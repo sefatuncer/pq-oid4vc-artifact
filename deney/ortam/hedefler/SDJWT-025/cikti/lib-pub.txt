@@ -1,0 +1,15 @@
+pub use ssi_core::{json_pointer, JsonPointer, JsonPointerBuf};
+pub use conceal::*;
+pub use decode::*;
+pub use digest::*;
+pub use disclosure::*;
+pub use kb::*;
+pub use reveal::*;
+pub struct InvalidSdJwt<T = String>(pub T);
+pub struct SdJwt([u8]);
+pub struct SdJwtBuf(Vec<u8>);
+pub struct Disclosures<'a> {
+pub struct PartsRef<'a> {
+pub struct SdJwtPayload {
+pub struct DecodedSdJwt<'a> {
+pub struct RevealedSdJwt<'a, T = AnyClaims> {

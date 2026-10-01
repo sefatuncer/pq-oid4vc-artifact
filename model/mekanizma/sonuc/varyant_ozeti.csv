@@ -1,0 +1,44 @@
+kural,varyant,rol,lemma,uyum,hayir,kapanmadi,kayitsiz
+M-a,MA_taban,mekanizma,14,14,0,0,0
+M-f,MF_cekirdek,mekanizma,19,19,0,0,0
+M-b0,MB0_taban,mekanizma,14,14,0,0,0
+M-b / A.3.2.2,MB_taban,mekanizma,14,14,0,0,0
+M-e,ME_signed_fresh,mekanizma,14,13,1,0,0
+M-e′,MEP_tls_classical,mekanizma,14,14,0,0,0
+M-e′,MEP_signed_fresh,kosul,14,13,1,0,0
+M-d,MD_reg_pq,mekanizma,14,14,0,0,0
+M-f,MF_3b_yol_farkli_ad,3b,19,19,0,0,0
+M-f,MF_3b_yol_ayni_ad,3b,19,19,0,0,0
+M-f,MF_3b_yol_klasik_kok,3b,19,19,0,0,0
+M-f,MF_3b_anahtar_farkli_ad,3b,19,19,0,0,0
+M-f,MF_3b_anahtar_ayni_ad,3b,19,19,0,0,0
+M-f,MF_3b_anahtar_klasik_kok,3b,19,19,0,0,0
+M-f,MF_3b_yaprak_farkli_ad,3b,19,19,0,0,0
+M-f,MF_3b_yaprak_ayni_ad,3b,19,19,0,0,0
+M-f,MF_3b_yaprak_klasik_kok,3b,19,19,0,0,0
+M-f,MF_tas_tl_onbellek,tasiyici,19,19,0,0,0
+M-f,MF_tas_wrprc_faz0,tasiyici,19,19,0,0,0
+M-f,MF_tas_wrprc_faz1,tasiyici,19,19,0,0,0
+M-f,MF_tas_federasyon_pq,tasiyici,19,19,0,0,0
+M-f,MF_tas_federasyon_klasik_ara,tasiyici,19,19,0,0,0
+M-f,MF_tas_federasyon_bayat,tasiyici,19,19,0,0,0
+M-f,MF_tas_crit_baslik,ablasyon,19,19,0,0,0
+M-h reddy,MH_reddy_klasik_zincir,3a,17,17,0,0,0
+M-h reddy,MH_reddy_farkli_ad,3b,17,17,0,0,0
+M-h reddy,MH_reddy_ayni_ad,3b,17,17,0,0,0
+M-h reddy,MH_reddy_klasik_kok,3b,17,17,0,0,0
+M-h reddy,MH_reddy_adbag_farkli_ad,3a,17,17,0,0,0
+M-h vicente,MH_vicente_klasik_zincir,3a,18,18,0,0,0
+M-h vicente,MH_vicente_farkli_ad,3b,18,18,0,0,0
+M-h vicente,MH_vicente_ayni_ad,3b,18,18,0,0,0
+M-h vicente,MH_vicente_klasik_kok,3b,18,18,0,0,0
+"M-g (sheffer, yol)",EK_mg_anahtar_farkli_ad,3b,18,18,0,0,0
+"M-g (sheffer, yol)",EK_mg_anahtar_ayni_ad,3b,18,18,0,0,0
+"M-g (sheffer, yol)",EK_mg_anahtar_klasik_kok,3b,18,18,0,0,0
+"M-g (sheffer, yol)",EK_mg_imza_farkli_ad,3b,18,18,0,0,0
+"M-g (sheffer, yol)",EK_mg_imza_ayni_ad,3b,18,18,0,0,0
+"M-g (sheffer, yol)",EK_mg_imza_klasik_kok,3b,18,18,0,0,0
+"M-f (çevrimdışı ek, yol)",EK_mf_r7_tanimlari,ablasyon,19,19,0,0,0
+"M-f (çevrimdışı ek, yol)",EK_mf_monoton_genis,ablasyon,19,19,0,0,0
+"M-f (çevrimdışı ek, yol)",EK_mf_sunset_beklenti,ablasyon,19,19,0,0,0
+"M-f (çevrimdışı ek, yol)",EK_mf_yola_duyarli,mekanizma,19,19,0,0,0

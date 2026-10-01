@@ -1,0 +1,16 @@
+{
+	"Path": "github.com/veraison/go-cose",
+	"Version": "v1.3.0",
+	"Info": "/go/pkg/mod/cache/download/github.com/veraison/go-cose/@v/v1.3.0.info",
+	"GoMod": "/go/pkg/mod/cache/download/github.com/veraison/go-cose/@v/v1.3.0.mod",
+	"Zip": "/go/pkg/mod/cache/download/github.com/veraison/go-cose/@v/v1.3.0.zip",
+	"Dir": "/go/pkg/mod/github.com/veraison/go-cose@v1.3.0",
+	"Sum": "h1:2/H5w8kdSpQJyVtIhx8gmwPJ2uSz1PkyWFx0idbd7rk=",
+	"GoModSum": "h1:df09OV91aHoQWLmy1KsDdYiagtXgyAwAl8vFeFn1gMc=",
+	"Origin": {
+		"VCS": "git",
+		"URL": "https://github.com/veraison/go-cose",
+		"Hash": "e5c68f97dfbb7dc2677e891ceea9a8eafe42ddb4",
+		"Ref": "refs/tags/v1.3.0"
+	}
+}

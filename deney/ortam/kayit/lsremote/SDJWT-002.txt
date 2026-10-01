@@ -1,0 +1,5 @@
+64550db13714249bb39924292995a5e32ef824f8	refs/tags/selective_disclosure_jwt-v1.0.0
+682b81b1cf7bdb001e8d8ff8ae7240260b33aad2	refs/tags/selective_disclosure_jwt-v1.0.1
+9a5461cb1d761635b97e72f6c0c8c9e72172751d	refs/tags/selective_disclosure_jwt-v1.0.3
+a96b39fb638a53237c8cce30c723203717bea68c	refs/tags/selective_disclosure_jwt-v1.1.0
+54a187b64095788a77da329c28e79ec30c606108	refs/tags/selective_disclosure_jwt-v1.1.1

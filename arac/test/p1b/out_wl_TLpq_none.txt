@@ -1,0 +1,207 @@
+Process 0 (that is, the initial process):
+{1}new sktl: skey;
+{2}new skc: skey;
+{3}new skq: skey;
+{4}out(c, (pk(sktl),pk(skc),pk(skq)));
+(
+    {5}!
+    {6}let sktl_1: skey = sktl in
+    {7}let i: bitstring = issuerA in
+    {8}let pkc: pkey = pk(skc) in
+    {9}let pkq: pkey = pk(skq) in
+    {10}out(c, ((i,pkc,pkq,none),sign((i,pkc,pkq,none),sktl_1)))
+) | (
+    {11}!
+    {12}let i_1: bitstring = issuerA in
+    {13}let skc_1: skey = skc in
+    {14}let skq_1: skey = skq in
+    {15}new claims: bitstring;
+    {16}event Issued(i_1,claims);
+    {17}out(c, (i_1,claims,sign((i_1,claims),skq_1)));
+    {18}out(c, (i_1,claims,sign((i_1,claims),skc_1)))
+) | (
+    {19}phase 1;
+    (
+        {20}out(c, skc)
+    ) | (
+        {21}!
+        {22}let pktl: pkey = pk(sktl) in
+        {23}in(c, ((i_2: bitstring,pkc_1: pkey,pkq_1: pkey,e: bitstring),tlsig: bitstring));
+        {24}if (verify(tlsig,(i_2,pkc_1,pkq_1,e),pktl) = true) then
+        {25}in(c, (=i_2,claims_1: bitstring,sigq: bitstring));
+        {26}if (verify(sigq,(i_2,claims_1),pkq_1) = true) then
+        {27}event Accept(i_2,claims_1)
+    ) | (
+        {28}!
+        {29}let pktl_1: pkey = pk(sktl) in
+        {30}in(c, ((i_3: bitstring,pkc_2: pkey,pkq_2: pkey,e_1: bitstring),tlsig_1: bitstring));
+        {31}if (verify(tlsig_1,(i_3,pkc_2,pkq_2,e_1),pktl_1) = true) then
+        {32}if (e_1 ≠ pq_required) then
+        {33}in(c, (=i_3,claims_2: bitstring,sigc: bitstring));
+        {34}if (verify(sigc,(i_3,claims_2),pkc_2) = true) then
+        {35}event Accept(i_3,claims_2)
+    )
+)
+
+--  Process 1 (that is, process 0, with let moved downwards):
+{1}new sktl: skey;
+{2}new skc: skey;
+{3}new skq: skey;
+{4}out(c, (pk(sktl),pk(skc),pk(skq)));
+(
+    {5}!
+    {9}let pkq: pkey = pk(skq) in
+    {8}let pkc: pkey = pk(skc) in
+    {7}let i: bitstring = issuerA in
+    {6}let sktl_1: skey = sktl in
+    {10}out(c, ((i,pkc,pkq,none),sign((i,pkc,pkq,none),sktl_1)))
+) | (
+    {11}!
+    {15}new claims: bitstring;
+    {12}let i_1: bitstring = issuerA in
+    {16}event Issued(i_1,claims);
+    {14}let skq_1: skey = skq in
+    {17}out(c, (i_1,claims,sign((i_1,claims),skq_1)));
+    {13}let skc_1: skey = skc in
+    {18}out(c, (i_1,claims,sign((i_1,claims),skc_1)))
+) | (
+    {19}phase 1;
+    (
+        {20}out(c, skc)
+    ) | (
+        {21}!
+        {23}in(c, ((i_2: bitstring,pkc_1: pkey,pkq_1: pkey,e: bitstring),tlsig: bitstring));
+        {22}let pktl: pkey = pk(sktl) in
+        {24}if (verify(tlsig,(i_2,pkc_1,pkq_1,e),pktl) = true) then
+        {25}in(c, (=i_2,claims_1: bitstring,sigq: bitstring));
+        {26}if (verify(sigq,(i_2,claims_1),pkq_1) = true) then
+        {27}event Accept(i_2,claims_1)
+    ) | (
+        {28}!
+        {30}in(c, ((i_3: bitstring,pkc_2: pkey,pkq_2: pkey,e_1: bitstring),tlsig_1: bitstring));
+        {29}let pktl_1: pkey = pk(sktl) in
+        {31}if (verify(tlsig_1,(i_3,pkc_2,pkq_2,e_1),pktl_1) = true) then
+        {32}if (e_1 ≠ pq_required) then
+        {33}in(c, (=i_3,claims_2: bitstring,sigc: bitstring));
+        {34}if (verify(sigc,(i_3,claims_2),pkc_2) = true) then
+        {35}event Accept(i_3,claims_2)
+    )
+)
+
+-- Query event(Accept(i_4,x)) ==> event(Issued(i_4,x)) in process 1.
+Translating the process into Horn clauses...
+Completing...
+Starting query event(Accept(i_4,x)) ==> event(Issued(i_4,x))
+goal reachable: attacker_p1(x) -> event(Accept(issuerA[],x))
+
+Derivation:
+
+1. The message ((issuerA[],pk(skc[]),pk(skq[]),none[]),sign((issuerA[],pk(skc[]),pk(skq[]),none[]),sktl[])) may be sent to the attacker at output {10}.
+attacker(((issuerA[],pk(skc[]),pk(skq[]),none[]),sign((issuerA[],pk(skc[]),pk(skq[]),none[]),sktl[]))).
+
+2. By 1, the attacker may know ((issuerA[],pk(skc[]),pk(skq[]),none[]),sign((issuerA[],pk(skc[]),pk(skq[]),none[]),sktl[])).
+Using the function 2-proj-2-tuple the attacker may obtain sign((issuerA[],pk(skc[]),pk(skq[]),none[]),sktl[]).
+attacker(sign((issuerA[],pk(skc[]),pk(skq[]),none[]),sktl[])).
+
+3. By 2, the attacker may know sign((issuerA[],pk(skc[]),pk(skq[]),none[]),sktl[]).
+So the attacker may know sign((issuerA[],pk(skc[]),pk(skq[]),none[]),sktl[]) in phase 1.
+attacker_p1(sign((issuerA[],pk(skc[]),pk(skq[]),none[]),sktl[])).
+
+4. The attacker initially knows none[] in phase 1.
+attacker_p1(none[]).
+
+5. The message (pk(sktl[]),pk(skc[]),pk(skq[])) may be sent to the attacker at output {4}.
+attacker((pk(sktl[]),pk(skc[]),pk(skq[]))).
+
+6. By 5, the attacker may know (pk(sktl[]),pk(skc[]),pk(skq[])).
+Using the function 3-proj-3-tuple the attacker may obtain pk(skq[]).
+attacker(pk(skq[])).
+
+7. By 6, the attacker may know pk(skq[]).
+So the attacker may know pk(skq[]) in phase 1.
+attacker_p1(pk(skq[])).
+
+8. The message skc[] may be sent to the attacker in phase 1 at output {20}.
+attacker_p1(skc[]).
+
+9. By 8, the attacker may know skc[] in phase 1.
+Using the function pk the attacker may obtain pk(skc[]) in phase 1.
+attacker_p1(pk(skc[])).
+
+10. The attacker initially knows issuerA[] in phase 1.
+attacker_p1(issuerA[]).
+
+11. By 10, the attacker may know issuerA[] in phase 1.
+By 9, the attacker may know pk(skc[]) in phase 1.
+By 7, the attacker may know pk(skq[]) in phase 1.
+By 4, the attacker may know none[] in phase 1.
+Using the function 4-tuple the attacker may obtain (issuerA[],pk(skc[]),pk(skq[]),none[]) in phase 1.
+attacker_p1((issuerA[],pk(skc[]),pk(skq[]),none[])).
+
+12. By 11, the attacker may know (issuerA[],pk(skc[]),pk(skq[]),none[]) in phase 1.
+By 3, the attacker may know sign((issuerA[],pk(skc[]),pk(skq[]),none[]),sktl[]) in phase 1.
+Using the function 2-tuple the attacker may obtain ((issuerA[],pk(skc[]),pk(skq[]),none[]),sign((issuerA[],pk(skc[]),pk(skq[]),none[]),sktl[])) in phase 1.
+attacker_p1(((issuerA[],pk(skc[]),pk(skq[]),none[]),sign((issuerA[],pk(skc[]),pk(skq[]),none[]),sktl[]))).
+
+13. We assume as hypothesis that
+attacker_p1(x).
+
+14. By 10, the attacker may know issuerA[] in phase 1.
+By 13, the attacker may know x in phase 1.
+Using the function 2-tuple the attacker may obtain (issuerA[],x) in phase 1.
+attacker_p1((issuerA[],x)).
+
+15. By 14, the attacker may know (issuerA[],x) in phase 1.
+By 8, the attacker may know skc[] in phase 1.
+Using the function sign the attacker may obtain sign((issuerA[],x),skc[]) in phase 1.
+attacker_p1(sign((issuerA[],x),skc[])).
+
+16. By 10, the attacker may know issuerA[] in phase 1.
+By 13, the attacker may know x in phase 1.
+By 15, the attacker may know sign((issuerA[],x),skc[]) in phase 1.
+Using the function 3-tuple the attacker may obtain (issuerA[],x,sign((issuerA[],x),skc[])) in phase 1.
+attacker_p1((issuerA[],x,sign((issuerA[],x),skc[]))).
+
+17. The message ((issuerA[],pk(skc[]),pk(skq[]),none[]),sign((issuerA[],pk(skc[]),pk(skq[]),none[]),sktl[])) that the attacker may have in phase 1 by 12 may be received at input {30}.
+The message (issuerA[],x,sign((issuerA[],x),skc[])) that the attacker may have in phase 1 by 16 may be received at input {33}.
+We have none[] ≠ pq_required[].
+So event Accept(issuerA[],x) may be executed at {35}.
+event(Accept(issuerA[],x)).
+
+18. By 17, event(Accept(issuerA[],x)).
+The goal is reached, represented in the following fact:
+event(Accept(issuerA[],x)).
+
+
+A more detailed output of the traces is available with
+  set traceDisplay = long.
+
+new sktl: skey creating sktl_2 at {1}
+
+new skc: skey creating skc_2 at {2}
+
+new skq: skey creating skq_2 at {3}
+
+out(c, (~M,~M_1,~M_2)) with ~M = pk(sktl_2), ~M_1 = pk(skc_2), ~M_2 = pk(skq_2) at {4}
+
+out(c, ((~M_3,~M_4,~M_5,~M_6),~M_7)) with ~M_3 = issuerA, ~M_4 = pk(skc_2), ~M_5 = pk(skq_2), ~M_6 = none, ~M_7 = sign((issuerA,pk(skc_2),pk(skq_2),none),sktl_2) at {10} in copy a
+
+out(c, ~M_8) with ~M_8 = skc_2 at {20}
+
+in(c, ((issuerA,~M_1,~M_2,none),~M_7)) with ~M_1 = pk(skc_2), ~M_2 = pk(skq_2), ~M_7 = sign((issuerA,pk(skc_2),pk(skq_2),none),sktl_2) at {30} in copy a_1
+
+in(c, (issuerA,a_2,sign((issuerA,a_2),~M_8))) with sign((issuerA,a_2),~M_8) = sign((issuerA,a_2),skc_2) at {33} in copy a_1
+
+event Accept(issuerA,a_2) at {35} in copy a_1 (goal)
+
+The event Accept(issuerA,a_2) is executed at {35} in copy a_1.
+A trace has been found.
+RESULT event(Accept(i_4,x)) ==> event(Issued(i_4,x)) is false.
+
+--------------------------------------------------------------
+Verification summary:
+
+Query event(Accept(i_4,x)) ==> event(Issued(i_4,x)) is false.
+
+--------------------------------------------------------------
+

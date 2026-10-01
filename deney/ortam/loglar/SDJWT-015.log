@@ -1,0 +1,10 @@
+# hedef=SDJWT-015 imaj=pq-a09-env-node:1.0 (sha256:e2650858bc9c0b6bfd491eb6d27f91c0a80cb8ea718c0d7f06e3e957b984f3be) baslangic=2026-09-25T12:35:40Z zaman_asimi=900s
+# komut: docker run --rm --name pq-a09-ortam-sdjwt-015 --label pq.agir=derleme --memory=6g --memory-swap=6g -v hedefler/SDJWT-015:/w -v betikler/konteyner:/b:ro pq-a09-env-node:1.0 bash /w/kur.sh
+== npm install @sd-jwt/core@0.21.0 (ignore-scripts=true)
+
+added 2 packages in 2s
+== içe aktarma kontrolü (imza doğrulama YOK)
+modul=@sd-jwt/core yuklendi; disa_aktarim=DEFAULT_SECURE_HASH_ALGORITHMS,Disclosure,FlattenJSON,GeneralJSON,IANA_HASH_ALGORITHMS,Jwt,KBJwt,KB_JWT_TYP,SDJWTException,SDJwt,SDJwtGeneralJSONInstance,SDJwtInstance,SD_DECOY,SD_DIGEST,SD_LIST_KEY,SD_SEPARATOR,base64UrlToUint8Array,base64urlDecode,base64urlEncode,createDecoy,createHashMapping,createHashMappingForSerializedDisclosure,createHashMappingSync,decodeJwt,decodeSdJwt,decodeSdJwtSync,encodePath,encodePathSegment,ensureError,getClaims,getClaimsSync,getSDAlgAndPayload,listKeys,pack,present,presentSync,presentableKeys,presentableKeysSync,selectDisclosures,splitSdJwt,transformPresentationFrame,uint8ArrayToBase64Url,unpack,unpackObj,unpackSync,validateJwtPayload
+sembol SDJwtInstance function
+== SONUC: basarili
+# cikis_kodu=0 sure_s=4 bitis=2026-09-25T12:35:44Z

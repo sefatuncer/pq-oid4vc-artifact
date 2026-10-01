@@ -1,0 +1,6 @@
+kosu,mutasyon,temel,sonda,beklenen,gozlenen,dondu,sure_s,tanik
+MUT11.o7.kati.asp,MUT11,o7,kati,1,1,EVET,0.0025,"kabul_alti(cek,yol(1)) kabul_alti(cek,yol(2))"
+MUT11.o7.gecis.asp,MUT11,o7,gecis,1,1,EVET,0.0027,"kabul_alti(cek,yol(1)) kabul_alti(cek,yol(2))"
+MUT11.o10.kati.asp,MUT11,o10,kati,1,1,EVET,0.0026,"kabul_alti(cek,yol(1))"
+MUT11.o10.gecis.asp,MUT11,o10,gecis,1,1,EVET,0.0025,"kabul_alti(cek,yol(1))"
+MUT12.V4.qday0.asp,MUT12,V4,qday0,SALDIRI,SALDIRI,EVET,0.0023,"sahte(tum,ag_yaniti) sahte(tum,cred) kirilir_alt(tum,cred) kabul_alti(cred,tl)"

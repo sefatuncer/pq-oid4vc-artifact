@@ -1,0 +1,114 @@
+# hedef=JOSE-092 imaj=pq-a09-env-rust:1.0 (sha256:b21d9e67309a86054643e61d4f78c5da262aca261b5dea7e5e047144306be32b) baslangic=2026-09-25T13:12:40Z zaman_asimi=1500s
+# komut: docker run --rm --name pq-a09-ortam-jose-092 --label pq.agir=derleme --memory=6g --memory-swap=6g -v hedefler/JOSE-092:/w -v betikler/konteyner:/b:ro pq-a09-env-rust:1.0 sh -c '(bash|sh) /w/kur.sh'
+[package]
+name = "ortam-deneme"
+version = "0.0.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+jsonwebtoken = { version = "=11.1.0", features = ["aws_lc_rs"] }
+== Aşama A: cargo build
+    Updating crates.io index
+     Locking 62 packages to latest compatible versions
+ Downloading crates ...
+  Downloaded powerfmt v0.2.0
+  Downloaded num-conv v0.2.2
+  Downloaded cfg-if v1.0.5
+  Downloaded zeroize_derive v1.5.0
+  Downloaded time-core v0.1.9
+  Downloaded dunce v1.0.5
+  Downloaded untrusted v0.7.1
+  Downloaded itoa v1.0.18
+  Downloaded rand_core v0.6.4
+  Downloaded thiserror-impl v2.0.21
+  Downloaded pkg-config v0.3.34
+  Downloaded shlex v2.0.1
+  Downloaded simple_asn1 v0.6.4
+  Downloaded deranged v0.5.8
+  Downloaded find-msvc-tools v0.1.14
+  Downloaded num-integer v0.1.47
+  Downloaded quote v1.0.47
+  Downloaded signature v2.2.0
+  Downloaded pem v3.0.6
+  Downloaded zeroize v1.9.0
+  Downloaded cmake v0.1.58
+  Downloaded zmij v1.0.23
+  Downloaded autocfg v1.5.1
+  Downloaded fs_extra v1.3.0
+  Downloaded time-macros v0.2.32
+  Downloaded jobserver v0.1.35
+  Downloaded thiserror v2.0.21
+  Downloaded serde_derive v1.0.229
+  Downloaded getrandom v0.2.17
+  Downloaded num-traits v0.2.19
+  Downloaded unicode-ident v1.0.26
+  Downloaded serde_core v1.0.229
+  Downloaded proc-macro2 v1.0.107
+  Downloaded base64 v0.22.1
+  Downloaded jsonwebtoken v11.1.0
+  Downloaded cc v1.5.0
+  Downloaded serde v1.0.229
+  Downloaded num-bigint v0.4.8
+  Downloaded memchr v2.8.3
+  Downloaded serde_json v1.0.151
+  Downloaded aws-lc-rs v1.18.1
+  Downloaded time v0.3.55
+  Downloaded syn v2.0.119
+  Downloaded syn v3.0.6
+  Downloaded libc v0.2.189
+  Downloaded aws-lc-sys v0.45.0
+   Compiling proc-macro2 v1.0.107
+   Compiling unicode-ident v1.0.26
+   Compiling quote v1.0.47
+   Compiling libc v0.2.189
+   Compiling find-msvc-tools v0.1.14
+   Compiling shlex v2.0.1
+   Compiling autocfg v1.5.1
+   Compiling fs_extra v1.3.0
+   Compiling dunce v1.0.5
+   Compiling pkg-config v0.3.34
+   Compiling serde_core v1.0.229
+   Compiling thiserror v2.0.21
+   Compiling zmij v1.0.23
+   Compiling num-conv v0.2.2
+   Compiling time-core v0.1.9
+   Compiling powerfmt v0.2.0
+   Compiling serde v1.0.229
+   Compiling aws-lc-rs v1.18.1
+   Compiling deranged v0.5.8
+   Compiling serde_json v1.0.151
+   Compiling time-macros v0.2.32
+   Compiling num-traits v0.2.19
+   Compiling base64 v0.22.1
+   Compiling untrusted v0.7.1
+   Compiling memchr v2.8.3
+   Compiling itoa v1.0.18
+   Compiling signature v2.2.0
+   Compiling pem v3.0.6
+   Compiling syn v3.0.6
+   Compiling syn v2.0.119
+   Compiling num-integer v0.1.47
+   Compiling jobserver v0.1.35
+   Compiling time v0.3.55
+   Compiling num-bigint v0.4.8
+   Compiling cc v1.5.0
+   Compiling cmake v0.1.58
+   Compiling aws-lc-sys v0.45.0
+   Compiling thiserror-impl v2.0.21
+   Compiling serde_derive v1.0.229
+   Compiling simple_asn1 v0.6.4
+   Compiling zeroize_derive v1.5.0
+   Compiling zeroize v1.9.0
+   Compiling jsonwebtoken v11.1.0
+   Compiling ortam-deneme v0.0.0 (/tmp/p)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 15.27s
+== Aşama B: API tiplerine başvuran program
+   Compiling ortam-deneme v0.0.0 (/tmp/p)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.14s
+krate jsonwebtoken baglandi
+tip jsonwebtoken::validation::Validation
+tip jsonwebtoken::decoding::DecodingKey
+tip jsonwebtoken::algorithms::Algorithm
+== SONUC: basarili
+# cikis_kodu=0 sure_s=16 bitis=2026-09-25T13:12:56Z

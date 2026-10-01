@@ -1,0 +1,236 @@
+maude tool: 'maude'
+ checking version: 3.5.1. OK.
+ checking installation: OK.
+[Theory R5_Anchor] Theory loaded
+[Theory R5_Anchor] Theory translated
+[Theory R5_Anchor] Derivation checks started
+[Theory R5_Anchor] Derivation checks ended
+[Theory R5_Anchor] Theory closed
+[Saturating Sources] Step 1 (Max 5)
+[Saturating Sources] Done
+theory R5_Anchor
+
+begin
+
+// Function signature and definition of the equational theory E
+
+functions: fst/1, pair/2, pk/1, sign/2, snd/1, true/0, verify/3
+equations:
+    fst(<x.1, x.2>) = x.1,
+    snd(<x.1, x.2>) = x.2,
+    verify(sign(x.1, x.2), x.1, pk(x.2)) = true
+
+restriction Equality:
+  "∀ x y #i. (Eq( x, y ) @ #i) ⇒ (x = y)"
+  // safety formula
+
+  /*
+  expanded formula:
+  "∀ x y #i. (Eq( x, y ) @ #i) ⇒ (x = y)"
+  */
+
+restriction Unique:
+  "∀ x #i #j. ((Unique( x ) @ #i) ∧ (Unique( x ) @ #j)) ⇒ (#i = #j)"
+  // safety formula
+
+  /*
+  expanded formula:
+  "∀ x #i #j. ((Unique( x ) @ #i) ∧ (Unique( x ) @ #j)) ⇒ (#i = #j)"
+  */
+
+rule (modulo E) Qday:
+   [ ] --[ Unique( 'qday' ), QdayEv( ) ]-> [ !CRQC( ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) LOTL_Setup:
+   [ Fr( ~skL ) ]
+  --[ Unique( 'lotl' ) ]->
+   [ !LOTLSk( ~skL ), !LOTLPin( pk(~skL) ), Out( pk(~skL) ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) TL_Setup:
+   [ !LOTLSk( skL ), Fr( ~skT ) ]
+  --[ Unique( 'tl' ) ]->
+   [
+   !TLSk( $T, ~skT ), Out( pk(~skT) ),
+   Out( <<'lotl_ptr', $T, pk(~skT)>, sign(<'lotl_ptr', $T, pk(~skT)>, skL)>
+   )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Pin_TL_Out_Of_Band:
+   [ !TLSk( T, skT ) ] --[ Pinned( T ) ]-> [ !TLPin( T, pk(skT) ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Issuer_Setup:
+   [ !TLSk( T, skT ), Fr( ~skI ) ]
+  --[ Unique( <'iss', $I> ) ]->
+   [
+   !IssSk( $I, ~skI ), Out( pk(~skI) ),
+   Out( <<'tl_entry', $I, pk(~skI)>, sign(<'tl_entry', $I, pk(~skI)>, skT)>
+   )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Issue:
+   [ !IssSk( I, skI ), Fr( ~c ) ]
+  --[ Issued( I, ~c ) ]->
+   [ Out( <<'cred', I, ~c>, sign(<'cred', I, ~c>, skI)> ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Verify_Pinned_TL:
+   [
+   !TLPin( T, pkT ), In( <<'tl_entry', I, pkI>, s2> ),
+   In( <<'cred', I, c>, s3> )
+   ]
+  --[
+  Eq( verify(s2, <'tl_entry', I, pkI>, pkT), true ),
+  Eq( verify(s3, <'cred', I, c>, pkI), true ), Accept( I, c )
+  ]->
+   [ ]
+
+  /*
+  rule (modulo AC) Verify_Pinned_TL:
+     [
+     !TLPin( T, pkT ), In( <<'tl_entry', I, pkI>, s2> ),
+     In( <<'cred', I, c>, s3> )
+     ]
+    --[ Eq( z, true ), Eq( z.1, true ), Accept( I, c ) ]->
+     [ ]
+    variants (modulo AC)
+    1. I     = I.19
+       c     = c.21
+       pkI   = pkI.22
+       pkT   = pkT.23
+       s2    = s2.24
+       s3    = s3.25
+       z     = verify(s2.24, <'tl_entry', I.19, pkI.22>, pkT.23)
+       z.1   = verify(s3.25, <'cred', I.19, c.21>, pkI.22)
+    
+    2. I     = I.27
+       c     = c.29
+       pkI   = pk(x.52)
+       pkT   = pkT.31
+       s2    = s2.32
+       s3    = sign(<'cred', I.27, c.29>, x.52)
+       z     = verify(s2.32, <'tl_entry', I.27, pk(x.52)>, pkT.31)
+       z.1   = true
+    
+    3. I     = I.28
+       c     = c.30
+       pkI   = pkI.31
+       pkT   = pk(x.54)
+       s2    = sign(<'tl_entry', I.28, pkI.31>, x.54)
+       s3    = s3.34
+       z     = true
+       z.1   = verify(s3.34, <'cred', I.28, c.30>, pkI.31)
+    
+    4. I     = I.28
+       c     = c.30
+       pkI   = pk(x.53)
+       pkT   = pk(x.54)
+       s2    = sign(<'tl_entry', I.28, pk(x.53)>, x.54)
+       s3    = sign(<'cred', I.28, c.30>, x.53)
+       z     = true
+       z.1   = true
+  */
+
+lemma executable:
+  exists-trace "∃ I c #i #j. (Issued( I, c ) @ #i) ∧ (Accept( I, c ) @ #j)"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ I c #i #j. (Issued( I, c ) @ #i) ∧ (Accept( I, c ) @ #j)"
+*/
+by sorry
+
+lemma executable_post_qday:
+  exists-trace
+  "∃ I c #q #i #j.
+    (((QdayEv( ) @ #q) ∧ (Issued( I, c ) @ #i)) ∧ (Accept( I, c ) @ #j)) ∧
+    (#q < #j)"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ I c #q #i #j.
+  (QdayEv( ) @ #q) ∧ (Issued( I, c ) @ #i) ∧ (Accept( I, c ) @ #j)
+ ∧
+  #q < #j"
+*/
+simplify
+solve( !IssSk( I, skI ) ▶₀ #i )
+  case Issuer_Setup
+  solve( !TLPin( T, pk(x) ) ▶₀ #j )
+    case Pin_TL_Out_Of_Band
+    solve( !KU( sign(<'tl_entry', $I, pk(x)>, ~skT) ) @ #vk.9 )
+      case Issuer_Setup
+      solve( !KU( ~c ) @ #vk.11 )
+        case Issue
+        solve( !KU( sign(<'cred', $I, ~c>, ~skI) ) @ #vk.12 )
+          case Issue
+          solve( !KU( pk(~skI) ) @ #vk.11 )
+            case Issuer_Setup_case_1
+            SOLVED // trace found
+          qed
+        qed
+      qed
+    qed
+  qed
+qed
+
+lemma attack_needs_crqc:
+  all-traces
+  "∀ I c #j.
+    (Accept( I, c ) @ #j) ⇒
+    ((∃ #i. (Issued( I, c ) @ #i) ∧ (#i < #j)) ∨
+     (∃ k #b. (Broken( k ) @ #b) ∧ (#b < #j)))"
+/*
+guarded formula characterizing all counter-examples:
+"∃ I c #j.
+  (Accept( I, c ) @ #j)
+ ∧
+  (∀ #i. (Issued( I, c ) @ #i) ⇒ ¬(#i < #j)) ∧
+  (∀ k #b. (Broken( k ) @ #b) ⇒ ¬(#b < #j))"
+*/
+by sorry
+
+lemma G1_claims_unforgeability:
+  all-traces
+  "∀ I c #j.
+    (Accept( I, c ) @ #j) ⇒ (∃ #i. (Issued( I, c ) @ #i) ∧ (#i < #j))"
+/*
+guarded formula characterizing all counter-examples:
+"∃ I c #j.
+  (Accept( I, c ) @ #j) ∧ ∀ #i. (Issued( I, c ) @ #i) ⇒ ¬(#i < #j)"
+*/
+by sorry
+
+/* All wellformedness checks were successful. */
+
+/*
+Generated from:
+Tamarin version 1.12.0
+Maude version 3.5.1
+Git revision: 82780bbaf3328a45f624ddb41e51bf75425f851c (with uncommited changes), branch: master
+Compiled at: 2026-03-07 14:22:39.174278293 UTC
+*/
+
+end
+
+==============================================================================
+summary of summaries:
+
+analyzed: /work/modeller/R5_anchor.spthy
+
+  processing time: 0.68s
+  
+  executable (exists-trace): analysis incomplete (1 steps)
+  executable_post_qday (exists-trace): verified (8 steps)
+  attack_needs_crqc (all-traces): analysis incomplete (1 steps)
+  G1_claims_unforgeability (all-traces): analysis incomplete (1 steps)
+
+==============================================================================

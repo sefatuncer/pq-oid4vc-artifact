@@ -1,0 +1,369 @@
+{
+ "aciklama": "DPoP boyut tablosu (yurutucu karari A6): talep kumesiyle birlikte ve composite imza UST SINIRIYLA.",
+ "esikler": {
+  "nginx_1.31.6": 8182,
+  "node_24.15": 16348
+ },
+ "satirlar": [
+  {
+   "alg": "ES256",
+   "talep_kumesi": "asgari",
+   "imza_B": 64,
+   "imza_ust_sinir_B": 64,
+   "dpop_B": 440,
+   "dpop_ust_sinir_B": 440,
+   "nginx_8182_asar(ust)": false,
+   "node_16348_asar(ust)": false
+  },
+  {
+   "alg": "ES256",
+   "talep_kumesi": "+ath",
+   "imza_B": 64,
+   "imza_ust_sinir_B": 64,
+   "dpop_B": 510,
+   "dpop_ust_sinir_B": 510,
+   "nginx_8182_asar(ust)": false,
+   "node_16348_asar(ust)": false
+  },
+  {
+   "alg": "ES256",
+   "talep_kumesi": "+ath+nonce",
+   "imza_B": 64,
+   "imza_ust_sinir_B": 64,
+   "dpop_B": 556,
+   "dpop_ust_sinir_B": 556,
+   "nginx_8182_asar(ust)": false,
+   "node_16348_asar(ust)": false
+  },
+  {
+   "alg": "EdDSA",
+   "talep_kumesi": "asgari",
+   "imza_B": 64,
+   "imza_ust_sinir_B": 64,
+   "dpop_B": 378,
+   "dpop_ust_sinir_B": 378,
+   "nginx_8182_asar(ust)": false,
+   "node_16348_asar(ust)": false
+  },
+  {
+   "alg": "EdDSA",
+   "talep_kumesi": "+ath",
+   "imza_B": 64,
+   "imza_ust_sinir_B": 64,
+   "dpop_B": 448,
+   "dpop_ust_sinir_B": 448,
+   "nginx_8182_asar(ust)": false,
+   "node_16348_asar(ust)": false
+  },
+  {
+   "alg": "EdDSA",
+   "talep_kumesi": "+ath+nonce",
+   "imza_B": 64,
+   "imza_ust_sinir_B": 64,
+   "dpop_B": 494,
+   "dpop_ust_sinir_B": 494,
+   "nginx_8182_asar(ust)": false,
+   "node_16348_asar(ust)": false
+  },
+  {
+   "alg": "Ed25519",
+   "talep_kumesi": "asgari",
+   "imza_B": 64,
+   "imza_ust_sinir_B": 64,
+   "dpop_B": 380,
+   "dpop_ust_sinir_B": 380,
+   "nginx_8182_asar(ust)": false,
+   "node_16348_asar(ust)": false
+  },
+  {
+   "alg": "Ed25519",
+   "talep_kumesi": "+ath",
+   "imza_B": 64,
+   "imza_ust_sinir_B": 64,
+   "dpop_B": 450,
+   "dpop_ust_sinir_B": 450,
+   "nginx_8182_asar(ust)": false,
+   "node_16348_asar(ust)": false
+  },
+  {
+   "alg": "Ed25519",
+   "talep_kumesi": "+ath+nonce",
+   "imza_B": 64,
+   "imza_ust_sinir_B": 64,
+   "dpop_B": 496,
+   "dpop_ust_sinir_B": 496,
+   "nginx_8182_asar(ust)": false,
+   "node_16348_asar(ust)": false
+  },
+  {
+   "alg": "ML-DSA-44",
+   "talep_kumesi": "asgari",
+   "imza_B": 2420,
+   "imza_ust_sinir_B": 2420,
+   "dpop_B": 5805,
+   "dpop_ust_sinir_B": 5805,
+   "nginx_8182_asar(ust)": false,
+   "node_16348_asar(ust)": false
+  },
+  {
+   "alg": "ML-DSA-44",
+   "talep_kumesi": "+ath",
+   "imza_B": 2420,
+   "imza_ust_sinir_B": 2420,
+   "dpop_B": 5875,
+   "dpop_ust_sinir_B": 5875,
+   "nginx_8182_asar(ust)": false,
+   "node_16348_asar(ust)": false
+  },
+  {
+   "alg": "ML-DSA-44",
+   "talep_kumesi": "+ath+nonce",
+   "imza_B": 2420,
+   "imza_ust_sinir_B": 2420,
+   "dpop_B": 5921,
+   "dpop_ust_sinir_B": 5921,
+   "nginx_8182_asar(ust)": false,
+   "node_16348_asar(ust)": false
+  },
+  {
+   "alg": "ML-DSA-65",
+   "talep_kumesi": "asgari",
+   "imza_B": 3309,
+   "imza_ust_sinir_B": 3309,
+   "dpop_B": 8128,
+   "dpop_ust_sinir_B": 8128,
+   "nginx_8182_asar(ust)": false,
+   "node_16348_asar(ust)": false
+  },
+  {
+   "alg": "ML-DSA-65",
+   "talep_kumesi": "+ath",
+   "imza_B": 3309,
+   "imza_ust_sinir_B": 3309,
+   "dpop_B": 8198,
+   "dpop_ust_sinir_B": 8198,
+   "nginx_8182_asar(ust)": true,
+   "node_16348_asar(ust)": false
+  },
+  {
+   "alg": "ML-DSA-65",
+   "talep_kumesi": "+ath+nonce",
+   "imza_B": 3309,
+   "imza_ust_sinir_B": 3309,
+   "dpop_B": 8244,
+   "dpop_ust_sinir_B": 8244,
+   "nginx_8182_asar(ust)": true,
+   "node_16348_asar(ust)": false
+  },
+  {
+   "alg": "ML-DSA-87",
+   "talep_kumesi": "asgari",
+   "imza_B": 4627,
+   "imza_ust_sinir_B": 4627,
+   "dpop_B": 11023,
+   "dpop_ust_sinir_B": 11023,
+   "nginx_8182_asar(ust)": true,
+   "node_16348_asar(ust)": false
+  },
+  {
+   "alg": "ML-DSA-87",
+   "talep_kumesi": "+ath",
+   "imza_B": 4627,
+   "imza_ust_sinir_B": 4627,
+   "dpop_B": 11093,
+   "dpop_ust_sinir_B": 11093,
+   "nginx_8182_asar(ust)": true,
+   "node_16348_asar(ust)": false
+  },
+  {
+   "alg": "ML-DSA-87",
+   "talep_kumesi": "+ath+nonce",
+   "imza_B": 4627,
+   "imza_ust_sinir_B": 4627,
+   "dpop_B": 11139,
+   "dpop_ust_sinir_B": 11139,
+   "nginx_8182_asar(ust)": true,
+   "node_16348_asar(ust)": false
+  },
+  {
+   "alg": "ML-DSA-44-ES256",
+   "talep_kumesi": "asgari",
+   "imza_B": 2491,
+   "imza_ust_sinir_B": 2492,
+   "dpop_B": 6031,
+   "dpop_ust_sinir_B": 6032,
+   "nginx_8182_asar(ust)": false,
+   "node_16348_asar(ust)": false
+  },
+  {
+   "alg": "ML-DSA-44-ES256",
+   "talep_kumesi": "+ath",
+   "imza_B": 2491,
+   "imza_ust_sinir_B": 2492,
+   "dpop_B": 6101,
+   "dpop_ust_sinir_B": 6102,
+   "nginx_8182_asar(ust)": false,
+   "node_16348_asar(ust)": false
+  },
+  {
+   "alg": "ML-DSA-44-ES256",
+   "talep_kumesi": "+ath+nonce",
+   "imza_B": 2491,
+   "imza_ust_sinir_B": 2492,
+   "dpop_B": 6147,
+   "dpop_ust_sinir_B": 6148,
+   "nginx_8182_asar(ust)": false,
+   "node_16348_asar(ust)": false
+  },
+  {
+   "alg": "ML-DSA-65-ES256",
+   "talep_kumesi": "asgari",
+   "imza_B": 3380,
+   "imza_ust_sinir_B": 3381,
+   "dpop_B": 8355,
+   "dpop_ust_sinir_B": 8356,
+   "nginx_8182_asar(ust)": true,
+   "node_16348_asar(ust)": false
+  },
+  {
+   "alg": "ML-DSA-65-ES256",
+   "talep_kumesi": "+ath",
+   "imza_B": 3380,
+   "imza_ust_sinir_B": 3381,
+   "dpop_B": 8425,
+   "dpop_ust_sinir_B": 8426,
+   "nginx_8182_asar(ust)": true,
+   "node_16348_asar(ust)": false
+  },
+  {
+   "alg": "ML-DSA-65-ES256",
+   "talep_kumesi": "+ath+nonce",
+   "imza_B": 3379,
+   "imza_ust_sinir_B": 3381,
+   "dpop_B": 8470,
+   "dpop_ust_sinir_B": 8472,
+   "nginx_8182_asar(ust)": true,
+   "node_16348_asar(ust)": false
+  },
+  {
+   "alg": "ML-DSA-87-ES384",
+   "talep_kumesi": "asgari",
+   "imza_B": 4729,
+   "imza_ust_sinir_B": 4731,
+   "dpop_B": 11348,
+   "dpop_ust_sinir_B": 11350,
+   "nginx_8182_asar(ust)": true,
+   "node_16348_asar(ust)": false
+  },
+  {
+   "alg": "ML-DSA-87-ES384",
+   "talep_kumesi": "+ath",
+   "imza_B": 4731,
+   "imza_ust_sinir_B": 4731,
+   "dpop_B": 11420,
+   "dpop_ust_sinir_B": 11420,
+   "nginx_8182_asar(ust)": true,
+   "node_16348_asar(ust)": false
+  },
+  {
+   "alg": "ML-DSA-87-ES384",
+   "talep_kumesi": "+ath+nonce",
+   "imza_B": 4730,
+   "imza_ust_sinir_B": 4731,
+   "dpop_B": 11465,
+   "dpop_ust_sinir_B": 11466,
+   "nginx_8182_asar(ust)": true,
+   "node_16348_asar(ust)": false
+  },
+  {
+   "alg": "ML-DSA-44-Ed25519",
+   "talep_kumesi": "asgari",
+   "imza_B": 2484,
+   "imza_ust_sinir_B": 2484,
+   "dpop_B": 5968,
+   "dpop_ust_sinir_B": 5968,
+   "nginx_8182_asar(ust)": false,
+   "node_16348_asar(ust)": false
+  },
+  {
+   "alg": "ML-DSA-44-Ed25519",
+   "talep_kumesi": "+ath",
+   "imza_B": 2484,
+   "imza_ust_sinir_B": 2484,
+   "dpop_B": 6038,
+   "dpop_ust_sinir_B": 6038,
+   "nginx_8182_asar(ust)": false,
+   "node_16348_asar(ust)": false
+  },
+  {
+   "alg": "ML-DSA-44-Ed25519",
+   "talep_kumesi": "+ath+nonce",
+   "imza_B": 2484,
+   "imza_ust_sinir_B": 2484,
+   "dpop_B": 6084,
+   "dpop_ust_sinir_B": 6084,
+   "nginx_8182_asar(ust)": false,
+   "node_16348_asar(ust)": false
+  },
+  {
+   "alg": "ML-DSA-65-Ed25519",
+   "talep_kumesi": "asgari",
+   "imza_B": 3373,
+   "imza_ust_sinir_B": 3373,
+   "dpop_B": 8292,
+   "dpop_ust_sinir_B": 8292,
+   "nginx_8182_asar(ust)": true,
+   "node_16348_asar(ust)": false
+  },
+  {
+   "alg": "ML-DSA-65-Ed25519",
+   "talep_kumesi": "+ath",
+   "imza_B": 3373,
+   "imza_ust_sinir_B": 3373,
+   "dpop_B": 8362,
+   "dpop_ust_sinir_B": 8362,
+   "nginx_8182_asar(ust)": true,
+   "node_16348_asar(ust)": false
+  },
+  {
+   "alg": "ML-DSA-65-Ed25519",
+   "talep_kumesi": "+ath+nonce",
+   "imza_B": 3373,
+   "imza_ust_sinir_B": 3373,
+   "dpop_B": 8408,
+   "dpop_ust_sinir_B": 8408,
+   "nginx_8182_asar(ust)": true,
+   "node_16348_asar(ust)": false
+  },
+  {
+   "alg": "ML-DSA-87-Ed448",
+   "talep_kumesi": "asgari",
+   "imza_B": 4741,
+   "imza_ust_sinir_B": 4741,
+   "dpop_B": 11292,
+   "dpop_ust_sinir_B": 11292,
+   "nginx_8182_asar(ust)": true,
+   "node_16348_asar(ust)": false
+  },
+  {
+   "alg": "ML-DSA-87-Ed448",
+   "talep_kumesi": "+ath",
+   "imza_B": 4741,
+   "imza_ust_sinir_B": 4741,
+   "dpop_B": 11362,
+   "dpop_ust_sinir_B": 11362,
+   "nginx_8182_asar(ust)": true,
+   "node_16348_asar(ust)": false
+  },
+  {
+   "alg": "ML-DSA-87-Ed448",
+   "talep_kumesi": "+ath+nonce",
+   "imza_B": 4741,
+   "imza_ust_sinir_B": 4741,
+   "dpop_B": 11408,
+   "dpop_ust_sinir_B": 11408,
+   "nginx_8182_asar(ust)": true,
+   "node_16348_asar(ust)": false
+  }
+ ]
+}

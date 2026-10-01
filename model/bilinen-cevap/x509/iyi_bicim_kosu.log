@@ -1,0 +1,13 @@
+{'ad': 'wf01', 'model': 'KAT2_X509.spthy', 'bayraklar': 'CRQC,V_IGNORE', 'iyi_bicim': 'EVET', 'uyari_sayisi': 0, 'meta': 'rc=0 wall_s=0.3 mem_peak_MiB=62.3', 'ilk_kosu': 'K2b-01.tam'}
+{'ad': 'wf02', 'model': 'KAT2_X509.spthy', 'bayraklar': 'CRQC,V_ENFORCE_IF_PRESENT', 'iyi_bicim': 'EVET', 'uyari_sayisi': 0, 'meta': 'rc=0 wall_s=0.36 mem_peak_MiB=68.8', 'ilk_kosu': 'K2b-02.tam'}
+{'ad': 'wf03', 'model': 'KAT2_X509.spthy', 'bayraklar': 'CRQC,V_REQUIRE', 'iyi_bicim': 'EVET', 'uyari_sayisi': 0, 'meta': 'rc=0 wall_s=0.3 mem_peak_MiB=66.1', 'ilk_kosu': 'K2b-03.tam'}
+{'ad': 'wf04', 'model': 'KAT2_X509.spthy', 'bayraklar': 'CRQC,COMPOSITE', 'iyi_bicim': 'EVET', 'uyari_sayisi': 0, 'meta': 'rc=0 wall_s=0.31 mem_peak_MiB=67.6', 'ilk_kosu': 'K2b-06.tam'}
+{'ad': 'wf05', 'model': 'KAT2_X509.spthy', 'bayraklar': 'CRQC,COMPOSITE,COEXIST_CLASSICAL', 'iyi_bicim': 'EVET', 'uyari_sayisi': 0, 'meta': 'rc=0 wall_s=0.38 mem_peak_MiB=68.1', 'ilk_kosu': 'K2b-07.tam'}
+{'ad': 'wf06', 'model': 'KAT2_X509.spthy', 'bayraklar': 'M1_LEGACY,V_IGNORE', 'iyi_bicim': 'EVET', 'uyari_sayisi': 0, 'meta': 'rc=0 wall_s=0.3 mem_peak_MiB=64.0', 'ilk_kosu': 'K2d-01.tam'}
+{'ad': 'wf07', 'model': 'KAT2_X509.spthy', 'bayraklar': 'M1_LEGACY,V_ENFORCE_IF_PRESENT', 'iyi_bicim': 'EVET', 'uyari_sayisi': 0, 'meta': 'rc=0 wall_s=0.38 mem_peak_MiB=71.1', 'ilk_kosu': 'K2d-02.tam'}
+{'ad': 'wf08', 'model': 'KAT2_X509.spthy', 'bayraklar': 'M1_LEGACY,V_REQUIRE', 'iyi_bicim': 'EVET', 'uyari_sayisi': 0, 'meta': 'rc=0 wall_s=0.31 mem_peak_MiB=63.5', 'ilk_kosu': 'K2d-03.tam'}
+{'ad': 'wf09', 'model': 'KAT2_X509.spthy', 'bayraklar': 'CRQC,COMPOSITE,MUT_COMP_NO_PQ', 'iyi_bicim': 'EVET', 'uyari_sayisi': 0, 'meta': 'rc=0 wall_s=0.29 mem_peak_MiB=71.3', 'ilk_kosu': 'MUT07.K2b-06.tam'}
+{'ad': 'wf10', 'model': 'KAT2_X509.spthy', 'bayraklar': 'INVALID_ALT_ISSUED,V_IGNORE', 'iyi_bicim': 'EVET', 'uyari_sayisi': 0, 'meta': 'rc=0 wall_s=0.31 mem_peak_MiB=63.8', 'ilk_kosu': 'EK.duy-ignore.tam'}
+{'ad': 'wf11', 'model': 'KAT2_X509.spthy', 'bayraklar': 'INVALID_ALT_ISSUED,V_ENFORCE_IF_PRESENT', 'iyi_bicim': 'EVET', 'uyari_sayisi': 0, 'meta': 'rc=0 wall_s=0.41 mem_peak_MiB=67.1', 'ilk_kosu': 'EK.duy-enforce.tam'}
+{'ad': 'wf12', 'model': 'KAT2_X509.spthy', 'bayraklar': 'INVALID_ALT_ISSUED,V_REQUIRE', 'iyi_bicim': 'EVET', 'uyari_sayisi': 0, 'meta': 'rc=0 wall_s=0.32 mem_peak_MiB=64.3', 'ilk_kosu': 'EK.duy-require.tam'}
+rc=0

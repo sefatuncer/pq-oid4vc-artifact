@@ -1,0 +1,147 @@
+[2026-10-01 15:42:19] Başlangıç. Filtre=''. İmaj: pq-a02-tamarin:1.12.0 (sha256:59b648d60829c4580504470be1b171df0e63ead38bebc8944ac8ee2bba6b9c60)
+[2026-10-01 15:42:19] Çeviri özeti (on_ceviri.sha256) denetimi:
+    ceviri_plani.tsv: OK
+    secim.json: OK
+    ceviri_disi.tsv: OK
+[2026-10-01 15:42:19] == CERCEVE-000150 (kapi) hedef=G1 tur=bir-eksik model=ornekler/CERCEVE-000150.spthy lemma=G1_claims_unforgeability
+[2026-10-01 15:42:36]   CERCEVE-000150 executable basamak=1 -> verified (13 adım) 14.2s 263.8MiB rc=0
+[2026-10-01 15:42:46]   CERCEVE-000150 G1_claims_unforgeability basamak=1 -> falsified (12 adım) 8.49s 162.6MiB rc=0
+[2026-10-01 15:42:46] == CERCEVE-000268 (kapi) hedef=G1 tur=bir-eksik model=ornekler/CERCEVE-000268.spthy lemma=G1_claims_unforgeability
+[2026-10-01 15:43:23]   CERCEVE-000268 executable basamak=1 -> verified (14 adım) 31.67s 661.9MiB rc=0
+[2026-10-01 15:43:58]   CERCEVE-000268 G1_claims_unforgeability basamak=1 -> falsified (11 adım) 33.34s 1577.0MiB rc=0
+[2026-10-01 15:43:58] == CERCEVE-000291 (kapi) hedef=G1 tur=bir-eksik model=ornekler/CERCEVE-000291.spthy lemma=G1_claims_unforgeability
+[2026-10-01 15:44:09]   CERCEVE-000291 executable basamak=1 -> verified (14 adım) 6.38s 125.4MiB rc=0
+[2026-10-01 15:44:16]   CERCEVE-000291 G1_claims_unforgeability basamak=1 -> falsified (16 adım) 4.97s 185.1MiB rc=0
+[2026-10-01 15:44:16] == CERCEVE-000438 (kapi) hedef=G1 tur=bir-eksik model=ornekler/CERCEVE-000438.spthy lemma=G1_claims_unforgeability
+[2026-10-01 15:44:23]   CERCEVE-000438 executable basamak=1 -> verified (12 adım) 3.28s 110.3MiB rc=0
+[2026-10-01 15:44:27]   CERCEVE-000438 G1_claims_unforgeability basamak=1 -> falsified (10 adım) 2.94s 95.6MiB rc=0
+[2026-10-01 15:44:27] == CERCEVE-000404 (kapi) hedef=G1 tur=bir-eksik model=ornekler/CERCEVE-000404.spthy lemma=G1_claims_unforgeability
+[2026-10-01 15:44:34]   CERCEVE-000404 executable basamak=1 -> verified (12 adım) 3.17s 105.2MiB rc=0
+[2026-10-01 15:44:39]   CERCEVE-000404 G1_claims_unforgeability basamak=1 -> falsified (13 adım) 2.93s 149.3MiB rc=0
+[2026-10-01 15:44:39] == CERCEVE-000427 (kapi) hedef=G1 tur=bir-eksik model=ornekler/CERCEVE-000427.spthy lemma=G1_claims_unforgeability
+[2026-10-01 15:44:46]   CERCEVE-000427 executable basamak=1 -> verified (12 adım) 3.51s 97.1MiB rc=0
+[2026-10-01 15:44:51]   CERCEVE-000427 G1_claims_unforgeability basamak=1 -> falsified (11 adım) 3.07s 90.9MiB rc=0
+[2026-10-01 15:44:51] == CERCEVE-000392 (kapi) hedef=G1 tur=bir-eksik model=ornekler/CERCEVE-000392.spthy lemma=G1_claims_unforgeability
+[2026-10-01 15:44:59]   CERCEVE-000392 executable basamak=1 -> verified (12 adım) 3.86s 108.2MiB rc=0
+[2026-10-01 15:45:05]   CERCEVE-000392 G1_claims_unforgeability basamak=1 -> falsified (13 adım) 4.18s 120.6MiB rc=0
+[2026-10-01 15:45:05] == CERCEVE-000527 (kapi) hedef=G1 tur=bir-eksik model=ornekler/CERCEVE-000527.spthy lemma=G1_claims_unforgeability
+[2026-10-01 15:45:13]   CERCEVE-000527 executable basamak=1 -> verified (12 adım) 3.89s 118.7MiB rc=0
+[2026-10-01 15:45:18]   CERCEVE-000527 G1_claims_unforgeability basamak=1 -> falsified (13 adım) 3.22s 130.0MiB rc=0
+[2026-10-01 15:45:18] == CERCEVE-000493 (kapi) hedef=G1 tur=asgari model=ornekler/CERCEVE-000493.spthy lemma=G1_claims_unforgeability
+[2026-10-01 15:45:25]   CERCEVE-000493 executable basamak=1 -> verified (12 adım) 3.21s 89.1MiB rc=0
+[2026-10-01 15:45:29]   CERCEVE-000493 G1_claims_unforgeability basamak=1 -> verified (20 adım) 2.35s 79.1MiB rc=0
+[2026-10-01 15:45:29] == CERCEVE-000459 (kapi) hedef=G1 tur=bir-eksik model=ornekler/CERCEVE-000459.spthy lemma=G1_claims_unforgeability
+[2026-10-01 15:45:37]   CERCEVE-000459 executable basamak=1 -> verified (12 adım) 3.72s 101.8MiB rc=0
+[2026-10-01 15:45:41]   CERCEVE-000459 G1_claims_unforgeability basamak=1 -> falsified (13 adım) 2.94s 120.5MiB rc=0
+[2026-10-01 15:45:41] == CERCEVE-000486 (kapi) hedef=G1 tur=bir-eksik model=ornekler/CERCEVE-000486.spthy lemma=G1_claims_unforgeability
+[2026-10-01 15:45:48]   CERCEVE-000486 executable basamak=1 -> verified (12 adım) 3.26s 97.5MiB rc=0
+[2026-10-01 15:45:55]   CERCEVE-000486 G1_claims_unforgeability basamak=1 -> falsified (10 adım) 4.46s 95.2MiB rc=0
+[2026-10-01 15:45:55] == CERCEVE-000616 (kapi) hedef=G1 tur=asgari model=ornekler/CERCEVE-000616.spthy lemma=G1_claims_unforgeability
+[2026-10-01 15:46:04]   CERCEVE-000616 executable basamak=1 -> verified (12 adım) 4.09s 105.5MiB rc=0
+[2026-10-01 15:46:09]   CERCEVE-000616 G1_claims_unforgeability basamak=1 -> verified (22 adım) 2.95s 79.6MiB rc=0
+[2026-10-01 15:46:09] == CERCEVE-000583 (kapi) hedef=G1 tur=asgari model=ornekler/CERCEVE-000583.spthy lemma=G1_claims_unforgeability
+[2026-10-01 15:46:17]   CERCEVE-000583 executable basamak=1 -> verified (12 adım) 4.01s 94.2MiB rc=0
+[2026-10-01 15:46:22]   CERCEVE-000583 G1_claims_unforgeability basamak=1 -> verified (20 adım) 2.73s 77.6MiB rc=0
+[2026-10-01 15:46:22] == CERCEVE-000550 (kapi) hedef=G1 tur=bir-eksik model=ornekler/CERCEVE-000550.spthy lemma=G1_claims_unforgeability
+[2026-10-01 15:46:32]   CERCEVE-000550 executable basamak=1 -> verified (12 adım) 4.52s 103.2MiB rc=0
+[2026-10-01 15:46:38]   CERCEVE-000550 G1_claims_unforgeability basamak=1 -> falsified (13 adım) 4.59s 123.5MiB rc=0
+[2026-10-01 15:46:39] == CERCEVE-000724 (kapi) hedef=G2 tur=bir-eksik model=ornekler/CERCEVE-000724.spthy lemma=G2_presentation_unforgeability
+[2026-10-01 15:48:58]   CERCEVE-000724 executable basamak=1 -> gecersiz_wf (NA adım) 131.26s 4096.0MiB rc=137
+[2026-10-01 15:51:01]   CERCEVE-000724 G2_presentation_unforgeability basamak=1 -> gecersiz_wf (NA adım) 121.87s 4096.0MiB rc=137
+[2026-10-01 15:51:01] == CERCEVE-000835 (kapi) hedef=G2 tur=bir-eksik model=ornekler/CERCEVE-000835.spthy lemma=G2_presentation_unforgeability
+[2026-10-01 15:53:46]   CERCEVE-000835 executable basamak=1 -> gecersiz_wf (NA adım) 158.22s 4096.0MiB rc=137
+[2026-10-01 15:57:33]   CERCEVE-000835 G2_presentation_unforgeability basamak=1 -> falsified (16 adım) 224.58s 4056.4MiB rc=0
+[2026-10-01 15:57:33] == CERCEVE-001197 (kapi) hedef=G2 tur=bir-eksik model=ornekler/CERCEVE-001197.spthy lemma=G2_presentation_unforgeability
+[2026-10-01 15:58:58]   CERCEVE-001197 executable basamak=1 -> verified (16 adım) 79.31s 869.7MiB rc=0
+[2026-10-01 15:59:47]   CERCEVE-001197 G2_presentation_unforgeability basamak=1 -> falsified (16 adım) 47.13s 558.9MiB rc=0
+[2026-10-01 15:59:47] == CERCEVE-001406 (kapi) hedef=G2 tur=bir-eksik model=ornekler/CERCEVE-001406.spthy lemma=G2_presentation_unforgeability
+[2026-10-01 16:00:50]   CERCEVE-001406 executable basamak=1 -> verified (16 adım) 55.97s 624.7MiB rc=0
+[2026-10-01 16:01:12]   CERCEVE-001406 G2_presentation_unforgeability basamak=1 -> falsified (15 adım) 20.11s 284.1MiB rc=0
+[2026-10-01 16:01:12] == CERCEVE-001602 (kapi) hedef=G2 tur=asgari model=ornekler/CERCEVE-001602.spthy lemma=G2_presentation_unforgeability
+[2026-10-01 16:01:21]   CERCEVE-001602 executable basamak=1 -> verified (15 adım) 4.5s 111.2MiB rc=0
+[2026-10-01 16:01:26]   CERCEVE-001602 G2_presentation_unforgeability basamak=1 -> verified (28 adım) 3.4s 86.4MiB rc=0
+[2026-10-01 16:01:26] == CERCEVE-001568 (kapi) hedef=G2 tur=bir-eksik model=ornekler/CERCEVE-001568.spthy lemma=G2_presentation_unforgeability
+[2026-10-01 16:01:37]   CERCEVE-001568 executable basamak=1 -> verified (15 adım) 4.72s 115.3MiB rc=0
+[2026-10-01 16:01:43]   CERCEVE-001568 G2_presentation_unforgeability basamak=1 -> falsified (15 adım) 4.42s 102.7MiB rc=0
+[2026-10-01 16:01:43] == CERCEVE-001523 (kapi) hedef=G2 tur=asgari model=ornekler/CERCEVE-001523.spthy lemma=G2_presentation_unforgeability
+[2026-10-01 16:01:54]   CERCEVE-001523 executable basamak=1 -> verified (15 adım) 5.47s 117.6MiB rc=0
+[2026-10-01 16:01:59]   CERCEVE-001523 G2_presentation_unforgeability basamak=1 -> verified (28 adım) 3.9s 85.5MiB rc=0
+[2026-10-01 16:02:00] == CERCEVE-001681 (kapi) hedef=G2 tur=asgari model=ornekler/CERCEVE-001681.spthy lemma=G2_presentation_unforgeability
+[2026-10-01 16:02:10]   CERCEVE-001681 executable basamak=1 -> verified (15 adım) 4.83s 115.3MiB rc=0
+[2026-10-01 16:02:16]   CERCEVE-001681 G2_presentation_unforgeability basamak=1 -> verified (28 adım) 4.22s 85.0MiB rc=0
+[2026-10-01 16:02:16] == CERCEVE-001712 (kapi) hedef=G2 tur=bir-eksik model=ornekler/CERCEVE-001712.spthy lemma=G2_presentation_unforgeability
+[2026-10-01 16:02:27]   CERCEVE-001712 executable basamak=1 -> verified (15 adım) 5.02s 118.7MiB rc=0
+[2026-10-01 16:02:34]   CERCEVE-001712 G2_presentation_unforgeability basamak=1 -> falsified (14 adım) 4.95s 139.8MiB rc=0
+[2026-10-01 16:02:34] == CERCEVE-001670 (kapi) hedef=G2 tur=bir-eksik model=ornekler/CERCEVE-001670.spthy lemma=G2_presentation_unforgeability
+[2026-10-01 16:02:45]   CERCEVE-001670 executable basamak=1 -> verified (15 adım) 6.11s 118.1MiB rc=0
+[2026-10-01 16:02:56]   CERCEVE-001670 G2_presentation_unforgeability basamak=1 -> falsified (16 adım) 7.98s 179.1MiB rc=0
+[2026-10-01 16:02:56] == CERCEVE-001634 (kapi) hedef=G2 tur=bir-eksik model=ornekler/CERCEVE-001634.spthy lemma=G2_presentation_unforgeability
+[2026-10-01 16:03:09]   CERCEVE-001634 executable basamak=1 -> verified (15 adım) 6.19s 115.2MiB rc=0
+[2026-10-01 16:03:16]   CERCEVE-001634 G2_presentation_unforgeability basamak=1 -> falsified (14 adım) 5.62s 132.9MiB rc=0
+[2026-10-01 16:03:16] == CERCEVE-001793 (kapi) hedef=G2 tur=bir-eksik model=ornekler/CERCEVE-001793.spthy lemma=G2_presentation_unforgeability
+[2026-10-01 16:03:28]   CERCEVE-001793 executable basamak=1 -> verified (15 adım) 5.96s 113.7MiB rc=0
+[2026-10-01 16:03:34]   CERCEVE-001793 G2_presentation_unforgeability basamak=1 -> falsified (14 adım) 5.12s 111.4MiB rc=0
+[2026-10-01 16:03:34] == CERCEVE-001756 (kapi) hedef=G2 tur=bir-eksik model=ornekler/CERCEVE-001756.spthy lemma=G2_presentation_unforgeability
+[2026-10-01 16:03:45]   CERCEVE-001756 executable basamak=1 -> verified (15 adım) 5.48s 117.4MiB rc=0
+[2026-10-01 16:03:52]   CERCEVE-001756 G2_presentation_unforgeability basamak=1 -> falsified (15 adım) 4.69s 102.6MiB rc=0
+[2026-10-01 16:03:52] == CERCEVE-001775 (kapi) hedef=G2 tur=asgari model=ornekler/CERCEVE-001775.spthy lemma=G2_presentation_unforgeability
+[2026-10-01 16:04:02]   CERCEVE-001775 executable basamak=1 -> verified (15 adım) 5.26s 117.4MiB rc=0
+[2026-10-01 16:04:09]   CERCEVE-001775 G2_presentation_unforgeability basamak=1 -> verified (26 adım) 4.28s 83.1MiB rc=0
+[2026-10-01 16:04:09] == CERCEVE-001740 (kapi) hedef=G2 tur=bir-eksik model=ornekler/CERCEVE-001740.spthy lemma=G2_presentation_unforgeability
+[2026-10-01 16:04:20]   CERCEVE-001740 executable basamak=1 -> verified (15 adım) 5.36s 117.0MiB rc=0
+[2026-10-01 16:04:27]   CERCEVE-001740 G2_presentation_unforgeability basamak=1 -> falsified (14 adım) 4.55s 147.3MiB rc=0
+[2026-10-01 16:04:27] == CERCEVE-001834 (kapi) hedef=G3 tur=bir-eksik model=ornekler/CERCEVE-001834.spthy lemma=G3_status_soundness
+[2026-10-01 16:05:01]   CERCEVE-001834 executable basamak=1 -> verified (14 adım) 29.13s 299.0MiB rc=0
+[2026-10-01 16:05:16]   CERCEVE-001834 G3_status_soundness basamak=1 -> falsified (13 adım) 13.17s 211.1MiB rc=0
+[2026-10-01 16:05:16] == CERCEVE-002044 (kapi) hedef=G3 tur=bir-eksik model=ornekler/CERCEVE-002044.spthy lemma=G3_status_soundness
+[2026-10-01 16:06:54]   CERCEVE-002044 executable basamak=1 -> verified (14 adım) 92.22s 700.6MiB rc=0
+[2026-10-01 16:07:20]   CERCEVE-002044 G3_status_soundness basamak=1 -> falsified (16 adım) 24.39s 459.2MiB rc=0
+[2026-10-01 16:07:20] == CERCEVE-002071 (kapi) hedef=G3 tur=bir-eksik model=ornekler/CERCEVE-002071.spthy lemma=G3_status_soundness
+[2026-10-01 16:07:34]   CERCEVE-002071 executable basamak=1 -> verified (13 adım) 8.86s 139.1MiB rc=0
+[2026-10-01 16:07:42]   CERCEVE-002071 G3_status_soundness basamak=1 -> falsified (12 adım) 5.48s 109.1MiB rc=0
+[2026-10-01 16:07:42] == CERCEVE-002176 (kapi) hedef=G3 tur=bir-eksik model=ornekler/CERCEVE-002176.spthy lemma=G3_status_soundness
+[2026-10-01 16:08:17]   CERCEVE-002176 executable basamak=1 -> verified (14 adım) 29.95s 482.9MiB rc=0
+[2026-10-01 16:08:44]   CERCEVE-002176 G3_status_soundness basamak=1 -> falsified (11 adım) 25.17s 638.5MiB rc=0
+[2026-10-01 16:08:44] == CERCEVE-002254 (kapi) hedef=G3 tur=bir-eksik model=ornekler/CERCEVE-002254.spthy lemma=G3_status_soundness
+[2026-10-01 16:08:54]   CERCEVE-002254 executable basamak=1 -> verified (12 adım) 4.5s 99.6MiB rc=0
+[2026-10-01 16:08:59]   CERCEVE-002254 G3_status_soundness basamak=1 -> falsified (11 adım) 3.41s 94.6MiB rc=0
+[2026-10-01 16:08:59] == CERCEVE-002218 (kapi) hedef=G3 tur=asgari model=ornekler/CERCEVE-002218.spthy lemma=G3_status_soundness
+[2026-10-01 16:09:07]   CERCEVE-002218 executable basamak=1 -> verified (12 adım) 3.41s 91.4MiB rc=0
+[2026-10-01 16:09:11]   CERCEVE-002218 G3_status_soundness basamak=1 -> verified (20 adım) 2.7s 79.0MiB rc=0
+[2026-10-01 16:09:11] == CERCEVE-002241 (kapi) hedef=G3 tur=bir-eksik model=ornekler/CERCEVE-002241.spthy lemma=G3_status_soundness
+[2026-10-01 16:09:23]   CERCEVE-002241 executable basamak=1 -> verified (12 adım) 6.0s 103.9MiB rc=0
+[2026-10-01 16:09:27]   CERCEVE-002241 G3_status_soundness basamak=1 -> falsified (10 adım) 2.94s 97.0MiB rc=0
+[2026-10-01 16:09:27] == CERCEVE-002207 (kapi) hedef=G3 tur=bir-eksik model=ornekler/CERCEVE-002207.spthy lemma=G3_status_soundness
+[2026-10-01 16:09:35]   CERCEVE-002207 executable basamak=1 -> verified (12 adım) 3.51s 98.3MiB rc=0
+[2026-10-01 16:09:40]   CERCEVE-002207 G3_status_soundness basamak=1 -> falsified (13 adım) 3.24s 123.1MiB rc=0
+[2026-10-01 16:09:40] == CERCEVE-002344 (kapi) hedef=G3 tur=bir-eksik model=ornekler/CERCEVE-002344.spthy lemma=G3_status_soundness
+[2026-10-01 16:09:47]   CERCEVE-002344 executable basamak=1 -> verified (12 adım) 2.92s 112.3MiB rc=0
+[2026-10-01 16:09:51]   CERCEVE-002344 G3_status_soundness basamak=1 -> falsified (10 adım) 2.78s 96.3MiB rc=0
+[2026-10-01 16:09:52] == CERCEVE-002310 (kapi) hedef=G3 tur=bir-eksik model=ornekler/CERCEVE-002310.spthy lemma=G3_status_soundness
+[2026-10-01 16:09:59]   CERCEVE-002310 executable basamak=1 -> verified (12 adım) 3.39s 118.2MiB rc=0
+[2026-10-01 16:10:04]   CERCEVE-002310 G3_status_soundness basamak=1 -> falsified (10 adım) 3.14s 120.6MiB rc=0
+[2026-10-01 16:10:04] == CERCEVE-002275 (kapi) hedef=G3 tur=bir-eksik model=ornekler/CERCEVE-002275.spthy lemma=G3_status_soundness
+[2026-10-01 16:10:12]   CERCEVE-002275 executable basamak=1 -> verified (12 adım) 3.71s 108.3MiB rc=0
+[2026-10-01 16:10:18]   CERCEVE-002275 G3_status_soundness basamak=1 -> falsified (13 adım) 4.11s 131.0MiB rc=0
+[2026-10-01 16:10:18] == CERCEVE-002298 (kapi) hedef=G3 tur=bir-eksik model=ornekler/CERCEVE-002298.spthy lemma=G3_status_soundness
+[2026-10-01 16:10:28]   CERCEVE-002298 executable basamak=1 -> verified (12 adım) 4.89s 99.6MiB rc=0
+[2026-10-01 16:10:33]   CERCEVE-002298 G3_status_soundness basamak=1 -> falsified (13 adım) 3.79s 121.3MiB rc=0
+[2026-10-01 16:10:33] == CERCEVE-002433 (kapi) hedef=G3 tur=bir-eksik model=ornekler/CERCEVE-002433.spthy lemma=G3_status_soundness
+[2026-10-01 16:10:42]   CERCEVE-002433 executable basamak=1 -> verified (12 adım) 3.94s 107.4MiB rc=0
+[2026-10-01 16:10:48]   CERCEVE-002433 G3_status_soundness basamak=1 -> falsified (13 adım) 4.41s 127.0MiB rc=0
+[2026-10-01 16:10:48] == CERCEVE-002402 (kapi) hedef=G3 tur=bir-eksik model=ornekler/CERCEVE-002402.spthy lemma=G3_status_soundness
+[2026-10-01 16:10:57]   CERCEVE-002402 executable basamak=1 -> verified (12 adım) 4.09s 94.0MiB rc=0
+[2026-10-01 16:11:02]   CERCEVE-002402 G3_status_soundness basamak=1 -> falsified (11 adım) 3.51s 91.4MiB rc=0
+[2026-10-01 16:11:02] == CERCEVE-002368 (kapi) hedef=G3 tur=bir-eksik model=ornekler/CERCEVE-002368.spthy lemma=G3_status_soundness
+[2026-10-01 16:11:12]   CERCEVE-002368 executable basamak=1 -> verified (12 adım) 3.98s 111.9MiB rc=0
+[2026-10-01 16:11:17]   CERCEVE-002368 G3_status_soundness basamak=1 -> falsified (10 adım) 3.34s 91.1MiB rc=0
+[2026-10-01 16:11:17] == CERCEVE-001680 (kapi) hedef=G2 tur=bir-eksik model=ornekler/CERCEVE-001680.spthy lemma=G2_presentation_unforgeability
+[2026-10-01 16:11:26]   CERCEVE-001680 executable basamak=1 -> verified (15 adım) 4.29s 114.9MiB rc=0
+[2026-10-01 16:11:34]   CERCEVE-001680 G2_presentation_unforgeability basamak=1 -> falsified (15 adım) 5.86s 99.6MiB rc=0
+[2026-10-01 16:11:34] == CERCEVE-001355 (kapi) hedef=G2 tur=bir-eksik model=ornekler/CERCEVE-001355.spthy lemma=G2_presentation_unforgeability
+[2026-10-01 16:11:53]   CERCEVE-001355 executable basamak=1 -> verified (16 adım) 13.06s 249.9MiB rc=0
+[2026-10-01 16:12:01]   CERCEVE-001355 G2_presentation_unforgeability basamak=1 -> falsified (15 adım) 6.53s 188.3MiB rc=0
+[2026-10-01 16:12:01] == CERCEVE-002124 (kapi) hedef=G3 tur=bir-eksik model=ornekler/CERCEVE-002124.spthy lemma=G3_status_soundness
+[2026-10-01 16:12:10]   CERCEVE-002124 executable basamak=1 -> verified (13 adım) 4.23s 101.2MiB rc=0
+[2026-10-01 16:12:16]   CERCEVE-002124 G3_status_soundness basamak=1 -> falsified (12 adım) 3.83s 96.7MiB rc=0
+[2026-10-01 16:12:16] Bitti (141 konteyner).

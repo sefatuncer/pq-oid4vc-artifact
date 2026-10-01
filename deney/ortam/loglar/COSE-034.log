@@ -1,0 +1,15 @@
+# hedef=COSE-034 imaj=pq-a09-env-go:1.0 (sha256:931657811dd72d1cde2c7425231242580b689ffe96c6eb942c8f504be851c706) baslangic=2026-09-25T12:44:27Z zaman_asimi=900s
+# komut: docker run --rm --name pq-a09-ortam-cose-034 --label pq.agir=derleme --memory=6g --memory-swap=6g -v hedefler/COSE-034:/w -v betikler/konteyner:/b:ro pq-a09-env-go:1.0 bash /w/kur.sh
+== go get github.com/veraison/go-cose@v1.3.0
+go: downloading github.com/veraison/go-cose v1.3.0
+go: downloading github.com/fxamacker/cbor/v2 v2.5.0
+go: downloading github.com/x448/float16 v0.8.4
+go: added github.com/fxamacker/cbor/v2 v2.5.0
+go: added github.com/veraison/go-cose v1.3.0
+go: added github.com/x448/float16 v0.8.4
+== derleme ve bağlama
+paket github.com/veraison/go-cose baglandi
+sembol NewVerifier func(cose.Algorithm, crypto.PublicKey) (cose.Verifier, error)
+tip *cose.Sign1Message *cose.SignMessage
+== SONUC: basarili
+# cikis_kodu=0 sure_s=14 bitis=2026-09-25T12:44:41Z

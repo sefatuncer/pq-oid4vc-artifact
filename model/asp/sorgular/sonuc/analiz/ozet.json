@@ -1,0 +1,146 @@
+{
+ "birincil_sat": 189,
+ "birincil_unsat": 486,
+ "birincil_kume": 279,
+ "cab": {
+  "cab_2x2|ad|var": {
+   "hucre": 675,
+   "birincil_ile_ayni": 486,
+   "unsat": 675,
+   "unsat_hedef": {
+    "g1": 135,
+    "g2": 135,
+    "g3": 135,
+    "g4": 135,
+    "tum": 135
+   }
+  },
+  "cab_2x2|ad|yok": {
+   "hucre": 675,
+   "birincil_ile_ayni": 675,
+   "unsat": 486,
+   "unsat_hedef": {
+    "g1": 72,
+    "g2": 72,
+    "g3": 72,
+    "g4": 135,
+    "tum": 135
+   }
+  },
+  "cab_2x2|anahtar|var": {
+   "hucre": 675,
+   "birincil_ile_ayni": 675,
+   "unsat": 486,
+   "unsat_hedef": {
+    "g1": 72,
+    "g2": 72,
+    "g3": 72,
+    "g4": 135,
+    "tum": 135
+   }
+  },
+  "cab_2x2|anahtar|yok": {
+   "hucre": 675,
+   "birincil_ile_ayni": 675,
+   "unsat": 486,
+   "unsat_hedef": {
+    "g1": 72,
+    "g2": 72,
+    "g3": 72,
+    "g4": 135,
+    "tum": 135
+   }
+  },
+  "cab_saglik_birincil|yok|var": {
+   "hucre": 675,
+   "birincil_ile_ayni": 675,
+   "unsat": 486,
+   "unsat_hedef": {
+    "g1": 72,
+    "g2": 72,
+    "g3": 72,
+    "g4": 135,
+    "tum": 135
+   }
+  },
+  "cab_saglik_diger|yok|var": {
+   "hucre": 675,
+   "birincil_ile_ayni": 486,
+   "unsat": 675,
+   "unsat_hedef": {
+    "g1": 135,
+    "g2": 135,
+    "g3": 135,
+    "g4": 135,
+    "tum": 135
+   }
+  },
+  "cab_saglik_diger|yok|yok": {
+   "hucre": 675,
+   "birincil_ile_ayni": 486,
+   "unsat": 675,
+   "unsat_hedef": {
+    "g1": 135,
+    "g2": 135,
+    "g3": 135,
+    "g4": 135,
+    "tum": 135
+   }
+  },
+  "saglik_diger_bayrak_etkisiz": 675,
+  "saglik_birincil_bayrak_etkisiz": 675,
+  "beklenti_tuttu": {
+   "ad/yok": true,
+   "ad/var": true,
+   "anahtar/yok": true,
+   "anahtar/var": true,
+   "saglik_yok_diger_var": true,
+   "saglik_yok_diger_yok_birincil": true
+  }
+ },
+ "r6_kapsam_disi": {
+  "TASIMA_KORUR": 42,
+  "UZUN_OTESI": 42
+ },
+ "r6": {
+  "hucre": 672,
+  "karsilastirilan": 588,
+  "uyum": 588,
+  "sinif_sayim": {
+   "uzun|LONG": 196,
+   "gunluk|FAST": 140,
+   "gunluk|MEDIUM": 4,
+   "gunluk|SLOW": 52,
+   "gecici|FAST": 140,
+   "gecici|MEDIUM": 4,
+   "gecici|SLOW": 52
+  },
+  "kimlik_pq_her_hucrede": true
+ },
+ "h2_yanlislama_i": {
+  "V1_sabit_pencere_hucre": 32,
+  "belirtec_omru_kumeyi_degistirdi": 0
+ },
+ "h2_yanlislama_ii": {
+  "V2V3_hucre_grubu": 180,
+  "τ_ile_kume_degisen": 66
+ },
+ "h1": {
+  "cekilen_ikame_tutan": [
+   "a01@g1",
+   "a01@g2",
+   "a01@g3",
+   "a02@g1",
+   "a02@g2",
+   "a02@g3",
+   "a02@g4",
+   "a03@g3",
+   "a04@g3",
+   "a06@g1",
+   "a08@g3",
+   "ejvi@g1"
+  ],
+  "aktarilan_ikame_tutan (H1 yanlışlama koşulu)": [],
+  "klasik_tasima_ikame_nominal_tau": "yok (A13 WebPKI klasikken seçilemez; w_tls = 1 y > τ nominal)"
+ }
+}

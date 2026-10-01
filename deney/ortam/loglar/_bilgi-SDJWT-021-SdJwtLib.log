@@ -1,0 +1,17 @@
+# hedef=_bilgi-SDJWT-021-SdJwtLib imaj=pq-a09-env-dotnet:1.0 (sha256:4f1b25cf1a6e359c5719da979e1c4e3e16f8a9f1ec6cc3c0e4232c7d146771e6) baslangic=2026-09-25T13:20:49Z zaman_asimi=900s
+# komut: docker run --rm --name pq-a09-ortam-_bilgi-sdjwt-021-sdjwtlib --label pq.agir=derleme --memory=6g --memory-swap=6g -v hedefler/_bilgi-SDJWT-021-SdJwtLib:/w -v betikler/konteyner:/b:ro pq-a09-env-dotnet:1.0 sh -c '(bash|sh) /w/kur.sh'
+== dotnet restore (kilit dosyasıyla)
+  Determining projects to restore...
+  Restored /tmp/p/Deneme.csproj (in 4.35 sec).
+== dotnet build + çalıştır
+  Deneme -> /tmp/p/bin/Release/net10.0/Deneme.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:01.94
+derleme=WalletFramework.SdJwtLib 3.1.0.0 tip_yuklendi=21 tip_yuklenemedi=0
+ad_eslesen_tipler (Valid|Verif|SdJwt; bilgi): WalletFramework.SdJwtLib.Roles.IVerifier,WalletFramework.SdJwtLib.Roles.Implementation.Verifier,WalletFramework.SdJwtLib.Models.SdJwtDoc
+== SONUC: basarili
+# cikis_kodu=0 sure_s=8 bitis=2026-09-25T13:20:57Z

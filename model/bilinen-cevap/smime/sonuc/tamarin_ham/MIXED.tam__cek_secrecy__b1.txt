@@ -1,0 +1,109 @@
+maude tool: 'maude'
+ checking version: 3.5.1. OK.
+ checking installation: OK.
+[Theory KAT3_SMIME_WeakestPath] Theory loaded
+[Theory KAT3_SMIME_WeakestPath] Theory translated
+[Theory KAT3_SMIME_WeakestPath] Derivation checks started
+[Theory KAT3_SMIME_WeakestPath] Derivation checks ended
+[Theory KAT3_SMIME_WeakestPath] Theory closed
+[Saturating Sources] Step 1 (Max 5)
+[Saturating Sources] Done
+theory KAT3_SMIME_WeakestPath
+
+begin
+
+// Function signature and definition of the equational theory E
+
+functions: adec/2, aenc/2, fst/1, h/1, pair/2, pk/1, sdec/2, senc/2,
+           snd/1
+equations:
+    adec(aenc(x.1, pk(x.2)), x.2) = x.1,
+    fst(<x.1, x.2>) = x.1,
+    sdec(senc(x.1, x.2), x.2) = x.1,
+    snd(<x.1, x.2>) = x.2
+
+restriction Once:
+  "∀ x #i #j. ((Once( x ) @ #i) ∧ (Once( x ) @ #j)) ⇒ (#i = #j)"
+  // safety formula
+
+  /*
+  expanded formula:
+  "∀ x #i #j. ((Once( x ) @ #i) ∧ (Once( x ) @ #j)) ⇒ (#i = #j)"
+  */
+
+rule (modulo E) Qday:
+   [ ] --[ Once( 'qday' ) ]-> [ !Qday( ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Recipient_Setup:
+   [ Fr( ~skc ), Fr( ~skq ) ]
+  --[ Once( 'rcpt' ) ]->
+   [ !Rc( ~skc ), !Rq( ~skq ), Out( pk(~skc) ), Out( pk(~skq) ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Break_Classical:
+   [ !Rc( skc ), !Qday( ) ] --[ BreakC( ) ]-> [ Out( skc ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Send:
+   [ Fr( ~cek ), Fr( ~m ), !Rc( skc ), !Rq( skq ) ]
+  --[ SecretCEK( ~cek ) ]->
+   [ Out( <senc(~m, ~cek), aenc(~cek, pk(skq)), aenc(~cek, pk(skc))> ) ]
+
+  /* has exactly the trivial AC variant */
+
+lemma executable:
+  exists-trace "∃ k #i. SecretCEK( k ) @ #i"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ k #i. (SecretCEK( k ) @ #i)"
+*/
+by sorry
+
+lemma cek_secrecy:
+  all-traces "∀ k #i. (SecretCEK( k ) @ #i) ⇒ (¬(∃ #j. K( k ) @ #j))"
+/*
+guarded formula characterizing all counter-examples:
+"∃ k #i. (SecretCEK( k ) @ #i) ∧ ∃ #j. (K( k ) @ #j)"
+*/
+simplify
+solve( !Rc( skc ) ▶₂ #i )
+  case Recipient_Setup
+  solve( !Rq( skq ) ▶₃ #i )
+    case Recipient_Setup
+    solve( !KU( ~cek ) @ #vk )
+      case Send_case_2
+      solve( !KU( ~skc ) @ #vk.1 )
+        case Break_Classical
+        SOLVED // trace found
+      qed
+    qed
+  qed
+qed
+
+/* All wellformedness checks were successful. */
+
+/*
+Generated from:
+Tamarin version 1.12.0
+Maude version 3.5.1
+Git revision: 82780bbaf3328a45f624ddb41e51bf75425f851c (with uncommited changes), branch: master
+Compiled at: 2026-03-07 14:22:39.174278293 UTC
+*/
+
+end
+
+==============================================================================
+summary of summaries:
+
+analyzed: /kat/KAT3_SMIME.spthy
+
+  processing time: 0.19s
+  
+  executable (exists-trace): analysis incomplete (1 steps)
+  cek_secrecy (all-traces): falsified - found trace (6 steps)
+
+==============================================================================

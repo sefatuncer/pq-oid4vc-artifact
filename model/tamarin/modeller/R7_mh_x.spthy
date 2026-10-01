@@ -1,0 +1,218 @@
+theory R7_MH_X
+begin
+
+/*
+ * =====================================================================
+ *  PQ-OID4VC | Adım 5A | R7 eki — M-h KEŞİF modeli (ön kayıt SONRASI)
+ * =====================================================================
+ *  Neden var: ön kayıtlı R7_mh.spthy'nin korumalı varyantı (CA_PQ, ALT_CA,
+ *  NAME_BIND) beklenenin tersine falsified çıktı (sonuc/izler.csv). İzde kök,
+ *  alternatif (klasik) CA'yı meşru CA ile AYNI ADLA sertifikalıyor; ad
+ *  bağlama yalnız CA adına baktığı için taahhütsüz sertifika kabul ediliyor.
+ *  R1'de CA adları Unique(<'ca', ad>) ile tekildi; R7_mh'de değildi. Bu model
+ *  nedeni ayrıştırır. R7_mh.spthy DEĞİŞTİRİLMEDİ; bu dosya onun kopyası +
+ *  üç bayraktır ve beklentileri koşumdan önce betik/varyantlar.tsv'ye
+ *  (kural R7hx) yazılmıştır.
+ *
+ *  EN  Name binding protects a PQ commitment only if the name identifies a
+ *      single key: when the same CA name is also certified with a classical
+ *      key (e.g. the CA's own pre-migration certificate during key rollover),
+ *      binding the issuer to the CA NAME does not exclude the classical key and
+ *      the commitment is bypassed after Q-day. Binding the issuer to the CA KEY
+ *      (or globally unique CA names) restores the protection.
+ *  TR  Ad bağlama bir PQ taahhüdünü ancak ad tek bir anahtarı gösteriyorsa
+ *      korur: aynı CA adı klasik bir anahtarla da sertifikalanmışsa (ör. anahtar
+ *      değişiminde CA'nın göç öncesi kendi sertifikası), ihraççıyı CA ADINA
+ *      bağlamak klasik anahtarı dışlamaz ve taahhüt Q-day'den sonra atlatılır.
+ *      İhraççıyı CA ANAHTARINA bağlamak (ya da CA adlarının küresel tekilliği)
+ *      korumayı geri getirir.
+ *
+ *  Flags (-D=...): R7_mh bayrakları (CA_PQ, ALT_CA, NAME_BIND) ve
+ *      UNIQUE_CA_NAMES  the root never certifies two CA keys under one name
+ *      ALT_SAME_NAME    the alternative classical CA carries the SAME name as the
+ *                       issuers' CA (CA key rollover: old classical certificate)
+ *      KEY_BIND         the verifier binds each issuer to its CA's PUBLIC KEY
+ */
+
+builtins: signing
+
+restriction Equality: "All x y #i. Eq(x, y) @ #i ==> x = y"
+restriction Unique:   "All x #i #j. Unique(x) @ #i & Unique(x) @ #j ==> #i = #j"
+
+#ifdef UNIQUE_CA_NAMES
+restriction UniqueCANames: "All n #i #j. CAName(n) @ #i & CAName(n) @ #j ==> #i = #j"
+#endif
+
+/* ---------------- Q-day ---------------- */
+rule Qday:
+    [ ] --[ Unique('qday'), QdayEv() ]-> [ !CRQC() ]
+
+/* ---------------- PKI ---------------- */
+rule Root_Setup:
+    [ Fr(~kr) ] --[ Unique('root') ]-> [ !RootSk(~kr), !RootPin(pk(~kr)), Out(pk(~kr)) ]
+
+rule CA_Setup:
+    let cab = <'ca_cert', $CA, pk(~kca)> in
+    [ !RootSk(kr), Fr(~kca) ]
+  --[ Unique('ca'), CAName($CA) ]->
+    [ !CASk($CA, ~kca), !CANameOf($CA), Out(pk(~kca)), Out(<cab, sign(cab, kr)>) ]
+
+#ifdef not CA_PQ
+rule CRQC_Break_CA:
+    [ !CASk(CA, k), !CRQC(), In(pk(k)) ] --[ Broken('ca') ]-> [ Out(k) ]
+#endif
+
+#ifdef ALT_CA & not ALT_SAME_NAME
+rule AltCA_Setup:
+    let cab = <'ca_cert', $A, pk(~ka)> in
+    [ !RootSk(kr), Fr(~ka) ]
+  --[ Unique('altca'), CAName($A) ]->
+    [ !AltCASk($A, ~ka), Out(pk(~ka)), Out(<cab, sign(cab, kr)>) ]
+#endif
+
+#ifdef ALT_CA & ALT_SAME_NAME
+/* the same CA name certified once more with an older classical key (key rollover) */
+rule AltCA_Setup:
+    let cab = <'ca_cert', CA, pk(~ka)> in
+    [ !RootSk(kr), !CANameOf(CA), Fr(~ka) ]
+  --[ Unique('altca') ]->
+    [ !AltCASk(CA, ~ka), Out(pk(~ka)), Out(<cab, sign(cab, kr)>) ]
+#endif
+
+#ifdef ALT_CA
+rule CRQC_Break_AltCA:
+    [ !AltCASk(A, k), !CRQC(), In(pk(k)) ] --[ Broken('alt_ca') ]-> [ Out(k) ]
+#endif
+
+/* ---------------- issuers ---------------- */
+rule Committed_Issuer_Setup:
+    let isb = <'iss_cert', $I, pk(~kc), pk(~kq), 'pq_commit'> in
+    [ !CASk(CA, kca), Fr(~kc), Fr(~kq) ]
+  --[ Unique(<'iss', $I>), Committed($I) ]->
+    [ !IssCl($I, ~kc), !IssPQ($I, ~kq), !IssuerOfCA($I, CA), !IssuerOfCAKey($I, pk(kca)),
+      Out(pk(~kc)), Out(pk(~kq)), Out(<isb, sign(isb, kca)>) ]
+
+rule Legacy_Issuer_Setup:
+    let isb = <'iss_cert', $L, pk(~kc), 'nokey', 'no_commit'> in
+    [ !CASk(CA, kca), Fr(~kc) ]
+  --[ Unique(<'iss', $L>), Legacy($L) ]->
+    [ !IssCl($L, ~kc), !IssuerOfCA($L, CA), !IssuerOfCAKey($L, pk(kca)),
+      Out(pk(~kc)), Out(<isb, sign(isb, kca)>) ]
+
+rule CRQC_Break_Issuer_Classical:
+    [ !IssCl(X, k), !CRQC(), In(pk(k)) ] --[ Broken(<'iss_cl', X>) ]-> [ Out(k) ]
+
+rule Issue_Classical:
+    let crb = <'cred', X, ~c, 'cl'> in
+    [ !IssCl(X, kc), Fr(~c) ] --[ Issued(X, ~c) ]-> [ Out(<crb, sign(crb, kc)>) ]
+
+rule Issue_PQ:
+    let crb = <'cred', I, ~c, 'pq'> in
+    [ !IssPQ(I, kq), Fr(~c) ] --[ Issued(I, ~c) ]-> [ Out(<crb, sign(crb, kq)>) ]
+
+/* ---------------- verifier ---------------- */
+#ifdef not NAME_BIND & not KEY_BIND
+rule Verify_PQ:
+    let cab = <'ca_cert', CA, pkca>
+        isb = <'iss_cert', X, pkc, pkq, cm>
+        crb = <'cred', X, c, 'pq'>
+    in
+    [ !RootPin(pkr), In(<cab, s1>), In(<isb, s2>), In(<crb, s3>) ]
+  --[ Eq(verify(s1, cab, pkr), true), Eq(verify(s2, isb, pkca), true),
+      Eq(verify(s3, crb, pkq), true), Accept(X, c), AcceptPQ(X, c) ]->
+    [ ]
+
+rule Verify_Classical:
+    let cab = <'ca_cert', CA, pkca>
+        isb = <'iss_cert', X, pkc, pkq, 'no_commit'>
+        crb = <'cred', X, c, 'cl'>
+    in
+    [ !RootPin(pkr), In(<cab, s1>), In(<isb, s2>), In(<crb, s3>) ]
+  --[ Eq(verify(s1, cab, pkr), true), Eq(verify(s2, isb, pkca), true),
+      Eq(verify(s3, crb, pkc), true), Accept(X, c), AcceptClassical(X, c) ]->
+    [ ]
+#endif
+
+#ifdef NAME_BIND & not KEY_BIND
+/* issuer bound to its CA NAME */
+rule Verify_PQ:
+    let cab = <'ca_cert', CA, pkca>
+        isb = <'iss_cert', X, pkc, pkq, cm>
+        crb = <'cred', X, c, 'pq'>
+    in
+    [ !RootPin(pkr), !IssuerOfCA(X, CA), In(<cab, s1>), In(<isb, s2>), In(<crb, s3>) ]
+  --[ Eq(verify(s1, cab, pkr), true), Eq(verify(s2, isb, pkca), true),
+      Eq(verify(s3, crb, pkq), true), Accept(X, c), AcceptPQ(X, c) ]->
+    [ ]
+
+rule Verify_Classical:
+    let cab = <'ca_cert', CA, pkca>
+        isb = <'iss_cert', X, pkc, pkq, 'no_commit'>
+        crb = <'cred', X, c, 'cl'>
+    in
+    [ !RootPin(pkr), !IssuerOfCA(X, CA), In(<cab, s1>), In(<isb, s2>), In(<crb, s3>) ]
+  --[ Eq(verify(s1, cab, pkr), true), Eq(verify(s2, isb, pkca), true),
+      Eq(verify(s3, crb, pkc), true), Accept(X, c), AcceptClassical(X, c) ]->
+    [ ]
+#endif
+
+#ifdef KEY_BIND
+/* issuer bound to its CA PUBLIC KEY */
+rule Verify_PQ:
+    let cab = <'ca_cert', CA, pkca>
+        isb = <'iss_cert', X, pkc, pkq, cm>
+        crb = <'cred', X, c, 'pq'>
+    in
+    [ !RootPin(pkr), !IssuerOfCAKey(X, pkca), In(<cab, s1>), In(<isb, s2>), In(<crb, s3>) ]
+  --[ Eq(verify(s1, cab, pkr), true), Eq(verify(s2, isb, pkca), true),
+      Eq(verify(s3, crb, pkq), true), Accept(X, c), AcceptPQ(X, c) ]->
+    [ ]
+
+rule Verify_Classical:
+    let cab = <'ca_cert', CA, pkca>
+        isb = <'iss_cert', X, pkc, pkq, 'no_commit'>
+        crb = <'cred', X, c, 'cl'>
+    in
+    [ !RootPin(pkr), !IssuerOfCAKey(X, pkca), In(<cab, s1>), In(<isb, s2>), In(<crb, s3>) ]
+  --[ Eq(verify(s1, cab, pkr), true), Eq(verify(s2, isb, pkca), true),
+      Eq(verify(s3, crb, pkc), true), Accept(X, c), AcceptClassical(X, c) ]->
+    [ ]
+#endif
+
+/* ================= health lemmas (H0) ================= */
+
+lemma executable:
+  exists-trace
+  "Ex I c #m #i #j. Committed(I) @ #m & Issued(I, c) @ #i & AcceptPQ(I, c) @ #j"
+
+lemma executable_legacy:
+  exists-trace
+  "Ex L c #l #i #j. Legacy(L) @ #l & Issued(L, c) @ #i & AcceptClassical(L, c) @ #j"
+
+lemma executable_post_qday:
+  exists-trace
+  "Ex I c #q #m #i #j. QdayEv() @ #q & Committed(I) @ #m & Issued(I, c) @ #i
+                     & AcceptPQ(I, c) @ #j & #q < #j"
+
+lemma attack_needs_crqc:
+  "All I c #m #j. Committed(I) @ #m & AcceptClassical(I, c) @ #j ==> (Ex x #b. Broken(x) @ #b & #b < #j)"
+
+/* ================= security goals ================= */
+
+lemma G5_no_classical_acceptance:
+  "All I c #m #j. Committed(I) @ #m & AcceptClassical(I, c) @ #j ==> F"
+
+lemma G1_claims_unforgeability:
+  "All I c #m #j. Committed(I) @ #m & Accept(I, c) @ #j ==> (Ex #i. Issued(I, c) @ #i & #i < #j)"
+
+/* ================= attribution lemma ================= */
+
+#ifdef ALT_CA
+/* classical acceptance of the committed issuer through the alternative CA key */
+lemma X_alt_ca_key_used:
+  exists-trace
+  "Ex I c #m #j #b. Committed(I) @ #m & AcceptClassical(I, c) @ #j & Broken('alt_ca') @ #b
+                  & not (Ex #x. Broken('ca') @ #x)"
+#endif
+
+end

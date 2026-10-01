@@ -1,0 +1,3 @@
+paket github.com/golang-jwt/jwt/v5 baglandi
+sembol ParseWithClaims func(string, jwt.Claims, jwt.Keyfunc, ...jwt.ParserOption) (*jwt.Token, error)
+sembol RegisterSigningMethod func(string, func() jwt.SigningMethod)

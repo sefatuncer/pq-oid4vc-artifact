@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>WalletFramework.SdJwtVc</id>
+    <version>3.1.0</version>
+    <authors>Wallet Framework Dotnet Maintainers</authors>
+    <license type="expression">Apache-2.0</license>
+    <licenseUrl>https://licenses.nuget.org/Apache-2.0</licenseUrl>
+    <projectUrl>https://github.com/openwallet-foundation-labs/wallet-framework-dotnet</projectUrl>
+    <description>Package Description</description>
+    <tags>Wallet Framework for Dotnet</tags>
+    <repository type="git" url="https://github.com/openwallet-foundation-labs/wallet-framework-dotnet.git" commit="2ed7a64b9c449b86bb2996359f2ca4a7e03a0cbb" />
+    <dependencies>
+      <group targetFramework="net10.0">
+        <dependency id="WalletFramework.Core" version="3.1.0" exclude="Build,Analyzers" />
+        <dependency id="WalletFramework.SdJwtLib" version="3.1.0" exclude="Build,Analyzers" />
+        <dependency id="WalletFramework.Storage" version="3.1.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

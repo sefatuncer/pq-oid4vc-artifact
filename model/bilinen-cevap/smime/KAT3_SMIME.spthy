@@ -1,0 +1,62 @@
+theory KAT3_SMIME_WeakestPath
+begin
+
+/* =====================================================================
+   PQ-OID4VC | Adım 6 | KAT-3a S/MIME: CEK gizliliği en zayıf geçerli alıcı yoluyla sınırlı
+   (Das & Chattopadhyay, ePrint 2026/1374, Önerme 1). Kaynak: KAT-SPEC §4(c) taslağı. Anlam aynıdır;
+   değişiklikler: msg_secrecy lemması ve SecretMsg eylemi çıkarıldı (beklenen tabloda yok; ekonomi);
+   KAT-SPEC §6 mutasyonu MUT_HYBRID_ONE (KEK yalnız klasik bileşenden: h(<~ssc,~ssq>) -> h(~ssc)).
+   KAT-3b bu dosyayı KULLANMAZ: pilot referans/pilot/p1/weakest_link.spthy değiştirilmeden koşulur.
+   Lemmalar: executable (sağlık), cek_secrecy.
+   ===================================================================== */
+
+builtins: asymmetric-encryption, symmetric-encryption, hashing
+
+restriction Once: "All x #i #j. Once(x) @ #i & Once(x) @ #j ==> #i = #j"
+
+rule Qday: [ ] --[ Once('qday') ]-> [ !Qday() ]
+
+rule Recipient_Setup:
+    [ Fr(~skc), Fr(~skq) ]
+  --[ Once('rcpt') ]->
+    [ !Rc(~skc), !Rq(~skq), Out(pk(~skc)), Out(pk(~skq)) ]
+
+/* ML-KEM anahtarı (skq) hiç kırılmaz */
+rule Break_Classical: [ !Rc(skc), !Qday() ] --[ BreakC() ]-> [ Out(skc) ]
+
+#ifdef MIXED
+/* aynı CEK: ML-KEM yolu + bağımsız klasik (RSA) yol -> unsafe-mixed-mode */
+rule Send:
+    [ Fr(~cek), Fr(~m), !Rc(skc), !Rq(skq) ]
+  --[ SecretCEK(~cek) ]->
+    [ Out(<senc(~m, ~cek), aenc(~cek, pk(skq)), aenc(~cek, pk(skc))>) ]
+#endif
+#ifdef PQ_ONLY
+/* yalnız ML-KEM yolu -> pqc-protected */
+rule Send:
+    [ Fr(~cek), Fr(~m), !Rq(skq) ]
+  --[ SecretCEK(~cek) ]->
+    [ Out(<senc(~m, ~cek), aenc(~cek, pk(skq))>) ]
+#endif
+#ifdef HYBRID_KEM & not MUT_HYBRID_ONE
+/* onaylı hibrit: KEK = h(ss_c, ss_q); iki bileşen de gerekir -> hybrid-protected */
+rule Send:
+    [ Fr(~cek), Fr(~m), Fr(~ssc), Fr(~ssq), !Rc(skc), !Rq(skq) ]
+  --[ SecretCEK(~cek) ]->
+    [ Out(<senc(~m, ~cek), aenc(~ssc, pk(skc)), aenc(~ssq, pk(skq)), senc(~cek, h(<~ssc, ~ssq>))>) ]
+#endif
+#ifdef HYBRID_KEM & MUT_HYBRID_ONE
+/* MUTASYON (KAT-SPEC §6): onaylı hibritte ikinci bileşen silindi, KEK yalnız klasik bileşenden */
+rule Send:
+    [ Fr(~cek), Fr(~m), Fr(~ssc), Fr(~ssq), !Rc(skc), !Rq(skq) ]
+  --[ SecretCEK(~cek) ]->
+    [ Out(<senc(~m, ~cek), aenc(~ssc, pk(skc)), aenc(~ssq, pk(skq)), senc(~cek, h(~ssc))>) ]
+#endif
+
+lemma executable:
+  exists-trace "Ex k #i. SecretCEK(k) @ #i"
+
+lemma cek_secrecy:
+  "All k #i. SecretCEK(k) @ #i ==> not (Ex #j. K(k) @ #j)"
+
+end

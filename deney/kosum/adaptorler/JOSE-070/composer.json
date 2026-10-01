@@ -1,0 +1,5 @@
+{"name":"pq-a09/ortam-deneme","type":"project","config":{"platform-check":true,"preferred-install":"dist"},
+    "require": {
+        "firebase/php-jwt": "7.2.0"
+    }
+}

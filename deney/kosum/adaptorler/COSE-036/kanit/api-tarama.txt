@@ -1,0 +1,165 @@
+# COSE-036 wolfCOSE @ f907071b1012 — API taraması (sözleşme §5.1)
+# imaj: a10-cose-036:1 (sha256:7cb7815d785503b3730b777ea3c4f53ee92f743dc21cd6a07431a51d4bb63ebb)
+# komut: docker run --rm --network none a10-cose-036:1 sh -c 'cd /opt/wolfcose && grep -n -i -E "key->alg|BAD_ALG|DEPRECATED|ML_DSA|MLDSA|composite|-55|crit|signerIndex|allow" include/wolfcose/wolfcose.h include/wolfcose/settings.h src/wolfcose_sign1.c src/wolfcose_sign.c src/wolfcose_alg.c | head -150'
+
+include/wolfcose/wolfcose.h:51:#ifdef WOLFSSL_HAVE_MLDSA
+include/wolfcose/wolfcose.h:52:    #include <wolfssl/wolfcrypt/wc_mldsa.h>
+include/wolfcose/wolfcose.h:72:#if defined(WOLFCOSE_LEAN_VERIFY_MLDSA) && !defined(WOLFCOSE_SIGN1_VERIFY)
+include/wolfcose/wolfcose.h:73:    #error "WOLFCOSE_LEAN_VERIFY_MLDSA requires Sign1 verify; do not also disable it"
+include/wolfcose/wolfcose.h:88:#define WOLFCOSE_E_COSE_BAD_ALG     (-9011)
+include/wolfcose/wolfcose.h:149:#define WOLFCOSE_HDR_CRIT        2
+include/wolfcose/wolfcose.h:176: *   To avoid algorithm-confusion, set key->alg (or recipient->algId) so the
+include/wolfcose/wolfcose.h:180: *   WOLFCOSE_E_COSE_KEY_TYPE unless WOLFCOSE_ALLOW_SHORT_HMAC_KEY is defined.
+include/wolfcose/wolfcose.h:198:/* The following four polymorphic RFC 9053 IDs are deprecated by RFC 9864 and
+include/wolfcose/wolfcose.h:199: * accepted only when WOLFCOSE_ENABLE_DEPRECATED_ALGS is defined. */
+include/wolfcose/wolfcose.h:204:/* RSA-PSS algorithms remain supported without the deprecated-algorithm gate. */
+include/wolfcose/wolfcose.h:258:#define WOLFCOSE_ALG_ML_DSA_44   (-48)   /* ML-DSA Level 2 */
+include/wolfcose/wolfcose.h:259:#define WOLFCOSE_ALG_ML_DSA_65   (-49)   /* ML-DSA Level 3 */
+include/wolfcose/wolfcose.h:260:#define WOLFCOSE_ALG_ML_DSA_87   (-50)   /* ML-DSA Level 5 */
+include/wolfcose/wolfcose.h:265:#define WOLFCOSE_MLDSA_SEED_SZ   32u
+include/wolfcose/wolfcose.h:282:#define WOLFCOSE_ATT_MLDSA       5u
+include/wolfcose/wolfcose.h:294:#define WOLFCOSE_CRV_ML_DSA_44   (-48)
+include/wolfcose/wolfcose.h:295:#define WOLFCOSE_CRV_ML_DSA_65   (-49)
+include/wolfcose/wolfcose.h:296:#define WOLFCOSE_CRV_ML_DSA_87   (-50)
+include/wolfcose/wolfcose.h:415:#ifdef WOLFSSL_HAVE_MLDSA
+include/wolfcose/wolfcose.h:416:        wc_MlDsaKey*   mldsa;     /**< ML-DSA (FIPS 204), caller-owned */
+include/wolfcose/wolfcose.h:427:#ifdef WOLFSSL_HAVE_MLDSA
+include/wolfcose/wolfcose.h:428:    const uint8_t* mldsaSeed;    /**< RFC 9964 ML-DSA private seed (32B), caller-owned */
+include/wolfcose/wolfcose.h:429:    size_t         mldsaSeedLen; /**< ML-DSA private seed length */
+include/wolfcose/wolfcose.h:748: * to defer or nest a parse: a CTAP2 allowList entry, a COSE_Key embedded in
+include/wolfcose/wolfcose.h:765: * RFC 9052 allows `label = int / tstr`. Applications may define either form
+include/wolfcose/wolfcose.h:876:#ifdef WOLFCOSE_HAVE_MLDSA
+include/wolfcose/wolfcose.h:877:WOLFCOSE_API int wc_CoseKey_SetMlDsa(WOLFCOSE_KEY* key, int32_t alg,
+include/wolfcose/wolfcose.h:878:                                       wc_MlDsaKey* mlDsaKey);
+include/wolfcose/wolfcose.h:881:WOLFCOSE_API int wc_CoseKey_SetMlDsa_ex(WOLFCOSE_KEY* key, int32_t alg,
+include/wolfcose/wolfcose.h:882:                                       wc_MlDsaKey* mlDsaKey,
+include/wolfcose/wolfcose.h:1109: *        SetEd25519(), SetEd448(), SetRsa(), SetMlDsa(), or SetSymmetric() to
+include/wolfcose/wolfcose.h:1204: *                    attached key's parameter set), and for the deprecated
+include/wolfcose/wolfcose.h:1587: * Verifies the signature at signerIndex against the provided verifyKey.
+include/wolfcose/wolfcose.h:1591: * \param signerIndex     0-based index of signer to verify.
+include/wolfcose/wolfcose.h:1608:    size_t signerIndex,
+include/wolfcose/wolfcose.h:1756: * accepted only when recipient->key->alg pins the same value.
+include/wolfcose/settings.h:25: * WOLFCOSE_ENABLE_DEPRECATED_ALGS). Strip an individual feature with
+include/wolfcose/settings.h:80:/* Verify-only COSE_Sign1 with ML-DSA (implies WOLFCOSE_LEAN_MLDSA, no signing). */
+include/wolfcose/settings.h:81:#ifdef WOLFCOSE_LEAN_VERIFY_MLDSA
+include/wolfcose/settings.h:82:    #ifndef WOLFCOSE_LEAN_MLDSA
+include/wolfcose/settings.h:83:        #define WOLFCOSE_LEAN_MLDSA
+include/wolfcose/settings.h:88:#endif /* WOLFCOSE_LEAN_VERIFY_MLDSA */
+include/wolfcose/settings.h:133:#ifdef WOLFCOSE_LEAN_MLDSA
+include/wolfcose/settings.h:137:    #ifndef WOLFCOSE_ENABLE_MLDSA
+include/wolfcose/settings.h:138:        #define WOLFCOSE_ENABLE_MLDSA
+include/wolfcose/settings.h:155:#endif /* WOLFCOSE_LEAN_MLDSA */
+include/wolfcose/settings.h:189: * ESP256/ESP384/ESP512/Ed25519/Ed448. The deprecated IDs are opt-in. */
+include/wolfcose/settings.h:190:#if defined(WOLFCOSE_ENABLE_DEPRECATED_ALGS)
+include/wolfcose/settings.h:191:    #define WOLFCOSE_HAVE_DEPRECATED_ALGS
+include/wolfcose/settings.h:194:/* ESP256 (and deprecated ES256), core when wolfSSL has P-256 and SHA-256. */
+include/wolfcose/settings.h:252:#if defined(WOLFCOSE_ENABLE_MLDSA)
+include/wolfcose/settings.h:253:    #if !defined(WOLFSSL_HAVE_MLDSA)
+include/wolfcose/settings.h:254:        #error "WOLFCOSE_ENABLE_MLDSA requires wolfSSL WOLFSSL_HAVE_MLDSA"
+include/wolfcose/settings.h:258:        #define WOLFCOSE_HAVE_MLDSA
+include/wolfcose/settings.h:260:#elif !defined(WOLFCOSE_LEAN) && !defined(WOLFCOSE_NO_MLDSA) && \
+include/wolfcose/settings.h:261:      defined(WOLFSSL_HAVE_MLDSA)
+include/wolfcose/settings.h:265:        #define WOLFCOSE_HAVE_MLDSA
+include/wolfcose/settings.h:345:    defined(WOLFCOSE_HAVE_MLDSA) || defined(WOLFCOSE_HAVE_LMS)
+include/wolfcose/settings.h:498:    defined(WOLFCOSE_HAVE_MLDSA)
+include/wolfcose/settings.h:836:        !defined(WOLFCOSE_HAVE_DEPRECATED_ALGS) || \
+include/wolfcose/settings.h:839:        #error "WOLFCOSE_ENABLE_EAT_PSA_SIGN1 requires EAT_PSA, deprecated IDs, and an ECDSA COSE Sign1 verifier"
+include/wolfcose/settings.h:855:        !defined(WOLFCOSE_HAVE_DEPRECATED_ALGS) || \
+include/wolfcose/settings.h:858:        #error "EAT_PSA_SIGN1_ISSUE needs EAT_PSA_ISSUE, deprecated IDs, and ECDSA Sign1 signing"
+include/wolfcose/settings.h:920:    defined(WOLFCOSE_HAVE_DEPRECATED_ALGS) && \
+include/wolfcose/settings.h:934:    #elif defined(WOLFCOSE_HAVE_MLDSA)
+include/wolfcose/settings.h:953:    #elif defined(WOLFCOSE_HAVE_MLDSA)
+include/wolfcose/settings.h:1033:#if defined(WOLFCOSE_HAVE_MLDSA) && (WOLFCOSE_MAX_SCRATCH_SZ < 4096u)
+src/wolfcose_sign1.c:32: * wc_mldsa.h (ML-DSA), rsa.h, random.h.  Only list headers not pulled in. */
+src/wolfcose_sign1.c:55:#if defined(WOLFCOSE_HAVE_MLDSA) && \
+src/wolfcose_sign1.c:62:static int wolfCose_MlDsaAlgLevel(int32_t alg, byte* level)
+src/wolfcose_sign1.c:67:        case WOLFCOSE_ALG_ML_DSA_44:
+src/wolfcose_sign1.c:70:        case WOLFCOSE_ALG_ML_DSA_65:
+src/wolfcose_sign1.c:73:        case WOLFCOSE_ALG_ML_DSA_87:
+src/wolfcose_sign1.c:77:            ret = WOLFCOSE_E_COSE_BAD_ALG;
+src/wolfcose_sign1.c:85:int wolfCose_MlDsaCheckKey(const WOLFCOSE_KEY* key, int32_t alg)
+src/wolfcose_sign1.c:91:        (key->attachedType != WOLFCOSE_ATT_MLDSA) ||
+src/wolfcose_sign1.c:92:        (key->key.mldsa == NULL)) {
+src/wolfcose_sign1.c:96:        ret = wolfCose_MlDsaAlgLevel(alg, &reqLevel);
+src/wolfcose_sign1.c:99:        ((byte)key->key.mldsa->level != reqLevel)) {
+src/wolfcose_sign1.c:104:#endif /* WOLFCOSE_HAVE_MLDSA */
+src/wolfcose_sign1.c:138:    defined(WOLFCOSE_HAVE_DEPRECATED_ALGS)
+src/wolfcose_sign1.c:235:                        ret = WOLFCOSE_E_COSE_BAD_ALG;
+src/wolfcose_sign1.c:259:#ifdef WOLFCOSE_HAVE_DEPRECATED_ALGS
+src/wolfcose_sign1.c:267:#ifdef WOLFCOSE_HAVE_DEPRECATED_ALGS
+src/wolfcose_sign1.c:275:#ifdef WOLFCOSE_HAVE_DEPRECATED_ALGS
+src/wolfcose_sign1.c:298:    defined(WOLFCOSE_HAVE_DEPRECATED_ALGS)
+src/wolfcose_sign1.c:311:#if defined(WOLFCOSE_HAVE_MLDSA)
+src/wolfcose_sign1.c:312:        case WOLFCOSE_ALG_ML_DSA_44:
+src/wolfcose_sign1.c:313:        case WOLFCOSE_ALG_ML_DSA_65:
+src/wolfcose_sign1.c:314:        case WOLFCOSE_ALG_ML_DSA_87:
+src/wolfcose_sign1.c:326:            ret = WOLFCOSE_E_COSE_BAD_ALG;
+src/wolfcose_sign1.c:486:        (key->alg != WOLFCOSE_ALG_UNSET) && (key->alg != alg)) {
+src/wolfcose_sign1.c:487:        ret = WOLFCOSE_E_COSE_BAD_ALG;
+src/wolfcose_sign1.c:643:    /* Honour the key->alg pin. */
+src/wolfcose_sign1.c:645:        (key->alg != WOLFCOSE_ALG_UNSET) && (key->alg != alg)) {
+src/wolfcose_sign1.c:646:        ret = WOLFCOSE_E_COSE_BAD_ALG;
+src/wolfcose_sign1.c:763:                ret = WOLFCOSE_E_COSE_BAD_ALG;
+src/wolfcose_sign1.c:878:#ifdef WOLFCOSE_HAVE_MLDSA
+src/wolfcose_sign1.c:879:    if ((ret == WOLFCOSE_SUCCESS) && ((alg == WOLFCOSE_ALG_ML_DSA_44) ||
+src/wolfcose_sign1.c:880:        (alg == WOLFCOSE_ALG_ML_DSA_65) || (alg == WOLFCOSE_ALG_ML_DSA_87))) {
+src/wolfcose_sign1.c:885:            ret = wolfCose_MlDsaCheckKey(key, alg);
+src/wolfcose_sign1.c:901:            INJECT_FAILURE(WOLF_FAIL_MLDSA_SIGN, -1,
+src/wolfcose_sign1.c:902:                ret = wc_MlDsaKey_SignCtx(
+src/wolfcose_sign1.c:903:                    key->key.mldsa, NULL, 0,
+src/wolfcose_sign1.c:916:#endif /* WOLFCOSE_HAVE_MLDSA */
+src/wolfcose_sign1.c:989:        ret = WOLFCOSE_E_COSE_BAD_ALG;
+src/wolfcose_sign1.c:1198:    /* Honour the key->alg pin on the verify path too. */
+src/wolfcose_sign1.c:1200:        (key->alg != WOLFCOSE_ALG_UNSET) && (key->alg != alg)) {
+src/wolfcose_sign1.c:1201:        ret = WOLFCOSE_E_COSE_BAD_ALG;
+src/wolfcose_sign1.c:1204:        (key->alg == WOLFCOSE_ALG_UNSET) && (algProtected == 0)) {
+src/wolfcose_sign1.c:1205:        ret = WOLFCOSE_E_COSE_BAD_ALG;
+src/wolfcose_sign1.c:1276:            ret = WOLFCOSE_E_COSE_BAD_ALG;
+src/wolfcose_sign1.c:1394:#ifdef WOLFCOSE_HAVE_MLDSA
+src/wolfcose_sign1.c:1396:        ((alg == WOLFCOSE_ALG_ML_DSA_44) || (alg == WOLFCOSE_ALG_ML_DSA_65) ||
+src/wolfcose_sign1.c:1397:         (alg == WOLFCOSE_ALG_ML_DSA_87))) {
+src/wolfcose_sign1.c:1398:        wc_MlDsaKey* mldsaKey = NULL;
+src/wolfcose_sign1.c:1403:            ret = wolfCose_MlDsaCheckKey(key, alg);
+src/wolfcose_sign1.c:1406:            mldsaKey = key->key.mldsa;
+src/wolfcose_sign1.c:1407:            INJECT_FAILURE(WOLF_FAIL_MLDSA_VERIFY, -1,
+src/wolfcose_sign1.c:1408:                ret = wc_MlDsaKey_VerifyCtx(
+src/wolfcose_sign1.c:1409:                    mldsaKey,
+src/wolfcose_sign1.c:1423:#endif /* WOLFCOSE_HAVE_MLDSA */
+src/wolfcose_sign1.c:1453:        ret = WOLFCOSE_E_COSE_BAD_ALG;
+src/wolfcose_sign.c:32: * wc_mldsa.h (ML-DSA), rsa.h, random.h.  Only list headers not pulled in. */
+src/wolfcose_sign.c:257:        else if ((signerKey->alg != WOLFCOSE_ALG_UNSET) &&
+src/wolfcose_sign.c:258:                 (signerKey->alg != signers[i].algId)) {
+src/wolfcose_sign.c:259:            ret = WOLFCOSE_E_COSE_BAD_ALG;
+src/wolfcose_sign.c:277:                ret = WOLFCOSE_E_COSE_BAD_ALG;
+src/wolfcose_sign.c:281:                ret = WOLFCOSE_E_COSE_BAD_ALG;
+src/wolfcose_sign.c:306:#ifdef WOLFCOSE_HAVE_MLDSA
+src/wolfcose_sign.c:308:        else if (((signers[i].algId == WOLFCOSE_ALG_ML_DSA_44) ||
+src/wolfcose_sign.c:309:                  (signers[i].algId == WOLFCOSE_ALG_ML_DSA_65) ||
+src/wolfcose_sign.c:310:                  (signers[i].algId == WOLFCOSE_ALG_ML_DSA_87)) &&
+src/wolfcose_sign.c:311:                 (wolfCose_MlDsaCheckKey(signerKey, signers[i].algId)
+src/wolfcose_sign.c:337:         * any signer failing after it would waste that leaf. Allow one HSS-LMS
+src/wolfcose_sign.c:367:            if ((signers[i].algId == WOLFCOSE_ALG_ML_DSA_44) ||
+src/wolfcose_sign.c:368:                (signers[i].algId == WOLFCOSE_ALG_ML_DSA_65) ||
+src/wolfcose_sign.c:369:                (signers[i].algId == WOLFCOSE_ALG_ML_DSA_87) ||
+src/wolfcose_sign.c:498:            (signer->algId != WOLFCOSE_ALG_ML_DSA_44) &&
+src/wolfcose_sign.c:499:            (signer->algId != WOLFCOSE_ALG_ML_DSA_65) &&
+src/wolfcose_sign.c:500:            (signer->algId != WOLFCOSE_ALG_ML_DSA_87) &&
+src/wolfcose_sign.c:531:            (signer->algId != WOLFCOSE_ALG_ML_DSA_44) &&
+src/wolfcose_sign.c:532:            (signer->algId != WOLFCOSE_ALG_ML_DSA_65) &&
+src/wolfcose_sign.c:533:            (signer->algId != WOLFCOSE_ALG_ML_DSA_87) &&
+src/wolfcose_sign.c:640:                ret = WOLFCOSE_E_COSE_BAD_ALG;
+src/wolfcose_sign.c:675:#ifdef WOLFCOSE_HAVE_MLDSA
+src/wolfcose_sign.c:677:            ((signer->algId == WOLFCOSE_ALG_ML_DSA_44) ||
+src/wolfcose_sign.c:678:             (signer->algId == WOLFCOSE_ALG_ML_DSA_65) ||
+src/wolfcose_sign.c:679:             (signer->algId == WOLFCOSE_ALG_ML_DSA_87))) {
+
+# docs/Macros.md L149-157 (Deprecated Algorithm IDs)
+149:### Deprecated Algorithm IDs (RFC 9864)
+150:
+151:RFC 9864 deprecates the polymorphic RFC 9053 signature IDs `ES256` (-7), `ES384` (-35), `ES512` (-36), and `EdDSA` (-8) in favour of the fully-specified `ESP256` (-9), `ESP384` (-51), `ESP512` (-52), `Ed25519` (-19), and `Ed448` (-53). The key format and signature encoding are unchanged, but the protected `alg` value is part of the signed `Sig_structure`, so relabelling an existing message to a replacement ID requires re-signing it. The new IDs bind the curve, so `Ed25519` with an Ed448 key (or `ESP256` with a P-384 key) is rejected with `WOLFCOSE_E_COSE_BAD_ALG`.
+152:
+153:| Define | Description |
+154:|--------|-------------|
+155:| `WOLFCOSE_ENABLE_DEPRECATED_ALGS` | Also accept the deprecated `ES256`/`ES384`/`ES512`/`EdDSA` IDs on sign and verify. Off by default in both full and lean builds. |
+156:
+157:Without it the deprecated IDs fail with `WOLFCOSE_E_COSE_BAD_ALG`. Enable it to verify messages from peers that still emit the RFC 9053 IDs, including the pinned t_cose, go-cose, coset, and python-cwt interop peers, the COSE WG example vectors, and the RFC 9783 PSA attestation tokens (`ES256`). The CLI tool accepts the `ES256` and `EdDSA` names only in such a build; `Ed448` on the CLI always means -53.

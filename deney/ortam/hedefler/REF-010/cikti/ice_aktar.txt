@@ -1,0 +1,8 @@
+modul acapy_agent yuklendi
+modul oid4vc yuklendi
+modul oid4vc.public_routes yuklendi
+modul sd_jwt_vc yuklendi
+modul jwt_vc_json yuklendi
+surum acapy-agent 1.7.0
+surum aries-askar 0.5.0
+surum cryptography 43.0.3

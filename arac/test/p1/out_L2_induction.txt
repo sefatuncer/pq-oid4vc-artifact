@@ -1,0 +1,185 @@
+maude tool: 'maude'
+ checking version: 3.5.1. OK.
+ checking installation: OK.
+[Theory DelegationChain] Theory loaded
+[Theory DelegationChain] Theory translated
+[Theory DelegationChain] Derivation checks started
+[Theory DelegationChain] Derivation checks ended
+[Theory DelegationChain] Theory closed
+[Saturating Sources] Step 1 (Max 5)
+[Saturating Sources] Done
+theory DelegationChain
+
+begin
+
+// Function signature and definition of the equational theory E
+
+functions: fst/1, pair/2, pk/1, sign/2, snd/1, true/0, verify/3
+equations:
+    fst(<x.1, x.2>) = x.1,
+    snd(<x.1, x.2>) = x.2,
+    verify(sign(x.1, x.2), x.1, pk(x.2)) = true
+
+restriction Equality:
+  "∀ x y #i. (Eq( x, y ) @ #i) ⇒ (x = y)"
+  // safety formula
+
+  /*
+  expanded formula:
+  "∀ x y #i. (Eq( x, y ) @ #i) ⇒ (x = y)"
+  */
+
+restriction OnlyOnce:
+  "∀ x #i #j. ((OnlyOnce( x ) @ #i) ∧ (OnlyOnce( x ) @ #j)) ⇒ (#i = #j)"
+  // safety formula
+
+  /*
+  expanded formula:
+  "∀ x #i #j. ((OnlyOnce( x ) @ #i) ∧ (OnlyOnce( x ) @ #j)) ⇒ (#i = #j)"
+  */
+
+rule (modulo E) Root_Setup:
+   [ Fr( ~skr ) ]
+  --[ OnlyOnce( 'root' ), RootKey( pk(~skr) ) ]->
+   [ !CA( 'root', ~skr ), !RootPk( pk(~skr) ), Out( pk(~skr) ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Delegate:
+   [ !CA( A, ska ), Fr( ~skb ) ]
+  --[ Delegated( A, $B, pk(~skb) ) ]->
+   [ !CA( $B, ~skb ), Out( <$B, pk(~skb), sign(<$B, pk(~skb)>, ska)> ) ]
+
+  // loop breaker: [0]
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Verify_Start:
+   [ !RootPk( pkr ) ]
+  --[ TrustedKey( 'root', pkr ) ]->
+   [ Trusted( 'root', pkr ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Verify_Step:
+   [ Trusted( A, pka ), In( <B, pkb, sig> ) ]
+  --[ Eq( verify(sig, <B, pkb>, pka), true ), TrustedKey( B, pkb ) ]->
+   [ Trusted( B, pkb ) ]
+
+  // loop breaker: [0]
+  /*
+  rule (modulo AC) Verify_Step:
+     [ Trusted( A, pka ), In( <B, pkb, sig> ) ]
+    --[ Eq( z, true ), TrustedKey( B, pkb ) ]->
+     [ Trusted( B, pkb ) ]
+    variants (modulo AC)
+    1. B     = B.7
+       pka   = pka.7
+       pkb   = pkb.7
+       sig   = sig.7
+       z     = verify(sig.7, <B.7, pkb.7>, pka.7)
+    
+    2. B     = x.7
+       pka   = pk(x.8)
+       pkb   = x.9
+       sig   = sign(<x.7, x.9>, x.8)
+       z     = true
+    // loop breaker: [0]
+  */
+
+lemma trusted_keys_are_delegated [use_induction]:
+  all-traces
+  "∀ B pkb #i.
+    (TrustedKey( B, pkb ) @ #i) ⇒
+    ((∃ #r. RootKey( pkb ) @ #r) ∨ (∃ A #j. Delegated( A, B, pkb ) @ #j))"
+/*
+guarded formula characterizing all counter-examples:
+"∃ B pkb #i.
+  (TrustedKey( B, pkb ) @ #i)
+ ∧
+  (∀ #r. (RootKey( pkb ) @ #r) ⇒ ⊥) ∧
+  (∀ A #j. (Delegated( A, B, pkb ) @ #j) ⇒ ⊥)"
+*/
+induction
+  case empty_trace
+  by contradiction /* from formulas */
+next
+  case non_empty_trace
+  solve( (last(#i))  ∥ (∃ #r. (RootKey( pkb ) @ #r) ∧ ¬(last(#r)))  ∥
+         (∃ A #j. (Delegated( A, B, pkb ) @ #j) ∧ ¬(last(#j))) )
+    case case_1
+    solve( TrustedKey( B, pkb ) @ #i )
+      case Verify_Start
+      solve( !RootPk( pkb ) ▶₀ #i )
+        case Root_Setup
+        by contradiction /* from formulas */
+      qed
+    next
+      case Verify_Step
+      solve( Trusted( A, pk(x) ) ▶₀ #i )
+        case Verify_Start
+        solve( (∃ #r. (RootKey( pk(~skr) ) @ #r) ∧ ¬(last(#r)))  ∥
+               (∃ A #j. (Delegated( A, 'root', pk(~skr) ) @ #j) ∧ ¬(last(#j))) )
+          case case_1
+          solve( !KU( sign(<B, pkb>, ~skr) ) @ #vk.4 )
+            case Delegate
+            by contradiction /* from formulas */
+          next
+            case c_sign
+            by solve( !KU( ~skr ) @ #vk.6 )
+          qed
+        qed
+      next
+        case Verify_Step
+        solve( (∃ #r. (RootKey( pk(x) ) @ #r) ∧ ¬(last(#r)))  ∥
+               (∃ A.1 #j. (Delegated( A.1, A, pk(x) ) @ #j) ∧ ¬(last(#j))) )
+          case case_1
+          solve( !KU( sign(<B, pkb>, ~skr) ) @ #vk.4 )
+            case Delegate
+            by contradiction /* from formulas */
+          next
+            case c_sign
+            by solve( !KU( ~skr ) @ #vk.11 )
+          qed
+        next
+          case case_2
+          solve( !KU( sign(<B.1, pkb>, ~skb) ) @ #vk.4 )
+            case Delegate
+            by contradiction /* from formulas */
+          next
+            case c_sign
+            by solve( !KU( ~skb ) @ #vk.11 )
+          qed
+        qed
+      qed
+    qed
+  next
+    case case_2
+    by contradiction /* from formulas */
+  next
+    case case_3
+    by contradiction /* from formulas */
+  qed
+qed
+
+/* All wellformedness checks were successful. */
+
+/*
+Generated from:
+Tamarin version 1.12.0
+Maude version 3.5.1
+Git revision: 82780bbaf3328a45f624ddb41e51bf75425f851c (with uncommited changes), branch: master
+Compiled at: 2026-03-07 14:22:39.174278293 UTC
+*/
+
+end
+
+==============================================================================
+summary of summaries:
+
+analyzed: /work/delegation_loop.spthy
+
+  processing time: 0.22s
+  
+  trusted_keys_are_delegated (all-traces): verified (20 steps)
+
+==============================================================================

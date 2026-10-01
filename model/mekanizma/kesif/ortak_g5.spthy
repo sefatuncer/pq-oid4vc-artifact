@@ -1,0 +1,56 @@
+/*
+ * =====================================================================
+ *  PQ-OID4VC | Adım 7 | ORTAK: yaşam döngüsü kısıtları ve G5 ailesi
+ *  (#include ile eklenir; tek başına bir theory değildir)
+ * =====================================================================
+ *  Ortak eylem sözlüğü (her mekanizma modeli bu adlarla yayar):
+ *    BornMigrated(E)          E kurulumda göç etmiş doğar (G5-zamansız kurgusu; R2/R3 biçimi)
+ *    Migrate(E)               E'nin göç olayı (doğuştan göçmüş varlıkta kurulumda)
+ *    Sunset(E)                E'nin eski-sürüm penceresinin sonu
+ *    StateChange(E)           Migrate ya da Sunset (tazelik kısıtları için)
+ *    StateIs(E, e)            yetkili durumun o andaki değeri: 'none' | 'pq_required' | 'retired'
+ *    AcceptClassical(V, E, x) V, E'ye atfedilen x'i YALNIZ klasik kanıtla kabul etti
+ *    SeenPQReq(V, E)          V, E'nin PQ beklentisini öğrendi / önbelleğe aldı
+ *  G5'in üç biçimi (ÖK §2D.10; 5A B-3):
+ *    G5-zamansız : G5_untimed   (doğuştan göçmüş varlık hiçbir zaman yalnız klasik kanıtla kabul edilmez)
+ *    G5-zamanlı  : G5_timed + no_rollback
+ *    G5-göç      : G5_migrated  (göçten sonra, ilk temas dahil)
+ */
+
+/* ---------------- yaşam döngüsü: yetkili durum = olay sırası ---------------- */
+restriction SunsetAfterMigrate:
+  "All E #s. Sunset(E) @ #s ==> (Ex #m. Migrate(E) @ #m & #m < #s)"
+
+restriction ReportNone:
+  "All E #r. StateIs(E, 'none') @ #r ==> not (Ex #m. Migrate(E) @ #m & #m < #r)"
+
+restriction ReportPQ:
+  "All E #r. StateIs(E, 'pq_required') @ #r ==>
+      (Ex #m. Migrate(E) @ #m & #m < #r) & not (Ex #s. Sunset(E) @ #s & #s < #r)"
+
+restriction ReportRetired:
+  "All E #r. StateIs(E, 'retired') @ #r ==> (Ex #s. Sunset(E) @ #s & #s < #r)"
+
+/* ---------------- G5 ailesi ---------------- */
+
+/* G5-zamansız: doğuştan göçmüş varlık yalnız klasik kanıtla hiçbir zaman kabul edilmez */
+lemma G5_untimed:
+  "All V E x #b #j. BornMigrated(E) @ #b & AcceptClassical(V, E, x) @ #j ==> F"
+
+/* G5-göç: göçten sonra (ilk temas dahil) yalnız klasik kanıtla kabul yok */
+lemma G5_migrated:
+  "All V E x #m #j. Migrate(E) @ #m & AcceptClassical(V, E, x) @ #j & #m < #j ==> F"
+
+/* G5-zamanlı (1): sunset'ten sonra yalnız klasik kanıtla kabul yok */
+lemma G5_timed:
+  "All V E x #s #j. Sunset(E) @ #s & AcceptClassical(V, E, x) @ #j & #s < #j ==> F"
+
+/* G5-zamanlı (2): beklentiyi bir kez görmüş doğrulayıcı geri dönmez */
+lemma no_rollback:
+  "All V E x #k #j. SeenPQReq(V, E) @ #k & AcceptClassical(V, E, x) @ #j & #k < #j ==> F"
+
+/* bilgi (L-D1): beklentiyi hiç görmemiş doğrulayıcı göçten sonra klasik kabul ediyor mu */
+lemma first_contact_downgrade:
+  exists-trace
+  "Ex V E x #m #j. Migrate(E) @ #m & AcceptClassical(V, E, x) @ #j & #m < #j
+                 & not (Ex #k. SeenPQReq(V, E) @ #k)"

@@ -1,0 +1,48 @@
+{
+ "cerceve.jsonl": {
+  "asgari_verified_birEksik_falsified_tutarsiz": 0,
+  "hucre_sayisi_satirli": 189,
+  "katman_hedef_x_tur": {
+   "G1|asgari": 81,
+   "G1|bir-eksik": 546,
+   "G2|asgari": 117,
+   "G2|bir-eksik": 1071,
+   "G3|asgari": 81,
+   "G3|bir-eksik": 546
+  },
+  "satir": 2442,
+  "sha256": "0a9b10d169a2898b97a6463fc481385a359744a981c392560ad0355f01942d87"
+ },
+ "kesif_2x2.jsonl": {
+  "ad_var_birincil_kume_hukumleri": {
+   "falsified": 279
+  },
+  "asgari_verified_birEksik_falsified_tutarsiz": 0,
+  "hucre_sayisi_satirli": 756,
+  "katman_hedef_x_tur": {
+   "G1|asgari": 243,
+   "G1|bir-eksik": 1638,
+   "G1|birincil-kume": 324,
+   "G2|asgari": 351,
+   "G2|bir-eksik": 3213,
+   "G2|birincil-kume": 468,
+   "G3|asgari": 243,
+   "G3|bir-eksik": 1638,
+   "G3|birincil-kume": 324
+  },
+  "kombinasyon_x_tur": {
+   "ad/var|birincil-kume": 279,
+   "ad/yok|asgari": 279,
+   "ad/yok|bir-eksik": 2163,
+   "ad/yok|birincil-kume": 279,
+   "anahtar/var|asgari": 279,
+   "anahtar/var|bir-eksik": 2163,
+   "anahtar/var|birincil-kume": 279,
+   "anahtar/yok|asgari": 279,
+   "anahtar/yok|bir-eksik": 2163,
+   "anahtar/yok|birincil-kume": 279
+  },
+  "satir": 8442,
+  "sha256": "c1e810c8c5f077790e9feb27ab6ddd8c0031ac3019a2d0c1503a4a2e5a3fb2ec"
+ }
+}

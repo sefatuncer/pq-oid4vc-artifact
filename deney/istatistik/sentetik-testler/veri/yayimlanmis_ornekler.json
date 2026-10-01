@@ -1,0 +1,19 @@
+{
+  "aciklama": "Yayimlanmis ornek degerler. Birincil metinler (Newcombe 1998a/b, Stat Med) odeme duvarli oldugu icin ERISILEMEDI. Degerler acik erisimli ikincil kaynaktan BIREBIR aktarildi: R paketi ratesci (CRAN; GPL>=3), tests/testthat/test3.R, commit 7ad93a580144fe78b9545263975621967bd8c0a0, dosya SHA-256 57bb060993d3cad7f36827109018ec97dd962b0a727a56d280668a01206b20f4. Ayrinti: kaynak/NEWCOMBE-KAYNAK.md.",
+  "ornekler": [
+    {"kod": "Y1", "tur": "wilson", "x": 15, "n": 148, "alt": "0.0624", "ust": "0.1605", "ondalik": 4,
+     "kaynak": "ratesci test3.R s.360-364 ('Single proportion, Newcombe examples')"},
+    {"kod": "Y2", "tur": "wilson", "x": 0, "n": 20, "alt": "0", "ust": "0.1611", "ondalik": 4,
+     "kaynak": "ratesci test3.R s.360-364"},
+    {"kod": "Y3", "tur": "wilson", "x": 1, "n": 29, "alt": "0.0061", "ust": "0.1718", "ondalik": 4,
+     "kaynak": "ratesci test3.R s.360-364"},
+    {"kod": "Y4", "tur": "newcombe_bagimsiz", "x1": 5, "n1": 56, "x2": 0, "n2": 29, "alt": "-0.0381", "ust": "0.1926", "ondalik": 4,
+     "kaynak": "ratesci test3.R s.7, 20-24 ('Newcombe RD example (d)', 'Newcombe/Score/Square&add')"},
+    {"kod": "Y5", "tur": "newcombe_eslestirilmis", "phi_turu": "newcombe_duzeltmeli", "a": 20, "b": 12, "c": 2, "d": 16, "alt": "0.0562", "ust": "0.3292", "ondalik": 4,
+     "kaynak": "ratesci test3.R s.525-528 ('against Newcombe's method 10 result'; corc=TRUE)"},
+    {"kod": "Y6", "tur": "newcombe_eslestirilmis", "phi_turu": "duz", "a": 20, "b": 12, "c": 2, "d": 16, "alt": "0.0618", "ust": "0.3242", "ondalik": 4,
+     "kaynak": "ratesci test3.R s.520-523 ('against Newcombe's method 8 result'; corc=FALSE)"},
+    {"kod": "Y7", "tur": "newcombe_eslestirilmis", "phi_turu": "newcombe_duzeltmeli", "a": 1, "b": 1, "c": 7, "d": 12, "alt": "-0.507", "ust": "-0.026", "ondalik": 3,
+     "kaynak": "ratesci test3.R s.487-492 ('Fagerland use Newcombe's correlation-corrected method 10'; Fagerland vd. 2014 ornegi)"}
+  ]
+}

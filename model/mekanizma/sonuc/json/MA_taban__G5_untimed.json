@@ -1,0 +1,2502 @@
+{
+    "graphs": [
+        {
+            "jgAbbrevs": [
+                {
+                    "jgaAbbrev": {
+                        "jgnConst": "SI1"
+                    },
+                    "jgaExpansion": {
+                        "jgnFunct": "sign",
+                        "jgnParams": [
+                            {
+                                "jgnFunct": "pair",
+                                "jgnParams": [
+                                    {
+                                        "jgnConst": "'req'"
+                                    },
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "$X"
+                                            },
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "~wn"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~p"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair(~wn,~p)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair($X,pair(~wn,~p))"
+                                    }
+                                ],
+                                "jgnShow": "pair('req',pair($X,pair(~wn,~p)))"
+                            },
+                            {
+                                "jgnConst": "~kc"
+                            }
+                        ],
+                        "jgnShow": "sign(pair('req',pair($X,pair(~wn,~p))),~kc)"
+                    },
+                    "jgaTerm": {
+                        "jgnFunct": "sign",
+                        "jgnParams": [
+                            {
+                                "jgnFunct": "pair",
+                                "jgnParams": [
+                                    {
+                                        "jgnConst": "'req'"
+                                    },
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "$X"
+                                            },
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "~wn"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~p"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair(~wn,~p)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair($X,pair(~wn,~p))"
+                                    }
+                                ],
+                                "jgnShow": "pair('req',pair($X,pair(~wn,~p)))"
+                            },
+                            {
+                                "jgnConst": "~kc"
+                            }
+                        ],
+                        "jgnShow": "sign(pair('req',pair($X,pair(~wn,~p))),~kc)"
+                    }
+                }
+            ],
+            "jgClusters": [],
+            "jgDirected": true,
+            "jgEdges": [
+                {
+                    "jgeRelation": "PersistentFact",
+                    "jgeSource": "#b:c0",
+                    "jgeTarget": "#vr.1:p0"
+                },
+                {
+                    "jgeRelation": "PersistentFact",
+                    "jgeSource": "#b:c3",
+                    "jgeTarget": "#j:p1"
+                },
+                {
+                    "jgeRelation": "KFact",
+                    "jgeSource": "#vl:c0",
+                    "jgeTarget": "#vr.2:p0"
+                },
+                {
+                    "jgeRelation": "ProtoFact",
+                    "jgeSource": "#vr:c0",
+                    "jgeTarget": "#j:p0"
+                },
+                {
+                    "jgeRelation": "KFact",
+                    "jgeSource": "#vr:c1",
+                    "jgeTarget": "#vk.1:p0"
+                },
+                {
+                    "jgeRelation": "default",
+                    "jgeSource": "#vr.1:c0",
+                    "jgeTarget": "#vl:p0"
+                },
+                {
+                    "jgeRelation": "KFact",
+                    "jgeSource": "#vr.2:c0",
+                    "jgeTarget": "#vr.3:p0"
+                },
+                {
+                    "jgeRelation": "KFact",
+                    "jgeSource": "#vr.2:c0",
+                    "jgeTarget": "#vr.6:p0"
+                },
+                {
+                    "jgeRelation": "default",
+                    "jgeSource": "#vf.3:c0",
+                    "jgeTarget": "#j:p2"
+                },
+                {
+                    "jgeRelation": "KFact",
+                    "jgeSource": "#vr.3:c0",
+                    "jgeTarget": "#vk:p0"
+                },
+                {
+                    "jgeRelation": "default",
+                    "jgeSource": "#vf.5:c0",
+                    "jgeTarget": "#vr.1:p1"
+                },
+                {
+                    "jgeRelation": "KFact",
+                    "jgeSource": "#vr.6:c0",
+                    "jgeTarget": "#vr.7:p0"
+                },
+                {
+                    "jgeRelation": "KFact",
+                    "jgeSource": "#vr.7:c0",
+                    "jgeTarget": "#vr.8:p0"
+                },
+                {
+                    "jgeRelation": "KFact",
+                    "jgeSource": "#vr.8:c0",
+                    "jgeTarget": "#vr.9:p0"
+                },
+                {
+                    "jgeRelation": "KFact",
+                    "jgeSource": "#vr.9:c0",
+                    "jgeTarget": "#vk.2:p0"
+                },
+                {
+                    "jgeRelation": "LessAtoms",
+                    "jgeSource": "#vk",
+                    "jgeTarget": "#vf.3"
+                },
+                {
+                    "jgeRelation": "LessAtoms",
+                    "jgeSource": "#vk.1",
+                    "jgeTarget": "#vf.3"
+                },
+                {
+                    "jgeRelation": "LessAtoms",
+                    "jgeSource": "#vk.1",
+                    "jgeTarget": "#vf.5"
+                },
+                {
+                    "jgeRelation": "LessAtoms",
+                    "jgeSource": "#vk.2",
+                    "jgeTarget": "#vf.3"
+                },
+                {
+                    "jgeRelation": "LessAtoms",
+                    "jgeSource": "#vr.2",
+                    "jgeTarget": "#vf.3"
+                },
+                {
+                    "jgeRelation": "LessAtoms",
+                    "jgeSource": "#vr.6",
+                    "jgeTarget": "#vf.3"
+                },
+                {
+                    "jgeRelation": "LessAtoms",
+                    "jgeSource": "#vr.7",
+                    "jgeTarget": "#vf.3"
+                },
+                {
+                    "jgeRelation": "LessAtoms",
+                    "jgeSource": "#vr.8",
+                    "jgeTarget": "#vf.3"
+                }
+            ],
+            "jgLabel": "trace_M_Istek_SL2-AS0-CL0-A1-C1-NB_G5_untimed-Wallet_Fetch-RP_Setup_Born-RP_Serve_Classical_Header-Wallet_Fetch-RP_Serve_Classical_Header",
+            "jgNodes": [
+                {
+                    "jgnId": "#b",
+                    "jgnLabel": "RP_Setup_Born",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Unique",
+                                "jgnFactShow": "Unique( <'rp', $X> )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "'rp'"
+                                            },
+                                            {
+                                                "jgnConst": "$X"
+                                            }
+                                        ],
+                                        "jgnShow": "pair('rp',$X)"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Unique",
+                                "jgnFactShow": "Unique( <'migrate', $X> )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "'migrate'"
+                                            },
+                                            {
+                                                "jgnConst": "$X"
+                                            }
+                                        ],
+                                        "jgnShow": "pair('migrate',$X)"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "BornMigrated",
+                                "jgnFactShow": "BornMigrated( $X )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$X"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Migrate",
+                                "jgnFactShow": "Migrate( $X )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$X"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "StateChange",
+                                "jgnFactShow": "StateChange( $X )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$X"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#b:c0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!RPCl",
+                                "jgnFactShow": "!RPCl( $X, ~kc )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$X"
+                                    },
+                                    {
+                                        "jgnConst": "~kc"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#b:c1",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!RPPQ",
+                                "jgnFactShow": "!RPPQ( $X, ~kq )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$X"
+                                    },
+                                    {
+                                        "jgnConst": "~kq"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#b:c2",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!RPTls",
+                                "jgnFactShow": "!RPTls( $X, ~kt )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$X"
+                                    },
+                                    {
+                                        "jgnConst": "~kt"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#b:c3",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!PinRPCl",
+                                "jgnFactShow": "!PinRPCl( $X, pk(~kc) )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$X"
+                                    },
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~kc"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~kc)"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#b:c4",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!PinRPPQ",
+                                "jgnFactShow": "!PinRPPQ( $X, pk(~kq) )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$X"
+                                    },
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~kq"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~kq)"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#b:c5",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!PinTls",
+                                "jgnFactShow": "!PinTls( $X, pk(~kt) )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$X"
+                                    },
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~kt"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~kt)"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#b:c6",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Out",
+                                "jgnFactShow": "Out( pk(~kc) )",
+                                "jgnFactTag": "OutFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~kc"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~kc)"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#b:c7",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Out",
+                                "jgnFactShow": "Out( pk(~kq) )",
+                                "jgnFactTag": "OutFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~kq"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~kq)"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#b:c8",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Out",
+                                "jgnFactShow": "Out( pk(~kt) )",
+                                "jgnFactTag": "OutFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~kt"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~kt)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#b:p0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Fr",
+                                "jgnFactShow": "Fr( ~kc )",
+                                "jgnFactTag": "FreshFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~kc"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#b:p1",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Fr",
+                                "jgnFactShow": "Fr( ~kq )",
+                                "jgnFactTag": "FreshFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~kq"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#b:p2",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Fr",
+                                "jgnFactShow": "Fr( ~kt )",
+                                "jgnFactTag": "FreshFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~kt"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isProtocolRule"
+                },
+                {
+                    "jgnId": "#j",
+                    "jgnLabel": "Wallet_Accept_Single_Classical",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Eq",
+                                "jgnFactShow": "Eq( true, true )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "true",
+                                        "jgnParams": [],
+                                        "jgnShow": "true"
+                                    },
+                                    {
+                                        "jgnFunct": "true",
+                                        "jgnParams": [],
+                                        "jgnShow": "true"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "GateClassical",
+                                "jgnFactShow": "GateClassical( $X )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$X"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "UseClKey",
+                                "jgnFactShow": "UseClKey( $X )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$X"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "AcceptReq",
+                                "jgnFactShow": "AcceptReq( $W, $X, ~wn, ~p )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$W"
+                                    },
+                                    {
+                                        "jgnConst": "$X"
+                                    },
+                                    {
+                                        "jgnConst": "~wn"
+                                    },
+                                    {
+                                        "jgnConst": "~p"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "AcceptClassical",
+                                "jgnFactShow": "AcceptClassical( $W, $X, <~wn, ~p> )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$W"
+                                    },
+                                    {
+                                        "jgnConst": "$X"
+                                    },
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~wn"
+                                            },
+                                            {
+                                                "jgnConst": "~p"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(~wn,~p)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#j:p0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "WSess",
+                                "jgnFactShow": "WSess( $W, ~wn )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$W"
+                                    },
+                                    {
+                                        "jgnConst": "~wn"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#j:p1",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!PinRPCl",
+                                "jgnFactShow": "!PinRPCl( $X, pk(~kc) )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$X"
+                                    },
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~kc"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~kc)"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#j:p2",
+                                "jgnFactMult": "",
+                                "jgnFactName": "In",
+                                "jgnFactShow": "In( <'single', <'req', $X, ~wn, ~p>, sign(<'req', $X, ~wn, ~p>, ~kc)>)",
+                                "jgnFactTag": "InFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "'single'"
+                                            },
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'req'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "$X"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pair",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "~wn"
+                                                                            },
+                                                                            {
+                                                                                "jgnConst": "~p"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pair(~wn,~p)"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair($X,pair(~wn,~p))"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('req',pair($X,pair(~wn,~p)))"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "sign",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "'req'"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pair",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "$X"
+                                                                            },
+                                                                            {
+                                                                                "jgnFunct": "pair",
+                                                                                "jgnParams": [
+                                                                                    {
+                                                                                        "jgnConst": "~wn"
+                                                                                    },
+                                                                                    {
+                                                                                        "jgnConst": "~p"
+                                                                                    }
+                                                                                ],
+                                                                                "jgnShow": "pair(~wn,~p)"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pair($X,pair(~wn,~p))"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair('req',pair($X,pair(~wn,~p)))"
+                                                            },
+                                                            {
+                                                                "jgnConst": "~kc"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "sign(pair('req',pair($X,pair(~wn,~p))),~kc)"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair(pair('req',pair($X,pair(~wn,~p))),sign(pair('req',pair($X,pair(~wn,~p))),~kc))"
+                                            }
+                                        ],
+                                        "jgnShow": "pair('single',pair(pair('req',pair($X,pair(~wn,~p))),sign(pair('req',pair($X,pair(~wn,~p))),~kc)))"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isProtocolRule"
+                },
+                {
+                    "jgnId": "#vk",
+                    "jgnLabel": "Coerce",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( sign(<'req', $X, ~wn, ~p>, ~kc) )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "sign",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'req'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "$X"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~wn"
+                                                                    },
+                                                                    {
+                                                                        "jgnConst": "~p"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair(~wn,~p)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair($X,pair(~wn,~p))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('req',pair($X,pair(~wn,~p)))"
+                                            },
+                                            {
+                                                "jgnConst": "~kc"
+                                            }
+                                        ],
+                                        "jgnShow": "sign(pair('req',pair($X,pair(~wn,~p))),~kc)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vk:c0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( sign(<'req', $X, ~wn, ~p>, ~kc) )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "sign",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'req'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "$X"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~wn"
+                                                                    },
+                                                                    {
+                                                                        "jgnConst": "~p"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair(~wn,~p)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair($X,pair(~wn,~p))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('req',pair($X,pair(~wn,~p)))"
+                                            },
+                                            {
+                                                "jgnConst": "~kc"
+                                            }
+                                        ],
+                                        "jgnShow": "sign(pair('req',pair($X,pair(~wn,~p))),~kc)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vk:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KD",
+                                "jgnFactShow": "!KD( sign(<'req', $X, ~wn, ~p>, ~kc) )",
+                                "jgnFactTag": "KDFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "sign",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'req'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "$X"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~wn"
+                                                                    },
+                                                                    {
+                                                                        "jgnConst": "~p"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair(~wn,~p)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair($X,pair(~wn,~p))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('req',pair($X,pair(~wn,~p)))"
+                                            },
+                                            {
+                                                "jgnConst": "~kc"
+                                            }
+                                        ],
+                                        "jgnShow": "sign(pair('req',pair($X,pair(~wn,~p))),~kc)"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                },
+                {
+                    "jgnId": "#vl",
+                    "jgnLabel": "Recv",
+                    "jgnMetadata": {
+                        "jgnActs": [],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vl:c0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KD",
+                                "jgnFactShow": "!KD( <'single', <'req', $X, ~wn, ~p>, sign(<'req', $X, ~wn, ~p>, ~kc)>)",
+                                "jgnFactTag": "KDFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "'single'"
+                                            },
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'req'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "$X"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pair",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "~wn"
+                                                                            },
+                                                                            {
+                                                                                "jgnConst": "~p"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pair(~wn,~p)"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair($X,pair(~wn,~p))"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('req',pair($X,pair(~wn,~p)))"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "sign",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "'req'"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pair",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "$X"
+                                                                            },
+                                                                            {
+                                                                                "jgnFunct": "pair",
+                                                                                "jgnParams": [
+                                                                                    {
+                                                                                        "jgnConst": "~wn"
+                                                                                    },
+                                                                                    {
+                                                                                        "jgnConst": "~p"
+                                                                                    }
+                                                                                ],
+                                                                                "jgnShow": "pair(~wn,~p)"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pair($X,pair(~wn,~p))"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair('req',pair($X,pair(~wn,~p)))"
+                                                            },
+                                                            {
+                                                                "jgnConst": "~kc"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "sign(pair('req',pair($X,pair(~wn,~p))),~kc)"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair(pair('req',pair($X,pair(~wn,~p))),sign(pair('req',pair($X,pair(~wn,~p))),~kc))"
+                                            }
+                                        ],
+                                        "jgnShow": "pair('single',pair(pair('req',pair($X,pair(~wn,~p))),sign(pair('req',pair($X,pair(~wn,~p))),~kc)))"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vl:p0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Out",
+                                "jgnFactShow": "Out( <'single', <'req', $X, ~wn, ~p>, sign(<'req', $X, ~wn, ~p>, ~kc)>)",
+                                "jgnFactTag": "OutFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "'single'"
+                                            },
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'req'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "$X"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pair",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "~wn"
+                                                                            },
+                                                                            {
+                                                                                "jgnConst": "~p"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pair(~wn,~p)"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair($X,pair(~wn,~p))"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('req',pair($X,pair(~wn,~p)))"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "sign",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "'req'"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pair",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "$X"
+                                                                            },
+                                                                            {
+                                                                                "jgnFunct": "pair",
+                                                                                "jgnParams": [
+                                                                                    {
+                                                                                        "jgnConst": "~wn"
+                                                                                    },
+                                                                                    {
+                                                                                        "jgnConst": "~p"
+                                                                                    }
+                                                                                ],
+                                                                                "jgnShow": "pair(~wn,~p)"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pair($X,pair(~wn,~p))"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair('req',pair($X,pair(~wn,~p)))"
+                                                            },
+                                                            {
+                                                                "jgnConst": "~kc"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "sign(pair('req',pair($X,pair(~wn,~p))),~kc)"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair(pair('req',pair($X,pair(~wn,~p))),sign(pair('req',pair($X,pair(~wn,~p))),~kc))"
+                                            }
+                                        ],
+                                        "jgnShow": "pair('single',pair(pair('req',pair($X,pair(~wn,~p))),sign(pair('req',pair($X,pair(~wn,~p))),~kc)))"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                },
+                {
+                    "jgnId": "#vr",
+                    "jgnLabel": "Wallet_Fetch",
+                    "jgnMetadata": {
+                        "jgnActs": [],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vr:c0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "WSess",
+                                "jgnFactShow": "WSess( $W, ~wn )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$W"
+                                    },
+                                    {
+                                        "jgnConst": "~wn"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#vr:c1",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Out",
+                                "jgnFactShow": "Out( <'fetch', ~wn, 'pq_cl'> )",
+                                "jgnFactTag": "OutFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "'fetch'"
+                                            },
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "~wn"
+                                                    },
+                                                    {
+                                                        "jgnConst": "'pq_cl'"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair(~wn,'pq_cl')"
+                                            }
+                                        ],
+                                        "jgnShow": "pair('fetch',pair(~wn,'pq_cl'))"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vr:p0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Fr",
+                                "jgnFactShow": "Fr( ~wn )",
+                                "jgnFactTag": "FreshFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~wn"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isProtocolRule"
+                },
+                {
+                    "jgnId": "#vk.1",
+                    "jgnLabel": "Coerce",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( ~wn )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~wn"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vk.1:c0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( ~wn )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~wn"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vk.1:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KD",
+                                "jgnFactShow": "!KD( ~wn )",
+                                "jgnFactTag": "KDFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~wn"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                },
+                {
+                    "jgnId": "#vr.1",
+                    "jgnLabel": "RP_Serve_Classical_Header",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "ReqCreated",
+                                "jgnFactShow": "ReqCreated( $X, ~wn, ~p )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$X"
+                                    },
+                                    {
+                                        "jgnConst": "~wn"
+                                    },
+                                    {
+                                        "jgnConst": "~p"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "SignClassical",
+                                "jgnFactShow": "SignClassical( $X )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$X"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vr.1:c0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Out",
+                                "jgnFactShow": "Out( <'single', <'req', $X, ~wn, ~p>, sign(<'req', $X, ~wn, ~p>, ~kc)>)",
+                                "jgnFactTag": "OutFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "'single'"
+                                            },
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'req'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "$X"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pair",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "~wn"
+                                                                            },
+                                                                            {
+                                                                                "jgnConst": "~p"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pair(~wn,~p)"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair($X,pair(~wn,~p))"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('req',pair($X,pair(~wn,~p)))"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "sign",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "'req'"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pair",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "$X"
+                                                                            },
+                                                                            {
+                                                                                "jgnFunct": "pair",
+                                                                                "jgnParams": [
+                                                                                    {
+                                                                                        "jgnConst": "~wn"
+                                                                                    },
+                                                                                    {
+                                                                                        "jgnConst": "~p"
+                                                                                    }
+                                                                                ],
+                                                                                "jgnShow": "pair(~wn,~p)"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pair($X,pair(~wn,~p))"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair('req',pair($X,pair(~wn,~p)))"
+                                                            },
+                                                            {
+                                                                "jgnConst": "~kc"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "sign(pair('req',pair($X,pair(~wn,~p))),~kc)"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair(pair('req',pair($X,pair(~wn,~p))),sign(pair('req',pair($X,pair(~wn,~p))),~kc))"
+                                            }
+                                        ],
+                                        "jgnShow": "pair('single',pair(pair('req',pair($X,pair(~wn,~p))),sign(pair('req',pair($X,pair(~wn,~p))),~kc)))"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vr.1:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!RPCl",
+                                "jgnFactShow": "!RPCl( $X, ~kc )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$X"
+                                    },
+                                    {
+                                        "jgnConst": "~kc"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#vr.1:p1",
+                                "jgnFactMult": "",
+                                "jgnFactName": "In",
+                                "jgnFactShow": "In( <'fetch', ~wn, 'cl'> )",
+                                "jgnFactTag": "InFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "'fetch'"
+                                            },
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "~wn"
+                                                    },
+                                                    {
+                                                        "jgnConst": "'cl'"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair(~wn,'cl')"
+                                            }
+                                        ],
+                                        "jgnShow": "pair('fetch',pair(~wn,'cl'))"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#vr.1:p2",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Fr",
+                                "jgnFactShow": "Fr( ~p )",
+                                "jgnFactTag": "FreshFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~p"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isProtocolRule"
+                },
+                {
+                    "jgnId": "#vk.2",
+                    "jgnLabel": "Coerce",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( ~p )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~p"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vk.2:c0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( ~p )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~p"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vk.2:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KD",
+                                "jgnFactShow": "!KD( ~p )",
+                                "jgnFactTag": "KDFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~p"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                },
+                {
+                    "jgnId": "#vr.2",
+                    "jgnLabel": "Destrd_0_snd",
+                    "jgnMetadata": {
+                        "jgnActs": [],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vr.2:c0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KD",
+                                "jgnFactShow": "!KD( <<'req', $X, ~wn, ~p>, sign(<'req', $X, ~wn, ~p>, ~kc)> )",
+                                "jgnFactTag": "KDFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'req'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "$X"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~wn"
+                                                                    },
+                                                                    {
+                                                                        "jgnConst": "~p"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair(~wn,~p)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair($X,pair(~wn,~p))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('req',pair($X,pair(~wn,~p)))"
+                                            },
+                                            {
+                                                "jgnFunct": "sign",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'req'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "$X"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pair",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "~wn"
+                                                                            },
+                                                                            {
+                                                                                "jgnConst": "~p"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pair(~wn,~p)"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair($X,pair(~wn,~p))"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('req',pair($X,pair(~wn,~p)))"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~kc"
+                                                    }
+                                                ],
+                                                "jgnShow": "sign(pair('req',pair($X,pair(~wn,~p))),~kc)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('req',pair($X,pair(~wn,~p))),sign(pair('req',pair($X,pair(~wn,~p))),~kc))"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vr.2:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KD",
+                                "jgnFactShow": "!KD( <'single', <'req', $X, ~wn, ~p>, sign(<'req', $X, ~wn, ~p>, ~kc)>)",
+                                "jgnFactTag": "KDFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "'single'"
+                                            },
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'req'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "$X"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pair",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "~wn"
+                                                                            },
+                                                                            {
+                                                                                "jgnConst": "~p"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pair(~wn,~p)"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair($X,pair(~wn,~p))"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('req',pair($X,pair(~wn,~p)))"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "sign",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "'req'"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pair",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "$X"
+                                                                            },
+                                                                            {
+                                                                                "jgnFunct": "pair",
+                                                                                "jgnParams": [
+                                                                                    {
+                                                                                        "jgnConst": "~wn"
+                                                                                    },
+                                                                                    {
+                                                                                        "jgnConst": "~p"
+                                                                                    }
+                                                                                ],
+                                                                                "jgnShow": "pair(~wn,~p)"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pair($X,pair(~wn,~p))"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair('req',pair($X,pair(~wn,~p)))"
+                                                            },
+                                                            {
+                                                                "jgnConst": "~kc"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "sign(pair('req',pair($X,pair(~wn,~p))),~kc)"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair(pair('req',pair($X,pair(~wn,~p))),sign(pair('req',pair($X,pair(~wn,~p))),~kc))"
+                                            }
+                                        ],
+                                        "jgnShow": "pair('single',pair(pair('req',pair($X,pair(~wn,~p))),sign(pair('req',pair($X,pair(~wn,~p))),~kc)))"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                },
+                {
+                    "jgnId": "#vf.3",
+                    "jgnLabel": "Send",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "K",
+                                "jgnFactShow": "K( <'single', <'req', $X, ~wn, ~p>, sign(<'req', $X, ~wn, ~p>, ~kc) >)",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "'single'"
+                                            },
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'req'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "$X"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pair",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "~wn"
+                                                                            },
+                                                                            {
+                                                                                "jgnConst": "~p"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pair(~wn,~p)"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair($X,pair(~wn,~p))"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('req',pair($X,pair(~wn,~p)))"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "sign",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "'req'"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pair",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "$X"
+                                                                            },
+                                                                            {
+                                                                                "jgnFunct": "pair",
+                                                                                "jgnParams": [
+                                                                                    {
+                                                                                        "jgnConst": "~wn"
+                                                                                    },
+                                                                                    {
+                                                                                        "jgnConst": "~p"
+                                                                                    }
+                                                                                ],
+                                                                                "jgnShow": "pair(~wn,~p)"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pair($X,pair(~wn,~p))"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair('req',pair($X,pair(~wn,~p)))"
+                                                            },
+                                                            {
+                                                                "jgnConst": "~kc"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "sign(pair('req',pair($X,pair(~wn,~p))),~kc)"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair(pair('req',pair($X,pair(~wn,~p))),sign(pair('req',pair($X,pair(~wn,~p))),~kc))"
+                                            }
+                                        ],
+                                        "jgnShow": "pair('single',pair(pair('req',pair($X,pair(~wn,~p))),sign(pair('req',pair($X,pair(~wn,~p))),~kc)))"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vf.3:c0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "In",
+                                "jgnFactShow": "In( <'single', <'req', $X, ~wn, ~p>, sign(<'req', $X, ~wn, ~p>, ~kc)>)",
+                                "jgnFactTag": "InFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "'single'"
+                                            },
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'req'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "$X"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pair",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "~wn"
+                                                                            },
+                                                                            {
+                                                                                "jgnConst": "~p"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pair(~wn,~p)"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair($X,pair(~wn,~p))"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('req',pair($X,pair(~wn,~p)))"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "sign",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "'req'"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pair",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "$X"
+                                                                            },
+                                                                            {
+                                                                                "jgnFunct": "pair",
+                                                                                "jgnParams": [
+                                                                                    {
+                                                                                        "jgnConst": "~wn"
+                                                                                    },
+                                                                                    {
+                                                                                        "jgnConst": "~p"
+                                                                                    }
+                                                                                ],
+                                                                                "jgnShow": "pair(~wn,~p)"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pair($X,pair(~wn,~p))"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair('req',pair($X,pair(~wn,~p)))"
+                                                            },
+                                                            {
+                                                                "jgnConst": "~kc"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "sign(pair('req',pair($X,pair(~wn,~p))),~kc)"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair(pair('req',pair($X,pair(~wn,~p))),sign(pair('req',pair($X,pair(~wn,~p))),~kc))"
+                                            }
+                                        ],
+                                        "jgnShow": "pair('single',pair(pair('req',pair($X,pair(~wn,~p))),sign(pair('req',pair($X,pair(~wn,~p))),~kc)))"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vf.3:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( <'single', <'req', $X, ~wn, ~p>, sign(<'req', $X, ~wn, ~p>, ~kc)>)",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "'single'"
+                                            },
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'req'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "$X"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pair",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "~wn"
+                                                                            },
+                                                                            {
+                                                                                "jgnConst": "~p"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pair(~wn,~p)"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair($X,pair(~wn,~p))"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('req',pair($X,pair(~wn,~p)))"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "sign",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "'req'"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pair",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "$X"
+                                                                            },
+                                                                            {
+                                                                                "jgnFunct": "pair",
+                                                                                "jgnParams": [
+                                                                                    {
+                                                                                        "jgnConst": "~wn"
+                                                                                    },
+                                                                                    {
+                                                                                        "jgnConst": "~p"
+                                                                                    }
+                                                                                ],
+                                                                                "jgnShow": "pair(~wn,~p)"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pair($X,pair(~wn,~p))"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair('req',pair($X,pair(~wn,~p)))"
+                                                            },
+                                                            {
+                                                                "jgnConst": "~kc"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "sign(pair('req',pair($X,pair(~wn,~p))),~kc)"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair(pair('req',pair($X,pair(~wn,~p))),sign(pair('req',pair($X,pair(~wn,~p))),~kc))"
+                                            }
+                                        ],
+                                        "jgnShow": "pair('single',pair(pair('req',pair($X,pair(~wn,~p))),sign(pair('req',pair($X,pair(~wn,~p))),~kc)))"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                },
+                {
+                    "jgnId": "#vr.3",
+                    "jgnLabel": "Destrd_0_snd",
+                    "jgnMetadata": {
+                        "jgnActs": [],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vr.3:c0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KD",
+                                "jgnFactShow": "!KD( sign(<'req', $X, ~wn, ~p>, ~kc) )",
+                                "jgnFactTag": "KDFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "sign",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'req'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "$X"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~wn"
+                                                                    },
+                                                                    {
+                                                                        "jgnConst": "~p"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair(~wn,~p)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair($X,pair(~wn,~p))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('req',pair($X,pair(~wn,~p)))"
+                                            },
+                                            {
+                                                "jgnConst": "~kc"
+                                            }
+                                        ],
+                                        "jgnShow": "sign(pair('req',pair($X,pair(~wn,~p))),~kc)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vr.3:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KD",
+                                "jgnFactShow": "!KD( <<'req', $X, ~wn, ~p>, sign(<'req', $X, ~wn, ~p>, ~kc)> )",
+                                "jgnFactTag": "KDFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'req'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "$X"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~wn"
+                                                                    },
+                                                                    {
+                                                                        "jgnConst": "~p"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair(~wn,~p)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair($X,pair(~wn,~p))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('req',pair($X,pair(~wn,~p)))"
+                                            },
+                                            {
+                                                "jgnFunct": "sign",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'req'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "$X"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pair",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "~wn"
+                                                                            },
+                                                                            {
+                                                                                "jgnConst": "~p"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pair(~wn,~p)"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair($X,pair(~wn,~p))"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('req',pair($X,pair(~wn,~p)))"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~kc"
+                                                    }
+                                                ],
+                                                "jgnShow": "sign(pair('req',pair($X,pair(~wn,~p))),~kc)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('req',pair($X,pair(~wn,~p))),sign(pair('req',pair($X,pair(~wn,~p))),~kc))"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                },
+                {
+                    "jgnId": "#vf.5",
+                    "jgnLabel": "Send",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "K",
+                                "jgnFactShow": "K( <'fetch', ~wn, 'cl'> )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "'fetch'"
+                                            },
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "~wn"
+                                                    },
+                                                    {
+                                                        "jgnConst": "'cl'"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair(~wn,'cl')"
+                                            }
+                                        ],
+                                        "jgnShow": "pair('fetch',pair(~wn,'cl'))"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vf.5:c0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "In",
+                                "jgnFactShow": "In( <'fetch', ~wn, 'cl'> )",
+                                "jgnFactTag": "InFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "'fetch'"
+                                            },
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "~wn"
+                                                    },
+                                                    {
+                                                        "jgnConst": "'cl'"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair(~wn,'cl')"
+                                            }
+                                        ],
+                                        "jgnShow": "pair('fetch',pair(~wn,'cl'))"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vf.5:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( <'fetch', ~wn, 'cl'> )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "'fetch'"
+                                            },
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "~wn"
+                                                    },
+                                                    {
+                                                        "jgnConst": "'cl'"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair(~wn,'cl')"
+                                            }
+                                        ],
+                                        "jgnShow": "pair('fetch',pair(~wn,'cl'))"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                },
+                {
+                    "jgnId": "#vr.6",
+                    "jgnLabel": "Destrd_0_fst",
+                    "jgnMetadata": {
+                        "jgnActs": [],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vr.6:c0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KD",
+                                "jgnFactShow": "!KD( <'req', $X, ~wn, ~p> )",
+                                "jgnFactTag": "KDFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "'req'"
+                                            },
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "$X"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "~wn"
+                                                            },
+                                                            {
+                                                                "jgnConst": "~p"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair(~wn,~p)"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair($X,pair(~wn,~p))"
+                                            }
+                                        ],
+                                        "jgnShow": "pair('req',pair($X,pair(~wn,~p)))"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vr.6:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KD",
+                                "jgnFactShow": "!KD( <<'req', $X, ~wn, ~p>, sign(<'req', $X, ~wn, ~p>, ~kc)> )",
+                                "jgnFactTag": "KDFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'req'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "$X"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~wn"
+                                                                    },
+                                                                    {
+                                                                        "jgnConst": "~p"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair(~wn,~p)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair($X,pair(~wn,~p))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('req',pair($X,pair(~wn,~p)))"
+                                            },
+                                            {
+                                                "jgnFunct": "sign",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'req'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "$X"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pair",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "~wn"
+                                                                            },
+                                                                            {
+                                                                                "jgnConst": "~p"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pair(~wn,~p)"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair($X,pair(~wn,~p))"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('req',pair($X,pair(~wn,~p)))"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~kc"
+                                                    }
+                                                ],
+                                                "jgnShow": "sign(pair('req',pair($X,pair(~wn,~p))),~kc)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('req',pair($X,pair(~wn,~p))),sign(pair('req',pair($X,pair(~wn,~p))),~kc))"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                },
+                {
+                    "jgnId": "#vr.7",
+                    "jgnLabel": "Destrd_0_snd",
+                    "jgnMetadata": {
+                        "jgnActs": [],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vr.7:c0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KD",
+                                "jgnFactShow": "!KD( <$X, ~wn, ~p> )",
+                                "jgnFactTag": "KDFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "$X"
+                                            },
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "~wn"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~p"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair(~wn,~p)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair($X,pair(~wn,~p))"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vr.7:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KD",
+                                "jgnFactShow": "!KD( <'req', $X, ~wn, ~p> )",
+                                "jgnFactTag": "KDFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "'req'"
+                                            },
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "$X"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "~wn"
+                                                            },
+                                                            {
+                                                                "jgnConst": "~p"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair(~wn,~p)"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair($X,pair(~wn,~p))"
+                                            }
+                                        ],
+                                        "jgnShow": "pair('req',pair($X,pair(~wn,~p)))"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                },
+                {
+                    "jgnId": "#vr.8",
+                    "jgnLabel": "Destrd_0_snd",
+                    "jgnMetadata": {
+                        "jgnActs": [],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vr.8:c0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KD",
+                                "jgnFactShow": "!KD( <~wn, ~p> )",
+                                "jgnFactTag": "KDFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~wn"
+                                            },
+                                            {
+                                                "jgnConst": "~p"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(~wn,~p)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vr.8:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KD",
+                                "jgnFactShow": "!KD( <$X, ~wn, ~p> )",
+                                "jgnFactTag": "KDFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "$X"
+                                            },
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "~wn"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~p"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair(~wn,~p)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair($X,pair(~wn,~p))"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                },
+                {
+                    "jgnId": "#vr.9",
+                    "jgnLabel": "Destrd_0_snd",
+                    "jgnMetadata": {
+                        "jgnActs": [],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vr.9:c0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KD",
+                                "jgnFactShow": "!KD( ~p )",
+                                "jgnFactTag": "KDFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~p"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vr.9:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KD",
+                                "jgnFactShow": "!KD( <~wn, ~p> )",
+                                "jgnFactTag": "KDFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~wn"
+                                            },
+                                            {
+                                                "jgnConst": "~p"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(~wn,~p)"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                }
+            ],
+            "jgType": "Tamarin prover constraint system"
+        }
+    ]
+}

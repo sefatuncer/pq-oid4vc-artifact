@@ -1,0 +1,7 @@
+kosu	ek	motor	nsurum_hucre	nsurum_sutun	tamarin_bayraklari	tamarin_lemma	model	beklenen	kaynak
+EK.V1.pilot_asli.tam	pilot_asli	tamarin	V1	Tamarin:claims_unforgeability	-	claims_unforgeability	/pilot/weakest_link.spthy	-	KAT-SPEC §4(c) lafzi: pilot degistirilmeden (iyi bicimlilik uyarili; kapi hucresi DEGIL)
+EK.V2.pilot_asli.tam	pilot_asli	tamarin	V2	Tamarin:claims_unforgeability	EXPECT_IN_TL	claims_unforgeability	/pilot/weakest_link.spthy	-	KAT-SPEC §4(c) lafzi: pilot degistirilmeden (iyi bicimlilik uyarili; kapi hucresi DEGIL)
+EK.V3.pilot_asli.tam	pilot_asli	tamarin	V3	Tamarin:claims_unforgeability	TL_PQ	claims_unforgeability	/pilot/weakest_link.spthy	-	KAT-SPEC §4(c) lafzi: pilot degistirilmeden (iyi bicimlilik uyarili; kapi hucresi DEGIL)
+EK.V4.pilot_asli.tam	pilot_asli	tamarin	V4	Tamarin:claims_unforgeability	TL_PQ,EXPECT_IN_TL	claims_unforgeability	/pilot/weakest_link.spthy	-	KAT-SPEC §4(c) lafzi: pilot degistirilmeden (iyi bicimlilik uyarili; kapi hucresi DEGIL)
+EK.V5.pilot_asli.tam	pilot_asli	tamarin	V5	Tamarin:claims_unforgeability	TL_PQ,NO_COEXIST	claims_unforgeability	/pilot/weakest_link.spthy	-	KAT-SPEC §4(c) lafzi: pilot degistirilmeden (iyi bicimlilik uyarili; kapi hucresi DEGIL)
+EK.V6.pilot_asli.tam	pilot_asli	tamarin	V6	Tamarin:claims_unforgeability	NO_COEXIST	claims_unforgeability	/pilot/weakest_link.spthy	-	KAT-SPEC §4(c) lafzi: pilot degistirilmeden (iyi bicimlilik uyarili; kapi hucresi DEGIL)

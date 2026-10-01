@@ -1,0 +1,3 @@
+#define HAVE_ECC
+#define WOLFSSL_HAVE_MLDSA
+#define HAVE_ED25519

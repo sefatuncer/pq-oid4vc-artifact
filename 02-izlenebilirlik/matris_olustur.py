@@ -1,0 +1,953 @@
+# -*- coding: utf-8 -*-
+"""
+PQ-OID4VC Adim 1 - izlenebilirlik matrisi olusturucu.
+
+Satirlar asagida elle (birincil metin okunarak) yazilmistir; bu betik yalnizca
+kimlikleri atar, uzunluk kontrolu yapar ve izlenebilirlik.csv'yi UTF-8 yazar.
+Alintilarin metinde birebir gectigi alinti_dogrula.py ile ayrica dogrulanir.
+
+Sutunlar: id, belge_id, bolum, birebir_alinti, anahtar_sozcuk, artefakt,
+imzalayan_rol, algoritma_kosulu, kanal, hedef, kategori, not
+"""
+import csv
+from pathlib import Path
+
+KOK = Path(__file__).resolve().parent
+CIKTI = KOK / "izlenebilirlik.csv"
+
+# --- 13 artefakt (Surum 3, 7.4) ---
+A01 = "A01 LOTL"
+A02 = "A02 TL/LoTE"
+A03 = "A03 CA (x5c zinciri)"
+A04 = "A04 ihraççı sertifikası"
+A05 = "A05 imzalı ihraççı meta verisi"
+A06 = "A06 Type Metadata"
+A07 = "A07 kimlik bilgisi (SD-JWT VC)"
+A08 = "A08 durum listesi belirteci"
+A09 = "A09 cüzdan kanıtlaması (WUA: WIA/KA)"
+A10 = "A10 WSCD anahtarı ve KB-JWT"
+A11 = "A11 RP erişim/kayıt sertifikası"
+A12 = "A12 OID4VP istek nesnesi"
+A13 = "A13 taşıma (TLS/WebPKI)"
+GEN = "genel"
+
+# --- imzalayan roller ---
+KOM = "Avrupa Komisyonu (LOTL/LoTE operatörü)"
+TLSO = "TL/LoTE şema operatörü"
+CA = "CA (ihraççı zinciri)"
+ISS = "ihraççı (PID/Attestation Provider)"
+STAT = "durum ihraççısı (Status Issuer)"
+WP = "cüzdan sağlayıcı (Wallet Provider)"
+HOL = "Holder/WSCD (cüzdan birimi)"
+RP = "RP/doğrulayıcı (Verifier)"
+ACA = "Access CA / kayıt sertifikası sağlayıcı"
+TLS = "TLS sunucusu (WebPKI CA)"
+PUB = "Type Metadata yayımcısı"
+NA = "—"
+DNS = "DNS bölgesi (BCT)"
+
+AK, CE, SA, BE = "aktarilan", "cekilen", "sabitlenmis", "belirsiz"
+
+R = []
+
+
+def r(belge, bolum, alinti, anahtar, artefakt, imzalayan, alg, kanal, hedef, kategori, not_=""):
+    R.append([belge, bolum, alinti, anahtar, artefakt, imzalayan, alg, kanal, hedef, kategori, not_])
+
+
+# =====================================================================
+# A01 LOTL
+# =====================================================================
+r("TS119612", "A.1 NOT 2", "The authenticity and integrity of the machine processable version of the LOTL is ensured through a qualified electronic signature or seal supported by a qualified certificate which can be authenticated and directly trusted through one of the digests published in the Official Journal",
+  "bilgi (NOTE)", A01, KOM, "nitelikli imza/mühür; algoritma TS 119 312'ye bağlı", CE, "G1;G3", "guven-capasi",
+  "LOTL çekilir; imzacı sertifikası OJEU'da özetle sabitlenmiş (sabitlenmiş çıpa + çekilen nesne).")
+r("TS119612", "A.1 NOT 4 (1)", "download the LOTL from the protected location published in the OJEU, after having authenticated the trusted channel on the basis of the trusted channel certificate whose digest is published in the OJEU;",
+  "bilgi (NOTE)", A01, KOM, "belirtilmemiş (kanal sertifikası)", CE, "G1;G3", "guven-capasi",
+  "Kanal (TLS) sertifikası da OJEU'da özetle sabitleniyor: taşıma kimlik doğrulaması WebPKI'den bağımsız sabitlemeye dayanabilir (H1 için örnek).")
+r("TS119612", "A.1 NOT 4 (3)", "verify, once the LOTL signature/seal being validated, the continued validity of the LOTL, by ensuring that the validity period of the LOTL has not expired;",
+  "bilgi (NOTE)", A01, KOM, "—", CE, "G1;G3", "gecerlilik", "LOTL geçerlilik penceresi = Next update (≤6 ay, 5.3.15).")
+r("TS119612", "5.3.13", "The referenced digital identities, validly representing the issuer(s) of the LOTL pointed to, formatted as specified in clause 5.5.3 (Service digital identity) shall be as published in the Official Journal of the European Union.",
+  "shall", A01, TLSO, "—", SA, "G1", "guven-capasi", "Ulusal TL'ler de LOTL imzacı kimliğini OJEU'daki hâliyle taşır (çapraz sabitleme).")
+r("TS119612", "A.1 NOT 3", "Additionally the certificate(s) of the LOTL scheme operator is(are) included in any EU MS trusted list.",
+  "bilgi (NOTE)", A01, KOM, "—", SA, "G1", "guven-capasi", "LOTL çıpası her ulusal TL'de yinelenir: çıpa göçü 32+ listede eşzamanlı güncelleme gerektirir (M2 maliyet).")
+r("PQCRM", "4.2", "the transition plan has to take into account that the transition of systems with a long life-cycle or of complex systems (such as PKIs) to PQC will take a lot of time.",
+  "bilgi", A01, KOM, "—", BE, "G1", "gecerlilik", "PKI (LOTL/TL) uzun teslim süresi: 'önce kök' gerekçesi (bariz; katkı değil).")
+r("RFC9955", "1", "For example, root certificates are often valid for about 20 years or longer.",
+  "bilgi", A01, NA, "—", SA, "G1", "gecerlilik", "Kök ömrü ≫ τ (26 gün bile): kök anahtarın açıkta kalma penceresi en uzun (H2 için uç değer).")
+
+# =====================================================================
+# A02 TL/LoTE
+# =====================================================================
+r("TS119612", "A.1 NOT 4 (6)", "validate the signature/seal on the target MS TL, once having verified that the digest of the TL scheme operator public key certificate to be used to validate the signature/seal maps one of the digests of the public key certificate(s)",
+  "bilgi (NOTE)", A02, TLSO, "—", CE, "G1;G3", "guven-capasi", "Ulusal TL, LOTL'deki imzacı sertifika özetlerinden 'biriyle' eşleşmeli: birden çok imzacı sertifikası = OR semantiği.")
+r("TS119612", "5.3.15", "TL with a Next update occurring in the past shall be discarded as expired as a measure to reduce the risk of a substitution by an attacker with an old TL.",
+  "shall", A02, TLSO, "—", CE, "G1;G3;G5", "gecerlilik", "Eski TL ile ikameye karşı tek zaman kuralı; geri alma (rollback) penceresi = Next update.")
+r("TS119612", "5.3.15", "The difference between the 'Next update' date and time and the 'List issue date and time' shall not exceed six (6) months.",
+  "shall", A02, TLSO, "—", CE, "G1;G3", "gecerlilik", "TL kabul penceresi ≤ 6 ay (τ ile karşılaştırılacak pencere).")
+r("TS119612", "5.3.15", "Applications shall consider, in the event they implement some caching mechanism, that other TLs could be issued and published before 'Next update' date and time.",
+  "shall", A02, TLSO, "—", CE, "G1;G3", "tazelik", "Önbellek süresi tanımsız; yalnız üst sınır Next update.")
+r("TS119612", "6.1", "Applications should regularly check for publication of a new version of a TL and not wait until the time contained in the Next update field (clause 5.3.15) of the previous TL or the previously downloaded TL is elapsed.",
+  "should", A02, TLSO, "—", CE, "G1;G3", "tazelik", "Güncelleme sıklığı nitel ('regularly'); sayısal değer yok.")
+r("TS119612", "5.7.1", "The format of the digital signature shall be XAdES-B-B as defined by ETSI EN 319 132-1 [3].",
+  "shall", A02, TLSO, "XAdES-B-B", CE, "G1", "tl-lote", "")
+r("TS119612", "5.7.1", "The digital signature algorithm as well as the certified digital signature key shall conform to security requirement for a minimum 3 years usable key as specified in tables 4, 6 and 7 of ETSI TS 119 312 [2].",
+  "shall", A02, TLSO, "TS 119 312 Tablo 4/6/7; ≥3 yıl kullanılabilir anahtar", CE, "G1", "alg-muzakere",
+  "TS 119 312 V2.1.1 (2026-06) RSA<3000'i 2026 sonunda eskitiyor: LOTL pilotundaki 49 RSA-2048 TL imzacısı bu kurala takılır.")
+r("TS119612", "5.7.1", "The TLSO certificate, to be used to validate its digital signature on the TL, shall be protected with the digital signature by incorporating the TLSO certificate within the ds:KeyInfo element that shall not contain any other certificate forming any kind of associated certificate chain.",
+  "shall", A02, TLSO, "—", CE, "G1", "anahtar-baglama", "Tek imzacı sertifikası, zincirsiz: hibrit/ikili sertifika için yer tanımlı değil.")
+r("TS119612", "B.1.0", "The TL-structure contains a ds:Signature element that represents an enveloped digital signature-type.",
+  "bilgi", A02, TLSO, "tek ds:Signature", CE, "G1;G5", "downgrade",
+  "Tek zarflanmış imza varsayımı. TS 119 312 V2.1.1 6.4.2 'XAdES çoklu imza' ile protokol düzeyi hibriti kabul ediyor: TL için çoklu imza işleme kuralı tanımsız (belirsiz).")
+r("TS119612", "B.1.2", "The algorithms, their parameters and formats supported by the present document shall be: • those supported by XML-Signature [4]; or • the Elliptic Curve Digital Signature Algorithm (ECDSA) as defined in [1]; or • the SHA-2 algorithms as defined in [10].",
+  "shall", A02, TLSO, "XMLDSig / ECDSA / SHA-2 (PQ yok)", CE, "G1", "alg-muzakere", "TL imza algoritma listesi ML-DSA/composite içermiyor (V2.4.1, 2025-08).")
+r("TS119612", "A.2", "In order to ensure continuity in TL authentication, TL scheme operators need to make sure that at all times two or more scheme operator public key certificates, with shifted validity periods, corresponding to the private keys entitled to be used to digitally sign the TL are available",
+  "bilgi (need)", A02, TLSO, "—", CE, "G1;G5", "downgrade", "Birden çok geçerli imzacı sertifikası (farklı algoritmalı olabilir) = birlikte yaşama; doğrulayıcı hangisini şart koşacağını bilmez (M-f 'sunset' ihtiyacı).")
+r("TS119602", "6.3.15", "LoTE with a Next update occurring in the past shall be discarded as expired as a measure to reduce the risk of a substitution by an attacker with an old LoTE.",
+  "shall", A02, TLSO, "—", CE, "G1;G3;G4;G5", "gecerlilik", "")
+r("TS119602", "6.3.15", "LoTE profiles should specify the maximum allowed difference between the 'Next update' date and time and the 'List issue date and time'.",
+  "should", A02, TLSO, "—", CE, "G1;G3", "gecerlilik", "Genel LoTE için pencere profile bırakılmış.")
+r("TS119602", "Ek D–I (profiller)", "The maximum value between the list issue date and time and the next update shall be 6 months.",
+  "shall", A02, TLSO, "—", CE, "G1;G3;G4", "gecerlilik", "EUDI LoTE profilleri (PID, cüzdan, WRPAC, WRPRC, PuB-EAA, kayıt) için pencere ≤ 6 ay.")
+r("TS119602", "6.8.0", "Lists of trusted entities shall be signed by means of an AdES digital signature at conformance level baseline B.",
+  "shall", A02, TLSO, "AdES-B", CE, "G1", "tl-lote", "")
+r("TS119602", "D.4", "The PID providers list shall be signed by means of a compact JAdES Baseline B signature as specified in ETSI TS 119 182-1 [3].",
+  "shall", A02, KOM, "compact JAdES-B (tek JWS imzası)", CE, "G1;G5", "tl-lote",
+  "Compact serileştirme tek imza taşır: LoTE'de hibrit ancak tek 'alg' (composite) ile mümkün; çoklu imza yapısal olarak dışlanmış.")
+r("TS119602", "F.4", "The WRPAC providers list shall be signed by means of a compact JAdES Baseline B signature as specified in ETSI TS 119 182-1 [3].",
+  "shall", A02, KOM, "compact JAdES-B", CE, "G4;G5", "tl-lote", "RP erişim sertifikası çıpalarını taşıyan LoTE (A11 zinciri).")
+r("TS119602", "E.4", "The wallet providers list shall be signed by means of a compact JAdES Baseline B signature as specified in ETSI TS 119 182-1 [3].",
+  "shall", A02, KOM, "compact JAdES-B", CE, "G2", "tl-lote", "WIA/KA imzacı çıpaları (A09 zinciri).")
+r("TS119602", "D.3", "The following URI may be used as values of the ServiceTypeIdentifier component, to the exclusion of any other:",
+  "may", A08, KOM, "—", CE, "G3", "guven-capasi", "PID/Revocation hizmet tipi: durum listesi imzacısının çıpası LoTE'de ayrı listelenebilir (delegasyon).")
+r("ARF-A202", "Topic 31 TLPub_03", "The publication of the information referred to in TLPub_01 SHALL take place over a secure channel protecting the authenticity and integrity of the published information.",
+  "SHALL", A02, KOM, "belirtilmemiş (kanal)", CE, "G1;G3;G4", "tl-lote", "Nesne imzası + kanal kimlik doğrulaması birlikte isteniyor; kanalın PQ olması tanımsız (H1).")
+r("ARF-A202", "Topic 31 TLPub_05", "The information referred to in TLPub_01 SHALL be published in an electronically signed or sealed form that is suitable for automated processing, and in a human-readable format, e.g., through introspection and display facilities, over an authenticated channel.",
+  "SHALL", A02, KOM, "—", CE, "G1;G3;G4", "tl-lote", "")
+r("ARF-A202", "Topic 31 TLPub_07", "The Commission SHALL publish in the OJEU the trust anchors to be used for verifying the signature or seal mentioned in TLPub_05.",
+  "SHALL", A02, KOM, "—", SA, "G1;G3;G4", "guven-capasi", "LoTE çıpaları OJEU'da sabitleniyor (LOTL modeliyle aynı).")
+r("ARF-M06", "6.6.3.6", "A Relying Party performs regular trust anchor management. It downloads the latest version of all applicable Trusted Lists and LoTEs.",
+  "bilgi", A02, TLSO, "—", CE, "G1;G3", "tazelik", "İndirme sıklığı tanımsız ('regular').")
+r("ARF-M06", "6.3.2.4", "For a PID Provider or a PuB-EAA Provider, successful registration and notification also means that the Provider is notified to the European Commission and that its trust anchors are included in the respective LoTE by the Commission.",
+  "bilgi", A02, KOM, "—", CE, "G1", "guven-capasi", "")
+r("ARF-M06", "6.3.2.4", "The trust anchors of a QEAA Provider are included in a Trusted List once it gets the qualified status.",
+  "bilgi", A02, TLSO, "—", CE, "G1", "guven-capasi", "QEAA için TL (TS 119 612), PID/PuB-EAA için LoTE (TS 119 602): iki farklı liste biçimi.")
+r("OID4VP", "6.1.1.2", "The trust chain of a matching Credential MUST contain at least one X.509 Certificate that matches one of the entries of the Trusted List or its cascading Trusted Lists.",
+  "MUST", A02, TLSO, "—", CE, "G1", "guven-capasi", "DCQL eşleştirme kuralı ('at least one'); doğrulama politikası değil.")
+r("HAIP", "5", "Note that the Authority Key Identifiers mechanism can be used to support multiple X.509-based trust mechanisms, such as ISO mDL VICAL (as introduced in [ISO.18013-5]) or ETSI Trusted Lists [ETSI.TL].",
+  "bilgi", A02, TLSO, "—", CE, "G1", "guven-capasi", "")
+r("TS119312", "6.4.2", "b) protocol-level hybrids: mechanisms provided by the encapsulating protocol or data format, such as the signedattributes mechanism in CMS (applicable to CAdES and PAdES) or multi-signature constructions in XAdES.",
+  "bilgi", A02, TLSO, "hibrit: algoritma ya da protokol düzeyi", CE, "G1;G5", "downgrade", "XAdES çoklu imza hibrit sayılıyor; TL'nin tek ds:Signature kuralıyla (TS 119 612 B.1.0) nasıl birleşeceği tanımsız.")
+r("TS119312", "8.4", "RSA keys with a length of at least 1 900 bits and less than 3 000 bits shall not be used to issue new certificates after 2026-12-31.",
+  "shall", A02, TLSO, "RSA ≥3000", CE, "G1", "gecerlilik", "Klasik zayıflatma takvimi (PQ değil); TL imzacı sertifikalarını etkiler.")
+r("TS119312", "8.4", "Certificates based on such keys that were issued on or before 2026-12-31 shall have a validity period ending no later than 2028-12-31.",
+  "shall", A02, TLSO, "RSA 1900–2999 bit", CE, "G1", "gecerlilik", "")
+
+# =====================================================================
+# A03 CA (x5c zinciri) ve A04 ihraççı sertifikası
+# =====================================================================
+r("RFC7515", "4.1.6", "The recipient MUST validate the certificate chain according to RFC 5280 [RFC5280] and consider the certificate or certificate chain to be invalid if any validation failure occurs.",
+  "MUST", A03, CA, "RFC 5280 yol doğrulama", AK, "G1;G2;G4", "x5c", "")
+r("RFC7515", "4.1.6", "The certificate containing the public key corresponding to the key used to digitally sign the JWS MUST be the first certificate.",
+  "MUST", A04, CA, "—", AK, "G1", "x5c", "")
+r("RFC7515", "6", "These Header Parameters MUST be integrity protected if the information that they convey is to be utilized in a trust decision;",
+  "MUST", A03, CA, "—", AK, "G1;G5", "x5c", "x5c korumalı başlıkta olmalı; korumasız x5c = C3 bayrağı.")
+r("HAIP", "6.1.1", "This specification mandates the support for X.509 certificate-based key resolution to validate the issuer signature of an SD-JWT VC.",
+  "MUST (mandates)", A04, ISS, "—", AK, "G1", "x5c", "")
+r("HAIP", "6.1.1", "The SD-JWT VC MUST contain the credential issuer's signing certificate along with a trust chain in the x5c JOSE header parameter as described in section 3.5 of [I-D.ietf-oauth-sd-jwt-vc].",
+  "MUST", A04, ISS, "—", AK, "G1", "x5c", "Çapraz atıf -13'e göre (§3.5); güncel -19'da §2.5.")
+r("HAIP", "6.1.1", "The X.509 certificate of the trust anchor MUST NOT be included in the x5c JOSE header of the SD-JWT VC.",
+  "MUST NOT", A03, CA, "—", AK, "G1", "guven-capasi", "Çıpa daima bant dışı (TL/LoTE, çekilen); x5c yalnız ara+uç.")
+r("HAIP", "6.1.1", "The X.509 certificate signing the request MUST NOT be self-signed.",
+  "MUST NOT", A04, ISS, "—", AK, "G1", "x5c", "Aynı cümle HAIP 4.1/5/6.1/6.1.1'de kopyalanmış; kimlik bilgisi ve durum listesi bağlamında 'request' sözcüğü editoryal hata (belirsizlik).")
+r("SDJWTVC", "2.5", "When the protected header of the Issuer-signed JWT contains the x5c parameter, the recipient uses the public key from the end-entity certificate of the certificates from that x5c parameter and validates the X.509 certificate chain accordingly.",
+  "bilgi", A04, ISS, "—", AK, "G1", "x5c", "")
+r("SDJWTVC", "2.5", "A recipient MUST determine and validate the public verification key for the Issuer-signed JWT using a supported key discovery and validation mechanism that is permitted for the given Issuer according to policy.",
+  "MUST", A04, ISS, "ihraççı başına izinli mekanizma (politika)", AK, "G1;G5", "anahtar-baglama", "İhraççı başına 'mekanizma' izni; algoritma kümesi değil. Politika kaynağı tanımsız.")
+r("SDJWTVC", "2.5", "If a recipient cannot validate that the public verification key corresponds to the Issuer of the Issuer-signed JWT using a permitted key discovery and validation mechanism, the SD-JWT VC MUST be rejected.",
+  "MUST", A04, ISS, "—", AK, "G1", "anahtar-baglama", "")
+r("SDJWTVC", "7.3", "A Verifier MUST ensure that for any given iss value, an attacker cannot influence the type of verification process used.",
+  "MUST", A07, ISS, "doğrulama süreci iss başına sabit", AK, "G1;G5", "downgrade", "G5'in en yakın normatif karşılığı; ama beklentinin nasıl öğrenileceği tanımsız.")
+r("SDJWTVC13", "10.2", "It MUST be ensured that for any given iss value, an attacker cannot influence the type of verification process used.",
+  "MUST", A07, ISS, "doğrulama süreci iss başına sabit", AK, "G1;G5", "downgrade", "HAIP'in sabitlediği -13'te de var (öznesiz edilgen biçim).")
+r("LAMPSCOMP", "9.2.3", "When used within X.509, the Label representing the signature algorithm is included in the signed object so if one of the component signatures is removed from the Composite ML-DSA signature then the signed-over Label will still indicate the composite algorithm",
+  "bilgi", A03, CA, "composite ML-DSA (X.509)", AK, "G1;G5", "downgrade", "X.509'da composite soyma X.509 katmanında başarısız olur (SNS'in bir biçimi).")
+r("LAMPSCOMP", "9.3", "Despite the weak non-separability property offered by the composite signature combiner, key reuse MUST be avoided to prevent the introduction of EUF-CMA vulnerabilities.",
+  "MUST", A03, CA, "composite", AK, "G1", "anahtar-baglama", "")
+r("LAMPSCOMP", "9.3", "CAs performing revocation checks on a composite key SHOULD also check both component keys independently to verify that the component keys have not been revoked.",
+  "SHOULD", A03, CA, "composite", AK, "G1;G3", "gecerlilik", "")
+r("LAMPSCOMP", "10.3", "The mechanisms specified in this document explicitly do not provide application backwards compatibility, only upgraded systems will understand the OIDs defined in this specification.",
+  "bilgi", A03, CA, "composite", AK, "G1;G5", "downgrade", "Geriye uyumluluk yok: klasik doğrulayıcı için ikili zincir (klasik + composite) gerekir → birlikte yaşama.")
+r("LAMPSCOMP", "9.5", "As such, a single composite public key or certificate may contain a mixture of deprecated and non-deprecated algorithms.",
+  "bilgi", A03, CA, "composite", AK, "G1", "alg-muzakere", "")
+r("JOSECOMP", "6.2", "Because the certificate itself is protected by a composite signature, an attacker cannot forge a fake certificate to swap a public key even if the traditional algorithm is broken.",
+  "bilgi", A03, CA, "composite (sertifika)", AK, "G1;G5", "x5c", "H1'in x5c yarısı önceden yazılı (bariz); katkı değil.")
+r("JOSECOMP", "6.2", "These specifications require the validation of the composite signature on the certificate itself.",
+  "require (küçük harf)", A03, CA, "composite (sertifika)", AK, "G1", "x5c", "")
+r("JOSECOMP", "6.2", "Moreover, compliant parties MUST NOT use, import, or export component keys that are used in other contexts, combinations, or as standalone keys.",
+  "MUST NOT", A04, ISS, "composite", AK, "G1", "anahtar-baglama", "Aynı ECDSA anahtarını klasik ve composite olarak birlikte kullanmak yasak: ikili ihraçta ayrı anahtarlar gerekir.")
+r("RFC9360", "2 (x5chain)", "The trust mechanism MUST process any certificates in this parameter as untrusted input.",
+  "MUST", A03, CA, "—", AK, "G1", "x5c", "COSE x5chain.")
+r("RFC9360", "2 (x5chain)", "The end-entity certificate MUST be integrity protected by COSE.",
+  "MUST", A04, ISS, "—", AK, "G1", "x5c", "")
+r("RFC9360", "2 (x5chain)", "Sending the header parameter in the unprotected header bucket allows an intermediary to remove or add certificates.",
+  "bilgi", A03, CA, "—", AK, "G1;G5", "downgrade", "Korumasız kovada zincir soyma/ekleme mümkün.")
+r("RFC9360", "5", "In any event, both the signature validation and the certificate validation MUST be completed successfully before acting on any requests.",
+  "MUST", A03, CA, "—", AK, "G1", "x5c", "")
+r("RFC9360", "5", "Before using the key in a certificate, the key MUST be checked against the algorithm to be used, and any algorithm-specific checks need to be made.",
+  "MUST", A04, CA, "anahtar–alg uyumu", AK, "G1", "anahtar-baglama", "")
+r("ARF-M06", "6.6.3.6", "To do this for PIDs, QEAAs, and PuB-EAAs, the Relying Party Instance uses a trust anchor of the Provider obtained from a LoTE or Trusted List.",
+  "bilgi", A03, TLSO, "—", CE, "G1", "guven-capasi", "")
+r("ARF-M06", "6.6.3.6", "Note that the Provider may use an intermediate signing certificate to sign the PID or attestation, and use the trust anchor to sign the signing certificate, instead of signing the PID or attestation directly with the trust anchor.",
+  "bilgi", A04, ISS, "—", AK, "G1", "x5c", "")
+r("OID4VP", "6.1.1.1", "The raw byte representation of this element MUST match with the AuthorityKeyIdentifier element of an X.509 certificate in the certificate chain present in the Credential (e.g., in the header of an mdoc or SD-JWT).",
+  "MUST", A03, CA, "—", AK, "G1", "guven-capasi", "")
+r("OID4VCI", "14.4", "The Wallet MAY check the binding between the Credential Issuer Identifier and the Issuer Identifier in the issued Credential.",
+  "MAY", A04, ISS, "—", AK, "G1", "anahtar-baglama", "")
+r("HAUCK25", "2 (Assumptions and Modeling Decisions)", "In our model, these validation keys are preconfigured, i.e., verifiers are initialized with public keys for the issuers they trust.",
+  "bilgi", A04, NA, "—", SA, "G1", "guven-capasi", "OIDF biçimsel analizi güven zincirini soyutluyor: çıpa=sabitlenmiş anahtar (boşluğun kanıtı).")
+r("TS119312", "9.3", "Signer's keys shall remain suitable during the certificate maintenance period (commonly called validity period from notBefore to notAfter) of the associated certificate.",
+  "shall", A04, CA, "—", AK, "G1", "gecerlilik", "Anahtar dayanım penceresi = sertifika geçerliliği (τ karşılaştırması için).")
+r("TS119312", "9.4", "A trust anchor shall remain secure during the whole time period during which advanced electronic signature",
+  "shall", A03, CA, "—", SA, "G1", "gecerlilik", "Çıpa, imza doğrulaması gereken tüm süre boyunca güvenli kalmalı (sertifika ömründen uzun olabilir).")
+
+# =====================================================================
+# A05 imzalı ihraççı meta verisi
+# =====================================================================
+r("OID4VCI", "12.2.2", "Communication with the Credential Issuer Metadata Endpoint MUST utilize TLS.",
+  "MUST", A05, ISS, "TLS (BCP195)", CE, "G1;G5", "guven-capasi", "Meta veri çekilen artefakt; imzasız meta verinin tek koruması TLS/WebPKI.")
+r("OID4VCI", "12.2.2", "The Credential Issuer MUST support returning metadata in an unsigned form 'application/json' and MAY support returning it in a signed form 'application/jwt'.",
+  "MUST/MAY", A05, ISS, "imzalı biçim isteğe bağlı", CE, "G1;G5", "downgrade", "İmzasız biçim zorunlu, imzalı isteğe bağlı: istemci imzalıyı istese de sunucu imzasız döndürebilir.")
+r("OID4VCI", "12.2.2", "The Wallet is RECOMMENDED to send an Accept header in the HTTP GET request to indicate the Content Type(s) it supports, and by doing so, signaling whether it supports signed metadata.",
+  "RECOMMENDED", A05, ISS, "—", CE, "G5", "alg-muzakere", "Kimliği doğrulanmamış yetenek sinyali (M-a sınıfı).")
+r("OID4VCI", "12.2.3", "When requesting signed metadata, the Wallet MUST establish trust in the signer of the metadata. Otherwise, the Wallet MUST reject the signed metadata.",
+  "MUST", A05, ISS, "—", CE, "G1;G5", "guven-capasi", "")
+r("OID4VCI", "12.2.3", "The concrete mechanisms for doing this are out of scope of this specification.",
+  "bilgi", A05, ISS, "—", CE, "G1", "guven-capasi", "İmzalı meta verinin güven çıpası tanımsız (HAIP x5c ile daraltıyor).")
+r("OID4VCI", "12.2.3", "iat: REQUIRED. Integer for the time at which the Credential Issuer Metadata was issued using the syntax defined in [RFC7519].",
+  "REQUIRED", A05, ISS, "—", CE, "G1;G5", "tazelik", "")
+r("OID4VCI", "12.2.3", "exp: OPTIONAL. Integer for the time at which the Credential Issuer Metadata is expiring, using the syntax defined in [RFC7519].",
+  "OPTIONAL", A05, ISS, "—", CE, "G1;G5", "gecerlilik", "Meta veri kabul penceresi tanımsız (exp isteğe bağlı).")
+r("OID4VCI", "12.2.3", "It MUST NOT be none or an identifier for a symmetric algorithm (MAC).",
+  "MUST NOT", A05, ISS, "asimetrik; none/MAC yasak", CE, "G1", "alg-muzakere", "Aynı cümle D.1 ve F.1'de de geçer.")
+r("OID4VCI", "12.2.4", "If these values are not identical (when compared using a simple string comparison with no normalization), the data contained in the response MUST NOT be used.",
+  "MUST NOT", A05, ISS, "—", CE, "G1", "anahtar-baglama", "credential_issuer ↔ URL bağı.")
+r("OID4VCI", "12.2.4", "credential_signing_alg_values_supported: OPTIONAL. A non-empty array of algorithm identifiers that identify the algorithms that the Issuer uses to sign the issued Credential.",
+  "OPTIONAL", A05, ISS, "ihraççının kullandığı algler (beyan)", CE, "G1;G5", "alg-muzakere",
+  "'uses' beyanı; doğrulayıcıya zorlayıcı kural yok, OID4VP doğrulayıcısı bu meta veriyi okumaz → 'required' kanalı değil.")
+r("OID4VCI", "A.3.2", "Cryptographic algorithm identifiers used in the credential_signing_alg_values_supported parameter are case sensitive strings and SHOULD be one of those JWS Algorithm Names defined in [IANA.JOSE].",
+  "SHOULD", A05, ISS, "IANA JOSE adları", CE, "G1", "alg-muzakere", "")
+r("OID4VCI", "12.2.4", "proof_signing_alg_values_supported: REQUIRED. A non-empty array of algorithm identifiers that the Issuer supports for this proof type.",
+  "REQUIRED", A05, ISS, "desteklenen proof algleri", CE, "G2", "alg-muzakere", "'supports' — ihraççının kendi kabul kümesi (L2).")
+r("OID4VCI", "13.11", "The simplest way to achieve this is by retrieving the keys directly from the Issuer’s hosted Issuer Metadata.",
+  "bilgi", A05, ISS, "—", CE, "G1", "guven-capasi", "Şifreleme anahtarları için TLS'e dayanan meta veri önerisi (WebPKI bağımlılığı).")
+r("HAIP", "4.1", "When Ecosystem policies require Issuer Authentication to a higher level than possible with TLS alone, signed Credential Issuer Metadata as specified in Section 11.2.3 in [OIDF.OID4VCI] MUST be supported by both the Wallet and the Issuer.",
+  "MUST (koşullu)", A05, ISS, "—", CE, "G1;G5", "guven-capasi",
+  "TLS'in tek başına ihraççı kimlik doğrulaması olarak kabul edildiği varsayılan durum açıkça tanınıyor (H1). Çapraz atıf hatası: OID4VCI 1.0'da imzalı meta veri §12.2.3.")
+r("HAIP", "4.1", "Key resolution to validate the signed Issuer Metadata MUST be supported using the x5c JOSE header parameter as defined in [RFC7515].",
+  "MUST", A05, ISS, "—", AK, "G1", "x5c", "")
+r("HAIP", "9.3", "Whether to use Signed Issuer Metadata or not (see Section 4.1)",
+  "bilgi (uzatma noktası)", A05, ISS, "—", CE, "G1;G5", "downgrade", "İmzalı meta veri ekosistem seçimi: beklenti yoksa imzasız meta veriye düşme mümkün.")
+r("HAIP", "9.3.1.1", "Issuers use and Wallets support unsigned Issuer Metadata.",
+  "bilgi (örnek)", A05, ISS, "—", CE, "G1", "guven-capasi", "Temel birlikte çalışabilirlik örneğinde meta veri yalnız TLS ile korunur.")
+r("ARF-M06", "6.3.2.3", "The PID Provider or Attestation Provider includes an access certificate and a registration certificate in its Credential Issuer metadata, specified per [OpenID4VCI] and [ETSI TS 119 472-3], to make them available to Wallet Units.",
+  "bilgi", A05, ISS, "—", CE, "G1;G4", "guven-capasi", "Meta veri, ihraççının erişim ve kayıt sertifikasını taşır (çekilen kap içinde aktarılan nesne).")
+r("ARF-A202", "Topic 44 RPRC_22", "The registration certificate SHALL be included in the metadata by value, not by reference.",
+  "SHALL", A11, ACA, "—", AK, "G1", "diger", "Değerle taşıma: kayıt sertifikası çekilen meta veri içinde aktarılan artefakt olur.")
+r("ARF-A202", "Topic 44 RPRC_22a", "If the certificate is absent, malformed, inauthentic, or expired, the Wallet Unit SHALL warn the User that it could not obtain or validate the information registered about the PID Provider or Attestation Provider, and SHALL NOT request the issuance of a PID or attestation.",
+  "SHALL/SHALL NOT", A11, ACA, "—", AK, "G1", "gecerlilik", "İhraç tarafında fail-closed (sunum tarafındaki RPRC_17 ile karşıtlık).")
+
+# =====================================================================
+# A06 Type Metadata
+# =====================================================================
+r("SDJWTVC", "2.2.2.3", "vct#integrity: OPTIONAL. The hash of the Type Metadata document to provide integrity as defined in Section 6.",
+  "OPTIONAL", A06, ISS, "özet (SRI)", AK, "G1", "anahtar-baglama", "Type Metadata imzasız; bütünlük kimlik bilgisindeki özetle bağlanır (aktarılan bağ + çekilen belge).")
+r("SDJWTVC", "6", "If the integrity metadata contains multiple hash expressions, the Consumer MUST use the hash expressions with the strongest hash algorithm it supports; verification succeeds if the computed digest matches the digest value of any of those hash expressions.",
+  "MUST", A06, ISS, "en güçlü desteklenen özet", CE, "G1;G5", "alg-muzakere", "Özet düzeyinde 'en güçlü desteklenen' semantiği; imzada karşılığı yok.")
+r("SDJWTVC", "6", "If verification fails, or if the Consumer supports none of the hash algorithms used in the integrity metadata, the retrieved document MUST be rejected and MUST NOT be processed further.",
+  "MUST", A06, ISS, "—", CE, "G1", "gecerlilik", "")
+r("SDJWTVC", "5.3.4", "If a hash for integrity protection is present for the Type Metadata as defined in Section 6, the Consumer MAY assume that the Type Metadata is static and cache it indefinitely, keyed by the integrity metadata value.",
+  "MAY", A06, PUB, "—", SA, "G1", "tazelik", "Özetle anahtarlanmış süresiz önbellek = sabitlenmiş.")
+r("SDJWTVC", "5.3.4", "Otherwise, the Consumer MUST determine how long the Type Metadata can be cached and reused according to the HTTP caching model defined in [RFC9111].",
+  "MUST", A06, PUB, "—", CE, "G1", "tazelik", "Özet yoksa kabul penceresi HTTP önbelleğine (max-age) bırakılmış.")
+r("SDJWTVC", "5.3.1", "If the type is a URL using the HTTPS scheme, Type Metadata might be retrievable from that URL, and it is at the consumer's discretion whether to attempt retrieve Type Metadata from the URL.",
+  "bilgi", A06, PUB, "—", CE, "G1", "guven-capasi", "Özetsiz Type Metadata'nın tek koruması HTTPS (WebPKI).")
+r("SDJWTVC", "5.7", "This specification does not require every Holder or Verifier to process Type Metadata; whether Type Metadata is processed is determined by the Holder's or Verifier's policy and, where applicable, ecosystem rules.",
+  "bilgi", A06, PUB, "—", BE, "G1", "diger", "")
+r("SDJWTVC", "5.7", "If Type Metadata processing is required by policy or ecosystem rules and the Holder or Verifier cannot retrieve or process the applicable Type Metadata, the SD-JWT VC MUST be rejected.",
+  "MUST", A06, PUB, "—", CE, "G1", "gecerlilik", "")
+r("SDJWTVC", "7.8", "A Consumer MUST NOT assume that Type Metadata is accurate or meaningful unless the Publisher is recognized as authoritative for the type in question.",
+  "MUST NOT", A06, PUB, "—", CE, "G1", "guven-capasi", "Yayımcı yetkisi kanalı tanımsız (ekosisteme bırakılmış).")
+r("SDJWTVC", "7.7", "Verifiers and Holders MUST implement explicit checks for issuer authorization and MUST NOT rely on type extension as a proxy for trust or legitimacy.",
+  "MUST/MUST NOT", A06, ISS, "—", BE, "G1", "guven-capasi", "")
+r("SDJWTVC", "3", "All URLs dereferenced according to this specification MUST use the HTTPS scheme.",
+  "MUST", A13, TLS, "—", CE, "G1", "diger", "JWT VC Issuer Metadata, JWK Set ve Type Metadata alımı WebPKI'ye bağlı.")
+r("SDJWTVC", "3", "Issuers and Publishers SHOULD include an explicit freshness lifetime (e.g., a Cache-Control: max-age response directive) in their responses.",
+  "SHOULD", A06, PUB, "—", CE, "G1", "tazelik", "")
+
+# =====================================================================
+# A07 kimlik bilgisi
+# =====================================================================
+r("RFC9901", "4.1", "An SD-JWT has a JWT component that MUST be signed using the Issuer's private key. It MUST NOT use the none algorithm.",
+  "MUST/MUST NOT", A07, ISS, "none yasak", AK, "G1", "alg-muzakere", "")
+r("RFC9901", "7.1 (2a)", "Ensure that the used signing algorithm was deemed secure for the application. Refer to [RFC8725], Sections 3.1 and 3.2 for details. The \"none\" algorithm MUST NOT be accepted.",
+  "MUST (adım)", A07, ISS, "uygulamaca güvenli sayılan alg", AK, "G1;G5", "alg-muzakere", "Algoritma kabulü uygulama politikasına bırakılmış; ihraççı başına beklenti tanımlı değil.")
+r("RFC9901", "7.1 (2c)", "Validate the Issuer and that the signing key belongs to this Issuer.",
+  "MUST (adım)", A07, ISS, "—", AK, "G1", "anahtar-baglama", "")
+r("RFC9901", "7.1 (2d)", "Check that the _sd_alg claim value is understood and the hash algorithm is deemed secure according to the Holder or Verifier's policy (see Section 4.1.1).",
+  "MUST (adım)", A07, ISS, "özet: politika", AK, "G1", "alg-muzakere", "")
+r("RFC9901", "9.1", "Per the last paragraph of Section 5.2 of [RFC7515], it is an application-specific decision to choose the appropriate JWS algorithm from [JWS.Algs], including post-quantum algorithms, when they are ready.",
+  "bilgi", A07, ISS, "PQ açıkça anılıyor; karar uygulamada", AK, "G1;G5", "alg-muzakere", "SD-JWT'de PQ'nun tek anıldığı yer: beklenti taşıma yok.")
+r("RFC9901", "9.1", "The Verifier MUST always check the signature of the Issuer-signed JWT to ensure that it has not been tampered with since its issuance.",
+  "MUST", A07, ISS, "—", AK, "G1", "gecerlilik", "")
+r("RFC9901", "8.3", "If present, disclosures and kb_jwt MUST be included in the first unprotected header and MUST NOT be present in any following unprotected headers.",
+  "MUST/MUST NOT", A07, ISS, "General JSON (çoklu imza)", AK, "G1;G2;G5", "downgrade", "Senaryo (d): çoklu ihraççı imzası sözdizimi var; hangi imzanın geçerli olması gerektiği tanımsız.")
+r("RFC9901", "8.4", "Verification of the JWS JSON serialized SD-JWT follows the rules defined in Section 3.4, except for the following aspects:",
+  "bilgi", A07, ISS, "çoklu imza semantiği tanımsız", AK, "G1;G5", "downgrade", "Çoklu imza semantiği RFC 7515 §5.2'deki 'uygulama kararı'na düşer (P0 = en az biri).")
+r("RFC9901", "9.7", "An Issuer MUST NOT allow any content to be selectively disclosable that is critical for evaluating the SD-JWT's authenticity or validity.",
+  "MUST NOT", A07, ISS, "—", AK, "G1;G3", "gecerlilik", "")
+r("RFC9901", "9.8", "Verifiers need to ensure that they are not using expired or revoked keys for signature verification using reasonable and appropriate means for the given key-distribution method.",
+  "bilgi (need)", A04, ISS, "—", BE, "G1;G3", "gecerlilik", "Anahtar geçerlilik denetimi yöntemi tanımsız.")
+r("RFC9901", "9.4", "The collision resistance of the hash function used to generate digests SHOULD match the collision resistance of the hash function used by the signature scheme.",
+  "SHOULD", A07, ISS, "özet ↔ imza güç eşleşmesi", AK, "G1", "alg-muzakere", "PQ imzada (ML-DSA-65/87) SHA-384/512 gerekebilir; TS 119 312 5.2.2 ile tutarlı.")
+r("SDJWTVC", "2.2", "Use of the JWS JSON Serialization per Section 8 of [RFC9901] for SD-JWT VC is not precluded but the specific details are beyond the scope of this specification.",
+  "bilgi", A07, ISS, "JSON serileştirme kapsam dışı", AK, "G1;G5", "downgrade", "-19'da çoklu imza 'kapsam dışı ama yasak değil'.")
+r("SDJWTVC13", "3.2", "An SD-JWT VC MUST be encoded using the SD-JWT format defined in Section 4 or Section 8 of [I-D.ietf-oauth-selective-disclosure-jwt], where support for the JWS JSON Serialization is OPTIONAL.",
+  "MUST/OPTIONAL", A07, ISS, "JSON serileştirme isteğe bağlı", AK, "G1;G5", "downgrade", "HAIP'in sabitlediği -13'te JSON (dolayısıyla General JSON çoklu imza) spesifikasyon İÇİ isteğe bağlı biçim.")
+r("HAIP", "6.1", "Compact serialization MUST be supported as defined in [RFC9901]. JSON serialization MAY be supported.",
+  "MUST/MAY", A07, ISS, "compact zorunlu; JSON isteğe bağlı", AK, "G1;G5", "downgrade", "Senaryo (d) HAIP profilinde izinli (MAY): 'spesifikasyon dışı' etiketi yalnız -19 ve OID4VCI A.3.4 için doğru.")
+r("HAIP", "6.1", "It is RECOMMENDED that Issuers limit the validity period when issuing SD-JWT VC. When doing so, the Issuer MUST use an exp claim, a status claim, or both.",
+  "RECOMMENDED/MUST", A07, ISS, "—", AK, "G1;G3", "gecerlilik", "Kimlik bilgisi ömrü için sayısal sınır yok.")
+r("SDJWTVC", "2.2.2.3", "nbf: OPTIONAL. The time before which the Verifiable Digital Credential MUST NOT be accepted before validating.",
+  "OPTIONAL", A07, ISS, "—", AK, "G1", "gecerlilik", "")
+r("SDJWTVC", "2.2.2.3", "exp: OPTIONAL. The expiry time of the Verifiable Digital Credential after which the Verifiable Digital Credential is no longer valid.",
+  "OPTIONAL", A07, ISS, "—", AK, "G1;G3", "gecerlilik", "Kabul penceresi = exp (isteğe bağlı); tanımsız olabilir.")
+r("SDJWTVC", "2.2.1", "The Issuer MUST include the typ header parameter in the SD-JWT.",
+  "MUST", A07, ISS, "—", AK, "G1", "diger", "Açık tipleme (tür karışıklığına karşı).")
+r("OID4VCI", "A.3.4", "The value of the credential claim in the Credential Response MUST be a string that is an SD-JWT VC.",
+  "MUST", A07, ISS, "—", AK, "G1", "diger", "JSON serileştirilmiş SD-JWT (nesne) ile gerilim: HAIP 6.1 MAY ile belirsiz.")
+r("OID4VCI", "A.3.4", "Credentials of this format are already suitable for transfer and, therefore, they need not and MUST NOT be re-encoded.",
+  "MUST NOT", A07, ISS, "—", AK, "G1", "diger", "")
+r("HAIP", "7", "Issuers, Verifiers, and Wallets MUST, at a minimum, support ECDSA with P-256 and SHA-256 (JOSE algorithm identifier ES256; COSE algorithm identifier -7 or -9, as applicable) for the purpose of validating the following:",
+  "MUST", GEN, NA, "ES256 asgari (tüm imzalı artefaktlar)", BE, "G1;G2;G3;G4", "alg-muzakere", "Asgari küme klasik; PQ yok ('quantum' 0 kez).")
+r("HAIP", "7", "Verifiers are assumed to determine in advance the cryptographic suites supported by the Ecosystem, e.g. mDL Issuers/Verifiers implementing ISO mdocs.",
+  "bilgi (varsayım)", GEN, RP, "ekosistem süitleri bant dışı", SA, "G5", "alg-muzakere", "Beklenti bant dışı ve ekosistem düzeyinde (varlık başına değil) → M-d sınıfı.")
+r("HAIP", "7", "Ecosystem-specific profiles of this specification MAY mandate additional cryptographic suites.",
+  "MAY", GEN, NA, "ek süitler ekosisteme", BE, "G5", "alg-muzakere", "")
+r("HAIP", "7", "When using this specification alongside other crypto suites, each entity SHOULD make it explicit in its metadata which other algorithms and key types are supported for the cryptographic operations.",
+  "SHOULD", GEN, NA, "'supported' beyanı", CE, "G5", "alg-muzakere", "Meta veride yalnız 'supported': 'required' beklentisi taşıyan normatif kanal yok (Q1 bulgusu).")
+r("HAIP", "8", "When using this specification alongside other hash algorithms, each entity SHOULD make it explicit in its metadata which other algorithms are supported.",
+  "SHOULD", GEN, NA, "'supported' beyanı", CE, "G5", "alg-muzakere", "")
+r("HAIP", "10.2", "Implementers need to ensure appropriate key sizes are used.",
+  "bilgi", GEN, NA, "ECCG ACM2, BSI, NIST kaynakları", BE, "G1", "alg-muzakere", "")
+r("HAIP", "3.4", "Although X.509 PKI is extensively utilized in this specification, the methods for establishing trust or obtaining root certificates are out of the scope of this specification.",
+  "bilgi", A03, NA, "—", BE, "G1;G4", "guven-capasi", "Çıpa edinimi HAIP dışında (ARF/ETSI'ye bırakılmış).")
+r("HAIP", "9.4", "implementations compliant with this specification should continue to use the specifically referenced versions above in preference to the final versions",
+  "should", GEN, NA, "—", BE, "G1", "diger", "Sürüm sabitleme: HAIP SD-JWT VC -13 ve TSL -14'ü sabitliyor.")
+r("HAIP", "9.4", "SD-JWT-based Verifiable Credentials (SD-JWT VC) draft -13 [I-D.ietf-oauth-sd-jwt-vc]",
+  "bilgi", GEN, NA, "—", BE, "G1", "diger", "")
+r("OID4VP", "13.4", "SD-JWT-based Verifiable Credentials (SD-JWT VC) draft -09 [I-D.ietf-oauth-sd-jwt-vc]",
+  "bilgi", GEN, NA, "—", BE, "G1", "diger", "OID4VP -09, OID4VCI -11, HAIP -13, güncel -19: dört farklı sabit sürüm.")
+r("OID4VCI", "14.7", "SD-JWT-based Verifiable Credentials (SD-JWT VC) draft -11 [I-D.ietf-oauth-sd-jwt-vc]",
+  "bilgi", GEN, NA, "—", BE, "G1", "diger", "")
+r("ARF-A202", "Topic 1 OIA_03", "When issuing, presenting, or verifying an attestation, Wallet Units, PID Providers, Attestation Providers, and Relying Parties SHALL only use cryptographic algorithms included in the [ECCG Agreed Cryptographic Mechanisms v2.0].",
+  "SHALL", A07, ISS, "ECCG ACM v2 listesi", BE, "G1;G2;G3;G4", "alg-muzakere", "ACM v2'de ML-DSA yalnız hibrit (Note 51) → EUDI'de saf ML-DSA (RFC 9964) uyumsuz, composite (taslak) gerekli.")
+r("ACM2", "Note 51", "To provide assurance against regression of robustness, they shouldn’t be used in a standalone way to provide the intended security functionality, but should be combined with a classicaly secure cryptographic mechanism.",
+  "should", GEN, NA, "ML-DSA: hibrit", BE, "G1;G5", "alg-muzakere", "")
+r("ACM2", "Note 51", "For digital signatures, hybridization can consist in concatenating signatures from diﬀerent schemes, the veriﬁcation function accepting if and only if all signatures are correct.",
+  "bilgi", GEN, NA, "AND (tümü geçerli)", BE, "G1;G5", "downgrade", "AND semantiği; ama AND'in soyma karşısında beklenti gerektirdiği yazılı değil.")
+r("ACM2", "Note 50", "In contexts where resistance against attacks leveraging quantum computers is required, these cryptographic mechanisms shall not be used without being combined with a quantum resistant mechanism.",
+  "shall", GEN, NA, "klasik: PQ ile birleşik", BE, "G1", "alg-muzakere", "")
+r("ACM2", "Note 55", "It is recommended to use the highest possible standardised parameter size, either ML-DSA-87 or ML-DSA-65.",
+  "recommended", GEN, NA, "ML-DSA-65/87", BE, "G1", "alg-muzakere", "Boyut: ML-DSA-65 imza 3309 B, açık anahtar 1952 B (RFC 9964 Tablo 1).")
+r("ACM3D", "Note 53", "Note 53-Hybridization. These cryptographic mechanisms are based on novel asymmetric primitives.",
+  "bilgi", GEN, NA, "—", BE, "G1", "diger", "v2 Note 51 → v3 taslağında Note 53 (numara kayması birincil metinde doğrulandı).")
+r("ARF-M06", "6.6.3.6", "All PIDs and attestations in the EUDI Wallet ecosystem are digitally signed by the respective PID Provider or Attestation Provider.",
+  "bilgi", A07, ISS, "—", AK, "G1", "diger", "")
+r("OID4VP", "8.6", "Validate the integrity and authenticity of the Presentation and Credential.",
+  "MUST (adım)", A07, ISS, "—", AK, "G1;G2", "gecerlilik", "")
+r("OID4VP", "14.9", "The Wallet is not controlled by the Verifier and the Verifier MUST perform its own security checks on the returned Credentials and Presentations.",
+  "MUST", A07, RP, "—", AK, "G1;G2", "gecerlilik", "")
+r("OID4VP", "B.3.4", "sd-jwt_alg_values: OPTIONAL. A non-empty array containing fully-specified identifiers of cryptographic algorithms (as defined in [I-D.ietf-jose-fully-specified-algorithms]) supported for an Issuer-signed JWT of an SD-JWT.",
+  "OPTIONAL", A07, RP, "'supported' (fully-specified)", BE, "G1;G5", "alg-muzakere", "Doğrulayıcı/cüzdan meta verisinde ihraççı imzası için yalnız 'supported'.")
+r("ARF-A202", "Topic 10 ISSU_50 (not)", "It is the responsibility of the Relying Party receiving a PID or attestation to validate whether a presented technical PID or attestation is temporally valid.",
+  "bilgi (not)", A07, RP, "—", AK, "G1;G2", "gecerlilik", "")
+r("ARF-A202", "Topic 10 ISSU_50 (not)", "A Wallet Unit is allowed to present a PID or attestation even if its expiration date is in the past.",
+  "bilgi (not)", A07, HOL, "—", AK, "G1;G2", "gecerlilik", "Zaman kontrolü tamamen doğrulayıcıda; saat varsayımı (§7.4) kritik.")
+
+# =====================================================================
+# A08 durum listesi belirteci
+# =====================================================================
+r("TSL", "5.1", "The JWT MUST be secured using a cryptographic signature or MAC algorithm.",
+  "MUST", A08, STAT, "imza ya da MAC", CE, "G3", "alg-muzakere", "MAC da serbest; algoritma kısıtı yok.")
+r("TSL", "5.1", "Relying Parties MUST reject JWTs with an invalid signature.",
+  "MUST", A08, STAT, "—", CE, "G3", "gecerlilik", "")
+r("TSL", "5.1", "Application of additional restrictions and policies are at the discretion of the Relying Party.",
+  "bilgi", A08, STAT, "RP politikası", CE, "G3;G5", "alg-muzakere", "Algoritma beklentisi RP takdirinde.")
+r("TSL", "5.1", "The ttl (time to live) claim, if present, MUST specify the maximum amount of time, in seconds, that the Status List Token can be cached by a consumer before a fresh copy SHOULD be retrieved.",
+  "MUST/SHOULD", A08, STAT, "—", CE, "G3", "tazelik", "ttl isteğe bağlı (RECOMMENDED).")
+r("TSL", "5.1", "exp: RECOMMENDED. As generally defined in [RFC7519].",
+  "RECOMMENDED", A08, STAT, "—", CE, "G3", "gecerlilik", "Durum listesi kabul penceresi = exp (tanımsız olabilir).")
+r("TSL", "8.2", "If caching-related HTTP headers are present in the HTTP response, Relying Parties MUST prioritize the exp and ttl claims within the Status List Token over the HTTP headers for determining caching behavior.",
+  "MUST", A08, STAT, "—", CE, "G3", "tazelik", "")
+r("TSL", "8.3 (4b)", "If the Relying Party has local policies regarding the freshness of the Status List Token, it SHOULD check the issued at claim (iat or 6)",
+  "SHOULD", A08, STAT, "—", CE, "G3", "tazelik", "")
+r("TSL", "8.3 (4c)", "If the expiration time is defined (exp or 4), it MUST be checked if the Status List Token is expired",
+  "MUST", A08, STAT, "—", CE, "G3", "gecerlilik", "")
+r("TSL", "8.3 (4d)", "If the Relying Party is using a system for caching the Status List Token, it SHOULD check the ttl claim of the Status List Token and retrieve a fresh copy if (time status was resolved + ttl < current time)",
+  "SHOULD", A08, STAT, "—", CE, "G3", "tazelik", "")
+r("TSL", "8.3 (4a)", "The subject claim (sub or 2) of the Status List Token MUST be equal to the uri claim in the status_list object of the Referenced Token",
+  "MUST", A08, STAT, "—", CE, "G3", "anahtar-baglama", "")
+r("TSL", "8.3", "If any of these checks fails, no statement about the status of the Referenced Token can be made and the Referenced Token SHOULD be rejected.",
+  "SHOULD", A08, STAT, "—", CE, "G3", "durum-listesi", "Fail-closed yalnız SHOULD.")
+r("TSL", "8.3", "The processing rules for Referenced Tokens (such as JWT or CWT) MUST precede any evaluation of a Referenced Token's status.",
+  "MUST", A08, STAT, "—", CE, "G3", "durum-listesi", "")
+r("TSL", "11", "Status List Tokens as defined in Section 5 only exist in cryptographically secured containers which allow checking the integrity and origin without relying on other factors such as transport security or web PKI.",
+  "bilgi", A08, STAT, "—", CE, "G3", "durum-listesi", "Tasarım taşıma ikamesini açıkça dışlıyor: H1 'kanal ikamesi' TSL'nin tasarım amacına aykırı bir politika önerisi olur.")
+r("TSL", "11.3", "This specification does not mandate specific methods for key resolution and trust management, however the following recommendations are made for specifications, profiles, or ecosystems that are planning to make use of the Status List mechanism:",
+  "bilgi", A08, STAT, "—", CE, "G3", "guven-capasi", "")
+r("TSL", "11.3", "If the Issuer of the Referenced Token is a different entity than the Status Issuer, then the keys used for the Status List Token may be cryptographically linked, e.g. by a Certificate Authority through an x.509 PKI.",
+  "may", A08, STAT, "—", CE, "G3", "guven-capasi", "Durum listesi delegasyonu (H4 aday hücresi).")
+r("TSL", "11.3", "The certificate of the Issuer for the Referenced Token and the Status Issuer should be issued by the same Certificate Authority and the Status Issuer's certificate should utilize extended key usage (Section 10).",
+  "should", A08, CA, "—", CE, "G3", "guven-capasi", "")
+r("TSL", "10", "A certificate's issuer explicitly delegates Status List Token signing authority by issuing an X.509 certificate containing the KeyPurposeId defined below in the extended key usage extension.",
+  "bilgi", A08, CA, "—", CE, "G3", "anahtar-baglama", "")
+r("TSL", "11.5", "Reasonable values for both claims highly depend on the use-case requirements and clients should be configured with lower/upper bounds for these values that fit their respective use-cases.",
+  "should", A08, RP, "—", CE, "G3", "tazelik", "Sayısal pencere yok.")
+r("TSL", "13.7", "Ultimately, it's the Relying Parties decision how often to check for updates, ecosystems may define their own guidelines and policies for updating the Status List information.",
+  "bilgi", A08, RP, "—", CE, "G3", "tazelik", "")
+r("TSL", "13.7", "If no ttl is given, then Relying Party SHOULD check for updates latest after the time of exp.",
+  "SHOULD", A08, RP, "—", CE, "G3", "tazelik", "")
+r("TSL", "11.6", "We expect most deployments to use digital signatures for the protection of Status List Tokens and implementers SHOULD default to digital signatures if they are unsure.",
+  "SHOULD", A08, STAT, "imza (MAC değil)", CE, "G3", "alg-muzakere", "")
+r("TSL", "5", "This allows for the Status List Token to be hosted by third parties or be transferred for offline use cases.",
+  "bilgi", A08, STAT, "—", BE, "G3", "durum-listesi", "Kanal sınıfı iki yönlü: çevrimiçi çekilen, çevrimdışı aktarılan (belirsiz).")
+r("HAIP", "6.1", "The public key used to validate the signature on the Status List Token defined in [I-D.ietf-oauth-status-list] MUST be included in the x5c JOSE header of the Token.",
+  "MUST", A08, STAT, "—", CE, "G3", "x5c", "")
+r("HAIP", "6.1", "The X.509 certificate of the trust anchor MUST NOT be included in the x5c JOSE header of the Status List Token.",
+  "MUST NOT", A08, STAT, "—", CE, "G3", "guven-capasi", "")
+r("HAIP", "6.1", "The status claim, if present, MUST contain status_list as defined in [I-D.ietf-oauth-status-list]",
+  "MUST", A08, ISS, "—", AK, "G3", "durum-listesi", "")
+r("HAIP", "7", "the status information of the Verifiable Credential or Wallet Attestation.",
+  "MUST (liste)", A08, STAT, "ES256 asgari", CE, "G3", "alg-muzakere", "")
+r("SDJWTVC", "2.2.2.3", "When the status claim is present and using the status_list mechanism, the associated Status List Token MUST be in JWT format.",
+  "MUST", A08, STAT, "—", CE, "G3", "durum-listesi", "")
+r("SDJWTVC", "2.4", "If status is present in the verified payload of the SD-JWT, the status SHOULD be checked.",
+  "SHOULD", A08, RP, "—", CE, "G3", "durum-listesi", "G3 için durum denetimi yalnız SHOULD.")
+r("SDJWTVC", "2.4", "Verifier policy decides whether to reject or accept a presentation of a SD-JWT VC based on the status of the Verifiable Digital Credential.",
+  "bilgi", A08, RP, "—", CE, "G3", "durum-listesi", "")
+r("ARF-A202", "Topic 7 VCR_01b", "A PID Provider, QEAA Provider, or PuB-EAA Provider SHALL use one of the following methods for revocation of a [SD-JWT VC]-compliant PID, QEAA, or PuB-EAA:",
+  "SHALL", A08, ISS, "—", CE, "G3", "durum-listesi", "")
+r("ARF-A202", "Topic 7 VCR_01b", "Only issue short-lived attestations having a validity period of 24 hours or less, such that revocation will never be necessary",
+  "SHALL (seçenek)", A07, ISS, "—", AK, "G3", "gecerlilik", "Kısa ömürlü (≤24 sa) kimlik bilgisinde durum listesi artefaktı hiç yok: H2'de A08 kümeden düşer, pencere 24 sa.")
+r("ARF-A202", "Topic 7 VCR_04", "A PID Provider, Attestation Provider, or Wallet Provider that revoked a PID, attestation, WIA, or KA SHALL NOT reverse the revocation.",
+  "SHALL NOT", A08, STAT, "—", CE, "G3;G5", "downgrade", "İptal tekdüze (geri alınamaz): M-f'nin 'tekdüzelik' bileşeninin ekosistemdeki emsali.")
+r("ARF-A202", "Topic 7 VCR_11a", "For [SD-JWT VC]-compliant PIDs and attestations, the PID Provider or Attestation Provider SHALL implement the Attestation Status List mechanism as specified in [Token Status List].",
+  "SHALL", A08, ISS, "—", CE, "G3", "durum-listesi", "")
+r("ARF-M06", "6.6.3.7", "It is recommended but not mandatory for a Relying Party Instance to verify the revocation status of a PID or attestation.",
+  "bilgi", A08, RP, "—", CE, "G3", "durum-listesi", "G3 ekosistemde isteğe bağlı.")
+r("ARF-M06", "6.6.3.7", "In such a case, a Relying Party performs a risk analysis considering all relevant factors for the use case, before taking a decision to accept or refuse the PID or attestation.",
+  "bilgi", A08, RP, "—", BE, "G3", "durum-listesi", "Çevrimdışı/önbelleksiz durumda karar risk analizine bırakılmış (fail-open olabilir).")
+r("ARF-M06", "6.3.2.4", "However, they also may be different, because a PID Provider or Attestation Provider can outsource the responsibility of providing revocation lists to a third party.",
+  "bilgi", A08, STAT, "—", CE, "G3", "guven-capasi", "Durum imzacısı çıpası ihraççıdan farklı olabilir (delegasyon).")
+
+# =====================================================================
+# A09 cüzdan kanıtlaması (WUA: WIA/KA)
+# =====================================================================
+r("ABCA", "4", "alg: REQUIRED. The alg (algorithm) header MUST specify the cryptographic algorithm used to sign the Client Attestation.",
+  "MUST", A09, WP, "—", AK, "G2", "alg-muzakere", "")
+r("ABCA", "4", "The Authorization Server or Resource Server MUST reject any JWT with an expiration time that has passed, subject to allowable clock skew between systems.",
+  "MUST", A09, WP, "—", AK, "G2", "gecerlilik", "")
+r("ABCA", "4", "The JWT MUST be digitally signed or integrity protected with a Message Authentication Code (MAC).",
+  "MUST", A09, WP, "imza ya da MAC", AK, "G2", "alg-muzakere", "")
+r("ABCA", "7.1 (3)", "The alg JOSE Header Parameter contains a registered algorithm [IANA.JOSE.ALGS], is not none, is supported by the application, and is acceptable per local policy.",
+  "MUST (adım)", A09, WP, "yerel politika", AK, "G2;G5", "alg-muzakere", "Beklenti yerel; ihraççı (AS) başına yapılandırma.")
+r("ABCA", "7.1 (4)", "The signature of the Client Attestation JWT verifies with the public key of a known and trusted Client Attester.",
+  "MUST (adım)", A09, WP, "—", AK, "G2", "guven-capasi", "")
+r("ABCA", "7.1 (6)", "The Client Attestation JWT is fresh enough per local policy of the Authorization Server or Resource Server by checking the iat or exp claims.",
+  "MUST (adım)", A09, WP, "—", AK, "G2", "tazelik", "Pencere yerel politika.")
+r("ABCA", "7.2 (6)", "The creation time of the Client Attestation PoP JWT as determined by either the iat claim or a server managed timestamp via the challenge claim, is within an acceptable window per local policy of the Authorization Server or Resource Server.",
+  "MUST (adım)", A09, HOL, "—", AK, "G2", "tazelik", "")
+r("ABCA", "8", "The Authorization Server or Resource Server SHOULD communicate supported algorithms for client attestations by using client_attestation_signing_alg_values_supported and client_attestation_pop_signing_alg_values_supported within its published metadata.",
+  "SHOULD", A09, WP, "'supported'", CE, "G2;G5", "alg-muzakere", "AS meta verisi (TLS ile çekilen) yalnız destek bildirir.")
+r("ABCA", "8", "The client MAY try to get a new client attestation with different algorithms.",
+  "MAY", A09, WP, "istemci yeniden deneme", CE, "G2;G5", "alg-muzakere", "Kanıtlama düzeyinde M-c benzeri (farklı alg ile yeni nesne).")
+r("ABCA", "10.8", "The mechanisms by which the Authorization Server establishes trust in the Client Attester, and by which it obtains the public keys used to verify Client Attestation JWTs, are out of scope of this specification.",
+  "bilgi", A09, WP, "—", BE, "G2", "guven-capasi", "")
+r("ABCA", "10.8", "The x5c header parameter, as defined in Section 4.1.6 of [RFC7515], conveys an X.509 certificate chain in the JOSE header of each Client Attestation.",
+  "bilgi", A09, WP, "—", AK, "G2", "x5c", "")
+r("ABCA", "10.5", "As of 2024, typical limits for modern web servers configure maximum HTTP headers as 8 kB or more as a default.",
+  "bilgi", A09, WP, "—", AK, "G2", "diger", "Başlık boyutu: ML-DSA/x5c'li WUA 20–38 KB (B'nin P4 ölçümü) sınırı aşar.")
+r("ABCA", "12.2", "We expect most deployments to use digital signatures for the protection of Client Attestations, and implementers SHOULD default to digital signatures if they are unsure.",
+  "SHOULD", A09, WP, "imza", AK, "G2", "alg-muzakere", "")
+r("HAIP", "4.4.1", "the public key certificate, and optionally a trust certificate chain excluding the trust anchor, used to validate the signature on the Wallet Attestation MUST be included in the x5c JOSE header of the Client Attestation JWT",
+  "MUST", A09, WP, "—", AK, "G2", "x5c", "")
+r("HAIP", "4.4.1", "Wallet Attestations MUST NOT be reused across different Issuers.",
+  "MUST NOT", A09, WP, "—", AK, "G2", "diger", "")
+r("HAIP", "7", "Wallet Attestations (including PoP) when Appendix E of [OIDF.OID4VCI] is used.",
+  "MUST (liste)", A09, WP, "ES256 asgari", AK, "G2", "alg-muzakere", "")
+r("HAIP", "4.5.1", "Wallets MUST support key attestations.",
+  "MUST", A09, WP, "—", AK, "G2", "kanitlama", "")
+r("HAIP", "4.5.1", "The X.509 certificate of the trust anchor MUST NOT be included in the x5c JOSE header of the key attestation.",
+  "MUST NOT", A09, WP, "—", AK, "G2", "x5c", "")
+r("OID4VCI", "Ek E", "The Authorization Server MUST verify that the Wallet Attestation is signed by an issuer that the Credential Issuer trusts for this purpose.",
+  "MUST", A09, WP, "—", AK, "G2", "guven-capasi", "")
+r("OID4VCI", "D.1", "exp: OPTIONAL (number). Integer for the time at which the key attestation and the key(s) it is attesting expire, using the syntax defined in [RFC7519]. MUST be present if the attestation is used with the JWT proof type.",
+  "OPTIONAL/MUST", A09, WP, "—", AK, "G2", "gecerlilik", "")
+r("OID4VCI", "Ek D", "A Credential Issuer MUST communicate the need to evaluate key attestations through its metadata or via an out-of-band mechanism.",
+  "MUST", A09, ISS, "—", CE, "G2;G5", "diger", "Beklenti taşıma örneği (meta veri ya da bant dışı); meta veri imzasız olabilir.")
+r("ARF-A202", "Topic 9 WUA_04", "When issuing, presenting, or verifying a WIA or KA, Wallet Providers, Wallet Units, PID Providers, and Attestation Providers SHALL only use cryptographic algorithms included in the [ECCG Agreed Cryptographic Mechanisms v2.0].",
+  "SHALL", A09, WP, "ECCG ACM v2", AK, "G2", "alg-muzakere", "")
+r("ARF-A202", "Topic 9 WUA_25", "During issuance of a PID or attestation, the PID Provider or Attestation Provider SHALL verify the WIA in accordance with the requirements in [OpenID4VCI] Appendix E.",
+  "SHALL", A09, WP, "—", AK, "G2", "kanitlama", "")
+r("ARF-M06", "6.5.3.5", "A WIA has a short technical validity period (less than 24 hours), ensuring that it reflects a recent integrity check of the Wallet Instance.",
+  "bilgi", A09, WP, "—", AK, "G2", "gecerlilik", "WIA penceresi <24 sa (TS3'te SHALL): hızlı olmayan τ rejimlerinde WIA kümeden düşer (H2).")
+r("ARF-M06", "6.5.3.5", "In addition, a WIA specifies a revocation maintenance period, which may be considerably longer than the technical validity period.",
+  "bilgi", A09, WP, "—", AK, "G2;G3", "gecerlilik", "")
+r("ARF-M06", "6.5.3.4", "Moreover, a Wallet Unit will present each KA only once.",
+  "bilgi", A09, HOL, "—", AK, "G2", "diger", "Tek kullanımlık KA — cüzdan tarafında (H5 ile ilgili).")
+r("ARF-M06", "6.5.3.4", "the technical validity period of a PID cannot exceed the end of the revocation maintenance period indicated in the KA received by the PID Provider during issuance.",
+  "bilgi", A09, WP, "—", AK, "G2;G3", "gecerlilik", "PID ömrü ≤ KA iptal bakım süresi.")
+r("ARF-A202", "Topic 9 WUA_22", "A Wallet Provider SHALL ensure that a non-revoked Wallet Unit at all times can present a temporally valid and non-revoked WIA to a PID Provider or Attestation Provider during the issuance process of a PID or attestation.",
+  "SHALL", A09, WP, "—", AK, "G2", "gecerlilik", "")
+
+# =====================================================================
+# A10 WSCD anahtarı ve KB-JWT
+# =====================================================================
+r("RFC9901", "4.3", "alg: REQUIRED. A digital signature algorithm identifier such as per the IANA \"JSON Web Signature and Encryption Algorithms\" registry. It MUST NOT be \"none\".",
+  "REQUIRED/MUST NOT", A10, HOL, "none yasak", AK, "G2", "alg-muzakere", "")
+r("RFC9901", "4.3", "iat: REQUIRED. The value of this claim MUST be the time at which the Key Binding JWT was issued using the syntax defined in [RFC7519].",
+  "REQUIRED/MUST", A10, HOL, "—", AK, "G2", "tazelik", "")
+r("RFC9901", "4.3", "\"nonce\": REQUIRED. Ensures the freshness of the signature or its binding to the given transaction.",
+  "REQUIRED", A10, HOL, "—", AK, "G2", "tazelik", "")
+r("RFC9901", "7.3 (5e)", "Check that the creation time of the Key Binding JWT, as determined by the iat claim, is within an acceptable window.",
+  "MUST (adım)", A10, HOL, "—", AK, "G2", "tazelik", "KB-JWT kabul penceresi sayısal olarak tanımsız.")
+r("RFC9901", "7.3 (5b)", "Ensure that a signing algorithm was used that was deemed secure for the application.",
+  "MUST (adım)", A10, HOL, "uygulama politikası", AK, "G2;G5", "alg-muzakere", "")
+r("RFC9901", "7.3 (1)", "This decision MUST NOT be based on whether or not a Key Binding JWT is provided by the Holder.",
+  "MUST NOT", A10, RP, "—", AK, "G2;G5", "downgrade", "Soyma direncinin SD-JWT'deki doğrudan kuralı (KB-JWT için).")
+r("RFC9901", "9.5", "It is important that a Verifier not make its security policy decisions based on data that can be influenced by an attacker.",
+  "bilgi", GEN, RP, "—", BE, "G5", "downgrade", "G5'in genel ilkesi; algoritma beklentisine uygulanırsa 'istek başına beklenti' dışlanır (#2153 ile tutarlı).")
+r("RFC9901", "9.5", "Verifiers MUST NOT take into account whether the Holder has provided an SD-JWT+KB or a bare SD-JWT; otherwise, an attacker could strip the KB-JWT from an SD-JWT+KB and present the resultant SD-JWT.",
+  "MUST NOT", A10, RP, "—", AK, "G2;G5", "downgrade", "")
+r("RFC9901", "4.3.2", "If the Verifier requires Key Binding, the Verifier MUST ensure that the key with which it validates the signature on the Key Binding JWT is the key specified in the SD-JWT as the Holder's public key.",
+  "MUST", A10, HOL, "—", AK, "G2", "anahtar-baglama", "")
+r("SDJWTVC", "2.2.2.3", "For proof of cryptographic Key Binding, the KB-JWT in the presentation of the SD-JWT MUST be secured by the key identified in this claim.",
+  "MUST", A10, HOL, "—", AK, "G2", "anahtar-baglama", "cnf açık anahtarı kimlik bilgisinde (aktarılan) — S3 için maruziyet: her sunumda görünür.")
+r("HAIP", "6.1.1.1", "If the credential has cryptographic holder binding, a KB-JWT, as defined in [I-D.ietf-oauth-sd-jwt-vc], MUST always be present when presenting an SD-JWT VC.",
+  "MUST", A10, HOL, "—", AK, "G2", "kanitlama", "")
+r("HAIP", "6.1", "Implementations conforming to this specification MUST include the JSON Web Key [RFC7517] in the jwk member if the corresponding Credential Configuration requires cryptographic holder binding.",
+  "MUST", A10, ISS, "—", AK, "G2", "anahtar-baglama", "Cihaz açık anahtarı değerle (jwk) kimlik bilgisinde: maruziyet.")
+r("HAIP", "7", "the signature of the Verifiable Presentation, e.g., KB-JWT of an SD-JWT VC, or deviceSignature CBOR structure in case of ISO mdocs.",
+  "MUST (liste)", A10, HOL, "ES256 asgari", AK, "G2", "alg-muzakere", "")
+r("OID4VP", "B.3.6", "the nonce claim MUST be the value of nonce from the Authorization Request;",
+  "MUST", A10, HOL, "—", AK, "G2", "tazelik", "")
+r("OID4VP", "B.3.6", "the aud claim MUST be the value of the Client Identifier, except for requests over the DC API where it MUST be the Origin prefixed with origin:, as described in Appendix A.4.",
+  "MUST", A10, HOL, "—", AK, "G2;G4", "kanitlama", "")
+r("OID4VP", "14.1.2", "If any Verifiable Presentation in the response does not contain the correct nonce value, the response MUST be rejected.",
+  "MUST", A10, RP, "—", AK, "G2", "tazelik", "")
+r("OID4VP", "5.2", "The Verifier MUST create a fresh, cryptographically random number with sufficient entropy for every Authorization Request, store it with its current session, and pass it in the nonce Authorization Request Parameter to the Wallet.",
+  "MUST", A10, RP, "—", AK, "G2", "tazelik", "")
+r("OID4VP", "B.3.4", "kb-jwt_alg_values: OPTIONAL. A non-empty array containing fully-specified identifiers of cryptographic algorithms (as defined in [I-D.ietf-jose-fully-specified-algorithms]) supported for a Key Binding JWT (KB-JWT).",
+  "OPTIONAL", A10, RP, "'supported' (fully-specified)", BE, "G2;G5", "alg-muzakere", "")
+r("OID4VP", "A.4", "The audience for the response (for example, the aud value in a Key Binding JWT) MUST be the Origin, prefixed with origin:, for example origin:https://verifier.example.com/.",
+  "MUST", A10, HOL, "—", AK, "G2;G4", "kanitlama", "DC API'de bağlam origin'e (tarayıcı/WebPKI) dayanır.")
+r("ARF-M06", "6.6.3.8", "Note that it is recommended but not mandatory for a Relying Party Instance to verify the device binding signature in the presentation response, if present.",
+  "bilgi", A10, RP, "—", AK, "G2", "kanitlama", "G2 ekosistemde isteğe bağlı.")
+r("ARF-A202", "Topic 10 ISSU_17", "A PID Provider SHALL implement device binding for all PIDs it issues, meaning it SHALL ensure that a PID is cryptographically bound to the WSCA/WSCD included in the Wallet Unit",
+  "SHALL", A10, ISS, "—", AK, "G2", "anahtar-baglama", "")
+r("ARF-A202", "Topic 10 ISSU_44", "If Method A is used, the Wallet Unit SHALL present each technical PID or attestation only once to a Relying Party that requests the corresponding logical PID or attestation, except when it has fallen back to Method B as specified in ISSU_47.",
+  "SHALL", A10, HOL, "—", AK, "G2", "kanitlama", "Tek kullanımlık cüzdanda zorlanır, doğrulayıcıda değil (H5).")
+r("ARF-A202", "Topic 10 ISSU_47", "If Method A is used and the Wallet Unit has run out of unused technical PIDs or attestations, but is not able to request a new batch, it SHALL fall back to method B (see ISSU_48 - ISSU_50).",
+  "SHALL", A10, HOL, "—", AK, "G2", "kanitlama", "Tek kullanımlıktan çok kullanımlığa geri düşüş.")
+r("OID4VP", "15.5", "a Wallet can use an issued Credential instance only once in a Presentation to a specific Verifier, before discarding the Credential, thus avoiding linking on the above basis ever occurring",
+  "bilgi", A10, HOL, "—", AK, "G2", "kanitlama", "Tek kullanımlık gizlilik amaçlı; güvenlik zorlaması değil.")
+r("OID4VCI", "13.8 (not)", "For the attacker to be able to present a Credential bound to a replayed key proof to the Verifier, the attacker also needs to obtain the victim's private key.",
+  "bilgi", A10, HOL, "—", AK, "G2", "kanitlama", "S2/S3 (CRQC) bu önkoşulu açık anahtardan karşılar.")
+r("OID4VCI", "F.4", "the creation time of the JWT, as determined by either the issuance time, or a server managed timestamp via the nonce claim, is within an acceptable window (see Section 13.8).",
+  "MUST (adım)", A10, HOL, "—", AK, "G2", "tazelik", "")
+r("OID4VCI", "F.4", "the header parameter indicates a registered asymmetric digital signature algorithm, alg parameter value is not none, is supported by the application, and is acceptable per local policy,",
+  "MUST (adım)", A10, HOL, "yerel politika", AK, "G2", "alg-muzakere", "")
+r("OID4VCI", "F.1", "If Credential Issuer metadata is provided, the alg JWT header of the key proof, and if present, the alg JOSE headers of both key_attestation and trust_chain, MUST match one of the values listed in the proof_signing_alg_values_supported metadata parameter.",
+  "MUST", A10, HOL, "ihraççı meta verisindeki küme", AK, "G2", "alg-muzakere", "İhraççı kendi yayımladığı kümeyi zorlar (yerel L2).")
+r("OID4VCI", "7.2", "Due to the temporal nature of the c_nonce value, the Credential Issuer MUST make the response uncacheable by adding a Cache-Control header field including the value no-store.",
+  "MUST", A10, ISS, "—", CE, "G2", "tazelik", "")
+r("OID4VCI", "13.8", "The Credential Issuer determines for how long a particular nonce can be used.",
+  "bilgi", A10, ISS, "—", BE, "G2", "tazelik", "")
+r("OID4VCI", "8.1", "The issued Credential SHOULD be cryptographically bound to the identifier of the End-User who possesses the Credential.",
+  "SHOULD", A10, ISS, "—", AK, "G2", "anahtar-baglama", "")
+
+# =====================================================================
+# A11 RP erişim/kayıt sertifikası
+# =====================================================================
+r("OID4VP", "5.9.3 (x509_hash)", "The Wallet MUST validate the signature and the trust chain of the X.509 leaf certificate.",
+  "MUST", A11, ACA, "—", AK, "G4", "x5c", "")
+r("HAIP", "5", "For signed requests, the Verifier MUST use, and the Wallet MUST accept the Client Identifier Prefix x509_hash as defined in Section 5.9.3 of [OIDF.OID4VP].",
+  "MUST", A11, RP, "—", AK, "G4", "istek-imzasi", "")
+r("HAIP", "5", "X.509 certificate profiles to be used with x509_hash are out of scope of this specification.",
+  "bilgi", A11, ACA, "—", BE, "G4", "guven-capasi", "")
+r("HAIP", "5", "The X.509 certificate of the trust anchor MUST NOT be included in the x5c JOSE header of the signed request.",
+  "MUST NOT", A11, ACA, "—", AK, "G4", "x5c", "")
+r("ARF-A202", "Topic 6 RPA_02", "For performing Relying Party authentication, Wallet Units and Relying Party Instances SHALL support access certificates as specified in [ETSI TS 119 475] and [ETSI TS 119 411-8].",
+  "SHALL", A11, ACA, "—", AK, "G4", "guven-capasi", "")
+r("ARF-A202", "Topic 6 RPA_04", "For the verification of access certificates, a Wallet Unit SHALL accept only the trust anchors in the LoTE(s) of all Access Certificate Authorities notified by Member States.",
+  "SHALL", A11, ACA, "—", CE, "G4", "guven-capasi", "Çıpa LoTE'den (çekilen); WRPAC LoTE compact JAdES ile imzalı.")
+r("ARF-A202", "Topic 6 RPA_03", "A Wallet Unit and a Relying Party Instance SHALL perform Relying Party authentication in all PID or attestation presentation transactions to Relying Parties, whether proximity or remote, using an access certificate.",
+  "SHALL", A11, RP, "—", AK, "G4", "istek-imzasi", "HAIP'in cüzdana imzasız isteği de kabul ettirmesiyle (5.2) gerilim.")
+r("ARF-A202", "Topic 6 RPA_06a", "In addition, the Wallet Unit SHALL either not present the requested attributes to the Relying Party, or give the User the choice to present the requested attributes or not.",
+  "SHALL", A11, RP, "—", AK, "G4;G5", "downgrade", "RP kimlik doğrulaması başarısızken kullanıcı onayıyla sunum izinli (fail-open seçeneği).")
+r("ARF-A202", "Topic 6 RPA_01a", "A Wallet Unit SHALL retain full authority over the process meant in RPA_01. In particular, this process SHALL NOT be handled by a third party, including the browser and the operating system.",
+  "SHALL/SHALL NOT", A12, RP, "—", AK, "G4", "istek-imzasi", "İmzasız DC API isteğinde RP kimliği tarayıcı origin'ine bırakılıyor (HAIP 5.2 notu) → çelişki adayı.")
+r("ARF-A202", "Topic 27 Reg_12", "An Access CA SHALL be able to revoke an access certificate, if it has a validity period of longer than 24 hours",
+  "SHALL", A11, ACA, "—", AK, "G4", "gecerlilik", "")
+r("ARF-A202", "Topic 44 RPRC_01a", "A Provider of registration certificates SHALL be able to revoke a registration certificate, if it has a validity period of longer than 24 hours, in accordance with the applicable requirements in [ETSI TS 119 475].",
+  "SHALL", A11, ACA, "—", AK, "G4", "gecerlilik", "")
+r("ARF-A202", "Topic 27 Reg_10b", "When issuing an access certificate to a PID Provider, Attestation Provider, or Relying Party, an Access Certificate Authority SHALL also send the signing certificate and, if present, any intermediate certificate(s) leading up to the corresponding trust anchor of the Access CA",
+  "SHALL", A11, ACA, "—", AK, "G4", "x5c", "")
+r("ARF-A202", "Topic 44 RPRC_19", "The registration certificate SHALL be included in the request by value, not by reference.",
+  "SHALL", A11, ACA, "—", AK, "G4", "diger", "Kayıt sertifikası aktarılan artefakt (istek içinde).")
+r("ARF-A202", "Topic 44 RPRC_17", "In addition, the Wallet Provider SHALL determine, based on its risk analysis and security policy, whether and under which conditions the Wallet Unit will allow the User to approve the presentation of the requested attributes despite specific failed verifications.",
+  "SHALL", A11, RP, "—", AK, "G4;G5", "downgrade", "Kayıt sertifikası doğrulaması başarısızken devam kararı cüzdan sağlayıcıda (fail-open olabilir).")
+r("ARF-A202", "Topic 44 RPRC_17 (not)", "The requirement for Wallet Units to verify and validate registration certificates only applies as of 24 months after entry into force of the Regulation amending [CIR 2024/2982].",
+  "bilgi (not)", A11, ACA, "—", AK, "G4", "gecerlilik", "Doğrulama zorunluluğu ertelenmiş (geçiş dönemi).")
+r("ARF-M06", "6.6.3.2", "For revocation checking, the Wallet Unit uses the standard CRL or OCSP mechanisms, as specified in [RFC 5280], [ETSI TS 119 411-8], and in the Certification Practices Statement of the Access CA.",
+  "bilgi", A11, ACA, "—", CE, "G4", "gecerlilik", "Ek çekilen artefakt: Access CA CRL/OCSP (klasik imzalı).")
+r("ARF-M06", "6.6.3.2", "For offline revocation checking, a Wallet Unit caches the CRLs of all Access Certificate Authorities.",
+  "bilgi", A11, ACA, "—", SA, "G4", "tazelik", "CRL önbelleği: pencere = CRL nextUpdate (ETSI EN 319 411-1).")
+r("TS119475", "5.2.1 GEN-5.2.1-04", "GEN-5.2.1-04: The JWT shall be signed with a JSON Advanced Electronic Signature with the B-B profile as defined in ETSI TS 119 182-1 [18].",
+  "shall", A11, ACA, "JAdES B-B", AK, "G4", "alg-muzakere", "")
+r("TS119475", "5.2.1 GEN-5.2.1-03", "GEN-5.2.1-03: The WRPRC shall be signed with the digital signature of provider of the wallet-relying party registration certificates.",
+  "shall", A11, ACA, "—", AK, "G4", "guven-capasi", "")
+r("TS119475", "5.2.2 Tablo 5", "Contains the whole certificate chain to verify the JWT or CWT as defined in clause 5.1.8 of ETSI TS 119 182-1 [18].",
+  "bilgi", A11, ACA, "—", AK, "G4", "x5c", "")
+r("TS119475", "5.2.1 NOT", "Electronic seal certificate or electronic signature certificate of the provider of the wallet-relying party registration certificates is published on the relevant trusted list.",
+  "bilgi (NOTE)", A11, ACA, "—", CE, "G4", "guven-capasi", "")
+r("TS119411-8", "6.6.1 NOT", "Neither website authentication certificates nor short-term certificates (validity assured) are applicable to wallet-relying party access certificates.",
+  "bilgi (NOTE)", A11, ACA, "—", AK, "G4", "gecerlilik", "WRPAC kısa ömürlü değil → iptal (CRL/OCSP) zorunlu; pencere EN 319 411-1'e bağlı (sayısal tanım yok).")
+r("OID4VP", "5.11", "A registration certificate issued by a trusted authority, to prove that the Verifier has publicly registered its intent to request certain credentials.",
+  "bilgi (örnek)", A11, ACA, "—", AK, "G4", "diger", "")
+r("OID4VP", "5.1 (verifier_info)", "If the Wallet uses information from verifier_info, the Wallet MUST validate the signature and ensure binding.",
+  "MUST", A11, ACA, "—", AK, "G4", "anahtar-baglama", "")
+r("OID4VP", "5.1 (verifier_info)", "It is at the discretion of the Wallet whether it uses the information from verifier_info.",
+  "bilgi", A11, RP, "—", AK, "G4;G5", "downgrade", "Kayıt sertifikası (M-f taşıyıcı adayı) cüzdan takdirinde yok sayılabilir.")
+r("OID4VP", "12", "The Wallet MUST reject any Verifier Attestation JWT with an expiration time that has passed, subject to allowable clock skew between systems.",
+  "MUST", A11, ACA, "—", AK, "G4", "gecerlilik", "")
+r("OID4VP", "12", "How the trust is established between Wallet and Issuer and how the public key is obtained for validating the attestation's signature is out of scope of this specification.",
+  "bilgi", A11, ACA, "—", BE, "G4", "guven-capasi", "")
+r("OID4VP", "5.9.3 (verifier_attestation)", "If the Wallet cannot establish trust, it MUST refuse the request.",
+  "MUST", A11, ACA, "—", AK, "G4", "guven-capasi", "")
+
+# =====================================================================
+# A12 OID4VP istek nesnesi
+# =====================================================================
+r("OID4VP", "5.9.3", "In case of using OpenID4VP over DC API, as defined in Appendix A, it is at the discretion of the Wallet whether it validates the signature on the Request Object following the processing rules defined by a relevant Client Identifier Prefix.",
+  "bilgi (takdir)", A12, RP, "—", AK, "G4;G5", "downgrade", "DC API'de istek imzasının doğrulanması bile cüzdan takdirinde: G4/G5 için en zayıf normatif nokta.")
+r("OID4VP", "A.3.2.2", "The JWS JSON Serialization ([RFC7515]) allows the Verifier to use multiple Client Identifiers and corresponding key material to protect the same request.",
+  "bilgi", A12, RP, "çoklu imza (JWS JSON)", AK, "G4;G5", "downgrade", "Senaryo (c) / M-b.")
+r("OID4VP", "A.3.2.2", "This serves use cases where the Verifier requests Credentials belonging to different trust frameworks and, therefore, needs to authenticate in the context of those trust frameworks.",
+  "bilgi", A12, RP, "—", AK, "G4", "istek-imzasi", "")
+r("OID4VP", "A.3.2.2", "In this case, the following request parameters, if used, MUST be present only in the protected header of the respective signature object in the signatures array defined in Section 7.2.1 of [RFC7515]:",
+  "MUST", A12, RP, "—", AK, "G4", "istek-imzasi", "client_id, verifier_info, önek parametreleri imza başına korumalı başlıkta.")
+r("OID4VP", "A.3.2.2", "All other request parameters MUST be present in the payload element of the JWS object.",
+  "MUST", A12, RP, "—", AK, "G4", "istek-imzasi", "")
+r("OID4VP", "A.3.2.2", "Every object in the signatures structure contains the parameters and the signature specific to a particular Client Identifier.",
+  "bilgi", A12, RP, "—", AK, "G4;G5", "downgrade", "Cüzdanın hangi/kaç imzayı doğrulayacağı TANIMSIZ → RFC 7515 §5.2 'uygulama kararı' (en az biri).")
+r("OID4VP", "A.3.2", "The signed request allows the Wallet to authenticate the Verifier using one or more trust framework(s) in addition to the Web PKI utilized by the browser.",
+  "bilgi", A12, RP, "—", AK, "G4", "istek-imzasi", "")
+r("OID4VP", "A.3.2", "This web origin MAY still be used to further strengthen the security of the flow.",
+  "MAY", A13, TLS, "—", AK, "G4", "istek-imzasi", "")
+r("OID4VP", "A.3.2", "Verifiers SHOULD format signed Requests using JWS Compact Serialization but MAY use JWS JSON Serialization ([RFC7515]) to cater for the use cases described below.",
+  "SHOULD/MAY", A12, RP, "—", AK, "G4", "istek-imzasi", "")
+r("OID4VP", "A.3.2.1", "When the JWS Compact Serialization is used to send the request, the Verifier can convey only one Trust Framework, i.e., the Verifier knows which trust frameworks the Wallet supports.",
+  "bilgi", A12, RP, "—", AK, "G4;G5", "alg-muzakere", "Compact istek için doğrulayıcının cüzdan yeteneğini önceden bilmesi varsayılıyor.")
+r("OID4VP", "A.1", "unsigned requests, as defined in Appendix A.3.1, MUST use unsigned, signed requests, as defined in Appendix A.3.2.1, MUST use signed, and multi-signed requests, as defined in Appendix A.3.2.2, MUST use multisigned.",
+  "MUST", A12, RP, "—", AK, "G4;G5", "downgrade", "İstek türü protokol tanımlayıcısında (openid4vp-v1-*) — platform düzeyinde, imzasızlaştırmaya karşı bağlayıcı beklenti değil.")
+r("OID4VP", "A.2", "The client_id parameter MUST be omitted in unsigned requests defined in Appendix A.3.1. The Wallet MUST ignore any client_id parameter that is present in an unsigned request.",
+  "MUST", A12, RP, "—", AK, "G4", "istek-imzasi", "")
+r("OID4VP", "A.2", "The Wallet MUST compare values in this parameter to the Origin to detect replay of the request from a malicious Verifier.",
+  "MUST", A12, RP, "—", AK, "G4", "tazelik", "expected_origins: imzalı isteğin yeniden oynatılmasına karşı origin bağı (WebPKI).")
+r("HAIP", "5.2", "The Wallet MUST support unsigned, signed, and multi-signed requests as defined in Appendices A.3.1 and A.3.2 of [OIDF.OID4VP]. The Verifier MUST support at least one of these options.",
+  "MUST", A12, RP, "—", AK, "G4;G5", "downgrade", "Cüzdan imzasızı da kabul etmek zorunda: RP başına beklenti yoksa imzalı→imzasız düşürme (G5).")
+r("HAIP", "5.2", "Note that unsigned requests depend on the origin information provided by the platform and the web PKI for request integrity protection and to authenticate the Verifier.",
+  "bilgi", A13, TLS, "WebPKI (klasik)", AK, "G4", "istek-imzasi", "WebPKI bağımlılığının açık normatif-bilgi kaydı (H1).")
+r("HAIP", "5.2", "Signed requests introduce a separate layer for request integrity protection and Verifier authentication that can be validated by the Wallet.",
+  "bilgi", A12, RP, "—", AK, "G4", "istek-imzasi", "")
+r("HAIP", "5.1", "Signed Authorization Requests MUST be used by utilizing JWT-Secured Authorization Request (JAR) [RFC9101] with the request_uri parameter.",
+  "MUST", A12, RP, "—", CE, "G4", "istek-imzasi", "Yönlendirmeli akışta istek nesnesi request_uri'den çekilir; kaynak doğrulanacak tarafın kendisi (yetkili üçüncü taraf değil).")
+r("OID4VP", "5.10", "Additionally, if the Client Identifier Prefix permits signed Request Objects, the Wallet SHOULD list supported cryptographic algorithms for securing the Request Object through the request_object_signing_alg_values_supported parameter.",
+  "SHOULD", A12, RP, "'supported' (cüzdan meta verisi)", AK, "G4;G5", "alg-muzakere", "Cüzdan→doğrulayıcı yetenek bildirimi, kimliği doğrulanmamış (M-a sınıfı).")
+r("OID4VP", "5.10", "Conversely, the Wallet MUST NOT include this parameter if the Client Identifier Prefix precludes signed Request Objects.",
+  "MUST NOT", A12, RP, "—", AK, "G4", "alg-muzakere", "")
+r("OID4VP", "5.10", "When received, the Verifier MUST use it as the wallet_nonce value in the signed authorization request object.",
+  "MUST", A12, RP, "—", AK, "G4", "tazelik", "")
+r("OID4VP", "5.10.1", "Additionally, if the Wallet passed a wallet_nonce in the POST request, the Wallet MUST validate whether the request object contains the respective nonce value in a wallet_nonce claim.",
+  "MUST", A12, RP, "—", AK, "G4", "tazelik", "")
+r("OID4VP", "5.10.1", "The Client Identifier value in the client_id Authorization Request parameter and the Request Object client_id claim value MUST be identical, including the Client Identifier Prefix.",
+  "MUST", A12, RP, "—", AK, "G4;G5", "anahtar-baglama", "")
+r("OID4VP", "5.9.1", "Note that the Verifier needs to determine which Client Identifier Prefixes the Wallet supports prior to sending the Authorization Request in order to choose a supported prefix.",
+  "bilgi", A12, RP, "—", BE, "G4;G5", "alg-muzakere", "")
+r("OID4VP", "5.9.2", "If a : character is present in the Client Identifier but the value preceding it is not a recognized and supported Client Identifier Prefix value, the Wallet can treat the Client Identifier as referring to a pre-registered client or it may refuse the request.",
+  "bilgi", A12, RP, "—", AK, "G4;G5", "downgrade", "")
+r("OID4VP", "5.9.3 (redirect_uri)", "Requests using the redirect_uri Client Identifier Prefix cannot be signed because there is no method for the Wallet to obtain a trusted key for verification.",
+  "bilgi", A12, RP, "—", AK, "G4;G5", "downgrade", "İmzasız önek sınıfı: düşürme hedefi.")
+r("OID4VP", "5", "Wallets MUST NOT process Request Objects where the typ Header Parameter is not present or does not have the value oauth-authz-req+jwt.",
+  "MUST NOT", A12, RP, "—", AK, "G4", "istek-imzasi", "")
+r("OID4VP", "5.1 (client_metadata)", "Public keys included in this parameter MUST NOT be used to verify the signature of signed Authorization Requests.",
+  "MUST NOT", A12, RP, "—", AK, "G4", "anahtar-baglama", "")
+r("OID4VP", "5.1 (client_metadata)", "Authoritative data the Wallet is able to obtain about the Client from other sources, for example those from an OpenID Federation Entity Statement, take precedence over the values passed in client_metadata.",
+  "bilgi", A12, RP, "—", BE, "G4;G5", "alg-muzakere", "Yetkili kaynaktan beklentinin istek içi değerlere üstünlüğü: M-f'nin doğal bağlanma noktası.")
+r("OID4VP", "5.1 (request_uri_method)", "The Wallet MAY continue with JAR when it receives request_uri_method parameter with the value post but does not support this feature.",
+  "MAY", A12, RP, "—", AK, "G4", "alg-muzakere", "")
+r("OID4VP", "10", "This specification defines how the Verifier can determine Credential formats, proof types and algorithms supported by the Wallet to be used in a protocol exchange.",
+  "bilgi", A12, RP, "'supported'", BE, "G5", "alg-muzakere", "")
+r("OID4VP", "15.8.2", "If the link cannot be established in those cases, the Wallet MUST refuse the request.",
+  "MUST", A12, RP, "—", AK, "G4", "guven-capasi", "")
+r("OID4VP", "5.9.3 (x509_san_dns)", "The request MUST be signed with the private key corresponding to the public key in the leaf X.509 certificate of the certificate chain added to the request in the x5c JOSE header [RFC7515] of the signed request object.",
+  "MUST", A12, RP, "—", AK, "G4", "istek-imzasi", "")
+r("OID4VP", "14.8", "Therefore, Wallets MUST always use the full Client Identifier, including the prefix if provided, within the context of the Wallet or its responses to identify the client.",
+  "MUST", A12, RP, "—", AK, "G4", "anahtar-baglama", "")
+r("OID4VCI", "13.5", "The Wallet MUST consider the parameter values in the Credential Offer as not trustworthy, since the origin is not authenticated and the message integrity is not protected.",
+  "MUST", GEN, ISS, "—", AK, "G1;G5", "downgrade", "Kimliği doğrulanmamış giriş nesnesi (ihraç tarafı).")
+
+# =====================================================================
+# A13 taşıma (TLS/WebPKI)
+# =====================================================================
+r("OID4VP", "14.6", "Whenever TLS is used, a TLS server certificate check MUST be performed, per [RFC6125].",
+  "MUST", A13, TLS, "BCP195 (klasik sertifika)", AK, "G1;G3;G4", "diger", "")
+r("OID4VCI", "13.9", "Implementations MUST follow [BCP195]. Whenever TLS is used, a TLS server certificate check MUST be performed, per [RFC6125].",
+  "MUST", A13, TLS, "BCP195", AK, "G1;G2", "diger", "")
+r("OID4VCI", "8", "Communication with the Credential Endpoint MUST utilize TLS.",
+  "MUST", A13, TLS, "—", AK, "G1;G2", "diger", "")
+r("RFC7515", "8", "Whenever TLS is used, the identity of the service provider encoded in the TLS server certificate MUST be verified using the procedures described in Section 6 of RFC 6125 [RFC6125].",
+  "MUST", A13, TLS, "—", AK, "G1", "diger", "")
+r("RFC7515", "4.1.5", "The protocol used to acquire the resource MUST provide integrity protection; an HTTP GET request to retrieve the certificate MUST use TLS [RFC2818] [RFC5246]; and the identity of the server MUST be validated, as per Section 6 of RFC 6125 [RFC6125].",
+  "MUST", A13, TLS, "—", CE, "G1", "x5c", "x5u (çekilen sertifika) doğrudan TLS'e bağlı.")
+r("RFC8725", "3.2", "That said, if a JWT is cryptographically protected end-to-end by a transport layer, such as TLS using cryptographically current algorithms, there may be no need to apply another layer of cryptographic protections to the JWT.",
+  "bilgi", A13, TLS, "'cryptographically current' TLS", CE, "G1;G3", "diger", "Kanal ikamesinin (H1) normatif-bilgi dayanağı; 8725bis-10'da bu cümle kaldırılmış.")
+r("JWTBCP", "3.2", "The \"none\" algorithm should only be used when the JWT is cryptographically protected by other means.",
+  "should", A13, TLS, "—", CE, "G1", "diger", "8725bis-10'da TLS ikamesine yalnız bu genel ifade kalmış.")
+r("SDJWTVC", "4", "Issuers publishing JWT VC Issuer Metadata MUST make a JWT VC Issuer Metadata configuration available at the location formed by inserting the well-known string /.well-known/jwt-vc-issuer between the host component and the path component (if any) of the iss claim value in the JWT.",
+  "MUST", A13, TLS, "—", CE, "G1", "anahtar-baglama", "İhraççı anahtarı nesne imzası olmadan yalnız HTTPS ile (WebPKI) doğrulanır: çekilen + taşıma ikamesi fiilen tanımlı.")
+r("SDJWTVC", "4.3", "The issuer value returned MUST be identical to the iss value of the Issuer-signed JWT.",
+  "MUST", A04, ISS, "—", CE, "G1", "anahtar-baglama", "")
+r("SDJWTVC", "2.5", "JWT VC Issuer Metadata: A mechanism to retrieve the Issuer's public key using web-based resolution.",
+  "bilgi", A13, TLS, "—", CE, "G1", "guven-capasi", "")
+r("ABCA", "10.8", "This approach is self-contained but requires an additional HTTP request, and trust must be established in the jku URL.",
+  "bilgi", A13, TLS, "—", CE, "G2", "guven-capasi", "")
+r("HAUCK25", "2 (Assumptions and Modeling Decisions)", "This simplification, of course, means that we assume that the key bindings asserted by a CA are always correct, i.e., we assume that the web PKI works as intended.",
+  "bilgi", A13, NA, "—", SA, "G4", "guven-capasi", "OIDF biçimsel analizi WebPKI'yi ideal varsayıyor.")
+
+# =====================================================================
+# Genel: JOSE/COSE algoritma ve çoklu imza semantiği
+# =====================================================================
+r("RFC7515", "5.2", "When there are multiple JWS Signature values, it is an application decision which of the JWS Signature values must successfully validate for the JWS to be accepted.",
+  "bilgi", GEN, NA, "çoklu imza: uygulama kararı", BE, "G1;G4;G5", "downgrade", "A.3.2.2 ve RFC 9901 §8 bu kararı tanımlamıyor.")
+r("RFC7515", "5.2", "However, in all cases, at least one JWS Signature value MUST successfully validate, or the JWS MUST be considered invalid.",
+  "MUST", GEN, NA, "asgari: en az biri (P0)", BE, "G1;G4;G5", "downgrade", "P0 'any-valid' tabanının kaynağı.")
+r("RFC7515", "5.2", "Even if a JWS can be successfully validated, unless the algorithm(s) used in the JWS are acceptable to the application, it SHOULD consider the JWS to be invalid.",
+  "SHOULD", GEN, NA, "uygulama kabul kümesi", BE, "G1;G5", "alg-muzakere", "")
+r("RFC7515", "5.2 (10)", "If none of the validations in step 9 succeeded, then the JWS MUST be considered invalid.",
+  "MUST", GEN, NA, "—", BE, "G1", "downgrade", "")
+r("RFC7515", "10.7", "In some usages of JWS, there is a risk of algorithm substitution attacks, in which an attacker can use an existing digital signature value with a different signature algorithm to make it appear that a signer has signed something that it has not.",
+  "bilgi", GEN, NA, "—", BE, "G1;G5", "downgrade", "")
+r("RFC7515", "4.1.1", "The JWS Signature value is not valid if the \"alg\" value does not represent a supported algorithm or if there is not a key for use with that algorithm associated with the party that digitally signed or MACed the content.",
+  "bilgi", GEN, NA, "alg ↔ anahtar", BE, "G1", "anahtar-baglama", "")
+r("RFC7517", "4.4", "The \"alg\" (algorithm) parameter identifies the algorithm intended for use with the key.",
+  "OPTIONAL (üye)", GEN, NA, "JWK alg isteğe bağlı", BE, "G1", "anahtar-baglama", "")
+r("RFC7517", "9.1", "One should place no more trust in the data cryptographically secured by a key than in the method by which it was obtained and in the trustworthiness of the entity asserting an association with the key.",
+  "bilgi", GEN, NA, "—", BE, "G1", "guven-capasi", "Anahtar edinim kanalı = güven üst sınırı (H1'in genel ilkesi).")
+r("RFC7518", "8.1", "Therefore, implementers and deployments must be prepared for the set of algorithms that are supported and used to change over time.",
+  "bilgi", GEN, NA, "—", BE, "G1", "alg-muzakere", "")
+r("RFC8725", "3.1", "Libraries MUST enable the caller to specify a supported set of algorithms and MUST NOT use any other algorithms when performing cryptographic operations.",
+  "MUST", GEN, NA, "çağrı başına izin listesi (L1/L2)", BE, "G1;G5", "alg-muzakere", "")
+r("RFC8725", "3.1", "Moreover, each key MUST be used with exactly one algorithm, and this MUST be checked when the cryptographic operation is performed.",
+  "MUST", GEN, NA, "anahtar–alg bağı (P2)", BE, "G1;G5", "anahtar-baglama", "")
+r("RFC8725", "3.3", "All cryptographic operations used in the JWT MUST be validated and the entire JWT MUST be rejected if any of them fail to validate.",
+  "MUST", GEN, NA, "tümü geçerli (iç içe JWT)", BE, "G1", "downgrade", "'all' — ama çoklu imzalı JWS JSON için değil (JWT compact).")
+r("RFC8725", "3.8", "When a JWT contains an \"iss\" (issuer) claim, the application MUST validate that the cryptographic keys used for the cryptographic operations in the JWT belong to the issuer.",
+  "MUST", GEN, NA, "—", BE, "G1", "anahtar-baglama", "")
+r("JWTBCP", "3.1", "Libraries MUST provide a mechanism that enables developers to explicitly restrict the set of algorithms permitted for use and MUST NOT employ any algorithms outside this configured set when performing cryptographic operations.",
+  "MUST", GEN, NA, "izin listesi", BE, "G1;G5", "alg-muzakere", "")
+r("JWTBCP", "3.1", "When a recipient receives a JWT signed by a particular issuer, it MUST determine which algorithms are permitted for itself and that issuer and ensure that the received JWT complies with those requirements.",
+  "MUST", GEN, NA, "ihraççı başına izinli küme (P3/L3)", BE, "G1;G5", "alg-muzakere", "C3 oracle'ının dayanağı; kümenin kaynağı (kanal) tanımsız; PQ/composite hiç geçmiyor.")
+r("JWTBCP", "3.1", "The library MUST verify that the algorithm specified in the \"alg\" or \"enc\" header parameter is consistent with the algorithm associated with the key identified by the corresponding identifier (e.g., \"kid\") during key lookup.",
+  "MUST", GEN, NA, "alg ↔ anahtar", BE, "G1", "anahtar-baglama", "")
+r("JWTBCP", "3.1", "In particular, libraries should use allowlists for critical parameters such as \"alg\" instead of blocklists, because blocklists cannot anticipate every unsafe or misspelled value an attacker might use.",
+  "should", GEN, NA, "izin listesi", BE, "G1", "alg-muzakere", "")
+r("JWTBCP", "3.2", "New deployments SHOULD prefer fully-specified algorithm identifiers (for example, \"Ed25519\" rather than \"EdDSA\") when negotiating and configuring algorithms, unless backward compatibility requires use of the older polymorphic identifiers.",
+  "SHOULD", GEN, NA, "fully-specified", BE, "G5", "alg-muzakere", "")
+r("JWTBCP", "3.3", "Libraries MUST allow the recipient to distinguish between Unsecured JWTs, signed JWTs (JWSes), encrypted JWTs (JWEs), and signed and encrypted JWTs (Nested JWTs).",
+  "MUST", GEN, NA, "—", BE, "G1", "diger", "")
+r("JWTBCP", "2.13", "if an application by mistake verifies a JWT using the JSON Serialization but extracts claims by parsing it as a JWT using the Compact Serialization (e.g., via string splitting), an attacker can craft a valid JSON JWS with a forged payload.",
+  "bilgi", A07, NA, "—", AK, "G1", "downgrade", "General JSON (senaryo d) ile biçim karışıklığı riski.")
+r("RFC9864", "1", "This matters because many protocols negotiate supported operations using only algorithm identifiers.",
+  "bilgi", GEN, NA, "—", BE, "G5", "alg-muzakere", "")
+r("RFC9864", "7", "A cryptographic key MUST be used with only a single algorithm unless the use of the same key with different algorithms is proven secure.",
+  "MUST", GEN, NA, "tek alg", BE, "G1", "anahtar-baglama", "")
+r("RFC9864", "7", "As a result, it is RECOMMENDED that the algorithm parameter of JSON Web Keys and COSE Keys be present, unless there exists some other mechanism for ensuring that the key is used as intended.",
+  "RECOMMENDED", GEN, NA, "JWK alg", BE, "G1", "anahtar-baglama", "")
+r("RFC9964", "3", "The alg JSON Web Key (JWK) parameter or COSE Key Common parameter is REQUIRED for all AKP keys.",
+  "REQUIRED", GEN, NA, "ML-DSA (AKP): alg zorunlu", BE, "G1;G2", "anahtar-baglama", "PQ anahtarlarda anahtar–alg bağı zorunlu (EC anahtarlarında isteğe bağlı): P2 PQ'da yapısal.")
+r("RFC9964", "5", "The ctx parameter MUST be the empty string for ML-DSA-44, ML-DSA-65, and ML-DSA-87.",
+  "MUST", GEN, NA, "ML-DSA saf", BE, "G1", "alg-muzakere", "")
+r("RFC9964", "5", "ML-DSA may not be suitable for use cases requiring small keys or signatures.",
+  "bilgi", GEN, NA, "ML-DSA boyut", BE, "G1", "diger", "Başlık/QR kısıtları (dağıtım tablosu).")
+r("RFC9052", "4.1", "When more than one signature is present, the successful validation | of one signature associated with a given signer is usually treated | as a successful signature by that signer.",
+  "bilgi (RFC 5652 alıntısı)", GEN, NA, "COSE_Sign: biri yeter (OR)", BE, "G1;G5", "downgrade", "COSE çoklu imza varsayılanı OR.")
+r("RFC9052", "4.1", "This allows recipients to verify the signature associated with one algorithm or the other.",
+  "bilgi", GEN, NA, "OR", BE, "G1;G5", "downgrade", "")
+r("RFC9052", "3.1", "This header parameter MUST be authenticated where the ability to do so exists.",
+  "MUST", GEN, NA, "alg korumalı", BE, "G1;G5", "alg-muzakere", "")
+r("RFC9053", "11", "It is therefore recommended that keys be restricted to a single algorithm.",
+  "recommended", GEN, NA, "tek alg", BE, "G1", "anahtar-baglama", "")
+r("RFC9053", "11", "Is the cryptographic algorithm acceptable in the current context?",
+  "bilgi", GEN, NA, "bağlama göre kabul", BE, "G1;G5", "alg-muzakere", "")
+r("JOSECOMP", "4.3", "The Verify algorithm MUST validate a signature only if all component signatures were successfully validated.",
+  "MUST", GEN, NA, "composite: AND (tek alg)", BE, "G1;G5", "downgrade", "İmza içi soyma çözülür; beklenti kanalı ve zincir bileşimi çözülmez.")
+r("JOSECOMP", "6.4", "Consequently, applications for which SUF-CMA security is a strict requirement MUST NOT use Composite ML-DSA.",
+  "MUST NOT", GEN, NA, "composite", BE, "G1", "alg-muzakere", "")
+r("JOSECOMP", "6.3", "The unique label, specific to each composite algorithm, ensures that signatures cannot be removed from the composite and used in other contexts.",
+  "bilgi", GEN, NA, "composite (WNS)", BE, "G1;G5", "downgrade", "")
+r("RFC9955", "1", "Hybridization of digital signatures, where the hybrid signature may be expected to attest to both standard and post-quantum components, is subtle to design and implement due to the potential separability of the hybrid/dual signatures and the risk of downgrade/stripping attacks.",
+  "bilgi", GEN, NA, "—", BE, "G5", "downgrade", "")
+r("RFC9955", "6.1", "There is an inherent mutual exclusion between backwards compatibility and SNS.",
+  "bilgi", GEN, NA, "—", BE, "G5", "downgrade", "")
+r("RFC9955", "6.2", "Similarly, there is an inherent mutual exclusion between backwards compatibility, when acted upon, and hybrid unforgeability, as briefly mentioned above.",
+  "bilgi", GEN, NA, "—", BE, "G5", "downgrade", "")
+r("RFC9955", "1.3.3", "Note that WNS does not restrict an adversary from potentially creating a valid component digital signature from a hybrid one (a signature stripping attack) but rather implies that such a digital signature will contain artifacts of the separation.",
+  "bilgi", GEN, NA, "—", BE, "G5", "downgrade", "")
+r("RFC9955", "3.2", "So, for many applications and threat models, adding an artifact in the message might be insufficient under stripping attacks.",
+  "bilgi", GEN, NA, "—", BE, "G5", "downgrade", "Mesaj içi artefakt yetmez; sertifika/politika düzeyi gerekir (M-f gerekçesi).")
+r("RFC9955", "1.3.5", "Notably, this is a verification property; the sender has provided a hybrid digital signature, but the verifier is allowed, due to internal policy and/or implementation, to only verify one component signature.",
+  "bilgi", GEN, NA, "—", BE, "G5", "downgrade", "")
+r("RFC9955", "1", "This document only considers scenarios with a single signer and a single verifier; constructions with multiple signers or verifiers are out of scope.",
+  "bilgi", GEN, NA, "—", BE, "G5", "diger", "Çok imzacılı zincir/ekosistem (EUDI) RFC 9955 kapsamı dışında: boşluk.")
+r("ENISAHYB", "Section 5 Hybrid Digital Signature Frameworks (s. 51–52)", "Unlike for Key Agreement, there are no regulatory frameworks for specific hybrid digital signature frameworks.",
+  "bilgi", GEN, NA, "—", BE, "G5", "diger", "")
+r("TS119312", "6.4.1", "For hybrid signatures, implementations shall combine a classical signature and a post-quantum signature. Acceptance requires both signatures to be valid.",
+  "shall", GEN, NA, "AND (ikisi de geçerli)", BE, "G1;G5", "downgrade", "ETSI kripto süitlerinde hibrit = AND; soyulmuş belgenin reddi beklenti bilgisine muhtaç.")
+r("TS119312", "6.2.2.5", "The use of ML-DSA in a hybrid signature scheme as specified in clause 6.4 is recommended; migration scheduling is planned to be addressed in the applicable post-quantum migration document currently under development.",
+  "recommended", GEN, NA, "ML-DSA hibrit", BE, "G1", "alg-muzakere", "")
+r("TS119312", "6.2.2.3", "In use cases where protection against attacks leveraging quantum computers is required, ECDSA shall be used in a hybrid signature scheme as specified in clause 6.4, or shall be replaced by a quantum-safe algorithm.",
+  "shall", GEN, NA, "ECDSA → hibrit ya da PQ", BE, "G1", "alg-muzakere", "")
+r("TS119312", "8.5", "The present document provides mechanism suitability classifications (R/L) that are independent of deployment-phase timelines.",
+  "bilgi", GEN, NA, "—", BE, "G1", "gecerlilik", "Takvim ayrı bir 'PQ göç belgesine' bırakılmış (henüz yok).")
+r("PQCRM", "4.1", "For high-risk use cases, quantum-vulnerable public-key mechanisms shall not be used stand-alone after the end of 2030, analogously after the end of 2035 for medium-risk use cases.",
+  "shall", GEN, NA, "klasik tek başına: 2030/2035 sonrası yok", BE, "G1", "gecerlilik", "")
+r("PQCRM", "1", "When migrating to post-quantum cryptographic solutions, it is recommended to use standardised and tested hybrid solutions, whenever feasible and suitable.",
+  "recommended", GEN, NA, "hibrit", BE, "G1", "alg-muzakere", "")
+r("PQCFAQ", "3.3", "In contrast, hybrid signature schemes involve more complex interactions and a number of factors which can affect their security, making it more difficult to establish specific guidelines.",
+  "bilgi", GEN, NA, "—", BE, "G5", "diger", "")
+r("PQCFAQ", "3.3", "However, this topic falls outside the scope of the EU Roadmap on PQC.",
+  "bilgi", GEN, NA, "—", BE, "G5", "diger", "Hibrit imza rehberliği AB yol haritası kapsamı dışında (boşluk).")
+
+# =====================================================================
+# Bilinen-cevap testleri (DNSSEC)
+# =====================================================================
+r("RFC6840", "5.11", "Validators SHOULD accept any single valid path.",
+  "SHOULD", GEN, DNS, "biri yeter (P0)", BE, "G5", "downgrade", "BCT-1: DS ile beklenti sinyali olsa da doğrulayıcı OR uygular → soyma izi beklenir.")
+r("RFC6840", "5.11", "They SHOULD NOT insist that all algorithms signaled in the DS RRset work, and they MUST NOT insist that all algorithms signaled in the DNSKEY RRset work.",
+  "SHOULD NOT/MUST NOT", GEN, DNS, "—", BE, "G5", "downgrade", "")
+r("RFC6840", "5.11", "The presence of an algorithm in either a zone's DS or DNSKEY RRset signals that that algorithm is used to sign the entire zone.",
+  "bilgi", GEN, DNS, "DS = kimliği doğrulanmış algoritma sinyali", CE, "G5", "alg-muzakere", "Üst bölgeden kimliği doğrulanmış 'beklenti' taşıma emsali (M-f'nin DNSSEC karşılığı), ama doğrulayıcıyı bağlamıyor.")
+r("RFC6840", "5.11", "A signed zone MUST include a DNSKEY for each algorithm present in the zone's DS RRset and expected trust anchors for the zone.",
+  "MUST", GEN, DNS, "—", BE, "G5", "alg-muzakere", "Kural imzalayana (sunucuya) uygulanır, doğrulayıcıya değil.")
+r("RFC6840", "5.12", "Validating resolvers MUST disregard RRSIGs in a zone that do not (currently) have a corresponding DNSKEY in the zone.",
+  "MUST", GEN, DNS, "—", BE, "G5", "downgrade", "")
+r("RFC6781", "4.1.4", "When adding a new algorithm, the signatures should be added first.",
+  "should", GEN, DNS, "—", BE, "G5", "gecerlilik", "Geçiş sırası: önce imza, sonra anahtar (TTL beklemesiyle).")
+r("RFC6781", "4.1.4", "After the TTL of RRSIGs has expired and caches have dropped the old data covered by those signatures, the DNSKEY with the new algorithm can be added.",
+  "bilgi", GEN, DNS, "—", BE, "G5", "tazelik", "Önbellek TTL'i geçiş penceresini belirler (H2 benzeri zaman fazı).")
+r("RFC6781", "4.1.4", "When removing an old algorithm, the DS for the algorithm should be removed from the parent zone first, followed by the DNSKEY and the signatures (in the child zone).",
+  "should", GEN, DNS, "—", BE, "G5", "downgrade", "'Sunset' emsali: beklenti önce üstten kaldırılır.")
+r("RFC6781", "4.1.4", "Performing a Double-Signature KSK algorithm rollover will temporarily make your zone appear as Bogus by such validators during the rollover.",
+  "bilgi", GEN, DNS, "—", BE, "G5", "diger", "Katı (AND) doğrulayıcılarla birlikte yaşama maliyeti.")
+r("RFC7583", "1.4 (Limitation of Scope)", "Algorithm rollovers. Only the rolling of keys of the same algorithm is described here: not transitions between algorithms.",
+  "bilgi", GEN, DNS, "—", BE, "G5", "diger", "RFC 7583 algoritma geçişini KAPSAMIYOR: bilinen-cevap testi için yalnız anahtar devri zamanlaması.")
+
+# =====================================================================
+# DPoP (ihraç tarafı PoP; ABCA birleşik kipte WUA kanıtı)
+# =====================================================================
+r("HAIP", "4", "Sender-constrained access token: MUST support DPoP as defined in [RFC9449].",
+  "MUST", A09, HOL, "DPoP (RFC 9449)", AK, "G2", "dpop", "İhraç tarafı; sunumda DPoP yok. ML-DSA-65 DPoP ≈8.192 B > nginx varsayılanı (B, P4).")
+r("OID4VCI", "13.2", "The use of DPoP [RFC9449] is RECOMMENDED.",
+  "RECOMMENDED", A09, HOL, "—", AK, "G2", "dpop", "")
+r("OID4VCI", "7.2", "The Credential Issuer MAY provide a DPoP nonce in an HTTP header as defined in Section 8.2 of [RFC9449].",
+  "MAY", A09, ISS, "—", AK, "G2", "dpop", "")
+r("RFC9449", "4.2", "An identifier for a JWS asymmetric digital signature algorithm from [IANA.JOSE.ALGS]. It MUST NOT be none or an identifier for a symmetric algorithm (Message Authentication Code (MAC)).",
+  "MUST NOT", A09, HOL, "asimetrik; none/MAC yasak", AK, "G2", "dpop", "")
+r("RFC9449", "4.3 (5)", "The alg JOSE Header Parameter indicates a registered asymmetric digital signature algorithm [IANA.JOSE.ALGS], is not none, is supported by the application, and is acceptable per local policy.",
+  "MUST (adım)", A09, HOL, "yerel politika", AK, "G2;G5", "dpop", "")
+r("RFC9449", "4.3 (6)", "The JWT signature verifies with the public key contained in the jwk JOSE Header Parameter.",
+  "MUST (adım)", A09, HOL, "—", AK, "G2", "dpop", "Anahtar kanıtın içinde (aktarılan); bağ erişim belirteci üzerinden.")
+r("RFC9449", "4.3 (11)", "The creation time of the JWT, as determined by either the iat claim or a server managed timestamp via the nonce claim, is within an acceptable window (see Section 11.1).",
+  "MUST (adım)", A09, HOL, "—", AK, "G2", "dpop", "Pencere tanımsız ('acceptable').")
+r("RFC9449", "5.1", "dpop_signing_alg_values_supported: A JSON array containing a list of the JWS alg values (from the [IANA.JOSE.ALGS] registry) supported by the authorization server for DPoP proof JWTs.",
+  "bilgi (meta veri)", A09, HOL, "'supported'", CE, "G2;G5", "dpop", "")
+r("RFC9449", "11.3", "A server MUST NOT accept any DPoP proofs without the nonce claim when a DPoP nonce has been provided to the client.",
+  "MUST NOT", A09, HOL, "—", AK, "G2;G5", "dpop", "'DPoP Nonce Downgrade': sunucunun verdiği beklentinin (nonce) soyulmasına karşı kural — tekdüze beklenti emsali.")
+r("RFC9449", "11.6", "Implementers MUST ensure that only asymmetric digital signature algorithms (such as ES256) that are deemed secure can be used for signing DPoP proofs.",
+  "MUST", A09, HOL, "güvenli sayılan asimetrik", AK, "G2", "dpop", "")
+r("ABCA", "8", "The Authorization Server or Resource Server MUST include dpop_signing_alg_values_supported as defined in [RFC9449], if DPoP is used as the Proof of Possession in combined mode.",
+  "MUST", A09, WP, "'supported'", CE, "G2", "dpop", "")
+
+# =====================================================================
+# İstek içi yetenek/bilinmeyen parametre kuralları (M-a ile ilgili)
+# =====================================================================
+r("RFC7515", "4", "Unless listed as a critical Header Parameter, per Section 4.1.11, all Header Parameters not defined by this specification MUST be ignored when not understood.",
+  "MUST", GEN, NA, "bilinmeyen başlık yok sayılır", BE, "G5", "downgrade", "Eski doğrulayıcı bilinmeyen PQ başlıklarını yok sayar (#791'deki 'ignore unknown headers' davranışının kaynağı).")
+r("RFC7515", "4.1.11", "If any of the listed extension Header Parameters are not understood and supported by the recipient, then the JWS is invalid.",
+  "bilgi (kural)", GEN, NA, "crit ile zorunlu anlama", BE, "G5", "downgrade", "crit, beklentiyi imzalı nesne içinde taşımanın tek JOSE aracı; eski doğrulayıcıyı reddettirir.")
+r("OID4VP", "A.2", "The Wallet MUST ignore any unrecognized parameters. For example, since the state parameter is not defined for the DC API, the Verifier cannot expect it to be included in the response.",
+  "MUST", A12, RP, "—", AK, "G4;G5", "downgrade", "Bilinmeyen istek parametreleri (ör. PQ yetenek alanları) yok sayılır.")
+r("OID4VP", "A.3.1", "The Verifier MAY send all the OpenID4VP request parameters as members in the request member passed to the API.",
+  "MAY", A12, RP, "imzasız", AK, "G4;G5", "istek-imzasi", "İmzasız istek (A.3.1): RP kimliği yalnız origin/WebPKI.")
+r("OID4VP", "11.1", "An object containing a list of name/value pairs, where the name is a Credential Format Identifier and the value defines format-specific parameters that a Verifier supports.",
+  "REQUIRED (üye)", A12, RP, "'supports'", AK, "G5", "alg-muzakere", "Doğrulayıcı meta verisi istekte (client_metadata) taşınır; imzasız istekte kimliği doğrulanmamış.")
+r("OID4VP", "5.1 (client_metadata)", "vp_formats_supported: REQUIRED when not available to the Wallet via another mechanism. As defined in Section 11.1.",
+  "REQUIRED (koşullu)", A12, RP, "'supported'", AK, "G5", "alg-muzakere", "")
+
+# =====================================================================
+# Ek: zaman semantiği ve meta verideki 'required' bayrakları
+# =====================================================================
+r("RFC7519", "4.1.4", "The \"exp\" (expiration time) claim identifies the expiration time on or after which the JWT MUST NOT be accepted for processing.",
+  "MUST NOT", A07, ISS, "—", AK, "G1;G3", "gecerlilik", "Tüm JWT artefaktlarında (kimlik bilgisi, durum listesi, WIA, meta veri) ortak zaman kuralı.")
+r("RFC7519", "4.1.4", "Implementers MAY provide for some small leeway, usually no more than a few minutes, to account for clock skew.",
+  "MAY", GEN, NA, "—", BE, "G1;G2;G3", "gecerlilik", "Saat kayması payı dakikalar mertebesinde: hızlı τ rejiminde (dakikalar) pay ile τ aynı ölçekte (§7.4 saat varsayımı).")
+r("OID4VCI", "12.2.4", "encryption_required: REQUIRED. Boolean value specifying whether the Credential Issuer requires the additional encryption on top of TLS for the Credential Requests.",
+  "REQUIRED", A05, ISS, "şifreleme için 'required' bayrağı", CE, "G5", "alg-muzakere", "Meta veri şifreleme için 'required' semantiği taşıyabiliyor; imza algoritması için eşdeğeri yok.")
+r("OID4VCI", "12.2.4", "key_attestations_required: OPTIONAL. Object that describes the requirement for key attestations as described in Appendix D, which the Credential Issuer expects the Wallet to send within the proof(s) of the Credential Request.",
+  "OPTIONAL", A05, ISS, "anahtar kanıtlaması için 'required'", CE, "G2;G5", "alg-muzakere", "İhraççı→cüzdan yönünde 'expects' semantiği var (kanıtlama için); algoritma için yok.")
+
+r("HAIP", "7", "jwt proof type as specified in Appendix E of [OIDF.OID4VCI].",
+  "MUST (liste)", A10, HOL, "ES256 asgari", AK, "G2", "diger", "Çapraz atıf hatası: OID4VCI 1.0 Final'de jwt proof type Ek F.1; Ek E 'Wallet Attestations in JWT format'.")
+
+r("HAIP", "7", "Key Attestations when Appendix D of [OIDF.OID4VCI] is used.",
+  "MUST (liste)", A09, WP, "ES256 asgari", AK, "G2", "alg-muzakere", "")
+r("HAIP", "7", "signed presentation requests.",
+  "MUST (liste)", A12, RP, "ES256 asgari", AK, "G4", "alg-muzakere", "Cüzdan: imzalı istek için ES256 asgari.")
+r("HAIP", "7", "signed Issuer metadata.",
+  "MUST (liste)", A05, ISS, "ES256 asgari", CE, "G1", "alg-muzakere",
+  "HAIP §7'nin ES256 listesi: WUA/KA/jwt proof (ihraççı), KB-JWT ve durum bilgisi (doğrulayıcı), imzalı istek ve meta veri (cüzdan). İhraççının kimlik bilgisi imzası ve X.509 zincirleri listede YOK; ekosisteme bırakılmış (T123).")
+r("ARF-A202", "Topic 9 WUA_07", "A Wallet Unit SHALL present a KA only to a PID Provider or Attestation Provider, as part of the issuance process of a PID or a key-bound attestation, and not to a Relying Party or any other entity.",
+  "SHALL", A09, HOL, "—", AK, "G2", "kanitlama", "KA açık anahtarları yalnız ihraççıya açılır (RP'ye değil): maruziyet sınırlı.")
+r("ARF-A202", "Topic 9 WUA_24", "A Wallet Unit SHALL present a WIA only to a PID Provider or Attestation Provider, as part of the issuance process of a PID or an attestation, and not to a Relying Party or any other entity.",
+  "SHALL", A09, HOL, "—", AK, "G2", "kanitlama", "WIA yalnız ihraççıya; sunum yolunda WUA yok.")
+
+
+def main():
+    hatalar = []
+    with open(CIKTI, "w", encoding="utf-8", newline="") as f:
+        w = csv.writer(f, quoting=csv.QUOTE_MINIMAL)
+        w.writerow(["id", "belge_id", "bolum", "birebir_alinti", "anahtar_sozcuk", "artefakt",
+                    "imzalayan_rol", "algoritma_kosulu", "kanal", "hedef", "kategori", "not"])
+        for i, row in enumerate(R, start=1):
+            if len(row[2]) > 300:
+                hatalar.append((i, len(row[2])))
+            w.writerow([f"T{i:03d}"] + row)
+    print(f"{len(R)} satır yazıldı -> {CIKTI}")
+    if hatalar:
+        print("300 karakteri aşan alıntılar:", hatalar)
+
+
+if __name__ == "__main__":
+    main()

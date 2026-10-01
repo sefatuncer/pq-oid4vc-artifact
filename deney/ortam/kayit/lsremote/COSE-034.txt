@@ -1,0 +1,14 @@
+5c1fcf5b44eba7ab1939cba98afc2dcfea51d3bb	refs/tags/v0
+79085e121c0023a41cb889988e4802f23d73bd98	refs/tags/v0.0.0-sign1-alpha.0
+f28b77b07f544e2e03bdeadea17a01ca9c22d2df	refs/tags/v0.0.0-sign1-alpha.0^{}
+527d043e1e5e36c6802268b308b9529d7c076275	refs/tags/v1
+c5ba0da4875655e378aebd16654ad367c9c6edc4	refs/tags/v1.0.0
+8cef769ef52c8fc111a8b1e4da83649f1cb170d0	refs/tags/v1.0.0-alpha.1
+ebba05d25c1dc9a5eed3acf25446b7931291e1f4	refs/tags/v1.0.0-rc.1
+f72b6bc06b90d1e9c07ab11332df92c7838e3027	refs/tags/v1.0.0-rc.2
+354ac997519fe3d62314afe2906b106ef43bca5d	refs/tags/v1.1.0
+8c458e278da806b56444d1cbfd6ec24fc28aad9c	refs/tags/v1.2.0-alpha.1
+b67457d00c55749e9e03b832d9f497c92f838061	refs/tags/v1.2.1
+e5c68f97dfbb7dc2677e891ceea9a8eafe42ddb4	refs/tags/v1.3.0
+e5c68f97dfbb7dc2677e891ceea9a8eafe42ddb4	refs/tags/v1.3.0-alpha.1
+e5c68f97dfbb7dc2677e891ceea9a8eafe42ddb4	refs/tags/v1.3.0-rc.1

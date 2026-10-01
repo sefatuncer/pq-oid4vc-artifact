@@ -1,0 +1,114 @@
+t03_negatif: 103/103 gecti
+  [GECTI] N1-bozuk-imza / POZITIF:ES256 — ok
+  [GECTI] N1-bozuk-imza / NEGATIF:ES256 (orta bayt bit cevirme) — ["imzalardan-en-az-biri-gecersiz", "#0 ES256:imza-gecersiz"]
+  [GECTI] N1-bozuk-imza / POZITIF:ES384 — ok
+  [GECTI] N1-bozuk-imza / NEGATIF:ES384 (orta bayt bit cevirme) — ["imzalardan-en-az-biri-gecersiz", "#0 ES384:imza-gecersiz"]
+  [GECTI] N1-bozuk-imza / POZITIF:EdDSA — ok
+  [GECTI] N1-bozuk-imza / NEGATIF:EdDSA (orta bayt bit cevirme) — ["imzalardan-en-az-biri-gecersiz", "#0 EdDSA:imza-gecersiz"]
+  [GECTI] N1-bozuk-imza / POZITIF:Ed448 — ok
+  [GECTI] N1-bozuk-imza / NEGATIF:Ed448 (orta bayt bit cevirme) — ["imzalardan-en-az-biri-gecersiz", "#0 Ed448:imza-gecersiz"]
+  [GECTI] N1-bozuk-imza / POZITIF:ML-DSA-44 — ok
+  [GECTI] N1-bozuk-imza / NEGATIF:ML-DSA-44 (orta bayt bit cevirme) — ["imzalardan-en-az-biri-gecersiz", "#0 ML-DSA-44:imza-gecersiz"]
+  [GECTI] N1-bozuk-imza / POZITIF:ML-DSA-65 — ok
+  [GECTI] N1-bozuk-imza / NEGATIF:ML-DSA-65 (orta bayt bit cevirme) — ["imzalardan-en-az-biri-gecersiz", "#0 ML-DSA-65:imza-gecersiz"]
+  [GECTI] N1-bozuk-imza / POZITIF:ML-DSA-87 — ok
+  [GECTI] N1-bozuk-imza / NEGATIF:ML-DSA-87 (orta bayt bit cevirme) — ["imzalardan-en-az-biri-gecersiz", "#0 ML-DSA-87:imza-gecersiz"]
+  [GECTI] N1-bozuk-imza / POZITIF:ML-DSA-44-ES256 — ok
+  [GECTI] N1-bozuk-imza / NEGATIF:ML-DSA-44-ES256 (orta bayt bit cevirme) — ["imzalardan-en-az-biri-gecersiz", "#0 ML-DSA-44-ES256:imza-gecersiz:bilesen(ml=False,trad=True)"]
+  [GECTI] N1-bozuk-imza / POZITIF:ML-DSA-65-ES256 — ok
+  [GECTI] N1-bozuk-imza / NEGATIF:ML-DSA-65-ES256 (orta bayt bit cevirme) — ["imzalardan-en-az-biri-gecersiz", "#0 ML-DSA-65-ES256:imza-gecersiz:bilesen(ml=False,trad=True)"]
+  [GECTI] N1-bozuk-imza / POZITIF:ML-DSA-87-ES384 — ok
+  [GECTI] N1-bozuk-imza / NEGATIF:ML-DSA-87-ES384 (orta bayt bit cevirme) — ["imzalardan-en-az-biri-gecersiz", "#0 ML-DSA-87-ES384:imza-gecersiz:bilesen(ml=False,trad=True)"]
+  [GECTI] N1-bozuk-imza / POZITIF:ML-DSA-44-Ed25519 — ok
+  [GECTI] N1-bozuk-imza / NEGATIF:ML-DSA-44-Ed25519 (orta bayt bit cevirme) — ["imzalardan-en-az-biri-gecersiz", "#0 ML-DSA-44-Ed25519:imza-gecersiz:bilesen(ml=False,trad=True)"]
+  [GECTI] N1-bozuk-imza / POZITIF:ML-DSA-65-Ed25519 — ok
+  [GECTI] N1-bozuk-imza / NEGATIF:ML-DSA-65-Ed25519 (orta bayt bit cevirme) — ["imzalardan-en-az-biri-gecersiz", "#0 ML-DSA-65-Ed25519:imza-gecersiz:bilesen(ml=False,trad=True)"]
+  [GECTI] N1-bozuk-imza / POZITIF:ML-DSA-87-Ed448 — ok
+  [GECTI] N1-bozuk-imza / NEGATIF:ML-DSA-87-Ed448 (orta bayt bit cevirme) — ["imzalardan-en-az-biri-gecersiz", "#0 ML-DSA-87-Ed448:imza-gecersiz:bilesen(ml=False,trad=True)"]
+  [GECTI] N2-bozuk-yuk / NEGATIF:ES256 — ["imzalardan-en-az-biri-gecersiz", "#0 ES256:imza-gecersiz"]
+  [GECTI] N3-bozuk-baslik / NEGATIF:ES256 (typ degisti) — ["imzalardan-en-az-biri-gecersiz", "#0 ES256:imza-gecersiz"]
+  [GECTI] N2-bozuk-yuk / NEGATIF:ML-DSA-65 — ["imzalardan-en-az-biri-gecersiz", "#0 ML-DSA-65:imza-gecersiz"]
+  [GECTI] N3-bozuk-baslik / NEGATIF:ML-DSA-65 (typ degisti) — ["imzalardan-en-az-biri-gecersiz", "#0 ML-DSA-65:imza-gecersiz"]
+  [GECTI] N2-bozuk-yuk / NEGATIF:ML-DSA-65-ES256 — ["imzalardan-en-az-biri-gecersiz", "#0 ML-DSA-65-ES256:imza-gecersiz:bilesen(ml=False,trad=False)"]
+  [GECTI] N3-bozuk-baslik / NEGATIF:ML-DSA-65-ES256 (typ degisti) — ["imzalardan-en-az-biri-gecersiz", "#0 ML-DSA-65-ES256:imza-gecersiz:bilesen(ml=False,trad=False)"]
+  [GECTI] N4-yanlis-alg / NEGATIF:ML-DSA-65 imzasi, alg=ML-DSA-44 — ["imzalardan-en-az-biri-gecersiz", "#0 ML-DSA-44:anahtar-yok-ya-da-alg-uyumsuz"]
+  [GECTI] N4-yanlis-alg / NEGATIF:ML-DSA-65 imzasi, alg=ML-DSA-87 — ["imzalardan-en-az-biri-gecersiz", "#0 ML-DSA-87:anahtar-yok-ya-da-alg-uyumsuz"]
+  [GECTI] N4-yanlis-alg / NEGATIF:ML-DSA-65 imzasi, alg=ML-DSA-65-ES256 — ["imzalardan-en-az-biri-gecersiz", "#0 ML-DSA-65-ES256:anahtar-yok-ya-da-alg-uyumsuz"]
+  [GECTI] N4-yanlis-alg / NEGATIF:ES256 imzasi, alg=ES384 — ["imzalardan-en-az-biri-gecersiz", "#0 ES384:anahtar-yok-ya-da-alg-uyumsuz"]
+  [GECTI] N4-yanlis-alg / NEGATIF:EdDSA(Ed25519) imzasi, alg=Ed448 — ["imzalardan-en-az-biri-gecersiz", "#0 Ed448:anahtar-yok-ya-da-alg-uyumsuz"]
+  [GECTI] N4-yanlis-alg / NEGATIF:alg=none, bos imza — ["imzalardan-en-az-biri-gecersiz", "#0 none:alg-none"]
+  [GECTI] N4-yanlis-alg / NEGATIF:bilinmeyen alg=ML-DSA-66 (gecerli ML-DSA-65 imza baytlari) — ["imzalardan-en-az-biri-gecersiz", "#0 ML-DSA-66:alg-bilinmiyor"]
+  [GECTI] N4-yanlis-alg / NEGATIF:alg korumasiz baslikta (flattened) — ["imzalardan-en-az-biri-gecersiz", "#0 ML-DSA-65:korumasiz-parametre:alg"]
+  [GECTI] N5-composite-bilesen / NEGATIF:ML-DSA-44-ES256: ML-DSA bileseni bozuk — ["imzalardan-en-az-biri-gecersiz", "#0 ML-DSA-44-ES256:imza-gecersiz:bilesen(ml=False,trad=True)"]
+  [GECTI] N5-composite-bilesen / NEGATIF:ML-DSA-44-ES256: klasik bilesen bozuk — ["imzalardan-en-az-biri-gecersiz", "#0 ML-DSA-44-ES256:imza-gecersiz:bilesen(ml=True,trad=False)"]
+  [GECTI] N5-composite-bilesen / NEGATIF:ML-DSA-65-ES256: ML-DSA bileseni bozuk — ["imzalardan-en-az-biri-gecersiz", "#0 ML-DSA-65-ES256:imza-gecersiz:bilesen(ml=False,trad=True)"]
+  [GECTI] N5-composite-bilesen / NEGATIF:ML-DSA-65-ES256: klasik bilesen bozuk — ["imzalardan-en-az-biri-gecersiz", "#0 ML-DSA-65-ES256:imza-gecersiz:bilesen(ml=True,trad=False)"]
+  [GECTI] N5-composite-bilesen / NEGATIF:ML-DSA-87-ES384: ML-DSA bileseni bozuk — ["imzalardan-en-az-biri-gecersiz", "#0 ML-DSA-87-ES384:imza-gecersiz:bilesen(ml=False,trad=True)"]
+  [GECTI] N5-composite-bilesen / NEGATIF:ML-DSA-87-ES384: klasik bilesen bozuk — ["imzalardan-en-az-biri-gecersiz", "#0 ML-DSA-87-ES384:imza-gecersiz:bilesen(ml=True,trad=False)"]
+  [GECTI] N5-composite-bilesen / NEGATIF:ML-DSA-44-Ed25519: ML-DSA bileseni bozuk — ["imzalardan-en-az-biri-gecersiz", "#0 ML-DSA-44-Ed25519:imza-gecersiz:bilesen(ml=False,trad=True)"]
+  [GECTI] N5-composite-bilesen / NEGATIF:ML-DSA-44-Ed25519: klasik bilesen bozuk — ["imzalardan-en-az-biri-gecersiz", "#0 ML-DSA-44-Ed25519:imza-gecersiz:bilesen(ml=True,trad=False)"]
+  [GECTI] N5-composite-bilesen / NEGATIF:ML-DSA-65-Ed25519: ML-DSA bileseni bozuk — ["imzalardan-en-az-biri-gecersiz", "#0 ML-DSA-65-Ed25519:imza-gecersiz:bilesen(ml=False,trad=True)"]
+  [GECTI] N5-composite-bilesen / NEGATIF:ML-DSA-65-Ed25519: klasik bilesen bozuk — ["imzalardan-en-az-biri-gecersiz", "#0 ML-DSA-65-Ed25519:imza-gecersiz:bilesen(ml=True,trad=False)"]
+  [GECTI] N5-composite-bilesen / NEGATIF:ML-DSA-87-Ed448: ML-DSA bileseni bozuk — ["imzalardan-en-az-biri-gecersiz", "#0 ML-DSA-87-Ed448:imza-gecersiz:bilesen(ml=False,trad=True)"]
+  [GECTI] N5-composite-bilesen / NEGATIF:ML-DSA-87-Ed448: klasik bilesen bozuk — ["imzalardan-en-az-biri-gecersiz", "#0 ML-DSA-87-Ed448:imza-gecersiz:bilesen(ml=True,trad=False)"]
+  [GECTI] N5-composite-bilesen / NEGATIF:ML-DSA-65-ES256: DER SEQUENCE uzunlugu bozuk — ["imzalardan-en-az-biri-gecersiz", "#0 ML-DSA-65-ES256:imza-gecersiz:serilestirme: DER: SEQUENCE uzunluğu tutarsız / artık bayt"]
+  [GECTI] N5-composite-bilesen / NEGATIF:ML-DSA-65-ES256: asgari olmayan DER (r onunde fazla 0x00) — ["imzalardan-en-az-biri-gecersiz", "#0 ML-DSA-65-ES256:imza-gecersiz:serilestirme: DER: asgari olmayan INTEGER kodlaması"]
+  [GECTI] N5-composite-bilesen / NEGATIF:ML-DSA-65-ES256: sonda artik bayt — ["imzalardan-en-az-biri-gecersiz", "#0 ML-DSA-65-ES256:imza-gecersiz:serilestirme: DER: SEQUENCE uzunluğu tutarsız / artık bayt"]
+  [GECTI] N5-composite-bilesen / NEGATIF:ML-DSA-65-ES256: ECDSA bileseni kesilmis (yalniz ML-DSA) — ["imzalardan-en-az-biri-gecersiz", "#0 ML-DSA-65-ES256:imza-gecersiz:serilestirme: composite imza kisa"]
+  [GECTI] N5-composite-bilesen / NEGATIF:ML-DSA-65-ES256: ECDSA bileseni ham r||s (DER degil) — ["imzalardan-en-az-biri-gecersiz", "#0 ML-DSA-65-ES256:imza-gecersiz:serilestirme: DER: SEQUENCE yok"]
+  [GECTI] N5-composite-bilesen / NEGATIF:ML-DSA-65-ES256: bilesenler farkli iletilerden (ML-DSA yuk2, ECDSA yuk1) — ["imzalardan-en-az-biri-gecersiz", "#0 ML-DSA-65-ES256:imza-gecersiz:bilesen(ml=False,trad=True)"]
+  [GECTI] N5-composite-bilesen / NEGATIF:ML-DSA-65-ES256: bilesen sirasi ters (trad||ml) — ["imzalardan-en-az-biri-gecersiz", "#0 ML-DSA-65-ES256:imza-gecersiz:serilestirme: DER: SEQUENCE yok"]
+  [GECTI] N5-ayrilabilirlik / NEGATIF:ML-DSA-65-ES256: ECDSA bileseni ES256 diye sunuldu (Prefix/Label ayrimi) — ["imzalardan-en-az-biri-gecersiz", "#0 ES256:imza-gecersiz"]
+  [GECTI] N5-ayrilabilirlik / NEGATIF:ML-DSA-65-ES256: ML-DSA bileseni ML-DSA-65 diye sunuldu (ctx=Label ayrimi) — ["imzalardan-en-az-biri-gecersiz", "#0 ML-DSA-65:imza-gecersiz"]
+  [GECTI] N5-ayrilabilirlik / NEGATIF:ML-DSA-65-ES256: ECDSA bileseni ayni korumali baslikla ES256 JWS — ["imzalardan-en-az-biri-gecersiz", "#0 ES256:imza-gecersiz"]
+  [GECTI] N6-coklu-imza / POZITIF:ES256+EdDSA — ok
+  [GECTI] N6-coklu-imza / NEGATIF:ES256+EdDSA -> EdDSA soyuldu — ["gerekli-alg-eksik:EdDSA", "#0 ES256:ok"]
+  [BILGI] N6-coklu-imza / KONTROL(P0 any-valid): EdDSA soyulmus -> KABUL — ok
+  [BILGI] N6-coklu-imza / KONTROL(P1 AND, beklenen kume YOK): EdDSA soyulmus -> KABUL — ok
+  [GECTI] N6-coklu-imza / NEGATIF:ES256+EdDSA -> ES256 soyuldu — ["gerekli-alg-eksik:ES256", "#0 EdDSA:ok"]
+  [GECTI] N6-coklu-imza / NEGATIF:ES256+EdDSA, EdDSA imzasi bozuk (T2) — ["imzalardan-en-az-biri-gecersiz", "#0 ES256:ok", "#1 EdDSA:imza-gecersiz"]
+  [GECTI] N6-coklu-imza / NEGATIF:ES256+EdDSA, EdDSA imzasi baska yukten — ["imzalardan-en-az-biri-gecersiz", "#0 ES256:ok", "#1 EdDSA:imza-gecersiz"]
+  [GECTI] N6-coklu-imza / POZITIF:ES256+ML-DSA-65 — ok
+  [GECTI] N6-coklu-imza / NEGATIF:ES256+ML-DSA-65 -> ML-DSA-65 soyuldu — ["gerekli-alg-eksik:ML-DSA-65", "#0 ES256:ok"]
+  [BILGI] N6-coklu-imza / KONTROL(P0 any-valid): ML-DSA-65 soyulmus -> KABUL — ok
+  [BILGI] N6-coklu-imza / KONTROL(P1 AND, beklenen kume YOK): ML-DSA-65 soyulmus -> KABUL — ok
+  [GECTI] N6-coklu-imza / NEGATIF:ES256+ML-DSA-65 -> ES256 soyuldu — ["gerekli-alg-eksik:ES256", "#0 ML-DSA-65:ok"]
+  [GECTI] N6-coklu-imza / NEGATIF:ES256+ML-DSA-65, ML-DSA-65 imzasi bozuk (T2) — ["imzalardan-en-az-biri-gecersiz", "#0 ES256:ok", "#1 ML-DSA-65:imza-gecersiz"]
+  [GECTI] N6-coklu-imza / NEGATIF:ES256+ML-DSA-65, ML-DSA-65 imzasi baska yukten — ["imzalardan-en-az-biri-gecersiz", "#0 ES256:ok", "#1 ML-DSA-65:imza-gecersiz"]
+  [GECTI] N6-coklu-imza / POZITIF:ES256+ML-DSA-65-ES256 — ok
+  [GECTI] N6-coklu-imza / NEGATIF:ES256+ML-DSA-65-ES256 -> ML-DSA-65-ES256 soyuldu — ["gerekli-alg-eksik:ML-DSA-65-ES256", "#0 ES256:ok"]
+  [BILGI] N6-coklu-imza / KONTROL(P0 any-valid): ML-DSA-65-ES256 soyulmus -> KABUL — ok
+  [BILGI] N6-coklu-imza / KONTROL(P1 AND, beklenen kume YOK): ML-DSA-65-ES256 soyulmus -> KABUL — ok
+  [GECTI] N6-coklu-imza / NEGATIF:ES256+ML-DSA-65-ES256 -> ES256 soyuldu — ["gerekli-alg-eksik:ES256", "#0 ML-DSA-65-ES256:ok"]
+  [GECTI] N6-coklu-imza / NEGATIF:ES256+ML-DSA-65-ES256, ML-DSA-65-ES256 imzasi bozuk (T2) — ["imzalardan-en-az-biri-gecersiz", "#0 ES256:ok", "#1 ML-DSA-65-ES256:imza-gecersiz:bilesen(ml=False,trad=True)"]
+  [GECTI] N6-coklu-imza / NEGATIF:ES256+ML-DSA-65-ES256, ML-DSA-65-ES256 imzasi baska yukten — ["imzalardan-en-az-biri-gecersiz", "#0 ES256:ok", "#1 ML-DSA-65-ES256:imza-gecersiz:bilesen(ml=False,trad=False)"]
+  [GECTI] N6-coklu-imza / NEGATIF:ES256 imzasi iki kez, ML-DSA-65 yok — ["gerekli-alg-eksik:ML-DSA-65", "#0 ES256:ok", "#1 ES256:ok"]
+  [GECTI] N6-coklu-imza / NEGATIF:ES256+ML-DSA-65 + bilinmeyen alg imzasi (T4 tipi) — ["imzalardan-en-az-biri-gecersiz", "#0 ES256:ok", "#1 ML-DSA-65:ok", "#2 ML-DSA-66:alg-bilinmiyor"]
+  [GECTI] N6-coklu-imza / NEGATIF:ES256+ML-DSA-65 + alg=none imzasi — ["imzalardan-en-az-biri-gecersiz", "#0 ES256:ok", "#1 ML-DSA-65:ok", "#2 none:alg-none"]
+  [GECTI] N6-coklu-imza / NEGATIF:izin listesi yalniz ML-DSA-65 iken ES256 imzasi var (L1/L2, AND) — ["imzalardan-en-az-biri-gecersiz", "#0 ES256:alg-izinli-degil", "#1 ML-DSA-65:ok"]
+  [GECTI] N7-crit / NEGATIF:anlasilmayan crit parametresi — ["imzalardan-en-az-biri-gecersiz", "#0 ML-DSA-65:crit-anlasilmadi"]
+  [GECTI] N7-crit / POZITIF:ayni nesne, parametre anlasiliyor — ok
+  [GECTI] N7-crit / NEGATIF:crit kayitli parametre ('alg') listeliyor — ["imzalardan-en-az-biri-gecersiz", "#0 ML-DSA-65:crit-gecersiz-ad"]
+  [GECTI] N7-crit / NEGATIF:crit bos dizi — ["imzalardan-en-az-biri-gecersiz", "#0 ML-DSA-65:crit-gecersiz-bicim"]
+  [GECTI] N7-crit / NEGATIF:crit listelenen parametre baslikta yok — ["imzalardan-en-az-biri-gecersiz", "#0 ML-DSA-65:crit-listelenen-parametre-yok"]
+  [GECTI] N7-crit / NEGATIF:crit korumasiz baslikta — ["imzalardan-en-az-biri-gecersiz", "#0 ML-DSA-65:korumasiz-parametre:crit"]
+  [GECTI] N8-x5c / POZITIF:tam-PQ zincir — ok
+  [GECTI] N8-x5c / NEGATIF:x5c korumasiz baslikta — ["imzalardan-en-az-biri-gecersiz", "#0 ML-DSA-65:korumasiz-parametre:x5c"]
+  [GECTI] N8-x5c / NEGATIF:guven capasi listede yok — ["imzalardan-en-az-biri-gecersiz", "#0 ML-DSA-65:x5c-zincir-gecersiz"]
+  [BILGI] N8-x5c / KONTROL(zincir politikasi yok): karisik: ML-DSA yaprak + klasik ara CA -> KABUL — ["karisik"]
+  [GECTI] N8-x5c / NEGATIF:karisik: ML-DSA yaprak + klasik ara CA (x5c_pq_only) — ["imzalardan-en-az-biri-gecersiz", "#0 ML-DSA-65:x5c-klasik-halka"]
+  [BILGI] N8-x5c / KONTROL(zincir politikasi yok): karisik: klasik yaprak + ML-DSA ara CA -> KABUL — ["karisik"]
+  [GECTI] N8-x5c / NEGATIF:karisik: klasik yaprak + ML-DSA ara CA (x5c_pq_only) — ["imzalardan-en-az-biri-gecersiz", "#0 ES256:x5c-klasik-halka"]
+  [GECTI] N8-x5c / NEGATIF:baska anahtarla imza, gecerli x5c — ["imzalardan-en-az-biri-gecersiz", "#0 ML-DSA-65:imza-gecersiz"]
+  [GECTI] N8-x5c / NEGATIF:x5c yaprak anahtari EC, alg ML-DSA-65 — ["imzalardan-en-az-biri-gecersiz", "#0 ML-DSA-65:imza-gecersiz"]
+  [GECTI] N8-x5c / NEGATIF:x5c base64 degil — ["imzalardan-en-az-biri-gecersiz", "#0 ML-DSA-65:x5c-cozulemedi: x5c: standart base64 bekleniyor"]
+  [GECTI] N9-bicim / NEGATIF:compact 4 parca — ["bicim-hatasi: compact JWS 3 parcali olmali"]
+  [GECTI] N9-bicim / NEGATIF:yinelenen baslik adi — ["bicim-hatasi: JSON: yinelenen uye adi: 'alg'"]
+  [GECTI] N9-bicim / NEGATIF:kanonik olmayan base64url (dolgu bitleri) — ["bicim-hatasi: base64url: kanonik olmayan kodlama (dolgu bitleri)"]
+  [GECTI] N9-bicim / NEGATIF:korumali/korumasiz ayni ad (kid) — ["bicim-hatasi: korumali/korumasiz baslik adlari ayrik degil (RFC 7515 7.2.1)"]
+  [GECTI] N9-bicim / NEGATIF:general JSON ust duzeyde signature — ["bicim-hatasi: general JSON ust duzeyde protected/header/signature icermemeli"]
+  [GECTI] N9-bicim / NEGATIF:gomulu 'jwk' ozel anahtar iceriyor (DPoP) — ["imzalardan-en-az-biri-gecersiz", "#0 ES256:jwk-ozel-anahtar-iceriyor"]
+  [GECTI] N9-bicim / POZITIF:gomulu 'jwk' acik anahtar (DPoP) — ok
+  [GECTI] N9-bicim / NEGATIF:typ beklenenden farkli — ["imzalardan-en-az-biri-gecersiz", "#0 ES256:typ-uyusmuyor"]
+  [BILGI] genel / negatif — 84/84 reddedildi
+  [BILGI] genel / pozitif-kontrol — 19/19 kabul edildi

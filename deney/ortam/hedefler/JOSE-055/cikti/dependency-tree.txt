@@ -1,0 +1,7 @@
+pq.a09:ortam-deneme:jar:0
++- io.jsonwebtoken:jjwt-api:jar:0.13.0:compile
++- io.jsonwebtoken:jjwt-impl:jar:0.13.0:compile
+\- io.jsonwebtoken:jjwt-jackson:jar:0.13.0:compile
+   \- com.fasterxml.jackson.core:jackson-databind:jar:2.12.7.1:compile
+      +- com.fasterxml.jackson.core:jackson-annotations:jar:2.12.7:compile
+      \- com.fasterxml.jackson.core:jackson-core:jar:2.12.7:compile

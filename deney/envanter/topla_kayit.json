@@ -1,0 +1,436 @@
+{
+ "calisma_utc": "2026-09-24T16:09:50+00:00",
+ "ref_tarih": "2026-09-23",
+ "etkinlik_siniri": "2024-09-23",
+ "jwtio_commit": "60b70f7d8d2020e4c0165c4dfd442dd3329019a0",
+ "jwtio_dil": 37,
+ "jwtio_girdi": 110,
+ "jwtio_benzersiz_depo": 107,
+ "arama_isabeti": 386,
+ "tarama_satiri": 306,
+ "tarama_kararlari": {
+  "aday": 91,
+  "belge": 26,
+  "cuzdan": 9,
+  "ihracci": 3,
+  "ilgisiz": 60,
+  "kapsam-disi-mdoc": 5,
+  "taban-alti": 46,
+  "uygulama": 33,
+  "yinelenen": 32,
+  "yinelenen-jwtio": 1
+ },
+ "aday": 198,
+ "aday_tabaka": {
+  "JOSE": 109,
+  "SDJWT": 29,
+  "COSE": 37,
+  "REF": 23
+ },
+ "secim": {
+  "E1": {
+   "JOSE": {
+    "uygun": 52,
+    "secilen": [
+     "JOSE-065",
+     "JOSE-055",
+     "JOSE-083",
+     "JOSE-070",
+     "JOSE-033",
+     "JOSE-034",
+     "JOSE-009",
+     "JOSE-001",
+     "JOSE-071",
+     "JOSE-052",
+     "JOSE-087",
+     "JOSE-002",
+     "JOSE-092",
+     "JOSE-084",
+     "JOSE-089",
+     "JOSE-104",
+     "JOSE-102",
+     "JOSE-091"
+    ],
+    "yedek": [
+     "JOSE-059",
+     "JOSE-054",
+     "JOSE-108",
+     "JOSE-074",
+     "JOSE-038",
+     "JOSE-003",
+     "JOSE-094",
+     "JOSE-107",
+     "JOSE-031",
+     "JOSE-017"
+    ]
+   },
+   "SDJWT": {
+    "uygun": 10,
+    "secilen": [
+     "SDJWT-025",
+     "SDJWT-015",
+     "SDJWT-018",
+     "SDJWT-001",
+     "SDJWT-021",
+     "SDJWT-006",
+     "SDJWT-019",
+     "SDJWT-020"
+    ],
+    "yedek": [
+     "SDJWT-016",
+     "SDJWT-007"
+    ]
+   },
+   "COSE": {
+    "uygun": 14,
+    "secilen": [
+     "COSE-001",
+     "COSE-034",
+     "COSE-035",
+     "COSE-036",
+     "COSE-014"
+    ],
+    "yedek": [
+     "COSE-016",
+     "COSE-011"
+    ]
+   },
+   "REF": {
+    "uygun": 11,
+    "secilen": [
+     "REF-011",
+     "REF-003",
+     "REF-010"
+    ],
+    "yedek": [
+     "REF-023",
+     "REF-015"
+    ]
+   }
+  },
+  "E2": {
+   "JOSE": {
+    "uygun": 41,
+    "secilen": [
+     "JOSE-065",
+     "JOSE-055",
+     "JOSE-083",
+     "JOSE-070",
+     "JOSE-033",
+     "JOSE-034",
+     "JOSE-009",
+     "JOSE-001",
+     "JOSE-071",
+     "JOSE-052",
+     "JOSE-087",
+     "JOSE-002",
+     "JOSE-092",
+     "JOSE-084",
+     "JOSE-089",
+     "JOSE-104",
+     "JOSE-102",
+     "JOSE-091"
+    ],
+    "yedek": [
+     "JOSE-059",
+     "JOSE-054",
+     "JOSE-108",
+     "JOSE-074",
+     "JOSE-038",
+     "JOSE-003",
+     "JOSE-094",
+     "JOSE-031",
+     "JOSE-017"
+    ]
+   },
+   "SDJWT": {
+    "uygun": 15,
+    "secilen": [
+     "SDJWT-025",
+     "SDJWT-015",
+     "SDJWT-018",
+     "SDJWT-001",
+     "SDJWT-021",
+     "SDJWT-010",
+     "SDJWT-004",
+     "SDJWT-002"
+    ],
+    "yedek": [
+     "SDJWT-019",
+     "SDJWT-020",
+     "SDJWT-006",
+     "SDJWT-012",
+     "SDJWT-003",
+     "SDJWT-007"
+    ]
+   },
+   "COSE": {
+    "uygun": 17,
+    "secilen": [
+     "COSE-001",
+     "COSE-034",
+     "COSE-035",
+     "COSE-036",
+     "COSE-014"
+    ],
+    "yedek": [
+     "COSE-020",
+     "COSE-019",
+     "COSE-016",
+     "COSE-011"
+    ]
+   },
+   "REF": {
+    "uygun": 14,
+    "secilen": [
+     "REF-011",
+     "REF-003",
+     "REF-010"
+    ],
+    "yedek": [
+     "REF-023",
+     "REF-015"
+    ]
+   }
+  },
+  "E3": {
+   "JOSE": {
+    "uygun": 41,
+    "secilen": [
+     "JOSE-065",
+     "JOSE-055",
+     "JOSE-083",
+     "JOSE-070",
+     "JOSE-033",
+     "JOSE-034",
+     "JOSE-009",
+     "JOSE-001",
+     "JOSE-071",
+     "JOSE-052",
+     "JOSE-087",
+     "JOSE-002",
+     "JOSE-092",
+     "JOSE-084",
+     "JOSE-089",
+     "JOSE-104",
+     "JOSE-102",
+     "JOSE-091"
+    ],
+    "yedek": [
+     "JOSE-059",
+     "JOSE-054",
+     "JOSE-108",
+     "JOSE-074",
+     "JOSE-038",
+     "JOSE-003",
+     "JOSE-094",
+     "JOSE-031",
+     "JOSE-017"
+    ]
+   },
+   "SDJWT": {
+    "uygun": 9,
+    "secilen": [
+     "SDJWT-025",
+     "SDJWT-015",
+     "SDJWT-018",
+     "SDJWT-021",
+     "SDJWT-006",
+     "SDJWT-019",
+     "SDJWT-020",
+     "SDJWT-007"
+    ],
+    "yedek": [
+     "SDJWT-016"
+    ]
+   },
+   "COSE": {
+    "uygun": 4,
+    "secilen": [
+     "COSE-035",
+     "COSE-016",
+     "COSE-005",
+     "COSE-003"
+    ],
+    "yedek": []
+   },
+   "REF": {
+    "uygun": 6,
+    "secilen": [
+     "REF-011",
+     "REF-003",
+     "REF-010"
+    ],
+    "yedek": [
+     "REF-023",
+     "REF-013"
+    ]
+   }
+  },
+  "E4": {
+   "JOSE": {
+    "uygun": 52,
+    "secilen": [
+     "JOSE-065",
+     "JOSE-055",
+     "JOSE-083",
+     "JOSE-070",
+     "JOSE-033",
+     "JOSE-034",
+     "JOSE-009",
+     "JOSE-001",
+     "JOSE-071",
+     "JOSE-052",
+     "JOSE-087",
+     "JOSE-002",
+     "JOSE-092",
+     "JOSE-084",
+     "JOSE-089",
+     "JOSE-104",
+     "JOSE-102",
+     "JOSE-091"
+    ],
+    "yedek": [
+     "JOSE-059",
+     "JOSE-054",
+     "JOSE-108",
+     "JOSE-074",
+     "JOSE-038",
+     "JOSE-003",
+     "JOSE-094",
+     "JOSE-107",
+     "JOSE-031",
+     "JOSE-017"
+    ]
+   },
+   "SDJWT": {
+    "uygun": 17,
+    "secilen": [
+     "SDJWT-025",
+     "SDJWT-015",
+     "SDJWT-013",
+     "SDJWT-018",
+     "SDJWT-001",
+     "SDJWT-021",
+     "SDJWT-010",
+     "SDJWT-004"
+    ],
+    "yedek": [
+     "SDJWT-019",
+     "SDJWT-020",
+     "SDJWT-006",
+     "SDJWT-012",
+     "SDJWT-003",
+     "SDJWT-028"
+    ]
+   },
+   "COSE": {
+    "uygun": 22,
+    "secilen": [
+     "COSE-001",
+     "COSE-034",
+     "COSE-035",
+     "COSE-036",
+     "COSE-014"
+    ],
+    "yedek": [
+     "COSE-025",
+     "COSE-019",
+     "COSE-012",
+     "COSE-016",
+     "COSE-011"
+    ]
+   },
+   "REF": {
+    "uygun": 16,
+    "secilen": [
+     "REF-011",
+     "REF-003",
+     "REF-010"
+    ],
+    "yedek": [
+     "REF-023",
+     "REF-015"
+    ]
+   }
+  },
+  "E5": {
+   "JOSE": {
+    "uygun": 25,
+    "secilen": [
+     "JOSE-065",
+     "JOSE-055",
+     "JOSE-083",
+     "JOSE-070",
+     "JOSE-033",
+     "JOSE-034",
+     "JOSE-009",
+     "JOSE-001",
+     "JOSE-071",
+     "JOSE-052",
+     "JOSE-087",
+     "JOSE-002",
+     "JOSE-092",
+     "JOSE-084",
+     "JOSE-089",
+     "JOSE-031",
+     "JOSE-017",
+     "JOSE-026"
+    ],
+    "yedek": [
+     "JOSE-059",
+     "JOSE-054",
+     "JOSE-108",
+     "JOSE-038",
+     "JOSE-003",
+     "JOSE-066",
+     "JOSE-085"
+    ]
+   },
+   "SDJWT": {
+    "uygun": 10,
+    "secilen": [
+     "SDJWT-025",
+     "SDJWT-015",
+     "SDJWT-018",
+     "SDJWT-001",
+     "SDJWT-021",
+     "SDJWT-006",
+     "SDJWT-019",
+     "SDJWT-020"
+    ],
+    "yedek": [
+     "SDJWT-016",
+     "SDJWT-007"
+    ]
+   },
+   "COSE": {
+    "uygun": 14,
+    "secilen": [
+     "COSE-001",
+     "COSE-034",
+     "COSE-035",
+     "COSE-036",
+     "COSE-014"
+    ],
+    "yedek": [
+     "COSE-016",
+     "COSE-011"
+    ]
+   },
+   "REF": {
+    "uygun": 7,
+    "secilen": [
+     "REF-011",
+     "REF-003",
+     "REF-010"
+    ],
+    "yedek": [
+     "REF-023",
+     "REF-013"
+    ]
+   }
+  }
+ },
+ "python": "3.11.9"
+}

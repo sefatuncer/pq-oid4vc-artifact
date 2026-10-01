@@ -1,0 +1,350 @@
+{
+ "ABCA": {
+  "erisim_utc": "2026-09-23T20:30:45Z",
+  "hata": "",
+  "http": 200,
+  "son_url": "https://www.ietf.org/archive/id/draft-ietf-oauth-attestation-based-client-auth-11.txt"
+ },
+ "ACM2": {
+  "erisim_utc": "2026-09-23T20:31:20Z",
+  "hata": "",
+  "http": 200,
+  "son_url": "https://certification.enisa.europa.eu/document/download/a845662b-aee0-484e-9191-890c4cfa7aaa_en?filename=ECCG%20Agreed%20Cryptographic%20Mechanisms%20version%202.pdf"
+ },
+ "ACM3D": {
+  "erisim_utc": "2026-09-23T20:31:22Z",
+  "hata": "",
+  "http": 200,
+  "son_url": "https://certification.enisa.europa.eu/document/download/9993abb8-5f27-47d0-bdb2-f6f284cd5141_en?filename=20260507-acm-draft.pdf"
+ },
+ "ARF-A201": {
+  "erisim_utc": "2026-09-23T20:31:09Z",
+  "hata": "",
+  "http": 200,
+  "son_url": "https://raw.githubusercontent.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/v3.0.0/docs/annexes/annex-2/annex-2.01-high-level-requirements.md"
+ },
+ "ARF-A202": {
+  "erisim_utc": "2026-09-23T20:31:10Z",
+  "hata": "",
+  "http": 200,
+  "son_url": "https://raw.githubusercontent.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/v3.0.0/docs/annexes/annex-2/annex-2.02-high-level-requirements-by-topic.md"
+ },
+ "ARF-M01": {
+  "erisim_utc": "2026-09-23T20:30:59Z",
+  "hata": "",
+  "http": 200,
+  "son_url": "https://raw.githubusercontent.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/v3.0.0/docs/main/01-introduction.md"
+ },
+ "ARF-M02": {
+  "erisim_utc": "2026-09-23T20:31:00Z",
+  "hata": "",
+  "http": 200,
+  "son_url": "https://raw.githubusercontent.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/v3.0.0/docs/main/02-eudi-wallet-functionalities.md"
+ },
+ "ARF-M03": {
+  "erisim_utc": "2026-09-23T20:31:01Z",
+  "hata": "",
+  "http": 200,
+  "son_url": "https://raw.githubusercontent.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/v3.0.0/docs/main/03-roles-within-the-eudi-wallet-ecosystem.md"
+ },
+ "ARF-M04": {
+  "erisim_utc": "2026-09-23T20:31:02Z",
+  "hata": "",
+  "http": 200,
+  "son_url": "https://raw.githubusercontent.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/v3.0.0/docs/main/04-high-level-architecture.md"
+ },
+ "ARF-M05": {
+  "erisim_utc": "2026-09-23T20:31:03Z",
+  "hata": "",
+  "http": 200,
+  "son_url": "https://raw.githubusercontent.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/v3.0.0/docs/main/05-data-model-and-data-exchange-protocols.md"
+ },
+ "ARF-M06": {
+  "erisim_utc": "2026-09-23T20:31:03Z",
+  "hata": "",
+  "http": 200,
+  "son_url": "https://raw.githubusercontent.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/v3.0.0/docs/main/06-trust-model.md"
+ },
+ "ARF-M07": {
+  "erisim_utc": "2026-09-23T20:31:04Z",
+  "hata": "",
+  "http": 200,
+  "son_url": "https://raw.githubusercontent.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/v3.0.0/docs/main/07-wallet-solution-certification-and-risk-management.md"
+ },
+ "ARF-M08": {
+  "erisim_utc": "2026-09-23T20:31:05Z",
+  "hata": "",
+  "http": 200,
+  "son_url": "https://raw.githubusercontent.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/v3.0.0/docs/main/08-accessibility.md"
+ },
+ "ARF-M09": {
+  "erisim_utc": "2026-09-23T20:31:06Z",
+  "hata": "",
+  "http": 200,
+  "son_url": "https://raw.githubusercontent.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/v3.0.0/docs/main/09-document-development.md"
+ },
+ "ARF-M10": {
+  "erisim_utc": "2026-09-23T20:31:07Z",
+  "hata": "",
+  "http": 200,
+  "son_url": "https://raw.githubusercontent.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/v3.0.0/docs/main/10-references.md"
+ },
+ "ARF-M11": {
+  "erisim_utc": "2026-09-23T20:31:08Z",
+  "hata": "",
+  "http": 200,
+  "son_url": "https://raw.githubusercontent.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/v3.0.0/docs/main/11-annexes.md"
+ },
+ "EN319411-1": {
+  "erisim_utc": "2026-09-24T09:15:32Z",
+  "hata": "",
+  "http": 200,
+  "son_url": "https://www.etsi.org/deliver/etsi_en/319400_319499/31941101/01.05.01_60/en_31941101v010501p.pdf"
+ },
+ "ENISAHYB": {
+  "erisim_utc": "2026-09-23T20:31:23Z",
+  "hata": "",
+  "http": 200,
+  "son_url": "https://certification.enisa.europa.eu/document/download/02f54596-6a99-4c9e-88c4-8c711ebff9c1_en?filename=ENISA%20report%20-%20Hybridization%20of%20traditional%20cryptographic%20mechanisms%20with%20PQC%20-%20Standardisation%20Status%20-%2030%20April%202026%20.pdf"
+ },
+ "HAIP": {
+  "erisim_utc": "2026-09-23T20:30:42Z",
+  "hata": "",
+  "http": 200,
+  "son_url": "https://openid.net/specs/openid4vc-high-assurance-interoperability-profile-1_0-final.html"
+ },
+ "HAUCK25": {
+  "erisim_utc": "2026-09-23T20:31:30Z",
+  "hata": "",
+  "http": 200,
+  "son_url": "https://openid.net/wp-content/uploads/2025/08/Report-Deliverable-A_1_B_.pdf"
+ },
+ "JOSECOMP": {
+  "erisim_utc": "2026-09-23T20:30:54Z",
+  "hata": "",
+  "http": 200,
+  "son_url": "https://www.ietf.org/archive/id/draft-ietf-jose-pq-composite-sigs-04.txt"
+ },
+ "JWTBCP": {
+  "erisim_utc": "2026-09-23T20:30:51Z",
+  "hata": "",
+  "http": 200,
+  "son_url": "https://www.ietf.org/archive/id/draft-ietf-oauth-rfc8725bis-10.txt"
+ },
+ "LAMPSCOMP": {
+  "erisim_utc": "2026-09-23T20:30:58Z",
+  "hata": "",
+  "http": 200,
+  "son_url": "https://www.ietf.org/archive/id/draft-ietf-lamps-pq-composite-sigs-19.txt"
+ },
+ "OID4VCI": {
+  "erisim_utc": "2026-09-23T20:30:39Z",
+  "hata": "",
+  "http": 200,
+  "son_url": "https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-final.html"
+ },
+ "OID4VP": {
+  "erisim_utc": "2026-09-23T20:30:40Z",
+  "hata": "",
+  "http": 200,
+  "son_url": "https://openid.net/specs/openid-4-verifiable-presentations-1_0-final.html"
+ },
+ "OIDFED": {
+  "erisim_utc": "2026-09-24T09:15:34Z",
+  "hata": "",
+  "http": 200,
+  "son_url": "https://openid.net/specs/openid-federation-1_0-final.html"
+ },
+ "PQCFAQ": {
+  "erisim_utc": "2026-09-23T20:31:29Z",
+  "hata": "",
+  "http": 200,
+  "son_url": "https://ec.europa.eu/newsroom/dae/redirection/document/132120"
+ },
+ "PQCRM": {
+  "erisim_utc": "2026-09-23T20:31:25Z",
+  "hata": "",
+  "http": 200,
+  "son_url": "https://ec.europa.eu/newsroom/dae/redirection/document/117507"
+ },
+ "RFC5280": {
+  "erisim_utc": "2026-09-24T09:15:35Z",
+  "hata": "",
+  "http": 200,
+  "son_url": "https://www.rfc-editor.org/rfc/rfc5280.txt"
+ },
+ "RFC6781": {
+  "erisim_utc": "2026-09-23T20:31:18Z",
+  "hata": "",
+  "http": 200,
+  "son_url": "https://www.rfc-editor.org/rfc/rfc6781.txt"
+ },
+ "RFC6840": {
+  "erisim_utc": "2026-09-23T20:31:18Z",
+  "hata": "",
+  "http": 200,
+  "son_url": "https://www.rfc-editor.org/rfc/rfc6840.txt"
+ },
+ "RFC7515": {
+  "erisim_utc": "2026-09-23T20:30:47Z",
+  "hata": "",
+  "http": 200,
+  "son_url": "https://www.rfc-editor.org/rfc/rfc7515.txt"
+ },
+ "RFC7517": {
+  "erisim_utc": "2026-09-23T20:30:47Z",
+  "hata": "",
+  "http": 200,
+  "son_url": "https://www.rfc-editor.org/rfc/rfc7517.txt"
+ },
+ "RFC7518": {
+  "erisim_utc": "2026-09-23T20:30:48Z",
+  "hata": "",
+  "http": 200,
+  "son_url": "https://www.rfc-editor.org/rfc/rfc7518.txt"
+ },
+ "RFC7519": {
+  "erisim_utc": "2026-09-23T20:30:49Z",
+  "hata": "",
+  "http": 200,
+  "son_url": "https://www.rfc-editor.org/rfc/rfc7519.txt"
+ },
+ "RFC7583": {
+  "erisim_utc": "2026-09-23T20:31:19Z",
+  "hata": "",
+  "http": 200,
+  "son_url": "https://www.rfc-editor.org/rfc/rfc7583.txt"
+ },
+ "RFC8725": {
+  "erisim_utc": "2026-09-23T20:30:50Z",
+  "hata": "",
+  "http": 200,
+  "son_url": "https://www.rfc-editor.org/rfc/rfc8725.txt"
+ },
+ "RFC9052": {
+  "erisim_utc": "2026-09-23T20:30:54Z",
+  "hata": "",
+  "http": 200,
+  "son_url": "https://www.rfc-editor.org/rfc/rfc9052.txt"
+ },
+ "RFC9053": {
+  "erisim_utc": "2026-09-23T20:30:55Z",
+  "hata": "",
+  "http": 200,
+  "son_url": "https://www.rfc-editor.org/rfc/rfc9053.txt"
+ },
+ "RFC9101": {
+  "erisim_utc": "2026-09-24T09:15:36Z",
+  "hata": "",
+  "http": 200,
+  "son_url": "https://www.rfc-editor.org/rfc/rfc9101.txt"
+ },
+ "RFC9360": {
+  "erisim_utc": "2026-09-23T20:30:56Z",
+  "hata": "",
+  "http": 200,
+  "son_url": "https://www.rfc-editor.org/rfc/rfc9360.txt"
+ },
+ "RFC9449": {
+  "erisim_utc": "2026-09-23T20:30:46Z",
+  "hata": "",
+  "http": 200,
+  "son_url": "https://www.rfc-editor.org/rfc/rfc9449.txt"
+ },
+ "RFC9864": {
+  "erisim_utc": "2026-09-23T20:30:52Z",
+  "hata": "",
+  "http": 200,
+  "son_url": "https://www.rfc-editor.org/rfc/rfc9864.txt"
+ },
+ "RFC9901": {
+  "erisim_utc": "2026-09-23T20:30:43Z",
+  "hata": "",
+  "http": 200,
+  "son_url": "https://www.rfc-editor.org/rfc/rfc9901.txt"
+ },
+ "RFC9955": {
+  "erisim_utc": "2026-09-23T20:30:57Z",
+  "hata": "",
+  "http": 200,
+  "son_url": "https://www.rfc-editor.org/rfc/rfc9955.txt"
+ },
+ "RFC9964": {
+  "erisim_utc": "2026-09-23T20:30:53Z",
+  "hata": "",
+  "http": 200,
+  "son_url": "https://www.rfc-editor.org/rfc/rfc9964.txt"
+ },
+ "SDJWTVC": {
+  "erisim_utc": "2026-09-23T20:30:43Z",
+  "hata": "",
+  "http": 200,
+  "son_url": "https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-19.txt"
+ },
+ "SDJWTVC13": {
+  "erisim_utc": "2026-09-23T20:42:38Z",
+  "hata": "",
+  "http": 200,
+  "son_url": "https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-13.txt"
+ },
+ "TS119182-1": {
+  "erisim_utc": "2026-09-24T09:15:29Z",
+  "hata": "",
+  "http": 200,
+  "son_url": "https://www.etsi.org/deliver/etsi_ts/119100_119199/11918201/01.02.01_60/ts_11918201v010201p.pdf"
+ },
+ "TS119312": {
+  "erisim_utc": "2026-09-23T20:31:16Z",
+  "hata": "",
+  "http": 200,
+  "son_url": "https://www.etsi.org/deliver/etsi_ts/119300_119399/119312/02.01.01_60/ts_119312v020101p.pdf"
+ },
+ "TS119411-8": {
+  "erisim_utc": "2026-09-23T20:31:15Z",
+  "hata": "",
+  "http": 200,
+  "son_url": "https://www.etsi.org/deliver/etsi_ts/119400_119499/11941108/01.01.01_60/ts_11941108v010101p.pdf"
+ },
+ "TS119472-2": {
+  "erisim_utc": "2026-09-24T09:15:30Z",
+  "hata": "",
+  "http": 200,
+  "son_url": "https://www.etsi.org/deliver/etsi_ts/119400_119499/11947202/01.03.01_60/ts_11947202v010301p.pdf"
+ },
+ "TS119472-3": {
+  "erisim_utc": "2026-09-24T09:15:31Z",
+  "hata": "",
+  "http": 200,
+  "son_url": "https://www.etsi.org/deliver/etsi_ts/119400_119499/11947203/01.01.01_60/ts_11947203v010101p.pdf"
+ },
+ "TS119475": {
+  "erisim_utc": "2026-09-23T20:31:14Z",
+  "hata": "",
+  "http": 200,
+  "son_url": "https://www.etsi.org/deliver/etsi_ts/119400_119499/119475/01.02.01_60/ts_119475v010201p.pdf"
+ },
+ "TS119602": {
+  "erisim_utc": "2026-09-23T20:31:12Z",
+  "hata": "",
+  "http": 200,
+  "son_url": "https://www.etsi.org/deliver/etsi_ts/119600_119699/119602/01.01.01_60/ts_119602v010101p.pdf"
+ },
+ "TS119612": {
+  "erisim_utc": "2026-09-23T20:31:11Z",
+  "hata": "",
+  "http": 200,
+  "son_url": "https://www.etsi.org/deliver/etsi_ts/119600_119699/119612/02.04.01_60/ts_119612v020401p.pdf"
+ },
+ "TSL": {
+  "erisim_utc": "2026-09-23T20:30:44Z",
+  "hata": "",
+  "http": 200,
+  "son_url": "https://www.ietf.org/archive/id/draft-ietf-oauth-status-list-21.txt"
+ },
+ "TSL14": {
+  "erisim_utc": "2026-09-23T20:42:39Z",
+  "hata": "",
+  "http": 200,
+  "son_url": "https://www.ietf.org/archive/id/draft-ietf-oauth-status-list-14.txt"
+ }
+}

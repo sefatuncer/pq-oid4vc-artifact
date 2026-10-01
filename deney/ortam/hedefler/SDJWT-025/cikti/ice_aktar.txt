@@ -1,0 +1,3 @@
+krate ssi_sd_jwt baglandi
+tip ssi_sd_jwt::digest::SdAlg
+tip ssi_sd_jwt::SdJwtBuf

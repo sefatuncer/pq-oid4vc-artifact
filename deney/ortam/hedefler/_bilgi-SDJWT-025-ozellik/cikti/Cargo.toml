@@ -1,0 +1,10 @@
+[package]
+name = "ortam-deneme"
+version = "0.0.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+ssi-sd-jwt = "=0.6.0"
+ssi-jws = { version = "=0.5.0", features = ["secp256r1", "ed25519"] }
+ssi-jwk = { version = "=0.4.0", features = ["secp256r1", "ed25519"] }

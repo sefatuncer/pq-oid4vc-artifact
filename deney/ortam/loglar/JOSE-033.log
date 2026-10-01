@@ -1,0 +1,11 @@
+# hedef=JOSE-033 imaj=pq-a09-env-go:1.0 (sha256:931657811dd72d1cde2c7425231242580b689ffe96c6eb942c8f504be851c706) baslangic=2026-09-25T12:43:53Z zaman_asimi=900s
+# komut: docker run --rm --name pq-a09-ortam-jose-033 --label pq.agir=derleme --memory=6g --memory-swap=6g -v hedefler/JOSE-033:/w -v betikler/konteyner:/b:ro pq-a09-env-go:1.0 bash /w/kur.sh
+== go get github.com/golang-jwt/jwt/v5@v5.3.1
+go: downloading github.com/golang-jwt/jwt/v5 v5.3.1
+go: added github.com/golang-jwt/jwt/v5 v5.3.1
+== derleme ve bağlama
+paket github.com/golang-jwt/jwt/v5 baglandi
+sembol ParseWithClaims func(string, jwt.Claims, jwt.Keyfunc, ...jwt.ParserOption) (*jwt.Token, error)
+sembol RegisterSigningMethod func(string, func() jwt.SigningMethod)
+== SONUC: basarili
+# cikis_kodu=0 sure_s=14 bitis=2026-09-25T12:44:07Z

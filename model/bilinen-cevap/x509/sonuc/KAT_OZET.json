@@ -1,0 +1,76 @@
+{
+ "kat": "KAT-2 X.509 hibrit",
+ "karar_Vd": "GEÇTİ",
+ "kosullar": {
+  "asp_yuzde100": true,
+  "tamarin_yuzde100": true,
+  "executable_hepsi_verified": true,
+  "iyi_bicim_uyari0": true,
+  "asp_tamarin_yuzde100": true,
+  "mutasyon_yuzde100": true,
+  "cekirdek_degismedi": true
+ },
+ "sayilar": {
+  "asp": [
+   40,
+   40
+  ],
+  "tamarin": [
+   8,
+   8
+  ],
+  "asp_tamarin": [
+   8,
+   8
+  ],
+  "mutasyon": [
+   4,
+   4
+  ]
+ },
+ "mutasyonlar": {
+  "MUT06": {
+   "asp": true,
+   "tamarin": true
+  },
+  "MUT07": {
+   "asp": true,
+   "tamarin": true
+  },
+  "MUT08": {
+   "asp": true
+  },
+  "MUT09": {
+   "asp": true
+  }
+ },
+ "belirsiz_ya_da_gecersiz": [],
+ "executable_olmayan": [],
+ "alinti_bulundu": [
+  9,
+  9
+ ],
+ "asp_tamarin_uyumsuz": [],
+ "asp_uyumsuz": [],
+ "tamarin_uyumsuz": [],
+ "ek_duyarlilik_kapi_degil": [
+  [
+   "EK.duy-ignore.tam",
+   "verified",
+   "verified",
+   "EVET"
+  ],
+  [
+   "EK.duy-enforce.tam",
+   "falsified",
+   "falsified",
+   "EVET"
+  ],
+  [
+   "EK.duy-require.tam",
+   "falsified",
+   "falsified",
+   "EVET"
+  ]
+ ]
+}

@@ -1,0 +1,107 @@
+
+------------------------------------------------------------
+Root project 'ortam-deneme'
+------------------------------------------------------------
+
+runtimeClasspath - Runtime classpath of source set 'main'.
+\--- at.asitplus.signum:indispensable-cosef:3.26.0
+     \--- at.asitplus.signum:indispensable-cosef-jvm:3.26.0
+          +--- at.asitplus.signum:indispensable:3.26.0
+          |    \--- at.asitplus.signum:indispensable-jvm:3.26.0
+          |         +--- at.asitplus.signum:indispensable-asn1:3.26.0
+          |         |    \--- at.asitplus.signum:indispensable-asn1-jvm:3.26.0
+          |         |         +--- org.jetbrains.kotlinx:kotlinx-io-core:0.9.0
+          |         |         |    \--- org.jetbrains.kotlinx:kotlinx-io-core-jvm:0.9.0
+          |         |         |         +--- org.jetbrains.kotlinx:kotlinx-io-bytestring:0.9.0
+          |         |         |         |    \--- org.jetbrains.kotlinx:kotlinx-io-bytestring-jvm:0.9.0
+          |         |         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 -> 2.4.10
+          |         |         |         |              +--- org.jetbrains:annotations:13.0 -> 23.0.0
+          |         |         |         |              +--- org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.0 -> 2.0.0 (c)
+          |         |         |         |              +--- org.jetbrains.kotlin:kotlin-stdlib-common:2.4.10 (c)
+          |         |         |         |              \--- org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.0 -> 2.0.0 (c)
+          |         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 -> 2.4.10 (*)
+          |         |         +--- at.asitplus:kmmresult:1.9.3
+          |         |         |    \--- at.asitplus:kmmresult-jvm:1.9.3
+          |         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.1.20 -> 2.4.10 (*)
+          |         |         +--- org.jetbrains.kotlinx:kotlinx-serialization-json:1.11.0
+          |         |         |    \--- org.jetbrains.kotlinx:kotlinx-serialization-json-jvm:1.11.0
+          |         |         |         +--- org.jetbrains.kotlinx:kotlinx-serialization-bom:1.11.0
+          |         |         |         |    +--- org.jetbrains.kotlinx:kotlinx-serialization-cbor-jvm:1.11.0 (c)
+          |         |         |         |    +--- org.jetbrains.kotlinx:kotlinx-serialization-cbor:1.11.0 (c)
+          |         |         |         |    +--- org.jetbrains.kotlinx:kotlinx-serialization-core:1.11.0 (c)
+          |         |         |         |    +--- org.jetbrains.kotlinx:kotlinx-serialization-core-jvm:1.11.0 (c)
+          |         |         |         |    +--- org.jetbrains.kotlinx:kotlinx-serialization-json:1.11.0 (c)
+          |         |         |         |    \--- org.jetbrains.kotlinx:kotlinx-serialization-json-jvm:1.11.0 (c)
+          |         |         |         +--- org.jetbrains.kotlin:kotlin-stdlib:2.3.20 -> 2.4.10 (*)
+          |         |         |         \--- org.jetbrains.kotlinx:kotlinx-serialization-core:1.11.0
+          |         |         |              \--- org.jetbrains.kotlinx:kotlinx-serialization-core-jvm:1.11.0
+          |         |         |                   +--- org.jetbrains.kotlinx:kotlinx-serialization-bom:1.11.0 (*)
+          |         |         |                   \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.20 -> 2.4.10 (*)
+          |         |         +--- org.jetbrains.kotlinx:kotlinx-datetime:0.8.0
+          |         |         |    \--- org.jetbrains.kotlinx:kotlinx-datetime-jvm:0.8.0
+          |         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.1.20 -> 2.4.10 (*)
+          |         |         +--- org.jetbrains.kotlin:kotlin-stdlib:2.4.10 (*)
+          |         |         \--- at.asitplus.signum:internals:3.26.0
+          |         |              \--- at.asitplus.signum:internals-jvm:3.26.0
+          |         |                   \--- org.jetbrains.kotlin:kotlin-stdlib:2.4.10 (*)
+          |         +--- at.asitplus.signum:indispensable-oids:3.26.0
+          |         |    \--- at.asitplus.signum:indispensable-oids-jvm:3.26.0
+          |         |         +--- at.asitplus.signum:indispensable-asn1:3.26.0 (*)
+          |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.4.10 (*)
+          |         +--- at.asitplus:multibase:1.3.0
+          |         |    \--- at.asitplus:multibase-jvm:1.3.0
+          |         |         +--- io.matthewnelson.encoding:base32:2.4.0
+          |         |         |    \--- io.matthewnelson.encoding:base32-jvm:2.4.0
+          |         |         |         +--- io.matthewnelson.encoding:core:2.4.0
+          |         |         |         |    \--- io.matthewnelson.encoding:core-jvm:2.4.0
+          |         |         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.1.10 -> 2.4.10 (*)
+          |         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.1.10 -> 2.4.10 (*)
+          |         |         +--- io.matthewnelson.encoding:base64:2.4.0
+          |         |         |    \--- io.matthewnelson.encoding:base64-jvm:2.4.0
+          |         |         |         +--- io.matthewnelson.encoding:core:2.4.0 (*)
+          |         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.1.10 -> 2.4.10 (*)
+          |         |         +--- io.matthewnelson.encoding:base16:2.4.0
+          |         |         |    \--- io.matthewnelson.encoding:base16-jvm:2.4.0
+          |         |         |         +--- io.matthewnelson.encoding:core:2.4.0 (*)
+          |         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.1.10 -> 2.4.10 (*)
+          |         |         +--- org.jetbrains.kotlin:kotlin-stdlib:2.4.0 -> 2.4.10 (*)
+          |         |         \--- com.ionspin.kotlin:bignum:0.3.10
+          |         |              \--- com.ionspin.kotlin:bignum-jvm:0.3.10
+          |         |                   +--- org.jetbrains.kotlin:kotlin-stdlib:2.0.0 -> 2.4.10 (*)
+          |         |                   +--- org.jetbrains.kotlin:kotlin-stdlib-jdk8:2.0.0
+          |         |                   |    +--- org.jetbrains.kotlin:kotlin-stdlib:2.0.0 -> 2.4.10 (*)
+          |         |                   |    \--- org.jetbrains.kotlin:kotlin-stdlib-jdk7:2.0.0
+          |         |                   |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.0.0 -> 2.4.10 (*)
+          |         |                   \--- org.jetbrains.kotlin:kotlin-stdlib-common:2.0.0 -> 2.4.10
+          |         |                        \--- org.jetbrains.kotlin:kotlin-stdlib:2.4.10 (*)
+          |         +--- com.ionspin.kotlin:bignum:0.3.10 (*)
+          |         +--- org.kotlincrypto.random:crypto-rand:0.6.0
+          |         |    \--- org.kotlincrypto.random:crypto-rand-jvm:0.6.0
+          |         |         +--- org.kotlincrypto:error:0.4.0
+          |         |         |    \--- org.kotlincrypto:error-jvm:0.4.0
+          |         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.2.20 -> 2.4.10 (*)
+          |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.2.20 -> 2.4.10 (*)
+          |         +--- org.jetbrains.kotlin:kotlin-stdlib:2.4.10 (*)
+          |         +--- org.bouncycastle:bcpkix-jdk18on:1.85
+          |         |    \--- org.bouncycastle:bcutil-jdk18on:1.85
+          |         |         \--- org.bouncycastle:bcprov-jdk18on:1.85
+          |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.11.0
+          |         |    +--- org.jetbrains:annotations:23.0.0
+          |         |    +--- org.jetbrains.kotlinx:kotlinx-coroutines-bom:1.11.0
+          |         |    |    \--- org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.11.0 (c)
+          |         |    \--- org.jetbrains.kotlin:kotlin-stdlib:2.2.20 -> 2.4.10 (*)
+          |         \--- at.asitplus.signum:internals:3.26.0 (*)
+          +--- org.jetbrains.kotlinx:kotlinx-serialization-cbor:1.11.0
+          |    \--- org.jetbrains.kotlinx:kotlinx-serialization-cbor-jvm:1.11.0
+          |         +--- org.jetbrains.kotlinx:kotlinx-serialization-bom:1.11.0 (*)
+          |         +--- org.jetbrains.kotlin:kotlin-stdlib:2.3.20 -> 2.4.10 (*)
+          |         \--- org.jetbrains.kotlinx:kotlinx-serialization-core:1.11.0 (*)
+          +--- org.jetbrains.kotlin:kotlin-stdlib:2.4.10 (*)
+          +--- at.asitplus.signum:internals:3.26.0 (*)
+          +--- at.asitplus:multibase:1.3.0 (*)
+          \--- com.ionspin.kotlin:bignum:0.3.10 (*)
+
+(c) - A dependency constraint, not a dependency. The dependency affected by the constraint occurs elsewhere in the tree.
+(*) - Indicates repeated occurrences of a transitive dependency subtree. Gradle expands transitive dependency subtrees only once per project; repeat occurrences only display the root of the subtree, followed by this annotation.
+
+A web-based, searchable dependency report is available by adding the --scan option.

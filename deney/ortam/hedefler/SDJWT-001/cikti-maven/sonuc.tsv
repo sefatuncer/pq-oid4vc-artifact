@@ -1,0 +1,13 @@
+baslangic	2026-09-25T12:50:10Z
+hedef	SDJWT-001
+ekosistem	maven
+paket	at.asitplus.wallet:vck-jvm
+istenen_surum	7.0.1
+arac	openjdk version "25.0.4" 2026-07-21 LTS; Apache Maven 3.9.16 
+kilit_dosyasi	jar-sha256.txt (çalışma zamanı JAR'ları; Maven --strict-checksums)
+kilit_sha256	fc57fdcd4db4aa38a4aacf30f876175cfaf0aa7b0438ec121b7dd18683ce00fe
+bagimlilik_sayisi	47
+paket_ozeti	sha256:c50d76c6d194e6f8e438111462f5216e6481f9b2768f21bdad628f720025c88d (vck-jvm-7.0.1.jar)
+kurulan_surum	7.0.1
+ice_aktar	basarili
+bitis	2026-09-25T12:50:27Z

@@ -1,0 +1,216 @@
+
+------------------------------------------------------------
+Root project 'ortam-deneme'
+------------------------------------------------------------
+
+runtimeClasspath - Runtime classpath of source set 'main'.
+\--- at.asitplus.wallet:vck:7.0.1
+     \--- at.asitplus.wallet:vck-jvm:7.0.1
+          +--- at.asitplus.wallet:dif-data-classes:7.0.1
+          |    \--- at.asitplus.wallet:dif-data-classes-jvm:7.0.1
+          |         +--- com.benasher44:uuid:0.8.1
+          |         |    \--- com.benasher44:uuid-jvm:0.8.1
+          |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:1.7.21 -> 2.3.21
+          |         |              +--- org.jetbrains:annotations:13.0 -> 23.0.0
+          |         |              +--- org.jetbrains.kotlin:kotlin-stdlib-common:2.3.21 (c)
+          |         |              +--- org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.0 -> 2.0.0 (c)
+          |         |              \--- org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.0 -> 2.0.0 (c)
+          |         +--- at.asitplus.signum:indispensable-cosef:3.24.0
+          |         |    \--- at.asitplus.signum:indispensable-cosef-jvm:3.24.0
+          |         |         +--- at.asitplus.signum:indispensable:3.24.0
+          |         |         |    \--- at.asitplus.signum:indispensable-jvm:3.24.0
+          |         |         |         +--- at.asitplus.signum:indispensable-asn1:3.24.0
+          |         |         |         |    \--- at.asitplus.signum:indispensable-asn1-jvm:3.24.0
+          |         |         |         |         +--- org.jetbrains.kotlinx:kotlinx-io-core:0.9.0
+          |         |         |         |         |    \--- org.jetbrains.kotlinx:kotlinx-io-core-jvm:0.9.0
+          |         |         |         |         |         +--- org.jetbrains.kotlinx:kotlinx-io-bytestring:0.9.0
+          |         |         |         |         |         |    \--- org.jetbrains.kotlinx:kotlinx-io-bytestring-jvm:0.9.0
+          |         |         |         |         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 -> 2.3.21 (*)
+          |         |         |         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 -> 2.3.21 (*)
+          |         |         |         |         +--- at.asitplus:kmmresult:1.9.3
+          |         |         |         |         |    \--- at.asitplus:kmmresult-jvm:1.9.3
+          |         |         |         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.1.20 -> 2.3.21 (*)
+          |         |         |         |         +--- org.jetbrains.kotlinx:kotlinx-serialization-json:1.11.0
+          |         |         |         |         |    \--- org.jetbrains.kotlinx:kotlinx-serialization-json-jvm:1.11.0
+          |         |         |         |         |         +--- org.jetbrains.kotlinx:kotlinx-serialization-bom:1.11.0
+          |         |         |         |         |         |    +--- org.jetbrains.kotlinx:kotlinx-serialization-cbor-jvm:1.11.0 (c)
+          |         |         |         |         |         |    +--- org.jetbrains.kotlinx:kotlinx-serialization-cbor:1.11.0 (c)
+          |         |         |         |         |         |    +--- org.jetbrains.kotlinx:kotlinx-serialization-core-jvm:1.11.0 (c)
+          |         |         |         |         |         |    +--- org.jetbrains.kotlinx:kotlinx-serialization-core:1.11.0 (c)
+          |         |         |         |         |         |    +--- org.jetbrains.kotlinx:kotlinx-serialization-json:1.11.0 (c)
+          |         |         |         |         |         |    \--- org.jetbrains.kotlinx:kotlinx-serialization-json-jvm:1.11.0 (c)
+          |         |         |         |         |         +--- org.jetbrains.kotlin:kotlin-stdlib:2.3.20 -> 2.3.21 (*)
+          |         |         |         |         |         \--- org.jetbrains.kotlinx:kotlinx-serialization-core:1.11.0
+          |         |         |         |         |              \--- org.jetbrains.kotlinx:kotlinx-serialization-core-jvm:1.11.0
+          |         |         |         |         |                   +--- org.jetbrains.kotlinx:kotlinx-serialization-bom:1.11.0 (*)
+          |         |         |         |         |                   \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.20 -> 2.3.21 (*)
+          |         |         |         |         +--- org.jetbrains.kotlinx:kotlinx-datetime:0.7.1
+          |         |         |         |         |    \--- org.jetbrains.kotlinx:kotlinx-datetime-jvm:0.7.1
+          |         |         |         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.1.20 -> 2.3.21 (*)
+          |         |         |         |         +--- org.jetbrains.kotlin:kotlin-stdlib:2.3.20 -> 2.3.21 (*)
+          |         |         |         |         \--- at.asitplus.signum:internals:3.24.0
+          |         |         |         |              \--- at.asitplus.signum:internals-jvm:3.24.0
+          |         |         |         |                   \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.20 -> 2.3.21 (*)
+          |         |         |         +--- at.asitplus.signum:indispensable-oids:3.24.0
+          |         |         |         |    \--- at.asitplus.signum:indispensable-oids-jvm:3.24.0
+          |         |         |         |         +--- at.asitplus.signum:indispensable-asn1:3.24.0 (*)
+          |         |         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.20 -> 2.3.21 (*)
+          |         |         |         +--- at.asitplus:multibase:1.2.2
+          |         |         |         |    \--- at.asitplus:multibase-jvm:1.2.2
+          |         |         |         |         +--- io.matthewnelson.encoding:base64:2.4.0
+          |         |         |         |         |    \--- io.matthewnelson.encoding:base64-jvm:2.4.0
+          |         |         |         |         |         +--- io.matthewnelson.encoding:core:2.4.0
+          |         |         |         |         |         |    \--- io.matthewnelson.encoding:core-jvm:2.4.0
+          |         |         |         |         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.1.10 -> 2.3.21 (*)
+          |         |         |         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.1.10 -> 2.3.21 (*)
+          |         |         |         |         +--- io.matthewnelson.encoding:base32:2.4.0
+          |         |         |         |         |    \--- io.matthewnelson.encoding:base32-jvm:2.4.0
+          |         |         |         |         |         +--- io.matthewnelson.encoding:core:2.4.0 (*)
+          |         |         |         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.1.10 -> 2.3.21 (*)
+          |         |         |         |         +--- io.matthewnelson.encoding:base16:2.4.0
+          |         |         |         |         |    \--- io.matthewnelson.encoding:base16-jvm:2.4.0
+          |         |         |         |         |         +--- io.matthewnelson.encoding:core:2.4.0 (*)
+          |         |         |         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.1.10 -> 2.3.21 (*)
+          |         |         |         |         +--- org.jetbrains.kotlin:kotlin-stdlib:2.1.20 -> 2.3.21 (*)
+          |         |         |         |         \--- com.ionspin.kotlin:bignum:0.3.10
+          |         |         |         |              \--- com.ionspin.kotlin:bignum-jvm:0.3.10
+          |         |         |         |                   +--- org.jetbrains.kotlin:kotlin-stdlib:2.0.0 -> 2.3.21 (*)
+          |         |         |         |                   +--- org.jetbrains.kotlin:kotlin-stdlib-jdk8:2.0.0
+          |         |         |         |                   |    +--- org.jetbrains.kotlin:kotlin-stdlib:2.0.0 -> 2.3.21 (*)
+          |         |         |         |                   |    \--- org.jetbrains.kotlin:kotlin-stdlib-jdk7:2.0.0
+          |         |         |         |                   |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.0.0 -> 2.3.21 (*)
+          |         |         |         |                   \--- org.jetbrains.kotlin:kotlin-stdlib-common:2.0.0 -> 2.3.21
+          |         |         |         |                        \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.21 (*)
+          |         |         |         +--- com.ionspin.kotlin:bignum:0.3.10 (*)
+          |         |         |         +--- org.kotlincrypto.random:crypto-rand:0.6.0
+          |         |         |         |    \--- org.kotlincrypto.random:crypto-rand-jvm:0.6.0
+          |         |         |         |         +--- org.kotlincrypto:error:0.4.0
+          |         |         |         |         |    \--- org.kotlincrypto:error-jvm:0.4.0
+          |         |         |         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.2.20 -> 2.3.21 (*)
+          |         |         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.2.20 -> 2.3.21 (*)
+          |         |         |         +--- org.jetbrains.kotlin:kotlin-stdlib:2.3.20 -> 2.3.21 (*)
+          |         |         |         +--- org.bouncycastle:bcpkix-jdk18on:1.83
+          |         |         |         |    \--- org.bouncycastle:bcutil-jdk18on:1.83
+          |         |         |         |         \--- org.bouncycastle:bcprov-jdk18on:1.83
+          |         |         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.11.0
+          |         |         |         |    +--- org.jetbrains:annotations:23.0.0
+          |         |         |         |    +--- org.jetbrains.kotlinx:kotlinx-coroutines-bom:1.11.0
+          |         |         |         |    |    +--- org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.11.0 (c)
+          |         |         |         |    |    \--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.11.0 (c)
+          |         |         |         |    \--- org.jetbrains.kotlin:kotlin-stdlib:2.2.20 -> 2.3.21 (*)
+          |         |         |         \--- at.asitplus.signum:internals:3.24.0 (*)
+          |         |         +--- org.jetbrains.kotlinx:kotlinx-serialization-cbor:1.11.0
+          |         |         |    \--- org.jetbrains.kotlinx:kotlinx-serialization-cbor-jvm:1.11.0
+          |         |         |         +--- org.jetbrains.kotlinx:kotlinx-serialization-bom:1.11.0 (*)
+          |         |         |         +--- org.jetbrains.kotlin:kotlin-stdlib:2.3.20 -> 2.3.21 (*)
+          |         |         |         \--- org.jetbrains.kotlinx:kotlinx-serialization-core:1.11.0 (*)
+          |         |         +--- org.jetbrains.kotlin:kotlin-stdlib:2.3.20 -> 2.3.21 (*)
+          |         |         +--- at.asitplus.signum:internals:3.24.0 (*)
+          |         |         +--- at.asitplus:multibase:1.2.2 (*)
+          |         |         \--- com.ionspin.kotlin:bignum:0.3.10 (*)
+          |         +--- at.asitplus.signum:indispensable-josef:3.24.0
+          |         |    \--- at.asitplus.signum:indispensable-josef-jvm:3.24.0
+          |         |         +--- at.asitplus.signum:indispensable:3.24.0 (*)
+          |         |         +--- at.asitplus:multibase:1.2.2 (*)
+          |         |         +--- org.jetbrains.kotlin:kotlin-stdlib:2.3.20 -> 2.3.21 (*)
+          |         |         +--- at.asitplus.signum:internals:3.24.0 (*)
+          |         |         \--- com.ionspin.kotlin:bignum:0.3.10 (*)
+          |         +--- at.asitplus:jsonpath4k:3.0.0
+          |         |    \--- at.asitplus:jsonpath4k-jvm:3.0.0
+          |         |         +--- org.jetbrains.kotlin:kotlin-stdlib:2.1.0 -> 2.3.21 (*)
+          |         |         +--- com.strumenta:antlr-kotlin-runtime:1.0.3
+          |         |         |    \--- com.strumenta:antlr-kotlin-runtime-jvm:1.0.3
+          |         |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:1.9.24 -> 2.3.21 (*)
+          |         |         +--- org.jetbrains.kotlinx:kotlinx-serialization-json:1.8.0 -> 1.11.0 (*)
+          |         |         \--- io.github.aakira:napier:2.7.1
+          |         |              \--- io.github.aakira:napier-jvm:2.7.1
+          |         |                   +--- org.jetbrains.kotlin:kotlin-stdlib:1.9.21 -> 2.3.21 (*)
+          |         |                   +--- org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.21 -> 2.0.0 (*)
+          |         |                   \--- org.jetbrains.kotlin:kotlin-stdlib-common:1.9.21 -> 2.3.21 (*)
+          |         +--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 -> 2.3.21 (*)
+          |         +--- io.github.aakira:napier:2.7.1 (*)
+          |         \--- io.ktor:ktor-http:3.5.1
+          |              \--- io.ktor:ktor-http-jvm:3.5.1
+          |                   +--- org.slf4j:slf4j-api:2.0.18
+          |                   +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.11.0
+          |                   |    \--- org.jetbrains.kotlinx:kotlinx-coroutines-core-jvm:1.11.0 (*)
+          |                   +--- io.ktor:ktor-utils:3.5.1
+          |                   |    \--- io.ktor:ktor-utils-jvm:3.5.1
+          |                   |         +--- org.slf4j:slf4j-api:2.0.18
+          |                   |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.11.0 (*)
+          |                   |         +--- io.ktor:ktor-io:3.5.1
+          |                   |         |    \--- io.ktor:ktor-io-jvm:3.5.1
+          |                   |         |         +--- org.slf4j:slf4j-api:2.0.18
+          |                   |         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.11.0 (*)
+          |                   |         |         +--- org.jetbrains.kotlinx:kotlinx-io-core:0.9.0 (*)
+          |                   |         |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.21 (*)
+          |                   |         +--- org.jetbrains.kotlinx:kotlinx-serialization-core:1.11.0 (*)
+          |                   |         \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.21 (*)
+          |                   +--- org.jetbrains.kotlinx:kotlinx-serialization-core:1.11.0 (*)
+          |                   \--- org.jetbrains.kotlin:kotlin-stdlib:2.3.21 (*)
+          +--- at.asitplus.wallet:openid-data-classes:7.0.1
+          |    \--- at.asitplus.wallet:openid-data-classes-jvm:7.0.1
+          |         +--- at.asitplus.wallet:dif-data-classes:7.0.1 (*)
+          |         +--- at.asitplus.wallet:csc-data-classes:7.0.1
+          |         |    \--- at.asitplus.wallet:csc-data-classes-jvm:7.0.1
+          |         |         +--- com.benasher44:uuid:0.8.1 (*)
+          |         |         +--- at.asitplus.signum:indispensable-cosef:3.24.0 (*)
+          |         |         +--- at.asitplus.signum:indispensable-josef:3.24.0 (*)
+          |         |         +--- at.asitplus:jsonpath4k:3.0.0 (*)
+          |         |         +--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 -> 2.3.21 (*)
+          |         |         +--- io.github.aakira:napier:2.7.1 (*)
+          |         |         \--- io.ktor:ktor-http:3.5.1 (*)
+          |         +--- io.ktor:ktor-http:3.5.1 (*)
+          |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.11.0 (*)
+          |         +--- at.asitplus.signum:supreme:0.15.0
+          |         |    \--- at.asitplus.signum:supreme-jvm:0.15.0
+          |         |         +--- at.asitplus.signum:indispensable:3.24.0 (*)
+          |         |         +--- org.jetbrains.kotlin:kotlin-stdlib:2.3.20 -> 2.3.21 (*)
+          |         |         +--- at.asitplus.signum:internals:3.24.0 (*)
+          |         |         +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.11.0 (*)
+          |         |         +--- io.github.aakira:napier:2.7.1 (*)
+          |         |         \--- org.kotlincrypto.random:crypto-rand:0.6.0 (*)
+          |         +--- at.asitplus.signum:indispensable-cosef:3.24.0 (*)
+          |         +--- at.asitplus.signum:indispensable-josef:3.24.0 (*)
+          |         +--- at.asitplus:jsonpath4k:3.0.0 (*)
+          |         +--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 -> 2.3.21 (*)
+          |         +--- at.asitplus.wallet:rfc3986-uri-syntax:7.0.1
+          |         |    \--- at.asitplus.wallet:rfc3986-uri-syntax-jvm:7.0.1
+          |         |         +--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 -> 2.3.21 (*)
+          |         |         \--- org.jetbrains.kotlinx:kotlinx-serialization-core:1.11.0 (*)
+          |         +--- io.github.aakira:napier:2.7.1 (*)
+          |         +--- io.ktor:ktor-utils:3.5.1 (*)
+          |         \--- net.orandja.obor:obor:2.1.3
+          |              \--- net.orandja.obor:obor-jvm:2.1.3
+          |                   +--- org.jetbrains.kotlin:kotlin-stdlib:2.0.20 -> 2.3.21 (*)
+          |                   \--- org.jetbrains.kotlinx:kotlinx-serialization-core:1.7.2 -> 1.11.0 (*)
+          +--- at.asitplus.wallet:etsi-data-classes:7.0.1
+          |    \--- at.asitplus.wallet:etsi-data-classes-jvm:7.0.1
+          |         +--- at.asitplus.wallet:rfc3986-uri-syntax:7.0.1 (*)
+          |         +--- at.asitplus.signum:indispensable-josef:3.24.0 (*)
+          |         +--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 -> 2.3.21 (*)
+          |         +--- io.github.aakira:napier:2.7.1 (*)
+          |         \--- io.ktor:ktor-http:3.5.1 (*)
+          +--- at.asitplus.wallet:sd-jwt-type-metadata:7.0.1
+          |    \--- at.asitplus.wallet:sd-jwt-type-metadata-jvm:7.0.1
+          |         +--- at.asitplus.wallet:rfc3986-uri-syntax:7.0.1 (*)
+          |         +--- at.asitplus.signum:supreme:0.15.0 (*)
+          |         +--- at.asitplus.signum:indispensable:3.24.0 (*)
+          |         +--- at.asitplus:jsonpath4k:3.0.0 (*)
+          |         +--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 -> 2.3.21 (*)
+          |         \--- io.github.aakira:napier:2.7.1 (*)
+          +--- org.jetbrains.kotlinx:kotlinx-coroutines-core:1.11.0 (*)
+          +--- at.asitplus.signum:supreme:0.15.0 (*)
+          +--- at.asitplus.signum:indispensable-cosef:3.24.0 (*)
+          +--- at.asitplus.signum:indispensable-josef:3.24.0 (*)
+          +--- at.asitplus:jsonpath4k:3.0.0 (*)
+          +--- org.jetbrains.kotlin:kotlin-stdlib:2.3.0 -> 2.3.21 (*)
+          +--- io.ktor:ktor-http:3.5.1 (*)
+          +--- io.github.aakira:napier:2.7.1 (*)
+          +--- io.ktor:ktor-utils:3.5.1 (*)
+          \--- net.orandja.obor:obor:2.1.3 (*)
+
+(c) - A dependency constraint, not a dependency. The dependency affected by the constraint occurs elsewhere in the tree.
+(*) - Indicates repeated occurrences of a transitive dependency subtree. Gradle expands transitive dependency subtrees only once per project; repeat occurrences only display the root of the subtree, followed by this annotation.
+
+A web-based, searchable dependency report is available by adding the --scan option.

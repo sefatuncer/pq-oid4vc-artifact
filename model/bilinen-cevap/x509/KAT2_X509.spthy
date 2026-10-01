@@ -1,0 +1,144 @@
+theory KAT2_X509_Hybrid
+begin
+
+/* =====================================================================
+   PQ-OID4VC | Adım 6 | KAT-2 X.509 hibrit ("classical acceptance is not hybrid authentication")
+   Kaynak: KAT-SPEC §3(c) taslağı (literatür çalışması, 24.09.2026); Kim vd. arXiv:2607.20800, Lee vd. ePrint 2026/1416.
+   Anlam aynıdır; değişiklikler (iyi biçimlilik ve mutasyon bayrağı için):
+     - iç içe #ifdef yerine bileşik ifade (COMPOSITE & COEXIST_CLASSICAL);
+     - accept_with_invalid_pq lemması yalnız INVALID_ALT_ISSUED ile (eylem başka hiçbir kuralda yok);
+     - KAT-SPEC §6 mutasyonu MUT_COMP_NO_PQ: Verify_Composite'in PQ bileşen denetimi silinmiş alternatifi.
+   Lemmalar: executable (sağlık); cert_authentic (M2, K2b); no_silent_promotion (M1, K2d; ÖK §2H.1);
+   accept_with_invalid_pq (duyarlılık, exists-trace; kapı hücresi değil).
+   ===================================================================== */
+
+builtins: signing
+functions: noalt/0
+
+restriction Eq:   "All x y #i. Eq(x, y) @ #i ==> x = y"
+restriction Once: "All x #i #j. Once(x) @ #i & Once(x) @ #j ==> #i = #j"
+
+#ifdef CRQC
+rule Qday: [ ] --[ Once('qday') ]-> [ !Qday() ]
+rule Break_CA_Classical: [ !CA(cc, cq), !Qday() ] --[ BreakCA() ]-> [ Out(cc) ]
+#endif
+
+rule CA_Setup:
+    [ Fr(~cc), Fr(~cq) ]
+  --[ Once('ca') ]->
+    [ !CA(~cc, ~cq), !CApk(pk(~cc), pk(~cq)), Out(<pk(~cc), pk(~cq)>) ]
+
+/* Catalyst: pre = ön-TBS; alt = PQ alt imza (kritik olmayan uzantı); temel (klasik) imza <pre, alt> üzerinde */
+rule Issue_Catalyst:
+    let pre = <'tbs', $S, pk(~ke)>
+        tbs = <pre, sign(pre, cq)>
+    in
+    [ !CA(cc, cq), Fr(~ke) ]
+  --[ Issued($S, pk(~ke)), IssuedHybrid($S, pk(~ke)) ]->
+    [ Out(<tbs, sign(tbs, cc)>) ]
+
+#ifdef INVALID_ALT_ISSUED
+/* Kim'in "invalidated variant"ı: CA bozuk alt imzalı sertifika üretir (derleme aracı) */
+rule Issue_Catalyst_InvalidAlt:
+    let pre = <'tbs', $S, pk(~ke)>
+        tbs = <pre, ~garbage>
+    in
+    [ !CA(cc, cq), Fr(~ke), Fr(~garbage) ]
+  --[ Issued($S, pk(~ke)), IssuedInvalidAlt($S, pk(~ke)) ]->
+    [ Out(<tbs, sign(tbs, cc)>) ]
+#endif
+
+#ifdef M1_LEGACY
+/* M1: aynı özne için meşru, yalnız-klasik sertifika (PQ kanıtı saklanır) */
+rule Issue_ClassicalOnly:
+    let tbs = <<'tbs', $S, pk(~ke)>, noalt> in
+    [ !CA(cc, cq), Fr(~ke) ]
+  --[ Issued($S, pk(~ke)) ]->
+    [ Out(<tbs, sign(tbs, cc)>) ]
+#endif
+
+#ifdef COMPOSITE
+rule Issue_Composite:
+    let tbs = <'tbs', $S, pk(~ke)> in
+    [ !CA(cc, cq), Fr(~ke) ]
+  --[ Issued($S, pk(~ke)), IssuedHybrid($S, pk(~ke)) ]->
+    [ Out(<tbs, <sign(tbs, cc), sign(tbs, cq)>>) ]
+#endif
+#ifdef COMPOSITE & not MUT_COMP_NO_PQ
+rule Verify_Composite:
+    let tbs = <'tbs', S, pke> in
+    [ !CApk(pc, pq), In(<tbs, <s1, s2>>) ]
+  --[ Eq(verify(s1, tbs, pc), true), Eq(verify(s2, tbs, pq), true), AcceptCert(S, pke), HybridOK(S, pke) ]->
+    [ ]
+#endif
+#ifdef COMPOSITE & MUT_COMP_NO_PQ
+/* MUTASYON (KAT-SPEC §6): composite doğrulamasında PQ bileşen denetimi silindi */
+rule Verify_Composite:
+    let tbs = <'tbs', S, pke> in
+    [ !CApk(pc, pq), In(<tbs, <s1, s2>>) ]
+  --[ Eq(verify(s1, tbs, pc), true), AcceptCert(S, pke), HybridOK(S, pke) ]->
+    [ ]
+#endif
+#ifdef COMPOSITE & COEXIST_CLASSICAL
+/* birlikte yaşama: doğrulayıcı aynı CA'nın düz klasik sertifikasını da kabul ediyor */
+rule Verify_PlainClassical:
+    let tbs = <<'tbs', S, pke>, noalt> in
+    [ !CApk(pc, pq), In(<tbs, sb>) ]
+  --[ Eq(verify(sb, tbs, pc), true), AcceptCert(S, pke) ]->
+    [ ]
+#endif
+
+#ifdef V_IGNORE
+/* varsayılan yol: yalnız temel (klasik) imza; kritik olmayan uzantı yok sayılır */
+rule Verify_Base:
+    let pre = <'tbs', S, pke>
+        tbs = <pre, x>
+    in
+    [ !CApk(pc, pq), In(<tbs, sb>) ]
+  --[ Eq(verify(sb, tbs, pc), true), AcceptCert(S, pke) ]->
+    [ ]
+#endif
+#ifdef V_ENFORCE_IF_PRESENT
+/* varsa denetle (wolfSSL zorlayıcı / BC opt-in); yoksa kabul ("cannot require") */
+rule Verify_WithAlt:
+    let pre = <'tbs', S, pke>
+        tbs = <pre, alt>
+    in
+    [ !CApk(pc, pq), In(<tbs, sb>) ]
+  --[ Eq(verify(sb, tbs, pc), true), Eq(verify(alt, pre, pq), true), AcceptCert(S, pke), HybridOK(S, pke) ]->
+    [ ]
+rule Verify_NoAlt:
+    let tbs = <<'tbs', S, pke>, noalt> in
+    [ !CApk(pc, pq), In(<tbs, sb>) ]
+  --[ Eq(verify(sb, tbs, pc), true), AcceptCert(S, pke) ]->
+    [ ]
+#endif
+#ifdef V_REQUIRE
+/* P2: alt imza zorunlu */
+rule Verify_Require:
+    let pre = <'tbs', S, pke>
+        tbs = <pre, alt>
+    in
+    [ !CApk(pc, pq), In(<tbs, sb>) ]
+  --[ Eq(verify(sb, tbs, pc), true), Eq(verify(alt, pre, pq), true), AcceptCert(S, pke), HybridOK(S, pke) ]->
+    [ ]
+#endif
+
+lemma executable:
+  exists-trace "Ex S k #i #j. Issued(S, k) @ #i & AcceptCert(S, k) @ #j"
+
+#ifdef INVALID_ALT_ISSUED
+/* Kim'in 27 hücresinin karşılığı: bozuk PQ kanıtıyla kabul ERİŞİLEBİLİR mi? (evet = PQ kanıtı sonuca etki etmiyor) */
+lemma accept_with_invalid_pq:
+  exists-trace "Ex S k #i #j. IssuedInvalidAlt(S, k) @ #i & AcceptCert(S, k) @ #j"
+#endif
+
+/* M2: sertifika kimlik doğrulaması */
+lemma cert_authentic:
+  "All S k #j. AcceptCert(S, k) @ #j ==> Ex #i. Issued(S, k) @ #i"
+
+/* M1: hibrit niyet — kabul edilen her anahtar hibrit olarak ihraç edilmiş olmalı (sessiz terfi yok) */
+lemma no_silent_promotion:
+  "All S k #j. AcceptCert(S, k) @ #j ==> Ex #i. IssuedHybrid(S, k) @ #i"
+
+end

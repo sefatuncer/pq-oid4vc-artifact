@@ -1,0 +1,763 @@
+kural,varyant,rol,dosya,bayraklar,lemma,beklenen,gozlenen,uyum,adim,sure_s,bellek_MiB,merdiven,iyi_bicimlilik
+M-a,MA_taban,mekanizma,M_istek.spthy,MA,G5_untimed,F,F,evet,7,1.26,79.4,1,temiz
+M-a,MA_taban,mekanizma,M_istek.spthy,MA,G5_migrated,F,F,evet,8,1.31,80.5,1,temiz
+M-a,MA_taban,mekanizma,M_istek.spthy,MA,G5_timed,F,F,evet,11,1.17,80.5,1,temiz
+M-a,MA_taban,mekanizma,M_istek.spthy,MA,no_rollback,V,V,evet,6,1.05,79.3,1,temiz
+M-a,MA_taban,mekanizma,M_istek.spthy,MA,first_contact_downgrade,V,V,evet,8,1.27,78.1,1,temiz
+M-a,MA_taban,mekanizma,M_istek.spthy,MA,executable,V,V,evet,10,1.49,79.2,1,temiz
+M-a,MA_taban,mekanizma,M_istek.spthy,MA,executable_legacy,V,V,evet,8,1.39,80.5,1,temiz
+M-a,MA_taban,mekanizma,M_istek.spthy,MA,executable_pre_migration,V,V,evet,8,1.33,81.2,1,temiz
+M-a,MA_taban,mekanizma,M_istek.spthy,MA,executable_lifecycle,V,V,evet,13,1.27,79.1,1,temiz
+M-a,MA_taban,mekanizma,M_istek.spthy,MA,executable_learn,F,F,evet,2,1.12,78.4,1,temiz
+M-a,MA_taban,mekanizma,M_istek.spthy,MA,attack_needs_crqc,V,V,evet,28,1.45,77.9,1,temiz
+M-a,MA_taban,mekanizma,M_istek.spthy,MA,G4_rp_authentication,F,F,evet,11,1.64,80.2,1,temiz
+M-a,MA_taban,mekanizma,M_istek.spthy,MA,M_downgrade_s1,V,V,evet,8,1.21,82.6,1,temiz
+M-a,MA_taban,mekanizma,M_istek.spthy,MA,M_forgery_crqc,V,V,evet,14,1.83,90.5,1,temiz
+M-f,MF_cekirdek,mekanizma,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_untimed,V,V,evet,43,6.62,94.3,1,temiz
+M-f,MF_cekirdek,mekanizma,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_migrated,V,V,evet,94,8.23,106.7,1,temiz
+M-f,MF_cekirdek,mekanizma,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_timed,V,V,evet,132,8.61,112.2,1,temiz
+M-f,MF_cekirdek,mekanizma,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",no_rollback,V,V,evet,258,13.06,176.5,1,temiz
+M-f,MF_cekirdek,mekanizma,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",first_contact_downgrade,F,F,evet,94,8.0,107.7,1,temiz
+M-f,MF_cekirdek,mekanizma,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",executable,V,V,evet,16,7.7,110.9,1,temiz
+M-f,MF_cekirdek,mekanizma,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",executable_legacy,V,V,evet,14,8.04,112.8,1,temiz
+M-f,MF_cekirdek,mekanizma,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",executable_pre_migration,V,V,evet,14,7.57,115.5,1,temiz
+M-f,MF_cekirdek,mekanizma,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",executable_lifecycle,V,V,evet,18,9.79,124.6,1,temiz
+M-f,MF_cekirdek,mekanizma,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",executable_learn,V,V,evet,7,6.26,83.9,1,temiz
+M-f,MF_cekirdek,mekanizma,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",attack_needs_crqc,V,V,evet,158,9.06,128.3,1,temiz
+M-f,MF_cekirdek,mekanizma,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",G1_claims_unforgeability,V,V,evet,197,10.82,135.1,1,temiz
+M-f,MF_cekirdek,mekanizma,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_path_untimed,V,V,evet,51,7.0,93.6,1,temiz
+M-f,MF_cekirdek,mekanizma,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_path_migrated,V,V,evet,108,7.74,106.3,1,temiz
+M-f,MF_cekirdek,mekanizma,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_path_timed,V,V,evet,141,8.82,116.1,1,temiz
+M-f,MF_cekirdek,mekanizma,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",no_rollback_path,V,V,evet,226,12.3,161.3,1,temiz
+M-f,MF_cekirdek,mekanizma,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",M_downgrade_s1,F,F,evet,73,7.37,103.0,1,temiz
+M-f,MF_cekirdek,mekanizma,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",M_forgery_crqc,F,F,evet,1272,37.4,426.5,1,temiz
+M-f,MF_cekirdek,mekanizma,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",M_weak_path_forgery,F,F,evet,512,18.69,220.5,1,temiz
+M-b0,MB0_taban,mekanizma,M_istek.spthy,MB0,G5_untimed,F,F,evet,8,1.15,74.8,1,temiz
+M-b0,MB0_taban,mekanizma,M_istek.spthy,MB0,G5_migrated,F,F,evet,9,1.17,76.2,1,temiz
+M-b0,MB0_taban,mekanizma,M_istek.spthy,MB0,G5_timed,F,F,evet,11,1.13,77.2,1,temiz
+M-b0,MB0_taban,mekanizma,M_istek.spthy,MB0,no_rollback,V,V,evet,6,1.0,76.5,1,temiz
+M-b0,MB0_taban,mekanizma,M_istek.spthy,MB0,first_contact_downgrade,V,V,evet,9,1.24,79.4,1,temiz
+M-b0,MB0_taban,mekanizma,M_istek.spthy,MB0,executable,V,V,evet,10,1.28,75.4,1,temiz
+M-b0,MB0_taban,mekanizma,M_istek.spthy,MB0,executable_legacy,V,V,evet,8,1.22,77.2,1,temiz
+M-b0,MB0_taban,mekanizma,M_istek.spthy,MB0,executable_pre_migration,V,V,evet,8,1.29,78.2,1,temiz
+M-b0,MB0_taban,mekanizma,M_istek.spthy,MB0,executable_lifecycle,V,V,evet,13,1.35,77.0,1,temiz
+M-b0,MB0_taban,mekanizma,M_istek.spthy,MB0,executable_learn,F,F,evet,2,1.04,76.7,1,temiz
+M-b0,MB0_taban,mekanizma,M_istek.spthy,MB0,attack_needs_crqc,V,V,evet,26,1.31,75.3,1,temiz
+M-b0,MB0_taban,mekanizma,M_istek.spthy,MB0,G4_rp_authentication,F,F,evet,11,1.39,75.3,1,temiz
+M-b0,MB0_taban,mekanizma,M_istek.spthy,MB0,M_downgrade_s1,F,F,evet,15,1.14,77.2,1,temiz
+M-b0,MB0_taban,mekanizma,M_istek.spthy,MB0,M_forgery_crqc,V,V,evet,15,1.74,90.2,1,temiz
+M-b / A.3.2.2,MB_taban,mekanizma,M_istek.spthy,MB,G5_untimed,F,F,evet,8,1.67,80.1,1,temiz
+M-b / A.3.2.2,MB_taban,mekanizma,M_istek.spthy,MB,G5_migrated,F,F,evet,10,1.85,81.1,1,temiz
+M-b / A.3.2.2,MB_taban,mekanizma,M_istek.spthy,MB,G5_timed,F,F,evet,11,1.62,82.3,1,temiz
+M-b / A.3.2.2,MB_taban,mekanizma,M_istek.spthy,MB,no_rollback,V,V,evet,6,1.4,81.2,1,temiz
+M-b / A.3.2.2,MB_taban,mekanizma,M_istek.spthy,MB,first_contact_downgrade,V,V,evet,10,1.84,80.5,1,temiz
+M-b / A.3.2.2,MB_taban,mekanizma,M_istek.spthy,MB,executable,V,V,evet,12,2.19,84.2,1,temiz
+M-b / A.3.2.2,MB_taban,mekanizma,M_istek.spthy,MB,executable_legacy,V,V,evet,8,1.65,82.1,1,temiz
+M-b / A.3.2.2,MB_taban,mekanizma,M_istek.spthy,MB,executable_pre_migration,V,V,evet,8,1.76,80.2,1,temiz
+M-b / A.3.2.2,MB_taban,mekanizma,M_istek.spthy,MB,executable_lifecycle,V,V,evet,14,1.68,82.5,1,temiz
+M-b / A.3.2.2,MB_taban,mekanizma,M_istek.spthy,MB,executable_learn,F,F,evet,2,1.34,78.9,1,temiz
+M-b / A.3.2.2,MB_taban,mekanizma,M_istek.spthy,MB,attack_needs_crqc,V,V,evet,42,1.9,82.7,1,temiz
+M-b / A.3.2.2,MB_taban,mekanizma,M_istek.spthy,MB,G4_rp_authentication,F,F,evet,11,2.04,83.4,1,temiz
+M-b / A.3.2.2,MB_taban,mekanizma,M_istek.spthy,MB,M_downgrade_s1,V,V,evet,10,1.86,82.9,1,temiz
+M-b / A.3.2.2,MB_taban,mekanizma,M_istek.spthy,MB,M_forgery_crqc,V,V,evet,14,2.5,99.2,1,temiz
+M-e,ME_signed_fresh,mekanizma,M_metaveri.spthy,"ME,META_SIGNED,FRESH",G5_untimed,F,F,evet,10,1.84,78.5,1,temiz
+M-e,ME_signed_fresh,mekanizma,M_metaveri.spthy,"ME,META_SIGNED,FRESH",G5_migrated,F,F,evet,11,1.92,80.7,1,temiz
+M-e,ME_signed_fresh,mekanizma,M_metaveri.spthy,"ME,META_SIGNED,FRESH",G5_timed,V,V,evet,22,1.87,77.3,1,temiz
+M-e,ME_signed_fresh,mekanizma,M_metaveri.spthy,"ME,META_SIGNED,FRESH",no_rollback,V,F,HAYIR,15,2.37,83.4,1,temiz
+M-e,ME_signed_fresh,mekanizma,M_metaveri.spthy,"ME,META_SIGNED,FRESH",first_contact_downgrade,V,V,evet,11,1.92,80.6,1,temiz
+M-e,ME_signed_fresh,mekanizma,M_metaveri.spthy,"ME,META_SIGNED,FRESH",executable,V,V,evet,8,1.81,76.8,1,temiz
+M-e,ME_signed_fresh,mekanizma,M_metaveri.spthy,"ME,META_SIGNED,FRESH",executable_legacy,V,V,evet,9,2.24,78.6,1,temiz
+M-e,ME_signed_fresh,mekanizma,M_metaveri.spthy,"ME,META_SIGNED,FRESH",executable_pre_migration,V,V,evet,9,2.27,78.5,1,temiz
+M-e,ME_signed_fresh,mekanizma,M_metaveri.spthy,"ME,META_SIGNED,FRESH",executable_lifecycle,V,V,evet,11,1.82,76.6,1,temiz
+M-e,ME_signed_fresh,mekanizma,M_metaveri.spthy,"ME,META_SIGNED,FRESH",executable_learn,V,V,evet,8,1.74,79.5,1,temiz
+M-e,ME_signed_fresh,mekanizma,M_metaveri.spthy,"ME,META_SIGNED,FRESH",attack_needs_crqc,V,V,evet,36,2.28,81.2,1,temiz
+M-e,ME_signed_fresh,mekanizma,M_metaveri.spthy,"ME,META_SIGNED,FRESH",G1_claims_unforgeability,F,F,evet,13,2.19,80.4,1,temiz
+M-e,ME_signed_fresh,mekanizma,M_metaveri.spthy,"ME,META_SIGNED,FRESH",M_downgrade_s1,V,V,evet,11,2.12,83.5,1,temiz
+M-e,ME_signed_fresh,mekanizma,M_metaveri.spthy,"ME,META_SIGNED,FRESH",M_forgery_crqc,V,V,evet,16,2.63,88.7,1,temiz
+M-e′,MEP_tls_classical,mekanizma,M_metaveri.spthy,"MEP,META_TLS",G5_untimed,F,F,evet,11,1.93,78.1,1,temiz
+M-e′,MEP_tls_classical,mekanizma,M_metaveri.spthy,"MEP,META_TLS",G5_migrated,F,F,evet,12,2.08,78.4,1,temiz
+M-e′,MEP_tls_classical,mekanizma,M_metaveri.spthy,"MEP,META_TLS",G5_timed,F,F,evet,14,2.14,78.0,1,temiz
+M-e′,MEP_tls_classical,mekanizma,M_metaveri.spthy,"MEP,META_TLS",no_rollback,F,F,evet,16,2.56,88.4,1,temiz
+M-e′,MEP_tls_classical,mekanizma,M_metaveri.spthy,"MEP,META_TLS",first_contact_downgrade,V,V,evet,12,2.14,79.7,1,temiz
+M-e′,MEP_tls_classical,mekanizma,M_metaveri.spthy,"MEP,META_TLS",executable,V,V,evet,8,1.93,77.0,1,temiz
+M-e′,MEP_tls_classical,mekanizma,M_metaveri.spthy,"MEP,META_TLS",executable_legacy,V,V,evet,9,1.99,78.3,1,temiz
+M-e′,MEP_tls_classical,mekanizma,M_metaveri.spthy,"MEP,META_TLS",executable_pre_migration,V,V,evet,9,2.34,78.9,1,temiz
+M-e′,MEP_tls_classical,mekanizma,M_metaveri.spthy,"MEP,META_TLS",executable_lifecycle,V,V,evet,11,1.85,76.2,1,temiz
+M-e′,MEP_tls_classical,mekanizma,M_metaveri.spthy,"MEP,META_TLS",executable_learn,V,V,evet,7,1.82,79.6,1,temiz
+M-e′,MEP_tls_classical,mekanizma,M_metaveri.spthy,"MEP,META_TLS",attack_needs_crqc,V,V,evet,26,2.06,77.1,1,temiz
+M-e′,MEP_tls_classical,mekanizma,M_metaveri.spthy,"MEP,META_TLS",G1_claims_unforgeability,F,F,evet,14,2.12,77.7,1,temiz
+M-e′,MEP_tls_classical,mekanizma,M_metaveri.spthy,"MEP,META_TLS",M_downgrade_s1,F,F,evet,18,1.83,76.4,1,temiz
+M-e′,MEP_tls_classical,mekanizma,M_metaveri.spthy,"MEP,META_TLS",M_forgery_crqc,V,V,evet,18,6.37,144.7,1,temiz
+M-e′,MEP_signed_fresh,kosul,M_metaveri.spthy,"MEP,META_SIGNED,FRESH",G5_untimed,V,V,evet,6,1.7,76.1,1,temiz
+M-e′,MEP_signed_fresh,kosul,M_metaveri.spthy,"MEP,META_SIGNED,FRESH",G5_migrated,V,V,evet,16,1.87,76.4,1,temiz
+M-e′,MEP_signed_fresh,kosul,M_metaveri.spthy,"MEP,META_SIGNED,FRESH",G5_timed,V,V,evet,18,1.84,76.2,1,temiz
+M-e′,MEP_signed_fresh,kosul,M_metaveri.spthy,"MEP,META_SIGNED,FRESH",no_rollback,V,F,HAYIR,15,2.63,83.0,1,temiz
+M-e′,MEP_signed_fresh,kosul,M_metaveri.spthy,"MEP,META_SIGNED,FRESH",first_contact_downgrade,F,F,evet,16,1.75,76.7,1,temiz
+M-e′,MEP_signed_fresh,kosul,M_metaveri.spthy,"MEP,META_SIGNED,FRESH",executable,V,V,evet,8,1.77,76.6,1,temiz
+M-e′,MEP_signed_fresh,kosul,M_metaveri.spthy,"MEP,META_SIGNED,FRESH",executable_legacy,V,V,evet,9,2.04,77.9,1,temiz
+M-e′,MEP_signed_fresh,kosul,M_metaveri.spthy,"MEP,META_SIGNED,FRESH",executable_pre_migration,V,V,evet,9,1.91,78.1,1,temiz
+M-e′,MEP_signed_fresh,kosul,M_metaveri.spthy,"MEP,META_SIGNED,FRESH",executable_lifecycle,V,V,evet,11,1.81,77.0,1,temiz
+M-e′,MEP_signed_fresh,kosul,M_metaveri.spthy,"MEP,META_SIGNED,FRESH",executable_learn,V,V,evet,7,1.91,81.2,1,temiz
+M-e′,MEP_signed_fresh,kosul,M_metaveri.spthy,"MEP,META_SIGNED,FRESH",attack_needs_crqc,V,V,evet,24,1.84,76.5,1,temiz
+M-e′,MEP_signed_fresh,kosul,M_metaveri.spthy,"MEP,META_SIGNED,FRESH",G1_claims_unforgeability,V,V,evet,24,1.94,76.6,1,temiz
+M-e′,MEP_signed_fresh,kosul,M_metaveri.spthy,"MEP,META_SIGNED,FRESH",M_downgrade_s1,F,F,evet,16,1.88,77.4,1,temiz
+M-e′,MEP_signed_fresh,kosul,M_metaveri.spthy,"MEP,META_SIGNED,FRESH",M_forgery_crqc,F,F,evet,74,2.77,85.0,1,temiz
+M-d,MD_reg_pq,mekanizma,M_metaveri.spthy,"MD,REG_PQ",G5_untimed,V,V,evet,5,0.68,78.4,1,temiz
+M-d,MD_reg_pq,mekanizma,M_metaveri.spthy,"MD,REG_PQ",G5_migrated,F,F,evet,9,0.85,76.9,1,temiz
+M-d,MD_reg_pq,mekanizma,M_metaveri.spthy,"MD,REG_PQ",G5_timed,F,F,evet,11,0.9,79.2,1,temiz
+M-d,MD_reg_pq,mekanizma,M_metaveri.spthy,"MD,REG_PQ",no_rollback,F,F,evet,11,1.03,81.5,1,temiz
+M-d,MD_reg_pq,mekanizma,M_metaveri.spthy,"MD,REG_PQ",first_contact_downgrade,V,V,evet,9,0.9,76.7,1,temiz
+M-d,MD_reg_pq,mekanizma,M_metaveri.spthy,"MD,REG_PQ",executable,V,V,evet,8,0.78,76.7,1,temiz
+M-d,MD_reg_pq,mekanizma,M_metaveri.spthy,"MD,REG_PQ",executable_legacy,V,V,evet,7,0.77,79.7,1,temiz
+M-d,MD_reg_pq,mekanizma,M_metaveri.spthy,"MD,REG_PQ",executable_pre_migration,V,V,evet,7,0.83,76.7,1,temiz
+M-d,MD_reg_pq,mekanizma,M_metaveri.spthy,"MD,REG_PQ",executable_lifecycle,V,V,evet,11,0.84,78.2,1,temiz
+M-d,MD_reg_pq,mekanizma,M_metaveri.spthy,"MD,REG_PQ",executable_learn,V,V,evet,5,0.77,76.5,1,temiz
+M-d,MD_reg_pq,mekanizma,M_metaveri.spthy,"MD,REG_PQ",attack_needs_crqc,V,V,evet,25,0.92,76.4,1,temiz
+M-d,MD_reg_pq,mekanizma,M_metaveri.spthy,"MD,REG_PQ",G1_claims_unforgeability,F,F,evet,11,1.03,76.4,1,temiz
+M-d,MD_reg_pq,mekanizma,M_metaveri.spthy,"MD,REG_PQ",M_downgrade_s1,V,V,evet,9,0.89,78.7,1,temiz
+M-d,MD_reg_pq,mekanizma,M_metaveri.spthy,"MD,REG_PQ",M_forgery_crqc,V,V,evet,14,1.27,84.6,1,temiz
+M-f,MF_3b_yol_farkli_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_DIFF",G5_untimed,V,V,evet,27,4.97,90.0,1,temiz
+M-f,MF_3b_yol_farkli_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_DIFF",G5_migrated,V,V,evet,58,5.52,98.2,1,temiz
+M-f,MF_3b_yol_farkli_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_DIFF",G5_timed,V,V,evet,76,5.7,99.4,1,temiz
+M-f,MF_3b_yol_farkli_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_DIFF",no_rollback,V,V,evet,138,7.25,131.5,1,temiz
+M-f,MF_3b_yol_farkli_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_DIFF",first_contact_downgrade,F,F,evet,58,5.43,95.7,1,temiz
+M-f,MF_3b_yol_farkli_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_DIFF",executable,V,V,evet,16,5.57,103.1,1,temiz
+M-f,MF_3b_yol_farkli_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_DIFF",executable_legacy,V,V,evet,14,5.27,101.7,1,temiz
+M-f,MF_3b_yol_farkli_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_DIFF",executable_pre_migration,V,V,evet,14,5.39,104.9,1,temiz
+M-f,MF_3b_yol_farkli_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_DIFF",executable_lifecycle,V,V,evet,18,6.48,113.8,1,temiz
+M-f,MF_3b_yol_farkli_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_DIFF",executable_learn,V,V,evet,7,4.58,84.6,1,temiz
+M-f,MF_3b_yol_farkli_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_DIFF",attack_needs_crqc,V,V,evet,110,5.88,115.1,1,temiz
+M-f,MF_3b_yol_farkli_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_DIFF",G1_claims_unforgeability,V,V,evet,125,6.47,113.4,1,temiz
+M-f,MF_3b_yol_farkli_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_DIFF",G5_path_untimed,V,V,evet,31,5.01,89.2,1,temiz
+M-f,MF_3b_yol_farkli_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_DIFF",G5_path_migrated,V,V,evet,64,5.44,94.7,1,temiz
+M-f,MF_3b_yol_farkli_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_DIFF",G5_path_timed,V,V,evet,77,5.48,98.4,1,temiz
+M-f,MF_3b_yol_farkli_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_DIFF",no_rollback_path,V,V,evet,102,6.6,116.3,1,temiz
+M-f,MF_3b_yol_farkli_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_DIFF",M_downgrade_s1,F,F,evet,49,5.23,97.3,1,temiz
+M-f,MF_3b_yol_farkli_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_DIFF",M_forgery_crqc,F,F,evet,506,13.84,214.4,1,temiz
+M-f,MF_3b_yol_farkli_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_DIFF",M_weak_path_forgery,F,F,evet,168,7.47,127.7,1,temiz
+M-f,MF_3b_yol_ayni_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_SAME",G5_untimed,V,V,evet,27,5.12,86.7,1,temiz
+M-f,MF_3b_yol_ayni_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_SAME",G5_migrated,V,V,evet,58,5.74,94.5,1,temiz
+M-f,MF_3b_yol_ayni_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_SAME",G5_timed,V,V,evet,76,5.93,98.0,1,temiz
+M-f,MF_3b_yol_ayni_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_SAME",no_rollback,V,V,evet,138,7.32,131.0,1,temiz
+M-f,MF_3b_yol_ayni_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_SAME",first_contact_downgrade,F,F,evet,58,5.75,95.5,1,temiz
+M-f,MF_3b_yol_ayni_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_SAME",executable,V,V,evet,16,5.94,100.9,1,temiz
+M-f,MF_3b_yol_ayni_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_SAME",executable_legacy,V,V,evet,12,5.57,88.8,1,temiz
+M-f,MF_3b_yol_ayni_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_SAME",executable_pre_migration,V,V,evet,12,6.27,90.0,1,temiz
+M-f,MF_3b_yol_ayni_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_SAME",executable_lifecycle,V,V,evet,18,7.28,114.1,1,temiz
+M-f,MF_3b_yol_ayni_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_SAME",executable_learn,V,V,evet,7,5.08,86.4,1,temiz
+M-f,MF_3b_yol_ayni_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_SAME",attack_needs_crqc,V,V,evet,110,6.51,117.0,1,temiz
+M-f,MF_3b_yol_ayni_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_SAME",G1_claims_unforgeability,V,V,evet,125,7.12,117.2,1,temiz
+M-f,MF_3b_yol_ayni_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_SAME",G5_path_untimed,V,V,evet,31,5.34,88.7,1,temiz
+M-f,MF_3b_yol_ayni_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_SAME",G5_path_migrated,V,V,evet,64,5.72,94.7,1,temiz
+M-f,MF_3b_yol_ayni_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_SAME",G5_path_timed,V,V,evet,77,5.83,97.7,1,temiz
+M-f,MF_3b_yol_ayni_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_SAME",no_rollback_path,V,V,evet,102,7.0,113.3,1,temiz
+M-f,MF_3b_yol_ayni_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_SAME",M_downgrade_s1,F,F,evet,49,5.62,95.5,1,temiz
+M-f,MF_3b_yol_ayni_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_SAME",M_forgery_crqc,F,F,evet,506,14.39,216.7,1,temiz
+M-f,MF_3b_yol_ayni_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_SAME",M_weak_path_forgery,F,F,evet,168,7.6,123.1,1,temiz
+M-f,MF_3b_yol_klasik_kok,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_ROOT",G5_untimed,V,V,evet,27,5.27,86.8,1,temiz
+M-f,MF_3b_yol_klasik_kok,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_ROOT",G5_migrated,V,V,evet,58,5.83,95.6,1,temiz
+M-f,MF_3b_yol_klasik_kok,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_ROOT",G5_timed,V,V,evet,76,6.04,98.5,1,temiz
+M-f,MF_3b_yol_klasik_kok,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_ROOT",no_rollback,V,V,evet,138,7.72,127.4,1,temiz
+M-f,MF_3b_yol_klasik_kok,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_ROOT",first_contact_downgrade,F,F,evet,58,5.85,94.3,1,temiz
+M-f,MF_3b_yol_klasik_kok,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_ROOT",executable,V,V,evet,16,5.98,102.1,1,temiz
+M-f,MF_3b_yol_klasik_kok,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_ROOT",executable_legacy,V,V,evet,12,5.39,88.9,1,temiz
+M-f,MF_3b_yol_klasik_kok,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_ROOT",executable_pre_migration,V,V,evet,12,5.52,90.2,1,temiz
+M-f,MF_3b_yol_klasik_kok,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_ROOT",executable_lifecycle,V,V,evet,18,7.01,112.9,1,temiz
+M-f,MF_3b_yol_klasik_kok,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_ROOT",executable_learn,V,V,evet,7,4.98,84.7,1,temiz
+M-f,MF_3b_yol_klasik_kok,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_ROOT",attack_needs_crqc,V,V,evet,110,6.3,111.1,1,temiz
+M-f,MF_3b_yol_klasik_kok,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_ROOT",G1_claims_unforgeability,V,V,evet,125,6.86,113.7,1,temiz
+M-f,MF_3b_yol_klasik_kok,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_ROOT",G5_path_untimed,V,V,evet,31,5.21,88.4,1,temiz
+M-f,MF_3b_yol_klasik_kok,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_ROOT",G5_path_migrated,V,V,evet,64,5.56,94.1,1,temiz
+M-f,MF_3b_yol_klasik_kok,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_ROOT",G5_path_timed,V,V,evet,77,5.67,97.3,1,temiz
+M-f,MF_3b_yol_klasik_kok,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_ROOT",no_rollback_path,V,V,evet,102,6.79,113.2,1,temiz
+M-f,MF_3b_yol_klasik_kok,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_ROOT",M_downgrade_s1,F,F,evet,49,5.55,97.2,1,temiz
+M-f,MF_3b_yol_klasik_kok,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_ROOT",M_forgery_crqc,F,F,evet,506,14.28,221.5,1,temiz
+M-f,MF_3b_yol_klasik_kok,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_PATH,ATK_ROOT",M_weak_path_forgery,F,F,evet,168,7.62,121.4,1,temiz
+M-f,MF_3b_anahtar_farkli_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_KEY,ATK_DIFF",G5_untimed,V,V,evet,27,5.83,88.0,1,temiz
+M-f,MF_3b_anahtar_farkli_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_KEY,ATK_DIFF",G5_migrated,V,V,evet,58,6.61,96.3,1,temiz
+M-f,MF_3b_anahtar_farkli_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_KEY,ATK_DIFF",G5_timed,V,V,evet,76,6.84,97.9,1,temiz
+M-f,MF_3b_anahtar_farkli_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_KEY,ATK_DIFF",no_rollback,V,V,evet,138,8.86,130.5,1,temiz
+M-f,MF_3b_anahtar_farkli_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_KEY,ATK_DIFF",first_contact_downgrade,F,F,evet,58,6.45,94.9,1,temiz
+M-f,MF_3b_anahtar_farkli_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_KEY,ATK_DIFF",executable,V,V,evet,19,11.52,224.6,1,temiz
+M-f,MF_3b_anahtar_farkli_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_KEY,ATK_DIFF",executable_legacy,V,V,evet,14,6.15,104.9,1,temiz
+M-f,MF_3b_anahtar_farkli_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_KEY,ATK_DIFF",executable_pre_migration,V,V,evet,14,6.16,110.1,1,temiz
+M-f,MF_3b_anahtar_farkli_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_KEY,ATK_DIFF",executable_lifecycle,V,V,evet,21,8.95,158.7,1,temiz
+M-f,MF_3b_anahtar_farkli_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_KEY,ATK_DIFF",executable_learn,V,V,evet,7,5.42,85.3,1,temiz
+M-f,MF_3b_anahtar_farkli_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_KEY,ATK_DIFF",attack_needs_crqc,V,V,evet,126,7.25,119.7,1,temiz
+M-f,MF_3b_anahtar_farkli_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_KEY,ATK_DIFF",G1_claims_unforgeability,V,V,evet,157,8.03,126.7,1,temiz
+M-f,MF_3b_anahtar_farkli_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_KEY,ATK_DIFF",G5_path_untimed,F,F,evet,19,7.75,147.7,1,temiz
+M-f,MF_3b_anahtar_farkli_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_KEY,ATK_DIFF",G5_path_migrated,F,F,evet,20,8.6,158.4,1,temiz
+M-f,MF_3b_anahtar_farkli_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_KEY,ATK_DIFF",G5_path_timed,F,F,evet,21,8.26,147.9,1,temiz
+M-f,MF_3b_anahtar_farkli_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_KEY,ATK_DIFF",no_rollback_path,F,F,evet,23,11.14,203.9,1,temiz
+M-f,MF_3b_anahtar_farkli_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_KEY,ATK_DIFF",M_downgrade_s1,F,F,evet,49,6.14,97.0,1,temiz
+M-f,MF_3b_anahtar_farkli_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_KEY,ATK_DIFF",M_forgery_crqc,F,F,evet,634,17.72,257.8,1,temiz
+M-f,MF_3b_anahtar_farkli_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_KEY,ATK_DIFF",M_weak_path_forgery,F,F,evet,346,11.96,177.7,1,temiz
+M-f,MF_3b_anahtar_ayni_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_KEY,ATK_SAME",G5_untimed,V,V,evet,27,6.06,86.3,1,temiz
+M-f,MF_3b_anahtar_ayni_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_KEY,ATK_SAME",G5_migrated,V,V,evet,58,6.76,94.8,1,temiz
+M-f,MF_3b_anahtar_ayni_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_KEY,ATK_SAME",G5_timed,V,V,evet,76,7.17,101.0,1,temiz
+M-f,MF_3b_anahtar_ayni_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_KEY,ATK_SAME",no_rollback,V,V,evet,138,8.7,127.8,1,temiz
+M-f,MF_3b_anahtar_ayni_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_KEY,ATK_SAME",first_contact_downgrade,F,F,evet,58,6.44,96.7,1,temiz
+M-f,MF_3b_anahtar_ayni_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_KEY,ATK_SAME",executable,V,V,evet,17,11.25,218.3,1,temiz
+M-f,MF_3b_anahtar_ayni_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_KEY,ATK_SAME",executable_legacy,V,V,evet,12,6.1,88.9,1,temiz
+M-f,MF_3b_anahtar_ayni_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_KEY,ATK_SAME",executable_pre_migration,V,V,evet,12,6.14,90.3,1,temiz
+M-f,MF_3b_anahtar_ayni_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_KEY,ATK_SAME",executable_lifecycle,V,V,evet,19,9.33,158.9,1,temiz
+M-f,MF_3b_anahtar_ayni_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_KEY,ATK_SAME",executable_learn,V,V,evet,7,5.64,83.6,1,temiz
+M-f,MF_3b_anahtar_ayni_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_KEY,ATK_SAME",attack_needs_crqc,V,V,evet,126,7.4,123.1,1,temiz
+M-f,MF_3b_anahtar_ayni_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_KEY,ATK_SAME",G1_claims_unforgeability,V,V,evet,157,8.38,125.8,1,temiz
+M-f,MF_3b_anahtar_ayni_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_KEY,ATK_SAME",G5_path_untimed,F,F,evet,19,7.78,143.4,1,temiz
+M-f,MF_3b_anahtar_ayni_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_KEY,ATK_SAME",G5_path_migrated,F,F,evet,20,8.84,154.6,1,temiz
+M-f,MF_3b_anahtar_ayni_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_KEY,ATK_SAME",G5_path_timed,F,F,evet,21,8.41,153.1,1,temiz
+M-f,MF_3b_anahtar_ayni_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_KEY,ATK_SAME",no_rollback_path,F,F,evet,23,11.79,198.1,1,temiz
+M-f,MF_3b_anahtar_ayni_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_KEY,ATK_SAME",M_downgrade_s1,F,F,evet,49,6.27,94.8,1,temiz
+M-f,MF_3b_anahtar_ayni_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_KEY,ATK_SAME",M_forgery_crqc,F,F,evet,634,18.13,260.0,1,temiz
+M-f,MF_3b_anahtar_ayni_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_KEY,ATK_SAME",M_weak_path_forgery,F,F,evet,346,12.32,174.1,1,temiz
+M-f,MF_3b_anahtar_klasik_kok,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_KEY,ATK_ROOT",G5_untimed,V,V,evet,27,5.9,88.2,1,temiz
+M-f,MF_3b_anahtar_klasik_kok,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_KEY,ATK_ROOT",G5_migrated,V,V,evet,58,6.72,94.3,1,temiz
+M-f,MF_3b_anahtar_klasik_kok,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_KEY,ATK_ROOT",G5_timed,V,V,evet,76,6.93,98.3,1,temiz
+M-f,MF_3b_anahtar_klasik_kok,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_KEY,ATK_ROOT",no_rollback,V,V,evet,138,8.78,129.1,1,temiz
+M-f,MF_3b_anahtar_klasik_kok,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_KEY,ATK_ROOT",first_contact_downgrade,F,F,evet,58,6.61,94.3,1,temiz
+M-f,MF_3b_anahtar_klasik_kok,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_KEY,ATK_ROOT",executable,V,V,evet,17,11.45,226.0,1,temiz
+M-f,MF_3b_anahtar_klasik_kok,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_KEY,ATK_ROOT",executable_legacy,V,V,evet,12,6.7,91.8,1,temiz
+M-f,MF_3b_anahtar_klasik_kok,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_KEY,ATK_ROOT",executable_pre_migration,V,V,evet,12,6.68,92.2,1,temiz
+M-f,MF_3b_anahtar_klasik_kok,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_KEY,ATK_ROOT",executable_lifecycle,V,V,evet,19,9.96,161.3,1,temiz
+M-f,MF_3b_anahtar_klasik_kok,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_KEY,ATK_ROOT",executable_learn,V,V,evet,7,6.22,85.4,1,temiz
+M-f,MF_3b_anahtar_klasik_kok,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_KEY,ATK_ROOT",attack_needs_crqc,V,V,evet,126,7.74,119.7,1,temiz
+M-f,MF_3b_anahtar_klasik_kok,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_KEY,ATK_ROOT",G1_claims_unforgeability,V,V,evet,157,9.02,133.4,1,temiz
+M-f,MF_3b_anahtar_klasik_kok,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_KEY,ATK_ROOT",G5_path_untimed,F,F,evet,19,8.52,143.7,1,temiz
+M-f,MF_3b_anahtar_klasik_kok,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_KEY,ATK_ROOT",G5_path_migrated,F,F,evet,20,10.02,195.3,1,temiz
+M-f,MF_3b_anahtar_klasik_kok,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_KEY,ATK_ROOT",G5_path_timed,F,F,evet,21,8.3,149.2,1,temiz
+M-f,MF_3b_anahtar_klasik_kok,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_KEY,ATK_ROOT",no_rollback_path,F,F,evet,23,11.58,202.2,1,temiz
+M-f,MF_3b_anahtar_klasik_kok,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_KEY,ATK_ROOT",M_downgrade_s1,F,F,evet,49,6.45,93.5,1,temiz
+M-f,MF_3b_anahtar_klasik_kok,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_KEY,ATK_ROOT",M_forgery_crqc,F,F,evet,634,18.29,268.2,1,temiz
+M-f,MF_3b_anahtar_klasik_kok,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_KEY,ATK_ROOT",M_weak_path_forgery,F,F,evet,346,12.37,177.9,1,temiz
+M-f,MF_3b_yaprak_farkli_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_LEAF,ATK_DIFF",G5_untimed,V,V,evet,27,6.1,88.3,1,temiz
+M-f,MF_3b_yaprak_farkli_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_LEAF,ATK_DIFF",G5_migrated,V,V,evet,58,6.53,96.7,1,temiz
+M-f,MF_3b_yaprak_farkli_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_LEAF,ATK_DIFF",G5_timed,V,V,evet,76,6.92,99.0,1,temiz
+M-f,MF_3b_yaprak_farkli_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_LEAF,ATK_DIFF",no_rollback,V,V,evet,138,8.5,130.9,1,temiz
+M-f,MF_3b_yaprak_farkli_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_LEAF,ATK_DIFF",first_contact_downgrade,F,F,evet,58,6.47,94.0,1,temiz
+M-f,MF_3b_yaprak_farkli_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_LEAF,ATK_DIFF",executable,V,V,evet,16,7.01,120.0,1,temiz
+M-f,MF_3b_yaprak_farkli_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_LEAF,ATK_DIFF",executable_legacy,V,V,evet,14,6.21,105.7,1,temiz
+M-f,MF_3b_yaprak_farkli_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_LEAF,ATK_DIFF",executable_pre_migration,V,V,evet,14,6.18,107.4,1,temiz
+M-f,MF_3b_yaprak_farkli_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_LEAF,ATK_DIFF",executable_lifecycle,V,V,evet,16,6.63,143.9,1,temiz
+M-f,MF_3b_yaprak_farkli_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_LEAF,ATK_DIFF",executable_learn,V,V,evet,7,5.61,85.8,1,temiz
+M-f,MF_3b_yaprak_farkli_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_LEAF,ATK_DIFF",attack_needs_crqc,V,V,evet,122,7.17,118.4,1,temiz
+M-f,MF_3b_yaprak_farkli_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_LEAF,ATK_DIFF",G1_claims_unforgeability,F,F,evet,14,7.66,156.1,1,temiz
+M-f,MF_3b_yaprak_farkli_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_LEAF,ATK_DIFF",G5_path_untimed,F,F,evet,16,6.33,110.8,1,temiz
+M-f,MF_3b_yaprak_farkli_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_LEAF,ATK_DIFF",G5_path_migrated,F,F,evet,15,6.65,143.7,1,temiz
+M-f,MF_3b_yaprak_farkli_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_LEAF,ATK_DIFF",G5_path_timed,F,F,evet,16,6.78,146.8,1,temiz
+M-f,MF_3b_yaprak_farkli_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_LEAF,ATK_DIFF",no_rollback_path,F,F,evet,20,12.82,316.6,1,temiz
+M-f,MF_3b_yaprak_farkli_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_LEAF,ATK_DIFF",M_downgrade_s1,F,F,evet,49,6.11,94.4,1,temiz
+M-f,MF_3b_yaprak_farkli_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_LEAF,ATK_DIFF",M_forgery_crqc,V,V,evet,17,30.89,901.3,1,temiz
+M-f,MF_3b_yaprak_farkli_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_LEAF,ATK_DIFF",M_weak_path_forgery,V,V,evet,18,17.12,432.7,1,temiz
+M-f,MF_3b_yaprak_ayni_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_LEAF,ATK_SAME",G5_untimed,V,V,evet,27,6.03,88.2,1,temiz
+M-f,MF_3b_yaprak_ayni_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_LEAF,ATK_SAME",G5_migrated,V,V,evet,58,6.62,96.3,1,temiz
+M-f,MF_3b_yaprak_ayni_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_LEAF,ATK_SAME",G5_timed,V,V,evet,76,6.9,97.7,1,temiz
+M-f,MF_3b_yaprak_ayni_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_LEAF,ATK_SAME",no_rollback,V,V,evet,138,8.78,129.8,1,temiz
+M-f,MF_3b_yaprak_ayni_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_LEAF,ATK_SAME",first_contact_downgrade,F,F,evet,58,6.51,94.2,1,temiz
+M-f,MF_3b_yaprak_ayni_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_LEAF,ATK_SAME",executable,V,V,evet,16,6.9,103.6,1,temiz
+M-f,MF_3b_yaprak_ayni_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_LEAF,ATK_SAME",executable_legacy,V,V,evet,12,6.05,89.1,1,temiz
+M-f,MF_3b_yaprak_ayni_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_LEAF,ATK_SAME",executable_pre_migration,V,V,evet,12,6.19,90.4,1,temiz
+M-f,MF_3b_yaprak_ayni_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_LEAF,ATK_SAME",executable_lifecycle,V,V,evet,16,7.42,142.0,1,temiz
+M-f,MF_3b_yaprak_ayni_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_LEAF,ATK_SAME",executable_learn,V,V,evet,7,5.62,85.3,1,temiz
+M-f,MF_3b_yaprak_ayni_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_LEAF,ATK_SAME",attack_needs_crqc,V,V,evet,122,7.21,115.5,1,temiz
+M-f,MF_3b_yaprak_ayni_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_LEAF,ATK_SAME",G1_claims_unforgeability,F,F,evet,16,7.82,157.1,1,temiz
+M-f,MF_3b_yaprak_ayni_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_LEAF,ATK_SAME",G5_path_untimed,F,F,evet,16,6.42,105.9,1,temiz
+M-f,MF_3b_yaprak_ayni_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_LEAF,ATK_SAME",G5_path_migrated,F,F,evet,15,7.67,140.4,1,temiz
+M-f,MF_3b_yaprak_ayni_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_LEAF,ATK_SAME",G5_path_timed,F,F,evet,16,7.28,145.7,1,temiz
+M-f,MF_3b_yaprak_ayni_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_LEAF,ATK_SAME",no_rollback_path,F,F,evet,20,12.79,306.6,1,temiz
+M-f,MF_3b_yaprak_ayni_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_LEAF,ATK_SAME",M_downgrade_s1,F,F,evet,49,6.17,94.1,1,temiz
+M-f,MF_3b_yaprak_ayni_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_LEAF,ATK_SAME",M_forgery_crqc,V,V,evet,19,32.21,979.3,1,temiz
+M-f,MF_3b_yaprak_ayni_ad,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_LEAF,ATK_SAME",M_weak_path_forgery,V,V,evet,20,18.04,447.1,1,temiz
+M-f,MF_3b_yaprak_klasik_kok,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_LEAF,ATK_ROOT",G5_untimed,V,V,evet,27,5.98,88.4,1,temiz
+M-f,MF_3b_yaprak_klasik_kok,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_LEAF,ATK_ROOT",G5_migrated,V,V,evet,58,6.64,94.0,1,temiz
+M-f,MF_3b_yaprak_klasik_kok,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_LEAF,ATK_ROOT",G5_timed,V,V,evet,76,6.98,98.2,1,temiz
+M-f,MF_3b_yaprak_klasik_kok,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_LEAF,ATK_ROOT",no_rollback,V,V,evet,138,8.55,130.7,1,temiz
+M-f,MF_3b_yaprak_klasik_kok,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_LEAF,ATK_ROOT",first_contact_downgrade,F,F,evet,58,6.65,97.8,1,temiz
+M-f,MF_3b_yaprak_klasik_kok,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_LEAF,ATK_ROOT",executable,V,V,evet,16,6.94,104.3,1,temiz
+M-f,MF_3b_yaprak_klasik_kok,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_LEAF,ATK_ROOT",executable_legacy,V,V,evet,12,6.06,93.1,1,temiz
+M-f,MF_3b_yaprak_klasik_kok,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_LEAF,ATK_ROOT",executable_pre_migration,V,V,evet,12,6.08,90.8,1,temiz
+M-f,MF_3b_yaprak_klasik_kok,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_LEAF,ATK_ROOT",executable_lifecycle,V,V,evet,16,7.08,144.9,1,temiz
+M-f,MF_3b_yaprak_klasik_kok,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_LEAF,ATK_ROOT",executable_learn,V,V,evet,7,5.63,83.4,1,temiz
+M-f,MF_3b_yaprak_klasik_kok,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_LEAF,ATK_ROOT",attack_needs_crqc,V,V,evet,122,7.25,115.1,1,temiz
+M-f,MF_3b_yaprak_klasik_kok,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_LEAF,ATK_ROOT",G1_claims_unforgeability,F,F,evet,14,7.87,159.4,1,temiz
+M-f,MF_3b_yaprak_klasik_kok,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_LEAF,ATK_ROOT",G5_path_untimed,F,F,evet,16,6.5,111.9,1,temiz
+M-f,MF_3b_yaprak_klasik_kok,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_LEAF,ATK_ROOT",G5_path_migrated,F,F,evet,15,6.98,142.4,1,temiz
+M-f,MF_3b_yaprak_klasik_kok,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_LEAF,ATK_ROOT",G5_path_timed,F,F,evet,16,6.77,144.8,1,temiz
+M-f,MF_3b_yaprak_klasik_kok,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_LEAF,ATK_ROOT",no_rollback_path,F,F,evet,20,12.81,314.2,1,temiz
+M-f,MF_3b_yaprak_klasik_kok,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_LEAF,ATK_ROOT",M_downgrade_s1,F,F,evet,49,7.13,96.3,1,temiz
+M-f,MF_3b_yaprak_klasik_kok,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_LEAF,ATK_ROOT",M_forgery_crqc,V,V,evet,17,34.01,909.3,1,temiz
+M-f,MF_3b_yaprak_klasik_kok,3b,Mf_yol.spthy,"FRESH,PQ_CHAN,SCOPE_LEAF,ATK_ROOT",M_weak_path_forgery,V,V,evet,18,18.36,461.5,1,temiz
+M-f,MF_tas_tl_onbellek,tasiyici,Mf_yol.spthy,"OBJ,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_untimed,V,V,evet,43,6.1,95.4,1,temiz
+M-f,MF_tas_tl_onbellek,tasiyici,Mf_yol.spthy,"OBJ,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_migrated,F,F,evet,14,6.87,112.9,1,temiz
+M-f,MF_tas_tl_onbellek,tasiyici,Mf_yol.spthy,"OBJ,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_timed,F,F,evet,16,6.93,114.4,1,temiz
+M-f,MF_tas_tl_onbellek,tasiyici,Mf_yol.spthy,"OBJ,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",no_rollback,F,F,evet,15,6.88,142.8,1,temiz
+M-f,MF_tas_tl_onbellek,tasiyici,Mf_yol.spthy,"OBJ,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",first_contact_downgrade,V,V,evet,14,6.89,109.0,1,temiz
+M-f,MF_tas_tl_onbellek,tasiyici,Mf_yol.spthy,"OBJ,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",executable,V,V,evet,15,6.84,103.8,1,temiz
+M-f,MF_tas_tl_onbellek,tasiyici,Mf_yol.spthy,"OBJ,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",executable_legacy,V,V,evet,13,6.23,108.0,1,temiz
+M-f,MF_tas_tl_onbellek,tasiyici,Mf_yol.spthy,"OBJ,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",executable_pre_migration,V,V,evet,13,7.22,111.5,1,temiz
+M-f,MF_tas_tl_onbellek,tasiyici,Mf_yol.spthy,"OBJ,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",executable_lifecycle,V,V,evet,15,9.52,127.7,1,temiz
+M-f,MF_tas_tl_onbellek,tasiyici,Mf_yol.spthy,"OBJ,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",executable_learn,V,V,evet,6,6.09,84.1,1,temiz
+M-f,MF_tas_tl_onbellek,tasiyici,Mf_yol.spthy,"OBJ,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",attack_needs_crqc,V,V,evet,158,8.87,122.3,1,temiz
+M-f,MF_tas_tl_onbellek,tasiyici,Mf_yol.spthy,"OBJ,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",G1_claims_unforgeability,F,F,evet,12,10.39,125.2,1,temiz
+M-f,MF_tas_tl_onbellek,tasiyici,Mf_yol.spthy,"OBJ,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_path_untimed,V,V,evet,51,7.15,88.6,1,temiz
+M-f,MF_tas_tl_onbellek,tasiyici,Mf_yol.spthy,"OBJ,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_path_migrated,F,F,evet,15,7.17,112.8,1,temiz
+M-f,MF_tas_tl_onbellek,tasiyici,Mf_yol.spthy,"OBJ,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_path_timed,F,F,evet,15,7.28,120.0,1,temiz
+M-f,MF_tas_tl_onbellek,tasiyici,Mf_yol.spthy,"OBJ,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",no_rollback_path,F,F,evet,16,6.58,124.5,1,temiz
+M-f,MF_tas_tl_onbellek,tasiyici,Mf_yol.spthy,"OBJ,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",M_downgrade_s1,V,V,evet,12,6.4,97.9,1,temiz
+M-f,MF_tas_tl_onbellek,tasiyici,Mf_yol.spthy,"OBJ,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",M_forgery_crqc,V,V,evet,15,20.48,294.2,1,temiz
+M-f,MF_tas_tl_onbellek,tasiyici,Mf_yol.spthy,"OBJ,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",M_weak_path_forgery,V,V,evet,16,11.39,169.6,1,temiz
+M-f,MF_tas_wrprc_faz0,tasiyici,Mf_yol.spthy,"WRPRC,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_untimed,F,F,evet,12,6.11,103.8,1,temiz
+M-f,MF_tas_wrprc_faz0,tasiyici,Mf_yol.spthy,"WRPRC,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_migrated,F,F,evet,13,6.48,109.3,1,temiz
+M-f,MF_tas_wrprc_faz0,tasiyici,Mf_yol.spthy,"WRPRC,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_timed,F,F,evet,14,6.27,108.0,1,temiz
+M-f,MF_tas_wrprc_faz0,tasiyici,Mf_yol.spthy,"WRPRC,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",no_rollback,F,F,evet,12,6.26,125.1,1,temiz
+M-f,MF_tas_wrprc_faz0,tasiyici,Mf_yol.spthy,"WRPRC,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",first_contact_downgrade,V,V,evet,13,6.68,109.7,1,temiz
+M-f,MF_tas_wrprc_faz0,tasiyici,Mf_yol.spthy,"WRPRC,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",executable,V,V,evet,13,6.65,101.0,1,temiz
+M-f,MF_tas_wrprc_faz0,tasiyici,Mf_yol.spthy,"WRPRC,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",executable_legacy,V,V,evet,12,5.84,100.6,1,temiz
+M-f,MF_tas_wrprc_faz0,tasiyici,Mf_yol.spthy,"WRPRC,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",executable_pre_migration,V,V,evet,12,6.07,107.5,1,temiz
+M-f,MF_tas_wrprc_faz0,tasiyici,Mf_yol.spthy,"WRPRC,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",executable_lifecycle,V,V,evet,15,5.83,98.0,1,temiz
+M-f,MF_tas_wrprc_faz0,tasiyici,Mf_yol.spthy,"WRPRC,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",executable_learn,V,V,evet,3,5.1,83.4,1,temiz
+M-f,MF_tas_wrprc_faz0,tasiyici,Mf_yol.spthy,"WRPRC,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",attack_needs_crqc,V,V,evet,158,7.76,119.5,1,temiz
+M-f,MF_tas_wrprc_faz0,tasiyici,Mf_yol.spthy,"WRPRC,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",G1_claims_unforgeability,F,F,evet,11,8.44,125.4,1,temiz
+M-f,MF_tas_wrprc_faz0,tasiyici,Mf_yol.spthy,"WRPRC,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_path_untimed,F,F,evet,13,6.26,100.5,1,temiz
+M-f,MF_tas_wrprc_faz0,tasiyici,Mf_yol.spthy,"WRPRC,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_path_migrated,F,F,evet,14,6.18,107.1,1,temiz
+M-f,MF_tas_wrprc_faz0,tasiyici,Mf_yol.spthy,"WRPRC,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_path_timed,F,F,evet,15,6.1,110.5,1,temiz
+M-f,MF_tas_wrprc_faz0,tasiyici,Mf_yol.spthy,"WRPRC,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",no_rollback_path,F,F,evet,13,5.95,108.5,1,temiz
+M-f,MF_tas_wrprc_faz0,tasiyici,Mf_yol.spthy,"WRPRC,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",M_downgrade_s1,V,V,evet,11,6.28,97.1,1,temiz
+M-f,MF_tas_wrprc_faz0,tasiyici,Mf_yol.spthy,"WRPRC,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",M_forgery_crqc,V,V,evet,14,7.26,223.8,1,temiz
+M-f,MF_tas_wrprc_faz0,tasiyici,Mf_yol.spthy,"WRPRC,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",M_weak_path_forgery,V,V,evet,15,5.92,132.2,1,temiz
+M-f,MF_tas_wrprc_faz1,tasiyici,Mf_yol.spthy,"WRPRC,WRPRC_FAZ1,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_untimed,V,V,evet,43,6.11,93.0,1,temiz
+M-f,MF_tas_wrprc_faz1,tasiyici,Mf_yol.spthy,"WRPRC,WRPRC_FAZ1,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_migrated,F,F,evet,14,6.97,108.5,1,temiz
+M-f,MF_tas_wrprc_faz1,tasiyici,Mf_yol.spthy,"WRPRC,WRPRC_FAZ1,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_timed,F,F,evet,16,7.1,114.6,1,temiz
+M-f,MF_tas_wrprc_faz1,tasiyici,Mf_yol.spthy,"WRPRC,WRPRC_FAZ1,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",no_rollback,F,F,evet,15,6.83,144.1,1,temiz
+M-f,MF_tas_wrprc_faz1,tasiyici,Mf_yol.spthy,"WRPRC,WRPRC_FAZ1,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",first_contact_downgrade,V,V,evet,14,7.36,114.5,1,temiz
+M-f,MF_tas_wrprc_faz1,tasiyici,Mf_yol.spthy,"WRPRC,WRPRC_FAZ1,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",executable,V,V,evet,15,6.94,104.5,1,temiz
+M-f,MF_tas_wrprc_faz1,tasiyici,Mf_yol.spthy,"WRPRC,WRPRC_FAZ1,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",executable_legacy,V,V,evet,13,6.09,106.4,1,temiz
+M-f,MF_tas_wrprc_faz1,tasiyici,Mf_yol.spthy,"WRPRC,WRPRC_FAZ1,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",executable_pre_migration,V,V,evet,13,6.33,107.6,1,temiz
+M-f,MF_tas_wrprc_faz1,tasiyici,Mf_yol.spthy,"WRPRC,WRPRC_FAZ1,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",executable_lifecycle,V,V,evet,15,8.42,129.2,1,temiz
+M-f,MF_tas_wrprc_faz1,tasiyici,Mf_yol.spthy,"WRPRC,WRPRC_FAZ1,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",executable_learn,V,V,evet,6,5.18,83.9,1,temiz
+M-f,MF_tas_wrprc_faz1,tasiyici,Mf_yol.spthy,"WRPRC,WRPRC_FAZ1,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",attack_needs_crqc,V,V,evet,158,7.71,129.1,1,temiz
+M-f,MF_tas_wrprc_faz1,tasiyici,Mf_yol.spthy,"WRPRC,WRPRC_FAZ1,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",G1_claims_unforgeability,F,F,evet,12,9.37,129.4,1,temiz
+M-f,MF_tas_wrprc_faz1,tasiyici,Mf_yol.spthy,"WRPRC,WRPRC_FAZ1,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_path_untimed,V,V,evet,51,6.05,87.9,1,temiz
+M-f,MF_tas_wrprc_faz1,tasiyici,Mf_yol.spthy,"WRPRC,WRPRC_FAZ1,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_path_migrated,F,F,evet,15,6.79,111.3,1,temiz
+M-f,MF_tas_wrprc_faz1,tasiyici,Mf_yol.spthy,"WRPRC,WRPRC_FAZ1,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_path_timed,F,F,evet,15,7.73,119.5,1,temiz
+M-f,MF_tas_wrprc_faz1,tasiyici,Mf_yol.spthy,"WRPRC,WRPRC_FAZ1,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",no_rollback_path,F,F,evet,16,6.71,131.6,1,temiz
+M-f,MF_tas_wrprc_faz1,tasiyici,Mf_yol.spthy,"WRPRC,WRPRC_FAZ1,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",M_downgrade_s1,V,V,evet,12,6.52,98.1,1,temiz
+M-f,MF_tas_wrprc_faz1,tasiyici,Mf_yol.spthy,"WRPRC,WRPRC_FAZ1,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",M_forgery_crqc,V,V,evet,15,20.38,280.1,1,temiz
+M-f,MF_tas_wrprc_faz1,tasiyici,Mf_yol.spthy,"WRPRC,WRPRC_FAZ1,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",M_weak_path_forgery,V,V,evet,16,11.64,174.5,1,temiz
+M-f,MF_tas_federasyon_pq,tasiyici,Mf_yol.spthy,"FED,FED_INT_PQ,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_untimed,V,V,evet,59,7.4,101.1,1,temiz
+M-f,MF_tas_federasyon_pq,tasiyici,Mf_yol.spthy,"FED,FED_INT_PQ,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_migrated,V,V,evet,126,9.15,119.9,1,temiz
+M-f,MF_tas_federasyon_pq,tasiyici,Mf_yol.spthy,"FED,FED_INT_PQ,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_timed,V,V,evet,164,9.7,127.9,1,temiz
+M-f,MF_tas_federasyon_pq,tasiyici,Mf_yol.spthy,"FED,FED_INT_PQ,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",no_rollback,V,V,evet,338,17.08,223.8,1,temiz
+M-f,MF_tas_federasyon_pq,tasiyici,Mf_yol.spthy,"FED,FED_INT_PQ,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",first_contact_downgrade,F,F,evet,126,9.02,120.8,1,temiz
+M-f,MF_tas_federasyon_pq,tasiyici,Mf_yol.spthy,"FED,FED_INT_PQ,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",executable,V,V,evet,18,10.9,148.0,1,temiz
+M-f,MF_tas_federasyon_pq,tasiyici,Mf_yol.spthy,"FED,FED_INT_PQ,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",executable_legacy,V,V,evet,16,7.23,128.2,1,temiz
+M-f,MF_tas_federasyon_pq,tasiyici,Mf_yol.spthy,"FED,FED_INT_PQ,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",executable_pre_migration,V,V,evet,16,7.68,128.9,1,temiz
+M-f,MF_tas_federasyon_pq,tasiyici,Mf_yol.spthy,"FED,FED_INT_PQ,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",executable_lifecycle,V,V,evet,20,10.76,147.0,1,temiz
+M-f,MF_tas_federasyon_pq,tasiyici,Mf_yol.spthy,"FED,FED_INT_PQ,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",executable_learn,V,V,evet,9,6.07,88.9,1,temiz
+M-f,MF_tas_federasyon_pq,tasiyici,Mf_yol.spthy,"FED,FED_INT_PQ,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",attack_needs_crqc,V,V,evet,158,8.72,142.9,1,temiz
+M-f,MF_tas_federasyon_pq,tasiyici,Mf_yol.spthy,"FED,FED_INT_PQ,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",G1_claims_unforgeability,V,V,evet,249,12.84,161.1,1,temiz
+M-f,MF_tas_federasyon_pq,tasiyici,Mf_yol.spthy,"FED,FED_INT_PQ,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_path_untimed,V,V,evet,63,7.22,98.0,1,temiz
+M-f,MF_tas_federasyon_pq,tasiyici,Mf_yol.spthy,"FED,FED_INT_PQ,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_path_migrated,V,V,evet,132,8.73,119.7,1,temiz
+M-f,MF_tas_federasyon_pq,tasiyici,Mf_yol.spthy,"FED,FED_INT_PQ,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_path_timed,V,V,evet,165,9.15,130.0,1,temiz
+M-f,MF_tas_federasyon_pq,tasiyici,Mf_yol.spthy,"FED,FED_INT_PQ,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",no_rollback_path,V,V,evet,288,14.99,202.8,1,temiz
+M-f,MF_tas_federasyon_pq,tasiyici,Mf_yol.spthy,"FED,FED_INT_PQ,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",M_downgrade_s1,F,F,evet,77,7.75,108.8,1,temiz
+M-f,MF_tas_federasyon_pq,tasiyici,Mf_yol.spthy,"FED,FED_INT_PQ,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",M_forgery_crqc,F,F,evet,1863,58.14,648.8,1,temiz
+M-f,MF_tas_federasyon_pq,tasiyici,Mf_yol.spthy,"FED,FED_INT_PQ,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",M_weak_path_forgery,F,F,evet,766,26.98,311.8,1,temiz
+M-f,MF_tas_federasyon_klasik_ara,tasiyici,Mf_yol.spthy,"FED,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_untimed,F,F,evet,15,8.48,158.2,1,temiz
+M-f,MF_tas_federasyon_klasik_ara,tasiyici,Mf_yol.spthy,"FED,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_migrated,F,F,evet,16,8.46,157.5,1,temiz
+M-f,MF_tas_federasyon_klasik_ara,tasiyici,Mf_yol.spthy,"FED,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_timed,F,F,evet,19,29.74,1003.5,1,temiz
+M-f,MF_tas_federasyon_klasik_ara,tasiyici,Mf_yol.spthy,"FED,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",no_rollback,F,F,evet,22,39.99,1232.4,1,temiz
+M-f,MF_tas_federasyon_klasik_ara,tasiyici,Mf_yol.spthy,"FED,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",first_contact_downgrade,V,V,evet,16,8.34,164.4,1,temiz
+M-f,MF_tas_federasyon_klasik_ara,tasiyici,Mf_yol.spthy,"FED,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",executable,V,V,evet,16,9.95,179.2,1,temiz
+M-f,MF_tas_federasyon_klasik_ara,tasiyici,Mf_yol.spthy,"FED,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",executable_legacy,V,V,evet,16,7.37,125.9,1,temiz
+M-f,MF_tas_federasyon_klasik_ara,tasiyici,Mf_yol.spthy,"FED,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",executable_pre_migration,V,V,evet,16,7.56,129.0,1,temiz
+M-f,MF_tas_federasyon_klasik_ara,tasiyici,Mf_yol.spthy,"FED,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",executable_lifecycle,V,V,evet,20,17.12,419.5,1,temiz
+M-f,MF_tas_federasyon_klasik_ara,tasiyici,Mf_yol.spthy,"FED,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",executable_learn,V,V,evet,9,6.29,90.4,1,temiz
+M-f,MF_tas_federasyon_klasik_ara,tasiyici,Mf_yol.spthy,"FED,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",attack_needs_crqc,V,V,evet,158,9.08,136.6,1,temiz
+M-f,MF_tas_federasyon_klasik_ara,tasiyici,Mf_yol.spthy,"FED,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",G1_claims_unforgeability,F,F,evet,16,9.82,183.3,1,temiz
+M-f,MF_tas_federasyon_klasik_ara,tasiyici,Mf_yol.spthy,"FED,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_path_untimed,F,F,evet,16,7.88,152.3,1,temiz
+M-f,MF_tas_federasyon_klasik_ara,tasiyici,Mf_yol.spthy,"FED,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_path_migrated,F,F,evet,19,34.98,1386.1,1,temiz
+M-f,MF_tas_federasyon_klasik_ara,tasiyici,Mf_yol.spthy,"FED,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_path_timed,F,F,evet,20,15.0,405.8,1,temiz
+M-f,MF_tas_federasyon_klasik_ara,tasiyici,Mf_yol.spthy,"FED,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",no_rollback_path,F,F,evet,23,22.4,654.3,1,temiz
+M-f,MF_tas_federasyon_klasik_ara,tasiyici,Mf_yol.spthy,"FED,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",M_downgrade_s1,F,F,evet,79,7.34,107.3,1,temiz
+M-f,MF_tas_federasyon_klasik_ara,tasiyici,Mf_yol.spthy,"FED,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",M_forgery_crqc,V,V,evet,19,138.02,4499.5,1,temiz
+M-f,MF_tas_federasyon_klasik_ara,tasiyici,Mf_yol.spthy,"FED,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",M_weak_path_forgery,V,V,evet,20,40.89,877.7,1,temiz
+M-f,MF_tas_federasyon_bayat,tasiyici,Mf_yol.spthy,"FED,FED_INT_PQ,FED_STALE,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_untimed,V,V,evet,59,7.21,96.9,1,temiz
+M-f,MF_tas_federasyon_bayat,tasiyici,Mf_yol.spthy,"FED,FED_INT_PQ,FED_STALE,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_migrated,F,F,evet,16,8.43,127.7,1,temiz
+M-f,MF_tas_federasyon_bayat,tasiyici,Mf_yol.spthy,"FED,FED_INT_PQ,FED_STALE,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_timed,F,F,evet,16,8.93,167.9,1,temiz
+M-f,MF_tas_federasyon_bayat,tasiyici,Mf_yol.spthy,"FED,FED_INT_PQ,FED_STALE,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",no_rollback,F,F,evet,20,17.83,379.4,1,temiz
+M-f,MF_tas_federasyon_bayat,tasiyici,Mf_yol.spthy,"FED,FED_INT_PQ,FED_STALE,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",first_contact_downgrade,V,V,evet,16,8.49,131.7,1,temiz
+M-f,MF_tas_federasyon_bayat,tasiyici,Mf_yol.spthy,"FED,FED_INT_PQ,FED_STALE,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",executable,V,V,evet,16,10.03,155.3,1,temiz
+M-f,MF_tas_federasyon_bayat,tasiyici,Mf_yol.spthy,"FED,FED_INT_PQ,FED_STALE,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",executable_legacy,V,V,evet,15,7.12,116.9,1,temiz
+M-f,MF_tas_federasyon_bayat,tasiyici,Mf_yol.spthy,"FED,FED_INT_PQ,FED_STALE,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",executable_pre_migration,V,V,evet,15,6.91,124.6,1,temiz
+M-f,MF_tas_federasyon_bayat,tasiyici,Mf_yol.spthy,"FED,FED_INT_PQ,FED_STALE,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",executable_lifecycle,V,V,evet,19,14.25,331.1,1,temiz
+M-f,MF_tas_federasyon_bayat,tasiyici,Mf_yol.spthy,"FED,FED_INT_PQ,FED_STALE,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",executable_learn,V,V,evet,8,6.08,87.4,1,temiz
+M-f,MF_tas_federasyon_bayat,tasiyici,Mf_yol.spthy,"FED,FED_INT_PQ,FED_STALE,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",attack_needs_crqc,V,V,evet,158,8.9,138.0,1,temiz
+M-f,MF_tas_federasyon_bayat,tasiyici,Mf_yol.spthy,"FED,FED_INT_PQ,FED_STALE,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",G1_claims_unforgeability,F,F,evet,14,10.97,178.8,1,temiz
+M-f,MF_tas_federasyon_bayat,tasiyici,Mf_yol.spthy,"FED,FED_INT_PQ,FED_STALE,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_path_untimed,V,V,evet,63,7.07,98.9,1,temiz
+M-f,MF_tas_federasyon_bayat,tasiyici,Mf_yol.spthy,"FED,FED_INT_PQ,FED_STALE,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_path_migrated,F,F,evet,15,8.52,158.9,1,temiz
+M-f,MF_tas_federasyon_bayat,tasiyici,Mf_yol.spthy,"FED,FED_INT_PQ,FED_STALE,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_path_timed,F,F,evet,19,13.29,329.2,1,temiz
+M-f,MF_tas_federasyon_bayat,tasiyici,Mf_yol.spthy,"FED,FED_INT_PQ,FED_STALE,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",no_rollback_path,F,F,evet,21,14.66,258.4,1,temiz
+M-f,MF_tas_federasyon_bayat,tasiyici,Mf_yol.spthy,"FED,FED_INT_PQ,FED_STALE,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",M_downgrade_s1,V,V,evet,14,7.49,108.6,1,temiz
+M-f,MF_tas_federasyon_bayat,tasiyici,Mf_yol.spthy,"FED,FED_INT_PQ,FED_STALE,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",M_forgery_crqc,V,V,evet,17,121.35,3989.6,1,temiz
+M-f,MF_tas_federasyon_bayat,tasiyici,Mf_yol.spthy,"FED,FED_INT_PQ,FED_STALE,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",M_weak_path_forgery,V,V,evet,18,7024.43,905.1,1,temiz
+M-f,MF_tas_crit_baslik,ablasyon,Mf_yol.spthy,"CRIT,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_untimed,F,F,evet,12,7.01,103.7,1,temiz
+M-f,MF_tas_crit_baslik,ablasyon,Mf_yol.spthy,"CRIT,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_migrated,F,F,evet,13,7.76,111.6,1,temiz
+M-f,MF_tas_crit_baslik,ablasyon,Mf_yol.spthy,"CRIT,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_timed,F,F,evet,14,7.88,105.6,1,temiz
+M-f,MF_tas_crit_baslik,ablasyon,Mf_yol.spthy,"CRIT,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",no_rollback,F,F,evet,16,7.75,116.9,1,temiz
+M-f,MF_tas_crit_baslik,ablasyon,Mf_yol.spthy,"CRIT,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",first_contact_downgrade,V,V,evet,13,7.34,108.7,1,temiz
+M-f,MF_tas_crit_baslik,ablasyon,Mf_yol.spthy,"CRIT,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",executable,V,V,evet,13,7.4,102.0,1,temiz
+M-f,MF_tas_crit_baslik,ablasyon,Mf_yol.spthy,"CRIT,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",executable_legacy,V,V,evet,12,6.85,110.7,1,temiz
+M-f,MF_tas_crit_baslik,ablasyon,Mf_yol.spthy,"CRIT,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",executable_pre_migration,V,V,evet,12,7.18,105.4,1,temiz
+M-f,MF_tas_crit_baslik,ablasyon,Mf_yol.spthy,"CRIT,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",executable_lifecycle,V,V,evet,15,6.59,98.9,1,temiz
+M-f,MF_tas_crit_baslik,ablasyon,Mf_yol.spthy,"CRIT,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",executable_learn,V,V,evet,7,5.63,82.4,1,temiz
+M-f,MF_tas_crit_baslik,ablasyon,Mf_yol.spthy,"CRIT,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",attack_needs_crqc,V,V,evet,132,7.67,109.2,1,temiz
+M-f,MF_tas_crit_baslik,ablasyon,Mf_yol.spthy,"CRIT,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",G1_claims_unforgeability,F,F,evet,11,8.09,118.3,1,temiz
+M-f,MF_tas_crit_baslik,ablasyon,Mf_yol.spthy,"CRIT,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_path_untimed,F,F,evet,13,6.49,100.7,1,temiz
+M-f,MF_tas_crit_baslik,ablasyon,Mf_yol.spthy,"CRIT,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_path_migrated,F,F,evet,14,6.55,103.9,1,temiz
+M-f,MF_tas_crit_baslik,ablasyon,Mf_yol.spthy,"CRIT,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_path_timed,F,F,evet,15,6.88,106.6,1,temiz
+M-f,MF_tas_crit_baslik,ablasyon,Mf_yol.spthy,"CRIT,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",no_rollback_path,F,F,evet,15,8.05,145.8,1,temiz
+M-f,MF_tas_crit_baslik,ablasyon,Mf_yol.spthy,"CRIT,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",M_downgrade_s1,V,V,evet,11,6.78,94.6,1,temiz
+M-f,MF_tas_crit_baslik,ablasyon,Mf_yol.spthy,"CRIT,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",M_forgery_crqc,V,V,evet,14,7.29,217.8,1,temiz
+M-f,MF_tas_crit_baslik,ablasyon,Mf_yol.spthy,"CRIT,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT",M_weak_path_forgery,V,V,evet,15,6.33,132.9,1,temiz
+M-h reddy,MH_reddy_klasik_zincir,3a,M_h.spthy,MH_REDDY,G5_untimed,F,F,evet,8,2.35,80.6,1,temiz
+M-h reddy,MH_reddy_klasik_zincir,3a,M_h.spthy,MH_REDDY,G5_migrated,F,F,evet,9,3.03,102.7,1,temiz
+M-h reddy,MH_reddy_klasik_zincir,3a,M_h.spthy,MH_REDDY,G5_timed,F,F,evet,10,2.7,87.3,1,temiz
+M-h reddy,MH_reddy_klasik_zincir,3a,M_h.spthy,MH_REDDY,no_rollback,V,V,evet,2,1.82,77.9,1,temiz
+M-h reddy,MH_reddy_klasik_zincir,3a,M_h.spthy,MH_REDDY,first_contact_downgrade,V,V,evet,9,3.04,108.0,1,temiz
+M-h reddy,MH_reddy_klasik_zincir,3a,M_h.spthy,MH_REDDY,executable,V,V,evet,11,2.88,109.8,1,temiz
+M-h reddy,MH_reddy_klasik_zincir,3a,M_h.spthy,MH_REDDY,executable_legacy,V,V,evet,8,2.28,81.7,1,temiz
+M-h reddy,MH_reddy_klasik_zincir,3a,M_h.spthy,MH_REDDY,executable_pre_migration,V,V,evet,8,2.17,81.6,1,temiz
+M-h reddy,MH_reddy_klasik_zincir,3a,M_h.spthy,MH_REDDY,executable_lifecycle,V,V,evet,13,2.4,82.4,1,temiz
+M-h reddy,MH_reddy_klasik_zincir,3a,M_h.spthy,MH_REDDY,executable_learn,V,V,evet,7,3.11,100.8,1,temiz
+M-h reddy,MH_reddy_klasik_zincir,3a,M_h.spthy,MH_REDDY,attack_needs_crqc,V,V,evet,49,2.73,89.8,1,temiz
+M-h reddy,MH_reddy_klasik_zincir,3a,M_h.spthy,MH_REDDY,G1_claims_unforgeability,F,F,evet,10,2.68,94.1,1,temiz
+M-h reddy,MH_reddy_klasik_zincir,3a,M_h.spthy,MH_REDDY,G1_learned,F,F,evet,15,3.54,165.8,1,temiz
+M-h reddy,MH_reddy_klasik_zincir,3a,M_h.spthy,MH_REDDY,G1_learned_pq,F,F,evet,14,3.92,232.5,1,temiz
+M-h reddy,MH_reddy_klasik_zincir,3a,M_h.spthy,MH_REDDY,no_rollback_path,F,F,evet,16,3.48,134.6,1,temiz
+M-h reddy,MH_reddy_klasik_zincir,3a,M_h.spthy,MH_REDDY,M_downgrade_s1,V,V,evet,9,2.58,86.9,1,temiz
+M-h reddy,MH_reddy_klasik_zincir,3a,M_h.spthy,MH_REDDY,M_forgery_crqc,V,V,evet,14,2.64,100.7,1,temiz
+M-h reddy,MH_reddy_farkli_ad,3b,M_h.spthy,"MH_REDDY,CA_PQ,ATK_DIFF",G5_untimed,F,F,evet,8,2.35,85.8,1,temiz
+M-h reddy,MH_reddy_farkli_ad,3b,M_h.spthy,"MH_REDDY,CA_PQ,ATK_DIFF",G5_migrated,F,F,evet,9,3.28,115.7,1,temiz
+M-h reddy,MH_reddy_farkli_ad,3b,M_h.spthy,"MH_REDDY,CA_PQ,ATK_DIFF",G5_timed,F,F,evet,10,2.7,89.7,1,temiz
+M-h reddy,MH_reddy_farkli_ad,3b,M_h.spthy,"MH_REDDY,CA_PQ,ATK_DIFF",no_rollback,V,V,evet,2,1.85,79.1,1,temiz
+M-h reddy,MH_reddy_farkli_ad,3b,M_h.spthy,"MH_REDDY,CA_PQ,ATK_DIFF",first_contact_downgrade,V,V,evet,9,3.1,104.7,1,temiz
+M-h reddy,MH_reddy_farkli_ad,3b,M_h.spthy,"MH_REDDY,CA_PQ,ATK_DIFF",executable,V,V,evet,11,3.02,97.7,1,temiz
+M-h reddy,MH_reddy_farkli_ad,3b,M_h.spthy,"MH_REDDY,CA_PQ,ATK_DIFF",executable_legacy,V,V,evet,8,2.38,83.4,1,temiz
+M-h reddy,MH_reddy_farkli_ad,3b,M_h.spthy,"MH_REDDY,CA_PQ,ATK_DIFF",executable_pre_migration,V,V,evet,8,2.28,86.0,1,temiz
+M-h reddy,MH_reddy_farkli_ad,3b,M_h.spthy,"MH_REDDY,CA_PQ,ATK_DIFF",executable_lifecycle,V,V,evet,13,2.74,88.3,1,temiz
+M-h reddy,MH_reddy_farkli_ad,3b,M_h.spthy,"MH_REDDY,CA_PQ,ATK_DIFF",executable_learn,V,V,evet,7,3.21,101.8,1,temiz
+M-h reddy,MH_reddy_farkli_ad,3b,M_h.spthy,"MH_REDDY,CA_PQ,ATK_DIFF",attack_needs_crqc,V,V,evet,65,2.94,92.9,1,temiz
+M-h reddy,MH_reddy_farkli_ad,3b,M_h.spthy,"MH_REDDY,CA_PQ,ATK_DIFF",G1_claims_unforgeability,F,F,evet,10,3.07,105.6,1,temiz
+M-h reddy,MH_reddy_farkli_ad,3b,M_h.spthy,"MH_REDDY,CA_PQ,ATK_DIFF",G1_learned,F,F,evet,15,4.72,167.1,1,temiz
+M-h reddy,MH_reddy_farkli_ad,3b,M_h.spthy,"MH_REDDY,CA_PQ,ATK_DIFF",G1_learned_pq,F,F,evet,14,5.43,246.4,1,temiz
+M-h reddy,MH_reddy_farkli_ad,3b,M_h.spthy,"MH_REDDY,CA_PQ,ATK_DIFF",no_rollback_path,F,F,evet,15,5.27,188.0,1,temiz
+M-h reddy,MH_reddy_farkli_ad,3b,M_h.spthy,"MH_REDDY,CA_PQ,ATK_DIFF",M_downgrade_s1,V,V,evet,9,3.09,85.9,1,temiz
+M-h reddy,MH_reddy_farkli_ad,3b,M_h.spthy,"MH_REDDY,CA_PQ,ATK_DIFF",M_forgery_crqc,V,V,evet,14,3.2,117.7,1,temiz
+M-h reddy,MH_reddy_ayni_ad,3b,M_h.spthy,"MH_REDDY,CA_PQ,ATK_SAME",G5_untimed,F,F,evet,8,2.41,86.8,1,temiz
+M-h reddy,MH_reddy_ayni_ad,3b,M_h.spthy,"MH_REDDY,CA_PQ,ATK_SAME",G5_migrated,F,F,evet,9,3.33,115.4,1,temiz
+M-h reddy,MH_reddy_ayni_ad,3b,M_h.spthy,"MH_REDDY,CA_PQ,ATK_SAME",G5_timed,F,F,evet,10,3.05,92.8,1,temiz
+M-h reddy,MH_reddy_ayni_ad,3b,M_h.spthy,"MH_REDDY,CA_PQ,ATK_SAME",no_rollback,V,V,evet,2,2.11,78.8,1,temiz
+M-h reddy,MH_reddy_ayni_ad,3b,M_h.spthy,"MH_REDDY,CA_PQ,ATK_SAME",first_contact_downgrade,V,V,evet,9,3.62,125.6,1,temiz
+M-h reddy,MH_reddy_ayni_ad,3b,M_h.spthy,"MH_REDDY,CA_PQ,ATK_SAME",executable,V,V,evet,11,3.37,115.7,1,temiz
+M-h reddy,MH_reddy_ayni_ad,3b,M_h.spthy,"MH_REDDY,CA_PQ,ATK_SAME",executable_legacy,V,V,evet,8,2.6,86.8,1,temiz
+M-h reddy,MH_reddy_ayni_ad,3b,M_h.spthy,"MH_REDDY,CA_PQ,ATK_SAME",executable_pre_migration,V,V,evet,8,2.44,82.9,1,temiz
+M-h reddy,MH_reddy_ayni_ad,3b,M_h.spthy,"MH_REDDY,CA_PQ,ATK_SAME",executable_lifecycle,V,V,evet,13,3.01,88.8,1,temiz
+M-h reddy,MH_reddy_ayni_ad,3b,M_h.spthy,"MH_REDDY,CA_PQ,ATK_SAME",executable_learn,V,V,evet,7,3.68,124.0,1,temiz
+M-h reddy,MH_reddy_ayni_ad,3b,M_h.spthy,"MH_REDDY,CA_PQ,ATK_SAME",attack_needs_crqc,V,V,evet,65,3.16,95.4,1,temiz
+M-h reddy,MH_reddy_ayni_ad,3b,M_h.spthy,"MH_REDDY,CA_PQ,ATK_SAME",G1_claims_unforgeability,F,F,evet,10,3.18,97.1,1,temiz
+M-h reddy,MH_reddy_ayni_ad,3b,M_h.spthy,"MH_REDDY,CA_PQ,ATK_SAME",G1_learned,F,F,evet,15,6.71,189.2,1,temiz
+M-h reddy,MH_reddy_ayni_ad,3b,M_h.spthy,"MH_REDDY,CA_PQ,ATK_SAME",G1_learned_pq,F,F,evet,16,5.64,241.5,1,temiz
+M-h reddy,MH_reddy_ayni_ad,3b,M_h.spthy,"MH_REDDY,CA_PQ,ATK_SAME",no_rollback_path,F,F,evet,15,6.86,176.4,1,temiz
+M-h reddy,MH_reddy_ayni_ad,3b,M_h.spthy,"MH_REDDY,CA_PQ,ATK_SAME",M_downgrade_s1,V,V,evet,9,2.98,87.0,1,temiz
+M-h reddy,MH_reddy_ayni_ad,3b,M_h.spthy,"MH_REDDY,CA_PQ,ATK_SAME",M_forgery_crqc,V,V,evet,14,3.08,114.5,1,temiz
+M-h reddy,MH_reddy_klasik_kok,3b,M_h.spthy,"MH_REDDY,CA_PQ,ATK_ROOT",G5_untimed,F,F,evet,8,2.46,82.9,1,temiz
+M-h reddy,MH_reddy_klasik_kok,3b,M_h.spthy,"MH_REDDY,CA_PQ,ATK_ROOT",G5_migrated,F,F,evet,9,3.42,119.2,1,temiz
+M-h reddy,MH_reddy_klasik_kok,3b,M_h.spthy,"MH_REDDY,CA_PQ,ATK_ROOT",G5_timed,F,F,evet,10,2.8,88.8,1,temiz
+M-h reddy,MH_reddy_klasik_kok,3b,M_h.spthy,"MH_REDDY,CA_PQ,ATK_ROOT",no_rollback,V,V,evet,2,1.96,80.1,1,temiz
+M-h reddy,MH_reddy_klasik_kok,3b,M_h.spthy,"MH_REDDY,CA_PQ,ATK_ROOT",first_contact_downgrade,V,V,evet,9,3.26,113.4,1,temiz
+M-h reddy,MH_reddy_klasik_kok,3b,M_h.spthy,"MH_REDDY,CA_PQ,ATK_ROOT",executable,V,V,evet,11,3.27,110.8,1,temiz
+M-h reddy,MH_reddy_klasik_kok,3b,M_h.spthy,"MH_REDDY,CA_PQ,ATK_ROOT",executable_legacy,V,V,evet,8,2.22,86.5,1,temiz
+M-h reddy,MH_reddy_klasik_kok,3b,M_h.spthy,"MH_REDDY,CA_PQ,ATK_ROOT",executable_pre_migration,V,V,evet,8,2.3,84.9,1,temiz
+M-h reddy,MH_reddy_klasik_kok,3b,M_h.spthy,"MH_REDDY,CA_PQ,ATK_ROOT",executable_lifecycle,V,V,evet,13,2.66,86.1,1,temiz
+M-h reddy,MH_reddy_klasik_kok,3b,M_h.spthy,"MH_REDDY,CA_PQ,ATK_ROOT",executable_learn,V,V,evet,7,3.22,124.7,1,temiz
+M-h reddy,MH_reddy_klasik_kok,3b,M_h.spthy,"MH_REDDY,CA_PQ,ATK_ROOT",attack_needs_crqc,V,V,evet,65,2.91,94.4,1,temiz
+M-h reddy,MH_reddy_klasik_kok,3b,M_h.spthy,"MH_REDDY,CA_PQ,ATK_ROOT",G1_claims_unforgeability,F,F,evet,10,2.95,99.2,1,temiz
+M-h reddy,MH_reddy_klasik_kok,3b,M_h.spthy,"MH_REDDY,CA_PQ,ATK_ROOT",G1_learned,F,F,evet,15,4.71,172.3,1,temiz
+M-h reddy,MH_reddy_klasik_kok,3b,M_h.spthy,"MH_REDDY,CA_PQ,ATK_ROOT",G1_learned_pq,F,F,evet,14,5.12,229.0,1,temiz
+M-h reddy,MH_reddy_klasik_kok,3b,M_h.spthy,"MH_REDDY,CA_PQ,ATK_ROOT",no_rollback_path,F,F,evet,15,4.66,170.2,1,temiz
+M-h reddy,MH_reddy_klasik_kok,3b,M_h.spthy,"MH_REDDY,CA_PQ,ATK_ROOT",M_downgrade_s1,V,V,evet,9,2.8,86.7,1,temiz
+M-h reddy,MH_reddy_klasik_kok,3b,M_h.spthy,"MH_REDDY,CA_PQ,ATK_ROOT",M_forgery_crqc,V,V,evet,14,2.94,115.3,1,temiz
+M-h reddy,MH_reddy_adbag_farkli_ad,3a,M_h.spthy,"MH_REDDY,CA_PQ,NAME_BIND,ATK_DIFF",G5_untimed,F,F,evet,8,2.37,89.8,1,temiz
+M-h reddy,MH_reddy_adbag_farkli_ad,3a,M_h.spthy,"MH_REDDY,CA_PQ,NAME_BIND,ATK_DIFF",G5_migrated,F,F,evet,9,3.33,118.4,1,temiz
+M-h reddy,MH_reddy_adbag_farkli_ad,3a,M_h.spthy,"MH_REDDY,CA_PQ,NAME_BIND,ATK_DIFF",G5_timed,F,F,evet,10,2.75,87.9,1,temiz
+M-h reddy,MH_reddy_adbag_farkli_ad,3a,M_h.spthy,"MH_REDDY,CA_PQ,NAME_BIND,ATK_DIFF",no_rollback,V,V,evet,2,1.82,77.9,1,temiz
+M-h reddy,MH_reddy_adbag_farkli_ad,3a,M_h.spthy,"MH_REDDY,CA_PQ,NAME_BIND,ATK_DIFF",first_contact_downgrade,V,V,evet,9,3.15,123.0,1,temiz
+M-h reddy,MH_reddy_adbag_farkli_ad,3a,M_h.spthy,"MH_REDDY,CA_PQ,NAME_BIND,ATK_DIFF",executable,V,V,evet,11,3.08,109.9,1,temiz
+M-h reddy,MH_reddy_adbag_farkli_ad,3a,M_h.spthy,"MH_REDDY,CA_PQ,NAME_BIND,ATK_DIFF",executable_legacy,V,V,evet,8,2.32,82.7,1,temiz
+M-h reddy,MH_reddy_adbag_farkli_ad,3a,M_h.spthy,"MH_REDDY,CA_PQ,NAME_BIND,ATK_DIFF",executable_pre_migration,V,V,evet,8,2.31,83.5,1,temiz
+M-h reddy,MH_reddy_adbag_farkli_ad,3a,M_h.spthy,"MH_REDDY,CA_PQ,NAME_BIND,ATK_DIFF",executable_lifecycle,V,V,evet,13,2.83,88.3,1,temiz
+M-h reddy,MH_reddy_adbag_farkli_ad,3a,M_h.spthy,"MH_REDDY,CA_PQ,NAME_BIND,ATK_DIFF",executable_learn,V,V,evet,7,3.33,101.8,1,temiz
+M-h reddy,MH_reddy_adbag_farkli_ad,3a,M_h.spthy,"MH_REDDY,CA_PQ,NAME_BIND,ATK_DIFF",attack_needs_crqc,V,V,evet,65,3.01,93.6,1,temiz
+M-h reddy,MH_reddy_adbag_farkli_ad,3a,M_h.spthy,"MH_REDDY,CA_PQ,NAME_BIND,ATK_DIFF",G1_claims_unforgeability,F,F,evet,10,3.2,97.9,1,temiz
+M-h reddy,MH_reddy_adbag_farkli_ad,3a,M_h.spthy,"MH_REDDY,CA_PQ,NAME_BIND,ATK_DIFF",G1_learned,F,F,evet,13,21.7,531.9,1,temiz
+M-h reddy,MH_reddy_adbag_farkli_ad,3a,M_h.spthy,"MH_REDDY,CA_PQ,NAME_BIND,ATK_DIFF",G1_learned_pq,F,F,evet,16,5.37,257.1,1,temiz
+M-h reddy,MH_reddy_adbag_farkli_ad,3a,M_h.spthy,"MH_REDDY,CA_PQ,NAME_BIND,ATK_DIFF",no_rollback_path,F,F,evet,14,28.83,657.6,1,temiz
+M-h reddy,MH_reddy_adbag_farkli_ad,3a,M_h.spthy,"MH_REDDY,CA_PQ,NAME_BIND,ATK_DIFF",M_downgrade_s1,V,V,evet,9,2.96,88.2,1,temiz
+M-h reddy,MH_reddy_adbag_farkli_ad,3a,M_h.spthy,"MH_REDDY,CA_PQ,NAME_BIND,ATK_DIFF",M_forgery_crqc,V,V,evet,14,2.96,118.1,1,temiz
+M-h vicente,MH_vicente_klasik_zincir,3a,M_h.spthy,MH_VICENTE,G5_untimed,F,F,evet,8,3.21,100.0,1,temiz
+M-h vicente,MH_vicente_klasik_zincir,3a,M_h.spthy,MH_VICENTE,G5_migrated,F,F,evet,10,3.51,128.9,1,temiz
+M-h vicente,MH_vicente_klasik_zincir,3a,M_h.spthy,MH_VICENTE,G5_timed,F,F,evet,11,3.09,94.3,1,temiz
+M-h vicente,MH_vicente_klasik_zincir,3a,M_h.spthy,MH_VICENTE,no_rollback,F,F,evet,12,5.89,263.0,1,temiz
+M-h vicente,MH_vicente_klasik_zincir,3a,M_h.spthy,MH_VICENTE,first_contact_downgrade,V,V,evet,10,3.38,107.3,1,temiz
+M-h vicente,MH_vicente_klasik_zincir,3a,M_h.spthy,MH_VICENTE,executable,V,V,evet,16,7.39,234.9,1,temiz
+M-h vicente,MH_vicente_klasik_zincir,3a,M_h.spthy,MH_VICENTE,executable_legacy,V,V,evet,8,2.62,85.5,1,temiz
+M-h vicente,MH_vicente_klasik_zincir,3a,M_h.spthy,MH_VICENTE,executable_pre_migration,V,V,evet,8,3.18,111.2,1,temiz
+M-h vicente,MH_vicente_klasik_zincir,3a,M_h.spthy,MH_VICENTE,executable_lifecycle,V,V,evet,14,13.76,777.4,1,temiz
+M-h vicente,MH_vicente_klasik_zincir,3a,M_h.spthy,MH_VICENTE,executable_learn,V,V,evet,8,2.85,95.6,1,temiz
+M-h vicente,MH_vicente_klasik_zincir,3a,M_h.spthy,MH_VICENTE,attack_needs_crqc,V,V,evet,91,3.87,113.7,1,temiz
+M-h vicente,MH_vicente_klasik_zincir,3a,M_h.spthy,MH_VICENTE,G1_claims_unforgeability,F,F,evet,11,3.81,125.6,1,temiz
+M-h vicente,MH_vicente_klasik_zincir,3a,M_h.spthy,MH_VICENTE,G1_learned,F,F,evet,13,4.88,205.0,1,temiz
+M-h vicente,MH_vicente_klasik_zincir,3a,M_h.spthy,MH_VICENTE,G1_learned_pq,F,F,evet,15,4.13,161.0,1,temiz
+M-h vicente,MH_vicente_klasik_zincir,3a,M_h.spthy,MH_VICENTE,G1_learned_pq_genuine,V,V,evet,136,5.68,141.2,1,temiz
+M-h vicente,MH_vicente_klasik_zincir,3a,M_h.spthy,MH_VICENTE,no_rollback_path,F,F,evet,16,9.46,273.4,1,temiz
+M-h vicente,MH_vicente_klasik_zincir,3a,M_h.spthy,MH_VICENTE,M_downgrade_s1,V,V,evet,10,3.09,91.7,1,temiz
+M-h vicente,MH_vicente_klasik_zincir,3a,M_h.spthy,MH_VICENTE,M_forgery_crqc,V,V,evet,15,3.53,130.9,1,temiz
+M-h vicente,MH_vicente_farkli_ad,3b,M_h.spthy,"MH_VICENTE,CA_PQ,ATK_DIFF",G5_untimed,F,F,evet,8,3.29,109.6,1,temiz
+M-h vicente,MH_vicente_farkli_ad,3b,M_h.spthy,"MH_VICENTE,CA_PQ,ATK_DIFF",G5_migrated,F,F,evet,10,3.58,122.9,1,temiz
+M-h vicente,MH_vicente_farkli_ad,3b,M_h.spthy,"MH_VICENTE,CA_PQ,ATK_DIFF",G5_timed,F,F,evet,11,3.24,100.0,1,temiz
+M-h vicente,MH_vicente_farkli_ad,3b,M_h.spthy,"MH_VICENTE,CA_PQ,ATK_DIFF",no_rollback,F,F,evet,12,6.67,266.2,1,temiz
+M-h vicente,MH_vicente_farkli_ad,3b,M_h.spthy,"MH_VICENTE,CA_PQ,ATK_DIFF",first_contact_downgrade,V,V,evet,10,3.81,125.8,1,temiz
+M-h vicente,MH_vicente_farkli_ad,3b,M_h.spthy,"MH_VICENTE,CA_PQ,ATK_DIFF",executable,V,V,evet,16,12.27,425.4,1,temiz
+M-h vicente,MH_vicente_farkli_ad,3b,M_h.spthy,"MH_VICENTE,CA_PQ,ATK_DIFF",executable_legacy,V,V,evet,8,2.65,90.2,1,temiz
+M-h vicente,MH_vicente_farkli_ad,3b,M_h.spthy,"MH_VICENTE,CA_PQ,ATK_DIFF",executable_pre_migration,V,V,evet,8,3.24,114.7,1,temiz
+M-h vicente,MH_vicente_farkli_ad,3b,M_h.spthy,"MH_VICENTE,CA_PQ,ATK_DIFF",executable_lifecycle,V,V,evet,14,16.33,780.1,1,temiz
+M-h vicente,MH_vicente_farkli_ad,3b,M_h.spthy,"MH_VICENTE,CA_PQ,ATK_DIFF",executable_learn,V,V,evet,8,2.98,95.8,1,temiz
+M-h vicente,MH_vicente_farkli_ad,3b,M_h.spthy,"MH_VICENTE,CA_PQ,ATK_DIFF",attack_needs_crqc,V,V,evet,179,5.55,153.2,1,temiz
+M-h vicente,MH_vicente_farkli_ad,3b,M_h.spthy,"MH_VICENTE,CA_PQ,ATK_DIFF",G1_claims_unforgeability,F,F,evet,11,5.05,155.7,1,temiz
+M-h vicente,MH_vicente_farkli_ad,3b,M_h.spthy,"MH_VICENTE,CA_PQ,ATK_DIFF",G1_learned,F,F,evet,13,7.59,224.2,1,temiz
+M-h vicente,MH_vicente_farkli_ad,3b,M_h.spthy,"MH_VICENTE,CA_PQ,ATK_DIFF",G1_learned_pq,F,F,evet,15,6.38,197.4,1,temiz
+M-h vicente,MH_vicente_farkli_ad,3b,M_h.spthy,"MH_VICENTE,CA_PQ,ATK_DIFF",G1_learned_pq_genuine,V,V,evet,318,10.42,219.6,1,temiz
+M-h vicente,MH_vicente_farkli_ad,3b,M_h.spthy,"MH_VICENTE,CA_PQ,ATK_DIFF",no_rollback_path,F,F,evet,16,10.06,280.4,1,temiz
+M-h vicente,MH_vicente_farkli_ad,3b,M_h.spthy,"MH_VICENTE,CA_PQ,ATK_DIFF",M_downgrade_s1,V,V,evet,10,3.4,93.3,1,temiz
+M-h vicente,MH_vicente_farkli_ad,3b,M_h.spthy,"MH_VICENTE,CA_PQ,ATK_DIFF",M_forgery_crqc,V,V,evet,15,4.39,208.9,1,temiz
+M-h vicente,MH_vicente_ayni_ad,3b,M_h.spthy,"MH_VICENTE,CA_PQ,ATK_SAME",G5_untimed,F,F,evet,8,3.49,133.7,1,temiz
+M-h vicente,MH_vicente_ayni_ad,3b,M_h.spthy,"MH_VICENTE,CA_PQ,ATK_SAME",G5_migrated,F,F,evet,10,3.62,124.2,1,temiz
+M-h vicente,MH_vicente_ayni_ad,3b,M_h.spthy,"MH_VICENTE,CA_PQ,ATK_SAME",G5_timed,F,F,evet,11,3.15,100.1,1,temiz
+M-h vicente,MH_vicente_ayni_ad,3b,M_h.spthy,"MH_VICENTE,CA_PQ,ATK_SAME",no_rollback,F,F,evet,12,6.68,263.3,1,temiz
+M-h vicente,MH_vicente_ayni_ad,3b,M_h.spthy,"MH_VICENTE,CA_PQ,ATK_SAME",first_contact_downgrade,V,V,evet,10,3.66,109.8,1,temiz
+M-h vicente,MH_vicente_ayni_ad,3b,M_h.spthy,"MH_VICENTE,CA_PQ,ATK_SAME",executable,V,V,evet,16,13.42,427.0,1,temiz
+M-h vicente,MH_vicente_ayni_ad,3b,M_h.spthy,"MH_VICENTE,CA_PQ,ATK_SAME",executable_legacy,V,V,evet,8,2.78,89.6,1,temiz
+M-h vicente,MH_vicente_ayni_ad,3b,M_h.spthy,"MH_VICENTE,CA_PQ,ATK_SAME",executable_pre_migration,V,V,evet,8,3.26,129.8,1,temiz
+M-h vicente,MH_vicente_ayni_ad,3b,M_h.spthy,"MH_VICENTE,CA_PQ,ATK_SAME",executable_lifecycle,V,V,evet,14,16.88,859.3,1,temiz
+M-h vicente,MH_vicente_ayni_ad,3b,M_h.spthy,"MH_VICENTE,CA_PQ,ATK_SAME",executable_learn,V,V,evet,8,3.01,100.2,1,temiz
+M-h vicente,MH_vicente_ayni_ad,3b,M_h.spthy,"MH_VICENTE,CA_PQ,ATK_SAME",attack_needs_crqc,V,V,evet,179,5.79,148.5,1,temiz
+M-h vicente,MH_vicente_ayni_ad,3b,M_h.spthy,"MH_VICENTE,CA_PQ,ATK_SAME",G1_claims_unforgeability,F,F,evet,11,4.97,155.2,1,temiz
+M-h vicente,MH_vicente_ayni_ad,3b,M_h.spthy,"MH_VICENTE,CA_PQ,ATK_SAME",G1_learned,F,F,evet,13,7.95,235.3,1,temiz
+M-h vicente,MH_vicente_ayni_ad,3b,M_h.spthy,"MH_VICENTE,CA_PQ,ATK_SAME",G1_learned_pq,F,F,evet,15,8.13,202.0,1,temiz
+M-h vicente,MH_vicente_ayni_ad,3b,M_h.spthy,"MH_VICENTE,CA_PQ,ATK_SAME",G1_learned_pq_genuine,V,V,evet,318,10.63,223.4,1,temiz
+M-h vicente,MH_vicente_ayni_ad,3b,M_h.spthy,"MH_VICENTE,CA_PQ,ATK_SAME",no_rollback_path,F,F,evet,16,11.2,287.3,1,temiz
+M-h vicente,MH_vicente_ayni_ad,3b,M_h.spthy,"MH_VICENTE,CA_PQ,ATK_SAME",M_downgrade_s1,V,V,evet,10,3.26,95.2,1,temiz
+M-h vicente,MH_vicente_ayni_ad,3b,M_h.spthy,"MH_VICENTE,CA_PQ,ATK_SAME",M_forgery_crqc,V,V,evet,15,4.54,204.4,1,temiz
+M-h vicente,MH_vicente_klasik_kok,3b,M_h.spthy,"MH_VICENTE,CA_PQ,ATK_ROOT",G5_untimed,F,F,evet,8,3.34,132.5,1,temiz
+M-h vicente,MH_vicente_klasik_kok,3b,M_h.spthy,"MH_VICENTE,CA_PQ,ATK_ROOT",G5_migrated,F,F,evet,10,3.9,130.8,1,temiz
+M-h vicente,MH_vicente_klasik_kok,3b,M_h.spthy,"MH_VICENTE,CA_PQ,ATK_ROOT",G5_timed,F,F,evet,11,3.27,98.1,1,temiz
+M-h vicente,MH_vicente_klasik_kok,3b,M_h.spthy,"MH_VICENTE,CA_PQ,ATK_ROOT",no_rollback,F,F,evet,12,6.98,286.1,1,temiz
+M-h vicente,MH_vicente_klasik_kok,3b,M_h.spthy,"MH_VICENTE,CA_PQ,ATK_ROOT",first_contact_downgrade,V,V,evet,10,3.82,135.9,1,temiz
+M-h vicente,MH_vicente_klasik_kok,3b,M_h.spthy,"MH_VICENTE,CA_PQ,ATK_ROOT",executable,V,V,evet,16,12.78,429.4,1,temiz
+M-h vicente,MH_vicente_klasik_kok,3b,M_h.spthy,"MH_VICENTE,CA_PQ,ATK_ROOT",executable_legacy,V,V,evet,8,2.82,89.0,1,temiz
+M-h vicente,MH_vicente_klasik_kok,3b,M_h.spthy,"MH_VICENTE,CA_PQ,ATK_ROOT",executable_pre_migration,V,V,evet,8,3.31,129.9,1,temiz
+M-h vicente,MH_vicente_klasik_kok,3b,M_h.spthy,"MH_VICENTE,CA_PQ,ATK_ROOT",executable_lifecycle,V,V,evet,14,16.59,773.1,1,temiz
+M-h vicente,MH_vicente_klasik_kok,3b,M_h.spthy,"MH_VICENTE,CA_PQ,ATK_ROOT",executable_learn,V,V,evet,8,3.01,95.7,1,temiz
+M-h vicente,MH_vicente_klasik_kok,3b,M_h.spthy,"MH_VICENTE,CA_PQ,ATK_ROOT",attack_needs_crqc,V,V,evet,179,5.74,145.7,1,temiz
+M-h vicente,MH_vicente_klasik_kok,3b,M_h.spthy,"MH_VICENTE,CA_PQ,ATK_ROOT",G1_claims_unforgeability,F,F,evet,11,4.95,152.1,1,temiz
+M-h vicente,MH_vicente_klasik_kok,3b,M_h.spthy,"MH_VICENTE,CA_PQ,ATK_ROOT",G1_learned,F,F,evet,13,7.48,222.1,1,temiz
+M-h vicente,MH_vicente_klasik_kok,3b,M_h.spthy,"MH_VICENTE,CA_PQ,ATK_ROOT",G1_learned_pq,F,F,evet,15,6.51,189.4,1,temiz
+M-h vicente,MH_vicente_klasik_kok,3b,M_h.spthy,"MH_VICENTE,CA_PQ,ATK_ROOT",G1_learned_pq_genuine,V,V,evet,318,10.52,219.9,1,temiz
+M-h vicente,MH_vicente_klasik_kok,3b,M_h.spthy,"MH_VICENTE,CA_PQ,ATK_ROOT",no_rollback_path,F,F,evet,16,9.76,277.6,1,temiz
+M-h vicente,MH_vicente_klasik_kok,3b,M_h.spthy,"MH_VICENTE,CA_PQ,ATK_ROOT",M_downgrade_s1,V,V,evet,10,3.36,93.9,1,temiz
+M-h vicente,MH_vicente_klasik_kok,3b,M_h.spthy,"MH_VICENTE,CA_PQ,ATK_ROOT",M_forgery_crqc,V,V,evet,15,4.56,193.9,1,temiz
+"M-g (sheffer, yol)",EK_mg_anahtar_farkli_ad,3b,Mg_yol.spthy,"MG_ANAHTAR,ATK_DIFF",G5_untimed,F,F,evet,11,4.4,111.5,1,temiz
+"M-g (sheffer, yol)",EK_mg_anahtar_farkli_ad,3b,Mg_yol.spthy,"MG_ANAHTAR,ATK_DIFF",G5_migrated,F,F,evet,12,4.72,104.4,1,temiz
+"M-g (sheffer, yol)",EK_mg_anahtar_farkli_ad,3b,Mg_yol.spthy,"MG_ANAHTAR,ATK_DIFF",G5_timed,F,F,evet,13,4.42,95.0,1,temiz
+"M-g (sheffer, yol)",EK_mg_anahtar_farkli_ad,3b,Mg_yol.spthy,"MG_ANAHTAR,ATK_DIFF",no_rollback,F,F,evet,16,53.92,2079.1,1,temiz
+"M-g (sheffer, yol)",EK_mg_anahtar_farkli_ad,3b,Mg_yol.spthy,"MG_ANAHTAR,ATK_DIFF",first_contact_downgrade,V,V,evet,12,5.2,100.3,1,temiz
+"M-g (sheffer, yol)",EK_mg_anahtar_farkli_ad,3b,Mg_yol.spthy,"MG_ANAHTAR,ATK_DIFF",executable,V,V,evet,12,5.08,114.3,1,temiz
+"M-g (sheffer, yol)",EK_mg_anahtar_farkli_ad,3b,Mg_yol.spthy,"MG_ANAHTAR,ATK_DIFF",executable_legacy,V,V,evet,11,4.4,96.5,1,temiz
+"M-g (sheffer, yol)",EK_mg_anahtar_farkli_ad,3b,Mg_yol.spthy,"MG_ANAHTAR,ATK_DIFF",executable_pre_migration,V,V,evet,11,4.41,98.4,1,temiz
+"M-g (sheffer, yol)",EK_mg_anahtar_farkli_ad,3b,Mg_yol.spthy,"MG_ANAHTAR,ATK_DIFF",executable_lifecycle,V,V,evet,14,4.37,100.2,1,temiz
+"M-g (sheffer, yol)",EK_mg_anahtar_farkli_ad,3b,Mg_yol.spthy,"MG_ANAHTAR,ATK_DIFF",executable_learn,V,V,evet,7,4.34,105.0,1,temiz
+"M-g (sheffer, yol)",EK_mg_anahtar_farkli_ad,3b,Mg_yol.spthy,"MG_ANAHTAR,ATK_DIFF",attack_needs_crqc,V,V,evet,80,4.87,96.8,1,temiz
+"M-g (sheffer, yol)",EK_mg_anahtar_farkli_ad,3b,Mg_yol.spthy,"MG_ANAHTAR,ATK_DIFF",G1_claims_unforgeability,F,F,evet,10,5.27,104.3,1,temiz
+"M-g (sheffer, yol)",EK_mg_anahtar_farkli_ad,3b,Mg_yol.spthy,"MG_ANAHTAR,ATK_DIFF",G1_learned,F,F,evet,15,24.34,777.9,1,temiz
+"M-g (sheffer, yol)",EK_mg_anahtar_farkli_ad,3b,Mg_yol.spthy,"MG_ANAHTAR,ATK_DIFF",G1_learned_pq,F,F,evet,15,9.47,226.8,1,temiz
+"M-g (sheffer, yol)",EK_mg_anahtar_farkli_ad,3b,Mg_yol.spthy,"MG_ANAHTAR,ATK_DIFF",no_rollback_path,F,F,evet,16,8.6,218.5,1,temiz
+"M-g (sheffer, yol)",EK_mg_anahtar_farkli_ad,3b,Mg_yol.spthy,"MG_ANAHTAR,ATK_DIFF",M_downgrade_s1,V,V,evet,10,4.41,88.3,1,temiz
+"M-g (sheffer, yol)",EK_mg_anahtar_farkli_ad,3b,Mg_yol.spthy,"MG_ANAHTAR,ATK_DIFF",M_forgery_crqc,V,V,evet,13,5.06,171.6,1,temiz
+"M-g (sheffer, yol)",EK_mg_anahtar_farkli_ad,3b,Mg_yol.spthy,"MG_ANAHTAR,ATK_DIFF",M_cache_cleared,V,V,evet,14,6.23,166.5,1,temiz
+"M-g (sheffer, yol)",EK_mg_anahtar_ayni_ad,3b,Mg_yol.spthy,"MG_ANAHTAR,ATK_SAME",G5_untimed,F,F,evet,9,4.29,94.2,1,temiz
+"M-g (sheffer, yol)",EK_mg_anahtar_ayni_ad,3b,Mg_yol.spthy,"MG_ANAHTAR,ATK_SAME",G5_migrated,F,F,evet,10,4.38,90.7,1,temiz
+"M-g (sheffer, yol)",EK_mg_anahtar_ayni_ad,3b,Mg_yol.spthy,"MG_ANAHTAR,ATK_SAME",G5_timed,F,F,evet,11,4.4,89.2,1,temiz
+"M-g (sheffer, yol)",EK_mg_anahtar_ayni_ad,3b,Mg_yol.spthy,"MG_ANAHTAR,ATK_SAME",no_rollback,F,F,evet,16,101.22,5430.2,1,temiz
+"M-g (sheffer, yol)",EK_mg_anahtar_ayni_ad,3b,Mg_yol.spthy,"MG_ANAHTAR,ATK_SAME",first_contact_downgrade,V,V,evet,10,5.57,93.7,1,temiz
+"M-g (sheffer, yol)",EK_mg_anahtar_ayni_ad,3b,Mg_yol.spthy,"MG_ANAHTAR,ATK_SAME",executable,V,V,evet,12,5.28,94.2,1,temiz
+"M-g (sheffer, yol)",EK_mg_anahtar_ayni_ad,3b,Mg_yol.spthy,"MG_ANAHTAR,ATK_SAME",executable_legacy,V,V,evet,9,4.26,96.0,1,temiz
+"M-g (sheffer, yol)",EK_mg_anahtar_ayni_ad,3b,Mg_yol.spthy,"MG_ANAHTAR,ATK_SAME",executable_pre_migration,V,V,evet,9,4.46,100.5,1,temiz
+"M-g (sheffer, yol)",EK_mg_anahtar_ayni_ad,3b,Mg_yol.spthy,"MG_ANAHTAR,ATK_SAME",executable_lifecycle,V,V,evet,14,4.3,87.6,1,temiz
+"M-g (sheffer, yol)",EK_mg_anahtar_ayni_ad,3b,Mg_yol.spthy,"MG_ANAHTAR,ATK_SAME",executable_learn,V,V,evet,7,4.75,110.7,1,temiz
+"M-g (sheffer, yol)",EK_mg_anahtar_ayni_ad,3b,Mg_yol.spthy,"MG_ANAHTAR,ATK_SAME",attack_needs_crqc,V,V,evet,80,4.73,96.2,1,temiz
+"M-g (sheffer, yol)",EK_mg_anahtar_ayni_ad,3b,Mg_yol.spthy,"MG_ANAHTAR,ATK_SAME",G1_claims_unforgeability,F,F,evet,10,5.23,115.2,1,temiz
+"M-g (sheffer, yol)",EK_mg_anahtar_ayni_ad,3b,Mg_yol.spthy,"MG_ANAHTAR,ATK_SAME",G1_learned,F,F,evet,15,26.0,879.3,1,temiz
+"M-g (sheffer, yol)",EK_mg_anahtar_ayni_ad,3b,Mg_yol.spthy,"MG_ANAHTAR,ATK_SAME",G1_learned_pq,F,F,evet,15,11.47,230.6,1,temiz
+"M-g (sheffer, yol)",EK_mg_anahtar_ayni_ad,3b,Mg_yol.spthy,"MG_ANAHTAR,ATK_SAME",no_rollback_path,F,F,evet,16,9.59,205.8,1,temiz
+"M-g (sheffer, yol)",EK_mg_anahtar_ayni_ad,3b,Mg_yol.spthy,"MG_ANAHTAR,ATK_SAME",M_downgrade_s1,V,V,evet,10,4.5,87.5,1,temiz
+"M-g (sheffer, yol)",EK_mg_anahtar_ayni_ad,3b,Mg_yol.spthy,"MG_ANAHTAR,ATK_SAME",M_forgery_crqc,V,V,evet,14,4.88,133.5,1,temiz
+"M-g (sheffer, yol)",EK_mg_anahtar_ayni_ad,3b,Mg_yol.spthy,"MG_ANAHTAR,ATK_SAME",M_cache_cleared,V,V,evet,16,6.41,154.2,1,temiz
+"M-g (sheffer, yol)",EK_mg_anahtar_klasik_kok,3b,Mg_yol.spthy,"MG_ANAHTAR,ATK_ROOT",G5_untimed,F,F,evet,9,4.38,100.0,1,temiz
+"M-g (sheffer, yol)",EK_mg_anahtar_klasik_kok,3b,Mg_yol.spthy,"MG_ANAHTAR,ATK_ROOT",G5_migrated,F,F,evet,10,4.52,94.3,1,temiz
+"M-g (sheffer, yol)",EK_mg_anahtar_klasik_kok,3b,Mg_yol.spthy,"MG_ANAHTAR,ATK_ROOT",G5_timed,F,F,evet,11,4.19,86.8,1,temiz
+"M-g (sheffer, yol)",EK_mg_anahtar_klasik_kok,3b,Mg_yol.spthy,"MG_ANAHTAR,ATK_ROOT",no_rollback,F,F,evet,16,95.68,4146.5,1,temiz
+"M-g (sheffer, yol)",EK_mg_anahtar_klasik_kok,3b,Mg_yol.spthy,"MG_ANAHTAR,ATK_ROOT",first_contact_downgrade,V,V,evet,10,5.06,89.9,1,temiz
+"M-g (sheffer, yol)",EK_mg_anahtar_klasik_kok,3b,Mg_yol.spthy,"MG_ANAHTAR,ATK_ROOT",executable,V,V,evet,12,5.27,95.2,1,temiz
+"M-g (sheffer, yol)",EK_mg_anahtar_klasik_kok,3b,Mg_yol.spthy,"MG_ANAHTAR,ATK_ROOT",executable_legacy,V,V,evet,9,4.69,112.1,1,temiz
+"M-g (sheffer, yol)",EK_mg_anahtar_klasik_kok,3b,Mg_yol.spthy,"MG_ANAHTAR,ATK_ROOT",executable_pre_migration,V,V,evet,9,4.31,102.9,1,temiz
+"M-g (sheffer, yol)",EK_mg_anahtar_klasik_kok,3b,Mg_yol.spthy,"MG_ANAHTAR,ATK_ROOT",executable_lifecycle,V,V,evet,14,4.46,89.4,1,temiz
+"M-g (sheffer, yol)",EK_mg_anahtar_klasik_kok,3b,Mg_yol.spthy,"MG_ANAHTAR,ATK_ROOT",executable_learn,V,V,evet,7,4.36,115.2,1,temiz
+"M-g (sheffer, yol)",EK_mg_anahtar_klasik_kok,3b,Mg_yol.spthy,"MG_ANAHTAR,ATK_ROOT",attack_needs_crqc,V,V,evet,80,4.72,95.8,1,temiz
+"M-g (sheffer, yol)",EK_mg_anahtar_klasik_kok,3b,Mg_yol.spthy,"MG_ANAHTAR,ATK_ROOT",G1_claims_unforgeability,F,F,evet,10,5.29,107.9,1,temiz
+"M-g (sheffer, yol)",EK_mg_anahtar_klasik_kok,3b,Mg_yol.spthy,"MG_ANAHTAR,ATK_ROOT",G1_learned,F,F,evet,15,24.15,743.1,1,temiz
+"M-g (sheffer, yol)",EK_mg_anahtar_klasik_kok,3b,Mg_yol.spthy,"MG_ANAHTAR,ATK_ROOT",G1_learned_pq,F,F,evet,15,9.6,233.9,1,temiz
+"M-g (sheffer, yol)",EK_mg_anahtar_klasik_kok,3b,Mg_yol.spthy,"MG_ANAHTAR,ATK_ROOT",no_rollback_path,F,F,evet,16,8.66,208.4,1,temiz
+"M-g (sheffer, yol)",EK_mg_anahtar_klasik_kok,3b,Mg_yol.spthy,"MG_ANAHTAR,ATK_ROOT",M_downgrade_s1,V,V,evet,10,4.36,88.7,1,temiz
+"M-g (sheffer, yol)",EK_mg_anahtar_klasik_kok,3b,Mg_yol.spthy,"MG_ANAHTAR,ATK_ROOT",M_forgery_crqc,V,V,evet,14,5.06,139.9,1,temiz
+"M-g (sheffer, yol)",EK_mg_anahtar_klasik_kok,3b,Mg_yol.spthy,"MG_ANAHTAR,ATK_ROOT",M_cache_cleared,V,V,evet,14,6.38,157.9,1,temiz
+"M-g (sheffer, yol)",EK_mg_imza_farkli_ad,3b,Mg_yol.spthy,"MG_IMZA,ATK_DIFF",G5_untimed,F,F,evet,11,5.05,98.4,1,temiz
+"M-g (sheffer, yol)",EK_mg_imza_farkli_ad,3b,Mg_yol.spthy,"MG_IMZA,ATK_DIFF",G5_migrated,F,F,evet,12,5.04,100.9,1,temiz
+"M-g (sheffer, yol)",EK_mg_imza_farkli_ad,3b,Mg_yol.spthy,"MG_IMZA,ATK_DIFF",G5_timed,F,F,evet,13,4.94,95.0,1,temiz
+"M-g (sheffer, yol)",EK_mg_imza_farkli_ad,3b,Mg_yol.spthy,"MG_IMZA,ATK_DIFF",no_rollback,V,V,evet,192,9.06,134.8,1,temiz
+"M-g (sheffer, yol)",EK_mg_imza_farkli_ad,3b,Mg_yol.spthy,"MG_IMZA,ATK_DIFF",first_contact_downgrade,V,V,evet,12,4.98,110.0,1,temiz
+"M-g (sheffer, yol)",EK_mg_imza_farkli_ad,3b,Mg_yol.spthy,"MG_IMZA,ATK_DIFF",executable,V,V,evet,12,5.34,99.0,1,temiz
+"M-g (sheffer, yol)",EK_mg_imza_farkli_ad,3b,Mg_yol.spthy,"MG_IMZA,ATK_DIFF",executable_legacy,V,V,evet,11,4.94,93.1,1,temiz
+"M-g (sheffer, yol)",EK_mg_imza_farkli_ad,3b,Mg_yol.spthy,"MG_IMZA,ATK_DIFF",executable_pre_migration,V,V,evet,11,5.0,97.4,1,temiz
+"M-g (sheffer, yol)",EK_mg_imza_farkli_ad,3b,Mg_yol.spthy,"MG_IMZA,ATK_DIFF",executable_lifecycle,V,V,evet,14,5.06,99.0,1,temiz
+"M-g (sheffer, yol)",EK_mg_imza_farkli_ad,3b,Mg_yol.spthy,"MG_IMZA,ATK_DIFF",executable_learn,V,V,evet,9,4.54,82.5,1,temiz
+"M-g (sheffer, yol)",EK_mg_imza_farkli_ad,3b,Mg_yol.spthy,"MG_IMZA,ATK_DIFF",attack_needs_crqc,V,V,evet,78,5.24,96.8,1,temiz
+"M-g (sheffer, yol)",EK_mg_imza_farkli_ad,3b,Mg_yol.spthy,"MG_IMZA,ATK_DIFF",G1_claims_unforgeability,F,F,evet,10,5.87,105.3,1,temiz
+"M-g (sheffer, yol)",EK_mg_imza_farkli_ad,3b,Mg_yol.spthy,"MG_IMZA,ATK_DIFF",G1_learned,V,V,evet,350,13.1,187.7,1,temiz
+"M-g (sheffer, yol)",EK_mg_imza_farkli_ad,3b,Mg_yol.spthy,"MG_IMZA,ATK_DIFF",G1_learned_pq,V,V,evet,170,8.03,127.8,1,temiz
+"M-g (sheffer, yol)",EK_mg_imza_farkli_ad,3b,Mg_yol.spthy,"MG_IMZA,ATK_DIFF",no_rollback_path,V,V,evet,150,7.44,121.0,1,temiz
+"M-g (sheffer, yol)",EK_mg_imza_farkli_ad,3b,Mg_yol.spthy,"MG_IMZA,ATK_DIFF",M_downgrade_s1,V,V,evet,10,4.83,88.0,1,temiz
+"M-g (sheffer, yol)",EK_mg_imza_farkli_ad,3b,Mg_yol.spthy,"MG_IMZA,ATK_DIFF",M_forgery_crqc,V,V,evet,13,5.75,156.4,1,temiz
+"M-g (sheffer, yol)",EK_mg_imza_farkli_ad,3b,Mg_yol.spthy,"MG_IMZA,ATK_DIFF",M_cache_cleared,F,F,evet,38,4.73,88.8,1,temiz
+"M-g (sheffer, yol)",EK_mg_imza_ayni_ad,3b,Mg_yol.spthy,"MG_IMZA,ATK_SAME",G5_untimed,F,F,evet,9,4.89,106.4,1,temiz
+"M-g (sheffer, yol)",EK_mg_imza_ayni_ad,3b,Mg_yol.spthy,"MG_IMZA,ATK_SAME",G5_migrated,F,F,evet,10,5.01,96.2,1,temiz
+"M-g (sheffer, yol)",EK_mg_imza_ayni_ad,3b,Mg_yol.spthy,"MG_IMZA,ATK_SAME",G5_timed,F,F,evet,11,4.97,88.3,1,temiz
+"M-g (sheffer, yol)",EK_mg_imza_ayni_ad,3b,Mg_yol.spthy,"MG_IMZA,ATK_SAME",no_rollback,V,V,evet,192,9.54,135.3,1,temiz
+"M-g (sheffer, yol)",EK_mg_imza_ayni_ad,3b,Mg_yol.spthy,"MG_IMZA,ATK_SAME",first_contact_downgrade,V,V,evet,10,5.5,97.9,1,temiz
+"M-g (sheffer, yol)",EK_mg_imza_ayni_ad,3b,Mg_yol.spthy,"MG_IMZA,ATK_SAME",executable,V,V,evet,12,5.32,97.2,1,temiz
+"M-g (sheffer, yol)",EK_mg_imza_ayni_ad,3b,Mg_yol.spthy,"MG_IMZA,ATK_SAME",executable_legacy,V,V,evet,9,4.87,89.8,1,temiz
+"M-g (sheffer, yol)",EK_mg_imza_ayni_ad,3b,Mg_yol.spthy,"MG_IMZA,ATK_SAME",executable_pre_migration,V,V,evet,9,4.65,104.6,1,temiz
+"M-g (sheffer, yol)",EK_mg_imza_ayni_ad,3b,Mg_yol.spthy,"MG_IMZA,ATK_SAME",executable_lifecycle,V,V,evet,14,5.0,99.4,1,temiz
+"M-g (sheffer, yol)",EK_mg_imza_ayni_ad,3b,Mg_yol.spthy,"MG_IMZA,ATK_SAME",executable_learn,V,V,evet,9,4.5,83.2,1,temiz
+"M-g (sheffer, yol)",EK_mg_imza_ayni_ad,3b,Mg_yol.spthy,"MG_IMZA,ATK_SAME",attack_needs_crqc,V,V,evet,78,5.32,95.7,1,temiz
+"M-g (sheffer, yol)",EK_mg_imza_ayni_ad,3b,Mg_yol.spthy,"MG_IMZA,ATK_SAME",G1_claims_unforgeability,F,F,evet,10,5.87,116.4,1,temiz
+"M-g (sheffer, yol)",EK_mg_imza_ayni_ad,3b,Mg_yol.spthy,"MG_IMZA,ATK_SAME",G1_learned,V,V,evet,350,12.65,187.7,1,temiz
+"M-g (sheffer, yol)",EK_mg_imza_ayni_ad,3b,Mg_yol.spthy,"MG_IMZA,ATK_SAME",G1_learned_pq,V,V,evet,170,8.07,130.2,1,temiz
+"M-g (sheffer, yol)",EK_mg_imza_ayni_ad,3b,Mg_yol.spthy,"MG_IMZA,ATK_SAME",no_rollback_path,V,V,evet,150,7.69,122.7,1,temiz
+"M-g (sheffer, yol)",EK_mg_imza_ayni_ad,3b,Mg_yol.spthy,"MG_IMZA,ATK_SAME",M_downgrade_s1,V,V,evet,10,4.78,87.3,1,temiz
+"M-g (sheffer, yol)",EK_mg_imza_ayni_ad,3b,Mg_yol.spthy,"MG_IMZA,ATK_SAME",M_forgery_crqc,V,V,evet,14,5.59,133.6,1,temiz
+"M-g (sheffer, yol)",EK_mg_imza_ayni_ad,3b,Mg_yol.spthy,"MG_IMZA,ATK_SAME",M_cache_cleared,F,F,evet,38,4.95,91.1,1,temiz
+"M-g (sheffer, yol)",EK_mg_imza_klasik_kok,3b,Mg_yol.spthy,"MG_IMZA,ATK_ROOT",G5_untimed,F,F,evet,9,4.79,99.8,1,temiz
+"M-g (sheffer, yol)",EK_mg_imza_klasik_kok,3b,Mg_yol.spthy,"MG_IMZA,ATK_ROOT",G5_migrated,F,F,evet,10,5.01,89.9,1,temiz
+"M-g (sheffer, yol)",EK_mg_imza_klasik_kok,3b,Mg_yol.spthy,"MG_IMZA,ATK_ROOT",G5_timed,F,F,evet,11,4.79,89.2,1,temiz
+"M-g (sheffer, yol)",EK_mg_imza_klasik_kok,3b,Mg_yol.spthy,"MG_IMZA,ATK_ROOT",no_rollback,V,V,evet,192,8.86,136.4,1,temiz
+"M-g (sheffer, yol)",EK_mg_imza_klasik_kok,3b,Mg_yol.spthy,"MG_IMZA,ATK_ROOT",first_contact_downgrade,V,V,evet,10,5.04,96.0,1,temiz
+"M-g (sheffer, yol)",EK_mg_imza_klasik_kok,3b,Mg_yol.spthy,"MG_IMZA,ATK_ROOT",executable,V,V,evet,12,5.4,98.7,1,temiz
+"M-g (sheffer, yol)",EK_mg_imza_klasik_kok,3b,Mg_yol.spthy,"MG_IMZA,ATK_ROOT",executable_legacy,V,V,evet,9,4.83,112.7,1,temiz
+"M-g (sheffer, yol)",EK_mg_imza_klasik_kok,3b,Mg_yol.spthy,"MG_IMZA,ATK_ROOT",executable_pre_migration,V,V,evet,9,5.0,111.6,1,temiz
+"M-g (sheffer, yol)",EK_mg_imza_klasik_kok,3b,Mg_yol.spthy,"MG_IMZA,ATK_ROOT",executable_lifecycle,V,V,evet,14,5.06,96.3,1,temiz
+"M-g (sheffer, yol)",EK_mg_imza_klasik_kok,3b,Mg_yol.spthy,"MG_IMZA,ATK_ROOT",executable_learn,V,V,evet,9,4.36,84.9,1,temiz
+"M-g (sheffer, yol)",EK_mg_imza_klasik_kok,3b,Mg_yol.spthy,"MG_IMZA,ATK_ROOT",attack_needs_crqc,V,V,evet,78,5.38,94.9,1,temiz
+"M-g (sheffer, yol)",EK_mg_imza_klasik_kok,3b,Mg_yol.spthy,"MG_IMZA,ATK_ROOT",G1_claims_unforgeability,F,F,evet,10,5.75,99.6,1,temiz
+"M-g (sheffer, yol)",EK_mg_imza_klasik_kok,3b,Mg_yol.spthy,"MG_IMZA,ATK_ROOT",G1_learned,V,V,evet,350,12.19,191.0,1,temiz
+"M-g (sheffer, yol)",EK_mg_imza_klasik_kok,3b,Mg_yol.spthy,"MG_IMZA,ATK_ROOT",G1_learned_pq,V,V,evet,170,8.12,128.9,1,temiz
+"M-g (sheffer, yol)",EK_mg_imza_klasik_kok,3b,Mg_yol.spthy,"MG_IMZA,ATK_ROOT",no_rollback_path,V,V,evet,150,7.23,123.9,1,temiz
+"M-g (sheffer, yol)",EK_mg_imza_klasik_kok,3b,Mg_yol.spthy,"MG_IMZA,ATK_ROOT",M_downgrade_s1,V,V,evet,10,4.69,86.8,1,temiz
+"M-g (sheffer, yol)",EK_mg_imza_klasik_kok,3b,Mg_yol.spthy,"MG_IMZA,ATK_ROOT",M_forgery_crqc,V,V,evet,14,5.33,130.1,1,temiz
+"M-g (sheffer, yol)",EK_mg_imza_klasik_kok,3b,Mg_yol.spthy,"MG_IMZA,ATK_ROOT",M_cache_cleared,F,F,evet,38,4.7,88.0,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_r7_tanimlari,ablasyon,Mf_ek.spthy,"MONOTONE_DAR,SUNSET_ANAHTAR,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_untimed,V,V,evet,43,6.38,96.5,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_r7_tanimlari,ablasyon,Mf_ek.spthy,"MONOTONE_DAR,SUNSET_ANAHTAR,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_migrated,F,F,evet,14,7.52,118.3,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_r7_tanimlari,ablasyon,Mf_ek.spthy,"MONOTONE_DAR,SUNSET_ANAHTAR,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_timed,V,V,evet,8,5.62,86.6,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_r7_tanimlari,ablasyon,Mf_ek.spthy,"MONOTONE_DAR,SUNSET_ANAHTAR,ATK_DIFF,ATK_SAME,ATK_ROOT",no_rollback,V,V,evet,2,5.07,81.0,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_r7_tanimlari,ablasyon,Mf_ek.spthy,"MONOTONE_DAR,SUNSET_ANAHTAR,ATK_DIFF,ATK_SAME,ATK_ROOT",first_contact_downgrade,V,V,evet,14,7.62,118.5,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_r7_tanimlari,ablasyon,Mf_ek.spthy,"MONOTONE_DAR,SUNSET_ANAHTAR,ATK_DIFF,ATK_SAME,ATK_ROOT",executable,V,V,evet,15,7.25,108.2,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_r7_tanimlari,ablasyon,Mf_ek.spthy,"MONOTONE_DAR,SUNSET_ANAHTAR,ATK_DIFF,ATK_SAME,ATK_ROOT",executable_legacy,V,V,evet,13,6.89,109.7,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_r7_tanimlari,ablasyon,Mf_ek.spthy,"MONOTONE_DAR,SUNSET_ANAHTAR,ATK_DIFF,ATK_SAME,ATK_ROOT",executable_pre_migration,V,V,evet,13,6.64,112.6,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_r7_tanimlari,ablasyon,Mf_ek.spthy,"MONOTONE_DAR,SUNSET_ANAHTAR,ATK_DIFF,ATK_SAME,ATK_ROOT",executable_lifecycle,V,V,evet,15,8.66,131.5,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_r7_tanimlari,ablasyon,Mf_ek.spthy,"MONOTONE_DAR,SUNSET_ANAHTAR,ATK_DIFF,ATK_SAME,ATK_ROOT",executable_learn,V,V,evet,6,5.38,86.2,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_r7_tanimlari,ablasyon,Mf_ek.spthy,"MONOTONE_DAR,SUNSET_ANAHTAR,ATK_DIFF,ATK_SAME,ATK_ROOT",attack_needs_crqc,V,V,evet,158,8.22,134.5,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_r7_tanimlari,ablasyon,Mf_ek.spthy,"MONOTONE_DAR,SUNSET_ANAHTAR,ATK_DIFF,ATK_SAME,ATK_ROOT",G1_claims_unforgeability,F,F,evet,12,8.83,129.7,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_r7_tanimlari,ablasyon,Mf_ek.spthy,"MONOTONE_DAR,SUNSET_ANAHTAR,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_path_untimed,V,V,evet,51,6.46,90.9,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_r7_tanimlari,ablasyon,Mf_ek.spthy,"MONOTONE_DAR,SUNSET_ANAHTAR,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_path_migrated,F,F,evet,15,7.1,116.6,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_r7_tanimlari,ablasyon,Mf_ek.spthy,"MONOTONE_DAR,SUNSET_ANAHTAR,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_path_timed,F,F,evet,15,7.67,120.2,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_r7_tanimlari,ablasyon,Mf_ek.spthy,"MONOTONE_DAR,SUNSET_ANAHTAR,ATK_DIFF,ATK_SAME,ATK_ROOT",no_rollback_path,F,F,evet,16,6.93,129.0,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_r7_tanimlari,ablasyon,Mf_ek.spthy,"MONOTONE_DAR,SUNSET_ANAHTAR,ATK_DIFF,ATK_SAME,ATK_ROOT",M_downgrade_s1,V,V,evet,12,6.92,101.6,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_r7_tanimlari,ablasyon,Mf_ek.spthy,"MONOTONE_DAR,SUNSET_ANAHTAR,ATK_DIFF,ATK_SAME,ATK_ROOT",M_forgery_crqc,V,V,evet,15,19.88,286.8,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_r7_tanimlari,ablasyon,Mf_ek.spthy,"MONOTONE_DAR,SUNSET_ANAHTAR,ATK_DIFF,ATK_SAME,ATK_ROOT",M_weak_path_forgery,V,V,evet,16,11.56,170.8,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_monoton_genis,ablasyon,Mf_ek.spthy,"MONOTONE_GENIS,SUNSET_ANAHTAR,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_untimed,V,V,evet,43,7.23,93.7,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_monoton_genis,ablasyon,Mf_ek.spthy,"MONOTONE_GENIS,SUNSET_ANAHTAR,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_migrated,F,F,evet,14,5.03,113.6,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_monoton_genis,ablasyon,Mf_ek.spthy,"MONOTONE_GENIS,SUNSET_ANAHTAR,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_timed,V,V,evet,8,3.58,86.0,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_monoton_genis,ablasyon,Mf_ek.spthy,"MONOTONE_GENIS,SUNSET_ANAHTAR,ATK_DIFF,ATK_SAME,ATK_ROOT",no_rollback,V,V,evet,6,3.59,89.1,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_monoton_genis,ablasyon,Mf_ek.spthy,"MONOTONE_GENIS,SUNSET_ANAHTAR,ATK_DIFF,ATK_SAME,ATK_ROOT",first_contact_downgrade,V,V,evet,14,5.23,116.8,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_monoton_genis,ablasyon,Mf_ek.spthy,"MONOTONE_GENIS,SUNSET_ANAHTAR,ATK_DIFF,ATK_SAME,ATK_ROOT",executable,V,V,evet,15,5.01,108.0,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_monoton_genis,ablasyon,Mf_ek.spthy,"MONOTONE_GENIS,SUNSET_ANAHTAR,ATK_DIFF,ATK_SAME,ATK_ROOT",executable_legacy,V,V,evet,13,4.4,107.7,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_monoton_genis,ablasyon,Mf_ek.spthy,"MONOTONE_GENIS,SUNSET_ANAHTAR,ATK_DIFF,ATK_SAME,ATK_ROOT",executable_pre_migration,V,V,evet,13,4.43,108.5,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_monoton_genis,ablasyon,Mf_ek.spthy,"MONOTONE_GENIS,SUNSET_ANAHTAR,ATK_DIFF,ATK_SAME,ATK_ROOT",executable_lifecycle,V,V,evet,15,6.15,130.5,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_monoton_genis,ablasyon,Mf_ek.spthy,"MONOTONE_GENIS,SUNSET_ANAHTAR,ATK_DIFF,ATK_SAME,ATK_ROOT",executable_learn,V,V,evet,6,3.82,84.8,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_monoton_genis,ablasyon,Mf_ek.spthy,"MONOTONE_GENIS,SUNSET_ANAHTAR,ATK_DIFF,ATK_SAME,ATK_ROOT",attack_needs_crqc,V,V,evet,158,6.05,127.1,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_monoton_genis,ablasyon,Mf_ek.spthy,"MONOTONE_GENIS,SUNSET_ANAHTAR,ATK_DIFF,ATK_SAME,ATK_ROOT",G1_claims_unforgeability,F,F,evet,12,6.93,126.8,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_monoton_genis,ablasyon,Mf_ek.spthy,"MONOTONE_GENIS,SUNSET_ANAHTAR,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_path_untimed,V,V,evet,51,5.09,91.0,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_monoton_genis,ablasyon,Mf_ek.spthy,"MONOTONE_GENIS,SUNSET_ANAHTAR,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_path_migrated,F,F,evet,15,5.52,116.8,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_monoton_genis,ablasyon,Mf_ek.spthy,"MONOTONE_GENIS,SUNSET_ANAHTAR,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_path_timed,F,F,evet,15,6.03,119.7,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_monoton_genis,ablasyon,Mf_ek.spthy,"MONOTONE_GENIS,SUNSET_ANAHTAR,ATK_DIFF,ATK_SAME,ATK_ROOT",no_rollback_path,V,V,evet,14,4.47,86.4,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_monoton_genis,ablasyon,Mf_ek.spthy,"MONOTONE_GENIS,SUNSET_ANAHTAR,ATK_DIFF,ATK_SAME,ATK_ROOT",M_downgrade_s1,V,V,evet,12,5.41,101.8,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_monoton_genis,ablasyon,Mf_ek.spthy,"MONOTONE_GENIS,SUNSET_ANAHTAR,ATK_DIFF,ATK_SAME,ATK_ROOT",M_forgery_crqc,V,V,evet,15,18.45,296.5,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_monoton_genis,ablasyon,Mf_ek.spthy,"MONOTONE_GENIS,SUNSET_ANAHTAR,ATK_DIFF,ATK_SAME,ATK_ROOT",M_weak_path_forgery,V,V,evet,16,10.11,178.6,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_sunset_beklenti,ablasyon,Mf_ek.spthy,"MONOTONE_DAR,SUNSET_BEKLENTI,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_untimed,V,V,evet,43,5.49,91.2,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_sunset_beklenti,ablasyon,Mf_ek.spthy,"MONOTONE_DAR,SUNSET_BEKLENTI,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_migrated,F,F,evet,14,6.26,117.0,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_sunset_beklenti,ablasyon,Mf_ek.spthy,"MONOTONE_DAR,SUNSET_BEKLENTI,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_timed,V,V,evet,8,4.45,85.9,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_sunset_beklenti,ablasyon,Mf_ek.spthy,"MONOTONE_DAR,SUNSET_BEKLENTI,ATK_DIFF,ATK_SAME,ATK_ROOT",no_rollback,V,V,evet,2,4.18,80.7,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_sunset_beklenti,ablasyon,Mf_ek.spthy,"MONOTONE_DAR,SUNSET_BEKLENTI,ATK_DIFF,ATK_SAME,ATK_ROOT",first_contact_downgrade,V,V,evet,14,6.33,116.5,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_sunset_beklenti,ablasyon,Mf_ek.spthy,"MONOTONE_DAR,SUNSET_BEKLENTI,ATK_DIFF,ATK_SAME,ATK_ROOT",executable,V,V,evet,15,6.29,108.5,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_sunset_beklenti,ablasyon,Mf_ek.spthy,"MONOTONE_DAR,SUNSET_BEKLENTI,ATK_DIFF,ATK_SAME,ATK_ROOT",executable_legacy,V,V,evet,13,7.86,107.3,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_sunset_beklenti,ablasyon,Mf_ek.spthy,"MONOTONE_DAR,SUNSET_BEKLENTI,ATK_DIFF,ATK_SAME,ATK_ROOT",executable_pre_migration,V,V,evet,13,11.59,109.6,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_sunset_beklenti,ablasyon,Mf_ek.spthy,"MONOTONE_DAR,SUNSET_BEKLENTI,ATK_DIFF,ATK_SAME,ATK_ROOT",executable_lifecycle,V,V,evet,17,6.05,99.9,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_sunset_beklenti,ablasyon,Mf_ek.spthy,"MONOTONE_DAR,SUNSET_BEKLENTI,ATK_DIFF,ATK_SAME,ATK_ROOT",executable_learn,V,V,evet,6,4.88,84.5,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_sunset_beklenti,ablasyon,Mf_ek.spthy,"MONOTONE_DAR,SUNSET_BEKLENTI,ATK_DIFF,ATK_SAME,ATK_ROOT",attack_needs_crqc,V,V,evet,158,7.13,127.4,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_sunset_beklenti,ablasyon,Mf_ek.spthy,"MONOTONE_DAR,SUNSET_BEKLENTI,ATK_DIFF,ATK_SAME,ATK_ROOT",G1_claims_unforgeability,F,F,evet,12,10.7,126.7,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_sunset_beklenti,ablasyon,Mf_ek.spthy,"MONOTONE_DAR,SUNSET_BEKLENTI,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_path_untimed,V,V,evet,51,5.85,92.4,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_sunset_beklenti,ablasyon,Mf_ek.spthy,"MONOTONE_DAR,SUNSET_BEKLENTI,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_path_migrated,F,F,evet,15,6.45,115.7,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_sunset_beklenti,ablasyon,Mf_ek.spthy,"MONOTONE_DAR,SUNSET_BEKLENTI,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_path_timed,V,V,evet,24,5.09,87.7,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_sunset_beklenti,ablasyon,Mf_ek.spthy,"MONOTONE_DAR,SUNSET_BEKLENTI,ATK_DIFF,ATK_SAME,ATK_ROOT",no_rollback_path,F,F,evet,16,6.26,127.9,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_sunset_beklenti,ablasyon,Mf_ek.spthy,"MONOTONE_DAR,SUNSET_BEKLENTI,ATK_DIFF,ATK_SAME,ATK_ROOT",M_downgrade_s1,V,V,evet,12,7.64,102.1,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_sunset_beklenti,ablasyon,Mf_ek.spthy,"MONOTONE_DAR,SUNSET_BEKLENTI,ATK_DIFF,ATK_SAME,ATK_ROOT",M_forgery_crqc,V,V,evet,15,20.84,288.4,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_sunset_beklenti,ablasyon,Mf_ek.spthy,"MONOTONE_DAR,SUNSET_BEKLENTI,ATK_DIFF,ATK_SAME,ATK_ROOT",M_weak_path_forgery,V,V,evet,16,11.62,173.6,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_yola_duyarli,mekanizma,Mf_ek.spthy,"MONOTONE_GENIS,SUNSET_BEKLENTI,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_untimed,V,V,evet,43,6.05,97.1,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_yola_duyarli,mekanizma,Mf_ek.spthy,"MONOTONE_GENIS,SUNSET_BEKLENTI,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_migrated,F,F,evet,14,6.89,112.9,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_yola_duyarli,mekanizma,Mf_ek.spthy,"MONOTONE_GENIS,SUNSET_BEKLENTI,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_timed,V,V,evet,8,5.02,86.2,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_yola_duyarli,mekanizma,Mf_ek.spthy,"MONOTONE_GENIS,SUNSET_BEKLENTI,ATK_DIFF,ATK_SAME,ATK_ROOT",no_rollback,V,V,evet,6,5.15,88.5,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_yola_duyarli,mekanizma,Mf_ek.spthy,"MONOTONE_GENIS,SUNSET_BEKLENTI,ATK_DIFF,ATK_SAME,ATK_ROOT",first_contact_downgrade,V,V,evet,14,7.1,116.7,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_yola_duyarli,mekanizma,Mf_ek.spthy,"MONOTONE_GENIS,SUNSET_BEKLENTI,ATK_DIFF,ATK_SAME,ATK_ROOT",executable,V,V,evet,15,6.98,111.4,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_yola_duyarli,mekanizma,Mf_ek.spthy,"MONOTONE_GENIS,SUNSET_BEKLENTI,ATK_DIFF,ATK_SAME,ATK_ROOT",executable_legacy,V,V,evet,13,6.32,109.0,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_yola_duyarli,mekanizma,Mf_ek.spthy,"MONOTONE_GENIS,SUNSET_BEKLENTI,ATK_DIFF,ATK_SAME,ATK_ROOT",executable_pre_migration,V,V,evet,13,6.04,111.9,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_yola_duyarli,mekanizma,Mf_ek.spthy,"MONOTONE_GENIS,SUNSET_BEKLENTI,ATK_DIFF,ATK_SAME,ATK_ROOT",executable_lifecycle,V,V,evet,17,6.52,102.4,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_yola_duyarli,mekanizma,Mf_ek.spthy,"MONOTONE_GENIS,SUNSET_BEKLENTI,ATK_DIFF,ATK_SAME,ATK_ROOT",executable_learn,V,V,evet,6,5.19,85.4,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_yola_duyarli,mekanizma,Mf_ek.spthy,"MONOTONE_GENIS,SUNSET_BEKLENTI,ATK_DIFF,ATK_SAME,ATK_ROOT",attack_needs_crqc,V,V,evet,158,7.7,134.0,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_yola_duyarli,mekanizma,Mf_ek.spthy,"MONOTONE_GENIS,SUNSET_BEKLENTI,ATK_DIFF,ATK_SAME,ATK_ROOT",G1_claims_unforgeability,F,F,evet,12,9.07,129.5,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_yola_duyarli,mekanizma,Mf_ek.spthy,"MONOTONE_GENIS,SUNSET_BEKLENTI,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_path_untimed,V,V,evet,51,6.12,90.2,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_yola_duyarli,mekanizma,Mf_ek.spthy,"MONOTONE_GENIS,SUNSET_BEKLENTI,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_path_migrated,F,F,evet,15,6.67,113.9,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_yola_duyarli,mekanizma,Mf_ek.spthy,"MONOTONE_GENIS,SUNSET_BEKLENTI,ATK_DIFF,ATK_SAME,ATK_ROOT",G5_path_timed,V,V,evet,24,5.15,87.3,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_yola_duyarli,mekanizma,Mf_ek.spthy,"MONOTONE_GENIS,SUNSET_BEKLENTI,ATK_DIFF,ATK_SAME,ATK_ROOT",no_rollback_path,V,V,evet,14,5.09,87.7,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_yola_duyarli,mekanizma,Mf_ek.spthy,"MONOTONE_GENIS,SUNSET_BEKLENTI,ATK_DIFF,ATK_SAME,ATK_ROOT",M_downgrade_s1,V,V,evet,12,6.52,100.8,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_yola_duyarli,mekanizma,Mf_ek.spthy,"MONOTONE_GENIS,SUNSET_BEKLENTI,ATK_DIFF,ATK_SAME,ATK_ROOT",M_forgery_crqc,V,V,evet,15,20.96,306.3,1,temiz
+"M-f (çevrimdışı ek, yol)",EK_mf_yola_duyarli,mekanizma,Mf_ek.spthy,"MONOTONE_GENIS,SUNSET_BEKLENTI,ATK_DIFF,ATK_SAME,ATK_ROOT",M_weak_path_forgery,V,V,evet,16,12.44,176.7,1,temiz

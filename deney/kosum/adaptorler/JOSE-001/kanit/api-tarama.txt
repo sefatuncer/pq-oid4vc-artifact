@@ -1,0 +1,148 @@
+# JOSE-001 Microsoft.IdentityModel.* 8.23.0 — API taraması (sözleşme §5.1; derlenmiş paket: yansıma ile genel türler/üyeler/sabitler)
+# imaj: a10-jose-001:1 (sha256:f0231e004805134dafd0b775ff97e9d833bada7fad748803de4c3647bc8806be)
+# komut: docker run --rm --network none a10-jose-001:1 adaptor tara 'ValidAlgorithms|AlgorithmValidator|TryAllIssuerSigningKeys|IssuerSigningKeyResolver|SignatureValidator|CryptoProviderFactory\.(IsSupportedAlgorithm|CustomCryptoProvider)|ICryptoProvider|ML-?DSA|MlDsa|Composite|EdDSA|Ed25519|AKP|Akp|ValidTypes|Crit|X5c|Required|SecurityAlgorithms\.'
+# (TARA_DERLEMELER=Microsoft.IdentityModel.Tokens,Microsoft.IdentityModel.JsonWebTokens,System.IdentityModel.Tokens.Jwt; Ortak.cs Tara())
+
+## derleme Microsoft.IdentityModel.Tokens 8.23.0.0 (8.23.0+8b16f418b3d587416d293e9ba34c5d310781cdb3)
+tip Microsoft.IdentityModel.Tokens.AlgorithmValidator
+  uye Method Microsoft.IdentityModel.Tokens.AlgorithmValidator.Invoke
+  uye Constructor Microsoft.IdentityModel.Tokens.AlgorithmValidator..ctor
+  uye Method Microsoft.IdentityModel.Tokens.CryptoProviderFactory.IsSupportedAlgorithm
+  uye Method Microsoft.IdentityModel.Tokens.CryptoProviderFactory.IsSupportedAlgorithm
+  uye Property Microsoft.IdentityModel.Tokens.CryptoProviderFactory.CustomCryptoProvider
+  uye Method Microsoft.IdentityModel.Tokens.Experimental.ValidationParameters.get_AlgorithmValidator
+  uye Method Microsoft.IdentityModel.Tokens.Experimental.ValidationParameters.set_AlgorithmValidator
+  uye Method Microsoft.IdentityModel.Tokens.Experimental.ValidationParameters.get_SignatureValidator
+  uye Method Microsoft.IdentityModel.Tokens.Experimental.ValidationParameters.set_SignatureValidator
+  uye Method Microsoft.IdentityModel.Tokens.Experimental.ValidationParameters.get_ValidAlgorithms
+  uye Method Microsoft.IdentityModel.Tokens.Experimental.ValidationParameters.get_ValidTypes
+  uye Property Microsoft.IdentityModel.Tokens.Experimental.ValidationParameters.AlgorithmValidator
+  uye Property Microsoft.IdentityModel.Tokens.Experimental.ValidationParameters.SignatureValidator
+  uye Property Microsoft.IdentityModel.Tokens.Experimental.ValidationParameters.ValidAlgorithms
+  uye Property Microsoft.IdentityModel.Tokens.Experimental.ValidationParameters.ValidTypes
+tip Microsoft.IdentityModel.Tokens.ICryptoProvider
+  uye Method Microsoft.IdentityModel.Tokens.ICryptoProvider.IsSupportedAlgorithm
+  uye Method Microsoft.IdentityModel.Tokens.ICryptoProvider.Create
+  uye Method Microsoft.IdentityModel.Tokens.ICryptoProvider.Release
+tip Microsoft.IdentityModel.Tokens.IssuerSigningKeyResolver
+  uye Method Microsoft.IdentityModel.Tokens.IssuerSigningKeyResolver.Invoke
+  uye Constructor Microsoft.IdentityModel.Tokens.IssuerSigningKeyResolver..ctor
+tip Microsoft.IdentityModel.Tokens.IssuerSigningKeyResolverUsingConfiguration
+  uye Method Microsoft.IdentityModel.Tokens.IssuerSigningKeyResolverUsingConfiguration.Invoke
+  uye Constructor Microsoft.IdentityModel.Tokens.IssuerSigningKeyResolverUsingConfiguration..ctor
+  uye Field Microsoft.IdentityModel.Tokens.JsonWebAlgorithmsKeyTypes.Akp = "AKP"
+  uye Method Microsoft.IdentityModel.Tokens.JsonWebKey.get_X5c
+  uye Property Microsoft.IdentityModel.Tokens.JsonWebKey.X5c
+  uye Method Microsoft.IdentityModel.Tokens.JsonWebKeyConverter.ConvertFromMlDsaSecurityKey
+  uye Field Microsoft.IdentityModel.Tokens.JsonWebKeyParameterNames.X5c = "x5c"
+tip Microsoft.IdentityModel.Tokens.MlDsaSecurityKey
+  uye Method Microsoft.IdentityModel.Tokens.MlDsaSecurityKey.get_MLDsa
+  uye Method Microsoft.IdentityModel.Tokens.MlDsaSecurityKey.Dispose
+  uye Method Microsoft.IdentityModel.Tokens.MlDsaSecurityKey.get_HasPrivateKey
+  uye Method Microsoft.IdentityModel.Tokens.MlDsaSecurityKey.get_PrivateKeyStatus
+  uye Method Microsoft.IdentityModel.Tokens.MlDsaSecurityKey.get_KeySize
+  uye Method Microsoft.IdentityModel.Tokens.MlDsaSecurityKey.CanComputeJwkThumbprint
+  uye Method Microsoft.IdentityModel.Tokens.MlDsaSecurityKey.ComputeJwkThumbprint
+  uye Constructor Microsoft.IdentityModel.Tokens.MlDsaSecurityKey..ctor
+  uye Property Microsoft.IdentityModel.Tokens.MlDsaSecurityKey.MLDsa
+  uye Property Microsoft.IdentityModel.Tokens.MlDsaSecurityKey.HasPrivateKey
+  uye Property Microsoft.IdentityModel.Tokens.MlDsaSecurityKey.PrivateKeyStatus
+  uye Property Microsoft.IdentityModel.Tokens.MlDsaSecurityKey.KeySize
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.Aes128Encryption = "http://www.w3.org/2001/04/xmlenc#aes128-cbc"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.Aes192Encryption = "http://www.w3.org/2001/04/xmlenc#aes192-cbc"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.Aes256Encryption = "http://www.w3.org/2001/04/xmlenc#aes256-cbc"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.DesEncryption = "http://www.w3.org/2001/04/xmlenc#des-cbc"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.Aes128KeyWrap = "http://www.w3.org/2001/04/xmlenc#kw-aes128"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.Aes192KeyWrap = "http://www.w3.org/2001/04/xmlenc#kw-aes192"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.Aes256KeyWrap = "http://www.w3.org/2001/04/xmlenc#kw-aes256"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.RsaV15KeyWrap = "http://www.w3.org/2001/04/xmlenc#rsa-1_5"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.Ripemd160Digest = "http://www.w3.org/2001/04/xmlenc#ripemd160"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.RsaOaepKeyWrap = "http://www.w3.org/2001/04/xmlenc#rsa-oaep"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.Aes128KW = "A128KW"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.Aes192KW = "A192KW"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.Aes256KW = "A256KW"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.RsaPKCS1 = "RSA1_5"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.RsaOAEP = "RSA-OAEP"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.ExclusiveC14n = "http://www.w3.org/2001/10/xml-exc-c14n#"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.ExclusiveC14nWithComments = "http://www.w3.org/2001/10/xml-exc-c14n#WithComments"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.EnvelopedSignature = "http://www.w3.org/2000/09/xmldsig#enveloped-signature"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.Sha256Digest = "http://www.w3.org/2001/04/xmlenc#sha256"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.Sha384Digest = "http://www.w3.org/2001/04/xmldsig-more#sha384"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.Sha512Digest = "http://www.w3.org/2001/04/xmlenc#sha512"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.Sha256 = "SHA256"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.Sha384 = "SHA384"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.Sha512 = "SHA512"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.EcdsaSha256Signature = "http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha256"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.EcdsaSha384Signature = "http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha384"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.EcdsaSha512Signature = "http://www.w3.org/2001/04/xmldsig-more#ecdsa-sha512"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.HmacSha256Signature = "http://www.w3.org/2001/04/xmldsig-more#hmac-sha256"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.HmacSha384Signature = "http://www.w3.org/2001/04/xmldsig-more#hmac-sha384"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.HmacSha512Signature = "http://www.w3.org/2001/04/xmldsig-more#hmac-sha512"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.RsaSha256Signature = "http://www.w3.org/2001/04/xmldsig-more#rsa-sha256"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.RsaSha384Signature = "http://www.w3.org/2001/04/xmldsig-more#rsa-sha384"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.RsaSha512Signature = "http://www.w3.org/2001/04/xmldsig-more#rsa-sha512"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.RsaSsaPssSha256Signature = "http://www.w3.org/2007/05/xmldsig-more#sha256-rsa-MGF1"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.RsaSsaPssSha384Signature = "http://www.w3.org/2007/05/xmldsig-more#sha384-rsa-MGF1"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.RsaSsaPssSha512Signature = "http://www.w3.org/2007/05/xmldsig-more#sha512-rsa-MGF1"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.EcdsaSha256 = "ES256"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.EcdsaSha384 = "ES384"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.EcdsaSha512 = "ES512"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.HmacSha256 = "HS256"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.HmacSha384 = "HS384"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.HmacSha512 = "HS512"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.None = "none"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.RsaSha256 = "RS256"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.RsaSha384 = "RS384"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.RsaSha512 = "RS512"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.RsaSsaPssSha256 = "PS256"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.RsaSsaPssSha384 = "PS384"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.RsaSsaPssSha512 = "PS512"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.MlDsa44 = "ML-DSA-44"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.MlDsa65 = "ML-DSA-65"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.MlDsa87 = "ML-DSA-87"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.Aes128CbcHmacSha256 = "A128CBC-HS256"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.Aes192CbcHmacSha384 = "A192CBC-HS384"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.Aes256CbcHmacSha512 = "A256CBC-HS512"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.Aes128Gcm = "A128GCM"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.Aes192Gcm = "A192GCM"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.Aes256Gcm = "A256GCM"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.EcdhEsA128kw = "ECDH-ES+A128KW"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.EcdhEsA192kw = "ECDH-ES+A192KW"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.EcdhEsA256kw = "ECDH-ES+A256KW"
+  uye Field Microsoft.IdentityModel.Tokens.SecurityAlgorithms.EcdhEs = "ECDH-ES"
+tip Microsoft.IdentityModel.Tokens.SignatureValidator
+  uye Method Microsoft.IdentityModel.Tokens.SignatureValidator.Invoke
+  uye Constructor Microsoft.IdentityModel.Tokens.SignatureValidator..ctor
+tip Microsoft.IdentityModel.Tokens.SignatureValidatorUsingConfiguration
+  uye Method Microsoft.IdentityModel.Tokens.SignatureValidatorUsingConfiguration.Invoke
+  uye Constructor Microsoft.IdentityModel.Tokens.SignatureValidatorUsingConfiguration..ctor
+  uye Method Microsoft.IdentityModel.Tokens.TokenValidationParameters.get_AlgorithmValidator
+  uye Method Microsoft.IdentityModel.Tokens.TokenValidationParameters.set_AlgorithmValidator
+  uye Method Microsoft.IdentityModel.Tokens.TokenValidationParameters.get_IssuerSigningKeyResolver
+  uye Method Microsoft.IdentityModel.Tokens.TokenValidationParameters.set_IssuerSigningKeyResolver
+  uye Method Microsoft.IdentityModel.Tokens.TokenValidationParameters.get_IssuerSigningKeyResolverUsingConfiguration
+  uye Method Microsoft.IdentityModel.Tokens.TokenValidationParameters.set_IssuerSigningKeyResolverUsingConfiguration
+  uye Method Microsoft.IdentityModel.Tokens.TokenValidationParameters.get_SignatureValidator
+  uye Method Microsoft.IdentityModel.Tokens.TokenValidationParameters.set_SignatureValidator
+  uye Method Microsoft.IdentityModel.Tokens.TokenValidationParameters.get_SignatureValidatorUsingConfiguration
+  uye Method Microsoft.IdentityModel.Tokens.TokenValidationParameters.set_SignatureValidatorUsingConfiguration
+  uye Method Microsoft.IdentityModel.Tokens.TokenValidationParameters.get_TryAllIssuerSigningKeys
+  uye Method Microsoft.IdentityModel.Tokens.TokenValidationParameters.set_TryAllIssuerSigningKeys
+  uye Method Microsoft.IdentityModel.Tokens.TokenValidationParameters.get_ValidAlgorithms
+  uye Method Microsoft.IdentityModel.Tokens.TokenValidationParameters.set_ValidAlgorithms
+  uye Method Microsoft.IdentityModel.Tokens.TokenValidationParameters.get_ValidTypes
+  uye Method Microsoft.IdentityModel.Tokens.TokenValidationParameters.set_ValidTypes
+  uye Property Microsoft.IdentityModel.Tokens.TokenValidationParameters.AlgorithmValidator
+  uye Property Microsoft.IdentityModel.Tokens.TokenValidationParameters.IssuerSigningKeyResolver
+  uye Property Microsoft.IdentityModel.Tokens.TokenValidationParameters.IssuerSigningKeyResolverUsingConfiguration
+  uye Property Microsoft.IdentityModel.Tokens.TokenValidationParameters.SignatureValidator
+  uye Property Microsoft.IdentityModel.Tokens.TokenValidationParameters.SignatureValidatorUsingConfiguration
+  uye Property Microsoft.IdentityModel.Tokens.TokenValidationParameters.TryAllIssuerSigningKeys
+  uye Property Microsoft.IdentityModel.Tokens.TokenValidationParameters.ValidAlgorithms
+  uye Property Microsoft.IdentityModel.Tokens.TokenValidationParameters.ValidTypes
+## derleme Microsoft.IdentityModel.JsonWebTokens 8.23.0.0 (8.23.0+8b16f418b3d587416d293e9ba34c5d310781cdb3)
+  uye Field Microsoft.IdentityModel.JsonWebTokens.JwtHeaderParameterNames.X5c = "x5c"
+## derleme System.IdentityModel.Tokens.Jwt 8.23.0.0 (8.23.0+8b16f418b3d587416d293e9ba34c5d310781cdb3)
+  uye Method System.IdentityModel.Tokens.Jwt.JwtHeader.get_X5c
+  uye Property System.IdentityModel.Tokens.Jwt.JwtHeader.X5c
+  uye Field System.IdentityModel.Tokens.Jwt.JwtHeaderParameterNames.X5c = "x5c"

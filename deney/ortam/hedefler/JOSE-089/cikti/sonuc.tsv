@@ -1,0 +1,14 @@
+baslangic	2026-09-25T13:09:47Z
+hedef	JOSE-089
+ekosistem	rubygems
+paket	json-jwt
+istenen_surum	1.17.2
+arac	ruby 3.4.11; bundler 2.6.9; ruby-openssl OpenSSL 3.5.7 9 Jun 2026
+kilit_dosyasi	Gemfile.lock (CHECKSUMS dahil)
+kilit_sha256	89d11df0f031ddae451a680d1fe57b1135c91e4b0bde587dc9025e85d12d4901
+bagimlilik_sayisi	21
+kurulan_surum	1.17.2
+paket_ozeti	sha256:97e37c1c3e22e9e1d74a1c0d77319c5cdc8a636226e5dbb1664b0b34eddcf1c9 (Gemfile.lock CHECKSUMS)
+lisans_kayit	MIT
+ice_aktar	basarili
+bitis	2026-09-25T13:10:13Z

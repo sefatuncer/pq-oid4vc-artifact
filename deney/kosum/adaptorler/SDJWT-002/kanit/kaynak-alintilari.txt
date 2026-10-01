@@ -1,0 +1,183 @@
+# SDJWT-002 kaynak alintilari — selective_disclosure_jwt 1.1.1 (pub.dev; pubspec.lock sha256 1ee9764a...), imaj a10-sdjwt-002:1
+# komut: docker run --rm --network none a10-sdjwt-002:1 sh -c 'grep -n "" <dosya> | sed -n <aralik>p'
+== verify/sd_jwt_verifier.dart (tum dosya)
+1:part of '../models/sdjwt.dart';
+2:
+3:/// Input class for the SD-JWT verification process.
+4:///
+5:/// Contains all the necessary information to verify an SD-JWT.
+6:///
+7:/// @internal
+8:/// This is an internal implementation detail, not intended for direct use by consumers of the package.
+9:class SdJwtVerifierInput {
+10:  /// Configuration options for the verification process.
+11:  final Map<String, dynamic> config;
+12:
+13:  /// The SD-JWT to verify.
+14:  final SdJwt sdJwt;
+15:
+16:  /// The public key of the issuer used to verify the JWT signature.
+17:  final Verifier verifier;
+18:
+19:  /// Creates a new input for the SD-JWT verification process.
+20:  ///
+21:  /// Parameters:
+22:  /// - **[config]**: Configuration options for the verification process.
+23:  /// - **[sdJwt]**: The SD-JWT to verify.
+24:  /// - **[verifier]**: The [Verifier] with issuer's public key used to verify the JWT signature.
+25:  SdJwtVerifierInput(
+26:      {required this.config, required this.sdJwt, required this.verifier});
+27:}
+28:
+29:/// Action class for verifying Selective Disclosure JWTs (SD-JWTs).
+30:///
+31:/// This class implements the logic for verifying SD-JWTs and their
+32:/// selectively disclosed claims according to the SD-JWT specification.
+33:///
+34:/// @internal
+35:/// This is an internal implementation detail, not intended for direct use by consumers of the package.
+36:class SdJwtVerifyAction extends Action<SdJwtVerifierInput, SdJwt>
+37:    with JwtVerifier {
+38:  /// Action for verifying Key Binding JWTs.
+39:  final KbVerifyAction _kbVerifyAction;
+40:
+41:  /// Creates a new action for verifying SD-JWTs.
+42:  ///
+43:  /// Parameters:
+44:  /// - **[kbVerifyAction]**: Action for verifying Key Binding JWTs.
+45:  SdJwtVerifyAction({KbVerifyAction? kbVerifyAction})
+46:      : _kbVerifyAction = kbVerifyAction ?? KbVerifyAction();
+47:
+48:  @override
+49:  SdJwt execute(SdJwtVerifierInput input) {
+50:    final sdJwt = input.sdJwt;
+51:
+52:    try {
+53:      verifyJwt(
+54:        serialized: sdJwt.jwsString,
+55:        verifier: input.verifier,
+56:      );
+57:      sdJwt._verified._isJwsVerified = true;
+58:    } catch (e) {
+59:      sdJwt._verified._isJwsVerified = false;
+60:      return sdJwt;
+61:    }
+62:
+63:    // Verify holder KB JWT (if configured)
+64:    final shouldVerifyKb = input.config['verifyKeyBinding'] ?? false;
+65:
+66:    if (shouldVerifyKb) {
+67:      try {
+68:        final kbResult = _kbVerifyAction.execute(sdJwt);
+69:        if (!kbResult) {
+70:          throw Exception('Invalid KB JWT');
+71:        }
+72:
+73:        sdJwt._verified._isKbJwtVerified = true;
+74:      } catch (e) {
+75:        sdJwt._verified._isKbJwtVerified = false;
+76:        return sdJwt;
+77:      }
+78:    }
+79:
+80:    return sdJwt;
+81:  }
+82:}
+== verify/jwt_verifier_base.dart L1-50
+1:import 'dart:convert';
+2:import 'dart:typed_data';
+3:
+4:import 'package:dart_jsonwebtoken/dart_jsonwebtoken.dart';
+5:import 'package:selective_disclosure_jwt/src/utils/common.dart';
+6:import 'package:selective_disclosure_jwt/src/verify/verifier.dart';
+7:
+8:/// A mixin that provides common JWT verification functionality.
+9:///
+10:/// This mixin includes methods for verifying JWT signatures, time-based claims,
+11:/// and confirmation claims (cnf).
+12:///
+13:/// @internal
+14:/// This is an internal implementation detail, not intended for direct use by consumers of the package.
+15:mixin JwtVerifier {
+16:  /// Verifies the signature of a JWT using the provided key.
+17:  ///
+18:  /// Parameters:
+19:  /// - **[serialized]**: The JWT string to verify.
+20:  /// - **[verifier]**: The [Verifier] to use for verification.
+21:  ///
+22:  /// Returns the verified JWT object if successful.
+23:  /// Throws an exception if verification fails.
+24:  bool verifyJwt({
+25:    required String serialized,
+26:    required Verifier verifier,
+27:  }) {
+28:    final JWT decodedJwt;
+29:    try {
+30:      decodedJwt = JWT.decode(serialized);
+31:    } catch (e) {
+32:      throw Exception('Invalid JWT format: $e');
+33:    }
+34:
+35:    final headerJson = decodedJwt.header;
+36:    if (headerJson == null) {
+37:      throw Exception('JWT header is missing');
+38:    }
+39:
+40:    // Verify that the algorithm is supported by the verifier.
+41:    final alg = headerJson['alg'] as String?;
+42:    if (alg == null || !verifier.isAllowedAlgorithm(alg)) {
+43:      throw Exception('JWT verification failed: Supported alg not found');
+44:    }
+45:
+46:    final parts = serialized.split('.');
+47:    if (parts.length != 3) {
+48:      throw Exception('Invalid JWT format: expected 3 parts');
+49:    }
+50:
+== models/sdkey.dart SDKeyVerifier
+260:class SDKeyVerifier implements Verifier {
+261:  final SdPublicKey _publicKey;
+262:
+263:  /// Creates the verifier for the given [SdPublicKey].
+264:  /// The public key of the JWT's issuer can be deduced as needed using any appropriate method.
+265:  ///
+266:  /// Parameters:
+267:  /// - **[_publicKey]**: The [SdPublicKey] that can be used for verifying
+268:  SDKeyVerifier(this._publicKey);
+269:
+270:  /// Verify the signature bytes, for the given data bytes using the [SdPublicKey] and it's [SdJwtSignAlgorithm].
+271:  ///
+272:  /// Parameters:
+273:  /// - **[data]**: The data bytes
+274:  /// - **[signature]**: The signature bytes
+275:  ///
+276:  /// Returns whether the signature is correct
+277:  @override
+278:  bool verify(Uint8List data, Uint8List signature) {
+279:    try {
+280:      final key = _publicKey._key;
+281:      final algorithm = _publicKey.alg._jwa;
+282:      return algorithm.verify(key, data, signature);
+283:    } catch (e) {
+284:      return false;
+285:    }
+286:  }
+287:
+288:  /// This Verifier can be used with any of the bundled algorithms.
+289:  @override
+290:  bool isAllowedAlgorithm(String algorithm) {
+291:    return SdJwtSignAlgorithm.isSupported(algorithm);
+292:  }
+293:}
+== models/sdjwt.dart L136-146 (_sd_alg)
+136:
+137:    final headerJson = decodedIssuerJwt.header!;
+138:    final payload = decodedIssuerJwt.payload;
+139:    if (payload is! Map<String, dynamic>) {
+140:      throw Exception("Invalid SD-JWT: JWT payload must be a JSON object");
+141:    }
+142:
+143:    final hasher = Base64EncodedOutputHasher(
+144:        Hasher.fromString(payload['_sd_alg'], customHasher: customHasher));
+145:
+146:    final disclosuresDigestIndex =

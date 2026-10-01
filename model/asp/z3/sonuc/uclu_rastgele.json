@@ -1,0 +1,80 @@
+{
+ "duvar_s": 74.74,
+ "en_cok_jacobi_turu": 8,
+ "esit": 7000,
+ "ilk_farklar": [],
+ "siniflar": {
+  "g1": {
+   "esit": 1000,
+   "hedef_ihlal_orani": 0.383,
+   "kip": {
+    "bos": 331,
+    "ozel": 336,
+    "tum": 333
+   },
+   "n": 1000
+  },
+  "g2": {
+   "esit": 1000,
+   "hedef_ihlal_orani": 0.723,
+   "kip": {
+    "bos": 327,
+    "ozel": 338,
+    "tum": 335
+   },
+   "n": 1000
+  },
+  "g2i": {
+   "esit": 1000,
+   "hedef_ihlal_orani": 0.362,
+   "kip": {
+    "bos": 330,
+    "ozel": 345,
+    "tum": 325
+   },
+   "n": 1000
+  },
+  "g3": {
+   "esit": 1000,
+   "hedef_ihlal_orani": 0.316,
+   "kip": {
+    "bos": 309,
+    "ozel": 351,
+    "tum": 340
+   },
+   "n": 1000
+  },
+  "g4": {
+   "esit": 1000,
+   "hedef_ihlal_orani": 0.687,
+   "kip": {
+    "bos": 313,
+    "ozel": 366,
+    "tum": 321
+   },
+   "n": 1000
+  },
+  "g5": {
+   "esit": 1000,
+   "hedef_ihlal_orani": 0.762,
+   "kip": {
+    "bos": 315,
+    "ozel": 349,
+    "tum": 336
+   },
+   "n": 1000
+  },
+  "tum": {
+   "esit": 1000,
+   "hedef_ihlal_orani": 0.91,
+   "kip": {
+    "bos": 331,
+    "ozel": 320,
+    "tum": 349
+   },
+   "n": 1000
+  }
+ },
+ "tohum": 20260928,
+ "yapilandirma": 7000
+}

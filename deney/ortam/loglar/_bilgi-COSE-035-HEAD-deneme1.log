@@ -1,0 +1,16 @@
+# hedef=_bilgi-COSE-035-HEAD imaj=pq-a09-env-php:1.0 (sha256:a89612973cf41e3cb0597817bc85206aa10f11aa86b633636457a9fb99ad95c4) baslangic=2026-09-25T13:07:49Z zaman_asimi=900s
+# komut: docker run --rm --name pq-a09-ortam-_bilgi-cose-035-head --label pq.agir=derleme --memory=6g --memory-swap=6g -v hedefler/_bilgi-COSE-035-HEAD:/w -v betikler/konteyner:/b:ro pq-a09-env-php:1.0 sh -c '(bash|sh) /w/kur.sh'
+== composer require web-auth/cose-lib:dev-4.9.x#1c854bf63c5cd8d872d1e57ec7b891030f4ed314
+./composer.json has been updated
+Running composer update web-auth/cose-lib spomky-labs/cbor-php
+Loading composer repositories with package information
+Updating dependencies
+Your requirements could not be resolved to an installable set of packages.
+
+  Problem 1
+    - Root composer.json requires web-auth/cose-lib dev-4.9.x#1c854bf63c5cd8d872d1e57ec7b891030f4ed314, found web-auth/cose-lib[dev-feat/issue-192-cose-wg-fixtures, dev-feat/issue-194-rfc9864-remainder, dev-feat/issue-198-typ-cwt-claims, dev-feat/issue-215-hash-envelope, dev-feat/issue-216-countersignatures, dev-feat/issue-217-rfc3161-timestamps, dev-feat/issue-218-receipts-vds-vdp, dev-feat/rfc9052-tag-conformance, dev-feature/195-hash-algorithms, dev-4.7.x-merge-up-into-4.8.x_nnzwYPbs, v1.0.0, ..., v1.2.x-dev, v2.0.0-alpha1, ..., v2.2.x-dev, v3.0.0, ..., v3.3.x-dev, v4.0.0, ..., 4.9.x-dev] but it does not match the constraint.
+
+
+Installation failed, reverting ./composer.json to its original content.
+== SONUC: basarisiz
+# cikis_kodu=10 sure_s=2 bitis=2026-09-25T13:07:51Z

@@ -1,0 +1,15 @@
+baslangic	2026-09-25T12:44:28Z
+hedef	COSE-034
+ekosistem	go
+paket	github.com/veraison/go-cose
+istenen_surum	v1.3.0
+arac	go version go1.27.1 linux/amd64
+commit	e5c68f97dfbb7dc2677e891ceea9a8eafe42ddb4
+commit_kaynagi	Go proxy Origin (refs/tags/v1.3.0)
+kurulan_surum	v1.3.0
+kilit_dosyasi	go.sum
+kilit_sha256	f1cedb7a9eb1f770d27d78d7499349cad54d5a1ca4740ad9655cb581b1cbb2c9
+bagimlilik_sayisi	3
+paket_ozeti	h1:2/H5w8kdSpQJyVtIhx8gmwPJ2uSz1PkyWFx0idbd7rk=
+ice_aktar	basarili
+bitis	2026-09-25T12:44:41Z

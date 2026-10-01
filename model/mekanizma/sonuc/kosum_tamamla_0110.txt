@@ -1,0 +1,75 @@
+[2026-10-01 15:21:56] Başlangıç. Filtre=''. İmaj: pq-a02-tamarin:1.12.0 (sha256:59b648d60829c4580504470be1b171df0e63ead38bebc8944ac8ee2bba6b9c60)
+[2026-10-01 15:21:56] Çapa denetimi (SHA256-ON-KAYIT.txt):
+    on_kayit_varyantlar.tsv: OK
+    modeller/ortak_g5.spthy: OK
+    modeller/M_istek.spthy: OK
+    modeller/M_metaveri.spthy: OK
+    modeller/Mf_yol.spthy: OK
+    modeller/M_h.spthy: OK
+    modeller/Mg_yol.spthy: OK
+    modeller/Mf_ek.spthy: OK
+    ON-KAYIT-GEREKCE.md: OK
+    betik/iyi_bicimlilik.sh: OK
+    iyi_bicimlilik_on_kayit.txt: OK
+[2026-10-01 15:22:26]   EK_mf_monoton_genis G5_migrated basamak=1 -> falsified (14 adım) 5.03s 113.6MiB rc=0
+[2026-10-01 15:22:31]   EK_mf_monoton_genis G5_timed basamak=1 -> verified (8 adım) 3.58s 86.0MiB rc=0
+[2026-10-01 15:22:35]   EK_mf_monoton_genis no_rollback basamak=1 -> verified (6 adım) 3.59s 89.1MiB rc=0
+[2026-10-01 15:22:42]   EK_mf_monoton_genis first_contact_downgrade basamak=1 -> verified (14 adım) 5.23s 116.8MiB rc=0
+[2026-10-01 15:22:48]   EK_mf_monoton_genis executable basamak=1 -> verified (15 adım) 5.01s 108.0MiB rc=0
+[2026-10-01 15:22:53]   EK_mf_monoton_genis executable_legacy basamak=1 -> verified (13 adım) 4.4s 107.7MiB rc=0
+[2026-10-01 15:22:59]   EK_mf_monoton_genis executable_pre_migration basamak=1 -> verified (13 adım) 4.43s 108.5MiB rc=0
+[2026-10-01 15:23:06]   EK_mf_monoton_genis executable_lifecycle basamak=1 -> verified (15 adım) 6.15s 130.5MiB rc=0
+[2026-10-01 15:23:11]   EK_mf_monoton_genis executable_learn basamak=1 -> verified (6 adım) 3.82s 84.8MiB rc=0
+[2026-10-01 15:23:18]   EK_mf_monoton_genis attack_needs_crqc basamak=1 -> verified (158 adım) 6.05s 127.1MiB rc=0
+[2026-10-01 15:23:26]   EK_mf_monoton_genis G1_claims_unforgeability basamak=1 -> falsified (12 adım) 6.93s 126.8MiB rc=0
+[2026-10-01 15:23:32]   EK_mf_monoton_genis G5_path_untimed basamak=1 -> verified (51 adım) 5.09s 91.0MiB rc=0
+[2026-10-01 15:23:39]   EK_mf_monoton_genis G5_path_migrated basamak=1 -> falsified (15 adım) 5.52s 116.8MiB rc=0
+[2026-10-01 15:23:46]   EK_mf_monoton_genis G5_path_timed basamak=1 -> falsified (15 adım) 6.03s 119.7MiB rc=0
+[2026-10-01 15:23:52]   EK_mf_monoton_genis no_rollback_path basamak=1 -> verified (14 adım) 4.47s 86.4MiB rc=0
+[2026-10-01 15:23:58]   EK_mf_monoton_genis M_downgrade_s1 basamak=1 -> verified (12 adım) 5.41s 101.8MiB rc=0
+[2026-10-01 15:24:18]   EK_mf_monoton_genis M_forgery_crqc basamak=1 -> verified (15 adım) 18.45s 296.5MiB rc=0
+[2026-10-01 15:24:29]   EK_mf_monoton_genis M_weak_path_forgery basamak=1 -> verified (16 adım) 10.11s 178.6MiB rc=0
+[2026-10-01 15:24:29] == EK_mf_sunset_beklenti (ablasyon) Mf_ek.spthy bayraklar: -D=MONOTONE_DAR -D=SUNSET_BEKLENTI -D=ATK_DIFF -D=ATK_SAME -D=ATK_ROOT
+[2026-10-01 15:24:41]   EK_mf_sunset_beklenti G5_untimed basamak=1 -> verified (43 adım) 5.49s 91.2MiB rc=0
+[2026-10-01 15:24:49]   EK_mf_sunset_beklenti G5_migrated basamak=1 -> falsified (14 adım) 6.26s 117.0MiB rc=0
+[2026-10-01 15:24:54]   EK_mf_sunset_beklenti G5_timed basamak=1 -> verified (8 adım) 4.45s 85.9MiB rc=0
+[2026-10-01 15:25:00]   EK_mf_sunset_beklenti no_rollback basamak=1 -> verified (2 adım) 4.18s 80.7MiB rc=0
+[2026-10-01 15:25:07]   EK_mf_sunset_beklenti first_contact_downgrade basamak=1 -> verified (14 adım) 6.33s 116.5MiB rc=0
+[2026-10-01 15:25:14]   EK_mf_sunset_beklenti executable basamak=1 -> verified (15 adım) 6.29s 108.5MiB rc=0
+[2026-10-01 15:25:24]   EK_mf_sunset_beklenti executable_legacy basamak=1 -> verified (13 adım) 7.86s 107.3MiB rc=0
+[2026-10-01 15:25:37]   EK_mf_sunset_beklenti executable_pre_migration basamak=1 -> verified (13 adım) 11.59s 109.6MiB rc=0
+[2026-10-01 15:25:37]   başka bir Tamarin konteyneri çalışıyor; bekleniyor
+[2026-10-01 15:31:11]   EK_mf_sunset_beklenti executable_lifecycle basamak=1 -> verified (17 adım) 6.05s 99.9MiB rc=0
+[2026-10-01 15:31:17]   EK_mf_sunset_beklenti executable_learn basamak=1 -> verified (6 adım) 4.88s 84.5MiB rc=0
+[2026-10-01 15:31:25]   EK_mf_sunset_beklenti attack_needs_crqc basamak=1 -> verified (158 adım) 7.13s 127.4MiB rc=0
+[2026-10-01 15:31:37]   EK_mf_sunset_beklenti G1_claims_unforgeability basamak=1 -> falsified (12 adım) 10.7s 126.7MiB rc=0
+[2026-10-01 15:31:37]   başka bir Tamarin konteyneri çalışıyor; bekleniyor
+[2026-10-01 15:32:00]   EK_mf_sunset_beklenti G5_path_untimed basamak=1 -> verified (51 adım) 5.85s 92.4MiB rc=0
+[2026-10-01 15:32:07]   EK_mf_sunset_beklenti G5_path_migrated basamak=1 -> falsified (15 adım) 6.45s 115.7MiB rc=0
+[2026-10-01 15:32:14]   EK_mf_sunset_beklenti G5_path_timed basamak=1 -> verified (24 adım) 5.09s 87.7MiB rc=0
+[2026-10-01 15:32:21]   EK_mf_sunset_beklenti no_rollback_path basamak=1 -> falsified (16 adım) 6.26s 127.9MiB rc=0
+[2026-10-01 15:32:30]   EK_mf_sunset_beklenti M_downgrade_s1 basamak=1 -> verified (12 adım) 7.64s 102.1MiB rc=0
+[2026-10-01 15:32:31]   başka bir Tamarin konteyneri çalışıyor; bekleniyor
+[2026-10-01 15:38:20]   EK_mf_sunset_beklenti M_forgery_crqc basamak=1 -> verified (15 adım) 20.84s 288.4MiB rc=0
+[2026-10-01 15:38:33]   EK_mf_sunset_beklenti M_weak_path_forgery basamak=1 -> verified (16 adım) 11.62s 173.6MiB rc=0
+[2026-10-01 15:38:33] == EK_mf_yola_duyarli (mekanizma) Mf_ek.spthy bayraklar: -D=MONOTONE_GENIS -D=SUNSET_BEKLENTI -D=ATK_DIFF -D=ATK_SAME -D=ATK_ROOT
+[2026-10-01 15:38:46]   EK_mf_yola_duyarli G5_untimed basamak=1 -> verified (43 adım) 6.05s 97.1MiB rc=0
+[2026-10-01 15:38:54]   EK_mf_yola_duyarli G5_migrated basamak=1 -> falsified (14 adım) 6.89s 112.9MiB rc=0
+[2026-10-01 15:39:00]   EK_mf_yola_duyarli G5_timed basamak=1 -> verified (8 adım) 5.02s 86.2MiB rc=0
+[2026-10-01 15:39:07]   EK_mf_yola_duyarli no_rollback basamak=1 -> verified (6 adım) 5.15s 88.5MiB rc=0
+[2026-10-01 15:39:15]   EK_mf_yola_duyarli first_contact_downgrade basamak=1 -> verified (14 adım) 7.1s 116.7MiB rc=0
+[2026-10-01 15:39:23]   EK_mf_yola_duyarli executable basamak=1 -> verified (15 adım) 6.98s 111.4MiB rc=0
+[2026-10-01 15:39:31]   EK_mf_yola_duyarli executable_legacy basamak=1 -> verified (13 adım) 6.32s 109.0MiB rc=0
+[2026-10-01 15:39:38]   EK_mf_yola_duyarli executable_pre_migration basamak=1 -> verified (13 adım) 6.04s 111.9MiB rc=0
+[2026-10-01 15:39:46]   EK_mf_yola_duyarli executable_lifecycle basamak=1 -> verified (17 adım) 6.52s 102.4MiB rc=0
+[2026-10-01 15:39:52]   EK_mf_yola_duyarli executable_learn basamak=1 -> verified (6 adım) 5.19s 85.4MiB rc=0
+[2026-10-01 15:40:01]   EK_mf_yola_duyarli attack_needs_crqc basamak=1 -> verified (158 adım) 7.7s 134.0MiB rc=0
+[2026-10-01 15:40:12]   EK_mf_yola_duyarli G1_claims_unforgeability basamak=1 -> falsified (12 adım) 9.07s 129.5MiB rc=0
+[2026-10-01 15:40:19]   EK_mf_yola_duyarli G5_path_untimed basamak=1 -> verified (51 adım) 6.12s 90.2MiB rc=0
+[2026-10-01 15:40:27]   EK_mf_yola_duyarli G5_path_migrated basamak=1 -> falsified (15 adım) 6.67s 113.9MiB rc=0
+[2026-10-01 15:40:33]   EK_mf_yola_duyarli G5_path_timed basamak=1 -> verified (24 adım) 5.15s 87.3MiB rc=0
+[2026-10-01 15:40:40]   EK_mf_yola_duyarli no_rollback_path basamak=1 -> verified (14 adım) 5.09s 87.7MiB rc=0
+[2026-10-01 15:40:47]   EK_mf_yola_duyarli M_downgrade_s1 basamak=1 -> verified (12 adım) 6.52s 100.8MiB rc=0
+[2026-10-01 15:41:10]   EK_mf_yola_duyarli M_forgery_crqc basamak=1 -> verified (15 adım) 20.96s 306.3MiB rc=0
+[2026-10-01 15:41:23]   EK_mf_yola_duyarli M_weak_path_forgery basamak=1 -> verified (16 adım) 12.44s 176.7MiB rc=0
+[2026-10-01 15:41:23] Bitti (58 konteyner).

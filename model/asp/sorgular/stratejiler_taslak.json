@@ -1,0 +1,39 @@
+{
+ "_aciklama": "Adım 3 TASLAK strateji ataması, SÜRÜM 2 (ön kayıt §4.9, §2A Ö5, §2C D1′: 17 karar düğümü). Hiçbir strateji karşılaştırması koşulmadan ÖNCE yazıldı; SHA-256 stratejiler_taslak.sha256 dosyasında. Sürüm 1 (24.09, SHA b749dd47…) §2C'den önceki artefakt düzeyi modele aitti ve hiçbir karşılaştırma koşulmadan bu sürümle değiştirildi. Ö5 gereği dondurulmuş dosyanın yolu model\\karsilastirma\\stratejiler.yaml'dır; ASP çalışmasının oraya yazma izni yoktur: yürütücüye öneri.",
+ "_tarih": "2026-09-25",
+ "dugumler": ["a01", "a02", "a03", "a04", "a05", "a06", "a07", "a08", "a09a", "a09b", "a10", "a11", "a12", "a13", "ecrl", "ejvi", "eas"],
+ "gruplar": {
+  "KOK": ["a01", "a02"],
+  "CA": ["a03"],
+  "IHR_SERT": ["a04"],
+  "KIMLIK": ["a07"],
+  "CIHAZ": ["a10"],
+  "HEPSI": "hücrede etkin ve PQ yasağı olmayan bütün karar düğümleri (WebPKI klasikken a13 yasak)",
+  "OPERASYONEL": ["a07", "a08", "a10"]
+ },
+ "tasiyici_kumeleri": {
+  "MF": "hücrede etkin bütün m_f ve m_f2 taşıyıcıları (TL/LoTE/LOTL/OJEU kaydı; WRPRC yalnız faz1)",
+  "MD": "hücrede etkin bütün m_d taşıyıcıları (md_kanca = acik)",
+  "MF_ME2": "MF + m_e2 (meta veri) taşıyıcıları"
+ },
+ "stratejiler": {
+  "S0": {"ad": "Statüko: HAIP asgarisi + ekosistemin bant dışı seçtiği klasik süitler (T123; §2C Ö5)", "pq": {"f1": [], "f2": [], "f3": []}, "politika": "p0", "tasi": null},
+  "S1": {"ad": "Naif kimlik-bilgisi-önce", "pq": {"f1": ["KIMLIK"], "f2": ["KIMLIK"], "f3": ["KIMLIK"]}, "politika": "p0", "tasi": null},
+  "S2": {"ad": "ECCG AND; beklenti kanalı yok", "pq": {"f1": ["HEPSI"], "f2": ["HEPSI"], "f3": ["HEPSI"]}, "politika": "p1", "tasi": null},
+  "S3": {"ad": "RFC 9955 composite; beklenti bant dışı (M-d)", "pq": {"f1": ["HEPSI"], "f2": ["HEPSI"], "f3": ["HEPSI"]}, "politika": "p4", "tasi": "MD", "ek_parametre": {"md_kanca": "acik"}},
+  "S4": {"ad": "8725bis: ihraççı başına yerel yapılandırma, klasik kaynaktan", "pq": {"f1": ["HEPSI"], "f2": ["HEPSI"], "f3": ["HEPSI"]}, "politika": "p3", "tasi": "MF_ME2"},
+  "S5": {"ad": "Önce kök ve cihaz (Mulder 2026, NCSC 2025)", "pq": {"f1": ["KOK", "CA", "CIHAZ"], "f2": ["KOK", "CA", "CIHAZ", "IHR_SERT", "KIMLIK"], "f3": ["HEPSI"]}, "politika": "p1", "tasi": null},
+  "S5e": {"ad": "KEŞİFSEL: S5 kümeleri + P4 + M-f (sıra etkisini beklenti etkisinden ayırmak için)", "pq": {"f1": ["KOK", "CA", "CIHAZ"], "f2": ["KOK", "CA", "CIHAZ", "IHR_SERT", "KIMLIK"], "f3": ["HEPSI"]}, "politika": "p4", "tasi": "MF"},
+  "S6": {"ad": "Big-bang: hepsi + PQ taşıma (taşıma yalnız WebPKI PQ hücresinde seçilebilir; iki durumda da raporlanır)", "pq": {"f1": ["HEPSI"], "f2": ["HEPSI"], "f3": ["HEPSI"]}, "politika": "p4", "tasi": "MF"},
+  "S7": {"ad": "Hesaplanan asgari küme (hücre başına; P4; ağırlıklı M2'si en küçük asgari küme; eşitlikte düğüm sayısı, sonra sözlük sırası)", "hesaplanan": true},
+  "S8": {"ad": "Geçici direnç kuralı (Anchuri vd.): operasyonel anahtarlar klasik ve kısa pencereli (V3 ihraççı ve durum anahtarı, kimlik bilgisi başına cnf), uzun ömürlü kimlikler (CA zinciri, listeler) PQ", "pq": {"f1": ["HEPSI-OPERASYONEL"], "f2": ["HEPSI-OPERASYONEL"], "f3": ["HEPSI-OPERASYONEL"]}, "politika": "p4", "tasi": "MF", "ek_parametre": {"ihracci_anahtari": "gecici", "durum_anahtari": "gecici", "cihaz_anahtari": "kimlik_basi"}}
+ },
+ "olcutler": {
+  "M1": "sağlanan hücre / 36 (G1–G4 × Φ1–Φ3 × 3 τ; birincil yapılandırma: çıpa taze, WebPKI klasik); H1 tasarımı için WebPKI PQ ayrıca",
+  "M2": "göç eden karar düğümü sayısı (17 düğüm; A02 tek düğüm); ağırlıklı: a02 = 107 TL imzacı sertifikası (43 işaretçi), diğerleri 1",
+  "M3": "YAPISAL VEKİL: başlıkta taşınan PQ artefakt düğümü sayısı (a09a WIA-PoP, a09b WIA imzası; OAuth-Client-Attestation, T192). Bayt ölçümü Adım 12",
+  "M4": "YAPISAL: Φ3'te göç etmiş sınıfın eski varlıkları varlık başına beklenti olmadan reddedilir mi (1/0)",
+  "M5": "WSCD değişimi gerekiyor mu: a10 ∈ PQ"
+ },
+ "hucreler": {"hedef": ["g1", "g2", "g3", "g4"], "faz": ["f1", "f2", "f3"], "tau": ["hizli", "orta", "yavas"], "capa": "taze (M1); sabit, onbellek ayrı", "webpki": "cl (birincil); pq (H1 tasarımı)"}
+}

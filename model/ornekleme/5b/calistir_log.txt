@@ -1,0 +1,54 @@
+[2026-10-01 16:51:25] Başlangıç. Filtre='CERCEVE-000048'. İmaj: pq-a02-tamarin:1.12.0 (sha256:59b648d60829c4580504470be1b171df0e63ead38bebc8944ac8ee2bba6b9c60)
+[2026-10-01 16:51:25] Çeviri özeti (on_ceviri.sha256) denetimi:
+    ceviri_plani.tsv: OK
+    secim.json: OK
+    ceviri_disi.tsv: OK
+[2026-10-01 16:51:26] == CERCEVE-000048 (kapi) hedef=G1 tur=bir-eksik model=ornekler/CERCEVE-000048.spthy lemma=G1_claims_unforgeability
+[2026-10-01 16:55:53]   CERCEVE-000048 executable basamak=1 -> gecersiz_wf (NA adım) 264.47s 12288.0MiB rc=137
+[2026-10-01 16:56:25]   CERCEVE-000048 G1_claims_unforgeability basamak=1 -> falsified (16 adım) 30.57s 954.6MiB rc=0
+[2026-10-01 16:56:25] Bitti (3 konteyner).
+[2026-10-01 16:56:26] Başlangıç. Filtre='CERCEVE-000212'. İmaj: pq-a02-tamarin:1.12.0 (sha256:59b648d60829c4580504470be1b171df0e63ead38bebc8944ac8ee2bba6b9c60)
+[2026-10-01 16:56:26] Çeviri özeti (on_ceviri.sha256) denetimi:
+    ceviri_plani.tsv: OK
+    secim.json: OK
+    ceviri_disi.tsv: OK
+[2026-10-01 16:56:26] == CERCEVE-000212 (kapi) hedef=G1 tur=bir-eksik model=ornekler/CERCEVE-000212.spthy lemma=G1_claims_unforgeability
+[2026-10-01 17:01:22]   CERCEVE-000212 executable basamak=1 -> verified (14 adım) 293.31s 5422.0MiB rc=0
+[2026-10-01 17:03:02]   CERCEVE-000212 G1_claims_unforgeability basamak=1 -> falsified (13 adım) 98.63s 5929.8MiB rc=0
+[2026-10-01 17:03:03] Bitti (3 konteyner).
+[2026-10-01 17:03:03] Başlangıç. Filtre='CERCEVE-000938'. İmaj: pq-a02-tamarin:1.12.0 (sha256:59b648d60829c4580504470be1b171df0e63ead38bebc8944ac8ee2bba6b9c60)
+[2026-10-01 17:03:03] Çeviri özeti (on_ceviri.sha256) denetimi:
+    ceviri_plani.tsv: OK
+    secim.json: OK
+    ceviri_disi.tsv: OK
+[2026-10-01 17:03:03] == CERCEVE-000938 (kapi) hedef=G2 tur=bir-eksik model=ornekler/CERCEVE-000938.spthy lemma=G2_presentation_unforgeability
+[2026-10-01 17:09:46]   CERCEVE-000938 executable basamak=1 -> verified (16 adım) 398.33s 8354.2MiB rc=0
+[2026-10-01 17:12:50]   CERCEVE-000938 G2_presentation_unforgeability basamak=1 -> gecersiz_wf (NA adım) 183.62s 12288.0MiB rc=137
+[2026-10-01 17:12:51] Bitti (3 konteyner).
+[2026-10-01 17:12:51] Başlangıç. Filtre='CERCEVE-001064'. İmaj: pq-a02-tamarin:1.12.0 (sha256:59b648d60829c4580504470be1b171df0e63ead38bebc8944ac8ee2bba6b9c60)
+[2026-10-01 17:12:51] Çeviri özeti (on_ceviri.sha256) denetimi:
+    ceviri_plani.tsv: OK
+    secim.json: OK
+    ceviri_disi.tsv: OK
+[2026-10-01 17:12:51] == CERCEVE-001064 (kapi) hedef=G2 tur=asgari model=ornekler/CERCEVE-001064.spthy lemma=G2_presentation_unforgeability
+[2026-10-01 17:16:35]   CERCEVE-001064 executable basamak=1 -> gecersiz_wf (NA adım) 219.14s 12288.0MiB rc=137
+[2026-10-01 17:19:55]   CERCEVE-001064 G2_presentation_unforgeability basamak=1 -> verified (5976 adım) 198.59s 5856.6MiB rc=0
+[2026-10-01 17:19:55] Bitti (3 konteyner).
+[2026-10-01 17:19:55] Başlangıç. Filtre='CERCEVE-000173'. İmaj: pq-a02-tamarin:1.12.0 (sha256:59b648d60829c4580504470be1b171df0e63ead38bebc8944ac8ee2bba6b9c60)
+[2026-10-01 17:19:55] Çeviri özeti (on_ceviri.sha256) denetimi:
+    ceviri_plani.tsv: OK
+    secim.json: OK
+    ceviri_disi.tsv: OK
+[2026-10-01 17:19:56] == CERCEVE-000173 (kapi) hedef=G1 tur=bir-eksik model=ornekler/CERCEVE-000173.spthy lemma=G1_claims_unforgeability
+[2026-10-01 17:22:39]   CERCEVE-000173 executable basamak=1 -> verified (16 adım) 160.39s 11128.3MiB rc=0
+[2026-10-01 17:22:52]   CERCEVE-000173 G1_claims_unforgeability basamak=1 -> falsified (16 adım) 11.47s 420.7MiB rc=0
+[2026-10-01 17:22:52] Bitti (3 konteyner).
+[2026-10-01 17:22:53] Başlangıç. Filtre='CERCEVE-000869'. İmaj: pq-a02-tamarin:1.12.0 (sha256:59b648d60829c4580504470be1b171df0e63ead38bebc8944ac8ee2bba6b9c60)
+[2026-10-01 17:22:53] Çeviri özeti (on_ceviri.sha256) denetimi:
+    ceviri_plani.tsv: OK
+    secim.json: OK
+    ceviri_disi.tsv: OK
+[2026-10-01 17:22:53] == CERCEVE-000869 (kapi) hedef=G2 tur=bir-eksik model=ornekler/CERCEVE-000869.spthy lemma=G2_presentation_unforgeability
+[2026-10-01 17:25:57]   CERCEVE-000869 executable basamak=1 -> gecersiz_wf (NA adım) 180.53s 12288.0MiB rc=137
+[2026-10-01 17:26:49]   CERCEVE-000869 G2_presentation_unforgeability basamak=1 -> gecersiz_wf (NA adım) s MiB rc=
+[2026-10-01 17:26:49] Bitti (3 konteyner).

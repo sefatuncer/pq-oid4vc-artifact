@@ -1,0 +1,171 @@
+# SDJWT-002 selective_disclosure_jwt 1.1.1 — API taraması (sözleşme §5.1)
+# imaj: a10-sdjwt-002:1 (sha256:f8167b34f9bc6ff103bef2613d34f1723c7ed945635ea877b67ac99735c78e1c)
+# komut: docker run --rm --network none a10-sdjwt-002:1 sh -c 'K=/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1; grep -rn -i -E "isAllowedAlgorithm|isSupported|_sd_alg|alg|ml.?dsa|composite|crit|typ|verifyKeyBinding|class .*Verifier" $K/lib | grep -v "^\s*///" | head -120; echo "== sdjwt.dart L105-150"; grep -n "" $K/lib/src/models/sdjwt.dart | sed -n 105,150p'
+
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/selective_disclosure_jwt.dart:12:/// - Cryptographic operations using various algorithms (RS256, ES256, etc.)
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/sd_jwt_handler_v1.dart:34:      bool verifyKeyBinding = false}) {
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/sd_jwt_handler_v1.dart:37:        config: {'verifyKeyBinding': verifyKeyBinding},
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/sd_jwt_handler_v1.dart:49:      bool verifyKeyBinding = false}) {
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/sd_jwt_handler_v1.dart:52:        sdJwt: sdJwt, verifier: verifier, verifyKeyBinding: verifyKeyBinding);
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/base/action.dart:1:/// A generic class representing an action that takes an input of type [T]
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/base/action.dart:2:/// and produces an output of type [V]. Implementing classes should define the
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/base/action.dart:9:/// - **[T]**: The type of input required by the action.
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/base/action.dart:10:/// - **[V]**: The type of output produced by the action.
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/base/action.dart:12:  /// Executes the action with the given [input] and returns a result of type [V].
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/base/hasher.dart:2:import 'dart:typed_data';
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/base/hasher.dart:9:typedef CustomHasher = Hasher<String, Uint8List>? Function(
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/base/hasher.dart:10:    String algorithmName);
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/base/hasher.dart:12:/// [Hasher] is an interface for hashing algorithms. It provides a way to
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/base/hasher.dart:13:/// execute a specific algorithm on input data.
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/base/hasher.dart:20:  /// [sha256] is an instance of the SHA-256 hashing algorithm.
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/base/hasher.dart:23:  /// [sha384] is an instance of the SHA-384 hashing algorithm.
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/base/hasher.dart:26:  /// [sha512] is an instance of the SHA-512 hashing algorithm.
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/base/hasher.dart:29:  /// [sha512_256] is an instance of the SHA-512-256 hashing algorithm.
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/base/hasher.dart:41:  /// available algorithms.
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/base/hasher.dart:47:  /// precedence over the default hasher for this algorithm.
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/base/hasher.dart:85:  /// Executes the wrapped hashing algorithm on the input data and returns its encoded
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/base/hasher.dart:98:/// An implementation of the SHA-256 hashing algorithm.
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/base/hasher.dart:106:  /// Executes the SHA-256 hashing algorithm on the input data and returns its
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/base/hasher.dart:114:/// An implementation of the SHA-384 hashing algorithm.
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/base/hasher.dart:128:/// An implementation of the SHA-512 hashing algorithm.
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/base/hasher.dart:142:/// An implementation of the SHA-512-256 hashing algorithm.
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/base/generator.dart:2:/// type [T]. The class defines a contract for implementing custom generators,
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/base/generator.dart:5:/// - [T]: The type of value generated by the generator class.
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/base/generator.dart:24:  /// Generates and returns a value of type [T].
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/disclosure.dart:31:  /// The value can be of any type that is allowed in JSON, including numbers,
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/jwk_enums.dart:5:/// - **_sd_alg**: Specifies the used algorithm.
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/jwk_enums.dart:13:  /// - '_sd_alg' (hashing algorithm)
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/jwk_enums.dart:15:  sdJwt(<String>{'...', '_sd', '_sd_alg', 'cnf'});
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdjwt.dart:144:        Hasher.fromString(payload['_sd_alg'], customHasher: customHasher));
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:1:import 'dart:typed_data';
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:7:/// Bundled Crypto Algorithms.
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:8:enum SdJwtSignAlgorithm {
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:10:  hs256(JWTAlgorithm.HS256),
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:13:  hs384(JWTAlgorithm.HS384),
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:16:  hs512(JWTAlgorithm.HS512),
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:19:  rs256(JWTAlgorithm.RS256),
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:22:  rs384(JWTAlgorithm.RS384),
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:25:  rs512(JWTAlgorithm.RS512),
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:28:  es256(JWTAlgorithm.ES256),
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:31:  es384(JWTAlgorithm.ES384),
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:34:  es512(JWTAlgorithm.ES512),
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:37:  es256k(JWTAlgorithm.ES256K),
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:40:  eddsa(JWTAlgorithm.EdDSA);
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:43:  final JWTAlgorithm _jwa;
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:45:  /// Create an enum entry of supported SdJwtAlgorithms.
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:46:  const SdJwtSignAlgorithm(this._jwa);
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:48:  /// Lookup the SdJwtAlgorithms enum from a given algorithm name.
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:49:  factory SdJwtSignAlgorithm.fromString(String value) {
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:50:    return SdJwtSignAlgorithm.values.firstWhere(
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:52:      orElse: () => throw ArgumentError('Invalid algorithm: $value'),
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:56:  /// Lookup the SdJwtAlgorithm enum from a given elliptic curve. Relevant only for ECDSA based algorithms.
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:57:  factory SdJwtSignAlgorithm.fromCurve(String curve) {
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:62:        return SdJwtSignAlgorithm.es256;
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:64:        return SdJwtSignAlgorithm.es384;
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:66:        return SdJwtSignAlgorithm.es512;
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:69:        return SdJwtSignAlgorithm.es256k;
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:86:  /// Checks if the given JWK (ECDSA based) or the Algorithm name is among the bundled algorithms.
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:87:  static bool isSupported(String alg) {
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:88:    // Checks if the algorithm is among the bundled algorithms.
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:90:      SdJwtSignAlgorithm.fromString(alg);
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:100:  /// Return the name of the curve used by the ECDSA based algorithm. Returns null for other algorithms.
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:103:      case JWTAlgorithm.ES256:
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:105:      case JWTAlgorithm.ES384:
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:107:      case JWTAlgorithm.ES512:
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:109:      case JWTAlgorithm.ES256K:
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:111:      case JWTAlgorithm.EdDSA:
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:131:  /// the algorithm implemented by the given key.
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:132:  final SdJwtSignAlgorithm alg;
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:134:  /// Creates an SD key from the provided key data in various supported formats and algorithm.
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:138:  /// - **[alg]**: The algorithm to use with this key.
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:139:  SdKey(dynamic keyData, this.alg) : _key = _createKey(keyData, alg);
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:144:    SdJwtSignAlgorithm alg,
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:148:        switch (alg) {
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:149:          case SdJwtSignAlgorithm.hs256:
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:150:          case SdJwtSignAlgorithm.hs384:
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:151:          case SdJwtSignAlgorithm.hs512:
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:153:          case SdJwtSignAlgorithm.rs256:
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:154:          case SdJwtSignAlgorithm.rs384:
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:155:          case SdJwtSignAlgorithm.rs512:
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:161:          case SdJwtSignAlgorithm.es256:
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:162:          case SdJwtSignAlgorithm.es384:
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:163:          case SdJwtSignAlgorithm.es512:
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:164:          case SdJwtSignAlgorithm.es256k:
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:170:          case SdJwtSignAlgorithm.eddsa:
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:181:            'Invalid key data type. Expected String (PEM) or Map<String, dynamic> (JWK).');
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:185:        'Failed to create key from provided data for alg ${alg.ianaName}: $e. Data: $keyData',
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:190:  /// Gets the IANA name for the algorithm used with this key.
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:192:  /// Returns the IANA standard name for the algorithm.
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:193:  String algIanaName() => alg.ianaName;
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:204:          'This key type does not support conversion to JWK: $e');
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:213:  /// Creates a private key from the provided key data and algorithm.
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:217:  /// - **[alg]**: The algorithm to use with this key.
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:218:  SdPrivateKey(super.key, super.alg);
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:225:  /// Creates a public key from the provided key data and algorithm.
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:229:  /// - **[alg]**: The algorithm to use with this key.
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:230:  SdPublicKey(super.key, super.alg);
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:233:/// Implements the [Signer] for bundled algorithms and supported private key formats.
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:250:    final algorithm = _privateKey.alg._jwa;
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:252:    return algorithm.sign(key, input);
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:256:  String get algIanaName => _privateKey.alg.ianaName;
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:259:/// Implements the [Signer] for bundled algorithms and supported public key formats.
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:260:class SDKeyVerifier implements Verifier {
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:270:  /// Verify the signature bytes, for the given data bytes using the [SdPublicKey] and it's [SdJwtSignAlgorithm].
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:281:      final algorithm = _publicKey.alg._jwa;
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:282:      return algorithm.verify(key, data, signature);
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:288:  /// This Verifier can be used with any of the bundled algorithms.
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:290:  bool isAllowedAlgorithm(String algorithm) {
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/models/sdkey.dart:291:    return SdJwtSignAlgorithm.isSupported(algorithm);
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/sign/claim_processing/claim_processing_visitor.dart:11:/// - **[T]**: The type of value this claim field holds. Possible types include:
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/sign/claim_processing/claim_processing_visitor.dart:14:///   - Any other type representing a specific claim value.
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/sign/claim_processing/claim_processing_visitor.dart:43:  /// in the SD-JWT (Selective Disclosure JSON Web Token) framework. The claim element can hold various types
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/sign/claim_processing/claim_processing_visitor.dart:51:  /// - **[value]**: The actual value of this element, which can be a map, list, or any other type of data.
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/sign/claim_processing/claim_processing_visitor.dart:109:/// This interface defines methods for visiting different types of claim elements
+/root/.pub-cache/hosted/pub.dev/selective_disclosure_jwt-1.1.1/lib/src/sign/kbjwt_signer.dart:52:  /// Creates a Key Binding from [input] and returns a result of type [SdJwt].
+== sdjwt.dart L105-150
+105:  ///
+106:  /// Throws an exception if the format is invalid.
+107:  factory SdJwt.parse(String serialized, {CustomHasher? customHasher}) {
+108:    if (!_sdJwtRegExp.hasMatch(serialized)) {
+109:      throw Exception("Invalid SD-JWT: not well formatted");
+110:    }
+111:
+112:    final parts = serialized.split(disclosureSeparator);
+113:    if (parts.length < 2) {
+114:      throw Exception("Invalid SD-JWT: expected minimum two parts");
+115:    }
+116:    final String issuerJwt = parts.first;
+117:    final String? kbJwt = parts.last.isEmpty ? null : parts.last;
+118:    parts.removeLast();
+119:
+120:    late final List<String> disclosureParts;
+121:    disclosureParts = parts.length > 1 ? parts.sublist(1) : <String>[];
+122:
+123:    final Set<String> disclosureStrings = Set.of(disclosureParts);
+124:    if (disclosureStrings.length != disclosureParts.length) {
+125:      throw Exception(
+126:          "Invalid SD-JWT: Disclosures cannot be duplicate in sd-jwt");
+127:    }
+128:
+129:    final JWT decodedIssuerJwt;
+130:    try {
+131:      decodedIssuerJwt = JWT.decode(issuerJwt);
+132:    } catch (e) {
+133:      throw Exception(
+134:          "Invalid SD-JWT: JWT part not well formatted or failed to decode. Error: $e");
+135:    }
+136:
+137:    final headerJson = decodedIssuerJwt.header!;
+138:    final payload = decodedIssuerJwt.payload;
+139:    if (payload is! Map<String, dynamic>) {
+140:      throw Exception("Invalid SD-JWT: JWT payload must be a JSON object");
+141:    }
+142:
+143:    final hasher = Base64EncodedOutputHasher(
+144:        Hasher.fromString(payload['_sd_alg'], customHasher: customHasher));
+145:
+146:    final disclosuresDigestIndex =
+147:        DisclosureMap.parse(disclosureStrings, hasher);
+148:
+149:    final UnpackedDisclosuresOutput resolved = unpackDisclosures(
+150:      tokenPayload: payload,

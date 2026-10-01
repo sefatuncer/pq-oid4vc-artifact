@@ -1,0 +1,2642 @@
+{
+ "test": "t05_servis",
+ "sure_s": 33.3,
+ "surumler": {
+  "pqjose": "1.0.0",
+  "python": "3.11.16",
+  "cryptography": "50.0.1",
+  "cryptography_openssl": "OpenSSL 4.0.2 25 Aug 2026",
+  "openssl_cli": "OpenSSL 3.5.7 9 Jun 2026 (Library: OpenSSL 3.5.7 9 Jun 2026)",
+  "spesifikasyonlar": {
+   "JWS": "RFC 7515",
+   "JWA": "RFC 7518 (RFC 9864 ile guncellendi)",
+   "ML-DSA": "RFC 9964 (Mayis 2026)",
+   "composite": "draft-ietf-jose-pq-composite-sigs-04 (10.09.2026)",
+   "EdDSA": "RFC 8037 / RFC 9864"
+  }
+ },
+ "ozet": {
+  "toplam": 121,
+  "gecen": 121,
+  "kalan": []
+ },
+ "kontroller": [
+  {
+   "grup": "t01",
+   "ad": "JOSECOMP04-JOSE-ML-DSA-44-ES256/jwk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true,
+      "trad": true
+     }
+    },
+    "http": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true,
+      "trad": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 0
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "JOSECOMP04-JOSE-ML-DSA-44-ES256/hex (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true,
+      "trad": true
+     }
+    },
+    "http": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true,
+      "trad": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 0
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "JOSECOMP04-JOSE-ML-DSA-44-ES256/imza-bozuk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": true
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "JOSECOMP04-JOSE-ML-DSA-44-ES256/ileti-bozuk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": false
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": false
+     },
+     "hata": null
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "JOSECOMP04-JOSE-ML-DSA-44-ES256/klasik-bilesen-bozuk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": true,
+      "trad": false
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": true,
+      "trad": false
+     },
+     "hata": null
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "JOSECOMP04-JOSE-ML-DSA-44-ES256/sonda-artik-bayt (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": false
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": false
+     },
+     "hata": "serilestirme: DER: SEQUENCE uzunluğu tutarsız / artık bayt"
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "JOSECOMP04-JOSE-ML-DSA-44-ES256/ml-bileseni-bozuk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": true
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "JOSECOMP04-JOSE-ML-DSA-44-Ed25519/jwk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true,
+      "trad": true
+     }
+    },
+    "http": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true,
+      "trad": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 0
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "JOSECOMP04-JOSE-ML-DSA-44-Ed25519/hex (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true,
+      "trad": true
+     }
+    },
+    "http": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true,
+      "trad": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 0
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "JOSECOMP04-JOSE-ML-DSA-44-Ed25519/imza-bozuk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": true
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "JOSECOMP04-JOSE-ML-DSA-44-Ed25519/ileti-bozuk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": false
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": false
+     },
+     "hata": null
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "JOSECOMP04-JOSE-ML-DSA-44-Ed25519/klasik-bilesen-bozuk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": true,
+      "trad": false
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": true,
+      "trad": false
+     },
+     "hata": null
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "JOSECOMP04-JOSE-ML-DSA-44-Ed25519/sonda-artik-bayt (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": false
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": false
+     },
+     "hata": "serilestirme: EdDSA bileseni uzunlugu hatali"
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "JOSECOMP04-JOSE-ML-DSA-44-Ed25519/ml-bileseni-bozuk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": true
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "JOSECOMP04-JOSE-ML-DSA-65-ES256/jwk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true,
+      "trad": true
+     }
+    },
+    "http": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true,
+      "trad": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 0
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "JOSECOMP04-JOSE-ML-DSA-65-ES256/hex (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true,
+      "trad": true
+     }
+    },
+    "http": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true,
+      "trad": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 0
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "JOSECOMP04-JOSE-ML-DSA-65-ES256/imza-bozuk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": true
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "JOSECOMP04-JOSE-ML-DSA-65-ES256/ileti-bozuk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": false
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": false
+     },
+     "hata": null
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "JOSECOMP04-JOSE-ML-DSA-65-ES256/klasik-bilesen-bozuk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": true,
+      "trad": false
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": true,
+      "trad": false
+     },
+     "hata": null
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "JOSECOMP04-JOSE-ML-DSA-65-ES256/sonda-artik-bayt (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": false
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": false
+     },
+     "hata": "serilestirme: DER: SEQUENCE uzunluğu tutarsız / artık bayt"
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "JOSECOMP04-JOSE-ML-DSA-65-ES256/ml-bileseni-bozuk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": true
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "JOSECOMP04-JOSE-ML-DSA-65-Ed25519/jwk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true,
+      "trad": true
+     }
+    },
+    "http": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true,
+      "trad": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 0
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "JOSECOMP04-JOSE-ML-DSA-65-Ed25519/hex (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true,
+      "trad": true
+     }
+    },
+    "http": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true,
+      "trad": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 0
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "JOSECOMP04-JOSE-ML-DSA-65-Ed25519/imza-bozuk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": true
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "JOSECOMP04-JOSE-ML-DSA-65-Ed25519/ileti-bozuk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": false
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": false
+     },
+     "hata": null
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "JOSECOMP04-JOSE-ML-DSA-65-Ed25519/klasik-bilesen-bozuk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": true,
+      "trad": false
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": true,
+      "trad": false
+     },
+     "hata": null
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "JOSECOMP04-JOSE-ML-DSA-65-Ed25519/sonda-artik-bayt (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": false
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": false
+     },
+     "hata": "serilestirme: EdDSA bileseni uzunlugu hatali"
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "JOSECOMP04-JOSE-ML-DSA-65-Ed25519/ml-bileseni-bozuk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": true
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "JOSECOMP04-JOSE-ML-DSA-87-ES384/jwk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true,
+      "trad": true
+     }
+    },
+    "http": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true,
+      "trad": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 0
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "JOSECOMP04-JOSE-ML-DSA-87-ES384/hex (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true,
+      "trad": true
+     }
+    },
+    "http": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true,
+      "trad": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 0
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "JOSECOMP04-JOSE-ML-DSA-87-ES384/imza-bozuk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": true
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "JOSECOMP04-JOSE-ML-DSA-87-ES384/ileti-bozuk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": false
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": false
+     },
+     "hata": null
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "JOSECOMP04-JOSE-ML-DSA-87-ES384/klasik-bilesen-bozuk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": true,
+      "trad": false
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": true,
+      "trad": false
+     },
+     "hata": null
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "JOSECOMP04-JOSE-ML-DSA-87-ES384/sonda-artik-bayt (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": false
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": false
+     },
+     "hata": "serilestirme: DER: SEQUENCE uzunluğu tutarsız / artık bayt"
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "JOSECOMP04-JOSE-ML-DSA-87-ES384/ml-bileseni-bozuk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": true
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "JOSECOMP04-JOSE-ML-DSA-87-Ed448/jwk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true,
+      "trad": true
+     }
+    },
+    "http": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true,
+      "trad": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 0
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "JOSECOMP04-JOSE-ML-DSA-87-Ed448/hex (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true,
+      "trad": true
+     }
+    },
+    "http": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true,
+      "trad": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 0
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "JOSECOMP04-JOSE-ML-DSA-87-Ed448/imza-bozuk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": true
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "JOSECOMP04-JOSE-ML-DSA-87-Ed448/ileti-bozuk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": false
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": false
+     },
+     "hata": null
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "JOSECOMP04-JOSE-ML-DSA-87-Ed448/klasik-bilesen-bozuk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": true,
+      "trad": false
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": true,
+      "trad": false
+     },
+     "hata": null
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "JOSECOMP04-JOSE-ML-DSA-87-Ed448/sonda-artik-bayt (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": false
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": false
+     },
+     "hata": "serilestirme: EdDSA bileseni uzunlugu hatali"
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "JOSECOMP04-JOSE-ML-DSA-87-Ed448/ml-bileseni-bozuk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": true
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "RFC9964-COSE-ML-DSA-44/hex (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true
+     }
+    },
+    "http": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 0
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "RFC9964-COSE-ML-DSA-44/b64u (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true
+     }
+    },
+    "http": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 0
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "RFC9964-COSE-ML-DSA-44/imza-bozuk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false
+     },
+     "hata": null
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "RFC9964-COSE-ML-DSA-44/ileti-bozuk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false
+     },
+     "hata": null
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "RFC9964-COSE-ML-DSA-65/hex (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true
+     }
+    },
+    "http": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 0
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "RFC9964-COSE-ML-DSA-65/b64u (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true
+     }
+    },
+    "http": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 0
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "RFC9964-COSE-ML-DSA-65/imza-bozuk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false
+     },
+     "hata": null
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "RFC9964-COSE-ML-DSA-65/ileti-bozuk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false
+     },
+     "hata": null
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "RFC9964-COSE-ML-DSA-87/hex (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true
+     }
+    },
+    "http": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 0
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "RFC9964-COSE-ML-DSA-87/b64u (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true
+     }
+    },
+    "http": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 0
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "RFC9964-COSE-ML-DSA-87/imza-bozuk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false
+     },
+     "hata": null
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "RFC9964-COSE-ML-DSA-87/ileti-bozuk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false
+     },
+     "hata": null
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "RFC9964-JOSE-ML-DSA-44/jwk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true
+     }
+    },
+    "http": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 0
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "RFC9964-JOSE-ML-DSA-44/hex (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true
+     }
+    },
+    "http": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 0
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "RFC9964-JOSE-ML-DSA-44/b64u (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true
+     }
+    },
+    "http": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 0
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "RFC9964-JOSE-ML-DSA-44/imza-bozuk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false
+     },
+     "hata": null
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "RFC9964-JOSE-ML-DSA-44/ileti-bozuk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false
+     },
+     "hata": null
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "RFC9964-JOSE-ML-DSA-65/jwk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true
+     }
+    },
+    "http": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 0
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "RFC9964-JOSE-ML-DSA-65/hex (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true
+     }
+    },
+    "http": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 0
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "RFC9964-JOSE-ML-DSA-65/b64u (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true
+     }
+    },
+    "http": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 0
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "RFC9964-JOSE-ML-DSA-65/imza-bozuk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false
+     },
+     "hata": null
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "RFC9964-JOSE-ML-DSA-65/ileti-bozuk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false
+     },
+     "hata": null
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "RFC9964-JOSE-ML-DSA-87/jwk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true
+     }
+    },
+    "http": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 0
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "RFC9964-JOSE-ML-DSA-87/hex (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true
+     }
+    },
+    "http": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 0
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "RFC9964-JOSE-ML-DSA-87/b64u (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true
+     }
+    },
+    "http": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 0
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "RFC9964-JOSE-ML-DSA-87/imza-bozuk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false
+     },
+     "hata": null
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t01",
+   "ad": "RFC9964-JOSE-ML-DSA-87/ileti-bozuk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false
+     },
+     "hata": null
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t02",
+   "ad": "ML-DSA-44/pqjose-hedged (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true
+     }
+    },
+    "http": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 0
+   }
+  },
+  {
+   "grup": "t02",
+   "ad": "ML-DSA-44/openssl-hedged (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true
+     }
+    },
+    "http": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 0
+   }
+  },
+  {
+   "grup": "t02",
+   "ad": "ML-DSA-44/dilithium-py (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true
+     }
+    },
+    "http": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 0
+   }
+  },
+  {
+   "grup": "t02",
+   "ad": "ML-DSA-44/belirlenimci (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true
+     }
+    },
+    "http": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 0
+   }
+  },
+  {
+   "grup": "t02",
+   "ad": "ML-DSA-44/bozuk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false
+     },
+     "hata": null
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t02",
+   "ad": "ML-DSA-65/pqjose-hedged (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true
+     }
+    },
+    "http": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 0
+   }
+  },
+  {
+   "grup": "t02",
+   "ad": "ML-DSA-65/openssl-hedged (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true
+     }
+    },
+    "http": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 0
+   }
+  },
+  {
+   "grup": "t02",
+   "ad": "ML-DSA-65/dilithium-py (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true
+     }
+    },
+    "http": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 0
+   }
+  },
+  {
+   "grup": "t02",
+   "ad": "ML-DSA-65/belirlenimci (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true
+     }
+    },
+    "http": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 0
+   }
+  },
+  {
+   "grup": "t02",
+   "ad": "ML-DSA-65/bozuk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false
+     },
+     "hata": null
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t02",
+   "ad": "ML-DSA-87/pqjose-hedged (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true
+     }
+    },
+    "http": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 0
+   }
+  },
+  {
+   "grup": "t02",
+   "ad": "ML-DSA-87/openssl-hedged (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true
+     }
+    },
+    "http": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 0
+   }
+  },
+  {
+   "grup": "t02",
+   "ad": "ML-DSA-87/dilithium-py (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true
+     }
+    },
+    "http": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 0
+   }
+  },
+  {
+   "grup": "t02",
+   "ad": "ML-DSA-87/belirlenimci (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true
+     }
+    },
+    "http": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 0
+   }
+  },
+  {
+   "grup": "t02",
+   "ad": "ML-DSA-87/bozuk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false
+     },
+     "hata": null
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t02",
+   "ad": "ML-DSA-44-ES256/pqjose (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true,
+      "trad": true
+     }
+    },
+    "http": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true,
+      "trad": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 0
+   }
+  },
+  {
+   "grup": "t02",
+   "ad": "ML-DSA-44-ES256/openssl-bilesenleri (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true,
+      "trad": true
+     }
+    },
+    "http": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true,
+      "trad": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 0
+   }
+  },
+  {
+   "grup": "t02",
+   "ad": "ML-DSA-44-ES256/ml-bozuk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": true
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t02",
+   "ad": "ML-DSA-44-ES256/trad-bozuk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": true,
+      "trad": false
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": true,
+      "trad": false
+     },
+     "hata": null
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t02",
+   "ad": "ML-DSA-44-ES256/kesik (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": false
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": false
+     },
+     "hata": "serilestirme: composite imza kisa"
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t02",
+   "ad": "ML-DSA-65-ES256/pqjose (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true,
+      "trad": true
+     }
+    },
+    "http": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true,
+      "trad": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 0
+   }
+  },
+  {
+   "grup": "t02",
+   "ad": "ML-DSA-65-ES256/openssl-bilesenleri (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true,
+      "trad": true
+     }
+    },
+    "http": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true,
+      "trad": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 0
+   }
+  },
+  {
+   "grup": "t02",
+   "ad": "ML-DSA-65-ES256/ml-bozuk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": true
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t02",
+   "ad": "ML-DSA-65-ES256/trad-bozuk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": true,
+      "trad": false
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": true,
+      "trad": false
+     },
+     "hata": null
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t02",
+   "ad": "ML-DSA-65-ES256/kesik (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": false
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": false
+     },
+     "hata": "serilestirme: composite imza kisa"
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t02",
+   "ad": "ML-DSA-87-ES384/pqjose (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true,
+      "trad": true
+     }
+    },
+    "http": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true,
+      "trad": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 0
+   }
+  },
+  {
+   "grup": "t02",
+   "ad": "ML-DSA-87-ES384/openssl-bilesenleri (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true,
+      "trad": true
+     }
+    },
+    "http": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true,
+      "trad": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 0
+   }
+  },
+  {
+   "grup": "t02",
+   "ad": "ML-DSA-87-ES384/ml-bozuk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": true
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t02",
+   "ad": "ML-DSA-87-ES384/trad-bozuk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": true,
+      "trad": false
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": true,
+      "trad": false
+     },
+     "hata": null
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t02",
+   "ad": "ML-DSA-87-ES384/kesik (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": false
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": false
+     },
+     "hata": "serilestirme: composite imza kisa"
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t02",
+   "ad": "ML-DSA-44-Ed25519/pqjose (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true,
+      "trad": true
+     }
+    },
+    "http": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true,
+      "trad": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 0
+   }
+  },
+  {
+   "grup": "t02",
+   "ad": "ML-DSA-44-Ed25519/openssl-bilesenleri (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true,
+      "trad": true
+     }
+    },
+    "http": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true,
+      "trad": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 0
+   }
+  },
+  {
+   "grup": "t02",
+   "ad": "ML-DSA-44-Ed25519/ml-bozuk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": true
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t02",
+   "ad": "ML-DSA-44-Ed25519/trad-bozuk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": true,
+      "trad": false
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": true,
+      "trad": false
+     },
+     "hata": null
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t02",
+   "ad": "ML-DSA-44-Ed25519/kesik (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": false
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": false
+     },
+     "hata": "serilestirme: composite imza kisa"
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t02",
+   "ad": "ML-DSA-65-Ed25519/pqjose (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true,
+      "trad": true
+     }
+    },
+    "http": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true,
+      "trad": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 0
+   }
+  },
+  {
+   "grup": "t02",
+   "ad": "ML-DSA-65-Ed25519/openssl-bilesenleri (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true,
+      "trad": true
+     }
+    },
+    "http": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true,
+      "trad": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 0
+   }
+  },
+  {
+   "grup": "t02",
+   "ad": "ML-DSA-65-Ed25519/ml-bozuk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": true
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t02",
+   "ad": "ML-DSA-65-Ed25519/trad-bozuk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": true,
+      "trad": false
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": true,
+      "trad": false
+     },
+     "hata": null
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t02",
+   "ad": "ML-DSA-65-Ed25519/kesik (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": false
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": false
+     },
+     "hata": "serilestirme: composite imza kisa"
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t02",
+   "ad": "ML-DSA-87-Ed448/pqjose (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true,
+      "trad": true
+     }
+    },
+    "http": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true,
+      "trad": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 0
+   }
+  },
+  {
+   "grup": "t02",
+   "ad": "ML-DSA-87-Ed448/openssl-bilesenleri (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true,
+      "trad": true
+     }
+    },
+    "http": {
+     "gecerli": true,
+     "bilesenler": {
+      "ml": true,
+      "trad": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 0
+   }
+  },
+  {
+   "grup": "t02",
+   "ad": "ML-DSA-87-Ed448/ml-bozuk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": true
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": true
+     },
+     "hata": null
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t02",
+   "ad": "ML-DSA-87-Ed448/trad-bozuk (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": true,
+      "trad": false
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": true,
+      "trad": false
+     },
+     "hata": null
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "t02",
+   "ad": "ML-DSA-87-Ed448/kesik (HTTP+CLI == kitaplik)",
+   "gecti": true,
+   "ayrinti": {
+    "kitaplik": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": false
+     }
+    },
+    "http": {
+     "gecerli": false,
+     "bilesenler": {
+      "ml": false,
+      "trad": false
+     },
+     "hata": "serilestirme: composite imza kisa"
+    },
+    "cli_cikis": 1
+   }
+  },
+  {
+   "grup": "toplu",
+   "ad": "/v1/dogrula/toplu 114 istek == kitaplik",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "hata",
+   "ad": "desteklenmeyen alg (ES256) -> hata, gecersiz",
+   "gecti": true,
+   "ayrinti": "FormatError: desteklenmeyen alg (servis yalniz ML-DSA ve composite -04 ilkelleri): 'ES256'"
+  },
+  {
+   "grup": "hata",
+   "ad": "jwk.alg != istek alg -> hata",
+   "gecti": true,
+   "ayrinti": "FormatError: jwk.alg istek alg ile ayni olmali (RFC 9964 3: AKP alg ZORUNLU)"
+  },
+  {
+   "grup": "hata",
+   "ad": "gecersiz hex -> hata",
+   "gecti": true,
+   "ayrinti": "FormatError: acik_anahtar_hex gecersiz"
+  },
+  {
+   "grup": "hata",
+   "ad": "acik anahtar uzunlugu hatali -> hata",
+   "gecti": true,
+   "ayrinti": "JWKError: AKP pub uzunlugu alg ile uyusmuyor (RFC 9964 5)"
+  },
+  {
+   "grup": "hata",
+   "ad": "jwk'de priv varsa yok sayilir (yalniz pub kullanilir)",
+   "gecti": true,
+   "ayrinti": {
+    "gecerli": true,
+    "alg": "ML-DSA-65",
+    "bilesenler": {
+     "ml": true
+    },
+    "hata": null,
+    "servis": "pqdogrula/1"
+   }
+  },
+  {
+   "grup": "saglik",
+   "ad": "/v1/saglik 9 alg",
+   "gecti": true,
+   "ayrinti": [
+    "ML-DSA-44",
+    "ML-DSA-65",
+    "ML-DSA-87",
+    "ML-DSA-44-ES256",
+    "ML-DSA-65-ES256",
+    "ML-DSA-87-ES384",
+    "ML-DSA-44-Ed25519",
+    "ML-DSA-65-Ed25519",
+    "ML-DSA-87-Ed448"
+   ]
+  },
+  {
+   "grup": "genel",
+   "ad": "ayni-sonuc",
+   "gecti": null,
+   "ayrinti": {
+    "t01": "69/69",
+    "t02": "45/45"
+   }
+  }
+ ],
+ "ayni_sonuc": {
+  "t01": {
+   "ayni": 69,
+   "toplam": 69
+  },
+  "t02": {
+   "ayni": 45,
+   "toplam": 45
+  }
+ }
+}

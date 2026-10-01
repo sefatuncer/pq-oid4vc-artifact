@@ -1,0 +1,18 @@
+baslangic	2026-09-25T12:59:01Z
+hedef	REF-003
+ekosistem	kaynak (git) + Gradle
+paket	eudi-srv-verifier-endpoint
+istenen_surum	git:b1f17e8fe247504e7541a0121c1b6c9f1c7d4908
+arac	openjdk version "25.0.4" 2026-07-21 LTS; Gradle 9.6.1 (kurulu dağıtım)
+commit	b1f17e8fe247504e7541a0121c1b6c9f1c7d4908
+commit_kaynagi	git checkout (CERCEVE son_commit_sha)
+paket_ozeti	git-tree:03bb99398912bfe562b9684ed1d2c5dfc47611f8
+not	sarmalayıcı Gradle 9.6.1 = kurulu Gradle; ./gradlew kullanılmadı (services.gradle.org indirmesi yok)
+kilit_dosyasi	verification-metadata.xml (Gradle, sha256; bu koşuda üretildi)
+kilit_sha256	72737bae2d145797ae4aa2329a734972b5bd631ca597235e8d4dc8e631e648c1
+kurulan_surum	git:b1f17e8fe247 (proje sürümü 0.12.0-SNAPSHOT)
+not	bootJar sha256 d358d1d684da3e6f… (yeniden üretilebilir yapı iddia edilmez)
+bagimlilik_sayisi	164
+not	kripto bağımlılıkları: bcprov-jdk18on-1.84.jar cose-java-1.1.0.jar eudi-lib-jvm-sdjwt-kt-0.20.1.jar nimbus-jose-jwt-10.9.jar oauth2-oidc-sdk-11.37.2.jar tink-1.22.0.jar 
+ice_aktar	basarili
+bitis	2026-09-25T13:01:17Z

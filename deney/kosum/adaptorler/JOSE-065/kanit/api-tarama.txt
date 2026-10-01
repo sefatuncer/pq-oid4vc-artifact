@@ -1,0 +1,42 @@
+# JOSE-065 — API taraması (sözleşme §5.1)
+# imaj: a10-jose-065:1 (sha256:5e4d9850a6a26165e5ca9fc086aca5df85995683c3407537aabe095343d91422)
+# komut: docker run --rm --network none --entrypoint sh a10-jose-065:1 -c 'cd /a/node_modules/jsonwebtoken && grep '"version"' package.json; grep -rn -i -E 'algorithms|allow|register|deregister|required|eddsa|ed25519|ml-?dsa|mldsa|composite|okp|verifier|keyselector|PUB_KEY_ALGS|EC_KEY_ALGS' *.js lib/*.js'
+
+  "version": "9.0.3",
+sign.js:32:  allowInsecureKeySizes: { isValid: isBoolean, message: '"allowInsecureKeySizes" must be a boolean'},
+sign.js:33:  allowInvalidAsymmetricKeyTypes: { isValid: isBoolean, message: '"allowInvalidAsymmetricKeyTypes" must be a boolean'}
+sign.js:36:const registered_claims_schema = {
+sign.js:42:function validate(schema, allowUnknown, object, parameterName) {
+sign.js:50:        if (!allowUnknown) {
+sign.js:51:          throw new Error('"' + key + '" is not allowed in "' + parameterName + '"');
+sign.js:66:  return validate(registered_claims_schema, true, payload, 'payload');
+sign.js:132:    if (!options.allowInsecureKeySizes &&
+sign.js:141:    return failure(new Error('payload is required'));
+sign.js:177:  if (!options.allowInvalidAsymmetricKeyTypes) {
+sign.js:240:        if(!options.allowInsecureKeySizes && /^(?:RS|PS)/.test(header.alg) && signature.length < 256) {
+sign.js:248:    if(!options.allowInsecureKeySizes && /^(?:RS|PS)/.test(header.alg) && signature.length < 256) {
+verify.js:11:const PUB_KEY_ALGS = ['RS256', 'RS384', 'RS512'];
+verify.js:12:const EC_KEY_ALGS = ['ES256', 'ES384', 'ES512'];
+verify.js:17:  PUB_KEY_ALGS.splice(PUB_KEY_ALGS.length, 0, 'PS256', 'PS384', 'PS512');
+verify.js:53:  if (options.allowInvalidAsymmetricKeyTypes !== undefined && typeof options.allowInvalidAsymmetricKeyTypes !== 'boolean') {
+verify.js:54:    return done(new JsonWebTokenError('allowInvalidAsymmetricKeyTypes must be a boolean'));
+verify.js:109:      return done(new JsonWebTokenError('jwt signature is required'));
+verify.js:116:    if (!hasSignature && !options.algorithms) {
+verify.js:117:      return done(new JsonWebTokenError('please specify "none" in "algorithms" to verify unsigned tokens'));
+verify.js:132:    if (!options.algorithms) {
+verify.js:134:        options.algorithms = HS_ALGS;
+verify.js:136:        options.algorithms = RSA_KEY_ALGS
+verify.js:138:        options.algorithms = EC_KEY_ALGS
+verify.js:140:        options.algorithms = PUB_KEY_ALGS
+verify.js:144:    if (options.algorithms.indexOf(decodedToken.header.alg) === -1) {
+verify.js:154:    if (!options.allowInvalidAsymmetricKeyTypes) {
+verify.js:239:        return done(new JsonWebTokenError('iat required when maxAge is specified'));
+lib/validateAsymmetricKey.js:4:const allowedAlgorithmsForKeys = {
+lib/validateAsymmetricKey.js:10:const allowedCurves = {
+lib/validateAsymmetricKey.js:22:  const allowedAlgorithms = allowedAlgorithmsForKeys[keyType];
+lib/validateAsymmetricKey.js:24:  if (!allowedAlgorithms) {
+lib/validateAsymmetricKey.js:28:  if (!allowedAlgorithms.includes(algorithm)) {
+lib/validateAsymmetricKey.js:29:    throw new Error(`"alg" parameter for "${keyType}" key type must be one of: ${allowedAlgorithms.join(', ')}.`)
+lib/validateAsymmetricKey.js:43:      const allowedCurve = allowedCurves[algorithm];
+lib/validateAsymmetricKey.js:45:      if (keyCurve !== allowedCurve) {
+lib/validateAsymmetricKey.js:46:        throw new Error(`"alg" parameter "${algorithm}" requires curve "${allowedCurve}".`);

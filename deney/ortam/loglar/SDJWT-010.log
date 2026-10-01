@@ -1,0 +1,133 @@
+# hedef=SDJWT-010 imaj=pq-a09-env-rust:1.0 (sha256:b21d9e67309a86054643e61d4f78c5da262aca261b5dea7e5e047144306be32b) baslangic=2026-09-25T13:13:20Z zaman_asimi=1800s
+# komut: docker run --rm --name pq-a09-ortam-sdjwt-010 --label pq.agir=derleme --memory=6g --memory-swap=6g -v hedefler/SDJWT-010:/w -v betikler/konteyner:/b:ro pq-a09-env-rust:1.0 sh -c '(bash|sh) /w/kur.sh'
+[package]
+name = "ortam-deneme"
+version = "0.0.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+sd-jwt-payload = { version = "=0.5.1" }
+== Aşama A: cargo build
+    Updating crates.io index
+     Locking 56 packages to latest compatible versions
+      Adding generic-array v0.14.7 (available: v0.14.9)
+ Downloading crates ...
+  Downloaded crypto-common v0.1.7
+  Downloaded match-lookup v0.1.3
+  Downloaded strum v0.26.3
+  Downloaded digest v0.10.7
+  Downloaded json-pointer v0.3.4
+  Downloaded block-buffer v0.10.4
+  Downloaded generic-array v0.14.7
+  Downloaded version_check v0.9.5
+  Downloaded rand_chacha v0.3.1
+  Downloaded data-encoding-macro v0.1.21
+  Downloaded heck v0.5.0
+  Downloaded cpufeatures v0.2.17
+  Downloaded data-encoding-macro-internal v0.1.19
+  Downloaded base45 v3.2.0
+  Downloaded equivalent v1.0.2
+  Downloaded itoa v1.0.18
+  Downloaded base-x v0.2.11
+  Downloaded cfg-if v1.0.5
+  Downloaded either v1.18.0
+  Downloaded rand_core v0.6.4
+  Downloaded quote v1.0.47
+  Downloaded ppv-lite86 v0.2.21
+  Downloaded zmij v1.0.23
+  Downloaded thiserror v1.0.69
+  Downloaded base256emoji v1.0.2
+  Downloaded multibase v0.9.3
+  Downloaded sha2 v0.10.9
+  Downloaded thiserror-impl v1.0.69
+  Downloaded async-trait v0.1.92
+  Downloaded data-encoding v2.11.1
+  Downloaded rustversion v1.0.23
+  Downloaded strum_macros v0.26.4
+  Downloaded const-str v0.4.3
+  Downloaded autocfg v1.5.1
+  Downloaded getrandom v0.2.17
+  Downloaded unicode-ident v1.0.26
+  Downloaded anyhow v1.0.104
+  Downloaded proc-macro2 v1.0.107
+  Downloaded serde_derive v1.0.229
+  Downloaded serde_core v1.0.229
+  Downloaded rand v0.8.8
+  Downloaded serde v1.0.229
+  Downloaded memchr v2.8.3
+  Downloaded iota-crypto v0.23.2
+  Downloaded typenum v1.20.1
+  Downloaded indexmap v2.14.2
+  Downloaded hashbrown v0.17.1
+  Downloaded itertools v0.12.1
+  Downloaded serde_json v1.0.151
+  Downloaded syn v3.0.6
+  Downloaded zerocopy v0.8.58
+  Downloaded syn v2.0.119
+  Downloaded libc v0.2.189
+  Downloaded sd-jwt-payload v0.5.1
+   Compiling proc-macro2 v1.0.107
+   Compiling quote v1.0.47
+   Compiling unicode-ident v1.0.26
+   Compiling version_check v0.9.5
+   Compiling typenum v1.20.1
+   Compiling cfg-if v1.0.5
+   Compiling libc v0.2.189
+   Compiling serde_core v1.0.229
+   Compiling zerocopy v0.8.58
+   Compiling zmij v1.0.23
+   Compiling rustversion v1.0.23
+   Compiling serde_json v1.0.151
+   Compiling autocfg v1.5.1
+   Compiling data-encoding v2.11.1
+   Compiling serde v1.0.229
+   Compiling thiserror v1.0.69
+   Compiling generic-array v0.14.7
+   Compiling anyhow v1.0.104
+   Compiling cpufeatures v0.2.17
+   Compiling const-str v0.4.3
+   Compiling iota-crypto v0.23.2
+   Compiling memchr v2.8.3
+   Compiling heck v0.5.0
+   Compiling itoa v1.0.18
+   Compiling hashbrown v0.17.1
+   Compiling equivalent v1.0.2
+   Compiling base-x v0.2.11
+   Compiling base45 v3.2.0
+   Compiling either v1.18.0
+   Compiling syn v2.0.119
+   Compiling syn v3.0.6
+   Compiling itertools v0.12.1
+   Compiling block-buffer v0.10.4
+   Compiling crypto-common v0.1.7
+   Compiling getrandom v0.2.17
+   Compiling digest v0.10.7
+   Compiling rand_core v0.6.4
+   Compiling sha2 v0.10.9
+   Compiling indexmap v2.14.2
+   Compiling json-pointer v0.3.4
+   Compiling data-encoding-macro-internal v0.1.19
+   Compiling serde_derive v1.0.229
+   Compiling async-trait v0.1.92
+   Compiling ppv-lite86 v0.2.21
+   Compiling data-encoding-macro v0.1.21
+   Compiling rand_chacha v0.3.1
+   Compiling match-lookup v0.1.3
+   Compiling thiserror-impl v1.0.69
+   Compiling strum_macros v0.26.4
+   Compiling rand v0.8.8
+   Compiling base256emoji v1.0.2
+   Compiling multibase v0.9.3
+   Compiling strum v0.26.3
+   Compiling sd-jwt-payload v0.5.1
+   Compiling ortam-deneme v0.0.0 (/tmp/p)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 9.42s
+== Aşama B: API tiplerine başvuran program
+   Compiling ortam-deneme v0.0.0 (/tmp/p)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.13s
+krate sd_jwt_payload baglandi
+tip sd_jwt_payload::sd_jwt::SdJwt
+tip sd_jwt_payload::disclosure::Disclosure
+== SONUC: basarili
+# cikis_kodu=0 sure_s=11 bitis=2026-09-25T13:13:31Z

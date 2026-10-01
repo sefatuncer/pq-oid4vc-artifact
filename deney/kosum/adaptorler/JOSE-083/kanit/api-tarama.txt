@@ -1,0 +1,180 @@
+# JOSE-083 — API taraması (sözleşme §5.1)
+# imaj: a10-jose-083:1 (sha256:3203b4f3586782ae129290e8811d265ad5f642b1528b5eef7583dba86e857176)
+# komut: docker run --rm --network none --entrypoint sh a10-jose-083:1 -c 'cd /e/lib/python3*/site-packages/jwt && grep -rn -i -E 'algorithms|allow|register|deregister|required|eddsa|ed25519|ml-?dsa|mldsa|composite|okp|verifier|keyselector' --include=*.py . '
+
+./algorithms.py:57:    from cryptography.hazmat.primitives.asymmetric.ed25519 import (
+./algorithms.py:58:        Ed25519PrivateKey,
+./algorithms.py:59:        Ed25519PublicKey,
+./algorithms.py:88:    # Type aliases for convenience in algorithms method signatures
+./algorithms.py:89:    AllowedRSAKeys: TypeAlias = Union[RSAPrivateKey, RSAPublicKey]
+./algorithms.py:90:    AllowedECKeys: TypeAlias = Union[EllipticCurvePrivateKey, EllipticCurvePublicKey]
+./algorithms.py:91:    AllowedOKPKeys: TypeAlias = Union[
+./algorithms.py:92:        Ed25519PrivateKey, Ed25519PublicKey, Ed448PrivateKey, Ed448PublicKey
+./algorithms.py:94:    AllowedKeys: TypeAlias = Union[AllowedRSAKeys, AllowedECKeys, AllowedOKPKeys]
+./algorithms.py:95:    #: Type alias for allowed ``cryptography`` private keys (requires ``cryptography`` to be installed)
+./algorithms.py:96:    AllowedPrivateKeys: TypeAlias = Union[
+./algorithms.py:97:        RSAPrivateKey, EllipticCurvePrivateKey, Ed25519PrivateKey, Ed448PrivateKey
+./algorithms.py:99:    #: Type alias for allowed ``cryptography`` public keys (requires ``cryptography`` to be installed)
+./algorithms.py:100:    AllowedPublicKeys: TypeAlias = Union[
+./algorithms.py:101:        RSAPublicKey, EllipticCurvePublicKey, Ed25519PublicKey, Ed448PublicKey
+./algorithms.py:117:    AllowedRSAKeys = Never  # type: ignore[misc]
+./algorithms.py:118:    AllowedECKeys = Never  # type: ignore[misc]
+./algorithms.py:119:    AllowedOKPKeys = Never  # type: ignore[misc]
+./algorithms.py:120:    AllowedKeys = Never  # type: ignore[misc]
+./algorithms.py:121:    AllowedPrivateKeys = Never  # type: ignore[misc]
+./algorithms.py:122:    AllowedPublicKeys = Never  # type: ignore[misc]
+./algorithms.py:138:    "EdDSA",
+./algorithms.py:142:def get_default_algorithms() -> dict[str, Algorithm]:
+./algorithms.py:144:    Returns the algorithms that are implemented by the library.
+./algorithms.py:146:    default_algorithms: dict[str, Algorithm] = {
+./algorithms.py:154:        default_algorithms.update(
+./algorithms.py:169:                "EdDSA": OKPAlgorithm(),
+./algorithms.py:173:    return default_algorithms
+./algorithms.py:182:    _crypto_key_types: tuple[type[AllowedKeys], ...] | None = None
+./algorithms.py:218:                "This method requires the cryptography library, and should only be used by cryptography-based algorithms."
+./algorithms.py:287:    operations are required.
+./algorithms.py:365:        # arbitrary bytes as a valid secret. Other algorithms reject
+./algorithms.py:513:            tuple[type[AllowedKeys], ...],
+./algorithms.py:521:        def check_key_length(self, key: AllowedRSAKeys) -> str | None:
+./algorithms.py:530:        def prepare_key(self, key: AllowedRSAKeys | str | bytes) -> AllowedRSAKeys:
+./algorithms.py:532:                # Cast is required for type narrowing on Python 3.9's mypy
+./algorithms.py:535:                return cast(AllowedRSAKeys, key)  # type: ignore[redundant-cast,unused-ignore]
+./algorithms.py:565:        def to_jwk(key_obj: AllowedRSAKeys, as_dict: Literal[True]) -> JWKDict: ...
+./algorithms.py:569:        def to_jwk(key_obj: AllowedRSAKeys, as_dict: Literal[False] = False) -> str: ...
+./algorithms.py:572:        def to_jwk(key_obj: AllowedRSAKeys, as_dict: bool = False) -> JWKDict | str:
+./algorithms.py:611:        def from_jwk(jwk: str | JWKDict) -> AllowedRSAKeys:
+./algorithms.py:704:            tuple[type[AllowedKeys], ...],
+./algorithms.py:716:        def _validate_curve(self, key: AllowedECKeys) -> None:
+./algorithms.py:727:        def prepare_key(self, key: AllowedECKeys | str | bytes) -> AllowedECKeys:
+./algorithms.py:730:                ec_key = cast(AllowedECKeys, key)  # type: ignore[redundant-cast,unused-ignore]
+./algorithms.py:765:        def verify(self, msg: bytes, key: AllowedECKeys, sig: bytes) -> bool:
+./algorithms.py:784:        def to_jwk(key_obj: AllowedECKeys, as_dict: Literal[True]) -> JWKDict: ...
+./algorithms.py:788:        def to_jwk(key_obj: AllowedECKeys, as_dict: Literal[False] = False) -> str: ...
+./algorithms.py:791:        def to_jwk(key_obj: AllowedECKeys, as_dict: bool = False) -> JWKDict | str:
+./algorithms.py:835:        def from_jwk(jwk: str | JWKDict) -> AllowedECKeys:
+./algorithms.py:939:    class OKPAlgorithm(Algorithm):
+./algorithms.py:941:        Performs signing and verification operations using EdDSA
+./algorithms.py:947:            tuple[type[AllowedKeys], ...],
+./algorithms.py:950:                    Ed25519PrivateKey,
+./algorithms.py:951:                    Ed25519PublicKey,
+./algorithms.py:961:        def prepare_key(self, key: AllowedOKPKeys | str | bytes) -> AllowedOKPKeys:
+./algorithms.py:981:            return cast("AllowedOKPKeys", loaded_key)
+./algorithms.py:984:            self, msg: str | bytes, key: Ed25519PrivateKey | Ed448PrivateKey
+./algorithms.py:987:            Sign a message ``msg`` using the EdDSA private key ``key``
+./algorithms.py:989:            :param Ed25519PrivateKey}Ed448PrivateKey key: A :class:`.Ed25519PrivateKey`
+./algorithms.py:998:            self, msg: str | bytes, key: AllowedOKPKeys, sig: str | bytes
+./algorithms.py:1001:            Verify a given ``msg`` against a signature ``sig`` using the EdDSA key ``key``
+./algorithms.py:1003:            :param str|bytes sig: EdDSA signature to check ``msg`` against
+./algorithms.py:1005:            :param Ed25519PrivateKey|Ed25519PublicKey|Ed448PrivateKey|Ed448PublicKey key:
+./algorithms.py:1006:                A private or public EdDSA key instance
+./algorithms.py:1015:                    if isinstance(key, (Ed25519PrivateKey, Ed448PrivateKey))
+./algorithms.py:1025:        def to_jwk(key: AllowedOKPKeys, as_dict: Literal[True]) -> JWKDict: ...
+./algorithms.py:1029:        def to_jwk(key: AllowedOKPKeys, as_dict: Literal[False] = False) -> str: ...
+./algorithms.py:1032:        def to_jwk(key: AllowedOKPKeys, as_dict: bool = False) -> JWKDict | str:
+./algorithms.py:1033:            if isinstance(key, (Ed25519PublicKey, Ed448PublicKey)):
+./algorithms.py:1038:                crv = "Ed25519" if isinstance(key, Ed25519PublicKey) else "Ed448"
+./algorithms.py:1042:                    "kty": "OKP",
+./algorithms.py:1051:            if isinstance(key, (Ed25519PrivateKey, Ed448PrivateKey)):
+./algorithms.py:1063:                crv = "Ed25519" if isinstance(key, Ed25519PrivateKey) else "Ed448"
+./algorithms.py:1067:                    "kty": "OKP",
+./algorithms.py:1079:        def from_jwk(jwk: str | JWKDict) -> AllowedOKPKeys:
+./algorithms.py:1090:            if obj.get("kty") != "OKP":
+./algorithms.py:1094:            if curve != "Ed25519" and curve != "Ed448":
+./algorithms.py:1098:                raise InvalidKeyError('OKP should have "x" parameter')
+./algorithms.py:1103:                    if curve == "Ed25519":
+./algorithms.py:1104:                        return Ed25519PublicKey.from_public_bytes(x)
+./algorithms.py:1107:                private_key: Ed25519PrivateKey | Ed448PrivateKey
+./algorithms.py:1108:                if curve == "Ed25519":
+./algorithms.py:1109:                    private_key = Ed25519PrivateKey.from_private_bytes(d)
+./api_jwk.py:8:from .algorithms import get_default_algorithms, has_crypto, requires_cryptography
+./api_jwk.py:58:            elif kty == "OKP":
+./api_jwk.py:61:                if crv == "Ed25519":
+./api_jwk.py:62:                    algorithm = "EdDSA"
+./api_jwk.py:76:            self.Algorithm = get_default_algorithms()[algorithm]
+./api_jwt.py:21:    MissingRequiredClaimError,
+./api_jwt.py:34:    from .algorithms import AllowedPrivateKeys, AllowedPublicKeys
+./api_jwt.py:38:    AllowedPrivateKeyTypes: TypeAlias = Union[AllowedPrivateKeys, PyJWK, str, bytes]
+./api_jwt.py:39:    AllowedPublicKeyTypes: TypeAlias = Union[AllowedPublicKeys, PyJWK, str, bytes]
+./api_jwt.py:95:        key: AllowedPrivateKeyTypes,
+./api_jwt.py:107:            * for **asymmetric algorithms**: PEM-formatted private key, a multiline string
+./api_jwt.py:108:            * for **symmetric algorithms**: plain string, sufficiently long for security
+./api_jwt.py:110:        :type key: str or bytes or PyJWK or :py:class:`jwt.algorithms.AllowedPrivateKeys`
+./api_jwt.py:179:        key: AllowedPublicKeyTypes = "",
+./api_jwt.py:180:        algorithms: Sequence[str] | None = None,
+./api_jwt.py:201:        :param key: the key suitable for the allowed algorithm
+./api_jwt.py:202:        :type key: str or bytes or PyJWK or :py:class:`jwt.algorithms.AllowedPublicKeys`
+./api_jwt.py:204:        :param algorithms: allowed algorithms, e.g. ``["ES256"]``
+./api_jwt.py:208:               Do **not** compute the ``algorithms`` parameter based on
+./api_jwt.py:213:               either hard-code a fixed value for ``algorithms``, or
+./api_jwt.py:216:               algorithms that interpret the ``key`` in different ways
+./api_jwt.py:218:        :type algorithms: typing.Sequence[str] or None
+./api_jwt.py:270:            algorithms=algorithms,
+./api_jwt.py:308:        key: AllowedPublicKeys | PyJWK | str | bytes = "",
+./api_jwt.py:309:        algorithms: Sequence[str] | None = None,
+./api_jwt.py:328:        :param key: the key suitable for the allowed algorithm
+./api_jwt.py:329:        :type key: str or bytes or PyJWK or :py:class:`jwt.algorithms.AllowedPublicKeys`
+./api_jwt.py:331:        :param algorithms: allowed algorithms, e.g. ``["ES256"]``
+./api_jwt.py:332:            If ``key`` is a :class:`PyJWK` object, allowed algorithms will default to the key algorithm.
+./api_jwt.py:336:               Do **not** compute the ``algorithms`` parameter based on
+./api_jwt.py:341:               either hard-code a fixed value for ``algorithms``, or
+./api_jwt.py:344:               algorithms that interpret the ``key`` in different ways
+./api_jwt.py:346:        :type algorithms: typing.Sequence[str] or None
+./api_jwt.py:373:            algorithms,
+./api_jwt.py:399:        self._validate_required_claims(payload, options["require"])
+./api_jwt.py:426:    def _validate_required_claims(
+./api_jwt.py:433:                raise MissingRequiredClaimError(claim)
+./api_jwt.py:532:            raise MissingRequiredClaimError("aud")
+./api_jwt.py:539:            # Only a single audience is allowed in strict mode.
+./api_jwt.py:543:            # Only a single audience claim is allowed in strict mode.
+./api_jwt.py:572:            raise MissingRequiredClaimError("iss")
+./exceptions.py:71:class MissingRequiredClaimError(InvalidTokenError):
+./exceptions.py:72:    """Raised when a claim that is required to be present is not contained
+./types.py:57:# required _every_ value to be there; Options doesn't require any
+./__init__.py:6:    register_algorithm,
+./__init__.py:7:    unregister_algorithm,
+./__init__.py:21:    MissingRequiredClaimError,
+./__init__.py:56:    "register_algorithm",
+./__init__.py:57:    "unregister_algorithm",
+./__init__.py:72:    "MissingRequiredClaimError",
+./utils.py:136:    b"ssh-ed25519",
+./api_jws.py:9:from .algorithms import (
+./api_jws.py:11:    get_default_algorithms,
+./api_jws.py:27:    from .algorithms import AllowedPrivateKeys, AllowedPublicKeys
+./api_jws.py:41:        algorithms: Sequence[str] | None = None,
+./api_jws.py:44:        self._algorithms = get_default_algorithms()
+./api_jws.py:46:            set(algorithms) if algorithms is not None else set(self._algorithms)
+./api_jws.py:49:        # Remove algorithms that aren't on the whitelist
+./api_jws.py:50:        for key in list(self._algorithms.keys()):
+./api_jws.py:52:                del self._algorithms[key]
+./api_jws.py:62:    def register_algorithm(self, alg_id: str, alg_obj: Algorithm) -> None:
+./api_jws.py:64:        Registers a new Algorithm for use when creating and verifying tokens.
+./api_jws.py:70:        if alg_id in self._algorithms:
+./api_jws.py:76:        self._algorithms[alg_id] = alg_obj
+./api_jws.py:79:    def unregister_algorithm(self, alg_id: str) -> None:
+./api_jws.py:81:        Unregisters an Algorithm for use when creating and verifying tokens
+./api_jws.py:83:        :raises KeyError: if algorithm is not registered.
+./api_jws.py:85:        if alg_id not in self._algorithms:
+./api_jws.py:88:                " because it is not registered."
+./api_jws.py:91:        del self._algorithms[alg_id]
+./api_jws.py:94:    def get_algorithms(self) -> list[str]:
+./api_jws.py:115:            return self._algorithms[alg_name]
+./api_jws.py:126:        key: AllowedPrivateKeys | PyJWK | str | bytes,
+./api_jws.py:173:            # verifiers don't silently treat an unencoded payload as
+./api_jws.py:225:        key: AllowedPublicKeys | PyJWK | str | bytes = "",
+./api_jws.py:226:        algorithms: Sequence[str] | None = None,
+./api_jws.py:247:        if verify_signature and not algorithms and not isinstance(key, PyJWK):
+./api_jws.py:249:                'It is required that you pass in a value for the "algorithms" argument when calling decode().'
+./api_jws.py:272:                    'It is required that you pass in a value for the "detached_payload" argument to decode a message having the b64 header set to false.'
+./api_jws.py:283:                algorithms,
+./api_jws.py:296:        key: AllowedPublicKeys | PyJWK | str | bytes = "",
+./api_jws.py:297:        algorithms: Sequence[str] | None = None,
+./api_jws.py:311:            jwt, key, algorithms, options, detached_payload=detached_payload
+./api_jws.py:389:        key: AllowedPublicKeys | PyJWK | str | bytes = "",
+./api_jws.py:390:        algorithms: Sequence[str] | None = None,
+./api_jws.py:395:        if algorithms is None and isinstance(key, PyJWK):
+./api_jws.py:396:            algorithms = [key.algorithm_name]
+./api_jws.py:402:        if not alg or (algorithms is not None and alg not in algorithms):
+./api_jws.py:403:            raise InvalidAlgorithmError("The specified alg value is not allowed")
+./api_jws.py:408:            # header advertises, otherwise the caller's allow-list check
+./api_jws.py:469:register_algorithm = _jws_global_obj.register_algorithm
+./api_jws.py:470:unregister_algorithm = _jws_global_obj.unregister_algorithm

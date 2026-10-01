@@ -1,0 +1,56 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 DONE 0.0s
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 744B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/elixir:1.20.4@sha256:86ff0019e9f70662462d7394406e8dee03ea399fe11825708614b2a5ce5368aa
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context:
+#3 transferring context: 2B done
+#3 DONE 0.1s
+
+#4 [1/2] FROM docker.io/library/elixir:1.20.4@sha256:86ff0019e9f70662462d7394406e8dee03ea399fe11825708614b2a5ce5368aa
+#4 resolve docker.io/library/elixir:1.20.4@sha256:86ff0019e9f70662462d7394406e8dee03ea399fe11825708614b2a5ce5368aa 0.0s done
+#4 DONE 0.3s
+
+#5 [2/2] RUN set -eux; mix local.hex --force; mix local.rebar --force; echo "SURUM $(elixir --version | tr '\n' ' ')";     echo "SURUM hex $(mix hex.info 2>/dev/null | head -1)"; echo "SURUM erlang-crypto $(erl -noshell -eval 'io:format("~p", [crypto:info_lib()]), halt().')"
+#5 0.227 + mix local.hex --force
+#5 1.799 * creating root/.mix/archives/hex-2.5.1
+#5 1.807 + mix local.rebar --force
+#5 3.101 * creating root/.mix/elixir/1-20-otp-29/rebar3
+#5 3.109 + elixir --version
+#5 3.109 + tr \n  
+#5 3.404 + echo SURUM Erlang/OTP 29 [erts-17.1] [source] [64-bit] [smp:12:12] [ds:12:12:10] [async-threads:1] [jit:ns]  Elixir 1.20.4 (compiled with Erlang/OTP 29) 
+#5 3.404 SURUM Erlang/OTP 29 [erts-17.1] [source] [64-bit] [smp:12:12] [ds:12:12:10] [async-threads:1] [jit:ns]  Elixir 1.20.4 (compiled with Erlang/OTP 29) 
+#5 3.404 + mix hex.info
+#5 3.405 + head -1
+#5 3.949 SURUM hex Hex:    2.5.1
+#5 3.949 + echo SURUM hex Hex:    2.5.1
+#5 3.950 + erl -noshell -eval io:format(\"~p\", [crypto:info_lib()]), halt().
+#5 4.113 Error! Failed to eval: io:format(\"~p\", [crypto:info_lib()]), halt().
+#5 4.113 
+#5 4.113 Runtime terminating during boot ({{badmatch,{error,{1,erl_scan,{unterminated,string,"~p\", [crypto:inf"}},1}},[{init,start_it,1,[]},{init,start_em,1,[]},{init,do_boot,3,[]}]})
+#5 4.115 
+#5 4.115 Crash dump is being written to: erl_crash.dump...done
+#5 4.240 SURUM erlang-crypto 
+#5 4.240 + echo SURUM erlang-crypto 
+#5 DONE 4.8s
+
+#6 exporting to image
+#6 exporting layers
+#6 exporting layers 0.3s done
+#6 exporting manifest sha256:82a36dfc5710bf4fe8f0946d2ae57de9e70e51357fd28af50b7f706bbab52902 0.0s done
+#6 exporting config sha256:7631c296e12951c23256c46a61db68621cd29c4c107f6e0b4499638dac868b4e 0.0s done
+#6 exporting attestation manifest sha256:cb3a79a9e8aff7c215966c5cf883fb8f445e609860acba12a9f6d2dc0fcfd643
+#6 exporting attestation manifest sha256:cb3a79a9e8aff7c215966c5cf883fb8f445e609860acba12a9f6d2dc0fcfd643 0.1s done
+#6 exporting manifest list sha256:7a7a4a5dd7e207ba661cde2791b353c60393d037d3af62ccdeb4a27f59ce1036 0.0s done
+#6 naming to docker.io/library/pq-a09-env-elixir:1.0
+#6 naming to docker.io/library/pq-a09-env-elixir:1.0 done
+#6 unpacking to docker.io/library/pq-a09-env-elixir:1.0 0.1s done
+#6 DONE 0.7s

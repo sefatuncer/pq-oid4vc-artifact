@@ -1,0 +1,327 @@
+{
+    "graphs": [
+        {
+            "jgAbbrevs": [],
+            "jgClusters": [],
+            "jgDirected": true,
+            "jgEdges": [
+                {
+                    "jgeRelation": "default",
+                    "jgeSource": "#vf:c0",
+                    "jgeTarget": "#k:p1"
+                },
+                {
+                    "jgeRelation": "LessAtoms",
+                    "jgeSource": "#vk.5",
+                    "jgeTarget": "#vf"
+                },
+                {
+                    "jgeRelation": "LessAtoms",
+                    "jgeSource": "#vk.6",
+                    "jgeTarget": "#vf"
+                }
+            ],
+            "jgLabel": "trace_Mf_Yol_SL2-AS0-CL0-A1-C1-NB_executable_learn-Verifier_Start",
+            "jgNodes": [
+                {
+                    "jgnId": "#k",
+                    "jgnLabel": "Exp_Wrprc_Req",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "NotEq",
+                                "jgnFactShow": "NotEq( e, 'none' )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "e"
+                                    },
+                                    {
+                                        "jgnConst": "'none'"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "SeenPQReq",
+                                "jgnFactShow": "SeenPQReq( $V, $I )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$V"
+                                    },
+                                    {
+                                        "jgnConst": "$I"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#k:c0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Exp",
+                                "jgnFactShow": "Exp( $V, ~sid, $I, e )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$V"
+                                    },
+                                    {
+                                        "jgnConst": "~sid"
+                                    },
+                                    {
+                                        "jgnConst": "$I"
+                                    },
+                                    {
+                                        "jgnConst": "e"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#k:p0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "VS",
+                                "jgnFactShow": "VS( $V, ~sid, $I )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$V"
+                                    },
+                                    {
+                                        "jgnConst": "~sid"
+                                    },
+                                    {
+                                        "jgnConst": "$I"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#k:p1",
+                                "jgnFactMult": "",
+                                "jgnFactName": "In",
+                                "jgnFactShow": "In( <<'wrprc', $I, e>, ws> )",
+                                "jgnFactTag": "InFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'wrprc'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "$I"
+                                                            },
+                                                            {
+                                                                "jgnConst": "e"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair($I,e)"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('wrprc',pair($I,e))"
+                                            },
+                                            {
+                                                "jgnConst": "ws"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('wrprc',pair($I,e)),ws)"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isProtocolRule"
+                },
+                {
+                    "jgnId": "#vf",
+                    "jgnLabel": "Send",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "K",
+                                "jgnFactShow": "K( <<'wrprc', $I, e>, ws> )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'wrprc'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "$I"
+                                                            },
+                                                            {
+                                                                "jgnConst": "e"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair($I,e)"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('wrprc',pair($I,e))"
+                                            },
+                                            {
+                                                "jgnConst": "ws"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('wrprc',pair($I,e)),ws)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vf:c0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "In",
+                                "jgnFactShow": "In( <<'wrprc', $I, e>, ws> )",
+                                "jgnFactTag": "InFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'wrprc'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "$I"
+                                                            },
+                                                            {
+                                                                "jgnConst": "e"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair($I,e)"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('wrprc',pair($I,e))"
+                                            },
+                                            {
+                                                "jgnConst": "ws"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('wrprc',pair($I,e)),ws)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vf:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( <<'wrprc', $I, e>, ws> )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'wrprc'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "$I"
+                                                            },
+                                                            {
+                                                                "jgnConst": "e"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair($I,e)"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('wrprc',pair($I,e))"
+                                            },
+                                            {
+                                                "jgnConst": "ws"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('wrprc',pair($I,e)),ws)"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                },
+                {
+                    "jgnId": "#vk.5",
+                    "jgnLabel": "!KU( e )",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( e )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "e"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [],
+                        "jgnPrems": []
+                    },
+                    "jgnType": "unsolvedActionAtom"
+                },
+                {
+                    "jgnId": "#vk.6",
+                    "jgnLabel": "!KU( ws )",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( ws )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "ws"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [],
+                        "jgnPrems": []
+                    },
+                    "jgnType": "unsolvedActionAtom"
+                }
+            ],
+            "jgType": "Tamarin prover constraint system"
+        }
+    ]
+}

@@ -1,0 +1,286 @@
+maude tool: 'maude'
+ checking version: 3.5.1. OK.
+ checking installation: OK.
+[Theory WeakestLink] Theory loaded
+[Theory WeakestLink] Theory translated
+[Theory WeakestLink] Derivation checks started
+[Theory WeakestLink] Derivation checks ended
+[Theory WeakestLink] Theory closed
+theory WeakestLink
+
+begin
+
+// Function signature and definition of the equational theory E
+
+functions: fst/1, pair/2, pk/1, sign/2, snd/1, true/0, verify/3
+equations:
+    fst(<x.1, x.2>) = x.1,
+    snd(<x.1, x.2>) = x.2,
+    verify(sign(x.1, x.2), x.1, pk(x.2)) = true
+
+restriction Equality:
+  "∀ x y #i. (Eq( x, y ) @ #i) ⇒ (x = y)"
+  // safety formula
+
+  /*
+  expanded formula:
+  "∀ x y #i. (Eq( x, y ) @ #i) ⇒ (x = y)"
+  */
+
+restriction Inequality:
+  "∀ x #i. (NotEq( x, x ) @ #i) ⇒ (⊥)"
+  // safety formula
+
+  /*
+  expanded formula:
+  "∀ x #i. (NotEq( x, x ) @ #i) ⇒ (⊥)"
+  */
+
+restriction OnlyOnce:
+  "∀ x #i #j. ((OnlyOnce( x ) @ #i) ∧ (OnlyOnce( x ) @ #j)) ⇒ (#i = #j)"
+  // safety formula
+
+  /*
+  expanded formula:
+  "∀ x #i #j. ((OnlyOnce( x ) @ #i) ∧ (OnlyOnce( x ) @ #j)) ⇒ (#i = #j)"
+  */
+
+rule (modulo E) Qday:
+   [ ] --[ OnlyOnce( 'qday' ), QdayOlayi( ) ]-> [ !Qday( ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) TL_Setup:
+   [ Fr( ~sktl ) ]
+  --[ OnlyOnce( 'tl' ) ]->
+   [ !TLsk( ~sktl ), !TLpk( pk(~sktl) ), Out( pk(~sktl) ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) CRQC_Break_TL:
+   [ !TLsk( sk ), !Qday( ) ] --[ BreakTL( ) ]-> [ Out( sk ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Issuer_Setup:
+   [ Fr( ~skc ), Fr( ~skq ) ]
+  --[ IssuerSetup( $I ) ]->
+   [ !IssC( $I, ~skc ), !IssQ( $I, ~skq ), Out( pk(~skc) ), Out( pk(~skq) )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) CRQC_Break_Issuer_Classical:
+   [ !IssC( I, skc ), !Qday( ) ] --[ BreakIss( I ) ]-> [ Out( skc ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) TL_Entry:
+   [ !TLsk( sktl ), !IssC( I, skc ), !IssQ( I, skq ) ]
+  --[ TLEntry( I ) ]->
+   [
+   Out( <<'tlentry', I, pk(skc), pk(skq), 'none'>, 
+         sign(<'tlentry', I, pk(skc), pk(skq), 'none'>, sktl)>
+   )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Issue:
+   [ !IssC( I, skc ), !IssQ( I, skq ), Fr( ~claims ) ]
+  --[ Issued( I, ~claims ) ]->
+   [
+   Out( <I, ~claims, sign(<I, ~claims>, skq)> ),
+   Out( <I, ~claims, sign(<I, ~claims>, skc)> )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Verify_PQ:
+   [
+   !TLpk( pktl ), In( <<'tlentry', I, pkc, pkq, exp>, tlsig> ),
+   In( <I, claims, sigq> )
+   ]
+  --[
+  Eq( verify(tlsig, <'tlentry', I, pkc, pkq, exp>, pktl), true ),
+  Eq( verify(sigq, <I, claims>, pkq), true ), Accept( I, claims )
+  ]->
+   [ ]
+
+  /*
+  rule (modulo AC) Verify_PQ:
+     [
+     !TLpk( pktl ), In( <<'tlentry', I, pkc, pkq, exp>, tlsig> ),
+     In( <I, claims, sigq> )
+     ]
+    --[ Eq( z, true ), Eq( z.1, true ), Accept( I, claims ) ]->
+     [ ]
+    variants (modulo AC)
+    1. I     = I.13
+       claims
+             = claims.14
+       exp   = exp.15
+       pkc   = pkc.16
+       pkq   = pkq.17
+       pktl  = pktl.18
+       sigq  = sigq.19
+       tlsig = tlsig.20
+       z     = verify(tlsig.20, <'tlentry', I.13, pkc.16, pkq.17, exp.15>,
+                      pktl.18)
+       z.1   = verify(sigq.19, <I.13, claims.14>, pkq.17)
+    
+    2. I     = I.18
+       claims
+             = claims.19
+       exp   = exp.20
+       pkc   = pkc.21
+       pkq   = pk(x.33)
+       pktl  = pktl.23
+       sigq  = sign(<I.18, claims.19>, x.33)
+       tlsig = tlsig.25
+       z     = verify(tlsig.25, <'tlentry', I.18, pkc.21, pk(x.33), exp.20>,
+                      pktl.23)
+       z.1   = true
+    
+    3. I     = I.18
+       claims
+             = claims.19
+       exp   = exp.20
+       pkc   = pkc.21
+       pkq   = pk(x.33)
+       pktl  = pk(x.34)
+       sigq  = sign(<I.18, claims.19>, x.33)
+       tlsig = sign(<'tlentry', I.18, pkc.21, pk(x.33), exp.20>, x.34)
+       z     = true
+       z.1   = true
+    
+    4. I     = I.19
+       claims
+             = claims.20
+       exp   = exp.21
+       pkc   = pkc.22
+       pkq   = pkq.23
+       pktl  = pk(x.35)
+       sigq  = sigq.25
+       tlsig = sign(<'tlentry', I.19, pkc.22, pkq.23, exp.21>, x.35)
+       z     = true
+       z.1   = verify(sigq.25, <I.19, claims.20>, pkq.23)
+  */
+
+rule (modulo E) Verify_Classical:
+   [
+   !TLpk( pktl ), In( <<'tlentry', I, pkc, pkq, exp>, tlsig> ),
+   In( <I, claims, sigc> )
+   ]
+  --[
+  Eq( verify(tlsig, <'tlentry', I, pkc, pkq, exp>, pktl), true ),
+  Eq( verify(sigc, <I, claims>, pkc), true ), NotEq( exp, 'pq_required' ),
+  Accept( I, claims )
+  ]->
+   [ ]
+
+  /*
+  rule (modulo AC) Verify_Classical:
+     [
+     !TLpk( pktl ), In( <<'tlentry', I, pkc, pkq, exp>, tlsig> ),
+     In( <I, claims, sigc> )
+     ]
+    --[
+    Eq( z, true ), Eq( z.1, true ), NotEq( exp, 'pq_required' ),
+    Accept( I, claims )
+    ]->
+     [ ]
+    variants (modulo AC)
+    1. I     = I.20
+       claims
+             = claims.21
+       exp   = exp.22
+       pkc   = pkc.23
+       pkq   = pkq.24
+       pktl  = pktl.25
+       sigc  = sigc.26
+       tlsig = tlsig.27
+       z     = verify(tlsig.27, <'tlentry', I.20, pkc.23, pkq.24, exp.22>,
+                      pktl.25)
+       z.1   = verify(sigc.26, <I.20, claims.21>, pkc.23)
+    
+    2. I     = I.28
+       claims
+             = claims.29
+       exp   = exp.30
+       pkc   = pk(x.54)
+       pkq   = pkq.32
+       pktl  = pktl.33
+       sigc  = sign(<I.28, claims.29>, x.54)
+       tlsig = tlsig.35
+       z     = verify(tlsig.35, <'tlentry', I.28, pk(x.54), pkq.32, exp.30>,
+                      pktl.33)
+       z.1   = true
+    
+    3. I     = I.30
+       claims
+             = claims.31
+       exp   = exp.32
+       pkc   = pkc.33
+       pkq   = pkq.34
+       pktl  = pk(x.58)
+       sigc  = sigc.36
+       tlsig = sign(<'tlentry', I.30, pkc.33, pkq.34, exp.32>, x.58)
+       z     = true
+       z.1   = verify(sigc.36, <I.30, claims.31>, pkc.33)
+    
+    4. I     = I.30
+       claims
+             = claims.31
+       exp   = exp.32
+       pkc   = pk(x.56)
+       pkq   = pkq.34
+       pktl  = pk(x.58)
+       sigc  = sign(<I.30, claims.31>, x.56)
+       tlsig = sign(<'tlentry', I.30, pk(x.56), pkq.34, exp.32>, x.58)
+       z     = true
+       z.1   = true
+  */
+
+lemma executable:
+  exists-trace "∃ I c #i #j. (Issued( I, c ) @ #i) ∧ (Accept( I, c ) @ #j)"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ I c #i #j. (Issued( I, c ) @ #i) ∧ (Accept( I, c ) @ #j)"
+*/
+by sorry
+
+lemma claims_unforgeability:
+  all-traces
+  "∀ I c #j.
+    (Accept( I, c ) @ #j) ⇒ (∃ #i. (Issued( I, c ) @ #i) ∧ (#i < #j))"
+/*
+guarded formula characterizing all counter-examples:
+"∃ I c #j.
+  (Accept( I, c ) @ #j) ∧ ∀ #i. (Issued( I, c ) @ #i) ⇒ ¬(#i < #j)"
+*/
+by sorry
+
+/* All wellformedness checks were successful. */
+
+/*
+Generated from:
+Tamarin version 1.12.0
+Maude version 3.5.1
+Git revision: 82780bbaf3328a45f624ddb41e51bf75425f851c (with uncommited changes), branch: master
+Compiled at: 2026-03-07 14:22:39.174278293 UTC
+*/
+
+end
+
+==============================================================================
+summary of summaries:
+
+analyzed: /kat/weakest_link_wf.spthy
+
+  processing time: 0.65s
+  
+  executable (exists-trace): analysis incomplete (1 steps)
+  claims_unforgeability (all-traces): analysis incomplete (1 steps)
+
+==============================================================================

@@ -1,0 +1,306 @@
+anahtar,kaynak,kaynak_ayrinti,karar,tabaka,ad,dil,paket_ekosistemi,paket_adi,depo_url,alt_dizin,gerekce
+github.com/openwallet-foundation-labs/identity-common-ts,H+P,sd-jwt-js README (arşiv notu); npm @sd-jwt/core repository alanı,aday,SDJWT,identity-common-ts (@sd-jwt/core),TypeScript,npm,@sd-jwt/core,,packages/sd-jwt-core,"sd-jwt-js'nin halefi: sd-jwt-js README 'PROJECT ARCHIVED … visit the Identity Common-TS Repository'; npm @sd-jwt/core repository.directory=packages/sd-jwt-core. Pilot kütüphanesi (0.21.0). Aynı depoda @owf/cose, @owf/mdoc, @openid4vc/* var; birim @sd-jwt/core"
+github.com/openwallet-foundation-labs/sd-jwt-python,,,aday,SDJWT,sd-jwt-python,Python,pypi,sd-jwt,,,OWF-Labs referans uygulaması
+github.com/openwallet-foundation-labs/sd-jwt-rust,,,aday,SDJWT,sd-jwt-rust,Rust,cargo,sd-jwt-rs,,,OWF-Labs referans uygulaması
+github.com/openwallet-foundation-labs/sd-jwt-dotnet,,,aday,SDJWT,sd-jwt-dotnet (SdJwt.Net),.NET,nuget,SdJwt.Net,,,OWF-Labs; birim SdJwt.Net (SdJwt.Net.* alt paketleri aynı depo)
+github.com/openwallet-foundation-labs/sd-jwt-kotlin,,,aday,SDJWT,sd-jwt-kotlin,Kotlin,maven,org.sd-jwt:sd-jwt-kotlin,,,OWF-Labs
+github.com/openwallet-foundation-labs/sd-jwt-vc-dm,,,aday,SDJWT,sd-jwt-vc-dm,TypeScript,npm,sd-jwt-vcdm,,,OWF-Labs; SD-JWT VCDM
+github.com/openwallet-foundation-labs/wallet-framework-dotnet,,,aday,SDJWT,wallet-framework-dotnet (WalletFramework.SdJwtVc),.NET,nuget,WalletFramework.SdJwtVc,,,OWF-Labs; .NET çerçevesinin SD-JWT VC paketi
+github.com/eu-digital-identity-wallet/eudi-lib-jvm-sdjwt-kt,,,aday,SDJWT,eudi-lib-jvm-sdjwt-kt,Kotlin,maven,eu.europa.ec.eudi:eudi-lib-jvm-sdjwt-kt,,,EUDI referans kütüphanesi (issue+verify)
+github.com/eu-digital-identity-wallet/eudi-lib-sdjwt-swift,,,aday,SDJWT,eudi-lib-sdjwt-swift,Swift,swiftpm,https://github.com/eu-digital-identity-wallet/eudi-lib-sdjwt-swift,,,EUDI referans kütüphanesi (Swift)
+github.com/authlete/sd-jwt,,,aday,SDJWT,authlete/sd-jwt,Java,maven,com.authlete:sd-jwt,,,Java SD-JWT kütüphanesi
+github.com/spruceid/ssi,,,aday,SDJWT,spruceid/ssi (ssi-sd-jwt),Rust,cargo,ssi-sd-jwt,,,Spruce ssi; birim ssi-sd-jwt (aynı depoda ssi-cose ve ssi-vc-jose-cose)
+github.com/iotaledger/sd-jwt-payload,,,aday,SDJWT,sd-jwt-payload,Rust,cargo,sd-jwt-payload,,,IOTA
+github.com/affinidi/affinidi-tdk-rs,,,aday,SDJWT,affinidi-tdk-rs (affinidi-sd-jwt),Rust,cargo,affinidi-sd-jwt,,,birim affinidi-sd-jwt (affinidi-sd-jwt-vc: 'DEPRECATED — merged into affinidi-vc')
+github.com/affinidi/affinidi-sdjwt-dart,,,aday,SDJWT,affinidi-sdjwt-dart (selective_disclosure_jwt),Dart,pub,selective_disclosure_jwt,,,pub.dev
+github.com/michaelfraser99/go-sd-jwt,,,aday,SDJWT,go-sd-jwt,Go,go,github.com/MichaelFraser99/go-sd-jwt/v2,,,pkg.go.dev
+github.com/trustbloc/vc-go,,,aday,SDJWT,trustbloc/vc-go (sdjwt),Go,go,github.com/trustbloc/vc-go,,sdjwt,TrustBloc VC kütüphanesi; sdjwt paketi
+github.com/tbd54566975/ssi-sdk,,,aday,SDJWT,TBD ssi-sdk (sd-jwt),Go,go,github.com/TBD54566975/ssi-sdk,,sd-jwt,README: 'not actively being maintained'
+github.com/georgepadayatti/sdjwt,,,aday,SDJWT,georgepadayatti/sdjwt,Go,go,github.com/georgepadayatti/sdjwt,,,pkg.go.dev (RFC 9901)
+github.com/gmb-eudi/go-sdjwt,,,aday,SDJWT,gmb-eudi/go-sdjwt,Go,go,github.com/gmb-eudi/go-sdjwt,,,pkg.go.dev
+github.com/joesiltberg/sdjwt,,,aday,SDJWT,joesiltberg/sdjwt,Go,go,github.com/joesiltberg/sdjwt,,,pkg.go.dev
+github.com/hyperledger/aries-framework-go,,,aday,SDJWT,aries-framework-go (sdjwt),Go,go,github.com/hyperledger/aries-framework-go,,,pkg.go.dev; Hyperledger Aries Go
+github.com/meeco/sd-jwt,,,aday,SDJWT,@meeco/sd-jwt,TypeScript,npm,@meeco/sd-jwt,,,npm
+github.com/a-sit-plus/vck,,,aday,SDJWT,vck,Kotlin,maven,at.asitplus.wallet:vck,,,"KMP VC kütüphanesi (SD-JWT, ISO mdoc, OID4VP)"
+github.com/koalafacts/herosd-jwt,,,aday,SDJWT,HeroSD-JWT,.NET,nuget,HeroSD-JWT,,,NuGet
+github.com/berendsliedrecht/sd-jwt-ts,,,aday,SDJWT,sd-jwt-ts,TypeScript,,,,,GitHub konu sd-jwt; paket adı belirlenmedi
+github.com/robjsliwa/sd-jwt,,,aday,SDJWT,sdjwt (Rust),Rust,cargo,sdjwt,,,crates.io
+github.com/blockhousetech/eudi-rust-core,,,aday,SDJWT,eudi-rust-core (bh-sd-jwt),Rust,cargo,bh-sd-jwt,,,crates.io; AGPL-3.0
+github.com/sphereon-opensource/ssi-sdk,,,aday,SDJWT,Sphereon SSI-SDK (@sphereon/ssi-sdk.sd-jwt),TypeScript,npm,@sphereon/ssi-sdk.sd-jwt,,packages/sd-jwt,README: 'legacy SDK … development will be focussed on our multiplatform IDK'
+github.com/sphereon-opensource/identity-development-kit,H,Sphereon SSI-SDK README: 'moving forward development will be focussed on our multiplatform IDK',aday,SDJWT,Sphereon IDK,Kotlin,,,,,SSI-SDK README'sinin gösterdiği halef
+github.com/k2gl/sd-jwt,,,aday,SDJWT,k2gl/sd-jwt,PHP,packagist,k2gl/sd-jwt,,,Packagist (PHP'deki tek SD-JWT isabeti)
+github.com/transmute-industries/vc-jwt-sd,,,aday,SDJWT,vc-jwt-sd,TypeScript,,,,,deneysel (açıklama)
+pkg:maven:de.adorsys:sd-jwt,,,aday,SDJWT,adorsys/sd-jwt,Java,maven,de.adorsys:sd-jwt,https://github.com/adorsys/sd-jwt,,Maven araması
+github.com/veraison/go-cose,,,aday,COSE,go-cose (veraison),Go,go,github.com/veraison/go-cose,,,
+github.com/timothyclaeys/pycose,,,aday,COSE,pycose,Python,pypi,pycose,,,
+github.com/laurencelundblade/t_cose,,,aday,COSE,t_cose,C,kaynak,,,,
+github.com/cose-wg/cose-java,,,aday,COSE,COSE-JAVA,Java,maven,com.augustcellars.cose:cose-java,,,IETF COSE WG referans uygulaması
+github.com/cose-wg/cose-c,,,aday,COSE,COSE-C,C/C++,kaynak,,,,IETF COSE WG referans uygulaması
+github.com/cose-wg/cose-csharp,,,aday,COSE,COSE-csharp,.NET,nuget,Com.AugustCellars.COSE,,,IETF COSE WG referans uygulaması
+github.com/google/coset,,,aday,COSE,coset,Rust,cargo,coset,,,
+pkg:nuget:system.security.cryptography.cose,,,aday,COSE,System.Security.Cryptography.Cose,.NET,nuget,System.Security.Cryptography.Cose,https://github.com/dotnet/runtime,src/libraries/System.Security.Cryptography.Cose,.NET çalışma zamanının COSE kütüphanesi (dotnet/runtime; depo yıldızı bu bileşeni temsil etmez)
+github.com/erdtman/cose-js,,,aday,COSE,cose-js,JavaScript,npm,cose-js,,,
+github.com/auth0-lab/cose,,,aday,COSE,@auth0/cose,TypeScript,npm,@auth0/cose,,,cose-kit'in halefi (cose-kit: 'DEPRECATED: Use @auth0/cose')
+github.com/ldclabs/cose-ts,,,aday,COSE,@ldclabs/cose-ts,TypeScript,npm,@ldclabs/cose-ts,,,
+github.com/ldclabs/cose,,,aday,COSE,ldclabs/cose (Go),Go,go,github.com/ldclabs/cose,,,
+github.com/ldclabs/cose2,,,aday,COSE,cose2,Rust,cargo,cose2,,,
+github.com/dajiaji/python-cwt,,,aday,COSE,python-cwt,Python,pypi,cwt,,,CWT/COSE
+github.com/tramires/cose-rust,,,aday,COSE,cose-rust (tramires),Rust,cargo,cose-rust,,,
+github.com/awslabs/aws-nitro-enclaves-cose,,,aday,COSE,aws-nitro-enclaves-cose,Rust,cargo,aws-nitro-enclaves-cose,,,
+github.com/wolfssl/wolfcose,,,aday,COSE,wolfCOSE,C,kaynak,,,,GPL-3.0
+github.com/a-sit-plus/signum,,,aday,COSE,Signum (indispensable-cosef),Kotlin,maven,at.asitplus.signum:indispensable-cosef,,,KMP kripto/PKI; COSE ve JWS veri türleri
+github.com/cedarcode/cose-ruby,,,aday,COSE,cose-ruby,Ruby,rubygems,cose,,,
+github.com/web-auth/cose-lib,,,aday,COSE,web-auth/cose-lib,PHP,packagist,web-auth/cose-lib,,,açıklama: 'Cose Key and Algorithms support'
+github.com/mozilla-services/go-cose,,,aday,COSE,go-cose (mozilla),Go,go,go.mozilla.org/cose,,,
+github.com/bergzand/libcose,,,aday,COSE,libcose,C,kaynak,,,,
+github.com/franziskuskiefer/cose-rust,,,aday,COSE,"cose (Rust, franziskuskiefer)",Rust,cargo,cose,,,
+github.com/microsoft/cosesigntool,,,aday,COSE,CoseSignTool (CoseSign1),.NET,nuget,CoseSign1,,,COSE_Sign1 kütüphanesi + CLI
+github.com/microsoft/cosesign1go,,,aday,COSE,cosesign1go,Go,go,github.com/Microsoft/cosesign1go,,,COSE_Sign1 Go kütüphanesi
+github.com/dark-bio/crypto-rs,,,aday,COSE,dark-bio crypto-rs,Rust,cargo,darkbio-crypto,,,PQ kripto sarmalayıcıları + COSE
+github.com/dark-bio/crypto-go,,,aday,COSE,dark-bio crypto-go,Go,go,github.com/dark-bio/crypto-go,,,PQ kripto sarmalayıcıları + COSE
+github.com/dark-bio/crypto-ts,,,aday,COSE,dark-bio crypto-ts,TypeScript,npm,@darkbio/crypto,,,PQ kripto sarmalayıcıları + COSE
+github.com/jtdowney/gose,,,aday,COSE,gose,Gleam,,,,,JOSE+COSE (Gleam)
+github.com/vanaheimr/cose.ts,,,aday,COSE,@vanaheimr/cose,TypeScript,npm,@vanaheimr/cose,,,
+github.com/openbasil/basil,,,aday,COSE,basil-cose,Rust,cargo,basil-cose,,,
+github.com/mattrglobal/cose,,,aday,COSE,@mattrglobal/cose,TypeScript,npm,@mattrglobal/cose,,,README: 'incomplete implementation of RFC 8152'
+github.com/levischuck/tiny-cose,,,aday,COSE,@levischuck/tiny-cose,TypeScript,npm,@levischuck/tiny-cose,,,
+github.com/transmute-industries/cose,,,aday,COSE,@transmute/cose,TypeScript,npm,@transmute/cose,,,
+github.com/input-output-hk/catalyst-voices,,,aday,COSE,catalyst_cose,Dart,pub,catalyst_cose,,catalyst_voices/packages/libs/catalyst_cose,tek-depo içinde paket
+github.com/moisesja/dataproofs-dotnet,,,aday,COSE,DataProofsDotnet.Cose,.NET,nuget,DataProofsDotnet.Cose,,,JOSE/COSE zarflama kanıtları
+github.com/tbd54566975/vc-jose-cose-go,,,aday,COSE,vc-jose-cose-go (TBD),Go,go,github.com/TBD54566975/vc-jose-cose-go,,,W3C VC-JOSE-COSE
+github.com/decentralgabe/vc-jose-cose-go,,,aday,COSE,vc-jose-cose-go (decentralgabe),Go,go,github.com/decentralgabe/vc-jose-cose-go,,,TBD deposuyla aynı README; ilişki belirsiz (çatal/halef)
+github.com/shogo82148/goat,,,aday,COSE,goat,Go,go,github.com/shogo82148/goat,,,Go Authentication Toolkit (JOSE+COSE)
+github.com/alex-richards/tiny-cose,,,aday,COSE,tiny-cose (Go),Go,go,github.com/alex-richards/tiny-cose,,,
+github.com/jahkeup/corecbor,,,aday,COSE,corecbor/cose,Go,go,github.com/jahkeup/corecbor,,,
+github.com/zzdats/go-cose,,,aday,COSE,zzdats/go-cose,Go,go,github.com/zzdats/go-cose,,,
+github.com/eu-digital-identity-wallet/eudi-srv-verifier-endpoint,G,Sürüm 3 §9.2; görev tanımı,aday,REF,EUDI verifier endpoint,Kotlin,kaynak,,,,EUDI referans doğrulayıcı (plan §9.2)
+github.com/openwallet-foundation/acapy-plugins,G,Sürüm 3 §9.2; görev tanımı,aday,REF,ACA-Py oid4vc eklentisi,Python,,,,oid4vc,plan §9.2 (ACA-Py oid4vc); depo yıldızı eklenti koleksiyonunundur
+github.com/openwallet-foundation/credo-ts,G,Sürüm 3 §9.2; görev tanımı,aday,REF,Credo openid4vc,TypeScript,npm,@credo-ts/openid4vc,,packages/openid4vc,plan §9.2 (Credo openid4vc)
+github.com/walt-id/waltid-identity,Gt,görev tanımı (Adım 9a),aday,REF,walt.id identity (verifier-api),Kotlin,,,,waltid-services/waltid-verifier-api,görev tanımı (walt.id)
+github.com/procivis/one-core,,,aday,REF,Procivis One Core,Rust,kaynak,,,,
+github.com/sphereon-opensource/oid4vc,Gt,görev tanımı (Adım 9a),aday,REF,Sphereon OID4VC (RP modülleri),TypeScript,,,,,görev tanımı (Sphereon); SIOP-OID4VP bu depoya taşındı
+github.com/openwallet-foundation/eudiplo,Gt,görev tanımı (Adım 9a) + OWF kuruluş listesi,aday,REF,EUDIPLO,TypeScript,,,,,OWF kuruluş listesinde (ad/açıklama süzgecine takılmadı: 'EUDI Wallet integration'); görev tanımındaki 'diğer açık kaynak OID4VP doğrulayıcıları' kapsamında elle eklendi
+github.com/spruceid/openid4vp,Gt,görev tanımı (Adım 9a),aday,REF,Spruce openid4vp,Rust,,,,,görev tanımı (Spruce)
+github.com/a-sit-plus/wallet-relying-party,,,aday,REF,A-SIT Plus wallet-relying-party,Kotlin,kaynak,,,,OpenID4VP 1.0 RP
+github.com/trustbloc/vcs,,,aday,REF,TrustBloc VCS,Go,kaynak,,,,
+github.com/italia/iam-proxy-italia,,,aday,REF,IAM Proxy Italia (IT-Wallet RP),Python,kaynak,,,,doğrulama mantığı pyeudiw'de (italia/eudi-wallet-it-python)
+github.com/impierce/openid4vc,,,aday,REF,impierce/openid4vc,Rust,,,,,
+github.com/lumoin/verifiable,,,aday,REF,Lumoin Verifiable,.NET,,,,,
+github.com/tripledownab/tessio-verifier,,,aday,REF,Tessio verifier,.NET,nuget,Tessio.Verifier.Core,,,
+github.com/openwallet-foundation/multipaz,,,aday,REF,Multipaz,Kotlin,,,,,mdoc ağırlıklı SDK; SD-JWT VC doğrulayıcı rolü incelenecek
+github.com/trustknots/vcknots,,,aday,REF,vcknots,TypeScript,,,,,
+github.com/mashbean/twdiw-vp-verifier-lite,,,aday,REF,twdiw-vp-verifier-lite,TypeScript,,,,,
+github.com/hiero-ledger/heka-identity-platform,,,aday,REF,Heka identity platform,TypeScript,,,,,
+github.com/sunet/vc,,,aday,REF,SUNET vc,Go,go,github.com/SUNET/vc,,,pkg.go.dev
+github.com/privacybydesign/irmago,,,aday,REF,irmago (Yivi),Go,go,github.com/privacybydesign/irmago,,,pkg.go.dev: eudi/credentials/sdjwtvc
+github.com/polyrainbow/eudi-rp-ts,,,aday,REF,eudi-rp-ts,TypeScript,npm,@sauseschritt/eudi-rp-ts,,,
+github.com/openeudi/openid4vp,,,aday,REF,@openeudi/openid4vp,TypeScript,npm,@openeudi/openid4vp,,,
+github.com/cedarcode/openid4vp,,,aday,REF,openid4vp (Ruby),Ruby,rubygems,openid4vp,,,RubyGems ('Verifier and Wallet implementation of OpenID4VP 1.0')
+github.com/go-jose/go-jose,H,square/go-jose README,aday,JOSE,go-jose (go-jose org),go,go,github.com/go-jose/go-jose/v4,,,square/go-jose README: 'DEPRECATED … Development of Go JOSE has continued in a new organization: https://github.com/go-jose/go-jose'
+github.com/authlib/joserfc,H+P,pilot p3 + authlib uyarısı,aday,JOSE,joserfc,python,pypi,joserfc,,,"authlib.jose uyarısı: 'authlib.jose module is deprecated, please use joserfc instead' (pilot p3_py_output.txt); pilot kütüphanesi"
+github.com/openwallet-foundation/sd-jwt-js,,,yinelenen,,,,,,,,README: 'PROJECT ARCHIVED … Identity Common-TS'; birim identity-common-ts
+github.com/openwallet-foundation-labs/oid4vc-ts,,,yinelenen,,,,,,,,README: 'PROJECT ARCHIVED … merge with Identity Common - TS'
+github.com/sphereon-opensource/siop-oid4vp,,,yinelenen,,,,,,,,README: 'This package has been moved to the OID4VCI monorepo at https://github.com/Sphereon-Opensource/OID4VC'
+github.com/hyperledger/aries-framework-javascript,,,yinelenen,,,,,,,,Credo'nun eski adı (credo-ts)
+github.com/meeco/sd-jwt-vc,,,yinelenen,,,,,,,,aynı üreticinin SD-JWT VC katmanı; birim @meeco/sd-jwt
+github.com/k2gl/sd-jwt-vc,,,yinelenen,,,,,,,,aynı yazarın SD-JWT VC katmanı; birim k2gl/sd-jwt
+github.com/schulzesttsi/go-sd-jwt,,,yinelenen,,,,,,,,MichaelFraser99/go-sd-jwt çatalı (ecosyste.ms fork=true)
+github.com/extrimian/ssi-sdk,,,yinelenen,,,,,,,,TBD ssi-sdk çatalı (ecosyste.ms fork=true)
+github.com/cyware/ssi-sdk,,,yinelenen,,,,,,,,TBD ssi-sdk çatalı (pkg.go.dev yolu aynı yapı)
+github.com/alangotbithin/vc-go,,,yinelenen,,,,,,,,trustbloc/vc-go çatalı (pkg.go.dev yolu aynı yapı)
+github.com/ponci-berlin/go-cose,,,yinelenen,,,,,,,,mozilla-services/go-cose çatalı (ecosyste.ms fork=true)
+github.com/thomas-fossati/go-cose,,,yinelenen,,,,,,,,mozilla-services/go-cose çatalı (ecosyste.ms fork=true)
+github.com/lovasoa/cosette,,,yinelenen,,,,,,,,erdtman/cose-js çatalı (ecosyste.ms fork=true)
+github.com/jfromaniello/cose-kit,,,yinelenen,,,,,,,,npm açıklaması: 'DEPRECATED: Use @auth0/cose'
+github.com/franziskuskiefer/cose-c-api,,,yinelenen,,,,,,,,cose crate'inin C API sarmalayıcısı
+github.com/eu-digital-identity-wallet/eudi-web-verifier,,,yinelenen,,,,,,,,EUDI verifier endpoint'in web arayüzü
+github.com/italia/eudi-wallet-it-python,,,yinelenen,,,,,,,,pyeudiw; iam-proxy-italia'nın doğrulama bileşeni (birim iam-proxy-italia)
+github.com/definitelytyped/definitelytyped,,,yinelenen,,,,,,,,yalnız tür tanımları (@types/cose-js)
+pkg:maven:at.asitplus.crypto:datatypes-cose,,,yinelenen,,,,,,,,Signum'un eski yapıt adı (a-sit-plus/signum)
+pkg:maven:at.asitplus.crypto:datatypes-cose-iosarm64,,,yinelenen,,,,,,,,Signum eski yapıtı
+pkg:maven:at.asitplus.crypto:datatypes-cose-iossimulatorarm64,,,yinelenen,,,,,,,,Signum eski yapıtı
+pkg:maven:at.asitplus.crypto:datatypes-cose-iosx64,,,yinelenen,,,,,,,,Signum eski yapıtı
+pkg:maven:at.asitplus.crypto:datatypes-cose-jvm,,,yinelenen,,,,,,,,Signum eski yapıtı
+pkg:maven:at.asitplus.crypto:datatypes-cose-versioncatalog,,,yinelenen,,,,,,,,Signum eski yapıtı
+pkg:maven:com.augustcellars.cose:cose-java,,,yinelenen,,,,,,,,cose-wg/COSE-JAVA
+pkg:maven:com.authlete:sd-jwt,,,yinelenen,,,,,,,,authlete/sd-jwt
+pkg:maven:eu.europa.ec.eudi:eudi-lib-jvm-sdjwt-kt,,,yinelenen,,,,,,,,eudi-lib-jvm-sdjwt-kt
+pkg:maven:org.sd-jwt:sd-jwt-kotlin,,,yinelenen,,,,,,,,openwallet-foundation-labs/sd-jwt-kotlin
+pkg:maven:org.webjars.npm:cose-js,,,yinelenen,,,,,,,,WebJars yeniden paketlemesi (cose-js)
+pkg:maven:io.iohk.atala:sd-jwt-kmp,,,yinelenen,,,,,,,,deps.dev SOURCE_REPO: input-output-hk/sd-jwt-rust (OWF sd-jwt-rust türevi; KMP bağlamaları)
+pkg:maven:io.iohk.atala:sd-jwt-kmp-android,,,yinelenen,,,,,,,,aynı (io.iohk.atala:sd-jwt-kmp)
+pkg:maven:io.iohk.atala:sd-jwt-kmp-android-debug,,,yinelenen,,,,,,,,aynı (io.iohk.atala:sd-jwt-kmp)
+pkg:maven:io.iohk.atala:sd-jwt-kmp-jvm,,,yinelenen,,,,,,,,aynı (io.iohk.atala:sd-jwt-kmp)
+pkg:nuget:com.augustcellars.cose,,,yinelenen,,,,,,,,cose-wg/COSE-csharp
+pkg:pypi:sd-jwt,,,yinelenen,,,,,,,,openwallet-foundation-labs/sd-jwt-python (PyPI project_urls boş)
+pkg:npm:@lukas.j.han/sd-jwt,,,yinelenen,,,,,,,,sd-jwt-js'nin öncül paketi (açıklama: 'sd-jwt draft 6'); depo yok
+github.com/eu-digital-identity-wallet/eudi-lib-android-wallet-core,,,cuzdan,,,,,,,,cüzdan tarafı (C3 RP doğrulayıcılarını ölçer; istek nesnesi doğrulaması için OZET.md önerisine bakınız)
+github.com/eu-digital-identity-wallet/eudi-lib-ios-openid4vp-swift,,,cuzdan,,,,,,,,cüzdan tarafı (C3 RP doğrulayıcılarını ölçer; istek nesnesi doğrulaması için OZET.md önerisine bakınız)
+github.com/eu-digital-identity-wallet/eudi-lib-ios-wallet-kit,,,cuzdan,,,,,,,,cüzdan tarafı (C3 RP doğrulayıcılarını ölçer; istek nesnesi doğrulaması için OZET.md önerisine bakınız)
+github.com/eu-digital-identity-wallet/eudi-lib-jvm-openid4vp-kt,,,cuzdan,,,,,,,,cüzdan tarafı (C3 RP doğrulayıcılarını ölçer; istek nesnesi doğrulaması için OZET.md önerisine bakınız)
+github.com/animo/paradym-wallet,,,cuzdan,,,,,,,,cüzdan tarafı (C3 RP doğrulayıcılarını ölçer; istek nesnesi doğrulaması için OZET.md önerisine bakınız)
+github.com/openwallet-foundation/multipaz-wallet,,,cuzdan,,,,,,,,cüzdan tarafı (C3 RP doğrulayıcılarını ölçer; istek nesnesi doğrulaması için OZET.md önerisine bakınız)
+github.com/procivis/one-wallet,,,cuzdan,,,,,,,,cüzdan tarafı (C3 RP doğrulayıcılarını ölçer; istek nesnesi doğrulaması için OZET.md önerisine bakınız)
+github.com/sphereon-opensource/web-wallet,,,cuzdan,,,,,,,,cüzdan tarafı (C3 RP doğrulayıcılarını ölçer; istek nesnesi doğrulaması için OZET.md önerisine bakınız)
+github.com/trustbloc/wallet-sdk,,,cuzdan,,,,,,,,cüzdan tarafı (C3 RP doğrulayıcılarını ölçer; istek nesnesi doğrulaması için OZET.md önerisine bakınız)
+github.com/eu-digital-identity-wallet/eudi-srv-pid-issuer,,,ihracci,,,,,,,,ihraççı hizmeti
+github.com/eu-digital-identity-wallet/eudi-srv-web-issuing-eudiw-py,,,ihracci,,,,,,,,ihraççı hizmeti
+github.com/eu-digital-identity-wallet/av-srv-web-issuing-avw-py,,,ihracci,,,,,,,,ihraççı hizmeti
+github.com/eu-digital-identity-wallet/av-srv-verifier-endpoint,,,kapsam-disi-mdoc,,,,,,,,mdoc/ISO 18013-5 ya da yaş doğrulama (ISO 23220-4) doğrulayıcısı; mdoc Sürüm 3 §7.4 gereği kapsam dışı
+github.com/eu-digital-identity-wallet/av-srv-web-verifier-endpoint-23220-4-kt,,,kapsam-disi-mdoc,,,,,,,,mdoc/ISO 18013-5 ya da yaş doğrulama (ISO 23220-4) doğrulayıcısı; mdoc Sürüm 3 §7.4 gereği kapsam dışı
+github.com/eu-digital-identity-wallet/eudi-app-multiplatform-verifier-ui,,,kapsam-disi-mdoc,,,,,,,,mdoc/ISO 18013-5 ya da yaş doğrulama (ISO 23220-4) doğrulayıcısı; mdoc Sürüm 3 §7.4 gereği kapsam dışı
+github.com/eu-digital-identity-wallet/eudi-lib-android-verifier-core,,,kapsam-disi-mdoc,,,,,,,,mdoc/ISO 18013-5 ya da yaş doğrulama (ISO 23220-4) doğrulayıcısı; mdoc Sürüm 3 §7.4 gereği kapsam dışı
+github.com/eu-digital-identity-wallet/pymdoc-cbor,,,kapsam-disi-mdoc,,,,,,,,mdoc/ISO 18013-5 ya da yaş doğrulama (ISO 23220-4) doğrulayıcısı; mdoc Sürüm 3 §7.4 gereği kapsam dışı
+github.com/georgepadayatti/mdoc,,,kapsam-disi-mdoc,,,,,,,,mdoc/ISO 18013-5 ya da yaş doğrulama (ISO 23220-4) doğrulayıcısı; mdoc Sürüm 3 §7.4 gereği kapsam dışı
+github.com/animo/openid4vc-playground,,,uygulama,,,,,,,,demo/oyun alanı
+github.com/sphereon-opensource/oid4vc-demo,,,uygulama,,,,,,,,demo
+github.com/parlesec/protocolsoup,,,uygulama,,,,,,,,eğitim/oyun alanı
+github.com/forkbombeu/credimi,,,uygulama,,,,,,,,uyum testi aracı
+github.com/rcbj/id-proto-debugger,,,uygulama,,,,,,,,hata ayıklama aracı
+github.com/lukasjhan/sd-jwt-io,,,uygulama,,,,,,,,hata ayıklama sayfası
+github.com/swiss-ssi-group/swiyu-aspire-aspnetcore,,,uygulama,,,,,,,,örnek uygulama
+github.com/hyperledger-identus/keycloak-plugins,,,uygulama,,,,,,,,Keycloak eklentisi
+github.com/proof/proof-vc-common,,,uygulama,,,,,,,,ürün bileşeni
+github.com/proof/proof-vc-web,,,uygulama,,,,,,,,ürün web bileşenleri
+github.com/learningeconomy/learncard,,,uygulama,,,,,,,,platform eklentisi (@learncard/sd-jwt-vc-plugin)
+github.com/bsv-blockchain/ts-stack,,,uygulama,,,,,,,,platforma özgü yardımcılar
+github.com/authbound/sdk,,,uygulama,,,,,,,,hizmet SDK'sı
+github.com/passkeybridge/passkeybridge,,,uygulama,,,,,,,,hizmet SDK'sı
+github.com/agentictrustlabs/agenticprimitives,,,uygulama,,,,,,,,agent protocol layer
+github.com/azure/azure-sdk-for-net,,,uygulama,,,,,,,,hizmet istemcisi (Azure Code Transparency)
+github.com/blindspot22/rust_cbor_cose_ecies,,,uygulama,,,,,,,,örnek
+github.com/openwallet-foundation-labs/credhub,,,uygulama,,,,,,,,bulut cüzdanı/uygulama (arşiv)
+github.com/ivarprudnikov/cose-and-receipt-playground,,,uygulama,,,,,,,,oyun alanı
+github.com/thomas-fossati/go-cose-cli,,,uygulama,,,,,,,,komut satırı aracı
+github.com/eu-digital-identity-wallet/av-verifier-frontend-cinema,,,uygulama,,,,,,,,demo arayüzü
+github.com/eu-digital-identity-wallet/av-web-verifier-ui,,,uygulama,,,,,,,,arayüz
+github.com/abaxxtech/abaxx-vc-sdk,,,uygulama,,,,,,,,kurum SDK'sı; depo ecosyste.ms'te bulunamadı
+github.com/baur-software/pap,,,uygulama,,,,,,,,açıklama: 'Moved → gitlab.baursoftware.com' (GitHub'da arşiv); amaç belirsiz
+pkg:npm:@metadium-did/platform-agent-js,,,uygulama,,,,,,,,agent client; depo yok
+pkg:npm:@terminal3/sd_jwt_vc,,,uygulama,,,,,,,,hizmet SDK'sı; depo yok
+pkg:npm:@lukachi/cose-ts,,,uygulama,,,,,,,,depo URL'si yok ('git')
+pkg:maven:org.wso2.carbon.identity.openid4vc:org.wso2.carbon.identity.sdjwt,,,uygulama,,,,,,,,WSO2 Identity Server ürün bileşeni
+pkg:maven:org.wso2.carbon.identity.openid4vc:org.wso2.carbon.identity.sdjwt.server.feature,,,uygulama,,,,,,,,WSO2 IS ürün özelliği
+pkg:maven:at.asitplus.wallet:eupidcredential-sdjwt,,,uygulama,,,,,,,,kimlik bilgisi şeması (kütüphane değil)
+pkg:maven:at.asitplus.wallet:eupidcredential-sdjwt-iosarm64,,,uygulama,,,,,,,,kimlik bilgisi şeması (kütüphane değil)
+pkg:maven:at.asitplus.wallet:eupidcredential-sdjwt-iossimulatorarm64,,,uygulama,,,,,,,,kimlik bilgisi şeması (kütüphane değil)
+pkg:maven:at.asitplus.wallet:eupidcredential-sdjwt-iosx64,,,uygulama,,,,,,,,kimlik bilgisi şeması (kütüphane değil)
+pkg:maven:at.asitplus.wallet:eupidcredential-sdjwt-jvm,,,uygulama,,,,,,,,kimlik bilgisi şeması (kütüphane değil)
+pkg:maven:at.asitplus.wallet:eupidcredential-sdjwt-versioncatalog,,,uygulama,,,,,,,,kimlik bilgisi şeması (kütüphane değil)
+github.com/oauth-wg/oauth-selective-disclosure-jwt,,,belge,,,,,,,,spesifikasyon/taslak/belge/örnek deposu
+github.com/openid/openid4vp,,,belge,,,,,,,,spesifikasyon/taslak/belge/örnek deposu
+github.com/openid/dchp,,,belge,,,,,,,,spesifikasyon/taslak/belge/örnek deposu
+github.com/digitalcredentialsdev/digitalcredentials.dev,,,belge,,,,,,,,spesifikasyon/taslak/belge/örnek deposu
+github.com/forkbombeu/didroom-docs,,,belge,,,,,,,,spesifikasyon/taslak/belge/örnek deposu
+github.com/ietf-wg-scitt/draft-ietf-scitt-scrapi,,,belge,,,,,,,,spesifikasyon/taslak/belge/örnek deposu
+github.com/openwallet-foundation/oid4vc-due-diligence-tf,,,belge,,,,,,,,spesifikasyon/taslak/belge/örnek deposu
+github.com/cose-wg/alg-spec,,,belge,,,,,,,,spesifikasyon/taslak/belge/örnek deposu
+github.com/cose-wg/charter,,,belge,,,,,,,,spesifikasyon/taslak/belge/örnek deposu
+github.com/cose-wg/cose-algs,,,belge,,,,,,,,spesifikasyon/taslak/belge/örnek deposu
+github.com/cose-wg/cose-hash-sig,,,belge,,,,,,,,spesifikasyon/taslak/belge/örnek deposu
+github.com/cose-wg/cose-implementations,,,belge,,,,,,,,spesifikasyon/taslak/belge/örnek deposu
+github.com/cose-wg/cose-issues,,,belge,,,,,,,,spesifikasyon/taslak/belge/örnek deposu
+github.com/cose-wg/cose-rfc8152bis,,,belge,,,,,,,,spesifikasyon/taslak/belge/örnek deposu
+github.com/cose-wg/cose-spec,,,belge,,,,,,,,spesifikasyon/taslak/belge/örnek deposu
+github.com/cose-wg/cose-webauthn-algs,,,belge,,,,,,,,spesifikasyon/taslak/belge/örnek deposu
+github.com/cose-wg/countersign,,,belge,,,,,,,,spesifikasyon/taslak/belge/örnek deposu
+github.com/cose-wg/draft-ietf-cose-dilithium,,,belge,,,,,,,,spesifikasyon/taslak/belge/örnek deposu
+github.com/cose-wg/draft-ietf-cose-falcon,,,belge,,,,,,,,spesifikasyon/taslak/belge/örnek deposu
+github.com/cose-wg/draft-ietf-cose-hash-envelope,,,belge,,,,,,,,spesifikasyon/taslak/belge/örnek deposu
+github.com/cose-wg/draft-ietf-cose-hpke,,,belge,,,,,,,,spesifikasyon/taslak/belge/örnek deposu
+github.com/cose-wg/draft-ietf-cose-merkle-tree-proofs,,,belge,,,,,,,,spesifikasyon/taslak/belge/örnek deposu
+github.com/cose-wg/draft-ietf-cose-sphincs-plus,,,belge,,,,,,,,spesifikasyon/taslak/belge/örnek deposu
+github.com/cose-wg/draft-ietf-cose-split-signing-algs,,,belge,,,,,,,,spesifikasyon/taslak/belge/örnek deposu
+github.com/cose-wg/examples,,,belge,,,,,,,,spesifikasyon/taslak/belge/örnek deposu
+github.com/cose-wg/x509,,,belge,,,,,,,,spesifikasyon/taslak/belge/örnek deposu
+github.com/fxamacker/cbor,,,ilgisiz,,,,,,,,yalnız CBOR kodlayıcı
+github.com/ldclabs/cbor2,,,ilgisiz,,,,,,,,yalnız CBOR
+github.com/ldclabs/ic-cose,,,ilgisiz,,,,,,,,ICP yapılandırma hizmeti
+github.com/doocs/cose,,,ilgisiz,,,,,,,,ilgisiz (Markdown düzenleyici eklentisi)
+github.com/ivis-at-bilkent/cytoscape.js-layout-service,,,ilgisiz,,,,,,,,ilgisiz (graf yerleşimi)
+github.com/ivis-at-bilkent/cose-base,,,ilgisiz,,,,,,,,ilgisiz (graf yerleşimi)
+github.com/cytoscape/cytoscape.js-cose-bilkent,,,ilgisiz,,,,,,,,ilgisiz (graf yerleşimi)
+github.com/latias94/merman,,,ilgisiz,,,,,,,,ilgisiz (graf yerleşimi)
+github.com/nasa-ammos/bsl,,,ilgisiz,,,,,,,,BPSec kütüphanesi
+github.com/kamil-kielbasa/libedhoc,,,ilgisiz,,,,,,,,EDHOC protokolü
+github.com/stoprocent/node-edhoc,,,ilgisiz,,,,,,,,EDHOC protokolü
+github.com/dualeai/c2patxt,,,ilgisiz,,,,,,,,C2PA
+github.com/manekinekko/digital-covid-certificate-decoder,,,ilgisiz,,,,,,,,uygulamaya özgü (AB DCC)
+github.com/rust-italia/dgc,,,ilgisiz,,,,,,,,uygulamaya özgü (AB DCC)
+github.com/apowers313/cose-to-jwk,,,ilgisiz,,,,,,,,yalnız anahtar dönüştürme
+github.com/s1r-j/parse-cosekey,,,ilgisiz,,,,,,,,yalnız COSE_Key ayrıştırma
+github.com/lfdt-verii/core,,,ilgisiz,,,,,,,,yalnız COSE anahtar işlevleri
+github.com/velocitycareerlabs/velocitycore,,,ilgisiz,,,,,,,,yalnız COSE anahtar işlevleri
+github.com/nov/cose-key,,,ilgisiz,,,,,,,,yalnız COSE_Key
+github.com/ycrypto/cosey,,,ilgisiz,,,,,,,,yalnız COSE_Key
+github.com/wyattau/webauthn-kit,,,ilgisiz,,,,,,,,WebAuthn
+github.com/exortek/auth,,,ilgisiz,,,,,,,,WebAuthn
+github.com/keycloud/webauthn,,,ilgisiz,,,,,,,,WebAuthn
+github.com/koesie10/webauthn,,,ilgisiz,,,,,,,,WebAuthn
+github.com/pomerium/webauthn,,,ilgisiz,,,,,,,,WebAuthn
+github.com/findy-network/findy-agent-auth,,,ilgisiz,,,,,,,,WebAuthn
+github.com/kotsyubin/virtual-fido,,,ilgisiz,,,,,,,,FIDO
+github.com/bulwarkid/virtual-fido,,,ilgisiz,,,,,,,,FIDO
+github.com/heyvito/gou2f,,,ilgisiz,,,,,,,,U2F
+github.com/telesma-app/ctap,,,ilgisiz,,,,,,,,CTAP/FIDO
+github.com/telesma-app/fido-registry,,,ilgisiz,,,,,,,,FIDO
+github.com/ink-33/authn,,,ilgisiz,,,,,,,,WebAuthn
+github.com/jaydencj/passkeypeek,,,ilgisiz,,,,,,,,passkey aracı
+github.com/openvtc/vta-browser-plugin,,,ilgisiz,,,,,,,,passkey köprüsü
+github.com/fido-device-onboard/go-fdo,,,ilgisiz,,,,,,,,FDO protokolü
+github.com/roughlever/go-fdo,,,ilgisiz,,,,,,,,FDO protokolü
+github.com/datatrails/go-datatrails-common,,,ilgisiz,,,,,,,,uygulamaya özgü
+github.com/forestrie/canopy,,,ilgisiz,,,,,,,,şeffaflık günlüğü (uygulamaya özgü)
+github.com/forestrie/forestrie-cli,,,ilgisiz,,,,,,,,şeffaflık günlüğü CLI
+github.com/forestrie/go-merklelog,,,ilgisiz,,,,,,,,şeffaflık günlüğü
+github.com/tradeverifyd/transparency-service,,,ilgisiz,,,,,,,,SCITT hizmeti
+github.com/sigstore/rekor,,,ilgisiz,,,,,,,,Rekor şeffaflık günlüğü
+github.com/franchb/rekor,,,ilgisiz,,,,,,,,Rekor çatalı
+github.com/morrison76/rekor,,,ilgisiz,,,,,,,,Rekor çatalı
+github.com/notaryproject/notation-core-go,,,ilgisiz,,,,,,,,Notation imza zarfı (go-cose kullanır)
+github.com/sugarylentil/notation-core-go,,,ilgisiz,,,,,,,,Notation çatalı
+github.com/microsoft/notation-cose,,,ilgisiz,,,,,,,,Notation eklentisi
+github.com/filecoin-project/go-fee,,,ilgisiz,,,,,,,,Filecoin
+github.com/fil-forge/ingot,,,ilgisiz,,,,,,,,Filecoin
+github.com/melraidin/cardano-go,,,ilgisiz,,,,,,,,Cardano
+github.com/safanaj/cardano-go,,,ilgisiz,,,,,,,,Cardano
+github.com/smartcontractkit/chainlink-common,,,ilgisiz,,,,,,,,Chainlink
+github.com/signatory-io/signatory-core,,,ilgisiz,,,,,,,,imza hizmeti
+github.com/shizhmsft/cq,,,ilgisiz,,,,,,,,araç
+github.com/shizhmsft/go-cose-sm2,,,ilgisiz,,,,,,,,go-cose için SM2 eklentisi
+github.com/vldmkr/go-cose-es256k,,,ilgisiz,,,,,,,,go-cose için ES256K eklentisi
+github.com/vldmkr/go-cose-es256k1-signer,,,ilgisiz,,,,,,,,go-cose için ES256K imzalayıcı
+github.com/trustasia-com/go-sdk,,,ilgisiz,,,,,,,,hizmet SDK'sı
+github.com/ubirch/ubirch-cose-client-go,,,ilgisiz,,,,,,,,hizmet istemcisi
+github.com/swornmail/swornmail-go,,,ilgisiz,,,,,,,,uygulamaya özgü
+github.com/agentic-research/signet,,,ilgisiz,,,,,,,,uygulamaya özgü
+github.com/altshiftab/utils_go,,,ilgisiz,,,,,,,,yardımcı paketler
+github.com/motmedel/utils_go,,,ilgisiz,,,,,,,,yardımcı paketler
+github.com/bperin/trust,,,ilgisiz,,,,,,,,uygulamaya özgü
+github.com/cosee-gitlab/lock,,,ilgisiz,,,,,,,,ilgisiz
+github.com/cose-labs/lab2,,,ilgisiz,,,,,,,,ilgisiz
+github.com/imshi/golang-scripts,,,ilgisiz,,,,,,,,ilgisiz
+github.com/limike954/trajectory-data-00010,,,ilgisiz,,,,,,,,ilgisiz
+github.com/jwx-go/reddy-pqchpke,,,ilgisiz,,,,,,,,HPKE (imza değil)
+github.com/cratestack/cratestack,,,ilgisiz,,,,,,,,çerçeve kimlik doğrulama bileşeni
+github.com/metastable-void/philharmonic-connector-common,,,ilgisiz,,,,,,,,ilgisiz
+github.com/vul-os/kotva,,,ilgisiz,,,,,,,,ilgisiz
+github.com/dogrucanemek-alt/cedulon,,,ilgisiz,,,,,,,,uygulamaya özgü protokol (Cedulon)
+github.com/ar-agents/ar-agents,,,ilgisiz,,,,,,,,AP2 ödeme protokolü
+github.com/delegare/delegare,,,ilgisiz,,,,,,,,AP2/x402 ödeme ara katmanı
+github.com/digitalbazaar/di-sd-primitives,,,ilgisiz,,,,,,,,Data Integrity SD (SD-JWT değil)
+github.com/sorcha-platform/sorcha,,,ilgisiz,,,,,,,,platform kriptosu
+github.com/svss-labs/email-verification-api,,,ilgisiz,,,,,,,,e-posta doğrulama protokolü
+github.com/sirosfoundation/go-ts11client,,,ilgisiz,,,,,,,,TS11 istemcisi
+github.com/sirosfoundation/mtcvctm,,,ilgisiz,,,,,,,,VCTM araçları
+github.com/sirosfoundation/registry-cli,,,ilgisiz,,,,,,,,kayıt CLI
+github.com/mindburn-labs/helm-ai-kernel,,,ilgisiz,,,,,,,,ilgisiz
+github.com/gmb-eudi/go-dcql,,,ilgisiz,,,,,,,,DCQL sorgu motoru
+github.com/cose-wg/cbor-certificates,,,ilgisiz,,,,,,,,C509 sertifikaları (COSE imza kütüphanesi değil)
+pkg:nuget:com.augustcellars.coap,,,ilgisiz,,,,,,,,CoAP
+pkg:nuget:com.augustcellars.webtoken,,,ilgisiz,,,,,,,,CWT (aynı yazar; COSE-csharp'a dayanır)
+pkg:maven:org.webjars.npm:cose-base,,,ilgisiz,,,,,,,,graf yerleşimi
+pkg:maven:org.webjars.npm:cytoscape-cose-bilkent,,,ilgisiz,,,,,,,,graf yerleşimi
+pkg:go:codeberg.org/nomoi/nomos/nomoi/identity,,,ilgisiz,,,,,,,,ilgisiz
+pkg:go:go.blackcatinformatics.ca/gts/cose,,,ilgisiz,,,,,,,,uygulamaya özgü (GTS kapsayıcı)
+gitlab.com/ponci-berlin/ponci,,,ilgisiz,,,,,,,,uygulamaya özgü

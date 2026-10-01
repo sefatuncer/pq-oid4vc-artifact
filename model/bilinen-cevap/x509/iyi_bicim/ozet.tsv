@@ -1,0 +1,13 @@
+ad	model	bayraklar	iyi_bicim	uyari_sayisi	meta	ilk_kosu
+wf01	KAT2_X509.spthy	CRQC,V_IGNORE	EVET	0	rc=0 wall_s=0.3 mem_peak_MiB=62.3	K2b-01.tam
+wf02	KAT2_X509.spthy	CRQC,V_ENFORCE_IF_PRESENT	EVET	0	rc=0 wall_s=0.36 mem_peak_MiB=68.8	K2b-02.tam
+wf03	KAT2_X509.spthy	CRQC,V_REQUIRE	EVET	0	rc=0 wall_s=0.3 mem_peak_MiB=66.1	K2b-03.tam
+wf04	KAT2_X509.spthy	CRQC,COMPOSITE	EVET	0	rc=0 wall_s=0.31 mem_peak_MiB=67.6	K2b-06.tam
+wf05	KAT2_X509.spthy	CRQC,COMPOSITE,COEXIST_CLASSICAL	EVET	0	rc=0 wall_s=0.38 mem_peak_MiB=68.1	K2b-07.tam
+wf06	KAT2_X509.spthy	M1_LEGACY,V_IGNORE	EVET	0	rc=0 wall_s=0.3 mem_peak_MiB=64.0	K2d-01.tam
+wf07	KAT2_X509.spthy	M1_LEGACY,V_ENFORCE_IF_PRESENT	EVET	0	rc=0 wall_s=0.38 mem_peak_MiB=71.1	K2d-02.tam
+wf08	KAT2_X509.spthy	M1_LEGACY,V_REQUIRE	EVET	0	rc=0 wall_s=0.31 mem_peak_MiB=63.5	K2d-03.tam
+wf09	KAT2_X509.spthy	CRQC,COMPOSITE,MUT_COMP_NO_PQ	EVET	0	rc=0 wall_s=0.29 mem_peak_MiB=71.3	MUT07.K2b-06.tam
+wf10	KAT2_X509.spthy	INVALID_ALT_ISSUED,V_IGNORE	EVET	0	rc=0 wall_s=0.31 mem_peak_MiB=63.8	EK.duy-ignore.tam
+wf11	KAT2_X509.spthy	INVALID_ALT_ISSUED,V_ENFORCE_IF_PRESENT	EVET	0	rc=0 wall_s=0.41 mem_peak_MiB=67.1	EK.duy-enforce.tam
+wf12	KAT2_X509.spthy	INVALID_ALT_ISSUED,V_REQUIRE	EVET	0	rc=0 wall_s=0.32 mem_peak_MiB=64.3	EK.duy-require.tam

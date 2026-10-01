@@ -1,0 +1,187 @@
+theory R7_MH
+begin
+
+/*
+ * =====================================================================
+ *  PQ-OID4VC | Adım 5A | R7 eki — M-h: sertifikaya gömülü PQ taahhüdü
+ *  (draft-reddy-lamps-x509-pq-commit, draft-vicente-lamps-pqchc; L-D1, L-D7)
+ * =====================================================================
+ *  EN  A PQ commitment carried inside the issuer certificate protects a
+ *      committed issuer only as far as the certification path does: if the CA
+ *      that signs the committed certificate is classical, after Q-day the
+ *      attacker issues a commitment-less certificate for the same name; if the
+ *      CA is PQ but the verifier also trusts a classical alternative CA for any
+ *      name (no name binding), the commitment is bypassed through that CA.
+ *      With a PQ CA and name binding (or no alternative CA) the commitment
+ *      holds, also at first contact (it travels with every presentation).
+ *  TR  İhraççı sertifikasına gömülü PQ taahhüdü, taahhüt eden ihraççıyı
+ *      ancak sertifika yolu kadar korur: taahhütlü sertifikayı imzalayan CA
+ *      klasikse, Q-day'den sonra saldırgan aynı ad için taahhütsüz bir
+ *      sertifika üretir; CA PQ olsa bile doğrulayıcı her ad için klasik bir
+ *      alternatif CA'ya da güveniyorsa (ad bağlama yoksa) taahhüt o CA
+ *      üzerinden atlatılır. PQ CA ve ad bağlamayla (ya da alternatif CA
+ *      yoksa) taahhüt tutar; her sunumla taşındığı için ilk temasta da tutar.
+ *
+ *  Certificates (root key PQ and pinned):
+ *      ca_cert  = <'ca_cert', CA, pk(kca)>                 signed by root
+ *      iss_cert = <'iss_cert', X, pkc, pkq, commit>        signed by a CA
+ *        commit = 'pq_commit' (committed issuer I) | 'no_commit' (legacy issuer L)
+ *  Verifier (understands the extension):
+ *      committed certificate -> only PQ evidence (under pkq) is acceptable;
+ *      certificate without commitment -> classical evidence (under pkc) is acceptable.
+ *  Flags (-D=...)
+ *      CA_PQ      the CA of the committed issuer is PQ
+ *      ALT_CA     another root-certified CA exists and is classical
+ *      NAME_BIND  the verifier binds each issuer name to its own CA
+ */
+
+builtins: signing
+
+restriction Equality: "All x y #i. Eq(x, y) @ #i ==> x = y"
+restriction Unique:   "All x #i #j. Unique(x) @ #i & Unique(x) @ #j ==> #i = #j"
+
+/* ---------------- Q-day ---------------- */
+rule Qday:
+    [ ] --[ Unique('qday'), QdayEv() ]-> [ !CRQC() ]
+
+/* ---------------- PKI: PQ root, the issuers' CA, optional alternative CA ---------------- */
+rule Root_Setup:
+    [ Fr(~kr) ] --[ Unique('root') ]-> [ !RootSk(~kr), !RootPin(pk(~kr)), Out(pk(~kr)) ]
+
+rule CA_Setup:
+    let cab = <'ca_cert', $CA, pk(~kca)> in
+    [ !RootSk(kr), Fr(~kca) ]
+  --[ Unique('ca') ]->
+    [ !CASk($CA, ~kca), Out(pk(~kca)), Out(<cab, sign(cab, kr)>) ]
+
+#ifdef not CA_PQ
+rule CRQC_Break_CA:
+    [ !CASk(CA, k), !CRQC(), In(pk(k)) ] --[ Broken('ca') ]-> [ Out(k) ]
+#endif
+
+#ifdef ALT_CA
+rule AltCA_Setup:
+    let cab = <'ca_cert', $A, pk(~ka)> in
+    [ !RootSk(kr), Fr(~ka) ]
+  --[ Unique('altca') ]->
+    [ !AltCASk($A, ~ka), Out(pk(~ka)), Out(<cab, sign(cab, kr)>) ]
+
+rule CRQC_Break_AltCA:
+    [ !AltCASk(A, k), !CRQC(), In(pk(k)) ] --[ Broken('alt_ca') ]-> [ Out(k) ]
+#endif
+
+/* ---------------- issuers ---------------- */
+/* committed issuer: classical + PQ keys (coexistence), certificate carries the commitment */
+rule Committed_Issuer_Setup:
+    let isb = <'iss_cert', $I, pk(~kc), pk(~kq), 'pq_commit'> in
+    [ !CASk(CA, kca), Fr(~kc), Fr(~kq) ]
+  --[ Unique(<'iss', $I>), Committed($I) ]->
+    [ !IssCl($I, ~kc), !IssPQ($I, ~kq), !IssuerOfCA($I, CA),
+      Out(pk(~kc)), Out(pk(~kq)), Out(<isb, sign(isb, kca)>) ]
+
+/* legacy issuer: classical only, no commitment (keeps the classical path live) */
+rule Legacy_Issuer_Setup:
+    let isb = <'iss_cert', $L, pk(~kc), 'nokey', 'no_commit'> in
+    [ !CASk(CA, kca), Fr(~kc) ]
+  --[ Unique(<'iss', $L>), Legacy($L) ]->
+    [ !IssCl($L, ~kc), !IssuerOfCA($L, CA), Out(pk(~kc)), Out(<isb, sign(isb, kca)>) ]
+
+rule CRQC_Break_Issuer_Classical:
+    [ !IssCl(X, k), !CRQC(), In(pk(k)) ] --[ Broken(<'iss_cl', X>) ]-> [ Out(k) ]
+
+rule Issue_Classical:
+    let crb = <'cred', X, ~c, 'cl'> in
+    [ !IssCl(X, kc), Fr(~c) ] --[ Issued(X, ~c) ]-> [ Out(<crb, sign(crb, kc)>) ]
+
+rule Issue_PQ:
+    let crb = <'cred', I, ~c, 'pq'> in
+    [ !IssPQ(I, kq), Fr(~c) ] --[ Issued(I, ~c) ]-> [ Out(<crb, sign(crb, kq)>) ]
+
+/* ---------------- verifier ---------------- */
+#ifdef not NAME_BIND
+rule Verify_PQ:
+    let cab = <'ca_cert', CA, pkca>
+        isb = <'iss_cert', X, pkc, pkq, cm>
+        crb = <'cred', X, c, 'pq'>
+    in
+    [ !RootPin(pkr), In(<cab, s1>), In(<isb, s2>), In(<crb, s3>) ]
+  --[ Eq(verify(s1, cab, pkr), true), Eq(verify(s2, isb, pkca), true),
+      Eq(verify(s3, crb, pkq), true), Accept(X, c), AcceptPQ(X, c) ]->
+    [ ]
+
+rule Verify_Classical:
+    let cab = <'ca_cert', CA, pkca>
+        isb = <'iss_cert', X, pkc, pkq, 'no_commit'>
+        crb = <'cred', X, c, 'cl'>
+    in
+    [ !RootPin(pkr), In(<cab, s1>), In(<isb, s2>), In(<crb, s3>) ]
+  --[ Eq(verify(s1, cab, pkr), true), Eq(verify(s2, isb, pkca), true),
+      Eq(verify(s3, crb, pkc), true), Accept(X, c), AcceptClassical(X, c) ]->
+    [ ]
+#endif
+
+#ifdef NAME_BIND
+rule Verify_PQ:
+    let cab = <'ca_cert', CA, pkca>
+        isb = <'iss_cert', X, pkc, pkq, cm>
+        crb = <'cred', X, c, 'pq'>
+    in
+    [ !RootPin(pkr), !IssuerOfCA(X, CA), In(<cab, s1>), In(<isb, s2>), In(<crb, s3>) ]
+  --[ Eq(verify(s1, cab, pkr), true), Eq(verify(s2, isb, pkca), true),
+      Eq(verify(s3, crb, pkq), true), Accept(X, c), AcceptPQ(X, c) ]->
+    [ ]
+
+rule Verify_Classical:
+    let cab = <'ca_cert', CA, pkca>
+        isb = <'iss_cert', X, pkc, pkq, 'no_commit'>
+        crb = <'cred', X, c, 'cl'>
+    in
+    [ !RootPin(pkr), !IssuerOfCA(X, CA), In(<cab, s1>), In(<isb, s2>), In(<crb, s3>) ]
+  --[ Eq(verify(s1, cab, pkr), true), Eq(verify(s2, isb, pkca), true),
+      Eq(verify(s3, crb, pkc), true), Accept(X, c), AcceptClassical(X, c) ]->
+    [ ]
+#endif
+
+/* ================= health lemmas (H0) ================= */
+
+lemma executable:
+  exists-trace
+  "Ex I c #m #i #j. Committed(I) @ #m & Issued(I, c) @ #i & AcceptPQ(I, c) @ #j"
+
+lemma executable_legacy:
+  exists-trace
+  "Ex L c #l #i #j. Legacy(L) @ #l & Issued(L, c) @ #i & AcceptClassical(L, c) @ #j"
+
+lemma executable_post_qday:
+  exists-trace
+  "Ex I c #q #m #i #j. QdayEv() @ #q & Committed(I) @ #m & Issued(I, c) @ #i
+                     & AcceptPQ(I, c) @ #j & #q < #j"
+
+lemma attack_needs_crqc:
+  "All I c #m #j. Committed(I) @ #m & AcceptClassical(I, c) @ #j ==> (Ex x #b. Broken(x) @ #b & #b < #j)"
+
+/* ================= security goals ================= */
+
+/* the commitment holds: a committed issuer is never accepted on classical-only evidence */
+lemma G5_no_classical_acceptance:
+  "All I c #m #j. Committed(I) @ #m & AcceptClassical(I, c) @ #j ==> F"
+
+lemma G1_claims_unforgeability:
+  "All I c #m #j. Committed(I) @ #m & Accept(I, c) @ #j ==> (Ex #i. Issued(I, c) @ #i & #i < #j)"
+
+/* ================= mutation / attribution lemmas ================= */
+
+#ifdef not CA_PQ
+lemma M_commitment_chain_classical:
+  exists-trace
+  "Ex I c #m #j #b. Committed(I) @ #m & AcceptClassical(I, c) @ #j & Broken('ca') @ #b"
+#endif
+
+#ifdef ALT_CA & not NAME_BIND
+lemma M_alt_ca_bypass:
+  exists-trace
+  "Ex I c #m #j #b. Committed(I) @ #m & AcceptClassical(I, c) @ #j & Broken('alt_ca') @ #b
+                  & not (Ex #x. Broken('ca') @ #x)"
+#endif
+
+end

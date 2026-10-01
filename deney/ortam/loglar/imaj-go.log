@@ -1,0 +1,43 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 776B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/golang:1.27.1-trixie@sha256:433790e515d27dc6003e847e644cc0af956985cf315c1c58a3b73ee2dd305183
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/2] FROM docker.io/library/golang:1.27.1-trixie@sha256:433790e515d27dc6003e847e644cc0af956985cf315c1c58a3b73ee2dd305183
+#4 resolve docker.io/library/golang:1.27.1-trixie@sha256:433790e515d27dc6003e847e644cc0af956985cf315c1c58a3b73ee2dd305183 0.0s done
+#4 DONE 0.2s
+
+#5 [2/2] RUN set -eux; echo "SURUM $(go version)"; echo "SURUM $(git --version)"; echo "SURUM sistem $(openssl version)";     echo "SURUM stdlib crypto/mldsa: $(test -d /usr/local/go/src/crypto/mldsa && echo var || echo yok)"
+#5 0.131 + go version
+#5 0.135 SURUM go version go1.27.1 linux/amd64
+#5 0.135 + echo SURUM go version go1.27.1 linux/amd64
+#5 0.135 + git --version
+#5 0.136 + echo SURUM git version 2.47.3
+#5 0.136 SURUM git version 2.47.3
+#5 0.136 + openssl version
+#5 0.139 SURUM sistem OpenSSL 3.5.7 9 Jun 2026 (Library: OpenSSL 3.5.7 9 Jun 2026)
+#5 0.139 + echo SURUM sistem OpenSSL 3.5.7 9 Jun 2026 (Library: OpenSSL 3.5.7 9 Jun 2026)
+#5 0.139 + test -d /usr/local/go/src/crypto/mldsa
+#5 0.139 + echo var
+#5 0.139 SURUM stdlib crypto/mldsa: var
+#5 0.139 + echo SURUM stdlib crypto/mldsa: var
+#5 DONE 0.1s
+
+#6 exporting to image
+#6 exporting layers 0.1s done
+#6 exporting manifest sha256:3ab3381fca4050c0ff6712da7848d7ed3389d5c382e42088f98865619e81252e 0.0s done
+#6 exporting config sha256:67e95a0747995916c0cf6de97bed3da73f6e1acf2fb9d14757f4e3c3c2185152 0.0s done
+#6 exporting attestation manifest sha256:0e5ca68f3a94e42cb8185680c4b7b1f87a33d506a75f1e33f240df24f93bc29f 0.0s done
+#6 exporting manifest list sha256:931657811dd72d1cde2c7425231242580b689ffe96c6eb942c8f504be851c706 0.0s done
+#6 naming to docker.io/library/pq-a09-env-go:1.0 done
+#6 unpacking to docker.io/library/pq-a09-env-go:1.0
+#6 unpacking to docker.io/library/pq-a09-env-go:1.0 0.0s done
+#6 DONE 0.3s

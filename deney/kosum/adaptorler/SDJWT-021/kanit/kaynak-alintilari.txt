@@ -1,0 +1,83 @@
+# SDJWT-021 kaynak alintilari — wallet-framework-dotnet @ 2ed7a64b9c449b86bb2996359f2ca4a7e03a0cbb (nuspec <repository commit>, paket 3.1.0)
+# imaj a10-sdjwt-021-kaynak:1 (GitHub anonim git fetch --depth 1; yalniz okuma icin; sonra silindi)
+# komut: docker run --rm --network none a10-sdjwt-021-kaynak:1 sh -c 'cd /src && git rev-parse HEAD && grep -n "" <dosya> | sed -n <aralik>p'
+2ed7a64b9c449b86bb2996359f2ca4a7e03a0cbb
+== src/WalletFramework.SdJwtLib/Models/SdJwtDoc.cs L45-L73
+45:        Disclosures = sdJwtItems[1..].Select(Disclosure.Deserialize).ToImmutableList();
+46:        (UnsecuredPayload, Disclosures) = DecodeSecuredPayload((JObject)SecuredPayload.DeepClone(), Disclosures.ToList());
+47:    }
+48:    
+49:    public void AssertThatJwtSignatureIsValid(string issuerJwk, string expectedIssuer)
+50:    {
+51:        var jwtHandler = new JwtSecurityTokenHandler();
+52:        
+53:        var validationParameters = new TokenValidationParameters
+54:        {
+55:            ValidateIssuer = true,
+56:            ValidIssuer = expectedIssuer,
+57:            ValidateAudience = false,
+58:            ValidateLifetime =  UnsecuredPayload.SelectToken("exp") != null,
+59:            ValidateIssuerSigningKey = true,
+60:            ValidTypes = new string[] {"vc+sd-jwt"},
+61:            ValidAlgorithms = new string[] {"ES256"},
+62:            IssuerSigningKey = JsonWebKey.Create(issuerJwk)
+63:        };
+64:
+65:        try
+66:        {
+67:            jwtHandler.ValidateToken(IssuerSignedJwt, validationParameters, out _);
+68:        }
+69:        catch (Exception ex)
+70:        {
+71:            throw new InvalidOperationException("Invalid SD-JWT - Issuer Signed Jwt invalid", ex);
+72:        }
+73:    }
+== src/WalletFramework.SdJwtLib/Roles/Implementation/Verifier.cs (tum dosya)
+1:using System.IdentityModel.Tokens.Jwt;
+2:using Microsoft.IdentityModel.Tokens;
+3:
+4:namespace WalletFramework.SdJwtLib.Roles.Implementation;
+5:
+6:public class Verifier : IVerifier
+7:{
+8:    public bool VerifyPresentation(string presentation, string issuerJwk)
+9:    {
+10:        var firstSeparator = presentation.IndexOf("~", StringComparison.Ordinal);
+11:        var finalSeparator = presentation.LastIndexOf("~", StringComparison.Ordinal);
+12:        var jwt = presentation.Substring(0, firstSeparator);
+13:        var holderBinding = presentation.Substring(finalSeparator, presentation.Length - finalSeparator).TrimStart('~');
+14:        var disclosures = presentation
+15:            .Substring(firstSeparator, presentation.Length - jwt.Length - holderBinding.Length)
+16:            .Trim('~')
+17:            .Split('~')
+18:            .ToList();
+19:
+20:
+21:        var issuerKey = JsonWebKey.Create(issuerJwk);
+22:        VerifyJwt(jwt, issuerKey);
+23:    
+24:        return false;
+25:    }
+26:
+27:    private bool VerifyJwt(string jwt, SecurityKey issuerSigningKey)
+28:    {
+29:        var validationParameters = new TokenValidationParameters
+30:        {
+31:            RequireExpirationTime = true,
+32:            RequireSignedTokens = true,
+33:            ValidateIssuer = true,
+34:            ValidIssuer = null,
+35:            ValidateIssuerSigningKey = true, // Should be true
+36:            IssuerSigningKeys = new []{issuerSigningKey},
+37:            ValidateLifetime = true,
+38:            ClockSkew = TimeSpan.FromMinutes(2),
+39:            ValidateAudience = true
+40:        };
+41:    
+42:        var handler = new JwtSecurityTokenHandler();
+43:
+44:        handler.ValidateToken(jwt, validationParameters, out var validatedToken);
+45:
+46:        return true;
+47:    }
+48:}

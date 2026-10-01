@@ -1,0 +1,28 @@
+# COSE-001 — API taraması (sözleşme §5.1)
+# imaj: a10-kt-cose:1 (sha256:f8bef8094e2f7abf5dfd0c19b35247c223e301f8376e9d291114635ca86cb7b7)
+# komut: docker run --rm --network none --entrypoint sh a10-kt-cose:1 -c 'cd /tmp; for j in /a/app/lib/indispensable-cosef-*.jar; do jar tf $j | grep -E 'CoseAlgorithm.Signature.[A-Z]' ; jar tf $j | grep -i -E 'CoseSign[^e1]|mldsa|eddsa' ; done; CP=$(ls /a/app/lib/*.jar | tr "\n" ":"); javap -public -cp $CP 'at.asitplus.signum.indispensable.cosef.CoseSigned$Companion''
+
+at/asitplus/signum/indispensable/cosef/CoseAlgorithm$Signature$Companion.class
+at/asitplus/signum/indispensable/cosef/CoseAlgorithm$Signature$ES256.class
+at/asitplus/signum/indispensable/cosef/CoseAlgorithm$Signature$ES384.class
+at/asitplus/signum/indispensable/cosef/CoseAlgorithm$Signature$ES512.class
+at/asitplus/signum/indispensable/cosef/CoseAlgorithm$Signature$ESP256.class
+at/asitplus/signum/indispensable/cosef/CoseAlgorithm$Signature$ESP384.class
+at/asitplus/signum/indispensable/cosef/CoseAlgorithm$Signature$ESP512.class
+at/asitplus/signum/indispensable/cosef/CoseAlgorithm$Signature$PS256.class
+at/asitplus/signum/indispensable/cosef/CoseAlgorithm$Signature$PS384.class
+at/asitplus/signum/indispensable/cosef/CoseAlgorithm$Signature$PS512.class
+at/asitplus/signum/indispensable/cosef/CoseAlgorithm$Signature$RS1.class
+at/asitplus/signum/indispensable/cosef/CoseAlgorithm$Signature$RS256.class
+at/asitplus/signum/indispensable/cosef/CoseAlgorithm$Signature$RS384.class
+at/asitplus/signum/indispensable/cosef/CoseAlgorithm$Signature$RS512.class
+Compiled from "CoseSigned.kt"
+public final class at.asitplus.signum.indispensable.cosef.CoseSigned$Companion {
+  public final <P> at.asitplus.KmmResult<at.asitplus.signum.indispensable.cosef.CoseSigned<P>> deserialize(kotlinx.serialization.KSerializer<P>, byte[]);
+  public final <P> at.asitplus.signum.indispensable.cosef.CoseSigned<P> create(at.asitplus.signum.indispensable.cosef.CoseHeader, at.asitplus.signum.indispensable.cosef.CoseHeader, P, at.asitplus.signum.indispensable.CryptoSignature$RawByte
+  public static at.asitplus.signum.indispensable.cosef.CoseSigned create$default(at.asitplus.signum.indispensable.cosef.CoseSigned$Companion, at.asitplus.signum.indispensable.cosef.CoseHeader, at.asitplus.signum.indispensable.cosef.CoseHead
+  public final <P> at.asitplus.signum.indispensable.cosef.CoseInput prepare(at.asitplus.signum.indispensable.cosef.CoseHeader, byte[], P, kotlinx.serialization.KSerializer<P>) throws java.lang.IllegalArgumentException;
+  public static at.asitplus.signum.indispensable.cosef.CoseInput prepare$default(at.asitplus.signum.indispensable.cosef.CoseSigned$Companion, at.asitplus.signum.indispensable.cosef.CoseHeader, byte[], java.lang.Object, kotlinx.serialization
+  public final <P> kotlinx.serialization.KSerializer<at.asitplus.signum.indispensable.cosef.CoseSigned<P>> serializer(kotlinx.serialization.KSerializer<P>);
+  public at.asitplus.signum.indispensable.cosef.CoseSigned$Companion(kotlin.jvm.internal.DefaultConstructorMarker);
+}

@@ -1,0 +1,127 @@
+[2026-09-24 19:15:57] Başlangıç. Filtre='R6h5'. İmaj: pq-a02-tamarin:1.12.0 (sha256:59b648d60829c4580504470be1b171df0e63ead38bebc8944ac8ee2bba6b9c60)
+    tamarin-prover 1.12.0, (C) David Basin, Cas Cremers, Jannik Dreier, Simon Meier, Ralf Sasse, Benedikt Schmidt, 2010-2023
+    Maude version 3.5.1
+    Git revision: 82780bbaf3328a45f624ddb41e51bf75425f851c (with uncommited changes), branch: master
+[2026-09-24 19:15:57] == R6h5 P_single_slow (korumali) bayraklar: -D=SINGLE_USE -D=SLOW G_beklenen=-
+[2026-09-24 19:16:02]   R6h5 P_single_slow executable basamak=1 -> verified (11 adım) 1.25s 80.1MiB rc=0
+[2026-09-24 19:16:04]   R6h5 P_single_slow executable_post_qday basamak=1 -> verified (11 adım) 1.25s 79.7MiB rc=0
+[2026-09-24 19:16:07]   R6h5 P_single_slow executable_after_expiry basamak=1 -> verified (12 adım) 1.34s 80.5MiB rc=0
+[2026-09-24 19:16:09]   R6h5 P_single_slow executable_single_use_enforced basamak=1 -> verified (2 adım) 0.75s 75.8MiB rc=0
+[2026-09-24 19:16:11]   R6h5 P_single_slow attack_needs_crqc basamak=1 -> verified (9 adım) 0.99s 77.2MiB rc=0
+[2026-09-24 19:16:14]   R6h5 P_single_slow G2_presentation_unforgeability basamak=1 -> verified (10 adım) 1.0s 80.4MiB rc=0
+[2026-09-24 19:16:16]   R6h5 P_single_slow M_device_key_in_window basamak=1 -> falsified (7 adım) 0.98s 77.7MiB rc=0
+[2026-09-24 19:16:18]   R6h5 P_single_slow M_device_key_reused basamak=1 -> falsified (1 adım) 0.82s 73.7MiB rc=0
+[2026-09-24 19:16:18] == R6h5 E_nosingle_slow (ek) bayraklar: -D=SLOW G_beklenen=-
+[2026-09-24 19:16:23]   R6h5 E_nosingle_slow executable basamak=1 -> verified (11 adım) 1.23s 79.7MiB rc=0
+[2026-09-24 19:16:25]   R6h5 E_nosingle_slow executable_post_qday basamak=1 -> verified (11 adım) 1.33s 86.7MiB rc=0
+[2026-09-24 19:16:28]   R6h5 E_nosingle_slow executable_after_expiry basamak=1 -> verified (12 adım) 1.33s 82.0MiB rc=0
+[2026-09-24 19:16:30]   R6h5 E_nosingle_slow attack_needs_crqc basamak=1 -> verified (9 adım) 0.95s 76.0MiB rc=0
+[2026-09-24 19:16:32]   R6h5 E_nosingle_slow G2_presentation_unforgeability basamak=1 -> verified (10 adım) 1.0s 74.9MiB rc=0
+[2026-09-24 19:16:35]   R6h5 E_nosingle_slow M_device_key_in_window basamak=1 -> falsified (7 adım) 0.96s 79.1MiB rc=0
+[2026-09-24 19:16:37]   R6h5 E_nosingle_slow M_device_key_reused basamak=1 -> falsified (1 adım) 0.82s 73.1MiB rc=0
+[2026-09-24 19:16:37] == R6h5 M_single_fast (mutant:gecerlilik_penceresi_tau_dan_kisa(P_single_slow)) bayraklar: -D=SINGLE_USE G_beklenen=-
+[2026-09-24 19:16:41]   R6h5 M_single_fast executable basamak=1 -> verified (11 adım) 1.22s 80.7MiB rc=0
+[2026-09-24 19:16:44]   R6h5 M_single_fast executable_post_qday basamak=1 -> verified (11 adım) 1.24s 81.3MiB rc=0
+[2026-09-24 19:16:46]   R6h5 M_single_fast executable_after_expiry basamak=1 -> verified (12 adım) 1.27s 77.5MiB rc=0
+[2026-09-24 19:16:48]   R6h5 M_single_fast executable_single_use_enforced basamak=1 -> verified (2 adım) 0.91s 73.6MiB rc=0
+[2026-09-24 19:16:51]   R6h5 M_single_fast attack_needs_crqc basamak=1 -> verified (9 adım) 0.96s 79.5MiB rc=0
+[2026-09-24 19:16:53]   R6h5 M_single_fast G2_presentation_unforgeability basamak=1 -> falsified (10 adım) 1.21s 76.6MiB rc=0
+[2026-09-24 19:16:56]   R6h5 M_single_fast M_device_key_in_window basamak=1 -> verified (12 adım) 1.23s 81.2MiB rc=0
+[2026-09-24 19:16:58]   R6h5 M_single_fast M_device_key_reused basamak=1 -> falsified (1 adım) 0.79s 73.9MiB rc=0
+[2026-09-24 19:16:58] == R6h5 M_single_slow_reuse (mutant:kimlik_bilgisi_basina_cihaz_anahtari(P_single_slow)) bayraklar: -D=SINGLE_USE -D=SLOW -D=KEY_REUSE G_beklenen=-
+[2026-09-24 19:17:03]   R6h5 M_single_slow_reuse executable basamak=1 -> verified (12 adım) 1.3s 79.1MiB rc=0
+[2026-09-24 19:17:05]   R6h5 M_single_slow_reuse executable_post_qday basamak=1 -> verified (12 adım) 1.37s 82.8MiB rc=0
+[2026-09-24 19:17:08]   R6h5 M_single_slow_reuse executable_after_expiry basamak=1 -> verified (13 adım) 1.4s 82.7MiB rc=0
+[2026-09-24 19:17:10]   R6h5 M_single_slow_reuse executable_single_use_enforced basamak=1 -> verified (2 adım) 0.95s 74.6MiB rc=0
+[2026-09-24 19:17:13]   R6h5 M_single_slow_reuse attack_needs_crqc basamak=1 -> verified (9 adım) 1.03s 78.0MiB rc=0
+[2026-09-24 19:17:15]   R6h5 M_single_slow_reuse G2_presentation_unforgeability basamak=1 -> falsified (10 adım) 1.3s 82.0MiB rc=0
+[2026-09-24 19:17:17]   R6h5 M_single_slow_reuse M_device_key_in_window basamak=1 -> falsified (1 adım) 0.87s 75.3MiB rc=0
+[2026-09-24 19:17:20]   R6h5 M_single_slow_reuse M_device_key_reused basamak=1 -> verified (13 adım) 1.26s 82.0MiB rc=0
+[2026-09-24 19:17:20] == R6h5 E_nosingle_fast (ek) bayraklar: yok G_beklenen=-
+[2026-09-24 19:17:24]   R6h5 E_nosingle_fast executable basamak=1 -> verified (11 adım) 1.27s 79.6MiB rc=0
+[2026-09-24 19:17:27]   R6h5 E_nosingle_fast executable_post_qday basamak=1 -> verified (11 adım) 1.25s 84.5MiB rc=0
+[2026-09-24 19:17:29]   R6h5 E_nosingle_fast executable_after_expiry basamak=1 -> verified (12 adım) 1.3s 81.7MiB rc=0
+[2026-09-24 19:17:32]   R6h5 E_nosingle_fast attack_needs_crqc basamak=1 -> verified (9 adım) 1.03s 74.2MiB rc=0
+[2026-09-24 19:17:34]   R6h5 E_nosingle_fast G2_presentation_unforgeability basamak=1 -> falsified (10 adım) 1.11s 77.5MiB rc=0
+[2026-09-24 19:17:37]   R6h5 E_nosingle_fast M_device_key_in_window basamak=1 -> verified (12 adım) 1.18s 79.6MiB rc=0
+[2026-09-24 19:17:39]   R6h5 E_nosingle_fast M_device_key_reused basamak=1 -> falsified (1 adım) 0.82s 73.5MiB rc=0
+[2026-09-24 19:17:39] == R6h5 E_devpq_single_fast (ek) bayraklar: -D=DEV_PQ -D=SINGLE_USE G_beklenen=-
+[2026-09-24 19:17:43]   R6h5 E_devpq_single_fast executable basamak=1 -> verified (11 adım) 1.2s 79.7MiB rc=0
+[2026-09-24 19:17:46]   R6h5 E_devpq_single_fast executable_post_qday basamak=1 -> verified (11 adım) 1.2s 79.5MiB rc=0
+[2026-09-24 19:17:49]   R6h5 E_devpq_single_fast executable_after_expiry basamak=1 -> verified (12 adım) 1.18s 78.0MiB rc=0
+[2026-09-24 19:17:51]   R6h5 E_devpq_single_fast executable_single_use_enforced basamak=1 -> verified (2 adım) 0.86s 73.3MiB rc=0
+[2026-09-24 19:17:53]   R6h5 E_devpq_single_fast attack_needs_crqc basamak=1 -> verified (8 adım) 0.98s 76.4MiB rc=0
+[2026-09-24 19:17:55]   R6h5 E_devpq_single_fast G2_presentation_unforgeability basamak=1 -> verified (8 adım) 0.87s 78.7MiB rc=0
+[2026-09-24 19:17:57]   R6h5 E_devpq_single_fast M_device_key_in_window basamak=1 -> falsified (5 adım) 0.89s 75.5MiB rc=0
+[2026-09-24 19:17:59]   R6h5 E_devpq_single_fast M_device_key_reused basamak=1 -> falsified (1 adım) 0.74s 71.6MiB rc=0
+[2026-09-24 19:17:59] Tamarin koşumları bitti (52 konteyner). Değerlendirme (clingo, pq-a02-solver:1.0) başlıyor.
+PQ-OID4VC Adım 4 + 5A — Tamarin kural şemaları: metrikler (betik/degerlendir.py çıktısı)
+clingo 5.8.2
+
+==============================================================================
+Adım 4 (R1–R5)
+==============================================================================
+Varyant sayısı: 34 ; lemma koşumu (satır): 196
+Beklenen/gözlenen uyumu: 196/196
+
+Kabul ölçütü (korumalı ve mutant varyantlarda bütün lemmalar beklenen gibi; executable verified):
+   R1: GEÇTİ   (ek varyant lemmaları beklenen gibi: 34/34)
+   R2: GEÇTİ   (ek varyant lemmaları beklenen gibi: 21/21)
+   R3: GEÇTİ   (ek varyant lemmaları beklenen gibi: 0/0)
+   R4: GEÇTİ   (ek varyant lemmaları beklenen gibi: 17/17)
+   R5: GEÇTİ   (ek varyant lemmaları beklenen gibi: 24/24)
+
+Mutasyon skoru: 11/11 = 100%  (öldürülme = F beklenen güvenlik lemmaları falsified VE V beklenen M_ lemmaları verified)
+   R1   M_root                 mutant:kok_anahtari_PQ                               ÖLDÜ (G=True, M=True)
+   R1   M_ca                   mutant:CA_anahtari_PQ                                ÖLDÜ (G=True, M=True)
+   R1   M_iss                  mutant:ihracci_imzasi_PQ                             ÖLDÜ (G=True, M=True)
+   R2   M_expect_unauth        mutant:beklentinin_kimlik_dogrulamasi                ÖLDÜ (G=True, M=True)
+   R2   M_expect_absent        mutant:beklenti                                      ÖLDÜ (G=True, M=True)
+   R3   M_obj_classical        mutant:PQ_kanal_nesne_imzasi                         ÖLDÜ (G=True, M=True)
+   R3   M_tls_classical        mutant:PQ_kanal_tasima                               ÖLDÜ (G=True, M=True)
+   R4   M_dev                  mutant:PQ_cihaz_anahtari                             ÖLDÜ (G=True, M=True)
+   R4   M_iss                  mutant:PQ_ihracci_imzasi                             ÖLDÜ (G=True, M=True)
+   R5   M_pin                  mutant:sabitleme                                     ÖLDÜ (G=True, M=True)
+   R5   M_tl                   mutant:capa_anahtari_PQ                              ÖLDÜ (G=True, M=True)
+
+Datalog (clingo, sem=class) ↔ Tamarin güvenlik hükmü uyumu: 44/44
+Naif okuma (sem=naive: pq(L) yalnız gerçek ebeveyn) ile uyumsuzluklar: 1
+   R1 X_alt_ca g1: naive=verified tamarin=falsified
+
+En uzun koşum: 1.58 s (R1 E_iss_only executable_post_qday)
+En yüksek bellek: 95.7 MiB (R1 E_none G1_claims_unforgeability)
+Merdivende 1'den yüksek basamak gereken koşum: 0
+Kapanmayan ya da geçersiz (verified/falsified dışı): 0
+İyi biçimlilik taraması (sonuc/ham/*.txt): 230 dosya; 'All wellformedness checks were successful' 230; uyarılı 0
+
+==============================================================================
+Adım 5A (R6, R6h5, R7, R7h)
+==============================================================================
+Varyant sayısı: 18 ; lemma koşumu (satır): 151
+Beklenen/gözlenen uyumu: 151/151
+
+Kabul ölçütü (korumalı ve mutant varyantlarda bütün lemmalar beklenen gibi; executable verified):
+   R6: GEÇTİ   (ek varyant lemmaları beklenen gibi: 26/26)
+   R6h5: GEÇTİ   (ek varyant lemmaları beklenen gibi: 22/22)
+
+Mutasyon skoru: 9/9 = 100%  (öldürülme = F beklenen güvenlik lemmaları falsified VE V beklenen M_ lemmaları verified)
+   R6   M_long_medium          mutant:kisa_anahtar_penceresi(P_tok_medium)          ÖLDÜ (G=True, M=True)
+   R6   M_long_slow            mutant:kisa_anahtar_penceresi(P_rot_slow)            ÖLDÜ (G=True, M=True)
+   R6   M_rot_fast             mutant:tau_pencereden_uzun(P_rot_slow)               ÖLDÜ (G=True, M=True)
+   R6   M_tok_fast             mutant:tau_pencereden_uzun(P_tok_medium)             ÖLDÜ (G=True, M=True)
+   R6   M_rot_id               mutant:PQ_kimlik_baglama(P_rot_slow)                 ÖLDÜ (G=True, M=True)
+   R6   M_rot_reuse            mutant:anahtar_yeniden_kullanilmaz(P_rot_slow)       ÖLDÜ (G=True, M=True)
+   R6   M_tok_id               mutant:PQ_kimlik_baglama(P_tok_medium)               ÖLDÜ (G=True, M=True)
+   R6h5 M_single_fast          mutant:gecerlilik_penceresi_tau_dan_kisa(P_single_slow) ÖLDÜ (G=True, M=True)
+   R6h5 M_single_slow_reuse    mutant:kimlik_bilgisi_basina_cihaz_anahtari(P_single_slow) ÖLDÜ (G=True, M=True)
+
+Datalog karşılaştırması: bu grupta .lp karşılığı yok (R6/R7 sayısal pencere ASP'de).
+
+En uzun koşum: 1.4 s (R6h5 M_single_slow_reuse executable_after_expiry)
+En yüksek bellek: 86.7 MiB (R6h5 E_nosingle_slow executable_post_qday)
+Merdivende 1'den yüksek basamak gereken koşum: 0
+Kapanmayan ya da geçersiz (verified/falsified dışı): 0
+İyi biçimlilik taraması (sonuc/ham/*.txt): 169 dosya; 'All wellformedness checks were successful' 169; uyarılı 0
+
+
+[2026-09-24 19:18:06] Bitti.

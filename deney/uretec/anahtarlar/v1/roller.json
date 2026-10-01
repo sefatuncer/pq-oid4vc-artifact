@@ -1,0 +1,427 @@
+{
+ "turetme": "pqjose.keys.derive_key(tur, etiket): HKDF-SHA256(IKM=\"PQ-OID4VC Adim 9b test vektorleri v1\", salt=\"pqjose/derive/v1\", info=etiket|tur)",
+ "gecerlilik": [
+  "20260101000000Z",
+  "20361231235959Z"
+ ],
+ "roller": {
+  "issuer/ES256": {
+   "tur": "ES256",
+   "kid": "Dae-6PSSx7FfaEPNMopZGZ-wBvY8xkwyPQHmeHIgaUU",
+   "turetme_etiketi": "v1/issuer/ES256",
+   "ozel_jwk": "ozel/issuer__ES256.json"
+  },
+  "issuer/ES384": {
+   "tur": "ES384",
+   "kid": "35xWV--z8WN_BPF0nuwviD5IQsv6e5m2FRdcmiB_Dok",
+   "turetme_etiketi": "v1/issuer/ES384",
+   "ozel_jwk": "ozel/issuer__ES384.json"
+  },
+  "issuer/EdDSA": {
+   "tur": "EdDSA",
+   "kid": "Xs-nufJolGnijX_-1fWpt5C9pvH44duKX8YO0WJTsSs",
+   "turetme_etiketi": "v1/issuer/EdDSA",
+   "ozel_jwk": "ozel/issuer__EdDSA.json"
+  },
+  "issuer/Ed448": {
+   "tur": "Ed448",
+   "kid": "GBsOqG1Y1RSw1q1BNzrU7gWPLAgdU7koZGGhogZ7VMk",
+   "turetme_etiketi": "v1/issuer/Ed448",
+   "ozel_jwk": "ozel/issuer__Ed448.json"
+  },
+  "issuer/ML-DSA-44": {
+   "tur": "ML-DSA-44",
+   "kid": "8qrxQ6F1ZpYbjVg2h7ciBnLJKNiGt-IHsM9tZuDmXOk",
+   "turetme_etiketi": "v1/issuer/ML-DSA-44",
+   "ozel_jwk": "ozel/issuer__ML-DSA-44.json"
+  },
+  "issuer/ML-DSA-65": {
+   "tur": "ML-DSA-65",
+   "kid": "IwjBAm8NcIKqmDrXCIh38jMlzcH8b87-G3qtObt2OHs",
+   "turetme_etiketi": "v1/issuer/ML-DSA-65",
+   "ozel_jwk": "ozel/issuer__ML-DSA-65.json"
+  },
+  "issuer/ML-DSA-87": {
+   "tur": "ML-DSA-87",
+   "kid": "nKmOpr-FQT6koG4ervUh69YuGvGf7cJFgu7VSzhOdpc",
+   "turetme_etiketi": "v1/issuer/ML-DSA-87",
+   "ozel_jwk": "ozel/issuer__ML-DSA-87.json"
+  },
+  "issuer/ML-DSA-44-ES256": {
+   "tur": "ML-DSA-44-ES256",
+   "kid": "b5vVpgNGykwyC2uB_EyDS4FFeHluyW2abyl3SF_ZXBE",
+   "turetme_etiketi": "v1/issuer/ML-DSA-44-ES256",
+   "ozel_jwk": "ozel/issuer__ML-DSA-44-ES256.json"
+  },
+  "issuer/ML-DSA-65-ES256": {
+   "tur": "ML-DSA-65-ES256",
+   "kid": "Ok8LZzNE-E_MbjjoD_C6hj14YzZW9-lLCBPxpeHR2hg",
+   "turetme_etiketi": "v1/issuer/ML-DSA-65-ES256",
+   "ozel_jwk": "ozel/issuer__ML-DSA-65-ES256.json"
+  },
+  "issuer/ML-DSA-87-ES384": {
+   "tur": "ML-DSA-87-ES384",
+   "kid": "H5UZrL4X74Ef5he-myTdy4xahN5XPR3LhyyddpejGXE",
+   "turetme_etiketi": "v1/issuer/ML-DSA-87-ES384",
+   "ozel_jwk": "ozel/issuer__ML-DSA-87-ES384.json"
+  },
+  "issuer/ML-DSA-44-Ed25519": {
+   "tur": "ML-DSA-44-Ed25519",
+   "kid": "nHO1FmsiiPKTG9iTqtpmIrfQQWWYfHuYe15wzpjMjGU",
+   "turetme_etiketi": "v1/issuer/ML-DSA-44-Ed25519",
+   "ozel_jwk": "ozel/issuer__ML-DSA-44-Ed25519.json"
+  },
+  "issuer/ML-DSA-65-Ed25519": {
+   "tur": "ML-DSA-65-Ed25519",
+   "kid": "DAfpNOr7LdfwVhy9v-iHgk3PHegw57sO1JhqpFY5wBk",
+   "turetme_etiketi": "v1/issuer/ML-DSA-65-Ed25519",
+   "ozel_jwk": "ozel/issuer__ML-DSA-65-Ed25519.json"
+  },
+  "issuer/ML-DSA-87-Ed448": {
+   "tur": "ML-DSA-87-Ed448",
+   "kid": "w71O6pTALcDzpVf0VA3-0rg8hxsI8Z3D7tFY1TsRUMw",
+   "turetme_etiketi": "v1/issuer/ML-DSA-87-Ed448",
+   "ozel_jwk": "ozel/issuer__ML-DSA-87-Ed448.json"
+  },
+  "status/ES256": {
+   "tur": "ES256",
+   "kid": "BmpF9sUzPeDNETBPp3vllsVSouIQ_TC8f1FTy-yc12A",
+   "turetme_etiketi": "v1/status/ES256",
+   "ozel_jwk": "ozel/status__ES256.json"
+  },
+  "status/ML-DSA-65": {
+   "tur": "ML-DSA-65",
+   "kid": "J7ZCDPOuj7dJG-F9X32Vs_coupVTvIHbE0KTrvismNU",
+   "turetme_etiketi": "v1/status/ML-DSA-65",
+   "ozel_jwk": "ozel/status__ML-DSA-65.json"
+  },
+  "status/ML-DSA-65-ES256": {
+   "tur": "ML-DSA-65-ES256",
+   "kid": "xoiDNurpI9kzwkxJQN63EQN4TPfmDUkPbJH-ih8Wi88",
+   "turetme_etiketi": "v1/status/ML-DSA-65-ES256",
+   "ozel_jwk": "ozel/status__ML-DSA-65-ES256.json"
+  },
+  "rp/ES256": {
+   "tur": "ES256",
+   "kid": "qT7MLc8cJTRFLz9CeCpq3HEIzD_M2YqKiqHhMsH6U-c",
+   "turetme_etiketi": "v1/rp/ES256",
+   "ozel_jwk": "ozel/rp__ES256.json"
+  },
+  "rp/ML-DSA-65": {
+   "tur": "ML-DSA-65",
+   "kid": "0syZfRwNzIgbIr3Z7sLew5iVushOUGIyJ7PPjpRbtCU",
+   "turetme_etiketi": "v1/rp/ML-DSA-65",
+   "ozel_jwk": "ozel/rp__ML-DSA-65.json"
+  },
+  "rp/ML-DSA-65-ES256": {
+   "tur": "ML-DSA-65-ES256",
+   "kid": "kMPdqXXB7JmXq8ZU6dqKpeUnMLGC4f8YbK8ikA7lWtI",
+   "turetme_etiketi": "v1/rp/ML-DSA-65-ES256",
+   "ozel_jwk": "ozel/rp__ML-DSA-65-ES256.json"
+  },
+  "rp/enc": {
+   "tur": "ES256",
+   "kid": "2BntGtQ90ujH6Tb54YNlpVq5ua2-vYHUo-3Xbgj5Dcw",
+   "turetme_etiketi": "v1/rp/enc",
+   "ozel_jwk": "ozel/rp__enc.json"
+  },
+  "holder/ES256": {
+   "tur": "ES256",
+   "kid": "SKGNlnNDKiWyMJz-1cbmIGfVlIcp3P87gI9ftfZVJbI",
+   "turetme_etiketi": "v1/holder/ES256",
+   "ozel_jwk": "ozel/holder__ES256.json"
+  },
+  "holder/ML-DSA-65": {
+   "tur": "ML-DSA-65",
+   "kid": "uPxcN-KE35PAhvnDj8inkAFS9PzJvTo0QEIwz59Qjng",
+   "turetme_etiketi": "v1/holder/ML-DSA-65",
+   "ozel_jwk": "ozel/holder__ML-DSA-65.json"
+  },
+  "holder/ML-DSA-65-ES256": {
+   "tur": "ML-DSA-65-ES256",
+   "kid": "beQ6XvBaOI2KmbucYt0hDWaF_tbX4cQPc8SNDisUd-o",
+   "turetme_etiketi": "v1/holder/ML-DSA-65-ES256",
+   "ozel_jwk": "ozel/holder__ML-DSA-65-ES256.json"
+  },
+  "dpop/ES256": {
+   "tur": "ES256",
+   "kid": "NoiDl4xcMvhIpw0VFwQxY_DKUrJ37iYuLr15UWN3YdA",
+   "turetme_etiketi": "v1/dpop/ES256",
+   "ozel_jwk": "ozel/dpop__ES256.json"
+  },
+  "dpop/EdDSA": {
+   "tur": "EdDSA",
+   "kid": "bHAbLIuNlftwNII9Lk9sPihMjMYQiqDvQEOJgDa8ZTk",
+   "turetme_etiketi": "v1/dpop/EdDSA",
+   "ozel_jwk": "ozel/dpop__EdDSA.json"
+  },
+  "dpop/ML-DSA-44": {
+   "tur": "ML-DSA-44",
+   "kid": "p9xLoUQQkangJLW9g_PSiUgrzkfCjIOVWfoktOlm21I",
+   "turetme_etiketi": "v1/dpop/ML-DSA-44",
+   "ozel_jwk": "ozel/dpop__ML-DSA-44.json"
+  },
+  "dpop/ML-DSA-65": {
+   "tur": "ML-DSA-65",
+   "kid": "_elbl5wfhMtdZE7j76ALBRt5Ipu57GMzY5qKm3MuXYw",
+   "turetme_etiketi": "v1/dpop/ML-DSA-65",
+   "ozel_jwk": "ozel/dpop__ML-DSA-65.json"
+  },
+  "dpop/ML-DSA-87": {
+   "tur": "ML-DSA-87",
+   "kid": "11t2lM8Iv_QxgOLMKMbMKk0cuVAMLqgkMsma6oEOFAw",
+   "turetme_etiketi": "v1/dpop/ML-DSA-87",
+   "ozel_jwk": "ozel/dpop__ML-DSA-87.json"
+  },
+  "dpop/ML-DSA-44-ES256": {
+   "tur": "ML-DSA-44-ES256",
+   "kid": "rm4lQZ6JP-DzguelrZdWRIiRbrA-Ov9h7vKmTxXFt6c",
+   "turetme_etiketi": "v1/dpop/ML-DSA-44-ES256",
+   "ozel_jwk": "ozel/dpop__ML-DSA-44-ES256.json"
+  },
+  "dpop/ML-DSA-65-ES256": {
+   "tur": "ML-DSA-65-ES256",
+   "kid": "Y-DyWmV9ShACNvtFDn3_B_f-q1pnPUQUYbtY9qhaKsk",
+   "turetme_etiketi": "v1/dpop/ML-DSA-65-ES256",
+   "ozel_jwk": "ozel/dpop__ML-DSA-65-ES256.json"
+  },
+  "dpop/ML-DSA-87-ES384": {
+   "tur": "ML-DSA-87-ES384",
+   "kid": "I5fjo52xBo6ZKRCnI9oBkAAbGIVSsyxW9L8h7vWwPRE",
+   "turetme_etiketi": "v1/dpop/ML-DSA-87-ES384",
+   "ozel_jwk": "ozel/dpop__ML-DSA-87-ES384.json"
+  },
+  "dpop/ML-DSA-44-Ed25519": {
+   "tur": "ML-DSA-44-Ed25519",
+   "kid": "gaGMqiC5qrebLEErMOzjcCGLcDmnic8Cfoa9hyu6_t8",
+   "turetme_etiketi": "v1/dpop/ML-DSA-44-Ed25519",
+   "ozel_jwk": "ozel/dpop__ML-DSA-44-Ed25519.json"
+  },
+  "dpop/ML-DSA-65-Ed25519": {
+   "tur": "ML-DSA-65-Ed25519",
+   "kid": "SAmC-cijTarSlxKnyFlFUJG_jahC_mNW0iG3neAF6Aw",
+   "turetme_etiketi": "v1/dpop/ML-DSA-65-Ed25519",
+   "ozel_jwk": "ozel/dpop__ML-DSA-65-Ed25519.json"
+  },
+  "dpop/ML-DSA-87-Ed448": {
+   "tur": "ML-DSA-87-Ed448",
+   "kid": "w_4vA56Mk75Pkmk9D4axR1gcQtBHIOraeVJwuJvYpNA",
+   "turetme_etiketi": "v1/dpop/ML-DSA-87-Ed448",
+   "ozel_jwk": "ozel/dpop__ML-DSA-87-Ed448.json"
+  },
+  "ca/root-ec": {
+   "tur": "ES256",
+   "kid": "kRNUn10AlS3lPxyZVh_hJtpJiJJsj8K17Qoex604_l4",
+   "turetme_etiketi": "v1/ca/root-ec",
+   "ozel_jwk": "ozel/ca__root-ec.json"
+  },
+  "ca/root-ml": {
+   "tur": "ML-DSA-65",
+   "kid": "BkAAGDqZKEV4gxSy353JjLahsS9718eNx_5FwVObBZk",
+   "turetme_etiketi": "v1/ca/root-ml",
+   "ozel_jwk": "ozel/ca__root-ml.json"
+  },
+  "ca/int-ec": {
+   "tur": "ES256",
+   "kid": "w2au_XDo-7I495O7hggjnkG2qJBQllzgBhk19YGgoRs",
+   "turetme_etiketi": "v1/ca/int-ec",
+   "ozel_jwk": "ozel/ca__int-ec.json"
+  },
+  "ca/int-ml": {
+   "tur": "ML-DSA-65",
+   "kid": "fCTdOEVjBjmkUeD_9jwIO3BMfUfrZHpE9ObpRNnuUAc",
+   "turetme_etiketi": "v1/ca/int-ml",
+   "ozel_jwk": "ozel/ca__int-ml.json"
+  },
+  "ca/int-ml-rootec": {
+   "tur": "ML-DSA-65",
+   "kid": "zAs2odC0z0j5N3ztKWxwJjaU8nm2-b3BYapsvVwGr5Q",
+   "turetme_etiketi": "v1/ca/int-ml-rootec",
+   "ozel_jwk": "ozel/ca__int-ml-rootec.json"
+  }
+ },
+ "sertifikalar": {
+  "root-ec": {
+   "subject": "CN=Root CA EC-P256,O=PQ-OID4VC Test PKI v1,C=EU",
+   "issuer": "CN=Root CA EC-P256,O=PQ-OID4VC Test PKI v1,C=EU",
+   "serial": 1,
+   "imza_alg": "ecdsa-with-SHA256",
+   "imza_sinif": "klasik",
+   "anahtar_sinif": "klasik",
+   "der_bayt": 451,
+   "sha256": "fb0742ee8899155da6b303324c64222f9cc4c18c589ec749fff1bd2e6efc4a24",
+   "x509_hash": "-wdC7oiZFV2mswMyTGQiL5zEwYxYnsdJ__G9Lm78SiQ",
+   "kendinden_imzali": true,
+   "anahtar_rolu": "ca/root-ec"
+  },
+  "root-ml": {
+   "subject": "CN=Root CA ML-DSA-65,O=PQ-OID4VC Test PKI v1,C=EU",
+   "issuer": "CN=Root CA ML-DSA-65,O=PQ-OID4VC Test PKI v1,C=EU",
+   "serial": 2,
+   "imza_alg": "ML-DSA-65",
+   "imza_sinif": "pq",
+   "anahtar_sinif": "pq",
+   "der_bayt": 5580,
+   "sha256": "4b111e24ae8f17a22eed7feb51f0d3791a3ec245b231490a850f73a1d9b4e45d",
+   "x509_hash": "SxEeJK6PF6Iu7X_rUfDTeRo-wkWyMUkKhQ9zodm05F0",
+   "kendinden_imzali": true,
+   "anahtar_rolu": "ca/root-ml"
+  },
+  "int-ec": {
+   "subject": "CN=Issuing CA EC-P256,O=PQ-OID4VC Test PKI v1,C=EU",
+   "issuer": "CN=Root CA EC-P256,O=PQ-OID4VC Test PKI v1,C=EU",
+   "serial": 11,
+   "imza_alg": "ecdsa-with-SHA256",
+   "imza_sinif": "klasik",
+   "anahtar_sinif": "klasik",
+   "der_bayt": 490,
+   "sha256": "fdc8249c666a4b6b4225cc8e515063f5dec5d88f853d4b10dcde4d9553eb7e9b",
+   "x509_hash": "_cgknGZqS2tCJcyOUVBj9d7F2I-FPUsQ3N5NlVPrfps",
+   "kendinden_imzali": false,
+   "anahtar_rolu": "ca/int-ec"
+  },
+  "int-ml": {
+   "subject": "CN=Issuing CA ML-DSA-65,O=PQ-OID4VC Test PKI v1,C=EU",
+   "issuer": "CN=Root CA ML-DSA-65,O=PQ-OID4VC Test PKI v1,C=EU",
+   "serial": 12,
+   "imza_alg": "ML-DSA-65",
+   "imza_sinif": "pq",
+   "anahtar_sinif": "pq",
+   "der_bayt": 5619,
+   "sha256": "bad44425f8e1c6ab42bb9d950e1b6642284a761db16abb588b64b4a14d0ee4d9",
+   "x509_hash": "utREJfjhxqtCu52VDhtmQihKdh2xartYi2S0oU0O5Nk",
+   "kendinden_imzali": false,
+   "anahtar_rolu": "ca/int-ml"
+  },
+  "int-ml-rootec": {
+   "subject": "CN=Issuing CA ML-DSA-65 (EC root),O=PQ-OID4VC Test PKI v1,C=EU",
+   "issuer": "CN=Root CA EC-P256,O=PQ-OID4VC Test PKI v1,C=EU",
+   "serial": 13,
+   "imza_alg": "ecdsa-with-SHA256",
+   "imza_sinif": "klasik",
+   "anahtar_sinif": "pq",
+   "der_bayt": 2384,
+   "sha256": "2e2d0d36e787591f51c6d0eba8d71c5c25828ae664e2c8074a1397bce1f35e8d",
+   "x509_hash": "Li0NNueHWR9RxtDrqNccXCWCiuZk4sgHShOXvOHzXo0",
+   "kendinden_imzali": false,
+   "anahtar_rolu": "ca/int-ml-rootec"
+  },
+  "issuer-ec@int-ec": {
+   "subject": "CN=PID Issuer (EC),O=PQ-OID4VC Test PKI v1,C=EU",
+   "issuer": "CN=Issuing CA EC-P256,O=PQ-OID4VC Test PKI v1,C=EU",
+   "serial": 100,
+   "imza_alg": "ecdsa-with-SHA256",
+   "imza_sinif": "klasik",
+   "anahtar_sinif": "klasik",
+   "der_bayt": 511,
+   "sha256": "5e6367038766a17fad2ad705380df3359c3219b387f05d0f137bbe23bdcd4bfb",
+   "x509_hash": "XmNnA4dmoX-tKtcFOA3zNZwyGbOH8F0PE3u-I73NS_s",
+   "kendinden_imzali": false,
+   "anahtar_rolu": "issuer/ES256"
+  },
+  "issuer-ml@int-ml": {
+   "subject": "CN=PID Issuer (ML-DSA-65),O=PQ-OID4VC Test PKI v1,C=EU",
+   "issuer": "CN=Issuing CA ML-DSA-65,O=PQ-OID4VC Test PKI v1,C=EU",
+   "serial": 101,
+   "imza_alg": "ML-DSA-65",
+   "imza_sinif": "pq",
+   "anahtar_sinif": "pq",
+   "der_bayt": 5645,
+   "sha256": "7ca70e9c455bb1e082bad62c942b65055ac9b4e559c0636bfcf65367be3e1ea8",
+   "x509_hash": "fKcOnEVbseCCutYslCtlBVrJtOVZwGNr_PZTZ74-Hqg",
+   "kendinden_imzali": false,
+   "anahtar_rolu": "issuer/ML-DSA-65"
+  },
+  "issuer-ml@int-ec": {
+   "subject": "CN=PID Issuer (ML-DSA-65\\, EC CA),O=PQ-OID4VC Test PKI v1,C=EU",
+   "issuer": "CN=Issuing CA EC-P256,O=PQ-OID4VC Test PKI v1,C=EU",
+   "serial": 102,
+   "imza_alg": "ecdsa-with-SHA256",
+   "imza_sinif": "klasik",
+   "anahtar_sinif": "pq",
+   "der_bayt": 2408,
+   "sha256": "b86eac3183e2a09c82e146a616ae277ff1878723971f91353dad7e8ef013b6e4",
+   "x509_hash": "uG6sMYPioJyC4UamFq4nf_GHhyOXH5E1Pa1-jvATtuQ",
+   "kendinden_imzali": false,
+   "anahtar_rolu": "issuer/ML-DSA-65"
+  },
+  "issuer-ec@int-ml": {
+   "subject": "CN=PID Issuer (EC\\, ML-DSA CA),O=PQ-OID4VC Test PKI v1,C=EU",
+   "issuer": "CN=Issuing CA ML-DSA-65,O=PQ-OID4VC Test PKI v1,C=EU",
+   "serial": 103,
+   "imza_alg": "ML-DSA-65",
+   "imza_sinif": "pq",
+   "anahtar_sinif": "klasik",
+   "der_bayt": 3766,
+   "sha256": "3462d1fda598cc5f24c350a63effd519f08c60b2cf459f4d621ddd56cf7a8d68",
+   "x509_hash": "NGLR_aWYzF8kw1CmPv_VGfCMYLLPRZ9NYh3dVs96jWg",
+   "kendinden_imzali": false,
+   "anahtar_rolu": "issuer/ES256"
+  },
+  "issuer-ml@int-ml-rootec": {
+   "subject": "CN=PID Issuer (ML-DSA-65\\, EC root),O=PQ-OID4VC Test PKI v1,C=EU",
+   "issuer": "CN=Issuing CA ML-DSA-65 (EC root),O=PQ-OID4VC Test PKI v1,C=EU",
+   "serial": 104,
+   "imza_alg": "ML-DSA-65",
+   "imza_sinif": "pq",
+   "anahtar_sinif": "pq",
+   "der_bayt": 5664,
+   "sha256": "1873fd6ced2d6989c4847c9f1cedcf9b089238da731cbe4dd01475d4da1c1a34",
+   "x509_hash": "GHP9bO0taYnEhHyfHO3PmwiSONpzHL5N0BR11NocGjQ",
+   "kendinden_imzali": false,
+   "anahtar_rolu": "issuer/ML-DSA-65"
+  },
+  "status-ec@int-ec": {
+   "subject": "CN=Status List Signer (EC),O=PQ-OID4VC Test PKI v1,C=EU",
+   "issuer": "CN=Issuing CA EC-P256,O=PQ-OID4VC Test PKI v1,C=EU",
+   "serial": 105,
+   "imza_alg": "ecdsa-with-SHA256",
+   "imza_sinif": "klasik",
+   "anahtar_sinif": "klasik",
+   "der_bayt": 519,
+   "sha256": "fe9a95d46243af0835390bfceeefa5c2dddbc2c38982b61e0d43ce2b70bc9943",
+   "x509_hash": "_pqV1GJDrwg1OQv87u-lwt3bwsOJgrYeDUPOK3C8mUM",
+   "kendinden_imzali": false,
+   "anahtar_rolu": "status/ES256"
+  },
+  "status-ml@int-ml": {
+   "subject": "CN=Status List Signer (ML-DSA-65),O=PQ-OID4VC Test PKI v1,C=EU",
+   "issuer": "CN=Issuing CA ML-DSA-65,O=PQ-OID4VC Test PKI v1,C=EU",
+   "serial": 106,
+   "imza_alg": "ML-DSA-65",
+   "imza_sinif": "pq",
+   "anahtar_sinif": "pq",
+   "der_bayt": 5653,
+   "sha256": "795b42d9b9b936f42e6aef5fa9e8098b915f062d25499262b3bad989ffe7ca46",
+   "x509_hash": "eVtC2bm5NvQuau9fqegJi5FfBi0lSZJis7rZif_nykY",
+   "kendinden_imzali": false,
+   "anahtar_rolu": "status/ML-DSA-65"
+  },
+  "rp-ec@int-ec": {
+   "subject": "CN=Relying Party (EC),O=PQ-OID4VC Test PKI v1,C=EU",
+   "issuer": "CN=Issuing CA EC-P256,O=PQ-OID4VC Test PKI v1,C=EU",
+   "serial": 107,
+   "imza_alg": "ecdsa-with-SHA256",
+   "imza_sinif": "klasik",
+   "anahtar_sinif": "klasik",
+   "der_bayt": 515,
+   "sha256": "05ef05d5b43c3eb0ff533ec0262328f53510ecb42965441834d74af9f57257e3",
+   "x509_hash": "Be8F1bQ8PrD_Uz7AJiMo9TUQ7LQpZUQYNNdK-fVyV-M",
+   "kendinden_imzali": false,
+   "anahtar_rolu": "rp/ES256"
+  },
+  "rp-ml@int-ml": {
+   "subject": "CN=Relying Party (ML-DSA-65),O=PQ-OID4VC Test PKI v1,C=EU",
+   "issuer": "CN=Issuing CA ML-DSA-65,O=PQ-OID4VC Test PKI v1,C=EU",
+   "serial": 108,
+   "imza_alg": "ML-DSA-65",
+   "imza_sinif": "pq",
+   "anahtar_sinif": "pq",
+   "der_bayt": 5650,
+   "sha256": "e8556d959992d764d3de3680ad4c76a54e3849dcd726753979d1578f64edeaa0",
+   "x509_hash": "6FVtlZmS12TT3jaArUx2pU44SdzXJnU5edFXj2Tt6qA",
+   "kendinden_imzali": false,
+   "anahtar_rolu": "rp/ML-DSA-65"
+  }
+ }
+}

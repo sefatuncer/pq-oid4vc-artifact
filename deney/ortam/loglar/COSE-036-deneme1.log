@@ -1,0 +1,48 @@
+# hedef=COSE-036 imaj=pq-a09-env-c:1.0 (sha256:2fa966ecdb8a532de344d35fbb689ddf1474903e3b26bc5588a01dcb344431e5) baslangic=2026-09-25T19:25:22Z zaman_asimi=1500s
+# komut: docker run --rm --name pq-a09-ortam-cose-036 --label pq.agir=derleme --memory=6g --memory-swap=6g -v hedefler/COSE-036:/w -v betikler/konteyner:/b:ro pq-a09-env-c:1.0 sh -c '(bash|sh) /w/kur.sh'
+== wolfSSL v5.9.2-stable: autogen + configure (--enable-ecc --enable-ed25519 --enable-ed448 --enable-curve25519 --enable-aesgcm --enable-aesccm --enable-sha384 --enable-sha512 --enable-keygen --enable-rsapss --enable-chacha --enable-poly1305 --enable-mldsa --enable-lms --enable-hkdf --enable-aeskeywrap)
+configure.ac:25: installing 'build-aux/compile'
+configure.ac:27: installing 'build-aux/config.guess'
+configure.ac:27: installing 'build-aux/config.sub'
+configure.ac:30: installing 'build-aux/install-sh'
+configure.ac:30: installing 'build-aux/missing'
+Makefile.am: installing 'build-aux/depcomp'
+parallel-tests: installing 'build-aux/test-driver'
+make[2]: warning: -j13 forced in submake: resetting jobserver mode.
+make[3]: warning: -j13 forced in submake: resetting jobserver mode.
+#define HAVE_ECC
+#define WOLFSSL_HAVE_MLDSA
+#define HAVE_ED25519
+== wolfCOSE make (libwolfcose.a)
+cc -std=c99 -Os -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wvla -Werror=vla -ffunction-sections -fdata-sections -fstack-usage -DHAVE_ANONYMOUS_INLINE_AGGREGATES=1 -I./include -I/usr/local/include   -c src/wolfcose_cbor.c -o src/wolfcose_cbor.o
+cc -std=c99 -Os -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wvla -Werror=vla -ffunction-sections -fdata-sections -fstack-usage -DHAVE_ANONYMOUS_INLINE_AGGREGATES=1 -I./include -I/usr/local/include   -c src/wolfcose_util.c -o src/wolfcose_util.o
+cc -std=c99 -Os -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wvla -Werror=vla -ffunction-sections -fdata-sections -fstack-usage -DHAVE_ANONYMOUS_INLINE_AGGREGATES=1 -I./include -I/usr/local/include   -c src/wolfcose_alg.c -o src/wolfcose_alg.o
+cc -std=c99 -Os -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wvla -Werror=vla -ffunction-sections -fdata-sections -fstack-usage -DHAVE_ANONYMOUS_INLINE_AGGREGATES=1 -I./include -I/usr/local/include   -c src/wolfcose_ecc.c -o src/wolfcose_ecc.o
+cc -std=c99 -Os -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wvla -Werror=vla -ffunction-sections -fdata-sections -fstack-usage -DHAVE_ANONYMOUS_INLINE_AGGREGATES=1 -I./include -I/usr/local/include   -c src/wolfcose_hdr.c -o src/wolfcose_hdr.o
+cc -std=c99 -Os -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wvla -Werror=vla -ffunction-sections -fdata-sections -fstack-usage -DHAVE_ANONYMOUS_INLINE_AGGREGATES=1 -I./include -I/usr/local/include   -c src/wolfcose_key.c -o src/wolfcose_key.o
+cc -std=c99 -Os -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wvla -Werror=vla -ffunction-sections -fdata-sections -fstack-usage -DHAVE_ANONYMOUS_INLINE_AGGREGATES=1 -I./include -I/usr/local/include   -c src/wolfcose_struct.c -o src/wolfcose_struct.o
+cc -std=c99 -Os -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wvla -Werror=vla -ffunction-sections -fdata-sections -fstack-usage -DHAVE_ANONYMOUS_INLINE_AGGREGATES=1 -I./include -I/usr/local/include   -c src/wolfcose_recipient.c -o src/wolfcose_recipient.o
+cc -std=c99 -Os -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wvla -Werror=vla -ffunction-sections -fdata-sections -fstack-usage -DHAVE_ANONYMOUS_INLINE_AGGREGATES=1 -I./include -I/usr/local/include   -c src/wolfcose_sign1.c -o src/wolfcose_sign1.o
+cc -std=c99 -Os -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wvla -Werror=vla -ffunction-sections -fdata-sections -fstack-usage -DHAVE_ANONYMOUS_INLINE_AGGREGATES=1 -I./include -I/usr/local/include   -c src/wolfcose_sign.c -o src/wolfcose_sign.o
+cc -std=c99 -Os -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wvla -Werror=vla -ffunction-sections -fdata-sections -fstack-usage -DHAVE_ANONYMOUS_INLINE_AGGREGATES=1 -I./include -I/usr/local/include   -c src/wolfcose_countersign.c -o src/wolfcose_countersign.o
+cc -std=c99 -Os -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wvla -Werror=vla -ffunction-sections -fdata-sections -fstack-usage -DHAVE_ANONYMOUS_INLINE_AGGREGATES=1 -I./include -I/usr/local/include   -c src/wolfcose_encrypt0.c -o src/wolfcose_encrypt0.o
+cc -std=c99 -Os -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wvla -Werror=vla -ffunction-sections -fdata-sections -fstack-usage -DHAVE_ANONYMOUS_INLINE_AGGREGATES=1 -I./include -I/usr/local/include   -c src/wolfcose_mac0.c -o src/wolfcose_mac0.o
+cc -std=c99 -Os -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wvla -Werror=vla -ffunction-sections -fdata-sections -fstack-usage -DHAVE_ANONYMOUS_INLINE_AGGREGATES=1 -I./include -I/usr/local/include   -c src/wolfcose_encrypt.c -o src/wolfcose_encrypt.o
+cc -std=c99 -Os -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wvla -Werror=vla -ffunction-sections -fdata-sections -fstack-usage -DHAVE_ANONYMOUS_INLINE_AGGREGATES=1 -I./include -I/usr/local/include   -c src/wolfcose_mac.c -o src/wolfcose_mac.o
+cc -std=c99 -Os -Wall -Wextra -Wpedantic -Wshadow -Wconversion -Wvla -Werror=vla -ffunction-sections -fdata-sections -fstack-usage -DHAVE_ANONYMOUS_INLINE_AGGREGATES=1 -I./include -I/usr/local/include   -c src/wolfcose_eat_psa.c -o src/wolfcose_eat_psa.o
+rm -f libwolfcose.a
+ar rcs libwolfcose.a src/wolfcose_cbor.o src/wolfcose_util.o src/wolfcose_alg.o src/wolfcose_ecc.o src/wolfcose_hdr.o src/wolfcose_key.o src/wolfcose_struct.o src/wolfcose_recipient.o src/wolfcose_sign1.o src/wolfcose_sign.o src/wolfcose_countersign.o src/wolfcose_encrypt0.o src/wolfcose_mac0.o src/wolfcose_encrypt.o src/wolfcose_mac.o src/wolfcose_eat_psa.o
+doğrulama işlev adları (başlık): wc_CoseEatPsaToken_Verify
+wc_CoseEatPsaToken_VerifyByUeid
+wc_CoseMac0_Verify
+wc_CoseMac_Verify
+/tmp/baglanti.c: In function 'main':
+/tmp/baglanti.c:5:59: error: 'wc_CoseEatPsaToken_Verify' undeclared (first use in this function)
+    5 |   printf("sembol wc_CoseEatPsaToken_Verify %s\n", (void*)&wc_CoseEatPsaToken_Verify ? "var" : "yok");
+      |                                                           ^~~~~~~~~~~~~~~~~~~~~~~~~
+/tmp/baglanti.c:5:59: note: each undeclared identifier is reported only once for each function it appears in
+/tmp/baglanti.c:6:65: error: 'wc_CoseEatPsaToken_VerifyByUeid' undeclared (first use in this function)
+    6 |   printf("sembol wc_CoseEatPsaToken_VerifyByUeid %s\n", (void*)&wc_CoseEatPsaToken_VerifyByUeid ? "var" : "yok");
+      |                                                                 ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+== SONUC: basarisiz
+# cikis_kodu=13 sure_s=50 bitis=2026-09-25T19:26:12Z

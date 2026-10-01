@@ -1,0 +1,44 @@
+# hedef=REF-003 imaj=pq-a09-env-jvm:1.0 (sha256:1900053fd579a7ca0b4cfd6334a30f202d5ffdf737bb6bf06d56bd94d1cdb944) baslangic=2026-09-25T12:56:32Z zaman_asimi=2400s
+# komut: docker run --rm --name pq-a09-ortam-ref-003 --label pq.agir=derleme --memory=6g --memory-swap=6g -v hedefler/REF-003:/w -v betikler/konteyner:/b:ro pq-a09-env-jvm:1.0 bash /w/kur.sh
+HEAD=b1f17e8fe247504e7541a0121c1b6c9f1c7d4908
+== gradle assemble (--write-verification-metadata sha256; test yok)
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.6.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+Calculating task graph as configuration cache cannot be reused due to --write-verification-metadata
+> Task :checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :bootBuildInfo
+> Task :processResources
+> Task :compileKotlin
+w: file:///tmp/src/src/main/kotlin/eu/europa/ec/eudi/verifier/endpoint/VerifierContext.kt:705:16 'data object Apache : HttpClientEngineFactory<ApacheEngineConfig>' is deprecated. Apache engine is deprecated. Consider using Apache5 engine instead.
+w: file:///tmp/src/src/main/kotlin/eu/europa/ec/eudi/verifier/endpoint/domain/rqes/RqesTransactionData.kt:609:55 'constructor(p0: String!): URL' is deprecated. Deprecated in Java.
+
+> Task :compileJava NO-SOURCE
+> Task :classes
+> Task :resolveMainClassName
+> Task :bootJar
+> Task :jar
+> Task :assemble
+
+[Incubating] Problems report is available at: file:///tmp/src/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/9.6.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 1m 54s
+6 actionable tasks: 6 executed
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.6.1/userguide/configuration_cache_enabling.html
+total 87092
+drwxr-xr-x 2 root root     4096 Sep 25 12:58 .
+drwxr-xr-x 9 root root     4096 Sep 25 12:58 ..
+-rw-r--r-- 1 root root 87247309 Sep 25 12:58 eudi-srv-verifier-endpoint-0.12.0-SNAPSHOT.jar
+-rw-r--r-- 1 root root  1924893 Sep 25 12:58 eudi-srv-verifier-endpoint-0.12.0-SNAPSHOT-plain.jar
+Start-Class=eu.europa.ec.eudi.verifier.endpoint.VerifierEndpointApplica
+== bağlama kontrolü (uygulama sınıfları ilklendirilmeden yüklenir; servis başlatılmaz)
+jar=eudi-srv-verifier-endpoint-0.12.0-SNAPSHOT-plain.jar sinif_yuklendi=951 sinif_yuklenemedi=0
+ad_eslesen_siniflar (Verif|Validat; bilgi): eu.europa.ec.eudi.verifier.endpoint.TrustValidatorConfigurationProperties,eu.europa.ec.eudi.verifier.endpoint.ValidationConfigurationProperties,eu.europa.ec.eudi.verifier.endpoint.VerifierApplication,eu.europa.ec.eudi.verifier.endpoint.VerifierContextKt,eu.europa.ec.eudi.verifier.endpoint.VerifierEndpointApplicationKt,eu.europa.ec.eudi.verifier.endpoint.VerifierEndpointConfigurationProperties,eu.europa.ec.eudi.verifier.endpoint.adapter.input.web.VerifierApi,eu.europa.ec.eudi.verifier.endpoint.adapter.input.web.VerifierApiVersion,eu.europa.ec.eudi.verifier.endpoint.adapter.out.consultation.VerificationContextTO,eu.europa.ec.eudi.verifier.endpoint.adapter.out.jose.VerifierInfo,eu.europa.ec.eudi.verifier.endpoint.adapter.out.jose.VerifyEncryptedResponseWithNimbus,eu.europa.ec.eudi.verifier.endpoint.adapter.out.mso.DeviceResponseValidator,eu.europa.ec.eudi.verifier.endpoint.adapter.out.mso.DeviceResponseValidatorKt,eu.europa.ec.eudi.verifier.endpoint.adapter.out.mso.DocumentValidator,eu.europa.ec.eudi.verifier.endpoint.adapter.out.mso.DocumentValidatorKt,eu.europa.ec.eudi.verifier.endpoint.adapter.out.presentation.ValidateSdJwtVcOrMsoMdocVerifiablePresentation,eu.europa.ec.eudi.verifier.endpoint.adapter.out.presentation.ValidateSdJwtVcOrMsoMdocVerifiablePresentationKt,eu.europa.ec.eudi.verifier.endpoint.adapter.out.sdjwtvc.SdJwtVcValidationError,eu.europa.ec.eudi.verifier.endpoint.adapter.out.sdjwtvc.SdJwtVcValidationErrorCode,eu.europa.ec.eudi.verifier.endpoint.adapter.out.sdjwtvc.SdJwtVcValidator,eu.europa.ec.eudi.verifier.endpoint.adapter.out.sdjwtvc.SdJwtVcValidatorKt,eu.europa.ec.eudi.verifier.endpoint.adapter.out.sdjwtvc.SdJwtVerificationExceptionExtensionsKt,eu.europa.ec.eudi.verifier.endpoint.adapter.out.tokenstatuslist.StatusListTokenValidator,eu.europa.ec.eudi.verifier.endpoint.adapter.out.tokenstatuslist.StatusValidationError,eu.europa.ec.eudi.verifier.endpoint.domain.VerifiablePresentation
+anahtar_sinif eu.europa.ec.eudi.verifier.endpoint.VerifierEndpointApplica HATA java.lang.ClassNotFoundException: eu.europa.ec.eudi.verifier.endpoint.VerifierEndpointApplica
+== SONUC: basarisiz
+# cikis_kodu=20 sure_s=130 bitis=2026-09-25T12:58:42Z

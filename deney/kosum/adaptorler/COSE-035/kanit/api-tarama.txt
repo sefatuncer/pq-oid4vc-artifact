@@ -1,0 +1,323 @@
+# COSE-035 web-auth/cose-lib 4.8.2 — API taraması (sözleşme §5.1)
+# imaj: a10-cose-035:1 (sha256:6d76b651e0bef27d887ad5d3fbd60d23a065760a1c4b58dab89263b2852105ae)
+# komut: docker run --rm --network none a10-cose-035:1 sh -c 'cd /opt/a/vendor/web-auth/cose-lib && grep -rn -i -E "identifier\(\)|Manager|allow|register|required|KeyRestriction|signatures|eddsa|ed25519|ml-?dsa|composite|crit|x5chain|kid" src/ README.md'
+
+src/Structure/HeaderMapHelper.php:178:     * number stays acceptable exactly as it is on the decoder path (RFC 8949 allows it outside deterministic
+src/Structure/HeaderMapHelper.php:195:     * Check a "signatures" list against "signatures : [+ COSE_Signature]" and "COSE_Signature = [ Headers,
+src/Structure/HeaderMapHelper.php:198:    public static function assertSignatureList(ListObject|IndefiniteLengthListObject $signatures): void
+src/Structure/HeaderMapHelper.php:200:        if ($signatures->count() === 0) {
+src/Structure/HeaderMapHelper.php:202:                'Not a valid CoseSign object. The signatures list shall hold at least one COSE_Signature (RFC 9052 section 4.1).'
+src/Structure/HeaderMapHelper.php:205:        foreach ($signatures as $signature) {
+src/Structure/HeaderMapHelper.php:264:     * The decoder maps simple value 22 to NullObject only when the caller's OtherObjectManager knows that class; an
+src/Structure/HeaderMapHelper.php:265:     * empty manager yields a GenericObject carrying the same head. Both are nil on the wire, so both are nil here.
+src/Structure/CoseHeaders.php:31: * $kid = $headers->getHeaderParameter(4);            // protected bucket first
+src/Algorithms.php:73:     * @deprecated since v4.0.6. Please use COSE_ALGORITHM_EDDSA instead. Will be removed in v5.0.0
+src/Algorithms.php:75:    final public const COSE_ALGORITHM_EdDSA = -8;
+src/Algorithms.php:77:    final public const COSE_ALGORITHM_EDDSA = -8;
+src/Algorithms.php:80:     * Ed25519 over a SHA-256 (-260) or SHA-512 (-261) digest of the message. These pre-hash variants are not
+src/Algorithms.php:81:     * registered anywhere and are not EdDSA identifiers: the IANA COSE Algorithms registry assigns -260 to WalnutDSA
+src/Algorithms.php:83:     * COSE_ALGORITHM_ED25519 (-19) or COSE_ALGORITHM_ED448 (-53).
+src/Algorithms.php:163:    final public const COSE_ALGORITHM_ED25519 = -19;
+src/Algorithms.php:172:     * (RSASSA-PSS) are deliberately absent, and so are EdDSA (-8), Ed25519 (-19) and Ed448 (-53), which are one-shot
+src/Algorithms.php:202:     * The EdDSA identifiers (-8, -19, -53) are absent: they name one-shot signature schemes with no separately
+src/Algorithms.php:278:     * decision not to register RS1 has no effect on the code paths that go through these maps.
+src/Encryption/CoseEncryptTag.php:12:use CBOR\OtherObject\OtherObjectManager;
+src/Encryption/CoseEncryptTag.php:16:use CBOR\Tag\TagManager;
+src/Encryption/CoseEncryptTag.php:29: * registered in the default decoder, so Decoder::create() resolves tag 96 on its own. The replacement accepts what
+src/Encryption/CoseEncryptTag.php:149:        $decoder ??= Decoder::create(TagManager::create(), OtherObjectManager::create(), $maxDepth);
+src/Encryption/CoseEncrypt0Tag.php:12:use CBOR\OtherObject\OtherObjectManager;
+src/Encryption/CoseEncrypt0Tag.php:16:use CBOR\Tag\TagManager;
+src/Encryption/CoseEncrypt0Tag.php:29: * registered in the default decoder, so Decoder::create() resolves tag 16 on its own. The replacement accepts what
+src/Encryption/CoseEncrypt0Tag.php:136:        $decoder ??= Decoder::create(TagManager::create(), OtherObjectManager::create(), $maxDepth);
+src/Algorithm/Manager.php:14: * @see \Cose\Tests\Algorithm\ManagerTest
+src/Algorithm/Manager.php:16:final class Manager
+src/Algorithm/Manager.php:29:     * Registers algorithms, each under the identifier it declares.
+src/Algorithm/Manager.php:38:     * Re-registering the same class stays silent, so that a container that autoconfigures the same algorithm twice
+src/Algorithm/Manager.php:44:            $identifier = $algorithm::identifier();
+src/Algorithm/Manager.php:45:            $registered = $this->algorithms[$identifier] ?? null;
+src/Algorithm/Manager.php:46:            if ($registered !== null && $registered::class !== $algorithm::class) {
+src/Algorithm/Manager.php:48:                    'The algorithm identifier %d is already registered with "%s" and is being replaced by "%s". As of v5.0.0, this will throw an exception.',
+src/Algorithm/Manager.php:50:                    $registered::class,
+src/Algorithm/Manager.php:79:     * are carried over unchanged. This manager is left untouched.
+src/Algorithm/Manager.php:81:     * @see KeyRestrictionAware
+src/Algorithm/Manager.php:83:    public function withKeyRestrictionsEnforced(bool $enforce = true): self
+src/Algorithm/Manager.php:85:        $manager = self::create();
+src/Algorithm/Manager.php:87:            $manager->add(
+src/Algorithm/Manager.php:88:                $algorithm instanceof KeyRestrictionAware
+src/Algorithm/Manager.php:89:                    ? $algorithm->withKeyRestrictionsEnforced($enforce)
+src/Algorithm/Manager.php:94:        return $manager;
+src/Algorithm/KeyRestrictionAware.php:14: * did before this library read them. Turn it on with `withKeyRestrictionsEnforced()`, on a single algorithm or on a
+src/Algorithm/KeyRestrictionAware.php:15: * whole `Manager`, to get the behaviour the RFC requires: the operation is refused with an
+src/Algorithm/KeyRestrictionAware.php:21:interface KeyRestrictionAware extends Algorithm
+src/Algorithm/KeyRestrictionAware.php:27:    public function withKeyRestrictionsEnforced(bool $enforce = true): static;
+src/Algorithm/KeyRestrictionAware.php:29:    public function enforcesKeyRestrictions(): bool;
+src/Algorithm/Algorithm.php:9:    public static function identifier(): int;
+src/Algorithm/Mac/HS256Truncated64.php:16:    public static function identifier(): int
+src/Algorithm/Mac/HS256.php:16:    public static function identifier(): int
+src/Algorithm/Mac/Hmac.php:7:use Cose\Algorithm\KeyRestrictionAware;
+src/Algorithm/Mac/Hmac.php:8:use Cose\Algorithm\KeyRestrictionEnforcement;
+src/Algorithm/Mac/Hmac.php:41:abstract class Hmac implements Mac, KeyRestrictionAware
+src/Algorithm/Mac/Hmac.php:43:    use KeyRestrictionEnforcement;
+src/Algorithm/Mac/Hmac.php:115:        $this->checkKeyRestrictions($key, $operation);
+src/Algorithm/Mac/HS384.php:16:    public static function identifier(): int
+src/Algorithm/Mac/HS512.php:16:    public static function identifier(): int
+src/Algorithm/Mac/Mac.php:17:     *                                  value, or - when the algorithm enforces them, see KeyRestrictionAware - an
+src/Algorithm/Mac/Mac.php:24:     * operation from the one above: a key may be allowed to perform one and not the other.
+src/Algorithm/KeyRestrictionEnforcement.php:13: * @see KeyRestrictionAware
+src/Algorithm/KeyRestrictionEnforcement.php:15: * @phpstan-require-implements KeyRestrictionAware
+src/Algorithm/KeyRestrictionEnforcement.php:17:trait KeyRestrictionEnforcement
+src/Algorithm/KeyRestrictionEnforcement.php:19:    private bool $enforceKeyRestrictions = false;
+src/Algorithm/KeyRestrictionEnforcement.php:21:    public function withKeyRestrictionsEnforced(bool $enforce = true): static
+src/Algorithm/KeyRestrictionEnforcement.php:24:        $clone->enforceKeyRestrictions = $enforce;
+src/Algorithm/KeyRestrictionEnforcement.php:29:    public function enforcesKeyRestrictions(): bool
+src/Algorithm/KeyRestrictionEnforcement.php:31:        return $this->enforceKeyRestrictions;
+src/Algorithm/KeyRestrictionEnforcement.php:38:     *                                  does not allow the operation
+src/Algorithm/KeyRestrictionEnforcement.php:40:    private function checkKeyRestrictions(Key $key, int $operation): void
+src/Algorithm/KeyRestrictionEnforcement.php:42:        if (! $this->enforceKeyRestrictions) {
+src/Algorithm/KeyRestrictionEnforcement.php:46:        // static::identifier() is the identifier of the concrete algorithm, so ES256 and ESP256, or EdDSA (-8) and
+src/Algorithm/KeyRestrictionEnforcement.php:47:        // the fully-specified Ed25519 (-19), each enforce their own value.
+src/Algorithm/KeyRestrictionEnforcement.php:48:        $key->assertUsableWith(static::identifier(), $operation);
+src/Algorithm/ManagerFactory.php:14: * @see \Cose\Tests\Algorithm\ManagerFactoryTest
+src/Algorithm/ManagerFactory.php:16:final class ManagerFactory
+src/Algorithm/ManagerFactory.php:29:     * Registers an algorithm under an alias.
+src/Algorithm/ManagerFactory.php:33:     * of v5.0.0 it will throw an InvalidArgumentException. Re-registering the same class under the same alias stays
+src/Algorithm/ManagerFactory.php:37:     * collide as soon as generate() is given both: the Manager it builds keeps only one of them, and warns about the
+src/Algorithm/ManagerFactory.php:42:        $registered = $this->algorithms[$alias] ?? null;
+src/Algorithm/ManagerFactory.php:43:        if ($registered !== null && $registered::class !== $algorithm::class) {
+src/Algorithm/ManagerFactory.php:45:                'The alias "%s" is already registered with "%s" and is being replaced by "%s". As of v5.0.0, this will throw an exception.',
+src/Algorithm/ManagerFactory.php:47:                $registered::class,
+src/Algorithm/ManagerFactory.php:72:    public function generate(string ...$aliases): Manager
+src/Algorithm/ManagerFactory.php:74:        $manager = Manager::create();
+src/Algorithm/ManagerFactory.php:79:            $manager->add($this->algorithms[$alias]);
+src/Algorithm/ManagerFactory.php:82:        return $manager;
+src/Algorithm/Signature/ECDSA/ECDSA.php:7:use Cose\Algorithm\KeyRestrictionAware;
+src/Algorithm/Signature/ECDSA/ECDSA.php:8:use Cose\Algorithm\KeyRestrictionEnforcement;
+src/Algorithm/Signature/ECDSA/ECDSA.php:24:abstract class ECDSA implements Signature, KeyRestrictionAware
+src/Algorithm/Signature/ECDSA/ECDSA.php:26:    use KeyRestrictionEnforcement;
+src/Algorithm/Signature/ECDSA/ECDSA.php:82:        $this->checkKeyRestrictions($key, $operation);
+src/Algorithm/Signature/ECDSA/ECSignature.php:22: * The encoder emits DER as required by X.690 §10.1 and the decoder only accepts DER: every encoding OpenSSL
+src/Algorithm/Signature/ECDSA/ECSignature.php:87:            // X.690 §8.1.3: the length octets cover exactly the contents octets; no trailing data is allowed.
+src/Algorithm/Signature/ECDSA/ECSignature.php:209:            // Drop the single sign octet the encoding is allowed to carry.
+src/Algorithm/Signature/ECDSA/ES256.php:19:    public static function identifier(): int
+src/Algorithm/Signature/ECDSA/ES512.php:19:    public static function identifier(): int
+src/Algorithm/Signature/ECDSA/ES256K.php:19:    public static function identifier(): int
+src/Algorithm/Signature/ECDSA/ES384.php:19:    public static function identifier(): int
+src/Algorithm/Signature/EdDSA/Ed512.php:5:namespace Cose\Algorithm\Signature\EdDSA;
+src/Algorithm/Signature/EdDSA/Ed512.php:13: * Pure Ed25519 over the SHA-512 digest of the payload.
+src/Algorithm/Signature/EdDSA/Ed512.php:15: * Despite its name this is not EdDSA with Curve448, and it rejects an Ed448 key: the signature is computed by
+src/Algorithm/Signature/EdDSA/Ed512.php:16: * {@see EdDSA}, whose curve check accepts Ed25519 only. EdDSA with Curve448, RFC 8032 section 5.2, is
+src/Algorithm/Signature/EdDSA/Ed512.php:19: * The construction is defined by no specification. It is neither the EdDSA of RFC 8032, section 5.1 - which signs the
+src/Algorithm/Signature/EdDSA/Ed512.php:20: * message itself - nor Ed25519ph of the same section, whose challenge covers a "dom2" prefix this class does not add.
+src/Algorithm/Signature/EdDSA/Ed512.php:21: * RFC 9053, section 2.2 is explicit that "for use with COSE, only the pure EdDSA version is used", and RFC 8032,
+src/Algorithm/Signature/EdDSA/Ed512.php:37: * @see \Cose\Tests\Algorithm\Signature\EdDSA\PrehashedEdDSATest
+src/Algorithm/Signature/EdDSA/Ed512.php:39:final class Ed512 extends EdDSA
+src/Algorithm/Signature/EdDSA/Ed512.php:43:    public const NON_STANDARD_ALGORITHM_MESSAGE = 'The algorithm Ed512 (-261) signs the SHA-512 digest of the payload with pure Ed25519, a construction no specification defines, and its identifier is assigned by IANA to TurboSHAKE128. If you know what you are doing, create it with "acknowledgeNonStandardAlgorithm: true"; as of v5.0.0, omitting that acknowledgement will throw an exception.';
+src/Algorithm/Signature/EdDSA/Ed512.php:58:    public static function identifier(): int
+src/Algorithm/Signature/EdDSA/Ed256.php:5:namespace Cose\Algorithm\Signature\EdDSA;
+src/Algorithm/Signature/EdDSA/Ed256.php:13: * Pure Ed25519 over the SHA-256 digest of the payload.
+src/Algorithm/Signature/EdDSA/Ed256.php:15: * This construction is defined by no specification. It is neither the EdDSA of RFC 8032, section 5.1 - which signs
+src/Algorithm/Signature/EdDSA/Ed256.php:16: * the message itself - nor Ed25519ph of the same section, whose challenge covers a "dom2" prefix this class does not
+src/Algorithm/Signature/EdDSA/Ed256.php:17: * add. RFC 9053, section 2.2 is explicit that "for use with COSE, only the pure EdDSA version is used", and RFC 8032,
+src/Algorithm/Signature/EdDSA/Ed256.php:24: * are those that use it on both ends. The fully-specified EdDSA identifiers are
+src/Algorithm/Signature/EdDSA/Ed256.php:25: * {@see \Cose\Algorithm\Signature\FullySpecified\Ed25519} (-19) and
+src/Algorithm/Signature/EdDSA/Ed256.php:35: * @see \Cose\Tests\Algorithm\Signature\EdDSA\PrehashedEdDSATest
+src/Algorithm/Signature/EdDSA/Ed256.php:37:final class Ed256 extends EdDSA
+src/Algorithm/Signature/EdDSA/Ed256.php:41:    public const NON_STANDARD_ALGORITHM_MESSAGE = 'The algorithm Ed256 (-260) signs the SHA-256 digest of the payload with pure Ed25519, a construction no specification defines, and its identifier is assigned by IANA to WalnutDSA. If you know what you are doing, create it with "acknowledgeNonStandardAlgorithm: true"; as of v5.0.0, omitting that acknowledgement will throw an exception.';
+src/Algorithm/Signature/EdDSA/Ed256.php:56:    public static function identifier(): int
+src/Algorithm/Signature/EdDSA/Ed25519.php:5:namespace Cose\Algorithm\Signature\EdDSA;
+src/Algorithm/Signature/EdDSA/Ed25519.php:7:final class Ed25519 extends EdDSA
+src/Algorithm/Signature/EdDSA/Ed25519.php:16:    public static function identifier(): int
+src/Algorithm/Signature/EdDSA/EdDSA.php:5:namespace Cose\Algorithm\Signature\EdDSA;
+src/Algorithm/Signature/EdDSA/EdDSA.php:7:use Cose\Algorithm\KeyRestrictionAware;
+src/Algorithm/Signature/EdDSA/EdDSA.php:8:use Cose\Algorithm\KeyRestrictionEnforcement;
+src/Algorithm/Signature/EdDSA/EdDSA.php:27: * @see \Cose\Tests\Algorithm\Signature\EdDSA\EdDSATest
+src/Algorithm/Signature/EdDSA/EdDSA.php:29:class EdDSA implements Signature, KeyRestrictionAware
+src/Algorithm/Signature/EdDSA/EdDSA.php:31:    use KeyRestrictionEnforcement;
+src/Algorithm/Signature/EdDSA/EdDSA.php:37:                'The EdDSA algorithms require the Sodium extension, which is not loaded.'
+src/Algorithm/Signature/EdDSA/EdDSA.php:43:     * Ed25519 is computed with the sodium extension. It ships with PHP and is enabled by default, but a build can
+src/Algorithm/Signature/EdDSA/EdDSA.php:59:        if ($key->curveId() !== OkpKey::CURVE_ED25519) {
+src/Algorithm/Signature/EdDSA/EdDSA.php:65:        // verbatim, so handing it a caller-supplied "x" would let two signatures of the same message under two
+src/Algorithm/Signature/EdDSA/EdDSA.php:92:        if ($key->curveId() !== OkpKey::CURVE_ED25519) {
+src/Algorithm/Signature/EdDSA/EdDSA.php:95:        // Sodium reports a signature or a public key whose size is not the one Ed25519 defines with a
+src/Algorithm/Signature/EdDSA/EdDSA.php:105:    public static function identifier(): int
+src/Algorithm/Signature/EdDSA/EdDSA.php:107:        return Algorithms::COSE_ALGORITHM_EDDSA;
+src/Algorithm/Signature/EdDSA/EdDSA.php:112:        $this->checkKeyRestrictions($key, $operation);
+src/Algorithm/Signature/Signature.php:16:     *                                  algorithm enforces them, see KeyRestrictionAware - an "alg" or a "key_ops"
+src/Algorithm/Signature/Signature.php:29:     *                                  KeyRestrictionAware - its "alg" or its "key_ops" forbids the verification.
+src/Algorithm/Signature/RSA/PSSRSA.php:9:use Cose\Algorithm\KeyRestrictionAware;
+src/Algorithm/Signature/RSA/PSSRSA.php:10:use Cose\Algorithm\KeyRestrictionEnforcement;
+src/Algorithm/Signature/RSA/PSSRSA.php:54:abstract class PSSRSA implements Signature, KeyRestrictionAware
+src/Algorithm/Signature/RSA/PSSRSA.php:56:    use KeyRestrictionEnforcement;
+src/Algorithm/Signature/RSA/PSSRSA.php:156:        $this->checkKeyRestrictions($key, $operation);
+src/Algorithm/Signature/RSA/RSA.php:7:use Cose\Algorithm\KeyRestrictionAware;
+src/Algorithm/Signature/RSA/RSA.php:8:use Cose\Algorithm\KeyRestrictionEnforcement;
+src/Algorithm/Signature/RSA/RSA.php:37:abstract class RSA implements Signature, KeyRestrictionAware
+src/Algorithm/Signature/RSA/RSA.php:39:    use KeyRestrictionEnforcement;
+src/Algorithm/Signature/RSA/RSA.php:99:        $this->checkKeyRestrictions($key, $operation);
+src/Algorithm/Signature/RSA/RS512.php:19:    public static function identifier(): int
+src/Algorithm/Signature/RSA/PS384.php:19:    public static function identifier(): int
+src/Algorithm/Signature/RSA/PS512.php:19:    public static function identifier(): int
+src/Algorithm/Signature/RSA/RS1.php:15: * SHA-1 is no longer acceptable for digital signatures: NIST has recommended against generating signatures with it
+src/Algorithm/Signature/RSA/RS1.php:30:    public const INSECURE_ALGORITHM_MESSAGE = 'The algorithm RS1 (RSASSA-PKCS1-v1_5 with SHA-1) is not secure and shall only be used to verify signatures produced by legacy authenticators. If you know what you are doing, create it with "acknowledgeInsecureAlgorithm: true"; as of v5.0.0, omitting that acknowledgement will throw an exception.';
+src/Algorithm/Signature/RSA/RS1.php:47:    public static function identifier(): int
+src/Algorithm/Signature/RSA/PS256.php:19:    public static function identifier(): int
+src/Algorithm/Signature/RSA/RS256.php:19:    public static function identifier(): int
+src/Algorithm/Signature/RSA/RS384.php:19:    public static function identifier(): int
+src/Algorithm/Signature/FullySpecified/ESB512.php:25:    public static function identifier(): int
+src/Algorithm/Signature/FullySpecified/ESP384.php:25:    public static function identifier(): int
+src/Algorithm/Signature/FullySpecified/Ed448.php:7:use Cose\Algorithm\KeyRestrictionAware;
+src/Algorithm/Signature/FullySpecified/Ed448.php:8:use Cose\Algorithm\KeyRestrictionEnforcement;
+src/Algorithm/Signature/FullySpecified/Ed448.php:23: * EdDSA using the Ed448 parameter set of RFC 8032, section 5.2.
+src/Algorithm/Signature/FullySpecified/Ed448.php:25: * Unlike Ed25519, Ed448 is not covered by the sodium extension; it is computed through OpenSSL, which PHP only wires
+src/Algorithm/Signature/FullySpecified/Ed448.php:30:final class Ed448 implements Signature, KeyRestrictionAware
+src/Algorithm/Signature/FullySpecified/Ed448.php:32:    use KeyRestrictionEnforcement;
+src/Algorithm/Signature/FullySpecified/Ed448.php:37:     * EdDSA is a one-shot signature scheme: the message is not hashed beforehand, which OpenSSL expects to be
+src/Algorithm/Signature/FullySpecified/Ed448.php:47:    public static function identifier(): int
+src/Algorithm/Signature/FullySpecified/Ed448.php:103:        $this->checkKeyRestrictions($key, $operation);
+src/Algorithm/Signature/FullySpecified/ESP512.php:25:    public static function identifier(): int
+src/Algorithm/Signature/FullySpecified/ESP256.php:25:    public static function identifier(): int
+src/Algorithm/Signature/FullySpecified/Ed25519.php:7:use Cose\Algorithm\Signature\EdDSA\EdDSA;
+src/Algorithm/Signature/FullySpecified/Ed25519.php:10: * EdDSA using the Ed25519 parameter set of RFC 8032, section 5.1.
+src/Algorithm/Signature/FullySpecified/Ed25519.php:12: * This is the fully-specified counterpart of the polymorphic EdDSA identifier (-8). The cryptography is identical;
+src/Algorithm/Signature/FullySpecified/Ed25519.php:17:final class Ed25519 extends EdDSA
+src/Algorithm/Signature/FullySpecified/Ed25519.php:26:    public static function identifier(): int
+src/Algorithm/Signature/FullySpecified/ESB384.php:25:    public static function identifier(): int
+src/Algorithm/Signature/FullySpecified/ESB256.php:25:    public static function identifier(): int
+src/Algorithm/Signature/FullySpecified/ESB320.php:25:    public static function identifier(): int
+src/Algorithm/Signature/CertificateSignatureVerifier.php:7:use Cose\Algorithm\Manager;
+src/Algorithm/Signature/CertificateSignatureVerifier.php:20: * the map altogether, and RSASSA-PSS, EdDSA, Ed25519 and Ed448 cannot be expressed by it at all.
+src/Algorithm/Signature/CertificateSignatureVerifier.php:22: * This class takes the other route: the certificate's key becomes a Cose\Key\Key and the Signature class registered
+src/Algorithm/Signature/CertificateSignatureVerifier.php:25: * First, the set of acceptable algorithms is the Manager the operator built, not a constant of this library: an
+src/Algorithm/Signature/CertificateSignatureVerifier.php:26: * identifier that was never registered is refused, so `alg`, which comes from the wire, cannot select a verifier the
+src/Algorithm/Signature/CertificateSignatureVerifier.php:27: * operator did not choose. RS1 in particular is only reachable when the operator registered an RS1 instance, which
+src/Algorithm/Signature/CertificateSignatureVerifier.php:30: * Second, every policy a registered algorithm carries applies unchanged, because it is that very instance which
+src/Algorithm/Signature/CertificateSignatureVerifier.php:44:        private readonly Manager $manager
+src/Algorithm/Signature/CertificateSignatureVerifier.php:48:    public static function create(Manager $manager): self
+src/Algorithm/Signature/CertificateSignatureVerifier.php:50:        return new self($manager);
+src/Algorithm/Signature/CertificateSignatureVerifier.php:57:     * registered for the identifier, or when the key of the certificate cannot be used with that algorithm
+src/Algorithm/Signature/CertificateSignatureVerifier.php:91:        $algorithm = $this->manager->get($algorithmIdentifier);
+src/Algorithm/Signature/CertificateSignatureVerifier.php:94:                'The algorithm identifier %d is not registered with a signature algorithm',
+src/Mac/CoseMacTag.php:12:use CBOR\OtherObject\OtherObjectManager;
+src/Mac/CoseMacTag.php:16:use CBOR\Tag\TagManager;
+src/Mac/CoseMacTag.php:29: * registered in the default decoder, so Decoder::create() resolves tag 97 on its own. The replacement accepts what
+src/Mac/CoseMacTag.php:154:        $decoder ??= Decoder::create(TagManager::create(), OtherObjectManager::create(), $maxDepth);
+src/Mac/CoseMac0Tag.php:12:use CBOR\OtherObject\OtherObjectManager;
+src/Mac/CoseMac0Tag.php:16:use CBOR\Tag\TagManager;
+src/Mac/CoseMac0Tag.php:29: * registered in the default decoder, so Decoder::create() resolves tag 17 on its own. The replacement accepts what
+src/Mac/CoseMac0Tag.php:140:        $decoder ??= Decoder::create(TagManager::create(), OtherObjectManager::create(), $maxDepth);
+src/Key/OkpKey.php:34:    final public const CURVE_ED25519 = 6;
+src/Key/OkpKey.php:42:    final public const CURVE_NAME_ED25519 = 'Ed25519';
+src/Key/OkpKey.php:55:        self::CURVE_ED25519,
+src/Key/OkpKey.php:68:        self::CURVE_NAME_ED25519 => self::CURVE_ED25519,
+src/Key/OkpKey.php:79:        self::CURVE_ED25519 => 32,
+src/Key/OkpKey.php:89:        self::CURVE_ED25519,
+src/Key/OkpKey.php:95:        self::CURVE_ED25519 => '1.3.101.112',
+src/Key/OkpKey.php:113:        // private key, "it can be recomputed from the required elements". A private key carrying "crv" and "d"
+src/Key/OkpKey.php:168:     * The curve as the key carries it, which RFC 9053 section 7.2 allows to be either the identifier of the "COSE
+src/Key/OkpKey.php:196:     * Recomputes the public key from the private one, as RFC 9053 section 7.2 allows when "x" was omitted.
+src/Key/RsaKeyValidator.php:18: * RFC 8812 registers the RSA algorithms for WebAuthn and defers to RFC 8230, whose section 6.1 states that "a key
+src/Key/RsaKeyValidator.php:47:     * The smallest modulus length RFC 8230 allows, in bits.
+src/Key/RsaKeyValidator.php:63:     * bound allows.
+src/Key/RsaKeyValidator.php:138:                'The modulus of the key is %d bits long; at least %d bits are required',
+src/Key/RsaKeyValidator.php:213:                'The modulus of the key is %d bits long; at most %d bits are allowed',
+src/Key/RsaKeyValidator.php:225:                'The public exponent of the key is %d bits long; at most %d bits are allowed',
+src/Key/Key.php:40:    public const KID = 2;
+src/Key/Key.php:122:     * numeric string, or an equivalent PHP array: both the string and the native integer form of a registered key
+src/Key/Key.php:153:     *                                  is registered under.
+src/Key/Key.php:199:     * Whether the restrictions the key carries allow the operation to be performed with the given algorithm.
+src/Key/Key.php:218:     * 3.1 repeat both as a per-algorithm requirement for ECDSA, EdDSA and HMAC.
+src/Key/Key.php:252:            throw new InvalidArgumentException(sprintf('The key does not allow the "%s" operation', $name));
+src/Key/PublicKeyLoader.php:30: * the EdDSA family cannot be expressed that way. This loader is the missing half of the other route: it produces the
+src/Key/PublicKeyLoader.php:31: * key, and the Signature class registered for the identifier does the verification. See
+src/Key/PublicKeyLoader.php:61:        '1.3.101.112' => OkpKey::CURVE_ED25519,
+src/Key/PublicKeyLoader.php:117:        $algorithm = $publicKeyInfo->algorithmIdentifier();
+src/Key/PublicKeyLoader.php:200:     * Only the definite form of X.690, section 8.1.3 is accepted, which is all DER allows (section 10.1).
+src/Key/SymmetricKeyValidator.php:84:                'The key is %d bytes long; at least %d bytes are required',
+src/Key/Ec2Key.php:38:     * The registered name of COSE curve 8 (RFC 8812, sections 3.1 and 4.2) and the name OpenSSL gives it.
+src/Key/Ec2Key.php:44:     * "secp256k1" before -01 and never registered. Still accepted; use CURVE_NAME_SECP256K1 instead.
+src/Key/Ec2Key.php:150:        // RFC 9053 section 7.1.1: "For public keys, it is REQUIRED that 'crv', 'x', and 'y' be present".
+src/Key/Ec2Key.php:219:     * The curve as the key carries it, which RFC 9053 section 7.1 allows to be either the identifier of the "COSE
+src/Signature/CoseSignature.php:19: * One entry of the "signatures" list of a COSE_Sign (RFC 9052 section 4.1).
+src/Signature/CoseSignature.php:29: * foreach ($message->getSignatures() as $entry) {
+src/Signature/CoseSignature.php:72:     * Every entry of a "signatures" list, checked and wrapped.
+src/Signature/CoseSignature.php:76:    public static function all(ListObject|IndefiniteLengthListObject $signatures): array
+src/Signature/CoseSignature.php:78:        HeaderMapHelper::assertSignatureList($signatures);
+src/Signature/CoseSignature.php:81:        foreach ($signatures as $signature) {
+src/Signature/CoseSign1Tag.php:12:use CBOR\OtherObject\OtherObjectManager;
+src/Signature/CoseSign1Tag.php:16:use CBOR\Tag\TagManager;
+src/Signature/CoseSign1Tag.php:29: * registered in the default decoder, so Decoder::create() resolves tag 18 on its own. The replacement accepts what
+src/Signature/CoseSign1Tag.php:146:        $decoder ??= Decoder::create(TagManager::create(), OtherObjectManager::create(), $maxDepth);
+src/Signature/CoseSignTag.php:12:use CBOR\OtherObject\OtherObjectManager;
+src/Signature/CoseSignTag.php:16:use CBOR\Tag\TagManager;
+src/Signature/CoseSignTag.php:29: * registered in the default decoder, so Decoder::create() resolves tag 98 on its own. The replacement accepts what
+src/Signature/CoseSignTag.php:60:    private readonly ListObject $signatures;
+src/Signature/CoseSignTag.php:80:        $signatures = $object->get(3);
+src/Signature/CoseSignTag.php:91:        if (! $signatures instanceof ListObject) {
+src/Signature/CoseSignTag.php:99:        $this->signatures = $signatures;
+src/Signature/CoseSignTag.php:116:        ListObject $signatures
+src/Signature/CoseSignTag.php:119:        $object = ListObject::create([$protectedHeaderAsBytesString, $unprotectedHeader, $payload, $signatures]);
+src/Signature/CoseSignTag.php:140:        $decoder ??= Decoder::create(TagManager::create(), OtherObjectManager::create(), $maxDepth);
+src/Signature/CoseSignTag.php:160:    public function getSignatures(): ListObject
+src/Signature/CoseSignTag.php:162:        return $this->signatures;
+README.md:27:- `CoseSignature` and `CoseRecipient` are the checked views over the `signatures` and `recipients` lists (`[+ ...]`)
+README.md:32:  `CoseMac0Tag` (17), `CoseMacTag` (97), plus `CwtTag` (61), all registered in the default decoder
+README.md:37:- **Signatures**: ECDSA (ES256, ES384, ES512, ES256K), EdDSA (Ed25519, Ed448), RSA (RS256/384/512, PS256/384/512)
+README.md:38:- **Fully-specified identifiers** ([RFC 9864](https://www.rfc-editor.org/rfc/rfc9864.html)): ESP256/384/512, ESB256/320/384/512, Ed25519, Ed448
+README.md:44:- Turned on per algorithm or for a whole `Manager`: `ES256::create()->withKeyRestrictionsEnforced()`
+README.md:89:// The protected header labels this application knows how to process (1 = alg, 2 = crit).
+README.md:92:// cbor-php 3.4.0 registers the six COSE tags in the default decoder: tag 18 resolves on its own.
+README.md:105:if ($alg === null || (int) $alg->normalize() !== $algorithm::identifier()) {
+README.md:109:// RFC 9052 §3.1: every parameter listed in "crit" must be processed, or the message must be rejected.
+README.md:110:$crit = $headers->getProtectedHeaderParameter(2);
+README.md:111:if ($crit !== null) {
+README.md:112:    if (! $crit instanceof ListObject) {
+README.md:113:        throw new RuntimeException('"crit" is not an array');
+README.md:115:    foreach ($crit as $label) {
+README.md:117:            throw new RuntimeException('Unsupported critical header parameter');
+README.md:134:> The library verifies signatures; it does not decide what a message is allowed to say. Checking that `alg` is the one
+README.md:135:> expected for that key, and refusing any `crit` label the application does not process, are the caller's
+README.md:161:        NegativeIntegerObject::create(ES256::identifier()) // ES256 (-7)
+README.md:166:        UnsignedIntegerObject::create(4),                  // kid
+README.md:210:- 🔐 **WebAuthn/FIDO2** - Authenticator attestation and assertion signatures
+README.md:213:- 📄 **Document Signing** - Compact digital signatures
+README.md:225:| EdDSA | -8 | EdDSA |
+README.md:226:| Ed25519 | -8 | Alias of EdDSA (Curve25519); see -19 below for the fully-specified form |
+README.md:227:| Ed256 | -260 | Ed25519 over a SHA-256 digest — non-standard, see below |
+README.md:228:| Ed512 | -261 | Ed25519 over a SHA-512 digest — non-standard, see below |
+README.md:251:| Ed25519 | -19 | EdDSA with the Ed25519 parameter set |
+README.md:252:| Ed448 | -53 | EdDSA with the Ed448 parameter set — requires PHP 8.4 or later |
+README.md:255:> `Cose\Algorithm\Signature\FullySpecified\Ed25519` (-19) and `Cose\Algorithm\Signature\EdDSA\Ed25519` (-8)
+README.md:256:> compute the same signatures; only the algorithm identifier differs.
+README.md:263:> Both hash the message and sign the digest with pure **Ed25519**, without the `dom2` prefix that would make it the
+README.md:264:> Ed25519ph of [RFC 8032](https://www.rfc-editor.org/rfc/rfc8032) §5.1 — whose §8.5 says prehashed variants
+README.md:268:> classes as those algorithms. Despite its name, `Ed512` is not Ed448 and rejects an Ed448 key; EdDSA with Curve448 is
+README.md:271:> No authenticator emits these identifiers. Prefer `Ed25519` (-8 or -19). They are kept for the deployments that
+README.md:275:> use Cose\Algorithm\Signature\EdDSA\Ed256;
+README.md:498:can describe — ECDSA and RSASSA-PKCS1-v1_5 — because that digest implies PKCS #1 v1.5 padding; RSASSA-PSS, EdDSA,
+README.md:499:Ed25519 and Ed448 cannot be expressed that way at all.
+README.md:502:`Cose\Key\Key`, and the `Signature` class registered for the identifier verifies with it.
+README.md:505:use Cose\Algorithm\Manager;
+README.md:510:$manager = Manager::create()->add(ES256::create(), PS256::create());
+README.md:511:$verifier = CertificateSignatureVerifier::create($manager);
+README.md:516:The set of acceptable algorithms is the `Manager` the operator built, not a constant of this library: an `alg` that
+README.md:517:comes from the wire cannot select a verifier that was never registered. Nothing is configured twice either — it is the
+README.md:518:registered instance that verifies, so the minimum modulus length an RSA algorithm was created with applies unchanged to
+README.md:522:certificate cannot be read, when no signature algorithm is registered for the identifier, or when the key of the
+README.md:535:## Registering Algorithms
+README.md:537:`Cose\Algorithm\Manager` registers each algorithm under the identifier it declares, and
+README.md:538:`Cose\Algorithm\ManagerFactory` registers algorithms under aliases so that a `Manager` can be generated from a
+README.md:544:`E_USER_WARNING` is emitted. Registering the same class twice stays silent, so a container that autoconfigures an
+README.md:552:**ext-gmp** (recommended) or **ext-bcmath** is worth installing, but no longer required for RSA verification to be
+README.md:588:- **ext-sodium** — required by every Ed25519 algorithm (`EdDSA` -8, `Ed25519` -8 and -19, `Ed256` -260, `Ed512` -261)
+README.md:591:  valid signatures as invalid. Call `EdDSA::isSupported()` when the platform is not known in advance.
+README.md:592:- **spomky-labs/cbor-php** `^3.3.4` — required by the COSE tag classes (Sign, Encrypt, Mac). Versions below 3.3.4 are
+
+# ek: ML-DSA/composite deseni (4.8.2) ve algoritma dizinleri
+eslesme yok (0)
+CertificateSignatureVerifier.php
+ECDSA
+EdDSA
+FullySpecified
+OpenSslError.php
+RSA
+Signature.php

@@ -1,0 +1,20 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    base64 (0.3.0)
+    jwt (3.3.0)
+      base64
+
+PLATFORMS
+  ruby
+  x86_64-linux
+
+DEPENDENCIES
+  jwt (= 3.3.0)
+
+CHECKSUMS
+  base64 (0.3.0) sha256=27337aeabad6ffae05c265c450490628ef3ebd4b67be58257393227588f5a97b
+  jwt (3.3.0) sha256=44cc34fbc341c148233cf66641522b4bce0dfb1ce55e8073f05c56f44f4ee546
+
+BUNDLED WITH
+   2.6.9

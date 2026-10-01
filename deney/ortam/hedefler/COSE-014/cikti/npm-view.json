@@ -1,0 +1,7 @@
+{
+  "gitHead": "421bcaa5dded58890d00243c91b9f7155a613458",
+  "dist.integrity": "sha512-iYQvus+3LmjqXE2VkNKPQMZ5x+frSrk7WfSB7asTHYqpBuAG1ezdUEqJ5lXDuGoLbOSDOFAIgslawjkI2fX/hQ==",
+  "dist.tarball": "https://registry.npmjs.org/cose-js/-/cose-js-0.9.0.tgz",
+  "repository.url": "git+https://github.com/erdtman/COSE-JS.git",
+  "license": "Apache-2.0"
+}

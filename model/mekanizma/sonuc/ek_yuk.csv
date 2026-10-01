@@ -1,0 +1,14 @@
+mekanizma,nesne,ek_bayt,ek_alim,formul,kaynak
+M-b / A.3.2.2,"imzalı istek (JWS JSON genel), ikinci imza",4470,0,b64u(korumalı başlık) + b64u(ML-DSA-65 imzası 3309 B) + JSON sarmalayıcı,JOSECOMP Tablo 1; RFC 7515 §7.2.1
+M-a,HTTP başlığı Accept-Signature-Algorithms,47,0,başlık satırı; istek nesnesi tek imza (ML-DSA-65 seçilirse 3309 B imza 64 B yerine),#791 yorumu (12.09.2026)
+M-c,ikinci istek parametresi request_pqc,yük + 4427,0 (değerle) / +1 (request_uri ile),aynı istek nesnesinin ML-DSA-65 imzalı ikinci kopyası: b64u(başlık)+b64u(yük)+b64u(3309 B),#791 yorumu
+M-b0,imzasız istek (taban),0,0,taban; ek yok,HAIP 5.2 (T281)
+M-e′,meta veri alanı (required),55,0,JSON alanı,T393/T394 örüntüsü
+M-e / M-e′ (imzalı),imzalı meta veri,4414,+1 meta veri alımı (taze kip),b64u(ML-DSA-65 imzası) + ayraç; taze kipte doğrulama başına bir alım,"T073, T075, T076"
+M-d,kayıt meta verisi alanı,59,0,kayıt başına bir kez (işlem başına 0),"#2153 madde 3, 5"
+M-f,"TL kaydı uzantısı (XML, varlık başına)",87,0 (sabitli/güncel görünüm) / +1 (çevrimiçi sorgu),"varlık başına bir öğe; TL imzası zaten var (ML-DSA-65 ile 3309 B, göçte bir kez)","TS 119 612 §5.7.1 (T013, T014); öneri"
+M-f,"LoTE kaydı uzantısı (JSON, varlık başına)",87,0 / +1,aynı; JAdES-B tek imza (T023-T025),TS 119 602 §6.8.0 (T022); öneri
+M-g,TLS uzantısı pq_cert_available (sunucu),8,0,tür (2) + uzunluk (2) + uint32 (4),sheffer-02 §3.3
+M-g,TLS uzantısı pq_cert_available (ClientHello),4,0,boş uzantı,sheffer-02 §3.3
+M-h reddy,X.509 PQCHC eki (continuityPeriod=365),20,0,DER; policyURI yok,reddy-01 §3.2
+M-h vicente,"X.509 PQCHC eki (ML-DSA-65, SHA-256)",97,0,"DER; commitmentValid varsayılan, policyURI yok",vicente-02 §4.1

@@ -1,0 +1,31 @@
+# SDJWT-001 — API taraması (sözleşme §5.1)
+# imaj: a10-kt-sdjwt:1 (sha256:84decc0445a079abfd309e3fcc16bc803cdd74b0fb742acce0e877f0109b32c1)
+# komut: docker run --rm --network none --entrypoint sh a10-kt-sdjwt:1 -c 'cd /tmp; for j in /a/app/lib/indispensable-josef-*.jar /a/app/lib/supreme-*.jar; do echo == $j; jar tf $j | grep -i -E 'JwsAlgorithm.Signature|mldsa|eddsa|ed25519' ; done; CP=$(ls /a/app/lib/*.jar | tr "\n" ":"); javap -public -cp $CP at.asitplus.wallet.lib.agent.ValidatorSdJwt | grep verify; CP=$(ls /a/app/lib/*.jar | tr "\n" ":"); javap -public -cp $CP at.asitplus.wallet.lib.jws.VerifyJwsObject | grep -E 'invoke|public at''
+
+== /a/app/lib/indispensable-josef-jvm-3.24.0.jar
+at/asitplus/signum/indispensable/josef/JwsAlgorithm$Signature$Companion.class
+at/asitplus/signum/indispensable/josef/JwsAlgorithm$Signature$EC$Companion.class
+at/asitplus/signum/indispensable/josef/JwsAlgorithm$Signature$EC$ES256.class
+at/asitplus/signum/indispensable/josef/JwsAlgorithm$Signature$EC$ES384.class
+at/asitplus/signum/indispensable/josef/JwsAlgorithm$Signature$EC$ES512.class
+at/asitplus/signum/indispensable/josef/JwsAlgorithm$Signature$EC.class
+at/asitplus/signum/indispensable/josef/JwsAlgorithm$Signature$RSA$Companion.class
+at/asitplus/signum/indispensable/josef/JwsAlgorithm$Signature$RSA$NON_JWS_SHA1_WITH_RSA.class
+at/asitplus/signum/indispensable/josef/JwsAlgorithm$Signature$RSA$PS256.class
+at/asitplus/signum/indispensable/josef/JwsAlgorithm$Signature$RSA$PS384.class
+at/asitplus/signum/indispensable/josef/JwsAlgorithm$Signature$RSA$PS512.class
+at/asitplus/signum/indispensable/josef/JwsAlgorithm$Signature$RSA$RS256.class
+at/asitplus/signum/indispensable/josef/JwsAlgorithm$Signature$RSA$RS384.class
+at/asitplus/signum/indispensable/josef/JwsAlgorithm$Signature$RSA$RS512.class
+at/asitplus/signum/indispensable/josef/JwsAlgorithm$Signature$RSA.class
+at/asitplus/signum/indispensable/josef/JwsAlgorithm$Signature.class
+== /a/app/lib/supreme-jvm-0.15.0.jar
+  public final java.lang.Object verifyVpSdJwt(at.asitplus.wallet.lib.jws.SdJwtSigned, java.lang.String, java.lang.String, java.util.List<? extends kotlinx.serialization.json.JsonPrimitive>, boolean, kotlin.coroutines.Continuation<? super at
+  public static java.lang.Object verifyVpSdJwt$default(at.asitplus.wallet.lib.agent.ValidatorSdJwt, at.asitplus.wallet.lib.jws.SdJwtSigned, java.lang.String, java.lang.String, java.util.List, boolean, kotlin.coroutines.Continuation, int, ja
+  public final java.lang.Object verifySdJwt(at.asitplus.wallet.lib.jws.SdJwtSigned, at.asitplus.signum.indispensable.CryptoPublicKey, kotlin.coroutines.Continuation<? super at.asitplus.KmmResult<at.asitplus.wallet.lib.agent.Verifier$VerifyC
+  public at.asitplus.wallet.lib.jws.VerifyJwsObject(at.asitplus.wallet.lib.jws.VerifyJwsSignatureFun, at.asitplus.wallet.lib.jws.JwkSetRetrieverFunction, at.asitplus.wallet.lib.jws.PublicJsonWebKeyLookup);
+  public at.asitplus.wallet.lib.jws.VerifyJwsObject(at.asitplus.wallet.lib.jws.VerifyJwsSignatureFun, at.asitplus.wallet.lib.jws.JwkSetRetrieverFunction, at.asitplus.wallet.lib.jws.PublicJsonWebKeyLookup, int, kotlin.jvm.internal.DefaultCon
+  public java.lang.Object invoke(at.asitplus.signum.indispensable.josef.JwsCompact, kotlin.coroutines.Continuation<? super at.asitplus.KmmResult<at.asitplus.signum.supreme.sign.Verifier$Success>>);
+  public at.asitplus.wallet.lib.jws.VerifyJwsObject(at.asitplus.wallet.lib.jws.VerifyJwsSignatureFun, at.asitplus.wallet.lib.jws.JwkSetRetrieverFunction);
+  public at.asitplus.wallet.lib.jws.VerifyJwsObject(at.asitplus.wallet.lib.jws.VerifyJwsSignatureFun);
+  public at.asitplus.wallet.lib.jws.VerifyJwsObject();

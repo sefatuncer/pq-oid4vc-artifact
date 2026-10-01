@@ -1,0 +1,468 @@
+# Insa denetimi: vektor dosyalari yalniz base64url ile cozuldu (kripto yok). 467 denetim, hepsi gecti.
+T1K_both_valid	imza alg dizisi manifestle ayni ['ES256', 'EdDSA']	GECTI
+T2K_second_tampered	imza alg dizisi manifestle ayni ['ES256', 'EdDSA']	GECTI
+T3_stripped_to_ES256	imza alg dizisi manifestle ayni ['ES256']	GECTI
+T1P_both_valid	imza alg dizisi manifestle ayni ['ES256', 'ML-DSA-65']	GECTI
+T2P_second_tampered	imza alg dizisi manifestle ayni ['ES256', 'ML-DSA-65']	GECTI
+T1C_both_valid	imza alg dizisi manifestle ayni ['ES256', 'ML-DSA-65-ES256']	GECTI
+T2C_second_tampered	imza alg dizisi manifestle ayni ['ES256', 'ML-DSA-65-ES256']	GECTI
+T4K_plus_ML-DSA-65	imza alg dizisi manifestle ayni ['ES256', 'EdDSA', 'ML-DSA-65']	GECTI
+T4P_plus_ML-DSA-65-ES256	imza alg dizisi manifestle ayni ['ES256', 'ML-DSA-65', 'ML-DSA-65-ES256']	GECTI
+T4C_plus_ML-DSA-65	imza alg dizisi manifestle ayni ['ES256', 'ML-DSA-65-ES256', 'ML-DSA-65']	GECTI
+T5P_only_ML-DSA-65	imza alg dizisi manifestle ayni ['ML-DSA-65']	GECTI
+T5C_only_ML-DSA-65-ES256	imza alg dizisi manifestle ayni ['ML-DSA-65-ES256']	GECTI
+T5K_only_EdDSA	imza alg dizisi manifestle ayni ['EdDSA']	GECTI
+T6_plus_composite	imza alg dizisi manifestle ayni ['ES256', 'EdDSA', 'ML-DSA-65-ES256']	GECTI
+UNK01_alg_ML-DSA-66	exp > simdi	GECTI
+UNK01_alg_ML-DSA-66	iat <= simdi	GECTI
+UNK01_alg_ML-DSA-66	imza alg dizisi manifestle ayni ['ML-DSA-66']	GECTI
+UNK02_alg_ML-DSA-65-P256	exp > simdi	GECTI
+UNK02_alg_ML-DSA-65-P256	iat <= simdi	GECTI
+UNK02_alg_ML-DSA-65-P256	imza alg dizisi manifestle ayni ['ML-DSA-65-P256']	GECTI
+UNK03_alg_kucuk_harf	exp > simdi	GECTI
+UNK03_alg_kucuk_harf	iat <= simdi	GECTI
+UNK03_alg_kucuk_harf	imza alg dizisi manifestle ayni ['ml-dsa-65']	GECTI
+UNK04_general_arti_kayitsiz_composite	exp > simdi	GECTI
+UNK04_general_arti_kayitsiz_composite	iat <= simdi	GECTI
+UNK04_general_arti_kayitsiz_composite	imza alg dizisi manifestle ayni ['ES256', 'ML-DSA-65', 'ML-DSA-65-P256']	GECTI
+UNK05_general_arti_alg_none	exp > simdi	GECTI
+UNK05_general_arti_alg_none	iat <= simdi	GECTI
+UNK05_general_arti_alg_none	imza alg dizisi manifestle ayni ['ES256', 'ML-DSA-65', 'none']	GECTI
+CMP00_gecerli_referans	exp > simdi	GECTI
+CMP00_gecerli_referans	iat <= simdi	GECTI
+CMP00_gecerli_referans	imza alg dizisi manifestle ayni ['ML-DSA-65-ES256']	GECTI
+CMP01_ml_bileseni_bozuk	exp > simdi	GECTI
+CMP01_ml_bileseni_bozuk	iat <= simdi	GECTI
+CMP01_ml_bileseni_bozuk	imza alg dizisi manifestle ayni ['ML-DSA-65-ES256']	GECTI
+CMP02_ecdsa_bileseni_bozuk	exp > simdi	GECTI
+CMP02_ecdsa_bileseni_bozuk	iat <= simdi	GECTI
+CMP02_ecdsa_bileseni_bozuk	imza alg dizisi manifestle ayni ['ML-DSA-65-ES256']	GECTI
+CMP03_ecdsa_der_uzunluk_bozuk	exp > simdi	GECTI
+CMP03_ecdsa_der_uzunluk_bozuk	iat <= simdi	GECTI
+CMP03_ecdsa_der_uzunluk_bozuk	imza alg dizisi manifestle ayni ['ML-DSA-65-ES256']	GECTI
+CMP04_ecdsa_ham_rs	exp > simdi	GECTI
+CMP04_ecdsa_ham_rs	iat <= simdi	GECTI
+CMP04_ecdsa_ham_rs	imza alg dizisi manifestle ayni ['ML-DSA-65-ES256']	GECTI
+CMP05_ecdsa_asgari_olmayan_der	exp > simdi	GECTI
+CMP05_ecdsa_asgari_olmayan_der	iat <= simdi	GECTI
+CMP05_ecdsa_asgari_olmayan_der	imza alg dizisi manifestle ayni ['ML-DSA-65-ES256']	GECTI
+CMP06_sonda_artik_bayt	exp > simdi	GECTI
+CMP06_sonda_artik_bayt	iat <= simdi	GECTI
+CMP06_sonda_artik_bayt	imza alg dizisi manifestle ayni ['ML-DSA-65-ES256']	GECTI
+CMP07_yalniz_ml_bileseni	exp > simdi	GECTI
+CMP07_yalniz_ml_bileseni	iat <= simdi	GECTI
+CMP07_yalniz_ml_bileseni	imza alg dizisi manifestle ayni ['ML-DSA-65-ES256']	GECTI
+CMP08_bilesenler_farkli_iletilerden	exp > simdi	GECTI
+CMP08_bilesenler_farkli_iletilerden	iat <= simdi	GECTI
+CMP08_bilesenler_farkli_iletilerden	imza alg dizisi manifestle ayni ['ML-DSA-65-ES256']	GECTI
+CMP09_ml_bileseni_ctx_bos	exp > simdi	GECTI
+CMP09_ml_bileseni_ctx_bos	iat <= simdi	GECTI
+CMP09_ml_bileseni_ctx_bos	imza alg dizisi manifestle ayni ['ML-DSA-65-ES256']	GECTI
+CMP10_onozet_sha256	exp > simdi	GECTI
+CMP10_onozet_sha256	iat <= simdi	GECTI
+CMP10_onozet_sha256	imza alg dizisi manifestle ayni ['ML-DSA-65-ES256']	GECTI
+CMP11_bos_ctx_uzunlugu_yok	exp > simdi	GECTI
+CMP11_bos_ctx_uzunlugu_yok	iat <= simdi	GECTI
+CMP11_bos_ctx_uzunlugu_yok	imza alg dizisi manifestle ayni ['ML-DSA-65-ES256']	GECTI
+CMP12_ayrilabilirlik_ecdsa_ES256	exp > simdi	GECTI
+CMP12_ayrilabilirlik_ecdsa_ES256	iat <= simdi	GECTI
+CMP12_ayrilabilirlik_ecdsa_ES256	imza alg dizisi manifestle ayni ['ES256']	GECTI
+CMP13_ayrilabilirlik_ml_MLDSA65	exp > simdi	GECTI
+CMP13_ayrilabilirlik_ml_MLDSA65	iat <= simdi	GECTI
+CMP13_ayrilabilirlik_ml_MLDSA65	imza alg dizisi manifestle ayni ['ML-DSA-65']	GECTI
+CMP14_ed25519_ml_bileseni_bozuk	exp > simdi	GECTI
+CMP14_ed25519_ml_bileseni_bozuk	iat <= simdi	GECTI
+CMP14_ed25519_ml_bileseni_bozuk	imza alg dizisi manifestle ayni ['ML-DSA-65-Ed25519']	GECTI
+CMP15_ed25519_eddsa_bileseni_bozuk	exp > simdi	GECTI
+CMP15_ed25519_eddsa_bileseni_bozuk	iat <= simdi	GECTI
+CMP15_ed25519_eddsa_bileseni_bozuk	imza alg dizisi manifestle ayni ['ML-DSA-65-Ed25519']	GECTI
+CMP16_bilesen_sirasi_ters	exp > simdi	GECTI
+CMP16_bilesen_sirasi_ters	iat <= simdi	GECTI
+CMP16_bilesen_sirasi_ters	imza alg dizisi manifestle ayni ['ML-DSA-65-ES256']	GECTI
+X5C01_klasik_zincir	exp > simdi	GECTI
+X5C01_klasik_zincir	iat <= simdi	GECTI
+X5C01_klasik_zincir	imza alg dizisi manifestle ayni ['ES256']	GECTI
+X5C01_klasik_zincir	typ=dc+sd-jwt	GECTI
+X5C01_klasik_zincir	x5c korumali	GECTI
+X5C02_pq_zincir	exp > simdi	GECTI
+X5C02_pq_zincir	iat <= simdi	GECTI
+X5C02_pq_zincir	imza alg dizisi manifestle ayni ['ML-DSA-65']	GECTI
+X5C02_pq_zincir	typ=dc+sd-jwt	GECTI
+X5C02_pq_zincir	x5c korumali	GECTI
+X5C03_karisik_klasik_yaprak_pq_ara	exp > simdi	GECTI
+X5C03_karisik_klasik_yaprak_pq_ara	iat <= simdi	GECTI
+X5C03_karisik_klasik_yaprak_pq_ara	imza alg dizisi manifestle ayni ['ES256']	GECTI
+X5C03_karisik_klasik_yaprak_pq_ara	typ=dc+sd-jwt	GECTI
+X5C03_karisik_klasik_yaprak_pq_ara	x5c korumali	GECTI
+X5C04_karisik_pq_yaprak_klasik_ara	exp > simdi	GECTI
+X5C04_karisik_pq_yaprak_klasik_ara	iat <= simdi	GECTI
+X5C04_karisik_pq_yaprak_klasik_ara	imza alg dizisi manifestle ayni ['ML-DSA-65']	GECTI
+X5C04_karisik_pq_yaprak_klasik_ara	typ=dc+sd-jwt	GECTI
+X5C04_karisik_pq_yaprak_klasik_ara	x5c korumali	GECTI
+X5C05_karisik_pq_ara_klasik_kok	exp > simdi	GECTI
+X5C05_karisik_pq_ara_klasik_kok	iat <= simdi	GECTI
+X5C05_karisik_pq_ara_klasik_kok	imza alg dizisi manifestle ayni ['ML-DSA-65']	GECTI
+X5C05_karisik_pq_ara_klasik_kok	typ=dc+sd-jwt	GECTI
+X5C05_karisik_pq_ara_klasik_kok	x5c korumali	GECTI
+X5C06_guven_capasi_x5c_icinde	exp > simdi	GECTI
+X5C06_guven_capasi_x5c_icinde	iat <= simdi	GECTI
+X5C06_guven_capasi_x5c_icinde	imza alg dizisi manifestle ayni ['ML-DSA-65']	GECTI
+X5C06_guven_capasi_x5c_icinde	typ=dc+sd-jwt	GECTI
+X5C06_guven_capasi_x5c_icinde	x5c korumali	GECTI
+X5C06_guven_capasi_x5c_icinde	x5c 3 sertifika	GECTI
+X5C07_korumasiz_x5c	exp > simdi	GECTI
+X5C07_korumasiz_x5c	iat <= simdi	GECTI
+X5C07_korumasiz_x5c	imza alg dizisi manifestle ayni ['ML-DSA-65']	GECTI
+X5C07_korumasiz_x5c	typ=dc+sd-jwt	GECTI
+X5C07_korumasiz_x5c	x5c yalniz korumasiz	GECTI
+X5C08_korumasiz_x5c_zincir_degisimi	exp > simdi	GECTI
+X5C08_korumasiz_x5c_zincir_degisimi	iat <= simdi	GECTI
+X5C08_korumasiz_x5c_zincir_degisimi	imza alg dizisi manifestle ayni ['ML-DSA-65']	GECTI
+X5C08_korumasiz_x5c_zincir_degisimi	typ=dc+sd-jwt	GECTI
+X5C08_korumasiz_x5c_zincir_degisimi	x5c yalniz korumasiz	GECTI
+X5C09_korumali_ve_korumasiz_x5c	exp > simdi	GECTI
+X5C09_korumali_ve_korumasiz_x5c	iat <= simdi	GECTI
+X5C09_korumali_ve_korumasiz_x5c	imza alg dizisi manifestle ayni ['ML-DSA-65']	GECTI
+X5C09_korumali_ve_korumasiz_x5c	typ=dc+sd-jwt	GECTI
+X5C09_korumali_ve_korumasiz_x5c	x5c hem korumali hem korumasiz	GECTI
+X5C10_x5c_ve_baska_anahtar_kid	exp > simdi	GECTI
+X5C10_x5c_ve_baska_anahtar_kid	iat <= simdi	GECTI
+X5C10_x5c_ve_baska_anahtar_kid	imza alg dizisi manifestle ayni ['ML-DSA-65']	GECTI
+X5C10_x5c_ve_baska_anahtar_kid	typ=dc+sd-jwt	GECTI
+X5C10_x5c_ve_baska_anahtar_kid	x5c korumali	GECTI
+X5C10_x5c_ve_baska_anahtar_kid	kid = issuer/ES256	GECTI
+REQ01_imzali_ES256_x509_hash	imza alg dizisi manifestle ayni ['ES256']	GECTI
+REQ02_imzali_MLDSA65_x509_hash	imza alg dizisi manifestle ayni ['ML-DSA-65']	GECTI
+REQ03_imzali_composite_onkayitli	imza alg dizisi manifestle ayni ['ML-DSA-65-ES256']	GECTI
+REQ04_coklu_imzali	imza alg dizisi manifestle ayni ['ES256', 'ML-DSA-65']	GECTI
+REQ05_coklu_imzali_pq_soyuldu	imza alg dizisi manifestle ayni ['ES256']	GECTI
+REQ06_coklu_imzali_klasik_soyuldu	imza alg dizisi manifestle ayni ['ML-DSA-65']	GECTI
+REQ07_coklu_imzali_pq_bozuk	imza alg dizisi manifestle ayni ['ES256', 'ML-DSA-65']	GECTI
+REQ08_imzasiz_M-b0	protokol openid4vp-v1-unsigned	GECTI
+REQ09_imzasiz_M-b0_client_id_korundu	protokol openid4vp-v1-unsigned	GECTI
+REQ10_istek_alg_none	imza alg dizisi manifestle ayni ['none']	GECTI
+VC01_ES256_x5c	exp > simdi	GECTI
+VC01_ES256_x5c	iat <= simdi	GECTI
+VC01_ES256_x5c	imza alg dizisi manifestle ayni ['ES256']	GECTI
+VC01_ES256_x5c	typ=dc+sd-jwt	GECTI
+VC02_MLDSA65_x5c	exp > simdi	GECTI
+VC02_MLDSA65_x5c	iat <= simdi	GECTI
+VC02_MLDSA65_x5c	imza alg dizisi manifestle ayni ['ML-DSA-65']	GECTI
+VC02_MLDSA65_x5c	typ=dc+sd-jwt	GECTI
+VC03_composite_kid	exp > simdi	GECTI
+VC03_composite_kid	iat <= simdi	GECTI
+VC03_composite_kid	imza alg dizisi manifestle ayni ['ML-DSA-65-ES256']	GECTI
+VC03_composite_kid	typ=dc+sd-jwt	GECTI
+VC04_MLDSA44_kid	exp > simdi	GECTI
+VC04_MLDSA44_kid	iat <= simdi	GECTI
+VC04_MLDSA44_kid	imza alg dizisi manifestle ayni ['ML-DSA-44']	GECTI
+VC04_MLDSA44_kid	typ=dc+sd-jwt	GECTI
+VC05_MLDSA87_kid	exp > simdi	GECTI
+VC05_MLDSA87_kid	iat <= simdi	GECTI
+VC05_MLDSA87_kid	imza alg dizisi manifestle ayni ['ML-DSA-87']	GECTI
+VC05_MLDSA87_kid	typ=dc+sd-jwt	GECTI
+VC06_composite_Ed25519_kid	exp > simdi	GECTI
+VC06_composite_Ed25519_kid	iat <= simdi	GECTI
+VC06_composite_Ed25519_kid	imza alg dizisi manifestle ayni ['ML-DSA-65-Ed25519']	GECTI
+VC06_composite_Ed25519_kid	typ=dc+sd-jwt	GECTI
+VC07_GJ_ES256_MLDSA65	exp > simdi	GECTI
+VC07_GJ_ES256_MLDSA65	iat <= simdi	GECTI
+VC07_GJ_ES256_MLDSA65	imza alg dizisi manifestle ayni ['ES256', 'ML-DSA-65']	GECTI
+VC07_GJ_ES256_MLDSA65	typ=dc+sd-jwt	GECTI
+VC07_GJ_ES256_MLDSA65	typ=dc+sd-jwt	GECTI
+VC08_GJ_ES256_composite	exp > simdi	GECTI
+VC08_GJ_ES256_composite	iat <= simdi	GECTI
+VC08_GJ_ES256_composite	imza alg dizisi manifestle ayni ['ES256', 'ML-DSA-65-ES256']	GECTI
+VC08_GJ_ES256_composite	typ=dc+sd-jwt	GECTI
+VC08_GJ_ES256_composite	typ=dc+sd-jwt	GECTI
+VC09_GJ_ES256_EdDSA	exp > simdi	GECTI
+VC09_GJ_ES256_EdDSA	iat <= simdi	GECTI
+VC09_GJ_ES256_EdDSA	imza alg dizisi manifestle ayni ['ES256', 'EdDSA']	GECTI
+VC09_GJ_ES256_EdDSA	typ=dc+sd-jwt	GECTI
+VC09_GJ_ES256_EdDSA	typ=dc+sd-jwt	GECTI
+VC10_ikili_ihrac	exp > simdi	GECTI
+VC10_ikili_ihrac	iat <= simdi	GECTI
+VC10_ikili_ihrac	exp > simdi	GECTI
+VC10_ikili_ihrac	iat <= simdi	GECTI
+VC10_ikili_ihrac	credentials[0] ES256 dc+sd-jwt	GECTI
+VC11_typ_vc+sd-jwt	exp > simdi	GECTI
+VC11_typ_vc+sd-jwt	iat <= simdi	GECTI
+VC11_typ_vc+sd-jwt	imza alg dizisi manifestle ayni ['ES256']	GECTI
+VC11_typ_vc+sd-jwt	typ=vc+sd-jwt	GECTI
+VC12_alg_none	exp > simdi	GECTI
+VC12_alg_none	iat <= simdi	GECTI
+VC12_alg_none	imza alg dizisi manifestle ayni ['none']	GECTI
+VC12_alg_none	typ=dc+sd-jwt	GECTI
+VP01_ihracci_ES256_kb_ES256	exp > simdi	GECTI
+VP01_ihracci_ES256_kb_ES256	iat <= simdi	GECTI
+VP01_ihracci_ES256_kb_ES256	KB typ=kb+jwt	GECTI
+VP01_ihracci_ES256_kb_ES256	KB iat penceresi (<=600 s)	GECTI
+VP01_ihracci_ES256_kb_ES256	KB aud/nonce = dogrulama_girdileri	GECTI
+VP01_ihracci_ES256_kb_ES256	imza alg dizisi manifestle ayni ['ES256']	GECTI
+VP01_ihracci_ES256_kb_ES256	typ=dc+sd-jwt	GECTI
+VP02_ihracci_MLDSA65_kb_ES256	exp > simdi	GECTI
+VP02_ihracci_MLDSA65_kb_ES256	iat <= simdi	GECTI
+VP02_ihracci_MLDSA65_kb_ES256	KB typ=kb+jwt	GECTI
+VP02_ihracci_MLDSA65_kb_ES256	KB iat penceresi (<=600 s)	GECTI
+VP02_ihracci_MLDSA65_kb_ES256	KB aud/nonce = dogrulama_girdileri	GECTI
+VP02_ihracci_MLDSA65_kb_ES256	imza alg dizisi manifestle ayni ['ML-DSA-65']	GECTI
+VP02_ihracci_MLDSA65_kb_ES256	typ=dc+sd-jwt	GECTI
+VP03_ihracci_MLDSA65_kb_MLDSA65	exp > simdi	GECTI
+VP03_ihracci_MLDSA65_kb_MLDSA65	iat <= simdi	GECTI
+VP03_ihracci_MLDSA65_kb_MLDSA65	KB typ=kb+jwt	GECTI
+VP03_ihracci_MLDSA65_kb_MLDSA65	KB iat penceresi (<=600 s)	GECTI
+VP03_ihracci_MLDSA65_kb_MLDSA65	KB aud/nonce = dogrulama_girdileri	GECTI
+VP03_ihracci_MLDSA65_kb_MLDSA65	imza alg dizisi manifestle ayni ['ML-DSA-65']	GECTI
+VP03_ihracci_MLDSA65_kb_MLDSA65	typ=dc+sd-jwt	GECTI
+VP04_ihracci_composite_kb_composite	exp > simdi	GECTI
+VP04_ihracci_composite_kb_composite	iat <= simdi	GECTI
+VP04_ihracci_composite_kb_composite	KB typ=kb+jwt	GECTI
+VP04_ihracci_composite_kb_composite	KB iat penceresi (<=600 s)	GECTI
+VP04_ihracci_composite_kb_composite	KB aud/nonce = dogrulama_girdileri	GECTI
+VP04_ihracci_composite_kb_composite	imza alg dizisi manifestle ayni ['ML-DSA-65-ES256']	GECTI
+VP04_ihracci_composite_kb_composite	typ=dc+sd-jwt	GECTI
+VP05_GJ_ES256_MLDSA65_kb	exp > simdi	GECTI
+VP05_GJ_ES256_MLDSA65_kb	iat <= simdi	GECTI
+VP05_GJ_ES256_MLDSA65_kb	KB typ=kb+jwt	GECTI
+VP05_GJ_ES256_MLDSA65_kb	KB iat penceresi (<=600 s)	GECTI
+VP05_GJ_ES256_MLDSA65_kb	KB aud/nonce = dogrulama_girdileri	GECTI
+VP05_GJ_ES256_MLDSA65_kb	imza alg dizisi manifestle ayni ['ES256', 'ML-DSA-65']	GECTI
+VP05_GJ_ES256_MLDSA65_kb	typ=dc+sd-jwt	GECTI
+VP05_GJ_ES256_MLDSA65_kb	typ=dc+sd-jwt	GECTI
+VP06_GJ_pq_soyuldu_kb_gecerli	exp > simdi	GECTI
+VP06_GJ_pq_soyuldu_kb_gecerli	iat <= simdi	GECTI
+VP06_GJ_pq_soyuldu_kb_gecerli	KB typ=kb+jwt	GECTI
+VP06_GJ_pq_soyuldu_kb_gecerli	KB iat penceresi (<=600 s)	GECTI
+VP06_GJ_pq_soyuldu_kb_gecerli	KB aud/nonce = dogrulama_girdileri	GECTI
+VP06_GJ_pq_soyuldu_kb_gecerli	imza alg dizisi manifestle ayni ['ES256']	GECTI
+VP06_GJ_pq_soyuldu_kb_gecerli	typ=dc+sd-jwt	GECTI
+VP07_GJ_sd_hash_ikinci_imza	exp > simdi	GECTI
+VP07_GJ_sd_hash_ikinci_imza	iat <= simdi	GECTI
+VP07_GJ_sd_hash_ikinci_imza	KB typ=kb+jwt	GECTI
+VP07_GJ_sd_hash_ikinci_imza	KB iat penceresi (<=600 s)	GECTI
+VP07_GJ_sd_hash_ikinci_imza	KB aud/nonce = dogrulama_girdileri	GECTI
+VP07_GJ_sd_hash_ikinci_imza	imza alg dizisi manifestle ayni ['ES256', 'ML-DSA-65']	GECTI
+VP07_GJ_sd_hash_ikinci_imza	typ=dc+sd-jwt	GECTI
+VP07_GJ_sd_hash_ikinci_imza	typ=dc+sd-jwt	GECTI
+TSL01_ES256_x5c	exp > simdi	GECTI
+TSL01_ES256_x5c	iat <= simdi	GECTI
+TSL01_ES256_x5c	imza alg dizisi manifestle ayni ['ES256']	GECTI
+TSL01_ES256_x5c	typ statuslist+jwt	GECTI
+TSL01_ES256_x5c	sub = status uri	GECTI
+TSL02_MLDSA65_x5c	exp > simdi	GECTI
+TSL02_MLDSA65_x5c	iat <= simdi	GECTI
+TSL02_MLDSA65_x5c	imza alg dizisi manifestle ayni ['ML-DSA-65']	GECTI
+TSL02_MLDSA65_x5c	typ statuslist+jwt	GECTI
+TSL02_MLDSA65_x5c	sub = status uri	GECTI
+TSL03_composite_kid	exp > simdi	GECTI
+TSL03_composite_kid	iat <= simdi	GECTI
+TSL03_composite_kid	imza alg dizisi manifestle ayni ['ML-DSA-65-ES256']	GECTI
+TSL03_composite_kid	typ statuslist+jwt	GECTI
+TSL03_composite_kid	sub = status uri	GECTI
+DPOP01_ES256	iat <= simdi	GECTI
+DPOP01_ES256	imza alg dizisi manifestle ayni ['ES256']	GECTI
+DPOP01_ES256	typ dpop+jwt	GECTI
+DPOP01_ES256	DPoP iat penceresi	GECTI
+DPOP01_ES256	htm/htu	GECTI
+DPOP01_ES256	jwk priv yalniz DPOP10	GECTI
+DPOP02_EdDSA	iat <= simdi	GECTI
+DPOP02_EdDSA	imza alg dizisi manifestle ayni ['EdDSA']	GECTI
+DPOP02_EdDSA	typ dpop+jwt	GECTI
+DPOP02_EdDSA	DPoP iat penceresi	GECTI
+DPOP02_EdDSA	htm/htu	GECTI
+DPOP02_EdDSA	jwk priv yalniz DPOP10	GECTI
+DPOP03_ML-DSA-44	iat <= simdi	GECTI
+DPOP03_ML-DSA-44	imza alg dizisi manifestle ayni ['ML-DSA-44']	GECTI
+DPOP03_ML-DSA-44	typ dpop+jwt	GECTI
+DPOP03_ML-DSA-44	DPoP iat penceresi	GECTI
+DPOP03_ML-DSA-44	htm/htu	GECTI
+DPOP03_ML-DSA-44	jwk priv yalniz DPOP10	GECTI
+DPOP04_ML-DSA-65	iat <= simdi	GECTI
+DPOP04_ML-DSA-65	imza alg dizisi manifestle ayni ['ML-DSA-65']	GECTI
+DPOP04_ML-DSA-65	typ dpop+jwt	GECTI
+DPOP04_ML-DSA-65	DPoP iat penceresi	GECTI
+DPOP04_ML-DSA-65	htm/htu	GECTI
+DPOP04_ML-DSA-65	jwk priv yalniz DPOP10	GECTI
+DPOP05_ML-DSA-87	iat <= simdi	GECTI
+DPOP05_ML-DSA-87	imza alg dizisi manifestle ayni ['ML-DSA-87']	GECTI
+DPOP05_ML-DSA-87	typ dpop+jwt	GECTI
+DPOP05_ML-DSA-87	DPoP iat penceresi	GECTI
+DPOP05_ML-DSA-87	htm/htu	GECTI
+DPOP05_ML-DSA-87	jwk priv yalniz DPOP10	GECTI
+DPOP06_ML-DSA-65-ES256	iat <= simdi	GECTI
+DPOP06_ML-DSA-65-ES256	imza alg dizisi manifestle ayni ['ML-DSA-65-ES256']	GECTI
+DPOP06_ML-DSA-65-ES256	typ dpop+jwt	GECTI
+DPOP06_ML-DSA-65-ES256	DPoP iat penceresi	GECTI
+DPOP06_ML-DSA-65-ES256	htm/htu	GECTI
+DPOP06_ML-DSA-65-ES256	jwk priv yalniz DPOP10	GECTI
+DPOP07_ML-DSA-65-Ed25519	iat <= simdi	GECTI
+DPOP07_ML-DSA-65-Ed25519	imza alg dizisi manifestle ayni ['ML-DSA-65-Ed25519']	GECTI
+DPOP07_ML-DSA-65-Ed25519	typ dpop+jwt	GECTI
+DPOP07_ML-DSA-65-Ed25519	DPoP iat penceresi	GECTI
+DPOP07_ML-DSA-65-Ed25519	htm/htu	GECTI
+DPOP07_ML-DSA-65-Ed25519	jwk priv yalniz DPOP10	GECTI
+DPOP08_ML-DSA-65_ath_nonce	iat <= simdi	GECTI
+DPOP08_ML-DSA-65_ath_nonce	imza alg dizisi manifestle ayni ['ML-DSA-65']	GECTI
+DPOP08_ML-DSA-65_ath_nonce	typ dpop+jwt	GECTI
+DPOP08_ML-DSA-65_ath_nonce	DPoP iat penceresi	GECTI
+DPOP08_ML-DSA-65_ath_nonce	htm/htu	GECTI
+DPOP08_ML-DSA-65_ath_nonce	jwk priv yalniz DPOP10	GECTI
+DPOP09_ML-DSA-65-ES256_ath_nonce	iat <= simdi	GECTI
+DPOP09_ML-DSA-65-ES256_ath_nonce	imza alg dizisi manifestle ayni ['ML-DSA-65-ES256']	GECTI
+DPOP09_ML-DSA-65-ES256_ath_nonce	typ dpop+jwt	GECTI
+DPOP09_ML-DSA-65-ES256_ath_nonce	DPoP iat penceresi	GECTI
+DPOP09_ML-DSA-65-ES256_ath_nonce	htm/htu	GECTI
+DPOP09_ML-DSA-65-ES256_ath_nonce	jwk priv yalniz DPOP10	GECTI
+DPOP10_jwk_ozel_anahtar_iceriyor	iat <= simdi	GECTI
+DPOP10_jwk_ozel_anahtar_iceriyor	imza alg dizisi manifestle ayni ['ML-DSA-65']	GECTI
+DPOP10_jwk_ozel_anahtar_iceriyor	typ dpop+jwt	GECTI
+DPOP10_jwk_ozel_anahtar_iceriyor	DPoP iat penceresi	GECTI
+DPOP10_jwk_ozel_anahtar_iceriyor	htm/htu	GECTI
+DPOP10_jwk_ozel_anahtar_iceriyor	jwk priv yalniz DPOP10	GECTI
+CRIT01_bilinmeyen_parametre	exp > simdi	GECTI
+CRIT01_bilinmeyen_parametre	iat <= simdi	GECTI
+CRIT01_bilinmeyen_parametre	imza alg dizisi manifestle ayni ['ML-DSA-65']	GECTI
+CRIT01_bilinmeyen_parametre	typ=dc+sd-jwt	GECTI
+CRIT01_bilinmeyen_parametre	crit yeri	GECTI
+CRIT03_kayitli_ad	exp > simdi	GECTI
+CRIT03_kayitli_ad	iat <= simdi	GECTI
+CRIT03_kayitli_ad	imza alg dizisi manifestle ayni ['ML-DSA-65']	GECTI
+CRIT03_kayitli_ad	typ=dc+sd-jwt	GECTI
+CRIT03_kayitli_ad	crit yeri	GECTI
+CRIT04_bos_dizi	exp > simdi	GECTI
+CRIT04_bos_dizi	iat <= simdi	GECTI
+CRIT04_bos_dizi	imza alg dizisi manifestle ayni ['ML-DSA-65']	GECTI
+CRIT04_bos_dizi	typ=dc+sd-jwt	GECTI
+CRIT04_bos_dizi	crit yeri	GECTI
+CRIT05_listelenen_parametre_yok	exp > simdi	GECTI
+CRIT05_listelenen_parametre_yok	iat <= simdi	GECTI
+CRIT05_listelenen_parametre_yok	imza alg dizisi manifestle ayni ['ML-DSA-65']	GECTI
+CRIT05_listelenen_parametre_yok	typ=dc+sd-jwt	GECTI
+CRIT05_listelenen_parametre_yok	crit yeri	GECTI
+CRIT02_korumasiz_crit	exp > simdi	GECTI
+CRIT02_korumasiz_crit	iat <= simdi	GECTI
+CRIT02_korumasiz_crit	imza alg dizisi manifestle ayni ['ML-DSA-65']	GECTI
+CRIT02_korumasiz_crit	typ=dc+sd-jwt	GECTI
+CRIT02_korumasiz_crit	crit yeri	GECTI
+T1K_both_valid-ED25519	imza alg dizisi manifestle ayni ['ES256', 'Ed25519']	GECTI
+T2K_second_tampered-ED25519	imza alg dizisi manifestle ayni ['ES256', 'Ed25519']	GECTI
+T4K_plus_ML-DSA-65-ED25519	imza alg dizisi manifestle ayni ['ES256', 'Ed25519', 'ML-DSA-65']	GECTI
+T5K_only_EdDSA-ED25519	imza alg dizisi manifestle ayni ['Ed25519']	GECTI
+T6_plus_composite-ED25519	imza alg dizisi manifestle ayni ['ES256', 'Ed25519', 'ML-DSA-65-ES256']	GECTI
+VC09_GJ_ES256_EdDSA-ED25519	exp > simdi	GECTI
+VC09_GJ_ES256_EdDSA-ED25519	iat <= simdi	GECTI
+VC09_GJ_ES256_EdDSA-ED25519	imza alg dizisi manifestle ayni ['ES256', 'Ed25519']	GECTI
+VC09_GJ_ES256_EdDSA-ED25519	typ=dc+sd-jwt	GECTI
+VC09_GJ_ES256_EdDSA-ED25519	typ=dc+sd-jwt	GECTI
+DPOP02_EdDSA-ED25519	iat <= simdi	GECTI
+DPOP02_EdDSA-ED25519	imza alg dizisi manifestle ayni ['Ed25519']	GECTI
+DPOP02_EdDSA-ED25519	typ dpop+jwt	GECTI
+DPOP02_EdDSA-ED25519	DPoP iat penceresi	GECTI
+DPOP02_EdDSA-ED25519	htm/htu	GECTI
+DPOP02_EdDSA-ED25519	jwk priv yalniz DPOP10	GECTI
+T1K_both_valid-SIRA-ters	imza alg dizisi manifestle ayni ['EdDSA', 'ES256']	GECTI
+T1K_both_valid-SIRA-ters-ED25519	imza alg dizisi manifestle ayni ['Ed25519', 'ES256']	GECTI
+T1P_both_valid-SIRA-ters	imza alg dizisi manifestle ayni ['ML-DSA-65', 'ES256']	GECTI
+T1C_both_valid-SIRA-ters	imza alg dizisi manifestle ayni ['ML-DSA-65-ES256', 'ES256']	GECTI
+T2K_second_tampered-SIRA-ters	imza alg dizisi manifestle ayni ['EdDSA', 'ES256']	GECTI
+T2K_second_tampered-SIRA-ters-ED25519	imza alg dizisi manifestle ayni ['Ed25519', 'ES256']	GECTI
+T2P_second_tampered-SIRA-ters	imza alg dizisi manifestle ayni ['ML-DSA-65', 'ES256']	GECTI
+T2C_second_tampered-SIRA-ters	imza alg dizisi manifestle ayni ['ML-DSA-65-ES256', 'ES256']	GECTI
+T4K_plus_ML-DSA-65-SIRA-ek-once	imza alg dizisi manifestle ayni ['ML-DSA-65', 'ES256', 'EdDSA']	GECTI
+T4K_plus_ML-DSA-65-SIRA-ek-once-ED25519	imza alg dizisi manifestle ayni ['ML-DSA-65', 'ES256', 'Ed25519']	GECTI
+T4K_plus_ML-DSA-65-SIRA-ters	imza alg dizisi manifestle ayni ['ML-DSA-65', 'EdDSA', 'ES256']	GECTI
+T4K_plus_ML-DSA-65-SIRA-ters-ED25519	imza alg dizisi manifestle ayni ['ML-DSA-65', 'Ed25519', 'ES256']	GECTI
+T4P_plus_ML-DSA-65-ES256-SIRA-ek-once	imza alg dizisi manifestle ayni ['ML-DSA-65-ES256', 'ES256', 'ML-DSA-65']	GECTI
+T4P_plus_ML-DSA-65-ES256-SIRA-ters	imza alg dizisi manifestle ayni ['ML-DSA-65-ES256', 'ML-DSA-65', 'ES256']	GECTI
+T4C_plus_ML-DSA-65-SIRA-ek-once	imza alg dizisi manifestle ayni ['ML-DSA-65', 'ES256', 'ML-DSA-65-ES256']	GECTI
+T4C_plus_ML-DSA-65-SIRA-ters	imza alg dizisi manifestle ayni ['ML-DSA-65', 'ML-DSA-65-ES256', 'ES256']	GECTI
+T6_plus_composite-SIRA-ek-once	imza alg dizisi manifestle ayni ['ML-DSA-65-ES256', 'ES256', 'EdDSA']	GECTI
+T6_plus_composite-SIRA-ek-once-ED25519	imza alg dizisi manifestle ayni ['ML-DSA-65-ES256', 'ES256', 'Ed25519']	GECTI
+T6_plus_composite-SIRA-ters	imza alg dizisi manifestle ayni ['ML-DSA-65-ES256', 'EdDSA', 'ES256']	GECTI
+T6_plus_composite-SIRA-ters-ED25519	imza alg dizisi manifestle ayni ['ML-DSA-65-ES256', 'Ed25519', 'ES256']	GECTI
+VC07_GJ_ES256_MLDSA65-SIRA-ters	exp > simdi	GECTI
+VC07_GJ_ES256_MLDSA65-SIRA-ters	iat <= simdi	GECTI
+VC07_GJ_ES256_MLDSA65-SIRA-ters	imza alg dizisi manifestle ayni ['ML-DSA-65', 'ES256']	GECTI
+VC07_GJ_ES256_MLDSA65-SIRA-ters	typ=dc+sd-jwt	GECTI
+VC07_GJ_ES256_MLDSA65-SIRA-ters	typ=dc+sd-jwt	GECTI
+VC08_GJ_ES256_composite-SIRA-ters	exp > simdi	GECTI
+VC08_GJ_ES256_composite-SIRA-ters	iat <= simdi	GECTI
+VC08_GJ_ES256_composite-SIRA-ters	imza alg dizisi manifestle ayni ['ML-DSA-65-ES256', 'ES256']	GECTI
+VC08_GJ_ES256_composite-SIRA-ters	typ=dc+sd-jwt	GECTI
+VC08_GJ_ES256_composite-SIRA-ters	typ=dc+sd-jwt	GECTI
+VC09_GJ_ES256_EdDSA-SIRA-ters	exp > simdi	GECTI
+VC09_GJ_ES256_EdDSA-SIRA-ters	iat <= simdi	GECTI
+VC09_GJ_ES256_EdDSA-SIRA-ters	imza alg dizisi manifestle ayni ['EdDSA', 'ES256']	GECTI
+VC09_GJ_ES256_EdDSA-SIRA-ters	typ=dc+sd-jwt	GECTI
+VC09_GJ_ES256_EdDSA-SIRA-ters	typ=dc+sd-jwt	GECTI
+VC09_GJ_ES256_EdDSA-SIRA-ters-ED25519	exp > simdi	GECTI
+VC09_GJ_ES256_EdDSA-SIRA-ters-ED25519	iat <= simdi	GECTI
+VC09_GJ_ES256_EdDSA-SIRA-ters-ED25519	imza alg dizisi manifestle ayni ['Ed25519', 'ES256']	GECTI
+VC09_GJ_ES256_EdDSA-SIRA-ters-ED25519	typ=dc+sd-jwt	GECTI
+VC09_GJ_ES256_EdDSA-SIRA-ters-ED25519	typ=dc+sd-jwt	GECTI
+REQ04_coklu_imzali-SIRA-ters	imza alg dizisi manifestle ayni ['ML-DSA-65', 'ES256']	GECTI
+VP05_GJ_ES256_MLDSA65_kb-SIRA-ters	exp > simdi	GECTI
+VP05_GJ_ES256_MLDSA65_kb-SIRA-ters	iat <= simdi	GECTI
+VP05_GJ_ES256_MLDSA65_kb-SIRA-ters	KB typ=kb+jwt	GECTI
+VP05_GJ_ES256_MLDSA65_kb-SIRA-ters	KB iat penceresi (<=600 s)	GECTI
+VP05_GJ_ES256_MLDSA65_kb-SIRA-ters	KB aud/nonce = dogrulama_girdileri	GECTI
+VP05_GJ_ES256_MLDSA65_kb-SIRA-ters	imza alg dizisi manifestle ayni ['ML-DSA-65', 'ES256']	GECTI
+VP05_GJ_ES256_MLDSA65_kb-SIRA-ters	typ=dc+sd-jwt	GECTI
+VP05_GJ_ES256_MLDSA65_kb-SIRA-ters	typ=dc+sd-jwt	GECTI
+T7K_plus_kayitsiz	imza alg dizisi manifestle ayni ['ES256', 'EdDSA', 'X-KAYITSIZ-1']	GECTI
+T7K_plus_kayitsiz-ED25519	imza alg dizisi manifestle ayni ['ES256', 'Ed25519', 'X-KAYITSIZ-1']	GECTI
+T7K_plus_kayitsiz-SIRA-kayitsiz-once	imza alg dizisi manifestle ayni ['X-KAYITSIZ-1', 'ES256', 'EdDSA']	GECTI
+T7K_plus_kayitsiz-SIRA-kayitsiz-once-ED25519	imza alg dizisi manifestle ayni ['X-KAYITSIZ-1', 'ES256', 'Ed25519']	GECTI
+T7K_plus_kayitsiz-SIRA-ters	imza alg dizisi manifestle ayni ['X-KAYITSIZ-1', 'EdDSA', 'ES256']	GECTI
+T7K_plus_kayitsiz-SIRA-ters-ED25519	imza alg dizisi manifestle ayni ['X-KAYITSIZ-1', 'Ed25519', 'ES256']	GECTI
+T7P_plus_kayitsiz	imza alg dizisi manifestle ayni ['ES256', 'ML-DSA-65', 'X-KAYITSIZ-1']	GECTI
+T7P_plus_kayitsiz-SIRA-kayitsiz-once	imza alg dizisi manifestle ayni ['X-KAYITSIZ-1', 'ES256', 'ML-DSA-65']	GECTI
+T7P_plus_kayitsiz-SIRA-ters	imza alg dizisi manifestle ayni ['X-KAYITSIZ-1', 'ML-DSA-65', 'ES256']	GECTI
+T7C_plus_kayitsiz	imza alg dizisi manifestle ayni ['ES256', 'ML-DSA-65-ES256', 'X-KAYITSIZ-1']	GECTI
+T7C_plus_kayitsiz-SIRA-kayitsiz-once	imza alg dizisi manifestle ayni ['X-KAYITSIZ-1', 'ES256', 'ML-DSA-65-ES256']	GECTI
+T7C_plus_kayitsiz-SIRA-ters	imza alg dizisi manifestle ayni ['X-KAYITSIZ-1', 'ML-DSA-65-ES256', 'ES256']	GECTI
+K10K_alg-EdDSA_anahtar-ES256	imza alg dizisi manifestle ayni ['EdDSA']	GECTI
+K10K_alg-EdDSA_anahtar-ES256	kid = dg jwk kid	GECTI
+K10K_alg-EdDSA_anahtar-ES256	baslik alg ile anahtar turu uyusmuyor	GECTI
+K10K_alg-EdDSA_anahtar-ES256-ED25519	imza alg dizisi manifestle ayni ['Ed25519']	GECTI
+K10K_alg-EdDSA_anahtar-ES256-ED25519	kid = dg jwk kid	GECTI
+K10K_alg-EdDSA_anahtar-ES256-ED25519	baslik alg ile anahtar turu uyusmuyor	GECTI
+K10K_alg-ES256_anahtar-Ed25519	imza alg dizisi manifestle ayni ['ES256']	GECTI
+K10K_alg-ES256_anahtar-Ed25519	kid = dg jwk kid	GECTI
+K10K_alg-ES256_anahtar-Ed25519	baslik alg ile anahtar turu uyusmuyor	GECTI
+K10P_alg-ML-DSA-65_anahtar-ES256	imza alg dizisi manifestle ayni ['ML-DSA-65']	GECTI
+K10P_alg-ML-DSA-65_anahtar-ES256	kid = dg jwk kid	GECTI
+K10P_alg-ML-DSA-65_anahtar-ES256	baslik alg ile anahtar turu uyusmuyor	GECTI
+K10P_alg-ES256_anahtar-ML-DSA-65	imza alg dizisi manifestle ayni ['ES256']	GECTI
+K10P_alg-ES256_anahtar-ML-DSA-65	kid = dg jwk kid	GECTI
+K10P_alg-ES256_anahtar-ML-DSA-65	baslik alg ile anahtar turu uyusmuyor	GECTI
+K10C_alg-ML-DSA-65-ES256_anahtar-ML-DSA-65	imza alg dizisi manifestle ayni ['ML-DSA-65-ES256']	GECTI
+K10C_alg-ML-DSA-65-ES256_anahtar-ML-DSA-65	kid = dg jwk kid	GECTI
+K10C_alg-ML-DSA-65-ES256_anahtar-ML-DSA-65	baslik alg ile anahtar turu uyusmuyor	GECTI
+K10C_alg-ML-DSA-65_anahtar-ML-DSA-65-ES256	imza alg dizisi manifestle ayni ['ML-DSA-65']	GECTI
+K10C_alg-ML-DSA-65_anahtar-ML-DSA-65-ES256	kid = dg jwk kid	GECTI
+K10C_alg-ML-DSA-65_anahtar-ML-DSA-65-ES256	baslik alg ile anahtar turu uyusmuyor	GECTI
+VPLUS_ES256	exp > simdi	GECTI
+VPLUS_ES256	iat <= simdi	GECTI
+VPLUS_ES256	imza alg dizisi manifestle ayni ['ES256']	GECTI
+VMINUS_ES256	exp > simdi	GECTI
+VMINUS_ES256	iat <= simdi	GECTI
+VMINUS_ES256	imza alg dizisi manifestle ayni ['ES256']	GECTI
+VPLUS_EdDSA	exp > simdi	GECTI
+VPLUS_EdDSA	iat <= simdi	GECTI
+VPLUS_EdDSA	imza alg dizisi manifestle ayni ['EdDSA']	GECTI
+VPLUS_EdDSA-ED25519	exp > simdi	GECTI
+VPLUS_EdDSA-ED25519	iat <= simdi	GECTI
+VPLUS_EdDSA-ED25519	imza alg dizisi manifestle ayni ['Ed25519']	GECTI
+VMINUS_EdDSA	exp > simdi	GECTI
+VMINUS_EdDSA	iat <= simdi	GECTI
+VMINUS_EdDSA	imza alg dizisi manifestle ayni ['EdDSA']	GECTI
+VMINUS_EdDSA-ED25519	exp > simdi	GECTI
+VMINUS_EdDSA-ED25519	iat <= simdi	GECTI
+VMINUS_EdDSA-ED25519	imza alg dizisi manifestle ayni ['Ed25519']	GECTI
+VPLUS_ML-DSA-65	exp > simdi	GECTI
+VPLUS_ML-DSA-65	iat <= simdi	GECTI
+VPLUS_ML-DSA-65	imza alg dizisi manifestle ayni ['ML-DSA-65']	GECTI
+VMINUS_ML-DSA-65	exp > simdi	GECTI
+VMINUS_ML-DSA-65	iat <= simdi	GECTI
+VMINUS_ML-DSA-65	imza alg dizisi manifestle ayni ['ML-DSA-65']	GECTI

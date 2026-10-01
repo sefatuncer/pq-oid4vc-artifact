@@ -1,0 +1,49 @@
+# SDJWT-004 — API taraması (sözleşme §5.1)
+# imaj: a10-jvm:1 (sha256:efda0bc4fca2edcbbdc46158e5a231b04cdd8b575bca3e41151cea71fdd4b0b6)
+# komut: docker run --rm --network none --entrypoint sh a10-jvm:1 -c 'javap -public -cp /a/adaptor.jar com.authlete.sd.SDJWT | head -30; javap -public -cp /a/adaptor.jar com.nimbusds.jose.JWSAlgorithm | grep -E 'public static final'; javap -public -cp /a/adaptor.jar com.nimbusds.jose.proc.JWSVerificationKeySelector | head -20; javap -public -cp /a/adaptor.jar com.nimbusds.jose.crypto.factories.DefaultJWSVerifierFactory | head'
+
+Compiled from "SDJWT.java"
+public class com.authlete.sd.SDJWT {
+  public com.authlete.sd.SDJWT(java.lang.String, java.util.Collection<com.authlete.sd.Disclosure>);
+  public com.authlete.sd.SDJWT(java.lang.String, java.util.Collection<com.authlete.sd.Disclosure>, java.lang.String);
+  public java.lang.String toString();
+  public java.lang.String getCredentialJwt();
+  public java.util.List<com.authlete.sd.Disclosure> getDisclosures();
+  public java.lang.String getBindingJwt();
+  public java.lang.String getHashAlgorithm();
+  public java.lang.String getSDHash();
+  public static com.authlete.sd.SDJWT parse(java.lang.String);
+}
+  public static final com.nimbusds.jose.JWSAlgorithm HS256;
+  public static final com.nimbusds.jose.JWSAlgorithm HS384;
+  public static final com.nimbusds.jose.JWSAlgorithm HS512;
+  public static final com.nimbusds.jose.JWSAlgorithm RS256;
+  public static final com.nimbusds.jose.JWSAlgorithm RS384;
+  public static final com.nimbusds.jose.JWSAlgorithm RS512;
+  public static final com.nimbusds.jose.JWSAlgorithm ES256;
+  public static final com.nimbusds.jose.JWSAlgorithm ES256K;
+  public static final com.nimbusds.jose.JWSAlgorithm ES384;
+  public static final com.nimbusds.jose.JWSAlgorithm ES512;
+  public static final com.nimbusds.jose.JWSAlgorithm PS256;
+  public static final com.nimbusds.jose.JWSAlgorithm PS384;
+  public static final com.nimbusds.jose.JWSAlgorithm PS512;
+  public static final com.nimbusds.jose.JWSAlgorithm EdDSA;
+  public static final com.nimbusds.jose.JWSAlgorithm Ed25519;
+  public static final com.nimbusds.jose.JWSAlgorithm Ed448;
+Compiled from "JWSVerificationKeySelector.java"
+public class com.nimbusds.jose.proc.JWSVerificationKeySelector<C extends com.nimbusds.jose.proc.SecurityContext> extends com.nimbusds.jose.proc.AbstractJWKSelectorWithSource<C> implements com.nimbusds.jose.proc.JWSKeySelector<C> {
+  public com.nimbusds.jose.proc.JWSVerificationKeySelector(com.nimbusds.jose.JWSAlgorithm, com.nimbusds.jose.jwk.source.JWKSource<C>);
+  public com.nimbusds.jose.proc.JWSVerificationKeySelector(java.util.Set<com.nimbusds.jose.JWSAlgorithm>, com.nimbusds.jose.jwk.source.JWKSource<C>);
+  public boolean isAllowed(com.nimbusds.jose.JWSAlgorithm);
+  public com.nimbusds.jose.JWSAlgorithm getExpectedJWSAlgorithm();
+  public java.util.List<java.security.Key> selectJWSKeys(com.nimbusds.jose.JWSHeader, C) throws com.nimbusds.jose.KeySourceException;
+  public com.nimbusds.jose.jwk.source.JWKSource getJWKSource();
+}
+Compiled from "DefaultJWSVerifierFactory.java"
+public class com.nimbusds.jose.crypto.factories.DefaultJWSVerifierFactory implements com.nimbusds.jose.proc.JWSVerifierFactory {
+  public static final java.util.Set<com.nimbusds.jose.JWSAlgorithm> SUPPORTED_ALGORITHMS;
+  public com.nimbusds.jose.crypto.factories.DefaultJWSVerifierFactory();
+  public java.util.Set<com.nimbusds.jose.JWSAlgorithm> supportedJWSAlgorithms();
+  public com.nimbusds.jose.jca.JCAContext getJCAContext();
+  public com.nimbusds.jose.JWSVerifier createJWSVerifier(com.nimbusds.jose.JWSHeader, java.security.Key) throws com.nimbusds.jose.JOSEException;
+}

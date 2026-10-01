@@ -1,0 +1,3 @@
+krate sd_jwt_payload baglandi
+tip sd_jwt_payload::sd_jwt::SdJwt
+tip sd_jwt_payload::disclosure::Disclosure

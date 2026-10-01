@@ -1,0 +1,2 @@
+derleme=WalletFramework.SdJwtLib 3.1.0.0 tip_yuklendi=21 tip_yuklenemedi=0
+ad_eslesen_tipler (Valid|Verif|SdJwt; bilgi): WalletFramework.SdJwtLib.Roles.IVerifier,WalletFramework.SdJwtLib.Roles.Implementation.Verifier,WalletFramework.SdJwtLib.Models.SdJwtDoc

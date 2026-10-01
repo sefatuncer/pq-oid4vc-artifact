@@ -1,0 +1,44 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 725B done
+#1 DONE 0.1s
+
+#2 [internal] load metadata for docker.io/library/swift:6.4.0-trixie@sha256:c90a484cbd45ff768e05bfdb2a73c4cc8978de0d940d8eb2cf68fcede6bad8f8
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/2] FROM docker.io/library/swift:6.4.0-trixie@sha256:c90a484cbd45ff768e05bfdb2a73c4cc8978de0d940d8eb2cf68fcede6bad8f8
+#4 resolve docker.io/library/swift:6.4.0-trixie@sha256:c90a484cbd45ff768e05bfdb2a73c4cc8978de0d940d8eb2cf68fcede6bad8f8 0.0s done
+#4 DONE 0.1s
+
+#5 [2/2] RUN set -eux; echo "SURUM $(swift --version 2>&1 | head -1)"; echo "SURUM sistem $(openssl version)";     echo "SURUM pkg-config openssl $(pkg-config --modversion openssl)"; echo "SURUM $(git --version)"
+#5 0.195 + swift+  --version
+#5 0.195 head -1
+#5 0.246 SURUM Swift version 6.4 (swift-6.4-RELEASE)
+#5 0.246 + echo SURUM Swift version 6.4 (swift-6.4-RELEASE)
+#5 0.246 + openssl version
+#5 0.250 SURUM sistem OpenSSL 3.5.7 9 Jun 2026 (Library: OpenSSL 3.5.7 9 Jun 2026)
+#5 0.250 + echo SURUM sistem OpenSSL 3.5.7 9 Jun 2026 (Library: OpenSSL 3.5.7 9 Jun 2026)
+#5 0.250 + pkg-config --modversion openssl
+#5 0.251 SURUM pkg-config openssl 3.5.7
+#5 0.251 + echo SURUM pkg-config openssl 3.5.7
+#5 0.252 + git --version
+#5 0.253 SURUM git version 2.47.3
+#5 0.253 + echo SURUM git version 2.47.3
+#5 DONE 0.3s
+
+#6 exporting to image
+#6 exporting layers
+#6 exporting layers 0.2s done
+#6 exporting manifest sha256:920e59879d114038aed8e4a357b112550f8cb0a2e8e585a778f5a6f835c7f980 0.0s done
+#6 exporting config sha256:30d57644eb4500477a4adc41991135fd3d36f11c70099baa30dd3b827ec59815 0.1s done
+#6 exporting attestation manifest sha256:d8d2bb0a333f70cf01ed119e93fe9329c68fdf6a39ef879035d85325c7ff8c63 0.1s done
+#6 exporting manifest list sha256:7422932f6627c118a34062e8bc2d0305dd79029c68e7d8fb85fc26ddae30dde5
+#6 exporting manifest list sha256:7422932f6627c118a34062e8bc2d0305dd79029c68e7d8fb85fc26ddae30dde5 0.0s done
+#6 naming to docker.io/library/pq-a09-env-swift:1.0 done
+#6 unpacking to docker.io/library/pq-a09-env-swift:1.0 0.1s done
+#6 DONE 0.6s

@@ -1,0 +1,225 @@
+theory KAT1_DNSSEC_AnyValidPath
+begin
+
+/* =====================================================================
+   TANI MODELİ (Adım 6, SONUÇ GÖRÜLDÜKTEN SONRA; kapı hücresi DEĞİL). Dondurulmuş ../KAT1_DNSSEC.spthy'nin
+   kopyasıdır; TEK farkı: COMPLETENESS bayrağında bütünlük testi DNSKEY adımına da uygulanır. DS'nin işaretlediği
+   her KSK algoritması DNSKEY RRset'ini doğrulamalı (RFC 6840 §5.11: "insist that all algorithms signaled in the
+   DS RRset work"). Amaç: K1-11 uyumsuzluğunun (taslağın bütünlüğü yalnız A RRset adımında uygulaması)
+   tanısını sınamak. Bkz. ADIM06-RAPOR §5.
+   ===================================================================== */
+/* =====================================================================
+   PQ-OID4VC | Adım 6 | KAT-1 DNSSEC (RFC 6840 §5.11 "any single valid path" + §6.2)
+   Kaynak: KAT-SPEC §2(c) taslağı (literatür çalışması, 24.09.2026). Anlam aynıdır; değişiklikler:
+     - "#ifndef X" yerine "#ifdef not X" (Tamarin 1.12 önişlemcisi; R1–R7 modelleriyle aynı üslup);
+     - NO_QDAY'de Qday ile birlikte Break_* kuralları da kalkar (üretilmeyen !Qday() olgusu uyarısı olmasın);
+     - NotEq kısıtı yalnız kullanıldığı bayraklarda (ALLPRESENT, COMPLETENESS) tanımlıdır;
+     - KAT-SPEC §6 mutasyonları bütün kural düzeyinde alternatiftir: MUT_NO_DS_SIG (DS imza denetimi
+       yok), MUT_NO_DS_KSK_MATCH (DS–KSK eşleşmesi yok). Mutasyon bayrağı yoksa model taslakla aynıdır.
+   Hücre ve bayraklar: hucreler.tsv, mutasyonlar.tsv. Lemmalar: executable (sağlık), a_rrset_authentic.
+   τ Tamarin'de modellenmez: zaman hücreleri bayrakla temsil edilir (KAT-SPEC §1.4).
+   ===================================================================== */
+
+builtins: signing
+functions: none/0
+
+restriction Eq:   "All x y #i. Eq(x, y) @ #i ==> x = y"
+restriction Once: "All x #i #j. Once(x) @ #i & Once(x) @ #j ==> #i = #j"
+#ifdef ALLPRESENT | COMPLETENESS
+restriction NotEq: "All x #i. NotEq(x, x) @ #i ==> F"
+#endif
+
+/* ---------------- Q-day ve kırılma (S2 soyutlaması) ---------------- */
+#ifdef not NO_QDAY
+rule Qday: [ ] --[ Once('qday') ]-> [ !Qday() ]
+#endif
+
+rule Parent_Setup:
+    [ Fr(~kp) ] --[ Once('parent') ]-> [ !Psk(~kp), !Ppk(pk(~kp)), Out(pk(~kp)) ]
+
+#ifdef PARENT_CL & not NO_QDAY
+rule Break_Parent: [ !Psk(k), !Qday() ] --[ Break('parent') ]-> [ Out(k) ]
+#endif
+
+rule Zone_Setup:
+    [ Fr(~kc), Fr(~kq), Fr(~zc), Fr(~zq) ]
+  --[ Once('zone') ]->
+    [ !Z(~kc, ~kq, ~zc, ~zq), Out(<pk(~kc), pk(~kq), pk(~zc), pk(~zq)>) ]
+
+#ifdef not NO_QDAY
+rule Break_Zone_Classical: [ !Z(kc, kq, zc, zq), !Qday() ] --[ Break('zone_cl') ]-> [ Out(<kc, zc>) ]
+#endif
+
+/* ---------------- DS RRset: <'ds', KSK_cl | none, KSK_pq | none>, üst bölge imzalı ---------------- */
+#ifdef DS_CL
+rule Publish_DS:
+    let ds = <'ds', pk(kc), none> in
+    [ !Psk(kp), !Z(kc, kq, zc, zq) ] --[ Once('ds') ]-> [ Out(<ds, sign(ds, kp)>) ]
+#endif
+#ifdef DS_PQ
+rule Publish_DS:
+    let ds = <'ds', none, pk(kq)> in
+    [ !Psk(kp), !Z(kc, kq, zc, zq) ] --[ Once('ds') ]-> [ Out(<ds, sign(ds, kp)>) ]
+#endif
+#ifdef DS_BOTH
+rule Publish_DS:
+    let ds = <'ds', pk(kc), pk(kq)> in
+    [ !Psk(kp), !Z(kc, kq, zc, zq) ] --[ Once('ds') ]-> [ Out(<ds, sign(ds, kp)>) ]
+#endif
+#ifdef OLD_DS_REPLAY
+/* eski klasik DS'nin imzası hâlâ geçerli (RFC 6781 §4.3.4) */
+rule Publish_Old_DS:
+    let ds = <'ds', pk(kc), none> in
+    [ !Psk(kp), !Z(kc, kq, zc, zq) ] --[ Once('ds_old') ]-> [ Out(<ds, sign(ds, kp)>) ]
+#endif
+
+/* ---------------- DNSKEY RRset: <'dnskey', v, KSKc|none, KSKq, ZSKc|none, ZSKq> ---------------- */
+#ifdef DK3_USABLE
+/* her iki algoritma; R2, R3, DDS ya da R5'te yeniden oynatma */
+rule Publish_DNSKEY_v3:
+    let dk = <'dnskey', 'v3', pk(kc), pk(kq), pk(zc), pk(zq)> in
+    [ !Z(kc, kq, zc, zq) ] --[ Once('dk3') ]-> [ Out(<dk, sign(dk, kc), sign(dk, kq)>) ]
+#endif
+#ifdef DK5
+/* yalnız PQ */
+rule Publish_DNSKEY_v5:
+    let dk = <'dnskey', 'v5', none, pk(kq), none, pk(zq)> in
+    [ !Z(kc, kq, zc, zq) ] --[ Once('dk5') ]-> [ Out(<dk, none, sign(dk, kq)>) ]
+#endif
+
+rule Sign_A:
+    [ !Z(kc, kq, zc, zq), Fr(~d) ]
+  --[ SignedA(~d) ]->
+    [ Out(<<'A', ~d>, sign(<'A', ~d>, zc), sign(<'A', ~d>, zq)>) ]
+
+/* ---------------- doğrulayıcı: DS'nin gösterdiği bir KSK ile DNSKEY RRset (herhangi bir tek yol) ---------------- */
+#ifdef not MUT_NO_DS_SIG & not MUT_NO_DS_KSK_MATCH & not COMPLETENESS
+rule Validate_DNSKEY_via_KSKcl:
+    let ds = <'ds', dc, dq>
+        dk = <'dnskey', v, pkc, pkq, pzc, pzq>
+    in
+    [ !Ppk(pp), In(<ds, sds>), In(<dk, s1, s2>) ]
+  --[ Eq(verify(sds, ds, pp), true), Eq(dc, pkc), Eq(verify(s1, dk, pkc), true), UseDK(v) ]->
+    [ DKok(ds, pzc, pzq) ]
+rule Validate_DNSKEY_via_KSKpq:
+    let ds = <'ds', dc, dq>
+        dk = <'dnskey', v, pkc, pkq, pzc, pzq>
+    in
+    [ !Ppk(pp), In(<ds, sds>), In(<dk, s1, s2>) ]
+  --[ Eq(verify(sds, ds, pp), true), Eq(dq, pkq), Eq(verify(s2, dk, pkq), true), UseDK(v) ]->
+    [ DKok(ds, pzc, pzq) ]
+#endif
+#ifdef COMPLETENESS & not MUT_NO_DS_SIG & not MUT_NO_DS_KSK_MATCH
+/* TANI: bütünlük testi DNSKEY adımında da (DS'nin işaretlediği her KSK algoritması) */
+rule Validate_DNSKEY_complete_cl:
+    let ds = <'ds', dc, none>
+        dk = <'dnskey', v, pkc, pkq, pzc, pzq>
+    in
+    [ !Ppk(pp), In(<ds, sds>), In(<dk, s1, s2>) ]
+  --[ Eq(verify(sds, ds, pp), true), Eq(dc, pkc), Eq(verify(s1, dk, pkc), true), UseDK(v) ]->
+    [ DKok(ds, pzc, pzq) ]
+rule Validate_DNSKEY_complete_pq:
+    let ds = <'ds', none, dq>
+        dk = <'dnskey', v, pkc, pkq, pzc, pzq>
+    in
+    [ !Ppk(pp), In(<ds, sds>), In(<dk, s1, s2>) ]
+  --[ Eq(verify(sds, ds, pp), true), Eq(dq, pkq), Eq(verify(s2, dk, pkq), true), UseDK(v) ]->
+    [ DKok(ds, pzc, pzq) ]
+rule Validate_DNSKEY_complete_both:
+    let ds = <'ds', dc, dq>
+        dk = <'dnskey', v, pkc, pkq, pzc, pzq>
+    in
+    [ !Ppk(pp), In(<ds, sds>), In(<dk, s1, s2>) ]
+  --[ NotEq(dc, none), NotEq(dq, none), Eq(verify(sds, ds, pp), true),
+      Eq(dc, pkc), Eq(dq, pkq), Eq(verify(s1, dk, pkc), true), Eq(verify(s2, dk, pkq), true), UseDK(v) ]->
+    [ DKok(ds, pzc, pzq) ]
+#endif
+#ifdef MUT_NO_DS_SIG
+/* MUTASYON (KAT-SPEC §6): DS imza denetimi Eq(verify(sds, ds, pp), true) silindi */
+rule Validate_DNSKEY_via_KSKcl:
+    let ds = <'ds', dc, dq>
+        dk = <'dnskey', v, pkc, pkq, pzc, pzq>
+    in
+    [ !Ppk(pp), In(<ds, sds>), In(<dk, s1, s2>) ]
+  --[ Eq(dc, pkc), Eq(verify(s1, dk, pkc), true), UseDK(v) ]->
+    [ DKok(ds, pzc, pzq) ]
+rule Validate_DNSKEY_via_KSKpq:
+    let ds = <'ds', dc, dq>
+        dk = <'dnskey', v, pkc, pkq, pzc, pzq>
+    in
+    [ !Ppk(pp), In(<ds, sds>), In(<dk, s1, s2>) ]
+  --[ Eq(dq, pkq), Eq(verify(s2, dk, pkq), true), UseDK(v) ]->
+    [ DKok(ds, pzc, pzq) ]
+#endif
+#ifdef MUT_NO_DS_KSK_MATCH
+/* MUTASYON (KAT-SPEC §6): DS–KSK eşleşmesi Eq(dc, pkc) / Eq(dq, pkq) silindi */
+rule Validate_DNSKEY_via_KSKcl:
+    let ds = <'ds', dc, dq>
+        dk = <'dnskey', v, pkc, pkq, pzc, pzq>
+    in
+    [ !Ppk(pp), In(<ds, sds>), In(<dk, s1, s2>) ]
+  --[ Eq(verify(sds, ds, pp), true), Eq(verify(s1, dk, pkc), true), UseDK(v) ]->
+    [ DKok(ds, pzc, pzq) ]
+rule Validate_DNSKEY_via_KSKpq:
+    let ds = <'ds', dc, dq>
+        dk = <'dnskey', v, pkc, pkq, pzc, pzq>
+    in
+    [ !Ppk(pp), In(<ds, sds>), In(<dk, s1, s2>) ]
+  --[ Eq(verify(sds, ds, pp), true), Eq(verify(s2, dk, pkq), true), UseDK(v) ]->
+    [ DKok(ds, pzc, pzq) ]
+#endif
+
+#ifdef EXTRA_TA
+/* eski klasik KSK ayrıca yapılandırılmış güven çapası (RFC 6840 Ek C.2) */
+rule TA_Setup: [ !Z(kc, kq, zc, zq) ] --[ Once('ta') ]-> [ !TA(pk(kc)) ]
+rule Validate_DNSKEY_via_TA:
+    let dk = <'dnskey', v, pkc, pkq, pzc, pzq> in
+    [ !TA(t), In(<dk, s1, s2>) ]
+  --[ Eq(verify(s1, dk, t), true), UseDK(v) ]->
+    [ DKok(<'ds', t, none>, pzc, pzq) ]
+#endif
+
+/* ---------------- A RRset ---------------- */
+#ifdef ANYVALID
+/* RFC 6840 §5.11 + §6.2 */
+rule Validate_A_via_zc:
+    [ DKok(ds, pzc, pzq), In(<<'A', d>, sa, sb>) ]
+  --[ Eq(verify(sa, <'A', d>, pzc), true), AcceptA(d) ]-> [ ]
+rule Validate_A_via_zq:
+    [ DKok(ds, pzc, pzq), In(<<'A', d>, sa, sb>) ]
+  --[ Eq(verify(sb, <'A', d>, pzq), true), AcceptA(d) ]-> [ ]
+#endif
+#ifdef ALLPRESENT
+/* mevcut imzaların hepsi geçerli olmalı (soyma açık) */
+rule Validate_A_clonly:
+    [ DKok(ds, pzc, pzq), In(<<'A', d>, sa, none>) ]
+  --[ Eq(verify(sa, <'A', d>, pzc), true), AcceptA(d) ]-> [ ]
+rule Validate_A_both:
+    [ DKok(ds, pzc, pzq), In(<<'A', d>, sa, sb>) ]
+  --[ NotEq(sb, none), Eq(verify(sa, <'A', d>, pzc), true), Eq(verify(sb, <'A', d>, pzq), true), AcceptA(d) ]-> [ ]
+#endif
+#ifdef COMPLETENESS
+/* DS'nin işaretlediği her algoritma doğrulanmalı */
+rule Validate_A_complete_cl:
+    [ DKok(<'ds', c, none>, pzc, pzq), In(<<'A', d>, sa, sb>) ]
+  --[ Eq(verify(sa, <'A', d>, pzc), true), AcceptA(d) ]-> [ ]
+rule Validate_A_complete_pq:
+    [ DKok(<'ds', none, q>, pzc, pzq), In(<<'A', d>, sa, sb>) ]
+  --[ Eq(verify(sb, <'A', d>, pzq), true), AcceptA(d) ]-> [ ]
+rule Validate_A_complete_both:
+    [ DKok(<'ds', c, q>, pzc, pzq), In(<<'A', d>, sa, sb>) ]
+  --[ NotEq(c, none), NotEq(q, none),
+      Eq(verify(sa, <'A', d>, pzc), true), Eq(verify(sb, <'A', d>, pzq), true), AcceptA(d) ]-> [ ]
+#endif
+#ifdef MONOTONE
+/* doğrulayıcı v5'i görmüştür; v3'e dönmez */
+restriction NoRollbackDK: "All #j. UseDK('v3') @ #j ==> F"
+#endif
+
+lemma executable:
+  exists-trace "Ex d #i #j. SignedA(d) @ #i & AcceptA(d) @ #j"
+
+lemma a_rrset_authentic:
+  "All d #j. AcceptA(d) @ #j ==> Ex #i. SignedA(d) @ #i"
+
+end

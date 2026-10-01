@@ -1,0 +1,21 @@
+{
+ "kat": "KAT-3",
+ "clingo": "5.8.2",
+ "cekirdek_sha256_once": "a32372a7c646274ce672c9586e25b34f75f4febb2f966596cc97e7afb89e0b38",
+ "cekirdek_sha256_sonra": "a32372a7c646274ce672c9586e25b34f75f4febb2f966596cc97e7afb89e0b38",
+ "cekirdek_commit_45cbd0f_ile_ayni": true,
+ "taban_sha256": {
+  "KAT-3a": "5fa007250194a4cb7abdc3cb1cb7c4ee28a45eb3e1286451fb7ea62adbe0ec43",
+  "KAT-3b": "ac5bdd086b4646e79258b3e84fdc944224af3332343f94c07d890d3ea3ef361b"
+ },
+ "asp_kosusu": 102,
+ "hucre_degeri": 54,
+ "hucre_uyum": 54,
+ "kat3a_fail": [],
+ "model_gap": [
+  "o8"
+ ],
+ "mutasyon_kosusu": 5,
+ "mutasyon_dondu": 5,
+ "en_uzun_s": 0.0028
+}

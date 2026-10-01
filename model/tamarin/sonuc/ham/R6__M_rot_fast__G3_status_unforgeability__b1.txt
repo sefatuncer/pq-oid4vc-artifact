@@ -1,0 +1,370 @@
+maude tool: 'maude'
+ checking version: 3.5.1. OK.
+ checking installation: OK.
+[Theory R6_Time] Theory loaded
+[Theory R6_Time] Theory translated
+[Theory R6_Time] Derivation checks started
+[Theory R6_Time] Derivation checks ended
+[Theory R6_Time] Theory closed
+[Saturating Sources] Step 1 (Max 5)
+[Saturating Sources] Done
+theory R6_Time
+
+begin
+
+// Function signature and definition of the equational theory E
+
+functions: fst/1, pair/2, pk/1, sign/2, snd/1, true/0, verify/3
+equations:
+    fst(<x.1, x.2>) = x.1,
+    snd(<x.1, x.2>) = x.2,
+    verify(sign(x.1, x.2), x.1, pk(x.2)) = true
+
+restriction Equality:
+  "∀ x y #i. (Eq( x, y ) @ #i) ⇒ (x = y)"
+  // safety formula
+
+  /*
+  expanded formula:
+  "∀ x y #i. (Eq( x, y ) @ #i) ⇒ (x = y)"
+  */
+
+restriction Unique:
+  "∀ x #i #j. ((Unique( x ) @ #i) ∧ (Unique( x ) @ #j)) ⇒ (#i = #j)"
+  // safety formula
+
+  /*
+  expanded formula:
+  "∀ x #i #j. ((Unique( x ) @ #i) ∧ (Unique( x ) @ #j)) ⇒ (#i = #j)"
+  */
+
+restriction WindowOpen:
+  "∀ ep #u #e.
+    ((UseWindow( ep ) @ #u) ∧ (WindowEnd( ep ) @ #e)) ⇒ (#u < #e)"
+  // safety formula
+
+  /*
+  expanded formula:
+  "∀ ep #u #e.
+    ((UseWindow( ep ) @ #u) ∧ (WindowEnd( ep ) @ #e)) ⇒ (#u < #e)"
+  */
+
+rule (modulo E) Qday:
+   [ ] --[ Unique( 'qday' ), QdayEv( ) ]-> [ !CRQC( ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) CRQC_Start:
+   [ !CRQC( ), !Classical( k ), In( pk(k) ) ]
+  --[ CRQCStart( k ) ]->
+   [ Extracting( k ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) CRQC_Done:
+   [ Extracting( k ) ] --[ CRQCDone( k ) ]-> [ Out( k ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Provider_Setup:
+   [ Fr( ~idk ) ]
+  --[ Unique( 'provider' ), KeyClass( ~idk, 'identity' ) ]->
+   [ !ProvID( $S, ~idk ), !IDPin( $S, pk(~idk) ), Out( pk(~idk) ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Epoch_Start:
+   [ !ProvID( S, idk ), Fr( ~k ), Fr( ~ep ) ]
+  --[ KeyClass( ~k, 'epoch' ) ]->
+   [
+   !Signer( S, ~k, ~ep ), !Classical( ~k ), EpochLive( ~k, ~ep ),
+   Out( pk(~k) ),
+   Out( <<'stkey', S, pk(~k), ~ep>, sign(<'stkey', S, pk(~k), ~ep>, idk)> )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Epoch_End:
+   [ EpochLive( k, ep ) ] --[ WindowEnd( ep ), KeyClose( k ) ]-> [ ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Issue_Status:
+   [ !Signer( S, k, ep ), Fr( ~c ) ]
+  --[ StatusIssued( S, ~c, 'valid' ), UseWindow( ep ) ]->
+   [
+   Out( <<'status', S, ~c, 'valid'>, sign(<'status', S, ~c, 'valid'>, k)> )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Verify_Status:
+   [
+   !IDPin( S, pkid ), In( <<'stkey', S, pkk, ep>, s1> ),
+   In( <<'status', S, c, st>, s2> )
+   ]
+  --[
+  Eq( verify(s1, <'stkey', S, pkk, ep>, pkid), true ),
+  Eq( verify(s2, <'status', S, c, st>, pkk), true ), UseWindow( ep ),
+  AcceptStatus( S, c, st )
+  ]->
+   [ ]
+
+  /*
+  rule (modulo AC) Verify_Status:
+     [
+     !IDPin( S, pkid ), In( <<'stkey', S, pkk, ep>, s1> ),
+     In( <<'status', S, c, st>, s2> )
+     ]
+    --[
+    Eq( z, true ), Eq( z.1, true ), UseWindow( ep ), AcceptStatus( S, c, st )
+    ]->
+     [ ]
+    variants (modulo AC)
+    1. S     = S.21
+       c     = c.22
+       ep    = ep.23
+       pkid  = pkid.24
+       pkk   = pkk.25
+       s1    = s1.26
+       s2    = s2.27
+       st    = st.28
+       z     = verify(s1.26, <'stkey', S.21, pkk.25, ep.23>, pkid.24)
+       z.1   = verify(s2.27, <'status', S.21, c.22, st.28>, pkk.25)
+    
+    2. S     = S.29
+       c     = c.30
+       ep    = ep.31
+       pkid  = pk(x.56)
+       pkk   = pkk.33
+       s1    = sign(<'stkey', S.29, pkk.33, ep.31>, x.56)
+       s2    = s2.35
+       st    = st.36
+       z     = true
+       z.1   = verify(s2.35, <'status', S.29, c.30, st.36>, pkk.33)
+    
+    3. S     = S.30
+       c     = c.31
+       ep    = ep.32
+       pkid  = pkid.33
+       pkk   = pk(x.58)
+       s1    = s1.35
+       s2    = sign(<'status', S.30, c.31, st.37>, x.58)
+       st    = st.37
+       z     = verify(s1.35, <'stkey', S.30, pk(x.58), ep.32>, pkid.33)
+       z.1   = true
+    
+    4. S     = S.30
+       c     = c.31
+       ep    = ep.32
+       pkid  = pk(x.57)
+       pkk   = pk(x.58)
+       s1    = sign(<'stkey', S.30, pk(x.58), ep.32>, x.57)
+       s2    = sign(<'status', S.30, c.31, st.37>, x.58)
+       st    = st.37
+       z     = true
+       z.1   = true
+  */
+
+lemma executable:
+  exists-trace
+  "∃ S c st #i #j.
+    (StatusIssued( S, c, st ) @ #i) ∧ (AcceptStatus( S, c, st ) @ #j)"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ S c st #i #j.
+  (StatusIssued( S, c, st ) @ #i) ∧ (AcceptStatus( S, c, st ) @ #j)"
+*/
+by sorry
+
+lemma executable_post_qday:
+  exists-trace
+  "∃ S c st #q #i #j.
+    (((QdayEv( ) @ #q) ∧ (StatusIssued( S, c, st ) @ #i)) ∧
+     (AcceptStatus( S, c, st ) @ #j)) ∧
+    (#q < #j)"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ S c st #q #i #j.
+  (QdayEv( ) @ #q) ∧
+  (StatusIssued( S, c, st ) @ #i) ∧
+  (AcceptStatus( S, c, st ) @ #j)
+ ∧
+  #q < #j"
+*/
+by sorry
+
+lemma executable_after_window_end:
+  exists-trace
+  "∃ S c st ep #e #i #j.
+    (((WindowEnd( ep ) @ #e) ∧ (StatusIssued( S, c, st ) @ #i)) ∧
+     (AcceptStatus( S, c, st ) @ #j)) ∧
+    (#e < #j)"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ S c st ep #e #i #j.
+  (WindowEnd( ep ) @ #e) ∧
+  (StatusIssued( S, c, st ) @ #i) ∧
+  (AcceptStatus( S, c, st ) @ #j)
+ ∧
+  #e < #j"
+*/
+by sorry
+
+lemma attack_needs_crqc:
+  all-traces
+  "∀ S c st #j.
+    (AcceptStatus( S, c, st ) @ #j) ⇒
+    ((∃ #i. (StatusIssued( S, c, st ) @ #i) ∧ (#i < #j)) ∨
+     (∃ k #d. (CRQCDone( k ) @ #d) ∧ (#d < #j)))"
+/*
+guarded formula characterizing all counter-examples:
+"∃ S c st #j.
+  (AcceptStatus( S, c, st ) @ #j)
+ ∧
+  (∀ #i. (StatusIssued( S, c, st ) @ #i) ⇒ ¬(#i < #j)) ∧
+  (∀ k #d. (CRQCDone( k ) @ #d) ⇒ ¬(#d < #j))"
+*/
+by sorry
+
+lemma G3_status_unforgeability:
+  all-traces
+  "∀ S c st #j.
+    (AcceptStatus( S, c, st ) @ #j) ⇒
+    (∃ #i. (StatusIssued( S, c, st ) @ #i) ∧ (#i < #j))"
+/*
+guarded formula characterizing all counter-examples:
+"∃ S c st #j.
+  (AcceptStatus( S, c, st ) @ #j)
+ ∧
+  ∀ #i. (StatusIssued( S, c, st ) @ #i) ⇒ ¬(#i < #j)"
+*/
+simplify
+solve( !IDPin( S, pk(x) ) ▶₀ #j )
+  case Provider_Setup
+  solve( !KU( sign(<'stkey', $S, pk(x), ep>, ~idk) ) @ #vk.10 )
+    case Epoch_Start
+    solve( !KU( sign(<'status', $S, c, st>, ~k) ) @ #vk.16 )
+      case c_sign
+      solve( !KU( ~k ) @ #vk.17 )
+        case CRQC_Done
+        solve( !KU( ~ep ) @ #vk.13 )
+          case Epoch_Start
+          solve( !KU( pk(~k) ) @ #vk.13 )
+            case Epoch_Start_case_1
+            SOLVED // trace found
+          qed
+        qed
+      qed
+    qed
+  qed
+qed
+
+lemma M_long_key:
+  exists-trace
+  "∃ S c st k #a #d #j.
+    ((((KeyClass( k, 'long' ) @ #a) ∧ (CRQCDone( k ) @ #d)) ∧
+      (AcceptStatus( S, c, st ) @ #j)) ∧
+     (#d < #j)) ∧
+    (¬(∃ #i. StatusIssued( S, c, st ) @ #i))"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ S c st k #a #d #j.
+  (KeyClass( k, 'long' ) @ #a) ∧
+  (CRQCDone( k ) @ #d) ∧
+  (AcceptStatus( S, c, st ) @ #j)
+ ∧
+  (#d < #j) ∧ (∀ #i. (StatusIssued( S, c, st ) @ #i) ⇒ ⊥)"
+*/
+by sorry
+
+lemma M_epoch_key_in_window:
+  exists-trace
+  "∃ S c st k #a #d #j.
+    (((((KeyClass( k, 'epoch' ) @ #a) ∧ (CRQCDone( k ) @ #d)) ∧
+       (AcceptStatus( S, c, st ) @ #j)) ∧
+      (#d < #j)) ∧
+     (¬(∃ #i. StatusIssued( S, c, st ) @ #i))) ∧
+    (¬(∃ #x. (KeyClose( k ) @ #x) ∧ (#x < #d)))"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ S c st k #a #d #j.
+  (KeyClass( k, 'epoch' ) @ #a) ∧
+  (CRQCDone( k ) @ #d) ∧
+  (AcceptStatus( S, c, st ) @ #j)
+ ∧
+  (#d < #j) ∧
+  (∀ #i. (StatusIssued( S, c, st ) @ #i) ⇒ ⊥) ∧
+  (∀ #x. (KeyClose( k ) @ #x) ⇒ ¬(#x < #d))"
+*/
+by sorry
+
+lemma M_token_key_in_window:
+  exists-trace
+  "∃ S c st k #a #d #j.
+    (((((KeyClass( k, 'token' ) @ #a) ∧ (CRQCDone( k ) @ #d)) ∧
+       (AcceptStatus( S, c, st ) @ #j)) ∧
+      (#d < #j)) ∧
+     (¬(∃ #i. StatusIssued( S, c, st ) @ #i))) ∧
+    (¬(∃ #x. (KeyClose( k ) @ #x) ∧ (#x < #d)))"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ S c st k #a #d #j.
+  (KeyClass( k, 'token' ) @ #a) ∧
+  (CRQCDone( k ) @ #d) ∧
+  (AcceptStatus( S, c, st ) @ #j)
+ ∧
+  (#d < #j) ∧
+  (∀ #i. (StatusIssued( S, c, st ) @ #i) ⇒ ⊥) ∧
+  (∀ #x. (KeyClose( k ) @ #x) ⇒ ¬(#x < #d))"
+*/
+by sorry
+
+lemma M_identity_key:
+  exists-trace
+  "∃ S c st k #a #d #j.
+    ((((KeyClass( k, 'identity' ) @ #a) ∧ (CRQCDone( k ) @ #d)) ∧
+      (AcceptStatus( S, c, st ) @ #j)) ∧
+     (#d < #j)) ∧
+    (¬(∃ #i. StatusIssued( S, c, st ) @ #i))"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ S c st k #a #d #j.
+  (KeyClass( k, 'identity' ) @ #a) ∧
+  (CRQCDone( k ) @ #d) ∧
+  (AcceptStatus( S, c, st ) @ #j)
+ ∧
+  (#d < #j) ∧ (∀ #i. (StatusIssued( S, c, st ) @ #i) ⇒ ⊥)"
+*/
+by sorry
+
+/* All wellformedness checks were successful. */
+
+/*
+Generated from:
+Tamarin version 1.12.0
+Maude version 3.5.1
+Git revision: 82780bbaf3328a45f624ddb41e51bf75425f851c (with uncommited changes), branch: master
+Compiled at: 2026-03-07 14:22:39.174278293 UTC
+*/
+
+end
+
+==============================================================================
+summary of summaries:
+
+analyzed: /work/modeller/R6_time.spthy
+
+  processing time: 0.83s
+  
+  executable (exists-trace): analysis incomplete (1 steps)
+  executable_post_qday (exists-trace): analysis incomplete (1 steps)
+  executable_after_window_end (exists-trace): analysis incomplete (1 steps)
+  attack_needs_crqc (all-traces): analysis incomplete (1 steps)
+  G3_status_unforgeability (all-traces): falsified - found trace (8 steps)
+  M_long_key (exists-trace): analysis incomplete (1 steps)
+  M_epoch_key_in_window (exists-trace): analysis incomplete (1 steps)
+  M_token_key_in_window (exists-trace): analysis incomplete (1 steps)
+  M_identity_key (exists-trace): analysis incomplete (1 steps)
+
+==============================================================================

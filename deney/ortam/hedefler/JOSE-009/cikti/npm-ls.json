@@ -1,0 +1,11 @@
+{
+  "version": "0.0.0",
+  "name": "pq-a09-ortam",
+  "dependencies": {
+    "jose": {
+      "version": "6.2.12",
+      "resolved": "https://registry.npmjs.org/jose/-/jose-6.2.12.tgz",
+      "overridden": false
+    }
+  }
+}

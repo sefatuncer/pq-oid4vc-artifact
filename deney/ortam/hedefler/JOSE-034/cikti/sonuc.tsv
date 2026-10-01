@@ -1,0 +1,15 @@
+baslangic	2026-09-25T12:44:10Z
+hedef	JOSE-034
+ekosistem	go
+paket	github.com/dvsekhvalnov/jose2go
+istenen_surum	v1.11.0
+arac	go version go1.27.1 linux/amd64
+commit	f18fd18d33eebaab5b2b2b8a8ebfb63e0290c359
+commit_kaynagi	Go proxy Origin (refs/tags/v1.11.0)
+kurulan_surum	v1.11.0
+kilit_dosyasi	go.sum
+kilit_sha256	6cde33b8bac18d044b613538005355062b309c79151b118725a187a852e26a4e
+bagimlilik_sayisi	4
+paket_ozeti	h1:9pnsV1/CLWFYSxMilqtiY1Fb4JZOxfDk/q0/CQiUMYw=
+ice_aktar	basarili
+bitis	2026-09-25T12:44:24Z

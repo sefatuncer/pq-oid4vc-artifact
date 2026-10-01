@@ -1,0 +1,17 @@
+# hedef=SDJWT-021 imaj=pq-a09-env-dotnet:1.0 (sha256:4f1b25cf1a6e359c5719da979e1c4e3e16f8a9f1ec6cc3c0e4232c7d146771e6) baslangic=2026-09-25T13:20:09Z zaman_asimi=1500s
+# komut: docker run --rm --name pq-a09-ortam-sdjwt-021 --label pq.agir=derleme --memory=6g --memory-swap=6g -v hedefler/SDJWT-021:/w -v betikler/konteyner:/b:ro pq-a09-env-dotnet:1.0 sh -c '(bash|sh) /w/kur.sh'
+== dotnet restore (kilit dosyasıyla)
+  Determining projects to restore...
+  Restored /tmp/p/Deneme.csproj (in 4.76 sec).
+== dotnet build + çalıştır
+  Deneme -> /tmp/p/bin/Release/net10.0/Deneme.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:01.63
+derleme=WalletFramework.SdJwtVc 3.1.0.0 tip_yuklendi=84 tip_yuklenemedi=0
+ad_eslesen_tipler (Valid|Verif|SdJwt; bilgi): WalletFramework.SdJwtVc.SdJwtCredential,WalletFramework.SdJwtVc.SdJwtCredentialExtensions,WalletFramework.SdJwtVc.Services.SdJwtVcHolderService.ISdJwtSigner,WalletFramework.SdJwtVc.Services.SdJwtVcHolderService.ISdJwtVcHolderService,WalletFramework.SdJwtVc.Services.SdJwtVcHolderService.SdJwtSigner,WalletFramework.SdJwtVc.Services.SdJwtVcHolderService.SdJwtVcHolderService,WalletFramework.SdJwtVc.Persistence.ISdJwtCredentialStore,WalletFramework.SdJwtVc.Persistence.SdJwtCredentialRecord,WalletFramework.SdJwtVc.Persistence.SdJwtCredentialRecordConfiguration,WalletFramework.SdJwtVc.Persistence.SdJwtCredentialStore,WalletFramework.SdJwtVc.Models.VctMetadata.Claims.ClaimVerification
+== SONUC: basarili
+# cikis_kodu=0 sure_s=9 bitis=2026-09-25T13:20:18Z

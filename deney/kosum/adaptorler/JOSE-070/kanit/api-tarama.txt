@@ -1,0 +1,121 @@
+# JOSE-070 firebase/php-jwt 7.2.0 — API taraması (sözleşme §5.1)
+# imaj: a10-jose-070:1 (sha256:75b05ef1ea8393f8a4273b7b5fb577fe13c0fd27470a7385f497340addc21f27)
+# komut: docker run --rm --network none a10-jose-070:1 sh -c 'cd /opt/a/vendor/firebase/php-jwt && grep -rn -i -E "supported_algs|algorithm|allow|register|required|signatures|eddsa|ed25519|ml-?dsa|composite|crit|x5c|kid|timestamp|leeway" src/ README.md'
+
+src/JWT.php:38:     * we want to provide some extra leeway time to
+src/JWT.php:43:    public static $leeway = 0;
+src/JWT.php:46:     * Allow the current timestamp to be specified.
+src/JWT.php:52:    public static $timestamp = null;
+src/JWT.php:57:    public static $supported_algs = [
+src/JWT.php:68:        'EdDSA' => ['sodium_crypto', 'EdDSA']
+src/JWT.php:76:     *                                                                      (kid) to Key objects.
+src/JWT.php:77:     *                                                                      If the algorithm used is asymmetric, this is
+src/JWT.php:79:     *                                                                      Each Key object contains an algorithm and
+src/JWT.php:81:     *                                                                      Supported algorithms are 'ES384','ES256',
+src/JWT.php:106:        $timestamp = \is_null(static::$timestamp) ? \time() : static::$timestamp;
+src/JWT.php:146:            throw new UnexpectedValueException('Empty algorithm');
+src/JWT.php:148:        if (empty(static::$supported_algs[$header->alg])) {
+src/JWT.php:149:            throw new UnexpectedValueException('Algorithm not supported');
+src/JWT.php:152:        $key = self::getKey($keyOrKeyArray, property_exists($header, 'kid') ? $header->kid : null);
+src/JWT.php:154:        // Check the algorithm
+src/JWT.php:155:        if (!self::constantTimeEquals($key->getAlgorithm(), $header->alg)) {
+src/JWT.php:157:            throw new UnexpectedValueException('Incorrect key for this algorithm');
+src/JWT.php:160:            // OpenSSL expects an ASN.1 DER sequence for ES256/ES256K/ES384 signatures
+src/JWT.php:169:        if (isset($payload->nbf) && floor($payload->nbf) > ($timestamp + static::$leeway)) {
+src/JWT.php:180:        if (!isset($payload->nbf) && isset($payload->iat) && floor($payload->iat) > ($timestamp + static::$leeway)) {
+src/JWT.php:189:        if (isset($payload->exp) && ($timestamp - static::$leeway) >= $payload->exp) {
+src/JWT.php:192:            $ex->setTimestamp($timestamp);
+src/JWT.php:204:     * @param string                $alg     Supported algorithms are 'ES384','ES256', 'ES256K', 'HS256',
+src/JWT.php:227:            $header['kid'] = $keyId;
+src/JWT.php:250:     * Sign a string with a given key and algorithm.
+src/JWT.php:254:     * @param string $alg  Supported algorithms are 'EdDSA', 'ES384', 'ES256', 'ES256K', 'HS256',
+src/JWT.php:259:     * @throws DomainException Unsupported algorithm or bad key was specified
+src/JWT.php:266:        if (empty(static::$supported_algs[$alg])) {
+src/JWT.php:267:            throw new DomainException('Algorithm not supported');
+src/JWT.php:269:        list($function, $algorithm) = static::$supported_algs[$alg];
+src/JWT.php:275:                self::validateHmacKeyLength($key, $algorithm);
+src/JWT.php:276:                return \hash_hmac($algorithm, $msg, $key, true);
+src/JWT.php:290:                $success = \openssl_sign($msg, $signature, $key, $algorithm);
+src/JWT.php:302:                    return sodium_crypto_sign_detached($msg, self::validateEdDSAKey($key));
+src/JWT.php:308:        throw new DomainException('Algorithm not supported');
+src/JWT.php:319:     * @param string $alg         The algorithm
+src/JWT.php:323:     * @throws DomainException Invalid Algorithm, bad key, or OpenSSL failure
+src/JWT.php:331:        if (empty(static::$supported_algs[$alg])) {
+src/JWT.php:332:            throw new DomainException('Algorithm not supported');
+src/JWT.php:335:        list($function, $algorithm) = static::$supported_algs[$alg];
+src/JWT.php:349:                $success = \openssl_verify($msg, $signature, $keyMaterial, $algorithm);
+src/JWT.php:362:                    $key = self::validateEdDSAKey($keyMaterial);
+src/JWT.php:375:                self::validateHmacKeyLength($keyMaterial, $algorithm);
+src/JWT.php:376:                $hash = \hash_hmac($algorithm, $msg, $keyMaterial, true);
+src/JWT.php:472:     * Determine if an algorithm has been provided for each Key
+src/JWT.php:475:     * @param string|null            $kid
+src/JWT.php:483:        ?string $kid
+src/JWT.php:489:        if (empty($kid) && $kid !== '0') {
+src/JWT.php:490:            throw new UnexpectedValueException('"kid" empty, unable to lookup correct key');
+src/JWT.php:495:            return $keyOrKeyArray[$kid];
+src/JWT.php:498:        if (!isset($keyOrKeyArray[$kid])) {
+src/JWT.php:499:            throw new UnexpectedValueException('"kid" invalid, unable to lookup correct key');
+src/JWT.php:502:        return $keyOrKeyArray[$kid];
+src/JWT.php:632:        // OpenSSL returns the ECDSA signatures as a binary ASN.1 DER SEQUENCE
+src/JWT.php:694:     * @param string $algorithm The algorithm
+src/JWT.php:698:    private static function validateHmacKeyLength(string $key, string $algorithm): void
+src/JWT.php:701:        $minKeyLength = (int) \str_replace('SHA', '', $algorithm);
+src/JWT.php:727:     * @param string $algorithm The algorithm
+src/JWT.php:732:        string $algorithm
+src/JWT.php:737:        $minKeyLength = (int) \str_replace('ES', '', $algorithm);
+src/JWT.php:747:    private static function validateEdDSAKey(#[\SensitiveParameter] $keyMaterial): string
+src/JWT.php:753:            throw new InvalidArgumentException('key must be a string when using EdDSA');
+src/JWT.php:765:     * Signs a message with a PS256 algorithm
+src/JWT.php:776:            throw new DomainException('phpseclib/phpseclib is required for PS256 support');
+src/JWT.php:780:            throw new DomainException('Cannot sign with an X.509 certificate. A private key is required.');
+src/JWT.php:799:     * Validates a PS256 algorithm signature.
+src/JWT.php:812:            throw new DomainException('phpseclib/phpseclib is required for PS256 support');
+src/CachedKeySet.php:152:            $kid = isset($v['kid']) ? $v['kid'] : $k;
+src/CachedKeySet.php:153:            $keys[(string) $kid] = $v;
+src/CachedKeySet.php:168:                // Parse this into expected format array<kid, jwk> instead.
+src/JWK.php:37:        'Ed25519', // RFC 8037
+src/JWK.php:46:        'Ed25519' => true, // RFC 8037
+src/JWK.php:53:     * @param string       $defaultAlg The algorithm for the Key object if "alg" is not set in the
+src/JWK.php:56:     * @return array<string, Key> An associative array of key IDs (kid) to Key objects
+src/JWK.php:77:            $kid = isset($v['kid']) ? $v['kid'] : $k;
+src/JWK.php:79:                $keys[(string) $kid] = $key;
+src/JWK.php:84:            throw new UnexpectedValueException('No supported algorithms found in JWK Set');
+src/JWK.php:94:     * @param string       $defaultAlg The algorithm for the Key object if "alg" is not set in the
+src/JWK.php:117:                // The "alg" parameter is optional in a KTY, but an algorithm is required
+src/JWK.php:184:                // This library works internally with EdDSA keys (Ed25519) encoded in standard base64.
+src/Key.php:14:     * @param string $algorithm
+src/Key.php:18:        private string $algorithm
+src/Key.php:31:        if (empty($algorithm)) {
+src/Key.php:32:            throw new InvalidArgumentException('Algorithm must not be empty');
+src/Key.php:37:     * Return the algorithm valid for this key
+src/Key.php:41:    public function getAlgorithm(): string
+src/Key.php:43:        return $this->algorithm;
+src/ExpiredException.php:9:    private ?int $timestamp = null;
+src/ExpiredException.php:21:    public function setTimestamp(int $timestamp): void
+src/ExpiredException.php:23:        $this->timestamp = $timestamp;
+src/ExpiredException.php:26:    public function getTimestamp(): ?int
+src/ExpiredException.php:28:        return $this->timestamp;
+README.md:42: * You must specify supported algorithms for your application. See
+README.md:43: * https://tools.ietf.org/html/draft-ietf-jose-json-web-algorithms-40
+README.md:44: * for a list of spec-compliant algorithms.
+README.md:63: * You can add a leeway to account for when there is a clock skew times between
+README.md:64: * the signing and verifying servers. It is recommended that this leeway should
+README.md:69:JWT::$leeway = 60; // $leeway in seconds
+README.md:213:## Example with EdDSA (libsodium and Ed25519 signature)
+README.md:237:$jwt = JWT::encode($payload, $privateKey, 'EdDSA');
+README.md:240:$decoded = JWT::decode($jwt, new Key($publicKey, 'EdDSA'));
+README.md:254:// Example EdDSA keys from previous example
+README.md:265:$jwt1 = JWT::encode($payload, $privateRsKey, 'RS256', 'kid1');
+README.md:266:$jwt2 = JWT::encode($payload, $privateEcKey, 'EdDSA', 'kid2');
+README.md:271:    'kid1' => new Key($publicRsKey, 'RS256'),
+README.md:272:    'kid2' => new Key($publicEcKey, 'EdDSA'),
+README.md:285:PHP's OpenSSL extension does not support RSASSA-PSS signatures (PS256) by default, so we provide support via a soft dependency on the [phpseclib/phpseclib](https://github.com/phpseclib/phpseclib) library. It is necessary to install this library in your project if you plan to use PS256.
+README.md:320:// Set of keys. The "keys" key is required. For example, the JSON response to
+README.md:324:// JWK::parseKeySet($jwks) returns an associative array of **kid** to Firebase\JWT\Key
+README.md:389:    // provided algorithm is unsupported OR
+README.md:392:    // libsodium is required but not available.
+README.md:402:    // provided JWT is missing an algorithm / using an unsupported algorithm OR
+README.md:403:    // provided JWT algorithm does not match provided key OR
+
+# ek: ML-DSA/composite deseni
+eslesme yok (0)

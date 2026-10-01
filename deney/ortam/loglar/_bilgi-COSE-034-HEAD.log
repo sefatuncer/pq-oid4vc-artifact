@@ -1,0 +1,15 @@
+# hedef=_bilgi-COSE-034-HEAD imaj=pq-a09-env-go:1.0 (sha256:931657811dd72d1cde2c7425231242580b689ffe96c6eb942c8f504be851c706) baslangic=2026-09-25T13:07:52Z zaman_asimi=900s
+# komut: docker run --rm --name pq-a09-ortam-_bilgi-cose-034-head --label pq.agir=derleme --memory=6g --memory-swap=6g -v hedefler/_bilgi-COSE-034-HEAD:/w -v betikler/konteyner:/b:ro pq-a09-env-go:1.0 sh -c '(bash|sh) /w/kur.sh'
+== go get github.com/veraison/go-cose@dea543bf9b89b0cef461c0d194747c9ed5e6666c
+go: downloading github.com/veraison/go-cose v1.3.1-0.20260826103205-dea543bf9b89
+go: downloading github.com/fxamacker/cbor/v2 v2.9.0
+go: downloading github.com/x448/float16 v0.8.4
+go: added github.com/fxamacker/cbor/v2 v2.9.0
+go: added github.com/veraison/go-cose v1.3.1-0.20260826103205-dea543bf9b89
+go: added github.com/x448/float16 v0.8.4
+== derleme ve bağlama
+paket github.com/veraison/go-cose baglandi
+sembol NewVerifier func(cose.Algorithm, crypto.PublicKey) (cose.Verifier, error)
+tip *cose.Sign1Message *cose.SignMessage
+== SONUC: basarili
+# cikis_kodu=0 sure_s=10 bitis=2026-09-25T13:08:02Z

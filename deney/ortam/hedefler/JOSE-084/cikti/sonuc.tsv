@@ -1,0 +1,16 @@
+baslangic	2026-09-25T12:39:39Z
+hedef	JOSE-084
+ekosistem	pypi
+paket	python-jose
+istenen_surum	3.5.0
+not	ekstra [cryptography]
+arac	python 3.13.15; pip 26.2.1
+paket_ozeti	sha256:abd1202f23d34dfad2c3d28cb8617b90acf34132c7afd60abd0b0b7d3cb55771 (python_jose-3.5.0-py2.py3-none-any.whl)
+bagimlilik_sayisi	8
+kilit_dosyasi	requirements.lock (pip --report'tan, --hash'li)
+kilit_sha256	831216aed515085df1459615a3496b371a35b5af2c205c07ff7fbf3a39a4a956
+kurulan_surum	3.5.0
+lisans_kayit	MIT
+ortam	cryptography 50.0.1; gömülü OpenSSL 4.0.2 25 Aug 2026; mldsa_modulu=var
+ice_aktar	basarili
+bitis	2026-09-25T12:39:52Z

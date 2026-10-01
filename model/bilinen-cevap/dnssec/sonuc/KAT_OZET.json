@@ -1,0 +1,70 @@
+{
+ "kat": "KAT-1 DNSSEC",
+ "karar_Vd": "KALDI",
+ "kosullar": {
+  "asp_yuzde100": true,
+  "tamarin_yuzde100": false,
+  "executable_hepsi_verified": true,
+  "iyi_bicim_uyari0": true,
+  "asp_tamarin_yuzde100": false,
+  "mutasyon_yuzde100": true,
+  "cekirdek_degismedi": true
+ },
+ "sayilar": {
+  "asp": [
+   15,
+   15
+  ],
+  "tamarin": [
+   14,
+   15
+  ],
+  "asp_tamarin": [
+   14,
+   15
+  ],
+  "mutasyon": [
+   5,
+   5
+  ]
+ },
+ "mutasyonlar": {
+  "MUT01": {
+   "asp": true,
+   "tamarin": true
+  },
+  "MUT02": {
+   "asp": true,
+   "tamarin": true
+  },
+  "MUT03": {
+   "asp": true,
+   "tamarin": true
+  },
+  "MUT04": {
+   "asp": true,
+   "tamarin": true
+  },
+  "MUT05": {
+   "asp": true,
+   "tamarin": true
+  }
+ },
+ "belirsiz_ya_da_gecersiz": [],
+ "executable_olmayan": [],
+ "alinti_bulundu": [
+  7,
+  7
+ ],
+ "asp_tamarin_uyumsuz": [
+  "K1-11"
+ ],
+ "asp_uyumsuz": [],
+ "tamarin_uyumsuz": [
+  [
+   "K1-11",
+   "verified",
+   "falsified"
+  ]
+ ]
+}

@@ -1,0 +1,76 @@
+kural,varyant,rol,bayraklar,G_beklenen,guvenlik,mutasyon_ek,saglik_verified,lemma_sayisi,max_sure_s,max_bellek_MiB,merdiven_max,hepsi_beklenen_gibi
+R1,P_all_pq,korumali,ROOT_PQ+CA_PQ+ISS_PQ,V,G1_claims_unforgeability=verified,-,3/3,4,1.32,75.5,1,EVET
+R1,M_root,mutant:kok_anahtari_PQ,CA_PQ+ISS_PQ,F,G1_claims_unforgeability=falsified,M_root_classical=verified,3/3,5,1.47,84.4,1,EVET
+R1,M_ca,mutant:CA_anahtari_PQ,ROOT_PQ+ISS_PQ,F,G1_claims_unforgeability=falsified,M_ca_classical=verified,3/3,5,1.38,84.9,1,EVET
+R1,M_iss,mutant:ihracci_imzasi_PQ,ROOT_PQ+CA_PQ,F,G1_claims_unforgeability=falsified,M_issuer_classical=verified,3/3,5,1.35,77.7,1,EVET
+R1,E_iss_only,ek,ISS_PQ,F,G1_claims_unforgeability=falsified,M_root_classical=verified M_ca_classical=verified,3/3,6,1.58,94.2,1,EVET
+R1,E_ca_only,ek,CA_PQ,F,G1_claims_unforgeability=falsified,M_root_classical=verified M_issuer_classical=verified,3/3,6,1.55,93.6,1,EVET
+R1,E_root_only,ek,ROOT_PQ,F,G1_claims_unforgeability=falsified,M_ca_classical=verified M_issuer_classical=verified,3/3,6,1.48,89.4,1,EVET
+R1,E_none,ek,-,F,G1_claims_unforgeability=falsified,M_root_classical=verified M_ca_classical=verified M_issuer_classical=verified,3/3,7,1.58,95.7,1,EVET
+R1,X_alt_ca,ek-sinir,ROOT_PQ+CA_PQ+ISS_PQ+ALT_CA,F,G1_claims_unforgeability=falsified,X_alt_ca_forges_honest_issuer=verified,3/3,5,1.47,89.8,1,EVET
+R1,X_alt_ca_namebind,ek-sinir,ROOT_PQ+CA_PQ+ISS_PQ+ALT_CA+NAME_BIND,V,G1_claims_unforgeability=verified,-,3/3,4,1.52,76.1,1,EVET
+R2,P_expect_auth,korumali,EXPECT_AUTH,V,G1_claims_unforgeability=verified G5_no_classical_acceptance=verified,S1_downgrade_trace=falsified,4/4,7,0.96,78.1,1,EVET
+R2,M_expect_unauth,mutant:beklentinin_kimlik_dogrulamasi,EXPECT_UNAUTH,F,G1_claims_unforgeability=falsified G5_no_classical_acceptance=falsified,S1_downgrade_trace=verified M_expectation_unauthenticated=verified,4/4,8,0.97,76.3,1,EVET
+R2,M_expect_absent,mutant:beklenti,-,F,G1_claims_unforgeability=falsified G5_no_classical_acceptance=falsified,S1_downgrade_trace=verified M_expectation_absent=verified,4/4,8,0.88,76.6,1,EVET
+R2,E_nocoexist_auth,ek,NO_COEXIST+EXPECT_AUTH,V,G1_claims_unforgeability=verified G5_no_classical_acceptance=verified,S1_downgrade_trace=falsified,4/4,7,0.84,75.8,1,EVET
+R2,E_nocoexist_unauth,ek,NO_COEXIST+EXPECT_UNAUTH,V,G1_claims_unforgeability=verified G5_no_classical_acceptance=verified,S1_downgrade_trace=falsified,4/4,7,0.87,75.8,1,EVET
+R2,E_nocoexist_none,ek,NO_COEXIST,V,G1_claims_unforgeability=verified G5_no_classical_acceptance=verified,S1_downgrade_trace=falsified,4/4,7,0.81,75.6,1,EVET
+R3,P_obj_pq,korumali,CHAN_PQ,V,G1_claims_unforgeability=verified G5_no_classical_acceptance=verified,-,5/5,7,1.29,78.0,1,EVET
+R3,P_tls_pq,korumali,CHAN_PQ+VIA_TLS,V,G1_claims_unforgeability=verified G5_no_classical_acceptance=verified,-,5/5,7,1.44,80.0,1,EVET
+R3,M_obj_classical,mutant:PQ_kanal_nesne_imzasi,-,F,G1_claims_unforgeability=falsified G5_no_classical_acceptance=falsified,M_channel_classical=verified,5/5,8,1.27,78.6,1,EVET
+R3,M_tls_classical,mutant:PQ_kanal_tasima,VIA_TLS,F,G1_claims_unforgeability=falsified G5_no_classical_acceptance=falsified,M_channel_classical=verified,5/5,8,1.56,78.4,1,EVET
+R4,P_dev_iss_pq,korumali,DEV_PQ+ISS_PQ,V,G2_presentation_unforgeability=verified,-,3/3,4,1.5,80.2,1,EVET
+R4,M_dev,mutant:PQ_cihaz_anahtari,ISS_PQ,F,G2_presentation_unforgeability=falsified,M_device_key_classical=verified,3/3,5,1.46,81.7,1,EVET
+R4,M_iss,mutant:PQ_ihracci_imzasi,DEV_PQ,F,G2_presentation_unforgeability=falsified,M_issuer_classical=verified,3/3,5,1.4,81.7,1,EVET
+R4,E_none,ek,-,F,G2_presentation_unforgeability=falsified,M_device_key_classical=verified M_issuer_classical=verified,3/3,6,1.57,84.9,1,EVET
+R4,H5_single_use_dev_classical,ek-h5,ISS_PQ+SINGLE_USE,F,G2_presentation_unforgeability=falsified,M_device_key_classical=verified,4/4,6,1.46,83.7,1,EVET
+R4,H5_single_use_protected,ek-h5,DEV_PQ+ISS_PQ+SINGLE_USE,V,G2_presentation_unforgeability=verified,-,4/4,5,1.41,76.8,1,EVET
+R5,P_pin_tlpq,korumali,PIN_TL+TL_PQ,V,G1_claims_unforgeability=verified,-,3/3,4,1.0,75.0,1,EVET
+R5,M_pin,mutant:sabitleme,TL_PQ,F,G1_claims_unforgeability=falsified,M_pin_removed=verified,3/3,5,1.48,84.6,1,EVET
+R5,M_tl,mutant:capa_anahtari_PQ,PIN_TL,F,G1_claims_unforgeability=falsified,M_anchor_classical=verified,3/3,5,1.08,75.1,1,EVET
+R5,E_none,ek,-,F,G1_claims_unforgeability=falsified,M_pin_removed=verified M_anchor_classical=verified,3/3,6,1.56,92.5,1,EVET
+R5,E_lotlpq,ek,LOTL_PQ,F,G1_claims_unforgeability=falsified,M_anchor_classical=verified,3/3,5,1.4,84.1,1,EVET
+R5,E_lotlpq_tlpq,ek,LOTL_PQ+TL_PQ,V,G1_claims_unforgeability=verified,-,3/3,4,1.32,73.8,1,EVET
+R5,E_pin_lotlpq,ek,PIN_TL+LOTL_PQ,F,G1_claims_unforgeability=falsified,M_anchor_classical=verified,3/3,5,0.98,76.0,1,EVET
+R5,E_all_pq_pin,ek,PIN_TL+TL_PQ+LOTL_PQ,V,G1_claims_unforgeability=verified,-,3/3,4,0.89,74.4,1,EVET
+R6,E_long_fast,ek,ID_PQ,-,G3_status_unforgeability=falsified,M_long_key=verified M_epoch_key_in_window=falsified M_token_key_in_window=falsified M_identity_key=falsified,3/3,8,0.96,76.3,1,EVET
+R6,M_long_medium,mutant:kisa_anahtar_penceresi(P_tok_medium),ID_PQ+MEDIUM,-,G3_status_unforgeability=falsified,M_long_key=verified M_epoch_key_in_window=falsified M_token_key_in_window=falsified M_identity_key=falsified,3/3,8,1.0,76.7,1,EVET
+R6,M_long_slow,mutant:kisa_anahtar_penceresi(P_rot_slow),ID_PQ+SLOW,-,G3_status_unforgeability=falsified,M_long_key=verified M_epoch_key_in_window=falsified M_token_key_in_window=falsified M_identity_key=falsified,3/3,8,0.9,77.4,1,EVET
+R6,M_rot_fast,mutant:tau_pencereden_uzun(P_rot_slow),ROTATED+ID_PQ,-,G3_status_unforgeability=falsified,M_long_key=falsified M_epoch_key_in_window=verified M_token_key_in_window=falsified M_identity_key=falsified,4/4,9,1.04,75.3,1,EVET
+R6,E_rot_medium,ek,ROTATED+ID_PQ+MEDIUM,-,G3_status_unforgeability=falsified,M_long_key=falsified M_epoch_key_in_window=verified M_token_key_in_window=falsified M_identity_key=falsified,4/4,9,1.08,75.4,1,EVET
+R6,P_rot_slow,korumali,ROTATED+ID_PQ+SLOW,-,G3_status_unforgeability=verified,M_long_key=falsified M_epoch_key_in_window=falsified M_token_key_in_window=falsified M_identity_key=falsified,4/4,9,1.03,74.7,1,EVET
+R6,M_tok_fast,mutant:tau_pencereden_uzun(P_tok_medium),PER_TOKEN+ID_PQ,-,G3_status_unforgeability=falsified,M_long_key=falsified M_epoch_key_in_window=falsified M_token_key_in_window=verified M_identity_key=falsified,4/4,9,1.03,76.4,1,EVET
+R6,P_tok_medium,korumali,PER_TOKEN+ID_PQ+MEDIUM,-,G3_status_unforgeability=verified,M_long_key=falsified M_epoch_key_in_window=falsified M_token_key_in_window=falsified M_identity_key=falsified,4/4,9,0.96,77.1,1,EVET
+R6,E_tok_slow,ek,PER_TOKEN+ID_PQ+SLOW,-,G3_status_unforgeability=verified,M_long_key=falsified M_epoch_key_in_window=falsified M_token_key_in_window=falsified M_identity_key=falsified,4/4,9,0.95,76.6,1,EVET
+R6,M_rot_id,mutant:PQ_kimlik_baglama(P_rot_slow),ROTATED+SLOW,-,G3_status_unforgeability=falsified,M_long_key=falsified M_epoch_key_in_window=falsified M_token_key_in_window=falsified M_identity_key=verified,4/4,9,1.22,84.9,1,EVET
+R6,M_rot_reuse,mutant:anahtar_yeniden_kullanilmaz(P_rot_slow),ROTATED+ID_PQ+SLOW+KEY_REUSE,-,G3_status_unforgeability=falsified,M_long_key=verified M_epoch_key_in_window=falsified M_token_key_in_window=falsified M_identity_key=falsified,4/4,9,1.08,76.3,1,EVET
+R6,M_tok_id,mutant:PQ_kimlik_baglama(P_tok_medium),PER_TOKEN+MEDIUM,-,G3_status_unforgeability=falsified,M_long_key=falsified M_epoch_key_in_window=falsified M_token_key_in_window=falsified M_identity_key=verified,4/4,9,1.12,85.5,1,EVET
+R6h5,P_single_slow,korumali,SINGLE_USE+SLOW,-,G2_presentation_unforgeability=verified,M_device_key_in_window=falsified M_device_key_reused=falsified,5/5,8,1.34,80.5,1,EVET
+R6h5,E_nosingle_slow,ek,SLOW,-,G2_presentation_unforgeability=verified,M_device_key_in_window=falsified M_device_key_reused=falsified,4/4,7,1.33,86.7,1,EVET
+R6h5,M_single_fast,mutant:gecerlilik_penceresi_tau_dan_kisa(P_single_slow),SINGLE_USE,-,G2_presentation_unforgeability=falsified,M_device_key_in_window=verified M_device_key_reused=falsified,5/5,8,1.27,81.3,1,EVET
+R6h5,M_single_slow_reuse,mutant:kimlik_bilgisi_basina_cihaz_anahtari(P_single_slow),SINGLE_USE+SLOW+KEY_REUSE,-,G2_presentation_unforgeability=falsified,M_device_key_in_window=falsified M_device_key_reused=verified,5/5,8,1.4,82.8,1,EVET
+R6h5,E_nosingle_fast,ek,-,-,G2_presentation_unforgeability=falsified,M_device_key_in_window=verified M_device_key_reused=falsified,4/4,7,1.3,84.5,1,EVET
+R6h5,E_devpq_single_fast,ek,DEV_PQ+SINGLE_USE,-,G2_presentation_unforgeability=verified,M_device_key_in_window=falsified M_device_key_reused=falsified,5/5,8,1.2,79.7,1,EVET
+R7,P_mf_online,korumali,PQ_CHAN+FRESH+MONOTONE+PER_ENTITY+SUNSET_CHECK,-,G5_migrated=verified G5_timed=verified no_rollback=verified,first_contact_downgrade=falsified,5/5,9,1.48,77.0,1,EVET
+R7,P_mf_pinned,korumali,PINNED+MONOTONE+PER_ENTITY+SUNSET_CHECK,-,G5_migrated=verified G5_timed=verified no_rollback=verified,first_contact_downgrade=falsified,5/5,9,0.81,76.9,1,EVET
+R7,M_pq_chan,mutant:PQ_kanal(P_mf_online),FRESH+MONOTONE+PER_ENTITY+SUNSET_CHECK,-,G5_migrated=falsified G5_timed=verified no_rollback=verified,first_contact_downgrade=verified M_source_key_broken=verified,5/5,10,1.57,77.3,1,EVET
+R7,M_fresh,mutant:tazelik_ya_da_sabitleme(P_mf_online),PQ_CHAN+MONOTONE+PER_ENTITY+SUNSET_CHECK,-,G5_migrated=falsified G5_timed=verified no_rollback=verified,first_contact_downgrade=verified M_stale_object=verified,5/5,10,1.21,76.0,1,EVET
+R7,M_per_entity,mutant:varlik_basina_kapsam(P_mf_online),PQ_CHAN+FRESH+MONOTONE+SUNSET_CHECK,-,G5_migrated=falsified G5_timed=verified no_rollback=verified,first_contact_downgrade=verified M_global_expectation=verified,4/5,10,0.96,75.6,1,EVET
+R7,A_online_no_monotone,ek-ablasyon,PQ_CHAN+FRESH+PER_ENTITY+SUNSET_CHECK,-,G5_migrated=verified G5_timed=verified no_rollback=verified,first_contact_downgrade=falsified M_rollback=falsified,5/5,10,1.57,78.0,1,EVET
+R7,A_online_no_sunset,ek-ablasyon,PQ_CHAN+FRESH+MONOTONE+PER_ENTITY,-,G5_migrated=verified G5_timed=verified no_rollback=verified,first_contact_downgrade=falsified M_after_sunset=falsified,5/5,10,1.55,77.2,1,EVET
+R7,A_pinned_min,ek-ablasyon,PINNED+PER_ENTITY,-,G5_migrated=verified G5_timed=verified no_rollback=verified,first_contact_downgrade=falsified M_rollback=falsified M_after_sunset=falsified,5/5,11,0.82,76.7,1,EVET
+R7,M_off_monotone,mutant:tekduzelik_cevrimdisi(M_fresh),PQ_CHAN+PER_ENTITY+SUNSET_CHECK,-,G5_migrated=falsified G5_timed=verified no_rollback=falsified,first_contact_downgrade=verified M_stale_object=verified M_rollback=verified,5/5,11,1.71,76.2,1,EVET
+R7,M_off_sunset,mutant:sunset_denetimi_cevrimdisi(M_fresh),PQ_CHAN+MONOTONE+PER_ENTITY,-,G5_migrated=falsified G5_timed=falsified no_rollback=verified,first_contact_downgrade=verified M_stale_object=verified M_after_sunset=verified,5/5,11,1.63,76.9,1,EVET
+R7,G_mg,ek-mekanizma,MG+MONOTONE+SUNSET_CHECK,-,G5_migrated=falsified G5_timed=verified no_rollback=verified,first_contact_downgrade=verified,5/5,9,0.82,76.9,1,EVET
+R7,G_mg_no_sunset,ek-mekanizma,MG+MONOTONE,-,G5_migrated=falsified G5_timed=falsified no_rollback=verified,first_contact_downgrade=verified M_after_sunset=verified,5/5,10,0.8,74.7,1,EVET
+R7,G_mg_no_cache,ek-mekanizma,MG+SUNSET_CHECK,-,G5_migrated=falsified G5_timed=verified no_rollback=falsified,first_contact_downgrade=verified M_rollback=verified,5/5,10,1.13,76.7,1,EVET
+R7h,P_ca_pq_alt_namebind,korumali,CA_PQ+ALT_CA+NAME_BIND,-,G5_no_classical_acceptance=falsified G1_claims_unforgeability=falsified,-,4/4,6,3.58,115.8,1,HAYIR
+R7h,P_ca_pq_single,korumali,CA_PQ,-,G5_no_classical_acceptance=verified G1_claims_unforgeability=verified,-,4/4,6,2.62,85.1,1,EVET
+R7h,M_ca_classical,mutant:taahhut_zinciri_PQ(P_ca_pq_alt_namebind),ALT_CA+NAME_BIND,-,G5_no_classical_acceptance=falsified G1_claims_unforgeability=falsified,M_commitment_chain_classical=verified,4/4,7,2.85,115.5,1,EVET
+R7h,M_no_namebind,mutant:ad_baglama(P_ca_pq_alt_namebind),CA_PQ+ALT_CA,-,G5_no_classical_acceptance=falsified G1_claims_unforgeability=falsified,M_alt_ca_bypass=verified,4/4,7,2.65,115.0,1,EVET
+R7h,E_ca_classical_single,ek,-,-,G5_no_classical_acceptance=falsified G1_claims_unforgeability=falsified,M_commitment_chain_classical=verified,4/4,7,2.53,107.6,1,EVET
+R7hx,X_repro_prereg,kesif,CA_PQ+ALT_CA+NAME_BIND,-,G5_no_classical_acceptance=falsified G1_claims_unforgeability=falsified,X_alt_ca_key_used=verified,4/4,7,2.76,113.9,1,EVET
+R7hx,X_namebind_unique,kesif,CA_PQ+ALT_CA+NAME_BIND+UNIQUE_CA_NAMES,-,G5_no_classical_acceptance=verified G1_claims_unforgeability=verified,X_alt_ca_key_used=falsified,4/4,7,2.77,85.3,1,EVET
+R7hx,X_namebind_samename,kesif,CA_PQ+ALT_CA+NAME_BIND+ALT_SAME_NAME,-,G5_no_classical_acceptance=falsified G1_claims_unforgeability=falsified,X_alt_ca_key_used=verified,4/4,7,2.82,114.8,1,EVET
+R7hx,X_keybind_samename,kesif,CA_PQ+ALT_CA+KEY_BIND+ALT_SAME_NAME,-,G5_no_classical_acceptance=verified G1_claims_unforgeability=verified,X_alt_ca_key_used=falsified,4/4,7,2.7,87.0,1,EVET
+R7hx,X_keybind_distinct,kesif,CA_PQ+ALT_CA+KEY_BIND,-,G5_no_classical_acceptance=verified G1_claims_unforgeability=verified,X_alt_ca_key_used=falsified,4/4,7,2.67,89.0,1,EVET

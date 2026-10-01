@@ -1,0 +1,67 @@
+(* =====================================================================
+   PQ-OID4VC | Adım 5A | ProVerif ikinci görüş — R3 kanal, nesne imzası
+   (Tamarin: R3_channel.spthy, VIA_TLS olmadan)
+   Coexistence; the expectation source signs (exp_tag, X, e) with its channel
+   key (pinned at the verifier). Classical issuer keys always leak in phase 1;
+   the channel key leaks in phase 1 unless CHAN_PQ.
+   Queries in order: executable (reachability), G1_claims_unforgeability (issM),
+                     G5_no_classical_acceptance (issM)
+   ===================================================================== *)
+free c: channel.
+type skey.
+type pkey.
+fun pk(skey): pkey.
+fun sign(bitstring, skey): bitstring.
+reduc forall m: bitstring, k: skey; verify(sign(m, k), m, pk(k)) = true.
+
+free cred_tag, exp_tag, pq_required, none: bitstring.
+free issM, issL: bitstring.
+
+event Issued(bitstring, bitstring).
+event Accept(bitstring, bitstring).
+event AcceptCl(bitstring, bitstring).
+
+query x: bitstring; event(Accept(issM, x)).
+query x: bitstring; event(Accept(issM, x)) ==> event(Issued(issM, x)).
+query x: bitstring; event(AcceptCl(issM, x)).
+
+let IssueMigrated(skq: skey, skc: skey) =
+  new claims: bitstring;
+  event Issued(issM, claims);
+  out(c, ((cred_tag, issM, claims), sign((cred_tag, issM, claims), skq)));
+  out(c, ((cred_tag, issM, claims), sign((cred_tag, issM, claims), skc))).
+
+let IssueLegacy(skl: skey) =
+  new claims: bitstring;
+  event Issued(issL, claims);
+  out(c, ((cred_tag, issL, claims), sign((cred_tag, issL, claims), skl))).
+
+let Source(skch: skey) =
+  out(c, ((exp_tag, issM, pq_required), sign((exp_tag, issM, pq_required), skch)));
+  out(c, ((exp_tag, issL, none), sign((exp_tag, issL, none), skch))).
+
+let VerifyPQ(pkq: pkey) =
+  in(c, ((=cred_tag, =issM, x: bitstring), s: bitstring));
+  if verify(s, (cred_tag, issM, x), pkq) = true then
+  event Accept(issM, x).
+
+let VerifyClassical(i: bitstring, pkc: pkey, pkch: pkey) =
+  in(c, ((=exp_tag, =i, e: bitstring), se: bitstring));
+  if verify(se, (exp_tag, i, e), pkch) = true then
+  if e = none then
+  in(c, ((=cred_tag, =i, x: bitstring), s: bitstring));
+  if verify(s, (cred_tag, i, x), pkc) = true then
+  event AcceptCl(i, x); event Accept(i, x).
+
+process
+  new skq: skey; new skc: skey; new skl: skey; new skch: skey;
+  out(c, (pk(skq), pk(skc), pk(skl), pk(skch)));
+  ( Source(skch)
+  | (!IssueMigrated(skq, skc)) | (!IssueLegacy(skl))
+  | (!VerifyPQ(pk(skq)))
+  | (!VerifyClassical(issM, pk(skc), pk(skch))) | (!VerifyClassical(issL, pk(skl), pk(skch)))
+  | (phase 1; ( out(c, skc) | out(c, skl) |
+      out(c, skch) |
+      (!IssueMigrated(skq, skc)) | (!IssueLegacy(skl))
+      | (!VerifyPQ(pk(skq)))
+      | (!VerifyClassical(issM, pk(skc), pk(skch))) | (!VerifyClassical(issL, pk(skl), pk(skch))) )) )

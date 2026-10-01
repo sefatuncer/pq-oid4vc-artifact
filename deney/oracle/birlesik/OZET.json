@@ -1,0 +1,24 @@
+{
+ "satir": 1845,
+ "karar_dagilimi": {
+  "accept-classical": 460,
+  "accept-hybrid": 255,
+  "reject": 861,
+  "kol-bagimsiz": 24,
+  "B1-bayragi": 108,
+  "indeterminate": 137
+ },
+ "kaynak_dagilimi": {
+  "A=B": 152,
+  "tek-oracle": 1118,
+  "madde-9": 12,
+  "madde-8": 96,
+  "A≠B": 10,
+  "A|B": 3,
+  "COSE-esleme": 418,
+  "L4c-3": 36
+ },
+ "cose_esi_bulunamayan": [],
+ "A_sha256": "dd21fdba2b86b22410c6c0292419b44240e508a7429e6f42ffce827801892c75",
+ "B_sha256": "2cca12957e4a3b1145d6e7c616fe89531b992e63e50b92de4b0f141ba2ba7e4e"
+}

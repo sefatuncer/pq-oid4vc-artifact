@@ -1,0 +1,16 @@
+baslangic	2026-09-25T13:05:29Z
+hedef	JOSE-070
+ekosistem	packagist
+paket	firebase/php-jwt
+istenen_surum	v7.2.0
+arac	PHP 8.4.26 ; Composer version 2.10.3; php-openssl OpenSSL 3.5.8 25 Aug 2026
+kilit_dosyasi	composer.lock
+kilit_sha256	5f6f08856f2b217a4fa26ba4022a0c57a98e891c05767a3ce8a8a917dfd9843b
+bagimlilik_sayisi	1
+kurulan_surum	v7.2.0
+commit	f502cdbf279cd7532060b041f7c22a05208c0b93
+commit_kaynagi	composer.lock dist.reference
+lisans_kayit	BSD-3-Clause
+paket_ozeti	sha256:c2618bab982eed4ad12d1975366b14648b59fa1e279244504dea4511454e44b2 (Packagist dist zip)
+ice_aktar	basarili
+bitis	2026-09-25T13:05:31Z

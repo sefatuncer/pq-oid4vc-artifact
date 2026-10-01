@@ -1,0 +1,15 @@
+baslangic	2026-09-25T12:43:53Z
+hedef	JOSE-033
+ekosistem	go
+paket	github.com/golang-jwt/jwt/v5
+istenen_surum	v5.3.1
+arac	go version go1.27.1 linux/amd64
+commit	7ceae619e739dc8a7bf577214aa8ebf26668e9db
+commit_kaynagi	Go proxy Origin (refs/tags/v5.3.1)
+kurulan_surum	v5.3.1
+kilit_dosyasi	go.sum
+kilit_sha256	d0c4ed11fdf0e6faba5af1aa8be9e7df55828a6f0c93958580f09b309d2b024b
+bagimlilik_sayisi	1
+paket_ozeti	h1:kYf81DTWFe7t+1VvL7eS+jKFVWaUnK9cB1qbwn63YCY=
+ice_aktar	basarili
+bitis	2026-09-25T12:44:06Z

@@ -1,0 +1,84 @@
+# JOSE-034 — API taraması (sözleşme §5.1)
+# imaj: pq-a10-go-b:gecici (sha256:429c02b4261e58730eaf30649a20f7a693a147687a18a15cf527458de93a5bd9)
+# komut: docker run --rm --network none --entrypoint sh pq-a10-go-b:gecici -c 'cd /go/pkg/mod/github.com/dvsekhvalnov/jose2go@*/ && grep -rn -i -E 'algorithms|allow|register|deregister|required|eddsa|ed25519|ml-?dsa|mldsa|composite|okp|verifier|keyselector|RegisterJws|DeregisterJws|ES256|EdDSA' --include=*.go . | grep -v _test.go | head -150'
+
+./ecdh.go:19:	RegisterJwa(&Ecdh{directAgreement: true})
+./ecdh_aeskw.go:4:	RegisterJwa(&EcdhAesKW{ keySizeBits: 128, aesKW: &AesKW{ keySizeBits: 128}, ecdh: &Ecdh{directAgreement:false}})
+./ecdh_aeskw.go:5:	RegisterJwa(&EcdhAesKW{ keySizeBits: 192, aesKW: &AesKW{ keySizeBits: 192}, ecdh: &Ecdh{directAgreement:false}})
+./ecdh_aeskw.go:6:	RegisterJwa(&EcdhAesKW{ keySizeBits: 256, aesKW: &AesKW{ keySizeBits: 256}, ecdh: &Ecdh{directAgreement:false}})
+./aes_gcm_kw.go:13:	RegisterJwa(&AesGcmKW{ keySizeBits: 128})
+./aes_gcm_kw.go:14:	RegisterJwa(&AesGcmKW{ keySizeBits: 192})
+./aes_gcm_kw.go:15:	RegisterJwa(&AesGcmKW{ keySizeBits: 256})
+./hmac_using_sha.go:10:	RegisterJws(&HmacUsingSha{keySizeBits: 256})
+./hmac_using_sha.go:11:	RegisterJws(&HmacUsingSha{keySizeBits: 384})
+./hmac_using_sha.go:12:	RegisterJws(&HmacUsingSha{keySizeBits: 512})		
+./aes_gcm.go:17:	RegisterJwe(&AesGcm{keySizeBits:128})
+./aes_gcm.go:18:	RegisterJwe(&AesGcm{keySizeBits:192})
+./aes_gcm.go:19:	RegisterJwe(&AesGcm{keySizeBits:256})		
+./plaintext.go:11:	RegisterJws(new(Plaintext))
+./deflate.go:14:	RegisterJwc(NewDeflate(250 * 1024))
+./padding/align.go:1:// package padding provides various padding algorithms
+./padding/align.go:12:	required:=bitSize >> 3
+./padding/align.go:15:		required++  //extra byte if needed
+./padding/align.go:18:	if (actual >= required) {
+./padding/align.go:22:	return append(bytes.Repeat([]byte{0}, required-actual), data...)
+./direct.go:8:	RegisterJwa(new(Direct))
+./aeskw.go:11:	RegisterJwa(&AesKW{ keySizeBits: 128})
+./aeskw.go:12:	RegisterJwa(&AesKW{ keySizeBits: 192})
+./aeskw.go:13:	RegisterJwa(&AesKW{ keySizeBits: 256})
+./ecdsa_using_sha.go:14:	RegisterJws(&EcdsaUsingSha{keySizeBits: 256, hashSizeBits: 256})
+./ecdsa_using_sha.go:15:	RegisterJws(&EcdsaUsingSha{keySizeBits: 384, hashSizeBits: 384})
+./ecdsa_using_sha.go:16:	RegisterJws(&EcdsaUsingSha{keySizeBits: 521, hashSizeBits: 512})
+./ecdsa_using_sha.go:27:		case 256: return ES256
+./aes_cbc_hmac.go:19:	RegisterJwe(&AesCbcHmac{keySizeBits: 256})
+./aes_cbc_hmac.go:20:	RegisterJwe(&AesCbcHmac{keySizeBits: 384})
+./aes_cbc_hmac.go:21:	RegisterJwe(&AesCbcHmac{keySizeBits: 512})
+./pbse2_hmac_aeskw.go:16:	RegisterJwa(NewPbse2HmacAesKWAlg(128, 1300000, 0))
+./pbse2_hmac_aeskw.go:17:	RegisterJwa(NewPbse2HmacAesKWAlg(192, 950000, 0))
+./pbse2_hmac_aeskw.go:18:	RegisterJwa(NewPbse2HmacAesKWAlg(256, 600000, 0))
+./rsa_pkcs1v15.go:11:	RegisterJwa(new(RsaPkcs1v15))
+./rsa_using_sha.go:10:	RegisterJws(&RsaUsingSha{keySizeBits: 256})
+./rsa_using_sha.go:11:	RegisterJws(&RsaUsingSha{keySizeBits: 384})
+./rsa_using_sha.go:12:	RegisterJws(&RsaUsingSha{keySizeBits: 512})
+./rsapss_using_sha.go:10:	RegisterJws(&RsaPssUsingSha{keySizeBits: 256, saltSizeBytes: 32})
+./rsapss_using_sha.go:11:	RegisterJws(&RsaPssUsingSha{keySizeBits: 384, saltSizeBytes: 48})
+./rsapss_using_sha.go:12:	RegisterJws(&RsaPssUsingSha{keySizeBits: 512, saltSizeBytes: 64})
+./rsa_oaep.go:17:	RegisterJwa(&RsaOaep{shaSizeBits: 1})
+./rsa_oaep.go:18:	RegisterJwa(&RsaOaep{shaSizeBits: 256})
+./rsa_oaep.go:19:	RegisterJwa(&RsaOaep{shaSizeBits: 384})
+./rsa_oaep.go:20:	RegisterJwa(&RsaOaep{shaSizeBits: 512})
+./jose.go:25:	ES256 = "ES256" //ECDSA using P-256 curve and SHA-256 hash
+./jose.go:61:var jwaAlgorithms = map[string]JwaAlgorithm{}
+./jose.go:64:// RegisterJwe register new encryption algorithm
+./jose.go:65:func RegisterJwe(alg JweEncryption) {
+./jose.go:69:// RegisterJwa register new key management algorithm
+./jose.go:70:func RegisterJwa(alg JwaAlgorithm) {
+./jose.go:71:	jwaAlgorithms[alg.Name()] = alg
+./jose.go:74:// RegisterJws register new signing algorithm
+./jose.go:75:func RegisterJws(alg JwsAlgorithm) {
+./jose.go:79:// RegisterJwc register new compression algorithm
+./jose.go:80:func RegisterJwc(alg JwcAlgorithm) {
+./jose.go:84:// DeregisterJwa deregister existing key management algorithm
+./jose.go:85:func DeregisterJwa(alg string) JwaAlgorithm {
+./jose.go:86:	jwa := jwaAlgorithms[alg]
+./jose.go:88:	delete(jwaAlgorithms, alg)
+./jose.go:93:// DeregisterJws deregister existing signing algorithm
+./jose.go:94:func DeregisterJws(alg string) JwsAlgorithm {
+./jose.go:102:// DeregisterJws deregister existing encryption algorithm
+./jose.go:103:func DeregisterJwe(alg string) JweEncryption {
+./jose.go:111:// DeregisterJwc deregister existing compression algorithm
+./jose.go:112:func DeregisterJwc(alg string) JwcAlgorithm {
+./jose.go:219:// Encrypt produces encrypted JWT token given arbitrary string payload, key management and encryption algorithms to use (see constants for list of supported algs) and management key.
+./jose.go:228:// Encrypt produces encrypted JWT token given arbitrary binary payload, key management and encryption algorithms to use (see constants for list of supported algs) and management key.
+./jose.go:242:	//make sure required headers are managed by us
+./jose.go:257:		delete(cfg.Headers, "zip") //we not allow to manage 'zip' header manually for encryption
+./jose.go:266:// Compress produces encrypted & comressed JWT token given arbitrary payload, key management , encryption and compression algorithms to use (see constants for list of supported algs) and management key.
+./jose.go:289:// Management key is of different type for different key management or signing algorithms, see specific alg implementation documentation.
+./jose.go:304:// Management key is of different type for different key management or signing algorithms, see specific alg implementation documentation.
+./jose.go:333:	if keyMgmtAlg, ok = jwaAlgorithms[alg]; !ok {
+./jose.go:371:		if verifier, ok := jwsHashers[alg]; ok {
+./jose.go:376:			if err = verifier.Verify(secured, signature, key); err == nil {
+./jose.go:386:	return nil, nil, errors.New(fmt.Sprint("jwt.Decode(): required 'alg' header is missing or of invalid type"))
+./jose.go:407:		return nil, nil, errors.New(fmt.Sprint("jwt.Decode(): required 'alg' header is missing or of invalid type"))
+./jose.go:411:		return nil, nil, errors.New(fmt.Sprint("jwt.Decode(): required 'enc' header is missing or of invalid type"))
+./jose.go:416:	if keyMgmtAlg, ok = jwaAlgorithms[alg]; ok {

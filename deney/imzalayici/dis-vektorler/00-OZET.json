@@ -1,0 +1,261 @@
+{
+ "kaynaklar": {
+  "RFC9964": {
+   "dosya": "RFC9964.txt",
+   "sha256": "00470379e12eeae80e37872b2b4b3163831c572dbfa90b9dc9a9a9eb0c92aa28"
+  },
+  "JOSECOMP": {
+   "dosya": "JOSECOMP.txt",
+   "sha256": "f23f9ad996ac1f85e1d39584a03554754cc74e0a07f186d1288e009d9578250d",
+   "surum": "draft-ietf-jose-pq-composite-sigs-04"
+  }
+ },
+ "vektorler": [
+  {
+   "id": "RFC9964-JOSE-ML-DSA-44",
+   "figure": [
+    3,
+    "ML_DSA_44"
+   ],
+   "satirlar": [
+    628,
+    821
+   ],
+   "alanlar": [
+    "jwk",
+    "jws",
+    "priv",
+    "raw_public_key",
+    "raw_signature",
+    "raw_to_be_signed"
+   ]
+  },
+  {
+   "id": "RFC9964-JOSE-ML-DSA-65",
+   "figure": [
+    4,
+    "ML_DSA_65"
+   ],
+   "satirlar": [
+    825,
+    1089
+   ],
+   "alanlar": [
+    "jwk",
+    "jws",
+    "priv",
+    "raw_public_key",
+    "raw_signature",
+    "raw_to_be_signed"
+   ]
+  },
+  {
+   "id": "RFC9964-JOSE-ML-DSA-87",
+   "figure": [
+    5,
+    "ML_DSA_87"
+   ],
+   "satirlar": [
+    1093,
+    1448
+   ],
+   "alanlar": [
+    "jwk",
+    "jws",
+    "priv",
+    "raw_public_key",
+    "raw_signature",
+    "raw_to_be_signed"
+   ]
+  },
+  {
+   "id": "RFC9964-COSE-ML-DSA-44",
+   "figure": [
+    6,
+    "ML_DSA_44"
+   ],
+   "satirlar": [
+    1454,
+    1784
+   ],
+   "alanlar": [
+    "key",
+    "key_diag",
+    "priv",
+    "raw_public_key",
+    "raw_signature",
+    "raw_to_be_signed",
+    "sign1",
+    "sign1_diag"
+   ]
+  },
+  {
+   "id": "RFC9964-COSE-ML-DSA-65",
+   "figure": [
+    7,
+    "ML_DSA_65"
+   ],
+   "satirlar": [
+    1788,
+    2246
+   ],
+   "alanlar": [
+    "key",
+    "key_diag",
+    "priv",
+    "raw_public_key",
+    "raw_signature",
+    "raw_to_be_signed",
+    "sign1",
+    "sign1_diag"
+   ]
+  },
+  {
+   "id": "RFC9964-COSE-ML-DSA-87",
+   "figure": [
+    8,
+    "ML_DSA_87"
+   ],
+   "satirlar": [
+    2250,
+    2870
+   ],
+   "alanlar": [
+    "key",
+    "key_diag",
+    "priv",
+    "raw_public_key",
+    "raw_signature",
+    "raw_to_be_signed",
+    "sign1",
+    "sign1_diag"
+   ]
+  },
+  {
+   "id": "JOSECOMP04-JOSE-ML-DSA-44-ES256",
+   "figure": [
+    1,
+    "ML-DSA-44-ES256"
+   ],
+   "satirlar": [
+    1512,
+    1782
+   ],
+   "alanlar": [
+    "ecdsa_d",
+    "jwk",
+    "jws",
+    "mldsa_seed",
+    "raw_composite_public_key",
+    "raw_composite_signature",
+    "raw_message_representative",
+    "raw_to_be_signed"
+   ]
+  },
+  {
+   "id": "JOSECOMP04-JOSE-ML-DSA-44-Ed25519",
+   "figure": [
+    2,
+    "ML-DSA-44-Ed25519"
+   ],
+   "satirlar": [
+    1788,
+    2055
+   ],
+   "alanlar": [
+    "eddsa_seed",
+    "jwk",
+    "jws",
+    "mldsa_seed",
+    "raw_composite_public_key",
+    "raw_composite_signature",
+    "raw_message_representative",
+    "raw_to_be_signed"
+   ]
+  },
+  {
+   "id": "JOSECOMP04-JOSE-ML-DSA-65-ES256",
+   "figure": [
+    3,
+    "ML-DSA-65-ES256"
+   ],
+   "satirlar": [
+    2061,
+    2421
+   ],
+   "alanlar": [
+    "ecdsa_d",
+    "jwk",
+    "jws",
+    "mldsa_seed",
+    "raw_composite_public_key",
+    "raw_composite_signature",
+    "raw_message_representative",
+    "raw_to_be_signed"
+   ]
+  },
+  {
+   "id": "JOSECOMP04-JOSE-ML-DSA-65-Ed25519",
+   "figure": [
+    4,
+    "ML-DSA-65-Ed25519"
+   ],
+   "satirlar": [
+    2427,
+    2786
+   ],
+   "alanlar": [
+    "eddsa_seed",
+    "jwk",
+    "jws",
+    "mldsa_seed",
+    "raw_composite_public_key",
+    "raw_composite_signature",
+    "raw_message_representative",
+    "raw_to_be_signed"
+   ]
+  },
+  {
+   "id": "JOSECOMP04-JOSE-ML-DSA-87-ES384",
+   "figure": [
+    5,
+    "ML-DSA-87-ES384"
+   ],
+   "satirlar": [
+    2792,
+    3274
+   ],
+   "alanlar": [
+    "ecdsa_d",
+    "jwk",
+    "jws",
+    "mldsa_seed",
+    "raw_composite_public_key",
+    "raw_composite_signature",
+    "raw_message_representative",
+    "raw_to_be_signed"
+   ]
+  },
+  {
+   "id": "JOSECOMP04-JOSE-ML-DSA-87-Ed448",
+   "figure": [
+    6,
+    "ML-DSA-87-Ed448"
+   ],
+   "satirlar": [
+    3280,
+    3762
+   ],
+   "alanlar": [
+    "eddsa_seed",
+    "jwk",
+    "jws",
+    "mldsa_seed",
+    "raw_composite_public_key",
+    "raw_composite_signature",
+    "raw_message_representative",
+    "raw_to_be_signed"
+   ]
+  }
+ ]
+}

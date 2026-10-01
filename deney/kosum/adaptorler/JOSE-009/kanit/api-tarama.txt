@@ -1,0 +1,32 @@
+# JOSE-009 — API taraması (sözleşme §5.1)
+# imaj: a10-jose-009:1 (sha256:b41fdc8b20444031c1826ef7c504b59e06d42941bb1b6eb8f952d96bd99d8171)
+# komut: docker run --rm --network none --entrypoint sh a10-jose-009:1 -c 'cd /a/node_modules/jose && cat package.json | grep '"version"'; grep -rn -i -E 'algorithms|allow|register|deregister|required|eddsa|ed25519|ml-?dsa|mldsa|composite|okp|verifier|keyselector' dist/types/types.d.ts | head -120; grep -rln -i 'ML-DSA' dist/webapi | head'
+
+  "version": "6.2.12",
+15:  | 'EdDSA'
+16:  | 'Ed25519'
+17:  | 'ML-DSA-44'
+18:  | 'ML-DSA-65'
+19:  | 'ML-DSA-87'
+58:export type JWKKeyType = 'EC' | 'RSA' | 'OKP' | 'AKP' | 'oct' | (string & {})
+91:/** Convenience interface for public OKP JSON Web Keys. */
+92:export interface JWK_OKP_Public extends JWKParameters {
+99:/** Convenience interface for private OKP JSON Web Keys. */
+100:export interface JWK_OKP_Private extends JWK_OKP_Public {
+167: * JSON Web Key ({@link https://www.rfc-editor.org/info/rfc7517/ JWK}). "RSA", "EC", "OKP", "AKP",
+198:  /** EC curve or OKP key pair subtype. */
+200:  /** Private RSA exponent, EC key, or OKP key. */
+218:  /** EC public key X coordinate or OKP public key. */
+246:  | (JWK_OKP_Private & { kty: 'OKP' })
+247:  | (JWK_OKP_Public & { kty: 'OKP' })
+442:   * > is not required by this option. You must check their presence and process them according to the
+453:   * Accepted JWE "alg" (Algorithm) Header Parameter values. Defaults to all algorithms applicable
+454:   * to the key or secret except PBES2, which must be explicitly allowed.
+456:  keyManagementAlgorithms?: JWEKeyManagementAlgorithm[]
+459:   * Accepted JWE "enc" (Encryption Algorithm) Header Parameter values. Defaults to all algorithms
+462:  contentEncryptionAlgorithms?: JWEContentEncryptionAlgorithm[]
+512:   * Additional claim names required in the JWT Claims Set. The {@link issuer}, {@link audience},
+516:  requiredClaims?: string[]
+522:   * Accepted JWS "alg" (Algorithm) Header Parameter values. Defaults to all algorithms applicable
+525:  algorithms?: JWSAlgorithm[]
+dist/webapi/lib/jws_algorithms.js

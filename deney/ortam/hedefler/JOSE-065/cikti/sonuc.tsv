@@ -1,0 +1,16 @@
+baslangic	2026-09-25T12:35:36Z
+hedef	JOSE-065
+ekosistem	npm
+paket	jsonwebtoken
+istenen_surum	9.0.3
+arac	node v24.21.0; npm 11.19.0; node-openssl 3.5.8
+kilit_dosyasi	package-lock.json
+kilit_sha256	e82f3df8d2b283f561e22dea485c1467f9c072614a5052402724767fcd953918
+bagimlilik_sayisi	15
+kurulan_surum	9.0.3
+paket_ozeti	sha512-MT/xP0CrubFRNLNKvxJ2BYfy53Zkm++5bX9dtuPbqAeQpTVe0MQTFhao8+Cp//EmJp244xt6Drw/GVEGCUj40g==
+commit	ed59e76ea37a80f54b833668c02a5271984dcba3
+commit_kaynagi	npm gitHead
+lisans_kayit	MIT
+ice_aktar	basarili
+bitis	2026-09-25T12:35:38Z

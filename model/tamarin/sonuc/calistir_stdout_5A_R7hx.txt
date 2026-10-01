@@ -1,0 +1,127 @@
+[2026-09-24 19:29:00] Başlangıç. Filtre='R7hx'. İmaj: pq-a02-tamarin:1.12.0 (sha256:59b648d60829c4580504470be1b171df0e63ead38bebc8944ac8ee2bba6b9c60)
+     checking version: tamarin-prover 1.12.0, (C) David Basin, Cas Cremers, Jannik Dreier, Simon Meier, Ralf Sasse, Benedikt Schmidt, 2010-2023
+    Maude version 3.5.1
+    Git revision: 82780bbaf3328a45f624ddb41e51bf75425f851c (with uncommited changes), branch: master
+[2026-09-24 19:29:01] == R7hx X_repro_prereg (kesif) bayraklar: -D=CA_PQ -D=ALT_CA -D=NAME_BIND G_beklenen=-
+[2026-09-24 19:29:08]   R7hx X_repro_prereg executable basamak=1 -> verified (13 adım) 2.61s 113.9MiB rc=0
+[2026-09-24 19:29:12]   R7hx X_repro_prereg executable_legacy basamak=1 -> verified (14 adım) 2.61s 88.6MiB rc=0
+[2026-09-24 19:29:16]   R7hx X_repro_prereg executable_post_qday basamak=1 -> verified (13 adım) 2.58s 111.7MiB rc=0
+[2026-09-24 19:29:19]   R7hx X_repro_prereg attack_needs_crqc basamak=1 -> verified (11 adım) 2.24s 78.2MiB rc=0
+[2026-09-24 19:29:23]   R7hx X_repro_prereg G5_no_classical_acceptance basamak=1 -> falsified (12 adım) 2.64s 88.6MiB rc=0
+[2026-09-24 19:29:27]   R7hx X_repro_prereg G1_claims_unforgeability basamak=1 -> falsified (11 adım) 2.54s 91.4MiB rc=0
+[2026-09-24 19:29:31]   R7hx X_repro_prereg X_alt_ca_key_used basamak=1 -> verified (15 adım) 2.76s 90.7MiB rc=0
+[2026-09-24 19:29:32] == R7hx X_namebind_unique (kesif) bayraklar: -D=CA_PQ -D=ALT_CA -D=NAME_BIND -D=UNIQUE_CA_NAMES G_beklenen=-
+[2026-09-24 19:29:39]   R7hx X_namebind_unique executable basamak=1 -> verified (14 adım) 2.77s 85.3MiB rc=0
+[2026-09-24 19:29:43]   R7hx X_namebind_unique executable_legacy basamak=1 -> verified (13 adım) 2.55s 81.3MiB rc=0
+[2026-09-24 19:29:47]   R7hx X_namebind_unique executable_post_qday basamak=1 -> verified (14 adım) 2.63s 85.1MiB rc=0
+[2026-09-24 19:29:50]   R7hx X_namebind_unique attack_needs_crqc basamak=1 -> verified (8 adım) 2.18s 78.9MiB rc=0
+[2026-09-24 19:29:54]   R7hx X_namebind_unique G5_no_classical_acceptance basamak=1 -> verified (8 adım) 2.05s 77.8MiB rc=0
+[2026-09-24 19:29:58]   R7hx X_namebind_unique G1_claims_unforgeability basamak=1 -> verified (18 adım) 2.48s 81.5MiB rc=0
+[2026-09-24 19:30:01]   R7hx X_namebind_unique X_alt_ca_key_used basamak=1 -> falsified (11 adım) 2.19s 78.8MiB rc=0
+[2026-09-24 19:30:01] == R7hx X_namebind_samename (kesif) bayraklar: -D=CA_PQ -D=ALT_CA -D=NAME_BIND -D=ALT_SAME_NAME G_beklenen=-
+[2026-09-24 19:30:08]   R7hx X_namebind_samename executable basamak=1 -> verified (13 adım) 2.72s 114.8MiB rc=0
+[2026-09-24 19:30:12]   R7hx X_namebind_samename executable_legacy basamak=1 -> verified (14 adım) 2.6s 87.4MiB rc=0
+[2026-09-24 19:30:16]   R7hx X_namebind_samename executable_post_qday basamak=1 -> verified (13 adım) 2.59s 110.6MiB rc=0
+[2026-09-24 19:30:19]   R7hx X_namebind_samename attack_needs_crqc basamak=1 -> verified (11 adım) 2.15s 81.4MiB rc=0
+[2026-09-24 19:30:23]   R7hx X_namebind_samename G5_no_classical_acceptance basamak=1 -> falsified (12 adım) 2.4s 87.2MiB rc=0
+[2026-09-24 19:30:27]   R7hx X_namebind_samename G1_claims_unforgeability basamak=1 -> falsified (11 adım) 2.82s 104.3MiB rc=0
+[2026-09-24 19:30:31]   R7hx X_namebind_samename X_alt_ca_key_used basamak=1 -> verified (15 adım) 2.59s 91.4MiB rc=0
+[2026-09-24 19:30:31] == R7hx X_keybind_samename (kesif) bayraklar: -D=CA_PQ -D=ALT_CA -D=KEY_BIND -D=ALT_SAME_NAME G_beklenen=-
+[2026-09-24 19:30:38]   R7hx X_keybind_samename executable basamak=1 -> verified (14 adım) 2.7s 84.7MiB rc=0
+[2026-09-24 19:30:42]   R7hx X_keybind_samename executable_legacy basamak=1 -> verified (13 adım) 2.45s 82.4MiB rc=0
+[2026-09-24 19:30:46]   R7hx X_keybind_samename executable_post_qday basamak=1 -> verified (14 adım) 2.64s 87.0MiB rc=0
+[2026-09-24 19:30:50]   R7hx X_keybind_samename attack_needs_crqc basamak=1 -> verified (8 adım) 2.0s 79.5MiB rc=0
+[2026-09-24 19:30:53]   R7hx X_keybind_samename G5_no_classical_acceptance basamak=1 -> verified (8 adım) 2.03s 79.5MiB rc=0
+[2026-09-24 19:30:57]   R7hx X_keybind_samename G1_claims_unforgeability basamak=1 -> verified (18 adım) 2.33s 79.9MiB rc=0
+[2026-09-24 19:31:00]   R7hx X_keybind_samename X_alt_ca_key_used basamak=1 -> falsified (11 adım) 2.22s 79.3MiB rc=0
+[2026-09-24 19:31:00] == R7hx X_keybind_distinct (kesif) bayraklar: -D=CA_PQ -D=ALT_CA -D=KEY_BIND G_beklenen=-
+[2026-09-24 19:31:07]   R7hx X_keybind_distinct executable basamak=1 -> verified (14 adım) 2.67s 84.3MiB rc=0
+[2026-09-24 19:31:11]   R7hx X_keybind_distinct executable_legacy basamak=1 -> verified (13 adım) 2.37s 84.8MiB rc=0
+[2026-09-24 19:31:15]   R7hx X_keybind_distinct executable_post_qday basamak=1 -> verified (14 adım) 2.67s 89.0MiB rc=0
+[2026-09-24 19:31:19]   R7hx X_keybind_distinct attack_needs_crqc basamak=1 -> verified (8 adım) 2.28s 78.9MiB rc=0
+[2026-09-24 19:31:22]   R7hx X_keybind_distinct G5_no_classical_acceptance basamak=1 -> verified (8 adım) 2.21s 78.0MiB rc=0
+[2026-09-24 19:31:26]   R7hx X_keybind_distinct G1_claims_unforgeability basamak=1 -> verified (18 adım) 2.31s 80.2MiB rc=0
+[2026-09-24 19:31:30]   R7hx X_keybind_distinct X_alt_ca_key_used basamak=1 -> falsified (11 adım) 2.32s 80.0MiB rc=0
+[2026-09-24 19:31:30] Tamarin koşumları bitti (40 konteyner). Değerlendirme (clingo, pq-a02-solver:1.0) başlıyor.
+PQ-OID4VC Adım 4 + 5A — Tamarin kural şemaları: metrikler (betik/degerlendir.py çıktısı)
+clingo 5.8.2
+
+==============================================================================
+Adım 4 (R1–R5)
+==============================================================================
+Varyant sayısı: 34 ; lemma koşumu (satır): 196
+Beklenen/gözlenen uyumu: 196/196
+
+Kabul ölçütü (korumalı ve mutant varyantlarda bütün lemmalar beklenen gibi; executable verified):
+   R1: GEÇTİ   (ek varyant lemmaları beklenen gibi: 34/34)
+   R2: GEÇTİ   (ek varyant lemmaları beklenen gibi: 21/21)
+   R3: GEÇTİ   (ek varyant lemmaları beklenen gibi: 0/0)
+   R4: GEÇTİ   (ek varyant lemmaları beklenen gibi: 17/17)
+   R5: GEÇTİ   (ek varyant lemmaları beklenen gibi: 24/24)
+
+Mutasyon skoru: 11/11 = 100%  (öldürülme = F beklenen güvenlik lemmaları falsified VE V beklenen M_ lemmaları verified)
+   R1   M_root                 mutant:kok_anahtari_PQ                               ÖLDÜ (G=True, M=True)
+   R1   M_ca                   mutant:CA_anahtari_PQ                                ÖLDÜ (G=True, M=True)
+   R1   M_iss                  mutant:ihracci_imzasi_PQ                             ÖLDÜ (G=True, M=True)
+   R2   M_expect_unauth        mutant:beklentinin_kimlik_dogrulamasi                ÖLDÜ (G=True, M=True)
+   R2   M_expect_absent        mutant:beklenti                                      ÖLDÜ (G=True, M=True)
+   R3   M_obj_classical        mutant:PQ_kanal_nesne_imzasi                         ÖLDÜ (G=True, M=True)
+   R3   M_tls_classical        mutant:PQ_kanal_tasima                               ÖLDÜ (G=True, M=True)
+   R4   M_dev                  mutant:PQ_cihaz_anahtari                             ÖLDÜ (G=True, M=True)
+   R4   M_iss                  mutant:PQ_ihracci_imzasi                             ÖLDÜ (G=True, M=True)
+   R5   M_pin                  mutant:sabitleme                                     ÖLDÜ (G=True, M=True)
+   R5   M_tl                   mutant:capa_anahtari_PQ                              ÖLDÜ (G=True, M=True)
+
+Datalog (clingo, sem=class) ↔ Tamarin güvenlik hükmü uyumu: 44/44
+Naif okuma (sem=naive: pq(L) yalnız gerçek ebeveyn) ile uyumsuzluklar: 1
+   R1 X_alt_ca g1: naive=verified tamarin=falsified
+
+En uzun koşum: 1.58 s (R1 E_iss_only executable_post_qday)
+En yüksek bellek: 95.7 MiB (R1 E_none G1_claims_unforgeability)
+Merdivende 1'den yüksek basamak gereken koşum: 0
+Kapanmayan ya da geçersiz (verified/falsified dışı): 0
+İyi biçimlilik taraması (sonuc/ham/*.txt): 230 dosya; 'All wellformedness checks were successful' 230; uyarılı 0
+
+==============================================================================
+Adım 5A (R6, R6h5, R7, R7h; R7hx keşif)
+==============================================================================
+Varyant sayısı: 41 ; lemma koşumu (satır): 349
+Beklenen/gözlenen uyumu: 347/349
+   UYUMSUZ: R7h P_ca_pq_alt_namebind G5_no_classical_acceptance beklenen=verified gozlenen=falsified
+   UYUMSUZ: R7h P_ca_pq_alt_namebind G1_claims_unforgeability beklenen=verified gozlenen=falsified
+
+Kabul ölçütü (korumalı ve mutant varyantlarda bütün lemmalar beklenen gibi; executable verified):
+   R6: GEÇTİ   (ek varyant lemmaları beklenen gibi: 26/26)
+   R6h5: GEÇTİ   (ek varyant lemmaları beklenen gibi: 22/22)
+   R7: GEÇTİ   (ek varyant lemmaları beklenen gibi: 60/60)
+   R7h: KALDI   (ek varyant lemmaları beklenen gibi: 7/7)
+   R7hx: GEÇTİ   (ek varyant lemmaları beklenen gibi: 35/35)
+
+Mutasyon skoru: 16/16 = 100%  (öldürülme = F beklenen güvenlik lemmaları falsified VE V beklenen M_ lemmaları verified)
+   R6   M_long_medium          mutant:kisa_anahtar_penceresi(P_tok_medium)          ÖLDÜ (G=True, M=True)
+   R6   M_long_slow            mutant:kisa_anahtar_penceresi(P_rot_slow)            ÖLDÜ (G=True, M=True)
+   R6   M_rot_fast             mutant:tau_pencereden_uzun(P_rot_slow)               ÖLDÜ (G=True, M=True)
+   R6   M_tok_fast             mutant:tau_pencereden_uzun(P_tok_medium)             ÖLDÜ (G=True, M=True)
+   R6   M_rot_id               mutant:PQ_kimlik_baglama(P_rot_slow)                 ÖLDÜ (G=True, M=True)
+   R6   M_rot_reuse            mutant:anahtar_yeniden_kullanilmaz(P_rot_slow)       ÖLDÜ (G=True, M=True)
+   R6   M_tok_id               mutant:PQ_kimlik_baglama(P_tok_medium)               ÖLDÜ (G=True, M=True)
+   R6h5 M_single_fast          mutant:gecerlilik_penceresi_tau_dan_kisa(P_single_slow) ÖLDÜ (G=True, M=True)
+   R6h5 M_single_slow_reuse    mutant:kimlik_bilgisi_basina_cihaz_anahtari(P_single_slow) ÖLDÜ (G=True, M=True)
+   R7   M_pq_chan              mutant:PQ_kanal(P_mf_online)                         ÖLDÜ (G=True, M=True)
+   R7   M_fresh                mutant:tazelik_ya_da_sabitleme(P_mf_online)          ÖLDÜ (G=True, M=True)
+   R7   M_per_entity           mutant:varlik_basina_kapsam(P_mf_online)             ÖLDÜ (G=True, M=True)
+   R7   M_off_monotone         mutant:tekduzelik_cevrimdisi(M_fresh)                ÖLDÜ (G=True, M=True)
+   R7   M_off_sunset           mutant:sunset_denetimi_cevrimdisi(M_fresh)           ÖLDÜ (G=True, M=True)
+   R7h  M_ca_classical         mutant:taahhut_zinciri_PQ(P_ca_pq_alt_namebind)      ÖLDÜ (G=True, M=True)
+   R7h  M_no_namebind          mutant:ad_baglama(P_ca_pq_alt_namebind)              ÖLDÜ (G=True, M=True)
+
+Datalog karşılaştırması: bu grupta .lp karşılığı yok (R6/R7 sayısal pencere ASP'de).
+
+En uzun koşum: 3.58 s (R7h P_ca_pq_alt_namebind executable)
+En yüksek bellek: 115.8 MiB (R7h P_ca_pq_alt_namebind executable_post_qday)
+Merdivende 1'den yüksek basamak gereken koşum: 0
+Kapanmayan ya da geçersiz (verified/falsified dışı): 0
+İyi biçimlilik taraması (sonuc/ham/*.txt): 390 dosya; 'All wellformedness checks were successful' 390; uyarılı 0
+
+
+[2026-09-24 19:31:45] Bitti.

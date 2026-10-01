@@ -1,0 +1,227 @@
+maude tool: 'maude'
+ checking version: 3.5.1. OK.
+ checking installation: OK.
+[Theory R4_WSCD] Theory loaded
+[Theory R4_WSCD] Theory translated
+[Theory R4_WSCD] Derivation checks started
+[Theory R4_WSCD] Derivation checks ended
+[Theory R4_WSCD] Theory closed
+theory R4_WSCD
+
+begin
+
+// Function signature and definition of the equational theory E
+
+functions: fst/1, pair/2, pk/1, sign/2, snd/1, true/0, verify/3
+equations:
+    fst(<x.1, x.2>) = x.1,
+    snd(<x.1, x.2>) = x.2,
+    verify(sign(x.1, x.2), x.1, pk(x.2)) = true
+
+restriction Equality:
+  "∀ x y #i. (Eq( x, y ) @ #i) ⇒ (x = y)"
+  // safety formula
+
+  /*
+  expanded formula:
+  "∀ x y #i. (Eq( x, y ) @ #i) ⇒ (x = y)"
+  */
+
+restriction Unique:
+  "∀ x #i #j. ((Unique( x ) @ #i) ∧ (Unique( x ) @ #j)) ⇒ (#i = #j)"
+  // safety formula
+
+  /*
+  expanded formula:
+  "∀ x #i #j. ((Unique( x ) @ #i) ∧ (Unique( x ) @ #j)) ⇒ (#i = #j)"
+  */
+
+rule (modulo E) Qday:
+   [ ] --[ Unique( 'qday' ), QdayEv( ) ]-> [ !CRQC( ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Issuer_Setup:
+   [ Fr( ~skI ) ]
+  --[ Unique( <'iss', $I> ) ]->
+   [ !IssSk( $I, ~skI ), !IssPin( $I, pk(~skI) ), Out( pk(~skI) ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Issue:
+   [ !IssSk( I, skI ), Fr( ~c ), Fr( ~skd ) ]
+  --[ Issued( I, ~c, pk(~skd) ) ]->
+   [
+   !DevSk( ~skd ),
+   !WalletCred( ~skd, <'cred', I, ~c, pk(~skd)>,
+                sign(<'cred', I, ~c, pk(~skd)>, skI)
+   )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Holder_Present:
+   [ !WalletCred( skd, crb, sig ), In( <'nonce', n> ) ]
+  --[ Presented( pk(skd), n ), WalletUse( crb ) ]->
+   [ Out( <<crb, sig>, <'kb', n, crb>, sign(<'kb', n, crb>, skd)> ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Verifier_Challenge:
+   [ Fr( ~n ) ] --> [ Challenge( ~n ), Out( <'nonce', ~n> ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Verifier_Accept:
+   [
+   Challenge( n ), !IssPin( I, pkI ),
+   In( <<<'cred', I, c, pkd>, s1>, <'kb', n, 'cred', I, c, pkd>, s2> )
+   ]
+  --[
+  Eq( verify(s1, <'cred', I, c, pkd>, pkI), true ),
+  Eq( verify(s2, <'kb', n, 'cred', I, c, pkd>, pkd), true ),
+  AcceptPres( I, c, pkd, n ), UseOnce( <I, c> )
+  ]->
+   [ ]
+
+  /*
+  rule (modulo AC) Verifier_Accept:
+     [
+     Challenge( n ), !IssPin( I, pkI ),
+     In( <<<'cred', I, c, pkd>, s1>, <'kb', n, 'cred', I, c, pkd>, s2> )
+     ]
+    --[
+    Eq( z, true ), Eq( z.1, true ), AcceptPres( I, c, pkd, n ),
+    UseOnce( <I, c> )
+    ]->
+     [ ]
+    variants (modulo AC)
+    1. I     = I.19
+       c     = c.20
+       n     = n.21
+       pkI   = pkI.22
+       pkd   = pkd.23
+       s1    = s1.24
+       s2    = s2.25
+       z     = verify(s1.24, <'cred', I.19, c.20, pkd.23>, pkI.22)
+       z.1   = verify(s2.25, <'kb', n.21, 'cred', I.19, c.20, pkd.23>, pkd.23)
+    
+    2. I     = I.27
+       c     = c.28
+       n     = n.29
+       pkI   = pk(x.52)
+       pkd   = pkd.31
+       s1    = sign(<'cred', I.27, c.28, pkd.31>, x.52)
+       s2    = s2.33
+       z     = true
+       z.1   = verify(s2.33, <'kb', n.29, 'cred', I.27, c.28, pkd.31>, pkd.31)
+    
+    3. I     = I.28
+       c     = c.29
+       n     = n.30
+       pkI   = pkI.31
+       pkd   = pk(x.54)
+       s1    = s1.33
+       s2    = sign(<'kb', n.30, 'cred', I.28, c.29, pk(x.54)>, x.54)
+       z     = verify(s1.33, <'cred', I.28, c.29, pk(x.54)>, pkI.31)
+       z.1   = true
+    
+    4. I     = I.28
+       c     = c.29
+       n     = n.30
+       pkI   = pk(x.53)
+       pkd   = pk(x.54)
+       s1    = sign(<'cred', I.28, c.29, pk(x.54)>, x.53)
+       s2    = sign(<'kb', n.30, 'cred', I.28, c.29, pk(x.54)>, x.54)
+       z     = true
+       z.1   = true
+  */
+
+lemma executable:
+  exists-trace
+  "∃ I c pkd n #i #p #j.
+    ((Issued( I, c, pkd ) @ #i) ∧ (Presented( pkd, n ) @ #p)) ∧
+    (AcceptPres( I, c, pkd, n ) @ #j)"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ I c pkd n #i #p #j.
+  (Issued( I, c, pkd ) @ #i) ∧
+  (Presented( pkd, n ) @ #p) ∧
+  (AcceptPres( I, c, pkd, n ) @ #j)"
+*/
+by sorry
+
+lemma executable_post_qday:
+  exists-trace
+  "∃ I c pkd n #q #i #p #j.
+    ((((QdayEv( ) @ #q) ∧ (Issued( I, c, pkd ) @ #i)) ∧
+      (Presented( pkd, n ) @ #p)) ∧
+     (AcceptPres( I, c, pkd, n ) @ #j)) ∧
+    (#q < #j)"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ I c pkd n #q #i #p #j.
+  (QdayEv( ) @ #q) ∧
+  (Issued( I, c, pkd ) @ #i) ∧
+  (Presented( pkd, n ) @ #p) ∧
+  (AcceptPres( I, c, pkd, n ) @ #j)
+ ∧
+  #q < #j"
+*/
+by sorry
+
+lemma attack_needs_crqc:
+  all-traces
+  "∀ I c pkd n #j.
+    (AcceptPres( I, c, pkd, n ) @ #j) ⇒
+    ((∃ #p. (Presented( pkd, n ) @ #p) ∧ (#p < #j)) ∨
+     (∃ k #b. (Broken( k ) @ #b) ∧ (#b < #j)))"
+/*
+guarded formula characterizing all counter-examples:
+"∃ I c pkd n #j.
+  (AcceptPres( I, c, pkd, n ) @ #j)
+ ∧
+  (∀ #p. (Presented( pkd, n ) @ #p) ⇒ ¬(#p < #j)) ∧
+  (∀ k #b. (Broken( k ) @ #b) ⇒ ¬(#b < #j))"
+*/
+by sorry
+
+lemma G2_presentation_unforgeability:
+  all-traces
+  "∀ I c pkd n #j.
+    (AcceptPres( I, c, pkd, n ) @ #j) ⇒
+    (∃ #p. (Presented( pkd, n ) @ #p) ∧ (#p < #j))"
+/*
+guarded formula characterizing all counter-examples:
+"∃ I c pkd n #j.
+  (AcceptPres( I, c, pkd, n ) @ #j)
+ ∧
+  ∀ #p. (Presented( pkd, n ) @ #p) ⇒ ¬(#p < #j)"
+*/
+by sorry
+
+/* All wellformedness checks were successful. */
+
+/*
+Generated from:
+Tamarin version 1.12.0
+Maude version 3.5.1
+Git revision: 82780bbaf3328a45f624ddb41e51bf75425f851c (with uncommited changes), branch: master
+Compiled at: 2026-03-07 14:22:39.174278293 UTC
+*/
+
+end
+
+==============================================================================
+summary of summaries:
+
+analyzed: /work/modeller/R4_wscd.spthy
+
+  processing time: 0.70s
+  
+  executable (exists-trace): analysis incomplete (1 steps)
+  executable_post_qday (exists-trace): analysis incomplete (1 steps)
+  attack_needs_crqc (all-traces): analysis incomplete (1 steps)
+  G2_presentation_unforgeability (all-traces): analysis incomplete (1 steps)
+
+==============================================================================

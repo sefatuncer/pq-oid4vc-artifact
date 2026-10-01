@@ -1,0 +1,7 @@
+kosu	mutasyon	kat_spec_6	temel	motor	asp_sabitler	tamarin_bayraklari	tamarin_lemma	model	grup	sonda	beklenen
+MUT10.HYBRID_KEM.tam	MUT10	onayli hibritte ikinci bileseni sil (h(<~ssc,~ssq>) -> h(~ssc))	HYBRID_KEM	tamarin	-	HYBRID_KEM,MUT_HYBRID_ONE	cek_secrecy	KAT3_SMIME.spthy	-	-	falsified
+MUT11.o7.kati.asp	MUT11	fail-closed: unknown sinifini izinli say	o7	asp	kat_vektor(o7). kat_prob(kati). kat_now(100). kat_qday(0). kat_tau(10). kat_mutasyon(bilinmeyen_izinli).	-	-	-	KAT-3a	kati	1
+MUT11.o7.gecis.asp	MUT11	fail-closed: unknown sinifini izinli say	o7	asp	kat_vektor(o7). kat_prob(gecis). kat_now(100). kat_qday(0). kat_tau(10). kat_mutasyon(bilinmeyen_izinli).	-	-	-	KAT-3a	gecis	1
+MUT11.o10.kati.asp	MUT11	fail-closed: unknown sinifini izinli say	o10	asp	kat_vektor(o10). kat_prob(kati). kat_now(100). kat_qday(0). kat_tau(10). kat_mutasyon(bilinmeyen_izinli).	-	-	-	KAT-3a	kati	1
+MUT11.o10.gecis.asp	MUT11	fail-closed: unknown sinifini izinli say	o10	asp	kat_vektor(o10). kat_prob(gecis). kat_now(100). kat_qday(0). kat_tau(10). kat_mutasyon(bilinmeyen_izinli).	-	-	-	KAT-3a	gecis	1
+MUT12.V4.qday0.asp	MUT12	TL beklenti denetimini sil (req yok)	V4	asp	kat_tl_sinifi(pq). kat_beklenti(1). kat_birlikte(1). kat_now(100). kat_qday(0). kat_tau(10). kat_mutasyon(tl_beklenti_denetimi_yok).	-	-	-	KAT-3b	qday0	SALDIRI

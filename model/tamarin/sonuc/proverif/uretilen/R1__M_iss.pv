@@ -1,0 +1,48 @@
+(* =====================================================================
+   PQ-OID4VC | Adım 5A | ProVerif ikinci görüş — R1 zincir (Tamarin: R1_chain.spthy)
+   Q-day = phase 1: classical keys are handed to the attacker in phase 1;
+   honest issuer and verifier run in both phases. PQ keys never leak.
+   Flags (betik/pp.awk): ROOT_PQ, CA_PQ, ISS_PQ
+   Queries in order: executable (reachability), G1_claims_unforgeability
+   ===================================================================== *)
+free c: channel.
+type skey.
+type pkey.
+fun pk(skey): pkey.
+fun sign(bitstring, skey): bitstring.
+reduc forall m: bitstring, k: skey; verify(sign(m, k), m, pk(k)) = true.
+
+free cacert_tag, isscert_tag, cred_tag: bitstring.
+free caName, issA: bitstring.
+
+event Issued(bitstring, bitstring).
+event Accept(bitstring, bitstring).
+
+(* executable: expected "not event(Accept(...)) is false" (Accept reachable) *)
+query i: bitstring, x: bitstring; event(Accept(i, x)).
+(* G1 claims unforgeability *)
+query i: bitstring, x: bitstring; event(Accept(i, x)) ==> event(Issued(i, x)).
+
+let Issuer(i: bitstring, skI: skey) =
+  new claims: bitstring;
+  event Issued(i, claims);
+  out(c, ((cred_tag, i, claims), sign((cred_tag, i, claims), skI))).
+
+let Verifier(pkR: pkey) =
+  in(c, ((=cacert_tag, ca: bitstring, pkCA: pkey), s1: bitstring));
+  if verify(s1, (cacert_tag, ca, pkCA), pkR) = true then
+  in(c, ((=isscert_tag, i: bitstring, pkI: pkey), s2: bitstring));
+  if verify(s2, (isscert_tag, i, pkI), pkCA) = true then
+  in(c, ((=cred_tag, =i, x: bitstring), s3: bitstring));
+  if verify(s3, (cred_tag, i, x), pkI) = true then
+  event Accept(i, x).
+
+process
+  new skR: skey; new skCA: skey; new skI: skey;
+  out(c, (pk(skR), pk(skCA), pk(skI)));
+  out(c, ((cacert_tag, caName, pk(skCA)), sign((cacert_tag, caName, pk(skCA)), skR)));
+  out(c, ((isscert_tag, issA, pk(skI)), sign((isscert_tag, issA, pk(skI)), skCA)));
+  ( (!Issuer(issA, skI)) | (!Verifier(pk(skR)))
+  | (phase 1; (
+      out(c, skI) |
+      (!Issuer(issA, skI)) | (!Verifier(pk(skR))) )) )

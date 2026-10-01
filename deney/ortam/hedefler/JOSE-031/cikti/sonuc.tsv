@@ -1,0 +1,14 @@
+baslangic	2026-09-25T19:31:29Z
+hedef	JOSE-031
+ekosistem	hex
+paket	guardian
+istenen_surum	2.5.0
+arac	Elixir 1.20.4 (compiled with Erlang/OTP 29); Hex: 2.5.1
+kilit_dosyasi	mix.lock (Hex iç/dış sağlama toplamları)
+kilit_sha256	37c4bc4a18e3cd729a5dc33873ba7b8b9d291399bc40413aa6f18b794e7580cf
+bagimlilik_sayisi	2
+paket_ozeti	sha256:bc75cc9374825194060b0cd3230ce4440df23d8509d1f17472b210d3ee525790 (mix.lock dış sağlama toplamı)
+kurulan_surum	2.5.0
+lisans_kayit	MIT
+ice_aktar	basarili
+bitis	2026-09-25T19:31:35Z

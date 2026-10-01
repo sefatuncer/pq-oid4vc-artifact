@@ -1,0 +1,13 @@
+baslangic	2026-09-25T12:48:55Z
+hedef	JOSE-052
+ekosistem	maven
+paket	com.auth0:java-jwt
+istenen_surum	4.6.1
+arac	openjdk version "25.0.4" 2026-07-21 LTS; Apache Maven 3.9.16 
+kilit_dosyasi	jar-sha256.txt (çalışma zamanı JAR'ları; Maven --strict-checksums)
+kilit_sha256	aea1a81f658380b918637e7a4ede95903c1f8503e8cab0fe42ab804e926f3dfc
+bagimlilik_sayisi	4
+paket_ozeti	sha256:1fea79118317f6aee30f6c8c962e2b05e9e66f30c6f157a4102b567de43b3401 (java-jwt-4.6.1.jar)
+kurulan_surum	4.6.1
+ice_aktar	basarili
+bitis	2026-09-25T12:49:07Z

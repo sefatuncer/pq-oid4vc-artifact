@@ -1,0 +1,13 @@
+baslangic	2026-09-25T12:51:41Z
+hedef	COSE-001
+ekosistem	maven (Gradle modül meta verisiyle)
+paket	at.asitplus.signum:indispensable-cosef
+istenen_surum	3.26.0
+arac	openjdk version "25.0.4" 2026-07-21 LTS; Gradle 9.6.1
+kilit_dosyasi	verification-metadata.xml (Gradle, sha256) + jar-sha256.txt
+kilit_sha256	30b3372fb56c7cc8fe0b85cda17d9d37a60d64352575b29d41c16396d52b43f1
+bagimlilik_sayisi	28
+paket_ozeti	sha256:ab78939913f1ee87a3784822163d82c05c7be5b644f87e2ddb3cb3b364bf3bd0 (indispensable-cosef-jvm-3.26.0.jar)
+kurulan_surum	3.26.0
+ice_aktar	basarili
+bitis	2026-09-25T12:52:07Z

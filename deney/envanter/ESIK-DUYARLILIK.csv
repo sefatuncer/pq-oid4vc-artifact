@@ -1,0 +1,6 @@
+esik,tanim,JOSE_uygun,JOSE_secilen,SDJWT_uygun,SDJWT_secilen,COSE_uygun,COSE_secilen,REF_uygun,REF_secilen,toplam_uygun,toplam_secilen,n_25_40_icinde,sayim_n,sayim_25_40_icinde,jose_cekirdek_grup_uygun,jose_cekirdek_grup_secilen,pilot_secilen
+E1,"Tek biçim, gevşek: ≥50★ ya da ≥10k/ay ya da ≥50 bağımlı paket (tüm tabakalar)",52,18,10,8,14,5,11,3,76,31,evet,76,hayır,9,9,"identity-common-ts (@sd-jwt/core),jose"
+E2,Tabakaya göre ölçekli (ÖNERİLEN): JOSE ≥200★/≥100k/≥100 bağımlı; SD-JWT ve COSE ≥20★/≥1k/≥10 bağımlı; REF ≥20★,41,18,15,8,17,5,14,3,73,31,evet,73,hayır,9,9,"identity-common-ts (@sd-jwt/core),jose"
+E3,"Tek biçim, sıkı: ≥200★ ya da ≥100k/ay ya da ≥100 bağımlı paket",41,18,9,8,4,4,6,3,54,30,evet,54,hayır,9,9,"identity-common-ts (@sd-jwt/core),jose"
+E4,"Tabakaya göre ölçekli, gevşek: JOSE ≥50★/≥10k/≥50; SD-JWT ve COSE ≥10★/≥500/≥5; REF ≥10★",52,18,17,8,22,5,16,3,91,31,evet,91,hayır,9,9,"identity-common-ts (@sd-jwt/core),jose"
+E5,Yüksek eşik + sayım (kota yok) seçeneği: JOSE ≥1000★/≥1M/≥500; SD-JWT ≥50★/≥10k/≥10; COSE ≥40★/≥10k/≥10; REF ≥100★,25,18,10,8,14,5,7,3,49,31,evet,49,hayır,8,8,"identity-common-ts (@sd-jwt/core),jose"

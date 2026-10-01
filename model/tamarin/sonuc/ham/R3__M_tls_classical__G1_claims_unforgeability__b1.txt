@@ -1,0 +1,408 @@
+maude tool: 'maude'
+ checking version: 3.5.1. OK.
+ checking installation: OK.
+[Theory R3_Channel] Theory loaded
+[Theory R3_Channel] Theory translated
+[Theory R3_Channel] Derivation checks started
+[Theory R3_Channel] Derivation checks ended
+[Theory R3_Channel] Theory closed
+[Saturating Sources] Step 1 (Max 5)
+[Saturating Sources] Done
+theory R3_Channel
+
+begin
+
+// Function signature and definition of the equational theory E
+
+functions: fst/1, pair/2, pk/1, sign/2, snd/1, true/0, verify/3
+equations:
+    fst(<x.1, x.2>) = x.1,
+    snd(<x.1, x.2>) = x.2,
+    verify(sign(x.1, x.2), x.1, pk(x.2)) = true
+
+restriction Equality:
+  "∀ x y #i. (Eq( x, y ) @ #i) ⇒ (x = y)"
+  // safety formula
+
+  /*
+  expanded formula:
+  "∀ x y #i. (Eq( x, y ) @ #i) ⇒ (x = y)"
+  */
+
+restriction Inequality:
+  "∀ x #i. (NotEq( x, x ) @ #i) ⇒ (⊥)"
+  // safety formula
+
+  /*
+  expanded formula:
+  "∀ x #i. (NotEq( x, x ) @ #i) ⇒ (⊥)"
+  */
+
+restriction Unique:
+  "∀ x #i #j. ((Unique( x ) @ #i) ∧ (Unique( x ) @ #j)) ⇒ (#i = #j)"
+  // safety formula
+
+  /*
+  expanded formula:
+  "∀ x #i #j. ((Unique( x ) @ #i) ∧ (Unique( x ) @ #j)) ⇒ (#i = #j)"
+  */
+
+rule (modulo E) Qday:
+   [ ] --[ Unique( 'qday' ), QdayEv( ) ]-> [ !CRQC( ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Migrated_Issuer_Setup:
+   [ Fr( ~skq ), Fr( ~skc ) ]
+  --[ Unique( <'iss', $I> ), Migrated( $I ) ]->
+   [
+   !IssPQSk( $I, ~skq ), !IssPQPk( $I, pk(~skq) ), !IssClSk( $I, ~skc ),
+   !IssClPk( $I, pk(~skc) ), !ExpectOf( $I, 'pq_required' ),
+   Out( pk(~skq) ), Out( pk(~skc) )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Issue_Migrated:
+   [ !IssPQSk( I, skq ), !IssClSk( I, skc ), Fr( ~c ) ]
+  --[ Issued( I, ~c ) ]->
+   [
+   Out( <<'cred', I, ~c>, sign(<'cred', I, ~c>, skq)> ),
+   Out( <<'cred', I, ~c>, sign(<'cred', I, ~c>, skc)> )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Legacy_Issuer_Setup:
+   [ Fr( ~skc ) ]
+  --[ Unique( <'iss', $L> ), Legacy( $L ) ]->
+   [
+   !IssClSk( $L, ~skc ), !IssClPk( $L, pk(~skc) ), !ExpectOf( $L, 'none' ),
+   Out( pk(~skc) )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Issue_Legacy:
+   [ !IssClSk( L, skc ), !ExpectOf( L, 'none' ), Fr( ~c ) ]
+  --[ Issued( L, ~c ) ]->
+   [ Out( <<'cred', L, ~c>, sign(<'cred', L, ~c>, skc)> ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Channel_Setup:
+   [ Fr( ~skch ) ]
+  --[ Unique( 'chan' ) ]->
+   [ !ChanSk( ~skch ), !ChanPin( pk(~skch) ), Out( pk(~skch) ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) CRQC_Break_Issuer_Classical:
+   [ !IssClSk( X, sk ), !CRQC( ), In( pk(sk) ) ]
+  --[ Broken( <'iss_classical', X> ) ]->
+   [ Out( sk ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) CRQC_Break_Channel:
+   [ !ChanSk( sk ), !CRQC( ), In( pk(sk) ) ]
+  --[ Broken( 'channel' ) ]->
+   [ Out( sk ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Verify_PQ:
+   [ !IssPQPk( I, pkq ), In( <<'cred', I, c>, s> ) ]
+  --[
+  Eq( verify(s, <'cred', I, c>, pkq), true ), Accept( I, c ),
+  AcceptVia( I, c, 'pq' )
+  ]->
+   [ ]
+
+  /*
+  rule (modulo AC) Verify_PQ:
+     [ !IssPQPk( I, pkq ), In( <<'cred', I, c>, s> ) ]
+    --[ Eq( z, true ), Accept( I, c ), AcceptVia( I, c, 'pq' ) ]->
+     [ ]
+    variants (modulo AC)
+    1. I     = I.11
+       c     = c.12
+       pkq   = pkq.13
+       s     = s.14
+       z     = verify(s.14, <'cred', I.11, c.12>, pkq.13)
+    
+    2. I     = I.17
+       c     = c.18
+       pkq   = pk(x.32)
+       s     = sign(<'cred', I.17, c.18>, x.32)
+       z     = true
+  */
+
+rule (modulo E) Verifier_Fetch:
+   [ Fr( ~n ) ] --> [ Fetch( ~n, $I ), Out( <'fetch', ~n, $I> ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Source_Respond:
+   [ !ChanSk( sk ), !ExpectOf( X, e ), In( <'fetch', n, X> ) ]
+  -->
+   [ Out( <<'resp', n, X, e>, sign(<'resp', n, X, e>, sk)> ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Verify_Classical:
+   [
+   Fetch( n, I ), !ChanPin( pkch ), In( <<'resp', n, I, e>, sr> ),
+   !IssClPk( I, pkc ), In( <<'cred', I, c>, s> )
+   ]
+  --[
+  Eq( verify(sr, <'resp', n, I, e>, pkch), true ),
+  NotEq( e, 'pq_required' ), Eq( verify(s, <'cred', I, c>, pkc), true ),
+  Accept( I, c ), AcceptVia( I, c, 'classical' ), UsedExpectation( I, e )
+  ]->
+   [ ]
+
+  /*
+  rule (modulo AC) Verify_Classical:
+     [
+     Fetch( n, I ), !ChanPin( pkch ), In( <<'resp', n, I, e>, sr> ),
+     !IssClPk( I, pkc ), In( <<'cred', I, c>, s> )
+     ]
+    --[
+    Eq( z, true ), NotEq( e, 'pq_required' ), Eq( z.1, true ),
+    Accept( I, c ), AcceptVia( I, c, 'classical' ), UsedExpectation( I, e )
+    ]->
+     [ ]
+    variants (modulo AC)
+    1. I     = I.22
+       c     = c.23
+       e     = e.24
+       n     = n.25
+       pkc   = pkc.26
+       pkch  = pkch.27
+       s     = s.28
+       sr    = sr.29
+       z     = verify(sr.29, <'resp', n.25, I.22, e.24>, pkch.27)
+       z.1   = verify(s.28, <'cred', I.22, c.23>, pkc.26)
+    
+    2. I     = I.61
+       c     = c.62
+       e     = e.63
+       n     = n.64
+       pkc   = pk(x.120)
+       pkch  = pkch.66
+       s     = sign(<'cred', I.61, c.62>, x.120)
+       sr    = sr.68
+       z     = verify(sr.68, <'resp', n.64, I.61, e.63>, pkch.66)
+       z.1   = true
+    
+    3. I     = I.62
+       c     = c.63
+       e     = e.64
+       n     = n.65
+       pkc   = pkc.66
+       pkch  = pk(x.122)
+       s     = s.68
+       sr    = sign(<'resp', n.65, I.62, e.64>, x.122)
+       z     = true
+       z.1   = verify(s.68, <'cred', I.62, c.63>, pkc.66)
+    
+    4. I     = I.62
+       c     = c.63
+       e     = e.64
+       n     = n.65
+       pkc   = pk(x.121)
+       pkch  = pk(x.122)
+       s     = sign(<'cred', I.62, c.63>, x.121)
+       sr    = sign(<'resp', n.65, I.62, e.64>, x.122)
+       z     = true
+       z.1   = true
+  */
+
+lemma executable:
+  exists-trace
+  "∃ I c #m #i #j.
+    ((Migrated( I ) @ #m) ∧ (Issued( I, c ) @ #i)) ∧
+    (AcceptVia( I, c, 'pq' ) @ #j)"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ I c #m #i #j.
+  (Migrated( I ) @ #m) ∧
+  (Issued( I, c ) @ #i) ∧
+  (AcceptVia( I, c, 'pq' ) @ #j)"
+*/
+by sorry
+
+lemma executable_legacy:
+  exists-trace
+  "∃ L c #l #i #j.
+    (((Legacy( L ) @ #l) ∧ (Issued( L, c ) @ #i)) ∧
+     (AcceptVia( L, c, 'classical' ) @ #j)) ∧
+    (UsedExpectation( L, 'none' ) @ #j)"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ L c #l #i #j.
+  (Legacy( L ) @ #l) ∧
+  (Issued( L, c ) @ #i) ∧
+  (AcceptVia( L, c, 'classical' ) @ #j) ∧
+  (UsedExpectation( L, 'none' ) @ #j)"
+*/
+by sorry
+
+lemma executable_post_qday:
+  exists-trace
+  "∃ I c #q #m #i #j.
+    ((((QdayEv( ) @ #q) ∧ (Migrated( I ) @ #m)) ∧ (Issued( I, c ) @ #i)) ∧
+     (Accept( I, c ) @ #j)) ∧
+    (#q < #j)"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ I c #q #m #i #j.
+  (QdayEv( ) @ #q) ∧
+  (Migrated( I ) @ #m) ∧
+  (Issued( I, c ) @ #i) ∧
+  (Accept( I, c ) @ #j)
+ ∧
+  #q < #j"
+*/
+by sorry
+
+lemma attack_needs_crqc:
+  all-traces
+  "∀ I c #m #j.
+    ((Migrated( I ) @ #m) ∧ (Accept( I, c ) @ #j)) ⇒
+    ((∃ #i. (Issued( I, c ) @ #i) ∧ (#i < #j)) ∨
+     (∃ k #b. (Broken( k ) @ #b) ∧ (#b < #j)))"
+/*
+guarded formula characterizing all counter-examples:
+"∃ I c #m #j.
+  (Migrated( I ) @ #m) ∧ (Accept( I, c ) @ #j)
+ ∧
+  (∀ #i. (Issued( I, c ) @ #i) ⇒ ¬(#i < #j)) ∧
+  (∀ k #b. (Broken( k ) @ #b) ⇒ ¬(#b < #j))"
+*/
+by sorry
+
+lemma attack_needs_crqc_G5:
+  all-traces
+  "∀ I c #m #j.
+    ((Migrated( I ) @ #m) ∧ (AcceptVia( I, c, 'classical' ) @ #j)) ⇒
+    (∃ k #b. (Broken( k ) @ #b) ∧ (#b < #j))"
+/*
+guarded formula characterizing all counter-examples:
+"∃ I c #m #j.
+  (Migrated( I ) @ #m) ∧ (AcceptVia( I, c, 'classical' ) @ #j)
+ ∧
+  ∀ k #b. (Broken( k ) @ #b) ⇒ ¬(#b < #j)"
+*/
+by sorry
+
+lemma G1_claims_unforgeability:
+  all-traces
+  "∀ I c #m #j.
+    ((Migrated( I ) @ #m) ∧ (Accept( I, c ) @ #j)) ⇒
+    (∃ #i. (Issued( I, c ) @ #i) ∧ (#i < #j))"
+/*
+guarded formula characterizing all counter-examples:
+"∃ I c #m #j.
+  (Migrated( I ) @ #m) ∧ (Accept( I, c ) @ #j)
+ ∧
+  ∀ #i. (Issued( I, c ) @ #i) ⇒ ¬(#i < #j)"
+*/
+simplify
+solve( Accept( $I, c ) @ #j )
+  case Verify_Classical
+  solve( Fetch( n, $I ) ▶₀ #j )
+    case Verifier_Fetch
+    solve( !ChanPin( pk(x) ) ▶₁ #j )
+      case Channel_Setup
+      solve( !IssClPk( $I, pk(x) ) ▶₃ #j )
+        case Migrated_Issuer_Setup
+        solve( !KU( sign(<'resp', ~n, $I, e>, ~skch) ) @ #vk.11 )
+          case c_sign
+          solve( !KU( ~skch ) @ #vk.15 )
+            case CRQC_Break_Channel
+            solve( !KU( sign(<'cred', $I, c>, ~skc) ) @ #vk.15 )
+              case c_sign
+              solve( !KU( ~skc ) @ #vk.17 )
+                case CRQC_Break_Issuer_Classical
+                solve( !KU( ~n ) @ #vk.9 )
+                  case Verifier_Fetch
+                  solve( !KU( pk(~skch) ) @ #vk.17 )
+                    case Channel_Setup
+                    solve( !KU( pk(~skc) ) @ #vk.18 )
+                      case Migrated_Issuer_Setup
+                      SOLVED // trace found
+                    qed
+                  qed
+                qed
+              qed
+            qed
+          qed
+        qed
+      qed
+    qed
+  qed
+qed
+
+lemma G5_no_classical_acceptance:
+  all-traces
+  "∀ I c #m #j.
+    ((Migrated( I ) @ #m) ∧ (AcceptVia( I, c, 'classical' ) @ #j)) ⇒ (⊥)"
+/*
+guarded formula characterizing all counter-examples:
+"∃ I c #m #j.
+  (Migrated( I ) @ #m) ∧ (AcceptVia( I, c, 'classical' ) @ #j)"
+*/
+by sorry
+
+lemma M_channel_classical:
+  exists-trace
+  "∃ I c #m #j #b1 #b2.
+    (((((Migrated( I ) @ #m) ∧ (Accept( I, c ) @ #j)) ∧
+       (UsedExpectation( I, 'none' ) @ #j)) ∧
+      (Broken( 'channel' ) @ #b1)) ∧
+     (Broken( <'iss_classical', I> ) @ #b2)) ∧
+    (¬(∃ #i. Issued( I, c ) @ #i))"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ I c #m #j #b1 #b2.
+  (Migrated( I ) @ #m) ∧
+  (Accept( I, c ) @ #j) ∧
+  (UsedExpectation( I, 'none' ) @ #j) ∧
+  (Broken( 'channel' ) @ #b1) ∧
+  (Broken( <'iss_classical', I> ) @ #b2)
+ ∧
+  ∀ #i. (Issued( I, c ) @ #i) ⇒ ⊥"
+*/
+by sorry
+
+/* All wellformedness checks were successful. */
+
+/*
+Generated from:
+Tamarin version 1.12.0
+Maude version 3.5.1
+Git revision: 82780bbaf3328a45f624ddb41e51bf75425f851c (with uncommited changes), branch: master
+Compiled at: 2026-03-07 14:22:39.174278293 UTC
+*/
+
+end
+
+==============================================================================
+summary of summaries:
+
+analyzed: /work/modeller/R3_channel.spthy
+
+  processing time: 1.34s
+  
+  executable (exists-trace): analysis incomplete (1 steps)
+  executable_legacy (exists-trace): analysis incomplete (1 steps)
+  executable_post_qday (exists-trace): analysis incomplete (1 steps)
+  attack_needs_crqc (all-traces): analysis incomplete (1 steps)
+  attack_needs_crqc_G5 (all-traces): analysis incomplete (1 steps)
+  G1_claims_unforgeability (all-traces): falsified - found trace (13 steps)
+  G5_no_classical_acceptance (all-traces): analysis incomplete (1 steps)
+  M_channel_classical (exists-trace): analysis incomplete (1 steps)
+
+==============================================================================

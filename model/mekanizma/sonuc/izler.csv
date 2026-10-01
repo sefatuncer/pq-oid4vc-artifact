@@ -1,0 +1,542 @@
+varyant,lemma,gozlenen,kirilan_anahtarlar,iz_protokol_kurallari
+MA_taban,G5_untimed,F,,RP_Serve_Classical_Header RP_Setup_Born Wallet_Accept_Single_Classical Wallet_Fetch
+MA_taban,G5_migrated,F,,RP_Serve_Classical_Header RP_Setup_Born Wallet_Accept_Single_Classical Wallet_Fetch
+MA_taban,G5_timed,F,"<'rp_cl', $X>",CRQC_Break_RP_Classical Qday RP_Setup_Born Sunset Wallet_Accept_Single_Classical Wallet_Fetch
+MA_taban,first_contact_downgrade,V,,RP_Serve_Classical_Header RP_Setup_Born Wallet_Accept_Single_Classical Wallet_Fetch
+MA_taban,executable,V,,RP_Serve_PQ RP_Setup_Born Wallet_Accept_Single_PQ Wallet_Fetch
+MA_taban,executable_legacy,V,,RP_Serve_Classical_Header RP_Setup_Legacy Wallet_Accept_Single_Classical Wallet_Fetch
+MA_taban,executable_pre_migration,V,,RP_Serve_Classical_Header RP_Setup_Migrating Wallet_Accept_Single_Classical Wallet_Fetch
+MA_taban,executable_lifecycle,V,,RP_Serve_PQ RP_Setup_Born Sunset Wallet_Accept_Single_PQ Wallet_Fetch
+MA_taban,G4_rp_authentication,F,"<'rp_cl', $X>",CRQC_Break_RP_Classical Migrate Qday RP_Setup_Migrating Wallet_Accept_Single_Classical Wallet_Fetch
+MA_taban,M_downgrade_s1,V,,RP_Serve_Classical_Header RP_Setup_Born Wallet_Accept_Single_Classical Wallet_Fetch
+MA_taban,M_forgery_crqc,V,"<'rp_cl', $X.1> <'rp_cl', $X>",CRQC_Break_RP_Classical Migrate Qday RP_Setup_Born RP_Setup_Migrating Wallet_Accept_Single_Classical Wallet_Fetch
+MF_cekirdek,executable,V,,Acc1_PQ_Exp CAM_Setup Exp_Fresh_Req Fresh_Query Issue_PQ Issuer_Setup_Born Source_Respond_PQ Source_Setup Verifier_Start
+MF_cekirdek,executable_legacy,V,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Fresh_None Fresh_Query Issue_Classical Issuer_Setup_Legacy Qday Source_Respond_None Source_Setup Verifier_Start
+MF_cekirdek,executable_pre_migration,V,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Fresh_None Fresh_Query Issue_Classical Issuer_Setup_Migrating Qday Source_Respond_None Source_Setup Verifier_Start
+MF_cekirdek,executable_lifecycle,V,,Acc1_PQ_Exp CAM_Setup Exp_Fresh_Req Fresh_Query Issue_PQ Issuer_Setup_Born Source_Respond_Retired Source_Setup Sunset Verifier_Start
+MF_cekirdek,executable_learn,V,,CAM_Setup Exp_Fresh_Req Fresh_Query Issuer_Setup_Born Source_Respond_PQ Source_Setup Verifier_Start
+MB0_taban,G5_untimed,F,"<'webpki', $X>",CRQC_Break_WebPKI Qday RP_Setup_Born Wallet_Accept_Unsigned Wallet_Session
+MB0_taban,G5_migrated,F,"<'webpki', $X>",CRQC_Break_WebPKI Qday RP_Setup_Born Wallet_Accept_Unsigned Wallet_Session
+MB0_taban,G5_timed,F,"<'webpki', $X>",CRQC_Break_WebPKI Qday RP_Setup_Born Sunset Wallet_Accept_Unsigned Wallet_Session
+MB0_taban,first_contact_downgrade,V,"<'webpki', $X>",CRQC_Break_WebPKI Qday RP_Setup_Born Wallet_Accept_Unsigned Wallet_Session
+MB0_taban,executable,V,,RP_Req_PQ RP_Setup_Born Wallet_Accept_Single_PQ Wallet_Session
+MB0_taban,executable_legacy,V,,RP_Req_Unsigned RP_Setup_Legacy Wallet_Accept_Unsigned Wallet_Session
+MB0_taban,executable_pre_migration,V,,RP_Req_Unsigned RP_Setup_Migrating Wallet_Accept_Unsigned Wallet_Session
+MB0_taban,executable_lifecycle,V,,RP_Req_PQ RP_Setup_Born Sunset Wallet_Accept_Single_PQ Wallet_Session
+MB0_taban,G4_rp_authentication,F,"<'webpki', $X>",CRQC_Break_WebPKI Migrate Qday RP_Setup_Migrating Wallet_Accept_Unsigned Wallet_Session
+MB0_taban,M_forgery_crqc,V,"<'rp_cl', $X> <'webpki', $X.1>",CRQC_Break_RP_Classical CRQC_Break_WebPKI Migrate Qday RP_Setup_Born RP_Setup_Migrating Wallet_Accept_Unsigned Wallet_Session
+MB_taban,G5_untimed,F,"<'rp_cl', $X>",CRQC_Break_RP_Classical Qday RP_Setup_Born Wallet_Accept_Single_Classical Wallet_Session
+MB_taban,G5_migrated,F,,RP_Req_Dual RP_Setup_Born Wallet_Accept_Single_Classical Wallet_Session
+MB_taban,G5_timed,F,"<'rp_cl', $X>",CRQC_Break_RP_Classical Qday RP_Setup_Born Sunset Wallet_Accept_Single_Classical Wallet_Session
+MB_taban,first_contact_downgrade,V,,RP_Req_Dual RP_Setup_Born Wallet_Accept_Single_Classical Wallet_Session
+MB_taban,executable,V,,Migrate RP_Req_Dual RP_Setup_Migrating Wallet_Accept_Multi_PQ Wallet_Session
+MB_taban,executable_legacy,V,,RP_Req_Classical RP_Setup_Legacy Wallet_Accept_Single_Classical Wallet_Session
+MB_taban,executable_pre_migration,V,,RP_Req_Classical RP_Setup_Migrating Wallet_Accept_Single_Classical Wallet_Session
+MB_taban,executable_lifecycle,V,,RP_Req_PQ RP_Setup_Born Sunset Wallet_Accept_Multi_PQ Wallet_Session
+MB_taban,G4_rp_authentication,F,"<'rp_cl', $X>",CRQC_Break_RP_Classical Migrate Qday RP_Setup_Migrating Wallet_Accept_Single_Classical Wallet_Session
+MB_taban,M_downgrade_s1,V,,RP_Req_Dual RP_Setup_Born Wallet_Accept_Single_Classical Wallet_Session
+MB_taban,M_forgery_crqc,V,"<'rp_cl', $X.1> <'rp_cl', $X>",CRQC_Break_RP_Classical Migrate Qday RP_Setup_Born RP_Setup_Migrating Wallet_Accept_Single_Classical Wallet_Session
+ME_signed_fresh,G5_untimed,F,,Issue_Classical Issuer_Setup_Born Meta_Respond_PQ Verifier_Query Verify_Classical_Fresh
+ME_signed_fresh,G5_migrated,F,,Issue_Classical Issuer_Setup_Born Meta_Respond_PQ Verifier_Query Verify_Classical_Fresh
+ME_signed_fresh,no_rollback,F,"<'iss_cl', $X>",CRQC_Break_Issuer_Classical Issue_Classical Issuer_Setup_Legacy Learn_Fresh Meta_Respond_None Qday Verifier_Query Verify_Classical_Fresh
+ME_signed_fresh,first_contact_downgrade,V,,Issue_Classical Issuer_Setup_Born Meta_Respond_PQ Verifier_Query Verify_Classical_Fresh
+ME_signed_fresh,executable,V,,Issue_PQ Issuer_Setup_Born Verify_PQ
+ME_signed_fresh,executable_legacy,V,,Issue_Classical Issuer_Setup_Legacy Meta_Respond_None Verifier_Query Verify_Classical_Fresh
+ME_signed_fresh,executable_pre_migration,V,,Issue_Classical Issuer_Setup_Migrating Meta_Respond_None Verifier_Query Verify_Classical_Fresh
+ME_signed_fresh,executable_lifecycle,V,,Issue_PQ Issuer_Setup_Born Sunset Verify_PQ
+ME_signed_fresh,executable_learn,V,,Issuer_Setup_Born Learn_Fresh Meta_Respond_Retired Sunset Verifier_Query
+ME_signed_fresh,G1_claims_unforgeability,F,"<'iss_cl', $I>",CRQC_Break_Issuer_Classical Issuer_Setup_Born Meta_Respond_PQ Qday Verifier_Query Verify_Classical_Fresh
+ME_signed_fresh,M_downgrade_s1,V,,Issue_Classical Issuer_Setup_Born Meta_Respond_PQ Verifier_Query Verify_Classical_Fresh
+ME_signed_fresh,M_forgery_crqc,V,"<'iss_cl', $I.1> <'iss_cl', $I>",CRQC_Break_Issuer_Classical Issuer_Setup_Born Meta_Respond_PQ Qday Verifier_Query Verify_Classical_Fresh
+MEP_tls_classical,G5_untimed,F,"<'meta_tls', $I>",CRQC_Break_Meta_TLS Issue_Classical Issuer_Setup_Born Qday Verifier_Query Verify_Classical_Fresh
+MEP_tls_classical,G5_migrated,F,"<'meta_tls', $X>",CRQC_Break_Meta_TLS Issue_Classical Issuer_Setup_Born Qday Verifier_Query Verify_Classical_Fresh
+MEP_tls_classical,G5_timed,F,"<'meta_tls', $I>",CRQC_Break_Meta_TLS Issue_Classical Issuer_Setup_Born Qday Sunset Verifier_Query Verify_Classical_Fresh
+MEP_tls_classical,no_rollback,F,"<'meta_tls', $X>",CRQC_Break_Meta_TLS Issue_Classical Issuer_Setup_Born Learn_Fresh Meta_Respond_PQ Qday Verifier_Query Verify_Classical_Fresh
+MEP_tls_classical,first_contact_downgrade,V,"<'meta_tls', $X>",CRQC_Break_Meta_TLS Issue_Classical Issuer_Setup_Born Qday Verifier_Query Verify_Classical_Fresh
+MEP_tls_classical,executable,V,,Issue_PQ Issuer_Setup_Born Verify_PQ
+MEP_tls_classical,executable_legacy,V,,Issue_Classical Issuer_Setup_Legacy Meta_Respond_None Verifier_Query Verify_Classical_Fresh
+MEP_tls_classical,executable_pre_migration,V,,Issue_Classical Issuer_Setup_Migrating Meta_Respond_None Verifier_Query Verify_Classical_Fresh
+MEP_tls_classical,executable_lifecycle,V,,Issue_PQ Issuer_Setup_Born Sunset Verify_PQ
+MEP_tls_classical,executable_learn,V,,Issuer_Setup_Born Learn_Fresh Meta_Respond_PQ Verifier_Query
+MEP_tls_classical,G1_claims_unforgeability,F,"<'iss_cl', $I> <'meta_tls', $I>",CRQC_Break_Issuer_Classical CRQC_Break_Meta_TLS Issuer_Setup_Born Qday Verifier_Query Verify_Classical_Fresh
+MEP_tls_classical,M_forgery_crqc,V,"<'iss_cl', $I.1> <'iss_cl', $I> <'meta_tls', $I.1>",CRQC_Break_Issuer_Classical CRQC_Break_Meta_TLS Issuer_Setup_Born Qday Verifier_Query Verify_Classical_Fresh
+MEP_signed_fresh,no_rollback,F,"<'iss_cl', $X>",CRQC_Break_Issuer_Classical Issue_Classical Issuer_Setup_Legacy Learn_Fresh Meta_Respond_None Qday Verifier_Query Verify_Classical_Fresh
+MEP_signed_fresh,executable,V,,Issue_PQ Issuer_Setup_Born Verify_PQ
+MEP_signed_fresh,executable_legacy,V,,Issue_Classical Issuer_Setup_Legacy Meta_Respond_None Verifier_Query Verify_Classical_Fresh
+MEP_signed_fresh,executable_pre_migration,V,,Issue_Classical Issuer_Setup_Migrating Meta_Respond_None Verifier_Query Verify_Classical_Fresh
+MEP_signed_fresh,executable_lifecycle,V,,Issue_PQ Issuer_Setup_Born Sunset Verify_PQ
+MEP_signed_fresh,executable_learn,V,,Issuer_Setup_Born Learn_Fresh Meta_Respond_PQ Verifier_Query
+MD_reg_pq,G5_migrated,F,,Issue_Classical Issuer_Setup_Migrating Migrate Register_None Registration_Setup Verify_Classical_Reg
+MD_reg_pq,G5_timed,F,,Issue_Classical Issuer_Setup_Migrating Migrate Register_None Registration_Setup Sunset Verify_Classical_Reg
+MD_reg_pq,no_rollback,F,,Issue_Classical Issuer_Setup_Migrating Learn_Reg Migrate Register_None Register_PQ Registration_Setup Verify_Classical_Reg
+MD_reg_pq,first_contact_downgrade,V,,Issue_Classical Issuer_Setup_Migrating Migrate Register_None Registration_Setup Verify_Classical_Reg
+MD_reg_pq,executable,V,,Issue_PQ Issuer_Setup_Born Verify_PQ
+MD_reg_pq,executable_legacy,V,,Issue_Classical Issuer_Setup_Legacy Register_None Registration_Setup Verify_Classical_Reg
+MD_reg_pq,executable_pre_migration,V,,Issue_Classical Issuer_Setup_Migrating Register_None Registration_Setup Verify_Classical_Reg
+MD_reg_pq,executable_lifecycle,V,,Issue_PQ Issuer_Setup_Born Sunset Verify_PQ
+MD_reg_pq,executable_learn,V,,Issuer_Setup_Born Learn_Reg Register_PQ Registration_Setup
+MD_reg_pq,G1_claims_unforgeability,F,"<'iss_cl', $I>",CRQC_Break_Issuer_Classical Issuer_Setup_Migrating Migrate Qday Register_None Registration_Setup Verify_Classical_Reg
+MD_reg_pq,M_downgrade_s1,V,,Issue_Classical Issuer_Setup_Migrating Migrate Register_None Registration_Setup Verify_Classical_Reg
+MD_reg_pq,M_forgery_crqc,V,"<'iss_cl', $I.1> <'iss_cl', $I>",CRQC_Break_Issuer_Classical Issuer_Setup_Born Issuer_Setup_Migrating Migrate Qday Register_None Registration_Setup Verify_Classical_Reg
+MF_3b_yol_farkli_ad,executable,V,,Acc1_PQ_Exp CAM_Setup Exp_Fresh_Req Fresh_Query Issue_PQ Issuer_Setup_Born Source_Respond_PQ Source_Setup Verifier_Start
+MF_3b_yol_farkli_ad,executable_legacy,V,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Fresh_None Fresh_Query Issue_Classical Issuer_Setup_Legacy Qday Source_Respond_None Source_Setup Verifier_Start
+MF_3b_yol_farkli_ad,executable_pre_migration,V,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Fresh_None Fresh_Query Issue_Classical Issuer_Setup_Migrating Qday Source_Respond_None Source_Setup Verifier_Start
+MF_3b_yol_farkli_ad,executable_lifecycle,V,,Acc1_PQ_Exp CAM_Setup Exp_Fresh_Req Fresh_Query Issue_PQ Issuer_Setup_Born Source_Respond_Retired Source_Setup Sunset Verifier_Start
+MF_3b_yol_farkli_ad,executable_learn,V,,CAM_Setup Exp_Fresh_Req Fresh_Query Issuer_Setup_Born Source_Respond_PQ Source_Setup Verifier_Start
+MF_3b_yol_ayni_ad,executable,V,,Acc1_PQ_Exp CAM_Setup Exp_Fresh_Req Fresh_Query Issue_PQ Issuer_Setup_Born Source_Respond_PQ Source_Setup Verifier_Start
+MF_3b_yol_ayni_ad,executable_legacy,V,,Acc1_Classical CAM_Setup Exp_Fresh_None Fresh_Query Issue_Classical Issuer_Setup_Legacy Source_Respond_None Source_Setup Verifier_Start
+MF_3b_yol_ayni_ad,executable_pre_migration,V,,Acc1_Classical CAM_Setup Exp_Fresh_None Fresh_Query Issue_Classical Issuer_Setup_Migrating Source_Respond_None Source_Setup Verifier_Start
+MF_3b_yol_ayni_ad,executable_lifecycle,V,,Acc1_PQ_Exp CAM_Setup Exp_Fresh_Req Fresh_Query Issue_PQ Issuer_Setup_Born Source_Respond_Retired Source_Setup Sunset Verifier_Start
+MF_3b_yol_ayni_ad,executable_learn,V,,CAM_Setup Exp_Fresh_Req Fresh_Query Issuer_Setup_Born Source_Respond_PQ Source_Setup Verifier_Start
+MF_3b_yol_klasik_kok,executable,V,,Acc1_PQ_Exp CAM_Setup Exp_Fresh_Req Fresh_Query Issue_PQ Issuer_Setup_Born Source_Respond_PQ Source_Setup Verifier_Start
+MF_3b_yol_klasik_kok,executable_legacy,V,,Acc1_Classical CAM_Setup Exp_Fresh_None Fresh_Query Issue_Classical Issuer_Setup_Legacy Source_Respond_None Source_Setup Verifier_Start
+MF_3b_yol_klasik_kok,executable_pre_migration,V,,Acc1_Classical CAM_Setup Exp_Fresh_None Fresh_Query Issue_Classical Issuer_Setup_Migrating Source_Respond_None Source_Setup Verifier_Start
+MF_3b_yol_klasik_kok,executable_lifecycle,V,,Acc1_PQ_Exp CAM_Setup Exp_Fresh_Req Fresh_Query Issue_PQ Issuer_Setup_Born Source_Respond_Retired Source_Setup Sunset Verifier_Start
+MF_3b_yol_klasik_kok,executable_learn,V,,CAM_Setup Exp_Fresh_Req Fresh_Query Issuer_Setup_Born Source_Respond_PQ Source_Setup Verifier_Start
+MF_3b_anahtar_farkli_ad,executable,V,"<'anchor', 'CAA'>",Acc1_PQ_Exp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Fresh_Req Fresh_Query Issue_PQ Issuer_Setup_Born Qday Source_Respond_PQ Source_Setup Verifier_Start
+MF_3b_anahtar_farkli_ad,executable_legacy,V,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Fresh_None Fresh_Query Issue_Classical Issuer_Setup_Legacy Qday Source_Respond_None Source_Setup Verifier_Start
+MF_3b_anahtar_farkli_ad,executable_pre_migration,V,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Fresh_None Fresh_Query Issue_Classical Issuer_Setup_Migrating Qday Source_Respond_None Source_Setup Verifier_Start
+MF_3b_anahtar_farkli_ad,executable_lifecycle,V,"<'anchor', 'CAA'>",Acc1_PQ_Exp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Fresh_Req Fresh_Query Issue_PQ Issuer_Setup_Born Qday Source_Respond_Retired Source_Setup Sunset Verifier_Start
+MF_3b_anahtar_farkli_ad,executable_learn,V,,CAM_Setup Exp_Fresh_Req Fresh_Query Issuer_Setup_Born Source_Respond_PQ Source_Setup Verifier_Start
+MF_3b_anahtar_farkli_ad,G5_path_untimed,F,"<'anchor', 'CAA'>",Acc1_PQ_Exp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Fresh_Req Fresh_Query Issue_PQ Issuer_Setup_Born Qday Source_Respond_PQ Source_Setup Verifier_Start
+MF_3b_anahtar_farkli_ad,G5_path_migrated,F,"<'anchor', 'CAA'>",Acc1_PQ_Exp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Fresh_Req Fresh_Query Issue_PQ Issuer_Setup_Born Qday Source_Respond_PQ Source_Setup Verifier_Start
+MF_3b_anahtar_farkli_ad,G5_path_timed,F,"<'anchor', 'CAA'>",Acc1_PQ_Exp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Fresh_Req Fresh_Query Issue_PQ Issuer_Setup_Born Qday Source_Respond_Retired Source_Setup Sunset Verifier_Start
+MF_3b_anahtar_farkli_ad,no_rollback_path,F,"<'anchor', 'CAA'>",Acc1_PQ_Exp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Fresh_Req Fresh_Query Issue_PQ Issuer_Setup_Born Qday Source_Respond_PQ Source_Setup Verifier_Start
+MF_3b_anahtar_ayni_ad,executable,V,,Acc1_PQ_Exp CAM_Setup Exp_Fresh_Req Fresh_Query Issue_PQ Issuer_Setup_Born Source_Respond_PQ Source_Setup Verifier_Start
+MF_3b_anahtar_ayni_ad,executable_legacy,V,,Acc1_Classical CAM_Setup Exp_Fresh_None Fresh_Query Issue_Classical Issuer_Setup_Legacy Source_Respond_None Source_Setup Verifier_Start
+MF_3b_anahtar_ayni_ad,executable_pre_migration,V,,Acc1_Classical CAM_Setup Exp_Fresh_None Fresh_Query Issue_Classical Issuer_Setup_Migrating Source_Respond_None Source_Setup Verifier_Start
+MF_3b_anahtar_ayni_ad,executable_lifecycle,V,,Acc1_PQ_Exp CAM_Setup Exp_Fresh_Req Fresh_Query Issue_PQ Issuer_Setup_Born Source_Respond_Retired Source_Setup Sunset Verifier_Start
+MF_3b_anahtar_ayni_ad,executable_learn,V,,CAM_Setup Exp_Fresh_Req Fresh_Query Issuer_Setup_Born Source_Respond_PQ Source_Setup Verifier_Start
+MF_3b_anahtar_ayni_ad,G5_path_untimed,F,"<'anchor', 'CAM'>",Acc1_PQ_Exp CAM_Setup CRQC_Break_Classical_Anchor Exp_Fresh_Req Fresh_Query Issue_PQ Issuer_Setup_Born OldCAM_Setup Qday Source_Respond_PQ Source_Setup Verifier_Start
+MF_3b_anahtar_ayni_ad,G5_path_migrated,F,"<'anchor', 'CAM'>",Acc1_PQ_Exp CAM_Setup CRQC_Break_Classical_Anchor Exp_Fresh_Req Fresh_Query Issue_PQ Issuer_Setup_Born OldCAM_Setup Qday Source_Respond_PQ Source_Setup Verifier_Start
+MF_3b_anahtar_ayni_ad,G5_path_timed,F,"<'anchor', 'CAM'>",Acc1_PQ_Exp CAM_Setup CRQC_Break_Classical_Anchor Exp_Fresh_Req Fresh_Query Issue_PQ Issuer_Setup_Born OldCAM_Setup Qday Source_Respond_Retired Source_Setup Sunset Verifier_Start
+MF_3b_anahtar_ayni_ad,no_rollback_path,F,"<'anchor', 'CAM'>",Acc1_PQ_Exp CAM_Setup CRQC_Break_Classical_Anchor Exp_Fresh_Req Fresh_Query Issue_PQ Issuer_Setup_Born OldCAM_Setup Qday Source_Respond_PQ Source_Setup Verifier_Start
+MF_3b_anahtar_klasik_kok,executable,V,,Acc1_PQ_Exp CAM_Setup Exp_Fresh_Req Fresh_Query Issue_PQ Issuer_Setup_Born Source_Respond_PQ Source_Setup Verifier_Start
+MF_3b_anahtar_klasik_kok,executable_legacy,V,,Acc1_Classical CAM_Setup Exp_Fresh_None Fresh_Query Issue_Classical Issuer_Setup_Legacy Source_Respond_None Source_Setup Verifier_Start
+MF_3b_anahtar_klasik_kok,executable_pre_migration,V,,Acc1_Classical CAM_Setup Exp_Fresh_None Fresh_Query Issue_Classical Issuer_Setup_Migrating Source_Respond_None Source_Setup Verifier_Start
+MF_3b_anahtar_klasik_kok,executable_lifecycle,V,,Acc1_PQ_Exp CAM_Setup Exp_Fresh_Req Fresh_Query Issue_PQ Issuer_Setup_Born Source_Respond_Retired Source_Setup Sunset Verifier_Start
+MF_3b_anahtar_klasik_kok,executable_learn,V,,CAM_Setup Exp_Fresh_Req Fresh_Query Issuer_Setup_Born Source_Respond_PQ Source_Setup Verifier_Start
+MF_3b_anahtar_klasik_kok,G5_path_untimed,F,"<'anchor', 'ROOT'>",Acc1_PQ_Exp CAM_Setup CRQC_Break_Classical_Anchor ClassicalRoot_Setup Exp_Fresh_Req Fresh_Query Issue_PQ Issuer_Setup_Born Qday Source_Respond_PQ Source_Setup Verifier_Start
+MF_3b_anahtar_klasik_kok,G5_path_migrated,F,"<'anchor', 'ROOT'>",Acc1_PQ_Exp CAM_Setup CRQC_Break_Classical_Anchor ClassicalRoot_Setup Exp_Fresh_Req Fresh_Query Issue_PQ Issuer_Setup_Born Qday Source_Respond_PQ Source_Setup Verifier_Start
+MF_3b_anahtar_klasik_kok,G5_path_timed,F,"<'anchor', 'ROOT'>",Acc1_PQ_Exp CAM_Setup CRQC_Break_Classical_Anchor ClassicalRoot_Setup Exp_Fresh_Req Fresh_Query Issue_PQ Issuer_Setup_Born Qday Source_Respond_Retired Source_Setup Sunset Verifier_Start
+MF_3b_anahtar_klasik_kok,no_rollback_path,F,"<'anchor', 'ROOT'>",Acc1_PQ_Exp CAM_Setup CRQC_Break_Classical_Anchor ClassicalRoot_Setup Exp_Fresh_Req Fresh_Query Issue_PQ Issuer_Setup_Born Qday Source_Respond_PQ Source_Setup Verifier_Start
+MF_3b_yaprak_farkli_ad,executable,V,"<'anchor', 'CAA'>",Acc1_PQ_Exp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Fresh_Req Fresh_Query Issue_Classical Issuer_Setup_Born Qday Source_Respond_PQ Source_Setup Verifier_Start
+MF_3b_yaprak_farkli_ad,executable_legacy,V,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Fresh_None Fresh_Query Issue_Classical Issuer_Setup_Legacy Qday Source_Respond_None Source_Setup Verifier_Start
+MF_3b_yaprak_farkli_ad,executable_pre_migration,V,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Fresh_None Fresh_Query Issue_Classical Issuer_Setup_Migrating Qday Source_Respond_None Source_Setup Verifier_Start
+MF_3b_yaprak_farkli_ad,executable_lifecycle,V,"<'anchor', 'CAA'>",Acc1_PQ_Exp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Fresh_Req Fresh_Query Issuer_Setup_Born Qday Source_Respond_Retired Source_Setup Sunset Verifier_Start
+MF_3b_yaprak_farkli_ad,executable_learn,V,,CAM_Setup Exp_Fresh_Req Fresh_Query Issuer_Setup_Born Source_Respond_PQ Source_Setup Verifier_Start
+MF_3b_yaprak_farkli_ad,G1_claims_unforgeability,F,"<'anchor', 'CAA'>",Acc1_PQ_Exp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Fresh_Req Fresh_Query Issuer_Setup_Born Qday Source_Respond_PQ Source_Setup Verifier_Start
+MF_3b_yaprak_farkli_ad,G5_path_untimed,F,"<'anchor', 'CAA'>",Acc1_PQ_Exp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Fresh_Req Fresh_Query Issue_Classical Issuer_Setup_Born Qday Source_Respond_PQ Source_Setup Verifier_Start
+MF_3b_yaprak_farkli_ad,G5_path_migrated,F,"<'anchor', 'CAA'>",Acc1_PQ_Exp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Fresh_Req Fresh_Query Issuer_Setup_Born Qday Source_Respond_PQ Source_Setup Verifier_Start
+MF_3b_yaprak_farkli_ad,G5_path_timed,F,"<'anchor', 'CAA'>",Acc1_PQ_Exp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Fresh_Req Fresh_Query Issuer_Setup_Born Qday Source_Respond_Retired Source_Setup Sunset Verifier_Start
+MF_3b_yaprak_farkli_ad,no_rollback_path,F,"<'anchor', 'CAA'>",Acc1_PQ_Exp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Fresh_Req Fresh_Query Issue_Classical Issuer_Setup_Born Qday Source_Respond_PQ Source_Setup Verifier_Start
+MF_3b_yaprak_farkli_ad,M_forgery_crqc,V,"<'anchor', 'CAA'>",Acc1_PQ_Exp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Fresh_Req Fresh_Query Issuer_Setup_Born Qday Source_Respond_PQ Source_Setup Verifier_Start
+MF_3b_yaprak_farkli_ad,M_weak_path_forgery,V,"<'anchor', 'CAA'>",Acc1_PQ_Exp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Fresh_Req Fresh_Query Issuer_Setup_Born Qday Source_Respond_PQ Source_Setup Verifier_Start
+MF_3b_yaprak_ayni_ad,executable,V,,Acc1_PQ_Exp CAM_Setup Exp_Fresh_Req Fresh_Query Issue_PQ Issuer_Setup_Born Source_Respond_PQ Source_Setup Verifier_Start
+MF_3b_yaprak_ayni_ad,executable_legacy,V,,Acc1_Classical CAM_Setup Exp_Fresh_None Fresh_Query Issue_Classical Issuer_Setup_Legacy Source_Respond_None Source_Setup Verifier_Start
+MF_3b_yaprak_ayni_ad,executable_pre_migration,V,,Acc1_Classical CAM_Setup Exp_Fresh_None Fresh_Query Issue_Classical Issuer_Setup_Migrating Source_Respond_None Source_Setup Verifier_Start
+MF_3b_yaprak_ayni_ad,executable_lifecycle,V,"<'anchor', 'CAM'>",Acc1_PQ_Exp CAM_Setup CRQC_Break_Classical_Anchor Exp_Fresh_Req Fresh_Query Issuer_Setup_Born OldCAM_Setup Qday Source_Respond_Retired Source_Setup Sunset Verifier_Start
+MF_3b_yaprak_ayni_ad,executable_learn,V,,CAM_Setup Exp_Fresh_Req Fresh_Query Issuer_Setup_Born Source_Respond_PQ Source_Setup Verifier_Start
+MF_3b_yaprak_ayni_ad,G1_claims_unforgeability,F,"<'anchor', 'CAM'> <'iss_cl', $I.1>",Acc1_PQ_Exp CAM_Setup CRQC_Break_Classical_Anchor CRQC_Break_Issuer_Classical Exp_Fresh_Req Fresh_Query Issuer_Setup_Born OldCAM_Setup Qday Source_Respond_PQ Source_Setup Verifier_Start
+MF_3b_yaprak_ayni_ad,G5_path_untimed,F,"<'anchor', 'CAM'>",Acc1_PQ_Exp CAM_Setup CRQC_Break_Classical_Anchor Exp_Fresh_Req Fresh_Query Issue_Classical Issuer_Setup_Born OldCAM_Setup Qday Source_Respond_PQ Source_Setup Verifier_Start
+MF_3b_yaprak_ayni_ad,G5_path_migrated,F,"<'anchor', 'CAM'>",Acc1_PQ_Exp CAM_Setup CRQC_Break_Classical_Anchor Exp_Fresh_Req Fresh_Query Issuer_Setup_Born OldCAM_Setup Qday Source_Respond_PQ Source_Setup Verifier_Start
+MF_3b_yaprak_ayni_ad,G5_path_timed,F,"<'anchor', 'CAM'>",Acc1_PQ_Exp CAM_Setup CRQC_Break_Classical_Anchor Exp_Fresh_Req Fresh_Query Issuer_Setup_Born OldCAM_Setup Qday Source_Respond_Retired Source_Setup Sunset Verifier_Start
+MF_3b_yaprak_ayni_ad,no_rollback_path,F,"<'anchor', 'CAM'>",Acc1_PQ_Exp CAM_Setup CRQC_Break_Classical_Anchor Exp_Fresh_Req Fresh_Query Issue_Classical Issuer_Setup_Born OldCAM_Setup Qday Source_Respond_PQ Source_Setup Verifier_Start
+MF_3b_yaprak_ayni_ad,M_forgery_crqc,V,"<'anchor', 'CAM'> <'iss_cl', $I.1>",Acc1_PQ_Exp CAM_Setup CRQC_Break_Classical_Anchor CRQC_Break_Issuer_Classical Exp_Fresh_Req Fresh_Query Issuer_Setup_Born OldCAM_Setup Qday Source_Respond_PQ Source_Setup Verifier_Start
+MF_3b_yaprak_ayni_ad,M_weak_path_forgery,V,"<'anchor', 'CAM'> <'iss_cl', $I.1>",Acc1_PQ_Exp CAM_Setup CRQC_Break_Classical_Anchor CRQC_Break_Issuer_Classical Exp_Fresh_Req Fresh_Query Issuer_Setup_Born OldCAM_Setup Qday Source_Respond_PQ Source_Setup Verifier_Start
+MF_3b_yaprak_klasik_kok,executable,V,,Acc1_PQ_Exp CAM_Setup Exp_Fresh_Req Fresh_Query Issue_PQ Issuer_Setup_Born Source_Respond_PQ Source_Setup Verifier_Start
+MF_3b_yaprak_klasik_kok,executable_legacy,V,,Acc1_Classical CAM_Setup Exp_Fresh_None Fresh_Query Issue_Classical Issuer_Setup_Legacy Source_Respond_None Source_Setup Verifier_Start
+MF_3b_yaprak_klasik_kok,executable_pre_migration,V,,Acc1_Classical CAM_Setup Exp_Fresh_None Fresh_Query Issue_Classical Issuer_Setup_Migrating Source_Respond_None Source_Setup Verifier_Start
+MF_3b_yaprak_klasik_kok,executable_lifecycle,V,"<'anchor', 'ROOT'>",Acc1_PQ_Exp CAM_Setup CRQC_Break_Classical_Anchor ClassicalRoot_Setup Exp_Fresh_Req Fresh_Query Issuer_Setup_Born Qday Source_Respond_Retired Source_Setup Sunset Verifier_Start
+MF_3b_yaprak_klasik_kok,executable_learn,V,,CAM_Setup Exp_Fresh_Req Fresh_Query Issuer_Setup_Born Source_Respond_PQ Source_Setup Verifier_Start
+MF_3b_yaprak_klasik_kok,G1_claims_unforgeability,F,"<'anchor', 'ROOT'>",Acc1_PQ_Exp CAM_Setup CRQC_Break_Classical_Anchor ClassicalRoot_Setup Exp_Fresh_Req Fresh_Query Issuer_Setup_Born Qday Source_Respond_PQ Source_Setup Verifier_Start
+MF_3b_yaprak_klasik_kok,G5_path_untimed,F,"<'anchor', 'ROOT'>",Acc1_PQ_Exp CAM_Setup CRQC_Break_Classical_Anchor ClassicalRoot_Setup Exp_Fresh_Req Fresh_Query Issue_Classical Issuer_Setup_Born Qday Source_Respond_PQ Source_Setup Verifier_Start
+MF_3b_yaprak_klasik_kok,G5_path_migrated,F,"<'anchor', 'ROOT'>",Acc1_PQ_Exp CAM_Setup CRQC_Break_Classical_Anchor ClassicalRoot_Setup Exp_Fresh_Req Fresh_Query Issuer_Setup_Born Qday Source_Respond_PQ Source_Setup Verifier_Start
+MF_3b_yaprak_klasik_kok,G5_path_timed,F,"<'anchor', 'ROOT'>",Acc1_PQ_Exp CAM_Setup CRQC_Break_Classical_Anchor ClassicalRoot_Setup Exp_Fresh_Req Fresh_Query Issuer_Setup_Born Qday Source_Respond_Retired Source_Setup Sunset Verifier_Start
+MF_3b_yaprak_klasik_kok,no_rollback_path,F,"<'anchor', 'ROOT'>",Acc1_PQ_Exp CAM_Setup CRQC_Break_Classical_Anchor ClassicalRoot_Setup Exp_Fresh_Req Fresh_Query Issue_Classical Issuer_Setup_Born Qday Source_Respond_PQ Source_Setup Verifier_Start
+MF_3b_yaprak_klasik_kok,M_forgery_crqc,V,"<'anchor', 'ROOT'>",Acc1_PQ_Exp CAM_Setup CRQC_Break_Classical_Anchor ClassicalRoot_Setup Exp_Fresh_Req Fresh_Query Issuer_Setup_Born Qday Source_Respond_PQ Source_Setup Verifier_Start
+MF_3b_yaprak_klasik_kok,M_weak_path_forgery,V,"<'anchor', 'ROOT'>",Acc1_PQ_Exp CAM_Setup CRQC_Break_Classical_Anchor ClassicalRoot_Setup Exp_Fresh_Req Fresh_Query Issuer_Setup_Born Qday Source_Respond_PQ Source_Setup Verifier_Start
+MF_tas_tl_onbellek,G5_migrated,F,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Obj_None Issue_Classical Issuer_Setup_Migrating Migrate Qday Source_Publish_None Source_Setup
+MF_tas_tl_onbellek,G5_timed,F,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Obj_None Issue_Classical Issuer_Setup_Migrating Migrate Qday Source_Publish_None Source_Setup Sunset
+MF_tas_tl_onbellek,no_rollback,F,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Obj_None Exp_Obj_Req Issuer_Setup_Migrating Migrate Qday Source_Publish_None Source_Publish_PQ Source_Setup
+MF_tas_tl_onbellek,first_contact_downgrade,V,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Obj_None Issue_Classical Issuer_Setup_Migrating Migrate Qday Source_Publish_None Source_Setup
+MF_tas_tl_onbellek,executable,V,,Acc1_PQ_Exp CAM_Setup Exp_Obj_Req Issue_PQ Issuer_Setup_Born Source_Publish_PQ Source_Setup
+MF_tas_tl_onbellek,executable_legacy,V,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Obj_None Issue_Classical Issuer_Setup_Legacy Qday Source_Publish_None Source_Setup
+MF_tas_tl_onbellek,executable_pre_migration,V,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Obj_None Issue_Classical Issuer_Setup_Migrating Qday Source_Publish_None Source_Setup
+MF_tas_tl_onbellek,executable_lifecycle,V,"<'anchor', 'CAA'>",Acc1_PQ_NoExp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Obj_None Issuer_Setup_Migrating Migrate Qday Source_Publish_None Source_Setup Sunset
+MF_tas_tl_onbellek,executable_learn,V,,CAM_Setup Exp_Obj_Req Issuer_Setup_Born Source_Publish_PQ Source_Setup
+MF_tas_tl_onbellek,G1_claims_unforgeability,F,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Obj_None Issuer_Setup_Migrating Migrate Qday Source_Publish_None Source_Setup
+MF_tas_tl_onbellek,G5_path_migrated,F,"<'anchor', 'CAA'>",Acc1_PQ_NoExp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Obj_None Issue_Classical Issuer_Setup_Migrating Migrate Qday Source_Publish_None Source_Setup
+MF_tas_tl_onbellek,G5_path_timed,F,"<'anchor', 'CAA'>",Acc1_PQ_NoExp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Obj_None Issuer_Setup_Migrating Migrate Qday Source_Publish_None Source_Setup Sunset
+MF_tas_tl_onbellek,no_rollback_path,F,"<'anchor', 'CAA'>",Acc1_PQ_NoExp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Obj_None Exp_Obj_Req Issuer_Setup_Migrating Migrate Qday Source_Publish_None Source_Publish_PQ Source_Setup
+MF_tas_tl_onbellek,M_downgrade_s1,V,,Acc1_Classical CAM_Setup Exp_Obj_None Issue_Classical Issuer_Setup_Migrating Migrate Source_Publish_None Source_Setup
+MF_tas_tl_onbellek,M_forgery_crqc,V,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Obj_None Issuer_Setup_Migrating Migrate Qday Source_Publish_None Source_Setup
+MF_tas_tl_onbellek,M_weak_path_forgery,V,"<'anchor', 'CAA'>",Acc1_PQ_NoExp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Obj_None Issuer_Setup_Migrating Migrate Qday Source_Publish_None Source_Setup
+MF_tas_wrprc_faz0,G5_untimed,F,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Wrprc_None Issue_Classical Issuer_Setup_Born Qday
+MF_tas_wrprc_faz0,G5_migrated,F,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Wrprc_None Issue_Classical Issuer_Setup_Born Qday
+MF_tas_wrprc_faz0,G5_timed,F,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Wrprc_None Issue_Classical Issuer_Setup_Born Qday Sunset
+MF_tas_wrprc_faz0,no_rollback,F,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Wrprc_None Exp_Wrprc_Req Issue_Classical Issuer_Setup_Born Qday
+MF_tas_wrprc_faz0,first_contact_downgrade,V,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Wrprc_None Issue_Classical Issuer_Setup_Born Qday
+MF_tas_wrprc_faz0,executable,V,,Acc1_PQ_Exp CAM_Setup Exp_Wrprc_Req Issue_PQ Issuer_Setup_Born
+MF_tas_wrprc_faz0,executable_legacy,V,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Wrprc_None Issue_Classical Issuer_Setup_Legacy Qday
+MF_tas_wrprc_faz0,executable_pre_migration,V,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Wrprc_None Issue_Classical Issuer_Setup_Migrating Qday
+MF_tas_wrprc_faz0,executable_lifecycle,V,,Acc1_PQ_Exp CAM_Setup Exp_Wrprc_Req Issue_PQ Issuer_Setup_Born Sunset
+MF_tas_wrprc_faz0,executable_learn,V,,Exp_Wrprc_Req
+MF_tas_wrprc_faz0,G1_claims_unforgeability,F,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Wrprc_None Issuer_Setup_Born Qday
+MF_tas_wrprc_faz0,G5_path_untimed,F,"<'anchor', 'CAA'>",Acc1_PQ_NoExp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Wrprc_None Issue_Classical Issuer_Setup_Born Qday
+MF_tas_wrprc_faz0,G5_path_migrated,F,"<'anchor', 'CAA'>",Acc1_PQ_NoExp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Wrprc_None Issue_Classical Issuer_Setup_Born Qday
+MF_tas_wrprc_faz0,G5_path_timed,F,"<'anchor', 'CAA'>",Acc1_PQ_NoExp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Wrprc_None Issue_Classical Issuer_Setup_Born Qday Sunset
+MF_tas_wrprc_faz0,no_rollback_path,F,"<'anchor', 'CAA'>",Acc1_PQ_NoExp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Wrprc_None Exp_Wrprc_Req Issue_Classical Issuer_Setup_Born Qday
+MF_tas_wrprc_faz0,M_downgrade_s1,V,,Acc1_Classical CAM_Setup Exp_Wrprc_None Issue_Classical Issuer_Setup_Born
+MF_tas_wrprc_faz0,M_forgery_crqc,V,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Wrprc_None Issuer_Setup_Born Qday
+MF_tas_wrprc_faz0,M_weak_path_forgery,V,"<'anchor', 'CAA'>",Acc1_PQ_NoExp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Wrprc_None Issuer_Setup_Born Qday
+MF_tas_wrprc_faz1,G5_migrated,F,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Wrprc_None Issue_Classical Issuer_Setup_Migrating Migrate Qday Source_Setup Wrprc_Issue_None
+MF_tas_wrprc_faz1,G5_timed,F,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Wrprc_None Issue_Classical Issuer_Setup_Migrating Migrate Qday Source_Setup Sunset Wrprc_Issue_None
+MF_tas_wrprc_faz1,no_rollback,F,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Wrprc_None Exp_Wrprc_Req Issuer_Setup_Migrating Migrate Qday Source_Setup Wrprc_Issue_None Wrprc_Issue_PQ
+MF_tas_wrprc_faz1,first_contact_downgrade,V,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Wrprc_None Issue_Classical Issuer_Setup_Migrating Migrate Qday Source_Setup Wrprc_Issue_None
+MF_tas_wrprc_faz1,executable,V,,Acc1_PQ_Exp CAM_Setup Exp_Wrprc_Req Issue_PQ Issuer_Setup_Born Source_Setup Wrprc_Issue_PQ
+MF_tas_wrprc_faz1,executable_legacy,V,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Wrprc_None Issue_Classical Issuer_Setup_Legacy Qday Source_Setup Wrprc_Issue_None
+MF_tas_wrprc_faz1,executable_pre_migration,V,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Wrprc_None Issue_Classical Issuer_Setup_Migrating Qday Source_Setup Wrprc_Issue_None
+MF_tas_wrprc_faz1,executable_lifecycle,V,"<'anchor', 'CAA'>",Acc1_PQ_NoExp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Wrprc_None Issuer_Setup_Migrating Migrate Qday Source_Setup Sunset Wrprc_Issue_None
+MF_tas_wrprc_faz1,executable_learn,V,,CAM_Setup Exp_Wrprc_Req Issuer_Setup_Born Source_Setup Wrprc_Issue_PQ
+MF_tas_wrprc_faz1,G1_claims_unforgeability,F,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Wrprc_None Issuer_Setup_Migrating Migrate Qday Source_Setup Wrprc_Issue_None
+MF_tas_wrprc_faz1,G5_path_migrated,F,"<'anchor', 'CAA'>",Acc1_PQ_NoExp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Wrprc_None Issue_Classical Issuer_Setup_Migrating Migrate Qday Source_Setup Wrprc_Issue_None
+MF_tas_wrprc_faz1,G5_path_timed,F,"<'anchor', 'CAA'>",Acc1_PQ_NoExp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Wrprc_None Issuer_Setup_Migrating Migrate Qday Source_Setup Sunset Wrprc_Issue_None
+MF_tas_wrprc_faz1,no_rollback_path,F,"<'anchor', 'CAA'>",Acc1_PQ_NoExp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Wrprc_None Exp_Wrprc_Req Issuer_Setup_Migrating Migrate Qday Source_Setup Wrprc_Issue_None Wrprc_Issue_PQ
+MF_tas_wrprc_faz1,M_downgrade_s1,V,,Acc1_Classical CAM_Setup Exp_Wrprc_None Issue_Classical Issuer_Setup_Migrating Migrate Source_Setup Wrprc_Issue_None
+MF_tas_wrprc_faz1,M_forgery_crqc,V,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Wrprc_None Issuer_Setup_Migrating Migrate Qday Source_Setup Wrprc_Issue_None
+MF_tas_wrprc_faz1,M_weak_path_forgery,V,"<'anchor', 'CAA'>",Acc1_PQ_NoExp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Wrprc_None Issuer_Setup_Migrating Migrate Qday Source_Setup Wrprc_Issue_None
+MF_tas_federasyon_pq,executable,V,,Acc1_PQ_Exp CAM_Setup Exp_Fed_Req Fed_Query Fed_Respond_PQ Fed_Setup Issue_PQ Issuer_Setup_Born Verifier_Start
+MF_tas_federasyon_pq,executable_legacy,V,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Fed_None Fed_Query Fed_Respond_None Fed_Setup Issue_Classical Issuer_Setup_Legacy Qday Verifier_Start
+MF_tas_federasyon_pq,executable_pre_migration,V,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Fed_None Fed_Query Fed_Respond_None Fed_Setup Issue_Classical Issuer_Setup_Migrating Qday Verifier_Start
+MF_tas_federasyon_pq,executable_lifecycle,V,,Acc1_PQ_Exp CAM_Setup Exp_Fed_Req Fed_Query Fed_Respond_Retired Fed_Setup Issue_PQ Issuer_Setup_Born Sunset Verifier_Start
+MF_tas_federasyon_pq,executable_learn,V,,CAM_Setup Exp_Fed_Req Fed_Query Fed_Respond_PQ Fed_Setup Issuer_Setup_Born Verifier_Start
+MF_tas_federasyon_klasik_ara,G5_untimed,F,"'fed_int' <'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor CRQC_Break_Fed_Intermediate Exp_Fed_None Fed_Query Fed_Setup Issuer_Setup_Born Qday Verifier_Start
+MF_tas_federasyon_klasik_ara,G5_migrated,F,"'fed_int' <'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor CRQC_Break_Fed_Intermediate Exp_Fed_None Fed_Query Fed_Setup Issuer_Setup_Born Qday Verifier_Start
+MF_tas_federasyon_klasik_ara,G5_timed,F,"'fed_int' <'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor CRQC_Break_Fed_Intermediate Exp_Fed_None Fed_Query Fed_Setup Issue_Classical Issuer_Setup_Born Qday Sunset Verifier_Start
+MF_tas_federasyon_klasik_ara,no_rollback,F,"'fed_int' <'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor CRQC_Break_Fed_Intermediate Exp_Fed_None Exp_Fed_Req Fed_Query Fed_Respond_PQ Fed_Setup Issue_Classical Issuer_Setup_Born Qday Verifier_Start
+MF_tas_federasyon_klasik_ara,first_contact_downgrade,V,"'fed_int' <'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor CRQC_Break_Fed_Intermediate Exp_Fed_None Fed_Query Fed_Setup Issuer_Setup_Born Qday Verifier_Start
+MF_tas_federasyon_klasik_ara,executable,V,"'fed_int' <'anchor', 'CAA'>",Acc1_PQ_NoExp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor CRQC_Break_Fed_Intermediate Exp_Fed_None Fed_Query Fed_Setup Issuer_Setup_Born Qday Verifier_Start
+MF_tas_federasyon_klasik_ara,executable_legacy,V,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Fed_None Fed_Query Fed_Respond_None Fed_Setup Issue_Classical Issuer_Setup_Legacy Qday Verifier_Start
+MF_tas_federasyon_klasik_ara,executable_pre_migration,V,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Fed_None Fed_Query Fed_Respond_None Fed_Setup Issue_Classical Issuer_Setup_Migrating Qday Verifier_Start
+MF_tas_federasyon_klasik_ara,executable_lifecycle,V,,Acc1_PQ_Exp CAM_Setup Exp_Fed_Req Fed_Query Fed_Respond_Retired Fed_Setup Issue_PQ Issuer_Setup_Born Sunset Verifier_Start
+MF_tas_federasyon_klasik_ara,executable_learn,V,,CAM_Setup Exp_Fed_Req Fed_Query Fed_Respond_PQ Fed_Setup Issuer_Setup_Born Verifier_Start
+MF_tas_federasyon_klasik_ara,G1_claims_unforgeability,F,"'fed_int' <'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor CRQC_Break_Fed_Intermediate Exp_Fed_None Fed_Query Fed_Setup Issuer_Setup_Born Qday Verifier_Start
+MF_tas_federasyon_klasik_ara,G5_path_untimed,F,"'fed_int' <'anchor', 'CAA'>",Acc1_PQ_NoExp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor CRQC_Break_Fed_Intermediate Exp_Fed_None Fed_Query Fed_Setup Issuer_Setup_Born Qday Verifier_Start
+MF_tas_federasyon_klasik_ara,G5_path_migrated,F,"'fed_int' <'anchor', 'CAA'>",Acc1_PQ_NoExp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor CRQC_Break_Fed_Intermediate Exp_Fed_None Fed_Query Fed_Setup Issue_Classical Issuer_Setup_Born Qday Verifier_Start
+MF_tas_federasyon_klasik_ara,G5_path_timed,F,"'fed_int' <'anchor', 'CAA'>",Acc1_PQ_NoExp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor CRQC_Break_Fed_Intermediate Exp_Fed_None Fed_Query Fed_Setup Issue_Classical Issuer_Setup_Born Qday Sunset Verifier_Start
+MF_tas_federasyon_klasik_ara,no_rollback_path,F,"'fed_int' <'anchor', 'CAA'>",Acc1_PQ_NoExp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor CRQC_Break_Fed_Intermediate Exp_Fed_None Exp_Fed_Req Fed_Query Fed_Respond_PQ Fed_Setup Issue_Classical Issuer_Setup_Born Qday Verifier_Start
+MF_tas_federasyon_klasik_ara,M_forgery_crqc,V,"'fed_int' <'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor CRQC_Break_Fed_Intermediate Exp_Fed_None Fed_Query Fed_Setup Issuer_Setup_Born Qday Verifier_Start
+MF_tas_federasyon_klasik_ara,M_weak_path_forgery,V,"'fed_int' <'anchor', 'CAA'>",Acc1_PQ_NoExp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor CRQC_Break_Fed_Intermediate Exp_Fed_None Fed_Query Fed_Setup Issuer_Setup_Born Qday Verifier_Start
+MF_tas_federasyon_bayat,G5_migrated,F,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Fed_None Fed_Publish_None Fed_Setup Issue_Classical Issuer_Setup_Migrating Migrate Qday
+MF_tas_federasyon_bayat,G5_timed,F,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Fed_None Fed_Publish_None Fed_Setup Issuer_Setup_Migrating Migrate Qday Sunset
+MF_tas_federasyon_bayat,no_rollback,F,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Fed_None Exp_Fed_Req Fed_Publish_None Fed_Publish_PQ Fed_Setup Issue_Classical Issuer_Setup_Migrating Migrate Qday
+MF_tas_federasyon_bayat,first_contact_downgrade,V,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Fed_None Fed_Publish_None Fed_Setup Issue_Classical Issuer_Setup_Migrating Migrate Qday
+MF_tas_federasyon_bayat,executable,V,"<'anchor', 'CAA'>",Acc1_PQ_NoExp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Fed_None Fed_Publish_None Fed_Setup Issue_Classical Issuer_Setup_Migrating Migrate Qday
+MF_tas_federasyon_bayat,executable_legacy,V,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Fed_None Fed_Publish_None Fed_Setup Issue_Classical Issuer_Setup_Legacy Qday
+MF_tas_federasyon_bayat,executable_pre_migration,V,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Fed_None Fed_Publish_None Fed_Setup Issue_Classical Issuer_Setup_Migrating Qday
+MF_tas_federasyon_bayat,executable_lifecycle,V,,Acc1_PQ_Exp CAM_Setup Exp_Fed_Req Fed_Publish_PQ Fed_Setup Issue_PQ Issuer_Setup_Born Sunset
+MF_tas_federasyon_bayat,executable_learn,V,,CAM_Setup Exp_Fed_Req Fed_Publish_PQ Fed_Setup Issuer_Setup_Born
+MF_tas_federasyon_bayat,G1_claims_unforgeability,F,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Fed_None Fed_Publish_None Fed_Setup Issuer_Setup_Migrating Migrate Qday
+MF_tas_federasyon_bayat,G5_path_migrated,F,"<'anchor', 'CAA'>",Acc1_PQ_NoExp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Fed_None Fed_Publish_None Fed_Setup Issuer_Setup_Migrating Migrate Qday
+MF_tas_federasyon_bayat,G5_path_timed,F,"<'anchor', 'CAA'>",Acc1_PQ_NoExp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Fed_None Fed_Publish_None Fed_Setup Issue_Classical Issuer_Setup_Migrating Migrate Qday Sunset
+MF_tas_federasyon_bayat,no_rollback_path,F,"<'anchor', 'CAA'>",Acc1_PQ_NoExp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Fed_None Exp_Fed_Req Fed_Publish_None Fed_Publish_PQ Fed_Setup Issue_Classical Issuer_Setup_Migrating Migrate Qday
+MF_tas_federasyon_bayat,M_downgrade_s1,V,,Acc1_Classical CAM_Setup Exp_Fed_None Fed_Publish_None Fed_Setup Issue_Classical Issuer_Setup_Migrating Migrate
+MF_tas_federasyon_bayat,M_forgery_crqc,V,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Fed_None Fed_Publish_None Fed_Setup Issuer_Setup_Migrating Migrate Qday
+MF_tas_federasyon_bayat,M_weak_path_forgery,V,"<'anchor', 'CAA'>",Acc1_PQ_NoExp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Fed_None Fed_Publish_None Fed_Setup Issuer_Setup_Migrating Migrate Qday
+MF_tas_crit_baslik,G5_untimed,F,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Issue_Classical Issuer_Setup_Born Qday
+MF_tas_crit_baslik,G5_migrated,F,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Issue_Classical Issuer_Setup_Born Qday
+MF_tas_crit_baslik,G5_timed,F,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Issue_Classical Issuer_Setup_Born Qday Sunset
+MF_tas_crit_baslik,no_rollback,F,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Issue_Classical Issue_PQ Issuer_Setup_Born Learn_Crit Qday
+MF_tas_crit_baslik,first_contact_downgrade,V,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Issue_Classical Issuer_Setup_Born Qday
+MF_tas_crit_baslik,executable,V,"<'anchor', 'CAA'>",Acc1_PQ_NoExp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Issue_Classical Issuer_Setup_Born Qday
+MF_tas_crit_baslik,executable_legacy,V,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Issue_Classical Issuer_Setup_Legacy Qday
+MF_tas_crit_baslik,executable_pre_migration,V,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Issue_Classical Issuer_Setup_Migrating Qday
+MF_tas_crit_baslik,executable_lifecycle,V,"<'anchor', 'CAA'>",Acc1_PQ_NoExp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Issue_Classical Issuer_Setup_Born Qday Sunset
+MF_tas_crit_baslik,executable_learn,V,,CAM_Setup Issue_PQ Issuer_Setup_Born Learn_Crit
+MF_tas_crit_baslik,G1_claims_unforgeability,F,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Issuer_Setup_Born Qday
+MF_tas_crit_baslik,G5_path_untimed,F,"<'anchor', 'CAA'>",Acc1_PQ_NoExp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Issue_Classical Issuer_Setup_Born Qday
+MF_tas_crit_baslik,G5_path_migrated,F,"<'anchor', 'CAA'>",Acc1_PQ_NoExp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Issue_Classical Issuer_Setup_Born Qday
+MF_tas_crit_baslik,G5_path_timed,F,"<'anchor', 'CAA'>",Acc1_PQ_NoExp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Issue_Classical Issuer_Setup_Born Qday Sunset
+MF_tas_crit_baslik,no_rollback_path,F,"<'anchor', 'CAA'>",Acc1_PQ_NoExp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Issue_PQ Issuer_Setup_Born Learn_Crit Qday
+MF_tas_crit_baslik,M_downgrade_s1,V,,Acc1_Classical CAM_Setup Issue_Classical Issuer_Setup_Born
+MF_tas_crit_baslik,M_forgery_crqc,V,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Issuer_Setup_Born Qday
+MF_tas_crit_baslik,M_weak_path_forgery,V,"<'anchor', 'CAA'>",Acc1_PQ_NoExp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Issuer_Setup_Born Qday
+MH_reddy_klasik_zincir,G5_untimed,F,,CAM_Setup Issue_Classical Issuer_Setup_Born Leaf_Classical Path1
+MH_reddy_klasik_zincir,G5_migrated,F,,CAM_Setup Issue_Classical Issuer_Setup_Born Leaf_Classical Path1
+MH_reddy_klasik_zincir,G5_timed,F,,CAM_Setup Issue_Classical Issuer_Setup_Born Leaf_Classical Path1 Sunset
+MH_reddy_klasik_zincir,first_contact_downgrade,V,,CAM_Setup Issue_Classical Issuer_Setup_Born Leaf_Classical Path1
+MH_reddy_klasik_zincir,executable,V,,CAM_Setup Issue_PQ Issuer_Setup_Born Leaf_PQ Path1
+MH_reddy_klasik_zincir,executable_legacy,V,,CAM_Setup Issue_Classical Issuer_Setup_Legacy Leaf_Classical Path1
+MH_reddy_klasik_zincir,executable_pre_migration,V,,CAM_Setup Issue_Classical Issuer_Setup_Migrating Leaf_Classical Path1
+MH_reddy_klasik_zincir,executable_lifecycle,V,,CAM_Setup Issue_PQ Issuer_Setup_Born Leaf_PQ Path1 Sunset
+MH_reddy_klasik_zincir,executable_learn,V,"<'anchor', 'CAM'>",CAM_Setup CRQC_Break_Classical_Anchor Leaf_PQ Learn_Reddy Path1 Qday
+MH_reddy_klasik_zincir,G1_claims_unforgeability,F,"<'iss_cl', $I>",CAM_Setup CRQC_Break_Issuer_Classical Issuer_Setup_Born Leaf_Classical Path1 Qday
+MH_reddy_klasik_zincir,G1_learned,F,"<'anchor', 'CAM'>",CAM_Setup CRQC_Break_Classical_Anchor Issue_PQ Issuer_Setup_Born Leaf_PQ Learn_Reddy Path1 Qday
+MH_reddy_klasik_zincir,G1_learned_pq,F,"<'anchor', 'CAM'>",CAM_Setup CRQC_Break_Classical_Anchor Issue_PQ Issuer_Setup_Born Leaf_PQ Learn_Reddy Path1 Qday
+MH_reddy_klasik_zincir,no_rollback_path,F,,CAM_Setup Issue_PQ Issuer_Setup_Born Leaf_PQ Learn_Reddy Path1
+MH_reddy_klasik_zincir,M_downgrade_s1,V,,CAM_Setup Issue_Classical Issuer_Setup_Born Leaf_Classical Path1
+MH_reddy_klasik_zincir,M_forgery_crqc,V,"<'anchor', 'CAM'> <'iss_cl', $I>",CAM_Setup CRQC_Break_Classical_Anchor CRQC_Break_Issuer_Classical Issuer_Setup_Born Leaf_Classical Path1 Qday
+MH_reddy_farkli_ad,G5_untimed,F,,CAM_Setup Issue_Classical Issuer_Setup_Born Leaf_Classical Path1
+MH_reddy_farkli_ad,G5_migrated,F,,CAM_Setup Issue_Classical Issuer_Setup_Born Leaf_Classical Path1
+MH_reddy_farkli_ad,G5_timed,F,,CAM_Setup Issue_Classical Issuer_Setup_Born Leaf_Classical Path1 Sunset
+MH_reddy_farkli_ad,first_contact_downgrade,V,,CAM_Setup Issue_Classical Issuer_Setup_Born Leaf_Classical Path1
+MH_reddy_farkli_ad,executable,V,,CAM_Setup Issue_PQ Issuer_Setup_Born Leaf_PQ Path1
+MH_reddy_farkli_ad,executable_legacy,V,,CAM_Setup Issue_Classical Issuer_Setup_Legacy Leaf_Classical Path1
+MH_reddy_farkli_ad,executable_pre_migration,V,,CAM_Setup Issue_Classical Issuer_Setup_Migrating Leaf_Classical Path1
+MH_reddy_farkli_ad,executable_lifecycle,V,,CAM_Setup Issue_PQ Issuer_Setup_Born Leaf_PQ Path1 Sunset
+MH_reddy_farkli_ad,executable_learn,V,"<'anchor', 'CAA'>",AltCA_Setup CRQC_Break_Classical_Anchor Leaf_PQ Learn_Reddy Path1 Qday
+MH_reddy_farkli_ad,G1_claims_unforgeability,F,"<'iss_cl', $I>",CAM_Setup CRQC_Break_Issuer_Classical Issuer_Setup_Born Leaf_Classical Path1 Qday
+MH_reddy_farkli_ad,G1_learned,F,"<'anchor', 'CAA'>",AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Issue_PQ Issuer_Setup_Born Leaf_PQ Learn_Reddy Path1 Qday
+MH_reddy_farkli_ad,G1_learned_pq,F,"<'anchor', 'CAA'>",AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Issue_PQ Issuer_Setup_Born Leaf_PQ Learn_Reddy Path1 Qday
+MH_reddy_farkli_ad,no_rollback_path,F,"<'anchor', 'CAA'>",AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Issue_PQ Issuer_Setup_Born Leaf_PQ Learn_Reddy Path1 Qday
+MH_reddy_farkli_ad,M_downgrade_s1,V,,CAM_Setup Issue_Classical Issuer_Setup_Born Leaf_Classical Path1
+MH_reddy_farkli_ad,M_forgery_crqc,V,"<'anchor', 'CAA'> <'iss_cl', $I>",AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor CRQC_Break_Issuer_Classical Issuer_Setup_Born Leaf_Classical Path1 Qday
+MH_reddy_ayni_ad,G5_untimed,F,,CAM_Setup Issue_Classical Issuer_Setup_Born Leaf_Classical Path1
+MH_reddy_ayni_ad,G5_migrated,F,,CAM_Setup Issue_Classical Issuer_Setup_Born Leaf_Classical Path1
+MH_reddy_ayni_ad,G5_timed,F,,CAM_Setup Issue_Classical Issuer_Setup_Born Leaf_Classical Path1 Sunset
+MH_reddy_ayni_ad,first_contact_downgrade,V,,CAM_Setup Issue_Classical Issuer_Setup_Born Leaf_Classical Path1
+MH_reddy_ayni_ad,executable,V,,CAM_Setup Issue_PQ Issuer_Setup_Born Leaf_PQ Path1
+MH_reddy_ayni_ad,executable_legacy,V,,CAM_Setup Issue_Classical Issuer_Setup_Legacy Leaf_Classical Path1
+MH_reddy_ayni_ad,executable_pre_migration,V,,CAM_Setup Issue_Classical Issuer_Setup_Migrating Leaf_Classical Path1
+MH_reddy_ayni_ad,executable_lifecycle,V,,CAM_Setup Issue_PQ Issuer_Setup_Born Leaf_PQ Path1 Sunset
+MH_reddy_ayni_ad,executable_learn,V,"<'anchor', 'CAM'>",CRQC_Break_Classical_Anchor Leaf_PQ Learn_Reddy OldCAM_Setup Path1 Qday
+MH_reddy_ayni_ad,G1_claims_unforgeability,F,"<'iss_cl', $I>",CAM_Setup CRQC_Break_Issuer_Classical Issuer_Setup_Born Leaf_Classical Path1 Qday
+MH_reddy_ayni_ad,G1_learned,F,"<'anchor', 'CAM'>",CAM_Setup CRQC_Break_Classical_Anchor Issue_PQ Issuer_Setup_Born Leaf_PQ Learn_Reddy OldCAM_Setup Path1 Qday
+MH_reddy_ayni_ad,G1_learned_pq,F,"<'anchor', 'CAM'> <'iss_cl', $I.1>",CAM_Setup CRQC_Break_Classical_Anchor CRQC_Break_Issuer_Classical Issue_PQ Issuer_Setup_Born Leaf_PQ Learn_Reddy OldCAM_Setup Path1 Qday
+MH_reddy_ayni_ad,no_rollback_path,F,"<'anchor', 'CAM'>",CAM_Setup CRQC_Break_Classical_Anchor Issue_PQ Issuer_Setup_Born Leaf_PQ Learn_Reddy OldCAM_Setup Path1 Qday
+MH_reddy_ayni_ad,M_downgrade_s1,V,,CAM_Setup Issue_Classical Issuer_Setup_Born Leaf_Classical Path1
+MH_reddy_ayni_ad,M_forgery_crqc,V,"<'anchor', 'CAM'> <'iss_cl', $I>",CAM_Setup CRQC_Break_Classical_Anchor CRQC_Break_Issuer_Classical Issuer_Setup_Born Leaf_Classical OldCAM_Setup Path1 Qday
+MH_reddy_klasik_kok,G5_untimed,F,,CAM_Setup Issue_Classical Issuer_Setup_Born Leaf_Classical Path1
+MH_reddy_klasik_kok,G5_migrated,F,,CAM_Setup Issue_Classical Issuer_Setup_Born Leaf_Classical Path1
+MH_reddy_klasik_kok,G5_timed,F,,CAM_Setup Issue_Classical Issuer_Setup_Born Leaf_Classical Path1 Sunset
+MH_reddy_klasik_kok,first_contact_downgrade,V,,CAM_Setup Issue_Classical Issuer_Setup_Born Leaf_Classical Path1
+MH_reddy_klasik_kok,executable,V,,CAM_Setup Issue_PQ Issuer_Setup_Born Leaf_PQ Path1
+MH_reddy_klasik_kok,executable_legacy,V,,CAM_Setup Issue_Classical Issuer_Setup_Legacy Leaf_Classical Path1
+MH_reddy_klasik_kok,executable_pre_migration,V,,CAM_Setup Issue_Classical Issuer_Setup_Migrating Leaf_Classical Path1
+MH_reddy_klasik_kok,executable_lifecycle,V,,CAM_Setup Issue_PQ Issuer_Setup_Born Leaf_PQ Path1 Sunset
+MH_reddy_klasik_kok,executable_learn,V,"<'anchor', 'ROOT'>",CRQC_Break_Classical_Anchor ClassicalRoot_Setup Leaf_PQ Learn_Reddy Path1 Qday
+MH_reddy_klasik_kok,G1_claims_unforgeability,F,"<'iss_cl', $I>",CAM_Setup CRQC_Break_Issuer_Classical Issuer_Setup_Born Leaf_Classical Path1 Qday
+MH_reddy_klasik_kok,G1_learned,F,"<'anchor', 'ROOT'>",CAM_Setup CRQC_Break_Classical_Anchor ClassicalRoot_Setup Issue_PQ Issuer_Setup_Born Leaf_PQ Learn_Reddy Path1 Qday
+MH_reddy_klasik_kok,G1_learned_pq,F,"<'anchor', 'ROOT'>",CAM_Setup CRQC_Break_Classical_Anchor ClassicalRoot_Setup Issue_PQ Issuer_Setup_Born Leaf_PQ Learn_Reddy Path1 Qday
+MH_reddy_klasik_kok,no_rollback_path,F,"<'anchor', 'ROOT'>",CAM_Setup CRQC_Break_Classical_Anchor ClassicalRoot_Setup Issue_PQ Issuer_Setup_Born Leaf_PQ Learn_Reddy Path1 Qday
+MH_reddy_klasik_kok,M_downgrade_s1,V,,CAM_Setup Issue_Classical Issuer_Setup_Born Leaf_Classical Path1
+MH_reddy_klasik_kok,M_forgery_crqc,V,"<'anchor', 'ROOT'> <'iss_cl', $I>",CAM_Setup CRQC_Break_Classical_Anchor CRQC_Break_Issuer_Classical ClassicalRoot_Setup Issuer_Setup_Born Leaf_Classical Path1 Qday
+MH_reddy_adbag_farkli_ad,G5_untimed,F,,CAM_Setup Issue_Classical Issuer_Setup_Born Leaf_Classical Path1
+MH_reddy_adbag_farkli_ad,G5_migrated,F,,CAM_Setup Issue_Classical Issuer_Setup_Born Leaf_Classical Path1
+MH_reddy_adbag_farkli_ad,G5_timed,F,,CAM_Setup Issue_Classical Issuer_Setup_Born Leaf_Classical Path1 Sunset
+MH_reddy_adbag_farkli_ad,first_contact_downgrade,V,,CAM_Setup Issue_Classical Issuer_Setup_Born Leaf_Classical Path1
+MH_reddy_adbag_farkli_ad,executable,V,,CAM_Setup Issue_PQ Issuer_Setup_Born Leaf_PQ Path1
+MH_reddy_adbag_farkli_ad,executable_legacy,V,,CAM_Setup Issue_Classical Issuer_Setup_Legacy Leaf_Classical Path1
+MH_reddy_adbag_farkli_ad,executable_pre_migration,V,,CAM_Setup Issue_Classical Issuer_Setup_Migrating Leaf_Classical Path1
+MH_reddy_adbag_farkli_ad,executable_lifecycle,V,,CAM_Setup Issue_PQ Issuer_Setup_Born Leaf_PQ Path1 Sunset
+MH_reddy_adbag_farkli_ad,executable_learn,V,"<'anchor', 'CAA'>",AltCA_Setup CRQC_Break_Classical_Anchor Leaf_PQ Learn_Reddy Path1 Qday
+MH_reddy_adbag_farkli_ad,G1_claims_unforgeability,F,"<'iss_cl', $I>",CAM_Setup CRQC_Break_Issuer_Classical Issuer_Setup_Born Leaf_Classical Path1 Qday
+MH_reddy_adbag_farkli_ad,G1_learned,F,"<'anchor', 'CAA'>",AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Issue_Classical Issuer_Setup_Born Leaf_PQ Learn_Reddy Path1 Qday
+MH_reddy_adbag_farkli_ad,G1_learned_pq,F,"<'anchor', 'CAA'>",AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Issue_PQ Issuer_Setup_Born Leaf_PQ Learn_Reddy Path1 Path2 Qday
+MH_reddy_adbag_farkli_ad,no_rollback_path,F,"<'anchor', 'CAA'>",AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Issue_Classical Issuer_Setup_Born Leaf_PQ Learn_Reddy Path1 Qday
+MH_reddy_adbag_farkli_ad,M_downgrade_s1,V,,CAM_Setup Issue_Classical Issuer_Setup_Born Leaf_Classical Path1
+MH_reddy_adbag_farkli_ad,M_forgery_crqc,V,"<'anchor', 'CAA'> <'iss_cl', $I>",AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor CRQC_Break_Issuer_Classical Issuer_Setup_Born Leaf_Classical Path1 Qday
+MH_vicente_klasik_zincir,G5_untimed,F,"<'anchor', 'CAM'>",CAM_Setup CRQC_Break_Classical_Anchor Issuer_Setup_Born Leaf_Classical Path1 Qday
+MH_vicente_klasik_zincir,G5_migrated,F,,CAM_Setup Issue_Classical Issuer_Setup_Born Leaf_Classical Path1
+MH_vicente_klasik_zincir,G5_timed,F,,CAM_Setup Issue_Classical Issuer_Setup_Born Leaf_Classical Path1 Sunset
+MH_vicente_klasik_zincir,no_rollback,F,,CAM_Setup Issue_Classical Issuer_Setup_Born Leaf_Classical Learn_Vicente Path1
+MH_vicente_klasik_zincir,first_contact_downgrade,V,,CAM_Setup Issue_Classical Issuer_Setup_Born Leaf_Classical Path1
+MH_vicente_klasik_zincir,executable,V,"<'anchor', 'CAM'>",CAM_Setup CRQC_Break_Classical_Anchor Issue_Classical Issuer_Setup_Born Leaf_Classical Leaf_PQ_Checked Learn_Vicente Path1 Qday
+MH_vicente_klasik_zincir,executable_legacy,V,,CAM_Setup Issue_Classical Issuer_Setup_Legacy Leaf_Classical Path1
+MH_vicente_klasik_zincir,executable_pre_migration,V,"<'anchor', 'CAM'>",CAM_Setup CRQC_Break_Classical_Anchor Issuer_Setup_Migrating Leaf_Classical Path1 Qday
+MH_vicente_klasik_zincir,executable_lifecycle,V,,CAM_Setup Issue_PQ Issuer_Setup_Born Leaf_PQ_Unchecked Path1 Sunset
+MH_vicente_klasik_zincir,executable_learn,V,,CAM_Setup Issue_Classical Issuer_Setup_Born Leaf_Classical Learn_Vicente Path1
+MH_vicente_klasik_zincir,G1_claims_unforgeability,F,"<'iss_cl', $I>",CAM_Setup CRQC_Break_Issuer_Classical Issuer_Setup_Born Leaf_Classical Path1 Qday
+MH_vicente_klasik_zincir,G1_learned,F,"<'iss_cl', $I>",CAM_Setup CRQC_Break_Issuer_Classical Issue_Classical Issuer_Setup_Born Leaf_Classical Learn_Vicente Path1 Qday
+MH_vicente_klasik_zincir,G1_learned_pq,F,"<'anchor', 'CAM'>",CAM_Setup CRQC_Break_Classical_Anchor Issue_Classical Issuer_Setup_Born Leaf_Classical Leaf_PQ_Checked Learn_Vicente Path1 Qday
+MH_vicente_klasik_zincir,no_rollback_path,F,"<'anchor', 'CAM'>",CAM_Setup CRQC_Break_Classical_Anchor Issue_Classical Issuer_Setup_Born Leaf_Classical Leaf_PQ_Checked Learn_Vicente Path1 Qday
+MH_vicente_klasik_zincir,M_downgrade_s1,V,,CAM_Setup Issue_Classical Issuer_Setup_Born Leaf_Classical Path1
+MH_vicente_klasik_zincir,M_forgery_crqc,V,"<'anchor', 'CAM'> <'iss_cl', $I>",CAM_Setup CRQC_Break_Classical_Anchor CRQC_Break_Issuer_Classical Issuer_Setup_Born Leaf_Classical Path1 Qday
+MH_vicente_farkli_ad,G5_untimed,F,"<'anchor', 'CAA'>",AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Issuer_Setup_Born Leaf_Classical Path1 Qday
+MH_vicente_farkli_ad,G5_migrated,F,,CAM_Setup Issue_Classical Issuer_Setup_Born Leaf_Classical Path1
+MH_vicente_farkli_ad,G5_timed,F,,CAM_Setup Issue_Classical Issuer_Setup_Born Leaf_Classical Path1 Sunset
+MH_vicente_farkli_ad,no_rollback,F,,CAM_Setup Issue_Classical Issuer_Setup_Born Leaf_Classical Learn_Vicente Path1
+MH_vicente_farkli_ad,first_contact_downgrade,V,,CAM_Setup Issue_Classical Issuer_Setup_Born Leaf_Classical Path1
+MH_vicente_farkli_ad,executable,V,"<'anchor', 'CAA'>",AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Issue_Classical Issuer_Setup_Born Leaf_Classical Leaf_PQ_Checked Learn_Vicente Path1 Qday
+MH_vicente_farkli_ad,executable_legacy,V,,CAM_Setup Issue_Classical Issuer_Setup_Legacy Leaf_Classical Path1
+MH_vicente_farkli_ad,executable_pre_migration,V,"<'anchor', 'CAA'>",AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Issuer_Setup_Migrating Leaf_Classical Path1 Qday
+MH_vicente_farkli_ad,executable_lifecycle,V,,CAM_Setup Issue_PQ Issuer_Setup_Born Leaf_PQ_Unchecked Path1 Sunset
+MH_vicente_farkli_ad,executable_learn,V,,CAM_Setup Issue_Classical Issuer_Setup_Born Leaf_Classical Learn_Vicente Path1
+MH_vicente_farkli_ad,G1_claims_unforgeability,F,"<'iss_cl', $I>",CAM_Setup CRQC_Break_Issuer_Classical Issuer_Setup_Born Leaf_Classical Path1 Qday
+MH_vicente_farkli_ad,G1_learned,F,"<'iss_cl', $I>",CAM_Setup CRQC_Break_Issuer_Classical Issue_Classical Issuer_Setup_Born Leaf_Classical Learn_Vicente Path1 Qday
+MH_vicente_farkli_ad,G1_learned_pq,F,"<'anchor', 'CAA'>",AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Issue_Classical Issuer_Setup_Born Leaf_Classical Leaf_PQ_Checked Learn_Vicente Path1 Qday
+MH_vicente_farkli_ad,no_rollback_path,F,"<'anchor', 'CAA'>",AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Issue_Classical Issuer_Setup_Born Leaf_Classical Leaf_PQ_Checked Learn_Vicente Path1 Qday
+MH_vicente_farkli_ad,M_downgrade_s1,V,,CAM_Setup Issue_Classical Issuer_Setup_Born Leaf_Classical Path1
+MH_vicente_farkli_ad,M_forgery_crqc,V,"<'anchor', 'CAA'> <'iss_cl', $I>",AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor CRQC_Break_Issuer_Classical Issuer_Setup_Born Leaf_Classical Path1 Qday
+MH_vicente_ayni_ad,G5_untimed,F,"<'anchor', 'CAM'>",CAM_Setup CRQC_Break_Classical_Anchor Issuer_Setup_Born Leaf_Classical OldCAM_Setup Path1 Qday
+MH_vicente_ayni_ad,G5_migrated,F,,CAM_Setup Issue_Classical Issuer_Setup_Born Leaf_Classical Path1
+MH_vicente_ayni_ad,G5_timed,F,,CAM_Setup Issue_Classical Issuer_Setup_Born Leaf_Classical Path1 Sunset
+MH_vicente_ayni_ad,no_rollback,F,,CAM_Setup Issue_Classical Issuer_Setup_Born Leaf_Classical Learn_Vicente Path1
+MH_vicente_ayni_ad,first_contact_downgrade,V,,CAM_Setup Issue_Classical Issuer_Setup_Born Leaf_Classical Path1
+MH_vicente_ayni_ad,executable,V,"<'anchor', 'CAM'>",CAM_Setup CRQC_Break_Classical_Anchor Issue_Classical Issuer_Setup_Born Leaf_Classical Leaf_PQ_Checked Learn_Vicente OldCAM_Setup Path1 Qday
+MH_vicente_ayni_ad,executable_legacy,V,,CAM_Setup Issue_Classical Issuer_Setup_Legacy Leaf_Classical Path1
+MH_vicente_ayni_ad,executable_pre_migration,V,"<'anchor', 'CAM'>",CAM_Setup CRQC_Break_Classical_Anchor Issuer_Setup_Migrating Leaf_Classical OldCAM_Setup Path1 Qday
+MH_vicente_ayni_ad,executable_lifecycle,V,,CAM_Setup Issue_PQ Issuer_Setup_Born Leaf_PQ_Unchecked Path1 Sunset
+MH_vicente_ayni_ad,executable_learn,V,,CAM_Setup Issue_Classical Issuer_Setup_Born Leaf_Classical Learn_Vicente Path1
+MH_vicente_ayni_ad,G1_claims_unforgeability,F,"<'iss_cl', $I>",CAM_Setup CRQC_Break_Issuer_Classical Issuer_Setup_Born Leaf_Classical Path1 Qday
+MH_vicente_ayni_ad,G1_learned,F,"<'iss_cl', $I>",CAM_Setup CRQC_Break_Issuer_Classical Issue_Classical Issuer_Setup_Born Leaf_Classical Learn_Vicente Path1 Qday
+MH_vicente_ayni_ad,G1_learned_pq,F,"<'anchor', 'CAM'>",CAM_Setup CRQC_Break_Classical_Anchor Issue_Classical Issuer_Setup_Born Leaf_Classical Leaf_PQ_Checked Learn_Vicente OldCAM_Setup Path1 Qday
+MH_vicente_ayni_ad,no_rollback_path,F,"<'anchor', 'CAM'>",CAM_Setup CRQC_Break_Classical_Anchor Issue_Classical Issuer_Setup_Born Leaf_Classical Leaf_PQ_Checked Learn_Vicente OldCAM_Setup Path1 Qday
+MH_vicente_ayni_ad,M_downgrade_s1,V,,CAM_Setup Issue_Classical Issuer_Setup_Born Leaf_Classical Path1
+MH_vicente_ayni_ad,M_forgery_crqc,V,"<'anchor', 'CAM'> <'iss_cl', $I>",CAM_Setup CRQC_Break_Classical_Anchor CRQC_Break_Issuer_Classical Issuer_Setup_Born Leaf_Classical OldCAM_Setup Path1 Qday
+MH_vicente_klasik_kok,G5_untimed,F,"<'anchor', 'ROOT'>",CAM_Setup CRQC_Break_Classical_Anchor ClassicalRoot_Setup Issuer_Setup_Born Leaf_Classical Path1 Qday
+MH_vicente_klasik_kok,G5_migrated,F,,CAM_Setup Issue_Classical Issuer_Setup_Born Leaf_Classical Path1
+MH_vicente_klasik_kok,G5_timed,F,,CAM_Setup Issue_Classical Issuer_Setup_Born Leaf_Classical Path1 Sunset
+MH_vicente_klasik_kok,no_rollback,F,,CAM_Setup Issue_Classical Issuer_Setup_Born Leaf_Classical Learn_Vicente Path1
+MH_vicente_klasik_kok,first_contact_downgrade,V,,CAM_Setup Issue_Classical Issuer_Setup_Born Leaf_Classical Path1
+MH_vicente_klasik_kok,executable,V,"<'anchor', 'ROOT'>",CAM_Setup CRQC_Break_Classical_Anchor ClassicalRoot_Setup Issue_Classical Issuer_Setup_Born Leaf_Classical Leaf_PQ_Checked Learn_Vicente Path1 Qday
+MH_vicente_klasik_kok,executable_legacy,V,,CAM_Setup Issue_Classical Issuer_Setup_Legacy Leaf_Classical Path1
+MH_vicente_klasik_kok,executable_pre_migration,V,"<'anchor', 'ROOT'>",CAM_Setup CRQC_Break_Classical_Anchor ClassicalRoot_Setup Issuer_Setup_Migrating Leaf_Classical Path1 Qday
+MH_vicente_klasik_kok,executable_lifecycle,V,,CAM_Setup Issue_PQ Issuer_Setup_Born Leaf_PQ_Unchecked Path1 Sunset
+MH_vicente_klasik_kok,executable_learn,V,,CAM_Setup Issue_Classical Issuer_Setup_Born Leaf_Classical Learn_Vicente Path1
+MH_vicente_klasik_kok,G1_claims_unforgeability,F,"<'iss_cl', $I>",CAM_Setup CRQC_Break_Issuer_Classical Issuer_Setup_Born Leaf_Classical Path1 Qday
+MH_vicente_klasik_kok,G1_learned,F,"<'iss_cl', $I>",CAM_Setup CRQC_Break_Issuer_Classical Issue_Classical Issuer_Setup_Born Leaf_Classical Learn_Vicente Path1 Qday
+MH_vicente_klasik_kok,G1_learned_pq,F,"<'anchor', 'ROOT'>",CAM_Setup CRQC_Break_Classical_Anchor ClassicalRoot_Setup Issue_Classical Issuer_Setup_Born Leaf_Classical Leaf_PQ_Checked Learn_Vicente Path1 Qday
+MH_vicente_klasik_kok,no_rollback_path,F,"<'anchor', 'ROOT'>",CAM_Setup CRQC_Break_Classical_Anchor ClassicalRoot_Setup Issue_Classical Issuer_Setup_Born Leaf_Classical Leaf_PQ_Checked Learn_Vicente Path1 Qday
+MH_vicente_klasik_kok,M_downgrade_s1,V,,CAM_Setup Issue_Classical Issuer_Setup_Born Leaf_Classical Path1
+MH_vicente_klasik_kok,M_forgery_crqc,V,"<'anchor', 'ROOT'> <'iss_cl', $I>",CAM_Setup CRQC_Break_Classical_Anchor CRQC_Break_Issuer_Classical ClassicalRoot_Setup Issuer_Setup_Born Leaf_Classical Path1 Qday
+EK_mg_anahtar_farkli_ad,G5_untimed,F,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Issue_Classical Issuer_Setup_Born Qday
+EK_mg_anahtar_farkli_ad,G5_migrated,F,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Issue_Classical Issuer_Setup_Born Qday
+EK_mg_anahtar_farkli_ad,G5_timed,F,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Issue_Classical Issuer_Setup_Born Qday Sunset
+EK_mg_anahtar_farkli_ad,no_rollback,F,"<'anchor', 'CAA'>",Acc1_Classical Acc1_PQ_Policy AltCA_Setup CRQC_Break_Classical_Anchor Cache_Clear Cache_Set Qday
+EK_mg_anahtar_farkli_ad,first_contact_downgrade,V,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Issue_Classical Issuer_Setup_Born Qday
+EK_mg_anahtar_farkli_ad,executable,V,"<'anchor', 'CAA'>",Acc1_PQ_Policy AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Issue_Classical Issuer_Setup_Born Qday
+EK_mg_anahtar_farkli_ad,executable_legacy,V,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Issue_Classical Issuer_Setup_Legacy Qday
+EK_mg_anahtar_farkli_ad,executable_pre_migration,V,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Issue_Classical Issuer_Setup_Migrating Qday
+EK_mg_anahtar_farkli_ad,executable_lifecycle,V,"<'anchor', 'CAA'>",Acc1_PQ_Policy AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Issue_Classical Issuer_Setup_Born Qday Sunset
+EK_mg_anahtar_farkli_ad,executable_learn,V,"<'anchor', 'CAA'>",Acc1_PQ_Policy AltCA_Setup CRQC_Break_Classical_Anchor Cache_Set Qday
+EK_mg_anahtar_farkli_ad,G1_claims_unforgeability,F,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Issuer_Setup_Born Qday
+EK_mg_anahtar_farkli_ad,G1_learned,F,"<'anchor', 'CAA'>",Acc1_PQ_Policy AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Cache_Set Issue_PQ Issuer_Setup_Born Qday
+EK_mg_anahtar_farkli_ad,G1_learned_pq,F,"<'anchor', 'CAA'>",Acc1_PQ_Policy AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Cache_Set Issue_PQ Issuer_Setup_Born Qday
+EK_mg_anahtar_farkli_ad,no_rollback_path,F,"<'anchor', 'CAA'>",Acc1_PQ_Policy AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Cache_Set Issue_PQ Issuer_Setup_Born Qday
+EK_mg_anahtar_farkli_ad,M_downgrade_s1,V,,Acc1_Classical CAM_Setup Issue_Classical Issuer_Setup_Born
+EK_mg_anahtar_farkli_ad,M_forgery_crqc,V,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Issuer_Setup_Born Qday
+EK_mg_anahtar_farkli_ad,M_cache_cleared,V,"<'anchor', 'CAA'>",Acc1_PQ_Policy AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Cache_Clear Cache_Set Issue_PQ Issuer_Setup_Born Qday
+EK_mg_anahtar_ayni_ad,G5_untimed,F,,Acc1_Classical CAM_Setup Issue_Classical Issuer_Setup_Born
+EK_mg_anahtar_ayni_ad,G5_migrated,F,,Acc1_Classical CAM_Setup Issue_Classical Issuer_Setup_Born
+EK_mg_anahtar_ayni_ad,G5_timed,F,,Acc1_Classical CAM_Setup Issue_Classical Issuer_Setup_Born Sunset
+EK_mg_anahtar_ayni_ad,no_rollback,F,"<'anchor', 'CAM'>",Acc1_Classical Acc1_PQ_Policy CRQC_Break_Classical_Anchor Cache_Clear Cache_Set OldCAM_Setup Qday
+EK_mg_anahtar_ayni_ad,first_contact_downgrade,V,,Acc1_Classical CAM_Setup Issue_Classical Issuer_Setup_Born
+EK_mg_anahtar_ayni_ad,executable,V,,Acc1_PQ_Policy CAM_Setup Issue_PQ Issuer_Setup_Born
+EK_mg_anahtar_ayni_ad,executable_legacy,V,,Acc1_Classical CAM_Setup Issue_Classical Issuer_Setup_Legacy
+EK_mg_anahtar_ayni_ad,executable_pre_migration,V,,Acc1_Classical CAM_Setup Issue_Classical Issuer_Setup_Migrating
+EK_mg_anahtar_ayni_ad,executable_lifecycle,V,,Acc1_PQ_Policy CAM_Setup Issue_PQ Issuer_Setup_Born Sunset
+EK_mg_anahtar_ayni_ad,executable_learn,V,"<'anchor', 'CAM'>",Acc1_PQ_Policy CRQC_Break_Classical_Anchor Cache_Set OldCAM_Setup Qday
+EK_mg_anahtar_ayni_ad,G1_claims_unforgeability,F,"<'iss_cl', $I>",Acc1_Classical CAM_Setup CRQC_Break_Issuer_Classical Issuer_Setup_Born Qday
+EK_mg_anahtar_ayni_ad,G1_learned,F,"<'anchor', 'CAM'>",Acc1_PQ_Policy CAM_Setup CRQC_Break_Classical_Anchor Cache_Set Issue_PQ Issuer_Setup_Born OldCAM_Setup Qday
+EK_mg_anahtar_ayni_ad,G1_learned_pq,F,"<'anchor', 'CAM'>",Acc1_PQ_Policy CAM_Setup CRQC_Break_Classical_Anchor Cache_Set Issue_PQ Issuer_Setup_Born OldCAM_Setup Qday
+EK_mg_anahtar_ayni_ad,no_rollback_path,F,"<'anchor', 'CAM'>",Acc1_PQ_Policy CAM_Setup CRQC_Break_Classical_Anchor Cache_Set Issue_PQ Issuer_Setup_Born OldCAM_Setup Qday
+EK_mg_anahtar_ayni_ad,M_downgrade_s1,V,,Acc1_Classical CAM_Setup Issue_Classical Issuer_Setup_Born
+EK_mg_anahtar_ayni_ad,M_forgery_crqc,V,"<'anchor', 'CAM'> <'iss_cl', $I>",Acc1_Classical CAM_Setup CRQC_Break_Classical_Anchor CRQC_Break_Issuer_Classical Issuer_Setup_Born OldCAM_Setup Qday
+EK_mg_anahtar_ayni_ad,M_cache_cleared,V,"<'anchor', 'CAM'> <'iss_cl', $I.1>",Acc1_PQ_Policy CAM_Setup CRQC_Break_Classical_Anchor CRQC_Break_Issuer_Classical Cache_Clear Cache_Set Issue_PQ Issuer_Setup_Born OldCAM_Setup Qday
+EK_mg_anahtar_klasik_kok,G5_untimed,F,,Acc1_Classical CAM_Setup Issue_Classical Issuer_Setup_Born
+EK_mg_anahtar_klasik_kok,G5_migrated,F,,Acc1_Classical CAM_Setup Issue_Classical Issuer_Setup_Born
+EK_mg_anahtar_klasik_kok,G5_timed,F,,Acc1_Classical CAM_Setup Issue_Classical Issuer_Setup_Born Sunset
+EK_mg_anahtar_klasik_kok,no_rollback,F,"<'anchor', 'ROOT'>",Acc1_Classical Acc1_PQ_Policy CRQC_Break_Classical_Anchor Cache_Clear Cache_Set ClassicalRoot_Setup Qday
+EK_mg_anahtar_klasik_kok,first_contact_downgrade,V,,Acc1_Classical CAM_Setup Issue_Classical Issuer_Setup_Born
+EK_mg_anahtar_klasik_kok,executable,V,,Acc1_PQ_Policy CAM_Setup Issue_PQ Issuer_Setup_Born
+EK_mg_anahtar_klasik_kok,executable_legacy,V,,Acc1_Classical CAM_Setup Issue_Classical Issuer_Setup_Legacy
+EK_mg_anahtar_klasik_kok,executable_pre_migration,V,,Acc1_Classical CAM_Setup Issue_Classical Issuer_Setup_Migrating
+EK_mg_anahtar_klasik_kok,executable_lifecycle,V,,Acc1_PQ_Policy CAM_Setup Issue_PQ Issuer_Setup_Born Sunset
+EK_mg_anahtar_klasik_kok,executable_learn,V,"<'anchor', 'ROOT'>",Acc1_PQ_Policy CRQC_Break_Classical_Anchor Cache_Set ClassicalRoot_Setup Qday
+EK_mg_anahtar_klasik_kok,G1_claims_unforgeability,F,"<'iss_cl', $I>",Acc1_Classical CAM_Setup CRQC_Break_Issuer_Classical Issuer_Setup_Born Qday
+EK_mg_anahtar_klasik_kok,G1_learned,F,"<'anchor', 'ROOT'>",Acc1_PQ_Policy CAM_Setup CRQC_Break_Classical_Anchor Cache_Set ClassicalRoot_Setup Issue_PQ Issuer_Setup_Born Qday
+EK_mg_anahtar_klasik_kok,G1_learned_pq,F,"<'anchor', 'ROOT'>",Acc1_PQ_Policy CAM_Setup CRQC_Break_Classical_Anchor Cache_Set ClassicalRoot_Setup Issue_PQ Issuer_Setup_Born Qday
+EK_mg_anahtar_klasik_kok,no_rollback_path,F,"<'anchor', 'ROOT'>",Acc1_PQ_Policy CAM_Setup CRQC_Break_Classical_Anchor Cache_Set ClassicalRoot_Setup Issue_PQ Issuer_Setup_Born Qday
+EK_mg_anahtar_klasik_kok,M_downgrade_s1,V,,Acc1_Classical CAM_Setup Issue_Classical Issuer_Setup_Born
+EK_mg_anahtar_klasik_kok,M_forgery_crqc,V,"<'anchor', 'ROOT'> <'iss_cl', $I>",Acc1_Classical CAM_Setup CRQC_Break_Classical_Anchor CRQC_Break_Issuer_Classical ClassicalRoot_Setup Issuer_Setup_Born Qday
+EK_mg_anahtar_klasik_kok,M_cache_cleared,V,"<'anchor', 'ROOT'>",Acc1_PQ_Policy CAM_Setup CRQC_Break_Classical_Anchor Cache_Clear Cache_Set ClassicalRoot_Setup Issue_PQ Issuer_Setup_Born Qday
+EK_mg_imza_farkli_ad,G5_untimed,F,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Issue_Classical Issuer_Setup_Born Qday
+EK_mg_imza_farkli_ad,G5_migrated,F,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Issue_Classical Issuer_Setup_Born Qday
+EK_mg_imza_farkli_ad,G5_timed,F,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Issue_Classical Issuer_Setup_Born Qday Sunset
+EK_mg_imza_farkli_ad,first_contact_downgrade,V,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Issue_Classical Issuer_Setup_Born Qday
+EK_mg_imza_farkli_ad,executable,V,"<'anchor', 'CAA'>",Acc1_PQ_NoPolicy AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Issue_Classical Issuer_Setup_Born Qday
+EK_mg_imza_farkli_ad,executable_legacy,V,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Issue_Classical Issuer_Setup_Legacy Qday
+EK_mg_imza_farkli_ad,executable_pre_migration,V,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Issue_Classical Issuer_Setup_Migrating Qday
+EK_mg_imza_farkli_ad,executable_lifecycle,V,"<'anchor', 'CAA'>",Acc1_PQ_NoPolicy AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Issue_Classical Issuer_Setup_Born Qday Sunset
+EK_mg_imza_farkli_ad,executable_learn,V,,Acc1_PQ_Policy CAM_Setup Cache_Set Issue_PQ Issuer_Setup_Born
+EK_mg_imza_farkli_ad,G1_claims_unforgeability,F,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Issuer_Setup_Born Qday
+EK_mg_imza_farkli_ad,M_downgrade_s1,V,,Acc1_Classical CAM_Setup Issue_Classical Issuer_Setup_Born
+EK_mg_imza_farkli_ad,M_forgery_crqc,V,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Issuer_Setup_Born Qday
+EK_mg_imza_ayni_ad,G5_untimed,F,,Acc1_Classical CAM_Setup Issue_Classical Issuer_Setup_Born
+EK_mg_imza_ayni_ad,G5_migrated,F,,Acc1_Classical CAM_Setup Issue_Classical Issuer_Setup_Born
+EK_mg_imza_ayni_ad,G5_timed,F,,Acc1_Classical CAM_Setup Issue_Classical Issuer_Setup_Born Sunset
+EK_mg_imza_ayni_ad,first_contact_downgrade,V,,Acc1_Classical CAM_Setup Issue_Classical Issuer_Setup_Born
+EK_mg_imza_ayni_ad,executable,V,"<'anchor', 'CAM'>",Acc1_PQ_NoPolicy CAM_Setup CRQC_Break_Classical_Anchor Issue_Classical Issuer_Setup_Born OldCAM_Setup Qday
+EK_mg_imza_ayni_ad,executable_legacy,V,,Acc1_Classical CAM_Setup Issue_Classical Issuer_Setup_Legacy
+EK_mg_imza_ayni_ad,executable_pre_migration,V,,Acc1_Classical CAM_Setup Issue_Classical Issuer_Setup_Migrating
+EK_mg_imza_ayni_ad,executable_lifecycle,V,"<'anchor', 'CAM'>",Acc1_PQ_NoPolicy CAM_Setup CRQC_Break_Classical_Anchor Issue_Classical Issuer_Setup_Born OldCAM_Setup Qday Sunset
+EK_mg_imza_ayni_ad,executable_learn,V,,Acc1_PQ_Policy CAM_Setup Cache_Set Issue_PQ Issuer_Setup_Born
+EK_mg_imza_ayni_ad,G1_claims_unforgeability,F,"<'iss_cl', $I>",Acc1_Classical CAM_Setup CRQC_Break_Issuer_Classical Issuer_Setup_Born Qday
+EK_mg_imza_ayni_ad,M_downgrade_s1,V,,Acc1_Classical CAM_Setup Issue_Classical Issuer_Setup_Born
+EK_mg_imza_ayni_ad,M_forgery_crqc,V,"<'anchor', 'CAM'> <'iss_cl', $I>",Acc1_Classical CAM_Setup CRQC_Break_Classical_Anchor CRQC_Break_Issuer_Classical Issuer_Setup_Born OldCAM_Setup Qday
+EK_mg_imza_klasik_kok,G5_untimed,F,,Acc1_Classical CAM_Setup Issue_Classical Issuer_Setup_Born
+EK_mg_imza_klasik_kok,G5_migrated,F,,Acc1_Classical CAM_Setup Issue_Classical Issuer_Setup_Born
+EK_mg_imza_klasik_kok,G5_timed,F,,Acc1_Classical CAM_Setup Issue_Classical Issuer_Setup_Born Sunset
+EK_mg_imza_klasik_kok,first_contact_downgrade,V,,Acc1_Classical CAM_Setup Issue_Classical Issuer_Setup_Born
+EK_mg_imza_klasik_kok,executable,V,"<'anchor', 'ROOT'>",Acc1_PQ_NoPolicy CAM_Setup CRQC_Break_Classical_Anchor ClassicalRoot_Setup Issue_Classical Issuer_Setup_Born Qday
+EK_mg_imza_klasik_kok,executable_legacy,V,,Acc1_Classical CAM_Setup Issue_Classical Issuer_Setup_Legacy
+EK_mg_imza_klasik_kok,executable_pre_migration,V,,Acc1_Classical CAM_Setup Issue_Classical Issuer_Setup_Migrating
+EK_mg_imza_klasik_kok,executable_lifecycle,V,"<'anchor', 'ROOT'>",Acc1_PQ_NoPolicy CAM_Setup CRQC_Break_Classical_Anchor ClassicalRoot_Setup Issue_Classical Issuer_Setup_Born Qday Sunset
+EK_mg_imza_klasik_kok,executable_learn,V,,Acc1_PQ_Policy CAM_Setup Cache_Set Issue_PQ Issuer_Setup_Born
+EK_mg_imza_klasik_kok,G1_claims_unforgeability,F,"<'iss_cl', $I>",Acc1_Classical CAM_Setup CRQC_Break_Issuer_Classical Issuer_Setup_Born Qday
+EK_mg_imza_klasik_kok,M_downgrade_s1,V,,Acc1_Classical CAM_Setup Issue_Classical Issuer_Setup_Born
+EK_mg_imza_klasik_kok,M_forgery_crqc,V,"<'anchor', 'ROOT'> <'iss_cl', $I>",Acc1_Classical CAM_Setup CRQC_Break_Classical_Anchor CRQC_Break_Issuer_Classical ClassicalRoot_Setup Issuer_Setup_Born Qday
+EK_mf_r7_tanimlari,G5_migrated,F,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Obj_None Issue_Classical Issuer_Setup_Migrating Migrate Qday Source_Publish_None Source_Setup
+EK_mf_r7_tanimlari,first_contact_downgrade,V,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Obj_None Issue_Classical Issuer_Setup_Migrating Migrate Qday Source_Publish_None Source_Setup
+EK_mf_r7_tanimlari,executable,V,,Acc1_PQ_Exp CAM_Setup Exp_Obj_Req Issue_PQ Issuer_Setup_Born Source_Publish_PQ Source_Setup
+EK_mf_r7_tanimlari,executable_legacy,V,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Obj_None Issue_Classical Issuer_Setup_Legacy Qday Source_Publish_None Source_Setup
+EK_mf_r7_tanimlari,executable_pre_migration,V,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Obj_None Issue_Classical Issuer_Setup_Migrating Qday Source_Publish_None Source_Setup
+EK_mf_r7_tanimlari,executable_lifecycle,V,"<'anchor', 'CAA'>",Acc1_PQ_NoExp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Obj_None Issuer_Setup_Migrating Migrate Qday Source_Publish_None Source_Setup Sunset
+EK_mf_r7_tanimlari,executable_learn,V,,CAM_Setup Exp_Obj_Req Issuer_Setup_Born Source_Publish_PQ Source_Setup
+EK_mf_r7_tanimlari,G1_claims_unforgeability,F,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Obj_None Issuer_Setup_Migrating Migrate Qday Source_Publish_None Source_Setup
+EK_mf_r7_tanimlari,G5_path_migrated,F,"<'anchor', 'CAA'>",Acc1_PQ_NoExp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Obj_None Issue_Classical Issuer_Setup_Migrating Migrate Qday Source_Publish_None Source_Setup
+EK_mf_r7_tanimlari,G5_path_timed,F,"<'anchor', 'CAA'>",Acc1_PQ_NoExp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Obj_None Issuer_Setup_Migrating Migrate Qday Source_Publish_None Source_Setup Sunset
+EK_mf_r7_tanimlari,no_rollback_path,F,"<'anchor', 'CAA'>",Acc1_PQ_NoExp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Obj_None Exp_Obj_Req Issuer_Setup_Migrating Migrate Qday Source_Publish_None Source_Publish_PQ Source_Setup
+EK_mf_r7_tanimlari,M_downgrade_s1,V,,Acc1_Classical CAM_Setup Exp_Obj_None Issue_Classical Issuer_Setup_Migrating Migrate Source_Publish_None Source_Setup
+EK_mf_r7_tanimlari,M_forgery_crqc,V,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Obj_None Issuer_Setup_Migrating Migrate Qday Source_Publish_None Source_Setup
+EK_mf_r7_tanimlari,M_weak_path_forgery,V,"<'anchor', 'CAA'>",Acc1_PQ_NoExp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Obj_None Issuer_Setup_Migrating Migrate Qday Source_Publish_None Source_Setup
+EK_mf_monoton_genis,G5_migrated,F,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Obj_None Issue_Classical Issuer_Setup_Migrating Migrate Qday Source_Publish_None Source_Setup
+EK_mf_monoton_genis,first_contact_downgrade,V,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Obj_None Issue_Classical Issuer_Setup_Migrating Migrate Qday Source_Publish_None Source_Setup
+EK_mf_monoton_genis,executable,V,,Acc1_PQ_Exp CAM_Setup Exp_Obj_Req Issue_PQ Issuer_Setup_Born Source_Publish_PQ Source_Setup
+EK_mf_monoton_genis,executable_legacy,V,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Obj_None Issue_Classical Issuer_Setup_Legacy Qday Source_Publish_None Source_Setup
+EK_mf_monoton_genis,executable_pre_migration,V,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Obj_None Issue_Classical Issuer_Setup_Migrating Qday Source_Publish_None Source_Setup
+EK_mf_monoton_genis,executable_lifecycle,V,"<'anchor', 'CAA'>",Acc1_PQ_NoExp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Obj_None Issuer_Setup_Migrating Migrate Qday Source_Publish_None Source_Setup Sunset
+EK_mf_monoton_genis,executable_learn,V,,CAM_Setup Exp_Obj_Req Issuer_Setup_Born Source_Publish_PQ Source_Setup
+EK_mf_monoton_genis,G1_claims_unforgeability,F,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Obj_None Issuer_Setup_Migrating Migrate Qday Source_Publish_None Source_Setup
+EK_mf_monoton_genis,G5_path_migrated,F,"<'anchor', 'CAA'>",Acc1_PQ_NoExp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Obj_None Issue_Classical Issuer_Setup_Migrating Migrate Qday Source_Publish_None Source_Setup
+EK_mf_monoton_genis,G5_path_timed,F,"<'anchor', 'CAA'>",Acc1_PQ_NoExp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Obj_None Issuer_Setup_Migrating Migrate Qday Source_Publish_None Source_Setup Sunset
+EK_mf_monoton_genis,M_downgrade_s1,V,,Acc1_Classical CAM_Setup Exp_Obj_None Issue_Classical Issuer_Setup_Migrating Migrate Source_Publish_None Source_Setup
+EK_mf_monoton_genis,M_forgery_crqc,V,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Obj_None Issuer_Setup_Migrating Migrate Qday Source_Publish_None Source_Setup
+EK_mf_monoton_genis,M_weak_path_forgery,V,"<'anchor', 'CAA'>",Acc1_PQ_NoExp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Obj_None Issuer_Setup_Migrating Migrate Qday Source_Publish_None Source_Setup
+EK_mf_sunset_beklenti,G5_migrated,F,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Obj_None Issue_Classical Issuer_Setup_Migrating Migrate Qday Source_Publish_None Source_Setup
+EK_mf_sunset_beklenti,first_contact_downgrade,V,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Obj_None Issue_Classical Issuer_Setup_Migrating Migrate Qday Source_Publish_None Source_Setup
+EK_mf_sunset_beklenti,executable,V,,Acc1_PQ_Exp CAM_Setup Exp_Obj_Req Issue_PQ Issuer_Setup_Born Source_Publish_PQ Source_Setup
+EK_mf_sunset_beklenti,executable_legacy,V,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Obj_None Issue_Classical Issuer_Setup_Legacy Qday Source_Publish_None Source_Setup
+EK_mf_sunset_beklenti,executable_pre_migration,V,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Obj_None Issue_Classical Issuer_Setup_Migrating Qday Source_Publish_None Source_Setup
+EK_mf_sunset_beklenti,executable_lifecycle,V,,Acc1_PQ_Exp CAM_Setup Exp_Obj_Req Issue_PQ Issuer_Setup_Born Source_Publish_PQ Source_Setup Sunset
+EK_mf_sunset_beklenti,executable_learn,V,,CAM_Setup Exp_Obj_Req Issuer_Setup_Born Source_Publish_PQ Source_Setup
+EK_mf_sunset_beklenti,G1_claims_unforgeability,F,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Obj_None Issuer_Setup_Migrating Migrate Qday Source_Publish_None Source_Setup
+EK_mf_sunset_beklenti,G5_path_migrated,F,"<'anchor', 'CAA'>",Acc1_PQ_NoExp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Obj_None Issue_Classical Issuer_Setup_Migrating Migrate Qday Source_Publish_None Source_Setup
+EK_mf_sunset_beklenti,no_rollback_path,F,"<'anchor', 'CAA'>",Acc1_PQ_NoExp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Obj_None Exp_Obj_Req Issuer_Setup_Migrating Migrate Qday Source_Publish_None Source_Publish_PQ Source_Setup
+EK_mf_sunset_beklenti,M_downgrade_s1,V,,Acc1_Classical CAM_Setup Exp_Obj_None Issue_Classical Issuer_Setup_Migrating Migrate Source_Publish_None Source_Setup
+EK_mf_sunset_beklenti,M_forgery_crqc,V,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Obj_None Issuer_Setup_Migrating Migrate Qday Source_Publish_None Source_Setup
+EK_mf_sunset_beklenti,M_weak_path_forgery,V,"<'anchor', 'CAA'>",Acc1_PQ_NoExp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Obj_None Issuer_Setup_Migrating Migrate Qday Source_Publish_None Source_Setup
+EK_mf_yola_duyarli,G5_migrated,F,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Obj_None Issue_Classical Issuer_Setup_Migrating Migrate Qday Source_Publish_None Source_Setup
+EK_mf_yola_duyarli,first_contact_downgrade,V,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Obj_None Issue_Classical Issuer_Setup_Migrating Migrate Qday Source_Publish_None Source_Setup
+EK_mf_yola_duyarli,executable,V,,Acc1_PQ_Exp CAM_Setup Exp_Obj_Req Issue_PQ Issuer_Setup_Born Source_Publish_PQ Source_Setup
+EK_mf_yola_duyarli,executable_legacy,V,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Obj_None Issue_Classical Issuer_Setup_Legacy Qday Source_Publish_None Source_Setup
+EK_mf_yola_duyarli,executable_pre_migration,V,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Obj_None Issue_Classical Issuer_Setup_Migrating Qday Source_Publish_None Source_Setup
+EK_mf_yola_duyarli,executable_lifecycle,V,,Acc1_PQ_Exp CAM_Setup Exp_Obj_Req Issue_PQ Issuer_Setup_Born Source_Publish_PQ Source_Setup Sunset
+EK_mf_yola_duyarli,executable_learn,V,,CAM_Setup Exp_Obj_Req Issuer_Setup_Born Source_Publish_PQ Source_Setup
+EK_mf_yola_duyarli,G1_claims_unforgeability,F,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Obj_None Issuer_Setup_Migrating Migrate Qday Source_Publish_None Source_Setup
+EK_mf_yola_duyarli,G5_path_migrated,F,"<'anchor', 'CAA'>",Acc1_PQ_NoExp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Obj_None Issue_Classical Issuer_Setup_Migrating Migrate Qday Source_Publish_None Source_Setup
+EK_mf_yola_duyarli,M_downgrade_s1,V,,Acc1_Classical CAM_Setup Exp_Obj_None Issue_Classical Issuer_Setup_Migrating Migrate Source_Publish_None Source_Setup
+EK_mf_yola_duyarli,M_forgery_crqc,V,"<'anchor', 'CAA'>",Acc1_Classical AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Obj_None Issuer_Setup_Migrating Migrate Qday Source_Publish_None Source_Setup
+EK_mf_yola_duyarli,M_weak_path_forgery,V,"<'anchor', 'CAA'>",Acc1_PQ_NoExp AltCA_Setup CAM_Setup CRQC_Break_Classical_Anchor Exp_Obj_None Issuer_Setup_Migrating Migrate Qday Source_Publish_None Source_Setup

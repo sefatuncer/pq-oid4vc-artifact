@@ -1,0 +1,3 @@
+modul=sd_jwt yuklendi; dagitim surumu=0.10.4
+sembol SDJWTVerifier SDJWTVerifier
+bagimlilik jwcrypto 1.6.1

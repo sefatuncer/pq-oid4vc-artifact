@@ -1,0 +1,12 @@
+satir_id,hedef,tur,asp_tahmini,tamarin_hukmu,lemma,sure_s,bellek,iyi_bicimlilik
+CERCEVE-000588,G1,asgari,verified,verified,G1_claims_unforgeability,1.32,79.2 MiB,temiz
+CERCEVE-000046,G1,bir-eksik,falsified,falsified,G1_claims_unforgeability,5.21,175.6 MiB,temiz
+CERCEVE-001695,G2,asgari,verified,verified,G2_presentation_unforgeability,1.82,85.6 MiB,temiz
+CERCEVE-001103,G2,bir-eksik,falsified,falsified,G2_presentation_unforgeability,12.38,517.4 MiB,temiz
+CERCEVE-002105,G3,asgari,verified,verified,G3_status_soundness,2.02,90.7 MiB,temiz
+CERCEVE-002239,G3,bir-eksik,falsified,falsified,G3_status_soundness,2.13,144.6 MiB,temiz
+CERCEVE-001666,G2,bir-eksik,falsified,falsified,G2_presentation_unforgeability,2.31,134.1 MiB,temiz
+CERCEVE-002338,G3,bir-eksik,falsified,falsified,G3_status_soundness,1.75,90.4 MiB,temiz
+CERCEVE-001715,G2,bir-eksik,falsified,falsified,G2_presentation_unforgeability,2.58,104.2 MiB,temiz
+CERCEVE-000317,G1,bir-eksik,falsified,falsified,G1_claims_unforgeability,3.09,113.7 MiB,temiz
+KESIF_2X2-002862,G2,birincil-kume,falsified,falsified,G2_presentation_unforgeability,7.09,276.1 MiB,temiz

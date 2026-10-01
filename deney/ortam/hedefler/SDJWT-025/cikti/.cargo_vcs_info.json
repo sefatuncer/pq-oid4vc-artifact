@@ -1,0 +1,6 @@
+{
+  "git": {
+    "sha1": "16cd58715aa209f3151560ad59bd6ac65b90fa89"
+  },
+  "path_in_vcs": "crates/claims/crates/sd-jwt"
+}

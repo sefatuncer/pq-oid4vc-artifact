@@ -1,0 +1,571 @@
+maude tool: 'maude'
+ checking version: 3.5.1. OK.
+ checking installation: OK.
+[Theory M_Istek] Theory loaded
+[Theory M_Istek] Theory translated
+[Theory M_Istek] Derivation checks started
+[Theory M_Istek] Derivation checks ended
+[Theory M_Istek] Theory closed
+[Saturating Sources] Step 1 (Max 5)
+[Saturating Sources] Done
+theory M_Istek
+
+begin
+
+// Function signature and definition of the equational theory E
+
+functions: fst/1, pair/2, pk/1, sign/2, snd/1, true/0, verify/3
+equations:
+    fst(<x.1, x.2>) = x.1,
+    snd(<x.1, x.2>) = x.2,
+    verify(sign(x.1, x.2), x.1, pk(x.2)) = true
+
+restriction Equality:
+  "∀ x y #i. (Eq( x, y ) @ #i) ⇒ (x = y)"
+  // safety formula
+
+  /*
+  expanded formula:
+  "∀ x y #i. (Eq( x, y ) @ #i) ⇒ (x = y)"
+  */
+
+restriction Unique:
+  "∀ x #i #j. ((Unique( x ) @ #i) ∧ (Unique( x ) @ #j)) ⇒ (#i = #j)"
+  // safety formula
+
+  /*
+  expanded formula:
+  "∀ x #i #j. ((Unique( x ) @ #i) ∧ (Unique( x ) @ #j)) ⇒ (#i = #j)"
+  */
+
+restriction HonestClassicalUntilSunset:
+  "∀ X #i.
+    (SignClassical( X ) @ #i) ⇒ (¬(∃ #s. (Sunset( X ) @ #s) ∧ (#s < #i)))"
+  // safety formula
+
+  /*
+  expanded formula:
+  "∀ X #i.
+    (SignClassical( X ) @ #i) ⇒ (¬(∃ #s. (Sunset( X ) @ #s) ∧ (#s < #i)))"
+  */
+
+restriction HonestPQAfterMigrate:
+  "∀ X #i. (SignPQ( X ) @ #i) ⇒ (∃ #m. (Migrate( X ) @ #m) ∧ (#m < #i))"
+
+  /*
+  expanded formula:
+  "∀ X #i. (SignPQ( X ) @ #i) ⇒ (∃ #m. (Migrate( X ) @ #m) ∧ (#m < #i))"
+  */
+
+restriction RequestSamePhase:
+  "∀ X W wn p #c #a #ch.
+    (((ReqCreated( X, wn, p ) @ #c) ∧ (AcceptReq( W, X, wn, p ) @ #a)) ∧
+     (StateChange( X ) @ #ch)) ⇒
+    ((#ch < #c) ∨ (#a < #ch))"
+  // safety formula
+
+  /*
+  expanded formula:
+  "∀ X W wn p #c #a #ch.
+    (((ReqCreated( X, wn, p ) @ #c) ∧ (AcceptReq( W, X, wn, p ) @ #a)) ∧
+     (StateChange( X ) @ #ch)) ⇒
+    ((#ch < #c) ∨ (#a < #ch))"
+  */
+
+restriction SunsetAfterMigrate:
+  "∀ E #s. (Sunset( E ) @ #s) ⇒ (∃ #m. (Migrate( E ) @ #m) ∧ (#m < #s))"
+
+  /*
+  expanded formula:
+  "∀ E #s. (Sunset( E ) @ #s) ⇒ (∃ #m. (Migrate( E ) @ #m) ∧ (#m < #s))"
+  */
+
+restriction ReportNone:
+  "∀ E #r.
+    (StateIs( E, 'none' ) @ #r) ⇒ (¬(∃ #m. (Migrate( E ) @ #m) ∧ (#m < #r)))"
+  // safety formula
+
+  /*
+  expanded formula:
+  "∀ E #r.
+    (StateIs( E, 'none' ) @ #r) ⇒ (¬(∃ #m. (Migrate( E ) @ #m) ∧ (#m < #r)))"
+  */
+
+restriction ReportPQ:
+  "∀ E #r.
+    (StateIs( E, 'pq_required' ) @ #r) ⇒
+    ((∃ #m. (Migrate( E ) @ #m) ∧ (#m < #r)) ∧
+     (¬(∃ #s. (Sunset( E ) @ #s) ∧ (#s < #r))))"
+
+  /*
+  expanded formula:
+  "∀ E #r.
+    (StateIs( E, 'pq_required' ) @ #r) ⇒
+    ((∃ #m. (Migrate( E ) @ #m) ∧ (#m < #r)) ∧
+     (¬(∃ #s. (Sunset( E ) @ #s) ∧ (#s < #r))))"
+  */
+
+restriction ReportRetired:
+  "∀ E #r.
+    (StateIs( E, 'retired' ) @ #r) ⇒ (∃ #s. (Sunset( E ) @ #s) ∧ (#s < #r))"
+
+  /*
+  expanded formula:
+  "∀ E #r.
+    (StateIs( E, 'retired' ) @ #r) ⇒ (∃ #s. (Sunset( E ) @ #s) ∧ (#s < #r))"
+  */
+
+lemma G5_untimed:
+  all-traces
+  "∀ V E x #b #j.
+    ((BornMigrated( E ) @ #b) ∧ (AcceptClassical( V, E, x ) @ #j)) ⇒ (⊥)"
+/*
+guarded formula characterizing all counter-examples:
+"∃ V E x #b #j.
+  (BornMigrated( E ) @ #b) ∧ (AcceptClassical( V, E, x ) @ #j)"
+*/
+by sorry
+
+lemma G5_migrated:
+  all-traces
+  "∀ V E x #m #j.
+    (((Migrate( E ) @ #m) ∧ (AcceptClassical( V, E, x ) @ #j)) ∧ (#m < #j)) ⇒
+    (⊥)"
+/*
+guarded formula characterizing all counter-examples:
+"∃ V E x #m #j.
+  (Migrate( E ) @ #m) ∧ (AcceptClassical( V, E, x ) @ #j) ∧ #m < #j"
+*/
+by sorry
+
+lemma G5_timed:
+  all-traces
+  "∀ V E x #s #j.
+    (((Sunset( E ) @ #s) ∧ (AcceptClassical( V, E, x ) @ #j)) ∧ (#s < #j)) ⇒
+    (⊥)"
+/*
+guarded formula characterizing all counter-examples:
+"∃ V E x #s #j.
+  (Sunset( E ) @ #s) ∧ (AcceptClassical( V, E, x ) @ #j) ∧ #s < #j"
+*/
+by sorry
+
+lemma no_rollback:
+  all-traces
+  "∀ V E x #k #j.
+    (((SeenPQReq( V, E ) @ #k) ∧ (AcceptClassical( V, E, x ) @ #j)) ∧
+     (#k < #j)) ⇒
+    (⊥)"
+/*
+guarded formula characterizing all counter-examples:
+"∃ V E x #k #j.
+  (SeenPQReq( V, E ) @ #k) ∧ (AcceptClassical( V, E, x ) @ #j) ∧ #k < #j"
+*/
+by sorry
+
+lemma first_contact_downgrade:
+  exists-trace
+  "∃ V E x #m #j.
+    (((Migrate( E ) @ #m) ∧ (AcceptClassical( V, E, x ) @ #j)) ∧ (#m < #j)) ∧
+    (¬(∃ #k. SeenPQReq( V, E ) @ #k))"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ V E x #m #j.
+  (Migrate( E ) @ #m) ∧ (AcceptClassical( V, E, x ) @ #j)
+ ∧
+  (#m < #j) ∧ (∀ #k. (SeenPQReq( V, E ) @ #k) ⇒ ⊥)"
+*/
+by sorry
+
+rule (modulo E) Qday:
+   [ ] --[ Unique( 'qday' ), QdayEv( ) ]-> [ !CRQC( ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) CRQC_Break_RP_Classical:
+   [ !RPCl( X, k ), !CRQC( ), In( pk(k) ) ]
+  --[ Broken( <'rp_cl', X> ) ]->
+   [ Out( k ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) RP_Setup_Born:
+   [ Fr( ~kc ), Fr( ~kq ), Fr( ~kt ) ]
+  --[
+  Unique( <'rp', $X> ), Unique( <'migrate', $X> ), BornMigrated( $X ),
+  Migrate( $X ), StateChange( $X )
+  ]->
+   [
+   !RPCl( $X, ~kc ), !RPPQ( $X, ~kq ), !RPTls( $X, ~kt ),
+   !PinRPCl( $X, pk(~kc) ), !PinRPPQ( $X, pk(~kq) ), !PinTls( $X, pk(~kt) ),
+   Out( pk(~kc) ), Out( pk(~kq) ), Out( pk(~kt) )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) RP_Setup_Migrating:
+   [ Fr( ~kc ), Fr( ~kq ), Fr( ~kt ) ]
+  --[ Unique( <'rp', $X> ), MigratingRP( $X ) ]->
+   [
+   !RPCl( $X, ~kc ), !RPPQ( $X, ~kq ), !RPTls( $X, ~kt ),
+   !PinRPCl( $X, pk(~kc) ), !PinRPPQ( $X, pk(~kq) ), !PinTls( $X, pk(~kt) ),
+   Out( pk(~kc) ), Out( pk(~kq) ), Out( pk(~kt) )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) RP_Setup_Legacy:
+   [ Fr( ~kc ), Fr( ~kt ) ]
+  --[ Unique( <'rp', $X> ), Legacy( $X ) ]->
+   [
+   !RPCl( $X, ~kc ), !RPTls( $X, ~kt ), !PinRPCl( $X, pk(~kc) ),
+   !PinTls( $X, pk(~kt) ), Out( pk(~kc) ), Out( pk(~kt) )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Migrate:
+   [ !RPPQ( X, kq ) ]
+  --[ Unique( <'migrate', X> ), Migrate( X ), StateChange( X ) ]->
+   [ ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Sunset:
+   [ !RPPQ( X, kq ) ]
+  --[ Unique( <'sunset', X> ), Sunset( X ), StateChange( X ) ]->
+   [ ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Wallet_Session:
+   [ Fr( ~wn ) ] --> [ WSess( $W, ~wn ), Out( <'wn', ~wn> ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) RP_Req_Dual:
+   [ !RPCl( X, kc ), !RPPQ( X, kq ), In( <'wn', wn> ), Fr( ~p ) ]
+  --[ ReqCreated( X, wn, ~p ), SignPQ( X ), SignClassical( X ) ]->
+   [
+   Out( <'multi', <'req', X, wn, ~p>, sign(<'req', X, wn, ~p>, kc), 
+         sign(<'req', X, wn, ~p>, kq)>
+   )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) RP_Req_Classical:
+   [ !RPCl( X, kc ), In( <'wn', wn> ), Fr( ~p ) ]
+  --[ ReqCreated( X, wn, ~p ), SignClassical( X ), StateIs( X, 'none' ) ]->
+   [ Out( <'single', <'req', X, wn, ~p>, sign(<'req', X, wn, ~p>, kc)> ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) RP_Req_PQ:
+   [ !RPPQ( X, kq ), In( <'wn', wn> ), Fr( ~p ) ]
+  --[ ReqCreated( X, wn, ~p ), SignPQ( X ) ]->
+   [ Out( <'single', <'req', X, wn, ~p>, sign(<'req', X, wn, ~p>, kq)> ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Wallet_Accept_Single_PQ:
+   [
+   WSess( W, wn ), !PinRPPQ( X, pkq ),
+   In( <'single', <'req', X, wn, p>, s> )
+   ]
+  --[
+  Eq( verify(s, <'req', X, wn, p>, pkq), true ), AcceptReq( W, X, wn, p ),
+  AcceptPQ( W, X, <wn, p> )
+  ]->
+   [ ]
+
+  /*
+  rule (modulo AC) Wallet_Accept_Single_PQ:
+     [
+     WSess( W, wn ), !PinRPPQ( X, pkq ),
+     In( <'single', <'req', X, wn, p>, s> )
+     ]
+    --[ Eq( z, true ), AcceptReq( W, X, wn, p ), AcceptPQ( W, X, <wn, p> )
+    ]->
+     [ ]
+    variants (modulo AC)
+    1. X     = X.15
+       p     = p.16
+       pkq   = pkq.17
+       s     = s.18
+       wn    = wn.19
+       z     = verify(s.18, <'req', X.15, wn.19, p.16>, pkq.17)
+    
+    2. X     = X.21
+       p     = p.22
+       pkq   = pk(x.39)
+       s     = sign(<'req', X.21, wn.25, p.22>, x.39)
+       wn    = wn.25
+       z     = true
+  */
+
+rule (modulo E) Wallet_Accept_Single_Classical:
+   [
+   WSess( W, wn ), !PinRPCl( X, pkc ),
+   In( <'single', <'req', X, wn, p>, s> )
+   ]
+  --[
+  Eq( verify(s, <'req', X, wn, p>, pkc), true ), GateClassical( X ),
+  UseClKey( X ), AcceptReq( W, X, wn, p ), AcceptClassical( W, X, <wn, p> )
+  ]->
+   [ ]
+
+  /*
+  rule (modulo AC) Wallet_Accept_Single_Classical:
+     [
+     WSess( W, wn ), !PinRPCl( X, pkc ),
+     In( <'single', <'req', X, wn, p>, s> )
+     ]
+    --[
+    Eq( z, true ), GateClassical( X ), UseClKey( X ),
+    AcceptReq( W, X, wn, p ), AcceptClassical( W, X, <wn, p> )
+    ]->
+     [ ]
+    variants (modulo AC)
+    1. X     = X.15
+       p     = p.16
+       pkc   = pkc.17
+       s     = s.18
+       wn    = wn.19
+       z     = verify(s.18, <'req', X.15, wn.19, p.16>, pkc.17)
+    
+    2. X     = X.21
+       p     = p.22
+       pkc   = pk(x.39)
+       s     = sign(<'req', X.21, wn.25, p.22>, x.39)
+       wn    = wn.25
+       z     = true
+  */
+
+rule (modulo E) Wallet_Accept_Multi_PQ:
+   [
+   WSess( W, wn ), !PinRPPQ( X, pkq ),
+   In( <'multi', <'req', X, wn, p>, s1, s2> )
+   ]
+  --[
+  Eq( verify(s2, <'req', X, wn, p>, pkq), true ), AcceptReq( W, X, wn, p ),
+  AcceptPQ( W, X, <wn, p> )
+  ]->
+   [ ]
+
+  /*
+  rule (modulo AC) Wallet_Accept_Multi_PQ:
+     [
+     WSess( W, wn ), !PinRPPQ( X, pkq ),
+     In( <'multi', <'req', X, wn, p>, s1, s2> )
+     ]
+    --[ Eq( z, true ), AcceptReq( W, X, wn, p ), AcceptPQ( W, X, <wn, p> )
+    ]->
+     [ ]
+    variants (modulo AC)
+    1. X     = X.17
+       p     = p.18
+       pkq   = pkq.19
+       s2    = s2.21
+       wn    = wn.22
+       z     = verify(s2.21, <'req', X.17, wn.22, p.18>, pkq.19)
+    
+    2. X     = X.23
+       p     = p.24
+       pkq   = pk(x.43)
+       s2    = sign(<'req', X.23, wn.28, p.24>, x.43)
+       wn    = wn.28
+       z     = true
+  */
+
+lemma executable:
+  exists-trace
+  "∃ W X x #m #j.
+    ((Migrate( X ) @ #m) ∧ (AcceptPQ( W, X, x ) @ #j)) ∧ (#m < #j)"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ W X x #m #j.
+  (Migrate( X ) @ #m) ∧ (AcceptPQ( W, X, x ) @ #j) ∧ #m < #j"
+*/
+by sorry
+
+lemma executable_legacy:
+  exists-trace
+  "∃ W X wn p #l #j. (Legacy( X ) @ #l) ∧ (AcceptReq( W, X, wn, p ) @ #j)"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ W X wn p #l #j. (Legacy( X ) @ #l) ∧ (AcceptReq( W, X, wn, p ) @ #j)"
+*/
+by sorry
+
+lemma executable_pre_migration:
+  exists-trace
+  "∃ W X wn p #s #j.
+    ((MigratingRP( X ) @ #s) ∧ (AcceptReq( W, X, wn, p ) @ #j)) ∧
+    (¬(∃ #m. Migrate( X ) @ #m))"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ W X wn p #s #j.
+  (MigratingRP( X ) @ #s) ∧ (AcceptReq( W, X, wn, p ) @ #j)
+ ∧
+  ∀ #m. (Migrate( X ) @ #m) ⇒ ⊥"
+*/
+by sorry
+
+lemma executable_lifecycle:
+  exists-trace
+  "∃ W X x #m #s #j.
+    (((Migrate( X ) @ #m) ∧ (Sunset( X ) @ #s)) ∧
+     (AcceptPQ( W, X, x ) @ #j)) ∧
+    (#s < #j)"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ W X x #m #s #j.
+  (Migrate( X ) @ #m) ∧ (Sunset( X ) @ #s) ∧ (AcceptPQ( W, X, x ) @ #j)
+ ∧
+  #s < #j"
+*/
+simplify
+solve( !RPPQ( X, kq ) ▶₀ #s )
+  case RP_Setup_Born
+  solve( Migrate( $X ) @ #m.2 )
+    case RP_Setup_Born
+    solve( AcceptPQ( W, $X, x ) @ #j )
+      case Wallet_Accept_Multi_PQ
+      solve( WSess( W, wn ) ▶₀ #j )
+        case Wallet_Session
+        solve( !PinRPPQ( $X, pk(x) ) ▶₁ #j )
+          case RP_Setup_Born
+          solve( Migrate( $X ) @ #m )
+            case RP_Setup_Born
+            solve( Migrate( $X ) @ #m.1 )
+              case RP_Setup_Born
+              solve( !KU( sign(<'req', $X, ~wn, p>, ~kq) ) @ #vk.12 )
+                case RP_Req_PQ
+                solve( Migrate( $X ) @ #m.1 )
+                  case RP_Setup_Born
+                  solve( !KU( ~wn ) @ #vk.10 )
+                    case Wallet_Session
+                    solve( !KU( ~p ) @ #vk.12 )
+                      case RP_Req_PQ
+                      solve( Migrate( $X ) @ #m.1 )
+                        case RP_Setup_Born
+                        SOLVED // trace found
+                      qed
+                    qed
+                  qed
+                qed
+              qed
+            qed
+          qed
+        qed
+      qed
+    qed
+  qed
+qed
+
+lemma executable_learn:
+  exists-trace "∃ W X #k. SeenPQReq( W, X ) @ #k"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ W X #k. (SeenPQReq( W, X ) @ #k)"
+*/
+by sorry
+
+lemma attack_needs_crqc:
+  all-traces
+  "∀ W X wn p #m #j.
+    (((Migrate( X ) @ #m) ∧ (AcceptReq( W, X, wn, p ) @ #j)) ∧ (#m < #j)) ⇒
+    ((∃ #i. (ReqCreated( X, wn, p ) @ #i) ∧ (#i < #j)) ∨
+     (∃ k #b. (Broken( k ) @ #b) ∧ (#b < #j)))"
+/*
+guarded formula characterizing all counter-examples:
+"∃ W X wn p #m #j.
+  (Migrate( X ) @ #m) ∧ (AcceptReq( W, X, wn, p ) @ #j)
+ ∧
+  (#m < #j) ∧
+  (∀ #i. (ReqCreated( X, wn, p ) @ #i) ⇒ ¬(#i < #j)) ∧
+  (∀ k #b. (Broken( k ) @ #b) ⇒ ¬(#b < #j))"
+*/
+by sorry
+
+lemma G4_rp_authentication:
+  all-traces
+  "∀ W X wn p #m #j.
+    (((Migrate( X ) @ #m) ∧ (AcceptReq( W, X, wn, p ) @ #j)) ∧ (#m < #j)) ⇒
+    (∃ #i. (ReqCreated( X, wn, p ) @ #i) ∧ (#i < #j))"
+/*
+guarded formula characterizing all counter-examples:
+"∃ W X wn p #m #j.
+  (Migrate( X ) @ #m) ∧ (AcceptReq( W, X, wn, p ) @ #j)
+ ∧
+  (#m < #j) ∧ (∀ #i. (ReqCreated( X, wn, p ) @ #i) ⇒ ¬(#i < #j))"
+*/
+by sorry
+
+lemma M_downgrade_s1:
+  exists-trace
+  "∃ W X x #m #j.
+    (((Migrate( X ) @ #m) ∧ (AcceptClassical( W, X, x ) @ #j)) ∧ (#m < #j)) ∧
+    (¬(∃ #q. QdayEv( ) @ #q))"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ W X x #m #j.
+  (Migrate( X ) @ #m) ∧ (AcceptClassical( W, X, x ) @ #j)
+ ∧
+  (#m < #j) ∧ (∀ #q. (QdayEv( ) @ #q) ⇒ ⊥)"
+*/
+by sorry
+
+lemma M_forgery_crqc:
+  exists-trace
+  "∃ W X wn p k #m #j #b.
+    ((((Migrate( X ) @ #m) ∧ (AcceptReq( W, X, wn, p ) @ #j)) ∧ (#m < #j)) ∧
+     (Broken( k ) @ #b)) ∧
+    (¬(∃ #i. ReqCreated( X, wn, p ) @ #i))"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ W X wn p k #m #j #b.
+  (Migrate( X ) @ #m) ∧
+  (AcceptReq( W, X, wn, p ) @ #j) ∧
+  (Broken( k ) @ #b)
+ ∧
+  (#m < #j) ∧ (∀ #i. (ReqCreated( X, wn, p ) @ #i) ⇒ ⊥)"
+*/
+by sorry
+
+/* All wellformedness checks were successful. */
+
+/*
+Generated from:
+Tamarin version 1.12.0
+Maude version 3.5.1
+Git revision: 82780bbaf3328a45f624ddb41e51bf75425f851c (with uncommited changes), branch: master
+Compiled at: 2026-03-07 14:22:39.174278293 UTC
+*/
+
+end
+
+==============================================================================
+summary of summaries:
+
+analyzed: /work/modeller/M_istek.spthy
+
+  processing time: 1.53s
+  
+  G5_untimed (all-traces): analysis incomplete (1 steps)
+  G5_migrated (all-traces): analysis incomplete (1 steps)
+  G5_timed (all-traces): analysis incomplete (1 steps)
+  no_rollback (all-traces): analysis incomplete (1 steps)
+  first_contact_downgrade (exists-trace): analysis incomplete (1 steps)
+  executable (exists-trace): analysis incomplete (1 steps)
+  executable_legacy (exists-trace): analysis incomplete (1 steps)
+  executable_pre_migration (exists-trace): analysis incomplete (1 steps)
+  executable_lifecycle (exists-trace): verified (14 steps)
+  executable_learn (exists-trace): analysis incomplete (1 steps)
+  attack_needs_crqc (all-traces): analysis incomplete (1 steps)
+  G4_rp_authentication (all-traces): analysis incomplete (1 steps)
+  M_downgrade_s1 (exists-trace): analysis incomplete (1 steps)
+  M_forgery_crqc (exists-trace): analysis incomplete (1 steps)
+
+==============================================================================

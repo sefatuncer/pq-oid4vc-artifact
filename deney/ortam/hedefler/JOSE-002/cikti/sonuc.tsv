@@ -1,0 +1,16 @@
+baslangic	2026-09-25T13:20:00Z
+hedef	JOSE-002
+ekosistem	nuget
+paket	JWT
+istenen_surum	11.1.0
+arac	dotnet-sdk 10.0.401; net10.0; sistem OpenSSL 3.5.5
+kilit_dosyasi	packages.lock.json (NuGet contentHash)
+kilit_sha256	23e9dcb1e3e90fb4d7ba472c0ba8bd485a5018e0c7b7fde56fa3368680e5e835
+bagimlilik_sayisi	2
+paket_ozeti	sha512:GbmNr2WUyY3Ma0rwuvmTDnE5tIV8gFNDWeua9Fn54HwrpvGfwQzi7HtEAnMgI4quf4MuJr0iwPkt9sKrNCq1Tg== (NuGet contentHash)
+commit	5a4a865eaad97677806df48cb395acc9a8dba89f
+commit_kaynagi	nuspec <repository commit>
+lisans_kayit	CC0-1.0
+kurulan_surum	11.1.0
+ice_aktar	basarili
+bitis	2026-09-25T13:20:04Z

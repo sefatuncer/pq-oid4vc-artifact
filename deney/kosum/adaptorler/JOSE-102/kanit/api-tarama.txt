@@ -1,0 +1,199 @@
+# JOSE-102 jwt-kit 5.3.0 (b5f82fb9dc23) — API taraması (sözleşme §5.1)
+# imaj: a10-jose-102:1 (sha256:3f7f16297f6073d00f72d9d9be5001ae303571fa0569d3b6e71ad256b6864a93)
+# komut: docker run --rm --network none a10-jose-102:1 sh -c 'J=/opt/a/.build/checkouts/jwt-kit; grep -rn -i -E "allow|algorithms|iteratingKeys|header.alg|alg ==|\.alg\b|_spi|mldsa|ml-dsa|composite|crit|x5c|func verify" $J/Sources/JWTKit --include=*.swift | grep -v "/Docs.docc/" | head -120; echo "== JWTSigner.swift (tum)"; grep -n "" $J/Sources/JWTKit/JWTSigner.swift; echo "== README L270-300"; grep -n "" $J/README.md | sed -n 270,300p'
+
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/Insecure/Insecure.swift:1:/// A container for older, cryptographically insecure algorithms.
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/Insecure/Insecure.swift:3:/// - Important: These algorithms aren’t considered cryptographically secure,
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/Insecure/Insecure.swift:5:/// services that require them. For new services, avoid these algorithms.
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/ECDSA/ECDSACurveType.swift:5:/// allowing for a more generic handling of ECDSA operations across different curves.
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/ECDSA/ECDSACurveType.swift:18:/// allowing for flexible and modular cryptographic code.
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/ECDSA/ECDSACurve.swift:10:/// The use of ``ECDSACurve`` in cryptographic operations allows for easy specification and interchange of
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/ECDSA/ECDSASigner.swift:36:    public func verify(_ signature: some DataProtocol, signs plaintext: some DataProtocol) throws
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/ECDSA/JWTKeyCollection+ECDSA.swift:20:    /// - Returns: The same instance of the collection (`Self`), which allows for method chaining.
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/JWK/JWK.swift:116:    /// Supported `alg` algorithms
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/JWTKeyCollection.swift:201:    ///   - iteratingKeys: Whether to try verifying the token with all keys in the collection.
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/JWTKeyCollection.swift:204:    public func verify<Payload>(
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/JWTKeyCollection.swift:207:        iteratingKeys: Bool = false
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/JWTKeyCollection.swift:210:        try await self.verify([UInt8](token.utf8), as: Payload.self, iteratingKeys: iteratingKeys)
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/JWTKeyCollection.swift:218:    ///   - iteratingKeys: Whether to try verifying the token with all keys in the collection.
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/JWTKeyCollection.swift:221:    public func verify<Payload>(
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/JWTKeyCollection.swift:224:        iteratingKeys: Bool = false
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/JWTKeyCollection.swift:229:        var signer = try await self.getSigner(for: kid, alg: header.alg)
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/JWTKeyCollection.swift:234:            if iteratingKeys == true {
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/JWTKeyCollection.swift:237:                        signer = try await self.getSigner(for: _kid, alg: header.alg)
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/JWTKeyCollection.swift:270:        let signer = try await self.getSigner(for: effectiveKid, alg: updatedHeader.alg)
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/EdDSA/EdDSA.swift:47:        /// This init allows for the creation of an ``EdDSA.PublicKey`` using the x-coordinate of the public key.
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/EdDSA/EdDSACurve.swift:4:/// It allows for representing and working with EdDSA curves.
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/EdDSA/EdDSASigner.swift:39:    func verify(_ signature: some DataProtocol, signs plaintext: some DataProtocol) throws -> Bool {
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/EdDSA/JWTKeyCollection+EdDSA.swift:23:    ///   - kid: An optional ``JWKIdentifier`` (Key ID). Providing this identifier allows the JWT `kid` header field
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/Vendor/FirebaseAuthIdentityToken.swift:122:    public func verify(using _: some JWTAlgorithm) throws {
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/Vendor/MicrosoftIdentityToken.swift:81:    /// The Microsoft Graph will return this ID as the id property for a given user account. Because the oid allows multiple apps to
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/Vendor/MicrosoftIdentityToken.swift:149:    public func verify(using _: some JWTAlgorithm) throws {
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/Vendor/AppleIdentityToken.swift:85:    public func verify(using _: some JWTAlgorithm) throws {
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/Vendor/GoogleIdentityToken.swift:139:    public func verify(using _: some JWTAlgorithm) throws {
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/Claims/ExpirationClaim.swift:24:    public func verifyNotExpired(currentDate: Date = .init()) throws {
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/Claims/TenantIDClaim.swift:9:/// are critical for the security of multi-tenant applications.
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/Claims/AudienceClaim.swift:29:    public func verifyIntendedAudience(includes audience: String) throws {
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/Claims/GoogleHostedDomainClaim.swift:10:    public func verify(domain: String) throws {
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/Claims/NotBeforeClaim.swift:24:    public func verifyNotBefore(currentDate: Date = .init()) throws {
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/JWTSigner.swift:28:    func verify<Payload>(_ token: some DataProtocol) async throws -> Payload where Payload: JWTPayload {
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/JWTSerializer.swift:18:        newHeader.alg = newHeader.alg ?? key.name
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/JWTSerializer.swift:21:        if let x5c = newHeader.x5c, !x5c.isEmpty {
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/JWTSerializer.swift:22:            let verifier = try X5CVerifier(rootCertificates: [x5c[0]])
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/JWTSerializer.swift:23:            let certs = try x5c.map { try Certificate(pemEncoded: $0) }
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/JWTSerializer.swift:26:            newHeader.x5c = try x5c.map { cert in
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/None/JWTKeyCollection+UnsecuredNone.swift:29:    /// are critical.
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/None/UnsecuredNoneSigner.swift:16:    func verify(_ signature: some DataProtocol, signs _: some DataProtocol) throws -> Bool {
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/RSA/RSA.swift:13:    /// Relatively to other algorithms such as ECDSA and EdDSA, RSA is considered slow and should be avoided when possible.
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/RSA/RSASigner.swift:48:    func verify(_ signature: some DataProtocol, signs plaintext: some DataProtocol) throws -> Bool {
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/JWTHeader+CommonFields.swift:10:    /// This parameter allows originators to explicitly signal a change of key to recipients.
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/JWTHeader+CommonFields.swift:30:    /// The `crit` (Critical) Header Parameter indicates that extensions to standard JWT specifications
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/JWTHeader+CommonFields.swift:32:    public var crit: [String]? {
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/JWTHeader+CommonFields.swift:34:            if case .array(let array) = self[dynamicMember: "crit"] {
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/JWTHeader+CommonFields.swift:41:            self[dynamicMember: "crit"] = arrayField.map { .array($0) }
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/JWTHeader+CommonFields.swift:59:    /// The `x5c` (X.509 Certificate Chain) Header Parameter contains a chain of one or more PKIX certificates.
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/JWTHeader+CommonFields.swift:61:    public var x5c: [String]? {
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/JWTHeader+CommonFields.swift:63:            if case .array(let array) = self[dynamicMember: "x5c"] {
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/JWTHeader+CommonFields.swift:70:            self[dynamicMember: "x5c"] = arrayField.map { .array($0) }
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSAError.swift:1:enum MLDSAError: Error {
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/JWTKeyCollection+MLDSA.swift:2:    @_spi(PostQuantum)
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/JWTKeyCollection+MLDSA.swift:6:        mldsa key: some MLDSAKey,
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/JWTKeyCollection+MLDSA.swift:12:            .init(algorithm: MLDSASigner(key: key), parser: parser, serializer: serializer),
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSA.swift:9:@_spi(PostQuantum)
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSA.swift:11:public enum MLDSA: Sendable {}
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSA.swift:14:extension MLDSA {
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSA.swift:15:    public struct PublicKey<KeyType>: MLDSAKey where KeyType: MLDSAType {
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSA.swift:16:        public typealias MLDSAType = KeyType
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSA.swift:20:        let backing: any MLDSAPublicKey
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSA.swift:22:        public init(backing: some MLDSAPublicKey) {
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSA.swift:33:extension MLDSA {
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSA.swift:34:    public struct PrivateKey<KeyType>: MLDSAKey where KeyType: MLDSAType {
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSA.swift:35:        public typealias MLDSAType = KeyType
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSA.swift:39:        let backing: any MLDSAPrivateKey
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSA.swift:41:        public var publicKey: MLDSA.PublicKey<KeyType> {
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSA.swift:45:        public init(backing: some MLDSAPrivateKey) {
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSAKey.swift:7:@_spi(PostQuantum)
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSAKey.swift:9:public protocol MLDSAKey: Sendable {
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSAKey.swift:10:    associatedtype MLDSAType: JWTKit.MLDSAType
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSAKey.swift:13:@_spi(PostQuantum)
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSAKey.swift:15:public protocol MLDSAPublicKey: Sendable {
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSAKey.swift:16:    associatedtype MLDSAType
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSAKey.swift:26:@_spi(PostQuantum)
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSAKey.swift:28:public protocol MLDSAPrivateKey: Sendable {
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSAKey.swift:29:    associatedtype MLDSAType
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSAKey.swift:30:    associatedtype PublicKey: MLDSAPublicKey
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSAType.swift:3:@_spi(PostQuantum)
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSAType.swift:5:public protocol MLDSAType {
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSAType.swift:6:    associatedtype PrivateKey: MLDSAPrivateKey
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSAType.swift:11:@_spi(PostQuantum)
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSAType.swift:13:extension MLDSA65: MLDSAType {
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSAType.swift:14:    public static var name: String { "ML-DSA-65" }
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSAType.swift:17:@_spi(PostQuantum)
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSAType.swift:19:extension MLDSA87: MLDSAType {
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSAType.swift:20:    public static var name: String { "ML-DSA-87" }
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSA87+MLDSAKey.swift:3:@_spi(PostQuantum)
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSA87+MLDSAKey.swift:5:extension MLDSA87.PublicKey: MLDSAPublicKey {
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSA87+MLDSAKey.swift:6:    public typealias MLDSAType = MLDSA87
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSA87+MLDSAKey.swift:9:@_spi(PostQuantum)
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSA87+MLDSAKey.swift:11:extension MLDSA87.PrivateKey: MLDSAPrivateKey {
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSA87+MLDSAKey.swift:12:    public typealias MLDSAType = MLDSA87
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSA87+MLDSAKey.swift:15:@_spi(PostQuantum)
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSA87+MLDSAKey.swift:17:public typealias MLDSA87PublicKey = MLDSA.PublicKey<MLDSA87>
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSA87+MLDSAKey.swift:19:@_spi(PostQuantum)
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSA87+MLDSAKey.swift:21:public typealias MLDSA87PrivateKey = MLDSA.PrivateKey<MLDSA87>
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSASigner.swift:10:struct MLDSASigner<Key: MLDSAKey>: JWTAlgorithm, Sendable {
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSASigner.swift:11:    let privateKey: MLDSA.PrivateKey<Key.MLDSAType>?
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSASigner.swift:12:    let publicKey: MLDSA.PublicKey<Key.MLDSAType>
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSASigner.swift:14:    var name: String = Key.MLDSAType.name
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSASigner.swift:18:        case let key as MLDSA.PrivateKey<Key.MLDSAType>:
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSASigner.swift:21:        case let key as MLDSA.PublicKey<Key.MLDSAType>:
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSASigner.swift:31:            throw JWTError.signingAlgorithmFailure(MLDSAError.noPrivateKey)
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSASigner.swift:38:            throw JWTError.signingAlgorithmFailure(MLDSAError.failedToSign(error))
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSASigner.swift:44:    func verify(_ signature: some DataProtocol, signs plaintext: some DataProtocol) throws -> Bool {
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSA65+MLDSAKey.swift:3:@_spi(PostQuantum)
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSA65+MLDSAKey.swift:5:extension MLDSA65.PublicKey: MLDSAPublicKey {
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSA65+MLDSAKey.swift:6:    public typealias MLDSAType = MLDSA65
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSA65+MLDSAKey.swift:9:@_spi(PostQuantum)
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSA65+MLDSAKey.swift:11:extension MLDSA65.PrivateKey: MLDSAPrivateKey {
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSA65+MLDSAKey.swift:12:    public typealias MLDSAType = MLDSA65
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSA65+MLDSAKey.swift:15:@_spi(PostQuantum)
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSA65+MLDSAKey.swift:17:public typealias MLDSA65PublicKey = MLDSA.PublicKey<MLDSA65>
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSA65+MLDSAKey.swift:19:@_spi(PostQuantum)
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSA65+MLDSAKey.swift:21:public typealias MLDSA65PrivateKey = MLDSA.PrivateKey<MLDSA65>
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/JWTAlgorithm.swift:8:/// All algorithms conform to ``JWTAlgorithm`` to provide custom signing and verification logic for JWT tokens.
+/opt/a/.build/checkouts/jwt-kit/Sources/JWTKit/JWTAlgorithm.swift:38:    func verify(_ signature: some DataProtocol, signs plaintext: some DataProtocol) throws -> Bool
+== JWTSigner.swift (tum)
+1:#if !canImport(Darwin)
+2:import FoundationEssentials
+3:#else
+4:import Foundation
+5:#endif
+6:
+7:/// A JWT signer.
+8:final class JWTSigner: Sendable {
+9:    let algorithm: JWTAlgorithm
+10:
+11:    let parser: any JWTParser
+12:    let serializer: any JWTSerializer
+13:
+14:    init(
+15:        algorithm: some JWTAlgorithm,
+16:        parser: any JWTParser = DefaultJWTParser(),
+17:        serializer: any JWTSerializer = DefaultJWTSerializer()
+18:    ) {
+19:        self.algorithm = algorithm
+20:        self.parser = parser
+21:        self.serializer = serializer
+22:    }
+23:
+24:    func sign(_ payload: some JWTPayload, with header: JWTHeader = .init()) async throws -> String {
+25:        try await serializer.sign(payload, with: header, using: self.algorithm)
+26:    }
+27:
+28:    func verify<Payload>(_ token: some DataProtocol) async throws -> Payload where Payload: JWTPayload {
+29:        let (encodedHeader, encodedPayload, encodedSignature) = try parser.getTokenParts(token)
+30:        let data = encodedHeader + [.period] + encodedPayload
+31:        let signature = encodedSignature.base64URLDecodedBytes()
+32:
+33:        guard try algorithm.verify(signature, signs: data) else {
+34:            throw JWTError.signatureVerificationFailed
+35:        }
+36:
+37:        let (_, payload, _) = try parser.parse(token, as: Payload.self)
+38:
+39:        try await payload.verify(using: algorithm)
+40:        return payload
+41:    }
+42:}
+== README L270-300
+270:await keys.add(eddsa: publicKey)
+271:
+272:// Add private key to the key collection
+273:await keys.add(eddsa: privateKey)
+274:```
+275:
+276:## MLDSA
+277:
+278:Hidden behind the `@_spi(PostQuantum)` flag, JWTKit supports MLDSA (Module-Lattice-Based Digital Signature Algorithm), a post-quantum signature scheme based on the CRYSTALS-DILITHIUM algorithm. It is currently behind an SPI flag because, while the MLDSA signature scheme is [standardized by NIST](https://nvlpubs.nist.gov/nistpubs/fips/nist.fips.204.pdf), its [usage in JWT](https://www.ietf.org/archive/id/draft-ietf-cose-dilithium-04.html) is still in draft state, and, while unlikely, may change before being finalized. Therefore JWTKit reserves the ability to make breaking changes to this API until the usage of MLDSA in JWT is finalized.
+279:
+280:> [!NOTE]\
+281:> MLDSA requires macOS 26+.
+282:
+283:Currently, to use MLDSA, you must import JWTKit with the `@_spi(PostQuantum)` flag enabled:
+284:
+285:```swift
+286:@_spi(PostQuantum) import JWTKit
+287:```
+288:
+289:Then you can choose whether to use MLDSA65 or MLDSA87. Use them as follows:
+290:
+291:```swift
+292:// Initialize an MLDSA key with its seed
+293:let seedRepresentation = Data("...".utf8)
+294:let privateKey = try MLDSA87PrivateKey(seedRepresentation: seedRepresentation)
+295:
+296:// Add private key to the key collection
+297:await keys.add(mldsa: privateKey)
+298:```
+299:
+300:## RSA

@@ -1,0 +1,595 @@
+theory Mf_Yol
+begin
+
+/*
+ * =====================================================================
+ *  PQ-OID4VC | Adım 7 | M-f (sadeleştirilmiş) — SERTİFİKA YOLU DAHİL
+ *  kabul ölçütü 2 (G5'in üç biçimi, yol sınıfı dahil); görev 3b (kapsam × 3 saldırı);
+ *  A3 boyutları 1–8 (taşıyıcı dahil) — TASLAK, koşulmadı (--prove YOK)
+ * =====================================================================
+ *  ÖN KAYITTA KOŞULACAK kipler (kapsam ekonomisi, 25.09.2026):
+ *    FRESH (çekirdek ve 3b), OBJ (TL/LoTE önbellek taşıyıcısı), WRPRC[,WRPRC_FAZ1],
+ *    FED[,FED_INT_PQ][,FED_STALE], CRIT; kapsam SCOPE_*; saldırı ATK_*.
+ *  Koşulmayacak (5A'da R7 ile sınandı): PINNED, UNAUTH, GLOBAL, SELF, LAZY, MONOTONE,
+ *    SUNSET_CHECK, KEY_EXPIRY. Bunlar M-f-TANIM için yola duyarlı tanım kaydı olarak
+ *    kalır (MONOTONE = 'none' beklentisi hiç kullanılmaz; SUNSET_CHECK = beklenti düzeyinde).
+ *  PKI: TL/LoTE (üçüncü taraf; doğrulayıcıda sabitli) çıpaları algoritma etiketiyle
+ *  listeler: !Anchor(ad, açık anahtar, alg). Dürüst çıpa CA_M ('CAM', PQ) bütün
+ *  ihraççıları sertifikalar: <'iss_cert', I, pkI, alg>. Kimlik bilgisi <'cred', I, c>
+ *  ihraççı anahtarıyla imzalanır.
+ *  Yol: derinlik 1 (çıpa → iss_cert → cred) ya da 2 (çıpa → int_cert → iss_cert → cred).
+ *  Kenar sınıfı = imzalayan anahtarın alg'ı (çıpanınki TL'den, ara CA'nınki kendi
+ *  sertifikasından). EdgeAlg(V, I, c, a) kabul edilen yoldaki kenar sınıflarını kaydeder.
+ *
+ *  Beklenti edinme kipi (tam olarak biri; oturum Exp(V, sid, I, e) üretir):
+ *    PINNED   sabitlenmiş eşzamanlı görünüm (okunduğu andan kullanıma dek durum değişmez)
+ *    FRESH    TL kaynağına nonce'lu sorgu; yanıt kullanım anına dek güncel
+ *    OBJ      imzalı, yeniden oynatılabilir beklenti nesnesi (çevrimdışı)
+ *    UNAUTH   kimliksiz beklenti alanı                               (A3-1 ablasyonu)
+ *    GLOBAL   tek küresel beklenti ('none'; eski ihraççı varken)     (A3-4 ablasyonu)
+ *    SELF     öz-beyan: ihraççının PQ kimlik bilgisinden TOFU belleği (A3-5)
+ *    WRPRC    taşıyıcı: kayıt sertifikası; varlık sunar, sağlayıcı imzalar;
+ *             WRPRC_FAZ1 yoksa cüzdan doğrulamaz (T254: doğrulama 24 ay ertelenmiş)
+ *    FED      taşıyıcı: OpenID Federation; TA (PQ, sabitli) → ara → varlık bildirimi (çekilen);
+ *             FED_INT_PQ ile ara anahtar PQ; FED_STALE ile bildirim sorguya bağlı değil
+ *             (trust_chain başlığında aktarılan ya da önbellekteki bildirim; yeniden oynatılabilir)
+ *    CRIT     taşıyıcı ablasyonu: işaret yalnız kimlik bilgisinin kendi başlığında
+ *             (crit; RFC 7515 §4.1.11, T386); doğrulayıcı durumsuz, klasik kopyada işaret yok
+ *  Değiştiriciler:
+ *    PQ_CHAN       beklenti kaynağının (TL / WRPRC sağlayıcısı) imza anahtarı PQ
+ *    MONOTONE      yapışkan durum: 'pq_required' görüldükten sonra 'none' beklentisi kullanılmaz
+ *    SUNSET_CHECK  beklenti düzeyinde sunset: 'none' beklentisi varlığın sunset'inden sonra
+ *                  kullanılmaz (sunset anı önceden ilan edilmiş; koşul)
+ *    KEY_EXPIRY    anahtar düzeyinde sunset: klasik ihraççı anahtarı sunset'te sona erer
+ *                  (yalnız algoritma sınıfını korur; karşılaştırma için)
+ *    LAZY          ilk temasta (beklenti öğrenilmeden) kaynağa bakmadan kabul  (A3-6)
+ *  Kapsam (görev 3b; TAM OLARAK BİRİ; yalnız beklenti 'none' değilken uygulanır):
+ *    SCOPE_PATH    yol_sinifi: çıpadan kimlik bilgisine her kenar PQ (M-f önerisi)
+ *    SCOPE_KEY     anahtar: kimlik bilgisi, beklentiyle aynı doğrulanmış görünümdeki PQ
+ *                  ihraççı anahtarıyla doğrulanmalı (!PinPQ; idealleştirme: anahtar
+ *                  beklentiyle birlikte taşınır)
+ *    SCOPE_LEAF    yaprak_alg: yalnız yaprak algoritması PQ (ablasyon)
+ *  Saldırı yüzeyleri (TL'de listelenmiş klasik çıpalar; CRQC ile kırılabilir):
+ *    ATK_DIFF   farklı adlı alternatif klasik CA ('CAA')
+ *    ATK_SAME   aynı adlı klasik CA ('CAM'; anahtar değişiminden kalan eski anahtar)
+ *    ATK_ROOT   klasik kök ('ROOT'); saldırgan altında kendi PQ ara CA'sını kurar
+ */
+
+builtins: signing
+
+restriction Equality:   "All x y #i. Eq(x, y) @ #i ==> x = y"
+restriction Inequality: "All x #i. NotEq(x, x) @ #i ==> F"
+restriction Unique:     "All x #i #j. Unique(x) @ #i & Unique(x) @ #j ==> #i = #j"
+
+/* dürüst ihraç yaşam döngüsüne uyar */
+restriction ClassicalIssuanceUntilSunset:
+  "All X #i. IssueClassical(X) @ #i ==> not (Ex #s. Sunset(X) @ #s & #s < #i)"
+restriction PQIssuanceAfterMigrate:
+  "All X #i. IssuePQ(X) @ #i ==> (Ex #m. Migrate(X) @ #m & #m < #i)"
+
+#ifdef PINNED
+restriction PinnedCurrent:
+  "All sid I #l #u #ch. PinRead(sid, I) @ #l & ExpUse(sid) @ #u & StateChange(I) @ #ch
+      ==> (#ch < #l) | (#u < #ch)"
+#endif
+
+#ifdef FRESH | FED
+restriction Freshness:
+  "All sid I e #r #u #ch. Respond(sid, I, e) @ #r & ExpUse(sid) @ #u & StateChange(I) @ #ch
+      ==> (#ch < #r) | (#u < #ch)"
+#endif
+
+#ifdef MONOTONE | SELF
+restriction Sticky:
+  "All V I #k #j. SeenPQReq(V, I) @ #k & UseNone(V, I) @ #j ==> #j < #k"
+#endif
+
+#ifdef SUNSET_CHECK
+restriction NoneExpiresAtSunset:
+  "All V I #j. UseNone(V, I) @ #j ==> not (Ex #s. Sunset(I) @ #s & #s < #j)"
+#endif
+
+#ifdef KEY_EXPIRY
+restriction ClassicalKeyExpiry:
+  "All I #j. UseClKey(I) @ #j ==> not (Ex #s. Sunset(I) @ #s & #s < #j)"
+#endif
+
+#ifdef LAZY
+restriction LazyOnlyBeforeLearning:
+  "All V I sid #j #u #k. NoExpYet(V, I, sid) @ #j & ExpUse(sid) @ #u & SeenPQReq(V, I) @ #k
+      ==> #u < #k"
+#endif
+
+#include "ortak_g5.spthy"
+
+/* ---------------- Q-day ve CRQC ---------------- */
+rule Qday:
+    [ ] --[ Unique('qday'), QdayEv() ]-> [ !CRQC() ]
+
+rule CRQC_Break_Issuer_Classical:
+    [ !IssCl(X, k), !CRQC(), In(pk(k)) ] --[ Broken(<'iss_cl', X>) ]-> [ Out(k) ]
+
+rule CRQC_Break_Classical_Anchor:
+    [ !ClAnchorSk(A, k), !CRQC(), In(pk(k)) ] --[ Broken(<'anchor', A>) ]-> [ Out(k) ]
+
+#ifdef not PQ_CHAN
+rule CRQC_Break_Source:
+    [ !SrcSk(k), !CRQC(), In(pk(k)) ] --[ Broken('src') ]-> [ Out(k) ]
+#endif
+
+#ifdef FED & not FED_INT_PQ
+rule CRQC_Break_Fed_Intermediate:
+    [ !FedIntSk(k), !CRQC(), In(pk(k)) ] --[ Broken('fed_int') ]-> [ Out(k) ]
+#endif
+
+/* ---------------- TL'de listelenen çıpalar ---------------- */
+rule CAM_Setup:
+    [ Fr(~kcam) ]
+  --[ Unique('setup_cam') ]->
+    [ !CASk('CAM', ~kcam), !Anchor('CAM', pk(~kcam), 'pq'), Out(pk(~kcam)) ]
+
+#ifdef ATK_DIFF
+rule AltCA_Setup:
+    [ Fr(~ka) ]
+  --[ Unique('setup_alt_ca') ]->
+    [ !ClAnchorSk('CAA', ~ka), !Anchor('CAA', pk(~ka), 'cl'), Out(pk(~ka)) ]
+#endif
+
+#ifdef ATK_SAME
+rule OldCAM_Setup:
+    [ Fr(~ko) ]
+  --[ Unique('setup_old_cam') ]->
+    [ !ClAnchorSk('CAM', ~ko), !Anchor('CAM', pk(~ko), 'cl'), Out(pk(~ko)) ]
+#endif
+
+#ifdef ATK_ROOT
+rule ClassicalRoot_Setup:
+    [ Fr(~kr) ]
+  --[ Unique('setup_cl_root') ]->
+    [ !ClAnchorSk('ROOT', ~kr), !Anchor('ROOT', pk(~kr), 'cl'), Out(pk(~kr)) ]
+#endif
+
+/* ---------------- ihraççılar (CA_M sertifikalar) ve yaşam döngüsü ---------------- */
+rule Issuer_Setup_Born:
+    let cc = <'iss_cert', $I, pk(~kc), 'cl'>
+        cq = <'iss_cert', $I, pk(~kq), 'pq'>
+    in
+    [ !CASk('CAM', kcam), Fr(~kc), Fr(~kq) ]
+  --[ Unique(<'iss', $I>), Unique(<'migrate', $I>), BornMigrated($I), Migrate($I), StateChange($I) ]->
+    [ !IssCl($I, ~kc), !IssPQ($I, ~kq), !PinCl($I, pk(~kc)), !PinPQ($I, pk(~kq)),
+      Out(pk(~kc)), Out(pk(~kq)), Out(<cc, sign(cc, kcam)>), Out(<cq, sign(cq, kcam)>) ]
+
+rule Issuer_Setup_Migrating:
+    let cc = <'iss_cert', $I, pk(~kc), 'cl'>
+        cq = <'iss_cert', $I, pk(~kq), 'pq'>
+    in
+    [ !CASk('CAM', kcam), Fr(~kc), Fr(~kq) ]
+  --[ Unique(<'iss', $I>), MigratingIssuer($I) ]->
+    [ !IssCl($I, ~kc), !IssPQ($I, ~kq), !PinCl($I, pk(~kc)), !PinPQ($I, pk(~kq)),
+      Out(pk(~kc)), Out(pk(~kq)), Out(<cc, sign(cc, kcam)>), Out(<cq, sign(cq, kcam)>) ]
+
+rule Issuer_Setup_Legacy:
+    let cc = <'iss_cert', $L, pk(~kc), 'cl'> in
+    [ !CASk('CAM', kcam), Fr(~kc) ]
+  --[ Unique(<'iss', $L>), Legacy($L) ]->
+    [ !IssCl($L, ~kc), !PinCl($L, pk(~kc)), Out(pk(~kc)), Out(<cc, sign(cc, kcam)>) ]
+
+rule Migrate:
+    [ !IssPQ(I, kq) ] --[ Unique(<'migrate', I>), Migrate(I), StateChange(I) ]-> [ ]
+
+rule Sunset:
+    [ !IssPQ(I, kq) ] --[ Unique(<'sunset', I>), Sunset(I), StateChange(I) ]-> [ ]
+
+rule Issue_Classical:
+    let crb = <'cred', X, ~c> in
+    [ !IssCl(X, kc), Fr(~c) ] --[ Issued(X, ~c), IssueClassical(X) ]-> [ Out(<crb, sign(crb, kc)>) ]
+
+rule Issue_PQ:
+    let crb = <'cred', I, ~c> in
+    [ !IssPQ(I, kq), Fr(~c) ] --[ Issued(I, ~c), IssuePQ(I) ]-> [ Out(<crb, sign(crb, kq)>) ]
+
+/* ---------------- beklenti kaynağı (TL / WRPRC sağlayıcısı); kipten bağımsız kurulur ---------------- */
+rule Source_Setup:
+    [ Fr(~ks) ] --[ Unique('src') ]-> [ !SrcSk(~ks), !SrcPin(pk(~ks)), Out(pk(~ks)) ]
+
+/* ---------------- doğrulayıcı oturumu ---------------- */
+rule Verifier_Start:
+    [ Fr(~sid) ] --> [ VS($V, ~sid, $I) ]
+
+/* ===================== beklenti edinme kipleri ===================== */
+
+#ifdef PINNED
+rule Exp_Pinned_None:
+    [ VS(V, sid, I), !PinCl(I, pkc) ]
+  --[ StateIs(I, 'none'), PinRead(sid, I) ]-> [ Exp(V, sid, I, 'none') ]
+rule Exp_Pinned_PQ:
+    [ VS(V, sid, I), !PinPQ(I, pkq) ]
+  --[ StateIs(I, 'pq_required'), PinRead(sid, I), SeenPQReq(V, I) ]-> [ Exp(V, sid, I, 'pq_required') ]
+rule Exp_Pinned_Retired:
+    [ VS(V, sid, I), !PinPQ(I, pkq) ]
+  --[ StateIs(I, 'retired'), PinRead(sid, I), SeenPQReq(V, I) ]-> [ Exp(V, sid, I, 'retired') ]
+#endif
+
+#ifdef FRESH
+rule Fresh_Query:
+    [ VS(V, sid, I) ] --> [ FQ(V, sid, I), Out(<'q', sid, I>) ]
+rule Source_Respond_None:
+    let rb = <'resp', sid, I, 'none'> in
+    [ !SrcSk(k), !PinCl(I, pkc), In(<'q', sid, I>) ]
+  --[ StateIs(I, 'none'), Respond(sid, I, 'none') ]-> [ Out(<rb, sign(rb, k)>) ]
+rule Source_Respond_PQ:
+    let rb = <'resp', sid, I, 'pq_required'> in
+    [ !SrcSk(k), !PinPQ(I, pkq), In(<'q', sid, I>) ]
+  --[ StateIs(I, 'pq_required'), Respond(sid, I, 'pq_required') ]-> [ Out(<rb, sign(rb, k)>) ]
+rule Source_Respond_Retired:
+    let rb = <'resp', sid, I, 'retired'> in
+    [ !SrcSk(k), !PinPQ(I, pkq), In(<'q', sid, I>) ]
+  --[ StateIs(I, 'retired'), Respond(sid, I, 'retired') ]-> [ Out(<rb, sign(rb, k)>) ]
+rule Exp_Fresh_None:
+    let rb = <'resp', sid, I, 'none'> in
+    [ FQ(V, sid, I), !SrcPin(pks), In(<rb, rs>) ]
+  --[ Eq(verify(rs, rb, pks), true) ]-> [ Exp(V, sid, I, 'none') ]
+rule Exp_Fresh_Req:
+    let rb = <'resp', sid, I, e> in
+    [ FQ(V, sid, I), !SrcPin(pks), In(<rb, rs>) ]
+  --[ Eq(verify(rs, rb, pks), true), NotEq(e, 'none'), SeenPQReq(V, I) ]-> [ Exp(V, sid, I, e) ]
+#endif
+
+#ifdef LAZY
+/* ilk temas: beklenti öğrenilmemişken kaynağa bakmadan 'none' ile ilerler */
+rule Exp_Lazy:
+    [ VS(V, sid, I) ] --[ NoExpYet(V, I, sid) ]-> [ Exp(V, sid, I, 'none') ]
+#endif
+
+#ifdef OBJ
+rule Source_Publish_None:
+    let ob = <'exp', I, 'none'> in
+    [ !SrcSk(k), !PinCl(I, pkc) ] --[ StateIs(I, 'none') ]-> [ Out(<ob, sign(ob, k)>) ]
+rule Source_Publish_PQ:
+    let ob = <'exp', I, 'pq_required'> in
+    [ !SrcSk(k), !PinPQ(I, pkq) ] --[ StateIs(I, 'pq_required') ]-> [ Out(<ob, sign(ob, k)>) ]
+rule Source_Publish_Retired:
+    let ob = <'exp', I, 'retired'> in
+    [ !SrcSk(k), !PinPQ(I, pkq) ] --[ StateIs(I, 'retired') ]-> [ Out(<ob, sign(ob, k)>) ]
+rule Exp_Obj_None:
+    let ob = <'exp', I, 'none'> in
+    [ VS(V, sid, I), !SrcPin(pks), In(<ob, os>) ]
+  --[ Eq(verify(os, ob, pks), true) ]-> [ Exp(V, sid, I, 'none') ]
+rule Exp_Obj_Req:
+    let ob = <'exp', I, e> in
+    [ VS(V, sid, I), !SrcPin(pks), In(<ob, os>) ]
+  --[ Eq(verify(os, ob, pks), true), NotEq(e, 'none'), SeenPQReq(V, I) ]-> [ Exp(V, sid, I, e) ]
+#endif
+
+#ifdef UNAUTH
+rule Announce_None:
+    [ !PinCl(I, pkc) ] --[ StateIs(I, 'none') ]-> [ Out(<'exp_u', I, 'none'>) ]
+rule Announce_PQ:
+    [ !PinPQ(I, pkq) ] --[ StateIs(I, 'pq_required') ]-> [ Out(<'exp_u', I, 'pq_required'>) ]
+rule Announce_Retired:
+    [ !PinPQ(I, pkq) ] --[ StateIs(I, 'retired') ]-> [ Out(<'exp_u', I, 'retired'>) ]
+rule Exp_Unauth_None:
+    [ VS(V, sid, I), In(<'exp_u', I, 'none'>) ] --> [ Exp(V, sid, I, 'none') ]
+rule Exp_Unauth_Req:
+    [ VS(V, sid, I), In(<'exp_u', I, e>) ]
+  --[ NotEq(e, 'none'), SeenPQReq(V, I) ]-> [ Exp(V, sid, I, e) ]
+#endif
+
+#ifdef GLOBAL
+rule Source_Publish_Global:
+    let gb = <'exp_global', 'none'> in
+    [ !SrcSk(k) ] --[ Unique('global') ]-> [ Out(<gb, sign(gb, k)>) ]
+rule Exp_Global:
+    let gb = <'exp_global', 'none'> in
+    [ VS(V, sid, I), !SrcPin(pks), In(<gb, gs>) ]
+  --[ Eq(verify(gs, gb, pks), true) ]-> [ Exp(V, sid, I, 'none') ]
+#endif
+
+#ifdef SELF | CRIT
+/* üçüncü taraf yok: oturum 'none' ile açılır */
+rule Exp_Hdr_None:
+    [ VS(V, sid, I) ] --> [ Exp(V, sid, I, 'none') ]
+#endif
+
+#ifdef SELF
+/* TOFU: ihraççının geçerli PQ kimlik bilgisini gören doğrulayıcı 'pq_required'ı hatırlar */
+rule Learn_Self:
+    let crb = <'cred', I, c> in
+    [ !PinPQ(I, pkq), In(<crb, s>) ]
+  --[ Eq(verify(s, crb, pkq), true), SeenPQReq($V, I) ]-> [ !SelfLearned($V, I) ]
+rule Exp_Self_Req:
+    [ VS(V, sid, I), !SelfLearned(V, I) ] --> [ Exp(V, sid, I, 'pq_required') ]
+#endif
+
+#ifdef CRIT
+/* işaret PQ kimlik bilgisinin başlığında görülür; doğrulayıcı durumsuzdur (bellek yok) */
+rule Learn_Crit:
+    let crb = <'cred', I, c> in
+    [ !PinPQ(I, pkq), In(<crb, s>) ]
+  --[ Eq(verify(s, crb, pkq), true), SeenPQReq($V, I) ]-> [ ]
+#endif
+
+#ifdef WRPRC
+rule Wrprc_Issue_None:
+    let wb = <'wrprc', I, 'none'> in
+    [ !SrcSk(k), !PinCl(I, pkc) ] --[ StateIs(I, 'none') ]-> [ Out(<wb, sign(wb, k)>) ]
+rule Wrprc_Issue_PQ:
+    let wb = <'wrprc', I, 'pq_required'> in
+    [ !SrcSk(k), !PinPQ(I, pkq) ] --[ StateIs(I, 'pq_required') ]-> [ Out(<wb, sign(wb, k)>) ]
+rule Wrprc_Issue_Retired:
+    let wb = <'wrprc', I, 'retired'> in
+    [ !SrcSk(k), !PinPQ(I, pkq) ] --[ StateIs(I, 'retired') ]-> [ Out(<wb, sign(wb, k)>) ]
+#endif
+
+#ifdef WRPRC & WRPRC_FAZ1
+rule Exp_Wrprc_None:
+    let wb = <'wrprc', I, 'none'> in
+    [ VS(V, sid, I), !SrcPin(pks), In(<wb, ws>) ]
+  --[ Eq(verify(ws, wb, pks), true) ]-> [ Exp(V, sid, I, 'none') ]
+rule Exp_Wrprc_Req:
+    let wb = <'wrprc', I, e> in
+    [ VS(V, sid, I), !SrcPin(pks), In(<wb, ws>) ]
+  --[ Eq(verify(ws, wb, pks), true), NotEq(e, 'none'), SeenPQReq(V, I) ]-> [ Exp(V, sid, I, e) ]
+#endif
+
+#ifdef WRPRC & not WRPRC_FAZ1
+/* faz0: cüzdan kayıt sertifikasının imzasını doğrulamaz (T254) */
+rule Exp_Wrprc_None:
+    [ VS(V, sid, I), In(<<'wrprc', I, 'none'>, ws>) ] --> [ Exp(V, sid, I, 'none') ]
+rule Exp_Wrprc_Req:
+    [ VS(V, sid, I), In(<<'wrprc', I, e>, ws>) ]
+  --[ NotEq(e, 'none'), SeenPQReq(V, I) ]-> [ Exp(V, sid, I, e) ]
+#endif
+
+#ifdef FED
+/* TA (PQ; anahtarı bant dışı sabitli, OIDFED §4) tek ara varlığı imzalar; ara varlık alt bildirimleri imzalar */
+rule Fed_Setup:
+    let ib = <'fed_int', 'FEDINT', pk(~kn)> in
+    [ Fr(~kta), Fr(~kn) ]
+  --[ Unique('fed') ]->
+    [ !TAPin(pk(~kta)), !FedIntSk(~kn), Out(pk(~kta)), Out(pk(~kn)), Out(<ib, sign(ib, ~kta)>) ]
+#endif
+
+#ifdef FED & FED_STALE
+/* trust_chain başlığında aktarılan ya da önbellekteki alt bildirim: sorguya bağlı değil,
+   geçerlilik süresi içinde yeniden oynatılabilir (OBJ ile aynı kanal sınıfı) */
+rule Fed_Publish_None:
+    let sb = <'fed_stmt', I, 'none'> in
+    [ !FedIntSk(k), !PinCl(I, pkc) ] --[ StateIs(I, 'none') ]-> [ Out(<sb, sign(sb, k)>) ]
+rule Fed_Publish_PQ:
+    let sb = <'fed_stmt', I, 'pq_required'> in
+    [ !FedIntSk(k), !PinPQ(I, pkq) ] --[ StateIs(I, 'pq_required') ]-> [ Out(<sb, sign(sb, k)>) ]
+rule Fed_Publish_Retired:
+    let sb = <'fed_stmt', I, 'retired'> in
+    [ !FedIntSk(k), !PinPQ(I, pkq) ] --[ StateIs(I, 'retired') ]-> [ Out(<sb, sign(sb, k)>) ]
+rule Exp_Fed_None:
+    let ib = <'fed_int', N, pkn>
+        sb = <'fed_stmt', I, 'none'>
+    in
+    [ VS(V, sid, I), !TAPin(pkta), In(<ib, s1>), In(<sb, s2>) ]
+  --[ Eq(verify(s1, ib, pkta), true), Eq(verify(s2, sb, pkn), true) ]-> [ Exp(V, sid, I, 'none') ]
+rule Exp_Fed_Req:
+    let ib = <'fed_int', N, pkn>
+        sb = <'fed_stmt', I, e>
+    in
+    [ VS(V, sid, I), !TAPin(pkta), In(<ib, s1>), In(<sb, s2>) ]
+  --[ Eq(verify(s1, ib, pkta), true), Eq(verify(s2, sb, pkn), true),
+      NotEq(e, 'none'), SeenPQReq(V, I) ]-> [ Exp(V, sid, I, e) ]
+#endif
+
+#ifdef FED & not FED_STALE
+/* çekilen, anlık çözümleme (fetch/resolve); tazelik koşulu: yanıt sorguya bağlı ve kullanım anına dek güncel */
+rule Fed_Query:
+    [ VS(V, sid, I) ] --> [ FQ(V, sid, I), Out(<'q', sid, I>) ]
+rule Fed_Respond_None:
+    let sb = <'fed_stmt', sid, I, 'none'> in
+    [ !FedIntSk(k), !PinCl(I, pkc), In(<'q', sid, I>) ]
+  --[ StateIs(I, 'none'), Respond(sid, I, 'none') ]-> [ Out(<sb, sign(sb, k)>) ]
+rule Fed_Respond_PQ:
+    let sb = <'fed_stmt', sid, I, 'pq_required'> in
+    [ !FedIntSk(k), !PinPQ(I, pkq), In(<'q', sid, I>) ]
+  --[ StateIs(I, 'pq_required'), Respond(sid, I, 'pq_required') ]-> [ Out(<sb, sign(sb, k)>) ]
+rule Fed_Respond_Retired:
+    let sb = <'fed_stmt', sid, I, 'retired'> in
+    [ !FedIntSk(k), !PinPQ(I, pkq), In(<'q', sid, I>) ]
+  --[ StateIs(I, 'retired'), Respond(sid, I, 'retired') ]-> [ Out(<sb, sign(sb, k)>) ]
+rule Exp_Fed_None:
+    let ib = <'fed_int', N, pkn>
+        sb = <'fed_stmt', sid, I, 'none'>
+    in
+    [ FQ(V, sid, I), !TAPin(pkta), In(<ib, s1>), In(<sb, s2>) ]
+  --[ Eq(verify(s1, ib, pkta), true), Eq(verify(s2, sb, pkn), true) ]-> [ Exp(V, sid, I, 'none') ]
+rule Exp_Fed_Req:
+    let ib = <'fed_int', N, pkn>
+        sb = <'fed_stmt', sid, I, e>
+    in
+    [ FQ(V, sid, I), !TAPin(pkta), In(<ib, s1>), In(<sb, s2>) ]
+  --[ Eq(verify(s1, ib, pkta), true), Eq(verify(s2, sb, pkn), true),
+      NotEq(e, 'none'), SeenPQReq(V, I) ]-> [ Exp(V, sid, I, e) ]
+#endif
+
+/* ===================== kabul: derinlik 1 (çıpa → iss_cert → cred) ===================== */
+
+rule Acc1_Classical:
+    let isb = <'iss_cert', I, pkI, 'cl'>
+        crb = <'cred', I, c>
+    in
+    [ Exp(V, sid, I, 'none'), !Anchor(A, pkA, aA), In(<isb, s2>), In(<crb, s3>) ]
+  --[ Eq(verify(s2, isb, pkA), true), Eq(verify(s3, crb, pkI), true),
+      ExpUse(sid), UseNone(V, I), UseClKey(I), Accept(V, I, c), AcceptClassical(V, I, c) ]->
+    [ ]
+
+rule Acc1_PQ_NoExp:
+    let isb = <'iss_cert', I, pkI, 'pq'>
+        crb = <'cred', I, c>
+    in
+    [ Exp(V, sid, I, 'none'), !Anchor(A, pkA, aA), In(<isb, s2>), In(<crb, s3>) ]
+  --[ Eq(verify(s2, isb, pkA), true), Eq(verify(s3, crb, pkI), true),
+      ExpUse(sid), UseNone(V, I), Accept(V, I, c), AcceptPQ(V, I, c), EdgeAlg(V, I, c, aA) ]->
+    [ ]
+
+#ifdef SCOPE_PATH
+rule Acc1_PQ_Exp:
+    let isb = <'iss_cert', I, pkI, 'pq'>
+        crb = <'cred', I, c>
+    in
+    [ Exp(V, sid, I, e), !Anchor(A, pkA, 'pq'), In(<isb, s2>), In(<crb, s3>) ]
+  --[ NotEq(e, 'none'), Eq(verify(s2, isb, pkA), true), Eq(verify(s3, crb, pkI), true),
+      ExpUse(sid), Accept(V, I, c), AcceptPQ(V, I, c), EdgeAlg(V, I, c, 'pq') ]->
+    [ ]
+#endif
+
+#ifdef SCOPE_KEY
+rule Acc1_PQ_Exp:
+    let isb = <'iss_cert', I, pkI, 'pq'>
+        crb = <'cred', I, c>
+    in
+    [ Exp(V, sid, I, e), !Anchor(A, pkA, aA), !PinPQ(I, pkI), In(<isb, s2>), In(<crb, s3>) ]
+  --[ NotEq(e, 'none'), Eq(verify(s2, isb, pkA), true), Eq(verify(s3, crb, pkI), true),
+      ExpUse(sid), Accept(V, I, c), AcceptPQ(V, I, c), EdgeAlg(V, I, c, aA) ]->
+    [ ]
+#endif
+
+#ifdef SCOPE_LEAF
+rule Acc1_PQ_Exp:
+    let isb = <'iss_cert', I, pkI, 'pq'>
+        crb = <'cred', I, c>
+    in
+    [ Exp(V, sid, I, e), !Anchor(A, pkA, aA), In(<isb, s2>), In(<crb, s3>) ]
+  --[ NotEq(e, 'none'), Eq(verify(s2, isb, pkA), true), Eq(verify(s3, crb, pkI), true),
+      ExpUse(sid), Accept(V, I, c), AcceptPQ(V, I, c), EdgeAlg(V, I, c, aA) ]->
+    [ ]
+#endif
+
+/* ===================== kabul: derinlik 2 (çıpa → int_cert → iss_cert → cred) ===================== */
+
+rule Acc2_Classical:
+    let inb = <'int_cert', N, pkN, aN>
+        isb = <'iss_cert', I, pkI, 'cl'>
+        crb = <'cred', I, c>
+    in
+    [ Exp(V, sid, I, 'none'), !Anchor(A, pkA, aA), In(<inb, s1>), In(<isb, s2>), In(<crb, s3>) ]
+  --[ Eq(verify(s1, inb, pkA), true), Eq(verify(s2, isb, pkN), true), Eq(verify(s3, crb, pkI), true),
+      ExpUse(sid), UseNone(V, I), UseClKey(I), Accept(V, I, c), AcceptClassical(V, I, c) ]->
+    [ ]
+
+rule Acc2_PQ_NoExp:
+    let inb = <'int_cert', N, pkN, aN>
+        isb = <'iss_cert', I, pkI, 'pq'>
+        crb = <'cred', I, c>
+    in
+    [ Exp(V, sid, I, 'none'), !Anchor(A, pkA, aA), In(<inb, s1>), In(<isb, s2>), In(<crb, s3>) ]
+  --[ Eq(verify(s1, inb, pkA), true), Eq(verify(s2, isb, pkN), true), Eq(verify(s3, crb, pkI), true),
+      ExpUse(sid), UseNone(V, I), Accept(V, I, c), AcceptPQ(V, I, c),
+      EdgeAlg(V, I, c, aA), EdgeAlg(V, I, c, aN) ]->
+    [ ]
+
+#ifdef SCOPE_PATH
+rule Acc2_PQ_Exp:
+    let inb = <'int_cert', N, pkN, 'pq'>
+        isb = <'iss_cert', I, pkI, 'pq'>
+        crb = <'cred', I, c>
+    in
+    [ Exp(V, sid, I, e), !Anchor(A, pkA, 'pq'), In(<inb, s1>), In(<isb, s2>), In(<crb, s3>) ]
+  --[ NotEq(e, 'none'), Eq(verify(s1, inb, pkA), true), Eq(verify(s2, isb, pkN), true),
+      Eq(verify(s3, crb, pkI), true),
+      ExpUse(sid), Accept(V, I, c), AcceptPQ(V, I, c), EdgeAlg(V, I, c, 'pq') ]->
+    [ ]
+#endif
+
+#ifdef SCOPE_KEY
+rule Acc2_PQ_Exp:
+    let inb = <'int_cert', N, pkN, aN>
+        isb = <'iss_cert', I, pkI, 'pq'>
+        crb = <'cred', I, c>
+    in
+    [ Exp(V, sid, I, e), !Anchor(A, pkA, aA), !PinPQ(I, pkI), In(<inb, s1>), In(<isb, s2>), In(<crb, s3>) ]
+  --[ NotEq(e, 'none'), Eq(verify(s1, inb, pkA), true), Eq(verify(s2, isb, pkN), true),
+      Eq(verify(s3, crb, pkI), true),
+      ExpUse(sid), Accept(V, I, c), AcceptPQ(V, I, c), EdgeAlg(V, I, c, aA), EdgeAlg(V, I, c, aN) ]->
+    [ ]
+#endif
+
+#ifdef SCOPE_LEAF
+rule Acc2_PQ_Exp:
+    let inb = <'int_cert', N, pkN, aN>
+        isb = <'iss_cert', I, pkI, 'pq'>
+        crb = <'cred', I, c>
+    in
+    [ Exp(V, sid, I, e), !Anchor(A, pkA, aA), In(<inb, s1>), In(<isb, s2>), In(<crb, s3>) ]
+  --[ NotEq(e, 'none'), Eq(verify(s1, inb, pkA), true), Eq(verify(s2, isb, pkN), true),
+      Eq(verify(s3, crb, pkI), true),
+      ExpUse(sid), Accept(V, I, c), AcceptPQ(V, I, c), EdgeAlg(V, I, c, aA), EdgeAlg(V, I, c, aN) ]->
+    [ ]
+#endif
+
+/* ================= sağlık lemmaları (H0) ================= */
+
+lemma executable:
+  exists-trace
+  "Ex V I c #m #j. Migrate(I) @ #m & AcceptPQ(V, I, c) @ #j & #m < #j"
+
+lemma executable_legacy:
+  exists-trace
+  "Ex V L c #l #j. Legacy(L) @ #l & AcceptClassical(V, L, c) @ #j"
+
+lemma executable_pre_migration:
+  exists-trace
+  "Ex V I c #s #j. MigratingIssuer(I) @ #s & AcceptClassical(V, I, c) @ #j
+                 & not (Ex #m. Migrate(I) @ #m)"
+
+lemma executable_lifecycle:
+  exists-trace
+  "Ex V I c #m #s #j. Migrate(I) @ #m & Sunset(I) @ #s & AcceptPQ(V, I, c) @ #j & #s < #j"
+
+lemma executable_learn:
+  exists-trace
+  "Ex V I #k. SeenPQReq(V, I) @ #k"
+
+lemma attack_needs_crqc:
+  "All V I c #m #j. Migrate(I) @ #m & Accept(V, I, c) @ #j & #m < #j ==>
+      (Ex #i. Issued(I, c) @ #i & #i < #j) | (Ex k #b. Broken(k) @ #b & #b < #j)"
+
+/* ================= güvenlik ================= */
+
+/* G1: göçten sonra kabul edilen kimlik bilgisi ihraç edilmiş olmalı */
+lemma G1_claims_unforgeability:
+  "All V I c #m #j. Migrate(I) @ #m & Accept(V, I, c) @ #j & #m < #j ==>
+      (Ex #i. Issued(I, c) @ #i & #i < #j)"
+
+/* G5'in yol sınıfı biçimleri (kabul ölçütü 2: "sertifika yolu dahil"):
+   PQ yaprakla kabul edilen kimlik bilgisinin yolunda klasik kenar olmaz */
+lemma G5_path_untimed:
+  "All V I c #b #j. BornMigrated(I) @ #b & AcceptPQ(V, I, c) @ #j & EdgeAlg(V, I, c, 'cl') @ #j ==> F"
+
+lemma G5_path_migrated:
+  "All V I c #m #j. Migrate(I) @ #m & AcceptPQ(V, I, c) @ #j & EdgeAlg(V, I, c, 'cl') @ #j
+      & #m < #j ==> F"
+
+lemma G5_path_timed:
+  "All V I c #s #j. Sunset(I) @ #s & AcceptPQ(V, I, c) @ #j & EdgeAlg(V, I, c, 'cl') @ #j
+      & #s < #j ==> F"
+
+lemma no_rollback_path:
+  "All V I c #k #j. SeenPQReq(V, I) @ #k & AcceptPQ(V, I, c) @ #j & EdgeAlg(V, I, c, 'cl') @ #j
+      & #k < #j ==> F"
+
+/* ================= atıf (mutasyon) lemmaları ================= */
+
+lemma M_downgrade_s1:
+  exists-trace
+  "Ex V I c #m #j. Migrate(I) @ #m & AcceptClassical(V, I, c) @ #j & #m < #j
+                 & not (Ex #q. QdayEv() @ #q)"
+
+lemma M_forgery_crqc:
+  exists-trace
+  "Ex V I c k #m #j #b. Migrate(I) @ #m & Accept(V, I, c) @ #j & #m < #j
+                      & Broken(k) @ #b & not (Ex #i. Issued(I, c) @ #i)"
+
+/* 3b: sahte kimlik bilgisi, klasik kenarlı bir yoldan PQ yaprakla kabul (kapsam atlatması) */
+lemma M_weak_path_forgery:
+  exists-trace
+  "Ex V I c k #m #j #b. Migrate(I) @ #m & AcceptPQ(V, I, c) @ #j & EdgeAlg(V, I, c, 'cl') @ #j
+                      & #m < #j & Broken(k) @ #b & not (Ex #i. Issued(I, c) @ #i)"
+
+end

@@ -1,0 +1,6 @@
+{
+  "dist.integrity": "sha512-WW2GNe6CH8oOyxCsNnUOfFNCFErZvjCwf5oBcUd/xfrZh14VzAh9OXKHsENnnz0T9p9RvIb8Pz81xQa1tT3iog==",
+  "dist.tarball": "https://registry.npmjs.org/@credo-ts/openid4vc/-/openid4vc-0.7.1.tgz",
+  "repository.url": "git+https://github.com/openwallet-foundation/credo-ts.git",
+  "license": "Apache-2.0"
+}

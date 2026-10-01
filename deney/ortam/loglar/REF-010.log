@@ -1,0 +1,181 @@
+# hedef=REF-010 imaj=pq-a09-env-python:1.0 (sha256:94dbdfc9282786cc2304d9bc08f951c078d22fb18e03c5055745d627e9fa3b9c) baslangic=2026-09-25T12:41:01Z zaman_asimi=1500s
+# komut: docker run --rm --name pq-a09-ortam-ref-010 --label pq.agir=derleme --memory=6g --memory-swap=6g -v hedefler/REF-010:/w -v betikler/konteyner:/b:ro pq-a09-env-python:1.0 bash /w/kur.sh
+HEAD=18c7d1f3c8497e0bc35797d26f3417ce96afeee9
+== poetry check --lock
+Warning: [tool.poetry.name] is deprecated. Use [project.name] instead.
+Warning: [tool.poetry.version] is set but 'version' is not in [project.dynamic]. If it is static use [project.version]. If it is dynamic, add 'version' to [project.dynamic].
+If you want to set the version dynamically via `poetry build --local-version` or you are using a plugin, which sets the version dynamically, you should define the version in [tool.poetry] and add 'version' to [project.dynamic].
+Warning: [tool.poetry.description] is deprecated. Use [project.description] instead.
+Warning: [tool.poetry.readme] is set but 'readme' is not in [project.dynamic]. If it is static use [project.readme]. If it is dynamic, add 'readme' to [project.dynamic].
+If you want to define multiple readmes, you should define them in [tool.poetry] and add 'readme' to [project.dynamic].
+Warning: [tool.poetry.authors] is deprecated. Use [project.authors] instead.
+Warning: [tool.poetry.extras] is deprecated. Use [project.optional-dependencies] instead.
+== poetry install (extras: aca-py sd_jwt_vc; dev/integration grupları hariç)
+Creating virtualenv oid4vc in /tmp/src/oid4vc/.venv
+Installing dependencies from lock file
+
+Package operations: 89 installs, 0 updates, 0 removals
+
+  - Installing acapy-agent (1.7.0)
+  - Installing aiohappyeyeballs (2.6.1)
+  - Installing aiohttp (3.14.3)
+  - Installing aiohttp-apispec-acapy (3.0.3)
+  - Installing aiohttp-cors (0.7.0)
+  - Installing aiosignal (1.4.0)
+  - Installing annotated-types (0.7.0)
+  - Installing anoncreds (0.2.3)
+  - Installing aries-askar (0.5.0)
+  - Installing apispec (6.8.2)
+  - Installing asn1crypto (1.5.1)
+  - Installing attrs (25.3.0)
+  - Installing base58 (2.1.1)
+  - Installing bases (0.3.0)
+  - Installing bitarray (3.6.1)
+  - Installing cachetools (6.1.0)
+  - Installing canonicaljson (2.0.0)
+  - Installing certifi (2025.8.3)
+  - Installing cffi (2.1.1)
+  - Installing charset-normalizer (3.4.3)
+  - Installing configargparse (1.7.7)
+  - Installing cryptography (43.0.3)
+  - Installing cytoolz (1.0.1)
+  - Installing deepmerge (2.0)
+  - Installing did-peer-2 (0.1.2)
+  - Installing did-peer-4 (0.1.4)
+  - Installing did-webvh (1.0.1)
+  - Installing eth-hash (0.7.1)
+  - Installing eth-typing (5.2.1)
+  - Installing eth-utils (5.3.0)
+  - Installing filelock (3.20.3)
+  - Installing frozendict (2.4.6)
+  - Installing frozenlist (1.7.0)
+  - Installing idna (3.16)
+  - Installing indy-credx (1.1.1)
+  - Installing indy-vdr (0.4.2)
+  - Installing inflection (0.5.1)
+  - Installing jinja2 (3.1.6)
+  - Installing jsoncanon (0.2.3)
+  - Installing jsonpath (0.82.2)
+  - Installing jsonpath-ng (1.8.0)
+  - Installing jsonpointer (3.0.0)
+  - Installing jsonschema (4.23.0)
+  - Installing jsonschema-specifications (2025.4.1)
+  - Installing jwcrypto (1.5.7)
+  - Installing lxml (6.1.0)
+  - Installing markdown (3.10.3)
+  - Installing markupsafe (3.0.2)
+  - Installing marshmallow (3.26.2)
+  - Installing multidict (6.6.4)
+  - Installing multiformats (0.3.1.post4)
+  - Installing multiformats-config (0.3.1)
+  - Installing nest-asyncio (1.6.0)
+  - Installing packaging (25.0)
+  - Installing pillow (12.3.0)
+  - Installing portalocker (3.2.0)
+  - Installing prompt-toolkit (3.0.53)
+  - Installing propcache (0.3.2)
+  - Installing psycopg (3.2.12)
+  - Installing psycopg-binary (3.2.12)
+  - Installing psycopg-pool (3.2.7)
+  - Installing pycparser (2.22)
+  - Installing pydantic (2.13.5)
+  - Installing pydantic-core (2.46.5)
+  - Installing pydid (0.5.2)
+  - Installing pyjwt (2.13.0)
+  - Installing pyld (2.0.4)
+  - Installing pynacl (1.6.2)
+  - Installing python-dateutil (2.9.0.post0)
+  - Installing python-json-logger (3.3.0)
+  - Installing pyyaml (6.0.2)
+  - Installing qrcode (8.2)
+  - Installing referencing (0.36.2)
+  - Installing requests (2.34.2)
+  - Installing rlp (4.1.0)
+  - Installing rpds-py (0.27.0)
+  - Installing sd-jwt (0.10.4)
+  - Installing six (1.17.0)
+  - Installing toolz (1.0.0)
+  - Installing typing-extensions (4.16.0)
+  - Installing typing-inspection (0.4.2)
+  - Installing typing-validation (1.2.12)
+  - Installing unflatten (0.2.0)
+  - Installing urllib3 (2.7.0)
+  - Installing uuid-utils (0.11.0)
+  - Installing wcwidth (0.2.13)
+  - Installing webargs (8.7.0)
+  - Installing yarl (1.20.1)
+  - Installing oscrypto (1.3.0 1547f53)
+/tmp/tmp4zqh7y08/.venv/lib/python3.13/site-packages/setuptools/dist.py:765: BuildBackendWarning: License classifiers are deprecated.
+!!
+
+        ********************************************************************************
+        Please consider removing the following classifiers in favor of a SPDX license expression:
+
+        License :: OSI Approved :: MIT License
+
+        See https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#license for details.
+        ********************************************************************************
+
+!!
+  self._finalize_license_expression()
+/tmp/tmp4zqh7y08/.venv/lib/python3.13/site-packages/setuptools/dist.py:765: BuildBackendWarning: License classifiers are deprecated.
+!!
+
+        ********************************************************************************
+        Please consider removing the following classifiers in favor of a SPDX license expression:
+
+        License :: OSI Approved :: MIT License
+
+        See https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#license for details.
+        ********************************************************************************
+
+!!
+  self._finalize_license_expression()
+/tmp/tmp0os2_zcd/.venv/lib/python3.13/site-packages/setuptools/_distutils/dist.py:318: BuildBackendWarning: Unknown distribution option: 'tests_require'
+  warnings.warn(msg)
+/tmp/tmp0os2_zcd/.venv/lib/python3.13/site-packages/setuptools/_distutils/dist.py:318: BuildBackendWarning: Unknown distribution option: 'test_suite'
+  warnings.warn(msg)
+/tmp/tmp0os2_zcd/.venv/lib/python3.13/site-packages/setuptools/dist.py:765: BuildBackendWarning: License classifiers are deprecated.
+!!
+
+        ********************************************************************************
+        Please consider removing the following classifiers in favor of a SPDX license expression:
+
+        License :: OSI Approved :: MIT License
+
+        See https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#license for details.
+        ********************************************************************************
+
+!!
+  self._finalize_license_expression()
+/tmp/tmp0os2_zcd/.venv/lib/python3.13/site-packages/setuptools/_distutils/dist.py:318: BuildBackendWarning: Unknown distribution option: 'tests_require'
+  warnings.warn(msg)
+/tmp/tmp0os2_zcd/.venv/lib/python3.13/site-packages/setuptools/_distutils/dist.py:318: BuildBackendWarning: Unknown distribution option: 'test_suite'
+  warnings.warn(msg)
+/tmp/tmp0os2_zcd/.venv/lib/python3.13/site-packages/setuptools/dist.py:765: BuildBackendWarning: License classifiers are deprecated.
+!!
+
+        ********************************************************************************
+        Please consider removing the following classifiers in favor of a SPDX license expression:
+
+        License :: OSI Approved :: MIT License
+
+        See https://packaging.python.org/en/latest/guides/writing-pyproject-toml/#license for details.
+        ********************************************************************************
+
+!!
+  self._finalize_license_expression()
+
+Installing the current project: oid4vc (0.1.0)
+ORTAM acapy-agent 1.7.0; cryptography 43.0.3; gömülü OpenSSL 3.3.2 3 Sep 2024; mldsa_modulu=yok
+== içe aktarma kontrolü (imza doğrulama YOK)
+modul acapy_agent yuklendi
+modul oid4vc yuklendi
+modul oid4vc.public_routes yuklendi
+modul sd_jwt_vc yuklendi
+modul jwt_vc_json yuklendi
+surum acapy-agent 1.7.0
+surum aries-askar 0.5.0
+surum cryptography 43.0.3
+== SONUC: basarili
+# cikis_kodu=0 sure_s=68 bitis=2026-09-25T12:42:09Z

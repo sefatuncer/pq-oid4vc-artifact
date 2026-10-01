@@ -1,0 +1,10 @@
+# hedef=COSE-014 imaj=pq-a09-env-node:1.0 (sha256:e2650858bc9c0b6bfd491eb6d27f91c0a80cb8ea718c0d7f06e3e957b984f3be) baslangic=2026-09-25T12:35:46Z zaman_asimi=900s
+# komut: docker run --rm --name pq-a09-ortam-cose-014 --label pq.agir=derleme --memory=6g --memory-swap=6g -v hedefler/COSE-014:/w -v betikler/konteyner:/b:ro pq-a09-env-node:1.0 bash /w/kur.sh
+== npm install cose-js@0.9.0 (ignore-scripts=true)
+
+added 19 packages in 2s
+== içe aktarma kontrolü (imza doğrulama YOK)
+modul=cose-js yuklendi; anahtarlar=common,encrypt,mac,sign
+sembol sign.verify function
+== SONUC: basarili
+# cikis_kodu=0 sure_s=4 bitis=2026-09-25T12:35:49Z

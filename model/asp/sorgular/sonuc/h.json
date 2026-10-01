@@ -1,0 +1,5761 @@
+{
+ "ozet": {
+  "duvar_s": 0.44,
+  "en_uzun": {
+   "id": "h|R6_reuse_gecici_yavas",
+   "s": 0.0478
+  },
+  "grup": "h",
+  "sat": 89,
+  "sorgu": 115,
+  "toplam_asgari_kume": 249,
+  "toplam_ground_solve_s": 3.22,
+  "unsat": 26
+ },
+ "sorgular": [
+  {
+   "bilgi": {
+    "ground_s": 0.0404,
+    "n": 1,
+    "solve_s": 0.0006,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f1",
+    "politika": "p0",
+    "tau": 2100000000
+   },
+   "etiket": {
+    "ad": "H0_tau_sonsuz_tum_f1_p0"
+   },
+   "grup": "h",
+   "hedefler": [
+    "tum"
+   ],
+   "id": "h|H0_tau_sonsuz_tum_f1_p0",
+   "kumeler": [
+    []
+   ],
+   "min_pq": 0,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0312,
+    "n": 1,
+    "solve_s": 0.0003,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f1",
+    "politika": "p0",
+    "saldirgan": "s1"
+   },
+   "etiket": {
+    "ad": "H0_S1_f1_p0_tum"
+   },
+   "grup": "h",
+   "hedefler": [
+    "tum"
+   ],
+   "id": "h|H0_S1_f1_p0_tum",
+   "kumeler": [
+    []
+   ],
+   "min_pq": 0,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0258,
+    "n": 1,
+    "solve_s": 0.0002,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f2",
+    "politika": "p0",
+    "saldirgan": "s1"
+   },
+   "etiket": {
+    "ad": "H0_S1_f2_p0_tum"
+   },
+   "grup": "h",
+   "hedefler": [
+    "tum"
+   ],
+   "id": "h|H0_S1_f2_p0_tum",
+   "kumeler": [
+    []
+   ],
+   "min_pq": 0,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.028,
+    "n": 1,
+    "solve_s": 0.0002,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f3",
+    "politika": "p0",
+    "saldirgan": "s1"
+   },
+   "etiket": {
+    "ad": "H0_S1_f3_p0_tum"
+   },
+   "grup": "h",
+   "hedefler": [
+    "tum"
+   ],
+   "id": "h|H0_S1_f3_p0_tum",
+   "kumeler": [
+    []
+   ],
+   "min_pq": 0,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0381,
+    "n": 0,
+    "solve_s": 0.0004,
+    "sonuc": "UNSAT"
+   },
+   "degisen": {
+    "faz": "f1",
+    "politika": "p0"
+   },
+   "etiket": {
+    "ad": "H3_g1g5_f1_p0_S2"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1",
+    "g5"
+   ],
+   "id": "h|H3_g1g5_f1_p0_S2",
+   "kumeler": [],
+   "min_pq": null,
+   "n": 0
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0319,
+    "n": 0,
+    "n_anahtar": 28,
+    "n_senaryo": 28,
+    "solve_s": 0.0001,
+    "sonuc": "UNSAT"
+   },
+   "degisen": {
+    "faz": "f1",
+    "k_sinir": "k1",
+    "politika": "p0"
+   },
+   "etiket": {
+    "ad": "H3_g1g5_f1_p0_k1"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1",
+    "g5"
+   ],
+   "id": "h|H3_g1g5_f1_p0_k1",
+   "kumeler": [],
+   "min_pq": null,
+   "n": 0
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0257,
+    "n": 1,
+    "solve_s": 0.0003,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f1",
+    "politika": "p0",
+    "saldirgan": "s1"
+   },
+   "etiket": {
+    "ad": "H3_g1g5_f1_p0_S1"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1",
+    "g5"
+   ],
+   "id": "h|H3_g1g5_f1_p0_S1",
+   "kumeler": [
+    []
+   ],
+   "min_pq": 0,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0302,
+    "n": 0,
+    "solve_s": 0.0001,
+    "sonuc": "UNSAT"
+   },
+   "degisen": {
+    "faz": "f2",
+    "politika": "p0"
+   },
+   "etiket": {
+    "ad": "H3_g1g5_f2_p0_S2"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1",
+    "g5"
+   ],
+   "id": "h|H3_g1g5_f2_p0_S2",
+   "kumeler": [],
+   "min_pq": null,
+   "n": 0
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0303,
+    "n": 0,
+    "n_anahtar": 20,
+    "n_senaryo": 20,
+    "solve_s": 0.0001,
+    "sonuc": "UNSAT"
+   },
+   "degisen": {
+    "faz": "f2",
+    "k_sinir": "k1",
+    "politika": "p0"
+   },
+   "etiket": {
+    "ad": "H3_g1g5_f2_p0_k1"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1",
+    "g5"
+   ],
+   "id": "h|H3_g1g5_f2_p0_k1",
+   "kumeler": [],
+   "min_pq": null,
+   "n": 0
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.026,
+    "n": 1,
+    "solve_s": 0.0014,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f2",
+    "politika": "p0",
+    "saldirgan": "s1"
+   },
+   "etiket": {
+    "ad": "H3_g1g5_f2_p0_S1"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1",
+    "g5"
+   ],
+   "id": "h|H3_g1g5_f2_p0_S1",
+   "kumeler": [
+    []
+   ],
+   "min_pq": 0,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0268,
+    "n": 1,
+    "solve_s": 0.0008,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f3",
+    "politika": "p0"
+   },
+   "etiket": {
+    "ad": "H3_g1g5_f3_p0_S2"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1",
+    "g5"
+   ],
+   "id": "h|H3_g1g5_f3_p0_S2",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)"
+    ]
+   ],
+   "min_pq": 5,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0319,
+    "n": 1,
+    "n_anahtar": 14,
+    "n_senaryo": 14,
+    "solve_s": 0.0003,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f3",
+    "k_sinir": "k1",
+    "politika": "p0"
+   },
+   "etiket": {
+    "ad": "H3_g1g5_f3_p0_k1"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1",
+    "g5"
+   ],
+   "id": "h|H3_g1g5_f3_p0_k1",
+   "kumeler": [
+    [
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)"
+    ]
+   ],
+   "min_pq": 3,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0378,
+    "n": 1,
+    "solve_s": 0.0011,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f3",
+    "politika": "p0",
+    "saldirgan": "s1"
+   },
+   "etiket": {
+    "ad": "H3_g1g5_f3_p0_S1"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1",
+    "g5"
+   ],
+   "id": "h|H3_g1g5_f3_p0_S1",
+   "kumeler": [
+    []
+   ],
+   "min_pq": 0,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0226,
+    "n": 0,
+    "solve_s": 0.0001,
+    "sonuc": "UNSAT"
+   },
+   "degisen": {
+    "faz": "f1",
+    "politika": "p1"
+   },
+   "etiket": {
+    "ad": "H3_g1g5_f1_p1_S2"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1",
+    "g5"
+   ],
+   "id": "h|H3_g1g5_f1_p1_S2",
+   "kumeler": [],
+   "min_pq": null,
+   "n": 0
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0286,
+    "n": 0,
+    "n_anahtar": 28,
+    "n_senaryo": 28,
+    "solve_s": 0.0002,
+    "sonuc": "UNSAT"
+   },
+   "degisen": {
+    "faz": "f1",
+    "k_sinir": "k1",
+    "politika": "p1"
+   },
+   "etiket": {
+    "ad": "H3_g1g5_f1_p1_k1"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1",
+    "g5"
+   ],
+   "id": "h|H3_g1g5_f1_p1_k1",
+   "kumeler": [],
+   "min_pq": null,
+   "n": 0
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0244,
+    "n": 1,
+    "solve_s": 0.0002,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f1",
+    "politika": "p1",
+    "saldirgan": "s1"
+   },
+   "etiket": {
+    "ad": "H3_g1g5_f1_p1_S1"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1",
+    "g5"
+   ],
+   "id": "h|H3_g1g5_f1_p1_S1",
+   "kumeler": [
+    []
+   ],
+   "min_pq": 0,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0374,
+    "n": 0,
+    "solve_s": 0.0004,
+    "sonuc": "UNSAT"
+   },
+   "degisen": {
+    "faz": "f2",
+    "politika": "p1"
+   },
+   "etiket": {
+    "ad": "H3_g1g5_f2_p1_S2"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1",
+    "g5"
+   ],
+   "id": "h|H3_g1g5_f2_p1_S2",
+   "kumeler": [],
+   "min_pq": null,
+   "n": 0
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0296,
+    "n": 0,
+    "n_anahtar": 20,
+    "n_senaryo": 20,
+    "solve_s": 0.0001,
+    "sonuc": "UNSAT"
+   },
+   "degisen": {
+    "faz": "f2",
+    "k_sinir": "k1",
+    "politika": "p1"
+   },
+   "etiket": {
+    "ad": "H3_g1g5_f2_p1_k1"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1",
+    "g5"
+   ],
+   "id": "h|H3_g1g5_f2_p1_k1",
+   "kumeler": [],
+   "min_pq": null,
+   "n": 0
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0238,
+    "n": 1,
+    "solve_s": 0.0006,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f2",
+    "politika": "p1",
+    "saldirgan": "s1"
+   },
+   "etiket": {
+    "ad": "H3_g1g5_f2_p1_S1"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1",
+    "g5"
+   ],
+   "id": "h|H3_g1g5_f2_p1_S1",
+   "kumeler": [
+    []
+   ],
+   "min_pq": 0,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0215,
+    "n": 1,
+    "solve_s": 0.0004,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f3",
+    "politika": "p1"
+   },
+   "etiket": {
+    "ad": "H3_g1g5_f3_p1_S2"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1",
+    "g5"
+   ],
+   "id": "h|H3_g1g5_f3_p1_S2",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)"
+    ]
+   ],
+   "min_pq": 5,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0296,
+    "n": 1,
+    "n_anahtar": 14,
+    "n_senaryo": 14,
+    "solve_s": 0.0004,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f3",
+    "k_sinir": "k1",
+    "politika": "p1"
+   },
+   "etiket": {
+    "ad": "H3_g1g5_f3_p1_k1"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1",
+    "g5"
+   ],
+   "id": "h|H3_g1g5_f3_p1_k1",
+   "kumeler": [
+    [
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)"
+    ]
+   ],
+   "min_pq": 3,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0251,
+    "n": 1,
+    "solve_s": 0.0004,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f3",
+    "politika": "p1",
+    "saldirgan": "s1"
+   },
+   "etiket": {
+    "ad": "H3_g1g5_f3_p1_S1"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1",
+    "g5"
+   ],
+   "id": "h|H3_g1g5_f3_p1_S1",
+   "kumeler": [
+    []
+   ],
+   "min_pq": 0,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0245,
+    "n": 0,
+    "solve_s": 0.0001,
+    "sonuc": "UNSAT"
+   },
+   "degisen": {
+    "faz": "f1",
+    "politika": "p2"
+   },
+   "etiket": {
+    "ad": "H3_g1g5_f1_p2_S2"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1",
+    "g5"
+   ],
+   "id": "h|H3_g1g5_f1_p2_S2",
+   "kumeler": [],
+   "min_pq": null,
+   "n": 0
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0317,
+    "n": 0,
+    "n_anahtar": 28,
+    "n_senaryo": 28,
+    "solve_s": 0.0001,
+    "sonuc": "UNSAT"
+   },
+   "degisen": {
+    "faz": "f1",
+    "k_sinir": "k1",
+    "politika": "p2"
+   },
+   "etiket": {
+    "ad": "H3_g1g5_f1_p2_k1"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1",
+    "g5"
+   ],
+   "id": "h|H3_g1g5_f1_p2_k1",
+   "kumeler": [],
+   "min_pq": null,
+   "n": 0
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0359,
+    "n": 1,
+    "solve_s": 0.001,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f1",
+    "politika": "p2",
+    "saldirgan": "s1"
+   },
+   "etiket": {
+    "ad": "H3_g1g5_f1_p2_S1"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1",
+    "g5"
+   ],
+   "id": "h|H3_g1g5_f1_p2_S1",
+   "kumeler": [
+    []
+   ],
+   "min_pq": 0,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0252,
+    "n": 0,
+    "solve_s": 0.0001,
+    "sonuc": "UNSAT"
+   },
+   "degisen": {
+    "faz": "f2",
+    "politika": "p2"
+   },
+   "etiket": {
+    "ad": "H3_g1g5_f2_p2_S2"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1",
+    "g5"
+   ],
+   "id": "h|H3_g1g5_f2_p2_S2",
+   "kumeler": [],
+   "min_pq": null,
+   "n": 0
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0263,
+    "n": 0,
+    "n_anahtar": 20,
+    "n_senaryo": 20,
+    "solve_s": 0.0001,
+    "sonuc": "UNSAT"
+   },
+   "degisen": {
+    "faz": "f2",
+    "k_sinir": "k1",
+    "politika": "p2"
+   },
+   "etiket": {
+    "ad": "H3_g1g5_f2_p2_k1"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1",
+    "g5"
+   ],
+   "id": "h|H3_g1g5_f2_p2_k1",
+   "kumeler": [],
+   "min_pq": null,
+   "n": 0
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0237,
+    "n": 1,
+    "solve_s": 0.0002,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f2",
+    "politika": "p2",
+    "saldirgan": "s1"
+   },
+   "etiket": {
+    "ad": "H3_g1g5_f2_p2_S1"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1",
+    "g5"
+   ],
+   "id": "h|H3_g1g5_f2_p2_S1",
+   "kumeler": [
+    []
+   ],
+   "min_pq": 0,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0357,
+    "n": 1,
+    "solve_s": 0.0014,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f3",
+    "politika": "p2"
+   },
+   "etiket": {
+    "ad": "H3_g1g5_f3_p2_S2"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1",
+    "g5"
+   ],
+   "id": "h|H3_g1g5_f3_p2_S2",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)"
+    ]
+   ],
+   "min_pq": 5,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0261,
+    "n": 1,
+    "n_anahtar": 14,
+    "n_senaryo": 14,
+    "solve_s": 0.0004,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f3",
+    "k_sinir": "k1",
+    "politika": "p2"
+   },
+   "etiket": {
+    "ad": "H3_g1g5_f3_p2_k1"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1",
+    "g5"
+   ],
+   "id": "h|H3_g1g5_f3_p2_k1",
+   "kumeler": [
+    [
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)"
+    ]
+   ],
+   "min_pq": 3,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0252,
+    "n": 1,
+    "solve_s": 0.0002,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f3",
+    "politika": "p2",
+    "saldirgan": "s1"
+   },
+   "etiket": {
+    "ad": "H3_g1g5_f3_p2_S1"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1",
+    "g5"
+   ],
+   "id": "h|H3_g1g5_f3_p2_S1",
+   "kumeler": [
+    []
+   ],
+   "min_pq": 0,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0233,
+    "n": 0,
+    "solve_s": 0.0001,
+    "sonuc": "UNSAT"
+   },
+   "degisen": {
+    "faz": "f1",
+    "politika": "p3"
+   },
+   "etiket": {
+    "ad": "H3_g1g5_f1_p3_S2"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1",
+    "g5"
+   ],
+   "id": "h|H3_g1g5_f1_p3_S2",
+   "kumeler": [],
+   "min_pq": null,
+   "n": 0
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0271,
+    "n": 0,
+    "n_anahtar": 29,
+    "n_senaryo": 29,
+    "solve_s": 0.0001,
+    "sonuc": "UNSAT"
+   },
+   "degisen": {
+    "faz": "f1",
+    "k_sinir": "k1",
+    "politika": "p3"
+   },
+   "etiket": {
+    "ad": "H3_g1g5_f1_p3_k1"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1",
+    "g5"
+   ],
+   "id": "h|H3_g1g5_f1_p3_k1",
+   "kumeler": [],
+   "min_pq": null,
+   "n": 0
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0312,
+    "n": 1,
+    "solve_s": 0.0004,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f1",
+    "politika": "p3",
+    "saldirgan": "s1"
+   },
+   "etiket": {
+    "ad": "H3_g1g5_f1_p3_S1"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1",
+    "g5"
+   ],
+   "id": "h|H3_g1g5_f1_p3_S1",
+   "kumeler": [
+    []
+   ],
+   "min_pq": 0,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0261,
+    "n": 0,
+    "solve_s": 0.0001,
+    "sonuc": "UNSAT"
+   },
+   "degisen": {
+    "faz": "f2",
+    "politika": "p3"
+   },
+   "etiket": {
+    "ad": "H3_g1g5_f2_p3_S2"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1",
+    "g5"
+   ],
+   "id": "h|H3_g1g5_f2_p3_S2",
+   "kumeler": [],
+   "min_pq": null,
+   "n": 0
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0274,
+    "n": 0,
+    "n_anahtar": 21,
+    "n_senaryo": 21,
+    "solve_s": 0.0001,
+    "sonuc": "UNSAT"
+   },
+   "degisen": {
+    "faz": "f2",
+    "k_sinir": "k1",
+    "politika": "p3"
+   },
+   "etiket": {
+    "ad": "H3_g1g5_f2_p3_k1"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1",
+    "g5"
+   ],
+   "id": "h|H3_g1g5_f2_p3_k1",
+   "kumeler": [],
+   "min_pq": null,
+   "n": 0
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0363,
+    "n": 1,
+    "solve_s": 0.0006,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f2",
+    "politika": "p3",
+    "saldirgan": "s1"
+   },
+   "etiket": {
+    "ad": "H3_g1g5_f2_p3_S1"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1",
+    "g5"
+   ],
+   "id": "h|H3_g1g5_f2_p3_S1",
+   "kumeler": [
+    []
+   ],
+   "min_pq": 0,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0238,
+    "n": 1,
+    "solve_s": 0.0006,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f3",
+    "politika": "p3"
+   },
+   "etiket": {
+    "ad": "H3_g1g5_f3_p3_S2"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1",
+    "g5"
+   ],
+   "id": "h|H3_g1g5_f3_p3_S2",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)"
+    ]
+   ],
+   "min_pq": 5,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0261,
+    "n": 1,
+    "n_anahtar": 15,
+    "n_senaryo": 15,
+    "solve_s": 0.0007,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f3",
+    "k_sinir": "k1",
+    "politika": "p3"
+   },
+   "etiket": {
+    "ad": "H3_g1g5_f3_p3_k1"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1",
+    "g5"
+   ],
+   "id": "h|H3_g1g5_f3_p3_k1",
+   "kumeler": [
+    [
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)"
+    ]
+   ],
+   "min_pq": 3,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0244,
+    "n": 1,
+    "solve_s": 0.0002,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f3",
+    "politika": "p3",
+    "saldirgan": "s1"
+   },
+   "etiket": {
+    "ad": "H3_g1g5_f3_p3_S1"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1",
+    "g5"
+   ],
+   "id": "h|H3_g1g5_f3_p3_S1",
+   "kumeler": [
+    []
+   ],
+   "min_pq": 0,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0299,
+    "n": 2,
+    "solve_s": 0.0006,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f1",
+    "politika": "p4"
+   },
+   "etiket": {
+    "ad": "H3_g1g5_f1_p4_S2"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1",
+    "g5"
+   ],
+   "id": "h|H3_g1g5_f1_p4_S2",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a00_ojeu,a02_lote_erisim)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a02_lote_pid,a05_meta)",
+     "tasi(a05_meta,a07_kimlik)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a00_ojeu,a02_lote_erisim)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a02_lote_pid,a07_kimlik)"
+    ]
+   ],
+   "min_pq": 5,
+   "n": 2
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.033,
+    "n": 2,
+    "n_anahtar": 28,
+    "n_senaryo": 28,
+    "solve_s": 0.001,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f1",
+    "k_sinir": "k1",
+    "politika": "p4"
+   },
+   "etiket": {
+    "ad": "H3_g1g5_f1_p4_k1"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1",
+    "g5"
+   ],
+   "id": "h|H3_g1g5_f1_p4_k1",
+   "kumeler": [
+    [
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a02_lote_pid,a05_meta)",
+     "tasi(a05_meta,a07_kimlik)"
+    ],
+    [
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a02_lote_pid,a07_kimlik)"
+    ]
+   ],
+   "min_pq": 3,
+   "n": 2
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0332,
+    "n": 1,
+    "solve_s": 0.0003,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f1",
+    "politika": "p4",
+    "saldirgan": "s1"
+   },
+   "etiket": {
+    "ad": "H3_g1g5_f1_p4_S1"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1",
+    "g5"
+   ],
+   "id": "h|H3_g1g5_f1_p4_S1",
+   "kumeler": [
+    []
+   ],
+   "min_pq": 0,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0247,
+    "n": 2,
+    "solve_s": 0.0004,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f2",
+    "politika": "p4"
+   },
+   "etiket": {
+    "ad": "H3_g1g5_f2_p4_S2"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1",
+    "g5"
+   ],
+   "id": "h|H3_g1g5_f2_p4_S2",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a02_lote_pid,a05_meta)",
+     "tasi(a05_meta,a07_kimlik)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a02_lote_pid,a07_kimlik)"
+    ]
+   ],
+   "min_pq": 5,
+   "n": 2
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0263,
+    "n": 2,
+    "n_anahtar": 20,
+    "n_senaryo": 20,
+    "solve_s": 0.0015,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f2",
+    "k_sinir": "k1",
+    "politika": "p4"
+   },
+   "etiket": {
+    "ad": "H3_g1g5_f2_p4_k1"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1",
+    "g5"
+   ],
+   "id": "h|H3_g1g5_f2_p4_k1",
+   "kumeler": [
+    [
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a02_lote_pid,a05_meta)",
+     "tasi(a05_meta,a07_kimlik)"
+    ],
+    [
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a02_lote_pid,a07_kimlik)"
+    ]
+   ],
+   "min_pq": 3,
+   "n": 2
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0228,
+    "n": 1,
+    "solve_s": 0.0004,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f2",
+    "politika": "p4",
+    "saldirgan": "s1"
+   },
+   "etiket": {
+    "ad": "H3_g1g5_f2_p4_S1"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1",
+    "g5"
+   ],
+   "id": "h|H3_g1g5_f2_p4_S1",
+   "kumeler": [
+    []
+   ],
+   "min_pq": 0,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0246,
+    "n": 1,
+    "solve_s": 0.0003,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f3",
+    "politika": "p4"
+   },
+   "etiket": {
+    "ad": "H3_g1g5_f3_p4_S2"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1",
+    "g5"
+   ],
+   "id": "h|H3_g1g5_f3_p4_S2",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)"
+    ]
+   ],
+   "min_pq": 5,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.038,
+    "n": 1,
+    "n_anahtar": 14,
+    "n_senaryo": 14,
+    "solve_s": 0.0005,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f3",
+    "k_sinir": "k1",
+    "politika": "p4"
+   },
+   "etiket": {
+    "ad": "H3_g1g5_f3_p4_k1"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1",
+    "g5"
+   ],
+   "id": "h|H3_g1g5_f3_p4_k1",
+   "kumeler": [
+    [
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)"
+    ]
+   ],
+   "min_pq": 3,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.026,
+    "n": 1,
+    "solve_s": 0.0003,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f3",
+    "politika": "p4",
+    "saldirgan": "s1"
+   },
+   "etiket": {
+    "ad": "H3_g1g5_f3_p4_S1"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1",
+    "g5"
+   ],
+   "id": "h|H3_g1g5_f3_p4_S1",
+   "kumeler": [
+    []
+   ],
+   "min_pq": 0,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0239,
+    "n": 0,
+    "solve_s": 0.0005,
+    "sonuc": "UNSAT"
+   },
+   "degisen": {
+    "faz": "f1",
+    "politika": "p4",
+    "wrprc_dogrulama": "faz0"
+   },
+   "etiket": {
+    "ad": "H3_g4_Mb0_faz0_f1_p4"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g4"
+   ],
+   "id": "h|H3_g4_Mb0_faz0_f1_p4",
+   "kumeler": [],
+   "min_pq": null,
+   "n": 0
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0246,
+    "n": 1,
+    "solve_s": 0.0004,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f1",
+    "politika": "p4",
+    "wrprc_dogrulama": "faz1"
+   },
+   "etiket": {
+    "ad": "H3_g4_Mb0_faz1_f1_p4"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g4"
+   ],
+   "id": "h|H3_g4_Mb0_faz1_f1_p4",
+   "kumeler": [
+    [
+     "pq(a02)",
+     "pq(a11)",
+     "pq(a12)",
+     "tasi(a00_ojeu,a02_lote_erisim)",
+     "tasi(a00_ojeu,a02_lote_kayit)",
+     "tasi(a02_lote_erisim,a11_erisim)",
+     "tasi(a02_lote_kayit,a11_kayit)",
+     "tasi(a11_kayit,a12_istek)"
+    ]
+   ],
+   "min_pq": 3,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0236,
+    "n": 0,
+    "solve_s": 0.0003,
+    "sonuc": "UNSAT"
+   },
+   "degisen": {
+    "faz": "f2",
+    "politika": "p4",
+    "wrprc_dogrulama": "faz0"
+   },
+   "etiket": {
+    "ad": "H3_g4_Mb0_faz0_f2_p4"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g4"
+   ],
+   "id": "h|H3_g4_Mb0_faz0_f2_p4",
+   "kumeler": [],
+   "min_pq": null,
+   "n": 0
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.026,
+    "n": 1,
+    "solve_s": 0.0004,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f2",
+    "politika": "p4",
+    "wrprc_dogrulama": "faz1"
+   },
+   "etiket": {
+    "ad": "H3_g4_Mb0_faz1_f2_p4"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g4"
+   ],
+   "id": "h|H3_g4_Mb0_faz1_f2_p4",
+   "kumeler": [
+    [
+     "pq(a02)",
+     "pq(a11)",
+     "pq(a12)",
+     "tasi(a02_lote_erisim,a11_erisim)",
+     "tasi(a02_lote_kayit,a11_kayit)",
+     "tasi(a11_kayit,a12_istek)"
+    ]
+   ],
+   "min_pq": 3,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0218,
+    "n": 0,
+    "solve_s": 0.0003,
+    "sonuc": "UNSAT"
+   },
+   "degisen": {
+    "faz": "f3",
+    "politika": "p4",
+    "wrprc_dogrulama": "faz0"
+   },
+   "etiket": {
+    "ad": "H3_g4_Mb0_faz0_f3_p4"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g4"
+   ],
+   "id": "h|H3_g4_Mb0_faz0_f3_p4",
+   "kumeler": [],
+   "min_pq": null,
+   "n": 0
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0251,
+    "n": 1,
+    "solve_s": 0.0005,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f3",
+    "politika": "p4",
+    "wrprc_dogrulama": "faz1"
+   },
+   "etiket": {
+    "ad": "H3_g4_Mb0_faz1_f3_p4"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g4"
+   ],
+   "id": "h|H3_g4_Mb0_faz1_f3_p4",
+   "kumeler": [
+    [
+     "pq(a02)",
+     "pq(a11)",
+     "pq(a12)",
+     "tasi(a11_kayit,a12_istek)"
+    ]
+   ],
+   "min_pq": 3,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0241,
+    "n": 1,
+    "solve_s": 0.0003,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f3",
+    "kimlik_gecerlilik": 86400,
+    "politika": "p0",
+    "tau": 600,
+    "tek_kullanim": "yok"
+   },
+   "etiket": {
+    "ad": "H5_yok_86400_hizli"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g2"
+   ],
+   "id": "h|H5_yok_86400_hizli",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "pq(a10)"
+    ]
+   ],
+   "min_pq": 6,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0245,
+    "n": 1,
+    "solve_s": 0.0003,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f3",
+    "kimlik_gecerlilik": 86400,
+    "politika": "p0",
+    "tau": 259200,
+    "tek_kullanim": "yok"
+   },
+   "etiket": {
+    "ad": "H5_yok_86400_orta"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g2"
+   ],
+   "id": "h|H5_yok_86400_orta",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)"
+    ]
+   ],
+   "min_pq": 5,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0218,
+    "n": 1,
+    "solve_s": 0.0003,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f3",
+    "kimlik_gecerlilik": 86400,
+    "politika": "p0",
+    "tau": 2246400,
+    "tek_kullanim": "yok"
+   },
+   "etiket": {
+    "ad": "H5_yok_86400_yavas"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g2"
+   ],
+   "id": "h|H5_yok_86400_yavas",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)"
+    ]
+   ],
+   "min_pq": 5,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0249,
+    "n": 1,
+    "solve_s": 0.0004,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f3",
+    "kimlik_gecerlilik": 2592000,
+    "politika": "p0",
+    "tau": 600,
+    "tek_kullanim": "yok"
+   },
+   "etiket": {
+    "ad": "H5_yok_2592000_hizli"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g2"
+   ],
+   "id": "h|H5_yok_2592000_hizli",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "pq(a10)"
+    ]
+   ],
+   "min_pq": 6,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0254,
+    "n": 1,
+    "solve_s": 0.0003,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f3",
+    "kimlik_gecerlilik": 2592000,
+    "politika": "p0",
+    "tau": 259200,
+    "tek_kullanim": "yok"
+   },
+   "etiket": {
+    "ad": "H5_yok_2592000_orta"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g2"
+   ],
+   "id": "h|H5_yok_2592000_orta",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "pq(a10)"
+    ]
+   ],
+   "min_pq": 6,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0254,
+    "n": 1,
+    "solve_s": 0.0003,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f3",
+    "kimlik_gecerlilik": 2592000,
+    "politika": "p0",
+    "tau": 2246400,
+    "tek_kullanim": "yok"
+   },
+   "etiket": {
+    "ad": "H5_yok_2592000_yavas"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g2"
+   ],
+   "id": "h|H5_yok_2592000_yavas",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "pq(a10)"
+    ]
+   ],
+   "min_pq": 6,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.031,
+    "n": 1,
+    "solve_s": 0.0003,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f3",
+    "kimlik_gecerlilik": 86400,
+    "politika": "p0",
+    "tau": 600,
+    "tek_kullanim": "cuzdan"
+   },
+   "etiket": {
+    "ad": "H5_cuzdan_86400_hizli"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g2"
+   ],
+   "id": "h|H5_cuzdan_86400_hizli",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "pq(a10)"
+    ]
+   ],
+   "min_pq": 6,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0284,
+    "n": 1,
+    "solve_s": 0.0003,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f3",
+    "kimlik_gecerlilik": 86400,
+    "politika": "p0",
+    "tau": 259200,
+    "tek_kullanim": "cuzdan"
+   },
+   "etiket": {
+    "ad": "H5_cuzdan_86400_orta"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g2"
+   ],
+   "id": "h|H5_cuzdan_86400_orta",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)"
+    ]
+   ],
+   "min_pq": 5,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.022,
+    "n": 1,
+    "solve_s": 0.0003,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f3",
+    "kimlik_gecerlilik": 86400,
+    "politika": "p0",
+    "tau": 2246400,
+    "tek_kullanim": "cuzdan"
+   },
+   "etiket": {
+    "ad": "H5_cuzdan_86400_yavas"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g2"
+   ],
+   "id": "h|H5_cuzdan_86400_yavas",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)"
+    ]
+   ],
+   "min_pq": 5,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0234,
+    "n": 1,
+    "solve_s": 0.0007,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f3",
+    "kimlik_gecerlilik": 2592000,
+    "politika": "p0",
+    "tau": 600,
+    "tek_kullanim": "cuzdan"
+   },
+   "etiket": {
+    "ad": "H5_cuzdan_2592000_hizli"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g2"
+   ],
+   "id": "h|H5_cuzdan_2592000_hizli",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "pq(a10)"
+    ]
+   ],
+   "min_pq": 6,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0251,
+    "n": 1,
+    "solve_s": 0.0003,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f3",
+    "kimlik_gecerlilik": 2592000,
+    "politika": "p0",
+    "tau": 259200,
+    "tek_kullanim": "cuzdan"
+   },
+   "etiket": {
+    "ad": "H5_cuzdan_2592000_orta"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g2"
+   ],
+   "id": "h|H5_cuzdan_2592000_orta",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "pq(a10)"
+    ]
+   ],
+   "min_pq": 6,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0259,
+    "n": 1,
+    "solve_s": 0.0003,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f3",
+    "kimlik_gecerlilik": 2592000,
+    "politika": "p0",
+    "tau": 2246400,
+    "tek_kullanim": "cuzdan"
+   },
+   "etiket": {
+    "ad": "H5_cuzdan_2592000_yavas"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g2"
+   ],
+   "id": "h|H5_cuzdan_2592000_yavas",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "pq(a10)"
+    ]
+   ],
+   "min_pq": 6,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0221,
+    "n": 1,
+    "solve_s": 0.0005,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f3",
+    "kimlik_gecerlilik": 86400,
+    "politika": "p0",
+    "tau": 600,
+    "tek_kullanim": "dogrulayici"
+   },
+   "etiket": {
+    "ad": "H5_dogrulayici_86400_hizli"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g2"
+   ],
+   "id": "h|H5_dogrulayici_86400_hizli",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "pq(a10)"
+    ]
+   ],
+   "min_pq": 6,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0218,
+    "n": 1,
+    "solve_s": 0.0003,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f3",
+    "kimlik_gecerlilik": 86400,
+    "politika": "p0",
+    "tau": 259200,
+    "tek_kullanim": "dogrulayici"
+   },
+   "etiket": {
+    "ad": "H5_dogrulayici_86400_orta"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g2"
+   ],
+   "id": "h|H5_dogrulayici_86400_orta",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)"
+    ]
+   ],
+   "min_pq": 5,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0232,
+    "n": 1,
+    "solve_s": 0.0003,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f3",
+    "kimlik_gecerlilik": 86400,
+    "politika": "p0",
+    "tau": 2246400,
+    "tek_kullanim": "dogrulayici"
+   },
+   "etiket": {
+    "ad": "H5_dogrulayici_86400_yavas"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g2"
+   ],
+   "id": "h|H5_dogrulayici_86400_yavas",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)"
+    ]
+   ],
+   "min_pq": 5,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.024,
+    "n": 1,
+    "solve_s": 0.0003,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f3",
+    "kimlik_gecerlilik": 2592000,
+    "politika": "p0",
+    "tau": 600,
+    "tek_kullanim": "dogrulayici"
+   },
+   "etiket": {
+    "ad": "H5_dogrulayici_2592000_hizli"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g2"
+   ],
+   "id": "h|H5_dogrulayici_2592000_hizli",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "pq(a10)"
+    ]
+   ],
+   "min_pq": 6,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0248,
+    "n": 1,
+    "solve_s": 0.0003,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f3",
+    "kimlik_gecerlilik": 2592000,
+    "politika": "p0",
+    "tau": 259200,
+    "tek_kullanim": "dogrulayici"
+   },
+   "etiket": {
+    "ad": "H5_dogrulayici_2592000_orta"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g2"
+   ],
+   "id": "h|H5_dogrulayici_2592000_orta",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "pq(a10)"
+    ]
+   ],
+   "min_pq": 6,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.025,
+    "n": 1,
+    "solve_s": 0.0003,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f3",
+    "kimlik_gecerlilik": 2592000,
+    "politika": "p0",
+    "tau": 2246400,
+    "tek_kullanim": "dogrulayici"
+   },
+   "etiket": {
+    "ad": "H5_dogrulayici_2592000_yavas"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g2"
+   ],
+   "id": "h|H5_dogrulayici_2592000_yavas",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "pq(a10)"
+    ]
+   ],
+   "min_pq": 6,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0244,
+    "n": 1,
+    "solve_s": 0.0003,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f3",
+    "kimlik_gecerlilik": 86400,
+    "politika": "p0",
+    "tau": 600,
+    "tek_kullanim": "kuresel_pasif"
+   },
+   "etiket": {
+    "ad": "H5_kuresel_pasif_86400_hizli"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g2"
+   ],
+   "id": "h|H5_kuresel_pasif_86400_hizli",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "pq(a10)"
+    ]
+   ],
+   "min_pq": 6,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0226,
+    "n": 1,
+    "solve_s": 0.0003,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f3",
+    "kimlik_gecerlilik": 86400,
+    "politika": "p0",
+    "tau": 259200,
+    "tek_kullanim": "kuresel_pasif"
+   },
+   "etiket": {
+    "ad": "H5_kuresel_pasif_86400_orta"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g2"
+   ],
+   "id": "h|H5_kuresel_pasif_86400_orta",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)"
+    ]
+   ],
+   "min_pq": 5,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0256,
+    "n": 1,
+    "solve_s": 0.0003,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f3",
+    "kimlik_gecerlilik": 86400,
+    "politika": "p0",
+    "tau": 2246400,
+    "tek_kullanim": "kuresel_pasif"
+   },
+   "etiket": {
+    "ad": "H5_kuresel_pasif_86400_yavas"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g2"
+   ],
+   "id": "h|H5_kuresel_pasif_86400_yavas",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)"
+    ]
+   ],
+   "min_pq": 5,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0233,
+    "n": 1,
+    "solve_s": 0.0003,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f3",
+    "kimlik_gecerlilik": 2592000,
+    "politika": "p0",
+    "tau": 600,
+    "tek_kullanim": "kuresel_pasif"
+   },
+   "etiket": {
+    "ad": "H5_kuresel_pasif_2592000_hizli"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g2"
+   ],
+   "id": "h|H5_kuresel_pasif_2592000_hizli",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "pq(a10)"
+    ]
+   ],
+   "min_pq": 6,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0247,
+    "n": 1,
+    "solve_s": 0.0005,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f3",
+    "kimlik_gecerlilik": 2592000,
+    "politika": "p0",
+    "tau": 259200,
+    "tek_kullanim": "kuresel_pasif"
+   },
+   "etiket": {
+    "ad": "H5_kuresel_pasif_2592000_orta"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g2"
+   ],
+   "id": "h|H5_kuresel_pasif_2592000_orta",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)"
+    ]
+   ],
+   "min_pq": 5,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.023,
+    "n": 1,
+    "solve_s": 0.0004,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f3",
+    "kimlik_gecerlilik": 2592000,
+    "politika": "p0",
+    "tau": 2246400,
+    "tek_kullanim": "kuresel_pasif"
+   },
+   "etiket": {
+    "ad": "H5_kuresel_pasif_2592000_yavas"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g2"
+   ],
+   "id": "h|H5_kuresel_pasif_2592000_yavas",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)"
+    ]
+   ],
+   "min_pq": 5,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0254,
+    "n": 1,
+    "solve_s": 0.0003,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "anahtar_yeniden_kullanim": "var",
+    "durum_anahtari": "gunluk",
+    "faz": "f3",
+    "politika": "p0",
+    "tau": 600
+   },
+   "etiket": {
+    "ad": "R6_reuse_gunluk_hizli"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g3"
+   ],
+   "id": "h|R6_reuse_gunluk_hizli",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a08)"
+    ]
+   ],
+   "min_pq": 5,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0245,
+    "n": 1,
+    "solve_s": 0.0003,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "anahtar_yeniden_kullanim": "var",
+    "faz": "f3",
+    "ihracci_anahtari": "gunluk",
+    "kimlik_gecerlilik": 86400,
+    "politika": "p0",
+    "tau": 600
+   },
+   "etiket": {
+    "ad": "R6_ihracci_reuse_gunluk_hizli"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1"
+   ],
+   "id": "h|R6_ihracci_reuse_gunluk_hizli",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)"
+    ]
+   ],
+   "min_pq": 5,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0308,
+    "n": 1,
+    "solve_s": 0.0011,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "anahtar_yeniden_kullanim": "var",
+    "durum_anahtari": "gunluk",
+    "faz": "f3",
+    "politika": "p0",
+    "tau": 259200
+   },
+   "etiket": {
+    "ad": "R6_reuse_gunluk_orta"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g3"
+   ],
+   "id": "h|R6_reuse_gunluk_orta",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a08)"
+    ]
+   ],
+   "min_pq": 5,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0284,
+    "n": 1,
+    "solve_s": 0.0006,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "anahtar_yeniden_kullanim": "var",
+    "faz": "f3",
+    "ihracci_anahtari": "gunluk",
+    "kimlik_gecerlilik": 86400,
+    "politika": "p0",
+    "tau": 259200
+   },
+   "etiket": {
+    "ad": "R6_ihracci_reuse_gunluk_orta"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1"
+   ],
+   "id": "h|R6_ihracci_reuse_gunluk_orta",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)"
+    ]
+   ],
+   "min_pq": 5,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0306,
+    "n": 1,
+    "solve_s": 0.0004,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "anahtar_yeniden_kullanim": "var",
+    "durum_anahtari": "gunluk",
+    "faz": "f3",
+    "politika": "p0",
+    "tau": 2246400
+   },
+   "etiket": {
+    "ad": "R6_reuse_gunluk_yavas"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g3"
+   ],
+   "id": "h|R6_reuse_gunluk_yavas",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a08)"
+    ]
+   ],
+   "min_pq": 5,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0231,
+    "n": 1,
+    "solve_s": 0.0003,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "anahtar_yeniden_kullanim": "var",
+    "faz": "f3",
+    "ihracci_anahtari": "gunluk",
+    "kimlik_gecerlilik": 86400,
+    "politika": "p0",
+    "tau": 2246400
+   },
+   "etiket": {
+    "ad": "R6_ihracci_reuse_gunluk_yavas"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1"
+   ],
+   "id": "h|R6_ihracci_reuse_gunluk_yavas",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)"
+    ]
+   ],
+   "min_pq": 5,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0349,
+    "n": 1,
+    "solve_s": 0.0003,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "anahtar_yeniden_kullanim": "var",
+    "durum_anahtari": "gecici",
+    "faz": "f3",
+    "politika": "p0",
+    "tau": 600
+   },
+   "etiket": {
+    "ad": "R6_reuse_gecici_hizli"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g3"
+   ],
+   "id": "h|R6_reuse_gecici_hizli",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a08)"
+    ]
+   ],
+   "min_pq": 5,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0261,
+    "n": 1,
+    "solve_s": 0.0004,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "anahtar_yeniden_kullanim": "var",
+    "faz": "f3",
+    "ihracci_anahtari": "gecici",
+    "kimlik_gecerlilik": 86400,
+    "politika": "p0",
+    "tau": 600
+   },
+   "etiket": {
+    "ad": "R6_ihracci_reuse_gecici_hizli"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1"
+   ],
+   "id": "h|R6_ihracci_reuse_gecici_hizli",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)"
+    ]
+   ],
+   "min_pq": 5,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0323,
+    "n": 1,
+    "solve_s": 0.0003,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "anahtar_yeniden_kullanim": "var",
+    "durum_anahtari": "gecici",
+    "faz": "f3",
+    "politika": "p0",
+    "tau": 259200
+   },
+   "etiket": {
+    "ad": "R6_reuse_gecici_orta"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g3"
+   ],
+   "id": "h|R6_reuse_gecici_orta",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a08)"
+    ]
+   ],
+   "min_pq": 5,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.025,
+    "n": 1,
+    "solve_s": 0.0004,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "anahtar_yeniden_kullanim": "var",
+    "faz": "f3",
+    "ihracci_anahtari": "gecici",
+    "kimlik_gecerlilik": 86400,
+    "politika": "p0",
+    "tau": 259200
+   },
+   "etiket": {
+    "ad": "R6_ihracci_reuse_gecici_orta"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1"
+   ],
+   "id": "h|R6_ihracci_reuse_gecici_orta",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)"
+    ]
+   ],
+   "min_pq": 5,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0475,
+    "n": 1,
+    "solve_s": 0.0003,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "anahtar_yeniden_kullanim": "var",
+    "durum_anahtari": "gecici",
+    "faz": "f3",
+    "politika": "p0",
+    "tau": 2246400
+   },
+   "etiket": {
+    "ad": "R6_reuse_gecici_yavas"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g3"
+   ],
+   "id": "h|R6_reuse_gecici_yavas",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a08)"
+    ]
+   ],
+   "min_pq": 5,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0253,
+    "n": 1,
+    "solve_s": 0.0004,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "anahtar_yeniden_kullanim": "var",
+    "faz": "f3",
+    "ihracci_anahtari": "gecici",
+    "kimlik_gecerlilik": 86400,
+    "politika": "p0",
+    "tau": 2246400
+   },
+   "etiket": {
+    "ad": "R6_ihracci_reuse_gecici_yavas"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1"
+   ],
+   "id": "h|R6_ihracci_reuse_gecici_yavas",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)"
+    ]
+   ],
+   "min_pq": 5,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0286,
+    "n": 0,
+    "solve_s": 0.0001,
+    "sonuc": "UNSAT"
+   },
+   "degisen": {
+    "ayni_ad_klasik_ca": "yok",
+    "ca_baglama": "yok",
+    "diger_ca": "var",
+    "faz": "f1",
+    "mekanizma_kancalari": "acik",
+    "politika": "p4"
+   },
+   "etiket": {
+    "ad": "MH_altCA_cab_yok_aa_yok_f1"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1"
+   ],
+   "id": "h|MH_altCA_cab_yok_aa_yok_f1",
+   "kumeler": [],
+   "min_pq": null,
+   "n": 0
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0254,
+    "n": 0,
+    "solve_s": 0.0001,
+    "sonuc": "UNSAT"
+   },
+   "degisen": {
+    "ayni_ad_klasik_ca": "yok",
+    "ca_baglama": "yok",
+    "diger_ca": "var",
+    "faz": "f2",
+    "mekanizma_kancalari": "acik",
+    "politika": "p4"
+   },
+   "etiket": {
+    "ad": "MH_altCA_cab_yok_aa_yok_f2"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1"
+   ],
+   "id": "h|MH_altCA_cab_yok_aa_yok_f2",
+   "kumeler": [],
+   "min_pq": null,
+   "n": 0
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0386,
+    "n": 0,
+    "solve_s": 0.0001,
+    "sonuc": "UNSAT"
+   },
+   "degisen": {
+    "ayni_ad_klasik_ca": "var",
+    "ca_baglama": "yok",
+    "diger_ca": "var",
+    "faz": "f1",
+    "mekanizma_kancalari": "acik",
+    "politika": "p4"
+   },
+   "etiket": {
+    "ad": "MH_altCA_cab_yok_aa_var_f1"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1"
+   ],
+   "id": "h|MH_altCA_cab_yok_aa_var_f1",
+   "kumeler": [],
+   "min_pq": null,
+   "n": 0
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0277,
+    "n": 0,
+    "solve_s": 0.0001,
+    "sonuc": "UNSAT"
+   },
+   "degisen": {
+    "ayni_ad_klasik_ca": "var",
+    "ca_baglama": "yok",
+    "diger_ca": "var",
+    "faz": "f2",
+    "mekanizma_kancalari": "acik",
+    "politika": "p4"
+   },
+   "etiket": {
+    "ad": "MH_altCA_cab_yok_aa_var_f2"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1"
+   ],
+   "id": "h|MH_altCA_cab_yok_aa_var_f2",
+   "kumeler": [],
+   "min_pq": null,
+   "n": 0
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0239,
+    "n": 3,
+    "solve_s": 0.0005,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "ayni_ad_klasik_ca": "yok",
+    "ca_baglama": "ad",
+    "diger_ca": "var",
+    "faz": "f1",
+    "mekanizma_kancalari": "acik",
+    "politika": "p4"
+   },
+   "etiket": {
+    "ad": "MH_altCA_cab_ad_aa_yok_f1"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1"
+   ],
+   "id": "h|MH_altCA_cab_ad_aa_yok_f1",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a02_lote_pid,a05_meta)",
+     "tasi(a05_meta,a07_kimlik)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a02_lote_pid,a07_kimlik)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a03_ca,a07_kimlik)"
+    ]
+   ],
+   "min_pq": 5,
+   "n": 3
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0253,
+    "n": 3,
+    "solve_s": 0.0005,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "ayni_ad_klasik_ca": "yok",
+    "ca_baglama": "ad",
+    "diger_ca": "var",
+    "faz": "f2",
+    "mekanizma_kancalari": "acik",
+    "politika": "p4"
+   },
+   "etiket": {
+    "ad": "MH_altCA_cab_ad_aa_yok_f2"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1"
+   ],
+   "id": "h|MH_altCA_cab_ad_aa_yok_f2",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a02_lote_pid,a05_meta)",
+     "tasi(a05_meta,a07_kimlik)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a02_lote_pid,a07_kimlik)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a03_ca,a07_kimlik)"
+    ]
+   ],
+   "min_pq": 5,
+   "n": 3
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0349,
+    "n": 0,
+    "solve_s": 0.0001,
+    "sonuc": "UNSAT"
+   },
+   "degisen": {
+    "ayni_ad_klasik_ca": "var",
+    "ca_baglama": "ad",
+    "diger_ca": "var",
+    "faz": "f1",
+    "mekanizma_kancalari": "acik",
+    "politika": "p4"
+   },
+   "etiket": {
+    "ad": "MH_altCA_cab_ad_aa_var_f1"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1"
+   ],
+   "id": "h|MH_altCA_cab_ad_aa_var_f1",
+   "kumeler": [],
+   "min_pq": null,
+   "n": 0
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0267,
+    "n": 0,
+    "solve_s": 0.0001,
+    "sonuc": "UNSAT"
+   },
+   "degisen": {
+    "ayni_ad_klasik_ca": "var",
+    "ca_baglama": "ad",
+    "diger_ca": "var",
+    "faz": "f2",
+    "mekanizma_kancalari": "acik",
+    "politika": "p4"
+   },
+   "etiket": {
+    "ad": "MH_altCA_cab_ad_aa_var_f2"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1"
+   ],
+   "id": "h|MH_altCA_cab_ad_aa_var_f2",
+   "kumeler": [],
+   "min_pq": null,
+   "n": 0
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0278,
+    "n": 3,
+    "solve_s": 0.0006,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "ayni_ad_klasik_ca": "yok",
+    "ca_baglama": "anahtar",
+    "diger_ca": "var",
+    "faz": "f1",
+    "mekanizma_kancalari": "acik",
+    "politika": "p4"
+   },
+   "etiket": {
+    "ad": "MH_altCA_cab_anahtar_aa_yok_f1"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1"
+   ],
+   "id": "h|MH_altCA_cab_anahtar_aa_yok_f1",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a02_lote_pid,a05_meta)",
+     "tasi(a05_meta,a07_kimlik)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a02_lote_pid,a07_kimlik)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a03_ca,a07_kimlik)"
+    ]
+   ],
+   "min_pq": 5,
+   "n": 3
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0282,
+    "n": 3,
+    "solve_s": 0.0005,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "ayni_ad_klasik_ca": "yok",
+    "ca_baglama": "anahtar",
+    "diger_ca": "var",
+    "faz": "f2",
+    "mekanizma_kancalari": "acik",
+    "politika": "p4"
+   },
+   "etiket": {
+    "ad": "MH_altCA_cab_anahtar_aa_yok_f2"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1"
+   ],
+   "id": "h|MH_altCA_cab_anahtar_aa_yok_f2",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a02_lote_pid,a05_meta)",
+     "tasi(a05_meta,a07_kimlik)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a02_lote_pid,a07_kimlik)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a03_ca,a07_kimlik)"
+    ]
+   ],
+   "min_pq": 5,
+   "n": 3
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0314,
+    "n": 3,
+    "solve_s": 0.0006,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "ayni_ad_klasik_ca": "var",
+    "ca_baglama": "anahtar",
+    "diger_ca": "var",
+    "faz": "f1",
+    "mekanizma_kancalari": "acik",
+    "politika": "p4"
+   },
+   "etiket": {
+    "ad": "MH_altCA_cab_anahtar_aa_var_f1"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1"
+   ],
+   "id": "h|MH_altCA_cab_anahtar_aa_var_f1",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a02_lote_pid,a05_meta)",
+     "tasi(a05_meta,a07_kimlik)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a02_lote_pid,a07_kimlik)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a03_ca,a07_kimlik)"
+    ]
+   ],
+   "min_pq": 5,
+   "n": 3
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0312,
+    "n": 3,
+    "solve_s": 0.0004,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "ayni_ad_klasik_ca": "var",
+    "ca_baglama": "anahtar",
+    "diger_ca": "var",
+    "faz": "f2",
+    "mekanizma_kancalari": "acik",
+    "politika": "p4"
+   },
+   "etiket": {
+    "ad": "MH_altCA_cab_anahtar_aa_var_f2"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1"
+   ],
+   "id": "h|MH_altCA_cab_anahtar_aa_var_f2",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a02_lote_pid,a05_meta)",
+     "tasi(a05_meta,a07_kimlik)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a02_lote_pid,a07_kimlik)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a03_ca,a07_kimlik)"
+    ]
+   ],
+   "min_pq": 5,
+   "n": 3
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0308,
+    "n": 4,
+    "solve_s": 0.0005,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "anahtar_cozumleme": "x5c_jvi",
+    "faz": "f1",
+    "mekanizma_kancalari": "acik",
+    "politika": "p4",
+    "webpki": "pq"
+   },
+   "etiket": {
+    "ad": "MH_jvi_webpkipq_f1"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1"
+   ],
+   "id": "h|MH_jvi_webpkipq_f1",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "pq(ejvi)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a02_lote_pid,a05_meta)",
+     "tasi(a02_lote_pid,e_jvi)",
+     "tasi(a05_meta,a07_kimlik)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "pq(ejvi)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a02_lote_pid,a07_kimlik)",
+     "tasi(a02_lote_pid,e_jvi)"
+    ],
+    [
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "pq(a13)",
+     "pq(ejvi)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a00_ojeu,a13_lotl_kanal)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a02_lote_pid,a05_meta)",
+     "tasi(a02_lote_pid,e_jvi)",
+     "tasi(a05_meta,a07_kimlik)"
+    ],
+    [
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "pq(a13)",
+     "pq(ejvi)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a00_ojeu,a13_lotl_kanal)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a02_lote_pid,a07_kimlik)",
+     "tasi(a02_lote_pid,e_jvi)"
+    ]
+   ],
+   "min_pq": 6,
+   "n": 4
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0373,
+    "n": 4,
+    "solve_s": 0.0007,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "anahtar_cozumleme": "x5c_jvi",
+    "faz": "f2",
+    "mekanizma_kancalari": "acik",
+    "politika": "p4",
+    "webpki": "pq"
+   },
+   "etiket": {
+    "ad": "MH_jvi_webpkipq_f2"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1"
+   ],
+   "id": "h|MH_jvi_webpkipq_f2",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "pq(ejvi)",
+     "tasi(a02_lote_pid,a05_meta)",
+     "tasi(a02_lote_pid,e_jvi)",
+     "tasi(a05_meta,a07_kimlik)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "pq(ejvi)",
+     "tasi(a02_lote_pid,a07_kimlik)",
+     "tasi(a02_lote_pid,e_jvi)"
+    ],
+    [
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "pq(a13)",
+     "tasi(a02_lote_pid,a07_kimlik)"
+    ],
+    [
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "pq(a13)",
+     "tasi(a05_meta,a07_kimlik)"
+    ]
+   ],
+   "min_pq": 4,
+   "n": 4
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0238,
+    "n": 5,
+    "solve_s": 0.0005,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f2",
+    "ilk_temas": "qday_oncesi",
+    "mekanizma_kancalari": "acik",
+    "politika": "p4"
+   },
+   "etiket": {
+    "ad": "MG_ilk_temas_qday_oncesi_f2_g1"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1"
+   ],
+   "id": "h|MG_ilk_temas_qday_oncesi_f2_g1",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a02_lote_pid,a05_meta)",
+     "tasi(a05_meta,a07_kimlik)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_g_oz,a05_meta)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a02_lote_pid,a07_kimlik)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a03_ca,a07_kimlik)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(m_g_oz,a07_kimlik)"
+    ]
+   ],
+   "min_pq": 5,
+   "n": 5
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0277,
+    "n": 1,
+    "solve_s": 0.0004,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f2",
+    "ilk_temas": "qday_oncesi",
+    "mekanizma_kancalari": "acik",
+    "politika": "p4"
+   },
+   "etiket": {
+    "ad": "MG_ilk_temas_qday_oncesi_f2_g4"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g4"
+   ],
+   "id": "h|MG_ilk_temas_qday_oncesi_f2_g4",
+   "kumeler": [
+    [
+     "pq(a02)",
+     "pq(a11)",
+     "pq(a12)",
+     "tasi(a02_lote_erisim,a11_erisim)",
+     "tasi(m_g_oz,a12_istek)"
+    ]
+   ],
+   "min_pq": 3,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0199,
+    "n": 3,
+    "solve_s": 0.0004,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f2",
+    "ilk_temas": "qday_sonrasi",
+    "mekanizma_kancalari": "acik",
+    "politika": "p4"
+   },
+   "etiket": {
+    "ad": "MG_ilk_temas_qday_sonrasi_f2_g1"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1"
+   ],
+   "id": "h|MG_ilk_temas_qday_sonrasi_f2_g1",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a02_lote_pid,a05_meta)",
+     "tasi(a05_meta,a07_kimlik)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a02_lote_pid,a07_kimlik)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a03_ca,a07_kimlik)"
+    ]
+   ],
+   "min_pq": 5,
+   "n": 3
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0371,
+    "n": 0,
+    "solve_s": 0.0002,
+    "sonuc": "UNSAT"
+   },
+   "degisen": {
+    "faz": "f2",
+    "ilk_temas": "qday_sonrasi",
+    "mekanizma_kancalari": "acik",
+    "politika": "p4"
+   },
+   "etiket": {
+    "ad": "MG_ilk_temas_qday_sonrasi_f2_g4"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g4"
+   ],
+   "id": "h|MG_ilk_temas_qday_sonrasi_f2_g4",
+   "kumeler": [],
+   "min_pq": null,
+   "n": 0
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0251,
+    "n": 128,
+    "solve_s": 0.0043,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f1",
+    "md_kanca": "acik",
+    "politika": "p4"
+   },
+   "etiket": {
+    "ad": "MD_g1_f1_p4"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1"
+   ],
+   "id": "h|MD_g1_f1_p4",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a02_lote_pid,a05_meta)",
+     "tasi(a05_meta,a07_kimlik)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a05_meta)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a05_meta)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a04_ihr)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a04_ihr)",
+     "tasi(m_d_cfg,a05_meta)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a02_lote_pid,a05_meta)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a03_ca)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a03_ca)",
+     "tasi(m_d_cfg,a05_meta)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a05_meta)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a03_ca)",
+     "tasi(m_d_cfg,a04_ihr)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a03_ca)",
+     "tasi(m_d_cfg,a04_ihr)",
+     "tasi(m_d_cfg,a05_meta)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a02_lote_pid,a05_meta)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a02_tl)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a02_tl)",
+     "tasi(m_d_cfg,a05_meta)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a05_meta)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a02_tl)",
+     "tasi(m_d_cfg,a04_ihr)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a02_tl)",
+     "tasi(m_d_cfg,a04_ihr)",
+     "tasi(m_d_cfg,a05_meta)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a02_lote_pid,a05_meta)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a02_tl)",
+     "tasi(m_d_cfg,a03_ca)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a02_tl)",
+     "tasi(m_d_cfg,a03_ca)",
+     "tasi(m_d_cfg,a05_meta)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a02_lote_pid,a05_meta)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a02_tl)",
+     "tasi(m_d_cfg,a03_ca)",
+     "tasi(m_d_cfg,a04_ihr)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a02_tl)",
+     "tasi(m_d_cfg,a03_ca)",
+     "tasi(m_d_cfg,a04_ihr)",
+     "tasi(m_d_cfg,a05_meta)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a02_lote_pid,a05_meta)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a02_lote_pid)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a05_meta)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a05_meta)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a04_ihr)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a04_ihr)",
+     "tasi(m_d_cfg,a05_meta)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a02_lote_pid,a05_meta)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a03_ca)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a03_ca)",
+     "tasi(m_d_cfg,a05_meta)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a05_meta)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a03_ca)",
+     "tasi(m_d_cfg,a04_ihr)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a03_ca)",
+     "tasi(m_d_cfg,a04_ihr)",
+     "tasi(m_d_cfg,a05_meta)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a02_lote_pid,a05_meta)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a02_tl)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a02_tl)",
+     "tasi(m_d_cfg,a05_meta)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a05_meta)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a02_tl)",
+     "tasi(m_d_cfg,a04_ihr)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a02_tl)",
+     "tasi(m_d_cfg,a04_ihr)",
+     "tasi(m_d_cfg,a05_meta)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a02_lote_pid,a05_meta)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a02_tl)",
+     "tasi(m_d_cfg,a03_ca)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a02_tl)",
+     "tasi(m_d_cfg,a03_ca)",
+     "tasi(m_d_cfg,a05_meta)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a02_lote_pid,a05_meta)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a02_tl)",
+     "tasi(m_d_cfg,a03_ca)",
+     "tasi(m_d_cfg,a04_ihr)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a02_tl)",
+     "tasi(m_d_cfg,a03_ca)",
+     "tasi(m_d_cfg,a04_ihr)",
+     "tasi(m_d_cfg,a05_meta)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a02_lote_pid,a05_meta)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a01_lotl)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a05_meta)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a05_meta)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a04_ihr)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a04_ihr)",
+     "tasi(m_d_cfg,a05_meta)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a02_lote_pid,a05_meta)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a03_ca)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a03_ca)",
+     "tasi(m_d_cfg,a05_meta)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a05_meta)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a03_ca)",
+     "tasi(m_d_cfg,a04_ihr)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a03_ca)",
+     "tasi(m_d_cfg,a04_ihr)",
+     "tasi(m_d_cfg,a05_meta)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a02_lote_pid,a05_meta)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a02_tl)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a02_tl)",
+     "tasi(m_d_cfg,a05_meta)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a05_meta)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a02_tl)",
+     "tasi(m_d_cfg,a04_ihr)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a02_tl)",
+     "tasi(m_d_cfg,a04_ihr)",
+     "tasi(m_d_cfg,a05_meta)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a02_lote_pid,a05_meta)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a02_tl)",
+     "tasi(m_d_cfg,a03_ca)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a02_tl)",
+     "tasi(m_d_cfg,a03_ca)",
+     "tasi(m_d_cfg,a05_meta)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a02_lote_pid,a05_meta)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a02_tl)",
+     "tasi(m_d_cfg,a03_ca)",
+     "tasi(m_d_cfg,a04_ihr)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a02_tl)",
+     "tasi(m_d_cfg,a03_ca)",
+     "tasi(m_d_cfg,a04_ihr)",
+     "tasi(m_d_cfg,a05_meta)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a02_lote_pid,a05_meta)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a02_lote_pid)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a05_meta)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a05_meta)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a04_ihr)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a04_ihr)",
+     "tasi(m_d_cfg,a05_meta)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a02_lote_pid,a05_meta)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a03_ca)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a03_ca)",
+     "tasi(m_d_cfg,a05_meta)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a05_meta)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a03_ca)",
+     "tasi(m_d_cfg,a04_ihr)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a03_ca)",
+     "tasi(m_d_cfg,a04_ihr)",
+     "tasi(m_d_cfg,a05_meta)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a02_lote_pid,a05_meta)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a02_tl)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a02_tl)",
+     "tasi(m_d_cfg,a05_meta)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a05_meta)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a02_tl)",
+     "tasi(m_d_cfg,a04_ihr)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a02_tl)",
+     "tasi(m_d_cfg,a04_ihr)",
+     "tasi(m_d_cfg,a05_meta)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a02_lote_pid,a05_meta)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a02_tl)",
+     "tasi(m_d_cfg,a03_ca)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a02_tl)",
+     "tasi(m_d_cfg,a03_ca)",
+     "tasi(m_d_cfg,a05_meta)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a02_lote_pid,a05_meta)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a02_tl)",
+     "tasi(m_d_cfg,a03_ca)",
+     "tasi(m_d_cfg,a04_ihr)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a02_tl)",
+     "tasi(m_d_cfg,a03_ca)",
+     "tasi(m_d_cfg,a04_ihr)",
+     "tasi(m_d_cfg,a05_meta)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a02_lote_pid,a07_kimlik)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(m_d_cfg,a07_kimlik)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a07_kimlik)",
+     "tasi(m_d_cfg,a04_ihr)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(m_d_cfg,a04_ihr)",
+     "tasi(m_d_cfg,a07_kimlik)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a02_lote_pid,a07_kimlik)",
+     "tasi(m_d_cfg,a03_ca)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(m_d_cfg,a03_ca)",
+     "tasi(m_d_cfg,a07_kimlik)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a07_kimlik)",
+     "tasi(m_d_cfg,a03_ca)",
+     "tasi(m_d_cfg,a04_ihr)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(m_d_cfg,a03_ca)",
+     "tasi(m_d_cfg,a04_ihr)",
+     "tasi(m_d_cfg,a07_kimlik)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a02_lote_pid,a07_kimlik)",
+     "tasi(m_d_cfg,a02_tl)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(m_d_cfg,a02_tl)",
+     "tasi(m_d_cfg,a07_kimlik)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a07_kimlik)",
+     "tasi(m_d_cfg,a02_tl)",
+     "tasi(m_d_cfg,a04_ihr)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(m_d_cfg,a02_tl)",
+     "tasi(m_d_cfg,a04_ihr)",
+     "tasi(m_d_cfg,a07_kimlik)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a02_lote_pid,a07_kimlik)",
+     "tasi(m_d_cfg,a02_tl)",
+     "tasi(m_d_cfg,a03_ca)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(m_d_cfg,a02_tl)",
+     "tasi(m_d_cfg,a03_ca)",
+     "tasi(m_d_cfg,a07_kimlik)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a02_lote_pid,a07_kimlik)",
+     "tasi(m_d_cfg,a02_tl)",
+     "tasi(m_d_cfg,a03_ca)",
+     "tasi(m_d_cfg,a04_ihr)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(m_d_cfg,a02_tl)",
+     "tasi(m_d_cfg,a03_ca)",
+     "tasi(m_d_cfg,a04_ihr)",
+     "tasi(m_d_cfg,a07_kimlik)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a02_lote_pid,a07_kimlik)",
+     "tasi(m_d_cfg,a02_lote_pid)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a07_kimlik)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a07_kimlik)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a04_ihr)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a04_ihr)",
+     "tasi(m_d_cfg,a07_kimlik)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a02_lote_pid,a07_kimlik)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a03_ca)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a03_ca)",
+     "tasi(m_d_cfg,a07_kimlik)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a07_kimlik)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a03_ca)",
+     "tasi(m_d_cfg,a04_ihr)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a03_ca)",
+     "tasi(m_d_cfg,a04_ihr)",
+     "tasi(m_d_cfg,a07_kimlik)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a02_lote_pid,a07_kimlik)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a02_tl)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a02_tl)",
+     "tasi(m_d_cfg,a07_kimlik)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a07_kimlik)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a02_tl)",
+     "tasi(m_d_cfg,a04_ihr)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a02_tl)",
+     "tasi(m_d_cfg,a04_ihr)",
+     "tasi(m_d_cfg,a07_kimlik)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a02_lote_pid,a07_kimlik)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a02_tl)",
+     "tasi(m_d_cfg,a03_ca)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a02_tl)",
+     "tasi(m_d_cfg,a03_ca)",
+     "tasi(m_d_cfg,a07_kimlik)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a02_lote_pid,a07_kimlik)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a02_tl)",
+     "tasi(m_d_cfg,a03_ca)",
+     "tasi(m_d_cfg,a04_ihr)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a02_tl)",
+     "tasi(m_d_cfg,a03_ca)",
+     "tasi(m_d_cfg,a04_ihr)",
+     "tasi(m_d_cfg,a07_kimlik)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a02_lote_pid,a07_kimlik)",
+     "tasi(m_d_cfg,a01_lotl)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a07_kimlik)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a07_kimlik)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a04_ihr)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a04_ihr)",
+     "tasi(m_d_cfg,a07_kimlik)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a02_lote_pid,a07_kimlik)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a03_ca)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a03_ca)",
+     "tasi(m_d_cfg,a07_kimlik)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a07_kimlik)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a03_ca)",
+     "tasi(m_d_cfg,a04_ihr)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a03_ca)",
+     "tasi(m_d_cfg,a04_ihr)",
+     "tasi(m_d_cfg,a07_kimlik)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a02_lote_pid,a07_kimlik)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a02_tl)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a02_tl)",
+     "tasi(m_d_cfg,a07_kimlik)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a07_kimlik)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a02_tl)",
+     "tasi(m_d_cfg,a04_ihr)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a02_tl)",
+     "tasi(m_d_cfg,a04_ihr)",
+     "tasi(m_d_cfg,a07_kimlik)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a02_lote_pid,a07_kimlik)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a02_tl)",
+     "tasi(m_d_cfg,a03_ca)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a02_tl)",
+     "tasi(m_d_cfg,a03_ca)",
+     "tasi(m_d_cfg,a07_kimlik)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a02_lote_pid,a07_kimlik)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a02_tl)",
+     "tasi(m_d_cfg,a03_ca)",
+     "tasi(m_d_cfg,a04_ihr)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a02_tl)",
+     "tasi(m_d_cfg,a03_ca)",
+     "tasi(m_d_cfg,a04_ihr)",
+     "tasi(m_d_cfg,a07_kimlik)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a02_lote_pid,a07_kimlik)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a02_lote_pid)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a07_kimlik)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a07_kimlik)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a04_ihr)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a04_ihr)",
+     "tasi(m_d_cfg,a07_kimlik)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a02_lote_pid,a07_kimlik)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a03_ca)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a03_ca)",
+     "tasi(m_d_cfg,a07_kimlik)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a07_kimlik)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a03_ca)",
+     "tasi(m_d_cfg,a04_ihr)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a03_ca)",
+     "tasi(m_d_cfg,a04_ihr)",
+     "tasi(m_d_cfg,a07_kimlik)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a02_lote_pid,a07_kimlik)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a02_tl)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a02_tl)",
+     "tasi(m_d_cfg,a07_kimlik)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a07_kimlik)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a02_tl)",
+     "tasi(m_d_cfg,a04_ihr)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a02_tl)",
+     "tasi(m_d_cfg,a04_ihr)",
+     "tasi(m_d_cfg,a07_kimlik)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a02_lote_pid,a07_kimlik)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a02_tl)",
+     "tasi(m_d_cfg,a03_ca)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a02_tl)",
+     "tasi(m_d_cfg,a03_ca)",
+     "tasi(m_d_cfg,a07_kimlik)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a02_lote_pid,a07_kimlik)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a02_tl)",
+     "tasi(m_d_cfg,a03_ca)",
+     "tasi(m_d_cfg,a04_ihr)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(m_d_cfg,a01_lotl)",
+     "tasi(m_d_cfg,a02_lote_pid)",
+     "tasi(m_d_cfg,a02_tl)",
+     "tasi(m_d_cfg,a03_ca)",
+     "tasi(m_d_cfg,a04_ihr)",
+     "tasi(m_d_cfg,a07_kimlik)"
+    ]
+   ],
+   "min_pq": 5,
+   "n": 128
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0238,
+    "n": 2,
+    "solve_s": 0.0004,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f1",
+    "ma_kanca": "acik",
+    "politika": "p4"
+   },
+   "etiket": {
+    "ad": "MA_g1_f1_p4"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1"
+   ],
+   "id": "h|MA_g1_f1_p4",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a02_lote_pid,a05_meta)",
+     "tasi(a05_meta,a07_kimlik)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a00_ojeu,a01_lotl)",
+     "tasi(a00_ojeu,a02_lote_pid)",
+     "tasi(a01_lotl,a02_tl)",
+     "tasi(a02_lote_pid,a03_ca)",
+     "tasi(a02_lote_pid,a04_ihr)",
+     "tasi(a02_lote_pid,a07_kimlik)"
+    ]
+   ],
+   "min_pq": 5,
+   "n": 2
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0196,
+    "n": 4,
+    "solve_s": 0.0004,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f2",
+    "md_kanca": "acik",
+    "politika": "p4"
+   },
+   "etiket": {
+    "ad": "MD_g1_f2_p4"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1"
+   ],
+   "id": "h|MD_g1_f2_p4",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a02_lote_pid,a05_meta)",
+     "tasi(a05_meta,a07_kimlik)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a05_meta,a07_kimlik)",
+     "tasi(m_d_cfg,a05_meta)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a02_lote_pid,a07_kimlik)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(m_d_cfg,a07_kimlik)"
+    ]
+   ],
+   "min_pq": 5,
+   "n": 4
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0356,
+    "n": 2,
+    "solve_s": 0.0005,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f2",
+    "ma_kanca": "acik",
+    "politika": "p4"
+   },
+   "etiket": {
+    "ad": "MA_g1_f2_p4"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1"
+   ],
+   "id": "h|MA_g1_f2_p4",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a05)",
+     "pq(a07)",
+     "tasi(a02_lote_pid,a05_meta)",
+     "tasi(a05_meta,a07_kimlik)"
+    ],
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)",
+     "tasi(a02_lote_pid,a07_kimlik)"
+    ]
+   ],
+   "min_pq": 5,
+   "n": 2
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0254,
+    "n": 1,
+    "solve_s": 0.0006,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f3",
+    "md_kanca": "acik",
+    "politika": "p4"
+   },
+   "etiket": {
+    "ad": "MD_g1_f3_p4"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1"
+   ],
+   "id": "h|MD_g1_f3_p4",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)"
+    ]
+   ],
+   "min_pq": 5,
+   "n": 1
+  },
+  {
+   "bilgi": {
+    "ground_s": 0.0276,
+    "n": 1,
+    "solve_s": 0.0003,
+    "sonuc": "SAT"
+   },
+   "degisen": {
+    "faz": "f3",
+    "ma_kanca": "acik",
+    "politika": "p4"
+   },
+   "etiket": {
+    "ad": "MA_g1_f3_p4"
+   },
+   "grup": "h",
+   "hedefler": [
+    "g1"
+   ],
+   "id": "h|MA_g1_f3_p4",
+   "kumeler": [
+    [
+     "pq(a01)",
+     "pq(a02)",
+     "pq(a03)",
+     "pq(a04)",
+     "pq(a07)"
+    ]
+   ],
+   "min_pq": 5,
+   "n": 1
+  }
+ ]
+}

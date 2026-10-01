@@ -1,0 +1,80 @@
+PQ-OID4VC Adım 4 + 5A — Tamarin kural şemaları: metrikler (betik/degerlendir.py çıktısı)
+clingo 5.8.2
+
+==============================================================================
+Adım 4 (R1–R5)
+==============================================================================
+Varyant sayısı: 34 ; lemma koşumu (satır): 196
+Beklenen/gözlenen uyumu: 196/196
+
+Kabul ölçütü (korumalı ve mutant varyantlarda bütün lemmalar beklenen gibi; executable verified):
+   R1: GEÇTİ   (ek varyant lemmaları beklenen gibi: 34/34)
+   R2: GEÇTİ   (ek varyant lemmaları beklenen gibi: 21/21)
+   R3: GEÇTİ   (ek varyant lemmaları beklenen gibi: 0/0)
+   R4: GEÇTİ   (ek varyant lemmaları beklenen gibi: 17/17)
+   R5: GEÇTİ   (ek varyant lemmaları beklenen gibi: 24/24)
+
+Mutasyon skoru: 11/11 = 100%  (öldürülme = F beklenen güvenlik lemmaları falsified VE V beklenen M_ lemmaları verified)
+   R1   M_root                 mutant:kok_anahtari_PQ                               ÖLDÜ (G=True, M=True)
+   R1   M_ca                   mutant:CA_anahtari_PQ                                ÖLDÜ (G=True, M=True)
+   R1   M_iss                  mutant:ihracci_imzasi_PQ                             ÖLDÜ (G=True, M=True)
+   R2   M_expect_unauth        mutant:beklentinin_kimlik_dogrulamasi                ÖLDÜ (G=True, M=True)
+   R2   M_expect_absent        mutant:beklenti                                      ÖLDÜ (G=True, M=True)
+   R3   M_obj_classical        mutant:PQ_kanal_nesne_imzasi                         ÖLDÜ (G=True, M=True)
+   R3   M_tls_classical        mutant:PQ_kanal_tasima                               ÖLDÜ (G=True, M=True)
+   R4   M_dev                  mutant:PQ_cihaz_anahtari                             ÖLDÜ (G=True, M=True)
+   R4   M_iss                  mutant:PQ_ihracci_imzasi                             ÖLDÜ (G=True, M=True)
+   R5   M_pin                  mutant:sabitleme                                     ÖLDÜ (G=True, M=True)
+   R5   M_tl                   mutant:capa_anahtari_PQ                              ÖLDÜ (G=True, M=True)
+
+Datalog (clingo, sem=class) ↔ Tamarin güvenlik hükmü uyumu: 44/44
+Naif okuma (sem=naive: pq(L) yalnız gerçek ebeveyn) ile uyumsuzluklar: 1
+   R1 X_alt_ca g1: naive=verified tamarin=falsified
+
+En uzun koşum: 1.58 s (R1 E_iss_only executable_post_qday)
+En yüksek bellek: 95.7 MiB (R1 E_none G1_claims_unforgeability)
+Merdivende 1'den yüksek basamak gereken koşum: 0
+Kapanmayan ya da geçersiz (verified/falsified dışı): 0
+İyi biçimlilik taraması (sonuc/ham/*.txt): 230 dosya; 'All wellformedness checks were successful' 230; uyarılı 0
+
+==============================================================================
+Adım 5A (R6, R6h5, R7, R7h; R7hx keşif)
+==============================================================================
+Varyant sayısı: 41 ; lemma koşumu (satır): 349
+Beklenen/gözlenen uyumu: 347/349
+   UYUMSUZ: R7h P_ca_pq_alt_namebind G5_no_classical_acceptance beklenen=verified gozlenen=falsified
+   UYUMSUZ: R7h P_ca_pq_alt_namebind G1_claims_unforgeability beklenen=verified gozlenen=falsified
+
+Kabul ölçütü (korumalı ve mutant varyantlarda bütün lemmalar beklenen gibi; executable verified):
+   R6: GEÇTİ   (ek varyant lemmaları beklenen gibi: 26/26)
+   R6h5: GEÇTİ   (ek varyant lemmaları beklenen gibi: 22/22)
+   R7: GEÇTİ   (ek varyant lemmaları beklenen gibi: 60/60)
+   R7h: KALDI   (ek varyant lemmaları beklenen gibi: 7/7)
+   R7hx: GEÇTİ   (ek varyant lemmaları beklenen gibi: 35/35)
+
+Mutasyon skoru: 16/16 = 100%  (öldürülme = F beklenen güvenlik lemmaları falsified VE V beklenen M_ lemmaları verified)
+   R6   M_long_medium          mutant:kisa_anahtar_penceresi(P_tok_medium)          ÖLDÜ (G=True, M=True)
+   R6   M_long_slow            mutant:kisa_anahtar_penceresi(P_rot_slow)            ÖLDÜ (G=True, M=True)
+   R6   M_rot_fast             mutant:tau_pencereden_uzun(P_rot_slow)               ÖLDÜ (G=True, M=True)
+   R6   M_tok_fast             mutant:tau_pencereden_uzun(P_tok_medium)             ÖLDÜ (G=True, M=True)
+   R6   M_rot_id               mutant:PQ_kimlik_baglama(P_rot_slow)                 ÖLDÜ (G=True, M=True)
+   R6   M_rot_reuse            mutant:anahtar_yeniden_kullanilmaz(P_rot_slow)       ÖLDÜ (G=True, M=True)
+   R6   M_tok_id               mutant:PQ_kimlik_baglama(P_tok_medium)               ÖLDÜ (G=True, M=True)
+   R6h5 M_single_fast          mutant:gecerlilik_penceresi_tau_dan_kisa(P_single_slow) ÖLDÜ (G=True, M=True)
+   R6h5 M_single_slow_reuse    mutant:kimlik_bilgisi_basina_cihaz_anahtari(P_single_slow) ÖLDÜ (G=True, M=True)
+   R7   M_pq_chan              mutant:PQ_kanal(P_mf_online)                         ÖLDÜ (G=True, M=True)
+   R7   M_fresh                mutant:tazelik_ya_da_sabitleme(P_mf_online)          ÖLDÜ (G=True, M=True)
+   R7   M_per_entity           mutant:varlik_basina_kapsam(P_mf_online)             ÖLDÜ (G=True, M=True)
+   R7   M_off_monotone         mutant:tekduzelik_cevrimdisi(M_fresh)                ÖLDÜ (G=True, M=True)
+   R7   M_off_sunset           mutant:sunset_denetimi_cevrimdisi(M_fresh)           ÖLDÜ (G=True, M=True)
+   R7h  M_ca_classical         mutant:taahhut_zinciri_PQ(P_ca_pq_alt_namebind)      ÖLDÜ (G=True, M=True)
+   R7h  M_no_namebind          mutant:ad_baglama(P_ca_pq_alt_namebind)              ÖLDÜ (G=True, M=True)
+
+Datalog karşılaştırması: bu grupta .lp karşılığı yok (R6/R7 sayısal pencere ASP'de).
+
+En uzun koşum: 3.58 s (R7h P_ca_pq_alt_namebind executable)
+En yüksek bellek: 115.8 MiB (R7h P_ca_pq_alt_namebind executable_post_qday)
+Merdivende 1'den yüksek basamak gereken koşum: 0
+Kapanmayan ya da geçersiz (verified/falsified dışı): 0
+İyi biçimlilik taraması (sonuc/ham/*.txt): 390 dosya; 'All wellformedness checks were successful' 390; uyarılı 0
+

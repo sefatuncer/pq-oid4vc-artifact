@@ -1,0 +1,55 @@
+hucre,sutun,beklenen,gozlenen,uyum,dayanak
+V1,attack(qday=0),SALDIRI,SALDIRI,EVET,V1.qday0.asp
+V1,attack(qday=200),YOK,YOK,EVET,V1.qday200.asp
+V1,violation(qday=0),1,1,EVET,V1.statik.asp
+V2,attack(qday=0),SALDIRI,SALDIRI,EVET,V2.qday0.asp
+V2,attack(qday=200),YOK,YOK,EVET,V2.qday200.asp
+V2,violation(qday=0),1,1,EVET,V2.statik.asp
+V3,attack(qday=0),SALDIRI,SALDIRI,EVET,V3.qday0.asp
+V3,attack(qday=200),YOK,YOK,EVET,V3.qday200.asp
+V3,violation(qday=0),1,1,EVET,V3.statik.asp
+V4,attack(qday=0),YOK,YOK,EVET,V4.qday0.asp
+V4,attack(qday=200),YOK,YOK,EVET,V4.qday200.asp
+V4,violation(qday=0),0,0,EVET,V4.statik.asp
+V5,attack(qday=0),YOK,YOK,EVET,V5.qday0.asp
+V5,attack(qday=200),YOK,YOK,EVET,V5.qday200.asp
+V5,violation(qday=0),0,0,EVET,V5.statik.asp
+V6,attack(qday=0),SALDIRI,SALDIRI,EVET,V6.qday0.asp
+V6,attack(qday=200),YOK,YOK,EVET,V6.qday200.asp
+V6,violation(qday=0),1,1,EVET,V6.statik.asp
+o1,out,pqc_protected,pqc_protected,EVET,bilinmeyen=0 gecersiz=0 gecis=0 kati=0 klasik=0 pq_hibrit=1 tum_klasik_yol=0
+o1,accept_strict,1,1,EVET,bilinmeyen=0 gecersiz=0 gecis=0 kati=0 klasik=0 pq_hibrit=1 tum_klasik_yol=0
+o1,accept_transitional,1,1,EVET,bilinmeyen=0 gecersiz=0 gecis=0 kati=0 klasik=0 pq_hibrit=1 tum_klasik_yol=0
+o2,out,pqc_protected,pqc_protected,EVET,bilinmeyen=0 gecersiz=0 gecis=0 kati=0 klasik=0 pq_hibrit=1 tum_klasik_yol=0
+o2,accept_strict,1,1,EVET,bilinmeyen=0 gecersiz=0 gecis=0 kati=0 klasik=0 pq_hibrit=1 tum_klasik_yol=0
+o2,accept_transitional,1,1,EVET,bilinmeyen=0 gecersiz=0 gecis=0 kati=0 klasik=0 pq_hibrit=1 tum_klasik_yol=0
+o3,out,classical_only,classical_only,EVET,bilinmeyen=0 gecersiz=0 gecis=1 kati=1 klasik=1 pq_hibrit=0 tum_klasik_yol=1
+o3,accept_strict,0,0,EVET,bilinmeyen=0 gecersiz=0 gecis=1 kati=1 klasik=1 pq_hibrit=0 tum_klasik_yol=1
+o3,accept_transitional,0,0,EVET,bilinmeyen=0 gecersiz=0 gecis=1 kati=1 klasik=1 pq_hibrit=0 tum_klasik_yol=1
+o4,out,unsafe_mixed,unsafe_mixed,EVET,bilinmeyen=0 gecersiz=0 gecis=1 kati=1 klasik=1 pq_hibrit=1 tum_klasik_yol=1
+o4,accept_strict,0,0,EVET,bilinmeyen=0 gecersiz=0 gecis=1 kati=1 klasik=1 pq_hibrit=1 tum_klasik_yol=1
+o4,accept_transitional,0,0,EVET,bilinmeyen=0 gecersiz=0 gecis=1 kati=1 klasik=1 pq_hibrit=1 tum_klasik_yol=1
+o5,out,hybrid_protected,hybrid_protected,EVET,bilinmeyen=0 gecersiz=0 gecis=0 kati=1 klasik=0 pq_hibrit=1 tum_klasik_yol=0
+o5,accept_strict,0,0,EVET,bilinmeyen=0 gecersiz=0 gecis=0 kati=1 klasik=0 pq_hibrit=1 tum_klasik_yol=0
+o5,accept_transitional,1,1,EVET,bilinmeyen=0 gecersiz=0 gecis=0 kati=1 klasik=0 pq_hibrit=1 tum_klasik_yol=0
+o6,out,unsafe_mixed,unsafe_mixed,EVET,bilinmeyen=0 gecersiz=0 gecis=1 kati=1 klasik=1 pq_hibrit=1 tum_klasik_yol=1
+o6,accept_strict,0,0,EVET,bilinmeyen=0 gecersiz=0 gecis=1 kati=1 klasik=1 pq_hibrit=1 tum_klasik_yol=1
+o6,accept_transitional,0,0,EVET,bilinmeyen=0 gecersiz=0 gecis=1 kati=1 klasik=1 pq_hibrit=1 tum_klasik_yol=1
+o7,out,unknown,unknown,EVET,bilinmeyen=1 gecersiz=0 gecis=1 kati=1 klasik=0 pq_hibrit=1 tum_klasik_yol=0
+o7,accept_strict,0,0,EVET,bilinmeyen=1 gecersiz=0 gecis=1 kati=1 klasik=0 pq_hibrit=1 tum_klasik_yol=0
+o7,accept_transitional,0,0,EVET,bilinmeyen=1 gecersiz=0 gecis=1 kati=1 klasik=0 pq_hibrit=1 tum_klasik_yol=0
+o8,out,pqc_protected,pqc_protected,EVET,bilinmeyen=0 gecersiz=0 gecis=0 kati=0 klasik=0 pq_hibrit=1 tum_klasik_yol=1
+o8,accept_strict,1,1,EVET,bilinmeyen=0 gecersiz=0 gecis=0 kati=0 klasik=0 pq_hibrit=1 tum_klasik_yol=1
+o8,accept_transitional,1,1,EVET,bilinmeyen=0 gecersiz=0 gecis=0 kati=0 klasik=0 pq_hibrit=1 tum_klasik_yol=1
+o9,out,invalid,invalid,EVET,bilinmeyen=0 gecersiz=1 gecis=1 kati=1 klasik=0 pq_hibrit=0 tum_klasik_yol=0
+o9,accept_strict,0,0,EVET,bilinmeyen=0 gecersiz=1 gecis=1 kati=1 klasik=0 pq_hibrit=0 tum_klasik_yol=0
+o9,accept_transitional,0,0,EVET,bilinmeyen=0 gecersiz=1 gecis=1 kati=1 klasik=0 pq_hibrit=0 tum_klasik_yol=0
+o10,out,unknown,unknown,EVET,bilinmeyen=1 gecersiz=0 gecis=1 kati=1 klasik=0 pq_hibrit=0 tum_klasik_yol=0
+o10,accept_strict,0,0,EVET,bilinmeyen=1 gecersiz=0 gecis=1 kati=1 klasik=0 pq_hibrit=0 tum_klasik_yol=0
+o10,accept_transitional,0,0,EVET,bilinmeyen=1 gecersiz=0 gecis=1 kati=1 klasik=0 pq_hibrit=0 tum_klasik_yol=0
+o11,out,hybrid_protected,hybrid_protected,EVET,bilinmeyen=0 gecersiz=0 gecis=0 kati=1 klasik=0 pq_hibrit=1 tum_klasik_yol=0
+o11,accept_strict,0,0,EVET,bilinmeyen=0 gecersiz=0 gecis=0 kati=1 klasik=0 pq_hibrit=1 tum_klasik_yol=0
+o11,accept_transitional,1,1,EVET,bilinmeyen=0 gecersiz=0 gecis=0 kati=1 klasik=0 pq_hibrit=1 tum_klasik_yol=0
+o12,out,classical_only,classical_only,EVET,bilinmeyen=0 gecersiz=0 gecis=1 kati=1 klasik=1 pq_hibrit=0 tum_klasik_yol=1
+o12,accept_strict,0,0,EVET,bilinmeyen=0 gecersiz=0 gecis=1 kati=1 klasik=1 pq_hibrit=0 tum_klasik_yol=1
+o12,accept_transitional,0,0,EVET,bilinmeyen=0 gecersiz=0 gecis=1 kati=1 klasik=1 pq_hibrit=0 tum_klasik_yol=1

@@ -1,0 +1,96 @@
+{
+ "cab_2x2|ad|var": {
+  "hucre": 675,
+  "birincil_ile_ayni": 486,
+  "unsat": 675,
+  "unsat_hedef": {
+   "g1": 135,
+   "g2": 135,
+   "g3": 135,
+   "g4": 135,
+   "tum": 135
+  }
+ },
+ "cab_2x2|ad|yok": {
+  "hucre": 675,
+  "birincil_ile_ayni": 675,
+  "unsat": 486,
+  "unsat_hedef": {
+   "g1": 72,
+   "g2": 72,
+   "g3": 72,
+   "g4": 135,
+   "tum": 135
+  }
+ },
+ "cab_2x2|anahtar|var": {
+  "hucre": 675,
+  "birincil_ile_ayni": 675,
+  "unsat": 486,
+  "unsat_hedef": {
+   "g1": 72,
+   "g2": 72,
+   "g3": 72,
+   "g4": 135,
+   "tum": 135
+  }
+ },
+ "cab_2x2|anahtar|yok": {
+  "hucre": 675,
+  "birincil_ile_ayni": 675,
+  "unsat": 486,
+  "unsat_hedef": {
+   "g1": 72,
+   "g2": 72,
+   "g3": 72,
+   "g4": 135,
+   "tum": 135
+  }
+ },
+ "cab_saglik_birincil|yok|var": {
+  "hucre": 675,
+  "birincil_ile_ayni": 675,
+  "unsat": 486,
+  "unsat_hedef": {
+   "g1": 72,
+   "g2": 72,
+   "g3": 72,
+   "g4": 135,
+   "tum": 135
+  }
+ },
+ "cab_saglik_diger|yok|var": {
+  "hucre": 675,
+  "birincil_ile_ayni": 486,
+  "unsat": 675,
+  "unsat_hedef": {
+   "g1": 135,
+   "g2": 135,
+   "g3": 135,
+   "g4": 135,
+   "tum": 135
+  }
+ },
+ "cab_saglik_diger|yok|yok": {
+  "hucre": 675,
+  "birincil_ile_ayni": 486,
+  "unsat": 675,
+  "unsat_hedef": {
+   "g1": 135,
+   "g2": 135,
+   "g3": 135,
+   "g4": 135,
+   "tum": 135
+  }
+ },
+ "saglik_diger_bayrak_etkisiz": 675,
+ "saglik_birincil_bayrak_etkisiz": 675,
+ "beklenti_tuttu": {
+  "ad/yok": true,
+  "ad/var": true,
+  "anahtar/yok": true,
+  "anahtar/var": true,
+  "saglik_yok_diger_var": true,
+  "saglik_yok_diger_yok_birincil": true
+ }
+}

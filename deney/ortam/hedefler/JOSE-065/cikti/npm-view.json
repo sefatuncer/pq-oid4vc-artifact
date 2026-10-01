@@ -1,0 +1,7 @@
+{
+  "gitHead": "ed59e76ea37a80f54b833668c02a5271984dcba3",
+  "dist.integrity": "sha512-MT/xP0CrubFRNLNKvxJ2BYfy53Zkm++5bX9dtuPbqAeQpTVe0MQTFhao8+Cp//EmJp244xt6Drw/GVEGCUj40g==",
+  "dist.tarball": "https://registry.npmjs.org/jsonwebtoken/-/jsonwebtoken-9.0.3.tgz",
+  "repository.url": "git+https://github.com/auth0/node-jsonwebtoken.git",
+  "license": "MIT"
+}

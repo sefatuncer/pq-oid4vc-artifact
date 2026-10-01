@@ -1,0 +1,66 @@
+(* =====================================================================
+   PQ-OID4VC | Adım 5A | ProVerif ikinci görüş — R2 downgrade (Tamarin: R2_downgrade.spthy)
+   Coexistence: migrated issuer issM has a PQ key and a classical key (dual
+   issuance); legacy issuer issL has a classical key only. Both classical keys
+   leak in phase 1 (Q-day). The verifier accepts PQ evidence always and
+   classical evidence through the expectation gate:
+     EXPECT_AUTH    authentic local configuration (issM: pq_required, issL: none)
+     EXPECT_UNAUTH  expectation read from the network (attacker may alter it)
+     (neither)      no expectation (any-valid)
+   Queries in order: executable (reachability), G1_claims_unforgeability (issM),
+                     G5_no_classical_acceptance (issM)
+   ===================================================================== *)
+free c: channel.
+type skey.
+type pkey.
+fun pk(skey): pkey.
+fun sign(bitstring, skey): bitstring.
+reduc forall m: bitstring, k: skey; verify(sign(m, k), m, pk(k)) = true.
+
+free cred_tag, exp_tag, pq_required, none: bitstring.
+free issM, issL: bitstring.
+
+event Issued(bitstring, bitstring).
+event Accept(bitstring, bitstring).
+event AcceptCl(bitstring, bitstring).
+
+query x: bitstring; event(Accept(issM, x)).
+query x: bitstring; event(Accept(issM, x)) ==> event(Issued(issM, x)).
+query x: bitstring; event(AcceptCl(issM, x)).
+
+let IssueMigrated(skq: skey, skc: skey) =
+  new claims: bitstring;
+  event Issued(issM, claims);
+  out(c, ((cred_tag, issM, claims), sign((cred_tag, issM, claims), skq)));
+  out(c, ((cred_tag, issM, claims), sign((cred_tag, issM, claims), skc))).
+
+let IssueLegacy(skl: skey) =
+  new claims: bitstring;
+  event Issued(issL, claims);
+  out(c, ((cred_tag, issL, claims), sign((cred_tag, issL, claims), skl))).
+
+let VerifyPQ(pkq: pkey) =
+  in(c, ((=cred_tag, =issM, x: bitstring), s: bitstring));
+  if verify(s, (cred_tag, issM, x), pkq) = true then
+  event Accept(issM, x).
+
+(* no expectation: any valid classical signature is accepted *)
+let VerifyClassical(i: bitstring, pkc: pkey, e0: bitstring) =
+  in(c, ((=cred_tag, =i, x: bitstring), s: bitstring));
+  if verify(s, (cred_tag, i, x), pkc) = true then
+  event AcceptCl(i, x); event Accept(i, x).
+
+let Announce() =
+  out(c, (exp_tag, issM, pq_required)); out(c, (exp_tag, issL, none)).
+
+process
+  new skq: skey; new skc: skey; new skl: skey;
+  out(c, (pk(skq), pk(skc), pk(skl)));
+  ( Announce()
+  | (!IssueMigrated(skq, skc)) | (!IssueLegacy(skl))
+  | (!VerifyPQ(pk(skq)))
+  | (!VerifyClassical(issM, pk(skc), pq_required)) | (!VerifyClassical(issL, pk(skl), none))
+  | (phase 1; ( out(c, skc) | out(c, skl)
+      | (!IssueMigrated(skq, skc)) | (!IssueLegacy(skl))
+      | (!VerifyPQ(pk(skq)))
+      | (!VerifyClassical(issM, pk(skc), pq_required)) | (!VerifyClassical(issL, pk(skl), none)) )) )

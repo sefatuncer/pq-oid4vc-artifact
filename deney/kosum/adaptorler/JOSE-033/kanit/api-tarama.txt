@@ -1,0 +1,133 @@
+# JOSE-033 — API taraması (sözleşme §5.1)
+# imaj: pq-a10-go-b:gecici (sha256:429c02b4261e58730eaf30649a20f7a693a147687a18a15cf527458de93a5bd9)
+# komut: docker run --rm --network none --entrypoint sh pq-a10-go-b:gecici -c 'cd /go/pkg/mod/github.com/golang-jwt/jwt/v5@*/ && grep -rn -i -E 'algorithms|allow|register|deregister|required|eddsa|ed25519|ml-?dsa|mldsa|composite|okp|verifier|keyselector|WithValidMethods|RegisterSigningMethod|SigningMethodEd' --include=*.go . | grep -v _test.go | head -150'
+
+./ed25519_utils.go:5:	"crypto/ed25519"
+./ed25519_utils.go:12:	ErrNotEdPrivateKey = errors.New("key is not a valid Ed25519 private key")
+./ed25519_utils.go:13:	ErrNotEdPublicKey  = errors.New("key is not a valid Ed25519 public key")
+./ed25519_utils.go:32:	var pkey ed25519.PrivateKey
+./ed25519_utils.go:34:	if pkey, ok = parsedKey.(ed25519.PrivateKey); !ok {
+./ed25519_utils.go:57:	var pkey ed25519.PublicKey
+./ed25519_utils.go:59:	if pkey, ok = parsedKey.(ed25519.PublicKey); !ok {
+./parser.go:27:	decodePaddingAllowed bool
+./parser.go:51:// interface. This provides default values which can be overridden and allows a caller to use their own type, rather
+./parser.go:54:// Note: If you provide a custom claim implementation that embeds one of the standard claims (such as RegisteredClaims),
+./parser.go:63:	// Verify signing method is in the required set
+./parser.go:233:// such as [WithStrictDecoding] or [WithPaddingAllowed].
+./parser.go:237:	if p.decodePaddingAllowed {
+./parser.go:253:// WithValidMethods option to validate the 'alg' claim in the token matches the
+./parser.go:264:// standard claims (such as RegisteredClaims), make sure that a) you either
+./rsa_pss.go:41:	RegisterSigningMethod(SigningMethodPS256.Alg(), func() SigningMethod {
+./rsa_pss.go:58:	RegisterSigningMethod(SigningMethodPS384.Alg(), func() SigningMethod {
+./rsa_pss.go:75:	RegisterSigningMethod(SigningMethodPS512.Alg(), func() SigningMethod {
+./validator.go:17://	    jwt.RegisteredClaims
+./validator.go:44:	// requireExp specifies whether the exp claim is required
+./validator.go:47:	// requireNbf specifies whether the nbf claim is required
+./validator.go:170:// If exp is not set, it will succeed if the claim is not required,
+./validator.go:171:// otherwise ErrTokenRequiredClaimMissing will be returned.
+./validator.go:175:func (v *Validator) verifyExpiresAt(claims Claims, cmp time.Time, required bool) error {
+./validator.go:182:		return errorIfRequired(required, "exp")
+./validator.go:191:// If iat is not set, it will succeed if the claim is not required,
+./validator.go:192:// otherwise ErrTokenRequiredClaimMissing will be returned.
+./validator.go:196:func (v *Validator) verifyIssuedAt(claims Claims, cmp time.Time, required bool) error {
+./validator.go:203:		return errorIfRequired(required, "iat")
+./validator.go:212:// If nbf is not set, it will succeed if the claim is not required,
+./validator.go:213:// otherwise ErrTokenRequiredClaimMissing will be returned.
+./validator.go:217:func (v *Validator) verifyNotBefore(claims Claims, cmp time.Time, required bool) error {
+./validator.go:224:		return errorIfRequired(required, "nbf")
+./validator.go:232:// If aud is not set or an empty list, it will succeed if the claim is not required,
+./validator.go:233:// otherwise ErrTokenRequiredClaimMissing will be returned.
+./validator.go:246:		required := len(v.expectedAud) > 0
+./validator.go:247:		return errorIfRequired(required, "aud")
+./validator.go:274:// If iss is not set, it will succeed if the claim is not required,
+./validator.go:275:// otherwise ErrTokenRequiredClaimMissing will be returned.
+./validator.go:279:func (v *Validator) verifyIssuer(claims Claims, cmp string, required bool) error {
+./validator.go:286:		return errorIfRequired(required, "iss")
+./validator.go:294:// If sub is not set, it will succeed if the claim is not required,
+./validator.go:295:// otherwise ErrTokenRequiredClaimMissing will be returned.
+./validator.go:299:func (v *Validator) verifySubject(claims Claims, cmp string, required bool) error {
+./validator.go:306:		return errorIfRequired(required, "sub")
+./validator.go:322:// errorIfRequired returns an ErrTokenRequiredClaimMissing error if required is
+./validator.go:324:func errorIfRequired(required bool, claim string) error {
+./validator.go:325:	if required {
+./validator.go:326:		return newError(fmt.Sprintf("%s claim is required", claim), ErrTokenRequiredClaimMissing)
+./ecdsa.go:35:	RegisterSigningMethod(SigningMethodES256.Alg(), func() SigningMethod {
+./ecdsa.go:41:	RegisterSigningMethod(SigningMethodES384.Alg(), func() SigningMethod {
+./ecdsa.go:47:	RegisterSigningMethod(SigningMethodES512.Alg(), func() SigningMethod {
+./parser_option.go:9:// WithValidMethods is an option to supply algorithm methods that the parser
+./parser_option.go:13:func WithValidMethods(methods []string) ParserOption {
+./parser_option.go:59:// WithExpirationRequired returns the ParserOption to make exp claim required.
+./parser_option.go:61:func WithExpirationRequired() ParserOption {
+./parser_option.go:67:// WithNotBeforeRequired returns the ParserOption to make nbf claim required.
+./parser_option.go:69:func WithNotBeforeRequired() ParserOption {
+./parser_option.go:134:// WithPaddingAllowed will enable the codec used for decoding JWTs to allow
+./parser_option.go:138:func WithPaddingAllowed() ParserOption {
+./parser_option.go:140:		p.decodePaddingAllowed = true
+./claims.go:5:// common basis for validation, it is required that an implementation is able to
+./cmd/jwt/main.go:33:	// Modes - exactly one of these is required
+./cmd/jwt/main.go:47:		fmt.Fprintf(os.Stderr, "  One of the following flags is required: sign, verify or show\n")
+./cmd/jwt/main.go:73:		return fmt.Errorf("none of the required flags are present. What do you want me to do?")
+./cmd/jwt/main.go:138:			return jwt.UnsafeAllowNoneSignatureType, nil
+./cmd/jwt/main.go:202:		key = jwt.UnsafeAllowNoneSignatureType
+./cmd/jwt/main.go:307:	return *flagAlg == "EdDSA"
+./cmd/jwt/main.go:315:	algs := jwt.GetAlgorithms()
+./ed25519.go:5:	"crypto/ed25519"
+./ed25519.go:11:	ErrEd25519Verification = errors.New("ed25519: verification error")
+./ed25519.go:14:// SigningMethodEd25519 implements the EdDSA family.
+./ed25519.go:15:// Expects ed25519.PrivateKey for signing and ed25519.PublicKey for verification
+./ed25519.go:16:type SigningMethodEd25519 struct{}
+./ed25519.go:18:// Specific instance for EdDSA
+./ed25519.go:20:	SigningMethodEdDSA *SigningMethodEd25519
+./ed25519.go:24:	SigningMethodEdDSA = &SigningMethodEd25519{}
+./ed25519.go:25:	RegisterSigningMethod(SigningMethodEdDSA.Alg(), func() SigningMethod {
+./ed25519.go:26:		return SigningMethodEdDSA
+./ed25519.go:30:func (m *SigningMethodEd25519) Alg() string {
+./ed25519.go:31:	return "EdDSA"
+./ed25519.go:35:// For this verify method, key must be an ed25519.PublicKey
+./ed25519.go:36:func (m *SigningMethodEd25519) Verify(signingString string, sig []byte, key any) error {
+./ed25519.go:37:	var ed25519Key ed25519.PublicKey
+./ed25519.go:40:	if ed25519Key, ok = key.(ed25519.PublicKey); !ok {
+./ed25519.go:41:		return newError("Ed25519 verify expects ed25519.PublicKey", ErrInvalidKeyType)
+./ed25519.go:44:	if len(ed25519Key) != ed25519.PublicKeySize {
+./ed25519.go:49:	if !ed25519.Verify(ed25519Key, []byte(signingString), sig) {
+./ed25519.go:50:		return ErrEd25519Verification
+./ed25519.go:57:// For this signing method, key must be an ed25519.PrivateKey
+./ed25519.go:58:func (m *SigningMethodEd25519) Sign(signingString string, key any) ([]byte, error) {
+./ed25519.go:59:	var ed25519Key crypto.Signer
+./ed25519.go:62:	if ed25519Key, ok = key.(crypto.Signer); !ok {
+./ed25519.go:63:		return nil, newError("Ed25519 sign expects crypto.Signer", ErrInvalidKeyType)
+./ed25519.go:66:	if _, ok := ed25519Key.Public().(ed25519.PublicKey); !ok {
+./ed25519.go:70:	// Sign the string and return the result. ed25519 performs a two-pass hash
+./ed25519.go:73:	sig, err := ed25519Key.Sign(rand.Reader, []byte(signingString), crypto.Hash(0))
+./errors.go:16:	ErrTokenRequiredClaimMissing = errors.New("token is missing required claim")
+./signing_method.go:20:// RegisterSigningMethod registers the "alg" name and a factory function for signing method.
+./signing_method.go:22:func RegisterSigningMethod(alg string, f func() SigningMethod) {
+./signing_method.go:40:// GetAlgorithms returns a list of registered "alg" names
+./signing_method.go:41:func GetAlgorithms() (algs []string) {
+./hmac.go:27:	RegisterSigningMethod(SigningMethodHS256.Alg(), func() SigningMethod {
+./hmac.go:33:	RegisterSigningMethod(SigningMethodHS384.Alg(), func() SigningMethod {
+./hmac.go:39:	RegisterSigningMethod(SigningMethodHS512.Alg(), func() SigningMethod {
+./token.go:11:// Token.  This allows you to use properties in the Header of the token (such as
+./registered_claims.go:3:// RegisteredClaims are a structured version of the JWT Claims Set,
+./registered_claims.go:4:// restricted to Registered Claim Names, as referenced at
+./registered_claims.go:12:type RegisteredClaims struct {
+./registered_claims.go:36:func (c RegisteredClaims) GetExpirationTime() (*NumericDate, error) {
+./registered_claims.go:41:func (c RegisteredClaims) GetNotBefore() (*NumericDate, error) {
+./registered_claims.go:46:func (c RegisteredClaims) GetIssuedAt() (*NumericDate, error) {
+./registered_claims.go:51:func (c RegisteredClaims) GetAudience() (ClaimStrings, error) {
+./registered_claims.go:56:func (c RegisteredClaims) GetIssuer() (string, error) {
+./registered_claims.go:61:func (c RegisteredClaims) GetSubject() (string, error) {
+./rsa.go:26:	RegisterSigningMethod(SigningMethodRS256.Alg(), func() SigningMethod {
+./rsa.go:32:	RegisterSigningMethod(SigningMethodRS384.Alg(), func() SigningMethod {
+./rsa.go:38:	RegisterSigningMethod(SigningMethodRS512.Alg(), func() SigningMethod {
+./none.go:3:// SigningMethodNone implements the none signing method.  This is required by the spec
+./none.go:7:const UnsafeAllowNoneSignatureType unsafeNoneMagicConstant = "none signing method allowed"
+./none.go:9:var NoneSignatureTypeDisallowedError error
+./none.go:16:	NoneSignatureTypeDisallowedError = newError("'none' signature type is not allowed", ErrTokenUnverifiable)
+./none.go:18:	RegisterSigningMethod(SigningMethodNone.Alg(), func() SigningMethod {
+./none.go:27:// Only allow 'none' alg type if UnsafeAllowNoneSignatureType is specified as the key
+./none.go:29:	// Key must be UnsafeAllowNoneSignatureType to prevent accidentally
+./none.go:32:		return NoneSignatureTypeDisallowedError
+./none.go:43:// Only allow 'none' signing if UnsafeAllowNoneSignatureType is specified as the key
+./none.go:49:	return nil, NoneSignatureTypeDisallowedError
+./request/request.go:11:// instead of a token string.  The Extractor interface allows you to define

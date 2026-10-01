@@ -1,0 +1,28 @@
+[2026-09-24 19:31:53] Başlangıç. İmaj: pq-a02-proverif:2.05 (sha256:9d15c7a7dc2c3e5c8cf777f5fb1facfb739810f5b1a8cecc438957aa55a8923e)
+Proverif 2.05. Cryptographic protocol verifier, by Bruno Blanchet, Vincent Cheval, and Marc Sylvestre
+[2026-09-24 19:31:56] R1__P_all_pq (bayraklar: ROOT_PQ,CA_PQ,ISS_PQ) -> is false is true | 0.36s 7.9MiB rc=0
+[2026-09-24 19:31:58] R1__M_root (bayraklar: CA_PQ,ISS_PQ) -> is false is false | 0.501s 6.8MiB rc=0
+[2026-09-24 19:31:59] R1__M_ca (bayraklar: ROOT_PQ,ISS_PQ) -> is false is false | 0.462s 7.9MiB rc=0
+[2026-09-24 19:32:01] R1__M_iss (bayraklar: ROOT_PQ,CA_PQ) -> is false is false | 0.503s 7.1MiB rc=0
+[2026-09-24 19:32:03] R2__P_expect_auth (bayraklar: EXPECT_AUTH) -> is false is true is true | 0.455s 7.3MiB rc=0
+[2026-09-24 19:32:05] R2__M_expect_unauth (bayraklar: EXPECT_UNAUTH) -> is false is false is false | 0.657s 7.5MiB rc=0
+[2026-09-24 19:32:07] R2__M_expect_absent (bayraklar: yok) -> is false is false is false | 0.385s 7.1MiB rc=0
+[2026-09-24 19:32:08] R3__P_obj_pq (bayraklar: CHAN_PQ) -> is false is true is true | 0.481s 7.7MiB rc=0
+[2026-09-24 19:32:10] R3__M_obj_classical (bayraklar: yok) -> is false is false is false | 0.776s 7.9MiB rc=0
+[2026-09-24 19:32:12] R4__P_dev_iss_pq (bayraklar: DEV_PQ,ISS_PQ) -> is false is true | 0.331s 7.3MiB rc=0
+[2026-09-24 19:32:14] R4__M_dev (bayraklar: ISS_PQ) -> is false is false | 0.449s 7.9MiB rc=0
+[2026-09-24 19:32:16] R4__M_iss (bayraklar: DEV_PQ) -> is false is false | 0.389s 7.5MiB rc=0
+[2026-09-24 19:32:17] R5__P_pin_tlpq (bayraklar: PIN_TL,TL_PQ) -> is false is true | 0.273s 7.3MiB rc=0
+[2026-09-24 19:32:19] R5__M_pin (bayraklar: TL_PQ) -> is false is false | 0.45s 7.3MiB rc=0
+[2026-09-24 19:32:20] R5__M_tl (bayraklar: PIN_TL) -> is false is false | 0.271s 7.0MiB rc=0
+[2026-09-24 19:32:21] ProVerif koşumları bitti (15 model). Karşılaştırma başlıyor.
+PQ-OID4VC Adım 5A — ProVerif 2.05 ikinci görüş (betik/proverif_degerlendir.py çıktısı)
+
+Model (varyant) sayısı: 15
+Güvenlik sorgusu (lemma) sayısı: 20
+  kesin sonuç: 20 ; 'cannot be proved' / bilinmiyor: 0
+  kesin sonuçlarda Tamarin ile uyum: 20/20
+Sağlık (executable ulaşılabilirliği) sorgusu: 15 ; Tamarin ile uyum 15/15 ; bilinmiyor 0
+ProVerif koşum süresi (model başına): en çok 0.776 s; bellek tepesi en çok 7.9 MiB
+
+[2026-09-24 19:32:22] Bitti.

@@ -1,0 +1,7 @@
+hucre,bayraklar,beklenen,tani_gozlenen,uyum,adim,merdiven,meta,iyi_bicim,executable
+K1-02,"DS_CL,DK3_USABLE,COMPLETENESS",falsified,falsified,EVET,12,1,rc=0 wall_s=2.57 mem_peak_MiB=99.7,EVET,verified
+K1-04,"DS_PQ,DK3_USABLE,COMPLETENESS",verified,verified,EVET,18,1,rc=0 wall_s=2.24 mem_peak_MiB=77.8,EVET,verified
+K1-05,"DS_PQ,OLD_DS_REPLAY,DK3_USABLE,COMPLETENESS",falsified,falsified,EVET,12,1,rc=0 wall_s=2.79 mem_peak_MiB=101.6,EVET,verified
+K1-06,"DS_PQ,DK3_USABLE,COMPLETENESS",verified,verified,EVET,18,1,rc=0 wall_s=2.19 mem_peak_MiB=78.9,EVET,verified
+K1-11,"DS_BOTH,DK3_USABLE,COMPLETENESS",verified,verified,EVET,28,1,rc=0 wall_s=2.46 mem_peak_MiB=82.3,EVET,verified
+K1-12,"DS_PQ,DK3_USABLE,COMPLETENESS,PARENT_CL",falsified,falsified,EVET,14,1,rc=0 wall_s=2.8 mem_peak_MiB=138.0,EVET,verified

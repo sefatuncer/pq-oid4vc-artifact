@@ -1,0 +1,148 @@
+t12_cose: 138/138 gecti
+  [GECTI] A:KAYNAK / alg.ES256 -> RFC9053:248 — | ES256 |   -7  | SHA-256 | ECDSA w/ SHA-256 |
+  [GECTI] A:KAYNAK / alg.ES256.deprecated -> RFC9864:467 — Recommended:  Deprecated
+  [GECTI] A:KAYNAK / alg.ES256.haip -> HAIP:498 — Issuers, Verifiers, and Wallets MUST, at a minimum, support ECDSA with P-256 and SHA-256 (
+  [GECTI] A:KAYNAK / alg.EdDSA -> RFC9053:365 — | EdDSA |   -8  | EdDSA       |
+  [GECTI] A:KAYNAK / alg.EdDSA.deprecated -> RFC9864:491 — Recommended:  Deprecated
+  [GECTI] A:KAYNAK / alg.Ed25519 -> RFC9864:225 — | Ed25519 | -19   | EdDSA using    | Optional       | Yes         |
+  [GECTI] A:KAYNAK / alg.Ed25519.kayit -> RFC9864:439 — Value:  -19
+  [GECTI] A:KAYNAK / alg.ML-DSA-44 -> RFC9964:351 — Value:  -48
+  [GECTI] A:KAYNAK / alg.ML-DSA-65 -> RFC9964:367 — Value:  -49
+  [GECTI] A:KAYNAK / alg.ML-DSA-87 -> RFC9964:383 — Value:  -50
+  [GECTI] A:KAYNAK / alg.ML-DSA-44-ES256 -> JOSECOMP:1251 — *  Value: TBD (request assignment -54)
+  [GECTI] A:KAYNAK / alg.ML-DSA-65-ES256 -> JOSECOMP:1268 — *  Value: TBD (request assignment -55)
+  [GECTI] A:KAYNAK / alg.ML-DSA-87-ES384 -> JOSECOMP:1289 — *  Value: TBD (request assignment -56)
+  [GECTI] A:KAYNAK / alg.ML-DSA-44-Ed25519 -> JOSECOMP:1306 — *  Value: TBD (request assignment -57)
+  [GECTI] A:KAYNAK / alg.ML-DSA-65-Ed25519 -> JOSECOMP:1323 — *  Value: TBD (request assignment -58)
+  [GECTI] A:KAYNAK / alg.ML-DSA-87-Ed448 -> JOSECOMP:1345 — *  Value: TBD (request assignment -59)
+  [GECTI] A:KAYNAK / hdr.alg -> RFC9052:751 — | alg     | 1     | int /  | COSE Algorithms     | Cryptographic    |
+  [GECTI] A:KAYNAK / hdr.kid -> RFC9052:762 — | kid     | 4     | bstr   |                     | Key identifier   |
+  [GECTI] A:KAYNAK / hdr.x5chain -> RFC9360:296 — | x5chain | 33    | COSE_X509     | An ordered chain of |
+  [GECTI] A:KAYNAK / etiket.COSE_Sign -> RFC9052:482 — | 98       | cose-sign     | COSE_Sign     | COSE Signed Data      |
+  [GECTI] A:KAYNAK / etiket.COSE_Sign1 -> RFC9052:485 — | 18       | cose-sign1    | COSE_Sign1    | COSE Single Signer    |
+  [GECTI] A:KAYNAK / sig_structure.baglam -> RFC9052:1025 — context : "Signature" / "Signature1",
+  [GECTI] A:KAYNAK / sig_structure.Signature -> RFC9052:1001 — "Signature" for signatures using the COSE_Signature structure.
+  [GECTI] A:KAYNAK / sig_structure.Signature1 -> RFC9052:1003 — "Signature1" for signatures using the COSE_Sign1 structure.
+  [GECTI] A:KAYNAK / imza.ecdsa_rs -> RFC9053:275 — concatenated together to form a byte string that is the resulting
+  [GECTI] A:KAYNAK / anahtar.kty -> RFC9052:1607 — | kty     | 1     | tstr / | COSE Key   | Identification of  |
+  [GECTI] A:KAYNAK / anahtar.kid -> RFC9052:1610 — | kid     | 2     | bstr   |            | Key identification |
+  [GECTI] A:KAYNAK / anahtar.alg -> RFC9052:1614 — | alg     | 3     | tstr / | COSE       | Key usage          |
+  [GECTI] A:KAYNAK / kty.OKP -> RFC9053:1627 — | OKP       |   1   | Octet Key Pair           |
+  [GECTI] A:KAYNAK / kty.EC2 -> RFC9053:1629 — | EC2       |   2   | Elliptic Curve Keys w/   |
+  [GECTI] A:KAYNAK / kty.AKP -> RFC9964:405 — Value:  7
+  [GECTI] A:KAYNAK / crv.P-256 -> RFC9053:1654 — | P-256   |   1   |   EC2    | NIST P-256, also known as secp256r1 |
+  [GECTI] A:KAYNAK / crv.Ed25519 -> RFC9053:1664 — | Ed25519 |   6   |   OKP    | Ed25519 for use w/ EdDSA only       |
+  [GECTI] A:KAYNAK / ec2.crv -> RFC9053:1716 — |  2   | crv  |   -1  | int /  | EC identifier -- Taken from the |
+  [GECTI] A:KAYNAK / ec2.x -> RFC9053:1719 — |  2   |  x   |   -2  | bstr   | x-coordinate                    |
+  [GECTI] A:KAYNAK / ec2.y -> RFC9053:1721 — |  2   |  y   |   -3  | bstr / | y-coordinate                    |
+  [GECTI] A:KAYNAK / okp.crv -> RFC9053:1760 — | crv  |    1     |   -1  | int / | EC identifier -- Taken from the |
+  [GECTI] A:KAYNAK / okp.x -> RFC9053:1763 — | x    |    1     |   -2  | bstr  | Public Key                      |
+  [GECTI] A:KAYNAK / akp.pub -> RFC9964:427 — Label:  -1
+  [GECTI] A:KAYNAK / akp.priv -> RFC9964:441 — Label:  -2
+  [GECTI] A:ALG / ES256 = -7 kaynak metninde geciyor
+  [GECTI] A:ALG / EdDSA = -8 kaynak metninde geciyor
+  [GECTI] A:ALG / Ed25519 = -19 kaynak metninde geciyor
+  [GECTI] A:ALG / ML-DSA-44 = -48 kaynak metninde geciyor
+  [GECTI] A:ALG / ML-DSA-65 = -49 kaynak metninde geciyor
+  [GECTI] A:ALG / ML-DSA-87 = -50 kaynak metninde geciyor
+  [GECTI] A:ALG / ML-DSA-44-ES256 = -54 kaynak metninde geciyor
+  [GECTI] A:ALG / ML-DSA-65-ES256 = -55 kaynak metninde geciyor
+  [GECTI] A:ALG / ML-DSA-87-ES384 = -56 kaynak metninde geciyor
+  [GECTI] A:ALG / ML-DSA-44-Ed25519 = -57 kaynak metninde geciyor
+  [GECTI] A:ALG / ML-DSA-65-Ed25519 = -58 kaynak metninde geciyor
+  [GECTI] A:ALG / ML-DSA-87-Ed448 = -59 kaynak metninde geciyor
+  [GECTI] B:RFC9964-COSE-ML-DSA-44 / COSE_Key ekleme sirasiyla yeniden kodlaninca bayt-ayni
+  [BILGI] B:RFC9964-COSE-ML-DSA-44 / COSE_Key kanonik (belirlenimci) sirada mi — False
+  [GECTI] B:RFC9964-COSE-ML-DSA-44 / AKP anahtari: tohumdan acik anahtar == -1
+  [GECTI] B:RFC9964-COSE-ML-DSA-44 / AKP COSE parmak izi (RFC 9964 §6: kty, alg, pub) == kid
+  [GECTI] B:RFC9964-COSE-ML-DSA-44 / COSE_Sign1 ayristirildi; korumali baslik {1: alg, 4: kid}
+  [GECTI] B:RFC9964-COSE-ML-DSA-44 / Sig_structure (bizim kodlama) == raw_to_be_signed
+  [GECTI] B:RFC9964-COSE-ML-DSA-44 / imza == raw_signature
+  [GECTI] B:RFC9964-COSE-ML-DSA-44 / COSE_Sign1 dogrulandi (pqjose)
+  [GECTI] B:RFC9964-COSE-ML-DSA-44 / dilithium-py capraz dogrulama
+  [GECTI] B:RFC9964-COSE-ML-DSA-44 / belirlenimci yeniden imzalama: COSE_Sign1 BAYT-AYNI
+  [GECTI] B:RFC9964-COSE-ML-DSA-65 / COSE_Key ekleme sirasiyla yeniden kodlaninca bayt-ayni
+  [BILGI] B:RFC9964-COSE-ML-DSA-65 / COSE_Key kanonik (belirlenimci) sirada mi — False
+  [GECTI] B:RFC9964-COSE-ML-DSA-65 / AKP anahtari: tohumdan acik anahtar == -1
+  [GECTI] B:RFC9964-COSE-ML-DSA-65 / AKP COSE parmak izi (RFC 9964 §6: kty, alg, pub) == kid
+  [GECTI] B:RFC9964-COSE-ML-DSA-65 / COSE_Sign1 ayristirildi; korumali baslik {1: alg, 4: kid}
+  [GECTI] B:RFC9964-COSE-ML-DSA-65 / Sig_structure (bizim kodlama) == raw_to_be_signed
+  [GECTI] B:RFC9964-COSE-ML-DSA-65 / imza == raw_signature
+  [GECTI] B:RFC9964-COSE-ML-DSA-65 / COSE_Sign1 dogrulandi (pqjose)
+  [GECTI] B:RFC9964-COSE-ML-DSA-65 / dilithium-py capraz dogrulama
+  [GECTI] B:RFC9964-COSE-ML-DSA-65 / belirlenimci yeniden imzalama: COSE_Sign1 BAYT-AYNI
+  [GECTI] B:RFC9964-COSE-ML-DSA-87 / COSE_Key ekleme sirasiyla yeniden kodlaninca bayt-ayni
+  [BILGI] B:RFC9964-COSE-ML-DSA-87 / COSE_Key kanonik (belirlenimci) sirada mi — False
+  [GECTI] B:RFC9964-COSE-ML-DSA-87 / AKP anahtari: tohumdan acik anahtar == -1
+  [GECTI] B:RFC9964-COSE-ML-DSA-87 / AKP COSE parmak izi (RFC 9964 §6: kty, alg, pub) == kid
+  [GECTI] B:RFC9964-COSE-ML-DSA-87 / COSE_Sign1 ayristirildi; korumali baslik {1: alg, 4: kid}
+  [GECTI] B:RFC9964-COSE-ML-DSA-87 / Sig_structure (bizim kodlama) == raw_to_be_signed
+  [GECTI] B:RFC9964-COSE-ML-DSA-87 / imza == raw_signature
+  [GECTI] B:RFC9964-COSE-ML-DSA-87 / COSE_Sign1 dogrulandi (pqjose)
+  [GECTI] B:RFC9964-COSE-ML-DSA-87 / dilithium-py capraz dogrulama
+  [GECTI] B:RFC9964-COSE-ML-DSA-87 / belirlenimci yeniden imzalama: COSE_Sign1 BAYT-AYNI
+  [GECTI] C:genel / -04 Ek A.2 COSE ornek sayisi 6 — ["ML-DSA-44-ES256", "ML-DSA-44-Ed25519", "ML-DSA-65-ES256", "ML-DSA-65-Ed25519", "ML-DSA-87-ES384", "ML-DSA-87-Ed448"]
+  [GECTI] C:ML-DSA-44-ES256 / COSE alg degeri = -54 (-04 Tablo 6, talep edilen)
+  [GECTI] C:ML-DSA-44-ES256 / cikarim tutarliligi (kid x3, payload x2, aad bos)
+  [GECTI] C:ML-DSA-44-ES256 / COSE_Key priv = tohum || klasik ozel; pub tutarli
+  [GECTI] C:ML-DSA-44-ES256 / ECDSA d cikarimi == anahtar
+  [GECTI] C:ML-DSA-44-ES256 / M' (bizim korumali baslik + Sig_structure kodlamamizla) BIREBIR
+  [GECTI] C:ML-DSA-44-ES256 / composite COSE imzasi dogrulandi (ml ve trad) — {"ml": true, "trad": true, "hata": null}
+  [GECTI] C:ML-DSA-44-ES256 / dilithium-py: ML-DSA bileseni (ctx=Label)
+  [GECTI] C:ML-DSA-44-ES256 / OpenSSL CLI: ML-DSA bileseni (ctx=Label)
+  [GECTI] C:ML-DSA-44-ES256 / OpenSSL CLI: ECDSA bileseni
+  [BILGI] C:ML-DSA-44-ES256 / ML-DSA bileseni belirlenimci mi (taslak) — True
+  [GECTI] C:ML-DSA-44-Ed25519 / COSE alg degeri = -57 (-04 Tablo 6, talep edilen)
+  [GECTI] C:ML-DSA-44-Ed25519 / cikarim tutarliligi (kid x3, payload x2, aad bos)
+  [GECTI] C:ML-DSA-44-Ed25519 / COSE_Key priv = tohum || klasik ozel; pub tutarli
+  [GECTI] C:ML-DSA-44-Ed25519 / EdDSA tohumu == anahtar
+  [GECTI] C:ML-DSA-44-Ed25519 / M' (bizim korumali baslik + Sig_structure kodlamamizla) BIREBIR
+  [GECTI] C:ML-DSA-44-Ed25519 / composite COSE imzasi dogrulandi (ml ve trad) — {"ml": true, "trad": true, "hata": null}
+  [GECTI] C:ML-DSA-44-Ed25519 / dilithium-py: ML-DSA bileseni (ctx=Label)
+  [GECTI] C:ML-DSA-44-Ed25519 / OpenSSL CLI: ML-DSA bileseni (ctx=Label)
+  [GECTI] C:ML-DSA-44-Ed25519 / OpenSSL CLI: EdDSA bileseni
+  [BILGI] C:ML-DSA-44-Ed25519 / ML-DSA bileseni belirlenimci mi (taslak) — True
+  [GECTI] C:ML-DSA-44-Ed25519 / EdDSA bileseni bayt-ayni (belirlenimci)
+  [GECTI] C:ML-DSA-44-Ed25519 / bizim COSE_Sign1 imzamiz bayt-ayni
+  [GECTI] C:ML-DSA-65-ES256 / COSE alg degeri = -55 (-04 Tablo 6, talep edilen)
+  [GECTI] C:ML-DSA-65-ES256 / cikarim tutarliligi (kid x3, payload x2, aad bos)
+  [GECTI] C:ML-DSA-65-ES256 / COSE_Key priv = tohum || klasik ozel; pub tutarli
+  [GECTI] C:ML-DSA-65-ES256 / ECDSA d cikarimi == anahtar
+  [GECTI] C:ML-DSA-65-ES256 / M' (bizim korumali baslik + Sig_structure kodlamamizla) BIREBIR
+  [GECTI] C:ML-DSA-65-ES256 / composite COSE imzasi dogrulandi (ml ve trad) — {"ml": true, "trad": true, "hata": null}
+  [GECTI] C:ML-DSA-65-ES256 / dilithium-py: ML-DSA bileseni (ctx=Label)
+  [GECTI] C:ML-DSA-65-ES256 / OpenSSL CLI: ML-DSA bileseni (ctx=Label)
+  [GECTI] C:ML-DSA-65-ES256 / OpenSSL CLI: ECDSA bileseni
+  [BILGI] C:ML-DSA-65-ES256 / ML-DSA bileseni belirlenimci mi (taslak) — True
+  [GECTI] C:ML-DSA-65-Ed25519 / COSE alg degeri = -58 (-04 Tablo 6, talep edilen)
+  [GECTI] C:ML-DSA-65-Ed25519 / cikarim tutarliligi (kid x3, payload x2, aad bos)
+  [GECTI] C:ML-DSA-65-Ed25519 / COSE_Key priv = tohum || klasik ozel; pub tutarli
+  [GECTI] C:ML-DSA-65-Ed25519 / EdDSA tohumu == anahtar
+  [GECTI] C:ML-DSA-65-Ed25519 / M' (bizim korumali baslik + Sig_structure kodlamamizla) BIREBIR
+  [GECTI] C:ML-DSA-65-Ed25519 / composite COSE imzasi dogrulandi (ml ve trad) — {"ml": true, "trad": true, "hata": null}
+  [GECTI] C:ML-DSA-65-Ed25519 / dilithium-py: ML-DSA bileseni (ctx=Label)
+  [GECTI] C:ML-DSA-65-Ed25519 / OpenSSL CLI: ML-DSA bileseni (ctx=Label)
+  [GECTI] C:ML-DSA-65-Ed25519 / OpenSSL CLI: EdDSA bileseni
+  [BILGI] C:ML-DSA-65-Ed25519 / ML-DSA bileseni belirlenimci mi (taslak) — True
+  [GECTI] C:ML-DSA-65-Ed25519 / EdDSA bileseni bayt-ayni (belirlenimci)
+  [GECTI] C:ML-DSA-65-Ed25519 / bizim COSE_Sign1 imzamiz bayt-ayni
+  [GECTI] C:ML-DSA-87-ES384 / COSE alg degeri = -56 (-04 Tablo 6, talep edilen)
+  [GECTI] C:ML-DSA-87-ES384 / cikarim tutarliligi (kid x3, payload x2, aad bos)
+  [GECTI] C:ML-DSA-87-ES384 / COSE_Key priv = tohum || klasik ozel; pub tutarli
+  [GECTI] C:ML-DSA-87-ES384 / ECDSA d cikarimi == anahtar
+  [GECTI] C:ML-DSA-87-ES384 / BILINEN TUTARSIZLIK (erratum adayi) suruyor: PH(Sig_structure) != M' icindeki PH
+  [GECTI] C:ML-DSA-87-ES384 / imza bilesenleri taslagin GOSTERDIGI M' uzerinde gecerli
+  [GECTI] C:ML-DSA-87-ES384 / ayni anahtar/baslik/yukle bizim COSE_Sign1 imzamiz gecerli (ic tutarli ornek)
+  [BILGI] C:ML-DSA-87-ES384 / not — COSE_Sign1 olarak dogrulanamaz; JOSE Ek A.1 esi (T01) gecerli; NOTLAR H
+  [GECTI] C:ML-DSA-87-Ed448 / COSE alg degeri = -59 (-04 Tablo 6, talep edilen)
+  [GECTI] C:ML-DSA-87-Ed448 / cikarim tutarliligi (kid x3, payload x2, aad bos)
+  [GECTI] C:ML-DSA-87-Ed448 / COSE_Key priv = tohum || klasik ozel; pub tutarli
+  [GECTI] C:ML-DSA-87-Ed448 / EdDSA tohumu == anahtar
+  [GECTI] C:ML-DSA-87-Ed448 / M' (bizim korumali baslik + Sig_structure kodlamamizla) BIREBIR
+  [GECTI] C:ML-DSA-87-Ed448 / composite COSE imzasi dogrulandi (ml ve trad) — {"ml": true, "trad": true, "hata": null}
+  [GECTI] C:ML-DSA-87-Ed448 / dilithium-py: ML-DSA bileseni (ctx=Label)
+  [GECTI] C:ML-DSA-87-Ed448 / OpenSSL CLI: ML-DSA bileseni (ctx=Label)
+  [GECTI] C:ML-DSA-87-Ed448 / OpenSSL CLI: EdDSA bileseni
+  [BILGI] C:ML-DSA-87-Ed448 / ML-DSA bileseni belirlenimci mi (taslak) — True
+  [GECTI] C:ML-DSA-87-Ed448 / EdDSA bileseni bayt-ayni (belirlenimci)
+  [GECTI] C:ML-DSA-87-Ed448 / bizim COSE_Sign1 imzamiz bayt-ayni

@@ -1,0 +1,23 @@
+# Unrelated local images and containers of the build machine were removed from this record on 2026-10-03 (privacy).
+golang:1.27.1-trixie 433790e515d2
+gradle:9.6.1-jdk25-noble b94f2560a917
+maven:3.9.16-eclipse-temurin-25-noble dd8e01b3be71
+mcr.microsoft.com/dotnet/sdk:8.0 306301580fca
+node:20-bookworm 8f693eaa7e0a
+node:20-bookworm-slim 2cf067cfed83
+node:24.21.0-trixie be40f6a87b9b
+pq-a02-proverif:2.05 9d15c7a7dc2c
+pq-a02-solver:1.0 02c637eba8b0
+pq-a02-tamarin:1.12.0 59b648d60829
+pq-a09-analiz:1.0 a196c92cd174
+pq-a09-credgen:1.0 55ac321117b7
+pq-a09-credgen:1.1 bd96803a15cd
+pq-a09-credgen:1.2 5984112f66f6
+pq-a09-env-go:1.0 931657811dd7
+pq-a09-env-jvm:1.0 1900053fd579
+pq-a09-env-node:1.0 e2650858bc9c
+pq-a09-env-python:1.0 94dbdfc92827
+pq-a09-signer:1.0 beeb05a70a97
+python:3.10-slim fd76ade0c607
+python:3.11-slim 9534e5a8e315
+python:3.13-trixie 82c46c08c991

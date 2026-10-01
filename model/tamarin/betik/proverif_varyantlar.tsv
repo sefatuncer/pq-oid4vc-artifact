@@ -1,0 +1,21 @@
+# Adım 5A — ProVerif ikinci görüş varyantları (R1–R5 korumalı + mutant alt kümesi).
+# kural	varyant	sablon	bayraklar	sorgular (ProVerif sorgu sırası; ad:tür)
+# tür: reach = "not event(E)" sorgusu, Tamarin exists-trace (verified ⇔ ProVerif false);
+#      corr  = karşılıklılık, Tamarin all-traces (verified ⇔ ProVerif true);
+#      neg   = "not event(E)" biçiminde güvenlik, Tamarin all-traces (verified ⇔ ProVerif true).
+# "cannot be proved" her türde "bilinmiyor" sayılır.
+R1	P_all_pq	R1_chain.pvt	ROOT_PQ,CA_PQ,ISS_PQ	executable:reach;G1_claims_unforgeability:corr
+R1	M_root	R1_chain.pvt	CA_PQ,ISS_PQ	executable:reach;G1_claims_unforgeability:corr
+R1	M_ca	R1_chain.pvt	ROOT_PQ,ISS_PQ	executable:reach;G1_claims_unforgeability:corr
+R1	M_iss	R1_chain.pvt	ROOT_PQ,CA_PQ	executable:reach;G1_claims_unforgeability:corr
+R2	P_expect_auth	R2_downgrade.pvt	EXPECT_AUTH	executable:reach;G1_claims_unforgeability:corr;G5_no_classical_acceptance:neg
+R2	M_expect_unauth	R2_downgrade.pvt	EXPECT_UNAUTH	executable:reach;G1_claims_unforgeability:corr;G5_no_classical_acceptance:neg
+R2	M_expect_absent	R2_downgrade.pvt	-	executable:reach;G1_claims_unforgeability:corr;G5_no_classical_acceptance:neg
+R3	P_obj_pq	R3_channel.pvt	CHAN_PQ	executable:reach;G1_claims_unforgeability:corr;G5_no_classical_acceptance:neg
+R3	M_obj_classical	R3_channel.pvt	-	executable:reach;G1_claims_unforgeability:corr;G5_no_classical_acceptance:neg
+R4	P_dev_iss_pq	R4_wscd.pvt	DEV_PQ,ISS_PQ	executable:reach;G2_presentation_unforgeability:corr
+R4	M_dev	R4_wscd.pvt	ISS_PQ	executable:reach;G2_presentation_unforgeability:corr
+R4	M_iss	R4_wscd.pvt	DEV_PQ	executable:reach;G2_presentation_unforgeability:corr
+R5	P_pin_tlpq	R5_anchor.pvt	PIN_TL,TL_PQ	executable:reach;G1_claims_unforgeability:corr
+R5	M_pin	R5_anchor.pvt	TL_PQ	executable:reach;G1_claims_unforgeability:corr
+R5	M_tl	R5_anchor.pvt	PIN_TL	executable:reach;G1_claims_unforgeability:corr

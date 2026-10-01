@@ -1,0 +1,12 @@
+# Unrelated local images and containers of the build machine were removed from this record on 2026-10-03 (privacy).
+pq-a09-credgen:1.1 bd96803a15cd 17 minutes ago 223MB
+pq-a09-credgen:1.0 55ac321117b7 41 minutes ago 223MB
+pq-a09-signer:1.0 beeb05a70a97 41 minutes ago 223MB
+pq-a02-proverif:2.05 9d15c7a7dc2c 21 hours ago 208MB
+pq-a02-solver:1.0 02c637eba8b0 21 hours ago 339MB
+pq-a02-tamarin:1.12.0 59b648d60829 21 hours ago 273MB
+python:3.10-slim fd76ade0c607 3 weeks ago 197MB
+python:3.11-slim 9534e5a8e315 3 weeks ago 200MB
+mcr.microsoft.com/dotnet/sdk:8.0 306301580fca 6 weeks ago 1.2GB
+node:20-bookworm 8f693eaa7e0a 5 months ago 1.59GB
+node:20-bookworm-slim 2cf067cfed83 5 months ago 293MB

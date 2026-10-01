@@ -1,0 +1,38 @@
+<block>:40:48-59: info: atom does not occur in any rule head:
+  anchored(L)
+
+== P2a: subset-minimal PQ migration sets (clingo domRec) ==
+total P2a wall s: 0.028 queries: 48
+coexist/p256/lotl/claims -> n_min_sets 3 min_pq_card 5 t 0.0003
+     convey(ca_iss,cred) pq(ca_iss) pq(cred) pq(iss_cert) pq(lotl) pq(tl_pid)
+     convey(tl_pid,cred) pq(ca_iss) pq(cred) pq(iss_cert) pq(lotl) pq(tl_pid)
+     convey(meta,cred) convey(tl_pid,meta) pq(ca_iss) pq(cred) pq(iss_cert) pq(lotl) pq(meta) pq(tl_pid)
+coexist/p256/lotl/holder -> n_min_sets 0 min_pq_card None t 0.0
+coexist/pq/lotl/holder -> n_min_sets 3 min_pq_card 6 t 0.0001
+     convey(ca_iss,cred) pq(ca_iss) pq(cred) pq(iss_cert) pq(kb) pq(lotl) pq(tl_pid)
+     convey(tl_pid,cred) pq(ca_iss) pq(cred) pq(iss_cert) pq(kb) pq(lotl) pq(tl_pid)
+     convey(meta,cred) convey(tl_pid,meta) pq(ca_iss) pq(cred) pq(iss_cert) pq(kb) pq(lotl) pq(meta) pq(tl_pid)
+coexist/pq/lotl/all -> n_min_sets 12 min_pq_card 12 t 0.0003
+     convey(ca_iss,cred) convey(tl_pid,status) convey(tl_rp,req) convey(tl_wp,wua) pq(ca_iss) pq(cred) pq(iss_cert) pq(kb) pq(lotl) pq(req) pq(rp_cert) pq(status) pq(tl_pid) pq(tl_rp) pq(tl_wp) pq(wua)
+     convey(tl_pid,cred) convey(tl_pid,status) convey(tl_rp,req) convey(tl_wp,wua) pq(ca_iss) pq(cred) pq(iss_cert) pq(kb) pq(lotl) pq(req) pq(rp_cert) pq(status) pq(tl_pid) pq(tl_rp) pq(tl_wp) pq(wua)
+     convey(ca_iss,cred) convey(rp_cert,req) convey(tl_pid,status) convey(tl_wp,wua) pq(ca_iss) pq(cred) pq(iss_cert) pq(kb) pq(lotl) pq(req) pq(rp_cert) pq(status) pq(tl_pid) pq(tl_rp) pq(tl_wp) pq(wua)
+post/pq/lotl/claims -> n_min_sets 1 min_pq_card 5 t 0.0001
+     pq(ca_iss) pq(cred) pq(iss_cert) pq(lotl) pq(tl_pid)
+coexist/pq/pinned_tl/claims -> n_min_sets 3 min_pq_card 4 t 0.0001
+     convey(ca_iss,cred) pq(ca_iss) pq(cred) pq(iss_cert) pq(tl_pid)
+     convey(tl_pid,cred) pq(ca_iss) pq(cred) pq(iss_cert) pq(tl_pid)
+     convey(meta,cred) convey(tl_pid,meta) pq(ca_iss) pq(cred) pq(iss_cert) pq(meta) pq(tl_pid)
+coexist/p256/lotl/revocation -> n_min_sets 2 min_pq_card 5 t 0.0001
+     convey(tl_pid,status) pq(ca_iss) pq(iss_cert) pq(lotl) pq(status) pq(tl_pid)
+     convey(meta,status) convey(tl_pid,meta) pq(ca_iss) pq(iss_cert) pq(lotl) pq(meta) pq(status) pq(tl_pid)
+== P2b: migration order for coexist/pq/lotl/claims (first minimal set) ==
+order solve s: 0.001 optimal orders: 1
+    lotl -> tl_pid -> ca_iss -> iss_cert -> cred
+== P2c: z3 cross-check ==
+z3 vs clingo agreement: 48/48 queries; z3+clingo wall s 0.46
+== P2d: scale test (random layered DAGs) ==
+n=25 links (3 seeds): (ground_s, solve_s, result) = [(0.001, 0.0, 'SAT'), (0.001, 0.0, 'SAT'), (0.001, 0.0, 'SAT')]
+n=50 links (3 seeds): (ground_s, solve_s, result) = [(0.001, 0.001, 'SAT'), (0.001, 0.001, 'SAT'), (0.001, 0.001, 'SAT')]
+n=100 links (3 seeds): (ground_s, solve_s, result) = [(0.001, 0.012, 'SAT'), (0.002, 0.004, 'SAT'), (0.002, 0.003, 'SAT')]
+n=200 links (3 seeds): (ground_s, solve_s, result) = [(0.002, 0.004, 'SAT'), (0.003, 0.005, 'SAT'), (0.003, 0.109, 'SAT')]
+n=400 links (3 seeds): (ground_s, solve_s, result) = [(0.005, 0.04, 'SAT'), (0.003, 0.007, 'SAT'), (0.003, 0.823, 'SAT')]

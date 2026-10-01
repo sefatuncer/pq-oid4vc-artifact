@@ -1,0 +1,106 @@
+Process 0 (that is, the initial process):
+{1}new sktl: skey;
+{2}new skc: skey;
+{3}new skq: skey;
+{4}out(c, (pk(sktl),pk(skc),pk(skq)));
+(
+    {5}!
+    {6}let sktl_1: skey = sktl in
+    {7}let i: bitstring = issuerA in
+    {8}let pkc: pkey = pk(skc) in
+    {9}let pkq: pkey = pk(skq) in
+    {10}out(c, ((i,pkc,pkq,pq_required),sign((i,pkc,pkq,pq_required),sktl_1)))
+) | (
+    {11}!
+    {12}let i_1: bitstring = issuerA in
+    {13}let skc_1: skey = skc in
+    {14}let skq_1: skey = skq in
+    {15}new claims: bitstring;
+    {16}event Issued(i_1,claims);
+    {17}out(c, (i_1,claims,sign((i_1,claims),skq_1)));
+    {18}out(c, (i_1,claims,sign((i_1,claims),skc_1)))
+) | (
+    {19}phase 1;
+    (
+        {20}out(c, skc)
+    ) | (
+        {21}!
+        {22}let pktl: pkey = pk(sktl) in
+        {23}in(c, ((i_2: bitstring,pkc_1: pkey,pkq_1: pkey,e: bitstring),tlsig: bitstring));
+        {24}if (verify(tlsig,(i_2,pkc_1,pkq_1,e),pktl) = true) then
+        {25}in(c, (=i_2,claims_1: bitstring,sigq: bitstring));
+        {26}if (verify(sigq,(i_2,claims_1),pkq_1) = true) then
+        {27}event Accept(i_2,claims_1)
+    ) | (
+        {28}!
+        {29}let pktl_1: pkey = pk(sktl) in
+        {30}in(c, ((i_3: bitstring,pkc_2: pkey,pkq_2: pkey,e_1: bitstring),tlsig_1: bitstring));
+        {31}if (verify(tlsig_1,(i_3,pkc_2,pkq_2,e_1),pktl_1) = true) then
+        {32}if (e_1 ≠ pq_required) then
+        {33}in(c, (=i_3,claims_2: bitstring,sigc: bitstring));
+        {34}if (verify(sigc,(i_3,claims_2),pkc_2) = true) then
+        {35}event Accept(i_3,claims_2)
+    )
+)
+
+--  Process 1 (that is, process 0, with let moved downwards):
+{1}new sktl: skey;
+{2}new skc: skey;
+{3}new skq: skey;
+{4}out(c, (pk(sktl),pk(skc),pk(skq)));
+(
+    {5}!
+    {9}let pkq: pkey = pk(skq) in
+    {8}let pkc: pkey = pk(skc) in
+    {7}let i: bitstring = issuerA in
+    {6}let sktl_1: skey = sktl in
+    {10}out(c, ((i,pkc,pkq,pq_required),sign((i,pkc,pkq,pq_required),sktl_1)))
+) | (
+    {11}!
+    {15}new claims: bitstring;
+    {12}let i_1: bitstring = issuerA in
+    {16}event Issued(i_1,claims);
+    {14}let skq_1: skey = skq in
+    {17}out(c, (i_1,claims,sign((i_1,claims),skq_1)));
+    {13}let skc_1: skey = skc in
+    {18}out(c, (i_1,claims,sign((i_1,claims),skc_1)))
+) | (
+    {19}phase 1;
+    (
+        {20}out(c, skc)
+    ) | (
+        {21}!
+        {23}in(c, ((i_2: bitstring,pkc_1: pkey,pkq_1: pkey,e: bitstring),tlsig: bitstring));
+        {22}let pktl: pkey = pk(sktl) in
+        {24}if (verify(tlsig,(i_2,pkc_1,pkq_1,e),pktl) = true) then
+        {25}in(c, (=i_2,claims_1: bitstring,sigq: bitstring));
+        {26}if (verify(sigq,(i_2,claims_1),pkq_1) = true) then
+        {27}event Accept(i_2,claims_1)
+    ) | (
+        {28}!
+        {30}in(c, ((i_3: bitstring,pkc_2: pkey,pkq_2: pkey,e_1: bitstring),tlsig_1: bitstring));
+        {29}let pktl_1: pkey = pk(sktl) in
+        {31}if (verify(tlsig_1,(i_3,pkc_2,pkq_2,e_1),pktl_1) = true) then
+        {32}if (e_1 ≠ pq_required) then
+        {33}in(c, (=i_3,claims_2: bitstring,sigc: bitstring));
+        {34}if (verify(sigc,(i_3,claims_2),pkc_2) = true) then
+        {35}event Accept(i_3,claims_2)
+    )
+)
+
+-- Query event(Accept(i_4,x)) ==> event(Issued(i_4,x)) in process 1.
+Translating the process into Horn clauses...
+Completing...
+Starting query event(Accept(i_4,x)) ==> event(Issued(i_4,x))
+goal reachable: b-event(Issued(issuerA[],claims_3)) -> event(Accept(issuerA[],claims_3))
+Abbreviations:
+claims_3 = claims[!1 = @sid]
+RESULT event(Accept(i_4,x)) ==> event(Issued(i_4,x)) is true.
+
+--------------------------------------------------------------
+Verification summary:
+
+Query event(Accept(i_4,x)) ==> event(Issued(i_4,x)) is true.
+
+--------------------------------------------------------------
+

@@ -1,0 +1,31 @@
+kosu	nsurum_hucre	nsurum_sutun	motor	asp_sabitler	tamarin_bayraklari	tamarin_lemma	aciklama
+K1-01.asp	K1-01	ASP	asp	kat_asama(r2). kat_politika(anyvalid). kat_now(100). kat_qday(0). kat_tau(10). kat_tekduze(0). kat_ust_sinif(pq). kat_ek_capa(0).	-	-	Yalnız klasik DS: zincir kuralı (sağlık)
+K1-02.asp	K1-02	ASP	asp	kat_asama(r2). kat_politika(required). kat_now(100). kat_qday(0). kat_tau(10). kat_tekduze(0). kat_ust_sinif(pq). kat_ek_capa(0).	-	-	Bütünlük testi yalnız işaretli (klasik) algoritmayı ister
+K1-03.asp	K1-03	ASP	asp	kat_asama(r3). kat_politika(anyvalid). kat_now(100). kat_qday(0). kat_tau(10). kat_tekduze(0). kat_ust_sinif(pq). kat_ek_capa(0).	-	-	Çekirdek sonuç: DS PQ olsa da DNSKEY RRset'teki klasik ZSK her RRset'i doğrular (§5.11 + §6.2)
+K1-04.asp	K1-04	ASP	asp	kat_asama(r3). kat_politika(required). kat_now(100). kat_qday(0). kat_tau(10). kat_tekduze(0). kat_ust_sinif(pq). kat_ek_capa(0).	-	-	Negatif kontrol: işaretli PQ algoritması zorunlu (§5.11 MAY seçeneği)
+K1-05.asp	K1-05	ASP	asp	kat_asama(r3). kat_politika(required). kat_now(50). kat_qday(0). kat_tau(10). kat_tekduze(0). kat_ust_sinif(pq). kat_ek_capa(0).	-	-	Eski DS imzası geçerli: yeniden oynatma (RFC 6781 §4.3.4)
+K1-06.asp	K1-06	ASP	asp	kat_asama(r3). kat_politika(required). kat_now(50). kat_qday(0). kat_tau(10). kat_tekduze(1). kat_ust_sinif(pq). kat_ek_capa(0).	-	-	Negatif kontrol: tekdüzelik
+K1-07.asp	K1-07	ASP	asp	kat_asama(r5). kat_politika(anyvalid). kat_now(100). kat_qday(0). kat_tau(10). kat_tekduze(0). kat_ust_sinif(pq). kat_ek_capa(0).	-	-	Eski DNSKEY sürümü (klasik ZSK içeren) hâlâ geçerli: yeniden oynatma
+K1-08.asp	K1-08	ASP	asp	kat_asama(r5). kat_politika(anyvalid). kat_now(100). kat_qday(0). kat_tau(10). kat_tekduze(1). kat_ust_sinif(pq). kat_ek_capa(0).	-	-	Negatif kontrol: tekdüzelik
+K1-09.asp	K1-09	ASP	asp	kat_asama(r5). kat_politika(anyvalid). kat_now(150). kat_qday(0). kat_tau(10). kat_tekduze(0). kat_ust_sinif(pq). kat_ek_capa(0).	-	-	Negatif kontrol: eski imzaların geçerliliği doldu
+K1-10.asp	K1-10	ASP	asp	kat_asama(dds). kat_politika(anyvalid). kat_now(100). kat_qday(0). kat_tau(10). kat_tekduze(0). kat_ust_sinif(pq). kat_ek_capa(0).	-	-	Çift-DS + herhangi bir yol
+K1-11.asp	K1-11	ASP	asp	kat_asama(dds). kat_politika(required). kat_now(100). kat_qday(0). kat_tau(10). kat_tekduze(0). kat_ust_sinif(pq). kat_ek_capa(0).	-	-	Negatif kontrol: iki algoritma da zorunlu
+K1-12.asp	K1-12	ASP	asp	kat_asama(r3). kat_politika(required). kat_now(100). kat_qday(0). kat_tau(10). kat_tekduze(0). kat_ust_sinif(cl). kat_ek_capa(0).	-	-	Beklenti kanalı (DS) sahtelenebilir: sinyal silinir
+K1-13.asp	K1-13	ASP	asp	kat_asama(r3). kat_politika(anyvalid). kat_now(100). kat_qday(200). kat_tau(10). kat_tekduze(0). kat_ust_sinif(pq). kat_ek_capa(0).	-	-	Sağlık: CRQC yok (τ=∞ hücresi)
+K1-14.asp	K1-14	ASP	asp	kat_asama(r5). kat_politika(anyvalid). kat_now(150). kat_qday(0). kat_tau(10). kat_tekduze(0). kat_ust_sinif(pq). kat_ek_capa(1).	-	-	Ek C.2: en zayıf güven çapası
+K1-15.asp	K1-15	ASP	asp	kat_asama(r3). kat_politika(allpresent). kat_now(100). kat_qday(0). kat_tau(10). kat_tekduze(0). kat_ust_sinif(pq). kat_ek_capa(0).	-	-	"Mevcut tümü geçerli" soymaya açık (RFC 9955 §6.2)
+K1-01.tam	K1-01	Tamarin:a_rrset_authentic	tamarin	-	DS_CL,DK3_USABLE,ANYVALID	a_rrset_authentic	KAT-SPEC §2(d)
+K1-02.tam	K1-02	Tamarin:a_rrset_authentic	tamarin	-	DS_CL,DK3_USABLE,COMPLETENESS	a_rrset_authentic	KAT-SPEC §2(d)
+K1-03.tam	K1-03	Tamarin:a_rrset_authentic	tamarin	-	DS_PQ,DK3_USABLE,ANYVALID	a_rrset_authentic	KAT-SPEC §2(d)
+K1-04.tam	K1-04	Tamarin:a_rrset_authentic	tamarin	-	DS_PQ,DK3_USABLE,COMPLETENESS	a_rrset_authentic	KAT-SPEC §2(d)
+K1-05.tam	K1-05	Tamarin:a_rrset_authentic	tamarin	-	DS_PQ,OLD_DS_REPLAY,DK3_USABLE,COMPLETENESS	a_rrset_authentic	KAT-SPEC §2(d)
+K1-06.tam	K1-06	Tamarin:a_rrset_authentic	tamarin	-	DS_PQ,DK3_USABLE,COMPLETENESS	a_rrset_authentic	KAT-SPEC §2(d): eski DS yok = tekdüze doğrulayıcı
+K1-07.tam	K1-07	Tamarin:a_rrset_authentic	tamarin	-	DS_PQ,DK3_USABLE,DK5,ANYVALID	a_rrset_authentic	KAT-SPEC §2(d)
+K1-08.tam	K1-08	Tamarin:a_rrset_authentic	tamarin	-	DS_PQ,DK3_USABLE,DK5,ANYVALID,MONOTONE	a_rrset_authentic	KAT-SPEC §2(d)
+K1-09.tam	K1-09	Tamarin:a_rrset_authentic	tamarin	-	DS_PQ,DK5,ANYVALID	a_rrset_authentic	KAT-SPEC §2(d)
+K1-10.tam	K1-10	Tamarin:a_rrset_authentic	tamarin	-	DS_BOTH,DK3_USABLE,ANYVALID	a_rrset_authentic	KAT-SPEC §2(d)
+K1-11.tam	K1-11	Tamarin:a_rrset_authentic	tamarin	-	DS_BOTH,DK3_USABLE,COMPLETENESS	a_rrset_authentic	KAT-SPEC §2(d)
+K1-12.tam	K1-12	Tamarin:a_rrset_authentic	tamarin	-	DS_PQ,DK3_USABLE,COMPLETENESS,PARENT_CL	a_rrset_authentic	KAT-SPEC §2(d)
+K1-13.tam	K1-13	Tamarin:a_rrset_authentic	tamarin	-	DS_PQ,DK3_USABLE,ANYVALID,NO_QDAY	a_rrset_authentic	KAT-SPEC §2(d)
+K1-14.tam	K1-14	Tamarin:a_rrset_authentic	tamarin	-	DS_PQ,DK5,ANYVALID,EXTRA_TA	a_rrset_authentic	KAT-SPEC §2(d)
+K1-15.tam	K1-15	Tamarin:a_rrset_authentic	tamarin	-	DS_PQ,DK3_USABLE,ALLPRESENT	a_rrset_authentic	KAT-SPEC §2(d)

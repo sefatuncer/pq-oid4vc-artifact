@@ -1,0 +1,35 @@
+# JOSE-055 — API taraması (sözleşme §5.1)
+# imaj: a10-jvm:1 (sha256:efda0bc4fca2edcbbdc46158e5a231b04cdd8b575bca3e41151cea71fdd4b0b6)
+# komut: docker run --rm --network none --entrypoint sh a10-jvm:1 -c 'javap -public -cp /a/adaptor.jar 'io.jsonwebtoken.Jwts$SIG' | head -40; javap -public -cp /a/adaptor.jar io.jsonwebtoken.JwtParserBuilder | grep -i -E 'sig|key|unsecured''
+
+Compiled from "Jwts.java"
+public final class io.jsonwebtoken.Jwts$SIG {
+  public static final io.jsonwebtoken.security.SecureDigestAlgorithm<java.security.Key, java.security.Key> NONE;
+  public static final io.jsonwebtoken.security.MacAlgorithm HS256;
+  public static final io.jsonwebtoken.security.MacAlgorithm HS384;
+  public static final io.jsonwebtoken.security.MacAlgorithm HS512;
+  public static final io.jsonwebtoken.security.SignatureAlgorithm RS256;
+  public static final io.jsonwebtoken.security.SignatureAlgorithm RS384;
+  public static final io.jsonwebtoken.security.SignatureAlgorithm RS512;
+  public static final io.jsonwebtoken.security.SignatureAlgorithm PS256;
+  public static final io.jsonwebtoken.security.SignatureAlgorithm PS384;
+  public static final io.jsonwebtoken.security.SignatureAlgorithm PS512;
+  public static final io.jsonwebtoken.security.SignatureAlgorithm ES256;
+  public static final io.jsonwebtoken.security.SignatureAlgorithm ES384;
+  public static final io.jsonwebtoken.security.SignatureAlgorithm ES512;
+  public static final io.jsonwebtoken.security.SignatureAlgorithm EdDSA;
+  public static io.jsonwebtoken.lang.Registry<java.lang.String, io.jsonwebtoken.security.SecureDigestAlgorithm<?, ?>> get();
+}
+  public abstract io.jsonwebtoken.JwtParserBuilder unsecured();
+  public abstract io.jsonwebtoken.JwtParserBuilder unsecuredDecompression();
+  public abstract io.jsonwebtoken.JwtParserBuilder setSigningKey(byte[]);
+  public abstract io.jsonwebtoken.JwtParserBuilder setSigningKey(java.lang.String);
+  public abstract io.jsonwebtoken.JwtParserBuilder setSigningKey(java.security.Key);
+  public abstract io.jsonwebtoken.JwtParserBuilder verifyWith(javax.crypto.SecretKey);
+  public abstract io.jsonwebtoken.JwtParserBuilder verifyWith(java.security.PublicKey);
+  public abstract io.jsonwebtoken.JwtParserBuilder decryptWith(javax.crypto.SecretKey);
+  public abstract io.jsonwebtoken.JwtParserBuilder decryptWith(java.security.PrivateKey);
+  public abstract io.jsonwebtoken.JwtParserBuilder keyLocator(io.jsonwebtoken.Locator<java.security.Key>);
+  public abstract io.jsonwebtoken.JwtParserBuilder setSigningKeyResolver(io.jsonwebtoken.SigningKeyResolver);
+  public abstract io.jsonwebtoken.lang.NestedCollection<io.jsonwebtoken.security.KeyAlgorithm<?, ?>, io.jsonwebtoken.JwtParserBuilder> key();
+  public abstract io.jsonwebtoken.lang.NestedCollection<io.jsonwebtoken.security.SecureDigestAlgorithm<?, ?>, io.jsonwebtoken.JwtParserBuilder> sig();

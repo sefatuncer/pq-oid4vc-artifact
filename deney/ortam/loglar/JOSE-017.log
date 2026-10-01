@@ -1,0 +1,6 @@
+# hedef=JOSE-017 imaj=pq-a09-env-c:1.0 (sha256:2fa966ecdb8a532de344d35fbb689ddf1474903e3b26bc5588a01dcb344431e5) baslangic=2026-09-25T19:27:28Z zaman_asimi=1200s
+# komut: docker run --rm --name pq-a09-ortam-jose-017 --label pq.agir=derleme --memory=6g --memory-swap=6g -v hedefler/JOSE-017:/w -v betikler/konteyner:/b:ro pq-a09-env-c:1.0 sh -c '(bash|sh) /w/kur.sh'
+jwt-cpp baglandi; tip N3jwt8verifierINS_13default_clockENS_6traits15kazuho_picojsonEEE
+tip N3jwt9algorithm5es256E
+== SONUC: basarili
+# cikis_kodu=0 sure_s=3 bitis=2026-09-25T19:27:31Z

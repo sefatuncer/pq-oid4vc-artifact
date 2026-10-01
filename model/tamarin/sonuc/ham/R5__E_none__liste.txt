@@ -1,0 +1,323 @@
+maude tool: 'maude'
+ checking version: 3.5.1. OK.
+ checking installation: OK.
+[Theory R5_Anchor] Theory loaded
+[Theory R5_Anchor] Theory translated
+[Theory R5_Anchor] Derivation checks started
+[Theory R5_Anchor] Derivation checks ended
+[Theory R5_Anchor] Theory closed
+theory R5_Anchor
+
+begin
+
+// Function signature and definition of the equational theory E
+
+functions: fst/1, pair/2, pk/1, sign/2, snd/1, true/0, verify/3
+equations:
+    fst(<x.1, x.2>) = x.1,
+    snd(<x.1, x.2>) = x.2,
+    verify(sign(x.1, x.2), x.1, pk(x.2)) = true
+
+restriction Equality:
+  "∀ x y #i. (Eq( x, y ) @ #i) ⇒ (x = y)"
+  // safety formula
+
+  /*
+  expanded formula:
+  "∀ x y #i. (Eq( x, y ) @ #i) ⇒ (x = y)"
+  */
+
+restriction Unique:
+  "∀ x #i #j. ((Unique( x ) @ #i) ∧ (Unique( x ) @ #j)) ⇒ (#i = #j)"
+  // safety formula
+
+  /*
+  expanded formula:
+  "∀ x #i #j. ((Unique( x ) @ #i) ∧ (Unique( x ) @ #j)) ⇒ (#i = #j)"
+  */
+
+rule (modulo E) Qday:
+   [ ] --[ Unique( 'qday' ), QdayEv( ) ]-> [ !CRQC( ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) LOTL_Setup:
+   [ Fr( ~skL ) ]
+  --[ Unique( 'lotl' ) ]->
+   [ !LOTLSk( ~skL ), !LOTLPin( pk(~skL) ), Out( pk(~skL) ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) TL_Setup:
+   [ !LOTLSk( skL ), Fr( ~skT ) ]
+  --[ Unique( 'tl' ) ]->
+   [
+   !TLSk( $T, ~skT ), Out( pk(~skT) ),
+   Out( <<'lotl_ptr', $T, pk(~skT)>, sign(<'lotl_ptr', $T, pk(~skT)>, skL)>
+   )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Issuer_Setup:
+   [ !TLSk( T, skT ), Fr( ~skI ) ]
+  --[ Unique( <'iss', $I> ) ]->
+   [
+   !IssSk( $I, ~skI ), Out( pk(~skI) ),
+   Out( <<'tl_entry', $I, pk(~skI)>, sign(<'tl_entry', $I, pk(~skI)>, skT)>
+   )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Issue:
+   [ !IssSk( I, skI ), Fr( ~c ) ]
+  --[ Issued( I, ~c ) ]->
+   [ Out( <<'cred', I, ~c>, sign(<'cred', I, ~c>, skI)> ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Verify_via_LOTL:
+   [
+   !LOTLPin( pkL ), In( <<'lotl_ptr', T, pkT>, s1> ),
+   In( <<'tl_entry', I, pkI>, s2> ), In( <<'cred', I, c>, s3> )
+   ]
+  --[
+  Eq( verify(s1, <'lotl_ptr', T, pkT>, pkL), true ),
+  Eq( verify(s2, <'tl_entry', I, pkI>, pkT), true ),
+  Eq( verify(s3, <'cred', I, c>, pkI), true ), Accept( I, c )
+  ]->
+   [ ]
+
+  /*
+  rule (modulo AC) Verify_via_LOTL:
+     [
+     !LOTLPin( pkL ), In( <<'lotl_ptr', T, pkT>, s1> ),
+     In( <<'tl_entry', I, pkI>, s2> ), In( <<'cred', I, c>, s3> )
+     ]
+    --[ Eq( z, true ), Eq( z.1, true ), Eq( z.2, true ), Accept( I, c ) ]->
+     [ ]
+    variants (modulo AC)
+    1. I     = I.25
+       T     = T.26
+       c     = c.27
+       pkI   = pkI.28
+       pkL   = pkL.29
+       pkT   = pkT.30
+       s1    = s1.31
+       s2    = s2.32
+       s3    = s3.33
+       z     = verify(s1.31, <'lotl_ptr', T.26, pkT.30>, pkL.29)
+       z.1   = verify(s2.32, <'tl_entry', I.25, pkI.28>, pkT.30)
+       z.2   = verify(s3.33, <'cred', I.25, c.27>, pkI.28)
+    
+    2. I     = I.50
+       T     = T.51
+       c     = c.52
+       pkI   = pkI.53
+       pkL   = pk(x.98)
+       pkT   = pkT.55
+       s1    = sign(<'lotl_ptr', T.51, pkT.55>, x.98)
+       s2    = s2.57
+       s3    = s3.58
+       z     = true
+       z.1   = verify(s2.57, <'tl_entry', I.50, pkI.53>, pkT.55)
+       z.2   = verify(s3.58, <'cred', I.50, c.52>, pkI.53)
+    
+    3. I     = I.50
+       T     = T.51
+       c     = c.52
+       pkI   = pk(x.98)
+       pkL   = pkL.54
+       pkT   = pkT.55
+       s1    = s1.56
+       s2    = s2.57
+       s3    = sign(<'cred', I.50, c.52>, x.98)
+       z     = verify(s1.56, <'lotl_ptr', T.51, pkT.55>, pkL.54)
+       z.1   = verify(s2.57, <'tl_entry', I.50, pk(x.98)>, pkT.55)
+       z.2   = true
+    
+    4. I     = I.51
+       T     = T.52
+       c     = c.53
+       pkI   = pk(x.99)
+       pkL   = pk(x.100)
+       pkT   = pkT.56
+       s1    = sign(<'lotl_ptr', T.52, pkT.56>, x.100)
+       s2    = s2.58
+       s3    = sign(<'cred', I.51, c.53>, x.99)
+       z     = true
+       z.1   = verify(s2.58, <'tl_entry', I.51, pk(x.99)>, pkT.56)
+       z.2   = true
+    
+    5. I     = I.52
+       T     = T.53
+       c     = c.54
+       pkI   = pkI.55
+       pkL   = pkL.56
+       pkT   = pk(x.102)
+       s1    = s1.58
+       s2    = sign(<'tl_entry', I.52, pkI.55>, x.102)
+       s3    = s3.60
+       z     = verify(s1.58, <'lotl_ptr', T.53, pk(x.102)>, pkL.56)
+       z.1   = true
+       z.2   = verify(s3.60, <'cred', I.52, c.54>, pkI.55)
+    
+    6. I     = I.52
+       T     = T.53
+       c     = c.54
+       pkI   = pkI.55
+       pkL   = pk(x.101)
+       pkT   = pk(x.102)
+       s1    = sign(<'lotl_ptr', T.53, pk(x.102)>, x.101)
+       s2    = sign(<'tl_entry', I.52, pkI.55>, x.102)
+       s3    = s3.60
+       z     = true
+       z.1   = true
+       z.2   = verify(s3.60, <'cred', I.52, c.54>, pkI.55)
+    
+    7. I     = I.52
+       T     = T.53
+       c     = c.54
+       pkI   = pk(x.100)
+       pkL   = pkL.56
+       pkT   = pk(x.102)
+       s1    = s1.58
+       s2    = sign(<'tl_entry', I.52, pk(x.100)>, x.102)
+       s3    = sign(<'cred', I.52, c.54>, x.100)
+       z     = verify(s1.58, <'lotl_ptr', T.53, pk(x.102)>, pkL.56)
+       z.1   = true
+       z.2   = true
+    
+    8. I     = I.52
+       T     = T.53
+       c     = c.54
+       pkI   = pk(x.100)
+       pkL   = pk(x.101)
+       pkT   = pk(x.102)
+       s1    = sign(<'lotl_ptr', T.53, pk(x.102)>, x.101)
+       s2    = sign(<'tl_entry', I.52, pk(x.100)>, x.102)
+       s3    = sign(<'cred', I.52, c.54>, x.100)
+       z     = true
+       z.1   = true
+       z.2   = true
+  */
+
+rule (modulo E) CRQC_Break_LOTL:
+   [ !LOTLSk( sk ), !CRQC( ), In( pk(sk) ) ]
+  --[ Broken( 'lotl' ) ]->
+   [ Out( sk ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) CRQC_Break_TL:
+   [ !TLSk( T, sk ), !CRQC( ), In( pk(sk) ) ]
+  --[ Broken( 'tl' ) ]->
+   [ Out( sk ) ]
+
+  /* has exactly the trivial AC variant */
+
+lemma executable:
+  exists-trace "∃ I c #i #j. (Issued( I, c ) @ #i) ∧ (Accept( I, c ) @ #j)"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ I c #i #j. (Issued( I, c ) @ #i) ∧ (Accept( I, c ) @ #j)"
+*/
+by sorry
+
+lemma executable_post_qday:
+  exists-trace
+  "∃ I c #q #i #j.
+    (((QdayEv( ) @ #q) ∧ (Issued( I, c ) @ #i)) ∧ (Accept( I, c ) @ #j)) ∧
+    (#q < #j)"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ I c #q #i #j.
+  (QdayEv( ) @ #q) ∧ (Issued( I, c ) @ #i) ∧ (Accept( I, c ) @ #j)
+ ∧
+  #q < #j"
+*/
+by sorry
+
+lemma attack_needs_crqc:
+  all-traces
+  "∀ I c #j.
+    (Accept( I, c ) @ #j) ⇒
+    ((∃ #i. (Issued( I, c ) @ #i) ∧ (#i < #j)) ∨
+     (∃ k #b. (Broken( k ) @ #b) ∧ (#b < #j)))"
+/*
+guarded formula characterizing all counter-examples:
+"∃ I c #j.
+  (Accept( I, c ) @ #j)
+ ∧
+  (∀ #i. (Issued( I, c ) @ #i) ⇒ ¬(#i < #j)) ∧
+  (∀ k #b. (Broken( k ) @ #b) ⇒ ¬(#b < #j))"
+*/
+by sorry
+
+lemma G1_claims_unforgeability:
+  all-traces
+  "∀ I c #j.
+    (Accept( I, c ) @ #j) ⇒ (∃ #i. (Issued( I, c ) @ #i) ∧ (#i < #j))"
+/*
+guarded formula characterizing all counter-examples:
+"∃ I c #j.
+  (Accept( I, c ) @ #j) ∧ ∀ #i. (Issued( I, c ) @ #i) ⇒ ¬(#i < #j)"
+*/
+by sorry
+
+lemma M_pin_removed:
+  exists-trace
+  "∃ I c #j #b.
+    ((Accept( I, c ) @ #j) ∧ (Broken( 'lotl' ) @ #b)) ∧
+    (¬(∃ #i. Issued( I, c ) @ #i))"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ I c #j #b.
+  (Accept( I, c ) @ #j) ∧ (Broken( 'lotl' ) @ #b)
+ ∧
+  ∀ #i. (Issued( I, c ) @ #i) ⇒ ⊥"
+*/
+by sorry
+
+lemma M_anchor_classical:
+  exists-trace
+  "∃ I c #j #b.
+    ((Accept( I, c ) @ #j) ∧ (Broken( 'tl' ) @ #b)) ∧
+    (¬(∃ #i. Issued( I, c ) @ #i))"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ I c #j #b.
+  (Accept( I, c ) @ #j) ∧ (Broken( 'tl' ) @ #b)
+ ∧
+  ∀ #i. (Issued( I, c ) @ #i) ⇒ ⊥"
+*/
+by sorry
+
+/* All wellformedness checks were successful. */
+
+/*
+Generated from:
+Tamarin version 1.12.0
+Maude version 3.5.1
+Git revision: 82780bbaf3328a45f624ddb41e51bf75425f851c (with uncommited changes), branch: master
+Compiled at: 2026-03-07 14:22:39.174278293 UTC
+*/
+
+end
+
+==============================================================================
+summary of summaries:
+
+analyzed: /work/modeller/R5_anchor.spthy
+
+  processing time: 0.77s
+  
+  executable (exists-trace): analysis incomplete (1 steps)
+  executable_post_qday (exists-trace): analysis incomplete (1 steps)
+  attack_needs_crqc (all-traces): analysis incomplete (1 steps)
+  G1_claims_unforgeability (all-traces): analysis incomplete (1 steps)
+  M_pin_removed (exists-trace): analysis incomplete (1 steps)
+  M_anchor_classical (exists-trace): analysis incomplete (1 steps)
+
+==============================================================================

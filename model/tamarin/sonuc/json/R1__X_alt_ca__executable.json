@@ -1,0 +1,3504 @@
+{
+    "graphs": [
+        {
+            "jgAbbrevs": [
+                {
+                    "jgaAbbrev": {
+                        "jgnConst": "SI1"
+                    },
+                    "jgaExpansion": {
+                        "jgnFunct": "sign",
+                        "jgnParams": [
+                            {
+                                "jgnFunct": "pair",
+                                "jgnParams": [
+                                    {
+                                        "jgnConst": "'ca_cert'"
+                                    },
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "$A"
+                                            },
+                                            {
+                                                "jgnFunct": "pk",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "~skA"
+                                                    }
+                                                ],
+                                                "jgnShow": "pk(~skA)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair($A,pk(~skA))"
+                                    }
+                                ],
+                                "jgnShow": "pair('ca_cert',pair($A,pk(~skA)))"
+                            },
+                            {
+                                "jgnConst": "~skR"
+                            }
+                        ],
+                        "jgnShow": "sign(pair('ca_cert',pair($A,pk(~skA))),~skR)"
+                    },
+                    "jgaTerm": {
+                        "jgnFunct": "sign",
+                        "jgnParams": [
+                            {
+                                "jgnFunct": "pair",
+                                "jgnParams": [
+                                    {
+                                        "jgnConst": "'ca_cert'"
+                                    },
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "$A"
+                                            },
+                                            {
+                                                "jgnFunct": "pk",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "~skA"
+                                                    }
+                                                ],
+                                                "jgnShow": "pk(~skA)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair($A,pk(~skA))"
+                                    }
+                                ],
+                                "jgnShow": "pair('ca_cert',pair($A,pk(~skA)))"
+                            },
+                            {
+                                "jgnConst": "~skR"
+                            }
+                        ],
+                        "jgnShow": "sign(pair('ca_cert',pair($A,pk(~skA))),~skR)"
+                    }
+                },
+                {
+                    "jgaAbbrev": {
+                        "jgnConst": "SI2"
+                    },
+                    "jgaExpansion": {
+                        "jgnFunct": "sign",
+                        "jgnParams": [
+                            {
+                                "jgnFunct": "pair",
+                                "jgnParams": [
+                                    {
+                                        "jgnConst": "'cred'"
+                                    },
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "$I"
+                                            },
+                                            {
+                                                "jgnConst": "~c"
+                                            }
+                                        ],
+                                        "jgnShow": "pair($I,~c)"
+                                    }
+                                ],
+                                "jgnShow": "pair('cred',pair($I,~c))"
+                            },
+                            {
+                                "jgnConst": "~skI"
+                            }
+                        ],
+                        "jgnShow": "sign(pair('cred',pair($I,~c)),~skI)"
+                    },
+                    "jgaTerm": {
+                        "jgnFunct": "sign",
+                        "jgnParams": [
+                            {
+                                "jgnFunct": "pair",
+                                "jgnParams": [
+                                    {
+                                        "jgnConst": "'cred'"
+                                    },
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "$I"
+                                            },
+                                            {
+                                                "jgnConst": "~c"
+                                            }
+                                        ],
+                                        "jgnShow": "pair($I,~c)"
+                                    }
+                                ],
+                                "jgnShow": "pair('cred',pair($I,~c))"
+                            },
+                            {
+                                "jgnConst": "~skI"
+                            }
+                        ],
+                        "jgnShow": "sign(pair('cred',pair($I,~c)),~skI)"
+                    }
+                },
+                {
+                    "jgaAbbrev": {
+                        "jgnConst": "SI3"
+                    },
+                    "jgaExpansion": {
+                        "jgnFunct": "sign",
+                        "jgnParams": [
+                            {
+                                "jgnFunct": "pair",
+                                "jgnParams": [
+                                    {
+                                        "jgnConst": "'iss_cert'"
+                                    },
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "$I"
+                                            },
+                                            {
+                                                "jgnFunct": "pk",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "~skI"
+                                                    }
+                                                ],
+                                                "jgnShow": "pk(~skI)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair($I,pk(~skI))"
+                                    }
+                                ],
+                                "jgnShow": "pair('iss_cert',pair($I,pk(~skI)))"
+                            },
+                            {
+                                "jgnConst": "~skA"
+                            }
+                        ],
+                        "jgnShow": "sign(pair('iss_cert',pair($I,pk(~skI))),~skA)"
+                    },
+                    "jgaTerm": {
+                        "jgnFunct": "sign",
+                        "jgnParams": [
+                            {
+                                "jgnFunct": "pair",
+                                "jgnParams": [
+                                    {
+                                        "jgnConst": "'iss_cert'"
+                                    },
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "$I"
+                                            },
+                                            {
+                                                "jgnFunct": "pk",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "~skI"
+                                                    }
+                                                ],
+                                                "jgnShow": "pk(~skI)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair($I,pk(~skI))"
+                                    }
+                                ],
+                                "jgnShow": "pair('iss_cert',pair($I,pk(~skI)))"
+                            },
+                            {
+                                "jgnConst": "~skA"
+                            }
+                        ],
+                        "jgnShow": "sign(pair('iss_cert',pair($I,pk(~skI))),~skA)"
+                    }
+                }
+            ],
+            "jgClusters": [],
+            "jgDirected": true,
+            "jgEdges": [
+                {
+                    "jgeRelation": "default",
+                    "jgeSource": "#i:c0",
+                    "jgeTarget": "#vl.2:p0"
+                },
+                {
+                    "jgeRelation": "KFact",
+                    "jgeSource": "#vl:c0",
+                    "jgeTarget": "#vk:p0"
+                },
+                {
+                    "jgeRelation": "PersistentFact",
+                    "jgeSource": "#vr:c0",
+                    "jgeTarget": "#i:p0"
+                },
+                {
+                    "jgeRelation": "KFact",
+                    "jgeSource": "#vr:c2",
+                    "jgeTarget": "#vk.6:p0"
+                },
+                {
+                    "jgeRelation": "default",
+                    "jgeSource": "#vf.1:c0",
+                    "jgeTarget": "#j:p1"
+                },
+                {
+                    "jgeRelation": "PersistentFact",
+                    "jgeSource": "#vr.1:c0",
+                    "jgeTarget": "#vr:p0"
+                },
+                {
+                    "jgeRelation": "default",
+                    "jgeSource": "#vf.2:c0",
+                    "jgeTarget": "#j:p2"
+                },
+                {
+                    "jgeRelation": "KFact",
+                    "jgeSource": "#vl.2:c0",
+                    "jgeTarget": "#vk.3:p0"
+                },
+                {
+                    "jgeRelation": "KFact",
+                    "jgeSource": "#vl.2:c0",
+                    "jgeTarget": "#vr.8:p0"
+                },
+                {
+                    "jgeRelation": "PersistentFact",
+                    "jgeSource": "#vr.2:c0",
+                    "jgeTarget": "#vr.1:p0"
+                },
+                {
+                    "jgeRelation": "PersistentFact",
+                    "jgeSource": "#vr.2:c0",
+                    "jgeTarget": "#vr.3:p0"
+                },
+                {
+                    "jgeRelation": "PersistentFact",
+                    "jgeSource": "#vr.2:c1",
+                    "jgeTarget": "#j:p0"
+                },
+                {
+                    "jgeRelation": "default",
+                    "jgeSource": "#vf.3:c0",
+                    "jgeTarget": "#j:p3"
+                },
+                {
+                    "jgeRelation": "PersistentFact",
+                    "jgeSource": "#vr.3:c0",
+                    "jgeTarget": "#vr.5:p0"
+                },
+                {
+                    "jgeRelation": "KFact",
+                    "jgeSource": "#vr.3:c1",
+                    "jgeTarget": "#vk.5:p0"
+                },
+                {
+                    "jgeRelation": "default",
+                    "jgeSource": "#vr.3:c2",
+                    "jgeTarget": "#vl:p0"
+                },
+                {
+                    "jgeRelation": "KFact",
+                    "jgeSource": "#vr.5:c0",
+                    "jgeTarget": "#vk.2:p0"
+                },
+                {
+                    "jgeRelation": "PersistentFact",
+                    "jgeSource": "#vr.6:c0",
+                    "jgeTarget": "#vr.5:p1"
+                },
+                {
+                    "jgeRelation": "default",
+                    "jgeSource": "#vf.8:c0",
+                    "jgeTarget": "#vr.5:p2"
+                },
+                {
+                    "jgeRelation": "KFact",
+                    "jgeSource": "#vr.8:c0",
+                    "jgeTarget": "#vr.9:p0"
+                },
+                {
+                    "jgeRelation": "KFact",
+                    "jgeSource": "#vr.9:c0",
+                    "jgeTarget": "#vk.4:p0"
+                },
+                {
+                    "jgeRelation": "LessAtoms",
+                    "jgeSource": "#vk",
+                    "jgeTarget": "#vf.1"
+                },
+                {
+                    "jgeRelation": "LessAtoms",
+                    "jgeSource": "#vl",
+                    "jgeTarget": "#vf.1"
+                },
+                {
+                    "jgeRelation": "LessAtoms",
+                    "jgeSource": "#vk.1",
+                    "jgeTarget": "#vf.2"
+                },
+                {
+                    "jgeRelation": "LessAtoms",
+                    "jgeSource": "#vk.2",
+                    "jgeTarget": "#vk.1"
+                },
+                {
+                    "jgeRelation": "LessAtoms",
+                    "jgeSource": "#vk.3",
+                    "jgeTarget": "#vf.3"
+                },
+                {
+                    "jgeRelation": "LessAtoms",
+                    "jgeSource": "#vk.4",
+                    "jgeTarget": "#vf.3"
+                },
+                {
+                    "jgeRelation": "LessAtoms",
+                    "jgeSource": "#vk.5",
+                    "jgeTarget": "#vf.1"
+                },
+                {
+                    "jgeRelation": "LessAtoms",
+                    "jgeSource": "#vk.5",
+                    "jgeTarget": "#vf.8"
+                },
+                {
+                    "jgeRelation": "LessAtoms",
+                    "jgeSource": "#vk.6",
+                    "jgeTarget": "#vk.1"
+                },
+                {
+                    "jgeRelation": "LessAtoms",
+                    "jgeSource": "#vk.6",
+                    "jgeTarget": "#vf.2"
+                },
+                {
+                    "jgeRelation": "LessAtoms",
+                    "jgeSource": "#vr.8",
+                    "jgeTarget": "#vf.3"
+                },
+                {
+                    "jgeRelation": "LessAtoms",
+                    "jgeSource": "#vr.9",
+                    "jgeTarget": "#vf.3"
+                }
+            ],
+            "jgLabel": "trace_R1_Chain_SL2-AS0-CL0-A1-C1-NB_executable-Issuer_Setup-Root_Setup-AltCA_Setup-c_sign-CRQC_Break_AltCA-Issue-Issue-AltCA_Setup_case_1-Issuer_Setup_case_1",
+            "jgNodes": [
+                {
+                    "jgnId": "#i",
+                    "jgnLabel": "Issue",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Issued",
+                                "jgnFactShow": "Issued( $I, ~c )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$I"
+                                    },
+                                    {
+                                        "jgnConst": "~c"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#i:c0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Out",
+                                "jgnFactShow": "Out( <<'cred', $I, ~c>, sign(<'cred', $I, ~c>, ~skI)> )",
+                                "jgnFactTag": "OutFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'cred'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "$I"
+                                                            },
+                                                            {
+                                                                "jgnConst": "~c"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair($I,~c)"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('cred',pair($I,~c))"
+                                            },
+                                            {
+                                                "jgnFunct": "sign",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'cred'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "$I"
+                                                                    },
+                                                                    {
+                                                                        "jgnConst": "~c"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair($I,~c)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('cred',pair($I,~c))"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~skI"
+                                                    }
+                                                ],
+                                                "jgnShow": "sign(pair('cred',pair($I,~c)),~skI)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('cred',pair($I,~c)),sign(pair('cred',pair($I,~c)),~skI))"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#i:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!IssSk",
+                                "jgnFactShow": "!IssSk( $I, ~skI )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$I"
+                                    },
+                                    {
+                                        "jgnConst": "~skI"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#i:p1",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Fr",
+                                "jgnFactShow": "Fr( ~c )",
+                                "jgnFactTag": "FreshFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~c"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isProtocolRule"
+                },
+                {
+                    "jgnId": "#j",
+                    "jgnLabel": "Verify",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Eq",
+                                "jgnFactShow": "Eq( true, true )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "true",
+                                        "jgnParams": [],
+                                        "jgnShow": "true"
+                                    },
+                                    {
+                                        "jgnFunct": "true",
+                                        "jgnParams": [],
+                                        "jgnShow": "true"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Eq",
+                                "jgnFactShow": "Eq( true, true )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "true",
+                                        "jgnParams": [],
+                                        "jgnShow": "true"
+                                    },
+                                    {
+                                        "jgnFunct": "true",
+                                        "jgnParams": [],
+                                        "jgnShow": "true"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Eq",
+                                "jgnFactShow": "Eq( true, true )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "true",
+                                        "jgnParams": [],
+                                        "jgnShow": "true"
+                                    },
+                                    {
+                                        "jgnFunct": "true",
+                                        "jgnParams": [],
+                                        "jgnShow": "true"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Accept",
+                                "jgnFactShow": "Accept( $I, ~c )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$I"
+                                    },
+                                    {
+                                        "jgnConst": "~c"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#j:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!RootPin",
+                                "jgnFactShow": "!RootPin( pk(~skR) )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~skR"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~skR)"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#j:p1",
+                                "jgnFactMult": "",
+                                "jgnFactName": "In",
+                                "jgnFactShow": "In( <<'ca_cert', $A, pk(~skA)>, sign(<'ca_cert', $A, pk(~skA)>, ~skR)>)",
+                                "jgnFactTag": "InFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'ca_cert'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "$A"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pk",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~skA"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pk(~skA)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair($A,pk(~skA))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('ca_cert',pair($A,pk(~skA)))"
+                                            },
+                                            {
+                                                "jgnFunct": "sign",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'ca_cert'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "$A"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pk",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "~skA"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pk(~skA)"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair($A,pk(~skA))"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('ca_cert',pair($A,pk(~skA)))"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~skR"
+                                                    }
+                                                ],
+                                                "jgnShow": "sign(pair('ca_cert',pair($A,pk(~skA))),~skR)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('ca_cert',pair($A,pk(~skA))),sign(pair('ca_cert',pair($A,pk(~skA))),~skR))"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#j:p2",
+                                "jgnFactMult": "",
+                                "jgnFactName": "In",
+                                "jgnFactShow": "In( <<'iss_cert', $I, pk(~skI)>, sign(<'iss_cert', $I, pk(~skI)>, ~skA)>)",
+                                "jgnFactTag": "InFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'iss_cert'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "$I"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pk",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~skI"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pk(~skI)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair($I,pk(~skI))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('iss_cert',pair($I,pk(~skI)))"
+                                            },
+                                            {
+                                                "jgnFunct": "sign",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'iss_cert'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "$I"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pk",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "~skI"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pk(~skI)"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair($I,pk(~skI))"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('iss_cert',pair($I,pk(~skI)))"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~skA"
+                                                    }
+                                                ],
+                                                "jgnShow": "sign(pair('iss_cert',pair($I,pk(~skI))),~skA)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('iss_cert',pair($I,pk(~skI))),sign(pair('iss_cert',pair($I,pk(~skI))),~skA))"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#j:p3",
+                                "jgnFactMult": "",
+                                "jgnFactName": "In",
+                                "jgnFactShow": "In( <<'cred', $I, ~c>, sign(<'cred', $I, ~c>, ~skI)> )",
+                                "jgnFactTag": "InFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'cred'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "$I"
+                                                            },
+                                                            {
+                                                                "jgnConst": "~c"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair($I,~c)"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('cred',pair($I,~c))"
+                                            },
+                                            {
+                                                "jgnFunct": "sign",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'cred'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "$I"
+                                                                    },
+                                                                    {
+                                                                        "jgnConst": "~c"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair($I,~c)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('cred',pair($I,~c))"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~skI"
+                                                    }
+                                                ],
+                                                "jgnShow": "sign(pair('cred',pair($I,~c)),~skI)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('cred',pair($I,~c)),sign(pair('cred',pair($I,~c)),~skI))"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isProtocolRule"
+                },
+                {
+                    "jgnId": "#vk",
+                    "jgnLabel": "Coerce",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( sign(<'ca_cert', $A, pk(~skA)>, ~skR) )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "sign",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'ca_cert'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "$A"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pk",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~skA"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pk(~skA)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair($A,pk(~skA))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('ca_cert',pair($A,pk(~skA)))"
+                                            },
+                                            {
+                                                "jgnConst": "~skR"
+                                            }
+                                        ],
+                                        "jgnShow": "sign(pair('ca_cert',pair($A,pk(~skA))),~skR)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vk:c0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( sign(<'ca_cert', $A, pk(~skA)>, ~skR) )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "sign",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'ca_cert'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "$A"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pk",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~skA"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pk(~skA)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair($A,pk(~skA))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('ca_cert',pair($A,pk(~skA)))"
+                                            },
+                                            {
+                                                "jgnConst": "~skR"
+                                            }
+                                        ],
+                                        "jgnShow": "sign(pair('ca_cert',pair($A,pk(~skA))),~skR)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vk:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KD",
+                                "jgnFactShow": "!KD( sign(<'ca_cert', $A, pk(~skA)>, ~skR) )",
+                                "jgnFactTag": "KDFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "sign",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'ca_cert'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "$A"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pk",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~skA"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pk(~skA)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair($A,pk(~skA))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('ca_cert',pair($A,pk(~skA)))"
+                                            },
+                                            {
+                                                "jgnConst": "~skR"
+                                            }
+                                        ],
+                                        "jgnShow": "sign(pair('ca_cert',pair($A,pk(~skA))),~skR)"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                },
+                {
+                    "jgnId": "#vl",
+                    "jgnLabel": "Recv",
+                    "jgnMetadata": {
+                        "jgnActs": [],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vl:c0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KD",
+                                "jgnFactShow": "!KD( <<'ca_cert', $A, pk(~skA)>, sign(<'ca_cert', $A, pk(~skA)>, ~skR)>)",
+                                "jgnFactTag": "KDFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'ca_cert'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "$A"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pk",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~skA"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pk(~skA)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair($A,pk(~skA))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('ca_cert',pair($A,pk(~skA)))"
+                                            },
+                                            {
+                                                "jgnFunct": "sign",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'ca_cert'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "$A"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pk",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "~skA"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pk(~skA)"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair($A,pk(~skA))"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('ca_cert',pair($A,pk(~skA)))"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~skR"
+                                                    }
+                                                ],
+                                                "jgnShow": "sign(pair('ca_cert',pair($A,pk(~skA))),~skR)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('ca_cert',pair($A,pk(~skA))),sign(pair('ca_cert',pair($A,pk(~skA))),~skR))"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vl:p0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Out",
+                                "jgnFactShow": "Out( <<'ca_cert', $A, pk(~skA)>, sign(<'ca_cert', $A, pk(~skA)>, ~skR)>)",
+                                "jgnFactTag": "OutFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'ca_cert'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "$A"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pk",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~skA"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pk(~skA)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair($A,pk(~skA))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('ca_cert',pair($A,pk(~skA)))"
+                                            },
+                                            {
+                                                "jgnFunct": "sign",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'ca_cert'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "$A"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pk",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "~skA"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pk(~skA)"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair($A,pk(~skA))"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('ca_cert',pair($A,pk(~skA)))"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~skR"
+                                                    }
+                                                ],
+                                                "jgnShow": "sign(pair('ca_cert',pair($A,pk(~skA))),~skR)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('ca_cert',pair($A,pk(~skA))),sign(pair('ca_cert',pair($A,pk(~skA))),~skR))"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                },
+                {
+                    "jgnId": "#vr",
+                    "jgnLabel": "Issuer_Setup",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Unique",
+                                "jgnFactShow": "Unique( <'iss', $I> )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "'iss'"
+                                            },
+                                            {
+                                                "jgnConst": "$I"
+                                            }
+                                        ],
+                                        "jgnShow": "pair('iss',$I)"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "IssuerRegistered",
+                                "jgnFactShow": "IssuerRegistered( $I, $CA )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$I"
+                                    },
+                                    {
+                                        "jgnConst": "$CA"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vr:c0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!IssSk",
+                                "jgnFactShow": "!IssSk( $I, ~skI )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$I"
+                                    },
+                                    {
+                                        "jgnConst": "~skI"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#vr:c1",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!IssuerOfCA",
+                                "jgnFactShow": "!IssuerOfCA( $I, $CA )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$I"
+                                    },
+                                    {
+                                        "jgnConst": "$CA"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#vr:c2",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Out",
+                                "jgnFactShow": "Out( pk(~skI) )",
+                                "jgnFactTag": "OutFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~skI"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~skI)"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#vr:c3",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Out",
+                                "jgnFactShow": "Out( <<'iss_cert', $I, pk(~skI)>, sign(<'iss_cert', $I, pk(~skI)>, ~skCA)>)",
+                                "jgnFactTag": "OutFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'iss_cert'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "$I"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pk",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~skI"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pk(~skI)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair($I,pk(~skI))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('iss_cert',pair($I,pk(~skI)))"
+                                            },
+                                            {
+                                                "jgnFunct": "sign",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'iss_cert'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "$I"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pk",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "~skI"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pk(~skI)"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair($I,pk(~skI))"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('iss_cert',pair($I,pk(~skI)))"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~skCA"
+                                                    }
+                                                ],
+                                                "jgnShow": "sign(pair('iss_cert',pair($I,pk(~skI))),~skCA)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('iss_cert',pair($I,pk(~skI))),sign(pair('iss_cert',pair($I,pk(~skI))),~skCA))"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vr:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!CASk",
+                                "jgnFactShow": "!CASk( $CA, ~skCA )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$CA"
+                                    },
+                                    {
+                                        "jgnConst": "~skCA"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#vr:p1",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Fr",
+                                "jgnFactShow": "Fr( ~skI )",
+                                "jgnFactTag": "FreshFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~skI"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isProtocolRule"
+                },
+                {
+                    "jgnId": "#vf.1",
+                    "jgnLabel": "Send",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "K",
+                                "jgnFactShow": "K( <<'ca_cert', $A, pk(~skA)>, sign(<'ca_cert', $A, pk(~skA)>, ~skR)>)",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'ca_cert'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "$A"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pk",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~skA"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pk(~skA)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair($A,pk(~skA))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('ca_cert',pair($A,pk(~skA)))"
+                                            },
+                                            {
+                                                "jgnFunct": "sign",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'ca_cert'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "$A"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pk",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "~skA"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pk(~skA)"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair($A,pk(~skA))"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('ca_cert',pair($A,pk(~skA)))"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~skR"
+                                                    }
+                                                ],
+                                                "jgnShow": "sign(pair('ca_cert',pair($A,pk(~skA))),~skR)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('ca_cert',pair($A,pk(~skA))),sign(pair('ca_cert',pair($A,pk(~skA))),~skR))"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vf.1:c0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "In",
+                                "jgnFactShow": "In( <<'ca_cert', $A, pk(~skA)>, sign(<'ca_cert', $A, pk(~skA)>, ~skR)>)",
+                                "jgnFactTag": "InFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'ca_cert'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "$A"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pk",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~skA"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pk(~skA)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair($A,pk(~skA))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('ca_cert',pair($A,pk(~skA)))"
+                                            },
+                                            {
+                                                "jgnFunct": "sign",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'ca_cert'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "$A"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pk",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "~skA"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pk(~skA)"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair($A,pk(~skA))"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('ca_cert',pair($A,pk(~skA)))"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~skR"
+                                                    }
+                                                ],
+                                                "jgnShow": "sign(pair('ca_cert',pair($A,pk(~skA))),~skR)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('ca_cert',pair($A,pk(~skA))),sign(pair('ca_cert',pair($A,pk(~skA))),~skR))"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vf.1:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( <<'ca_cert', $A, pk(~skA)>, sign(<'ca_cert', $A, pk(~skA)>, ~skR)>)",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'ca_cert'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "$A"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pk",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~skA"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pk(~skA)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair($A,pk(~skA))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('ca_cert',pair($A,pk(~skA)))"
+                                            },
+                                            {
+                                                "jgnFunct": "sign",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'ca_cert'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "$A"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pk",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "~skA"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pk(~skA)"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair($A,pk(~skA))"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('ca_cert',pair($A,pk(~skA)))"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~skR"
+                                                    }
+                                                ],
+                                                "jgnShow": "sign(pair('ca_cert',pair($A,pk(~skA))),~skR)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('ca_cert',pair($A,pk(~skA))),sign(pair('ca_cert',pair($A,pk(~skA))),~skR))"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                },
+                {
+                    "jgnId": "#vk.1",
+                    "jgnLabel": "Constrc_sign",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( sign(<'iss_cert', $I, pk(~skI)>, ~skA) )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "sign",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'iss_cert'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "$I"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pk",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~skI"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pk(~skI)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair($I,pk(~skI))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('iss_cert',pair($I,pk(~skI)))"
+                                            },
+                                            {
+                                                "jgnConst": "~skA"
+                                            }
+                                        ],
+                                        "jgnShow": "sign(pair('iss_cert',pair($I,pk(~skI))),~skA)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vk.1:c0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( sign(<'iss_cert', $I, pk(~skI)>, ~skA) )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "sign",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'iss_cert'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "$I"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pk",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~skI"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pk(~skI)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair($I,pk(~skI))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('iss_cert',pair($I,pk(~skI)))"
+                                            },
+                                            {
+                                                "jgnConst": "~skA"
+                                            }
+                                        ],
+                                        "jgnShow": "sign(pair('iss_cert',pair($I,pk(~skI))),~skA)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vk.1:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( <'iss_cert', $I, pk(~skI)> )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "'iss_cert'"
+                                            },
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "$I"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pk",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "~skI"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pk(~skI)"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair($I,pk(~skI))"
+                                            }
+                                        ],
+                                        "jgnShow": "pair('iss_cert',pair($I,pk(~skI)))"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#vk.1:p1",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( ~skA )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~skA"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                },
+                {
+                    "jgnId": "#vr.1",
+                    "jgnLabel": "CA_Setup",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Unique",
+                                "jgnFactShow": "Unique( <'ca', $CA> )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "'ca'"
+                                            },
+                                            {
+                                                "jgnConst": "$CA"
+                                            }
+                                        ],
+                                        "jgnShow": "pair('ca',$CA)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vr.1:c0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!CASk",
+                                "jgnFactShow": "!CASk( $CA, ~skCA )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$CA"
+                                    },
+                                    {
+                                        "jgnConst": "~skCA"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#vr.1:c1",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Out",
+                                "jgnFactShow": "Out( pk(~skCA) )",
+                                "jgnFactTag": "OutFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~skCA"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~skCA)"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#vr.1:c2",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Out",
+                                "jgnFactShow": "Out( <<'ca_cert', $CA, pk(~skCA)>, sign(<'ca_cert', $CA, pk(~skCA)>, ~skR)>)",
+                                "jgnFactTag": "OutFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'ca_cert'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "$CA"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pk",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~skCA"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pk(~skCA)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair($CA,pk(~skCA))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('ca_cert',pair($CA,pk(~skCA)))"
+                                            },
+                                            {
+                                                "jgnFunct": "sign",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'ca_cert'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "$CA"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pk",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "~skCA"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pk(~skCA)"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair($CA,pk(~skCA))"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('ca_cert',pair($CA,pk(~skCA)))"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~skR"
+                                                    }
+                                                ],
+                                                "jgnShow": "sign(pair('ca_cert',pair($CA,pk(~skCA))),~skR)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('ca_cert',pair($CA,pk(~skCA))),sign(pair('ca_cert',pair($CA,pk(~skCA))),~skR))"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vr.1:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!RootSk",
+                                "jgnFactShow": "!RootSk( ~skR )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~skR"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#vr.1:p1",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Fr",
+                                "jgnFactShow": "Fr( ~skCA )",
+                                "jgnFactTag": "FreshFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~skCA"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isProtocolRule"
+                },
+                {
+                    "jgnId": "#vf.2",
+                    "jgnLabel": "Send",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "K",
+                                "jgnFactShow": "K( <<'iss_cert', $I, pk(~skI)>, sign(<'iss_cert', $I, pk(~skI)>, ~skA)>)",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'iss_cert'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "$I"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pk",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~skI"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pk(~skI)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair($I,pk(~skI))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('iss_cert',pair($I,pk(~skI)))"
+                                            },
+                                            {
+                                                "jgnFunct": "sign",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'iss_cert'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "$I"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pk",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "~skI"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pk(~skI)"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair($I,pk(~skI))"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('iss_cert',pair($I,pk(~skI)))"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~skA"
+                                                    }
+                                                ],
+                                                "jgnShow": "sign(pair('iss_cert',pair($I,pk(~skI))),~skA)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('iss_cert',pair($I,pk(~skI))),sign(pair('iss_cert',pair($I,pk(~skI))),~skA))"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vf.2:c0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "In",
+                                "jgnFactShow": "In( <<'iss_cert', $I, pk(~skI)>, sign(<'iss_cert', $I, pk(~skI)>, ~skA)>)",
+                                "jgnFactTag": "InFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'iss_cert'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "$I"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pk",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~skI"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pk(~skI)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair($I,pk(~skI))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('iss_cert',pair($I,pk(~skI)))"
+                                            },
+                                            {
+                                                "jgnFunct": "sign",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'iss_cert'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "$I"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pk",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "~skI"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pk(~skI)"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair($I,pk(~skI))"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('iss_cert',pair($I,pk(~skI)))"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~skA"
+                                                    }
+                                                ],
+                                                "jgnShow": "sign(pair('iss_cert',pair($I,pk(~skI))),~skA)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('iss_cert',pair($I,pk(~skI))),sign(pair('iss_cert',pair($I,pk(~skI))),~skA))"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vf.2:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( <<'iss_cert', $I, pk(~skI)>, sign(<'iss_cert', $I, pk(~skI)>, ~skA)>)",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'iss_cert'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "$I"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pk",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~skI"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pk(~skI)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair($I,pk(~skI))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('iss_cert',pair($I,pk(~skI)))"
+                                            },
+                                            {
+                                                "jgnFunct": "sign",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'iss_cert'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "$I"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pk",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "~skI"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pk(~skI)"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair($I,pk(~skI))"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('iss_cert',pair($I,pk(~skI)))"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~skA"
+                                                    }
+                                                ],
+                                                "jgnShow": "sign(pair('iss_cert',pair($I,pk(~skI))),~skA)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('iss_cert',pair($I,pk(~skI))),sign(pair('iss_cert',pair($I,pk(~skI))),~skA))"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                },
+                {
+                    "jgnId": "#vk.2",
+                    "jgnLabel": "Coerce",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( ~skA )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~skA"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vk.2:c0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( ~skA )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~skA"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vk.2:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KD",
+                                "jgnFactShow": "!KD( ~skA )",
+                                "jgnFactTag": "KDFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~skA"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                },
+                {
+                    "jgnId": "#vl.2",
+                    "jgnLabel": "Recv",
+                    "jgnMetadata": {
+                        "jgnActs": [],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vl.2:c0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KD",
+                                "jgnFactShow": "!KD( <<'cred', $I, ~c>, sign(<'cred', $I, ~c>, ~skI)> )",
+                                "jgnFactTag": "KDFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'cred'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "$I"
+                                                            },
+                                                            {
+                                                                "jgnConst": "~c"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair($I,~c)"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('cred',pair($I,~c))"
+                                            },
+                                            {
+                                                "jgnFunct": "sign",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'cred'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "$I"
+                                                                    },
+                                                                    {
+                                                                        "jgnConst": "~c"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair($I,~c)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('cred',pair($I,~c))"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~skI"
+                                                    }
+                                                ],
+                                                "jgnShow": "sign(pair('cred',pair($I,~c)),~skI)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('cred',pair($I,~c)),sign(pair('cred',pair($I,~c)),~skI))"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vl.2:p0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Out",
+                                "jgnFactShow": "Out( <<'cred', $I, ~c>, sign(<'cred', $I, ~c>, ~skI)> )",
+                                "jgnFactTag": "OutFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'cred'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "$I"
+                                                            },
+                                                            {
+                                                                "jgnConst": "~c"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair($I,~c)"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('cred',pair($I,~c))"
+                                            },
+                                            {
+                                                "jgnFunct": "sign",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'cred'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "$I"
+                                                                    },
+                                                                    {
+                                                                        "jgnConst": "~c"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair($I,~c)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('cred',pair($I,~c))"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~skI"
+                                                    }
+                                                ],
+                                                "jgnShow": "sign(pair('cred',pair($I,~c)),~skI)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('cred',pair($I,~c)),sign(pair('cred',pair($I,~c)),~skI))"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                },
+                {
+                    "jgnId": "#vr.2",
+                    "jgnLabel": "Root_Setup",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Unique",
+                                "jgnFactShow": "Unique( 'root' )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "'root'"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vr.2:c0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!RootSk",
+                                "jgnFactShow": "!RootSk( ~skR )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~skR"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#vr.2:c1",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!RootPin",
+                                "jgnFactShow": "!RootPin( pk(~skR) )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~skR"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~skR)"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#vr.2:c2",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Out",
+                                "jgnFactShow": "Out( pk(~skR) )",
+                                "jgnFactTag": "OutFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~skR"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~skR)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vr.2:p0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Fr",
+                                "jgnFactShow": "Fr( ~skR )",
+                                "jgnFactTag": "FreshFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~skR"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isProtocolRule"
+                },
+                {
+                    "jgnId": "#vf.3",
+                    "jgnLabel": "Send",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "K",
+                                "jgnFactShow": "K( <<'cred', $I, ~c>, sign(<'cred', $I, ~c>, ~skI)> )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'cred'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "$I"
+                                                            },
+                                                            {
+                                                                "jgnConst": "~c"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair($I,~c)"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('cred',pair($I,~c))"
+                                            },
+                                            {
+                                                "jgnFunct": "sign",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'cred'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "$I"
+                                                                    },
+                                                                    {
+                                                                        "jgnConst": "~c"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair($I,~c)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('cred',pair($I,~c))"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~skI"
+                                                    }
+                                                ],
+                                                "jgnShow": "sign(pair('cred',pair($I,~c)),~skI)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('cred',pair($I,~c)),sign(pair('cred',pair($I,~c)),~skI))"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vf.3:c0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "In",
+                                "jgnFactShow": "In( <<'cred', $I, ~c>, sign(<'cred', $I, ~c>, ~skI)> )",
+                                "jgnFactTag": "InFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'cred'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "$I"
+                                                            },
+                                                            {
+                                                                "jgnConst": "~c"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair($I,~c)"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('cred',pair($I,~c))"
+                                            },
+                                            {
+                                                "jgnFunct": "sign",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'cred'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "$I"
+                                                                    },
+                                                                    {
+                                                                        "jgnConst": "~c"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair($I,~c)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('cred',pair($I,~c))"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~skI"
+                                                    }
+                                                ],
+                                                "jgnShow": "sign(pair('cred',pair($I,~c)),~skI)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('cred',pair($I,~c)),sign(pair('cred',pair($I,~c)),~skI))"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vf.3:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( <<'cred', $I, ~c>, sign(<'cred', $I, ~c>, ~skI)> )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'cred'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "$I"
+                                                            },
+                                                            {
+                                                                "jgnConst": "~c"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair($I,~c)"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('cred',pair($I,~c))"
+                                            },
+                                            {
+                                                "jgnFunct": "sign",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'cred'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "$I"
+                                                                    },
+                                                                    {
+                                                                        "jgnConst": "~c"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair($I,~c)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('cred',pair($I,~c))"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~skI"
+                                                    }
+                                                ],
+                                                "jgnShow": "sign(pair('cred',pair($I,~c)),~skI)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('cred',pair($I,~c)),sign(pair('cred',pair($I,~c)),~skI))"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                },
+                {
+                    "jgnId": "#vk.3",
+                    "jgnLabel": "Coerce",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( sign(<'cred', $I, ~c>, ~skI) )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "sign",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'cred'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "$I"
+                                                            },
+                                                            {
+                                                                "jgnConst": "~c"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair($I,~c)"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('cred',pair($I,~c))"
+                                            },
+                                            {
+                                                "jgnConst": "~skI"
+                                            }
+                                        ],
+                                        "jgnShow": "sign(pair('cred',pair($I,~c)),~skI)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vk.3:c0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( sign(<'cred', $I, ~c>, ~skI) )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "sign",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'cred'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "$I"
+                                                            },
+                                                            {
+                                                                "jgnConst": "~c"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair($I,~c)"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('cred',pair($I,~c))"
+                                            },
+                                            {
+                                                "jgnConst": "~skI"
+                                            }
+                                        ],
+                                        "jgnShow": "sign(pair('cred',pair($I,~c)),~skI)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vk.3:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KD",
+                                "jgnFactShow": "!KD( sign(<'cred', $I, ~c>, ~skI) )",
+                                "jgnFactTag": "KDFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "sign",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'cred'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "$I"
+                                                            },
+                                                            {
+                                                                "jgnConst": "~c"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair($I,~c)"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('cred',pair($I,~c))"
+                                            },
+                                            {
+                                                "jgnConst": "~skI"
+                                            }
+                                        ],
+                                        "jgnShow": "sign(pair('cred',pair($I,~c)),~skI)"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                },
+                {
+                    "jgnId": "#vr.3",
+                    "jgnLabel": "AltCA_Setup",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Unique",
+                                "jgnFactShow": "Unique( <'ca', $A> )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "'ca'"
+                                            },
+                                            {
+                                                "jgnConst": "$A"
+                                            }
+                                        ],
+                                        "jgnShow": "pair('ca',$A)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vr.3:c0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!AltCASk",
+                                "jgnFactShow": "!AltCASk( $A, ~skA )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$A"
+                                    },
+                                    {
+                                        "jgnConst": "~skA"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#vr.3:c1",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Out",
+                                "jgnFactShow": "Out( pk(~skA) )",
+                                "jgnFactTag": "OutFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~skA"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~skA)"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#vr.3:c2",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Out",
+                                "jgnFactShow": "Out( <<'ca_cert', $A, pk(~skA)>, sign(<'ca_cert', $A, pk(~skA)>, ~skR)>)",
+                                "jgnFactTag": "OutFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'ca_cert'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "$A"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pk",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~skA"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pk(~skA)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair($A,pk(~skA))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('ca_cert',pair($A,pk(~skA)))"
+                                            },
+                                            {
+                                                "jgnFunct": "sign",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'ca_cert'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "$A"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pk",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "~skA"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pk(~skA)"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair($A,pk(~skA))"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('ca_cert',pair($A,pk(~skA)))"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~skR"
+                                                    }
+                                                ],
+                                                "jgnShow": "sign(pair('ca_cert',pair($A,pk(~skA))),~skR)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('ca_cert',pair($A,pk(~skA))),sign(pair('ca_cert',pair($A,pk(~skA))),~skR))"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vr.3:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!RootSk",
+                                "jgnFactShow": "!RootSk( ~skR )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~skR"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#vr.3:p1",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Fr",
+                                "jgnFactShow": "Fr( ~skA )",
+                                "jgnFactTag": "FreshFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~skA"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isProtocolRule"
+                },
+                {
+                    "jgnId": "#vk.4",
+                    "jgnLabel": "Coerce",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( ~c )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~c"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vk.4:c0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( ~c )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~c"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vk.4:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KD",
+                                "jgnFactShow": "!KD( ~c )",
+                                "jgnFactTag": "KDFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~c"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                },
+                {
+                    "jgnId": "#vk.5",
+                    "jgnLabel": "Coerce",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( pk(~skA) )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~skA"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~skA)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vk.5:c0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( pk(~skA) )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~skA"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~skA)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vk.5:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KD",
+                                "jgnFactShow": "!KD( pk(~skA) )",
+                                "jgnFactTag": "KDFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~skA"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~skA)"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                },
+                {
+                    "jgnId": "#vr.5",
+                    "jgnLabel": "CRQC_Break_AltCA",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Broken",
+                                "jgnFactShow": "Broken( 'alt_ca' )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "'alt_ca'"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vr.5:c0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Out",
+                                "jgnFactShow": "Out( ~skA )",
+                                "jgnFactTag": "OutFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~skA"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vr.5:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!AltCASk",
+                                "jgnFactShow": "!AltCASk( $A, ~skA )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$A"
+                                    },
+                                    {
+                                        "jgnConst": "~skA"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#vr.5:p1",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!CRQC",
+                                "jgnFactShow": "!CRQC( )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": []
+                            },
+                            {
+                                "jgnFactId": "#vr.5:p2",
+                                "jgnFactMult": "",
+                                "jgnFactName": "In",
+                                "jgnFactShow": "In( pk(~skA) )",
+                                "jgnFactTag": "InFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~skA"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~skA)"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isProtocolRule"
+                },
+                {
+                    "jgnId": "#vk.6",
+                    "jgnLabel": "Coerce",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( pk(~skI) )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~skI"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~skI)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vk.6:c0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( pk(~skI) )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~skI"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~skI)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vk.6:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KD",
+                                "jgnFactShow": "!KD( pk(~skI) )",
+                                "jgnFactTag": "KDFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~skI"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~skI)"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                },
+                {
+                    "jgnId": "#vr.6",
+                    "jgnLabel": "Qday",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Unique",
+                                "jgnFactShow": "Unique( 'qday' )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "'qday'"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "QdayEv",
+                                "jgnFactShow": "QdayEv( )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": []
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vr.6:c0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!CRQC",
+                                "jgnFactShow": "!CRQC( )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": []
+                            }
+                        ],
+                        "jgnPrems": []
+                    },
+                    "jgnType": "isProtocolRule"
+                },
+                {
+                    "jgnId": "#vf.8",
+                    "jgnLabel": "Send",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "K",
+                                "jgnFactShow": "K( pk(~skA) )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~skA"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~skA)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vf.8:c0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "In",
+                                "jgnFactShow": "In( pk(~skA) )",
+                                "jgnFactTag": "InFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~skA"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~skA)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vf.8:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( pk(~skA) )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~skA"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~skA)"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                },
+                {
+                    "jgnId": "#vr.8",
+                    "jgnLabel": "Destrd_0_fst",
+                    "jgnMetadata": {
+                        "jgnActs": [],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vr.8:c0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KD",
+                                "jgnFactShow": "!KD( <'cred', $I, ~c> )",
+                                "jgnFactTag": "KDFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "'cred'"
+                                            },
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "$I"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~c"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair($I,~c)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair('cred',pair($I,~c))"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vr.8:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KD",
+                                "jgnFactShow": "!KD( <<'cred', $I, ~c>, sign(<'cred', $I, ~c>, ~skI)> )",
+                                "jgnFactTag": "KDFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'cred'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "$I"
+                                                            },
+                                                            {
+                                                                "jgnConst": "~c"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair($I,~c)"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('cred',pair($I,~c))"
+                                            },
+                                            {
+                                                "jgnFunct": "sign",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'cred'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "$I"
+                                                                    },
+                                                                    {
+                                                                        "jgnConst": "~c"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair($I,~c)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('cred',pair($I,~c))"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~skI"
+                                                    }
+                                                ],
+                                                "jgnShow": "sign(pair('cred',pair($I,~c)),~skI)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('cred',pair($I,~c)),sign(pair('cred',pair($I,~c)),~skI))"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                },
+                {
+                    "jgnId": "#vr.9",
+                    "jgnLabel": "Destrd_0_snd",
+                    "jgnMetadata": {
+                        "jgnActs": [],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vr.9:c0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KD",
+                                "jgnFactShow": "!KD( <$I, ~c> )",
+                                "jgnFactTag": "KDFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "$I"
+                                            },
+                                            {
+                                                "jgnConst": "~c"
+                                            }
+                                        ],
+                                        "jgnShow": "pair($I,~c)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vr.9:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KD",
+                                "jgnFactShow": "!KD( <'cred', $I, ~c> )",
+                                "jgnFactTag": "KDFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "'cred'"
+                                            },
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "$I"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~c"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair($I,~c)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair('cred',pair($I,~c))"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                }
+            ],
+            "jgType": "Tamarin prover constraint system"
+        }
+    ]
+}

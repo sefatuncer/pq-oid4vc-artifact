@@ -1,0 +1,25 @@
+# hedef=JOSE-052 imaj=pq-a09-env-jvm:1.0 (sha256:1900053fd579a7ca0b4cfd6334a30f202d5ffdf737bb6bf06d56bd94d1cdb944) baslangic=2026-09-25T12:48:54Z zaman_asimi=1200s
+# komut: docker run --rm --name pq-a09-ortam-jose-052 --label pq.agir=derleme --memory=6g --memory-swap=6g -v hedefler/JOSE-052:/w -v betikler/konteyner:/b:ro pq-a09-env-jvm:1.0 bash /w/kur.sh
+== mvn copy-dependencies (com.auth0:java-jwt:4.6.1 )
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------------< pq.a09:ortam-deneme >-------------------------
+[INFO] Building ortam-deneme 0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- dependency:3.8.1:copy-dependencies (default-cli) @ ortam-deneme ---
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  9.253 s
+[INFO] Finished at: 2026-09-25T12:49:05Z
+[INFO] ------------------------------------------------------------------------
+== bağlama kontrolü (sınıflar ilklendirilmeden yüklenir; imza doğrulama YOK)
+jar=java-jwt-4.6.1.jar sinif_yuklendi=55 sinif_yuklenemedi=0
+ad_eslesen_siniflar (Verif|Validat; bilgi): com.auth0.jwt.exceptions.SignatureVerificationException,com.auth0.jwt.exceptions.JWTVerificationException,com.auth0.jwt.JWTVerifier,com.auth0.jwt.interfaces.JWTVerifier,com.auth0.jwt.interfaces.Verification
+anahtar_sinif com.auth0.jwt.JWT OK
+anahtar_sinif com.auth0.jwt.JWTVerifier OK
+anahtar_sinif com.auth0.jwt.algorithms.Algorithm OK
+== SONUC: basarili
+# cikis_kodu=0 sure_s=14 bitis=2026-09-25T12:49:08Z

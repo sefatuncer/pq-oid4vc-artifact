@@ -1,0 +1,2 @@
+modul=jsonwebtoken yuklendi; anahtarlar=JsonWebTokenError,NotBeforeError,TokenExpiredError,decode,sign,verify
+sembol verify function

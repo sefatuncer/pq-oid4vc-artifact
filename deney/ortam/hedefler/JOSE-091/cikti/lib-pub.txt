@@ -1,0 +1,8 @@
+pub mod error;
+pub use error::Error;
+pub enum Algorithm {
+pub struct ValidationOptions {
+pub trait ToKey {
+pub fn encode<P: ToKey>(
+pub fn decode<P: ToKey>(
+pub fn validate_signature<P: ToKey>(

@@ -1,0 +1,183 @@
+# hedef=JOSE-031 imaj=pq-a09-env-elixir:1.0 (sha256:7a7a4a5dd7e207ba661cde2791b353c60393d037d3af62ccdeb4a27f59ce1036) baslangic=2026-09-25T19:31:28Z zaman_asimi=1200s
+# komut: docker run --rm --name pq-a09-ortam-jose-031 --label pq.agir=derleme --memory=6g --memory-swap=6g -v hedefler/JOSE-031:/w -v betikler/konteyner:/b:ro pq-a09-env-elixir:1.0 sh -c '(bash|sh) /w/kur.sh'
+24:      {:guardian, "== 2.5.0"},
+== mix deps.get
+Resolving Hex dependencies...
+Resolution completed in 0.08s
+New:
+  guardian 2.5.0
+  jose 1.11.12
+* Getting guardian (Hex package)
+* Getting jose (Hex package)
+== mix compile
+==> jose
+Compiling 113 files (.erl)
+src/jwa/jose_jwa.erl:230:7: Warning: 'catch ...' is deprecated; please use 'try ... catch ... end' instead.
+Compile directive 'nowarn_deprecated_catch' can be used to suppress
+warnings in selected modules.
+%  230| 	case catch block_cipher(Cipher) of
+%     | 	     ^
+
+src/jwa/jose_jwa.erl:238:7: Warning: 'catch ...' is deprecated; please use 'try ... catch ... end' instead.
+Compile directive 'nowarn_deprecated_catch' can be used to suppress
+warnings in selected modules.
+%  238| 	case catch ?MAYBE_START_JOSE(ets:lookup_element(?TAB, chacha20_poly1305_module, 2)) of
+%     | 	     ^
+
+src/jwa/jose_jwa.erl:246:7: Warning: 'catch ...' is deprecated; please use 'try ... catch ... end' instead.
+Compile directive 'nowarn_deprecated_catch' can be used to suppress
+warnings in selected modules.
+%  246| 	case catch rsa_crypt(Padding) of
+%     | 	     ^
+
+src/jwa/jose_jwa.erl:254:7: Warning: 'catch ...' is deprecated; please use 'try ... catch ... end' instead.
+Compile directive 'nowarn_deprecated_catch' can be used to suppress
+warnings in selected modules.
+%  254| 	case catch rsa_sign(Padding) of
+%     | 	     ^
+
+src/jwa/jose_jwa.erl:262:7: Warning: 'catch ...' is deprecated; please use 'try ... catch ... end' instead.
+Compile directive 'nowarn_deprecated_catch' can be used to suppress
+warnings in selected modules.
+%  262| 	case catch ?MAYBE_START_JOSE(ets:lookup_element(?TAB, xchacha20_poly1305_module, 2)) of
+%     | 	     ^
+
+src/jose_server.erl:137:7: Warning: 'catch ...' is deprecated; please use 'try ... catch ... end' instead.
+Compile directive 'nowarn_deprecated_catch' can be used to suppress
+warnings in selected modules.
+%  137| 		_ = catch jose_jwa:unsecured_signing(UnsecuredSigning),
+%     | 		    ^
+
+src/jose_server.erl:797:7: Warning: 'catch ...' is deprecated; please use 'try ... catch ... end' instead.
+Compile directive 'nowarn_deprecated_catch' can be used to suppress
+warnings in selected modules.
+%  797| 	case catch jose_crypto_compat:crypto_one_time(Cipher, Key, PlainText, true) of
+%     | 	     ^
+
+src/jose_server.erl:799:9: Warning: 'catch ...' is deprecated; please use 'try ... catch ... end' instead.
+Compile directive 'nowarn_deprecated_catch' can be used to suppress
+warnings in selected modules.
+%  799| 			case catch jose_crypto_compat:crypto_one_time(Cipher, Key, CipherText, false) of
+%     | 			     ^
+
+src/jose_server.erl:809:7: Warning: 'catch ...' is deprecated; please use 'try ... catch ... end' instead.
+Compile directive 'nowarn_deprecated_catch' can be used to suppress
+warnings in selected modules.
+%  809| 	case catch jose_crypto_compat:crypto_one_time(Cipher, Key, IV, PlainText, true) of
+%     | 	     ^
+
+src/jose_server.erl:811:9: Warning: 'catch ...' is deprecated; please use 'try ... catch ... end' instead.
+Compile directive 'nowarn_deprecated_catch' can be used to suppress
+warnings in selected modules.
+%  811| 			case catch jose_crypto_compat:crypto_one_time(Cipher, Key, IV, CipherText, false) of
+%     | 			     ^
+
+src/jose_server.erl:821:7: Warning: 'catch ...' is deprecated; please use 'try ... catch ... end' instead.
+Compile directive 'nowarn_deprecated_catch' can be used to suppress
+warnings in selected modules.
+%  821| 	case catch jose_crypto_compat:crypto_one_time(Cipher, Key, IV, {AAD, PlainText}, true) of
+%     | 	     ^
+
+src/jose_server.erl:823:9: Warning: 'catch ...' is deprecated; please use 'try ... catch ... end' instead.
+Compile directive 'nowarn_deprecated_catch' can be used to suppress
+warnings in selected modules.
+%  823| 			case catch jose_crypto_compat:crypto_one_time(Cipher, Key, IV, {AAD, CipherText, CipherTag}, false) of
+%     | 			     ^
+
+src/jose_server.erl:837:7: Warning: 'catch ...' is deprecated; please use 'try ... catch ... end' instead.
+Compile directive 'nowarn_deprecated_catch' can be used to suppress
+warnings in selected modules.
+%  837| 	case catch public_key:encrypt_public(PlainText, PublicKey, FutureOptions) of
+%     | 	     ^
+
+src/jose_server.erl:840:9: Warning: 'catch ...' is deprecated; please use 'try ... catch ... end' instead.
+Compile directive 'nowarn_deprecated_catch' can be used to suppress
+warnings in selected modules.
+%  840| 			case catch public_key:decrypt_private(CipherText, PrivateKey, FutureOptions) of
+%     | 			     ^
+
+src/jose_server.erl:842:11: Warning: 'catch ...' is deprecated; please use 'try ... catch ... end' instead.
+Compile directive 'nowarn_deprecated_catch' can be used to suppress
+warnings in selected modules.
+%  842| 					case catch public_key:decrypt_private(rsa_ciphertext(Algorithm), PrivateKey, FutureOptions) of
+%     | 					     ^
+
+src/jose_server.erl:859:7: Warning: 'catch ...' is deprecated; please use 'try ... catch ... end' instead.
+Compile directive 'nowarn_deprecated_catch' can be used to suppress
+warnings in selected modules.
+%  859| 	case catch public_key:encrypt_public(PlainText, PublicKey, LegacyOptions) of
+%     | 	     ^
+
+src/jose_server.erl:862:9: Warning: 'catch ...' is deprecated; please use 'try ... catch ... end' instead.
+Compile directive 'nowarn_deprecated_catch' can be used to suppress
+warnings in selected modules.
+%  862| 			case catch public_key:decrypt_private(CipherText, PrivateKey, LegacyOptions) of
+%     | 			     ^
+
+src/jose_server.erl:864:11: Warning: 'catch ...' is deprecated; please use 'try ... catch ... end' instead.
+Compile directive 'nowarn_deprecated_catch' can be used to suppress
+warnings in selected modules.
+%  864| 					case catch public_key:decrypt_private(rsa_ciphertext(Algorithm), PrivateKey, LegacyOptions) of
+%     | 					     ^
+
+src/jose_server.erl:882:7: Warning: 'catch ...' is deprecated; please use 'try ... catch ... end' instead.
+Compile directive 'nowarn_deprecated_catch' can be used to suppress
+warnings in selected modules.
+%  882| 	case catch public_key:sign(Message, DigestType, PrivateKey, Options) of
+%     | 	     ^
+
+src/jose_server.erl:885:9: Warning: 'catch ...' is deprecated; please use 'try ... catch ... end' instead.
+Compile directive 'nowarn_deprecated_catch' can be used to suppress
+warnings in selected modules.
+%  885| 			case catch public_key:verify(Message, DigestType, Signature, PublicKey, Options) of
+%     | 			     ^
+
+src/jose_server.erl:897:7: Warning: 'catch ...' is deprecated; please use 'try ... catch ... end' instead.
+Compile directive 'nowarn_deprecated_catch' can be used to suppress
+warnings in selected modules.
+%  897| 	case catch public_key:sign(Message, DigestType, PrivateKey) of
+%     | 	     ^
+
+src/jose_server.erl:900:9: Warning: 'catch ...' is deprecated; please use 'try ... catch ... end' instead.
+Compile directive 'nowarn_deprecated_catch' can be used to suppress
+warnings in selected modules.
+%  900| 			case catch public_key:verify(Message, DigestType, Signature, PublicKey) of
+%     | 			     ^
+
+Compiling 8 files (.ex)
+Generated jose app
+==> guardian
+Compiling 25 files (.ex)
+    warning: Guardian.Plug.current_claims/2 is undefined (module Guardian.Plug is not available or is yet to be defined)
+    │
+ 31 │       claims: Guardian.Plug.current_claims(conn, opts),
+    │                             ~
+    │
+    └─ lib/guardian/permissions/plug.ex:31:29: Guardian.Permissions.Plug.call/2
+
+    warning: Guardian.Plug.Pipeline.fetch_error_handler!/2 is undefined (module Guardian.Plug.Pipeline is not available or is yet to be defined)
+    │
+ 33 │       handler: Pipeline.fetch_error_handler!(conn, opts),
+    │                         ~
+    │
+    └─ lib/guardian/permissions/plug.ex:33:25: Guardian.Permissions.Plug.call/2
+
+    warning: Guardian.Plug.Pipeline.fetch_module!/2 is undefined (module Guardian.Plug.Pipeline is not available or is yet to be defined)
+    │
+ 34 │       impl: Pipeline.fetch_module!(conn, opts),
+    │                      ~
+    │
+    └─ lib/guardian/permissions/plug.ex:34:22: Guardian.Permissions.Plug.call/2
+
+Generated guardian app
+==> ortam_deneme
+Compiling 1 file (.ex)
+Generated ortam_deneme app
+modul Guardian OK
+modul Guardian.Token.Jwt OK
+modul JOSE.JWS OK
+modul JOSE.JWK OK
+ortam erlang-crypto [{"OpenSSL", 810549360, "OpenSSL 3.5.7 9 Jun 2026"}]
+bagimlilik jose (erlang-jose) 1.11.12
+== SONUC: basarili
+# cikis_kodu=0 sure_s=8 bitis=2026-09-25T19:31:36Z

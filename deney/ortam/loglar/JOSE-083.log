@@ -1,0 +1,26 @@
+# hedef=JOSE-083 imaj=pq-a09-env-python:1.0 (sha256:94dbdfc9282786cc2304d9bc08f951c078d22fb18e03c5055745d627e9fa3b9c) baslangic=2026-09-25T12:39:20Z zaman_asimi=900s
+# komut: docker run --rm --name pq-a09-ortam-jose-083 --label pq.agir=derleme --memory=6g --memory-swap=6g -v hedefler/JOSE-083:/w -v betikler/konteyner:/b:ro pq-a09-env-python:1.0 bash /w/kur.sh
+== pip install pyjwt[crypto]==2.15.0
+Collecting pyjwt==2.15.0 (from pyjwt[crypto]==2.15.0)
+  Downloading pyjwt-2.15.0-py3-none-any.whl.metadata (3.5 kB)
+Collecting cryptography>=3.4.0 (from pyjwt[crypto]==2.15.0)
+  Downloading cryptography-50.0.1-cp311-abi3-manylinux_2_34_x86_64.whl.metadata (4.3 kB)
+Collecting cffi>=2.0.0 (from cryptography>=3.4.0->pyjwt[crypto]==2.15.0)
+  Downloading cffi-2.1.1-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.5 kB)
+Collecting pycparser (from cffi>=2.0.0->cryptography>=3.4.0->pyjwt[crypto]==2.15.0)
+  Downloading pycparser-3.0-py3-none-any.whl.metadata (8.2 kB)
+Downloading pyjwt-2.15.0-py3-none-any.whl (33 kB)
+Downloading cryptography-50.0.1-cp311-abi3-manylinux_2_34_x86_64.whl (4.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.7/4.7 MB 6.9 MB/s  0:00:00
+Downloading cffi-2.1.1-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (221 kB)
+Downloading pycparser-3.0-py3-none-any.whl (48 kB)
+Installing collected packages: pyjwt, pycparser, cffi, cryptography
+
+Successfully installed cffi-2.1.1 cryptography-50.0.1 pycparser-3.0 pyjwt-2.15.0
+ORTAM cryptography 50.0.1; gömülü OpenSSL 4.0.2 25 Aug 2026; mldsa_modulu=var
+== içe aktarma kontrolü (imza doğrulama YOK)
+modul=jwt (pyjwt) yuklendi; surum=2.15.0
+sembol decode True
+sembol PyJWS.register_algorithm True
+== SONUC: basarili
+# cikis_kodu=0 sure_s=16 bitis=2026-09-25T12:39:36Z

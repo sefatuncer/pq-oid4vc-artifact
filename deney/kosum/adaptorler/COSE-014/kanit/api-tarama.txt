@@ -1,0 +1,30 @@
+# COSE-014 — API taraması (sözleşme §5.1)
+# imaj: a10-cose-014:1 (sha256:c6729f2972356b8ac66541d860242848220861047506e113d30e81eb61d19ea5)
+# komut: docker run --rm --network none --entrypoint sh a10-cose-014:1 -c 'cd /a/node_modules/cose-js && grep '"version"' package.json; grep -rn -i -E 'algorithms|allow|register|deregister|required|eddsa|ed25519|ml-?dsa|mldsa|composite|okp|verifier|keyselector|AlgToTags|ES256|-7|-8' lib/*.js | head -120'
+
+  "version": "0.9.0",
+lib/common.js:5:const AlgToTags = {
+lib/common.js:16:  ES256: -7,
+lib/common.js:59:    if (!(AlgToTags[value])) {
+lib/common.js:62:    return AlgToTags[value];
+lib/common.js:111:  OKP: 1,
+lib/common.js:123:  Ed25519: 6,
+lib/sign.js:17:AlgFromTags[-7] = { sign: 'ES256', digest: 'SHA-256' };
+lib/sign.js:28:  ES256: { sign: 'p256', digest: 'sha256' },
+lib/sign.js:145:function doVerify (SigStructure, verifier, alg, sig) {
+lib/sign.js:160:    const pub = { x: verifier.key.x, y: verifier.key.y };
+lib/sign.js:168:    const key = new NodeRSA().importKey(verifier.key, 'components-public');
+lib/sign.js:182:    if (!verify.verify(verifier.key, sig)) {
+lib/sign.js:188:function getSigner (signers, verifier) {
+lib/sign.js:191:    if (kid.equals(Buffer.from(verifier.key.kid, 'utf8'))) {
+lib/sign.js:208:exports.verify = async function (payload, verifier, options) {
+lib/sign.js:211:  return verifyInternal(verifier, options, obj);
+lib/sign.js:214:exports.verifySync = function (payload, verifier, options) {
+lib/sign.js:217:  return verifyInternal(verifier, options, obj);
+lib/sign.js:220:function verifyInternal (verifier, options, obj) {
+lib/sign.js:248:  const signer = (type === SignTag ? getSigner(signers, verifier) : signers);
+lib/sign.js:251:    throw new Error('Failed to find signer with kid' + verifier.key.kid);
+lib/sign.js:255:    const externalAAD = verifier.externalAAD || EMPTY_BUFFER;
+lib/sign.js:268:    doVerify(SigStructure, verifier, alg, sig);
+lib/sign.js:271:    const externalAAD = verifier.externalAAD || EMPTY_BUFFER;
+lib/sign.js:281:    doVerify(SigStructure, verifier, alg, signer);

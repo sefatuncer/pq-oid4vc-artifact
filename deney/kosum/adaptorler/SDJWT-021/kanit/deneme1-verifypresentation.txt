@@ -1,0 +1,13 @@
+# Deneme 1 (sentetik duman verisi, BATARYA DEGIL): Verifier.VerifyPresentation yolu (SDJWT021_YOL=sunum)
+# docker run --rm --network none -e SDJWT021_YOL=sunum ... a10-sdjwt-021:1 adaptor /is/isler.jsonl /c/SDJWT-021.sunum.jsonl
+SENT_PLUS_ES256 red istisna-diger SecurityTokenInvalidAudienceException: IDX10208: Unable to validate audience. validationParameters.ValidAudience is null or whitespace and validationParameters.
+SENT_MINUS_ES256 red imza-gecersiz SecurityTokenInvalidSignatureException: IDX10511: Signature validation failed. Keys tried: 'Microsoft.IdentityModel.Tokens.JsonWebKey, Use: '',  Kid: 'sent-es25
+SENT_PLUS_EdDSA red alg-desteklenmiyor SecurityTokenInvalidSignatureException: IDX10511: Signature validation failed. Keys tried: 'Microsoft.IdentityModel.Tokens.JsonWebKey, Use: '',  Kid: 'sent-ed25
+SENT_MINUS_EdDSA red alg-desteklenmiyor SecurityTokenInvalidSignatureException: IDX10511: Signature validation failed. Keys tried: 'Microsoft.IdentityModel.Tokens.JsonWebKey, Use: '',  Kid: 'sent-ed25
+SENT_PLUS_Ed25519 red alg-desteklenmiyor SecurityTokenInvalidSignatureException: IDX10511: Signature validation failed. Keys tried: 'Microsoft.IdentityModel.Tokens.JsonWebKey, Use: '',  Kid: 'sent-ed25
+SENT_MINUS_Ed25519 red alg-desteklenmiyor SecurityTokenInvalidSignatureException: IDX10511: Signature validation failed. Keys tried: 'Microsoft.IdentityModel.Tokens.JsonWebKey, Use: '',  Kid: 'sent-ed25
+SENT_PLUS_ML-DSA-65 red alg-desteklenmiyor SecurityTokenInvalidSignatureException: IDX10511: Signature validation failed. Keys tried: 'Microsoft.IdentityModel.Tokens.JsonWebKey, Use: '',  Kid: 'sent-mlds
+SENT_MINUS_ML-DSA-65 red alg-desteklenmiyor SecurityTokenInvalidSignatureException: IDX10511: Signature validation failed. Keys tried: 'Microsoft.IdentityModel.Tokens.JsonWebKey, Use: '',  Kid: 'sent-mlds
+SENT_GJ_ES256_EdDSA uygulanamaz bicim-desteklenmiyor B6: ESLEME.md (API incelemesi)
+SENT_GJ_ES256_EdDSA_ikinci_bozuk uygulanamaz bicim-desteklenmiyor B6: ESLEME.md (API incelemesi)
+SENT_GJ_tek_ES256 uygulanamaz bicim-desteklenmiyor B6: ESLEME.md (API incelemesi)

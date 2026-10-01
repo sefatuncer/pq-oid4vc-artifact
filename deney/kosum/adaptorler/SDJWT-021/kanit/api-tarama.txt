@@ -1,0 +1,60 @@
+# SDJWT-021 WalletFramework.SdJwtVc 3.1.0 (+SdJwtLib 3.1.0) — API taraması (sözleşme §5.1; yansıma ile genel türler/üyeler)
+# imaj: a10-sdjwt-021:1 (sha256:7e2e4dd54c40700a4013d6ae0dbe4bd006461ee8c4e047c17d9fc5f80435db3a)
+# komut: docker run --rm --network none -e TARA_DERLEMELER=WalletFramework.SdJwtLib,WalletFramework.SdJwtVc a10-sdjwt-021:1 adaptor tara 'Verif|Validat|Algorithm|SdJwtDoc|Assert|Issuer|Typ|ML-?DSA|MlDsa|EdDSA|Composite|Required|Allow'
+
+## derleme WalletFramework.SdJwtLib 3.1.0.0 (3.1.0+2ed7a64b9c449b86bb2996359f2ca4a7e03a0cbb)
+tip WalletFramework.SdJwtLib.Models.SdJwtDoc
+  uye Method WalletFramework.SdJwtLib.Models.SdJwtDoc.get_Disclosures
+  uye Method WalletFramework.SdJwtLib.Models.SdJwtDoc.get_IssuanceFormat
+  uye Method WalletFramework.SdJwtLib.Models.SdJwtDoc.get_IssuerSignedJwt
+  uye Method WalletFramework.SdJwtLib.Models.SdJwtDoc.get_SecuredPayload
+  uye Method WalletFramework.SdJwtLib.Models.SdJwtDoc.get_UnsecuredPayload
+  uye Method WalletFramework.SdJwtLib.Models.SdJwtDoc.AssertThatJwtSignatureIsValid
+  uye Constructor WalletFramework.SdJwtLib.Models.SdJwtDoc..ctor
+  uye Property WalletFramework.SdJwtLib.Models.SdJwtDoc.Disclosures
+  uye Property WalletFramework.SdJwtLib.Models.SdJwtDoc.IssuanceFormat
+  uye Property WalletFramework.SdJwtLib.Models.SdJwtDoc.IssuerSignedJwt
+  uye Property WalletFramework.SdJwtLib.Models.SdJwtDoc.SecuredPayload
+  uye Property WalletFramework.SdJwtLib.Models.SdJwtDoc.UnsecuredPayload
+tip WalletFramework.SdJwtLib.Roles.IIssuer
+  uye Method WalletFramework.SdJwtLib.Roles.IIssuer.Issue
+tip WalletFramework.SdJwtLib.Roles.Implementation.Issuer
+  uye Method WalletFramework.SdJwtLib.Roles.Implementation.Issuer.Issue
+  uye Method WalletFramework.SdJwtLib.Roles.Implementation.Issuer.IssueCredential
+  uye Method WalletFramework.SdJwtLib.Roles.Implementation.Issuer.FindAndReplaceSdProperties
+  uye Constructor WalletFramework.SdJwtLib.Roles.Implementation.Issuer..ctor
+tip WalletFramework.SdJwtLib.Roles.Implementation.Verifier
+  uye Method WalletFramework.SdJwtLib.Roles.Implementation.Verifier.VerifyPresentation
+  uye Constructor WalletFramework.SdJwtLib.Roles.Implementation.Verifier..ctor
+tip WalletFramework.SdJwtLib.Roles.Issuer.SdArray
+tip WalletFramework.SdJwtLib.Roles.Issuer.SdProperty
+tip WalletFramework.SdJwtLib.Roles.IVerifier
+  uye Method WalletFramework.SdJwtLib.Roles.IVerifier.VerifyPresentation
+## derleme WalletFramework.SdJwtVc 3.1.0.0 (3.1.0+2ed7a64b9c449b86bb2996359f2ca4a7e03a0cbb)
+  uye Field WalletFramework.SdJwtVc.Models.VctMetadata.Claims.ClaimSelectiveDisclosure.Allowed = "1"
+tip WalletFramework.SdJwtVc.Models.VctMetadata.Claims.ClaimVerification
+  uye Field WalletFramework.SdJwtVc.Models.VctMetadata.Claims.ClaimVerification.value__
+  uye Field WalletFramework.SdJwtVc.Models.VctMetadata.Claims.ClaimVerification.SelfAttested = "0"
+  uye Field WalletFramework.SdJwtVc.Models.VctMetadata.Claims.ClaimVerification.Verified = "1"
+  uye Field WalletFramework.SdJwtVc.Models.VctMetadata.Claims.ClaimVerification.Authoritative = "2"
+  uye Method WalletFramework.SdJwtVc.Models.VctMetadata.VctMetadataClaim.get_Verification
+  uye Property WalletFramework.SdJwtVc.Models.VctMetadata.VctMetadataClaim.Verification
+  uye Field WalletFramework.SdJwtVc.Models.VctMetadata.VctMetadataClaimsJsonKeys.VerificationJsonName = "verification"
+  uye Method WalletFramework.SdJwtVc.Persistence.SdJwtCredentialRecord.get_EncodedIssuerSignedJwt
+  uye Method WalletFramework.SdJwtVc.Persistence.SdJwtCredentialRecord.set_EncodedIssuerSignedJwt
+  uye Property WalletFramework.SdJwtVc.Persistence.SdJwtCredentialRecord.EncodedIssuerSignedJwt
+  uye Method WalletFramework.SdJwtVc.SdJwtCredential.get_EncodedIssuerSignedJwt
+  uye Method WalletFramework.SdJwtVc.SdJwtCredential.set_EncodedIssuerSignedJwt
+  uye Method WalletFramework.SdJwtVc.SdJwtCredential.get_IssuerId
+  uye Method WalletFramework.SdJwtVc.SdJwtCredential.set_IssuerId
+  uye Method WalletFramework.SdJwtVc.SdJwtCredential.get_SdJwtDoc
+  uye Method WalletFramework.SdJwtVc.SdJwtCredential.set_SdJwtDoc
+  uye Property WalletFramework.SdJwtVc.SdJwtCredential.EncodedIssuerSignedJwt
+  uye Property WalletFramework.SdJwtVc.SdJwtCredential.IssuerId
+  uye Property WalletFramework.SdJwtVc.SdJwtCredential.SdJwtDoc
+  uye Method WalletFramework.SdJwtVc.SdJwtCredentialExtensions.ToSdJwtDoc
+
+# kaynak taraması (a10-sdjwt-021-kaynak:1, commit 2ed7a64b9c44): grep -rn ValidAlgorithms|ValidTypes|SecurityAlgorithms|MLDsa src/WalletFramework.SdJwtLib src/WalletFramework.SdJwtVc
+src/WalletFramework.SdJwtLib/Models/SdJwtDoc.cs:60:            ValidTypes = new string[] {"vc+sd-jwt"},
+src/WalletFramework.SdJwtLib/Models/SdJwtDoc.cs:61:            ValidAlgorithms = new string[] {"ES256"},
+src/WalletFramework.SdJwtLib/Roles/Implementation/Issuer.cs:41:        tokenDescriptor.SigningCredentials = new SigningCredentials(new JsonWebKey(issuerJwk), SecurityAlgorithms.EcdsaSha256);

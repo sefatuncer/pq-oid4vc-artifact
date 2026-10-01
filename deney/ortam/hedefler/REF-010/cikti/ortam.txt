@@ -1,0 +1,1 @@
+ORTAM acapy-agent 1.7.0; cryptography 43.0.3; gömülü OpenSSL 3.3.2 3 Sep 2024; mldsa_modulu=yok

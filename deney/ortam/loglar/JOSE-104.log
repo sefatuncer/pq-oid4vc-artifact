@@ -1,0 +1,92 @@
+# hedef=JOSE-104 imaj=pq-a09-env-swift:1.0 (sha256:7422932f6627c118a34062e8bc2d0305dd79029c68e7d8fb85fc26ddae30dde5) baslangic=2026-09-25T19:32:41Z zaman_asimi=1200s
+# komut: docker run --rm --name pq-a09-ortam-jose-104 --label pq.agir=derleme --memory=6g --memory-swap=6g -v hedefler/JOSE-104:/w -v betikler/konteyner:/b:ro pq-a09-env-swift:1.0 sh -c '(bash|sh) /w/kur.sh'
+== swift package resolve
+Fetching https://github.com/Kitura/Swift-JWT.git
+[1/1633] Fetching swift-jwt
+Fetched https://github.com/Kitura/Swift-JWT.git (1.67s)
+Fetching https://github.com/Kitura/BlueRSA.git
+Fetching https://github.com/Kitura/BlueECC.git
+Fetching https://github.com/Kitura/KituraContracts.git
+Fetching https://github.com/Kitura/LoggerAPI.git
+Fetching https://github.com/Kitura/BlueCryptor.git
+[1/2556] Fetching kituracontracts
+[104/4214] Fetching kituracontracts, bluecryptor
+[454/4998] Fetching kituracontracts, bluecryptor, loggerapi
+[688/7021] Fetching kituracontracts, bluecryptor, loggerapi, bluersa
+[2418/8047] Fetching kituracontracts, bluecryptor, loggerapi, bluersa, blueecc
+Fetched https://github.com/Kitura/BlueCryptor.git (1.11s)
+[819/6389] Fetching kituracontracts, loggerapi, bluersa, blueecc
+Fetched https://github.com/Kitura/BlueRSA.git (1.46s)
+[906/4366] Fetching kituracontracts, loggerapi, blueecc
+Fetched https://github.com/Kitura/LoggerAPI.git (1.78s)
+[922/3582] Fetching kituracontracts, blueecc
+Fetched https://github.com/Kitura/BlueECC.git (2.99s)
+[2275/2556] Fetching kituracontracts
+Fetched https://github.com/Kitura/KituraContracts.git (3.36s)
+Computing version for https://github.com/Kitura/KituraContracts.git
+Computed https://github.com/Kitura/KituraContracts.git at 2.1.0 (3.59s)
+Computing version for https://github.com/Kitura/LoggerAPI.git
+Computed https://github.com/Kitura/LoggerAPI.git at 2.1.0 (0.22s)
+Fetching https://github.com/apple/swift-log.git
+[1/8165] Fetching swift-log
+Fetched https://github.com/apple/swift-log.git (3.01s)
+Computing version for https://github.com/Kitura/BlueECC.git
+Computed https://github.com/Kitura/BlueECC.git at 1.2.201 (3.24s)
+Fetching https://github.com/Kitura/OpenSSL.git
+[1/203] Fetching openssl
+Fetched https://github.com/Kitura/OpenSSL.git (1.06s)
+Computing version for https://github.com/Kitura/OpenSSL.git
+Computed https://github.com/Kitura/OpenSSL.git at 2.3.1 (2.05s)
+Computing version for https://github.com/Kitura/BlueCryptor.git
+Computed https://github.com/Kitura/BlueCryptor.git at 2.0.2 (0.23s)
+Computing version for https://github.com/Kitura/BlueRSA.git
+Computed https://github.com/Kitura/BlueRSA.git at 1.0.203 (0.22s)
+Computing version for https://github.com/apple/swift-log.git
+Computed https://github.com/apple/swift-log.git at 1.15.1 (0.22s)
+Creating working copy for https://github.com/Kitura/LoggerAPI.git
+Working copy of https://github.com/Kitura/LoggerAPI.git resolved at 2.1.0
+Creating working copy for https://github.com/apple/swift-log.git
+Working copy of https://github.com/apple/swift-log.git resolved at 1.15.1
+Creating working copy for https://github.com/Kitura/KituraContracts.git
+Working copy of https://github.com/Kitura/KituraContracts.git resolved at 2.1.0
+Creating working copy for https://github.com/Kitura/Swift-JWT.git
+Working copy of https://github.com/Kitura/Swift-JWT.git resolved at 29fe084d874045d22546612d85fae1e9408c9091
+Creating working copy for https://github.com/Kitura/BlueCryptor.git
+Working copy of https://github.com/Kitura/BlueCryptor.git resolved at 2.0.2
+Creating working copy for https://github.com/Kitura/BlueECC.git
+Working copy of https://github.com/Kitura/BlueECC.git resolved at 1.2.201
+Creating working copy for https://github.com/Kitura/OpenSSL.git
+Working copy of https://github.com/Kitura/OpenSSL.git resolved at 2.3.1
+Creating working copy for https://github.com/Kitura/BlueRSA.git
+Working copy of https://github.com/Kitura/BlueRSA.git resolved at 1.0.203
+== swift build
+Building for debugging...
+[Computing dependencies]
+[Pre-planning 1 / 249]
+[Planning deferred tasks]
+[26 / 110] SwiftJWT
+[61 / 114] Logging
+[74 / 159] Logging
+[74 / 159] CryptorECC
+error: SwiftCompile normal x86_64 failed with a nonzero exit code. Command line:     cd /tmp
+    
+/tmp/p/.build/checkouts/BlueRSA/Sources/CryptorRSA/CryptorRSA.swift:476:61: [1;31merror: [1;39mcannot find 'EVP_PKEY_size' in scope[0;0m
+ [0;36m474 |[0;0m 				typealias UInt8Ptr = UnsafeMutablePointer<UInt8>?
+ [0;36m475 |[0;0m 				var ek: UInt8Ptr
+ [0;36m476 |[0;0m 				ek = UnsafeMutablePointer<UInt8>.allocate(capacity: Int([4;39mEVP_PKEY_size[0;0m(.make(optional: key.reference))))
+     [0;36m|[0;0m                                                             `- [1;31merror: [1;39mcannot find 'EVP_PKEY_size' in scope[0;0m
+ [0;36m477 |[0;0m 				let ekPtr = UnsafeMutablePointer<UInt8Ptr>.allocate(capacity: MemoryLayout<UInt8Ptr>.size)
+ [0;36m478 |[0;0m 				ekPtr.pointee = ek
+
+/tmp/p/.build/checkouts/BlueRSA/Sources/CryptorRSA/CryptorRSA.swift:481:20: [1;31merror: [1;39mcannot find 'EVP_CIPHER_iv_length' in scope[0;0m
+ [0;36m479 |[0;0m 				
+ [0;36m480 |[0;0m 				// Assign size of the corresponding cipher's IV
+ [0;36m481 |[0;0m 				let IVLength = [4;39mEVP_CIPHER_iv_length[0;0m(.make(optional: enc))
+     [0;36m|[0;0m                    `- [1;31merror: [1;39mcannot find 'EVP_CIPHER_iv_length' in scope[0;0m
+ [0;36m482 |[0;0m 				let iv = UnsafeMutablePointer<UInt8>.allocate(capacity: Int(IVLength))
+ [0;36m483 |[0;0m 				let encrypted = UnsafeMutablePointer<UInt8>.allocate(capacity: self.data.count + Int(IVLength))
+Failed frontend command:
+/usr/bin/swift-frontend -frontend -emit-module -experimental-skip-non-inlinable-function-bodies-without-types /tmp/p/.build/checkouts/BlueRSA/Sources/CryptorRSA/CryptorRSA.swift /tmp/p/.build/checkouts/BlueRSA/Sources/CryptorRSA/CryptorRSAConstants.swift /tmp/p/.build/checkouts/BlueRSA/Sources/CryptorRSA/CryptorRSADigest.swift /tmp/p/.build/checkouts/BlueRSA/Sources/CryptorRSA/CryptorRSAErrors.swift /tmp/p/.build/checkouts/BlueRSA/Sources/CryptorRSA/CryptorRSAKey.swift /tmp/p/.build/checkouts/BlueRSA/Sources/CryptorRSA/CryptorRSAUtilities.swift /tmp/p/.build/checkouts/BlueRSA/Sources/CryptorRSA/Data+Extensions.swift /tmp/p/.build/checkouts/BlueRSA/Sources/CryptorRSA/SSLPointerTricks.swift -target x86_64-unknown-linux-gnu -disable-objc-interop -I /tmp/p/.build/out/Products/Debug-linux-x86_64 -module-cache-path /tmp/p/.build/out/ModuleCache.noindex -color-diagnostics -Xcc -fcolor-diagnostics -enable-testing -g -debug-info-format\=dwarf -dwarf-version\=4 -suppress-warnings -swift-version 5 -Onone -D SWIFT_PACKAGE -D DEBUG -D SWIFT_MODULE_RESOURCE_BUNDLE_UNAVAILABLE -D Xcode -serialize-debugging-options -enable-experimental-feature DebugDescriptionMacro -empty-abi-descriptor -external-plugin-path /usr/lib/swift/host/plugins/testing\#/usr/bin/swift-plugin-server -validate-clang-modules-once -clang-build-session-file /tmp/p/.build/out/ModuleCache.noindex/Session.modulevalidation -Xcc -working-directory -Xcc /tmp -enable-anonymous-context-mangled-names -file-compilation-dir /tmp -Xcc -fmodule-map-file\=/tmp/p/.build/checkouts/OpenSSL/Sources/OpenSSL/module.modulemap -Xcc -fno-omit-frame-pointer -Xcc -D_LIBCPP_HARDENING_MODE\=_LIBCPP_HARDENING_MODE_DEBUG -Xcc -fmodules-prune-interval\=86400 -Xcc -fmodules-prune-after\=345600 -Xcc -I/tmp/p/.build/out/Products/Debug-linux-x86_64/include -Xcc -I/tmp/p/.build/out/Intermediates.noindex/CryptorRSA.build/Debug-linux-x86_64/CryptorRSA-t.build/DerivedSources-normal/x86_64 -Xcc -I/tmp/p/.build/out/Intermediates.noindex/CryptorRSA.build/Debug-linux-x86_64/CryptorRSA-t.build/DerivedSources/x86_64 -Xcc -I/tmp/p/.build/out/Intermediates.noindex/CryptorRSA.build/Debug-linux-x86_64/CryptorRSA-t.build/DerivedSources -Xcc -DSWIFT_PACKAGE -Xcc -DDEBUG\=1 -no-auto-bridging-header-chaining -module-name CryptorRSA -const-gather-protocols-file /tmp/p/.build/out/Intermediates.noindex/CryptorRSA.build/Debug-linux-x86_64/CryptorRSA-t.build/Objects-normal/x86_64/CryptorRSA_const_extract_protocols.json -in-process-plugin-server-path /usr/lib/swift/host/libSwiftInProcPluginServer.so -plugin-path /usr/lib/swift/host/plugins -plugin-path /usr/local/lib/swift/host/plugins -emit-module-doc-path /tmp/p/.build/out/Intermediates.noindex/CryptorRSA.build/Debug-linux-x86_64/CryptorRSA-t.build/Objects-normal/x86_64/Modules/CryptorRSA.swiftdoc -emit-module-source-info-path /tmp/p/.build/out/Intermediates.noindex/CryptorRSA.build/Debug-linux-x86_64/CryptorRSA-t.build/Objects-normal/x86_64/Modules/CryptorRSA.swiftsourceinfo -emit-objc-header-path /tmp/p/.build/out/Intermediates.noindex/CryptorRSA.build/Debug-linux-x86_64/CryptorRSA-t.build/Objects-normal/x86_64/CryptorRSA-Swift.h -serialize-diagnostics-path /tmp/p/.build/out/Intermediates.noindex/CryptorRSA.build/Debug-linux-x86_64/CryptorRSA-t.build/Objects-normal/x86_64/CryptorRSA-primary-emit-module.dia -emit-dependencies-path /tmp/p/.build/out/Intermediates.noindex/CryptorRSA.build/Debug-linux-x86_64/CryptorRSA-t.build/Objects-normal/x86_64/CryptorRSA-primary-emit-module.d -parse-as-library -o /tmp/p/.build/out/Intermediates.noindex/CryptorRSA.build/Debug-linux-x86_64/CryptorRSA-t.build/Objects-normal/x86_64/Modules/CryptorRSA.swiftmodule
+error: Build failed
+== SONUC: basarisiz
+# cikis_kodu=12 sure_s=19 bitis=2026-09-25T19:33:00Z

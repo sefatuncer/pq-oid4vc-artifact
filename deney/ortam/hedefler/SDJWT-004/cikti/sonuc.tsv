@@ -1,0 +1,14 @@
+baslangic	2026-09-25T12:49:37Z
+hedef	SDJWT-004
+ekosistem	maven
+paket	com.authlete:sd-jwt
+istenen_surum	1.9
+arac	openjdk version "25.0.4" 2026-07-21 LTS; Apache Maven 3.9.16 
+kilit_dosyasi	jar-sha256.txt (çalışma zamanı JAR'ları; Maven --strict-checksums)
+kilit_sha256	6968acc8e909634b2a34f32f15a556d0691defed32667e4a8f6e11e12fc53b1e
+bagimlilik_sayisi	2
+paket_ozeti	sha256:38f22b0cc44cebb1d720f97b3ed81513a89967ae89e7171fc538824b4f272cfe (sd-jwt-1.9.jar)
+kurulan_surum	1.9
+not	POM scm/tag=sd-jwt-1.9
+ice_aktar	basarili
+bitis	2026-09-25T12:49:49Z

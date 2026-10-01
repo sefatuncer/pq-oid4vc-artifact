@@ -1,0 +1,1 @@
+ORTAM cryptography 50.0.1; gömülü OpenSSL 4.0.2 25 Aug 2026; mldsa_modulu=var

@@ -1,0 +1,148 @@
+theory R4_WSCD
+begin
+
+/*
+ * =====================================================================
+ *  PQ-OID4VC | Adım 4 | Katman 2 kural şeması R4 — WSCD cihaz anahtarı
+ * =====================================================================
+ *  EN  Holder binding / presentation unforgeability (G2) rests on the
+ *      device key that the issuer binds in the credential (cnf) and that
+ *      signs the KB-JWT over the verifier nonce. While the device key is
+ *      classical, after Q-day the CRQC extracts it from the observed cnf
+ *      public key and the attacker answers fresh verifier nonces: the
+ *      presentation is forged although the issuer signature is PQ. With a
+ *      PQ device key (and a PQ issuer key) no presentation forgery exists.
+ *      If the issuer key is classical, the attacker forges a credential that
+ *      binds its own device key (R1 chain rule applied to cnf).
+ *  TR  Sunum sahtelenemezliği / holder binding (G2), ihraççının kimlik
+ *      bilgisinde bağladığı (cnf) ve doğrulayıcı nonce'u üzerindeki KB-JWT'yi
+ *      imzalayan cihaz anahtarına dayanır. Cihaz anahtarı klasik kaldıkça
+ *      Q-day'den sonra CRQC onu gözlenen cnf açık anahtarından çıkarır ve
+ *      saldırgan taze nonce'lara yanıt verir: ihraççı imzası PQ olsa bile
+ *      sunum sahtelenir. PQ cihaz anahtarıyla (ve PQ ihraççıyla) sunum
+ *      sahteciliği yoktur. İhraççı anahtarı klasikse saldırgan kendi cihaz
+ *      anahtarını bağlayan bir kimlik bilgisi sahteler (cnf'ye uygulanan R1).
+ *
+ *  Issuance: the WSCD creates the device key, the issuer binds pk(skd) as
+ *  cnf. Issuance is assumed confidential (hybrid TLS), so the credential and
+ *  its cnf key reach the network only when presented (harvest point, S3).
+ *  The issuer key is pinned at the verifier (chain effects: R1/R5).
+ *
+ *  Flags (-D=...)
+ *    DEV_PQ      device (WSCD) key PQ                   <=> Datalog pq(kb)
+ *    ISS_PQ      issuer key PQ                           <=> Datalog pq(cred)
+ *    SINGLE_USE  EXTRA (H5 pre-signal, not a protection of R4): the wallet
+ *                presents each credential at most once (batch issuance,
+ *                one-time use) AND verifiers enforce global single use.
+ *  Protected : -D=DEV_PQ -D=ISS_PQ          -> G2 verified
+ *  Mutants   : drop DEV_PQ | drop ISS_PQ     -> G2 falsified,
+ *              M_device_key_classical | M_issuer_classical verified
+ *  Relay of a live presentation is not a G2 violation here (standard for
+ *  KB-JWT without channel binding); only forged KB-JWTs count.
+ */
+
+builtins: signing
+
+restriction Equality: "All x y #i. Eq(x, y) @ #i ==> x = y"
+restriction Unique:   "All x #i #j. Unique(x) @ #i & Unique(x) @ #j ==> #i = #j"
+
+#ifdef SINGLE_USE
+/* wallet side: each credential presented at most once */
+restriction WalletSingleUse: "All x #i #j. WalletUse(x) @ #i & WalletUse(x) @ #j ==> #i = #j"
+/* verifier side: each credential accepted at most once, globally (strongest form) */
+restriction VerifierSingleUse: "All x #i #j. UseOnce(x) @ #i & UseOnce(x) @ #j ==> #i = #j"
+#endif
+
+/* ---------------- Q-day ---------------- */
+rule Qday:
+    [ ] --[ Unique('qday'), QdayEv() ]-> [ !CRQC() ]
+
+/* ---------------- issuer (key pinned at verifiers) ---------------- */
+rule Issuer_Setup:
+    [ Fr(~skI) ]
+  --[ Unique(<'iss', $I>) ]->
+    [ !IssSk($I, ~skI), !IssPin($I, pk(~skI)), Out(pk(~skI)) ]
+
+/* ---------------- issuance with device-key binding (cnf) ---------------- */
+rule Issue:
+    let crb = <'cred', I, ~c, pk(~skd)> in
+    [ !IssSk(I, skI), Fr(~c), Fr(~skd) ]
+  --[ Issued(I, ~c, pk(~skd)) ]->
+    [ !DevSk(~skd), !WalletCred(~skd, crb, sign(crb, skI)) ]
+
+/* ---------------- holder: KB-JWT over the verifier nonce ---------------- */
+rule Holder_Present:
+    let kbb = <'kb', n, crb> in
+    [ !WalletCred(skd, crb, sig), In(<'nonce', n>) ]
+  --[ Presented(pk(skd), n), WalletUse(crb) ]->
+    [ Out(<<crb, sig>, <kbb, sign(kbb, skd)>>) ]
+
+/* ---------------- verifier ---------------- */
+rule Verifier_Challenge:
+    [ Fr(~n) ] --> [ Challenge(~n), Out(<'nonce', ~n>) ]
+
+rule Verifier_Accept:
+    let crb = <'cred', I, c, pkd>
+        kbb = <'kb', n, crb>
+    in
+    [ Challenge(n), !IssPin(I, pkI), In(<<crb, s1>, <kbb, s2>>) ]
+  --[ Eq(verify(s1, crb, pkI), true),
+      Eq(verify(s2, kbb, pkd), true),
+      AcceptPres(I, c, pkd, n), UseOnce(<I, c>) ]->
+    [ ]
+
+/* ---------------- CRQC ---------------- */
+#ifdef not DEV_PQ
+rule CRQC_Break_Device:
+    [ !DevSk(sk), !CRQC(), In(pk(sk)) ] --[ Broken('device') ]-> [ Out(sk) ]
+#endif
+
+#ifdef not ISS_PQ
+rule CRQC_Break_Issuer:
+    [ !IssSk(I, sk), !CRQC(), In(pk(sk)) ] --[ Broken('issuer') ]-> [ Out(sk) ]
+#endif
+
+/* ================= health lemmas (H0) ================= */
+
+lemma executable:
+  exists-trace
+  "Ex I c pkd n #i #p #j. Issued(I, c, pkd) @ #i & Presented(pkd, n) @ #p
+                        & AcceptPres(I, c, pkd, n) @ #j"
+
+lemma executable_post_qday:
+  exists-trace
+  "Ex I c pkd n #q #i #p #j. QdayEv() @ #q & Issued(I, c, pkd) @ #i & Presented(pkd, n) @ #p
+                           & AcceptPres(I, c, pkd, n) @ #j & #q < #j"
+
+lemma attack_needs_crqc:
+  "All I c pkd n #j. AcceptPres(I, c, pkd, n) @ #j ==>
+      (Ex #p. Presented(pkd, n) @ #p & #p < #j) | (Ex k #b. Broken(k) @ #b & #b < #j)"
+
+#ifdef SINGLE_USE
+/* the single-use restrictions really bite: a credential is accepted at most once */
+lemma executable_single_use_enforced:
+  "All I c pkd n1 n2 #j1 #j2. AcceptPres(I, c, pkd, n1) @ #j1 & AcceptPres(I, c, pkd, n2) @ #j2
+      ==> #j1 = #j2"
+#endif
+
+/* ================= security goal G2 ================= */
+lemma G2_presentation_unforgeability:
+  "All I c pkd n #j. AcceptPres(I, c, pkd, n) @ #j ==> (Ex #p. Presented(pkd, n) @ #p & #p < #j)"
+
+/* ================= mutation lemmas ================= */
+#ifdef not DEV_PQ
+/* the GENUINE credential (issued, PQ-signed if ISS_PQ) is presented with a forged KB-JWT */
+lemma M_device_key_classical:
+  exists-trace
+  "Ex I c pkd n #i #j #b. Issued(I, c, pkd) @ #i & AcceptPres(I, c, pkd, n) @ #j
+                        & Broken('device') @ #b & not (Ex #p. Presented(pkd, n) @ #p)"
+#endif
+
+#ifdef not ISS_PQ
+lemma M_issuer_classical:
+  exists-trace
+  "Ex I c pkd n #j #b. AcceptPres(I, c, pkd, n) @ #j & Broken('issuer') @ #b
+                     & not (Ex #p. Presented(pkd, n) @ #p)"
+#endif
+
+end

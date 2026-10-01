@@ -1,0 +1,201 @@
+maude tool: 'maude'
+ checking version: 3.5.1. OK.
+ checking installation: OK.
+[Theory KAT2_X509_Hybrid] Theory loaded
+[Theory KAT2_X509_Hybrid] Theory translated
+[Theory KAT2_X509_Hybrid] Derivation checks started
+[Theory KAT2_X509_Hybrid] Derivation checks ended
+[Theory KAT2_X509_Hybrid] Theory closed
+theory KAT2_X509_Hybrid
+
+begin
+
+// Function signature and definition of the equational theory E
+
+functions: fst/1, noalt/0, pair/2, pk/1, sign/2, snd/1, true/0, verify/3
+equations:
+    fst(<x.1, x.2>) = x.1,
+    snd(<x.1, x.2>) = x.2,
+    verify(sign(x.1, x.2), x.1, pk(x.2)) = true
+
+restriction Eq:
+  "∀ x y #i. (Eq( x, y ) @ #i) ⇒ (x = y)"
+  // safety formula
+
+  /*
+  expanded formula:
+  "∀ x y #i. (Eq( x, y ) @ #i) ⇒ (x = y)"
+  */
+
+restriction Once:
+  "∀ x #i #j. ((Once( x ) @ #i) ∧ (Once( x ) @ #j)) ⇒ (#i = #j)"
+  // safety formula
+
+  /*
+  expanded formula:
+  "∀ x #i #j. ((Once( x ) @ #i) ∧ (Once( x ) @ #j)) ⇒ (#i = #j)"
+  */
+
+rule (modulo E) Qday:
+   [ ] --[ Once( 'qday' ) ]-> [ !Qday( ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Break_CA_Classical:
+   [ !CA( cc, cq ), !Qday( ) ] --[ BreakCA( ) ]-> [ Out( cc ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) CA_Setup:
+   [ Fr( ~cc ), Fr( ~cq ) ]
+  --[ Once( 'ca' ) ]->
+   [ !CA( ~cc, ~cq ), !CApk( pk(~cc), pk(~cq) ), Out( <pk(~cc), pk(~cq)> ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Issue_Catalyst:
+   [ !CA( cc, cq ), Fr( ~ke ) ]
+  --[ Issued( $S, pk(~ke) ), IssuedHybrid( $S, pk(~ke) ) ]->
+   [
+   Out( <<<'tbs', $S, pk(~ke)>, sign(<'tbs', $S, pk(~ke)>, cq)>, 
+         sign(<<'tbs', $S, pk(~ke)>, sign(<'tbs', $S, pk(~ke)>, cq)>, cc)>
+   )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Verify_WithAlt:
+   [ !CApk( pc, pq ), In( <<<'tbs', S, pke>, alt>, sb> ) ]
+  --[
+  Eq( verify(sb, <<'tbs', S, pke>, alt>, pc), true ),
+  Eq( verify(alt, <'tbs', S, pke>, pq), true ), AcceptCert( S, pke ),
+  HybridOK( S, pke )
+  ]->
+   [ ]
+
+  /*
+  rule (modulo AC) Verify_WithAlt:
+     [ !CApk( pc, pq ), In( <<<'tbs', S, pke>, alt>, sb> ) ]
+    --[
+    Eq( z, true ), Eq( z.1, true ), AcceptCert( S, pke ), HybridOK( S, pke )
+    ]->
+     [ ]
+    variants (modulo AC)
+    1. S     = S.11
+       alt   = alt.12
+       pc    = pc.13
+       pke   = pke.14
+       pq    = pq.15
+       sb    = sb.16
+       z     = verify(sb.16, <<'tbs', S.11, pke.14>, alt.12>, pc.13)
+       z.1   = verify(alt.12, <'tbs', S.11, pke.14>, pq.15)
+    
+    2. S     = S.14
+       alt   = sign(<'tbs', S.14, pke.17>, x.25)
+       pc    = pc.16
+       pke   = pke.17
+       pq    = pk(x.25)
+       sb    = sb.19
+       z     = verify(sb.19,
+                      <<'tbs', S.14, pke.17>, sign(<'tbs', S.14, pke.17>, x.25)>, pc.16)
+       z.1   = true
+    
+    3. S     = S.14
+       alt   = sign(<'tbs', S.14, pke.17>, x.25)
+       pc    = pk(x.26)
+       pke   = pke.17
+       pq    = pk(x.25)
+       sb    = sign(<<'tbs', S.14, pke.17>, sign(<'tbs', S.14, pke.17>, x.25)>,
+                    x.26)
+       z     = true
+       z.1   = true
+    
+    4. S     = S.15
+       alt   = alt.16
+       pc    = pk(x.26)
+       pke   = pke.18
+       pq    = pq.19
+       sb    = sign(<<'tbs', S.15, pke.18>, alt.16>, x.26)
+       z     = true
+       z.1   = verify(alt.16, <'tbs', S.15, pke.18>, pq.19)
+  */
+
+rule (modulo E) Verify_NoAlt:
+   [ !CApk( pc, pq ), In( <<<'tbs', S, pke>, noalt>, sb> ) ]
+  --[
+  Eq( verify(sb, <<'tbs', S, pke>, noalt>, pc), true ),
+  AcceptCert( S, pke )
+  ]->
+   [ ]
+
+  /*
+  rule (modulo AC) Verify_NoAlt:
+     [ !CApk( pc, pq ), In( <<<'tbs', S, pke>, noalt>, sb> ) ]
+    --[ Eq( z, true ), AcceptCert( S, pke ) ]->
+     [ ]
+    variants (modulo AC)
+    1. S     = S.9
+       pc    = pc.10
+       pke   = pke.11
+       sb    = sb.13
+       z     = verify(sb.13, <<'tbs', S.9, pke.11>, noalt>, pc.10)
+    
+    2. S     = S.11
+       pc    = pk(x.19)
+       pke   = pke.13
+       sb    = sign(<<'tbs', S.11, pke.13>, noalt>, x.19)
+       z     = true
+  */
+
+lemma executable:
+  exists-trace
+  "∃ S k #i #j. (Issued( S, k ) @ #i) ∧ (AcceptCert( S, k ) @ #j)"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ S k #i #j. (Issued( S, k ) @ #i) ∧ (AcceptCert( S, k ) @ #j)"
+*/
+by sorry
+
+lemma cert_authentic:
+  all-traces
+  "∀ S k #j. (AcceptCert( S, k ) @ #j) ⇒ (∃ #i. Issued( S, k ) @ #i)"
+/*
+guarded formula characterizing all counter-examples:
+"∃ S k #j. (AcceptCert( S, k ) @ #j) ∧ ∀ #i. (Issued( S, k ) @ #i) ⇒ ⊥"
+*/
+by sorry
+
+lemma no_silent_promotion:
+  all-traces
+  "∀ S k #j. (AcceptCert( S, k ) @ #j) ⇒ (∃ #i. IssuedHybrid( S, k ) @ #i)"
+/*
+guarded formula characterizing all counter-examples:
+"∃ S k #j.
+  (AcceptCert( S, k ) @ #j) ∧ ∀ #i. (IssuedHybrid( S, k ) @ #i) ⇒ ⊥"
+*/
+by sorry
+
+/* All wellformedness checks were successful. */
+
+/*
+Generated from:
+Tamarin version 1.12.0
+Maude version 3.5.1
+Git revision: 82780bbaf3328a45f624ddb41e51bf75425f851c (with uncommited changes), branch: master
+Compiled at: 2026-03-07 14:22:39.174278293 UTC
+*/
+
+end
+
+==============================================================================
+summary of summaries:
+
+analyzed: /kat/KAT2_X509.spthy
+
+  processing time: 0.28s
+  
+  executable (exists-trace): analysis incomplete (1 steps)
+  cert_authentic (all-traces): analysis incomplete (1 steps)
+  no_silent_promotion (all-traces): analysis incomplete (1 steps)
+
+==============================================================================

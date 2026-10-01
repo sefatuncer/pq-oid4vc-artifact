@@ -1,0 +1,60 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.01kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/rust:1.98.1-trixie@sha256:a8a5f0a1e5fe7dfe1d352591e4a1c7dd2c08fd70475cae872cf3458ba0df0546
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context:
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/2] FROM docker.io/library/rust:1.98.1-trixie@sha256:a8a5f0a1e5fe7dfe1d352591e4a1c7dd2c08fd70475cae872cf3458ba0df0546
+#4 resolve docker.io/library/rust:1.98.1-trixie@sha256:a8a5f0a1e5fe7dfe1d352591e4a1c7dd2c08fd70475cae872cf3458ba0df0546 0.0s done
+#4 DONE 0.1s
+
+#5 [2/2] RUN set -eux; echo "SURUM $(rustc --version)"; echo "SURUM $(cargo --version)"; echo "SURUM $(gcc --version | head -1)";     echo "SURUM sistem $(openssl version)"; echo "SURUM pkg-config $(pkg-config --version 2>/dev/null || echo yok)";     echo "SURUM cmake $(cmake --version 2>/dev/null | head -1 || echo yok)"; echo "SURUM clang $(clang --version 2>/dev/null | head -1 || echo yok)";     echo "SURUM libssl-dev başlığı $(test -f /usr/include/openssl/ssl.h && echo var || echo yok)"
+#5 0.185 + rustc --version
+#5 0.200 SURUM rustc 1.98.1 (48a229cea 2026-09-01)
+#5 0.200 + echo SURUM rustc 1.98.1 (48a229cea 2026-09-01)
+#5 0.200 + cargo --version
+#5 0.211 + echo SURUM cargo 1.98.1 (797e8a9bc 2026-08-05)
+#5 0.211 SURUM cargo 1.98.1 (797e8a9bc 2026-08-05)
+#5 0.212 + gcc --version
+#5 0.212 + head -1
+#5 0.214 + echo SURUM gcc (Debian 14.2.0-19) 14.2.0
+#5 0.214 + openssl version
+#5 0.214 SURUM gcc (Debian 14.2.0-19) 14.2.0
+#5 0.221 + echo SURUM sistem OpenSSL 3.5.7 9 Jun 2026 (Library: OpenSSL 3.5.7 9 Jun 2026)
+#5 0.221 + pkg-config --version
+#5 0.221 SURUM sistem OpenSSL 3.5.7 9 Jun 2026 (Library: OpenSSL 3.5.7 9 Jun 2026)
+#5 0.222 + echo SURUM pkg-config 1.8.1
+#5 0.222 SURUM pkg-config 1.8.1
+#5 0.223 + head+  -1
+#5 0.223 cmake --version
+#5 0.224 + echo SURUM cmake 
+#5 0.224 SURUM cmake 
+#5 0.225 + + head -1
+#5 0.225 clang --version
+#5 0.226 SURUM clang 
+#5 0.226 + echo SURUM clang 
+#5 0.226 + test -f /usr/include/openssl/ssl.h
+#5 0.226 + echo var
+#5 0.227 + echo SURUM libssl-dev başlığı var
+#5 0.227 SURUM libssl-dev başlığı var
+#5 DONE 0.3s
+
+#6 exporting to image
+#6 exporting layers 0.1s done
+#6 exporting manifest sha256:bc8b1d1e0e0fc77f06cd2dca4e2333e0fe76d78c24460407276ffef973532bc1
+#6 exporting manifest sha256:bc8b1d1e0e0fc77f06cd2dca4e2333e0fe76d78c24460407276ffef973532bc1 0.0s done
+#6 exporting config sha256:ab0b0f802784bfb37aa06291b09d312f09e245ebb9406aca45d3fee193d4ac64 0.0s done
+#6 exporting attestation manifest sha256:065fc5c071f4157f00779291811f4c110c05a36f741be21db371d5c672e8a3b7
+#6 exporting attestation manifest sha256:065fc5c071f4157f00779291811f4c110c05a36f741be21db371d5c672e8a3b7 0.1s done
+#6 exporting manifest list sha256:b21d9e67309a86054643e61d4f78c5da262aca261b5dea7e5e047144306be32b 0.0s done
+#6 naming to docker.io/library/pq-a09-env-rust:1.0 done
+#6 unpacking to docker.io/library/pq-a09-env-rust:1.0 0.0s done
+#6 DONE 0.4s

@@ -1,0 +1,3 @@
+modul=jwt (pyjwt) yuklendi; surum=2.15.0
+sembol decode True
+sembol PyJWS.register_algorithm True

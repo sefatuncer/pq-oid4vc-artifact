@@ -1,0 +1,762 @@
+maude tool: 'maude'
+ checking version: 3.5.1. OK.
+ checking installation: OK.
+[Theory Ornek_CERCEVE_000150] Theory loaded
+[Theory Ornek_CERCEVE_000150] Theory translated
+[Theory Ornek_CERCEVE_000150] Derivation checks started
+[Theory Ornek_CERCEVE_000150] Derivation checks ended
+[Theory Ornek_CERCEVE_000150] Theory closed
+[Saturating Sources] Step 1 (Max 5)
+[Saturating Sources] Done
+theory Ornek_CERCEVE_000150
+
+begin
+
+// Function signature and definition of the equational theory E
+
+functions: fst/1, pair/2, pk/1, sign/2, snd/1, true/0, verify/3
+equations:
+    fst(<x.1, x.2>) = x.1,
+    snd(<x.1, x.2>) = x.2,
+    verify(sign(x.1, x.2), x.1, pk(x.2)) = true
+
+restriction Equality:
+  "∀ x y #i. (Eq( x, y ) @ #i) ⇒ (x = y)"
+  // safety formula
+
+  /*
+  expanded formula:
+  "∀ x y #i. (Eq( x, y ) @ #i) ⇒ (x = y)"
+  */
+
+restriction Unique:
+  "∀ x #i #j. ((Unique( x ) @ #i) ∧ (Unique( x ) @ #j)) ⇒ (#i = #j)"
+  // safety formula
+
+  /*
+  expanded formula:
+  "∀ x #i #j. ((Unique( x ) @ #i) ∧ (Unique( x ) @ #j)) ⇒ (#i = #j)"
+  */
+
+rule (modulo E) Qday:
+   [ ] --[ Unique( 'qday' ), QdayEv( ) ]-> [ !CRQC( ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Setup_a01_lotl:
+   [ Fr( ~km ), Fr( ~ka ) ]
+  --[ Unique( 'setup_a01_lotl' ) ]->
+   [
+   !Sk( 'a01_lotl', 'main', ~km ), !Sk( 'a01_lotl', 'alt', ~ka ),
+   Out( pk(~km) ), Out( pk(~ka) )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Break_a01_lotl_alt:
+   [ !Sk( 'a01_lotl', 'alt', k ), !CRQC( ), In( pk(k) ) ]
+  --[ Broken( 'a01_lotl_alt' ) ]->
+   [ Out( k ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Setup_a02_lote_pid:
+   [ Fr( ~km ), Fr( ~ka ) ]
+  --[ Unique( 'setup_a02_lote_pid' ) ]->
+   [
+   !Sk( 'a02_lote_pid', 'main', ~km ), !Sk( 'a02_lote_pid', 'alt', ~ka ),
+   Out( pk(~km) ), Out( pk(~ka) )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Break_a02_lote_pid_alt:
+   [ !Sk( 'a02_lote_pid', 'alt', k ), !CRQC( ), In( pk(k) ) ]
+  --[ Broken( 'a02_lote_pid_alt' ) ]->
+   [ Out( k ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Setup_a02_tl:
+   [ Fr( ~km ), Fr( ~ka ) ]
+  --[ Unique( 'setup_a02_tl' ) ]->
+   [
+   !Sk( 'a02_tl', 'main', ~km ), !Sk( 'a02_tl', 'alt', ~ka ),
+   Out( pk(~km) ), Out( pk(~ka) )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Break_a02_tl_alt:
+   [ !Sk( 'a02_tl', 'alt', k ), !CRQC( ), In( pk(k) ) ]
+  --[ Broken( 'a02_tl_alt' ) ]->
+   [ Out( k ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Setup_a03_ca:
+   [ Fr( ~km ), Fr( ~ka ) ]
+  --[ Unique( 'setup_a03_ca' ) ]->
+   [
+   !Sk( 'a03_ca', 'main', ~km ), !Sk( 'a03_ca', 'alt', ~ka ),
+   Out( pk(~km) ), Out( pk(~ka) )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Break_a03_ca_alt:
+   [ !Sk( 'a03_ca', 'alt', k ), !CRQC( ), In( pk(k) ) ]
+  --[ Broken( 'a03_ca_alt' ) ]->
+   [ Out( k ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Setup_a04_ihr:
+   [ Fr( ~km ), Fr( ~ka ) ]
+  --[ Unique( 'setup_a04_ihr' ) ]->
+   [
+   !Sk( 'a04_ihr', 'main', ~km ), !Sk( 'a04_ihr', 'alt', ~ka ),
+   Out( pk(~km) ), Out( pk(~ka) )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Break_a04_ihr_alt:
+   [ !Sk( 'a04_ihr', 'alt', k ), !CRQC( ), In( pk(k) ) ]
+  --[ Broken( 'a04_ihr_alt' ) ]->
+   [ Out( k ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Setup_a07_kimlik:
+   [ Fr( ~km ) ]
+  --[ Unique( 'setup_a07_kimlik' ) ]->
+   [ !Sk( 'a07_kimlik', 'main', ~km ), Out( pk(~km) ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Break_a07_kimlik_main:
+   [ !Sk( 'a07_kimlik', 'main', k ), !CRQC( ), In( pk(k) ) ]
+  --[ Broken( 'a07_kimlik_main' ) ]->
+   [ Out( k ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Pin_a01_lotl:
+   [ !Sk( 'a01_lotl', t, k ) ] --> [ !Acc( 'a01_lotl', pk(k), t ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Pin_a02_lote_pid:
+   [ !Sk( 'a02_lote_pid', t, k ) ] --> [ !Acc( 'a02_lote_pid', pk(k), t ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Intro_a01_lotl__a02_tl:
+   [ !Sk( 'a01_lotl', tB, kB ), !Sk( 'a02_tl', tA, kA ) ]
+  -->
+   [
+   Out( <<'intro', 'a01_lotl', 'a02_tl', pk(kA), tA>, 
+         sign(<'intro', 'a01_lotl', 'a02_tl', pk(kA), tA>, kB)>
+   )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) AccIntro_a01_lotl__a02_tl_main:
+   [
+   !Acc( 'a01_lotl', pkB, 'main' ),
+   In( <<'intro', 'a01_lotl', 'a02_tl', pkA, tA>, s> )
+   ]
+  --[ Eq( verify(s, <'intro', 'a01_lotl', 'a02_tl', pkA, tA>, pkB), true )
+  ]->
+   [ !Acc( 'a02_tl', pkA, tA ) ]
+
+  /*
+  rule (modulo AC) AccIntro_a01_lotl__a02_tl_main:
+     [
+     !Acc( 'a01_lotl', pkB, 'main' ),
+     In( <<'intro', 'a01_lotl', 'a02_tl', pkA, tA>, s> )
+     ]
+    --[ Eq( z, true ) ]->
+     [ !Acc( 'a02_tl', pkA, tA ) ]
+    variants (modulo AC)
+    1. pkA   = pkA.14
+       pkB   = pkB.15
+       s     = s.16
+       tA    = tA.17
+       z     = verify(s.16, <'intro', 'a01_lotl', 'a02_tl', pkA.14, tA.17>,
+                      pkB.15)
+    
+    2. pkA   = pkA.39
+       pkB   = pk(x.76)
+       s     = sign(<'intro', 'a01_lotl', 'a02_tl', pkA.39, tA.42>, x.76)
+       tA    = tA.42
+       z     = true
+  */
+
+rule (modulo E) Intro_a02_lote_pid__a03_ca:
+   [ !Sk( 'a02_lote_pid', tB, kB ), !Sk( 'a03_ca', tA, kA ) ]
+  -->
+   [
+   Out( <<'intro', 'a02_lote_pid', 'a03_ca', pk(kA), tA>, 
+         sign(<'intro', 'a02_lote_pid', 'a03_ca', pk(kA), tA>, kB)>
+   )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) AccIntro_a02_lote_pid__a03_ca_main:
+   [
+   !Acc( 'a02_lote_pid', pkB, 'main' ),
+   In( <<'intro', 'a02_lote_pid', 'a03_ca', pkA, tA>, s> )
+   ]
+  --[
+  Eq( verify(s, <'intro', 'a02_lote_pid', 'a03_ca', pkA, tA>, pkB), true )
+  ]->
+   [ !Acc( 'a03_ca', pkA, tA ) ]
+
+  /*
+  rule (modulo AC) AccIntro_a02_lote_pid__a03_ca_main:
+     [
+     !Acc( 'a02_lote_pid', pkB, 'main' ),
+     In( <<'intro', 'a02_lote_pid', 'a03_ca', pkA, tA>, s> )
+     ]
+    --[ Eq( z, true ) ]->
+     [ !Acc( 'a03_ca', pkA, tA ) ]
+    variants (modulo AC)
+    1. pkA   = pkA.14
+       pkB   = pkB.15
+       s     = s.16
+       tA    = tA.17
+       z     = verify(s.16, <'intro', 'a02_lote_pid', 'a03_ca', pkA.14, tA.17>,
+                      pkB.15)
+    
+    2. pkA   = pkA.39
+       pkB   = pk(x.76)
+       s     = sign(<'intro', 'a02_lote_pid', 'a03_ca', pkA.39, tA.42>, x.76)
+       tA    = tA.42
+       z     = true
+  */
+
+rule (modulo E) Intro_a02_tl__a03_ca:
+   [ !Sk( 'a02_tl', tB, kB ), !Sk( 'a03_ca', tA, kA ) ]
+  -->
+   [
+   Out( <<'intro', 'a02_tl', 'a03_ca', pk(kA), tA>, 
+         sign(<'intro', 'a02_tl', 'a03_ca', pk(kA), tA>, kB)>
+   )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) AccIntro_a02_tl__a03_ca_main:
+   [
+   !Acc( 'a02_tl', pkB, 'main' ),
+   In( <<'intro', 'a02_tl', 'a03_ca', pkA, tA>, s> )
+   ]
+  --[ Eq( verify(s, <'intro', 'a02_tl', 'a03_ca', pkA, tA>, pkB), true )
+  ]->
+   [ !Acc( 'a03_ca', pkA, tA ) ]
+
+  /*
+  rule (modulo AC) AccIntro_a02_tl__a03_ca_main:
+     [
+     !Acc( 'a02_tl', pkB, 'main' ),
+     In( <<'intro', 'a02_tl', 'a03_ca', pkA, tA>, s> )
+     ]
+    --[ Eq( z, true ) ]->
+     [ !Acc( 'a03_ca', pkA, tA ) ]
+    variants (modulo AC)
+    1. pkA   = pkA.14
+       pkB   = pkB.15
+       s     = s.16
+       tA    = tA.17
+       z     = verify(s.16, <'intro', 'a02_tl', 'a03_ca', pkA.14, tA.17>,
+                      pkB.15)
+    
+    2. pkA   = pkA.39
+       pkB   = pk(x.76)
+       s     = sign(<'intro', 'a02_tl', 'a03_ca', pkA.39, tA.42>, x.76)
+       tA    = tA.42
+       z     = true
+  */
+
+rule (modulo E) AccIntro_a02_tl__a03_ca_alt:
+   [
+   !Acc( 'a02_tl', pkB, 'alt' ), !ExpVal( 'a01_lotl', 'a02_tl', 'none' ),
+   In( <<'intro', 'a02_tl', 'a03_ca', pkA, tA>, s> )
+   ]
+  --[ Eq( verify(s, <'intro', 'a02_tl', 'a03_ca', pkA, tA>, pkB), true )
+  ]->
+   [ !Acc( 'a03_ca', pkA, tA ) ]
+
+  /*
+  rule (modulo AC) AccIntro_a02_tl__a03_ca_alt:
+     [
+     !Acc( 'a02_tl', pkB, 'alt' ), !ExpVal( 'a01_lotl', 'a02_tl', 'none' ),
+     In( <<'intro', 'a02_tl', 'a03_ca', pkA, tA>, s> )
+     ]
+    --[ Eq( z, true ) ]->
+     [ !Acc( 'a03_ca', pkA, tA ) ]
+    variants (modulo AC)
+    1. pkA   = pkA.16
+       pkB   = pkB.17
+       s     = s.18
+       tA    = tA.19
+       z     = verify(s.18, <'intro', 'a02_tl', 'a03_ca', pkA.16, tA.19>,
+                      pkB.17)
+    
+    2. pkA   = pkA.69
+       pkB   = pk(x.136)
+       s     = sign(<'intro', 'a02_tl', 'a03_ca', pkA.69, tA.72>, x.136)
+       tA    = tA.72
+       z     = true
+  */
+
+rule (modulo E) Intro_a03_ca__a04_ihr:
+   [ !Sk( 'a03_ca', tB, kB ), !Sk( 'a04_ihr', tA, kA ) ]
+  -->
+   [
+   Out( <<'intro', 'a03_ca', 'a04_ihr', pk(kA), tA>, 
+         sign(<'intro', 'a03_ca', 'a04_ihr', pk(kA), tA>, kB)>
+   )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) AccIntro_a03_ca__a04_ihr_main:
+   [
+   !Acc( 'a03_ca', pkB, 'main' ),
+   In( <<'intro', 'a03_ca', 'a04_ihr', pkA, tA>, s> )
+   ]
+  --[ Eq( verify(s, <'intro', 'a03_ca', 'a04_ihr', pkA, tA>, pkB), true )
+  ]->
+   [ !Acc( 'a04_ihr', pkA, tA ) ]
+
+  /*
+  rule (modulo AC) AccIntro_a03_ca__a04_ihr_main:
+     [
+     !Acc( 'a03_ca', pkB, 'main' ),
+     In( <<'intro', 'a03_ca', 'a04_ihr', pkA, tA>, s> )
+     ]
+    --[ Eq( z, true ) ]->
+     [ !Acc( 'a04_ihr', pkA, tA ) ]
+    variants (modulo AC)
+    1. pkA   = pkA.14
+       pkB   = pkB.15
+       s     = s.16
+       tA    = tA.17
+       z     = verify(s.16, <'intro', 'a03_ca', 'a04_ihr', pkA.14, tA.17>,
+                      pkB.15)
+    
+    2. pkA   = pkA.39
+       pkB   = pk(x.76)
+       s     = sign(<'intro', 'a03_ca', 'a04_ihr', pkA.39, tA.42>, x.76)
+       tA    = tA.42
+       z     = true
+  */
+
+rule (modulo E) AccIntro_a03_ca__a04_ihr_alt:
+   [
+   !Acc( 'a03_ca', pkB, 'alt' ),
+   !ExpVal( 'a02_lote_pid', 'a03_ca', 'none' ),
+   In( <<'intro', 'a03_ca', 'a04_ihr', pkA, tA>, s> )
+   ]
+  --[ Eq( verify(s, <'intro', 'a03_ca', 'a04_ihr', pkA, tA>, pkB), true )
+  ]->
+   [ !Acc( 'a04_ihr', pkA, tA ) ]
+
+  /*
+  rule (modulo AC) AccIntro_a03_ca__a04_ihr_alt:
+     [
+     !Acc( 'a03_ca', pkB, 'alt' ),
+     !ExpVal( 'a02_lote_pid', 'a03_ca', 'none' ),
+     In( <<'intro', 'a03_ca', 'a04_ihr', pkA, tA>, s> )
+     ]
+    --[ Eq( z, true ) ]->
+     [ !Acc( 'a04_ihr', pkA, tA ) ]
+    variants (modulo AC)
+    1. pkA   = pkA.16
+       pkB   = pkB.17
+       s     = s.18
+       tA    = tA.19
+       z     = verify(s.18, <'intro', 'a03_ca', 'a04_ihr', pkA.16, tA.19>,
+                      pkB.17)
+    
+    2. pkA   = pkA.69
+       pkB   = pk(x.136)
+       s     = sign(<'intro', 'a03_ca', 'a04_ihr', pkA.69, tA.72>, x.136)
+       tA    = tA.72
+       z     = true
+  */
+
+rule (modulo E) Intro_a04_ihr__a07_kimlik:
+   [ !Sk( 'a04_ihr', tB, kB ), !Sk( 'a07_kimlik', tA, kA ) ]
+  -->
+   [
+   Out( <<'intro', 'a04_ihr', 'a07_kimlik', pk(kA), tA>, 
+         sign(<'intro', 'a04_ihr', 'a07_kimlik', pk(kA), tA>, kB)>
+   )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) AccIntro_a04_ihr__a07_kimlik_main:
+   [
+   !Acc( 'a04_ihr', pkB, 'main' ),
+   In( <<'intro', 'a04_ihr', 'a07_kimlik', pkA, tA>, s> )
+   ]
+  --[
+  Eq( verify(s, <'intro', 'a04_ihr', 'a07_kimlik', pkA, tA>, pkB), true )
+  ]->
+   [ !Acc( 'a07_kimlik', pkA, tA ) ]
+
+  /*
+  rule (modulo AC) AccIntro_a04_ihr__a07_kimlik_main:
+     [
+     !Acc( 'a04_ihr', pkB, 'main' ),
+     In( <<'intro', 'a04_ihr', 'a07_kimlik', pkA, tA>, s> )
+     ]
+    --[ Eq( z, true ) ]->
+     [ !Acc( 'a07_kimlik', pkA, tA ) ]
+    variants (modulo AC)
+    1. pkA   = pkA.14
+       pkB   = pkB.15
+       s     = s.16
+       tA    = tA.17
+       z     = verify(s.16, <'intro', 'a04_ihr', 'a07_kimlik', pkA.14, tA.17>,
+                      pkB.15)
+    
+    2. pkA   = pkA.39
+       pkB   = pk(x.76)
+       s     = sign(<'intro', 'a04_ihr', 'a07_kimlik', pkA.39, tA.42>, x.76)
+       tA    = tA.42
+       z     = true
+  */
+
+rule (modulo E) AccIntro_a04_ihr__a07_kimlik_alt:
+   [
+   !Acc( 'a04_ihr', pkB, 'alt' ),
+   !ExpVal( 'a02_lote_pid', 'a04_ihr', 'none' ),
+   In( <<'intro', 'a04_ihr', 'a07_kimlik', pkA, tA>, s> )
+   ]
+  --[
+  Eq( verify(s, <'intro', 'a04_ihr', 'a07_kimlik', pkA, tA>, pkB), true )
+  ]->
+   [ !Acc( 'a07_kimlik', pkA, tA ) ]
+
+  /*
+  rule (modulo AC) AccIntro_a04_ihr__a07_kimlik_alt:
+     [
+     !Acc( 'a04_ihr', pkB, 'alt' ),
+     !ExpVal( 'a02_lote_pid', 'a04_ihr', 'none' ),
+     In( <<'intro', 'a04_ihr', 'a07_kimlik', pkA, tA>, s> )
+     ]
+    --[ Eq( z, true ) ]->
+     [ !Acc( 'a07_kimlik', pkA, tA ) ]
+    variants (modulo AC)
+    1. pkA   = pkA.16
+       pkB   = pkB.17
+       s     = s.18
+       tA    = tA.19
+       z     = verify(s.18, <'intro', 'a04_ihr', 'a07_kimlik', pkA.16, tA.19>,
+                      pkB.17)
+    
+    2. pkA   = pkA.69
+       pkB   = pk(x.136)
+       s     = sign(<'intro', 'a04_ihr', 'a07_kimlik', pkA.69, tA.72>, x.136)
+       tA    = tA.72
+       z     = true
+  */
+
+rule (modulo E) ExpPub_a01_lotl__a02_tl:
+   [ !Sk( 'a01_lotl', t, k ) ]
+  -->
+   [
+   Out( <<'exp', 'a01_lotl', 'a02_tl', 'pq_required'>, 
+         sign(<'exp', 'a01_lotl', 'a02_tl', 'pq_required'>, k)>
+   )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) ExpAcc_a01_lotl__a02_tl_main:
+   [
+   !Acc( 'a01_lotl', pkC, 'main' ),
+   In( <<'exp', 'a01_lotl', 'a02_tl', e>, s> )
+   ]
+  --[ Eq( verify(s, <'exp', 'a01_lotl', 'a02_tl', e>, pkC), true ) ]->
+   [ !ExpVal( 'a01_lotl', 'a02_tl', e ) ]
+
+  /*
+  rule (modulo AC) ExpAcc_a01_lotl__a02_tl_main:
+     [
+     !Acc( 'a01_lotl', pkC, 'main' ),
+     In( <<'exp', 'a01_lotl', 'a02_tl', e>, s> )
+     ]
+    --[ Eq( z, true ) ]->
+     [ !ExpVal( 'a01_lotl', 'a02_tl', e ) ]
+    variants (modulo AC)
+    1. e     = e.12
+       pkC   = pkC.13
+       s     = s.14
+       z     = verify(s.14, <'exp', 'a01_lotl', 'a02_tl', e.12>, pkC.13)
+    
+    2. e     = e.35
+       pkC   = pk(x.68)
+       s     = sign(<'exp', 'a01_lotl', 'a02_tl', e.35>, x.68)
+       z     = true
+  */
+
+rule (modulo E) ExpPub_a02_lote_pid__a03_ca:
+   [ !Sk( 'a02_lote_pid', t, k ) ]
+  -->
+   [
+   Out( <<'exp', 'a02_lote_pid', 'a03_ca', 'pq_required'>, 
+         sign(<'exp', 'a02_lote_pid', 'a03_ca', 'pq_required'>, k)>
+   )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) ExpAcc_a02_lote_pid__a03_ca_main:
+   [
+   !Acc( 'a02_lote_pid', pkC, 'main' ),
+   In( <<'exp', 'a02_lote_pid', 'a03_ca', e>, s> )
+   ]
+  --[ Eq( verify(s, <'exp', 'a02_lote_pid', 'a03_ca', e>, pkC), true ) ]->
+   [ !ExpVal( 'a02_lote_pid', 'a03_ca', e ) ]
+
+  /*
+  rule (modulo AC) ExpAcc_a02_lote_pid__a03_ca_main:
+     [
+     !Acc( 'a02_lote_pid', pkC, 'main' ),
+     In( <<'exp', 'a02_lote_pid', 'a03_ca', e>, s> )
+     ]
+    --[ Eq( z, true ) ]->
+     [ !ExpVal( 'a02_lote_pid', 'a03_ca', e ) ]
+    variants (modulo AC)
+    1. e     = e.12
+       pkC   = pkC.13
+       s     = s.14
+       z     = verify(s.14, <'exp', 'a02_lote_pid', 'a03_ca', e.12>, pkC.13)
+    
+    2. e     = e.35
+       pkC   = pk(x.68)
+       s     = sign(<'exp', 'a02_lote_pid', 'a03_ca', e.35>, x.68)
+       z     = true
+  */
+
+rule (modulo E) ExpPub_a02_lote_pid__a04_ihr:
+   [ !Sk( 'a02_lote_pid', t, k ) ]
+  -->
+   [
+   Out( <<'exp', 'a02_lote_pid', 'a04_ihr', 'pq_required'>, 
+         sign(<'exp', 'a02_lote_pid', 'a04_ihr', 'pq_required'>, k)>
+   )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) ExpAcc_a02_lote_pid__a04_ihr_main:
+   [
+   !Acc( 'a02_lote_pid', pkC, 'main' ),
+   In( <<'exp', 'a02_lote_pid', 'a04_ihr', e>, s> )
+   ]
+  --[ Eq( verify(s, <'exp', 'a02_lote_pid', 'a04_ihr', e>, pkC), true ) ]->
+   [ !ExpVal( 'a02_lote_pid', 'a04_ihr', e ) ]
+
+  /*
+  rule (modulo AC) ExpAcc_a02_lote_pid__a04_ihr_main:
+     [
+     !Acc( 'a02_lote_pid', pkC, 'main' ),
+     In( <<'exp', 'a02_lote_pid', 'a04_ihr', e>, s> )
+     ]
+    --[ Eq( z, true ) ]->
+     [ !ExpVal( 'a02_lote_pid', 'a04_ihr', e ) ]
+    variants (modulo AC)
+    1. e     = e.12
+       pkC   = pkC.13
+       s     = s.14
+       z     = verify(s.14, <'exp', 'a02_lote_pid', 'a04_ihr', e.12>, pkC.13)
+    
+    2. e     = e.35
+       pkC   = pk(x.68)
+       s     = sign(<'exp', 'a02_lote_pid', 'a04_ihr', e.35>, x.68)
+       z     = true
+  */
+
+rule (modulo E) ExpPub_a02_lote_pid__a07_kimlik:
+   [ !Sk( 'a02_lote_pid', t, k ) ]
+  -->
+   [
+   Out( <<'exp', 'a02_lote_pid', 'a07_kimlik', 'pq_required'>, 
+         sign(<'exp', 'a02_lote_pid', 'a07_kimlik', 'pq_required'>, k)>
+   )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) ExpAcc_a02_lote_pid__a07_kimlik_main:
+   [
+   !Acc( 'a02_lote_pid', pkC, 'main' ),
+   In( <<'exp', 'a02_lote_pid', 'a07_kimlik', e>, s> )
+   ]
+  --[ Eq( verify(s, <'exp', 'a02_lote_pid', 'a07_kimlik', e>, pkC), true )
+  ]->
+   [ !ExpVal( 'a02_lote_pid', 'a07_kimlik', e ) ]
+
+  /*
+  rule (modulo AC) ExpAcc_a02_lote_pid__a07_kimlik_main:
+     [
+     !Acc( 'a02_lote_pid', pkC, 'main' ),
+     In( <<'exp', 'a02_lote_pid', 'a07_kimlik', e>, s> )
+     ]
+    --[ Eq( z, true ) ]->
+     [ !ExpVal( 'a02_lote_pid', 'a07_kimlik', e ) ]
+    variants (modulo AC)
+    1. e     = e.12
+       pkC   = pkC.13
+       s     = s.14
+       z     = verify(s.14, <'exp', 'a02_lote_pid', 'a07_kimlik', e.12>, pkC.13)
+    
+    2. e     = e.35
+       pkC   = pk(x.68)
+       s     = sign(<'exp', 'a02_lote_pid', 'a07_kimlik', e.35>, x.68)
+       z     = true
+  */
+
+rule (modulo E) Issue_Credential:
+   [ !Sk( 'a07_kimlik', 'main', km ), Fr( ~c ) ]
+  --[ Issued( ~c ) ]->
+   [ Out( <<'cred', ~c>, sign(<'cred', ~c>, km)> ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Accept_Credential_main:
+   [ !Acc( 'a07_kimlik', pkI, 'main' ), In( <<'cred', c>, s> ) ]
+  --[ Eq( verify(s, <'cred', c>, pkI), true ), Accept( c ) ]->
+   [ ]
+
+  /*
+  rule (modulo AC) Accept_Credential_main:
+     [ !Acc( 'a07_kimlik', pkI, 'main' ), In( <<'cred', c>, s> ) ]
+    --[ Eq( z, true ), Accept( c ) ]->
+     [ ]
+    variants (modulo AC)
+    1. c     = c.11
+       pkI   = pkI.12
+       s     = s.13
+       z     = verify(s.13, <'cred', c.11>, pkI.12)
+    
+    2. c     = c.24
+       pkI   = pk(x.46)
+       s     = sign(<'cred', c.24>, x.46)
+       z     = true
+  */
+
+rule (modulo E) Accept_Credential_alt:
+   [
+   !Acc( 'a07_kimlik', pkI, 'alt' ),
+   !ExpVal( 'a02_lote_pid', 'a07_kimlik', 'none' ), In( <<'cred', c>, s> )
+   ]
+  --[ Eq( verify(s, <'cred', c>, pkI), true ), Accept( c ) ]->
+   [ ]
+
+  /*
+  rule (modulo AC) Accept_Credential_alt:
+     [
+     !Acc( 'a07_kimlik', pkI, 'alt' ),
+     !ExpVal( 'a02_lote_pid', 'a07_kimlik', 'none' ), In( <<'cred', c>, s> )
+     ]
+    --[ Eq( z, true ), Accept( c ) ]->
+     [ ]
+    variants (modulo AC)
+    1. c     = c.13
+       pkI   = pkI.14
+       s     = s.15
+       z     = verify(s.15, <'cred', c.13>, pkI.14)
+    
+    2. c     = c.48
+       pkI   = pk(x.94)
+       s     = sign(<'cred', c.48>, x.94)
+       z     = true
+  */
+
+lemma executable:
+  exists-trace "∃ c #i #j. (Issued( c ) @ #i) ∧ (Accept( c ) @ #j)"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ c #i #j. (Issued( c ) @ #i) ∧ (Accept( c ) @ #j)"
+*/
+by sorry
+
+lemma G1_claims_unforgeability:
+  all-traces
+  "∀ c #j. (Accept( c ) @ #j) ⇒ (∃ #i. (Issued( c ) @ #i) ∧ (#i < #j))"
+/*
+guarded formula characterizing all counter-examples:
+"∃ c #j. (Accept( c ) @ #j) ∧ ∀ #i. (Issued( c ) @ #i) ⇒ ¬(#i < #j)"
+*/
+simplify
+solve( Accept( c ) @ #j )
+  case Accept_Credential_main
+  solve( !Acc( 'a07_kimlik', pk(x), 'main' ) ▶₀ #j )
+    case AccIntro_a04_ihr__a07_kimlik_main_case_1
+    solve( !KU( sign(<'intro', 'a02_lote_pid', 'a03_ca', pk(x.2), 'main'>,
+                     ~km)
+           ) @ #vk.31 )
+      case Intro_a02_lote_pid__a03_ca
+      solve( !KU( sign(<'intro', 'a03_ca', 'a04_ihr', pk(x.1), 'main'>, ~km)
+             ) @ #vk.29 )
+        case Intro_a03_ca__a04_ihr
+        solve( !KU( sign(<'intro', 'a04_ihr', 'a07_kimlik', pk(x), 'main'>,
+                         ~km.2)
+               ) @ #vk.27 )
+          case Intro_a04_ihr__a07_kimlik
+          solve( !KU( sign(<'cred', c>, ~km) ) @ #vk.9 )
+            case c_sign
+            solve( !KU( ~km ) @ #vk.32 )
+              case Break_a07_kimlik_main
+              solve( !KU( pk(~km) ) @ #vk.23 )
+                case Intro_a04_ihr__a07_kimlik_case_1
+                solve( !KU( pk(~km.3) ) @ #vk.30 )
+                  case Intro_a03_ca__a04_ihr_case_1
+                  solve( !KU( pk(~km.1) ) @ #vk.32 )
+                    case Intro_a02_lote_pid__a03_ca_case_1
+                    SOLVED // trace found
+                  qed
+                qed
+              qed
+            qed
+          qed
+        qed
+      qed
+    qed
+  qed
+qed
+
+/* All wellformedness checks were successful. */
+
+/*
+Generated from:
+Tamarin version 1.12.0
+Maude version 3.5.1
+Git revision: 82780bbaf3328a45f624ddb41e51bf75425f851c (with uncommited changes), branch: master
+Compiled at: 2026-03-07 14:22:39.174278293 UTC
+*/
+
+end
+
+==============================================================================
+summary of summaries:
+
+analyzed: /work/ornekler/CERCEVE-000150.spthy
+
+  processing time: 8.37s
+  
+  executable (exists-trace): analysis incomplete (1 steps)
+  G1_claims_unforgeability (all-traces): falsified - found trace (12 steps)
+
+==============================================================================

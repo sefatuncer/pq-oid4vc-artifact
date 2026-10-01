@@ -1,0 +1,17 @@
+ad	model	bayraklar	iyi_bicim	uyari_sayisi	meta	ilk_kosu
+wf01	KAT3_SMIME.spthy	MIXED	EVET	0	rc=0 wall_s=0.2 mem_peak_MiB=64.8	MIXED.tam
+wf02	KAT3_SMIME.spthy	PQ_ONLY	EVET	0	rc=0 wall_s=0.18 mem_peak_MiB=62.5	PQ_ONLY.tam
+wf03	KAT3_SMIME.spthy	HYBRID_KEM	EVET	0	rc=0 wall_s=0.23 mem_peak_MiB=69.5	HYBRID_KEM.tam
+wf04	weakest_link_wf.spthy		EVET	0	rc=0 wall_s=0.74 mem_peak_MiB=73.0	V1.tam
+wf05	weakest_link_wf.spthy	EXPECT_IN_TL	EVET	0	rc=0 wall_s=0.73 mem_peak_MiB=72.8	V2.tam
+wf06	weakest_link_wf.spthy	TL_PQ	EVET	0	rc=0 wall_s=0.74 mem_peak_MiB=74.6	V3.tam
+wf07	weakest_link_wf.spthy	TL_PQ,EXPECT_IN_TL	EVET	0	rc=0 wall_s=0.7 mem_peak_MiB=72.4	V4.tam
+wf08	weakest_link_wf.spthy	TL_PQ,NO_COEXIST	EVET	0	rc=0 wall_s=0.48 mem_peak_MiB=73.3	V5.tam
+wf09	weakest_link_wf.spthy	NO_COEXIST	EVET	0	rc=0 wall_s=0.45 mem_peak_MiB=72.8	V6.tam
+wf10	KAT3_SMIME.spthy	HYBRID_KEM,MUT_HYBRID_ONE	EVET	0	rc=0 wall_s=0.23 mem_peak_MiB=68.0	MUT10.HYBRID_KEM.tam
+wf11	/pilot/weakest_link.spthy		HAYIR	2	rc=0 wall_s=0.68 mem_peak_MiB=71.8	EK.V1.pilot_asli.tam
+wf12	/pilot/weakest_link.spthy	EXPECT_IN_TL	HAYIR	2	rc=0 wall_s=0.74 mem_peak_MiB=73.3	EK.V2.pilot_asli.tam
+wf13	/pilot/weakest_link.spthy	TL_PQ	HAYIR	2	rc=0 wall_s=0.68 mem_peak_MiB=70.5	EK.V3.pilot_asli.tam
+wf14	/pilot/weakest_link.spthy	TL_PQ,EXPECT_IN_TL	HAYIR	2	rc=0 wall_s=0.69 mem_peak_MiB=73.6	EK.V4.pilot_asli.tam
+wf15	/pilot/weakest_link.spthy	TL_PQ,NO_COEXIST	HAYIR	2	rc=0 wall_s=0.44 mem_peak_MiB=70.5	EK.V5.pilot_asli.tam
+wf16	/pilot/weakest_link.spthy	NO_COEXIST	HAYIR	2	rc=0 wall_s=0.47 mem_peak_MiB=71.3	EK.V6.pilot_asli.tam
