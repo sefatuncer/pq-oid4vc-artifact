@@ -6,7 +6,7 @@
 import Foundation
 @_spi(PostQuantum) import JWTKit
 
-let xKol = ["kontrol-EdDSA": "EdDSA", "kontrol-Ed25519": "Ed25519", "tedavi-ML-DSA-65": "ML-DSA-65", "tedavi-composite": "ML-DSA-65-ES256"]
+let xKol = ["kontrol-EdDSA": "EdDSA", "kontrol-Ed25519": "Ed25519", "kontrol-ES384": "ES384", "tedavi-ML-DSA-65": "ML-DSA-65", "tedavi-composite": "ML-DSA-65-ES256"]
 // Bataryadaki algoritmalardan yerel destek (ECDSA ES256/384/512, EdDSA, MLDSA65/87 [SPI], RSA, HMAC; composite yok)
 let kutuphane: Set<String> = ["ES256", "ES384", "EdDSA", "ML-DSA-65", "ML-DSA-87"]
 let api = "JWTKeyCollection().add(ecdsa:|eddsa:|mldsa: <anahtar>, kid:) [alg(anahtar_turu) ∈ W]; verify(jwt, as: Yuk.self) (exp: simdi)"

@@ -29,7 +29,7 @@ import (
 const A = "ES256"
 const LEGACY = "https://legacy-issuer.example"
 
-var xOf = map[string]string{"kontrol-EdDSA": "EdDSA", "kontrol-Ed25519": "Ed25519", "tedavi-ML-DSA-65": "ML-DSA-65", "tedavi-composite": "ML-DSA-65-ES256"}
+var xOf = map[string]string{"kontrol-EdDSA": "EdDSA", "kontrol-Ed25519": "Ed25519", "kontrol-ES384": "ES384", "tedavi-ML-DSA-65": "ML-DSA-65", "tedavi-composite": "ML-DSA-65-ES256"}
 
 type JWK map[string]any
 

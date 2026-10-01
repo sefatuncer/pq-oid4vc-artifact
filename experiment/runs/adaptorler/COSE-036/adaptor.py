@@ -13,7 +13,7 @@ COSE_ID = {"ES256": -7, "ES384": -35, "EdDSA": -8, "Ed25519": -19, "ML-DSA-44": 
 AD = {v: k for k, v in COSE_ID.items()}
 # wolfcose.h WOLFCOSE_ALG_*: ES256/384/512, ESP256/384/512, EdDSA, Ed25519, Ed448, PS*, ML-DSA-44/65/87, HSS-LMS
 KUTUPHANE = ["ES256", "ES384", "EdDSA", "Ed25519", "ML-DSA-44", "ML-DSA-65", "ML-DSA-87"]
-X_KOL = {"kontrol-EdDSA": "EdDSA", "kontrol-Ed25519": "Ed25519", "tedavi-ML-DSA-65": "ML-DSA-65",
+X_KOL = {"kontrol-EdDSA": "EdDSA", "kontrol-Ed25519": "Ed25519", "kontrol-ES384": "ES384", "tedavi-ML-DSA-65": "ML-DSA-65",
          "tedavi-composite": "ML-DSA-65-ES256"}
 HATA = {-9000: "INVALID_ARG", -9001: "BUFFER_TOO_SMALL", -9002: "CBOR_MALFORMED", -9003: "CBOR_TYPE", -9004: "CBOR_OVERFLOW",
         -9006: "CBOR_DEPTH", -9010: "COSE_BAD_TAG", -9011: "COSE_BAD_ALG", -9012: "COSE_SIG_FAIL", -9014: "COSE_BAD_HDR",

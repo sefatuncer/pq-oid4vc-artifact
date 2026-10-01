@@ -17,7 +17,7 @@ public static class Ortak
     public const string A = "ES256";
     public static readonly Dictionary<string, string> XKol = new()
     {
-        ["kontrol-EdDSA"] = "EdDSA", ["kontrol-Ed25519"] = "Ed25519",
+        ["kontrol-EdDSA"] = "EdDSA", ["kontrol-Ed25519"] = "Ed25519", ["kontrol-ES384"] = "ES384",
         ["tedavi-ML-DSA-65"] = "ML-DSA-65", ["tedavi-composite"] = "ML-DSA-65-ES256",
     };
     static Dictionary<string, JsonObject>? _manifest;

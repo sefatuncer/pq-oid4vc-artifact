@@ -10,7 +10,7 @@ module Ortak
   SOZLESME = 'adaptor-sozlesme/1.0'
   A = 'ES256'
   X_KOL = {
-    'kontrol-EdDSA' => 'EdDSA', 'kontrol-Ed25519' => 'Ed25519',
+    'kontrol-EdDSA' => 'EdDSA', 'kontrol-Ed25519' => 'Ed25519', 'kontrol-ES384' => 'ES384',
     'tedavi-ML-DSA-65' => 'ML-DSA-65', 'tedavi-composite' => 'ML-DSA-65-ES256'
   }.freeze
 
