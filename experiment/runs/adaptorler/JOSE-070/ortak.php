@@ -9,7 +9,7 @@ final class Ortak
     public const SOZLESME = 'adaptor-sozlesme/1.0';
     public const A = 'ES256';
     public const X_KOL = [
-        'kontrol-EdDSA' => 'EdDSA', 'kontrol-Ed25519' => 'Ed25519',
+        'kontrol-EdDSA' => 'EdDSA', 'kontrol-Ed25519' => 'Ed25519', 'kontrol-ES384' => 'ES384',
         'tedavi-ML-DSA-65' => 'ML-DSA-65', 'tedavi-composite' => 'ML-DSA-65-ES256',
     ];
     private static ?array $manifest = null;

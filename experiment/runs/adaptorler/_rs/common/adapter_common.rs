@@ -38,6 +38,7 @@ pub fn x_of(kol: &str) -> &'static str {
     match kol {
         "kontrol-EdDSA" => "EdDSA",
         "kontrol-Ed25519" => "Ed25519",
+        "kontrol-ES384" => "ES384",
         "tedavi-ML-DSA-65" => "ML-DSA-65",
         "tedavi-composite" => "ML-DSA-65-ES256",
         _ => "EdDSA",

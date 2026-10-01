@@ -11,7 +11,7 @@ import java.util.Base64
 val J = Json { ignoreUnknownKeys = true }
 const val A = "ES256"
 const val LEGACY = "https://legacy-issuer.example"
-val X_OF = mapOf("kontrol-EdDSA" to "EdDSA", "kontrol-Ed25519" to "Ed25519", "tedavi-ML-DSA-65" to "ML-DSA-65", "tedavi-composite" to "ML-DSA-65-ES256")
+val X_OF = mapOf("kontrol-EdDSA" to "EdDSA", "kontrol-Ed25519" to "Ed25519", "kontrol-ES384" to "ES384", "tedavi-ML-DSA-65" to "ML-DSA-65", "tedavi-composite" to "ML-DSA-65-ES256")
 val KID = HashMap<String, JsonObject>()
 val ALG2KID = HashMap<String, String>()
 

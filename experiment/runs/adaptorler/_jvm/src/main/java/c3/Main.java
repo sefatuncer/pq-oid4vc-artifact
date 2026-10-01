@@ -18,7 +18,7 @@ import java.util.*;
 public class Main {
   static final ObjectMapper M = new ObjectMapper();
   static final String A = "ES256", LEGACY = "https://legacy-issuer.example";
-  static final Map<String, String> X_OF = Map.of("kontrol-EdDSA", "EdDSA", "kontrol-Ed25519", "Ed25519",
+  static final Map<String, String> X_OF = Map.of("kontrol-EdDSA", "EdDSA", "kontrol-Ed25519", "Ed25519", "kontrol-ES384", "ES384",
       "tedavi-ML-DSA-65", "ML-DSA-65", "tedavi-composite", "ML-DSA-65-ES256");
   static final Map<String, JsonNode> KID = new HashMap<>();
   static final Map<String, String> ALG2KID = new HashMap<>();

@@ -1,0 +1,15 @@
+{
+ "rows": 2202,
+ "v13_rows": 1845,
+ "es384_rows": 357,
+ "es384_decisions": {
+  "reject": 162,
+  "accept-classical": 147,
+  "B1-bayragi": 30,
+  "indeterminate": 12,
+  "accept-hybrid": 6
+ },
+ "not_copied": {
+  "DPOP02_EdDSA": 4
+ }
+}

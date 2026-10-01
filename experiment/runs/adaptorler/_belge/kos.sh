@@ -23,7 +23,9 @@ for h in "$@"; do
   # Tek ikilide birden çok hedef taşıyan imajlarda (Go, JVM, Kotlin) hedef kimliği ilk bağımsız değişkendir; diğerlerinde de aynı sözleşme.
   t0=$(date +%s)
   # EXTRA_MOUNT (optional): an additional vector folder, e.g. "<abs path>/vpm-sdjwt/vectors:/v/vpm-sdjwt:ro"
-  docker run --rm --network none --memory=4g -v "$D/vector-generator/vektorler:/v:ro" ${EXTRA_MOUNT:+-v "$EXTRA_MOUNT"} -v "$D/vector-generator/anahtarlar:/anahtarlar:ro" \
+  # Battery v1.4 is a byte-identical superset of v1.3 and is mounted at /v/v1.3 (adapters read /v/v1.3/MANIFEST.json).
+  # BATTERY=v1.3 keeps the original v1.3 folder.
+  docker run --rm --network none --memory=4g -v "$D/vector-generator/vektorler:/v:ro"     -v "$D/vector-generator/vektorler/${BATTERY:-v1.4}:/v/v1.3:ro" ${EXTRA_MOUNT:+-v "$EXTRA_MOUNT"} -v "$D/vector-generator/anahtarlar:/anahtarlar:ro" \
     -v "$D/runs:/is:ro" -v "$CM:/c" -e KOSU="$KOSU" "$img" $(cagri "$h") "/is/$ISLER" "/c/$ad" $(son "$h") || echo "WARNING: $h exit code $?"
   echo "$h: $(wc -l < "$CIK/$ad") satır, $(( $(date +%s) - t0 )) s"
 done

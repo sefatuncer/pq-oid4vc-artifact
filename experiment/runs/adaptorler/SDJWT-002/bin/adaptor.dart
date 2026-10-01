@@ -8,7 +8,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:selective_disclosure_jwt/selective_disclosure_jwt.dart';
 
-const xKol = {'kontrol-EdDSA': 'EdDSA', 'kontrol-Ed25519': 'Ed25519', 'tedavi-ML-DSA-65': 'ML-DSA-65', 'tedavi-composite': 'ML-DSA-65-ES256'};
+const xKol = {'kontrol-EdDSA': 'EdDSA', 'kontrol-Ed25519': 'Ed25519', 'kontrol-ES384': 'ES384', 'tedavi-ML-DSA-65': 'ML-DSA-65', 'tedavi-composite': 'ML-DSA-65-ES256'};
 // Bataryadaki algoritmalardan yerel destek (SdJwtSignAlgorithm: ES256/384/512, ES256K, RS*, HS*, EdDSA; ML-DSA yok)
 const kutuphane = ['ES256', 'ES384', 'EdDSA'];
 const api = 'SdJwtHandlerV1().decodeAndVerify(sdJwtToken: sd_jwt, verifier: SDKeyVerifier(SdPublicKey(jwk, alg_ignesi)), verifyKeyBinding: kb) -> isVerified';

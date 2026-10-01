@@ -8,7 +8,7 @@ import { createRequire } from 'node:module';
 const require = createRequire(import.meta.url);
 const [, , HID, ISLER, CIKTI, KOSU] = process.argv;
 const A = 'ES256', LEGACY = 'https://legacy-issuer.example';
-const X_OF = { 'kontrol-EdDSA': 'EdDSA', 'kontrol-Ed25519': 'Ed25519', 'tedavi-ML-DSA-65': 'ML-DSA-65', 'tedavi-composite': 'ML-DSA-65-ES256' };
+const X_OF = { 'kontrol-EdDSA': 'EdDSA', 'kontrol-Ed25519': 'Ed25519', 'kontrol-ES384': 'ES384', 'tedavi-ML-DSA-65': 'ML-DSA-65', 'tedavi-composite': 'ML-DSA-65-ES256' };
 const b64d = (s) => Buffer.from(s, 'base64url');
 const KID = {}, ALG2KID = {};
 for (const f of ['v1/acik-jwks.json', 'v1.3/acik-jwks.json']) for (const k of JSON.parse(readFileSync(`/anahtarlar/${f}`)).keys) KID[k.kid] = k;
@@ -77,19 +77,28 @@ const T = {
   },
   'COSE-014': () => {
     const cose = require('cose-js');
+    const cborlib = require('cbor');
     const cosekeys = JSON.parse(readFileSync('/anahtarlar/v1.3/cose-anahtarlar.json'));
     return {
-      ver: require('cose-js/package.json').version, api: 'cose.sign.verify(cbor, {key:{x,y,kid}})', formats: new Set(['COSE_Sign1', 'COSE_Sign']),
+      ver: require('cose-js/package.json').version, api: 'cose.sign.verify(cbor, {key:{x,y,kid}}) (key from the message kid or alg)', formats: new Set(['COSE_Sign1', 'COSE_Sign']),
       async verify(job, data, X) {
         const pol = temel(job.politika);
         if (!['GEC', 'P0', 'P1', 'P2'].includes(pol)) return 'ifade-edilemedi';   // cose-js'te algoritma izin listesi ya da gerekli küme seçeneği yok
         const buf = Buffer.from(readFileSync(`/v/${job.dosya}`));
-        // ES256 doğrulayıcı anahtarı (cose-js yalnız ES/PS/RS destekler; kaynak lib/sign.js AlgFromTags)
-        const j = KID[ALG2KID['ES256']];
-        const kidList = MAN[job.vektor_id].kid ?? [];
+        // Verifier key (cose-js supports ES/PS/RS only; lib/sign.js AlgFromTags). For COSE_Sign1 the key is chosen
+        // from the message's kid, or from its alg (-7 ES256, -35 ES384); COSE_Sign keeps the ES256 key.
+        let alg = 'ES256', j = KID[ALG2KID['ES256']];
+        const t = cborlib.decodeFirstSync(buf);
+        if (t && t.tag === 18 && Array.isArray(t.value) && t.value[0] && t.value[0].length) {
+          const h = cborlib.decodeFirstSync(t.value[0]);
+          const kid = h.get(4) ? Buffer.from(h.get(4)).toString('base64url') : null;
+          const a = h.get(1);
+          if (kid && KID[kid] && KID[kid].kty === 'EC') { j = KID[kid]; alg = KID[kid].crv === 'P-384' ? 'ES384' : 'ES256'; }
+          else if (a === -35) { j = KID[ALG2KID['ES384']]; alg = 'ES384'; }
+        }
         const verifier = { key: { x: b64d(j.x), y: b64d(j.y), kid: j.kid } };
         await cose.sign.verify(buf, verifier);
-        return [{ sira: 0, alg: 'ES256', sonuc: 'gecerli' }];
+        return [{ sira: 0, alg, sonuc: 'gecerli' }];
       },
     };
   },
