@@ -1,0 +1,159 @@
+# SDJWT-010 API scan (contract section 5.1)
+# image: build stage of a10-sdjwt-010:1, tagged temporarily as pq-a10-rs-b-sdjwt-010:gecici (sha256:ffc031cd1ab2e4db2c42e9ed25565a93745ac83cc38c51ceccb2133f2b53afd2)
+# command: docker run --rm --network none --entrypoint sh pq-a10-rs-b-sdjwt-010:gecici -c 'cd /usr/local/cargo/registry/src/index.crates.io-*/sd-jwt-payload-0.5.1 && grep -m1 '^version' Cargo.toml && cat .cargo_vcs_info.json  && echo '## JOSE layer used by the crate (manifest, published lock)' && grep -n -B1 -A2 'josekit' Cargo.toml Cargo.toml.orig && grep -n -A2 'name = "josekit"' Cargo.lock  && echo '## signature handling in sd-jwt-payload (src, tests, examples, README)'  && grep -rn -i -E 'algorithms|allow|register|deregister|required|eddsa|ed25519|ml-?dsa|mldsa|composite|okp|verifier|keyselector|verif|signature|JwsSigner|josekit|decode_with|into_disclosed_object|key_binding' src tests examples README.md | head -120  && echo '## ML-DSA / composite in sd-jwt-payload' && (grep -rn -i -E 'ml-?dsa|mldsa|composite' src || echo '0 matches')  && cd ../josekit-0.8.7 && echo '## josekit 0.8.7: JWS algorithms and verifier checks'  && grep -n -E 'pub use .* as (ES|RS|PS|HS|EdDSA)' src/jws.rs  && grep -n -E 'alg header claim|kid header claim|verifier\.algorithm|verifier\.key_id|A verifier is not found' src/jws/jws_context.rs  && grep -n -E 'pub fn decode_with_verifier' src/jwt.rs  && echo '## ML-DSA in josekit' && (grep -rn -i -E 'ml-?dsa|mldsa' src || echo '0 matches')'
+
+version = "0.5.1"
+{
+  "git": {
+    "sha1": "c47e52c31545f7ede55ad1259f275f31595e2322"
+  },
+  "path_in_vcs": ""
+}## JOSE layer used by the crate (manifest, published lock)
+Cargo.toml-110-
+Cargo.toml:111:[dev-dependencies.josekit]
+Cargo.toml-112-version = "0.8.4"
+Cargo.toml-113-features = ["vendored"]
+--
+Cargo.toml.orig-38-tokio = { version = "1.38.1", features = ["macros", "rt-multi-thread"] }
+Cargo.toml.orig:39:josekit = { version = "0.8.4", features = ["vendored"] }
+Cargo.toml.orig-40-
+Cargo.toml.orig-41-[[example]]
+288:name = "josekit"
+289-version = "0.8.7"
+290-source = "registry+https://github.com/rust-lang/crates.io-index"
+## signature handling in sd-jwt-payload (src, tests, examples, README)
+src/signer.rs:12:/// JSON Web Signature (JWS) Signer.
+src/signer.rs:15:pub trait JwsSigner {
+src/key_binding_jwt_claims.rs:8:use crate::JwsSigner;
+src/key_binding_jwt_claims.rs:54:  /// Returns a [`KeyBindingJwtBuilder`] that allows the creation of a [`KeyBindingJwt`].
+src/key_binding_jwt_claims.rs:138:    S: JwsSigner,
+src/key_binding_jwt_claims.rs:146:    if sd_jwt.key_binding_jwt().is_some() {
+src/key_binding_jwt_claims.rs:174:      .map_err(|e| Error::JwsSignerFailure(e.to_string()))?;
+src/key_binding_jwt_claims.rs:205:pub enum RequiredKeyBinding {
+src/error.rs:44:  JwsSignerFailure(String),
+src/error.rs:46:  #[error("Missing required KB-JWT")]
+src/jwt.rs:52:    let _signature = segments
+src/jwt.rs:54:      .context("missing signature")
+src/jwt.rs:72:  #[allow(dead_code)]
+src/jwt.rs:73:  pub fn signature(&self) -> &str {
+src/lib.rs:11:mod key_binding_jwt_claims;
+src/lib.rs:21:pub use key_binding_jwt_claims::*;
+src/hasher.rs:17:/// Implementations of this trait are expected only for algorithms listed in
+src/builder.rs:16:use crate::JwsSigner;
+src/builder.rs:17:use crate::RequiredKeyBinding;
+src/builder.rs:33:  key_bind: Option<RequiredKeyBinding>,
+src/builder.rs:155:  pub fn require_key_binding(mut self, key_bind: RequiredKeyBinding) -> Self {
+src/builder.rs:163:    S: JwsSigner,
+src/builder.rs:199:      .map_err(|e| Error::JwsSignerFailure(e.to_string()))?;
+src/sd_jwt.rs:16:use crate::RequiredKeyBinding;
+src/sd_jwt.rs:36:  pub cnf: Option<RequiredKeyBinding>,
+src/sd_jwt.rs:63:  key_binding_jwt: Option<KeyBindingJwt>,
+src/sd_jwt.rs:71:    key_binding_jwt: Option<KeyBindingJwt>,
+src/sd_jwt.rs:76:      key_binding_jwt,
+src/sd_jwt.rs:90:  /// Modifying the claims might invalidate the signature.
+src/sd_jwt.rs:101:  /// Returns the required key binding of this SD-JWT, if any.
+src/sd_jwt.rs:102:  pub fn required_key_bind(&self) -> Option<&RequiredKeyBinding> {
+src/sd_jwt.rs:107:  pub fn key_binding_jwt(&self) -> Option<&KeyBindingJwt> {
+src/sd_jwt.rs:108:    self.key_binding_jwt.as_ref()
+src/sd_jwt.rs:115:  pub fn attach_key_binding_jwt(&mut self, kb_jwt: KeyBindingJwt) {
+src/sd_jwt.rs:116:    self.key_binding_jwt = Some(kb_jwt);
+src/sd_jwt.rs:122:    let key_bindings = self
+src/sd_jwt.rs:123:      .key_binding_jwt
+src/sd_jwt.rs:128:      format!("{}~{}", self.jwt, key_bindings)
+src/sd_jwt.rs:130:      format!("{}~{}~{}", self.jwt, disclosures, key_bindings)
+src/sd_jwt.rs:151:    let key_binding_jwt = sd_segments
+src/sd_jwt.rs:160:      key_binding_jwt,
+src/sd_jwt.rs:174:  pub fn into_disclosed_object(self, hasher: &dyn Hasher) -> Result<JsonObject> {
+src/sd_jwt.rs:218:    let required_hasher = sd_jwt.claims()._sd_alg.as_deref().unwrap_or(SHA_ALG_NAME);
+src/sd_jwt.rs:219:    if required_hasher != hasher.alg_name() {
+src/sd_jwt.rs:221:        "hasher \"{}\" was provided, but \"{required_hasher} is required\"",
+src/sd_jwt.rs:504:    assert!(sd_jwt.key_binding_jwt.is_none());
+tests/api_test.rs:5:use josekit::jws::alg::hmac::HmacJwsSigner;
+tests/api_test.rs:6:use josekit::jws::JwsHeader;
+tests/api_test.rs:7:use josekit::jws::HS256;
+tests/api_test.rs:8:use josekit::jwt;
+tests/api_test.rs:9:use josekit::jwt::JwtPayload;
+tests/api_test.rs:12:use sd_jwt_payload::JwsSigner;
+tests/api_test.rs:23:struct HmacSignerAdapter(HmacJwsSigner);
+tests/api_test.rs:26:impl JwsSigner for HmacSignerAdapter {
+tests/api_test.rs:27:  type Error = josekit::JoseError;
+tests/api_test.rs:64:  let disclosed = sd_jwt.into_disclosed_object(&Sha256Hasher::new()).unwrap();
+tests/api_test.rs:148:async fn sd_jwt_is_verifiable() -> anyhow::Result<()> {
+tests/api_test.rs:151:  let verifier = HS256.verifier_from_bytes(HMAC_SECRET)?;
+tests/api_test.rs:153:  josekit::jwt::decode_with_verifier(&jwt, &verifier)?;
+tests/api_test.rs:168:  assert!(sd_jwt.key_binding_jwt().is_none());
+tests/api_test.rs:171:  sd_jwt.attach_key_binding_jwt(kb_jwt);
+tests/api_test.rs:179:  assert!(with_kb.key_binding_jwt().is_some());
+examples/sd_jwt.rs:7:use josekit::jws::alg::hmac::HmacJwsSigner;
+examples/sd_jwt.rs:8:use josekit::jws::JwsHeader;
+examples/sd_jwt.rs:9:use josekit::jws::HS256;
+examples/sd_jwt.rs:10:use josekit::jwt;
+examples/sd_jwt.rs:11:use josekit::jwt::JwtPayload;
+examples/sd_jwt.rs:13:use sd_jwt_payload::JwsSigner;
+examples/sd_jwt.rs:20:struct HmacSignerAdapter(HmacJwsSigner);
+examples/sd_jwt.rs:23:impl JwsSigner for HmacSignerAdapter {
+examples/sd_jwt.rs:24:  type Error = josekit::JoseError;
+examples/sd_jwt.rs:42:    "phone_number_verified": true,
+examples/sd_jwt.rs:67:    .require_key_binding(sd_jwt_payload::RequiredKeyBinding::Kid("#key1".to_string()))
+examples/sd_jwt.rs:79:  // The holder can withhold from a verifier any concealable claim by calling `conceal`.
+examples/sd_jwt.rs:87:    .aud("https://verifier.example.com")
+examples/sd_jwt.rs:93:  presented_sd_jwt.attach_key_binding_jwt(kb_jwt);
+examples/sd_jwt.rs:95:  // The holder send its token to a verifier.
+examples/sd_jwt.rs:100:    "object to verify: {}",
+examples/sd_jwt.rs:101:    serde_json::to_string_pretty(&sd_jwt.into_disclosed_object(&hasher)?)?
+README.md:45:  - Create a selectively disclosable JWT by choosing which properties can be concealed from a verifier.
+README.md:52:* **Verifying SD-JWTs**
+README.md:77:6. [`JwsSigner`](./src/signer.rs): a trait used to create JWS signatures.
+README.md:90:    "phone_number_verified": true,
+README.md:112:*Note: `SdJwtBuilder` is generic over `Hasher` which allows custom encoding with other hash functions.*
+README.md:137:Through the builder an issuer can require a specific key-binding that will be verified upon validation:
+README.md:141:    .require_key_binding(RequiredKeyBinding::Kid("key1".to_string()))
+README.md:171:  "phone_number_verified": true,
+README.md:212:  // Can be used to check which key is required - if any.
+README.md:213:  let required_kb: Option<&RequiredKeyBinding> = sd_jwt.required_key_bind();
+README.md:223:  sd_jwt.attach_key_binding_jwt(kb_jwt);
+README.md:226:### Verifying
+README.md:228:The SD-JWT can be turned into a JSON object of its disclosed values by calling the `into_disclosed_object` method:
+README.md:232:  let disclosed_object = sd_jwt.into_disclosed_object(&hasher)?;
+README.md:254:  "phone_number_verified": true,
+## ML-DSA / composite in sd-jwt-payload
+0 matches
+## josekit 0.8.7: JWS algorithms and verifier checks
+21:pub use HmacJwsAlgorithm::Hs256 as HS256;
+22:pub use HmacJwsAlgorithm::Hs384 as HS384;
+23:pub use HmacJwsAlgorithm::Hs512 as HS512;
+26:pub use RsassaJwsAlgorithm::Rs256 as RS256;
+27:pub use RsassaJwsAlgorithm::Rs384 as RS384;
+28:pub use RsassaJwsAlgorithm::Rs512 as RS512;
+31:pub use RsassaPssJwsAlgorithm::Ps256 as PS256;
+32:pub use RsassaPssJwsAlgorithm::Ps384 as PS384;
+33:pub use RsassaPssJwsAlgorithm::Ps512 as PS512;
+36:pub use EcdsaJwsAlgorithm::Es256 as ES256;
+37:pub use EcdsaJwsAlgorithm::Es256k as ES256K;
+38:pub use EcdsaJwsAlgorithm::Es384 as ES384;
+39:pub use EcdsaJwsAlgorithm::Es512 as ES512;
+42:pub use EddsaJwsAlgorithm::Eddsa as EdDSA;
+425:                None => bail!("A verifier is not found."),
+430:                    let expected_alg = verifier.algorithm().name();
+432:                        bail!("The JWS alg header claim is not {}: {}", expected_alg, val);
+435:                Some(_) => bail!("The JWS alg header claim must be a string."),
+436:                None => bail!("The JWS alg header claim is required."),
+439:            match verifier.key_id() {
+442:                    Some(actual) => bail!("The JWS kid header claim is mismatched: {}", actual),
+443:                    None => bail!("The JWS kid header claim is required."),
+498:                    let expected_alg = verifier.algorithm().name();
+506:            match verifier.key_id() {
+569:                    None => bail!("The JWS alg header claim must be in protected."),
+615:                    bail!("The JWS alg header claim must be in protected.");
+632:                        let expected_alg = verifier.algorithm().name();
+634:                            bail!("The JWS alg header claim is not {}: {}", expected_alg, val);
+637:                    Some(_) => bail!("The JWS alg header claim must be a string."),
+638:                    None => bail!("The JWS alg header claim is required."),
+641:                match verifier.key_id() {
+644:                        Some(actual) => bail!("The JWS kid header claim is mismatched: {}", actual),
+645:                        None => bail!("The JWS kid header claim is required."),
+87:pub fn decode_with_verifier(
+100:pub fn decode_with_verifier_selector<'a, F>(
+117:pub fn decode_with_verifier_in_jwk_set<F>(
+## ML-DSA in josekit
+0 matches

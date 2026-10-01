@@ -1,0 +1,9 @@
+target,ES256_DC,ES256_VC,EdDSA_DC,EdDSA_VC,Ed25519_DC,Ed25519_VC,MLDSA65_DC,MLDSA65_VC
+SDJWT-001,pass,pass,fail,fail,fail,fail,fail,fail
+SDJWT-002,minus-accepted,minus-accepted,minus-accepted,minus-accepted,fail,fail,fail,fail
+SDJWT-004,pass,pass,fail,fail,fail,fail,fail,fail
+SDJWT-010,pass,pass,pass,pass,fail,fail,fail,fail
+SDJWT-015,pass,pass,pass,pass,pass,pass,pass,pass
+SDJWT-018,pass,pass,pass,pass,pass,pass,pass,pass
+SDJWT-021,fail,pass,fail,fail,fail,fail,fail,fail
+SDJWT-025,pass,pass,pass,pass,fail,fail,fail,fail

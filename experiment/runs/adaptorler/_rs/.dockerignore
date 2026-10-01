@@ -1,0 +1,5 @@
+outputs/
+*/evidence/
+*/target/
+smoke/
+*.md

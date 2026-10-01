@@ -1,0 +1,43 @@
+# JOSE-091 smoke test (self-made keys and tokens; not the battery)
+# image: a10-jose-091:1 (sha256:1f98d3f937a97bb5c9894713c06384c18d858db8efd81e64e6dcd2b3a1ca12e1)
+# data:  smoke/make_smoke.py (deterministic keys from fixed labels; job list written with CRLF)
+# run:   docker run --rm --network none --memory=4g -v <w>/v:/v:ro -v <w>/anahtarlar:/anahtarlar:ro -v <w>/is:/is:ro -v <w>/out:/c a10-jose-091:1 JOSE-091 /is/jobs_smoke.jsonl /c/JOSE-091.jsonl smoke
+# check: python smoke/check_smoke.py expected.json out/JOSE-091.jsonl JOSE-091
+
+job  vector                 policy           arm               expected                                   observed                                   ok
+J01  es256_ok               GEC              kontrol-EdDSA     kabul/ES256                                kabul/ES256                                yes
+J02  es256_ok               IZIN-A           kontrol-EdDSA     kabul/ES256                                kabul/ES256                                yes
+J03  es256_ok               IZIN-AX          kontrol-EdDSA     kabul/ES256                                kabul/ES256                                yes
+J04  es256_ok               L4               kontrol-EdDSA     red/alg-desteklenmiyor                     red/alg-desteklenmiyor                     yes
+J05  es256_ok               L4               tedavi-ML-DSA-65  red/alg-desteklenmiyor                     red/alg-desteklenmiyor                     yes
+J06  es256_ok               L4-YOL           kontrol-EdDSA     ifade-edilemedi                            ifade-edilemedi                            yes
+J07  es256_ok               L4|sdjwtvc=-19   kontrol-EdDSA     red/alg-desteklenmiyor                     red/alg-desteklenmiyor                     yes
+J08  es256_ok               GEC@-19          kontrol-EdDSA     kabul/ES256                                kabul/ES256                                yes
+J09  es256_ok               P0               tedavi-composite  kabul/ES256                                kabul/ES256                                yes
+J10  es256_badsig           GEC              kontrol-EdDSA     red/imza-gecersiz                          red/imza-gecersiz                          yes
+J11  eddsa_ok               GEC              kontrol-EdDSA     red/alg-desteklenmiyor                     red/alg-desteklenmiyor                     yes
+J12  eddsa_ok               IZIN-A           kontrol-EdDSA     red/alg-anahtar-uyusmazligi                red/alg-anahtar-uyusmazligi                yes
+J13  eddsa_ok               IZIN-AX          kontrol-EdDSA     red/alg-anahtar-uyusmazligi                red/alg-anahtar-uyusmazligi                yes
+J14  eddsa_ok               L4               kontrol-EdDSA     red/alg-desteklenmiyor                     red/alg-desteklenmiyor                     yes
+J15  eddsa_badsig           GEC              kontrol-EdDSA     red/alg-desteklenmiyor                     red/alg-desteklenmiyor                     yes
+J16  es256_legacy           L4               kontrol-EdDSA     kabul/ES256                                kabul/ES256                                yes
+J17  es384_ok               GEC              kontrol-EdDSA     kabul/ES384                                kabul/ES384                                yes
+J18  es384_ok               IZIN-A           kontrol-EdDSA     red/imza-gecersiz                          red/imza-gecersiz                          yes
+J19  confusion              GEC              kontrol-EdDSA     red/alg-desteklenmiyor                     red/alg-desteklenmiyor                     yes
+J20  confusion              IZIN-A           kontrol-EdDSA     kabul/ES256                                kabul/ES256                                yes
+J21  nokid_es256            GEC              kontrol-EdDSA     kabul/ES256                                kabul/ES256                                yes
+J22  mldsa_hdr              GEC              tedavi-ML-DSA-65  red/alg-desteklenmiyor                     red/alg-desteklenmiyor                     yes
+J23  mldsa_hdr              IZIN-AX          tedavi-ML-DSA-65  red/alg-desteklenmiyor                     red/alg-desteklenmiyor                     yes
+J24  expired_es256          GEC              kontrol-EdDSA     kabul/ES256                                kabul/ES256                                yes
+J25  garbage                GEC              kontrol-EdDSA     red/ayristirma                             red/ayristirma                             yes
+J26  sdjwt_ok               GEC              kontrol-EdDSA     uygulanamaz/bicim-desteklenmiyor           uygulanamaz/bicim-desteklenmiyor           yes
+J27  sdjwt_ok               IZIN-A           kontrol-EdDSA     uygulanamaz/bicim-desteklenmiyor           uygulanamaz/bicim-desteklenmiyor           yes
+J28  sdjwt_badsig           GEC              kontrol-EdDSA     uygulanamaz/bicim-desteklenmiyor           uygulanamaz/bicim-desteklenmiyor           yes
+J29  sdjwt_unused           GEC              kontrol-EdDSA     uygulanamaz/bicim-desteklenmiyor           uygulanamaz/bicim-desteklenmiyor           yes
+J30  dummy                  GEC              kontrol-EdDSA     uygulanamaz/bicim-desteklenmiyor           uygulanamaz/bicim-desteklenmiyor           yes
+J31  missing                GEC              kontrol-EdDSA     istisna/adaptor-hatasi                     istisna/adaptor-hatasi                     yes
+J32  sdjwt_ok               GEC              kontrol-EdDSA     uygulanamaz/bicim-desteklenmiyor           uygulanamaz/bicim-desteklenmiyor           yes
+
+32/32 jobs as expected; jobs without output: none
+hedef_surum=3.1.4 adaptor_sha256=ab2b318775d0d8a94942726f1d0f8990baaceffa92854c23ec105d4c5aa2507e
+exit=0

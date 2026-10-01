@@ -46,6 +46,10 @@ public static class Ortak
             _manifest = new();
             foreach (var e in m["vektorler"]!.AsArray())
                 _manifest[e!["id"]!.GetValue<string>()] = (e["dogrulama_girdileri"] as JsonObject)?.DeepClone().AsObject() ?? new JsonObject();
+            // Pre-freeze SD-JWT validity vectors (not in the battery) carry their own manifest in the same schema.
+            if (File.Exists("/v/vpm-sdjwt/MANIFEST.json"))
+                foreach (var e in JsonNode.Parse(File.ReadAllText("/v/vpm-sdjwt/MANIFEST.json"))!["vektorler"]!.AsArray())
+                    _manifest[e!["id"]!.GetValue<string>()] = (e["dogrulama_girdileri"] as JsonObject)?.DeepClone().AsObject() ?? new JsonObject();
         }
         return _manifest.TryGetValue(id, out var g) ? g : throw new InvalidOperationException("manifestte yok: " + id);
     }

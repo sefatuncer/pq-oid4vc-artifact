@@ -1,0 +1,171 @@
+# SDJWT-025 API scan (contract section 5.1)
+# image: build stage of a10-sdjwt-025:1, tagged temporarily as pq-a10-rs-b-sdjwt-025:gecici (sha256:1e9545de772a6b501ce8b44113f813de42f09ac3789073f172330628f41ed41f)
+# command: docker run --rm --network none --entrypoint sh pq-a10-rs-b-sdjwt-025:gecici -c 'cd /usr/local/cargo/registry/src/index.crates.io-*/ssi-sd-jwt-0.6.0 && grep -m1 '^version' Cargo.toml && cat .cargo_vcs_info.json  && echo '## dependencies on the JOSE crates' && grep -n -A3 -E '^\[dependencies\.ssi-jw[skt]\]' Cargo.toml  && echo '## verification entry points (ssi-sd-jwt src)'  && grep -rn -i -E 'algorithms|allow|register|deregister|required|eddsa|ed25519|ml-?dsa|mldsa|composite|okp|verifier|keyselector|pub (async )?fn (decode|verify|reveal)|decode_reveal_verify|VerificationParameters|KbJwtPayload|SdHash|sd_alg' src | head -90  && cd ../ssi-jws-0.5.0 && echo '## ssi-jws 0.5.0 features' && grep -n -A8 '^\[features\]' Cargo.toml  && echo '## ssi-jws: algorithm choice and key binding in verification'  && grep -n -E 'fn validate_proof|fetch_public_jwk|verify_bytes\(claims|key\.algorithm|key_algorithm|AlgorithmMismatch|Err\(_\) => Err' src/verification.rs src/lib.rs | head -40  && cd ../ssi-jwk-0.4.0 && echo '## ssi-jwk 0.4.0: Algorithm names' && grep -n -E '^\s+[A-Za-z0-9]+: "' src/algorithm.rs  && cd ../ssi-claims-core-0.2.0 && echo '## VerificationParameters' && grep -n -E 'pub struct VerificationParameters|pub fn (from_resolver|with_date_time)|date_time' src/verification/parameters.rs  && echo '## ML-DSA / composite / allow-list in the ssi crates'  && (grep -rn -i -E 'ml-?dsa|mldsa|composite|allow.?list|allowed_alg' ../ssi-sd-jwt-0.6.0/src ../ssi-jws-0.5.0/src ../ssi-jwk-0.4.0/src ../ssi-jwt-0.6.0/src ../ssi-claims-core-0.2.0/src || echo '0 matches')'
+
+version = "0.6.0"
+{
+  "git": {
+    "sha1": "16cd58715aa209f3151560ad59bd6ac65b90fa89"
+  },
+  "path_in_vcs": "crates/claims/crates/sd-jwt"
+}## dependencies on the JOSE crates
+73:[dependencies.ssi-jwk]
+74-version = "0.4"
+75-default-features = false
+76-
+77:[dependencies.ssi-jws]
+78-version = "0.5"
+79-default-features = false
+80-
+81:[dependencies.ssi-jwt]
+82-version = "0.6"
+83-default-features = false
+84-
+## verification entry points (ssi-sd-jwt src)
+src/digest.rs:8:use crate::{DecodeError, SD_ALG_CLAIM_NAME};
+src/digest.rs:10:/// Elements of the _sd_alg claim
+src/digest.rs:21:    /// String encoding of _sd_alg field
+src/digest.rs:39:    #[allow(deprecated)] // TODO bump the `digest` crate whenever possible.
+src/digest.rs:40:    pub fn verify(&self, bytes: impl AsRef<[u8]>, hash: &str) -> bool {
+src/digest.rs:54:    const JWT_CLAIM_NAME: &'static str = SD_ALG_CLAIM_NAME;
+src/conceal.rs:46:        sd_alg: SdAlg,
+src/conceal.rs:53:        sd_alg: SdAlg,
+src/conceal.rs:59:    #[allow(async_fn_in_trait)]
+src/conceal.rs:62:        sd_alg: SdAlg,
+src/conceal.rs:68:    #[allow(async_fn_in_trait)]
+src/conceal.rs:71:        sd_alg: SdAlg,
+src/conceal.rs:81:        sd_alg: SdAlg,
+src/conceal.rs:84:        SdJwtPayload::conceal(self, sd_alg, pointers)
+src/conceal.rs:89:        sd_alg: SdAlg,
+src/conceal.rs:93:        SdJwtPayload::conceal_with(self, sd_alg, pointers, rng)
+src/conceal.rs:98:        sd_alg: SdAlg,
+src/conceal.rs:102:        SdJwtBuf::conceal_and_sign(self, sd_alg, pointers, signer).await
+src/conceal.rs:107:        sd_alg: SdAlg,
+src/conceal.rs:112:        SdJwtBuf::conceal_and_sign_with(self, sd_alg, pointers, signer, rng).await
+src/conceal.rs:121:        sd_alg: SdAlg,
+src/conceal.rs:124:        Self::conceal_with(value, sd_alg, pointers, thread_rng())
+src/conceal.rs:131:        sd_alg: SdAlg,
+src/conceal.rs:136:            Value::Object(obj) => Self::conceal_claims(obj, rng, sd_alg, pointers),
+src/conceal.rs:146:        sd_alg: SdAlg,
+src/conceal.rs:158:            disclosures.push(conceal_object_at(&mut claims, &mut rng, sd_alg, pointer)?);
+src/conceal.rs:161:        let concealed = Self { sd_alg, claims };
+src/conceal.rs:178:    sd_alg: SdAlg,
+src/conceal.rs:182:        Value::Object(object) => conceal_object_at(object, rng, sd_alg, pointer),
+src/conceal.rs:183:        Value::Array(array) => conceal_array_at(array, rng, sd_alg, pointer),
+src/conceal.rs:191:    sd_alg: SdAlg,
+src/conceal.rs:211:        add_disclosure(object, sd_alg, &disclosure.encoded)?;
+src/conceal.rs:216:        conceal_at(value, rng, sd_alg, rest)
+src/conceal.rs:223:    sd_alg: SdAlg,
+src/conceal.rs:240:        *value = new_concealed_array_item(sd_alg, &disclosure.encoded);
+src/conceal.rs:243:        conceal_at(value, rng, sd_alg, pointer)
+src/conceal.rs:247:fn new_concealed_array_item(sd_alg: SdAlg, disclosure: &Disclosure) -> Value {
+src/conceal.rs:251:        sd_alg.hash(disclosure).into(),
+src/conceal.rs:258:    sd_alg: SdAlg,
+src/conceal.rs:267:    sd.push(sd_alg.hash(disclosure).into());
+src/decode.rs:18:    /// JWT is missing _sd_alg property
+src/decode.rs:19:    #[error("JWT is missing _sd_alg property")]
+src/decode.rs:22:    /// Unknown value of _sd_alg
+src/decode.rs:23:    #[error("Unknown value of _sd_alg {0}")]
+src/decode.rs:26:    /// Type of _sd_alg was not string
+src/decode.rs:27:    #[error("Type of _sd_alg was not string")]
+src/decode.rs:77:    pub fn decode(self) -> Result<DecodedSdJwt<'a>, DecodeError> {
+src/decode.rs:94:    pub fn decode(&'_ self) -> Result<DecodedDisclosure<'_>, DecodeError> {
+src/lib.rs:29://! revealing the claims, a [`SdJwt::decode_reveal_verify`] function is provided
+src/lib.rs:70:const SD_ALG_CLAIM_NAME: &str = "_sd_alg";
+src/lib.rs:280:    pub fn decode_kb(&self) -> Result<Option<DecodedJws<'_, KbJwtPayload>>, DecodeError> {
+src/lib.rs:306:    pub fn decode(&'_ self) -> Result<DecodedSdJwt<'_>, DecodeError> {
+src/lib.rs:311:    pub fn decode_reveal<T: DeserializeOwned>(
+src/lib.rs:318:    pub fn decode_reveal_any(&'_ self) -> Result<RevealedSdJwt<'_>, RevealError> {
+src/lib.rs:323:    pub async fn decode_verify_concealed<P>(
+src/lib.rs:335:    /// Only the registered JWT claims will be validated.
+src/lib.rs:337:    /// [`Self::decode_reveal_verify`] method with `T` defining the custom
+src/lib.rs:341:    pub async fn decode_reveal_verify_any<P>(
+src/lib.rs:348:        self.parts().decode_reveal_verify_any(params).await
+src/lib.rs:355:    /// for this parameter, you can use the [`Self::decode_reveal_verify_any`]
+src/lib.rs:359:    pub async fn decode_reveal_verify<T, P>(
+src/lib.rs:367:        self.parts().decode_reveal_verify(params).await
+src/lib.rs:439:        sd_alg: SdAlg,
+src/lib.rs:443:        DecodedSdJwt::conceal_and_sign(claims, sd_alg, pointers, signer)
+src/lib.rs:451:        sd_alg: SdAlg,
+src/lib.rs:456:        DecodedSdJwt::conceal_and_sign_with(claims, sd_alg, pointers, signer, rng)
+src/lib.rs:630:    pub fn decode_reveal<T: DeserializeOwned>(self) -> Result<RevealedSdJwt<'a, T>, RevealError> {
+src/lib.rs:636:    pub fn decode_reveal_any(self) -> Result<RevealedSdJwt<'a>, RevealError> {
+src/lib.rs:642:    pub async fn decode_verify_concealed<P>(
+src/lib.rs:656:    /// Only the registered JWT claims will be validated.
+src/lib.rs:658:    /// [`Self::decode_reveal_verify`] method with `T` defining the custom
+src/lib.rs:662:    pub async fn decode_reveal_verify_any<P>(
+src/lib.rs:677:    /// for this parameter, you can use the [`Self::decode_reveal_verify_any`]
+src/lib.rs:681:    pub async fn decode_reveal_verify<T, P>(
+src/lib.rs:712:    #[serde(rename = "_sd_alg")]
+src/lib.rs:713:    pub sd_alg: SdAlg,
+src/lib.rs:742:    /// No revealing the claims means only the registered JWT claims will be
+src/lib.rs:744:    pub async fn verify_concealed<P>(&self, params: P) -> Result<Verification, ProofValidationError>
+src/lib.rs:753:    /// Only the registered JWT claims will be validated.
+src/lib.rs:758:    pub async fn reveal_verify_any<P>(
+src/lib.rs:779:    pub async fn reveal_verify<T, P>(
+src/lib.rs:799:        sd_alg: SdAlg,
+src/lib.rs:804:            SdJwtPayload::conceal(claims, sd_alg, pointers).map_err(SignatureError::other)?;
+src/lib.rs:815:        sd_alg: SdAlg,
+src/lib.rs:820:        let (payload, disclosures) = SdJwtPayload::conceal_with(claims, sd_alg, pointers, rng)
+src/lib.rs:861:    pub sd_alg: SdAlg,
+src/lib.rs:879:    pub async fn verify<P>(&self, params: P) -> Result<Verification, ProofValidationError>
+src/reveal.rs:57:    pub fn reveal<T: DeserializeOwned>(self) -> Result<RevealedSdJwt<'a, T>, RevealError> {
+src/reveal.rs:59:        let sd_alg = self.jwt.signing_bytes.payload.sd_alg;
+src/reveal.rs:66:            sd_alg,
+## ssi-jws 0.5.0 features
+36:[features]
+37-aleo = ["ssi-jwk/aleo"]
+38-default = [
+39-    "secp256k1",
+40-    "secp256r1",
+41-    "ed25519",
+42-    "rsa",
+43-]
+44-ed25519 = [
+## ssi-jws: algorithm choice and key binding in verification
+src/verification.rs:107:    async fn validate_proof<'a>(
+src/verification.rs:114:            .fetch_public_jwk(claims.header.key_id.as_deref())
+src/verification.rs:116:        match verify_bytes(claims.header.algorithm, &claims.bytes, &key, &self.0) {
+src/verification.rs:119:            Err(_) => Err(ProofValidationError::InvalidSignature),
+src/lib.rs:680:    if let Some(key_algorithm) = key.algorithm {
+src/lib.rs:681:        if key_algorithm != algorithm
+src/lib.rs:682:            && !(key_algorithm == Algorithm::EdDSA && algorithm == Algorithm::EdBlake2b)
+src/lib.rs:683:            && !(key_algorithm == Algorithm::ES256 && algorithm == Algorithm::ESBlake2b)
+src/lib.rs:684:            && !(key_algorithm == Algorithm::ES256K && algorithm == Algorithm::ESBlake2bK)
+src/lib.rs:685:            && !(key_algorithm == Algorithm::ES256KR && algorithm == Algorithm::ESBlake2bK)
+src/lib.rs:687:            return Err(Error::AlgorithmMismatch);
+src/lib.rs:1159:        return Err(Error::AlgorithmMismatch);
+## ssi-jwk 0.4.0: Algorithm names
+120:    HS256: "HS256",
+125:    HS384: "HS384",
+130:    HS512: "HS512",
+135:    RS256: "RS256",
+140:    RS384: "RS384",
+145:    RS512: "RS512",
+150:    PS256: "PS256",
+155:    PS384: "PS384",
+160:    PS512: "PS512",
+169:    EdDSA: "EdDSA",
+172:    EdBlake2b: "EdBlake2b", // TODO Blake2b is supposed to replace SHA-256
+177:    ES256: "ES256",
+182:    ES384: "ES384",
+187:    ES256K: "ES256K",
+196:    ES256KR: "ES256K-R",
+201:    ESKeccakK: "ESKeccakK",
+206:    ESKeccakKR: "ESKeccakKR",
+209:    ESBlake2b: "ESBlake2b",
+212:    ESBlake2bK: "ESBlake2bK",
+215:    AleoTestnet1Signature: "AleoTestnet1Signature"
+## VerificationParameters
+24:pub struct VerificationParameters<R, L1 = ssi_json_ld::ContextLoader, L2 = ()> {
+37:    pub date_time: Option<DateTime<Utc>>,
+41:    pub fn from_resolver(resolver: R) -> Self {
+46:            date_time: None,
+52:    pub fn with_date_time(mut self, date_time: DateTime<Utc>) -> Self {
+53:        self.date_time = Some(date_time);
+62:            date_time: self.date_time,
+71:            date_time: self.date_time,
+103:    fn date_time(&self) -> DateTime<Utc> {
+104:        self.date_time.unwrap_or_else(Utc::now)
+## ML-DSA / composite / allow-list in the ssi crates
+0 matches

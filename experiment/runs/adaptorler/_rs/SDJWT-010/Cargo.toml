@@ -1,0 +1,29 @@
+[package]
+name = "adapter-sdjwt-010"
+version = "1.0.0"
+edition = "2021"
+publish = false
+build = "../common/build_version.rs"
+
+[package.metadata.adapter]
+target_crate = "sd-jwt-payload"
+
+[[bin]]
+name = "adapter"
+path = "src/main.rs"
+
+[dependencies]
+# Library under test (default features: `sha`).
+sd-jwt-payload = "=0.5.1"
+# sd-jwt-payload performs no signature verification. Its example (examples/sd_jwt.rs) and
+# its own test `sd_jwt_is_verifiable` (tests/api_test.rs) use josekit for the JOSE layer:
+# dev-dependency `josekit = { version = "0.8.4", features = ["vendored"] }`, resolved to
+# 0.8.7 in the crate's published Cargo.lock. The same crate, version and feature are used here.
+josekit = { version = "=0.8.7", features = ["vendored"] }
+base64 = "0.22"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+sha2 = "0.10"
+
+[profile.release]
+debug = false

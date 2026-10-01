@@ -1,0 +1,210 @@
+# JOSE-092 API scan (contract section 5.1)
+# image: build stage of a10-jose-092:1, tagged temporarily as pq-a10-rs-b-jose-092:gecici (sha256:704e07f6b24d3b1cc5797d74fc54bc8930096ce0bef4aa422565065bd5d21a45)
+# command: docker run --rm --network none --entrypoint sh pq-a10-rs-b-jose-092:gecici -c 'cd /usr/local/cargo/registry/src/index.crates.io-*/jsonwebtoken-11.1.0 && grep -m1 '^version' Cargo.toml && cat .cargo_vcs_info.json  && echo '## features' && grep -n -A14 '^\[features\]' Cargo.toml  && echo '## allow-list, families, provider hooks (src/)'  && grep -rn -i -E 'algorithms|allow|register|deregister|required|eddsa|ed25519|ml-?dsa|mldsa|composite|okp|verifier|keyselector|new_for_family|fn family|pub enum Algorithm|InvalidAlgorithm|CryptoProvider|install_default|verifier_factory|validation\.algorithms|alg\.family' src --include=*.rs | head -160  && echo '## algorithm names accepted from the header (Algorithm::from_str)' && sed -n '/impl FromStr for Algorithm/,/^}/p' src/algorithms.rs  && echo '## ML-DSA / composite' && (grep -rn -i -E 'ml-?dsa|mldsa|composite' src || echo '0 matches')'
+
+version = "11.1.0"
+{
+  "git": {
+    "sha1": "4c0ae752e9acc108c8e2c4c8ed8128dc66014210"
+  },
+  "path_in_vcs": ""
+}## features
+50:[features]
+51-aws_lc_rs = ["dep:aws-lc-rs"]
+52-default = ["use_pem"]
+53-rust_crypto = [
+54-    "dep:ed25519-dalek",
+55-    "dep:hmac",
+56-    "dep:p256",
+57-    "dep:p384",
+58-    "dep:rand",
+59-    "dep:rsa",
+60-    "dep:sha2",
+61-]
+62-use_pem = [
+63-    "dep:pem",
+64-    "dep:simple_asn1",
+## allow-list, families, provider hooks (src/)
+src/jws.rs:4:use crate::crypto::{CryptoProvider, sign};
+src/jws.rs:42:    if key.family() != header.alg.family() {
+src/jws.rs:43:        return Err(new_error(ErrorKind::InvalidAlgorithm));
+src/jws.rs:70:    let verifying_provider = (CryptoProvider::get_default().verifier_factory)(&header.alg, key)?;
+src/decoding.rs:7:use crate::algorithms::AlgorithmFamily;
+src/decoding.rs:8:use crate::crypto::{CryptoProvider, JwtVerifier};
+src/decoding.rs:85:    pub fn family(&self) -> AlgorithmFamily {
+src/decoding.rs:166:    /// If you have a EdDSA public key in PEM format, use this.
+src/decoding.rs:235:    /// To be used for defining your own `CryptoProvider`.
+src/decoding.rs:278:    if !validation.algorithms.contains(&header.alg) {
+src/decoding.rs:279:        return Err(new_error(ErrorKind::InvalidAlgorithm));
+src/decoding.rs:282:    let verifying_provider = (CryptoProvider::get_default().verifier_factory)(&header.alg, key)?;
+src/decoding.rs:344:    verifying_provider: Box<dyn JwtVerifier>,
+src/decoding.rs:346:    if validation.algorithms.is_empty() {
+src/decoding.rs:350:    for alg in &validation.algorithms {
+src/decoding.rs:351:        if verifying_provider.algorithm().family() != alg.family() {
+src/decoding.rs:352:            return Err(new_error(ErrorKind::InvalidAlgorithm));
+src/decoding.rs:356:    if !validation.algorithms.contains(&header.alg) {
+src/decoding.rs:357:        return Err(new_error(ErrorKind::InvalidAlgorithm));
+src/decoding.rs:373:    verifying_provider: Box<dyn JwtVerifier>,
+src/encoding.rs:10:use crate::algorithms::AlgorithmFamily;
+src/encoding.rs:11:use crate::crypto::CryptoProvider;
+src/encoding.rs:29:    pub fn family(&self) -> AlgorithmFamily {
+src/encoding.rs:87:    /// If you are loading a EdDSA key from a .pem file
+src/encoding.rs:107:    /// If you know what you're doing and have the DER-encoded key, for EdDSA
+src/encoding.rs:114:    /// To be used for defining your own `CryptoProvider`.
+src/encoding.rs:152:    if key.family != header.alg.family() {
+src/encoding.rs:153:        return Err(new_error(ErrorKind::InvalidAlgorithm));
+src/encoding.rs:156:    let signing_provider = (CryptoProvider::get_default().signer_factory)(&header.alg, key)?;
+src/encoding.rs:159:        return Err(new_error(ErrorKind::InvalidAlgorithm));
+src/lib.rs:8:pub use algorithms::{Algorithm, AlgorithmFamily};
+src/lib.rs:20:mod algorithms;
+src/validation.rs:9:use crate::algorithms::{Algorithm, AlgorithmFamily};
+src/validation.rs:27:/// // Setting required claims
+src/validation.rs:28:/// validation.set_required_spec_claims(&["exp", "iss", "aud"]);
+src/validation.rs:32:    /// Which claims are required to be present before starting the validation.
+src/validation.rs:38:    pub required_spec_claims: HashSet<String>,
+src/validation.rs:62:    /// Adding `nbf` to `required_spec_claims` will make it required.
+src/validation.rs:71:    /// Adding `aud` to `required_spec_claims` will make it required.
+src/validation.rs:80:    /// Adding `aud` to `required_spec_claims` will make it required.
+src/validation.rs:89:    /// Adding `iss` to `required_spec_claims` will make it required.
+src/validation.rs:97:    /// Adding `sub` to `required_spec_claims` will make it required.
+src/validation.rs:105:    pub algorithms: Vec<Algorithm>,
+src/validation.rs:109:    /// Create a default validation setup allowing the given alg
+src/validation.rs:114:    /// Create a default validation setup allowing any algorithm in the family
+src/validation.rs:115:    pub fn new_for_family(family: AlgorithmFamily) -> Validation {
+src/validation.rs:116:        Self::new_impl(family.algorithms().to_vec())
+src/validation.rs:119:    fn new_impl(algorithms: Vec<Algorithm>) -> Validation {
+src/validation.rs:120:        let mut required_claims = HashSet::with_capacity(1);
+src/validation.rs:121:        required_claims.insert("exp".to_owned());
+src/validation.rs:124:            required_spec_claims: required_claims,
+src/validation.rs:125:            algorithms,
+src/validation.rs:151:    /// Which claims are required to be present for this JWT to be considered valid.
+src/validation.rs:153:    /// The simple usage is `set_required_spec_claims(&["exp", "nbf"])`.
+src/validation.rs:156:    pub fn set_required_spec_claims<T: ToString>(&mut self, items: &[T]) {
+src/validation.rs:157:        self.required_spec_claims = items.iter().map(|x| x.to_string()).collect();
+src/validation.rs:252:    for required_claim in &options.required_spec_claims {
+src/validation.rs:253:        let present = match required_claim.as_str() {
+src/validation.rs:263:            return Err(new_error(ErrorKind::MissingRequiredClaim(required_claim.clone())));
+src/validation.rs:477:    fn validate_required_fields_are_present() {
+src/validation.rs:481:            validation.set_required_spec_claims(&[spec_claim]);
+src/validation.rs:483:            assert_eq!(res.kind(), &ErrorKind::MissingRequiredClaim(spec_claim.to_owned()));
+src/validation.rs:489:    fn exp_validated_but_not_required_ok() {
+src/validation.rs:492:        validation.required_spec_claims = HashSet::new();
+src/validation.rs:500:    fn exp_validated_but_not_required_fails() {
+src/validation.rs:503:        validation.required_spec_claims = HashSet::new();
+src/validation.rs:511:    fn exp_required_but_not_validated_ok() {
+src/validation.rs:514:        validation.set_required_spec_claims(&["exp"]);
+src/validation.rs:522:    fn exp_required_but_not_validated_fails() {
+src/validation.rs:525:        validation.set_required_spec_claims(&["exp"]);
+src/validation.rs:536:        validation.required_spec_claims = HashSet::new();
+src/validation.rs:548:        validation.required_spec_claims = HashSet::new();
+src/validation.rs:560:        validation.required_spec_claims = HashSet::new();
+src/validation.rs:577:        validation.required_spec_claims = HashSet::new();
+src/validation.rs:590:        validation.required_spec_claims = HashSet::new();
+src/validation.rs:602:        validation.required_spec_claims = HashSet::new();
+src/validation.rs:615:        validation.required_spec_claims = HashSet::new();
+src/validation.rs:633:        validation.set_required_spec_claims(&["iss"]);
+src/validation.rs:639:            ErrorKind::MissingRequiredClaim(claim) => assert_eq!(claim, "iss"),
+src/validation.rs:649:        validation.required_spec_claims = HashSet::new();
+src/validation.rs:661:        validation.required_spec_claims = HashSet::new();
+src/validation.rs:679:        validation.set_required_spec_claims(&["sub"]);
+src/validation.rs:685:            ErrorKind::MissingRequiredClaim(claim) => assert_eq!(claim, "sub"),
+src/validation.rs:696:        validation.required_spec_claims = HashSet::new();
+src/validation.rs:708:        validation.required_spec_claims = HashSet::new();
+src/validation.rs:720:        validation.required_spec_claims = HashSet::new();
+src/validation.rs:737:        validation.required_spec_claims = HashSet::new();
+src/validation.rs:754:        validation.required_spec_claims = HashSet::new();
+src/validation.rs:772:        validation.required_spec_claims = HashSet::new();
+src/validation.rs:784:        validation.set_required_spec_claims(&["aud"]);
+src/validation.rs:790:            ErrorKind::MissingRequiredClaim(claim) => assert_eq!(claim, "aud"),
+src/validation.rs:802:        validation.set_required_spec_claims(&["exp", "iss"]);
+src/validation.rs:811:            ErrorKind::MissingRequiredClaim(claim) => assert_eq!(claim, "iss"),
+src/validation.rs:827:        validation.required_spec_claims = HashSet::new();
+src/pem/decoder.rs:216:    // Defined: https://datatracker.ietf.org/doc/html/rfc8410#section-3 id-Ed25519)
+src/pem/decoder.rs:217:    let ed25519_oid = simple_asn1::oid!(1, 3, 101, 112);
+src/pem/decoder.rs:233:                if oid == ed25519_oid {
+src/errors.rs:45:    /// When the secret given is not a valid EdDSA key
+src/errors.rs:46:    InvalidEddsaKey,
+src/errors.rs:54:    InvalidAlgorithmName,
+src/errors.rs:61:    /// When a claim required by the validation is not present
+src/errors.rs:62:    MissingRequiredClaim(String),
+src/errors.rs:77:    InvalidAlgorithm,
+src/errors.rs:98:            ErrorKind::InvalidEddsaKey => None,
+src/errors.rs:104:            ErrorKind::MissingRequiredClaim(_) => None,
+src/errors.rs:110:            ErrorKind::InvalidAlgorithm => None,
+src/errors.rs:112:            ErrorKind::InvalidAlgorithmName => None,
+src/errors.rs:135:            | ErrorKind::InvalidAlgorithm
+src/errors.rs:138:            | ErrorKind::InvalidEddsaKey
+src/errors.rs:139:            | ErrorKind::InvalidAlgorithmName => write!(f, "{:?}", self.0),
+src/errors.rs:140:            ErrorKind::MissingRequiredClaim(c) => write!(f, "Missing required claim: {}", c),
+src/errors.rs:201:            "InvalidAlgorithmName",
+src/errors.rs:202:            Error::from(ErrorKind::InvalidAlgorithmName).to_string()
+src/algorithms.rs:8:/// Supported families of algorithms.
+src/algorithms.rs:9:pub enum AlgorithmFamily {
+src/algorithms.rs:21:    /// A list of all possible Algorithms that are part of the family.
+src/algorithms.rs:22:    pub fn algorithms(&self) -> &[Algorithm] {
+src/algorithms.rs:34:            Self::Ed => &[Algorithm::EdDSA],
+src/algorithms.rs:39:/// The algorithms supported for signing/verifying JWTs
+src/algorithms.rs:40:#[allow(clippy::upper_case_acronyms)]
+src/algorithms.rs:43:pub enum Algorithm {
+src/algorithms.rs:71:    /// Edwards-curve Digital Signature Algorithm (EdDSA)
+src/algorithms.rs:72:    EdDSA,
+src/algorithms.rs:90:            "EdDSA" => Ok(Algorithm::EdDSA),
+src/algorithms.rs:91:            _ => Err(ErrorKind::InvalidAlgorithmName.into()),
+src/algorithms.rs:98:    pub fn family(self) -> AlgorithmFamily {
+src/algorithms.rs:108:            Algorithm::EdDSA => AlgorithmFamily::Ed,
+src/header.rs:8:use crate::algorithms::Algorithm;
+src/header.rs:27:#[allow(clippy::upper_case_acronyms, non_camel_case_types)]
+src/header.rs:344:            hash(&Header { alg: Algorithm::EdDSA, ..Default::default() }),
+src/jwk.rs:11:use crate::crypto::{CryptoProvider, ec_pub_components_from_public_key};
+src/jwk.rs:150:/// The algorithms of the keys
+src/jwk.rs:151:#[allow(non_camel_case_types, clippy::upper_case_acronyms)]
+src/jwk.rs:181:    /// Edwards-curve Digital Signature Algorithm (EdDSA)
+src/jwk.rs:182:    EdDSA,
+src/jwk.rs:215:            "EdDSA" => Ok(KeyAlgorithm::EdDSA),
+src/jwk.rs:219:            _ => Err(ErrorKind::InvalidAlgorithmName.into()),
+src/jwk.rs:238:            Algorithm::EdDSA => KeyAlgorithm::EdDSA,
+src/jwk.rs:259:            KeyAlgorithm::EdDSA => Ok(Algorithm::EdDSA),
+src/jwk.rs:351:    /// Ed25519 curve
+src/jwk.rs:352:    #[serde(rename = "Ed25519")]
+src/jwk.rs:353:    Ed25519,
+src/jwk.rs:425:    #[serde(rename = "OKP")]
+src/jwk.rs:448:    #[allow(missing_docs)]
+src/jwk.rs:455:#[allow(missing_docs)]
+src/jwk.rs:457:pub enum AlgorithmParameters {
+src/jwk.rs:467:#[allow(missing_docs)]
+src/jwk.rs:476:#[allow(missing_docs)]
+src/jwk.rs:504:                    let (n, e) = (CryptoProvider::get_default()
+src/jwk.rs:516:                    let (curve, x, y) = (CryptoProvider::get_default()
+src/jwk.rs:532:                        // 16 byte header + 32 byte Ed25519 key
+src/jwk.rs:533:                        48 => Ok(EllipticCurve::Ed25519),
+src/jwk.rs:534:                        _ => Err(Error::from(ErrorKind::InvalidEddsaKey)),
+src/jwk.rs:538:                    let public_key_bytes = (CryptoProvider::get_default()
+src/jwk.rs:562:                crate::algorithms::AlgorithmFamily::Hmac => {
+src/jwk.rs:568:                crate::algorithms::AlgorithmFamily::Rsa => {
+src/jwk.rs:574:                            let (n, e) = (CryptoProvider::get_default()
+src/jwk.rs:585:                crate::algorithms::AlgorithmFamily::Ec => {
+src/jwk.rs:594:                crate::algorithms::AlgorithmFamily::Ed => {
+src/jwk.rs:597:                        // ED25519: https://datatracker.ietf.org/doc/html/rfc8032#section-5.1.5
+## algorithm names accepted from the header (Algorithm::from_str)
+impl FromStr for Algorithm {
+    type Err = Error;
+    fn from_str(s: &str) -> Result<Self> {
+        match s {
+            "HS256" => Ok(Algorithm::HS256),
+            "HS384" => Ok(Algorithm::HS384),
+            "HS512" => Ok(Algorithm::HS512),
+            "ES256" => Ok(Algorithm::ES256),
+            "ES384" => Ok(Algorithm::ES384),
+            "RS256" => Ok(Algorithm::RS256),
+            "RS384" => Ok(Algorithm::RS384),
+            "PS256" => Ok(Algorithm::PS256),
+            "PS384" => Ok(Algorithm::PS384),
+            "PS512" => Ok(Algorithm::PS512),
+            "RS512" => Ok(Algorithm::RS512),
+            "EdDSA" => Ok(Algorithm::EdDSA),
+            _ => Err(ErrorKind::InvalidAlgorithmName.into()),
+        }
+    }
+}
+## ML-DSA / composite
+src/jwk.rs:766:            "alg": "ML-DSA-44",
