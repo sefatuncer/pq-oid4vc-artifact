@@ -33,7 +33,8 @@ A = ap.parse_args()
 
 PQ_ALGS = {'ML-DSA-44', 'ML-DSA-65', 'ML-DSA-87', 'ML-DSA-44-ES256', 'ML-DSA-65-ES256', 'ML-DSA-87-ES384',
            'ML-DSA-44-Ed25519', 'ML-DSA-65-Ed25519', 'ML-DSA-87-Ed448'}
-PILOT = {'JOSE-009', 'SDJWT-015'}                                   # pre-registration section 0.3 (P3 pilot)
+PILOT = {'JOSE-009', 'SDJWT-015',                                  # pilot P3 (pre-registration section 12.5)
+         'JOSE-033', 'JOSE-034', 'JOSE-065', 'JOSE-083', 'JOSE-084'}  # second pilot, targets in n (section 12.5)
 DELEGATES = {'SDJWT-001': 'COSE-001', 'SDJWT-021': 'JOSE-001'}       # amendment 8 item 16
 NO_INTEGRITY = {'SDJWT-002'}                                        # decision D1
 RUNS = ('r1', 'r2', 'r3')
@@ -41,6 +42,8 @@ RUNS = ('r1', 'r2', 'r3')
 # ---------------------------------------------------------------- 1. decisions (contract section 3.1)
 def decision(row, tk_arm):
     s = row['sonuc_ham']
+    if s in ('red', 'istisna') and row.get('kol', '').startswith('kontrol-') and row.get('hata_sinifi') == 'alg-desteklenmiyor':
+        return 'desteklenmiyor'                                     # amendment 11: incidental rejection, not enforcement
     if s == 'kabul':
         pq = any(a.get('alg') in PQ_ALGS and a.get('sonuc') == 'gecerli' for a in row.get('dogrulanan_algoritmalar') or [])
         return 'accept-hybrid' if pq and tk_arm == 'TK1' else 'accept-classical'
@@ -85,7 +88,7 @@ for t in targets:
         stable = vals[0] if len(set(vals)) == 1 and vals[0] is not None else 'kararsiz'
         st[k] = stable
         orc = oracle.get(k, {}).get('karar', '')
-        match = '' if stable in ('uygulanamaz', 'ifade-edilemedi', 'kararsiz', 'indeterminate') or orc not in ('accept-hybrid', 'accept-classical', 'reject') else int(stable == orc)
+        match = '' if stable in ('uygulanamaz', 'ifade-edilemedi', 'kararsiz', 'indeterminate') or orc not in ('accept-hybrid', 'accept-classical', 'reject')             else 0 if stable == 'desteklenmiyor' else int(stable == orc)
         dec_rows.append({'target': t, 'vektor_id': k[0], 'politika': k[1], 'kol': k[2], 'r1': vals[0], 'r2': vals[1], 'r3': vals[2],
                          'decision': stable, 'oracle': orc, 'match': match})
     obs[t] = st
@@ -125,6 +128,8 @@ def ok(t, base, pol, kol, label=None):
         return None, 'uygulanamaz'
     if d == 'ifade-edilemedi':
         return 0, 'ifade-edilemedi'
+    if d == 'desteklenmiyor':
+        return 0, 'desteklenmiyor'                                  # amendment 11: never agrees with an oracle reject
     if d in ('kararsiz', 'indeterminate'):
         return None, 'kararsiz_3_tekrar'
     if o not in ('accept-hybrid', 'accept-classical', 'reject'):
@@ -198,8 +203,8 @@ def target_vars(t, secondary=False):
     v['L_duzeyi'] = level if l1 is not None or v['Y_L4'] is not None else None
     if v['L_duzeyi'] is None:
         v['belirsiz_nedenleri']['L_duzeyi'] = 'kararsiz_3_tekrar'
-    # F_K / F_T at the best reachable configuration (section 6.4)
-    pol_best = 'L4' if v['Y_L4'] == 1 else ('IZIN-AX' if level >= 1 else 'P0')
+    # F_K / F_T against the L4 rows (section 7.9, adapter contract section 9.4; descriptive after amendment 11)
+    pol_best = 'L4'
     def fail(kol, bases, label):
         r = all_ok([ok(t, b, pol_best, kol, label) for b in bases])
         return (None, r[1]) if r[0] is None else (1 - r[0], None)

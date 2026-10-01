@@ -63,6 +63,28 @@ class H6Hukmu(unittest.TestCase):
         self.assertEqual(s["T1"]["p_ust"]["kesin"], str(binom_ust(21, 31)))
         self.assertEqual(s["H6_hukmu"]["hukum"], "yanlislama")
 
+    def test_kirilgan_yanlislama(self):
+        # Değişiklik 8 m.17: 2 belirsiz, X = 20: birincil n=29, u=20 → yanlışlama; (ii) n=31, X=20 < u=21 → belirsiz
+        s = analiz_sozluk(veri_seti(y_ata(n31_hedefleri(), birler=20, belirsiz=2)))
+        self.assertEqual((s["T1"]["n_eff"], s["T1"]["u"], s["T1"]["karar"]), (29, 20, "yanlislama"))
+        ii = s["T1_duyarlilik"]["ii_belirsiz_0"]
+        self.assertEqual((ii["n_eff"], ii["X"], ii["u"], ii["karar"]), (31, 20, 21, "belirsiz"))
+        self.assertEqual(s["H6_hukmu"]["hukum"], "kirilgan_yanlislama")
+
+    def test_yanlislama_belirsizle_saglam(self):
+        # 1 belirsiz, X = 21: birincil n=30, u=20 → yanlışlama; (ii) n=31, X=21, u=21 → yanlışlama => yanlışlama
+        s = analiz_sozluk(veri_seti(y_ata(n31_hedefleri(), birler=21, belirsiz=1)))
+        self.assertEqual(s["H6_hukmu"]["hukum"], "yanlislama")
+
+    def test_gecersiz_y0_duyarlilik(self):
+        # Değişiklik 10: 1 adaptör geçersiz hedef; birincil n=30, X=8; duyarlılık n=31, X=8, eşikler n=31'den
+        s = analiz_sozluk(veri_seti(y_ata(n31_hedefleri(), birler=8, gecersiz=1)))
+        self.assertEqual((s["T1"]["n_eff"], s["T1"]["X"]), (30, 8))
+        g = s["T1_duyarlilik"]["gecersiz_y0"]
+        self.assertEqual((g["n_eff"], g["X"], g["c"], g["karar"]), (31, 8, 10, "destek"))
+        self.assertEqual(g["eklenen"], ["S-JOSE-01"])
+        self.assertIn("T2", s["betimleyici_testler"]["testler"])
+
     def test_belirsiz(self):
         s = analiz_sozluk(veri_seti(y_ata(n31_hedefleri(), birler=15)))
         self.assertEqual(s["H6_hukmu"]["hukum"], "belirsiz")

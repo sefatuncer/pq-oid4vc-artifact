@@ -30,7 +30,7 @@ def _p(p: dict) -> str:
     return f"{_s(p['deger'], 6)} (kesin {p['kesin'] if len(p['kesin']) <= 40 else p['kesin'][:37] + '…'})"
 
 
-HUKUM = {"destek": "DESTEK", "kirilgan_destek": "KIRILGAN DESTEK", "yanlislama": "YANLIŞLAMA",
+HUKUM = {"destek": "DESTEK", "kirilgan_destek": "KIRILGAN DESTEK", "yanlislama": "YANLIŞLAMA", "kirilgan_yanlislama": "KIRILGAN YANLIŞLAMA",
          "belirsiz": "BELİRSİZ", "tanimlayici": "YALNIZ TANIMLAYICI (n_eff < 20)"}
 
 
@@ -62,7 +62,8 @@ def markdown(s: dict) -> str:
     a("|---|---|---|---|---|---|---|---|---|---|")
     satirlar = [("Birincil", s["T1"])] + [
         (ad, s["T1_duyarlilik"][k]) for ad, k in (("(i) belirsiz = 1", "i_belirsiz_1"), ("(ii) belirsiz = 0", "ii_belirsiz_0"),
-                                                  ("Pilot hariç", "pilot_haric"), ("Devralan hariç", "devralan_haric"))]
+                                                  ("Pilot hariç", "pilot_haric"), ("Devralan hariç", "devralan_haric"),
+                                                  ("Adaptör geçersiz = 0", "gecersiz_y0"))]
     for ad, t in satirlar:
         a(f"| {ad} | {t['n_eff']} | {t['X']} | {_s(t['c'])} | {_s(t['u'])} | {_s(t['p_alt']['deger'], 6)} | "
           f"{_s(t['p_ust']['deger'], 6)} | {_s(t['oran'])} | {_ga(t['wilson'])} | {t['karar']} |")

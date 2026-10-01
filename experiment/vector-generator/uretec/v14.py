@@ -227,6 +227,7 @@ def main(root):
     m2['v1_3_vektor_sayisi'] = len(m['vektorler'])
     m2['es384_es_sayisi'] = len(new)
     m2['vektorler'] = m['vektorler'] + new
+    m2['vektor_sayisi'] = len(m2['vektorler'])                  # 200 of v1.3 + ES384 counterparts
     m2['v1_3_capalari'] = {'MANIFEST.json': hashlib.sha256(open(os.path.join(src, 'MANIFEST.json'), 'rb').read()).hexdigest(),
                            'SHA256SUMS': hashlib.sha256(open(os.path.join(src, 'SHA256SUMS'), 'rb').read()).hexdigest()}
     with open(os.path.join(dst, 'MANIFEST.json'), 'w', encoding='utf-8') as f:
