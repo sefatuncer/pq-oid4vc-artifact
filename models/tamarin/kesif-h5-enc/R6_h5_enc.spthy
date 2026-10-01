@@ -1,0 +1,250 @@
+theory R6_H5_ENC
+begin
+
+/*
+ * =====================================================================
+ *  PQ-OID4VC | Adım 5A | R4 × R6 — H5'in biçimsel hâli (topla-sahtele)
+ * =====================================================================
+ *  EN  With a classical device (WSCD) key, one-time use enforced both in the
+ *      wallet and (globally) at verifiers does not prevent CRQC-era
+ *      presentation forgery: the attacker harvests the presented credential
+ *      and its cnf key, extracts the device key and answers a fresh verifier
+ *      nonce. The only protection that remains for a classical device key is
+ *      time: if tau exceeds the credential's validity window (and the device key
+ *      is not reused across credentials), the key is extracted only after the
+ *      credential has expired, and G2 holds.
+ *  TR  Cihaz (WSCD) anahtarı klasikse, tek kullanım hem cüzdanda hem
+ *      doğrulayıcılarda (küresel) uygulansa bile CRQC dönemindeki sunum
+ *      sahteciliği önlenmez: saldırgan sunulan kimlik bilgisini ve cnf
+ *      anahtarını toplar, cihaz anahtarını çıkarır ve taze bir doğrulayıcı
+ *      nonce'una yanıt verir. Klasik cihaz anahtarı için geriye kalan tek
+ *      koruma zamandır: τ kimlik bilgisinin geçerlilik penceresinden uzunsa
+ *      (ve cihaz anahtarı kimlik bilgileri arasında yeniden kullanılmıyorsa)
+ *      anahtar ancak kimlik bilgisi süresi dolduktan sonra çıkarılır; G2 sağlanır.
+ *
+ *  Batch issuance: each credential c binds its own device key d (cnf) unless
+ *  KEY_REUSE (one holder key for all credentials). The credential's validity
+ *  window is [issuance, Cred_Expire]; the verifier accepts presentations of c
+ *  only inside it (restriction CredWindow; verifier clock correct). Issuer key
+ *  PQ and pinned (chain effects: R1/R5). Issuance is confidential; the
+ *  credential and pk(d) become public only when presented (harvest point).
+ *
+ *  Flags (-D=...)
+ *    DEV_PQ      device keys PQ (no CRQC rule for them)
+ *    SINGLE_USE  wallet presents each credential at most once AND verifiers
+ *                accept each credential at most once, globally
+ *    SLOW        tau exceeds the credential validity window: a per-credential
+ *                device key is extracted only after its credential expired
+ *    KEY_REUSE   one device key per holder, shared by all its credentials
+ *                (exposure window = union of all windows: class 'long')
+ */
+
+/*
+ * =====================================================================
+ *  Exploratory extension of R6_h5 (not pre-registered): encrypted responses
+ * =====================================================================
+ *  OpenID4VP responses are encrypted to the verifier (HAIP: ECDH-ES with P-256).
+ *  This copy of R6_h5 adds the flag ENC: the holder presents only to registered
+ *  verifiers and encrypts the response to the verifier's encryption key. With
+ *  ENC_CL the verifier's encryption key is classical, so a CRQC can extract it
+ *  after Q-day and decrypt harvested responses (harvest now, decrypt later).
+ *  Without ENC_CL (that is, ENC_PQ) the encryption key cannot be extracted.
+ *  Question: with a classical device key, does PQ response encryption remove the
+ *  harvest step that the presentation forgery of H5 needs?
+ *  Flags are those of R6_h5 plus:
+ *    ENC      responses encrypted to the verifier; nonces carry the verifier id
+ *    ENC_CL   verifier encryption keys are classical (extractable after Q-day)
+ */
+
+#ifdef ENC
+builtins: signing, asymmetric-encryption
+#endif
+#ifdef not ENC
+builtins: signing
+#endif
+
+restriction Equality: "All x y #i. Eq(x, y) @ #i ==> x = y"
+restriction Unique:   "All x #i #j. Unique(x) @ #i & Unique(x) @ #j ==> #i = #j"
+
+/* presentations of c are accepted only inside c's validity window */
+restriction CredWindow:
+  "All c #u #e. UseCred(c) @ #u & CredEnd(c) @ #e ==> #u < #e"
+
+#ifdef SINGLE_USE
+restriction WalletSingleUse:   "All x #i #j. WalletUse(x) @ #i & WalletUse(x) @ #j ==> #i = #j"
+restriction VerifierSingleUse: "All x #i #j. UseOnce(x) @ #i & UseOnce(x) @ #j ==> #i = #j"
+#endif
+
+#ifdef SLOW
+restriction TauExceedsCredWindow:
+  "All d #a #x. KeyClass(d, 'cred') @ #a & CRQCDone(d) @ #x ==> (Ex #e. KeyClose(d) @ #e & #e < #x)"
+#endif
+
+/* ---------------- Q-day and two-phase CRQC (device keys only) ---------------- */
+rule Qday:
+    [ ] --[ Unique('qday'), QdayEv() ]-> [ !CRQC() ]
+
+#ifdef not DEV_PQ
+rule CRQC_Start_Device:
+    [ !CRQC(), !DevKey(d), In(pk(d)) ] --[ CRQCStart(d) ]-> [ Extracting(d) ]
+
+rule CRQC_Done:
+    [ Extracting(d) ] --[ CRQCDone(d) ]-> [ Out(d) ]
+#endif
+
+#ifdef ENC
+/* ---------------- verifier encryption keys ---------------- */
+rule RP_Setup:
+    [ Fr(~e) ] --[ Unique(<'rp', $V>) ]-> [ !RPEnc($V, ~e), !RPEncPk($V, pk(~e)), Out(pk(~e)) ]
+#endif
+#ifdef ENC & ENC_CL
+rule CRQC_Start_Enc:
+    [ !CRQC(), !RPEnc(V, e) ] --[ CRQCStartEnc(e) ]-> [ ExtractingEnc(e) ]
+
+rule CRQC_Done_Enc:
+    [ ExtractingEnc(e) ] --[ CRQCDoneEnc(e) ]-> [ Out(e) ]
+#endif
+
+/* ---------------- issuer (PQ, pinned) ---------------- */
+rule Issuer_Setup:
+    [ Fr(~skI) ]
+  --[ Unique(<'iss', $I>) ]->
+    [ !IssSk($I, ~skI), !IssPin($I, pk(~skI)), Out(pk(~skI)) ]
+
+/* ---------------- issuance: per-credential device key ---------------- */
+#ifdef not KEY_REUSE
+rule Issue:
+    let crb = <'cred', I, ~c, pk(~d)> in
+    [ !IssSk(I, skI), Fr(~c), Fr(~d) ]
+  --[ Issued(I, ~c, pk(~d)), KeyClass(~d, 'cred') ]->
+    [ !DevKey(~d), !WalletCred(~d, crb, sign(crb, skI)), CredLive(~c, ~d) ]
+
+rule Cred_Expire:
+    [ CredLive(c, d) ] --[ CredEnd(c), KeyClose(d) ]-> [ ]
+#endif
+
+/* ---------------- issuance: one reused holder key ---------------- */
+#ifdef KEY_REUSE
+rule Holder_Setup:
+    [ Fr(~d) ]
+  --[ Unique(<'holder', $H>), KeyClass(~d, 'long') ]->
+    [ !DevKey(~d), !HolderKey($H, ~d) ]
+
+rule Issue:
+    let crb = <'cred', I, ~c, pk(d)> in
+    [ !IssSk(I, skI), !HolderKey(H, d), Fr(~c) ]
+  --[ Issued(I, ~c, pk(d)) ]->
+    [ !WalletCred(d, crb, sign(crb, skI)), CredLiveR(~c) ]
+
+rule Cred_Expire:
+    [ CredLiveR(c) ] --[ CredEnd(c) ]-> [ ]
+#endif
+
+/* ---------------- holder: KB-JWT over the verifier nonce ---------------- */
+#ifdef not ENC
+rule Holder_Present:
+    let kbb = <'kb', n, crb> in
+    [ !WalletCred(d, crb, sig), In(<'nonce', n>) ]
+  --[ Presented(pk(d), n), WalletUse(crb) ]->
+    [ Out(<<crb, sig>, <kbb, sign(kbb, d)>>) ]
+#endif
+#ifdef ENC
+rule Holder_Present:
+    let kbb = <'kb', n, crb> in
+    [ !WalletCred(d, crb, sig), In(<'nonce', V, n>), !RPEncPk(V, pke) ]
+  --[ Presented(pk(d), n), WalletUse(crb) ]->
+    [ Out(aenc(<<crb, sig>, <kbb, sign(kbb, d)>>, pke)) ]
+#endif
+
+/* ---------------- verifier ---------------- */
+#ifdef not ENC
+rule Verifier_Challenge:
+    [ Fr(~n) ] --> [ Challenge(~n), Out(<'nonce', ~n>) ]
+#endif
+#ifdef ENC
+rule Verifier_Challenge:
+    [ Fr(~n), !RPEnc(V, e) ] --> [ Challenge(V, ~n), Out(<'nonce', V, ~n>) ]
+#endif
+
+#ifdef not ENC
+rule Verifier_Accept:
+    let crb = <'cred', I, c, pkd>
+        kbb = <'kb', n, crb>
+    in
+    [ Challenge(n), !IssPin(I, pkI), In(<<crb, s1>, <kbb, s2>>) ]
+  --[ Eq(verify(s1, crb, pkI), true),
+      Eq(verify(s2, kbb, pkd), true),
+      AcceptPres(I, c, pkd, n), UseOnce(<I, c>), UseCred(c) ]->
+    [ ]
+#endif
+#ifdef ENC
+rule Verifier_Accept:
+    let crb = <'cred', I, c, pkd>
+        kbb = <'kb', n, crb>
+    in
+    [ Challenge(V, n), !RPEnc(V, e), !IssPin(I, pkI), In(aenc(<<crb, s1>, <kbb, s2>>, pk(e))) ]
+  --[ Eq(verify(s1, crb, pkI), true),
+      Eq(verify(s2, kbb, pkd), true),
+      AcceptPres(I, c, pkd, n), UseOnce(<I, c>), UseCred(c) ]->
+    [ ]
+#endif
+
+/* ================= health lemmas (H0) ================= */
+
+lemma executable:
+  exists-trace
+  "Ex I c pkd n #i #p #j. Issued(I, c, pkd) @ #i & Presented(pkd, n) @ #p
+                        & AcceptPres(I, c, pkd, n) @ #j"
+
+lemma executable_post_qday:
+  exists-trace
+  "Ex I c pkd n #q #i #p #j. QdayEv() @ #q & Issued(I, c, pkd) @ #i & Presented(pkd, n) @ #p
+                           & AcceptPres(I, c, pkd, n) @ #j & #q < #j"
+
+/* windows really end and service continues with another credential */
+lemma executable_after_expiry:
+  exists-trace
+  "Ex I c c2 pkd n #e #i #p #j. CredEnd(c) @ #e & Issued(I, c2, pkd) @ #i & Presented(pkd, n) @ #p
+                              & AcceptPres(I, c2, pkd, n) @ #j & #e < #j"
+
+#ifdef SINGLE_USE
+lemma executable_single_use_enforced:
+  "All I c pkd n1 n2 #j1 #j2. AcceptPres(I, c, pkd, n1) @ #j1 & AcceptPres(I, c, pkd, n2) @ #j2
+      ==> #j1 = #j2"
+#endif
+
+lemma attack_needs_crqc:
+  "All I c pkd n #j. AcceptPres(I, c, pkd, n) @ #j ==>
+      (Ex #p. Presented(pkd, n) @ #p & #p < #j) | (Ex d #x. CRQCDone(d) @ #x & #x < #j)"
+
+/* ================= security goal G2 ================= */
+lemma G2_presentation_unforgeability:
+  "All I c pkd n #j. AcceptPres(I, c, pkd, n) @ #j ==> (Ex #p. Presented(pkd, n) @ #p & #p < #j)"
+
+/* ================= mutation / attribution lemmas ================= */
+
+/* a genuine credential presented with a KB-JWT forged under a per-credential
+   device key that was extracted while the credential was still valid */
+lemma M_device_key_in_window:
+  exists-trace
+  "Ex I c d n #a #i #x #j. KeyClass(d, 'cred') @ #a & Issued(I, c, pk(d)) @ #i & CRQCDone(d) @ #x
+                         & AcceptPres(I, c, pk(d), n) @ #j & #x < #j
+                         & not (Ex #p. Presented(pk(d), n) @ #p)"
+
+/* forgery under a device key reused across credentials */
+lemma M_device_key_reused:
+  exists-trace
+  "Ex I c d n #a #i #x #j. KeyClass(d, 'long') @ #a & Issued(I, c, pk(d)) @ #i & CRQCDone(d) @ #x
+                         & AcceptPres(I, c, pk(d), n) @ #j & #x < #j
+                         & not (Ex #p. Presented(pk(d), n) @ #p)"
+
+/* attribution: the forged presentation used a device key learned from a decrypted harvested response */
+#ifdef ENC & ENC_CL
+lemma M_harvest_decrypt_forge:
+  exists-trace
+  "Ex I c d e n #i #y #x #j. Issued(I, c, pk(d)) @ #i & CRQCDoneEnc(e) @ #y & CRQCDone(d) @ #x
+                           & AcceptPres(I, c, pk(d), n) @ #j & #y < #x & #x < #j
+                           & not (Ex #p. Presented(pk(d), n) @ #p)"
+#endif
+
+end
