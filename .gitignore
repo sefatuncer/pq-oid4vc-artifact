@@ -4,12 +4,12 @@ spec-corpus/metin/
 tools/*/indir/
 **/onbellek/
 # Build outputs (reproducible; versions pinned in the build files)
-experiment/runs/adaptorler/_kt/build-*/
-experiment/runs/adaptorler/_kt/build/
-experiment/runs/adaptorler/_kt/.kotlin/
-experiment/runs/adaptorler/_kt/.gradle/
-experiment/runs/adaptorler/_jvm/lib/
-experiment/runs/adaptorler/_jvm/target/
+experiment/runs/adapters/_kt/build-*/
+experiment/runs/adapters/_kt/build/
+experiment/runs/adapters/_kt/.kotlin/
+experiment/runs/adapters/_kt/.gradle/
+experiment/runs/adapters/_jvm/lib/
+experiment/runs/adapters/_jvm/target/
 **/node_modules/
 **/target/
 # Python caches

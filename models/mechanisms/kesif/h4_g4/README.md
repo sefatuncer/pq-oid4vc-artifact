@@ -10,8 +10,9 @@ object, while the computed minimal strategy S7 does and conveys an authenticated
 | S5-like: unsigned-request fallback, no expectation | `MB0` | falsified | all falsified | `../../sonuc/ozet.csv` (`MB0_taban`, pre-registered run) |
 | S7-like: unsigned-request fallback, authenticated per-RP expectation | `MB0`, `WALLET_EXPECT` | verified | all verified | `MB0_WALLET_EXPECT.txt` (this folder; run 2026-10-01) |
 
-The second variant was not part of the pre-registered run set. It is reported as an exploratory
-confirmation. Command (Tamarin 1.12.0, image `pq-a02-tamarin:1.12.0`, memory limit 4 GB):
+Under pre-registration amendment 8 (item 3), these four G4 cells were redefined after the result and do
+not count for the H4 verdict or the scientific gate. They are reported as exploratory. The second variant
+was not part of the pre-registered run set either. Command (Tamarin 1.12.0, image `pq-a02-tamarin:1.12.0`, memory limit 4 GB):
 
     tamarin-prover --derivcheck-timeout=60 -D=MB0 -D=WALLET_EXPECT --prove modeller/M_istek.spthy
 
