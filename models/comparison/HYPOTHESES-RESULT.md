@@ -1,0 +1,30 @@
+# Verdicts for H1–H5 (formal part)
+
+Decision rules: pre-registration section 3, with amendment Ö1 (H2′) and Ö2–Ö3 (counting rules).
+H0 holds (`H0-RESULT.md`), so H1–H5 are judged. Every number below is read from the files named in
+the evidence column. V = verified, F = falsified. ASP figures are for the primary configuration unless
+stated otherwise. ASP and z3 agree on all 52,693 queries (`../asp/sorgular/sonuc/rapor_sayilari.json`).
+
+| Hypothesis | Verdict | Key numbers | Evidence |
+|---|---|---|---|
+| H1 channel substitution | **Supported** | (i) PQ-authenticated fresh transport: substitution holds for 12 pulled artefact–goal pairs (for example LOTL a01 at G1–G3, TL/LoTE a02 at G1–G4, status-list signer a08 at G3, JWT VC issuer metadata at G1). (ii) Classical transport at nominal τ: none. Transferred artefacts: none, in all 8 channel variants. Tamarin R3: PQ transport keeps G1 and G5 (`P_tls_pq` V). Classical transport or a classical object signature breaks them (`M_tls_classical`, `M_obj_classical` F) | `../asp/sorgular/sonuc/analiz/ozet.json` (`h1`), `../tamarin/sonuc/ozet.csv` (R3) |
+| H2′ key-exposure window | **Supported** | Status key, rotation and per-token variants V2/V3: a08 is needed at fast τ (21/21 satisfiable cells) and unnecessary at medium and slow τ (33/33). The long-lived variant V1 needs a08 at every τ (21/21). Falsification test (i): token lifetime changed the set in 0 of 32 fixed-window cells. Falsification test (ii): the window changed the set in 66 of 180 V2/V3 cell groups. ASP window classes agree with Tamarin R6 in 588 of 588 compared cells. Tamarin R6: short-window classical keys keep G3 at slower τ (`P_rot_slow`, `P_tok_medium` V) and lose it when τ is shorter than the window (`M_rot_fast`, `M_tok_fast` F) | `../asp/sorgular/sonuc/analiz/ozet.json` (`h2_yanlislama_i`, `h2_yanlislama_ii`, `r6`), `../asp/RAPOR.md` section 8, `../tamarin/sonuc/ozet.csv` (R6) |
+| H3 expectation conveyance | **Supported** | (a) Without an authenticated per-entity expectation, G5 fails in coexistence. ASP: G1+G5 cells in Φ1/Φ2 are unsatisfiable under P0–P3. Tamarin R2: `M_expect_absent` and `M_expect_unauth` violate G5. (b) M-a, M-b (OID4VP A.3.2.2) and M-b0 violate all three G5 forms. (c) Simplified M-f with path-class scope is verified for every G5 form and every path form, against the different-name CA, same-name CA and classical-root attacks. (d) Each component is necessary: removing PQ channel authentication, freshness/pinning, monotonicity or per-entity scope gives a trace (R7 mutants killed). The 2×2 offline extension needs both wide monotonicity and expectation-level sunset for the path forms | `../mechanisms/STEP07-REPORT.md` (ADIM07), `../mechanisms/sonuc/ozet.csv`, `../tamarin/sonuc/ozet.csv` (R2, R7), `../mutation/mutation-score.csv` |
+| H4 limit of published orderings | **Supported** (strict counting) | Primary 36 cells, S5 against the computed minimal strategy S7. Insufficient: 18 (12 missing node, 6 missing expectation). Wasteful: 9. Neither secures: 9. Under counting rule Ö3, **10 candidate cells**: four G4 cells with an unsigned request and WRPRC phase 1, where S5 lacks the RP certificate a11 and the request object a12; six τ-wasteful cells, where S5 migrates the 1-day device key a10 (G2) or the rotated/per-token status key a08 (G3) at medium or slow τ. Tamarin reproduction: (1) G4: the request model without an expectation (S5-like) violates G4 (`MB0_taban` F), and with an authenticated RP expectation (S7-like) G4 and every G5 form are verified (`kesif/h4_g4/`). (2) τ-wasteful cells: classical short-window keys keep G2/G3 at slower τ (R6h5 `P_single_slow`, R6 `P_rot_slow`, `P_tok_medium` V). The fair-metric variant is reported as a sensitivity analysis (`H4-adil-duyarlilik.csv`) | `sayilar.json` (`h4_ozet`), `../asp/sorgular/sonuc/h4_karsilastirma.json` (`aday_2a`), `../mechanisms/kesif/h4_g4/`, `../tamarin/sonuc/ozet.csv` |
+| H5 harvest-and-forge | **Supported** | With a classical device (WSCD) key, single-use batch issuance does not prevent presentation forgery. A trace exists exactly when τ is shorter than the remaining validity (`M_single_fast`, `E_nosingle_fast` F; `P_single_slow`, `E_nosingle_slow` V). Enforcing single use at the verifier changes nothing. A PQ device key prevents the forgery (`E_devpq_single_fast` V). ASP: single use (none, wallet, verifier) never changes the minimal set. a10 is needed at every τ for a 30-day `cnf` and only at fast τ for a 1-day `cnf` | `../tamarin/sonuc/ozet.csv` (R6h5), `../asp/RAPOR.md` section 8 |
+
+## Results that contradict a pre-registered expectation
+
+These results are reported as they are and are not used to change any verdict above.
+
+1. **M-e and M-e′, `no_rollback` (expected V, observed F).**
+   - Cause: the metadata of a non-migrated issuer is signed with that issuer's own classical key. After the key is extracted, the attacker first shows the verifier a forged "PQ required" answer and then a forged "none" answer.
+   - Restricted to migrated issuers, the lemma is verified: M-e in 38 steps, M-e′ in 45 steps (exploratory, `../mechanisms/kesif/me_gocmus/`).
+   - Reading: an expectation carried by an object that is signed with the protected entity's own breakable key cannot protect that entity.
+2. **R7h same-name classical CA (expected V, observed F).** A classical CA with the same name bypasses name binding. In the Step 7 models, commitment extensions of the reddy and vicente type do not protect when they are carried only in a classical chain. M-f with path-class scope closes these attacks.
+3. **Health question on S1/S2** (`H0-RESULT.md`): S2 secures the 9 Φ3 cells, as the Φ3 definition implies.
+
+## Scope of the claims
+
+- All verdicts hold in the model: symbolic Dolev–Yao attacker, a CRQC that extracts classical keys after Q-day, the decision-node abstraction of `../asp/RAPOR.md` section 1, and the τ grid {10 min, 3 d, 26 d}.
+- Abstraction fidelity is checked by the technical gate (10/10) and the stratified Tamarin sample (`../sampling/5b/`).

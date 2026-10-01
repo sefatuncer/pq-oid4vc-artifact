@@ -1,0 +1,164 @@
+{
+ "total": {
+  "mutants": 58,
+  "equivalent": 11,
+  "base_insecure": 2,
+  "killed": 45,
+  "score": 1.0
+ },
+ "by_source": {
+  "kat-asp": {
+   "mutants": 21,
+   "equivalent": 11,
+   "base_insecure": 0,
+   "killed": 10,
+   "score": 1.0
+  },
+  "kat-tamarin": {
+   "mutants": 10,
+   "equivalent": 0,
+   "base_insecure": 0,
+   "killed": 10,
+   "score": 1.0
+  },
+  "rule": {
+   "mutants": 27,
+   "equivalent": 0,
+   "base_insecure": 2,
+   "killed": 25,
+   "score": 1.0
+  }
+ },
+ "by_group": {
+  "kat-asp/dnssec": {
+   "mutants": 7,
+   "equivalent": 0,
+   "base_insecure": 0,
+   "killed": 7,
+   "score": 1.0
+  },
+  "kat-asp/smime": {
+   "mutants": 5,
+   "equivalent": 4,
+   "base_insecure": 0,
+   "killed": 1,
+   "score": 1.0
+  },
+  "kat-asp/x509": {
+   "mutants": 9,
+   "equivalent": 7,
+   "base_insecure": 0,
+   "killed": 2,
+   "score": 1.0
+  },
+  "kat-tamarin/dnssec": {
+   "mutants": 7,
+   "equivalent": 0,
+   "base_insecure": 0,
+   "killed": 7,
+   "score": 1.0
+  },
+  "kat-tamarin/smime": {
+   "mutants": 1,
+   "equivalent": 0,
+   "base_insecure": 0,
+   "killed": 1,
+   "score": 1.0
+  },
+  "kat-tamarin/x509": {
+   "mutants": 2,
+   "equivalent": 0,
+   "base_insecure": 0,
+   "killed": 2,
+   "score": 1.0
+  },
+  "rule/R1": {
+   "mutants": 3,
+   "equivalent": 0,
+   "base_insecure": 0,
+   "killed": 3,
+   "score": 1.0
+  },
+  "rule/R2": {
+   "mutants": 2,
+   "equivalent": 0,
+   "base_insecure": 0,
+   "killed": 2,
+   "score": 1.0
+  },
+  "rule/R3": {
+   "mutants": 2,
+   "equivalent": 0,
+   "base_insecure": 0,
+   "killed": 2,
+   "score": 1.0
+  },
+  "rule/R4": {
+   "mutants": 2,
+   "equivalent": 0,
+   "base_insecure": 0,
+   "killed": 2,
+   "score": 1.0
+  },
+  "rule/R5": {
+   "mutants": 2,
+   "equivalent": 0,
+   "base_insecure": 0,
+   "killed": 2,
+   "score": 1.0
+  },
+  "rule/R6": {
+   "mutants": 7,
+   "equivalent": 0,
+   "base_insecure": 0,
+   "killed": 7,
+   "score": 1.0
+  },
+  "rule/R6h5": {
+   "mutants": 2,
+   "equivalent": 0,
+   "base_insecure": 0,
+   "killed": 2,
+   "score": 1.0
+  },
+  "rule/R7": {
+   "mutants": 5,
+   "equivalent": 0,
+   "base_insecure": 0,
+   "killed": 5,
+   "score": 1.0
+  },
+  "rule/R7h": {
+   "mutants": 2,
+   "equivalent": 0,
+   "base_insecure": 2,
+   "killed": 0,
+   "score": null
+  }
+ },
+ "base_insecure": [
+  {
+   "source": "rule",
+   "group": "R7h",
+   "mutant": "M_ca_classical",
+   "removed": "taahhut_zinciri_PQ",
+   "base": "P_ca_pq_alt_namebind",
+   "killed": 0,
+   "equivalent": 0,
+   "base_insecure": 1,
+   "evidence": ""
+  },
+  {
+   "source": "rule",
+   "group": "R7h",
+   "mutant": "M_no_namebind",
+   "removed": "ad_baglama",
+   "base": "P_ca_pq_alt_namebind",
+   "killed": 0,
+   "equivalent": 0,
+   "base_insecure": 1,
+   "evidence": ""
+  }
+ ],
+ "surviving": []
+}

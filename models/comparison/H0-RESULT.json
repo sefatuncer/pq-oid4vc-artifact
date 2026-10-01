@@ -1,0 +1,24 @@
+{
+ "a_health": {
+  "checked": 554,
+  "as_expected": 554,
+  "expected_F": 4,
+  "mismatch": []
+ },
+ "a_pass": true,
+ "b_asp_p0_coexistence_cells": {
+  "cells": 90,
+  "secured": 0
+ },
+ "b_tamarin_trace": "R2/M_expect_absent/S1_downgrade_trace = verified",
+ "b_pass": true,
+ "c_mutation": {
+  "mutants": 58,
+  "equivalent": 11,
+  "base_insecure": 2,
+  "killed": 45,
+  "score": 1.0
+ },
+ "c_pass": true,
+ "H0": "satisfied"
+}
