@@ -1,0 +1,139 @@
+{
+ "kat": "KAT-3 S/MIME",
+ "karar_Vd": "GEÇTİ",
+ "kosullar": {
+  "asp_yuzde100": true,
+  "tamarin_yuzde100": true,
+  "executable_hepsi_verified": true,
+  "iyi_bicim_uyari0": true,
+  "asp_tamarin_yuzde100": true,
+  "mutasyon_yuzde100": true,
+  "cekirdek_degismedi": true
+ },
+ "kat_spec_ek_maddeler": {
+  "kat3a_fail_bos": true,
+  "model_gap_yalniz_o8": true
+ },
+ "sayilar": {
+  "asp": [
+   54,
+   54
+  ],
+  "tamarin": [
+   9,
+   9
+  ],
+  "asp_tamarin": [
+   9,
+   9
+  ],
+  "mutasyon": [
+   3,
+   3
+  ]
+ },
+ "mutasyonlar": {
+  "MUT10": {
+   "tamarin": true
+  },
+  "MUT11": {
+   "asp": true
+  },
+  "MUT12": {
+   "asp": true
+  }
+ },
+ "asp_tamarin": [
+  [
+   "MIXED<->o4",
+   "falsified",
+   "falsified"
+  ],
+  [
+   "PQ_ONLY<->o1",
+   "verified",
+   "verified"
+  ],
+  [
+   "HYBRID_KEM<->o5",
+   "verified",
+   "verified"
+  ],
+  [
+   "V1",
+   "falsified",
+   "falsified"
+  ],
+  [
+   "V2",
+   "falsified",
+   "falsified"
+  ],
+  [
+   "V3",
+   "falsified",
+   "falsified"
+  ],
+  [
+   "V4",
+   "verified",
+   "verified"
+  ],
+  [
+   "V5",
+   "verified",
+   "verified"
+  ],
+  [
+   "V6",
+   "falsified",
+   "falsified"
+  ]
+ ],
+ "belirsiz_ya_da_gecersiz": [],
+ "executable_olmayan": [],
+ "alinti_bulundu": [
+  5,
+  5
+ ],
+ "asp_uyumsuz": [],
+ "tamarin_uyumsuz": [],
+ "ek_pilot_asli_kapi_degil": [
+  [
+   "EK.V1.pilot_asli.tam",
+   "falsified",
+   "falsified",
+   "HAYIR"
+  ],
+  [
+   "EK.V2.pilot_asli.tam",
+   "falsified",
+   "falsified",
+   "HAYIR"
+  ],
+  [
+   "EK.V3.pilot_asli.tam",
+   "falsified",
+   "falsified",
+   "HAYIR"
+  ],
+  [
+   "EK.V4.pilot_asli.tam",
+   "verified",
+   "verified",
+   "HAYIR"
+  ],
+  [
+   "EK.V5.pilot_asli.tam",
+   "verified",
+   "verified",
+   "HAYIR"
+  ],
+  [
+   "EK.V6.pilot_asli.tam",
+   "falsified",
+   "falsified",
+   "HAYIR"
+  ]
+ ]
+}

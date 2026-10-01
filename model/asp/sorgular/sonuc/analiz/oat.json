@@ -1,0 +1,752 @@
+{
+ "anahtar_yeniden_kullanim_var": {
+  "fark_hucre": 0,
+  "sat_unsat": 0,
+  "unsat_sat": 0,
+  "hedef": {},
+  "ornek": []
+ },
+ "ayni_ad_klasik_ca_var": {
+  "fark_hucre": 0,
+  "sat_unsat": 0,
+  "unsat_sat": 0,
+  "hedef": {},
+  "ornek": []
+ },
+ "ca_baglama_ad": {
+  "fark_hucre": 0,
+  "sat_unsat": 0,
+  "unsat_sat": 0,
+  "hedef": {},
+  "ornek": []
+ },
+ "ca_baglama_anahtar": {
+  "fark_hucre": 0,
+  "sat_unsat": 0,
+  "unsat_sat": 0,
+  "hedef": {},
+  "ornek": []
+ },
+ "cihaz_anahtari_kalici": {
+  "fark_hucre": 0,
+  "sat_unsat": 0,
+  "unsat_sat": 0,
+  "hedef": {},
+  "ornek": []
+ },
+ "cihaz_bagi_yok": {
+  "fark_hucre": 63,
+  "sat_unsat": 63,
+  "unsat_sat": 0,
+  "hedef": {
+   "g2": 63
+  },
+  "ornek": [
+   [
+    "g2",
+    "f1",
+    "hizli",
+    "taze",
+    "p4"
+   ],
+   [
+    "g2",
+    "f1",
+    "hizli",
+    "sabit",
+    "p4"
+   ],
+   [
+    "g2",
+    "f1",
+    "hizli",
+    "onbellek",
+    "p4"
+   ]
+  ]
+ },
+ "cnf_180g": {
+  "fark_hucre": 0,
+  "sat_unsat": 0,
+  "unsat_sat": 0,
+  "hedef": {},
+  "ornek": []
+ },
+ "cnf_1y": {
+  "fark_hucre": 0,
+  "sat_unsat": 0,
+  "unsat_sat": 0,
+  "hedef": {},
+  "ornek": []
+ },
+ "coklu_cerceve_var": {
+  "fark_hucre": 0,
+  "sat_unsat": 0,
+  "unsat_sat": 0,
+  "hedef": {},
+  "ornek": []
+ },
+ "diger_ca_var": {
+  "fark_hucre": 189,
+  "sat_unsat": 189,
+  "unsat_sat": 0,
+  "hedef": {
+   "g1": 63,
+   "g2": 63,
+   "g3": 63
+  },
+  "ornek": [
+   [
+    "g1",
+    "f1",
+    "hizli",
+    "taze",
+    "p4"
+   ],
+   [
+    "g1",
+    "f1",
+    "hizli",
+    "sabit",
+    "p4"
+   ],
+   [
+    "g1",
+    "f1",
+    "hizli",
+    "onbellek",
+    "p4"
+   ]
+  ]
+ },
+ "durum_baglama_gevsek": {
+  "fark_hucre": 9,
+  "sat_unsat": 0,
+  "unsat_sat": 0,
+  "hedef": {
+   "g3": 9
+  },
+  "ornek": [
+   [
+    "g3",
+    "f1",
+    "hizli",
+    "taze",
+    "p4"
+   ],
+   [
+    "g3",
+    "f1",
+    "hizli",
+    "sabit",
+    "p4"
+   ],
+   [
+    "g3",
+    "f1",
+    "hizli",
+    "onbellek",
+    "p4"
+   ]
+  ]
+ },
+ "durum_imzaci_farkli_capa": {
+  "fark_hucre": 63,
+  "sat_unsat": 0,
+  "unsat_sat": 0,
+  "hedef": {
+   "g3": 63
+  },
+  "ornek": [
+   [
+    "g3",
+    "f1",
+    "hizli",
+    "taze",
+    "p4"
+   ],
+   [
+    "g3",
+    "f1",
+    "hizli",
+    "sabit",
+    "p4"
+   ],
+   [
+    "g3",
+    "f1",
+    "hizli",
+    "onbellek",
+    "p4"
+   ]
+  ]
+ },
+ "durum_listesi_yok": {
+  "fark_hucre": 135,
+  "sat_unsat": 0,
+  "unsat_sat": 72,
+  "hedef": {
+   "g3": 135
+  },
+  "ornek": [
+   [
+    "g3",
+    "f1",
+    "hizli",
+    "taze",
+    "p0"
+   ],
+   [
+    "g3",
+    "f1",
+    "hizli",
+    "taze",
+    "p1"
+   ],
+   [
+    "g3",
+    "f1",
+    "hizli",
+    "taze",
+    "p2"
+   ]
+  ]
+ },
+ "durum_ttl_1sa": {
+  "fark_hucre": 0,
+  "sat_unsat": 0,
+  "unsat_sat": 0,
+  "hedef": {},
+  "ornek": []
+ },
+ "durum_ttl_7g": {
+  "fark_hucre": 0,
+  "sat_unsat": 0,
+  "unsat_sat": 0,
+  "hedef": {},
+  "ornek": []
+ },
+ "gun_batimi_iptal": {
+  "fark_hucre": 0,
+  "sat_unsat": 0,
+  "unsat_sat": 0,
+  "hedef": {},
+  "ornek": []
+ },
+ "guven_deposu_liste_bagli": {
+  "fark_hucre": 135,
+  "sat_unsat": 0,
+  "unsat_sat": 0,
+  "hedef": {
+   "g1": 45,
+   "g2": 45,
+   "g3": 45
+  },
+  "ornek": [
+   [
+    "g1",
+    "f1",
+    "hizli",
+    "taze",
+    "p4"
+   ],
+   [
+    "g1",
+    "f1",
+    "hizli",
+    "sabit",
+    "p4"
+   ],
+   [
+    "g1",
+    "f1",
+    "hizli",
+    "onbellek",
+    "p4"
+   ]
+  ]
+ },
+ "iptal_denetimi_yok": {
+  "fark_hucre": 63,
+  "sat_unsat": 63,
+  "unsat_sat": 0,
+  "hedef": {
+   "g3": 63
+  },
+  "ornek": [
+   [
+    "g3",
+    "f1",
+    "hizli",
+    "taze",
+    "p4"
+   ],
+   [
+    "g3",
+    "f1",
+    "hizli",
+    "sabit",
+    "p4"
+   ],
+   [
+    "g3",
+    "f1",
+    "hizli",
+    "onbellek",
+    "p4"
+   ]
+  ]
+ },
+ "k1": {
+  "fark_hucre": 297,
+  "sat_unsat": 0,
+  "unsat_sat": 108,
+  "hedef": {
+   "g1": 81,
+   "g2": 81,
+   "g3": 135
+  },
+  "ornek": [
+   [
+    "g1",
+    "f1",
+    "hizli",
+    "taze",
+    "p3"
+   ],
+   [
+    "g1",
+    "f1",
+    "hizli",
+    "taze",
+    "p4"
+   ],
+   [
+    "g1",
+    "f1",
+    "hizli",
+    "sabit",
+    "p3"
+   ]
+  ]
+ },
+ "k3": {
+  "fark_hucre": 9,
+  "sat_unsat": 0,
+  "unsat_sat": 0,
+  "hedef": {
+   "g1": 3,
+   "g2": 3,
+   "g3": 3
+  },
+  "ornek": [
+   [
+    "g1",
+    "f1",
+    "hizli",
+    "sabit",
+    "p4"
+   ],
+   [
+    "g1",
+    "f1",
+    "orta",
+    "sabit",
+    "p4"
+   ],
+   [
+    "g1",
+    "f1",
+    "yavas",
+    "sabit",
+    "p4"
+   ]
+  ]
+ },
+ "kbjwt_iat_1dk": {
+  "fark_hucre": 0,
+  "sat_unsat": 0,
+  "unsat_sat": 0,
+  "hedef": {},
+  "ornek": []
+ },
+ "kbjwt_iat_60dk": {
+  "fark_hucre": 0,
+  "sat_unsat": 0,
+  "unsat_sat": 0,
+  "hedef": {},
+  "ornek": []
+ },
+ "kimlik_turu_qeaa": {
+  "fark_hucre": 54,
+  "sat_unsat": 0,
+  "unsat_sat": 0,
+  "hedef": {
+   "g1": 18,
+   "g2": 18,
+   "g3": 18
+  },
+  "ornek": [
+   [
+    "g1",
+    "f1",
+    "hizli",
+    "taze",
+    "p4"
+   ],
+   [
+    "g1",
+    "f1",
+    "hizli",
+    "sabit",
+    "p4"
+   ],
+   [
+    "g1",
+    "f1",
+    "hizli",
+    "onbellek",
+    "p4"
+   ]
+  ]
+ },
+ "ma_kanca_acik": {
+  "fark_hucre": 0,
+  "sat_unsat": 0,
+  "unsat_sat": 0,
+  "hedef": {},
+  "ornek": []
+ },
+ "md_kanca_acik": {
+  "fark_hucre": 108,
+  "sat_unsat": 0,
+  "unsat_sat": 54,
+  "hedef": {
+   "g1": 18,
+   "g2": 18,
+   "g3": 18,
+   "g4": 27,
+   "tum": 27
+  },
+  "ornek": [
+   [
+    "g1",
+    "f1",
+    "hizli",
+    "taze",
+    "p4"
+   ],
+   [
+    "g1",
+    "f1",
+    "hizli",
+    "sabit",
+    "p4"
+   ],
+   [
+    "g1",
+    "f1",
+    "hizli",
+    "onbellek",
+    "p4"
+   ]
+  ]
+ },
+ "mekanizma_kancalari_acik": {
+  "fark_hucre": 36,
+  "sat_unsat": 0,
+  "unsat_sat": 0,
+  "hedef": {
+   "g1": 18,
+   "g2": 18
+  },
+  "ornek": [
+   [
+    "g1",
+    "f1",
+    "hizli",
+    "taze",
+    "p4"
+   ],
+   [
+    "g1",
+    "f1",
+    "hizli",
+    "sabit",
+    "p4"
+   ],
+   [
+    "g1",
+    "f1",
+    "hizli",
+    "onbellek",
+    "p4"
+   ]
+  ]
+ },
+ "onbellek_ufku_ilk_pencere": {
+  "fark_hucre": 63,
+  "sat_unsat": 0,
+  "unsat_sat": 0,
+  "hedef": {
+   "g1": 21,
+   "g2": 21,
+   "g3": 21
+  },
+  "ornek": [
+   [
+    "g1",
+    "f1",
+    "hizli",
+    "onbellek",
+    "p4"
+   ],
+   [
+    "g1",
+    "f1",
+    "orta",
+    "onbellek",
+    "p4"
+   ],
+   [
+    "g1",
+    "f1",
+    "yavas",
+    "onbellek",
+    "p4"
+   ]
+  ]
+ },
+ "rp_auth_fail_open_var": {
+  "fark_hucre": 0,
+  "sat_unsat": 0,
+  "unsat_sat": 0,
+  "hedef": {},
+  "ornek": []
+ },
+ "saat_payi_0": {
+  "fark_hucre": 0,
+  "sat_unsat": 0,
+  "unsat_sat": 0,
+  "hedef": {},
+  "ornek": []
+ },
+ "saat_payi_60": {
+  "fark_hucre": 0,
+  "sat_unsat": 0,
+  "unsat_sat": 0,
+  "hedef": {},
+  "ornek": []
+ },
+ "saat_payi_600": {
+  "fark_hucre": 0,
+  "sat_unsat": 0,
+  "unsat_sat": 0,
+  "hedef": {},
+  "ornek": []
+ },
+ "sdjwtvc_s19": {
+  "fark_hucre": 0,
+  "sat_unsat": 0,
+  "unsat_sat": 0,
+  "hedef": {},
+  "ornek": []
+ },
+ "tek_kullanim_dogrulayici": {
+  "fark_hucre": 0,
+  "sat_unsat": 0,
+  "unsat_sat": 0,
+  "hedef": {},
+  "ornek": []
+ },
+ "tek_kullanim_kuresel_pasif": {
+  "fark_hucre": 42,
+  "sat_unsat": 0,
+  "unsat_sat": 0,
+  "hedef": {
+   "g2": 42
+  },
+  "ornek": [
+   [
+    "g2",
+    "f1",
+    "orta",
+    "taze",
+    "p4"
+   ],
+   [
+    "g2",
+    "f1",
+    "orta",
+    "sabit",
+    "p4"
+   ],
+   [
+    "g2",
+    "f1",
+    "orta",
+    "onbellek",
+    "p4"
+   ]
+  ]
+ },
+ "tek_kullanim_yok": {
+  "fark_hucre": 0,
+  "sat_unsat": 0,
+  "unsat_sat": 0,
+  "hedef": {},
+  "ornek": []
+ },
+ "w_ca_1y": {
+  "fark_hucre": 0,
+  "sat_unsat": 0,
+  "unsat_sat": 0,
+  "hedef": {},
+  "ornek": []
+ },
+ "w_ihracci_180g": {
+  "fark_hucre": 0,
+  "sat_unsat": 0,
+  "unsat_sat": 0,
+  "hedef": {},
+  "ornek": []
+ },
+ "w_ihracci_30g": {
+  "fark_hucre": 0,
+  "sat_unsat": 0,
+  "unsat_sat": 0,
+  "hedef": {},
+  "ornek": []
+ },
+ "w_ka_180g": {
+  "fark_hucre": 0,
+  "sat_unsat": 0,
+  "unsat_sat": 0,
+  "hedef": {},
+  "ornek": []
+ },
+ "w_kok_1y": {
+  "fark_hucre": 0,
+  "sat_unsat": 0,
+  "unsat_sat": 0,
+  "hedef": {},
+  "ornek": []
+ },
+ "w_rp_180g": {
+  "fark_hucre": 0,
+  "sat_unsat": 0,
+  "unsat_sat": 0,
+  "hedef": {},
+  "ornek": []
+ },
+ "w_tls_47g": {
+  "fark_hucre": 0,
+  "sat_unsat": 0,
+  "unsat_sat": 0,
+  "hedef": {},
+  "ornek": []
+ },
+ "webpki_pq_birlikte": {
+  "fark_hucre": 63,
+  "sat_unsat": 0,
+  "unsat_sat": 0,
+  "hedef": {
+   "g1": 21,
+   "g2": 21,
+   "g3": 21
+  },
+  "ornek": [
+   [
+    "g1",
+    "f1",
+    "hizli",
+    "taze",
+    "p4"
+   ],
+   [
+    "g1",
+    "f1",
+    "hizli",
+    "sabit",
+    "p4"
+   ],
+   [
+    "g1",
+    "f1",
+    "hizli",
+    "onbellek",
+    "p4"
+   ]
+  ]
+ },
+ "wia_anahtari_kalici": {
+  "fark_hucre": 0,
+  "sat_unsat": 0,
+  "unsat_sat": 0,
+  "hedef": {},
+  "ornek": []
+ },
+ "wrprc_faz1": {
+  "fark_hucre": 54,
+  "sat_unsat": 0,
+  "unsat_sat": 54,
+  "hedef": {
+   "g4": 27,
+   "tum": 27
+  },
+  "ornek": [
+   [
+    "g4",
+    "f1",
+    "hizli",
+    "taze",
+    "p4"
+   ],
+   [
+    "g4",
+    "f1",
+    "hizli",
+    "sabit",
+    "p4"
+   ],
+   [
+    "g4",
+    "f1",
+    "hizli",
+    "onbellek",
+    "p4"
+   ]
+  ]
+ },
+ "wscd_pq_yok": {
+  "fark_hucre": 63,
+  "sat_unsat": 63,
+  "unsat_sat": 0,
+  "hedef": {
+   "g2": 63
+  },
+  "ornek": [
+   [
+    "g2",
+    "f1",
+    "hizli",
+    "taze",
+    "p4"
+   ],
+   [
+    "g2",
+    "f1",
+    "hizli",
+    "sabit",
+    "p4"
+   ],
+   [
+    "g2",
+    "f1",
+    "hizli",
+    "onbellek",
+    "p4"
+   ]
+  ]
+ }
+}

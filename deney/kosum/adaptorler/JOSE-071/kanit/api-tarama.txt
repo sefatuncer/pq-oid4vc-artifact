@@ -1,0 +1,128 @@
+# JOSE-071 lcobucci/jwt 5.6.0 — API taraması (sözleşme §5.1)
+# imaj: a10-jose-071:1 (sha256:9a8ec2f613b35a3d1a46811d234c8fdc4b1130fdc4f865341d4e5489fa98d61d)
+# komut: docker run --rm --network none a10-jose-071:1 sh -c 'cd /opt/a/vendor/lcobucci/jwt && grep -rn -i -E "algorithmId|allow|register|required|SignedWith|OneInSet|signatures|eddsa|ed25519|ml-?dsa|composite|crit|x5c|kid|jwk|clock" src/ README.md'
+
+src/Token.php:17:     * Returns if the token is allowed to be used by the audience
+src/JwtFacade.php:12:use Lcobucci\JWT\Validation\SignedWith;
+src/JwtFacade.php:15:use Psr\Clock\ClockInterface as Clock;
+src/JwtFacade.php:21:    private readonly Clock $clock;
+src/JwtFacade.php:25:        ?Clock $clock = null,
+src/JwtFacade.php:27:        $this->clock = $clock ?? new class implements Clock {
+src/JwtFacade.php:43:        $now     = $this->clock->now();
+src/JwtFacade.php:55:        SignedWith $signedWith,
+src/JwtFacade.php:64:            $signedWith,
+src/Encoding/UnixTimestampDates.php:8:use Lcobucci\JWT\Token\RegisteredClaims;
+src/Encoding/UnixTimestampDates.php:17:        foreach (RegisteredClaims::DATE_CLAIMS as $claim) {
+src/Encoding/UnifyAudience.php:7:use Lcobucci\JWT\Token\RegisteredClaims;
+src/Encoding/UnifyAudience.php:19:            ! array_key_exists(RegisteredClaims::AUDIENCE, $claims)
+src/Encoding/UnifyAudience.php:20:            || count($claims[RegisteredClaims::AUDIENCE]) !== 1
+src/Encoding/UnifyAudience.php:25:        $claims[RegisteredClaims::AUDIENCE] = current($claims[RegisteredClaims::AUDIENCE]);
+src/Encoding/MicrosecondBasedDateConversion.php:8:use Lcobucci\JWT\Token\RegisteredClaims;
+src/Encoding/MicrosecondBasedDateConversion.php:17:        foreach (RegisteredClaims::DATE_CLAIMS as $claim) {
+src/Validator.php:8:use Lcobucci\JWT\Validation\RequiredConstraintsViolated;
+src/Validator.php:13:     * @throws RequiredConstraintsViolated
+src/Signer/Blake2b.php:16:    public function algorithmId(): string
+src/Signer/Ecdsa/Sha512.php:12:    public function algorithmId(): string
+src/Signer/Ecdsa/Sha256.php:12:    public function algorithmId(): string
+src/Signer/Ecdsa/Sha384.php:12:    public function algorithmId(): string
+src/Signer/Eddsa.php:12:final class Eddsa implements Signer
+src/Signer/Eddsa.php:14:    public function algorithmId(): string
+src/Signer/Eddsa.php:16:        return 'EdDSA';
+src/Signer/Hmac/Sha512.php:10:    public function algorithmId(): string
+src/Signer/Hmac/Sha256.php:10:    public function algorithmId(): string
+src/Signer/Hmac/Sha384.php:10:    public function algorithmId(): string
+src/Signer/Rsa/Sha512.php:12:    public function algorithmId(): string
+src/Signer/Rsa/Sha256.php:12:    public function algorithmId(): string
+src/Signer/Rsa/Sha384.php:12:    public function algorithmId(): string
+src/Validation/RequiredConstraintsViolated.php:12:final class RequiredConstraintsViolated extends RuntimeException implements Exception
+src/Validation/Constraint/SignedWithOneInSet.php:8:use Lcobucci\JWT\Validation\SignedWith as SignedWithInterface;
+src/Validation/Constraint/SignedWithOneInSet.php:12:final class SignedWithOneInSet implements SignedWithInterface
+src/Validation/Constraint/SignedWithOneInSet.php:14:    /** @var array<SignedWithUntilDate> */
+src/Validation/Constraint/SignedWithOneInSet.php:17:    public function __construct(SignedWithUntilDate ...$constraints)
+src/Validation/Constraint/HasClaimWithValue.php:18:        if (in_array($claim, Token\RegisteredClaims::ALL, true)) {
+src/Validation/Constraint/HasClaimWithValue.php:19:            throw CannotValidateARegisteredClaim::create($claim);
+src/Validation/Constraint/SignedWith.php:10:use Lcobucci\JWT\Validation\SignedWith as SignedWithInterface;
+src/Validation/Constraint/SignedWith.php:12:final class SignedWith implements SignedWithInterface
+src/Validation/Constraint/SignedWith.php:24:        if ($token->headers()->get('alg') !== $this->signer->algorithmId()) {
+src/Validation/Constraint/SignedWithUntilDate.php:11:use Lcobucci\JWT\Validation\SignedWith as SignedWithInterface;
+src/Validation/Constraint/SignedWithUntilDate.php:12:use Psr\Clock\ClockInterface;
+src/Validation/Constraint/SignedWithUntilDate.php:14:final class SignedWithUntilDate implements SignedWithInterface
+src/Validation/Constraint/SignedWithUntilDate.php:16:    private readonly SignedWith $verifySignature;
+src/Validation/Constraint/SignedWithUntilDate.php:17:    private readonly ClockInterface $clock;
+src/Validation/Constraint/SignedWithUntilDate.php:23:        ?ClockInterface $clock = null,
+src/Validation/Constraint/SignedWithUntilDate.php:25:        $this->verifySignature = new SignedWith($signer, $key);
+src/Validation/Constraint/SignedWithUntilDate.php:27:        $this->clock = $clock ?? new class () implements ClockInterface {
+src/Validation/Constraint/SignedWithUntilDate.php:37:        if ($this->validUntil < $this->clock->now()) {
+src/Validation/Constraint/LooseValidAt.php:11:use Psr\Clock\ClockInterface as Clock;
+src/Validation/Constraint/LooseValidAt.php:17:    public function __construct(private readonly Clock $clock, ?DateInterval $leeway = null)
+src/Validation/Constraint/LooseValidAt.php:37:        $now = $this->clock->now();
+src/Validation/Constraint/PermittedFor.php:21:                'The token is not allowed to be used by this audience',
+src/Validation/Constraint/StrictValidAt.php:12:use Psr\Clock\ClockInterface as Clock;
+src/Validation/Constraint/StrictValidAt.php:18:    public function __construct(private readonly Clock $clock, ?DateInterval $leeway = null)
+src/Validation/Constraint/StrictValidAt.php:42:        $now = $this->clock->now();
+src/Validation/Constraint/StrictValidAt.php:52:        if (! $token->claims()->has(Token\RegisteredClaims::EXPIRATION_TIME)) {
+src/Validation/Constraint/StrictValidAt.php:64:        if (! $token->claims()->has(Token\RegisteredClaims::NOT_BEFORE)) {
+src/Validation/Constraint/StrictValidAt.php:76:        if (! $token->claims()->has(Token\RegisteredClaims::ISSUED_AT)) {
+src/Validation/Constraint/CannotValidateARegisteredClaim.php:9:final class CannotValidateARegisteredClaim extends InvalidArgumentException implements Exception
+src/Validation/Constraint/CannotValidateARegisteredClaim.php:15:            'The claim "' . $claim . '" is a registered claim, another constraint must be used to validate its value',
+src/Validation/Constraint/HasClaim.php:18:        if (in_array($claim, Token\RegisteredClaims::ALL, true)) {
+src/Validation/Constraint/HasClaim.php:19:            throw CannotValidateARegisteredClaim::create($claim);
+src/Validation/Validator.php:23:            throw RequiredConstraintsViolated::fromViolations(...$violations);
+src/Validation/SignedWith.php:6:interface SignedWith extends Constraint
+src/Token/Parser.php:121:        if (array_key_exists(RegisteredClaims::AUDIENCE, $claims)) {
+src/Token/Parser.php:122:            $claims[RegisteredClaims::AUDIENCE] = (array) $claims[RegisteredClaims::AUDIENCE];
+src/Token/Parser.php:125:        foreach (RegisteredClaims::DATE_CLAIMS as $claim) {
+src/Token/Plain.php:42:        return in_array($audience, $this->claims->get(RegisteredClaims::AUDIENCE, []), true);
+src/Token/Plain.php:47:        return $this->claims->get(RegisteredClaims::ID) === $id;
+src/Token/Plain.php:52:        return $this->claims->get(RegisteredClaims::SUBJECT) === $subject;
+src/Token/Plain.php:57:        return in_array($this->claims->get(RegisteredClaims::ISSUER), $issuers, true);
+src/Token/Plain.php:62:        return $now >= $this->claims->get(RegisteredClaims::ISSUED_AT);
+src/Token/Plain.php:67:        return $now >= $this->claims->get(RegisteredClaims::NOT_BEFORE);
+src/Token/Plain.php:72:        if (! $this->claims->has(RegisteredClaims::EXPIRATION_TIME)) {
+src/Token/Plain.php:76:        return $now >= $this->claims->get(RegisteredClaims::EXPIRATION_TIME);
+src/Token/RegisteredClaimGiven.php:11:final class RegisteredClaimGiven extends InvalidArgumentException implements Exception
+src/Token/RegisteredClaimGiven.php:13:    private const DEFAULT_MESSAGE = 'Builder#withClaim() is meant to be used for non-registered claims, '
+src/Token/RegisteredClaims.php:7: * Defines the list of claims that are registered in the IANA "JSON Web Token Claims" registry
+src/Token/RegisteredClaims.php:11:interface RegisteredClaims
+src/Token/InvalidTokenStructure.php:39:        return new self('Value is not in the allowed date format: ' . $value);
+src/Token/Builder.php:44:        $configured = $this->claims[RegisteredClaims::AUDIENCE] ?? [];
+src/Token/Builder.php:47:        return $this->setClaim(RegisteredClaims::AUDIENCE, array_merge($configured, $toAppend));
+src/Token/Builder.php:56:        return $this->setClaim(RegisteredClaims::EXPIRATION_TIME, $expiration);
+src/Token/Builder.php:65:        return $this->setClaim(RegisteredClaims::ID, $id);
+src/Token/Builder.php:74:        return $this->setClaim(RegisteredClaims::ISSUED_AT, $issuedAt);grep: README.md: No such file or directory
+
+src/Token/Builder.php:83:        return $this->setClaim(RegisteredClaims::ISSUER, $issuer);
+src/Token/Builder.php:92:        return $this->setClaim(RegisteredClaims::NOT_BEFORE, $notBefore);
+src/Token/Builder.php:101:        return $this->setClaim(RegisteredClaims::SUBJECT, $subject);
+src/Token/Builder.php:122:        if (in_array($name, RegisteredClaims::ALL, true)) {
+src/Token/Builder.php:123:            throw RegisteredClaimGiven::forClaim($name);
+src/Token/Builder.php:153:        $headers['alg'] = $signer->algorithmId();
+src/Signer.php:18:    public function algorithmId(): string;
+src/Builder.php:12:use Lcobucci\JWT\Token\RegisteredClaimGiven;
+src/Builder.php:72:     * @throws RegisteredClaimGiven When trying to set a registered claim.
+
+# ek: ML-DSA/composite/JWK deseni ve Signer listesi
+eslesme yok (0)
+src/Signer/Blake2b.php
+src/Signer/CannotSignPayload.php
+src/Signer/Ecdsa.php
+src/Signer/Ecdsa/ConversionFailed.php
+src/Signer/Ecdsa/MultibyteStringConverter.php
+src/Signer/Ecdsa/Sha256.php
+src/Signer/Ecdsa/Sha384.php
+src/Signer/Ecdsa/Sha512.php
+src/Signer/Ecdsa/SignatureConverter.php
+src/Signer/Eddsa.php
+src/Signer/Hmac.php
+src/Signer/Hmac/Sha256.php
+src/Signer/Hmac/Sha384.php
+src/Signer/Hmac/Sha512.php
+src/Signer/InvalidKeyProvided.php
+src/Signer/Key.php
+src/Signer/Key/FileCouldNotBeRead.php
+src/Signer/Key/InMemory.php
+src/Signer/OpenSSL.php
+src/Signer/Rsa.php
+src/Signer/Rsa/Sha256.php
+src/Signer/Rsa/Sha384.php
+src/Signer/Rsa/Sha512.php

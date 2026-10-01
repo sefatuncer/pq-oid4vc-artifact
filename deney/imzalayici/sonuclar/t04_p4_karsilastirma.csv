@@ -1,0 +1,5 @@
+alg,spki_der_B_biz,sig_B_biz,ca_cert_der_B_biz,leaf_cert_der_B_biz,x5c_2certs_b64_chars_biz,spki_der_B_P4,sig_B_P4,ca_cert_der_B_P4,leaf_cert_der_B_P4,x5c_2certs_b64_chars_P4
+ML-DSA-44,1334,2420,4054,4073,10840,1334,2420,4054,4073,10840
+ML-DSA-65,1974,3309,5583,5602,14916,1974,3309,5583,5602,14916
+ML-DSA-87,2614,4627,7541,7560,20136,2614,4627,7541,7560,20136
+EC-P256,91,72,454,474,1240,91,70,454,476,1244

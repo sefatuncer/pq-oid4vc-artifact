@@ -1,0 +1,13 @@
+baslangic	2026-09-25T12:52:10Z
+hedef	SDJWT-001
+ekosistem	maven (Gradle modül meta verisiyle)
+paket	at.asitplus.wallet:vck
+istenen_surum	7.0.1
+arac	openjdk version "25.0.4" 2026-07-21 LTS; Gradle 9.6.1
+kilit_dosyasi	verification-metadata.xml (Gradle, sha256) + jar-sha256.txt
+kilit_sha256	2cb93c5d965cfd1aba7299726585fbe8bb305a703093a91937ae200f48895820
+bagimlilik_sayisi	46
+paket_ozeti	sha256:c50d76c6d194e6f8e438111462f5216e6481f9b2768f21bdad628f720025c88d (vck-jvm-7.0.1.jar)
+kurulan_surum	7.0.1
+ice_aktar	basarili
+bitis	2026-09-25T12:52:43Z

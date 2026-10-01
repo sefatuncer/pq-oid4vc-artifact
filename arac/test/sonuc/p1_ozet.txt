@@ -1,0 +1,32 @@
+=== V1_base rc=0 wall_s=1.2 mem_peak_MiB=107.8
+  processing time: 1.15s
+  executable (exists-trace): verified (11 steps)
+  claims_unforgeability (all-traces): falsified - found trace (8 steps)
+=== V2_expectTL rc=0 wall_s=1.12 mem_peak_MiB=88.7
+  processing time: 1.08s
+  executable (exists-trace): verified (11 steps)
+  claims_unforgeability (all-traces): falsified - found trace (8 steps)
+=== V3_tlPQ rc=0 wall_s=1.08 mem_peak_MiB=88.8
+  processing time: 1.04s
+  executable (exists-trace): verified (11 steps)
+  claims_unforgeability (all-traces): falsified - found trace (9 steps)
+=== V4_tlPQ_expectTL rc=0 wall_s=1.09 mem_peak_MiB=76.1
+  processing time: 1.04s
+  executable (exists-trace): verified (11 steps)
+  claims_unforgeability (all-traces): verified (12 steps)
+=== V5_tlPQ_nocoexist rc=0 wall_s=0.64 mem_peak_MiB=74.5
+  processing time: 0.60s
+  executable (exists-trace): verified (9 steps)
+  claims_unforgeability (all-traces): verified (7 steps)
+=== V6_tlClassical_nocoexist rc=0 wall_s=0.89 mem_peak_MiB=94.6
+  processing time: 0.85s
+  executable (exists-trace): verified (9 steps)
+  claims_unforgeability (all-traces): falsified - found trace (8 steps)
+=== L2_induction rc=0 wall_s=0.27 mem_peak_MiB=71.2
+  processing time: 0.22s
+  trusted_keys_are_delegated (all-traces): verified (20 steps)
+=== L1_noinduction rc=124 wall_s=60.05 mem_peak_MiB=1975.5
+TIMEOUT after 60s
+[Theory DelegationChain] Theory closed
+[Saturating Sources] Step 1 (Max 5)
+[Saturating Sources] Done

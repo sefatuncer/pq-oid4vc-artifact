@@ -1,0 +1,1120 @@
+{
+  "H6_hukmu": {
+    "birincil": "belirsiz",
+    "duyarlilik_i": "belirsiz",
+    "gerekce": "c < X < u (ÖK §6.13)",
+    "hukum": "belirsiz"
+  },
+  "T1": {
+    "P_c": "11698223/268435456",
+    "X": 12,
+    "aciklama": "ÖK §3.7, §6.6 T1 (birincil, H6): tek yönlü (alt) kesin binom; Holm dışı; eşikler Ek A kuralıyla n_eff'ten",
+    "c": 9,
+    "fark_0_5": -0.07142857142857145,
+    "fark_0_5_ga": [
+      -0.23491452875876295,
+      0.10929214372531226
+    ],
+    "holm_disi": true,
+    "karar": "belirsiz",
+    "n_eff": 28,
+    "oran": 0.42857142857142855,
+    "p_alt": {
+      "deger": 0.28579409420490265,
+      "kesin": "19179317/67108864",
+      "referans": 0.28579409420490265
+    },
+    "p_ust": {
+      "deger": 0.8275357745587826,
+      "kesin": "222139943/268435456",
+      "referans": 0.8275357745587826
+    },
+    "u": 19,
+    "wilson": [
+      0.26508547124123705,
+      0.6092921437253123
+    ]
+  },
+  "T1_duyarlilik": {
+    "devralan_haric": {
+      "P_c": "3505699/134217728",
+      "X": 11,
+      "aciklama": "ÖK §2B.9: devralan hedefler hariç; tanımlayıcı, Holm dışı",
+      "c": 8,
+      "dislanan": [
+        "S-SDJWT-05"
+      ],
+      "fark_0_5": -0.09259259259259262,
+      "fark_0_5_ga": [
+        -0.25485242925604434,
+        0.09273299031935311
+      ],
+      "holm_disi": true,
+      "karar": "belirsiz",
+      "n_eff": 27,
+      "oran": 0.4074074074074074,
+      "p_alt": {
+        "deger": 0.22103416919708252,
+        "kesin": "1854169/8388608",
+        "referans": 0.22103416919708252
+      },
+      "p_ust": {
+        "deger": 0.8761057183146477,
+        "kesin": "117588919/134217728",
+        "referans": 0.8761057183146477
+      },
+      "u": 19,
+      "wilson": [
+        0.24514757074395563,
+        0.5927329903193531
+      ]
+    },
+    "i_belirsiz_1": {
+      "P_c": "26504551/536870912",
+      "X": 14,
+      "aciklama": "ÖK §6.10 (i): belirsiz hedefler Y = 1 (H6 aleyhine)",
+      "c": 10,
+      "eklenen": [
+        "S-JOSE-06",
+        "S-SDJWT-03"
+      ],
+      "fark_0_5": -0.033333333333333326,
+      "fark_0_5_ga": [
+        -0.1976761109230024,
+        0.13857700380126703
+      ],
+      "holm_disi": true,
+      "karar": "belirsiz",
+      "n_eff": 30,
+      "oran": 0.4666666666666667,
+      "p_alt": {
+        "deger": 0.427767775952816,
+        "kesin": "57414019/134217728",
+        "referans": 0.42776777595281607
+      },
+      "p_ust": {
+        "deger": 0.707667644135654,
+        "kesin": "759852347/1073741824",
+        "referans": 0.707667644135654
+      },
+      "u": 20,
+      "wilson": [
+        0.3023238890769976,
+        0.638577003801267
+      ]
+    },
+    "ii_belirsiz_0": {
+      "P_c": "26504551/536870912",
+      "X": 12,
+      "aciklama": "ÖK §6.10 (ii): belirsiz hedefler Y = 0",
+      "c": 10,
+      "eklenen": [
+        "S-JOSE-06",
+        "S-SDJWT-03"
+      ],
+      "fark_0_5": -0.09999999999999998,
+      "fark_0_5_ga": [
+        -0.25409371883198145,
+        0.07679639746677513
+      ],
+      "holm_disi": true,
+      "karar": "belirsiz",
+      "n_eff": 30,
+      "oran": 0.4,
+      "p_alt": {
+        "deger": 0.1807973040267825,
+        "kesin": "194129627/1073741824",
+        "referans": 0.18079730402678257
+      },
+      "p_ust": {
+        "deger": 0.8997557889670134,
+        "kesin": "483052711/536870912",
+        "referans": 0.8997557889670134
+      },
+      "u": 20,
+      "wilson": [
+        0.24590628116801855,
+        0.5767963974667751
+      ]
+    },
+    "pilot_haric": {
+      "P_c": "2533987/67108864",
+      "X": 12,
+      "aciklama": "ÖK §0.3, §6.10: P3 pilot kütüphaneleri hariç",
+      "c": 8,
+      "dislanan": [
+        "S-JOSE-01",
+        "S-SDJWT-02"
+      ],
+      "fark_0_5": -0.038461538461538436,
+      "fark_0_5_ga": [
+        -0.21244146469608777,
+        0.14542061253141203
+      ],
+      "holm_disi": true,
+      "karar": "belirsiz",
+      "n_eff": 26,
+      "oran": 0.46153846153846156,
+      "p_alt": {
+        "deger": 0.42250949144363403,
+        "kesin": "7088533/16777216",
+        "referans": 0.42250949144363403
+      },
+      "p_ust": {
+        "deger": 0.7214014530181885,
+        "kesin": "3025777/4194304",
+        "referans": 0.7214014530181885
+      },
+      "u": 18,
+      "wilson": [
+        0.28755853530391223,
+        0.645420612531412
+      ]
+    }
+  },
+  "T2": {
+    "aciklama": "ÖK §6.6 T2, §2B.7: kesin McNemar (F_K, F_T), iki yönlü; yalnız TK1 + TK2; Holm (T2–T5)",
+    "b": 7,
+    "c": 0,
+    "etki": {
+      "alt": 0.1388076684033464,
+      "fark": 0.4666666666666667,
+      "phi": 0.0,
+      "referans": {
+        "alt": 0.1388076684033463,
+        "ust": 0.6920029349220521
+      },
+      "tanim": "P(F_T=1) − P(F_K=1)",
+      "ust": 0.6920029349220521,
+      "yontem": "Newcombe (1998) yöntem 10, eşleştirilmiş (φ* düzeltmeli); ÖK §6.7"
+    },
+    "hedefler": [
+      "S-COSE-01",
+      "S-COSE-03",
+      "S-COSE-04",
+      "S-JOSE-06",
+      "S-JOSE-07",
+      "S-JOSE-09",
+      "S-JOSE-11",
+      "S-JOSE-13",
+      "S-JOSE-14",
+      "S-JOSE-15",
+      "S-JOSE-17",
+      "S-SDJWT-02",
+      "S-SDJWT-03",
+      "S-SDJWT-05",
+      "S-SDJWT-08"
+    ],
+    "holm_disi": false,
+    "kapsam": [
+      "TK1",
+      "TK2"
+    ],
+    "n_cift": 15,
+    "p": {
+      "deger": 0.015625,
+      "kesin": "1/64",
+      "referans": 0.015625
+    },
+    "tablo": {
+      "a": 1,
+      "b": 7,
+      "c": 0,
+      "d": 7
+    },
+    "tablo_tanimi": "a=(F_K=1,F_T=1), b=(F_K=0,F_T=1), c=(F_K=1,F_T=0), d=(F_K=0,F_T=0)",
+    "test": "T2",
+    "veri_yok": false
+  },
+  "T2_devralan_haric": {
+    "aciklama": "ÖK §2B.9: devralan hedefler hariç T2; tanımlayıcı, Holm dışı",
+    "b": 6,
+    "c": 0,
+    "dislanan": [
+      "S-SDJWT-05"
+    ],
+    "etki": {
+      "alt": 0.09241315442115178,
+      "fark": 0.42857142857142855,
+      "phi": 0.0,
+      "referans": {
+        "alt": 0.09241315442115161,
+        "ust": 0.6678915843051693
+      },
+      "tanim": "P(F_T=1) − P(F_K=1)",
+      "ust": 0.6678915843051692,
+      "yontem": "Newcombe (1998) yöntem 10, eşleştirilmiş (φ* düzeltmeli); ÖK §6.7"
+    },
+    "hedefler": [
+      "S-COSE-01",
+      "S-COSE-03",
+      "S-COSE-04",
+      "S-JOSE-06",
+      "S-JOSE-07",
+      "S-JOSE-09",
+      "S-JOSE-11",
+      "S-JOSE-13",
+      "S-JOSE-14",
+      "S-JOSE-15",
+      "S-JOSE-17",
+      "S-SDJWT-02",
+      "S-SDJWT-03",
+      "S-SDJWT-08"
+    ],
+    "holm_disi": true,
+    "kapsam": [
+      "TK1",
+      "TK2"
+    ],
+    "n_cift": 14,
+    "p": {
+      "deger": 0.03125,
+      "kesin": "1/32",
+      "referans": 0.03125
+    },
+    "tablo": {
+      "a": 1,
+      "b": 6,
+      "c": 0,
+      "d": 7
+    },
+    "tablo_tanimi": "a=(F_K=1,F_T=1), b=(F_K=0,F_T=1), c=(F_K=1,F_T=0), d=(F_K=0,F_T=0)",
+    "test": "T2",
+    "veri_yok": false
+  },
+  "T3": {
+    "aciklama": "ÖK §6.6 T3: PQ'ya özgü başarısızlık (F_T=1 ∧ F_K=0) oranı SD-JWT ve JOSE'de farklı mı? Fisher kesin, iki yönlü; Holm (T2–T5)",
+    "fark": {
+      "alt": -0.22156527032190088,
+      "fark": 0.14705882352941177,
+      "referans": {
+        "alt": -0.221565270321901,
+        "ust": 0.4838759039527266
+      },
+      "tanim": "p(SDJWT) − p(JOSE)",
+      "ust": 0.48387590395272645,
+      "yontem": "Newcombe (1998) yöntem 10, bağımsız; ÖK §6.7"
+    },
+    "hedefler": [
+      "S-JOSE-01",
+      "S-JOSE-02",
+      "S-JOSE-03",
+      "S-JOSE-05",
+      "S-JOSE-06",
+      "S-JOSE-07",
+      "S-JOSE-08",
+      "S-JOSE-09",
+      "S-JOSE-10",
+      "S-JOSE-11",
+      "S-JOSE-12",
+      "S-JOSE-13",
+      "S-JOSE-14",
+      "S-JOSE-15",
+      "S-JOSE-16",
+      "S-JOSE-17",
+      "S-JOSE-18",
+      "S-SDJWT-01",
+      "S-SDJWT-02",
+      "S-SDJWT-03",
+      "S-SDJWT-04",
+      "S-SDJWT-05",
+      "S-SDJWT-06",
+      "S-SDJWT-07",
+      "S-SDJWT-08"
+    ],
+    "n": 25,
+    "or": {
+      "alt": 0.2378259373014855,
+      "mle": 1.788046874318998,
+      "referans": {
+        "alt": 0.2378259373014843,
+        "mle": 1.7880468743189986,
+        "ust": 13.843594814837946
+      },
+      "ust": 13.843594814837937,
+      "yontem": "koşullu MLE + koşullu kesin GA (Fisher merkezsiz hipergeometrik); ÖK §6.7"
+    },
+    "oranlar": {
+      "JOSE": 0.35294117647058826,
+      "SDJWT": 0.5
+    },
+    "p": {
+      "deger": 0.6668192219679634,
+      "kesin": "1457/2185",
+      "referans": 0.6668192219679634
+    },
+    "satirlar": [
+      "SDJWT",
+      "JOSE"
+    ],
+    "sutunlar": [
+      "PQ_ozgu=1",
+      "PQ_ozgu=0"
+    ],
+    "tablo": [
+      [
+        4,
+        4
+      ],
+      [
+        6,
+        11
+      ]
+    ],
+    "test": "T3",
+    "tk_kapsami": [
+      "TK1",
+      "TK2",
+      "TK3"
+    ],
+    "veri_yok": false
+  },
+  "T4": {
+    "aciklama": "ÖK §6.6 T4: L ≥ 3 oranı, 8725bis-10'dan (2026-08-21) sonra sürüm çıkaran ve çıkarmayan hedeflerde farklı mı? Fisher kesin, iki yönlü; Holm (T2–T5)",
+    "fark": {
+      "alt": -0.1957678271324783,
+      "fark": 0.14479638009049775,
+      "referans": {
+        "alt": -0.19576782713247837,
+        "ust": 0.4392765813960733
+      },
+      "tanim": "p(8725bis_sonrasi=1) − p(8725bis_sonrasi=0)",
+      "ust": 0.4392765813960731,
+      "yontem": "Newcombe (1998) yöntem 10, bağımsız; ÖK §6.7"
+    },
+    "hedefler": [
+      "S-COSE-01",
+      "S-COSE-02",
+      "S-COSE-03",
+      "S-COSE-04",
+      "S-COSE-05",
+      "S-JOSE-01",
+      "S-JOSE-02",
+      "S-JOSE-03",
+      "S-JOSE-05",
+      "S-JOSE-06",
+      "S-JOSE-07",
+      "S-JOSE-08",
+      "S-JOSE-09",
+      "S-JOSE-10",
+      "S-JOSE-11",
+      "S-JOSE-12",
+      "S-JOSE-13",
+      "S-JOSE-14",
+      "S-JOSE-15",
+      "S-JOSE-16",
+      "S-JOSE-17",
+      "S-JOSE-18",
+      "S-SDJWT-01",
+      "S-SDJWT-02",
+      "S-SDJWT-03",
+      "S-SDJWT-04",
+      "S-SDJWT-05",
+      "S-SDJWT-06",
+      "S-SDJWT-07",
+      "S-SDJWT-08"
+    ],
+    "n": 30,
+    "or": {
+      "alt": 0.33368311093314873,
+      "mle": 1.7647123149089115,
+      "referans": {
+        "alt": 0.33368311093314745,
+        "mle": 1.7647123149089128,
+        "ust": 10.105831073430599
+      },
+      "ust": 10.105831073430606,
+      "yontem": "koşullu MLE + koşullu kesin GA (Fisher merkezsiz hipergeometrik); ÖK §6.7"
+    },
+    "oranlar": {
+      "8725bis_sonrasi=0": 0.47058823529411764,
+      "8725bis_sonrasi=1": 0.6153846153846154
+    },
+    "p": {
+      "deger": 0.4836518582813856,
+      "kesin": "153233/316825",
+      "referans": 0.48365185828138557
+    },
+    "satirlar": [
+      "8725bis_sonrasi=1",
+      "8725bis_sonrasi=0"
+    ],
+    "sutunlar": [
+      "L>=3",
+      "L<3"
+    ],
+    "tablo": [
+      [
+        8,
+        5
+      ],
+      [
+        8,
+        9
+      ]
+    ],
+    "test": "T4",
+    "veri_yok": false
+  },
+  "T5": {
+    "X": 19,
+    "aciklama": "ÖK §6.6 T5: varsayılan yapılandırmada soyulmuş belgeyi kabul oranı > 0,5 mi? Kesin binom, tek yönlü (üst); Holm (T2–T5)",
+    "hedefler": [
+      "S-COSE-01",
+      "S-COSE-02",
+      "S-COSE-03",
+      "S-COSE-04",
+      "S-COSE-05",
+      "S-JOSE-01",
+      "S-JOSE-02",
+      "S-JOSE-03",
+      "S-JOSE-05",
+      "S-JOSE-06",
+      "S-JOSE-07",
+      "S-JOSE-08",
+      "S-JOSE-09",
+      "S-JOSE-10",
+      "S-JOSE-11",
+      "S-JOSE-12",
+      "S-JOSE-13",
+      "S-JOSE-14",
+      "S-JOSE-15",
+      "S-JOSE-16",
+      "S-JOSE-17",
+      "S-JOSE-18",
+      "S-SDJWT-01",
+      "S-SDJWT-02",
+      "S-SDJWT-03",
+      "S-SDJWT-04",
+      "S-SDJWT-05",
+      "S-SDJWT-06",
+      "S-SDJWT-07",
+      "S-SDJWT-08"
+    ],
+    "n": 30,
+    "oran": 0.6333333333333333,
+    "p": {
+      "deger": 0.10024421103298664,
+      "kesin": "53818201/536870912",
+      "referans": 0.10024421103298667
+    },
+    "test": "T5",
+    "veri_yok": false,
+    "wilson": [
+      0.4551356365479488,
+      0.7812607919389929
+    ]
+  },
+  "TK3_tanimlayici": {
+    "n_cift": 15,
+    "not": "ÖK §2B.7: TK3 ayrı ve tanımlayıcı raporlanır (T2'ye girmez)",
+    "tablo": {
+      "a": 1,
+      "b": 5,
+      "c": 0,
+      "d": 9
+    }
+  },
+  "arac": {
+    "betik_sha256": {
+      "__init__.py": "809b210e9e26e0747a7e326c375a087c9d8de5f398cc3aacebda8d040f42684a",
+      "__main__.py": "6990410d729888995e6463cd1c6d14867302cdbcc80218f50201274f8479c6ff",
+      "analiz.py": "39f206acd30dfe5be758d1ebcf5e4d8622cfb30b0be1b92d996452620a803ccf",
+      "bootstrap.py": "df51f9a55a7b2889acc8603e0ecd4495de48fdbb6c508f09d2da929444f9db74",
+      "karsilastir.py": "5378604763427c160916e97908b15e3975c67f092a7b997215b31ea54dae37c5",
+      "kesin.py": "e5d6ac2fc76bc29971090898f067d9f66995b7c26598603e433376e20bbf7be0",
+      "rapor.py": "7de41aa0be63011f5bdfd9f332349308ddc97d021a8a73ead182d7230a2e9738",
+      "referans.py": "537386516291b9d4a52de38b5f058a26df168f46964512e9767cefe1f5c0283e",
+      "sema.py": "f7221f182c16a0bafed020691f3bd8bae6f3741c930bf02c1a871f33096a6f22",
+      "yapilandirma.py": "b0b980421e4cf6ae34c88309ebe261f3565de2f50ea8bac04b00c56e09339abc"
+    },
+    "surumler": {
+      "c3istat": "1.0.0",
+      "numpy": "2.4.6",
+      "python": "3.11.16",
+      "scipy": "1.17.1",
+      "statsmodels": "0.15.0"
+    }
+  },
+  "bootstrap": {
+    "K": {
+      "B": 10000,
+      "alt": 0.022752482159478747,
+      "dagilim_ozeti": {
+        "farkli_deger_sayisi": 885,
+        "max": 0.08522727272727272,
+        "min": 0.01021566401816118
+      },
+      "dagilim_sha256": "c24494d5d18ab774670a4d7a3369b1cbb9cfb40e18c2d91fea98421e9f068630",
+      "dislanan_bos_kume": [],
+      "durum": "tamam",
+      "k": 30,
+      "kapsam": "kontrol kolu",
+      "olcu": "oracle'a uymayan vaka oranı (havuzlanmış: Σ uymayan / Σ belirli vaka)",
+      "referans": {
+        "alt": 0.022752482159478747,
+        "dagilim_sha256": "c24494d5d18ab774670a4d7a3369b1cbb9cfb40e18c2d91fea98421e9f068630",
+        "ust": 0.06524184476940383
+      },
+      "tahmin": 0.04284103720405862,
+      "tohum": 20260927,
+      "toplam_vaka": 887,
+      "ust": 0.06524184476940383,
+      "uygulama": "saf",
+      "uymayan_vaka": 38,
+      "yuzdelikler": [
+        "1/40",
+        "39/40"
+      ]
+    },
+    "T": {
+      "B": 10000,
+      "alt": 0.11774600504625736,
+      "dagilim_ozeti": {
+        "farkli_deger_sayisi": 1846,
+        "max": 0.2327150084317032,
+        "min": 0.09375
+      },
+      "dagilim_sha256": "06da0a7d296c5f45d25f9b46769fa37e31609843a4259c9b9f056a6f4cb0b189",
+      "dislanan_bos_kume": [],
+      "durum": "tamam",
+      "k": 30,
+      "kapsam": "tedavi kolu",
+      "olcu": "oracle'a uymayan vaka oranı (havuzlanmış: Σ uymayan / Σ belirli vaka)",
+      "referans": {
+        "alt": 0.11774600504625736,
+        "dagilim_sha256": "06da0a7d296c5f45d25f9b46769fa37e31609843a4259c9b9f056a6f4cb0b189",
+        "ust": 0.1941211248012718
+      },
+      "tahmin": 0.15417017691659646,
+      "tohum": 20260927,
+      "toplam_vaka": 1187,
+      "ust": 0.19412112480127186,
+      "uygulama": "saf",
+      "uymayan_vaka": 183,
+      "yuzdelikler": [
+        "1/40",
+        "39/40"
+      ]
+    },
+    "tum": {
+      "B": 10000,
+      "alt": 0.08462575859743762,
+      "dagilim_ozeti": {
+        "farkli_deger_sayisi": 2983,
+        "max": 0.13513513513513514,
+        "min": 0.07277628032345014
+      },
+      "dagilim_sha256": "4531618745799044f84dbd073178c4727324d2622ba69b064d6a98f60b33b2f0",
+      "dislanan_bos_kume": [],
+      "durum": "tamam",
+      "k": 30,
+      "kapsam": "bütün vakalar",
+      "olcu": "oracle'a uymayan vaka oranı (havuzlanmış: Σ uymayan / Σ belirli vaka)",
+      "referans": {
+        "alt": 0.08462575859743762,
+        "dagilim_sha256": "4531618745799044f84dbd073178c4727324d2622ba69b064d6a98f60b33b2f0",
+        "ust": 0.11982528809865257
+      },
+      "tahmin": 0.1016548463356974,
+      "tohum": 20260927,
+      "toplam_vaka": 2961,
+      "ust": 0.11982528809865259,
+      "uygulama": "saf",
+      "uymayan_vaka": 301,
+      "yuzdelikler": [
+        "1/40",
+        "39/40"
+      ]
+    }
+  },
+  "girdi": {
+    "aciklama": "SENTETIK ornek (gercek olcum DEGIL); ornek_veri_uret.py, test tohumu 910010",
+    "hedef_kaydi": 33,
+    "kaynak": {
+      "dosya": "ornek_n31_sentetik.json",
+      "sha256": "0420f58d7221281f8fb96254394f2f66b7f230e45178332fcb24d24ad52ff57a"
+    },
+    "sema_surumu": "c3-istat-girdi/1.0",
+    "vaka_kaydi": 3000,
+    "veri_turu": "sentetik"
+  },
+  "holm": {
+    "aile": [
+      "T2",
+      "T3",
+      "T4",
+      "T5"
+    ],
+    "alfa": "1/20",
+    "m": 4,
+    "not": "Veri yoksa p = 1 alınır ve aile boyutu m = 4 korunur; T1 aile dışıdır (ÖK §6.6).",
+    "sonuclar": {
+      "T2": {
+        "p": {
+          "deger": 0.015625,
+          "kesin": "1/64",
+          "referans": 0.015625
+        },
+        "p_duzeltilmis": {
+          "deger": 0.0625,
+          "kesin": "1/16",
+          "referans": 0.0625
+        },
+        "red": false,
+        "red_referans": false,
+        "sira": 1,
+        "veri_yok": false
+      },
+      "T3": {
+        "p": {
+          "deger": 0.6668192219679634,
+          "kesin": "1457/2185",
+          "referans": 0.6668192219679634
+        },
+        "p_duzeltilmis": {
+          "deger": 0.9673037165627713,
+          "kesin": "306466/316825",
+          "referans": 0.9673037165627711
+        },
+        "red": false,
+        "red_referans": false,
+        "sira": 4,
+        "veri_yok": false
+      },
+      "T4": {
+        "p": {
+          "deger": 0.4836518582813856,
+          "kesin": "153233/316825",
+          "referans": 0.48365185828138557
+        },
+        "p_duzeltilmis": {
+          "deger": 0.9673037165627713,
+          "kesin": "306466/316825",
+          "referans": 0.9673037165627711
+        },
+        "red": false,
+        "red_referans": false,
+        "sira": 3,
+        "veri_yok": false
+      },
+      "T5": {
+        "p": {
+          "deger": 0.10024421103298664,
+          "kesin": "53818201/536870912",
+          "referans": 0.10024421103298667
+        },
+        "p_duzeltilmis": {
+          "deger": 0.3007326330989599,
+          "kesin": "161454603/536870912",
+          "referans": 0.30073263309896003
+        },
+        "red": false,
+        "red_referans": false,
+        "sira": 2,
+        "veri_yok": false
+      }
+    }
+  },
+  "iki_uygulama": {
+    "en_buyuk_sapma": 5.018333008645263e-15,
+    "gecerli": true,
+    "hata": 0,
+    "karsilastirma": 91,
+    "sinir_kayitlari": [],
+    "sinirda": 0,
+    "uyumlu": 91,
+    "uyusmazliklar": []
+  },
+  "orneklem": {
+    "Y_L4_belirsiz": [
+      "S-JOSE-06",
+      "S-SDJWT-03"
+    ],
+    "adaptor_gecersiz": [
+      {
+        "gerekce": "SENTETİK: V+/V− iki düzeltmeden sonra geçmedi",
+        "hedef_id": "S-JOSE-04"
+      }
+    ],
+    "n": 31,
+    "n_beklenen": 31,
+    "n_eff": 28,
+    "ref_hedefler": [
+      "S-REF-01",
+      "S-REF-02"
+    ],
+    "uyarilar": []
+  },
+  "tanimlayici": {
+    "B4_satir": {
+      "max": 55,
+      "medyan": 20,
+      "min": 9,
+      "n": 5
+    },
+    "REF": [
+      {
+        "D_soy": 1,
+        "F_K": 0,
+        "F_T": 1,
+        "L_duzeyi": 2,
+        "Y_L4": 0,
+        "hedef_id": "S-REF-01"
+      },
+      {
+        "D_soy": 1,
+        "F_K": 0,
+        "F_T": 1,
+        "L_duzeyi": 2,
+        "Y_L4": 0,
+        "hedef_id": "S-REF-02"
+      }
+    ],
+    "TK3": {
+      "n_cift": 15,
+      "not": "ÖK §2B.7: TK3 ayrı ve tanımlayıcı raporlanır (T2'ye girmez)",
+      "tablo": {
+        "a": 1,
+        "b": 5,
+        "c": 0,
+        "d": 9
+      }
+    },
+    "belirsiz_nedenleri": {
+      "B2": {
+        "uygulanamaz": 5
+      },
+      "B3": {
+        "uygulanamaz": 5
+      },
+      "Y_L4": {
+        "kanit_kurali": 1,
+        "oracle_uyusmazligi": 1
+      }
+    },
+    "devralanlar": [
+      {
+        "devraldigi_hedef": "S-JOSE-07",
+        "hedef_id": "S-SDJWT-05"
+      }
+    ],
+    "kararsiz_hucre_sayisi": 39,
+    "kontrol_etiketi": {
+      "Ed25519": 1,
+      "EdDSA": 29
+    },
+    "l4_bicimi": {
+      "L4c": 20,
+      "L4m": 10
+    },
+    "pilotlar": [
+      "S-JOSE-01",
+      "S-SDJWT-02"
+    ],
+    "tabaka": {
+      "COSE": 5,
+      "JOSE": 18,
+      "SDJWT": 8
+    },
+    "tk_sinifi": {
+      "TK1": 6,
+      "TK2": 9,
+      "TK3": 15
+    },
+    "vaka_belirsiz_nedenleri": {
+      "kararsiz_3_tekrar": 39
+    }
+  },
+  "wilson": {
+    "L_duzeyi": {
+      "L0": {
+        "ga": [
+          0.053096554840547455,
+          0.2968132668203629
+        ],
+        "n": 30,
+        "oran": 0.13333333333333333,
+        "x": 4
+      },
+      "L1": {
+        "ga": [
+          0.053096554840547455,
+          0.2968132668203629
+        ],
+        "n": 30,
+        "oran": 0.13333333333333333,
+        "x": 4
+      },
+      "L2": {
+        "ga": [
+          0.09505107177289873,
+          0.3730569641314825
+        ],
+        "n": 30,
+        "oran": 0.2,
+        "x": 6
+      },
+      "L3": {
+        "ga": [
+          0.053096554840547455,
+          0.2968132668203629
+        ],
+        "n": 30,
+        "oran": 0.13333333333333333,
+        "x": 4
+      },
+      "L4": {
+        "ga": [
+          0.09505107177289873,
+          0.3730569641314825
+        ],
+        "n": 30,
+        "oran": 0.2,
+        "x": 6
+      },
+      "L5": {
+        "ga": [
+          0.09505107177289873,
+          0.3730569641314825
+        ],
+        "n": 30,
+        "oran": 0.2,
+        "x": 6
+      },
+      "n": 30
+    },
+    "L_en_az": {
+      "L1": {
+        "ga": [
+          0.7031867331796371,
+          0.9469034451594526
+        ],
+        "n": 30,
+        "oran": 0.8666666666666667,
+        "x": 26
+      },
+      "L2": {
+        "ga": [
+          0.5555203830481111,
+          0.8581733668040368
+        ],
+        "n": 30,
+        "oran": 0.7333333333333333,
+        "x": 22
+      },
+      "L3": {
+        "ga": [
+          0.36142299619873297,
+          0.6976761109230024
+        ],
+        "n": 30,
+        "oran": 0.5333333333333333,
+        "x": 16
+      },
+      "L4": {
+        "ga": [
+          0.24590628116801855,
+          0.5767963974667751
+        ],
+        "n": 30,
+        "oran": 0.4,
+        "x": 12
+      },
+      "L5": {
+        "ga": [
+          0.09505107177289873,
+          0.3730569641314825
+        ],
+        "n": 30,
+        "oran": 0.2,
+        "x": 6
+      },
+      "n": 30,
+      "not": "tanımlayıcı ek (L ≥ k)"
+    },
+    "Y_L4_l4_bicimine_gore": {
+      "L4c": {
+        "ga": [
+          0.2030524657216363,
+          0.613809583977621
+        ],
+        "n": 18,
+        "oran": 0.3888888888888889,
+        "x": 7
+      },
+      "L4m": {
+        "ga": [
+          0.23659309051256405,
+          0.763406909487436
+        ],
+        "n": 10,
+        "oran": 0.5,
+        "x": 5
+      },
+      "not": "tanımlayıcı (ÖK §2B.6: uygulanan biçim hedef başına raporlanır)"
+    },
+    "bayraklar": {
+      "B1": {
+        "dogrulama_duser": {
+          "ga": [
+            0.3023238890769976,
+            0.638577003801267
+          ],
+          "n": 30,
+          "oran": 0.4666666666666667,
+          "x": 14
+        },
+        "n": 30,
+        "red": {
+          "ga": [
+            0.11792388144489499,
+            0.40928326158122164
+          ],
+          "n": 30,
+          "oran": 0.23333333333333334,
+          "x": 7
+        },
+        "yok_sayma": {
+          "ga": [
+            0.166647482682438,
+            0.47875787458714947
+          ],
+          "n": 30,
+          "oran": 0.3,
+          "x": 9
+        }
+      },
+      "B2": {
+        "1": {
+          "ga": [
+            0.0416681715044036,
+            0.2995579392092732
+          ],
+          "n": 25,
+          "oran": 0.12,
+          "x": 3
+        },
+        "n": 25
+      },
+      "B3": {
+        "1": {
+          "ga": [
+            0.33498516950356777,
+            0.6996871404588703
+          ],
+          "n": 25,
+          "oran": 0.52,
+          "x": 13
+        },
+        "n": 25
+      },
+      "B4_ozel_kod": {
+        "1": {
+          "ga": [
+            0.07336542371848552,
+            0.3356435050641603
+          ],
+          "n": 30,
+          "oran": 0.16666666666666666,
+          "x": 5
+        },
+        "n": 30
+      },
+      "B5": {
+        "diger": {
+          "ga": [
+            0.1923049808367614,
+            0.5121994835545615
+          ],
+          "n": 30,
+          "oran": 0.3333333333333333,
+          "x": 10
+        },
+        "en_az_biri_gecerli": {
+          "ga": [
+            0.03459988874733419,
+            0.2562108257918408
+          ],
+          "n": 30,
+          "oran": 0.1,
+          "x": 3
+        },
+        "gerekli_kume": {
+          "ga": [
+            0.09505107177289873,
+            0.3730569641314825
+          ],
+          "n": 30,
+          "oran": 0.2,
+          "x": 6
+        },
+        "mevcut_tumu_gecerli": {
+          "ga": [
+            0.2187392080610071,
+            0.5448643634520512
+          ],
+          "n": 30,
+          "oran": 0.36666666666666664,
+          "x": 11
+        },
+        "n": 30
+      },
+      "B6": {
+        "1": {
+          "ga": [
+            0.14182663319596325,
+            0.4444796169518888
+          ],
+          "n": 30,
+          "oran": 0.26666666666666666,
+          "x": 8
+        },
+        "n": 30
+      }
+    }
+  },
+  "yapilandirma": {
+    "ALFA": "1/20",
+    "BOOTSTRAP_ALT": "1/40",
+    "BOOTSTRAP_B": 10000,
+    "BOOTSTRAP_RNG": "Python random.Random(tohum).random(); indeks = floor(U*k); replikasyon-öncelikli",
+    "BOOTSTRAP_TOHUM": 20260927,
+    "BOOTSTRAP_UST": "39/40",
+    "BOOTSTRAP_YUZDELIK_TIPI": 7,
+    "GUVEN": "19/20",
+    "HOLM_AILESI": [
+      "T2",
+      "T3",
+      "T4",
+      "T5"
+    ],
+    "NEWCOMBE_ESLESTIRILMIS_PHI": "newcombe_duzeltmeli",
+    "N_BEKLENEN": 31,
+    "N_EFF_CIKARIMSAL_ALT_SINIR": 20,
+    "P0": "1/2",
+    "T2_TK_KAPSAMI": [
+      "TK1",
+      "TK2"
+    ],
+    "T3_TABAKALAR": [
+      "SDJWT",
+      "JOSE"
+    ],
+    "T3_TK_KAPSAMI": [
+      "TK1",
+      "TK2",
+      "TK3"
+    ],
+    "T4_KESIM_TARIHI": "2026-08-21",
+    "T4_L_ESIGI": 3,
+    "TOLERANSLAR": {
+      "bootstrap": 1e-12,
+      "ga": 1e-10,
+      "or_goreli": 1e-08,
+      "or_mutlak": 1e-12,
+      "p": 1e-10,
+      "sinir": 1e-12
+    }
+  }
+}

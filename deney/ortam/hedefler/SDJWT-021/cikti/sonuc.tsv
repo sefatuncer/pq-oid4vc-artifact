@@ -1,0 +1,16 @@
+baslangic	2026-09-25T13:20:10Z
+hedef	SDJWT-021
+ekosistem	nuget
+paket	WalletFramework.SdJwtVc
+istenen_surum	3.1.0
+arac	dotnet-sdk 10.0.401; net10.0; sistem OpenSSL 3.5.5
+kilit_dosyasi	packages.lock.json (NuGet contentHash)
+kilit_sha256	1766fe97f35094234bf5f7a57c4cc8a98dff328ea813056e97621b3e13419faf
+bagimlilik_sayisi	34
+paket_ozeti	sha512:oE9otHv2qoeqJ18uNEnQKHwZon6vgPIYXqW/Q6gNSjHXwVRvD2/GZXdaod7XKDv81r6p0TJZphj2J8qCnmHMJQ== (NuGet contentHash)
+commit	2ed7a64b9c449b86bb2996359f2ca4a7e03a0cbb
+commit_kaynagi	nuspec <repository commit>
+lisans_kayit	Apache-2.0
+kurulan_surum	3.1.0
+ice_aktar	basarili
+bitis	2026-09-25T13:20:17Z

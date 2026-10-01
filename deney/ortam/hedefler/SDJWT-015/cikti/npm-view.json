@@ -1,0 +1,6 @@
+{
+  "dist.integrity": "sha512-b4ODdTXT+QvfZkYlu9i8goV3fybdXD7wkOugplO1OyDzPvePelgJlzqT4wjwnBIM+E6ktH4h79XMGKAlJJEq4A==",
+  "dist.tarball": "https://registry.npmjs.org/@sd-jwt/core/-/core-0.21.0.tgz",
+  "repository.url": "git+https://github.com/openwallet-foundation-labs/identity-common-ts.git",
+  "license": "Apache-2.0"
+}

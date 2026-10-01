@@ -1,0 +1,314 @@
+theory M_H
+begin
+
+/*
+ * =====================================================================
+ *  PQ-OID4VC | Adım 7 görev 0 | M-h: sertifikaya gömülü PQ taahhüdü
+ *  görev 3a (i)–(ii) ve 3b (M-h × üç saldırı) — TASLAK, koşulmadı (--prove YOK)
+ * =====================================================================
+ *  Tip (tam olarak biri):
+ *    MH_REDDY    draft-reddy-lamps-x509-pq-commit-01. PQC sertifikasında PQCHC eki.
+ *                Doğrulayıcı yol doğrulamasından sonra SAN + yaprak algoritmasını
+ *                önbelleğe alır (§3.3); pencere içinde yalnız geleneksel sertifika
+ *                görürse bağlantıyı keser (SHOULD, §3.3). Yol doğrulaması değişmez (§3.1).
+ *    MH_VICENTE  draft-vicente-lamps-pqchc-02. Klasik sertifikada gelecekteki PQ
+ *                anahtarının özeti (committedKeyHash, §4.1). Ardıl PQ sertifikasında
+ *                özet uyuşmazlığı taahhüt hatasıdır (REQ-3, §4.2). Taahhüt danışma
+ *                niteliğindedir (§4.2, §7): klasik sertifika kabulünü değiştirmez.
+ *  Bayraklar:
+ *    CA_PQ      dürüst CA ('CAM') PQ; yoksa klasik ve Q-day'den sonra kırılır (görev 3a-i)
+ *    NAME_BIND  (yalnız reddy) önbellek, yaprağı imzalayan CA'nın adını da tutar (R7h ad bağlama)
+ *    ATK_DIFF / ATK_SAME / ATK_ROOT  TL'de listelenmiş klasik çıpalar (görev 3b; Mf_yol ile aynı)
+ *  Model varsayımları:
+ *    (R1) reddy: "SHOULD ... terminate" uygulanır. Süreklilik penceresi, iptal ve
+ *         PQC→PQC algoritma değişimi modellenmez (tek PQ etiketi). Pencere sonrası
+ *         koruma yoktur; bu, koşumsuz türetilir (GEREKCE §6).
+ *    (V1) vicente: taahhüt hatası reddedilir. Taslak "commitment failure" der, ama
+ *         sonucunu tanımlamaz; red, taslağa en elverişli okumadır.
+ *    (V2) vicente: doğrulayıcı özne başına ilk öğrendiği taahhüdü tutar (Unique).
+ *         commitmentNotAfter (REQ-4) modellenmez.
+ *  Sertifika: <'iss_cert', I, pk, alg, ek>; ara CA: <'int_cert', N, pk, alg>.
+ */
+
+builtins: signing, hashing
+
+restriction Equality: "All x y #i. Eq(x, y) @ #i ==> x = y"
+restriction Unique:   "All x #i #j. Unique(x) @ #i & Unique(x) @ #j ==> #i = #j"
+
+restriction ClassicalIssuanceUntilSunset:
+  "All X #i. IssueClassical(X) @ #i ==> not (Ex #s. Sunset(X) @ #s & #s < #i)"
+restriction PQIssuanceAfterMigrate:
+  "All X #i. IssuePQ(X) @ #i ==> (Ex #m. Migrate(X) @ #m & #m < #i)"
+
+#ifdef MH_REDDY
+/* önbellekten sonra yalnız geleneksel yaprak reddedilir (R1) */
+restriction ReddyContinuity:
+  "All V I #k #j. SeenPQReq(V, I) @ #k & NoPolicy(V, I) @ #j & #k < #j ==> F"
+#endif
+
+#ifdef MH_REDDY & NAME_BIND
+restriction ReddyNameBinding:
+  "All V I N N2 #k #j. CachedIssuer(V, I, N) @ #k & UsedIssuer(V, I, N2) @ #j & #k < #j ==> N = N2"
+#endif
+
+#ifdef MH_VICENTE
+/* taahhüt öğrenildikten sonra PQ ardıl yalnız özet eşleşirse kabul edilir (V1) */
+restriction VicenteCommitment:
+  "All V I hk #k #j. LearnedCommit(V, I, hk) @ #k & NoCommitCheck(V, I) @ #j & #k < #j ==> F"
+#endif
+
+#include "ortak_g5.spthy"
+
+/* ---------------- Q-day ve CRQC ---------------- */
+rule Qday:
+    [ ] --[ Unique('qday'), QdayEv() ]-> [ !CRQC() ]
+
+rule CRQC_Break_Issuer_Classical:
+    [ !IssCl(X, k), !CRQC(), In(pk(k)) ] --[ Broken(<'iss_cl', X>) ]-> [ Out(k) ]
+
+rule CRQC_Break_Classical_Anchor:
+    [ !ClAnchorSk(A, k), !CRQC(), In(pk(k)) ] --[ Broken(<'anchor', A>) ]-> [ Out(k) ]
+
+/* ---------------- TL'de listelenen çıpalar ---------------- */
+#ifdef CA_PQ
+rule CAM_Setup:
+    [ Fr(~kcam) ]
+  --[ Unique('setup_cam') ]->
+    [ !CASk('CAM', ~kcam), !Anchor('CAM', pk(~kcam), 'pq'), Out(pk(~kcam)) ]
+#endif
+
+#ifdef not CA_PQ
+/* görev 3a (i): taahhüt yalnız klasik zincirde taşınır */
+rule CAM_Setup:
+    [ Fr(~kcam) ]
+  --[ Unique('setup_cam') ]->
+    [ !CASk('CAM', ~kcam), !ClAnchorSk('CAM', ~kcam), !Anchor('CAM', pk(~kcam), 'cl'), Out(pk(~kcam)) ]
+#endif
+
+#ifdef ATK_DIFF
+rule AltCA_Setup:
+    [ Fr(~ka) ]
+  --[ Unique('setup_alt_ca') ]->
+    [ !ClAnchorSk('CAA', ~ka), !Anchor('CAA', pk(~ka), 'cl'), Out(pk(~ka)) ]
+#endif
+
+#ifdef ATK_SAME
+rule OldCAM_Setup:
+    [ Fr(~ko) ]
+  --[ Unique('setup_old_cam') ]->
+    [ !ClAnchorSk('CAM', ~ko), !Anchor('CAM', pk(~ko), 'cl'), Out(pk(~ko)) ]
+#endif
+
+#ifdef ATK_ROOT
+rule ClassicalRoot_Setup:
+    [ Fr(~kr) ]
+  --[ Unique('setup_cl_root') ]->
+    [ !ClAnchorSk('ROOT', ~kr), !Anchor('ROOT', pk(~kr), 'cl'), Out(pk(~kr)) ]
+#endif
+
+/* ---------------- ihraççılar ve yaşam döngüsü ---------------- */
+#ifdef MH_REDDY
+/* reddy: PQCHC eki PQC sertifikasındadır */
+rule Issuer_Setup_Born:
+    let cc = <'iss_cert', $I, pk(~kc), 'cl', 'noext'>
+        cq = <'iss_cert', $I, pk(~kq), 'pq', 'pqchc'>
+    in
+    [ !CASk('CAM', kcam), Fr(~kc), Fr(~kq) ]
+  --[ Unique(<'iss', $I>), Unique(<'migrate', $I>), BornMigrated($I), Migrate($I), StateChange($I),
+      HonestPQKey($I, pk(~kq)) ]->
+    [ !IssCl($I, ~kc), !IssPQ($I, ~kq), Out(pk(~kc)), Out(pk(~kq)),
+      Out(<cc, sign(cc, kcam)>), Out(<cq, sign(cq, kcam)>) ]
+
+rule Issuer_Setup_Migrating:
+    let cc = <'iss_cert', $I, pk(~kc), 'cl', 'noext'> in
+    [ !CASk('CAM', kcam), Fr(~kc), Fr(~kq) ]
+  --[ Unique(<'iss', $I>), MigratingIssuer($I), HonestPQKey($I, pk(~kq)) ]->
+    [ !IssCl($I, ~kc), !IssPQ($I, ~kq), Out(pk(~kc)), Out(pk(~kq)), Out(<cc, sign(cc, kcam)>) ]
+
+/* göçte ardıl PQC sertifikası (PQCHC ekli) yayımlanır */
+rule Migrate:
+    let cq = <'iss_cert', I, pk(kq), 'pq', 'pqchc'> in
+    [ !IssPQ(I, kq), !CASk('CAM', kcam) ]
+  --[ Unique(<'migrate', I>), Migrate(I), StateChange(I) ]->
+    [ Out(<cq, sign(cq, kcam)>) ]
+#endif
+
+#ifdef MH_VICENTE
+/* vicente: taahhüt (gelecekteki PQ anahtarının özeti) klasik sertifikadadır */
+rule Issuer_Setup_Born:
+    let cc = <'iss_cert', $I, pk(~kc), 'cl', <'commit', h(pk(~kq))>>
+        cq = <'iss_cert', $I, pk(~kq), 'pq', 'noext'>
+    in
+    [ !CASk('CAM', kcam), Fr(~kc), Fr(~kq) ]
+  --[ Unique(<'iss', $I>), Unique(<'migrate', $I>), BornMigrated($I), Migrate($I), StateChange($I),
+      HonestPQKey($I, pk(~kq)) ]->
+    [ !IssCl($I, ~kc), !IssPQ($I, ~kq), Out(pk(~kc)), Out(pk(~kq)),
+      Out(<cc, sign(cc, kcam)>), Out(<cq, sign(cq, kcam)>) ]
+
+rule Issuer_Setup_Migrating:
+    let cc = <'iss_cert', $I, pk(~kc), 'cl', <'commit', h(pk(~kq))>> in
+    [ !CASk('CAM', kcam), Fr(~kc), Fr(~kq) ]
+  --[ Unique(<'iss', $I>), MigratingIssuer($I), HonestPQKey($I, pk(~kq)) ]->
+    [ !IssCl($I, ~kc), !IssPQ($I, ~kq), Out(pk(~kc)), Out(pk(~kq)), Out(<cc, sign(cc, kcam)>) ]
+
+/* göçte taahhüdü onurlandıran ardıl PQ sertifikası yayımlanır */
+rule Migrate:
+    let cq = <'iss_cert', I, pk(kq), 'pq', 'noext'> in
+    [ !IssPQ(I, kq), !CASk('CAM', kcam) ]
+  --[ Unique(<'migrate', I>), Migrate(I), StateChange(I) ]->
+    [ Out(<cq, sign(cq, kcam)>) ]
+#endif
+
+rule Issuer_Setup_Legacy:
+    let cc = <'iss_cert', $L, pk(~kc), 'cl', 'noext'> in
+    [ !CASk('CAM', kcam), Fr(~kc) ]
+  --[ Unique(<'iss', $L>), Legacy($L) ]->
+    [ !IssCl($L, ~kc), Out(pk(~kc)), Out(<cc, sign(cc, kcam)>) ]
+
+rule Sunset:
+    [ !IssPQ(I, kq) ] --[ Unique(<'sunset', I>), Sunset(I), StateChange(I) ]-> [ ]
+
+rule Issue_Classical:
+    let crb = <'cred', X, ~c> in
+    [ !IssCl(X, kc), Fr(~c) ] --[ Issued(X, ~c), IssueClassical(X) ]-> [ Out(<crb, sign(crb, kc)>) ]
+
+rule Issue_PQ:
+    let crb = <'cred', I, ~c> in
+    [ !IssPQ(I, kq), Fr(~c) ] --[ Issued(I, ~c), IssuePQ(I) ]-> [ Out(<crb, sign(crb, kq)>) ]
+
+/* ---------------- yol doğrulaması (RFC 5280; iki taslak da değiştirmez) ---------------- */
+/* VCert(I, pkI, yaprak alg, ek, yaprağı imzalayan CA adı, kenar1 sınıfı, kenar2 sınıfı) */
+rule Path1:
+    let isb = <'iss_cert', I, pkI, la, x> in
+    [ !Anchor(A, pkA, aA), In(<isb, s>) ]
+  --[ Eq(verify(s, isb, pkA), true) ]->
+    [ VCert(I, pkI, la, x, A, aA, aA) ]
+
+rule Path2:
+    let inb = <'int_cert', N, pkN, aN>
+        isb = <'iss_cert', I, pkI, la, x>
+    in
+    [ !Anchor(A, pkA, aA), In(<inb, s1>), In(<isb, s2>) ]
+  --[ Eq(verify(s1, inb, pkA), true), Eq(verify(s2, isb, pkN), true) ]->
+    [ VCert(I, pkI, la, x, N, aA, aN) ]
+
+/* ---------------- reddy: yaprak işleme ---------------- */
+#ifdef MH_REDDY
+rule Leaf_Classical:
+    let crb = <'cred', I, c> in
+    [ VCert(I, pkI, 'cl', x, N, e1, e2), In(<crb, s>) ]
+  --[ Eq(verify(s, crb, pkI), true), NoPolicy($V, I), UsedIssuer($V, I, N), UseClKey(I),
+      Accept($V, I, c), AcceptClassical($V, I, c) ]->
+    [ ]
+
+rule Leaf_PQ:
+    let crb = <'cred', I, c> in
+    [ VCert(I, pkI, 'pq', x, N, e1, e2), In(<crb, s>) ]
+  --[ Eq(verify(s, crb, pkI), true), UsedIssuer($V, I, N),
+      Accept($V, I, c), AcceptPQ($V, I, c), EdgeAlg($V, I, c, e1), EdgeAlg($V, I, c, e2) ]->
+    [ SawCert($V, I, x, N) ]
+
+/* §3.3: PQCHC ekli sertifikayı gören doğrulayıcı SAN + algoritmayı (ve NAME_BIND ile CA adını) tutar */
+rule Learn_Reddy:
+    [ SawCert(V, I, 'pqchc', N) ] --[ SeenPQReq(V, I), CachedIssuer(V, I, N) ]-> [ ]
+#endif
+
+/* ---------------- vicente: yaprak işleme ---------------- */
+#ifdef MH_VICENTE
+/* danışma niteliği: klasik sertifika her zaman işlenir; taahhüt eki varsa görülür */
+rule Leaf_Classical:
+    let crb = <'cred', I, c> in
+    [ VCert(I, pkI, 'cl', x, N, e1, e2), In(<crb, s>) ]
+  --[ Eq(verify(s, crb, pkI), true), UseClKey(I), Accept($V, I, c), AcceptClassical($V, I, c) ]->
+    [ SawCert($V, I, x, N) ]
+
+rule Learn_Vicente:
+    [ SawCert(V, I, <'commit', hk>, N) ]
+  --[ Unique(<'vlearn', V, I>), SeenPQReq(V, I), LearnedCommit(V, I, hk) ]->
+    [ !VCommit(V, I, hk) ]
+
+/* VerifyPQCHCCommitment = COMMITMENT_HONORED */
+rule Leaf_PQ_Checked:
+    let crb = <'cred', I, c> in
+    [ VCert(I, pkI, 'pq', x, N, e1, e2), !VCommit(V, I, h(pkI)), In(<crb, s>) ]
+  --[ Eq(verify(s, crb, pkI), true), Accept(V, I, c), AcceptPQ(V, I, c),
+      EdgeAlg(V, I, c, e1), EdgeAlg(V, I, c, e2) ]->
+    [ ]
+
+/* taahhüt öğrenilmemişse denetim yok */
+rule Leaf_PQ_Unchecked:
+    let crb = <'cred', I, c> in
+    [ VCert(I, pkI, 'pq', x, N, e1, e2), In(<crb, s>) ]
+  --[ Eq(verify(s, crb, pkI), true), NoCommitCheck($V, I), Accept($V, I, c), AcceptPQ($V, I, c),
+      EdgeAlg($V, I, c, e1), EdgeAlg($V, I, c, e2) ]->
+    [ ]
+#endif
+
+/* ================= sağlık lemmaları (H0) ================= */
+
+lemma executable:
+  exists-trace
+  "Ex V I c #m #j. Migrate(I) @ #m & AcceptPQ(V, I, c) @ #j & #m < #j"
+
+lemma executable_legacy:
+  exists-trace
+  "Ex V L c #l #j. Legacy(L) @ #l & AcceptClassical(V, L, c) @ #j"
+
+lemma executable_pre_migration:
+  exists-trace
+  "Ex V I c #s #j. MigratingIssuer(I) @ #s & AcceptClassical(V, I, c) @ #j
+                 & not (Ex #m. Migrate(I) @ #m)"
+
+lemma executable_lifecycle:
+  exists-trace
+  "Ex V I c #m #s #j. Migrate(I) @ #m & Sunset(I) @ #s & AcceptPQ(V, I, c) @ #j & #s < #j"
+
+lemma executable_learn:
+  exists-trace
+  "Ex V I #k. SeenPQReq(V, I) @ #k"
+
+lemma attack_needs_crqc:
+  "All V I c #m #j. Migrate(I) @ #m & Accept(V, I, c) @ #j & #m < #j ==>
+      (Ex #i. Issued(I, c) @ #i & #i < #j) | (Ex k #b. Broken(k) @ #b & #b < #j)"
+
+/* ================= güvenlik ================= */
+
+lemma G1_claims_unforgeability:
+  "All V I c #m #j. Migrate(I) @ #m & Accept(V, I, c) @ #j & #m < #j ==>
+      (Ex #i. Issued(I, c) @ #i & #i < #j)"
+
+/* taahhüt öğrenildikten sonra (ilk temas dışlanır): her kabul gerçek mi */
+lemma G1_learned:
+  "All V I c #k #j. SeenPQReq(V, I) @ #k & Accept(V, I, c) @ #j & #k < #j ==>
+      (Ex #i. Issued(I, c) @ #i & #i < #j)"
+
+/* taahhüt öğrenildikten sonra PQ yaprakla kabul gerçek mi (görev 3b ölçütü) */
+lemma G1_learned_pq:
+  "All V I c #k #j. SeenPQReq(V, I) @ #k & AcceptPQ(V, I, c) @ #j & #k < #j ==>
+      (Ex #i. Issued(I, c) @ #i & #i < #j)"
+
+#ifdef MH_VICENTE
+/* yalnız gerçek taahhüdü (dürüst PQ anahtarının özeti) sabitlemiş doğrulayıcı */
+lemma G1_learned_pq_genuine:
+  "All V I c pkq #s #k #j. HonestPQKey(I, pkq) @ #s & LearnedCommit(V, I, h(pkq)) @ #k
+      & AcceptPQ(V, I, c) @ #j & #k < #j ==> (Ex #i. Issued(I, c) @ #i & #i < #j)"
+#endif
+
+/* öğrenildikten sonra PQ yaprakla kabul klasik kenarlı yoldan geçmez */
+lemma no_rollback_path:
+  "All V I c #k #j. SeenPQReq(V, I) @ #k & AcceptPQ(V, I, c) @ #j & EdgeAlg(V, I, c, 'cl') @ #j
+      & #k < #j ==> F"
+
+/* ================= atıf (mutasyon) lemmaları ================= */
+
+lemma M_downgrade_s1:
+  exists-trace
+  "Ex V I c #m #j. Migrate(I) @ #m & AcceptClassical(V, I, c) @ #j & #m < #j
+                 & not (Ex #q. QdayEv() @ #q)"
+
+lemma M_forgery_crqc:
+  exists-trace
+  "Ex V I c k #m #j #b. Migrate(I) @ #m & Accept(V, I, c) @ #j & #m < #j
+                      & Broken(k) @ #b & not (Ex #i. Issued(I, c) @ #i)"
+
+end

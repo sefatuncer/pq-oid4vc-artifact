@@ -1,0 +1,3 @@
+modul=jwt (ruby-jwt) yuklendi; surum=3.3.0
+sembol JWT.decode true
+sabit JWT::JWA var

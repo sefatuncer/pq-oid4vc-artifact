@@ -1,0 +1,16 @@
+{
+	"Path": "github.com/dvsekhvalnov/jose2go",
+	"Version": "v1.11.0",
+	"Info": "/go/pkg/mod/cache/download/github.com/dvsekhvalnov/jose2go/@v/v1.11.0.info",
+	"GoMod": "/go/pkg/mod/cache/download/github.com/dvsekhvalnov/jose2go/@v/v1.11.0.mod",
+	"Zip": "/go/pkg/mod/cache/download/github.com/dvsekhvalnov/jose2go/@v/v1.11.0.zip",
+	"Dir": "/go/pkg/mod/github.com/dvsekhvalnov/jose2go@v1.11.0",
+	"Sum": "h1:9pnsV1/CLWFYSxMilqtiY1Fb4JZOxfDk/q0/CQiUMYw=",
+	"GoModSum": "h1:QsHjhyTlD/lAVqn/NSbVZmSCGeDehTB/mPZadG+mhXU=",
+	"Origin": {
+		"VCS": "git",
+		"URL": "https://github.com/dvsekhvalnov/jose2go",
+		"Hash": "f18fd18d33eebaab5b2b2b8a8ebfb63e0290c359",
+		"Ref": "refs/tags/v1.11.0"
+	}
+}

@@ -1,0 +1,158 @@
+# hedef=JOSE-102 imaj=pq-a09-env-swift:1.0 (sha256:7422932f6627c118a34062e8bc2d0305dd79029c68e7d8fb85fc26ddae30dde5) baslangic=2026-09-25T13:24:30Z zaman_asimi=1800s
+# komut: docker run --rm --name pq-a09-ortam-jose-102 --label pq.agir=derleme --memory=6g --memory-swap=6g -v hedefler/JOSE-102:/w -v betikler/konteyner:/b:ro pq-a09-env-swift:1.0 sh -c '(bash|sh) /w/kur.sh'
+== swift package resolve
+Fetching https://github.com/vapor/jwt-kit.git
+[1/10247] Fetching jwt-kit
+Fetched https://github.com/vapor/jwt-kit.git (4.35s)
+Computing version for https://github.com/vapor/jwt-kit.git
+Computed https://github.com/vapor/jwt-kit.git at 5.3.0 (4.57s)
+Fetching https://github.com/apple/swift-crypto.git
+Fetching https://github.com/apple/swift-log.git
+Fetching https://github.com/apple/swift-certificates.git
+[1/8165] Fetching swift-log
+[2/26714] Fetching swift-log, swift-crypto
+[351/34289] Fetching swift-log, swift-crypto, swift-certificates
+Fetched https://github.com/apple/swift-certificates.git (2.23s)
+[4543/26714] Fetching swift-log, swift-crypto
+Fetched https://github.com/apple/swift-log.git (2.93s)
+[1670/18549] Fetching swift-crypto
+Fetched https://github.com/apple/swift-crypto.git (13.52s)
+Computing version for https://github.com/apple/swift-crypto.git
+Computed https://github.com/apple/swift-crypto.git at 4.5.2 (14.86s)
+Fetching https://github.com/apple/swift-asn1.git
+[1/1983] Fetching swift-asn1
+Fetched https://github.com/apple/swift-asn1.git (1.45s)
+Computing version for https://github.com/apple/swift-asn1.git
+Computed https://github.com/apple/swift-asn1.git at 1.7.3 (1.68s)
+Computing version for https://github.com/apple/swift-certificates.git
+Computed https://github.com/apple/swift-certificates.git at 1.21.0 (0.25s)
+Computing version for https://github.com/apple/swift-log.git
+Computed https://github.com/apple/swift-log.git at 1.15.1 (0.21s)
+Creating working copy for https://github.com/apple/swift-certificates.git
+Working copy of https://github.com/apple/swift-certificates.git resolved at 1.21.0
+Creating working copy for https://github.com/vapor/jwt-kit.git
+Working copy of https://github.com/vapor/jwt-kit.git resolved at 5.3.0
+Creating working copy for https://github.com/apple/swift-log.git
+Working copy of https://github.com/apple/swift-log.git resolved at 1.15.1
+Creating working copy for https://github.com/apple/swift-asn1.git
+Working copy of https://github.com/apple/swift-asn1.git resolved at 1.7.3
+Creating working copy for https://github.com/apple/swift-crypto.git
+Working copy of https://github.com/apple/swift-crypto.git resolved at 4.5.2
+/tmp/p/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/JWTKeyCollection+MLDSA.swift:3:    @available(iOS 26.0, macOS 26.0, watchOS 26.0, tvOS 26.0, *)
+/tmp/p/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSA.swift:3:#if !canImport(Darwin)
+/tmp/p/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSA.swift:10:@available(iOS 26.0, macOS 26.0, watchOS 26.0, tvOS 26.0, *)
+/tmp/p/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSA.swift:13:@available(iOS 26.0, macOS 26.0, watchOS 26.0, tvOS 26.0, *)
+/tmp/p/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSA.swift:32:@available(iOS 26.0, macOS 26.0, watchOS 26.0, tvOS 26.0, *)
+/tmp/p/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSAKey.swift:1:#if canImport(FoundationEssentials)
+/tmp/p/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSAKey.swift:8:@available(iOS 26.0, macOS 26.0, watchOS 26.0, tvOS 26.0, *)
+/tmp/p/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSAKey.swift:14:@available(iOS 26.0, macOS 26.0, watchOS 26.0, tvOS 26.0, *)
+/tmp/p/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSAKey.swift:27:@available(iOS 26.0, macOS 26.0, watchOS 26.0, tvOS 26.0, *)
+/tmp/p/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSAType.swift:4:@available(iOS 26.0, macOS 26.0, watchOS 26.0, tvOS 26.0, *)
+/tmp/p/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSAType.swift:12:@available(iOS 26.0, macOS 26.0, watchOS 26.0, tvOS 26.0, *)
+/tmp/p/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSAType.swift:18:@available(iOS 26.0, macOS 26.0, watchOS 26.0, tvOS 26.0, *)
+/tmp/p/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSA87+MLDSAKey.swift:4:@available(iOS 26.0, macOS 26.0, watchOS 26.0, tvOS 26.0, *)
+/tmp/p/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSA87+MLDSAKey.swift:10:@available(iOS 26.0, macOS 26.0, watchOS 26.0, tvOS 26.0, *)
+/tmp/p/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSA87+MLDSAKey.swift:16:@available(iOS 26.0, macOS 26.0, watchOS 26.0, tvOS 26.0, *)
+/tmp/p/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSA87+MLDSAKey.swift:20:@available(iOS 26.0, macOS 26.0, watchOS 26.0, tvOS 26.0, *)
+/tmp/p/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSASigner.swift:3:#if canImport(FoundationEssentials)
+/tmp/p/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSASigner.swift:9:@available(iOS 26.0, macOS 26.0, watchOS 26.0, tvOS 26.0, *)
+/tmp/p/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSA65+MLDSAKey.swift:4:@available(iOS 26.0, macOS 26.0, watchOS 26.0, tvOS 26.0, *)
+/tmp/p/.build/checkouts/jwt-kit/Sources/JWTKit/MLDSA/MLDSA65+MLDSAKey.swift:10:@available(iOS 26.0, macOS 26.0, watchOS 26.0, tvOS 26.0, *)
+== swift build
+Building for debugging...
+[Computing dependencies]
+[Constructing description]
+[Pre-planning 1 / 454]
+[Planning deferred tasks]
+[Starting]
+[80 / 526]
+[101 / 532] CCryptoBoringSSL
+[105 / 565] CryptoBoringWrapper
+[107 / 565] CCryptoBoringSSL
+[116 / 565] CCryptoBoringSSL
+[124 / 565] CCryptoBoringSSL
+[126 / 565] CCryptoBoringSSL
+[128 / 565] CCryptoBoringSSL
+[135 / 565] CCryptoBoringSSL
+[141 / 565] CCryptoBoringSSL
+[144 / 565] CCryptoBoringSSL
+[145 / 565] CCryptoBoringSSL
+[162 / 565] CCryptoBoringSSL
+[168 / 565] CCryptoBoringSSL
+[172 / 565] CCryptoBoringSSL
+[178 / 565] CCryptoBoringSSL
+[183 / 565] CCryptoBoringSSL
+[190 / 565] CCryptoBoringSSL
+[195 / 565] CCryptoBoringSSL
+[202 / 565] CCryptoBoringSSL
+[210 / 565] CCryptoBoringSSL
+[216 / 565] CCryptoBoringSSL
+[225 / 565] CCryptoBoringSSL
+[249 / 565] CCryptoBoringSSL
+[257 / 565] CCryptoBoringSSL
+[264 / 565] CCryptoBoringSSL
+[269 / 565] CCryptoBoringSSL
+[276 / 565] CCryptoBoringSSL
+[280 / 565] CCryptoBoringSSL
+[286 / 565] CCryptoBoringSSL
+[291 / 565] CCryptoBoringSSL
+[296 / 565] CCryptoBoringSSL
+[310 / 565] CCryptoBoringSSL
+[315 / 565] CCryptoBoringSSL
+[323 / 565] CCryptoBoringSSL
+[329 / 565] CCryptoBoringSSL
+[351 / 565] CCryptoBoringSSL
+[360 / 565] CCryptoBoringSSL
+[368 / 565] CCryptoBoringSSL
+[371 / 565] CCryptoBoringSSL
+[379 / 565] CCryptoBoringSSL
+[386 / 565] CCryptoBoringSSL
+[390 / 565] CCryptoBoringSSL
+[397 / 565] CCryptoBoringSSL
+[405 / 565] CCryptoBoringSSL
+[423 / 565] CCryptoBoringSSL
+[431 / 565] CCryptoBoringSSL
+[437 / 565] CCryptoBoringSSL
+[444 / 565] CCryptoBoringSSL
+[466 / 565] CCryptoBoringSSL
+[473 / 565] CCryptoBoringSSL
+[478 / 565] CCryptoBoringSSL
+[482 / 565] CCryptoBoringSSL
+[490 / 565] SwiftASN1
+[492 / 565] SwiftASN1
+[495 / 565] SwiftASN1
+[503 / 566] Logging-product
+[507 / 566] Logging
+[514 / 566] CryptoBoringWrapper
+[516 / 566] Crypto
+[519 / 567]
+[523 / 580] Logging
+[529 / 582] Logging
+[535 / 583] SwiftASN1
+[537 / 583] Crypto
+[540 / 583] CXKCP
+[541 / 583] Crypto
+[547 / 585] CryptoExtras
+[558 / 597] CCryptoBoringSSL
+[560 / 597] CCryptoBoringSSL
+[561 / 598] CryptoExtras
+[566 / 598] Crypto
+[572 / 599] _CryptoExtras
+[582 / 603] CryptoExtras
+[591 / 616] X509
+[594 / 616] X509
+[596 / 617] CryptoExtras
+[599 / 617] X509
+[599 / 618] X509
+[608 / 619]
+[621 / 632] JWTKit
+[629 / 635] JWTKit
+[632 / 636] Deneme-product
+[633 / 636] Deneme-product
+[637 / 637] Deneme-product
+Build complete! (17.95 secs)
+modul JWTKit baglandi
+tip JWTKeyCollection
+tip JWTAlgorithm
+== SONUC: basarili
+# cikis_kodu=0 sure_s=44 bitis=2026-09-25T13:25:14Z

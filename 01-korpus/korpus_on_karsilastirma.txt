@@ -1,0 +1,8 @@
+referans/korpus_on <-> 01-korpus taze indirme karsilastirmasi
+(sozcuk benzerligi, farkli metin cikarma yontemleri ve sayfalama yuzunden 1'in altinda olabilir)
+- draft-ietf-jose-pq-composite-sigs-04.txt -> JOSECOMP: bayt=ESIT; pdf_yeniden_uretim=gerekmez; sozcuk_benzerlik=0.9743; kodlama=utf-8
+- draft-ietf-oauth-rfc8725bis-10.txt -> JWTBCP: bayt=ESIT; pdf_yeniden_uretim=gerekmez; sozcuk_benzerlik=0.9919; kodlama=utf-8
+- rfc9955.txt -> RFC9955: bayt=ESIT; pdf_yeniden_uretim=gerekmez; sozcuk_benzerlik=1.0000; kodlama=utf-8
+- eccg_acm_v2.txt -> ACM2: bayt=uygulanmaz (korpus_on'da PDF yok); pdf_yeniden_uretim=pdftotext -layout (Latin-1 varsayilani): BAYT-OZDES; sozcuk_benzerlik=0.9609; kodlama=UTF-8 degil (Latin-1/cp1252)
+- pqc_roadmap.txt -> PQCRM: bayt=uygulanmaz (korpus_on'da PDF yok); pdf_yeniden_uretim=pypdf sayfa metinleri '\n' ile (CRLF normallestirilerek): METIN-OZDES; sozcuk_benzerlik=0.9751; kodlama=utf-8
+- oid4vp_report.txt -> HAUCK25: bayt=uygulanmaz (korpus_on'da PDF yok); pdf_yeniden_uretim=pdftotext -layout (Latin-1 varsayilani): BAYT-OZDES; sozcuk_benzerlik=0.9115; kodlama=UTF-8 degil (Latin-1/cp1252)

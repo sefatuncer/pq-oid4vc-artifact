@@ -1,0 +1,77 @@
+// PQ-OID4VC Adim 1 — guven bagimliligi grafigi (taslak, 24.09.2026)
+// Ok yonu = dogrulama akisi: A -> B, "A, B'nin dogrulanmasinda kullanilir".
+// Dugum sekli/rengi = kanal sinifi: sabitlenmis (gri), cekilen (mavi), aktarilan (turuncu), tasima (yesil).
+// Kenar stili: duz = nesne imzasi/sertifika zinciri; kesikli = tasima (TLS) ya da ozet baglantisi.
+// Etiketlerdeki Txxx = 02-izlenebilirlik/izlenebilirlik.csv satirlari. Render gerekmez.
+digraph guven_bagimliligi {
+  graph [rankdir=LR, fontname="Helvetica", fontsize=11, labelloc=t,
+         label="OpenID4VC/EUDI guven bagimliligi — 13 artefakt, kanal siniflari (Adim 1 taslak)"];
+  node  [fontname="Helvetica", fontsize=10, style="filled", shape=box];
+  edge  [fontname="Helvetica", fontsize=9];
+
+  subgraph cluster_sab {
+    label="Sabitlenmis capalar"; style=dashed; color="#6b7280";
+    OJEU  [label="OJEU ozetleri\n(LOTL imzacisi + kanal sertifikasi)\nT001,T002,T029", fillcolor="#e5e7eb", shape=cylinder];
+    ROOTS [label="WebPKI kok deposu\nT313", fillcolor="#e5e7eb", shape=cylinder];
+    TMC   [label="Type Metadata onbellegi\n(ozetle anahtarli, suresiz)\nT093", fillcolor="#e5e7eb", shape=cylinder];
+  }
+
+  subgraph cluster_cek {
+    label="Cekilen (yetkili kaynaktan)"; style=dashed; color="#1d4ed8";
+    LOTL [label="A01 LOTL\nXAdES; rsa-sha512 (olculen)\npencere <= 6 ay (T010)", fillcolor="#dbeafe"];
+    TL   [label="A02 ulusal TL\nXAdES-B-B, tek ds:Signature (T016)\n<= 6 ay", fillcolor="#dbeafe"];
+    LOTE [label="A02 EUDI LoTE'ler\ncompact JAdES-B, tek imza (T023-T025)\nPID | cuzdan | WRPAC | WRPRC | PuB-EAA\n<= 6 ay (T021)", fillcolor="#dbeafe"];
+    SLT  [label="A08 durum listesi belirteci\nimza ya da MAC (T145)\nexp/ttl tanimsiz (T148,T149,T163)", fillcolor="#dbeafe"];
+    IMD  [label="A05 ihracci meta verisi\nimzasiz varsayilan (T071)\nimzali: x5c, exp opsiyonel (T076,T084)", fillcolor="#dbeafe"];
+    TMD  [label="A06 Type Metadata\nimzasiz; vct#integrity (T090)", fillcolor="#dbeafe"];
+    CRL  [label="Access CA CRL/OCSP\n(T255, T256)", fillcolor="#dbeafe"];
+    JVI  [label="JWT VC Issuer Metadata / JWK Set\nyalniz HTTPS (T309-T311)", fillcolor="#dbeafe"];
+  }
+
+  subgraph cluster_akt {
+    label="Aktarilan (sunan getirir)"; style=dashed; color="#c2410c";
+    CA   [label="A03 CA ara sertifikalari (x5c)\ncapa x5c'de yasak (T043)", fillcolor="#ffedd5"];
+    ISC  [label="A04 ihracci sertifikasi (x5c yaprak)\n(T042)", fillcolor="#ffedd5"];
+    CRED [label="A07 kimlik bilgisi (SD-JWT VC)\nexp opsiyonel (T118); <=24 sa secenegi (T175)", fillcolor="#ffedd5"];
+    KB   [label="A10 KB-JWT + WSCD cnf anahtari\niat penceresi tanimsiz (T212)", fillcolor="#ffedd5"];
+    WUA  [label="A09 WIA (<24 sa, T204) / KA\nyalniz ihracciya (T399,T400)", fillcolor="#ffedd5"];
+    RPC  [label="A11 RP erisim (WRPAC) + kayit (WRPRC) sert.\ndegerle (T252)", fillcolor="#ffedd5"];
+    REQ  [label="A12 OID4VP istek nesnesi\nimzasiz / imzali / coklu imzali (T281)\nDC API'de dogrulama takdirde (T268)", fillcolor="#ffedd5"];
+  }
+
+  TLS [label="A13 TLS sunucu sertifikasi\nBCP195, klasik (T302-T305)", fillcolor="#dcfce7", shape=hexagon];
+
+  // --- nesne imzasi / sertifika zinciri (duz) ---
+  OJEU -> LOTL [label="imzaci ozeti"];
+  OJEU -> LOTE [label="capa (TLPub_07)"];
+  LOTL -> TL   [label="TL imzaci sertifikalari\n(43 isaretci)"];
+  TL   -> CA   [label="QEAA capasi"];
+  LOTE -> CA   [label="PID/PuB-EAA capasi"];
+  CA   -> ISC  [label="imzalar"];
+  ISC  -> CRED [label="imzalar"];
+  CRED -> KB   [label="cnf (T218)"];
+  CRED -> SLT  [label="status uri/idx"];
+  LOTE -> SLT  [label="PID/Revocation capasi (T026)"];
+  CA   -> SLT  [label="delegasyon, EKU (T159-T161)", style=dotted];
+  LOTE -> WUA  [label="cuzdan saglayici capasi"];
+  LOTE -> RPC  [label="WRPAC/WRPRC capasi (T245)"];
+  CRL  -> RPC  [label="iptal"];
+  RPC  -> REQ  [label="x5c ile imza (T240)"];
+  IMD  -> RPC  [label="erisim/kayit sert. degerle (T087,T088)"];
+  ISC  -> IMD  [label="imzali meta veri (T084)", style=dotted];
+
+  // --- ozet / onbellek baglari (kesikli) ---
+  CRED -> TMD [label="vct#integrity", style=dashed];
+  TMC  -> TMD [style=dashed];
+
+  // --- tasima (kesikli, yesil) ---
+  ROOTS -> TLS [label="capa"];
+  TLS -> IMD  [label="tasir; imzasizsa tek koruma", style=dashed, color="#15803d"];
+  TLS -> SLT  [label="tasir (TSL tasarimi dayanmaz, T157)", style=dashed, color="#15803d"];
+  TLS -> TL   [label="tasir", style=dashed, color="#15803d"];
+  TLS -> TMD  [label="tasir; ozetsizse tek koruma", style=dashed, color="#15803d"];
+  TLS -> JVI  [label="tek koruma (kanal ikamesi fiilen)", style=dashed, color="#15803d"];
+  TLS -> REQ  [label="request_uri / DC API origin (T282,T284)", style=dashed, color="#15803d"];
+  JVI -> CRED [label="alternatif anahtar yolu", style=dashed];
+  OJEU -> LOTL [label="indirme kanali ozeti (T002)", style=dashed, color="#6b7280"];
+}

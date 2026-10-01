@@ -1,0 +1,6636 @@
+{
+ "test": "t10_oz_dogrulama_v1.2",
+ "sure_s": 9.51,
+ "surumler": {
+  "pqjose": "1.0.0",
+  "python": "3.11.16",
+  "cryptography": "50.0.1",
+  "cryptography_openssl": "OpenSSL 4.0.2 25 Aug 2026",
+  "openssl_cli": "OpenSSL 3.5.7 9 Jun 2026 (Library: OpenSSL 3.5.7 9 Jun 2026)",
+  "spesifikasyonlar": {
+   "JWS": "RFC 7515",
+   "JWA": "RFC 7518 (RFC 9864 ile guncellendi)",
+   "ML-DSA": "RFC 9964 (Mayis 2026)",
+   "composite": "draft-ietf-jose-pq-composite-sigs-04 (10.09.2026)",
+   "EdDSA": "RFC 8037 / RFC 9864"
+  }
+ },
+ "ozet": {
+  "toplam": 944,
+  "gecen": 944,
+  "kalan": []
+ },
+ "kontroller": [
+  {
+   "grup": "A:TSL-EkC",
+   "ad": "C.1 bits=1 cozme(bizim bayt dizisi == Ek C)",
+   "gecti": true,
+   "ayrinti": {
+    "durum_sayisi": 11
+   }
+  },
+  {
+   "grup": "A:TSL-EkC",
+   "ad": "C.1 indeks degerleri",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "A:TSL-EkC",
+   "ad": "C.1 kodlama bayt-ayni (zlib 9)",
+   "gecti": null,
+   "ayrinti": true
+  },
+  {
+   "grup": "A:TSL-EkC",
+   "ad": "C.2 bits=2 cozme(bizim bayt dizisi == Ek C)",
+   "gecti": true,
+   "ayrinti": {
+    "durum_sayisi": 11
+   }
+  },
+  {
+   "grup": "A:TSL-EkC",
+   "ad": "C.2 indeks degerleri",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "A:TSL-EkC",
+   "ad": "C.2 kodlama bayt-ayni (zlib 9)",
+   "gecti": null,
+   "ayrinti": true
+  },
+  {
+   "grup": "A:TSL-EkC",
+   "ad": "C.3 bits=4 cozme(bizim bayt dizisi == Ek C)",
+   "gecti": true,
+   "ayrinti": {
+    "durum_sayisi": 15
+   }
+  },
+  {
+   "grup": "A:TSL-EkC",
+   "ad": "C.3 indeks degerleri",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "A:TSL-EkC",
+   "ad": "C.3 kodlama bayt-ayni (zlib 9)",
+   "gecti": null,
+   "ayrinti": true
+  },
+  {
+   "grup": "A:TSL-EkC",
+   "ad": "C.4 bits=8 cozme(bizim bayt dizisi == Ek C)",
+   "gecti": true,
+   "ayrinti": {
+    "durum_sayisi": 256
+   }
+  },
+  {
+   "grup": "A:TSL-EkC",
+   "ad": "C.4 indeks degerleri",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "A:TSL-EkC",
+   "ad": "C.4 kodlama bayt-ayni (zlib 9)",
+   "gecti": null,
+   "ayrinti": true
+  },
+  {
+   "grup": "A:RFC9901",
+   "ad": "4.2.3 ozet ornegi",
+   "gecti": true,
+   "ayrinti": {
+    "ifsa": "WyJfMjZiYzRMVC1hYzZxMktJNmNCVzVlcyIsICJmYW1pbHlfbmFtZSIsICJNw7ZiaXVzIl0",
+    "ozet": "X9yH0Ajrdm1Oij4tWso9UzzKJvPoDxwmuEcO3XAdRC0"
+   }
+  },
+  {
+   "grup": "B:manifest",
+   "ad": "dosya SHA-256 == manifest (153 vektor)",
+   "gecti": true,
+   "ayrinti": []
+  },
+  {
+   "grup": "B:manifest",
+   "ad": "vektorler/v1.2 SHA256SUMS (156 dosya)",
+   "gecti": true,
+   "ayrinti": []
+  },
+  {
+   "grup": "B:manifest",
+   "ad": "anahtarlar/v1 SHA256SUMS (71 dosya)",
+   "gecti": true,
+   "ayrinti": []
+  },
+  {
+   "grup": "C:belirlenimcilik",
+   "ad": "vektorler/v1.2/SHA256SUMS yeniden uretim bayt-bayt ayni",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "C:belirlenimcilik",
+   "ad": "vektorler/v1.2/MANIFEST.json yeniden uretim bayt-bayt ayni",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T1K_both_valid imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    2,
+    2
+   ]
+  },
+  {
+   "grup": "D:T",
+   "ad": "T1K_both_valid #0 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T1K_both_valid #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T1K_both_valid #1 (EdDSA) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T1K_both_valid #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T2K_second_tampered imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    2,
+    2
+   ]
+  },
+  {
+   "grup": "D:T",
+   "ad": "T2K_second_tampered #0 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T2K_second_tampered #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T2K_second_tampered #1 (EdDSA) insa=\"bozuk: bayt 5, bit 0 cevrildi\"",
+   "gecti": true,
+   "ayrinti": false
+  },
+  {
+   "grup": "D:T",
+   "ad": "T2K_second_tampered #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T3_stripped_to_ES256 imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:T",
+   "ad": "T3_stripped_to_ES256 #0 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T3_stripped_to_ES256 #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T1P_both_valid imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    2,
+    2
+   ]
+  },
+  {
+   "grup": "D:T",
+   "ad": "T1P_both_valid #0 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T1P_both_valid #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T1P_both_valid #1 (ML-DSA-65) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T1P_both_valid #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T2P_second_tampered imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    2,
+    2
+   ]
+  },
+  {
+   "grup": "D:T",
+   "ad": "T2P_second_tampered #0 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T2P_second_tampered #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T2P_second_tampered #1 (ML-DSA-65) insa=\"bozuk: bayt 5, bit 0 cevrildi\"",
+   "gecti": true,
+   "ayrinti": false
+  },
+  {
+   "grup": "D:T",
+   "ad": "T2P_second_tampered #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T1C_both_valid imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    2,
+    2
+   ]
+  },
+  {
+   "grup": "D:T",
+   "ad": "T1C_both_valid #0 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T1C_both_valid #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T1C_both_valid #1 (ML-DSA-65-ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T1C_both_valid #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T2C_second_tampered imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    2,
+    2
+   ]
+  },
+  {
+   "grup": "D:T",
+   "ad": "T2C_second_tampered #0 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T2C_second_tampered #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T2C_second_tampered #1 (ML-DSA-65-ES256) insa=\"bozuk: bayt 5, bit 0 cevrildi (ML-DSA bileseni ici\"",
+   "gecti": true,
+   "ayrinti": false
+  },
+  {
+   "grup": "D:T",
+   "ad": "T2C_second_tampered #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4K_plus_ML-DSA-65 imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    3,
+    3
+   ]
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4K_plus_ML-DSA-65 #0 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4K_plus_ML-DSA-65 #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4K_plus_ML-DSA-65 #1 (EdDSA) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4K_plus_ML-DSA-65 #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4K_plus_ML-DSA-65 #2 (ML-DSA-65) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4K_plus_ML-DSA-65 #2 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4P_plus_ML-DSA-65-ES256 imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    3,
+    3
+   ]
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4P_plus_ML-DSA-65-ES256 #0 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4P_plus_ML-DSA-65-ES256 #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4P_plus_ML-DSA-65-ES256 #1 (ML-DSA-65) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4P_plus_ML-DSA-65-ES256 #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4P_plus_ML-DSA-65-ES256 #2 (ML-DSA-65-ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4P_plus_ML-DSA-65-ES256 #2 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4C_plus_ML-DSA-65 imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    3,
+    3
+   ]
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4C_plus_ML-DSA-65 #0 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4C_plus_ML-DSA-65 #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4C_plus_ML-DSA-65 #1 (ML-DSA-65-ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4C_plus_ML-DSA-65 #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4C_plus_ML-DSA-65 #2 (ML-DSA-65) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4C_plus_ML-DSA-65 #2 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T5P_only_ML-DSA-65 imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:T",
+   "ad": "T5P_only_ML-DSA-65 #0 (ML-DSA-65) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T5P_only_ML-DSA-65 #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T5C_only_ML-DSA-65-ES256 imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:T",
+   "ad": "T5C_only_ML-DSA-65-ES256 #0 (ML-DSA-65-ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T5C_only_ML-DSA-65-ES256 #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T5K_only_EdDSA imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:T",
+   "ad": "T5K_only_EdDSA #0 (EdDSA) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T5K_only_EdDSA #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T6_plus_composite imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    3,
+    3
+   ]
+  },
+  {
+   "grup": "D:T",
+   "ad": "T6_plus_composite #0 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T6_plus_composite #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T6_plus_composite #1 (EdDSA) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T6_plus_composite #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T6_plus_composite #2 (ML-DSA-65-ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T6_plus_composite #2 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:UNK",
+   "ad": "UNK01_alg_ML-DSA-66 imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:UNK",
+   "ad": "UNK01_alg_ML-DSA-66 #0 (ML-DSA-66) insa=\"ML-DSA-65 ile gecerli bayt; etiket kayitsiz\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:UNK",
+   "ad": "UNK01_alg_ML-DSA-66 #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:UNK",
+   "ad": "UNK02_alg_ML-DSA-65-P256 imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:UNK",
+   "ad": "UNK02_alg_ML-DSA-65-P256 #0 (ML-DSA-65-P256) insa=\"ML-DSA-65-ES256 ile gecerli bayt; etiket kayitsiz\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:UNK",
+   "ad": "UNK02_alg_ML-DSA-65-P256 #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:UNK",
+   "ad": "UNK03_alg_kucuk_harf imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:UNK",
+   "ad": "UNK03_alg_kucuk_harf #0 (ml-dsa-65) insa=\"ML-DSA-65 ile gecerli bayt; etiket kucuk harf\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:UNK",
+   "ad": "UNK03_alg_kucuk_harf #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:UNK",
+   "ad": "UNK04_general_arti_kayitsiz_composite imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    3,
+    3
+   ]
+  },
+  {
+   "grup": "D:UNK",
+   "ad": "UNK04_general_arti_kayitsiz_composite #0 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:UNK",
+   "ad": "UNK04_general_arti_kayitsiz_composite #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:UNK",
+   "ad": "UNK04_general_arti_kayitsiz_composite #1 (ML-DSA-65) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:UNK",
+   "ad": "UNK04_general_arti_kayitsiz_composite #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:UNK",
+   "ad": "UNK04_general_arti_kayitsiz_composite #2 (ML-DSA-65-P256) insa=\"ML-DSA-65-ES256 ile gecerli bayt; etiket kayitsiz\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:UNK",
+   "ad": "UNK04_general_arti_kayitsiz_composite #2 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:UNK",
+   "ad": "UNK05_general_arti_alg_none imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    3,
+    3
+   ]
+  },
+  {
+   "grup": "D:UNK",
+   "ad": "UNK05_general_arti_alg_none #0 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:UNK",
+   "ad": "UNK05_general_arti_alg_none #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:UNK",
+   "ad": "UNK05_general_arti_alg_none #1 (ML-DSA-65) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:UNK",
+   "ad": "UNK05_general_arti_alg_none #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:UNK",
+   "ad": "UNK05_general_arti_alg_none #2 alg=none bos imza",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:CMP",
+   "ad": "CMP00_gecerli_referans imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:CMP",
+   "ad": "CMP00_gecerli_referans bilesen durumu",
+   "gecti": true,
+   "ayrinti": {
+    "ml": true,
+    "trad": true,
+    "hata": null
+   }
+  },
+  {
+   "grup": "D:CMP",
+   "ad": "CMP01_ml_bileseni_bozuk imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:CMP",
+   "ad": "CMP01_ml_bileseni_bozuk bilesen durumu",
+   "gecti": true,
+   "ayrinti": {
+    "ml": false,
+    "trad": true,
+    "hata": null
+   }
+  },
+  {
+   "grup": "D:CMP",
+   "ad": "CMP02_ecdsa_bileseni_bozuk imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:CMP",
+   "ad": "CMP02_ecdsa_bileseni_bozuk bilesen durumu",
+   "gecti": true,
+   "ayrinti": {
+    "ml": true,
+    "trad": false,
+    "hata": null
+   }
+  },
+  {
+   "grup": "D:CMP",
+   "ad": "CMP03_ecdsa_der_uzunluk_bozuk imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:CMP",
+   "ad": "CMP03_ecdsa_der_uzunluk_bozuk bilesen durumu",
+   "gecti": true,
+   "ayrinti": {
+    "ml": false,
+    "trad": false,
+    "hata": "serilestirme: DER: SEQUENCE uzunluğu tutarsız / artık bayt"
+   }
+  },
+  {
+   "grup": "D:CMP",
+   "ad": "CMP04_ecdsa_ham_rs imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:CMP",
+   "ad": "CMP04_ecdsa_ham_rs bilesen durumu",
+   "gecti": true,
+   "ayrinti": {
+    "ml": false,
+    "trad": false,
+    "hata": "serilestirme: DER: SEQUENCE yok"
+   }
+  },
+  {
+   "grup": "D:CMP",
+   "ad": "CMP05_ecdsa_asgari_olmayan_der imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:CMP",
+   "ad": "CMP05_ecdsa_asgari_olmayan_der bilesen durumu",
+   "gecti": true,
+   "ayrinti": {
+    "ml": false,
+    "trad": false,
+    "hata": "serilestirme: DER: asgari olmayan INTEGER kodlaması"
+   }
+  },
+  {
+   "grup": "D:CMP",
+   "ad": "CMP06_sonda_artik_bayt imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:CMP",
+   "ad": "CMP06_sonda_artik_bayt bilesen durumu",
+   "gecti": true,
+   "ayrinti": {
+    "ml": false,
+    "trad": false,
+    "hata": "serilestirme: DER: SEQUENCE uzunluğu tutarsız / artık bayt"
+   }
+  },
+  {
+   "grup": "D:CMP",
+   "ad": "CMP07_yalniz_ml_bileseni imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:CMP",
+   "ad": "CMP07_yalniz_ml_bileseni bilesen durumu",
+   "gecti": true,
+   "ayrinti": {
+    "ml": false,
+    "trad": false,
+    "hata": "serilestirme: composite imza kisa"
+   }
+  },
+  {
+   "grup": "D:CMP",
+   "ad": "CMP08_bilesenler_farkli_iletilerden imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:CMP",
+   "ad": "CMP08_bilesenler_farkli_iletilerden bilesen durumu",
+   "gecti": true,
+   "ayrinti": {
+    "ml": false,
+    "trad": true,
+    "hata": null
+   }
+  },
+  {
+   "grup": "D:CMP",
+   "ad": "CMP09_ml_bileseni_ctx_bos imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:CMP",
+   "ad": "CMP09_ml_bileseni_ctx_bos bilesen durumu",
+   "gecti": true,
+   "ayrinti": {
+    "ml": false,
+    "trad": true,
+    "hata": null
+   }
+  },
+  {
+   "grup": "D:CMP",
+   "ad": "CMP09_ml_bileseni_ctx_bos sapmali M'/ctx ile tutarli (uygulayici hatasi taklidi dogru kuruldu)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:CMP",
+   "ad": "CMP10_onozet_sha256 imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:CMP",
+   "ad": "CMP10_onozet_sha256 bilesen durumu",
+   "gecti": true,
+   "ayrinti": {
+    "ml": false,
+    "trad": false,
+    "hata": null
+   }
+  },
+  {
+   "grup": "D:CMP",
+   "ad": "CMP10_onozet_sha256 sapmali M'/ctx ile tutarli (uygulayici hatasi taklidi dogru kuruldu)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:CMP",
+   "ad": "CMP11_bos_ctx_uzunlugu_yok imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:CMP",
+   "ad": "CMP11_bos_ctx_uzunlugu_yok bilesen durumu",
+   "gecti": true,
+   "ayrinti": {
+    "ml": false,
+    "trad": false,
+    "hata": null
+   }
+  },
+  {
+   "grup": "D:CMP",
+   "ad": "CMP11_bos_ctx_uzunlugu_yok sapmali M'/ctx ile tutarli (uygulayici hatasi taklidi dogru kuruldu)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:CMP",
+   "ad": "CMP12_ayrilabilirlik_ecdsa_ES256 imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:CMP",
+   "ad": "CMP12_ayrilabilirlik_ecdsa_ES256 JWS olarak gecersiz (bilesen M' uzerinde)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:CMP",
+   "ad": "CMP12_ayrilabilirlik_ecdsa_ES256 imza gercek bir bilesen (M' uzerinde gecerli)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:CMP",
+   "ad": "CMP13_ayrilabilirlik_ml_MLDSA65 imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:CMP",
+   "ad": "CMP13_ayrilabilirlik_ml_MLDSA65 JWS olarak gecersiz (bilesen M' uzerinde)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:CMP",
+   "ad": "CMP13_ayrilabilirlik_ml_MLDSA65 imza gercek bir bilesen (M' uzerinde gecerli)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:CMP",
+   "ad": "CMP14_ed25519_ml_bileseni_bozuk imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:CMP",
+   "ad": "CMP14_ed25519_ml_bileseni_bozuk bilesen durumu",
+   "gecti": true,
+   "ayrinti": {
+    "ml": false,
+    "trad": true,
+    "hata": null
+   }
+  },
+  {
+   "grup": "D:CMP",
+   "ad": "CMP15_ed25519_eddsa_bileseni_bozuk imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:CMP",
+   "ad": "CMP15_ed25519_eddsa_bileseni_bozuk bilesen durumu",
+   "gecti": true,
+   "ayrinti": {
+    "ml": true,
+    "trad": false,
+    "hata": null
+   }
+  },
+  {
+   "grup": "D:CMP",
+   "ad": "CMP16_bilesen_sirasi_ters imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:CMP",
+   "ad": "CMP16_bilesen_sirasi_ters bilesen durumu",
+   "gecti": true,
+   "ayrinti": {
+    "ml": false,
+    "trad": false,
+    "hata": "serilestirme: DER: SEQUENCE yok"
+   }
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C01_klasik_zincir imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C01_klasik_zincir #0 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C01_klasik_zincir #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C01_klasik_zincir x5c korumali mi == insa",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C01_klasik_zincir x5c zinciri OpenSSL ile gecerli",
+   "gecti": true,
+   "ayrinti": "/tmp/pqjose-59gw0o65/leaf.pem: OK"
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C01_klasik_zincir zincir sinifi == insa (tam-klasik)",
+   "gecti": true,
+   "ayrinti": "tam-klasik"
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C01_klasik_zincir kok x5c icinde mi == insa",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C01_klasik_zincir yaprak anahtari == imzalayan rol",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C01_klasik_zincir her ifsa ozeti yukte var",
+   "gecti": true,
+   "ayrinti": 10
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C02_pq_zincir imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C02_pq_zincir #0 (ML-DSA-65) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C02_pq_zincir #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C02_pq_zincir x5c korumali mi == insa",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C02_pq_zincir x5c zinciri OpenSSL ile gecerli",
+   "gecti": true,
+   "ayrinti": "/tmp/pqjose-jrrrpara/leaf.pem: OK"
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C02_pq_zincir zincir sinifi == insa (tam-pq)",
+   "gecti": true,
+   "ayrinti": "tam-pq"
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C02_pq_zincir kok x5c icinde mi == insa",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C02_pq_zincir yaprak anahtari == imzalayan rol",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C02_pq_zincir her ifsa ozeti yukte var",
+   "gecti": true,
+   "ayrinti": 10
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C03_karisik_klasik_yaprak_pq_ara imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C03_karisik_klasik_yaprak_pq_ara #0 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C03_karisik_klasik_yaprak_pq_ara #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C03_karisik_klasik_yaprak_pq_ara x5c korumali mi == insa",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C03_karisik_klasik_yaprak_pq_ara x5c zinciri OpenSSL ile gecerli",
+   "gecti": true,
+   "ayrinti": "/tmp/pqjose-_gif2diz/leaf.pem: OK"
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C03_karisik_klasik_yaprak_pq_ara zincir sinifi == insa (karisik)",
+   "gecti": true,
+   "ayrinti": "karisik"
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C03_karisik_klasik_yaprak_pq_ara kok x5c icinde mi == insa",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C03_karisik_klasik_yaprak_pq_ara yaprak anahtari == imzalayan rol",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C03_karisik_klasik_yaprak_pq_ara her ifsa ozeti yukte var",
+   "gecti": true,
+   "ayrinti": 10
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C04_karisik_pq_yaprak_klasik_ara imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C04_karisik_pq_yaprak_klasik_ara #0 (ML-DSA-65) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C04_karisik_pq_yaprak_klasik_ara #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C04_karisik_pq_yaprak_klasik_ara x5c korumali mi == insa",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C04_karisik_pq_yaprak_klasik_ara x5c zinciri OpenSSL ile gecerli",
+   "gecti": true,
+   "ayrinti": "/tmp/pqjose-nna56njc/leaf.pem: OK"
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C04_karisik_pq_yaprak_klasik_ara zincir sinifi == insa (karisik)",
+   "gecti": true,
+   "ayrinti": "karisik"
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C04_karisik_pq_yaprak_klasik_ara kok x5c icinde mi == insa",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C04_karisik_pq_yaprak_klasik_ara yaprak anahtari == imzalayan rol",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C04_karisik_pq_yaprak_klasik_ara her ifsa ozeti yukte var",
+   "gecti": true,
+   "ayrinti": 10
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C05_karisik_pq_ara_klasik_kok imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C05_karisik_pq_ara_klasik_kok #0 (ML-DSA-65) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C05_karisik_pq_ara_klasik_kok #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C05_karisik_pq_ara_klasik_kok x5c korumali mi == insa",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C05_karisik_pq_ara_klasik_kok x5c zinciri OpenSSL ile gecerli",
+   "gecti": true,
+   "ayrinti": "/tmp/pqjose-von19tls/leaf.pem: OK"
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C05_karisik_pq_ara_klasik_kok zincir sinifi == insa (karisik)",
+   "gecti": true,
+   "ayrinti": "karisik"
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C05_karisik_pq_ara_klasik_kok kok x5c icinde mi == insa",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C05_karisik_pq_ara_klasik_kok yaprak anahtari == imzalayan rol",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C05_karisik_pq_ara_klasik_kok her ifsa ozeti yukte var",
+   "gecti": true,
+   "ayrinti": 10
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C06_guven_capasi_x5c_icinde imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C06_guven_capasi_x5c_icinde #0 (ML-DSA-65) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C06_guven_capasi_x5c_icinde #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C06_guven_capasi_x5c_icinde x5c korumali mi == insa",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C06_guven_capasi_x5c_icinde x5c zinciri OpenSSL ile gecerli",
+   "gecti": true,
+   "ayrinti": "/tmp/pqjose-s8rp5qxa/leaf.pem: OK"
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C06_guven_capasi_x5c_icinde zincir sinifi == insa (tam-pq)",
+   "gecti": true,
+   "ayrinti": "tam-pq"
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C06_guven_capasi_x5c_icinde kok x5c icinde mi == insa",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C06_guven_capasi_x5c_icinde yaprak anahtari == imzalayan rol",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C06_guven_capasi_x5c_icinde her ifsa ozeti yukte var",
+   "gecti": true,
+   "ayrinti": 10
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C07_korumasiz_x5c imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C07_korumasiz_x5c #0 (ML-DSA-65) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C07_korumasiz_x5c #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C07_korumasiz_x5c x5c korumali mi == insa",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C07_korumasiz_x5c x5c zinciri OpenSSL ile gecerli",
+   "gecti": true,
+   "ayrinti": "/tmp/pqjose-mdjqk9vh/leaf.pem: OK"
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C07_korumasiz_x5c zincir sinifi == insa (tam-pq)",
+   "gecti": true,
+   "ayrinti": "tam-pq"
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C07_korumasiz_x5c yaprak anahtari == imzalayan rol",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C07_korumasiz_x5c her ifsa ozeti yukte var",
+   "gecti": true,
+   "ayrinti": 10
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C08_korumasiz_x5c_zincir_degisimi imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C08_korumasiz_x5c_zincir_degisimi #0 (ML-DSA-65) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C08_korumasiz_x5c_zincir_degisimi #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C08_korumasiz_x5c_zincir_degisimi x5c korumali mi == insa",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C08_korumasiz_x5c_zincir_degisimi x5c zinciri OpenSSL ile gecerli",
+   "gecti": true,
+   "ayrinti": "/tmp/pqjose-fy388oro/leaf.pem: OK"
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C08_korumasiz_x5c_zincir_degisimi zincir sinifi == insa (karisik)",
+   "gecti": true,
+   "ayrinti": "karisik"
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C08_korumasiz_x5c_zincir_degisimi yaprak anahtari == imzalayan rol",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C08_korumasiz_x5c_zincir_degisimi her ifsa ozeti yukte var",
+   "gecti": true,
+   "ayrinti": 10
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C09_korumali_ve_korumasiz_x5c pqjose ayristirici ayriklik ihlalini yakalar",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C09_korumali_ve_korumasiz_x5c imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C09_korumali_ve_korumasiz_x5c #0 (ML-DSA-65) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C09_korumali_ve_korumasiz_x5c #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C09_korumali_ve_korumasiz_x5c korumali x5c zinciri gecerli",
+   "gecti": true,
+   "ayrinti": "ok"
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C09_korumali_ve_korumasiz_x5c korumasiz x5c zinciri gecerli",
+   "gecti": true,
+   "ayrinti": "ok"
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C09_korumali_ve_korumasiz_x5c her ifsa ozeti yukte var",
+   "gecti": true,
+   "ayrinti": 10
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C10_x5c_ve_baska_anahtar_kid imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C10_x5c_ve_baska_anahtar_kid #0 (ML-DSA-65) insa=\"x5c yapragiyla gecerli; kid issuer/ES256'yi goster\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C10_x5c_ve_baska_anahtar_kid #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C10_x5c_ve_baska_anahtar_kid x5c korumali mi == insa",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C10_x5c_ve_baska_anahtar_kid x5c zinciri OpenSSL ile gecerli",
+   "gecti": true,
+   "ayrinti": "/tmp/pqjose-5aqhatmo/leaf.pem: OK"
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C10_x5c_ve_baska_anahtar_kid zincir sinifi == insa (tam-pq)",
+   "gecti": true,
+   "ayrinti": "tam-pq"
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C10_x5c_ve_baska_anahtar_kid yaprak anahtari == imzalayan rol",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "X5C10_x5c_ve_baska_anahtar_kid her ifsa ozeti yukte var",
+   "gecti": true,
+   "ayrinti": 10
+  },
+  {
+   "grup": "D:REQ",
+   "ad": "REQ01_imzali_ES256_x509_hash imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:REQ",
+   "ad": "REQ01_imzali_ES256_x509_hash #0 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:REQ",
+   "ad": "REQ01_imzali_ES256_x509_hash #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "REQ01_imzali_ES256_x509_hash x5c korumali mi == insa",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "REQ01_imzali_ES256_x509_hash x5c zinciri OpenSSL ile gecerli",
+   "gecti": true,
+   "ayrinti": "/tmp/pqjose-xclqfdxd/leaf.pem: OK"
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "REQ01_imzali_ES256_x509_hash yaprak anahtari == imzalayan rol",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:REQ",
+   "ad": "REQ01_imzali_ES256_x509_hash client_id == x509_hash(yaprak)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:REQ",
+   "ad": "REQ02_imzali_MLDSA65_x509_hash imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:REQ",
+   "ad": "REQ02_imzali_MLDSA65_x509_hash #0 (ML-DSA-65) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:REQ",
+   "ad": "REQ02_imzali_MLDSA65_x509_hash #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "REQ02_imzali_MLDSA65_x509_hash x5c korumali mi == insa",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "REQ02_imzali_MLDSA65_x509_hash x5c zinciri OpenSSL ile gecerli",
+   "gecti": true,
+   "ayrinti": "/tmp/pqjose-3rfjxd51/leaf.pem: OK"
+  },
+  {
+   "grup": "D:X5C",
+   "ad": "REQ02_imzali_MLDSA65_x509_hash yaprak anahtari == imzalayan rol",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:REQ",
+   "ad": "REQ02_imzali_MLDSA65_x509_hash client_id == x509_hash(yaprak)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:REQ",
+   "ad": "REQ03_imzali_composite_onkayitli imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:REQ",
+   "ad": "REQ03_imzali_composite_onkayitli #0 (ML-DSA-65-ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:REQ",
+   "ad": "REQ03_imzali_composite_onkayitli #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:REQ",
+   "ad": "REQ04_coklu_imzali imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    2,
+    2
+   ]
+  },
+  {
+   "grup": "D:REQ",
+   "ad": "REQ04_coklu_imzali #0 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:REQ",
+   "ad": "REQ04_coklu_imzali #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:REQ",
+   "ad": "REQ04_coklu_imzali #1 (ML-DSA-65) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:REQ",
+   "ad": "REQ04_coklu_imzali #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:REQ",
+   "ad": "REQ04 client_id korumali baslikta ve x509_hash(yaprak)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:REQ",
+   "ad": "REQ04 client_id korumali baslikta ve x509_hash(yaprak)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:REQ",
+   "ad": "REQ04 yukte client_id yok (A.3.2.2)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:REQ",
+   "ad": "REQ05_coklu_imzali_pq_soyuldu imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:REQ",
+   "ad": "REQ05_coklu_imzali_pq_soyuldu #0 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:REQ",
+   "ad": "REQ05_coklu_imzali_pq_soyuldu #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:REQ",
+   "ad": "REQ06_coklu_imzali_klasik_soyuldu imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:REQ",
+   "ad": "REQ06_coklu_imzali_klasik_soyuldu #0 (ML-DSA-65) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:REQ",
+   "ad": "REQ06_coklu_imzali_klasik_soyuldu #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:REQ",
+   "ad": "REQ07_coklu_imzali_pq_bozuk imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    2,
+    2
+   ]
+  },
+  {
+   "grup": "D:REQ",
+   "ad": "REQ07_coklu_imzali_pq_bozuk #0 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:REQ",
+   "ad": "REQ07_coklu_imzali_pq_bozuk #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:REQ",
+   "ad": "REQ07_coklu_imzali_pq_bozuk #1 (ML-DSA-65) insa=\"bozuk: bayt 5, bit 0\"",
+   "gecti": true,
+   "ayrinti": false
+  },
+  {
+   "grup": "D:REQ",
+   "ad": "REQ07_coklu_imzali_pq_bozuk #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:REQ",
+   "ad": "REQ08_imzasiz_M-b0 imzasiz DC API istegi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:REQ",
+   "ad": "REQ08_imzasiz_M-b0 client_id var mi == insa",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:REQ",
+   "ad": "REQ09_imzasiz_M-b0_client_id_korundu imzasiz DC API istegi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:REQ",
+   "ad": "REQ09_imzasiz_M-b0_client_id_korundu client_id var mi == insa",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:REQ",
+   "ad": "REQ10_istek_alg_none imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:REQ",
+   "ad": "REQ10_istek_alg_none #0 alg=none bos imza",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC01_ES256_x5c imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC01_ES256_x5c #0 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC01_ES256_x5c #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC01_ES256_x5c her ifsa ozeti yukte var",
+   "gecti": true,
+   "ayrinti": 10
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC02_MLDSA65_x5c imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC02_MLDSA65_x5c #0 (ML-DSA-65) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC02_MLDSA65_x5c #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC02_MLDSA65_x5c her ifsa ozeti yukte var",
+   "gecti": true,
+   "ayrinti": 10
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC03_composite_kid imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC03_composite_kid #0 (ML-DSA-65-ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC03_composite_kid #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC03_composite_kid her ifsa ozeti yukte var",
+   "gecti": true,
+   "ayrinti": 10
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC04_MLDSA44_kid imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC04_MLDSA44_kid #0 (ML-DSA-44) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC04_MLDSA44_kid #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC04_MLDSA44_kid her ifsa ozeti yukte var",
+   "gecti": true,
+   "ayrinti": 10
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC05_MLDSA87_kid imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC05_MLDSA87_kid #0 (ML-DSA-87) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC05_MLDSA87_kid #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC05_MLDSA87_kid her ifsa ozeti yukte var",
+   "gecti": true,
+   "ayrinti": 10
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC06_composite_Ed25519_kid imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC06_composite_Ed25519_kid #0 (ML-DSA-65-Ed25519) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC06_composite_Ed25519_kid #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC06_composite_Ed25519_kid her ifsa ozeti yukte var",
+   "gecti": true,
+   "ayrinti": 10
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC07_GJ_ES256_MLDSA65 imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    2,
+    2
+   ]
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC07_GJ_ES256_MLDSA65 #0 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC07_GJ_ES256_MLDSA65 #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC07_GJ_ES256_MLDSA65 #1 (ML-DSA-65) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC07_GJ_ES256_MLDSA65 #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC07_GJ_ES256_MLDSA65 her ifsa ozeti yukte var",
+   "gecti": true,
+   "ayrinti": 10
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC08_GJ_ES256_composite imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    2,
+    2
+   ]
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC08_GJ_ES256_composite #0 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC08_GJ_ES256_composite #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC08_GJ_ES256_composite #1 (ML-DSA-65-ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC08_GJ_ES256_composite #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC08_GJ_ES256_composite her ifsa ozeti yukte var",
+   "gecti": true,
+   "ayrinti": 10
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC09_GJ_ES256_EdDSA imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    2,
+    2
+   ]
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC09_GJ_ES256_EdDSA #0 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC09_GJ_ES256_EdDSA #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC09_GJ_ES256_EdDSA #1 (EdDSA) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC09_GJ_ES256_EdDSA #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC09_GJ_ES256_EdDSA her ifsa ozeti yukte var",
+   "gecti": true,
+   "ayrinti": 10
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC10_ikili_ihrac[0] imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC10_ikili_ihrac[0] #0 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC10_ikili_ihrac[0] #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC10_ikili_ihrac[0] her ifsa ozeti yukte var",
+   "gecti": true,
+   "ayrinti": 10
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC10_ikili_ihrac[1] imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC10_ikili_ihrac[1] #0 (ML-DSA-65) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC10_ikili_ihrac[1] #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC10_ikili_ihrac[1] her ifsa ozeti yukte var",
+   "gecti": true,
+   "ayrinti": 10
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC11_typ_vc+sd-jwt imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC11_typ_vc+sd-jwt #0 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC11_typ_vc+sd-jwt #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC11_typ_vc+sd-jwt her ifsa ozeti yukte var",
+   "gecti": true,
+   "ayrinti": 10
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC12_alg_none imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC12_alg_none #0 alg=none bos imza",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC12_alg_none her ifsa ozeti yukte var",
+   "gecti": true,
+   "ayrinti": 10
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP01_ihracci_ES256_kb_ES256 imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP01_ihracci_ES256_kb_ES256 #0 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP01_ihracci_ES256_kb_ES256 #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP01_ihracci_ES256_kb_ES256 her ifsa ozeti yukte var",
+   "gecti": true,
+   "ayrinti": 3
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP01_ihracci_ES256_kb_ES256 KB-JWT cnf anahtariyla gecerli",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP01_ihracci_ES256_kb_ES256 sd_hash, insa'daki imza sirasini (0) kapsiyor",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP01_ihracci_ES256_kb_ES256 KB aud/nonce",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP02_ihracci_MLDSA65_kb_ES256 imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP02_ihracci_MLDSA65_kb_ES256 #0 (ML-DSA-65) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP02_ihracci_MLDSA65_kb_ES256 #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP02_ihracci_MLDSA65_kb_ES256 her ifsa ozeti yukte var",
+   "gecti": true,
+   "ayrinti": 3
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP02_ihracci_MLDSA65_kb_ES256 KB-JWT cnf anahtariyla gecerli",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP02_ihracci_MLDSA65_kb_ES256 sd_hash, insa'daki imza sirasini (0) kapsiyor",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP02_ihracci_MLDSA65_kb_ES256 KB aud/nonce",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP03_ihracci_MLDSA65_kb_MLDSA65 imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP03_ihracci_MLDSA65_kb_MLDSA65 #0 (ML-DSA-65) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP03_ihracci_MLDSA65_kb_MLDSA65 #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP03_ihracci_MLDSA65_kb_MLDSA65 her ifsa ozeti yukte var",
+   "gecti": true,
+   "ayrinti": 3
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP03_ihracci_MLDSA65_kb_MLDSA65 KB-JWT cnf anahtariyla gecerli",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP03_ihracci_MLDSA65_kb_MLDSA65 sd_hash, insa'daki imza sirasini (0) kapsiyor",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP03_ihracci_MLDSA65_kb_MLDSA65 KB aud/nonce",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP04_ihracci_composite_kb_composite imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP04_ihracci_composite_kb_composite #0 (ML-DSA-65-ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP04_ihracci_composite_kb_composite #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP04_ihracci_composite_kb_composite her ifsa ozeti yukte var",
+   "gecti": true,
+   "ayrinti": 3
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP04_ihracci_composite_kb_composite KB-JWT cnf anahtariyla gecerli",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP04_ihracci_composite_kb_composite sd_hash, insa'daki imza sirasini (0) kapsiyor",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP04_ihracci_composite_kb_composite KB aud/nonce",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP05_GJ_ES256_MLDSA65_kb imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    2,
+    2
+   ]
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP05_GJ_ES256_MLDSA65_kb #0 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP05_GJ_ES256_MLDSA65_kb #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP05_GJ_ES256_MLDSA65_kb #1 (ML-DSA-65) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP05_GJ_ES256_MLDSA65_kb #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP05_GJ_ES256_MLDSA65_kb her ifsa ozeti yukte var",
+   "gecti": true,
+   "ayrinti": 3
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP05_GJ_ES256_MLDSA65_kb KB-JWT cnf anahtariyla gecerli",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP05_GJ_ES256_MLDSA65_kb sd_hash, insa'daki imza sirasini (0) kapsiyor",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP05_GJ_ES256_MLDSA65_kb KB aud/nonce",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP06_GJ_pq_soyuldu_kb_gecerli imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP06_GJ_pq_soyuldu_kb_gecerli #0 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP06_GJ_pq_soyuldu_kb_gecerli #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP06_GJ_pq_soyuldu_kb_gecerli her ifsa ozeti yukte var",
+   "gecti": true,
+   "ayrinti": 3
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP06_GJ_pq_soyuldu_kb_gecerli KB-JWT cnf anahtariyla gecerli",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP06_GJ_pq_soyuldu_kb_gecerli sd_hash, insa'daki imza sirasini (0) kapsiyor",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP06_GJ_pq_soyuldu_kb_gecerli KB aud/nonce",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP07_GJ_sd_hash_ikinci_imza imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    2,
+    2
+   ]
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP07_GJ_sd_hash_ikinci_imza #0 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP07_GJ_sd_hash_ikinci_imza #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP07_GJ_sd_hash_ikinci_imza #1 (ML-DSA-65) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP07_GJ_sd_hash_ikinci_imza #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP07_GJ_sd_hash_ikinci_imza her ifsa ozeti yukte var",
+   "gecti": true,
+   "ayrinti": 3
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP07_GJ_sd_hash_ikinci_imza KB-JWT cnf anahtariyla gecerli",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP07_GJ_sd_hash_ikinci_imza sd_hash, insa'daki imza sirasini (1) kapsiyor",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP07_GJ_sd_hash_ikinci_imza KB aud/nonce",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:TSL",
+   "ad": "TSL01_ES256_x5c imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:TSL",
+   "ad": "TSL01_ES256_x5c #0 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:TSL",
+   "ad": "TSL01_ES256_x5c #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:TSL",
+   "ad": "TSL01_ES256_x5c durum degerleri == insa",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:TSL",
+   "ad": "TSL01_ES256_x5c typ=statuslist+jwt",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:TSL",
+   "ad": "TSL02_MLDSA65_x5c imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:TSL",
+   "ad": "TSL02_MLDSA65_x5c #0 (ML-DSA-65) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:TSL",
+   "ad": "TSL02_MLDSA65_x5c #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:TSL",
+   "ad": "TSL02_MLDSA65_x5c durum degerleri == insa",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:TSL",
+   "ad": "TSL02_MLDSA65_x5c typ=statuslist+jwt",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:TSL",
+   "ad": "TSL03_composite_kid imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:TSL",
+   "ad": "TSL03_composite_kid #0 (ML-DSA-65-ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:TSL",
+   "ad": "TSL03_composite_kid #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:TSL",
+   "ad": "TSL03_composite_kid durum degerleri == insa",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:TSL",
+   "ad": "TSL03_composite_kid typ=statuslist+jwt",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:DPOP",
+   "ad": "DPOP01_ES256 imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:DPOP",
+   "ad": "DPOP01_ES256 #0 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:DPOP",
+   "ad": "DPOP01_ES256 #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:DPOP",
+   "ad": "DPOP01_ES256 jwk == rol acik anahtari",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:DPOP",
+   "ad": "DPOP01_ES256 bayt == manifest",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:DPOP",
+   "ad": "DPOP02_EdDSA imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:DPOP",
+   "ad": "DPOP02_EdDSA #0 (EdDSA) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:DPOP",
+   "ad": "DPOP02_EdDSA #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:DPOP",
+   "ad": "DPOP02_EdDSA jwk == rol acik anahtari",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:DPOP",
+   "ad": "DPOP02_EdDSA bayt == manifest",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:DPOP",
+   "ad": "DPOP03_ML-DSA-44 imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:DPOP",
+   "ad": "DPOP03_ML-DSA-44 #0 (ML-DSA-44) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:DPOP",
+   "ad": "DPOP03_ML-DSA-44 #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:DPOP",
+   "ad": "DPOP03_ML-DSA-44 jwk == rol acik anahtari",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:DPOP",
+   "ad": "DPOP03_ML-DSA-44 bayt == manifest",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:DPOP",
+   "ad": "DPOP04_ML-DSA-65 imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:DPOP",
+   "ad": "DPOP04_ML-DSA-65 #0 (ML-DSA-65) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:DPOP",
+   "ad": "DPOP04_ML-DSA-65 #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:DPOP",
+   "ad": "DPOP04_ML-DSA-65 jwk == rol acik anahtari",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:DPOP",
+   "ad": "DPOP04_ML-DSA-65 bayt == manifest",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:DPOP",
+   "ad": "DPOP05_ML-DSA-87 imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:DPOP",
+   "ad": "DPOP05_ML-DSA-87 #0 (ML-DSA-87) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:DPOP",
+   "ad": "DPOP05_ML-DSA-87 #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:DPOP",
+   "ad": "DPOP05_ML-DSA-87 jwk == rol acik anahtari",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:DPOP",
+   "ad": "DPOP05_ML-DSA-87 bayt == manifest",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:DPOP",
+   "ad": "DPOP06_ML-DSA-65-ES256 imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:DPOP",
+   "ad": "DPOP06_ML-DSA-65-ES256 #0 (ML-DSA-65-ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:DPOP",
+   "ad": "DPOP06_ML-DSA-65-ES256 #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:DPOP",
+   "ad": "DPOP06_ML-DSA-65-ES256 jwk == rol acik anahtari",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:DPOP",
+   "ad": "DPOP06_ML-DSA-65-ES256 bayt == manifest",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:DPOP",
+   "ad": "DPOP07_ML-DSA-65-Ed25519 imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:DPOP",
+   "ad": "DPOP07_ML-DSA-65-Ed25519 #0 (ML-DSA-65-Ed25519) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:DPOP",
+   "ad": "DPOP07_ML-DSA-65-Ed25519 #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:DPOP",
+   "ad": "DPOP07_ML-DSA-65-Ed25519 jwk == rol acik anahtari",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:DPOP",
+   "ad": "DPOP07_ML-DSA-65-Ed25519 bayt == manifest",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:DPOP",
+   "ad": "DPOP08_ML-DSA-65_ath_nonce imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:DPOP",
+   "ad": "DPOP08_ML-DSA-65_ath_nonce #0 (ML-DSA-65) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:DPOP",
+   "ad": "DPOP08_ML-DSA-65_ath_nonce #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:DPOP",
+   "ad": "DPOP08_ML-DSA-65_ath_nonce jwk == rol acik anahtari",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:DPOP",
+   "ad": "DPOP08_ML-DSA-65_ath_nonce bayt == manifest",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:DPOP",
+   "ad": "DPOP09_ML-DSA-65-ES256_ath_nonce imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:DPOP",
+   "ad": "DPOP09_ML-DSA-65-ES256_ath_nonce #0 (ML-DSA-65-ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:DPOP",
+   "ad": "DPOP09_ML-DSA-65-ES256_ath_nonce #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:DPOP",
+   "ad": "DPOP09_ML-DSA-65-ES256_ath_nonce jwk == rol acik anahtari",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:DPOP",
+   "ad": "DPOP09_ML-DSA-65-ES256_ath_nonce bayt == manifest",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:DPOP",
+   "ad": "DPOP10_jwk_ozel_anahtar_iceriyor imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:DPOP",
+   "ad": "DPOP10_jwk_ozel_anahtar_iceriyor #0 (ML-DSA-65) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:DPOP",
+   "ad": "DPOP10_jwk_ozel_anahtar_iceriyor #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:DPOP",
+   "ad": "DPOP10_jwk_ozel_anahtar_iceriyor jwk ozel uye (priv) iceriyor",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:CRIT",
+   "ad": "CRIT01_bilinmeyen_parametre imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:CRIT",
+   "ad": "CRIT01_bilinmeyen_parametre #0 (ML-DSA-65) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:CRIT",
+   "ad": "CRIT01_bilinmeyen_parametre #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:CRIT",
+   "ad": "CRIT01_bilinmeyen_parametre her ifsa ozeti yukte var",
+   "gecti": true,
+   "ayrinti": 10
+  },
+  {
+   "grup": "D:CRIT",
+   "ad": "CRIT01_bilinmeyen_parametre crit konumu/degeri == insa",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:CRIT",
+   "ad": "CRIT03_kayitli_ad imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:CRIT",
+   "ad": "CRIT03_kayitli_ad #0 (ML-DSA-65) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:CRIT",
+   "ad": "CRIT03_kayitli_ad #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:CRIT",
+   "ad": "CRIT03_kayitli_ad her ifsa ozeti yukte var",
+   "gecti": true,
+   "ayrinti": 10
+  },
+  {
+   "grup": "D:CRIT",
+   "ad": "CRIT03_kayitli_ad crit konumu/degeri == insa",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:CRIT",
+   "ad": "CRIT04_bos_dizi imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:CRIT",
+   "ad": "CRIT04_bos_dizi #0 (ML-DSA-65) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:CRIT",
+   "ad": "CRIT04_bos_dizi #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:CRIT",
+   "ad": "CRIT04_bos_dizi her ifsa ozeti yukte var",
+   "gecti": true,
+   "ayrinti": 10
+  },
+  {
+   "grup": "D:CRIT",
+   "ad": "CRIT04_bos_dizi crit konumu/degeri == insa",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:CRIT",
+   "ad": "CRIT05_listelenen_parametre_yok imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:CRIT",
+   "ad": "CRIT05_listelenen_parametre_yok #0 (ML-DSA-65) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:CRIT",
+   "ad": "CRIT05_listelenen_parametre_yok #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:CRIT",
+   "ad": "CRIT05_listelenen_parametre_yok her ifsa ozeti yukte var",
+   "gecti": true,
+   "ayrinti": 10
+  },
+  {
+   "grup": "D:CRIT",
+   "ad": "CRIT05_listelenen_parametre_yok crit konumu/degeri == insa",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:CRIT",
+   "ad": "CRIT02_korumasiz_crit imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:CRIT",
+   "ad": "CRIT02_korumasiz_crit #0 (ML-DSA-65) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:CRIT",
+   "ad": "CRIT02_korumasiz_crit #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:CRIT",
+   "ad": "CRIT02_korumasiz_crit her ifsa ozeti yukte var",
+   "gecti": true,
+   "ayrinti": 10
+  },
+  {
+   "grup": "D:CRIT",
+   "ad": "CRIT02_korumasiz_crit crit konumu/degeri == insa",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T1K_both_valid-ED25519 imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    2,
+    2
+   ]
+  },
+  {
+   "grup": "D:T",
+   "ad": "T1K_both_valid-ED25519 #0 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T1K_both_valid-ED25519 #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T1K_both_valid-ED25519 #1 (Ed25519) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T1K_both_valid-ED25519 #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T2K_second_tampered-ED25519 imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    2,
+    2
+   ]
+  },
+  {
+   "grup": "D:T",
+   "ad": "T2K_second_tampered-ED25519 #0 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T2K_second_tampered-ED25519 #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T2K_second_tampered-ED25519 #1 (Ed25519) insa=\"bozuk: bayt 5, bit 0 cevrildi\"",
+   "gecti": true,
+   "ayrinti": false
+  },
+  {
+   "grup": "D:T",
+   "ad": "T2K_second_tampered-ED25519 #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4K_plus_ML-DSA-65-ED25519 imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    3,
+    3
+   ]
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4K_plus_ML-DSA-65-ED25519 #0 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4K_plus_ML-DSA-65-ED25519 #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4K_plus_ML-DSA-65-ED25519 #1 (Ed25519) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4K_plus_ML-DSA-65-ED25519 #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4K_plus_ML-DSA-65-ED25519 #2 (ML-DSA-65) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4K_plus_ML-DSA-65-ED25519 #2 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T5K_only_EdDSA-ED25519 imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:T",
+   "ad": "T5K_only_EdDSA-ED25519 #0 (Ed25519) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T5K_only_EdDSA-ED25519 #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T6_plus_composite-ED25519 imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    3,
+    3
+   ]
+  },
+  {
+   "grup": "D:T",
+   "ad": "T6_plus_composite-ED25519 #0 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T6_plus_composite-ED25519 #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T6_plus_composite-ED25519 #1 (Ed25519) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T6_plus_composite-ED25519 #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T6_plus_composite-ED25519 #2 (ML-DSA-65-ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T6_plus_composite-ED25519 #2 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC09_GJ_ES256_EdDSA-ED25519 imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    2,
+    2
+   ]
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC09_GJ_ES256_EdDSA-ED25519 #0 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC09_GJ_ES256_EdDSA-ED25519 #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC09_GJ_ES256_EdDSA-ED25519 #1 (Ed25519) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC09_GJ_ES256_EdDSA-ED25519 #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC09_GJ_ES256_EdDSA-ED25519 her ifsa ozeti yukte var",
+   "gecti": true,
+   "ayrinti": 10
+  },
+  {
+   "grup": "D:DPOP",
+   "ad": "DPOP02_EdDSA-ED25519 imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:DPOP",
+   "ad": "DPOP02_EdDSA-ED25519 #0 (Ed25519) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:DPOP",
+   "ad": "DPOP02_EdDSA-ED25519 #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:DPOP",
+   "ad": "DPOP02_EdDSA-ED25519 jwk == rol acik anahtari",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:DPOP",
+   "ad": "DPOP02_EdDSA-ED25519 bayt == manifest",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T1K_both_valid-SIRA-ters imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    2,
+    2
+   ]
+  },
+  {
+   "grup": "D:T",
+   "ad": "T1K_both_valid-SIRA-ters #0 (EdDSA) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T1K_both_valid-SIRA-ters #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T1K_both_valid-SIRA-ters #1 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T1K_both_valid-SIRA-ters #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T1K_both_valid-SIRA-ters-ED25519 imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    2,
+    2
+   ]
+  },
+  {
+   "grup": "D:T",
+   "ad": "T1K_both_valid-SIRA-ters-ED25519 #0 (Ed25519) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T1K_both_valid-SIRA-ters-ED25519 #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T1K_both_valid-SIRA-ters-ED25519 #1 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T1K_both_valid-SIRA-ters-ED25519 #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T1P_both_valid-SIRA-ters imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    2,
+    2
+   ]
+  },
+  {
+   "grup": "D:T",
+   "ad": "T1P_both_valid-SIRA-ters #0 (ML-DSA-65) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T1P_both_valid-SIRA-ters #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T1P_both_valid-SIRA-ters #1 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T1P_both_valid-SIRA-ters #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T1C_both_valid-SIRA-ters imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    2,
+    2
+   ]
+  },
+  {
+   "grup": "D:T",
+   "ad": "T1C_both_valid-SIRA-ters #0 (ML-DSA-65-ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T1C_both_valid-SIRA-ters #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T1C_both_valid-SIRA-ters #1 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T1C_both_valid-SIRA-ters #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T2K_second_tampered-SIRA-ters imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    2,
+    2
+   ]
+  },
+  {
+   "grup": "D:T",
+   "ad": "T2K_second_tampered-SIRA-ters #0 (EdDSA) insa=\"bozuk: bayt 5, bit 0 cevrildi\"",
+   "gecti": true,
+   "ayrinti": false
+  },
+  {
+   "grup": "D:T",
+   "ad": "T2K_second_tampered-SIRA-ters #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T2K_second_tampered-SIRA-ters #1 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T2K_second_tampered-SIRA-ters #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T2K_second_tampered-SIRA-ters-ED25519 imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    2,
+    2
+   ]
+  },
+  {
+   "grup": "D:T",
+   "ad": "T2K_second_tampered-SIRA-ters-ED25519 #0 (Ed25519) insa=\"bozuk: bayt 5, bit 0 cevrildi\"",
+   "gecti": true,
+   "ayrinti": false
+  },
+  {
+   "grup": "D:T",
+   "ad": "T2K_second_tampered-SIRA-ters-ED25519 #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T2K_second_tampered-SIRA-ters-ED25519 #1 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T2K_second_tampered-SIRA-ters-ED25519 #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T2P_second_tampered-SIRA-ters imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    2,
+    2
+   ]
+  },
+  {
+   "grup": "D:T",
+   "ad": "T2P_second_tampered-SIRA-ters #0 (ML-DSA-65) insa=\"bozuk: bayt 5, bit 0 cevrildi\"",
+   "gecti": true,
+   "ayrinti": false
+  },
+  {
+   "grup": "D:T",
+   "ad": "T2P_second_tampered-SIRA-ters #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T2P_second_tampered-SIRA-ters #1 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T2P_second_tampered-SIRA-ters #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T2C_second_tampered-SIRA-ters imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    2,
+    2
+   ]
+  },
+  {
+   "grup": "D:T",
+   "ad": "T2C_second_tampered-SIRA-ters #0 (ML-DSA-65-ES256) insa=\"bozuk: bayt 5, bit 0 cevrildi (ML-DSA bileseni ici\"",
+   "gecti": true,
+   "ayrinti": false
+  },
+  {
+   "grup": "D:T",
+   "ad": "T2C_second_tampered-SIRA-ters #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T2C_second_tampered-SIRA-ters #1 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T2C_second_tampered-SIRA-ters #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4K_plus_ML-DSA-65-SIRA-ek-once imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    3,
+    3
+   ]
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4K_plus_ML-DSA-65-SIRA-ek-once #0 (ML-DSA-65) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4K_plus_ML-DSA-65-SIRA-ek-once #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4K_plus_ML-DSA-65-SIRA-ek-once #1 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4K_plus_ML-DSA-65-SIRA-ek-once #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4K_plus_ML-DSA-65-SIRA-ek-once #2 (EdDSA) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4K_plus_ML-DSA-65-SIRA-ek-once #2 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4K_plus_ML-DSA-65-SIRA-ek-once-ED25519 imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    3,
+    3
+   ]
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4K_plus_ML-DSA-65-SIRA-ek-once-ED25519 #0 (ML-DSA-65) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4K_plus_ML-DSA-65-SIRA-ek-once-ED25519 #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4K_plus_ML-DSA-65-SIRA-ek-once-ED25519 #1 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4K_plus_ML-DSA-65-SIRA-ek-once-ED25519 #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4K_plus_ML-DSA-65-SIRA-ek-once-ED25519 #2 (Ed25519) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4K_plus_ML-DSA-65-SIRA-ek-once-ED25519 #2 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4K_plus_ML-DSA-65-SIRA-ters imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    3,
+    3
+   ]
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4K_plus_ML-DSA-65-SIRA-ters #0 (ML-DSA-65) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4K_plus_ML-DSA-65-SIRA-ters #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4K_plus_ML-DSA-65-SIRA-ters #1 (EdDSA) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4K_plus_ML-DSA-65-SIRA-ters #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4K_plus_ML-DSA-65-SIRA-ters #2 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4K_plus_ML-DSA-65-SIRA-ters #2 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4K_plus_ML-DSA-65-SIRA-ters-ED25519 imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    3,
+    3
+   ]
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4K_plus_ML-DSA-65-SIRA-ters-ED25519 #0 (ML-DSA-65) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4K_plus_ML-DSA-65-SIRA-ters-ED25519 #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4K_plus_ML-DSA-65-SIRA-ters-ED25519 #1 (Ed25519) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4K_plus_ML-DSA-65-SIRA-ters-ED25519 #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4K_plus_ML-DSA-65-SIRA-ters-ED25519 #2 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4K_plus_ML-DSA-65-SIRA-ters-ED25519 #2 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4P_plus_ML-DSA-65-ES256-SIRA-ek-once imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    3,
+    3
+   ]
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4P_plus_ML-DSA-65-ES256-SIRA-ek-once #0 (ML-DSA-65-ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4P_plus_ML-DSA-65-ES256-SIRA-ek-once #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4P_plus_ML-DSA-65-ES256-SIRA-ek-once #1 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4P_plus_ML-DSA-65-ES256-SIRA-ek-once #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4P_plus_ML-DSA-65-ES256-SIRA-ek-once #2 (ML-DSA-65) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4P_plus_ML-DSA-65-ES256-SIRA-ek-once #2 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4P_plus_ML-DSA-65-ES256-SIRA-ters imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    3,
+    3
+   ]
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4P_plus_ML-DSA-65-ES256-SIRA-ters #0 (ML-DSA-65-ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4P_plus_ML-DSA-65-ES256-SIRA-ters #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4P_plus_ML-DSA-65-ES256-SIRA-ters #1 (ML-DSA-65) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4P_plus_ML-DSA-65-ES256-SIRA-ters #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4P_plus_ML-DSA-65-ES256-SIRA-ters #2 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4P_plus_ML-DSA-65-ES256-SIRA-ters #2 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4C_plus_ML-DSA-65-SIRA-ek-once imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    3,
+    3
+   ]
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4C_plus_ML-DSA-65-SIRA-ek-once #0 (ML-DSA-65) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4C_plus_ML-DSA-65-SIRA-ek-once #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4C_plus_ML-DSA-65-SIRA-ek-once #1 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4C_plus_ML-DSA-65-SIRA-ek-once #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4C_plus_ML-DSA-65-SIRA-ek-once #2 (ML-DSA-65-ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4C_plus_ML-DSA-65-SIRA-ek-once #2 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4C_plus_ML-DSA-65-SIRA-ters imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    3,
+    3
+   ]
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4C_plus_ML-DSA-65-SIRA-ters #0 (ML-DSA-65) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4C_plus_ML-DSA-65-SIRA-ters #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4C_plus_ML-DSA-65-SIRA-ters #1 (ML-DSA-65-ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4C_plus_ML-DSA-65-SIRA-ters #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4C_plus_ML-DSA-65-SIRA-ters #2 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T4C_plus_ML-DSA-65-SIRA-ters #2 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T6_plus_composite-SIRA-ek-once imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    3,
+    3
+   ]
+  },
+  {
+   "grup": "D:T",
+   "ad": "T6_plus_composite-SIRA-ek-once #0 (ML-DSA-65-ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T6_plus_composite-SIRA-ek-once #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T6_plus_composite-SIRA-ek-once #1 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T6_plus_composite-SIRA-ek-once #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T6_plus_composite-SIRA-ek-once #2 (EdDSA) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T6_plus_composite-SIRA-ek-once #2 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T6_plus_composite-SIRA-ek-once-ED25519 imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    3,
+    3
+   ]
+  },
+  {
+   "grup": "D:T",
+   "ad": "T6_plus_composite-SIRA-ek-once-ED25519 #0 (ML-DSA-65-ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T6_plus_composite-SIRA-ek-once-ED25519 #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T6_plus_composite-SIRA-ek-once-ED25519 #1 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T6_plus_composite-SIRA-ek-once-ED25519 #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T6_plus_composite-SIRA-ek-once-ED25519 #2 (Ed25519) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T6_plus_composite-SIRA-ek-once-ED25519 #2 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T6_plus_composite-SIRA-ters imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    3,
+    3
+   ]
+  },
+  {
+   "grup": "D:T",
+   "ad": "T6_plus_composite-SIRA-ters #0 (ML-DSA-65-ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T6_plus_composite-SIRA-ters #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T6_plus_composite-SIRA-ters #1 (EdDSA) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T6_plus_composite-SIRA-ters #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T6_plus_composite-SIRA-ters #2 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T6_plus_composite-SIRA-ters #2 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T6_plus_composite-SIRA-ters-ED25519 imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    3,
+    3
+   ]
+  },
+  {
+   "grup": "D:T",
+   "ad": "T6_plus_composite-SIRA-ters-ED25519 #0 (ML-DSA-65-ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T6_plus_composite-SIRA-ters-ED25519 #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T6_plus_composite-SIRA-ters-ED25519 #1 (Ed25519) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T6_plus_composite-SIRA-ters-ED25519 #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T6_plus_composite-SIRA-ters-ED25519 #2 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T6_plus_composite-SIRA-ters-ED25519 #2 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC07_GJ_ES256_MLDSA65-SIRA-ters imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    2,
+    2
+   ]
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC07_GJ_ES256_MLDSA65-SIRA-ters #0 (ML-DSA-65) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC07_GJ_ES256_MLDSA65-SIRA-ters #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC07_GJ_ES256_MLDSA65-SIRA-ters #1 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC07_GJ_ES256_MLDSA65-SIRA-ters #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC07_GJ_ES256_MLDSA65-SIRA-ters her ifsa ozeti yukte var",
+   "gecti": true,
+   "ayrinti": 10
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC08_GJ_ES256_composite-SIRA-ters imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    2,
+    2
+   ]
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC08_GJ_ES256_composite-SIRA-ters #0 (ML-DSA-65-ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC08_GJ_ES256_composite-SIRA-ters #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC08_GJ_ES256_composite-SIRA-ters #1 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC08_GJ_ES256_composite-SIRA-ters #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC08_GJ_ES256_composite-SIRA-ters her ifsa ozeti yukte var",
+   "gecti": true,
+   "ayrinti": 10
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC09_GJ_ES256_EdDSA-SIRA-ters imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    2,
+    2
+   ]
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC09_GJ_ES256_EdDSA-SIRA-ters #0 (EdDSA) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC09_GJ_ES256_EdDSA-SIRA-ters #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC09_GJ_ES256_EdDSA-SIRA-ters #1 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC09_GJ_ES256_EdDSA-SIRA-ters #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC09_GJ_ES256_EdDSA-SIRA-ters her ifsa ozeti yukte var",
+   "gecti": true,
+   "ayrinti": 10
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC09_GJ_ES256_EdDSA-SIRA-ters-ED25519 imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    2,
+    2
+   ]
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC09_GJ_ES256_EdDSA-SIRA-ters-ED25519 #0 (Ed25519) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC09_GJ_ES256_EdDSA-SIRA-ters-ED25519 #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC09_GJ_ES256_EdDSA-SIRA-ters-ED25519 #1 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC09_GJ_ES256_EdDSA-SIRA-ters-ED25519 #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VC",
+   "ad": "VC09_GJ_ES256_EdDSA-SIRA-ters-ED25519 her ifsa ozeti yukte var",
+   "gecti": true,
+   "ayrinti": 10
+  },
+  {
+   "grup": "D:REQ",
+   "ad": "REQ04_coklu_imzali-SIRA-ters imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    2,
+    2
+   ]
+  },
+  {
+   "grup": "D:REQ",
+   "ad": "REQ04_coklu_imzali-SIRA-ters #0 (ML-DSA-65) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:REQ",
+   "ad": "REQ04_coklu_imzali-SIRA-ters #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:REQ",
+   "ad": "REQ04_coklu_imzali-SIRA-ters #1 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:REQ",
+   "ad": "REQ04_coklu_imzali-SIRA-ters #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP05_GJ_ES256_MLDSA65_kb-SIRA-ters imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    2,
+    2
+   ]
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP05_GJ_ES256_MLDSA65_kb-SIRA-ters #0 (ML-DSA-65) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP05_GJ_ES256_MLDSA65_kb-SIRA-ters #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP05_GJ_ES256_MLDSA65_kb-SIRA-ters #1 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP05_GJ_ES256_MLDSA65_kb-SIRA-ters #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP05_GJ_ES256_MLDSA65_kb-SIRA-ters her ifsa ozeti yukte var",
+   "gecti": true,
+   "ayrinti": 3
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP05_GJ_ES256_MLDSA65_kb-SIRA-ters KB-JWT cnf anahtariyla gecerli",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP05_GJ_ES256_MLDSA65_kb-SIRA-ters sd_hash, insa'daki imza sirasini (1) kapsiyor",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:VP",
+   "ad": "VP05_GJ_ES256_MLDSA65_kb-SIRA-ters KB aud/nonce",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7K_plus_kayitsiz imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    3,
+    3
+   ]
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7K_plus_kayitsiz #0 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7K_plus_kayitsiz #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7K_plus_kayitsiz #1 (EdDSA) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7K_plus_kayitsiz #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7K_plus_kayitsiz #2 anahtarsiz etiket X-KAYITSIZ-1, bayt mevcut",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7K_plus_kayitsiz-ED25519 imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    3,
+    3
+   ]
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7K_plus_kayitsiz-ED25519 #0 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7K_plus_kayitsiz-ED25519 #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7K_plus_kayitsiz-ED25519 #1 (Ed25519) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7K_plus_kayitsiz-ED25519 #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7K_plus_kayitsiz-ED25519 #2 anahtarsiz etiket X-KAYITSIZ-1, bayt mevcut",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7K_plus_kayitsiz-SIRA-kayitsiz-once imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    3,
+    3
+   ]
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7K_plus_kayitsiz-SIRA-kayitsiz-once #0 anahtarsiz etiket X-KAYITSIZ-1, bayt mevcut",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7K_plus_kayitsiz-SIRA-kayitsiz-once #1 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7K_plus_kayitsiz-SIRA-kayitsiz-once #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7K_plus_kayitsiz-SIRA-kayitsiz-once #2 (EdDSA) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7K_plus_kayitsiz-SIRA-kayitsiz-once #2 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7K_plus_kayitsiz-SIRA-kayitsiz-once-ED25519 imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    3,
+    3
+   ]
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7K_plus_kayitsiz-SIRA-kayitsiz-once-ED25519 #0 anahtarsiz etiket X-KAYITSIZ-1, bayt mevcut",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7K_plus_kayitsiz-SIRA-kayitsiz-once-ED25519 #1 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7K_plus_kayitsiz-SIRA-kayitsiz-once-ED25519 #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7K_plus_kayitsiz-SIRA-kayitsiz-once-ED25519 #2 (Ed25519) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7K_plus_kayitsiz-SIRA-kayitsiz-once-ED25519 #2 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7K_plus_kayitsiz-SIRA-ters imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    3,
+    3
+   ]
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7K_plus_kayitsiz-SIRA-ters #0 anahtarsiz etiket X-KAYITSIZ-1, bayt mevcut",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7K_plus_kayitsiz-SIRA-ters #1 (EdDSA) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7K_plus_kayitsiz-SIRA-ters #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7K_plus_kayitsiz-SIRA-ters #2 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7K_plus_kayitsiz-SIRA-ters #2 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7K_plus_kayitsiz-SIRA-ters-ED25519 imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    3,
+    3
+   ]
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7K_plus_kayitsiz-SIRA-ters-ED25519 #0 anahtarsiz etiket X-KAYITSIZ-1, bayt mevcut",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7K_plus_kayitsiz-SIRA-ters-ED25519 #1 (Ed25519) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7K_plus_kayitsiz-SIRA-ters-ED25519 #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7K_plus_kayitsiz-SIRA-ters-ED25519 #2 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7K_plus_kayitsiz-SIRA-ters-ED25519 #2 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7P_plus_kayitsiz imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    3,
+    3
+   ]
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7P_plus_kayitsiz #0 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7P_plus_kayitsiz #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7P_plus_kayitsiz #1 (ML-DSA-65) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7P_plus_kayitsiz #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7P_plus_kayitsiz #2 anahtarsiz etiket X-KAYITSIZ-1, bayt mevcut",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7P_plus_kayitsiz-SIRA-kayitsiz-once imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    3,
+    3
+   ]
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7P_plus_kayitsiz-SIRA-kayitsiz-once #0 anahtarsiz etiket X-KAYITSIZ-1, bayt mevcut",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7P_plus_kayitsiz-SIRA-kayitsiz-once #1 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7P_plus_kayitsiz-SIRA-kayitsiz-once #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7P_plus_kayitsiz-SIRA-kayitsiz-once #2 (ML-DSA-65) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7P_plus_kayitsiz-SIRA-kayitsiz-once #2 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7P_plus_kayitsiz-SIRA-ters imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    3,
+    3
+   ]
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7P_plus_kayitsiz-SIRA-ters #0 anahtarsiz etiket X-KAYITSIZ-1, bayt mevcut",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7P_plus_kayitsiz-SIRA-ters #1 (ML-DSA-65) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7P_plus_kayitsiz-SIRA-ters #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7P_plus_kayitsiz-SIRA-ters #2 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7P_plus_kayitsiz-SIRA-ters #2 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7C_plus_kayitsiz imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    3,
+    3
+   ]
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7C_plus_kayitsiz #0 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7C_plus_kayitsiz #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7C_plus_kayitsiz #1 (ML-DSA-65-ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7C_plus_kayitsiz #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7C_plus_kayitsiz #2 anahtarsiz etiket X-KAYITSIZ-1, bayt mevcut",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7C_plus_kayitsiz-SIRA-kayitsiz-once imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    3,
+    3
+   ]
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7C_plus_kayitsiz-SIRA-kayitsiz-once #0 anahtarsiz etiket X-KAYITSIZ-1, bayt mevcut",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7C_plus_kayitsiz-SIRA-kayitsiz-once #1 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7C_plus_kayitsiz-SIRA-kayitsiz-once #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7C_plus_kayitsiz-SIRA-kayitsiz-once #2 (ML-DSA-65-ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7C_plus_kayitsiz-SIRA-kayitsiz-once #2 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7C_plus_kayitsiz-SIRA-ters imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    3,
+    3
+   ]
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7C_plus_kayitsiz-SIRA-ters #0 anahtarsiz etiket X-KAYITSIZ-1, bayt mevcut",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7C_plus_kayitsiz-SIRA-ters #1 (ML-DSA-65-ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7C_plus_kayitsiz-SIRA-ters #1 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7C_plus_kayitsiz-SIRA-ters #2 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:T",
+   "ad": "T7C_plus_kayitsiz-SIRA-ters #2 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:K10",
+   "ad": "K10K_alg-EdDSA_anahtar-ES256 imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:K10",
+   "ad": "K10K_alg-EdDSA_anahtar-ES256 #0 (EdDSA) insa=\"gercek anahtarin algoritmasiyla (ES256) gecerli im\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:K10",
+   "ad": "K10K_alg-EdDSA_anahtar-ES256 #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:K10",
+   "ad": "K10K_alg-EdDSA_anahtar-ES256-ED25519 imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:K10",
+   "ad": "K10K_alg-EdDSA_anahtar-ES256-ED25519 #0 (Ed25519) insa=\"gercek anahtarin algoritmasiyla (ES256) gecerli im\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:K10",
+   "ad": "K10K_alg-EdDSA_anahtar-ES256-ED25519 #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:K10",
+   "ad": "K10K_alg-ES256_anahtar-Ed25519 imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:K10",
+   "ad": "K10K_alg-ES256_anahtar-Ed25519 #0 (ES256) insa=\"gercek anahtarin algoritmasiyla (EdDSA) gecerli im\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:K10",
+   "ad": "K10K_alg-ES256_anahtar-Ed25519 #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:K10",
+   "ad": "K10P_alg-ML-DSA-65_anahtar-ES256 imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:K10",
+   "ad": "K10P_alg-ML-DSA-65_anahtar-ES256 #0 (ML-DSA-65) insa=\"gercek anahtarin algoritmasiyla (ES256) gecerli im\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:K10",
+   "ad": "K10P_alg-ML-DSA-65_anahtar-ES256 #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:K10",
+   "ad": "K10P_alg-ES256_anahtar-ML-DSA-65 imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:K10",
+   "ad": "K10P_alg-ES256_anahtar-ML-DSA-65 #0 (ES256) insa=\"gercek anahtarin algoritmasiyla (ML-DSA-65) gecerl\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:K10",
+   "ad": "K10P_alg-ES256_anahtar-ML-DSA-65 #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:K10",
+   "ad": "K10C_alg-ML-DSA-65-ES256_anahtar-ML-DSA-65 imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:K10",
+   "ad": "K10C_alg-ML-DSA-65-ES256_anahtar-ML-DSA-65 #0 (ML-DSA-65-ES256) insa=\"gercek anahtarin algoritmasiyla (ML-DSA-65) gecerl\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:K10",
+   "ad": "K10C_alg-ML-DSA-65-ES256_anahtar-ML-DSA-65 #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:K10",
+   "ad": "K10C_alg-ML-DSA-65_anahtar-ML-DSA-65-ES256 imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:K10",
+   "ad": "K10C_alg-ML-DSA-65_anahtar-ML-DSA-65-ES256 #0 (ML-DSA-65) insa=\"gercek anahtarin algoritmasiyla (ML-DSA-65-ES256) \"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:K10",
+   "ad": "K10C_alg-ML-DSA-65_anahtar-ML-DSA-65-ES256 #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:V",
+   "ad": "VPLUS_ES256 imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:V",
+   "ad": "VPLUS_ES256 #0 (ES256) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:V",
+   "ad": "VPLUS_ES256 #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:V",
+   "ad": "VMINUS_ES256 imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:V",
+   "ad": "VMINUS_ES256 #0 (ES256) insa=\"bozuk: bayt 32, bit 0 cevrildi\"",
+   "gecti": true,
+   "ayrinti": false
+  },
+  {
+   "grup": "D:V",
+   "ad": "VMINUS_ES256 #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:V",
+   "ad": "VPLUS_EdDSA imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:V",
+   "ad": "VPLUS_EdDSA #0 (EdDSA) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:V",
+   "ad": "VPLUS_EdDSA #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:V",
+   "ad": "VPLUS_EdDSA-ED25519 imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:V",
+   "ad": "VPLUS_EdDSA-ED25519 #0 (Ed25519) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:V",
+   "ad": "VPLUS_EdDSA-ED25519 #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:V",
+   "ad": "VMINUS_EdDSA imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:V",
+   "ad": "VMINUS_EdDSA #0 (EdDSA) insa=\"bozuk: bayt 32, bit 0 cevrildi\"",
+   "gecti": true,
+   "ayrinti": false
+  },
+  {
+   "grup": "D:V",
+   "ad": "VMINUS_EdDSA #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:V",
+   "ad": "VMINUS_EdDSA-ED25519 imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:V",
+   "ad": "VMINUS_EdDSA-ED25519 #0 (Ed25519) insa=\"bozuk: bayt 32, bit 0 cevrildi\"",
+   "gecti": true,
+   "ayrinti": false
+  },
+  {
+   "grup": "D:V",
+   "ad": "VMINUS_EdDSA-ED25519 #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:V",
+   "ad": "VPLUS_ML-DSA-65 imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:V",
+   "ad": "VPLUS_ML-DSA-65 #0 (ML-DSA-65) insa=\"gecerli\"",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "D:V",
+   "ad": "VPLUS_ML-DSA-65 #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "D:V",
+   "ad": "VMINUS_ML-DSA-65 imza sayisi",
+   "gecti": true,
+   "ayrinti": [
+    1,
+    1
+   ]
+  },
+  {
+   "grup": "D:V",
+   "ad": "VMINUS_ML-DSA-65 #0 (ML-DSA-65) insa=\"bozuk: bayt 1654, bit 0 cevrildi\"",
+   "gecti": true,
+   "ayrinti": false
+  },
+  {
+   "grup": "D:V",
+   "ad": "VMINUS_ML-DSA-65 #0 alg etiketi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "F:v1.1-alt-kume",
+   "ad": "v1.1 vektorleri v1.2 icinde bayt-ayni ve manifest girdisi ayni (100/100)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "F:v1.1-alt-kume",
+   "ad": "b-uyumlu/vectors.json bayt-ayni",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "F:capalar",
+   "ad": "v1.2 manifestindeki v1.1 ve v1 capalari, anahtar SHA256SUMS dogru",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "F:genel",
+   "ad": "yeni vektor sayisi",
+   "gecti": null,
+   "ayrinti": 53
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "T1K_both_valid-SIRA-ters: sira [1, 0]; yuk + her (protected, imza) cifti korunmus",
+   "gecti": true,
+   "ayrinti": false
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "T1K_both_valid-SIRA-ters imza gecerlilikleri permutasyonla birebir tasindi",
+   "gecti": true,
+   "ayrinti": {
+    "kaynak": [
+     true,
+     true
+    ],
+    "es": [
+     true,
+     true
+    ]
+   }
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "T1K_both_valid-SIRA-ters-ED25519: sira [1, 0]; yuk + her (protected, imza) cifti korunmus",
+   "gecti": true,
+   "ayrinti": false
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "T1K_both_valid-SIRA-ters-ED25519 imza gecerlilikleri permutasyonla birebir tasindi",
+   "gecti": true,
+   "ayrinti": {
+    "kaynak": [
+     true,
+     true
+    ],
+    "es": [
+     true,
+     true
+    ]
+   }
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "T1P_both_valid-SIRA-ters: sira [1, 0]; yuk + her (protected, imza) cifti korunmus",
+   "gecti": true,
+   "ayrinti": false
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "T1P_both_valid-SIRA-ters imza gecerlilikleri permutasyonla birebir tasindi",
+   "gecti": true,
+   "ayrinti": {
+    "kaynak": [
+     true,
+     true
+    ],
+    "es": [
+     true,
+     true
+    ]
+   }
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "T1C_both_valid-SIRA-ters: sira [1, 0]; yuk + her (protected, imza) cifti korunmus",
+   "gecti": true,
+   "ayrinti": false
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "T1C_both_valid-SIRA-ters imza gecerlilikleri permutasyonla birebir tasindi",
+   "gecti": true,
+   "ayrinti": {
+    "kaynak": [
+     true,
+     true
+    ],
+    "es": [
+     true,
+     true
+    ]
+   }
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "T2K_second_tampered-SIRA-ters: sira [1, 0]; yuk + her (protected, imza) cifti korunmus",
+   "gecti": true,
+   "ayrinti": false
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "T2K_second_tampered-SIRA-ters imza gecerlilikleri permutasyonla birebir tasindi",
+   "gecti": true,
+   "ayrinti": {
+    "kaynak": [
+     true,
+     false
+    ],
+    "es": [
+     false,
+     true
+    ]
+   }
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "T2K_second_tampered-SIRA-ters-ED25519: sira [1, 0]; yuk + her (protected, imza) cifti korunmus",
+   "gecti": true,
+   "ayrinti": false
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "T2K_second_tampered-SIRA-ters-ED25519 imza gecerlilikleri permutasyonla birebir tasindi",
+   "gecti": true,
+   "ayrinti": {
+    "kaynak": [
+     true,
+     false
+    ],
+    "es": [
+     false,
+     true
+    ]
+   }
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "T2P_second_tampered-SIRA-ters: sira [1, 0]; yuk + her (protected, imza) cifti korunmus",
+   "gecti": true,
+   "ayrinti": false
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "T2P_second_tampered-SIRA-ters imza gecerlilikleri permutasyonla birebir tasindi",
+   "gecti": true,
+   "ayrinti": {
+    "kaynak": [
+     true,
+     false
+    ],
+    "es": [
+     false,
+     true
+    ]
+   }
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "T2C_second_tampered-SIRA-ters: sira [1, 0]; yuk + her (protected, imza) cifti korunmus",
+   "gecti": true,
+   "ayrinti": false
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "T2C_second_tampered-SIRA-ters imza gecerlilikleri permutasyonla birebir tasindi",
+   "gecti": true,
+   "ayrinti": {
+    "kaynak": [
+     true,
+     false
+    ],
+    "es": [
+     false,
+     true
+    ]
+   }
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "T4K_plus_ML-DSA-65-SIRA-ek-once: sira [2, 0, 1]; yuk + her (protected, imza) cifti korunmus",
+   "gecti": true,
+   "ayrinti": false
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "T4K_plus_ML-DSA-65-SIRA-ek-once imza gecerlilikleri permutasyonla birebir tasindi",
+   "gecti": true,
+   "ayrinti": {
+    "kaynak": [
+     true,
+     true,
+     true
+    ],
+    "es": [
+     true,
+     true,
+     true
+    ]
+   }
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "T4K_plus_ML-DSA-65-SIRA-ek-once-ED25519: sira [2, 0, 1]; yuk + her (protected, imza) cifti korunmus",
+   "gecti": true,
+   "ayrinti": false
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "T4K_plus_ML-DSA-65-SIRA-ek-once-ED25519 imza gecerlilikleri permutasyonla birebir tasindi",
+   "gecti": true,
+   "ayrinti": {
+    "kaynak": [
+     true,
+     true,
+     true
+    ],
+    "es": [
+     true,
+     true,
+     true
+    ]
+   }
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "T4K_plus_ML-DSA-65-SIRA-ters: sira [2, 1, 0]; yuk + her (protected, imza) cifti korunmus",
+   "gecti": true,
+   "ayrinti": false
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "T4K_plus_ML-DSA-65-SIRA-ters imza gecerlilikleri permutasyonla birebir tasindi",
+   "gecti": true,
+   "ayrinti": {
+    "kaynak": [
+     true,
+     true,
+     true
+    ],
+    "es": [
+     true,
+     true,
+     true
+    ]
+   }
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "T4K_plus_ML-DSA-65-SIRA-ters-ED25519: sira [2, 1, 0]; yuk + her (protected, imza) cifti korunmus",
+   "gecti": true,
+   "ayrinti": false
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "T4K_plus_ML-DSA-65-SIRA-ters-ED25519 imza gecerlilikleri permutasyonla birebir tasindi",
+   "gecti": true,
+   "ayrinti": {
+    "kaynak": [
+     true,
+     true,
+     true
+    ],
+    "es": [
+     true,
+     true,
+     true
+    ]
+   }
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "T4P_plus_ML-DSA-65-ES256-SIRA-ek-once: sira [2, 0, 1]; yuk + her (protected, imza) cifti korunmus",
+   "gecti": true,
+   "ayrinti": false
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "T4P_plus_ML-DSA-65-ES256-SIRA-ek-once imza gecerlilikleri permutasyonla birebir tasindi",
+   "gecti": true,
+   "ayrinti": {
+    "kaynak": [
+     true,
+     true,
+     true
+    ],
+    "es": [
+     true,
+     true,
+     true
+    ]
+   }
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "T4P_plus_ML-DSA-65-ES256-SIRA-ters: sira [2, 1, 0]; yuk + her (protected, imza) cifti korunmus",
+   "gecti": true,
+   "ayrinti": false
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "T4P_plus_ML-DSA-65-ES256-SIRA-ters imza gecerlilikleri permutasyonla birebir tasindi",
+   "gecti": true,
+   "ayrinti": {
+    "kaynak": [
+     true,
+     true,
+     true
+    ],
+    "es": [
+     true,
+     true,
+     true
+    ]
+   }
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "T4C_plus_ML-DSA-65-SIRA-ek-once: sira [2, 0, 1]; yuk + her (protected, imza) cifti korunmus",
+   "gecti": true,
+   "ayrinti": false
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "T4C_plus_ML-DSA-65-SIRA-ek-once imza gecerlilikleri permutasyonla birebir tasindi",
+   "gecti": true,
+   "ayrinti": {
+    "kaynak": [
+     true,
+     true,
+     true
+    ],
+    "es": [
+     true,
+     true,
+     true
+    ]
+   }
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "T4C_plus_ML-DSA-65-SIRA-ters: sira [2, 1, 0]; yuk + her (protected, imza) cifti korunmus",
+   "gecti": true,
+   "ayrinti": false
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "T4C_plus_ML-DSA-65-SIRA-ters imza gecerlilikleri permutasyonla birebir tasindi",
+   "gecti": true,
+   "ayrinti": {
+    "kaynak": [
+     true,
+     true,
+     true
+    ],
+    "es": [
+     true,
+     true,
+     true
+    ]
+   }
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "T6_plus_composite-SIRA-ek-once: sira [2, 0, 1]; yuk + her (protected, imza) cifti korunmus",
+   "gecti": true,
+   "ayrinti": false
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "T6_plus_composite-SIRA-ek-once imza gecerlilikleri permutasyonla birebir tasindi",
+   "gecti": true,
+   "ayrinti": {
+    "kaynak": [
+     true,
+     true,
+     true
+    ],
+    "es": [
+     true,
+     true,
+     true
+    ]
+   }
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "T6_plus_composite-SIRA-ek-once-ED25519: sira [2, 0, 1]; yuk + her (protected, imza) cifti korunmus",
+   "gecti": true,
+   "ayrinti": false
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "T6_plus_composite-SIRA-ek-once-ED25519 imza gecerlilikleri permutasyonla birebir tasindi",
+   "gecti": true,
+   "ayrinti": {
+    "kaynak": [
+     true,
+     true,
+     true
+    ],
+    "es": [
+     true,
+     true,
+     true
+    ]
+   }
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "T6_plus_composite-SIRA-ters: sira [2, 1, 0]; yuk + her (protected, imza) cifti korunmus",
+   "gecti": true,
+   "ayrinti": false
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "T6_plus_composite-SIRA-ters imza gecerlilikleri permutasyonla birebir tasindi",
+   "gecti": true,
+   "ayrinti": {
+    "kaynak": [
+     true,
+     true,
+     true
+    ],
+    "es": [
+     true,
+     true,
+     true
+    ]
+   }
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "T6_plus_composite-SIRA-ters-ED25519: sira [2, 1, 0]; yuk + her (protected, imza) cifti korunmus",
+   "gecti": true,
+   "ayrinti": false
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "T6_plus_composite-SIRA-ters-ED25519 imza gecerlilikleri permutasyonla birebir tasindi",
+   "gecti": true,
+   "ayrinti": {
+    "kaynak": [
+     true,
+     true,
+     true
+    ],
+    "es": [
+     true,
+     true,
+     true
+    ]
+   }
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "VC07_GJ_ES256_MLDSA65-SIRA-ters: sira [1, 0]; yuk + her (protected, imza) cifti korunmus; ifsalar yeni ilk baslikta",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "VC07_GJ_ES256_MLDSA65-SIRA-ters imza gecerlilikleri permutasyonla birebir tasindi",
+   "gecti": true,
+   "ayrinti": {
+    "kaynak": [
+     true,
+     true
+    ],
+    "es": [
+     true,
+     true
+    ]
+   }
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "VC07_GJ_ES256_MLDSA65-SIRA-ters SD-JWT VC (ifsalar yeni ilk baslikta) pqjose ile kaynakla ayni sonuc ve talepler",
+   "gecti": true,
+   "ayrinti": "ok"
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "VC08_GJ_ES256_composite-SIRA-ters: sira [1, 0]; yuk + her (protected, imza) cifti korunmus; ifsalar yeni ilk baslikta",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "VC08_GJ_ES256_composite-SIRA-ters imza gecerlilikleri permutasyonla birebir tasindi",
+   "gecti": true,
+   "ayrinti": {
+    "kaynak": [
+     true,
+     true
+    ],
+    "es": [
+     true,
+     true
+    ]
+   }
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "VC08_GJ_ES256_composite-SIRA-ters SD-JWT VC (ifsalar yeni ilk baslikta) pqjose ile kaynakla ayni sonuc ve talepler",
+   "gecti": true,
+   "ayrinti": "ok"
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "VC09_GJ_ES256_EdDSA-SIRA-ters: sira [1, 0]; yuk + her (protected, imza) cifti korunmus; ifsalar yeni ilk baslikta",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "VC09_GJ_ES256_EdDSA-SIRA-ters imza gecerlilikleri permutasyonla birebir tasindi",
+   "gecti": true,
+   "ayrinti": {
+    "kaynak": [
+     true,
+     true
+    ],
+    "es": [
+     true,
+     true
+    ]
+   }
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "VC09_GJ_ES256_EdDSA-SIRA-ters SD-JWT VC (ifsalar yeni ilk baslikta) pqjose ile kaynakla ayni sonuc ve talepler",
+   "gecti": true,
+   "ayrinti": "ok"
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "VC09_GJ_ES256_EdDSA-SIRA-ters-ED25519: sira [1, 0]; yuk + her (protected, imza) cifti korunmus; ifsalar yeni ilk baslikta",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "VC09_GJ_ES256_EdDSA-SIRA-ters-ED25519 imza gecerlilikleri permutasyonla birebir tasindi",
+   "gecti": true,
+   "ayrinti": {
+    "kaynak": [
+     true,
+     true
+    ],
+    "es": [
+     true,
+     true
+    ]
+   }
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "VC09_GJ_ES256_EdDSA-SIRA-ters-ED25519 SD-JWT VC (ifsalar yeni ilk baslikta) pqjose ile kaynakla ayni sonuc ve talepler",
+   "gecti": true,
+   "ayrinti": "ok"
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "REQ04_coklu_imzali-SIRA-ters: sira [1, 0]; yuk + her (protected, imza) cifti korunmus",
+   "gecti": true,
+   "ayrinti": false
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "REQ04_coklu_imzali-SIRA-ters imza gecerlilikleri permutasyonla birebir tasindi",
+   "gecti": true,
+   "ayrinti": {
+    "kaynak": [
+     true,
+     true
+    ],
+    "es": [
+     true,
+     true
+    ]
+   }
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "VP05_GJ_ES256_MLDSA65_kb-SIRA-ters: sira [1, 0]; yuk + her (protected, imza) cifti korunmus; ifsalar yeni ilk baslikta",
+   "gecti": true,
+   "ayrinti": true
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "VP05_GJ_ES256_MLDSA65_kb-SIRA-ters imza gecerlilikleri permutasyonla birebir tasindi",
+   "gecti": true,
+   "ayrinti": {
+    "kaynak": [
+     true,
+     true
+    ],
+    "es": [
+     true,
+     true
+    ]
+   }
+  },
+  {
+   "grup": "F:MR4-disi",
+   "ad": "VP05_GJ_ES256_MLDSA65_kb-SIRA-ters: KB sd_hash artik 1. siradaki imzayi bagliyor (ilk imzayi degil)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "T7K_plus_kayitsiz-SIRA-kayitsiz-once: sira [2, 0, 1]; yuk + her (protected, imza) cifti korunmus",
+   "gecti": true,
+   "ayrinti": false
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "T7K_plus_kayitsiz-SIRA-kayitsiz-once imza gecerlilikleri permutasyonla birebir tasindi",
+   "gecti": true,
+   "ayrinti": {
+    "kaynak": [
+     true,
+     true,
+     null
+    ],
+    "es": [
+     null,
+     true,
+     true
+    ]
+   }
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "T7K_plus_kayitsiz-SIRA-kayitsiz-once-ED25519: sira [2, 0, 1]; yuk + her (protected, imza) cifti korunmus",
+   "gecti": true,
+   "ayrinti": false
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "T7K_plus_kayitsiz-SIRA-kayitsiz-once-ED25519 imza gecerlilikleri permutasyonla birebir tasindi",
+   "gecti": true,
+   "ayrinti": {
+    "kaynak": [
+     true,
+     true,
+     null
+    ],
+    "es": [
+     null,
+     true,
+     true
+    ]
+   }
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "T7K_plus_kayitsiz-SIRA-ters: sira [2, 1, 0]; yuk + her (protected, imza) cifti korunmus",
+   "gecti": true,
+   "ayrinti": false
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "T7K_plus_kayitsiz-SIRA-ters imza gecerlilikleri permutasyonla birebir tasindi",
+   "gecti": true,
+   "ayrinti": {
+    "kaynak": [
+     true,
+     true,
+     null
+    ],
+    "es": [
+     null,
+     true,
+     true
+    ]
+   }
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "T7K_plus_kayitsiz-SIRA-ters-ED25519: sira [2, 1, 0]; yuk + her (protected, imza) cifti korunmus",
+   "gecti": true,
+   "ayrinti": false
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "T7K_plus_kayitsiz-SIRA-ters-ED25519 imza gecerlilikleri permutasyonla birebir tasindi",
+   "gecti": true,
+   "ayrinti": {
+    "kaynak": [
+     true,
+     true,
+     null
+    ],
+    "es": [
+     null,
+     true,
+     true
+    ]
+   }
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "T7P_plus_kayitsiz-SIRA-kayitsiz-once: sira [2, 0, 1]; yuk + her (protected, imza) cifti korunmus",
+   "gecti": true,
+   "ayrinti": false
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "T7P_plus_kayitsiz-SIRA-kayitsiz-once imza gecerlilikleri permutasyonla birebir tasindi",
+   "gecti": true,
+   "ayrinti": {
+    "kaynak": [
+     true,
+     true,
+     null
+    ],
+    "es": [
+     null,
+     true,
+     true
+    ]
+   }
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "T7P_plus_kayitsiz-SIRA-ters: sira [2, 1, 0]; yuk + her (protected, imza) cifti korunmus",
+   "gecti": true,
+   "ayrinti": false
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "T7P_plus_kayitsiz-SIRA-ters imza gecerlilikleri permutasyonla birebir tasindi",
+   "gecti": true,
+   "ayrinti": {
+    "kaynak": [
+     true,
+     true,
+     null
+    ],
+    "es": [
+     null,
+     true,
+     true
+    ]
+   }
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "T7C_plus_kayitsiz-SIRA-kayitsiz-once: sira [2, 0, 1]; yuk + her (protected, imza) cifti korunmus",
+   "gecti": true,
+   "ayrinti": false
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "T7C_plus_kayitsiz-SIRA-kayitsiz-once imza gecerlilikleri permutasyonla birebir tasindi",
+   "gecti": true,
+   "ayrinti": {
+    "kaynak": [
+     true,
+     true,
+     null
+    ],
+    "es": [
+     null,
+     true,
+     true
+    ]
+   }
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "T7C_plus_kayitsiz-SIRA-ters: sira [2, 1, 0]; yuk + her (protected, imza) cifti korunmus",
+   "gecti": true,
+   "ayrinti": false
+  },
+  {
+   "grup": "F:MR4",
+   "ad": "T7C_plus_kayitsiz-SIRA-ters imza gecerlilikleri permutasyonla birebir tasindi",
+   "gecti": true,
+   "ayrinti": {
+    "kaynak": [
+     true,
+     true,
+     null
+    ],
+    "es": [
+     null,
+     true,
+     true
+    ]
+   }
+  },
+  {
+   "grup": "F:K5-T7",
+   "ad": "T7K_plus_kayitsiz ilk iki imza T1K ile bayt-ayni",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "F:K5-T7",
+   "ad": "T7K_plus_kayitsiz ucuncu imza: alg=X-KAYITSIZ-1, 128 B HKDF baytlari",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "F:K5-T7",
+   "ad": "T7K_plus_kayitsiz pqjose AND: ucuncu imza alg-bilinmiyor (fail-closed)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "F:K5-T7",
+   "ad": "T7K_plus_kayitsiz KONTROL(any-valid)",
+   "gecti": null,
+   "ayrinti": "KABUL"
+  },
+  {
+   "grup": "F:K5-T7",
+   "ad": "T7P_plus_kayitsiz ilk iki imza T1P ile bayt-ayni",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "F:K5-T7",
+   "ad": "T7P_plus_kayitsiz ucuncu imza: alg=X-KAYITSIZ-1, 128 B HKDF baytlari",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "F:K5-T7",
+   "ad": "T7P_plus_kayitsiz pqjose AND: ucuncu imza alg-bilinmiyor (fail-closed)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "F:K5-T7",
+   "ad": "T7P_plus_kayitsiz KONTROL(any-valid)",
+   "gecti": null,
+   "ayrinti": "KABUL"
+  },
+  {
+   "grup": "F:K5-T7",
+   "ad": "T7C_plus_kayitsiz ilk iki imza T1C ile bayt-ayni",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "F:K5-T7",
+   "ad": "T7C_plus_kayitsiz ucuncu imza: alg=X-KAYITSIZ-1, 128 B HKDF baytlari",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "F:K5-T7",
+   "ad": "T7C_plus_kayitsiz pqjose AND: ucuncu imza alg-bilinmiyor (fail-closed)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "F:K5-T7",
+   "ad": "T7C_plus_kayitsiz KONTROL(any-valid)",
+   "gecti": null,
+   "ayrinti": "KABUL"
+  },
+  {
+   "grup": "F:K10",
+   "ad": "K10K_alg-EdDSA_anahtar-ES256: baslik alg=EdDSA, anahtar ES256; imza gercek anahtarla (ES256) gecerli",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "F:K10",
+   "ad": "K10K_alg-EdDSA_anahtar-ES256 OpenSSL CLI capraz dogrulama (gercek anahtar algoritmasiyla)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "F:K10",
+   "ad": "K10K_alg-EdDSA_anahtar-ES256 dogrulama_girdileri.jwk == rol acik anahtari",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "F:K10",
+   "ad": "K10K_alg-EdDSA_anahtar-ES256 pqjose (L3 anahtar-alg baglama) -> RED",
+   "gecti": true,
+   "ayrinti": "anahtar-yok-ya-da-alg-uyumsuz"
+  },
+  {
+   "grup": "F:K10",
+   "ad": "K10K_alg-EdDSA_anahtar-ES256-ED25519: baslik alg=Ed25519, anahtar ES256; imza gercek anahtarla (ES256) gecerli",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "F:K10",
+   "ad": "K10K_alg-EdDSA_anahtar-ES256-ED25519 OpenSSL CLI capraz dogrulama (gercek anahtar algoritmasiyla)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "F:K10",
+   "ad": "K10K_alg-EdDSA_anahtar-ES256-ED25519 dogrulama_girdileri.jwk == rol acik anahtari",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "F:K10",
+   "ad": "K10K_alg-EdDSA_anahtar-ES256-ED25519 pqjose (L3 anahtar-alg baglama) -> RED",
+   "gecti": true,
+   "ayrinti": "anahtar-yok-ya-da-alg-uyumsuz"
+  },
+  {
+   "grup": "F:K10",
+   "ad": "K10K_alg-ES256_anahtar-Ed25519: baslik alg=ES256, anahtar Ed25519; imza gercek anahtarla (EdDSA) gecerli",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "F:K10",
+   "ad": "K10K_alg-ES256_anahtar-Ed25519 OpenSSL CLI capraz dogrulama (gercek anahtar algoritmasiyla)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "F:K10",
+   "ad": "K10K_alg-ES256_anahtar-Ed25519 dogrulama_girdileri.jwk == rol acik anahtari",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "F:K10",
+   "ad": "K10K_alg-ES256_anahtar-Ed25519 pqjose (L3 anahtar-alg baglama) -> RED",
+   "gecti": true,
+   "ayrinti": "anahtar-yok-ya-da-alg-uyumsuz"
+  },
+  {
+   "grup": "F:K10",
+   "ad": "K10P_alg-ML-DSA-65_anahtar-ES256: baslik alg=ML-DSA-65, anahtar ES256; imza gercek anahtarla (ES256) gecerli",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "F:K10",
+   "ad": "K10P_alg-ML-DSA-65_anahtar-ES256 OpenSSL CLI capraz dogrulama (gercek anahtar algoritmasiyla)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "F:K10",
+   "ad": "K10P_alg-ML-DSA-65_anahtar-ES256 dogrulama_girdileri.jwk == rol acik anahtari",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "F:K10",
+   "ad": "K10P_alg-ML-DSA-65_anahtar-ES256 pqjose (L3 anahtar-alg baglama) -> RED",
+   "gecti": true,
+   "ayrinti": "anahtar-yok-ya-da-alg-uyumsuz"
+  },
+  {
+   "grup": "F:K10",
+   "ad": "K10P_alg-ES256_anahtar-ML-DSA-65: baslik alg=ES256, anahtar ML-DSA-65; imza gercek anahtarla (ML-DSA-65) gecerli",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "F:K10",
+   "ad": "K10P_alg-ES256_anahtar-ML-DSA-65 OpenSSL CLI capraz dogrulama (gercek anahtar algoritmasiyla)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "F:K10",
+   "ad": "K10P_alg-ES256_anahtar-ML-DSA-65 dogrulama_girdileri.jwk == rol acik anahtari",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "F:K10",
+   "ad": "K10P_alg-ES256_anahtar-ML-DSA-65 pqjose (L3 anahtar-alg baglama) -> RED",
+   "gecti": true,
+   "ayrinti": "anahtar-yok-ya-da-alg-uyumsuz"
+  },
+  {
+   "grup": "F:K10",
+   "ad": "K10C_alg-ML-DSA-65-ES256_anahtar-ML-DSA-65: baslik alg=ML-DSA-65-ES256, anahtar ML-DSA-65; imza gercek anahtarla (ML-DSA-65) gecerli",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "F:K10",
+   "ad": "K10C_alg-ML-DSA-65-ES256_anahtar-ML-DSA-65 OpenSSL CLI capraz dogrulama (gercek anahtar algoritmasiyla)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "F:K10",
+   "ad": "K10C_alg-ML-DSA-65-ES256_anahtar-ML-DSA-65 dogrulama_girdileri.jwk == rol acik anahtari",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "F:K10",
+   "ad": "K10C_alg-ML-DSA-65-ES256_anahtar-ML-DSA-65 pqjose (L3 anahtar-alg baglama) -> RED",
+   "gecti": true,
+   "ayrinti": "anahtar-yok-ya-da-alg-uyumsuz"
+  },
+  {
+   "grup": "F:K10",
+   "ad": "K10C_alg-ML-DSA-65_anahtar-ML-DSA-65-ES256: baslik alg=ML-DSA-65, anahtar ML-DSA-65-ES256; imza gercek anahtarla (ML-DSA-65-ES256) gecerli",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "F:K10",
+   "ad": "K10C_alg-ML-DSA-65_anahtar-ML-DSA-65-ES256 OpenSSL CLI capraz dogrulama (gercek anahtar algoritmasiyla)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "F:K10",
+   "ad": "K10C_alg-ML-DSA-65_anahtar-ML-DSA-65-ES256 dogrulama_girdileri.jwk == rol acik anahtari",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "F:K10",
+   "ad": "K10C_alg-ML-DSA-65_anahtar-ML-DSA-65-ES256 pqjose (L3 anahtar-alg baglama) -> RED",
+   "gecti": true,
+   "ayrinti": "anahtar-yok-ya-da-alg-uyumsuz"
+  },
+  {
+   "grup": "F:V",
+   "ad": "VPLUS_ES256: pqjose KABUL",
+   "gecti": true,
+   "ayrinti": "ok"
+  },
+  {
+   "grup": "F:V",
+   "ad": "VPLUS_ES256: OpenSSL CLI gecerli",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "F:V",
+   "ad": "VMINUS_ES256: pqjose RED",
+   "gecti": true,
+   "ayrinti": "imzalardan-en-az-biri-gecersiz"
+  },
+  {
+   "grup": "F:V",
+   "ad": "VMINUS_ES256: OpenSSL CLI gecersiz",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "F:V",
+   "ad": "VPLUS_EdDSA: pqjose KABUL",
+   "gecti": true,
+   "ayrinti": "ok"
+  },
+  {
+   "grup": "F:V",
+   "ad": "VPLUS_EdDSA: OpenSSL CLI gecerli",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "F:V",
+   "ad": "VPLUS_EdDSA-ED25519: pqjose KABUL",
+   "gecti": true,
+   "ayrinti": "ok"
+  },
+  {
+   "grup": "F:V",
+   "ad": "VPLUS_EdDSA-ED25519: OpenSSL CLI gecerli",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "F:V",
+   "ad": "VMINUS_EdDSA: pqjose RED",
+   "gecti": true,
+   "ayrinti": "imzalardan-en-az-biri-gecersiz"
+  },
+  {
+   "grup": "F:V",
+   "ad": "VMINUS_EdDSA: OpenSSL CLI gecersiz",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "F:V",
+   "ad": "VMINUS_EdDSA-ED25519: pqjose RED",
+   "gecti": true,
+   "ayrinti": "imzalardan-en-az-biri-gecersiz"
+  },
+  {
+   "grup": "F:V",
+   "ad": "VMINUS_EdDSA-ED25519: OpenSSL CLI gecersiz",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "F:V",
+   "ad": "VPLUS_ML-DSA-65: pqjose KABUL",
+   "gecti": true,
+   "ayrinti": "ok"
+  },
+  {
+   "grup": "F:V",
+   "ad": "VPLUS_ML-DSA-65: OpenSSL CLI gecerli",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "F:V",
+   "ad": "VMINUS_ML-DSA-65: pqjose RED",
+   "gecti": true,
+   "ayrinti": "imzalardan-en-az-biri-gecersiz"
+  },
+  {
+   "grup": "F:V",
+   "ad": "VMINUS_ML-DSA-65: OpenSSL CLI gecersiz",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "F:ED25519",
+   "ad": "T1K_both_valid-SIRA-ters-ED25519: T1K_both_valid-SIRA-ters ile yalniz EdDSA->Ed25519 basligi ve o imza farkli",
+   "gecti": true,
+   "ayrinti": [
+    0
+   ]
+  },
+  {
+   "grup": "F:ED25519",
+   "ad": "T1K_both_valid-SIRA-ters-ED25519 #0 OpenSSL CLI (Ed25519) gecerli",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "F:ED25519",
+   "ad": "T2K_second_tampered-SIRA-ters-ED25519: T2K_second_tampered-SIRA-ters ile yalniz EdDSA->Ed25519 basligi ve o imza farkli",
+   "gecti": true,
+   "ayrinti": [
+    0
+   ]
+  },
+  {
+   "grup": "F:ED25519",
+   "ad": "T2K_second_tampered-SIRA-ters-ED25519 #0 OpenSSL CLI (Ed25519) gecersiz (insa: bozuk)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "F:ED25519",
+   "ad": "T4K_plus_ML-DSA-65-SIRA-ek-once-ED25519: T4K_plus_ML-DSA-65-SIRA-ek-once ile yalniz EdDSA->Ed25519 basligi ve o imza farkli",
+   "gecti": true,
+   "ayrinti": [
+    2
+   ]
+  },
+  {
+   "grup": "F:ED25519",
+   "ad": "T4K_plus_ML-DSA-65-SIRA-ek-once-ED25519 #2 OpenSSL CLI (Ed25519) gecerli",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "F:ED25519",
+   "ad": "T4K_plus_ML-DSA-65-SIRA-ters-ED25519: T4K_plus_ML-DSA-65-SIRA-ters ile yalniz EdDSA->Ed25519 basligi ve o imza farkli",
+   "gecti": true,
+   "ayrinti": [
+    1
+   ]
+  },
+  {
+   "grup": "F:ED25519",
+   "ad": "T4K_plus_ML-DSA-65-SIRA-ters-ED25519 #1 OpenSSL CLI (Ed25519) gecerli",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "F:ED25519",
+   "ad": "T6_plus_composite-SIRA-ek-once-ED25519: T6_plus_composite-SIRA-ek-once ile yalniz EdDSA->Ed25519 basligi ve o imza farkli",
+   "gecti": true,
+   "ayrinti": [
+    2
+   ]
+  },
+  {
+   "grup": "F:ED25519",
+   "ad": "T6_plus_composite-SIRA-ek-once-ED25519 #2 OpenSSL CLI (Ed25519) gecerli",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "F:ED25519",
+   "ad": "T6_plus_composite-SIRA-ters-ED25519: T6_plus_composite-SIRA-ters ile yalniz EdDSA->Ed25519 basligi ve o imza farkli",
+   "gecti": true,
+   "ayrinti": [
+    1
+   ]
+  },
+  {
+   "grup": "F:ED25519",
+   "ad": "T6_plus_composite-SIRA-ters-ED25519 #1 OpenSSL CLI (Ed25519) gecerli",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "F:ED25519",
+   "ad": "VC09_GJ_ES256_EdDSA-SIRA-ters-ED25519: VC09_GJ_ES256_EdDSA-SIRA-ters ile yalniz EdDSA->Ed25519 basligi ve o imza farkli",
+   "gecti": true,
+   "ayrinti": [
+    0
+   ]
+  },
+  {
+   "grup": "F:ED25519",
+   "ad": "VC09_GJ_ES256_EdDSA-SIRA-ters-ED25519 #0 OpenSSL CLI (Ed25519) gecerli",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "F:ED25519",
+   "ad": "T7K_plus_kayitsiz-ED25519: T7K_plus_kayitsiz ile yalniz EdDSA->Ed25519 basligi ve o imza farkli",
+   "gecti": true,
+   "ayrinti": [
+    1
+   ]
+  },
+  {
+   "grup": "F:ED25519",
+   "ad": "T7K_plus_kayitsiz-ED25519 #1 OpenSSL CLI (Ed25519) gecerli",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "F:ED25519",
+   "ad": "T7K_plus_kayitsiz-SIRA-kayitsiz-once-ED25519: T7K_plus_kayitsiz-SIRA-kayitsiz-once ile yalniz EdDSA->Ed25519 basligi ve o imza farkli",
+   "gecti": true,
+   "ayrinti": [
+    2
+   ]
+  },
+  {
+   "grup": "F:ED25519",
+   "ad": "T7K_plus_kayitsiz-SIRA-kayitsiz-once-ED25519 #2 OpenSSL CLI (Ed25519) gecerli",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "F:ED25519",
+   "ad": "T7K_plus_kayitsiz-SIRA-ters-ED25519: T7K_plus_kayitsiz-SIRA-ters ile yalniz EdDSA->Ed25519 basligi ve o imza farkli",
+   "gecti": true,
+   "ayrinti": [
+    1
+   ]
+  },
+  {
+   "grup": "F:ED25519",
+   "ad": "T7K_plus_kayitsiz-SIRA-ters-ED25519 #1 OpenSSL CLI (Ed25519) gecerli",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "F:ED25519",
+   "ad": "K10K_alg-EdDSA_anahtar-ES256-ED25519: K10K_alg-EdDSA_anahtar-ES256 ile yalniz EdDSA->Ed25519 basligi ve o imza farkli",
+   "gecti": true,
+   "ayrinti": [
+    0
+   ]
+  },
+  {
+   "grup": "F:ED25519",
+   "ad": "K10K_alg-EdDSA_anahtar-ES256-ED25519 #0 OpenSSL CLI (ES256) gecerli",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "F:ED25519",
+   "ad": "VPLUS_EdDSA-ED25519: VPLUS_EdDSA ile yalniz EdDSA->Ed25519 basligi ve o imza farkli",
+   "gecti": true,
+   "ayrinti": [
+    0
+   ]
+  },
+  {
+   "grup": "F:ED25519",
+   "ad": "VPLUS_EdDSA-ED25519 #0 OpenSSL CLI (Ed25519) gecerli",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "F:ED25519",
+   "ad": "VMINUS_EdDSA-ED25519: VMINUS_EdDSA ile yalniz EdDSA->Ed25519 basligi ve o imza farkli",
+   "gecti": true,
+   "ayrinti": [
+    0
+   ]
+  },
+  {
+   "grup": "F:ED25519",
+   "ad": "VMINUS_EdDSA-ED25519 #0 OpenSSL CLI (Ed25519) gecersiz (insa: bozuk)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "F:ED25519",
+   "ad": "EdDSA etiketi tasiyan her yeni kontrol vektorunun -ED25519 esi var",
+   "gecti": true,
+   "ayrinti": []
+  }
+ ]
+}

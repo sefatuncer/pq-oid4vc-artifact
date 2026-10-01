@@ -1,0 +1,97 @@
+theory Ornek_CERCEVE_002198
+begin
+
+/*
+ * PQ-OID4VC | teknik kapı (ÖK §2F) | kapi örneği CERCEVE-002198 — cevir.py ile üretildi; elle değiştirme.
+ * hedef G3 (a08_durum), tür bir-eksik, hücre birincil|g3|f3|hizli|taze|p1
+ * Çeviri kuralları: cevir.py başlığı. Girdi: atama (pq), kenarlar (tanitici), sabitleme,
+ * faz (klasik alternatif), pencere (kırılabilirlik), taşıyıcılar, politika. ASP çıktıları okunmadı.
+ */
+
+builtins: signing
+
+restriction Equality: "All x y #i. Eq(x, y) @ #i ==> x = y"
+restriction Unique:   "All x #i #j. Unique(x) @ #i & Unique(x) @ #j ==> #i = #j"
+
+rule Qday:
+    [ ] --[ Unique('qday'), QdayEv() ]-> [ !CRQC() ]
+
+/* ---------------- artefakt imzacı anahtarları (R1/R5; birlikte yaşamada ikinci klasik anahtar: R2) ---------------- */
+rule Setup_a01_lotl:
+    [ Fr(~km) ] --[ Unique('setup_a01_lotl') ]-> [ !Sk('a01_lotl', 'main', ~km), Out(pk(~km)) ]
+rule Setup_a02_lote_pid:
+    [ Fr(~km) ] --[ Unique('setup_a02_lote_pid') ]-> [ !Sk('a02_lote_pid', 'main', ~km), Out(pk(~km)) ]
+rule Setup_a02_tl:
+    [ Fr(~km) ] --[ Unique('setup_a02_tl') ]-> [ !Sk('a02_tl', 'main', ~km), Out(pk(~km)) ]
+rule Setup_a03_ca:
+    [ Fr(~km) ] --[ Unique('setup_a03_ca') ]-> [ !Sk('a03_ca', 'main', ~km), Out(pk(~km)) ]
+rule Setup_a04_ihr:
+    [ Fr(~km) ] --[ Unique('setup_a04_ihr') ]-> [ !Sk('a04_ihr', 'main', ~km), Out(pk(~km)) ]
+rule Break_a04_ihr_main:
+    [ !Sk('a04_ihr', 'main', k), !CRQC(), In(pk(k)) ] --[ Broken('a04_ihr_main') ]-> [ Out(k) ]
+rule Setup_a08_durum:
+    [ Fr(~km) ] --[ Unique('setup_a08_durum') ]-> [ !Sk('a08_durum', 'main', ~km), Out(pk(~km)) ]
+
+/* ---------------- sabitleme (R5): sabit artefaktın imzacı anahtarları bant dışı güvenilir ---------------- */
+rule Pin_a01_lotl:
+    [ !Sk('a01_lotl', t, k) ] --> [ !Acc('a01_lotl', pk(k), t) ]
+rule Pin_a02_lote_pid:
+    [ !Sk('a02_lote_pid', t, k) ] --> [ !Acc('a02_lote_pid', pk(k), t) ]
+
+/* ---------------- tanıtma (R1 zinciri; her tanıtıcı bir OR-kenarıdır: R1 X_alt_ca) ---------------- */
+rule Intro_a01_lotl__a02_tl:
+    let m = <'intro', 'a01_lotl', 'a02_tl', pk(kA), tA> in
+    [ !Sk('a01_lotl', tB, kB), !Sk('a02_tl', tA, kA) ] --> [ Out(<m, sign(m, kB)>) ]
+rule AccIntro_a01_lotl__a02_tl:
+    [ !Acc('a01_lotl', pkB, t), In(<<'intro', 'a01_lotl', 'a02_tl', pkA, tA>, s>) ]
+  --[ Eq(verify(s, <'intro', 'a01_lotl', 'a02_tl', pkA, tA>, pkB), true) ]->
+    [ !Acc('a02_tl', pkA, tA) ]
+rule Intro_a02_lote_pid__a03_ca:
+    let m = <'intro', 'a02_lote_pid', 'a03_ca', pk(kA), tA> in
+    [ !Sk('a02_lote_pid', tB, kB), !Sk('a03_ca', tA, kA) ] --> [ Out(<m, sign(m, kB)>) ]
+rule AccIntro_a02_lote_pid__a03_ca:
+    [ !Acc('a02_lote_pid', pkB, t), In(<<'intro', 'a02_lote_pid', 'a03_ca', pkA, tA>, s>) ]
+  --[ Eq(verify(s, <'intro', 'a02_lote_pid', 'a03_ca', pkA, tA>, pkB), true) ]->
+    [ !Acc('a03_ca', pkA, tA) ]
+rule Intro_a02_tl__a03_ca:
+    let m = <'intro', 'a02_tl', 'a03_ca', pk(kA), tA> in
+    [ !Sk('a02_tl', tB, kB), !Sk('a03_ca', tA, kA) ] --> [ Out(<m, sign(m, kB)>) ]
+rule AccIntro_a02_tl__a03_ca:
+    [ !Acc('a02_tl', pkB, t), In(<<'intro', 'a02_tl', 'a03_ca', pkA, tA>, s>) ]
+  --[ Eq(verify(s, <'intro', 'a02_tl', 'a03_ca', pkA, tA>, pkB), true) ]->
+    [ !Acc('a03_ca', pkA, tA) ]
+rule Intro_a03_ca__a04_ihr:
+    let m = <'intro', 'a03_ca', 'a04_ihr', pk(kA), tA> in
+    [ !Sk('a03_ca', tB, kB), !Sk('a04_ihr', tA, kA) ] --> [ Out(<m, sign(m, kB)>) ]
+rule AccIntro_a03_ca__a04_ihr:
+    [ !Acc('a03_ca', pkB, t), In(<<'intro', 'a03_ca', 'a04_ihr', pkA, tA>, s>) ]
+  --[ Eq(verify(s, <'intro', 'a03_ca', 'a04_ihr', pkA, tA>, pkB), true) ]->
+    [ !Acc('a04_ihr', pkA, tA) ]
+rule Intro_a04_ihr__a08_durum:
+    let m = <'intro', 'a04_ihr', 'a08_durum', pk(kA), tA> in
+    [ !Sk('a04_ihr', tB, kB), !Sk('a08_durum', tA, kA) ] --> [ Out(<m, sign(m, kB)>) ]
+rule AccIntro_a04_ihr__a08_durum:
+    [ !Acc('a04_ihr', pkB, t), In(<<'intro', 'a04_ihr', 'a08_durum', pkA, tA>, s>) ]
+  --[ Eq(verify(s, <'intro', 'a04_ihr', 'a08_durum', pkA, tA>, pkB), true) ]->
+    [ !Acc('a08_durum', pkA, tA) ]
+
+/* ---------------- beklenti (R2 EXPECT_AUTH / R3 kanal; politika p1) ---------------- */
+
+/* ---------------- hedef G3 ---------------- */
+rule Issue_Status:
+    let stb = <'status', ~st> in
+    [ !Sk('a08_durum', 'main', km), Fr(~st) ] --[ IssuedStatus(~st) ]-> [ Out(<stb, sign(stb, km)>) ]
+rule Accept_Status:
+    [ !Acc('a08_durum', pkS, t), In(<<'status', st>, s>) ]
+  --[ Eq(verify(s, <'status', st>, pkS), true), AcceptStatus(st) ]->
+    [ ]
+
+/* ================= lemmalar ================= */
+lemma executable:
+  exists-trace
+  "Ex st #i #j. IssuedStatus(st) @ #i & AcceptStatus(st) @ #j"
+
+lemma G3_status_soundness:
+  "All st #j. AcceptStatus(st) @ #j ==> (Ex #i. IssuedStatus(st) @ #i & #i < #j)"
+
+end

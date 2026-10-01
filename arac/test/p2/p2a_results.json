@@ -1,0 +1,994 @@
+{
+ "coexist/p256/lotl/all": {
+  "n_min_sets": 0,
+  "min_card": null,
+  "time_s": 0.0002,
+  "sets": []
+ },
+ "coexist/p256/lotl/claims": {
+  "n_min_sets": 3,
+  "min_card": 5,
+  "time_s": 0.0003,
+  "sets": [
+   [
+    "convey(ca_iss,cred)",
+    "pq(ca_iss)",
+    "pq(cred)",
+    "pq(iss_cert)",
+    "pq(lotl)",
+    "pq(tl_pid)"
+   ],
+   [
+    "convey(tl_pid,cred)",
+    "pq(ca_iss)",
+    "pq(cred)",
+    "pq(iss_cert)",
+    "pq(lotl)",
+    "pq(tl_pid)"
+   ],
+   [
+    "convey(meta,cred)",
+    "convey(tl_pid,meta)",
+    "pq(ca_iss)",
+    "pq(cred)",
+    "pq(iss_cert)",
+    "pq(lotl)",
+    "pq(meta)",
+    "pq(tl_pid)"
+   ]
+  ]
+ },
+ "coexist/p256/lotl/holder": {
+  "n_min_sets": 0,
+  "min_card": null,
+  "time_s": 0.0,
+  "sets": []
+ },
+ "coexist/p256/lotl/revocation": {
+  "n_min_sets": 2,
+  "min_card": 5,
+  "time_s": 0.0001,
+  "sets": [
+   [
+    "convey(tl_pid,status)",
+    "pq(ca_iss)",
+    "pq(iss_cert)",
+    "pq(lotl)",
+    "pq(status)",
+    "pq(tl_pid)"
+   ],
+   [
+    "convey(meta,status)",
+    "convey(tl_pid,meta)",
+    "pq(ca_iss)",
+    "pq(iss_cert)",
+    "pq(lotl)",
+    "pq(meta)",
+    "pq(status)",
+    "pq(tl_pid)"
+   ]
+  ]
+ },
+ "coexist/p256/lotl/rp_auth": {
+  "n_min_sets": 2,
+  "min_card": 4,
+  "time_s": 0.0001,
+  "sets": [
+   [
+    "convey(tl_rp,req)",
+    "pq(lotl)",
+    "pq(req)",
+    "pq(rp_cert)",
+    "pq(tl_rp)"
+   ],
+   [
+    "convey(rp_cert,req)",
+    "pq(lotl)",
+    "pq(req)",
+    "pq(rp_cert)",
+    "pq(tl_rp)"
+   ]
+  ]
+ },
+ "coexist/p256/lotl/wscd_assurance": {
+  "n_min_sets": 1,
+  "min_card": 3,
+  "time_s": 0.0001,
+  "sets": [
+   [
+    "convey(tl_wp,wua)",
+    "pq(lotl)",
+    "pq(tl_wp)",
+    "pq(wua)"
+   ]
+  ]
+ },
+ "coexist/p256/pinned_tl/all": {
+  "n_min_sets": 0,
+  "min_card": null,
+  "time_s": 0.0,
+  "sets": []
+ },
+ "coexist/p256/pinned_tl/claims": {
+  "n_min_sets": 3,
+  "min_card": 4,
+  "time_s": 0.0001,
+  "sets": [
+   [
+    "convey(ca_iss,cred)",
+    "pq(ca_iss)",
+    "pq(cred)",
+    "pq(iss_cert)",
+    "pq(tl_pid)"
+   ],
+   [
+    "convey(tl_pid,cred)",
+    "pq(ca_iss)",
+    "pq(cred)",
+    "pq(iss_cert)",
+    "pq(tl_pid)"
+   ],
+   [
+    "convey(meta,cred)",
+    "convey(tl_pid,meta)",
+    "pq(ca_iss)",
+    "pq(cred)",
+    "pq(iss_cert)",
+    "pq(meta)",
+    "pq(tl_pid)"
+   ]
+  ]
+ },
+ "coexist/p256/pinned_tl/holder": {
+  "n_min_sets": 0,
+  "min_card": null,
+  "time_s": 0.0,
+  "sets": []
+ },
+ "coexist/p256/pinned_tl/revocation": {
+  "n_min_sets": 2,
+  "min_card": 4,
+  "time_s": 0.0001,
+  "sets": [
+   [
+    "convey(tl_pid,status)",
+    "pq(ca_iss)",
+    "pq(iss_cert)",
+    "pq(status)",
+    "pq(tl_pid)"
+   ],
+   [
+    "convey(meta,status)",
+    "convey(tl_pid,meta)",
+    "pq(ca_iss)",
+    "pq(iss_cert)",
+    "pq(meta)",
+    "pq(status)",
+    "pq(tl_pid)"
+   ]
+  ]
+ },
+ "coexist/p256/pinned_tl/rp_auth": {
+  "n_min_sets": 2,
+  "min_card": 4,
+  "time_s": 0.0001,
+  "sets": [
+   [
+    "convey(tl_rp,req)",
+    "pq(lotl)",
+    "pq(req)",
+    "pq(rp_cert)",
+    "pq(tl_rp)"
+   ],
+   [
+    "convey(rp_cert,req)",
+    "pq(lotl)",
+    "pq(req)",
+    "pq(rp_cert)",
+    "pq(tl_rp)"
+   ]
+  ]
+ },
+ "coexist/p256/pinned_tl/wscd_assurance": {
+  "n_min_sets": 1,
+  "min_card": 3,
+  "time_s": 0.0001,
+  "sets": [
+   [
+    "convey(tl_wp,wua)",
+    "pq(lotl)",
+    "pq(tl_wp)",
+    "pq(wua)"
+   ]
+  ]
+ },
+ "coexist/pq/lotl/all": {
+  "n_min_sets": 12,
+  "min_card": 12,
+  "time_s": 0.0003,
+  "sets": [
+   [
+    "convey(ca_iss,cred)",
+    "convey(tl_pid,status)",
+    "convey(tl_rp,req)",
+    "convey(tl_wp,wua)",
+    "pq(ca_iss)",
+    "pq(cred)",
+    "pq(iss_cert)",
+    "pq(kb)",
+    "pq(lotl)",
+    "pq(req)",
+    "pq(rp_cert)",
+    "pq(status)",
+    "pq(tl_pid)",
+    "pq(tl_rp)",
+    "pq(tl_wp)",
+    "pq(wua)"
+   ],
+   [
+    "convey(tl_pid,cred)",
+    "convey(tl_pid,status)",
+    "convey(tl_rp,req)",
+    "convey(tl_wp,wua)",
+    "pq(ca_iss)",
+    "pq(cred)",
+    "pq(iss_cert)",
+    "pq(kb)",
+    "pq(lotl)",
+    "pq(req)",
+    "pq(rp_cert)",
+    "pq(status)",
+    "pq(tl_pid)",
+    "pq(tl_rp)",
+    "pq(tl_wp)",
+    "pq(wua)"
+   ],
+   [
+    "convey(ca_iss,cred)",
+    "convey(rp_cert,req)",
+    "convey(tl_pid,status)",
+    "convey(tl_wp,wua)",
+    "pq(ca_iss)",
+    "pq(cred)",
+    "pq(iss_cert)",
+    "pq(kb)",
+    "pq(lotl)",
+    "pq(req)",
+    "pq(rp_cert)",
+    "pq(status)",
+    "pq(tl_pid)",
+    "pq(tl_rp)",
+    "pq(tl_wp)",
+    "pq(wua)"
+   ],
+   [
+    "convey(rp_cert,req)",
+    "convey(tl_pid,cred)",
+    "convey(tl_pid,status)",
+    "convey(tl_wp,wua)",
+    "pq(ca_iss)",
+    "pq(cred)",
+    "pq(iss_cert)",
+    "pq(kb)",
+    "pq(lotl)",
+    "pq(req)",
+    "pq(rp_cert)",
+    "pq(status)",
+    "pq(tl_pid)",
+    "pq(tl_rp)",
+    "pq(tl_wp)",
+    "pq(wua)"
+   ],
+   [
+    "convey(meta,cred)",
+    "convey(meta,status)",
+    "convey(rp_cert,req)",
+    "convey(tl_pid,meta)",
+    "convey(tl_wp,wua)",
+    "pq(ca_iss)",
+    "pq(cred)",
+    "pq(iss_cert)",
+    "pq(kb)",
+    "pq(lotl)",
+    "pq(meta)",
+    "pq(req)",
+    "pq(rp_cert)",
+    "pq(status)",
+    "pq(tl_pid)",
+    "pq(tl_rp)",
+    "pq(tl_wp)",
+    "pq(wua)"
+   ],
+   [
+    "convey(meta,cred)",
+    "convey(meta,status)",
+    "convey(tl_pid,meta)",
+    "convey(tl_rp,req)",
+    "convey(tl_wp,wua)",
+    "pq(ca_iss)",
+    "pq(cred)",
+    "pq(iss_cert)",
+    "pq(kb)",
+    "pq(lotl)",
+    "pq(meta)",
+    "pq(req)",
+    "pq(rp_cert)",
+    "pq(status)",
+    "pq(tl_pid)",
+    "pq(tl_rp)",
+    "pq(tl_wp)",
+    "pq(wua)"
+   ]
+  ]
+ },
+ "coexist/pq/lotl/claims": {
+  "n_min_sets": 3,
+  "min_card": 5,
+  "time_s": 0.0001,
+  "sets": [
+   [
+    "convey(ca_iss,cred)",
+    "pq(ca_iss)",
+    "pq(cred)",
+    "pq(iss_cert)",
+    "pq(lotl)",
+    "pq(tl_pid)"
+   ],
+   [
+    "convey(tl_pid,cred)",
+    "pq(ca_iss)",
+    "pq(cred)",
+    "pq(iss_cert)",
+    "pq(lotl)",
+    "pq(tl_pid)"
+   ],
+   [
+    "convey(meta,cred)",
+    "convey(tl_pid,meta)",
+    "pq(ca_iss)",
+    "pq(cred)",
+    "pq(iss_cert)",
+    "pq(lotl)",
+    "pq(meta)",
+    "pq(tl_pid)"
+   ]
+  ]
+ },
+ "coexist/pq/lotl/holder": {
+  "n_min_sets": 3,
+  "min_card": 6,
+  "time_s": 0.0001,
+  "sets": [
+   [
+    "convey(ca_iss,cred)",
+    "pq(ca_iss)",
+    "pq(cred)",
+    "pq(iss_cert)",
+    "pq(kb)",
+    "pq(lotl)",
+    "pq(tl_pid)"
+   ],
+   [
+    "convey(tl_pid,cred)",
+    "pq(ca_iss)",
+    "pq(cred)",
+    "pq(iss_cert)",
+    "pq(kb)",
+    "pq(lotl)",
+    "pq(tl_pid)"
+   ],
+   [
+    "convey(meta,cred)",
+    "convey(tl_pid,meta)",
+    "pq(ca_iss)",
+    "pq(cred)",
+    "pq(iss_cert)",
+    "pq(kb)",
+    "pq(lotl)",
+    "pq(meta)",
+    "pq(tl_pid)"
+   ]
+  ]
+ },
+ "coexist/pq/lotl/revocation": {
+  "n_min_sets": 2,
+  "min_card": 5,
+  "time_s": 0.0001,
+  "sets": [
+   [
+    "convey(tl_pid,status)",
+    "pq(ca_iss)",
+    "pq(iss_cert)",
+    "pq(lotl)",
+    "pq(status)",
+    "pq(tl_pid)"
+   ],
+   [
+    "convey(meta,status)",
+    "convey(tl_pid,meta)",
+    "pq(ca_iss)",
+    "pq(iss_cert)",
+    "pq(lotl)",
+    "pq(meta)",
+    "pq(status)",
+    "pq(tl_pid)"
+   ]
+  ]
+ },
+ "coexist/pq/lotl/rp_auth": {
+  "n_min_sets": 2,
+  "min_card": 4,
+  "time_s": 0.0001,
+  "sets": [
+   [
+    "convey(tl_rp,req)",
+    "pq(lotl)",
+    "pq(req)",
+    "pq(rp_cert)",
+    "pq(tl_rp)"
+   ],
+   [
+    "convey(rp_cert,req)",
+    "pq(lotl)",
+    "pq(req)",
+    "pq(rp_cert)",
+    "pq(tl_rp)"
+   ]
+  ]
+ },
+ "coexist/pq/lotl/wscd_assurance": {
+  "n_min_sets": 1,
+  "min_card": 3,
+  "time_s": 0.0001,
+  "sets": [
+   [
+    "convey(tl_wp,wua)",
+    "pq(lotl)",
+    "pq(tl_wp)",
+    "pq(wua)"
+   ]
+  ]
+ },
+ "coexist/pq/pinned_tl/all": {
+  "n_min_sets": 12,
+  "min_card": 12,
+  "time_s": 0.0003,
+  "sets": [
+   [
+    "convey(ca_iss,cred)",
+    "convey(tl_pid,status)",
+    "convey(tl_rp,req)",
+    "convey(tl_wp,wua)",
+    "pq(ca_iss)",
+    "pq(cred)",
+    "pq(iss_cert)",
+    "pq(kb)",
+    "pq(lotl)",
+    "pq(req)",
+    "pq(rp_cert)",
+    "pq(status)",
+    "pq(tl_pid)",
+    "pq(tl_rp)",
+    "pq(tl_wp)",
+    "pq(wua)"
+   ],
+   [
+    "convey(tl_pid,cred)",
+    "convey(tl_pid,status)",
+    "convey(tl_rp,req)",
+    "convey(tl_wp,wua)",
+    "pq(ca_iss)",
+    "pq(cred)",
+    "pq(iss_cert)",
+    "pq(kb)",
+    "pq(lotl)",
+    "pq(req)",
+    "pq(rp_cert)",
+    "pq(status)",
+    "pq(tl_pid)",
+    "pq(tl_rp)",
+    "pq(tl_wp)",
+    "pq(wua)"
+   ],
+   [
+    "convey(ca_iss,cred)",
+    "convey(rp_cert,req)",
+    "convey(tl_pid,status)",
+    "convey(tl_wp,wua)",
+    "pq(ca_iss)",
+    "pq(cred)",
+    "pq(iss_cert)",
+    "pq(kb)",
+    "pq(lotl)",
+    "pq(req)",
+    "pq(rp_cert)",
+    "pq(status)",
+    "pq(tl_pid)",
+    "pq(tl_rp)",
+    "pq(tl_wp)",
+    "pq(wua)"
+   ],
+   [
+    "convey(rp_cert,req)",
+    "convey(tl_pid,cred)",
+    "convey(tl_pid,status)",
+    "convey(tl_wp,wua)",
+    "pq(ca_iss)",
+    "pq(cred)",
+    "pq(iss_cert)",
+    "pq(kb)",
+    "pq(lotl)",
+    "pq(req)",
+    "pq(rp_cert)",
+    "pq(status)",
+    "pq(tl_pid)",
+    "pq(tl_rp)",
+    "pq(tl_wp)",
+    "pq(wua)"
+   ],
+   [
+    "convey(meta,cred)",
+    "convey(meta,status)",
+    "convey(rp_cert,req)",
+    "convey(tl_pid,meta)",
+    "convey(tl_wp,wua)",
+    "pq(ca_iss)",
+    "pq(cred)",
+    "pq(iss_cert)",
+    "pq(kb)",
+    "pq(lotl)",
+    "pq(meta)",
+    "pq(req)",
+    "pq(rp_cert)",
+    "pq(status)",
+    "pq(tl_pid)",
+    "pq(tl_rp)",
+    "pq(tl_wp)",
+    "pq(wua)"
+   ],
+   [
+    "convey(meta,cred)",
+    "convey(meta,status)",
+    "convey(tl_pid,meta)",
+    "convey(tl_rp,req)",
+    "convey(tl_wp,wua)",
+    "pq(ca_iss)",
+    "pq(cred)",
+    "pq(iss_cert)",
+    "pq(kb)",
+    "pq(lotl)",
+    "pq(meta)",
+    "pq(req)",
+    "pq(rp_cert)",
+    "pq(status)",
+    "pq(tl_pid)",
+    "pq(tl_rp)",
+    "pq(tl_wp)",
+    "pq(wua)"
+   ]
+  ]
+ },
+ "coexist/pq/pinned_tl/claims": {
+  "n_min_sets": 3,
+  "min_card": 4,
+  "time_s": 0.0001,
+  "sets": [
+   [
+    "convey(ca_iss,cred)",
+    "pq(ca_iss)",
+    "pq(cred)",
+    "pq(iss_cert)",
+    "pq(tl_pid)"
+   ],
+   [
+    "convey(tl_pid,cred)",
+    "pq(ca_iss)",
+    "pq(cred)",
+    "pq(iss_cert)",
+    "pq(tl_pid)"
+   ],
+   [
+    "convey(meta,cred)",
+    "convey(tl_pid,meta)",
+    "pq(ca_iss)",
+    "pq(cred)",
+    "pq(iss_cert)",
+    "pq(meta)",
+    "pq(tl_pid)"
+   ]
+  ]
+ },
+ "coexist/pq/pinned_tl/holder": {
+  "n_min_sets": 3,
+  "min_card": 5,
+  "time_s": 0.0001,
+  "sets": [
+   [
+    "convey(ca_iss,cred)",
+    "pq(ca_iss)",
+    "pq(cred)",
+    "pq(iss_cert)",
+    "pq(kb)",
+    "pq(tl_pid)"
+   ],
+   [
+    "convey(tl_pid,cred)",
+    "pq(ca_iss)",
+    "pq(cred)",
+    "pq(iss_cert)",
+    "pq(kb)",
+    "pq(tl_pid)"
+   ],
+   [
+    "convey(meta,cred)",
+    "convey(tl_pid,meta)",
+    "pq(ca_iss)",
+    "pq(cred)",
+    "pq(iss_cert)",
+    "pq(kb)",
+    "pq(meta)",
+    "pq(tl_pid)"
+   ]
+  ]
+ },
+ "coexist/pq/pinned_tl/revocation": {
+  "n_min_sets": 2,
+  "min_card": 4,
+  "time_s": 0.0003,
+  "sets": [
+   [
+    "convey(tl_pid,status)",
+    "pq(ca_iss)",
+    "pq(iss_cert)",
+    "pq(status)",
+    "pq(tl_pid)"
+   ],
+   [
+    "convey(meta,status)",
+    "convey(tl_pid,meta)",
+    "pq(ca_iss)",
+    "pq(iss_cert)",
+    "pq(meta)",
+    "pq(status)",
+    "pq(tl_pid)"
+   ]
+  ]
+ },
+ "coexist/pq/pinned_tl/rp_auth": {
+  "n_min_sets": 2,
+  "min_card": 4,
+  "time_s": 0.0001,
+  "sets": [
+   [
+    "convey(tl_rp,req)",
+    "pq(lotl)",
+    "pq(req)",
+    "pq(rp_cert)",
+    "pq(tl_rp)"
+   ],
+   [
+    "convey(rp_cert,req)",
+    "pq(lotl)",
+    "pq(req)",
+    "pq(rp_cert)",
+    "pq(tl_rp)"
+   ]
+  ]
+ },
+ "coexist/pq/pinned_tl/wscd_assurance": {
+  "n_min_sets": 1,
+  "min_card": 3,
+  "time_s": 0.0001,
+  "sets": [
+   [
+    "convey(tl_wp,wua)",
+    "pq(lotl)",
+    "pq(tl_wp)",
+    "pq(wua)"
+   ]
+  ]
+ },
+ "post/p256/lotl/all": {
+  "n_min_sets": 0,
+  "min_card": null,
+  "time_s": 0.0,
+  "sets": []
+ },
+ "post/p256/lotl/claims": {
+  "n_min_sets": 1,
+  "min_card": 5,
+  "time_s": 0.0001,
+  "sets": [
+   [
+    "pq(ca_iss)",
+    "pq(cred)",
+    "pq(iss_cert)",
+    "pq(lotl)",
+    "pq(tl_pid)"
+   ]
+  ]
+ },
+ "post/p256/lotl/holder": {
+  "n_min_sets": 0,
+  "min_card": null,
+  "time_s": 0.0,
+  "sets": []
+ },
+ "post/p256/lotl/revocation": {
+  "n_min_sets": 1,
+  "min_card": 5,
+  "time_s": 0.0001,
+  "sets": [
+   [
+    "pq(ca_iss)",
+    "pq(iss_cert)",
+    "pq(lotl)",
+    "pq(status)",
+    "pq(tl_pid)"
+   ]
+  ]
+ },
+ "post/p256/lotl/rp_auth": {
+  "n_min_sets": 1,
+  "min_card": 4,
+  "time_s": 0.0001,
+  "sets": [
+   [
+    "pq(lotl)",
+    "pq(req)",
+    "pq(rp_cert)",
+    "pq(tl_rp)"
+   ]
+  ]
+ },
+ "post/p256/lotl/wscd_assurance": {
+  "n_min_sets": 1,
+  "min_card": 3,
+  "time_s": 0.0001,
+  "sets": [
+   [
+    "pq(lotl)",
+    "pq(tl_wp)",
+    "pq(wua)"
+   ]
+  ]
+ },
+ "post/p256/pinned_tl/all": {
+  "n_min_sets": 0,
+  "min_card": null,
+  "time_s": 0.0,
+  "sets": []
+ },
+ "post/p256/pinned_tl/claims": {
+  "n_min_sets": 1,
+  "min_card": 4,
+  "time_s": 0.0001,
+  "sets": [
+   [
+    "pq(ca_iss)",
+    "pq(cred)",
+    "pq(iss_cert)",
+    "pq(tl_pid)"
+   ]
+  ]
+ },
+ "post/p256/pinned_tl/holder": {
+  "n_min_sets": 0,
+  "min_card": null,
+  "time_s": 0.0,
+  "sets": []
+ },
+ "post/p256/pinned_tl/revocation": {
+  "n_min_sets": 1,
+  "min_card": 4,
+  "time_s": 0.0001,
+  "sets": [
+   [
+    "pq(ca_iss)",
+    "pq(iss_cert)",
+    "pq(status)",
+    "pq(tl_pid)"
+   ]
+  ]
+ },
+ "post/p256/pinned_tl/rp_auth": {
+  "n_min_sets": 1,
+  "min_card": 4,
+  "time_s": 0.0001,
+  "sets": [
+   [
+    "pq(lotl)",
+    "pq(req)",
+    "pq(rp_cert)",
+    "pq(tl_rp)"
+   ]
+  ]
+ },
+ "post/p256/pinned_tl/wscd_assurance": {
+  "n_min_sets": 1,
+  "min_card": 3,
+  "time_s": 0.0001,
+  "sets": [
+   [
+    "pq(lotl)",
+    "pq(tl_wp)",
+    "pq(wua)"
+   ]
+  ]
+ },
+ "post/pq/lotl/all": {
+  "n_min_sets": 1,
+  "min_card": 12,
+  "time_s": 0.0001,
+  "sets": [
+   [
+    "pq(ca_iss)",
+    "pq(cred)",
+    "pq(iss_cert)",
+    "pq(kb)",
+    "pq(lotl)",
+    "pq(req)",
+    "pq(rp_cert)",
+    "pq(status)",
+    "pq(tl_pid)",
+    "pq(tl_rp)",
+    "pq(tl_wp)",
+    "pq(wua)"
+   ]
+  ]
+ },
+ "post/pq/lotl/claims": {
+  "n_min_sets": 1,
+  "min_card": 5,
+  "time_s": 0.0001,
+  "sets": [
+   [
+    "pq(ca_iss)",
+    "pq(cred)",
+    "pq(iss_cert)",
+    "pq(lotl)",
+    "pq(tl_pid)"
+   ]
+  ]
+ },
+ "post/pq/lotl/holder": {
+  "n_min_sets": 1,
+  "min_card": 6,
+  "time_s": 0.0001,
+  "sets": [
+   [
+    "pq(ca_iss)",
+    "pq(cred)",
+    "pq(iss_cert)",
+    "pq(kb)",
+    "pq(lotl)",
+    "pq(tl_pid)"
+   ]
+  ]
+ },
+ "post/pq/lotl/revocation": {
+  "n_min_sets": 1,
+  "min_card": 5,
+  "time_s": 0.0001,
+  "sets": [
+   [
+    "pq(ca_iss)",
+    "pq(iss_cert)",
+    "pq(lotl)",
+    "pq(status)",
+    "pq(tl_pid)"
+   ]
+  ]
+ },
+ "post/pq/lotl/rp_auth": {
+  "n_min_sets": 1,
+  "min_card": 4,
+  "time_s": 0.0001,
+  "sets": [
+   [
+    "pq(lotl)",
+    "pq(req)",
+    "pq(rp_cert)",
+    "pq(tl_rp)"
+   ]
+  ]
+ },
+ "post/pq/lotl/wscd_assurance": {
+  "n_min_sets": 1,
+  "min_card": 3,
+  "time_s": 0.0001,
+  "sets": [
+   [
+    "pq(lotl)",
+    "pq(tl_wp)",
+    "pq(wua)"
+   ]
+  ]
+ },
+ "post/pq/pinned_tl/all": {
+  "n_min_sets": 1,
+  "min_card": 12,
+  "time_s": 0.0001,
+  "sets": [
+   [
+    "pq(ca_iss)",
+    "pq(cred)",
+    "pq(iss_cert)",
+    "pq(kb)",
+    "pq(lotl)",
+    "pq(req)",
+    "pq(rp_cert)",
+    "pq(status)",
+    "pq(tl_pid)",
+    "pq(tl_rp)",
+    "pq(tl_wp)",
+    "pq(wua)"
+   ]
+  ]
+ },
+ "post/pq/pinned_tl/claims": {
+  "n_min_sets": 1,
+  "min_card": 4,
+  "time_s": 0.0001,
+  "sets": [
+   [
+    "pq(ca_iss)",
+    "pq(cred)",
+    "pq(iss_cert)",
+    "pq(tl_pid)"
+   ]
+  ]
+ },
+ "post/pq/pinned_tl/holder": {
+  "n_min_sets": 1,
+  "min_card": 5,
+  "time_s": 0.0001,
+  "sets": [
+   [
+    "pq(ca_iss)",
+    "pq(cred)",
+    "pq(iss_cert)",
+    "pq(kb)",
+    "pq(tl_pid)"
+   ]
+  ]
+ },
+ "post/pq/pinned_tl/revocation": {
+  "n_min_sets": 1,
+  "min_card": 4,
+  "time_s": 0.0001,
+  "sets": [
+   [
+    "pq(ca_iss)",
+    "pq(iss_cert)",
+    "pq(status)",
+    "pq(tl_pid)"
+   ]
+  ]
+ },
+ "post/pq/pinned_tl/rp_auth": {
+  "n_min_sets": 1,
+  "min_card": 4,
+  "time_s": 0.0001,
+  "sets": [
+   [
+    "pq(lotl)",
+    "pq(req)",
+    "pq(rp_cert)",
+    "pq(tl_rp)"
+   ]
+  ]
+ },
+ "post/pq/pinned_tl/wscd_assurance": {
+  "n_min_sets": 1,
+  "min_card": 3,
+  "time_s": 0.0001,
+  "sets": [
+   [
+    "pq(lotl)",
+    "pq(tl_wp)",
+    "pq(wua)"
+   ]
+  ]
+ }
+}

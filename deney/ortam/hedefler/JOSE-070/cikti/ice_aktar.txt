@@ -1,0 +1,2 @@
+paket=firebase/php-jwt sinif_yuklendi=8 sinif_yuklenemedi=0
+anahtar_sinif Firebase\JWT\JWT OK

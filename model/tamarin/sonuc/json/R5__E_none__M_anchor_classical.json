@@ -1,0 +1,3049 @@
+{
+    "graphs": [
+        {
+            "jgAbbrevs": [
+                {
+                    "jgaAbbrev": {
+                        "jgnConst": "SI3"
+                    },
+                    "jgaExpansion": {
+                        "jgnFunct": "sign",
+                        "jgnParams": [
+                            {
+                                "jgnFunct": "pair",
+                                "jgnParams": [
+                                    {
+                                        "jgnConst": "'cred'"
+                                    },
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "I"
+                                            },
+                                            {
+                                                "jgnConst": "c"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(I,c)"
+                                    }
+                                ],
+                                "jgnShow": "pair('cred',pair(I,c))"
+                            },
+                            {
+                                "jgnConst": "~skL"
+                            }
+                        ],
+                        "jgnShow": "sign(pair('cred',pair(I,c)),~skL)"
+                    },
+                    "jgaTerm": {
+                        "jgnFunct": "sign",
+                        "jgnParams": [
+                            {
+                                "jgnFunct": "pair",
+                                "jgnParams": [
+                                    {
+                                        "jgnConst": "'cred'"
+                                    },
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "I"
+                                            },
+                                            {
+                                                "jgnConst": "c"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(I,c)"
+                                    }
+                                ],
+                                "jgnShow": "pair('cred',pair(I,c))"
+                            },
+                            {
+                                "jgnConst": "~skL"
+                            }
+                        ],
+                        "jgnShow": "sign(pair('cred',pair(I,c)),~skL)"
+                    }
+                },
+                {
+                    "jgaAbbrev": {
+                        "jgnConst": "SI1"
+                    },
+                    "jgaExpansion": {
+                        "jgnFunct": "sign",
+                        "jgnParams": [
+                            {
+                                "jgnFunct": "pair",
+                                "jgnParams": [
+                                    {
+                                        "jgnConst": "'lotl_ptr'"
+                                    },
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "$T"
+                                            },
+                                            {
+                                                "jgnFunct": "pk",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "~skT"
+                                                    }
+                                                ],
+                                                "jgnShow": "pk(~skT)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair($T,pk(~skT))"
+                                    }
+                                ],
+                                "jgnShow": "pair('lotl_ptr',pair($T,pk(~skT)))"
+                            },
+                            {
+                                "jgnConst": "~skL"
+                            }
+                        ],
+                        "jgnShow": "sign(pair('lotl_ptr',pair($T,pk(~skT))),~skL)"
+                    },
+                    "jgaTerm": {
+                        "jgnFunct": "sign",
+                        "jgnParams": [
+                            {
+                                "jgnFunct": "pair",
+                                "jgnParams": [
+                                    {
+                                        "jgnConst": "'lotl_ptr'"
+                                    },
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "$T"
+                                            },
+                                            {
+                                                "jgnFunct": "pk",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "~skT"
+                                                    }
+                                                ],
+                                                "jgnShow": "pk(~skT)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair($T,pk(~skT))"
+                                    }
+                                ],
+                                "jgnShow": "pair('lotl_ptr',pair($T,pk(~skT)))"
+                            },
+                            {
+                                "jgnConst": "~skL"
+                            }
+                        ],
+                        "jgnShow": "sign(pair('lotl_ptr',pair($T,pk(~skT))),~skL)"
+                    }
+                },
+                {
+                    "jgaAbbrev": {
+                        "jgnConst": "SI2"
+                    },
+                    "jgaExpansion": {
+                        "jgnFunct": "sign",
+                        "jgnParams": [
+                            {
+                                "jgnFunct": "pair",
+                                "jgnParams": [
+                                    {
+                                        "jgnConst": "'tl_entry'"
+                                    },
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "I"
+                                            },
+                                            {
+                                                "jgnFunct": "pk",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "~skL"
+                                                    }
+                                                ],
+                                                "jgnShow": "pk(~skL)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(I,pk(~skL))"
+                                    }
+                                ],
+                                "jgnShow": "pair('tl_entry',pair(I,pk(~skL)))"
+                            },
+                            {
+                                "jgnConst": "~skT"
+                            }
+                        ],
+                        "jgnShow": "sign(pair('tl_entry',pair(I,pk(~skL))),~skT)"
+                    },
+                    "jgaTerm": {
+                        "jgnFunct": "sign",
+                        "jgnParams": [
+                            {
+                                "jgnFunct": "pair",
+                                "jgnParams": [
+                                    {
+                                        "jgnConst": "'tl_entry'"
+                                    },
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "I"
+                                            },
+                                            {
+                                                "jgnFunct": "pk",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "~skL"
+                                                    }
+                                                ],
+                                                "jgnShow": "pk(~skL)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(I,pk(~skL))"
+                                    }
+                                ],
+                                "jgnShow": "pair('tl_entry',pair(I,pk(~skL)))"
+                            },
+                            {
+                                "jgnConst": "~skT"
+                            }
+                        ],
+                        "jgnShow": "sign(pair('tl_entry',pair(I,pk(~skL))),~skT)"
+                    }
+                }
+            ],
+            "jgClusters": [],
+            "jgDirected": true,
+            "jgEdges": [
+                {
+                    "jgeRelation": "default",
+                    "jgeSource": "#vf:c0",
+                    "jgeTarget": "#j:p1"
+                },
+                {
+                    "jgeRelation": "KFact",
+                    "jgeSource": "#vl:c0",
+                    "jgeTarget": "#vk:p0"
+                },
+                {
+                    "jgeRelation": "PersistentFact",
+                    "jgeSource": "#vr:c0",
+                    "jgeTarget": "#vr.1:p0"
+                },
+                {
+                    "jgeRelation": "PersistentFact",
+                    "jgeSource": "#vr:c0",
+                    "jgeTarget": "#vr.4:p0"
+                },
+                {
+                    "jgeRelation": "PersistentFact",
+                    "jgeSource": "#vr:c1",
+                    "jgeTarget": "#j:p0"
+                },
+                {
+                    "jgeRelation": "KFact",
+                    "jgeSource": "#vr:c2",
+                    "jgeTarget": "#vk.3:p0"
+                },
+                {
+                    "jgeRelation": "default",
+                    "jgeSource": "#vf.1:c0",
+                    "jgeTarget": "#j:p2"
+                },
+                {
+                    "jgeRelation": "PersistentFact",
+                    "jgeSource": "#vr.1:c0",
+                    "jgeTarget": "#b:p0"
+                },
+                {
+                    "jgeRelation": "PersistentFact",
+                    "jgeSource": "#vr.1:c0",
+                    "jgeTarget": "#vr.5:p0"
+                },
+                {
+                    "jgeRelation": "KFact",
+                    "jgeSource": "#vr.1:c1",
+                    "jgeTarget": "#vk.6:p0"
+                },
+                {
+                    "jgeRelation": "default",
+                    "jgeSource": "#vr.1:c2",
+                    "jgeTarget": "#vl:p0"
+                },
+                {
+                    "jgeRelation": "default",
+                    "jgeSource": "#vf.2:c0",
+                    "jgeTarget": "#j:p3"
+                },
+                {
+                    "jgeRelation": "PersistentFact",
+                    "jgeSource": "#vr.2:c0",
+                    "jgeTarget": "#b:p1"
+                },
+                {
+                    "jgeRelation": "PersistentFact",
+                    "jgeSource": "#vr.2:c0",
+                    "jgeTarget": "#vr.4:p1"
+                },
+                {
+                    "jgeRelation": "PersistentFact",
+                    "jgeSource": "#vr.2:c0",
+                    "jgeTarget": "#vr.5:p1"
+                },
+                {
+                    "jgeRelation": "default",
+                    "jgeSource": "#vf.4:c0",
+                    "jgeTarget": "#b:p2"
+                },
+                {
+                    "jgeRelation": "KFact",
+                    "jgeSource": "#vr.4:c0",
+                    "jgeTarget": "#vk.4:p0"
+                },
+                {
+                    "jgeRelation": "KFact",
+                    "jgeSource": "#vr.5:c0",
+                    "jgeTarget": "#vk.5:p0"
+                },
+                {
+                    "jgeRelation": "default",
+                    "jgeSource": "#vf.6:c0",
+                    "jgeTarget": "#vr.4:p2"
+                },
+                {
+                    "jgeRelation": "default",
+                    "jgeSource": "#vf.7:c0",
+                    "jgeTarget": "#vr.5:p2"
+                },
+                {
+                    "jgeRelation": "LessAtoms",
+                    "jgeSource": "#vk",
+                    "jgeTarget": "#vf"
+                },
+                {
+                    "jgeRelation": "LessAtoms",
+                    "jgeSource": "#vl",
+                    "jgeTarget": "#vf"
+                },
+                {
+                    "jgeRelation": "LessAtoms",
+                    "jgeSource": "#vk.1",
+                    "jgeTarget": "#vf.1"
+                },
+                {
+                    "jgeRelation": "LessAtoms",
+                    "jgeSource": "#vk.2",
+                    "jgeTarget": "#vf.2"
+                },
+                {
+                    "jgeRelation": "LessAtoms",
+                    "jgeSource": "#vk.3",
+                    "jgeTarget": "#vf.1"
+                },
+                {
+                    "jgeRelation": "LessAtoms",
+                    "jgeSource": "#vk.3",
+                    "jgeTarget": "#vk.1"
+                },
+                {
+                    "jgeRelation": "LessAtoms",
+                    "jgeSource": "#vk.3",
+                    "jgeTarget": "#vf.6"
+                },
+                {
+                    "jgeRelation": "LessAtoms",
+                    "jgeSource": "#vk.4",
+                    "jgeTarget": "#vk.2"
+                },
+                {
+                    "jgeRelation": "LessAtoms",
+                    "jgeSource": "#vk.5",
+                    "jgeTarget": "#vk.1"
+                },
+                {
+                    "jgeRelation": "LessAtoms",
+                    "jgeSource": "#vk.6",
+                    "jgeTarget": "#vf"
+                },
+                {
+                    "jgeRelation": "LessAtoms",
+                    "jgeSource": "#vk.6",
+                    "jgeTarget": "#vf.4"
+                },
+                {
+                    "jgeRelation": "LessAtoms",
+                    "jgeSource": "#vk.6",
+                    "jgeTarget": "#vf.7"
+                },
+                {
+                    "jgeRelation": "LessAtoms",
+                    "jgeSource": "#vk.17",
+                    "jgeTarget": "#vf.1"
+                },
+                {
+                    "jgeRelation": "LessAtoms",
+                    "jgeSource": "#vk.17",
+                    "jgeTarget": "#vk.1"
+                },
+                {
+                    "jgeRelation": "LessAtoms",
+                    "jgeSource": "#vk.17",
+                    "jgeTarget": "#vf.2"
+                },
+                {
+                    "jgeRelation": "LessAtoms",
+                    "jgeSource": "#vk.17",
+                    "jgeTarget": "#vk.2"
+                },
+                {
+                    "jgeRelation": "LessAtoms",
+                    "jgeSource": "#vk.21",
+                    "jgeTarget": "#vf.2"
+                },
+                {
+                    "jgeRelation": "LessAtoms",
+                    "jgeSource": "#vk.21",
+                    "jgeTarget": "#vk.2"
+                }
+            ],
+            "jgLabel": "trace_R5_Anchor_SL2-AS0-CL0-A1-C1-NB_M_anchor_classical-LOTL_Setup-CRQC_Break_TL-TL_Setup-Qday-TL_Setup-c_sign-c_sign-LOTL_Setup-CRQC_Break_LOTL-CRQC_Break_TL-TL_Setup_case_1",
+            "jgNodes": [
+                {
+                    "jgnId": "#b",
+                    "jgnLabel": "CRQC_Break_TL",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Broken",
+                                "jgnFactShow": "Broken( 'tl' )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "'tl'"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#b:c0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Out",
+                                "jgnFactShow": "Out( ~skT )",
+                                "jgnFactTag": "OutFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~skT"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#b:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!TLSk",
+                                "jgnFactShow": "!TLSk( $T, ~skT )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$T"
+                                    },
+                                    {
+                                        "jgnConst": "~skT"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#b:p1",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!CRQC",
+                                "jgnFactShow": "!CRQC( )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": []
+                            },
+                            {
+                                "jgnFactId": "#b:p2",
+                                "jgnFactMult": "",
+                                "jgnFactName": "In",
+                                "jgnFactShow": "In( pk(~skT) )",
+                                "jgnFactTag": "InFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~skT"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~skT)"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isProtocolRule"
+                },
+                {
+                    "jgnId": "#j",
+                    "jgnLabel": "Verify_via_LOTL",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Eq",
+                                "jgnFactShow": "Eq( true, true )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "true",
+                                        "jgnParams": [],
+                                        "jgnShow": "true"
+                                    },
+                                    {
+                                        "jgnFunct": "true",
+                                        "jgnParams": [],
+                                        "jgnShow": "true"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Eq",
+                                "jgnFactShow": "Eq( true, true )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "true",
+                                        "jgnParams": [],
+                                        "jgnShow": "true"
+                                    },
+                                    {
+                                        "jgnFunct": "true",
+                                        "jgnParams": [],
+                                        "jgnShow": "true"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Eq",
+                                "jgnFactShow": "Eq( true, true )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "true",
+                                        "jgnParams": [],
+                                        "jgnShow": "true"
+                                    },
+                                    {
+                                        "jgnFunct": "true",
+                                        "jgnParams": [],
+                                        "jgnShow": "true"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Accept",
+                                "jgnFactShow": "Accept( I, c )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "I"
+                                    },
+                                    {
+                                        "jgnConst": "c"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#j:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!LOTLPin",
+                                "jgnFactShow": "!LOTLPin( pk(~skL) )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~skL"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~skL)"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#j:p1",
+                                "jgnFactMult": "",
+                                "jgnFactName": "In",
+                                "jgnFactShow": "In( <<'lotl_ptr', $T, pk(~skT)>, sign(<'lotl_ptr', $T, pk(~skT)>, ~skL)>)",
+                                "jgnFactTag": "InFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'lotl_ptr'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "$T"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pk",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~skT"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pk(~skT)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair($T,pk(~skT))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('lotl_ptr',pair($T,pk(~skT)))"
+                                            },
+                                            {
+                                                "jgnFunct": "sign",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'lotl_ptr'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "$T"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pk",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "~skT"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pk(~skT)"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair($T,pk(~skT))"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('lotl_ptr',pair($T,pk(~skT)))"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~skL"
+                                                    }
+                                                ],
+                                                "jgnShow": "sign(pair('lotl_ptr',pair($T,pk(~skT))),~skL)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('lotl_ptr',pair($T,pk(~skT))),sign(pair('lotl_ptr',pair($T,pk(~skT))),~skL))"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#j:p2",
+                                "jgnFactMult": "",
+                                "jgnFactName": "In",
+                                "jgnFactShow": "In( <<'tl_entry', I, pk(~skL)>, sign(<'tl_entry', I, pk(~skL)>, ~skT)>)",
+                                "jgnFactTag": "InFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'tl_entry'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "I"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pk",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~skL"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pk(~skL)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair(I,pk(~skL))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('tl_entry',pair(I,pk(~skL)))"
+                                            },
+                                            {
+                                                "jgnFunct": "sign",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'tl_entry'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "I"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pk",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "~skL"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pk(~skL)"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair(I,pk(~skL))"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('tl_entry',pair(I,pk(~skL)))"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~skT"
+                                                    }
+                                                ],
+                                                "jgnShow": "sign(pair('tl_entry',pair(I,pk(~skL))),~skT)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('tl_entry',pair(I,pk(~skL))),sign(pair('tl_entry',pair(I,pk(~skL))),~skT))"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#j:p3",
+                                "jgnFactMult": "",
+                                "jgnFactName": "In",
+                                "jgnFactShow": "In( <<'cred', I, c>, sign(<'cred', I, c>, ~skL)> )",
+                                "jgnFactTag": "InFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'cred'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "I"
+                                                            },
+                                                            {
+                                                                "jgnConst": "c"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair(I,c)"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('cred',pair(I,c))"
+                                            },
+                                            {
+                                                "jgnFunct": "sign",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'cred'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "I"
+                                                                    },
+                                                                    {
+                                                                        "jgnConst": "c"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair(I,c)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('cred',pair(I,c))"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~skL"
+                                                    }
+                                                ],
+                                                "jgnShow": "sign(pair('cred',pair(I,c)),~skL)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('cred',pair(I,c)),sign(pair('cred',pair(I,c)),~skL))"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isProtocolRule"
+                },
+                {
+                    "jgnId": "#vf",
+                    "jgnLabel": "Send",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "K",
+                                "jgnFactShow": "K( <<'lotl_ptr', $T, pk(~skT)>, sign(<'lotl_ptr', $T, pk(~skT)>, ~skL)>)",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'lotl_ptr'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "$T"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pk",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~skT"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pk(~skT)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair($T,pk(~skT))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('lotl_ptr',pair($T,pk(~skT)))"
+                                            },
+                                            {
+                                                "jgnFunct": "sign",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'lotl_ptr'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "$T"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pk",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "~skT"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pk(~skT)"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair($T,pk(~skT))"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('lotl_ptr',pair($T,pk(~skT)))"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~skL"
+                                                    }
+                                                ],
+                                                "jgnShow": "sign(pair('lotl_ptr',pair($T,pk(~skT))),~skL)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('lotl_ptr',pair($T,pk(~skT))),sign(pair('lotl_ptr',pair($T,pk(~skT))),~skL))"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vf:c0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "In",
+                                "jgnFactShow": "In( <<'lotl_ptr', $T, pk(~skT)>, sign(<'lotl_ptr', $T, pk(~skT)>, ~skL)>)",
+                                "jgnFactTag": "InFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'lotl_ptr'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "$T"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pk",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~skT"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pk(~skT)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair($T,pk(~skT))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('lotl_ptr',pair($T,pk(~skT)))"
+                                            },
+                                            {
+                                                "jgnFunct": "sign",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'lotl_ptr'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "$T"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pk",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "~skT"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pk(~skT)"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair($T,pk(~skT))"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('lotl_ptr',pair($T,pk(~skT)))"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~skL"
+                                                    }
+                                                ],
+                                                "jgnShow": "sign(pair('lotl_ptr',pair($T,pk(~skT))),~skL)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('lotl_ptr',pair($T,pk(~skT))),sign(pair('lotl_ptr',pair($T,pk(~skT))),~skL))"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vf:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( <<'lotl_ptr', $T, pk(~skT)>, sign(<'lotl_ptr', $T, pk(~skT)>, ~skL)>)",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'lotl_ptr'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "$T"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pk",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~skT"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pk(~skT)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair($T,pk(~skT))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('lotl_ptr',pair($T,pk(~skT)))"
+                                            },
+                                            {
+                                                "jgnFunct": "sign",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'lotl_ptr'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "$T"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pk",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "~skT"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pk(~skT)"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair($T,pk(~skT))"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('lotl_ptr',pair($T,pk(~skT)))"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~skL"
+                                                    }
+                                                ],
+                                                "jgnShow": "sign(pair('lotl_ptr',pair($T,pk(~skT))),~skL)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('lotl_ptr',pair($T,pk(~skT))),sign(pair('lotl_ptr',pair($T,pk(~skT))),~skL))"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                },
+                {
+                    "jgnId": "#vk",
+                    "jgnLabel": "Coerce",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( sign(<'lotl_ptr', $T, pk(~skT)>, ~skL) )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "sign",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'lotl_ptr'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "$T"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pk",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~skT"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pk(~skT)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair($T,pk(~skT))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('lotl_ptr',pair($T,pk(~skT)))"
+                                            },
+                                            {
+                                                "jgnConst": "~skL"
+                                            }
+                                        ],
+                                        "jgnShow": "sign(pair('lotl_ptr',pair($T,pk(~skT))),~skL)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vk:c0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( sign(<'lotl_ptr', $T, pk(~skT)>, ~skL) )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "sign",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'lotl_ptr'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "$T"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pk",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~skT"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pk(~skT)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair($T,pk(~skT))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('lotl_ptr',pair($T,pk(~skT)))"
+                                            },
+                                            {
+                                                "jgnConst": "~skL"
+                                            }
+                                        ],
+                                        "jgnShow": "sign(pair('lotl_ptr',pair($T,pk(~skT))),~skL)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vk:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KD",
+                                "jgnFactShow": "!KD( sign(<'lotl_ptr', $T, pk(~skT)>, ~skL) )",
+                                "jgnFactTag": "KDFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "sign",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'lotl_ptr'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "$T"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pk",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~skT"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pk(~skT)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair($T,pk(~skT))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('lotl_ptr',pair($T,pk(~skT)))"
+                                            },
+                                            {
+                                                "jgnConst": "~skL"
+                                            }
+                                        ],
+                                        "jgnShow": "sign(pair('lotl_ptr',pair($T,pk(~skT))),~skL)"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                },
+                {
+                    "jgnId": "#vl",
+                    "jgnLabel": "Recv",
+                    "jgnMetadata": {
+                        "jgnActs": [],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vl:c0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KD",
+                                "jgnFactShow": "!KD( <<'lotl_ptr', $T, pk(~skT)>, sign(<'lotl_ptr', $T, pk(~skT)>, ~skL)>)",
+                                "jgnFactTag": "KDFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'lotl_ptr'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "$T"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pk",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~skT"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pk(~skT)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair($T,pk(~skT))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('lotl_ptr',pair($T,pk(~skT)))"
+                                            },
+                                            {
+                                                "jgnFunct": "sign",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'lotl_ptr'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "$T"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pk",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "~skT"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pk(~skT)"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair($T,pk(~skT))"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('lotl_ptr',pair($T,pk(~skT)))"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~skL"
+                                                    }
+                                                ],
+                                                "jgnShow": "sign(pair('lotl_ptr',pair($T,pk(~skT))),~skL)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('lotl_ptr',pair($T,pk(~skT))),sign(pair('lotl_ptr',pair($T,pk(~skT))),~skL))"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vl:p0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Out",
+                                "jgnFactShow": "Out( <<'lotl_ptr', $T, pk(~skT)>, sign(<'lotl_ptr', $T, pk(~skT)>, ~skL)>)",
+                                "jgnFactTag": "OutFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'lotl_ptr'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "$T"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pk",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~skT"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pk(~skT)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair($T,pk(~skT))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('lotl_ptr',pair($T,pk(~skT)))"
+                                            },
+                                            {
+                                                "jgnFunct": "sign",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'lotl_ptr'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "$T"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pk",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "~skT"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pk(~skT)"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair($T,pk(~skT))"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('lotl_ptr',pair($T,pk(~skT)))"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~skL"
+                                                    }
+                                                ],
+                                                "jgnShow": "sign(pair('lotl_ptr',pair($T,pk(~skT))),~skL)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('lotl_ptr',pair($T,pk(~skT))),sign(pair('lotl_ptr',pair($T,pk(~skT))),~skL))"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                },
+                {
+                    "jgnId": "#vr",
+                    "jgnLabel": "LOTL_Setup",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Unique",
+                                "jgnFactShow": "Unique( 'lotl' )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "'lotl'"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vr:c0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!LOTLSk",
+                                "jgnFactShow": "!LOTLSk( ~skL )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~skL"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#vr:c1",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!LOTLPin",
+                                "jgnFactShow": "!LOTLPin( pk(~skL) )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~skL"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~skL)"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#vr:c2",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Out",
+                                "jgnFactShow": "Out( pk(~skL) )",
+                                "jgnFactTag": "OutFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~skL"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~skL)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vr:p0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Fr",
+                                "jgnFactShow": "Fr( ~skL )",
+                                "jgnFactTag": "FreshFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~skL"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isProtocolRule"
+                },
+                {
+                    "jgnId": "#vf.1",
+                    "jgnLabel": "Send",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "K",
+                                "jgnFactShow": "K( <<'tl_entry', I, pk(~skL)>, sign(<'tl_entry', I, pk(~skL)>, ~skT)>)",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'tl_entry'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "I"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pk",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~skL"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pk(~skL)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair(I,pk(~skL))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('tl_entry',pair(I,pk(~skL)))"
+                                            },
+                                            {
+                                                "jgnFunct": "sign",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'tl_entry'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "I"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pk",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "~skL"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pk(~skL)"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair(I,pk(~skL))"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('tl_entry',pair(I,pk(~skL)))"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~skT"
+                                                    }
+                                                ],
+                                                "jgnShow": "sign(pair('tl_entry',pair(I,pk(~skL))),~skT)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('tl_entry',pair(I,pk(~skL))),sign(pair('tl_entry',pair(I,pk(~skL))),~skT))"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vf.1:c0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "In",
+                                "jgnFactShow": "In( <<'tl_entry', I, pk(~skL)>, sign(<'tl_entry', I, pk(~skL)>, ~skT)>)",
+                                "jgnFactTag": "InFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'tl_entry'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "I"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pk",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~skL"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pk(~skL)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair(I,pk(~skL))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('tl_entry',pair(I,pk(~skL)))"
+                                            },
+                                            {
+                                                "jgnFunct": "sign",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'tl_entry'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "I"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pk",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "~skL"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pk(~skL)"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair(I,pk(~skL))"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('tl_entry',pair(I,pk(~skL)))"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~skT"
+                                                    }
+                                                ],
+                                                "jgnShow": "sign(pair('tl_entry',pair(I,pk(~skL))),~skT)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('tl_entry',pair(I,pk(~skL))),sign(pair('tl_entry',pair(I,pk(~skL))),~skT))"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vf.1:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( <<'tl_entry', I, pk(~skL)>, sign(<'tl_entry', I, pk(~skL)>, ~skT)>)",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'tl_entry'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "I"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pk",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~skL"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pk(~skL)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair(I,pk(~skL))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('tl_entry',pair(I,pk(~skL)))"
+                                            },
+                                            {
+                                                "jgnFunct": "sign",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'tl_entry'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "I"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pk",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "~skL"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pk(~skL)"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair(I,pk(~skL))"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('tl_entry',pair(I,pk(~skL)))"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~skT"
+                                                    }
+                                                ],
+                                                "jgnShow": "sign(pair('tl_entry',pair(I,pk(~skL))),~skT)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('tl_entry',pair(I,pk(~skL))),sign(pair('tl_entry',pair(I,pk(~skL))),~skT))"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                },
+                {
+                    "jgnId": "#vk.1",
+                    "jgnLabel": "Constrc_sign",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( sign(<'tl_entry', I, pk(~skL)>, ~skT) )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "sign",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'tl_entry'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "I"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pk",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~skL"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pk(~skL)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair(I,pk(~skL))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('tl_entry',pair(I,pk(~skL)))"
+                                            },
+                                            {
+                                                "jgnConst": "~skT"
+                                            }
+                                        ],
+                                        "jgnShow": "sign(pair('tl_entry',pair(I,pk(~skL))),~skT)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vk.1:c0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( sign(<'tl_entry', I, pk(~skL)>, ~skT) )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "sign",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'tl_entry'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "I"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pk",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~skL"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pk(~skL)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair(I,pk(~skL))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('tl_entry',pair(I,pk(~skL)))"
+                                            },
+                                            {
+                                                "jgnConst": "~skT"
+                                            }
+                                        ],
+                                        "jgnShow": "sign(pair('tl_entry',pair(I,pk(~skL))),~skT)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vk.1:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( <'tl_entry', I, pk(~skL)> )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "'tl_entry'"
+                                            },
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "I"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pk",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "~skL"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pk(~skL)"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair(I,pk(~skL))"
+                                            }
+                                        ],
+                                        "jgnShow": "pair('tl_entry',pair(I,pk(~skL)))"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#vk.1:p1",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( ~skT )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~skT"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                },
+                {
+                    "jgnId": "#vr.1",
+                    "jgnLabel": "TL_Setup",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Unique",
+                                "jgnFactShow": "Unique( 'tl' )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "'tl'"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vr.1:c0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!TLSk",
+                                "jgnFactShow": "!TLSk( $T, ~skT )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$T"
+                                    },
+                                    {
+                                        "jgnConst": "~skT"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#vr.1:c1",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Out",
+                                "jgnFactShow": "Out( pk(~skT) )",
+                                "jgnFactTag": "OutFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~skT"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~skT)"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#vr.1:c2",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Out",
+                                "jgnFactShow": "Out( <<'lotl_ptr', $T, pk(~skT)>, sign(<'lotl_ptr', $T, pk(~skT)>, ~skL)>)",
+                                "jgnFactTag": "OutFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'lotl_ptr'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "$T"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pk",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~skT"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pk(~skT)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair($T,pk(~skT))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('lotl_ptr',pair($T,pk(~skT)))"
+                                            },
+                                            {
+                                                "jgnFunct": "sign",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'lotl_ptr'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "$T"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pk",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "~skT"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pk(~skT)"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair($T,pk(~skT))"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('lotl_ptr',pair($T,pk(~skT)))"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~skL"
+                                                    }
+                                                ],
+                                                "jgnShow": "sign(pair('lotl_ptr',pair($T,pk(~skT))),~skL)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('lotl_ptr',pair($T,pk(~skT))),sign(pair('lotl_ptr',pair($T,pk(~skT))),~skL))"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vr.1:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!LOTLSk",
+                                "jgnFactShow": "!LOTLSk( ~skL )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~skL"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#vr.1:p1",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Fr",
+                                "jgnFactShow": "Fr( ~skT )",
+                                "jgnFactTag": "FreshFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~skT"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isProtocolRule"
+                },
+                {
+                    "jgnId": "#vf.2",
+                    "jgnLabel": "Send",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "K",
+                                "jgnFactShow": "K( <<'cred', I, c>, sign(<'cred', I, c>, ~skL)> )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'cred'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "I"
+                                                            },
+                                                            {
+                                                                "jgnConst": "c"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair(I,c)"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('cred',pair(I,c))"
+                                            },
+                                            {
+                                                "jgnFunct": "sign",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'cred'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "I"
+                                                                    },
+                                                                    {
+                                                                        "jgnConst": "c"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair(I,c)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('cred',pair(I,c))"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~skL"
+                                                    }
+                                                ],
+                                                "jgnShow": "sign(pair('cred',pair(I,c)),~skL)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('cred',pair(I,c)),sign(pair('cred',pair(I,c)),~skL))"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vf.2:c0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "In",
+                                "jgnFactShow": "In( <<'cred', I, c>, sign(<'cred', I, c>, ~skL)> )",
+                                "jgnFactTag": "InFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'cred'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "I"
+                                                            },
+                                                            {
+                                                                "jgnConst": "c"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair(I,c)"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('cred',pair(I,c))"
+                                            },
+                                            {
+                                                "jgnFunct": "sign",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'cred'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "I"
+                                                                    },
+                                                                    {
+                                                                        "jgnConst": "c"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair(I,c)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('cred',pair(I,c))"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~skL"
+                                                    }
+                                                ],
+                                                "jgnShow": "sign(pair('cred',pair(I,c)),~skL)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('cred',pair(I,c)),sign(pair('cred',pair(I,c)),~skL))"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vf.2:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( <<'cred', I, c>, sign(<'cred', I, c>, ~skL)> )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'cred'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "I"
+                                                            },
+                                                            {
+                                                                "jgnConst": "c"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair(I,c)"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('cred',pair(I,c))"
+                                            },
+                                            {
+                                                "jgnFunct": "sign",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'cred'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "I"
+                                                                    },
+                                                                    {
+                                                                        "jgnConst": "c"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair(I,c)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('cred',pair(I,c))"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~skL"
+                                                    }
+                                                ],
+                                                "jgnShow": "sign(pair('cred',pair(I,c)),~skL)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('cred',pair(I,c)),sign(pair('cred',pair(I,c)),~skL))"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                },
+                {
+                    "jgnId": "#vk.2",
+                    "jgnLabel": "Constrc_sign",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( sign(<'cred', I, c>, ~skL) )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "sign",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'cred'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "I"
+                                                            },
+                                                            {
+                                                                "jgnConst": "c"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair(I,c)"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('cred',pair(I,c))"
+                                            },
+                                            {
+                                                "jgnConst": "~skL"
+                                            }
+                                        ],
+                                        "jgnShow": "sign(pair('cred',pair(I,c)),~skL)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vk.2:c0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( sign(<'cred', I, c>, ~skL) )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "sign",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'cred'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "I"
+                                                            },
+                                                            {
+                                                                "jgnConst": "c"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair(I,c)"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('cred',pair(I,c))"
+                                            },
+                                            {
+                                                "jgnConst": "~skL"
+                                            }
+                                        ],
+                                        "jgnShow": "sign(pair('cred',pair(I,c)),~skL)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vk.2:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( <'cred', I, c> )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "'cred'"
+                                            },
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "I"
+                                                    },
+                                                    {
+                                                        "jgnConst": "c"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair(I,c)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair('cred',pair(I,c))"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#vk.2:p1",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( ~skL )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~skL"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                },
+                {
+                    "jgnId": "#vr.2",
+                    "jgnLabel": "Qday",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Unique",
+                                "jgnFactShow": "Unique( 'qday' )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "'qday'"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "QdayEv",
+                                "jgnFactShow": "QdayEv( )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": []
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vr.2:c0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!CRQC",
+                                "jgnFactShow": "!CRQC( )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": []
+                            }
+                        ],
+                        "jgnPrems": []
+                    },
+                    "jgnType": "isProtocolRule"
+                },
+                {
+                    "jgnId": "#vk.3",
+                    "jgnLabel": "Coerce",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( pk(~skL) )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~skL"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~skL)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vk.3:c0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( pk(~skL) )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~skL"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~skL)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vk.3:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KD",
+                                "jgnFactShow": "!KD( pk(~skL) )",
+                                "jgnFactTag": "KDFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~skL"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~skL)"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                },
+                {
+                    "jgnId": "#vf.4",
+                    "jgnLabel": "Send",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "K",
+                                "jgnFactShow": "K( pk(~skT) )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~skT"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~skT)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vf.4:c0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "In",
+                                "jgnFactShow": "In( pk(~skT) )",
+                                "jgnFactTag": "InFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~skT"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~skT)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vf.4:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( pk(~skT) )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~skT"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~skT)"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                },
+                {
+                    "jgnId": "#vk.4",
+                    "jgnLabel": "Coerce",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( ~skL )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~skL"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vk.4:c0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( ~skL )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~skL"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vk.4:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KD",
+                                "jgnFactShow": "!KD( ~skL )",
+                                "jgnFactTag": "KDFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~skL"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                },
+                {
+                    "jgnId": "#vr.4",
+                    "jgnLabel": "CRQC_Break_LOTL",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Broken",
+                                "jgnFactShow": "Broken( 'lotl' )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "'lotl'"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vr.4:c0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Out",
+                                "jgnFactShow": "Out( ~skL )",
+                                "jgnFactTag": "OutFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~skL"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vr.4:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!LOTLSk",
+                                "jgnFactShow": "!LOTLSk( ~skL )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~skL"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#vr.4:p1",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!CRQC",
+                                "jgnFactShow": "!CRQC( )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": []
+                            },
+                            {
+                                "jgnFactId": "#vr.4:p2",
+                                "jgnFactMult": "",
+                                "jgnFactName": "In",
+                                "jgnFactShow": "In( pk(~skL) )",
+                                "jgnFactTag": "InFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~skL"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~skL)"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isProtocolRule"
+                },
+                {
+                    "jgnId": "#vk.5",
+                    "jgnLabel": "Coerce",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( ~skT )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~skT"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vk.5:c0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( ~skT )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~skT"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vk.5:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KD",
+                                "jgnFactShow": "!KD( ~skT )",
+                                "jgnFactTag": "KDFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~skT"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                },
+                {
+                    "jgnId": "#vr.5",
+                    "jgnLabel": "CRQC_Break_TL",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Broken",
+                                "jgnFactShow": "Broken( 'tl' )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "'tl'"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vr.5:c0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Out",
+                                "jgnFactShow": "Out( ~skT )",
+                                "jgnFactTag": "OutFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~skT"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vr.5:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!TLSk",
+                                "jgnFactShow": "!TLSk( $T, ~skT )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$T"
+                                    },
+                                    {
+                                        "jgnConst": "~skT"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#vr.5:p1",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!CRQC",
+                                "jgnFactShow": "!CRQC( )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": []
+                            },
+                            {
+                                "jgnFactId": "#vr.5:p2",
+                                "jgnFactMult": "",
+                                "jgnFactName": "In",
+                                "jgnFactShow": "In( pk(~skT) )",
+                                "jgnFactTag": "InFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~skT"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~skT)"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isProtocolRule"
+                },
+                {
+                    "jgnId": "#vf.6",
+                    "jgnLabel": "Send",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "K",
+                                "jgnFactShow": "K( pk(~skL) )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~skL"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~skL)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vf.6:c0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "In",
+                                "jgnFactShow": "In( pk(~skL) )",
+                                "jgnFactTag": "InFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~skL"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~skL)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vf.6:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( pk(~skL) )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~skL"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~skL)"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                },
+                {
+                    "jgnId": "#vk.6",
+                    "jgnLabel": "Coerce",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( pk(~skT) )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~skT"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~skT)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vk.6:c0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( pk(~skT) )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~skT"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~skT)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vk.6:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KD",
+                                "jgnFactShow": "!KD( pk(~skT) )",
+                                "jgnFactTag": "KDFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~skT"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~skT)"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                },
+                {
+                    "jgnId": "#vf.7",
+                    "jgnLabel": "Send",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "K",
+                                "jgnFactShow": "K( pk(~skT) )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~skT"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~skT)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vf.7:c0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "In",
+                                "jgnFactShow": "In( pk(~skT) )",
+                                "jgnFactTag": "InFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~skT"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~skT)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vf.7:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( pk(~skT) )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~skT"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~skT)"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                },
+                {
+                    "jgnId": "#vk.17",
+                    "jgnLabel": "!KU( I )",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( I )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "I"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [],
+                        "jgnPrems": []
+                    },
+                    "jgnType": "unsolvedActionAtom"
+                },
+                {
+                    "jgnId": "#vk.21",
+                    "jgnLabel": "!KU( c )",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( c )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "c"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [],
+                        "jgnPrems": []
+                    },
+                    "jgnType": "unsolvedActionAtom"
+                }
+            ],
+            "jgType": "Tamarin prover constraint system"
+        }
+    ]
+}

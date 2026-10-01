@@ -1,0 +1,48 @@
+# Adım 7 görev 0 | --prove OLMADAN iyi biçimlilik denetimi | 25.09.2026
+# Araç: pq-a02-tamarin:1.12.0 (Tamarin 1.12.0, Maude 3.5.1); betik: betik/iyi_bicimlilik.sh (--derivcheck-timeout=60)
+# Kapsam: on_kayit_varyantlar.tsv'deki koşulacak satırların hepsi (33). Sonuç: 33/33 wf_ok=1, uyarı 0.
+# Biçim: varyant <TAB> model [bayraklar] rc wf_ok wf_uyari
+MB0_taban	M_istek.spthy [MB0] rc=0 wf_ok=1 wf_uyari=0
+MA_taban	M_istek.spthy [MA] rc=0 wf_ok=1 wf_uyari=0
+MB_taban	M_istek.spthy [MB] rc=0 wf_ok=1 wf_uyari=0
+ME_signed_fresh	M_metaveri.spthy [ME,META_SIGNED,FRESH] rc=0 wf_ok=1 wf_uyari=0
+MEP_tls_classical	M_metaveri.spthy [MEP,META_TLS] rc=0 wf_ok=1 wf_uyari=0
+MEP_signed_fresh	M_metaveri.spthy [MEP,META_SIGNED,FRESH] rc=0 wf_ok=1 wf_uyari=0
+MD_reg_pq	M_metaveri.spthy [MD,REG_PQ] rc=0 wf_ok=1 wf_uyari=0
+MF_cekirdek	Mf_yol.spthy [FRESH,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT] rc=0 wf_ok=1 wf_uyari=0
+MF_3b_yol_farkli_ad	Mf_yol.spthy [FRESH,PQ_CHAN,SCOPE_PATH,ATK_DIFF] rc=0 wf_ok=1 wf_uyari=0
+MF_3b_yol_ayni_ad	Mf_yol.spthy [FRESH,PQ_CHAN,SCOPE_PATH,ATK_SAME] rc=0 wf_ok=1 wf_uyari=0
+MF_3b_yol_klasik_kok	Mf_yol.spthy [FRESH,PQ_CHAN,SCOPE_PATH,ATK_ROOT] rc=0 wf_ok=1 wf_uyari=0
+MF_3b_anahtar_farkli_ad	Mf_yol.spthy [FRESH,PQ_CHAN,SCOPE_KEY,ATK_DIFF] rc=0 wf_ok=1 wf_uyari=0
+MF_3b_anahtar_ayni_ad	Mf_yol.spthy [FRESH,PQ_CHAN,SCOPE_KEY,ATK_SAME] rc=0 wf_ok=1 wf_uyari=0
+MF_3b_anahtar_klasik_kok	Mf_yol.spthy [FRESH,PQ_CHAN,SCOPE_KEY,ATK_ROOT] rc=0 wf_ok=1 wf_uyari=0
+MF_3b_yaprak_farkli_ad	Mf_yol.spthy [FRESH,PQ_CHAN,SCOPE_LEAF,ATK_DIFF] rc=0 wf_ok=1 wf_uyari=0
+MF_3b_yaprak_ayni_ad	Mf_yol.spthy [FRESH,PQ_CHAN,SCOPE_LEAF,ATK_SAME] rc=0 wf_ok=1 wf_uyari=0
+MF_3b_yaprak_klasik_kok	Mf_yol.spthy [FRESH,PQ_CHAN,SCOPE_LEAF,ATK_ROOT] rc=0 wf_ok=1 wf_uyari=0
+MF_tas_tl_onbellek	Mf_yol.spthy [OBJ,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT] rc=0 wf_ok=1 wf_uyari=0
+MF_tas_wrprc_faz0	Mf_yol.spthy [WRPRC,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT] rc=0 wf_ok=1 wf_uyari=0
+MF_tas_wrprc_faz1	Mf_yol.spthy [WRPRC,WRPRC_FAZ1,PQ_CHAN,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT] rc=0 wf_ok=1 wf_uyari=0
+MF_tas_federasyon_pq	Mf_yol.spthy [FED,FED_INT_PQ,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT] rc=0 wf_ok=1 wf_uyari=0
+MF_tas_federasyon_klasik_ara	Mf_yol.spthy [FED,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT] rc=0 wf_ok=1 wf_uyari=0
+MF_tas_federasyon_bayat	Mf_yol.spthy [FED,FED_INT_PQ,FED_STALE,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT] rc=0 wf_ok=1 wf_uyari=0
+MF_tas_crit_baslik	Mf_yol.spthy [CRIT,SCOPE_PATH,ATK_DIFF,ATK_SAME,ATK_ROOT] rc=0 wf_ok=1 wf_uyari=0
+MH_reddy_klasik_zincir	M_h.spthy [MH_REDDY] rc=0 wf_ok=1 wf_uyari=0
+MH_reddy_farkli_ad	M_h.spthy [MH_REDDY,CA_PQ,ATK_DIFF] rc=0 wf_ok=1 wf_uyari=0
+MH_reddy_ayni_ad	M_h.spthy [MH_REDDY,CA_PQ,ATK_SAME] rc=0 wf_ok=1 wf_uyari=0
+MH_reddy_klasik_kok	M_h.spthy [MH_REDDY,CA_PQ,ATK_ROOT] rc=0 wf_ok=1 wf_uyari=0
+MH_reddy_adbag_farkli_ad	M_h.spthy [MH_REDDY,CA_PQ,NAME_BIND,ATK_DIFF] rc=0 wf_ok=1 wf_uyari=0
+MH_vicente_klasik_zincir	M_h.spthy [MH_VICENTE] rc=0 wf_ok=1 wf_uyari=0
+MH_vicente_farkli_ad	M_h.spthy [MH_VICENTE,CA_PQ,ATK_DIFF] rc=0 wf_ok=1 wf_uyari=0
+MH_vicente_ayni_ad	M_h.spthy [MH_VICENTE,CA_PQ,ATK_SAME] rc=0 wf_ok=1 wf_uyari=0
+MH_vicente_klasik_kok	M_h.spthy [MH_VICENTE,CA_PQ,ATK_ROOT] rc=0 wf_ok=1 wf_uyari=0
+# ---- EK — Değişiklik 8 (26.09.2026): Mg_yol.spthy ve Mf_ek.spthy; 10/10 wf_ok=1, uyarı 0 ----
+EK_mg_anahtar_farkli_ad	Mg_yol.spthy [MG_ANAHTAR,ATK_DIFF] rc=0 wf_ok=1 wf_uyari=0
+EK_mg_anahtar_ayni_ad	Mg_yol.spthy [MG_ANAHTAR,ATK_SAME] rc=0 wf_ok=1 wf_uyari=0
+EK_mg_anahtar_klasik_kok	Mg_yol.spthy [MG_ANAHTAR,ATK_ROOT] rc=0 wf_ok=1 wf_uyari=0
+EK_mg_imza_farkli_ad	Mg_yol.spthy [MG_IMZA,ATK_DIFF] rc=0 wf_ok=1 wf_uyari=0
+EK_mg_imza_ayni_ad	Mg_yol.spthy [MG_IMZA,ATK_SAME] rc=0 wf_ok=1 wf_uyari=0
+EK_mg_imza_klasik_kok	Mg_yol.spthy [MG_IMZA,ATK_ROOT] rc=0 wf_ok=1 wf_uyari=0
+EK_mf_r7_tanimlari	Mf_ek.spthy [MONOTONE_DAR,SUNSET_ANAHTAR,ATK_DIFF,ATK_SAME,ATK_ROOT] rc=0 wf_ok=1 wf_uyari=0
+EK_mf_monoton_genis	Mf_ek.spthy [MONOTONE_GENIS,SUNSET_ANAHTAR,ATK_DIFF,ATK_SAME,ATK_ROOT] rc=0 wf_ok=1 wf_uyari=0
+EK_mf_sunset_beklenti	Mf_ek.spthy [MONOTONE_DAR,SUNSET_BEKLENTI,ATK_DIFF,ATK_SAME,ATK_ROOT] rc=0 wf_ok=1 wf_uyari=0
+EK_mf_yola_duyarli	Mf_ek.spthy [MONOTONE_GENIS,SUNSET_BEKLENTI,ATK_DIFF,ATK_SAME,ATK_ROOT] rc=0 wf_ok=1 wf_uyari=0

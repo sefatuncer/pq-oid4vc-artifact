@@ -1,0 +1,3 @@
+paket github.com/veraison/go-cose baglandi
+sembol NewVerifier func(cose.Algorithm, crypto.PublicKey) (cose.Verifier, error)
+tip *cose.Sign1Message *cose.SignMessage

@@ -1,0 +1,16 @@
+baslangic	2026-09-25T19:32:42Z
+hedef	JOSE-104
+ekosistem	swiftpm
+paket	https://github.com/Kitura/Swift-JWT.git
+istenen_surum	git:29fe084d874045d22546612d85fae1e9408c9091
+arac	Swift version 6.4
+kilit_dosyasi	Package.resolved (git revizyonları)
+kilit_sha256	481584daedfd8c81684523771452e4f894ec12e60d1f1fd8c8f0ca724e04b7aa
+bagimlilik_sayisi	8
+commit	29fe084d874045d22546612d85fae1e9408c9091
+commit_kaynagi	Package.resolved revision
+paket_ozeti	git:29fe084d874045d22546612d85fae1e9408c9091 (SwiftPM revizyonu)
+kurulan_surum	git:29fe084d8740
+not	swift build başarısız
+ice_aktar	basarisiz
+bitis	2026-09-25T19:32:59Z

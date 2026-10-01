@@ -1,0 +1,934 @@
+{
+ "test": "t12_cose",
+ "sure_s": 0.32,
+ "surumler": {
+  "pqjose": "1.0.0",
+  "python": "3.11.16",
+  "cryptography": "50.0.1",
+  "cryptography_openssl": "OpenSSL 4.0.2 25 Aug 2026",
+  "openssl_cli": "OpenSSL 3.5.7 9 Jun 2026 (Library: OpenSSL 3.5.7 9 Jun 2026)",
+  "spesifikasyonlar": {
+   "JWS": "RFC 7515",
+   "JWA": "RFC 7518 (RFC 9864 ile guncellendi)",
+   "ML-DSA": "RFC 9964 (Mayis 2026)",
+   "composite": "draft-ietf-jose-pq-composite-sigs-04 (10.09.2026)",
+   "EdDSA": "RFC 8037 / RFC 9864"
+  }
+ },
+ "ozet": {
+  "toplam": 138,
+  "gecen": 138,
+  "kalan": []
+ },
+ "kontroller": [
+  {
+   "grup": "A:KAYNAK",
+   "ad": "alg.ES256 -> RFC9053:248",
+   "gecti": true,
+   "ayrinti": "| ES256 |   -7  | SHA-256 | ECDSA w/ SHA-256 |"
+  },
+  {
+   "grup": "A:KAYNAK",
+   "ad": "alg.ES256.deprecated -> RFC9864:467",
+   "gecti": true,
+   "ayrinti": "Recommended:  Deprecated"
+  },
+  {
+   "grup": "A:KAYNAK",
+   "ad": "alg.ES256.haip -> HAIP:498",
+   "gecti": true,
+   "ayrinti": "Issuers, Verifiers, and Wallets MUST, at a minimum, support ECDSA with P-256 and SHA-256 ("
+  },
+  {
+   "grup": "A:KAYNAK",
+   "ad": "alg.EdDSA -> RFC9053:365",
+   "gecti": true,
+   "ayrinti": "| EdDSA |   -8  | EdDSA       |"
+  },
+  {
+   "grup": "A:KAYNAK",
+   "ad": "alg.EdDSA.deprecated -> RFC9864:491",
+   "gecti": true,
+   "ayrinti": "Recommended:  Deprecated"
+  },
+  {
+   "grup": "A:KAYNAK",
+   "ad": "alg.Ed25519 -> RFC9864:225",
+   "gecti": true,
+   "ayrinti": "| Ed25519 | -19   | EdDSA using    | Optional       | Yes         |"
+  },
+  {
+   "grup": "A:KAYNAK",
+   "ad": "alg.Ed25519.kayit -> RFC9864:439",
+   "gecti": true,
+   "ayrinti": "Value:  -19"
+  },
+  {
+   "grup": "A:KAYNAK",
+   "ad": "alg.ML-DSA-44 -> RFC9964:351",
+   "gecti": true,
+   "ayrinti": "Value:  -48"
+  },
+  {
+   "grup": "A:KAYNAK",
+   "ad": "alg.ML-DSA-65 -> RFC9964:367",
+   "gecti": true,
+   "ayrinti": "Value:  -49"
+  },
+  {
+   "grup": "A:KAYNAK",
+   "ad": "alg.ML-DSA-87 -> RFC9964:383",
+   "gecti": true,
+   "ayrinti": "Value:  -50"
+  },
+  {
+   "grup": "A:KAYNAK",
+   "ad": "alg.ML-DSA-44-ES256 -> JOSECOMP:1251",
+   "gecti": true,
+   "ayrinti": "*  Value: TBD (request assignment -54)"
+  },
+  {
+   "grup": "A:KAYNAK",
+   "ad": "alg.ML-DSA-65-ES256 -> JOSECOMP:1268",
+   "gecti": true,
+   "ayrinti": "*  Value: TBD (request assignment -55)"
+  },
+  {
+   "grup": "A:KAYNAK",
+   "ad": "alg.ML-DSA-87-ES384 -> JOSECOMP:1289",
+   "gecti": true,
+   "ayrinti": "*  Value: TBD (request assignment -56)"
+  },
+  {
+   "grup": "A:KAYNAK",
+   "ad": "alg.ML-DSA-44-Ed25519 -> JOSECOMP:1306",
+   "gecti": true,
+   "ayrinti": "*  Value: TBD (request assignment -57)"
+  },
+  {
+   "grup": "A:KAYNAK",
+   "ad": "alg.ML-DSA-65-Ed25519 -> JOSECOMP:1323",
+   "gecti": true,
+   "ayrinti": "*  Value: TBD (request assignment -58)"
+  },
+  {
+   "grup": "A:KAYNAK",
+   "ad": "alg.ML-DSA-87-Ed448 -> JOSECOMP:1345",
+   "gecti": true,
+   "ayrinti": "*  Value: TBD (request assignment -59)"
+  },
+  {
+   "grup": "A:KAYNAK",
+   "ad": "hdr.alg -> RFC9052:751",
+   "gecti": true,
+   "ayrinti": "| alg     | 1     | int /  | COSE Algorithms     | Cryptographic    |"
+  },
+  {
+   "grup": "A:KAYNAK",
+   "ad": "hdr.kid -> RFC9052:762",
+   "gecti": true,
+   "ayrinti": "| kid     | 4     | bstr   |                     | Key identifier   |"
+  },
+  {
+   "grup": "A:KAYNAK",
+   "ad": "hdr.x5chain -> RFC9360:296",
+   "gecti": true,
+   "ayrinti": "| x5chain | 33    | COSE_X509     | An ordered chain of |"
+  },
+  {
+   "grup": "A:KAYNAK",
+   "ad": "etiket.COSE_Sign -> RFC9052:482",
+   "gecti": true,
+   "ayrinti": "| 98       | cose-sign     | COSE_Sign     | COSE Signed Data      |"
+  },
+  {
+   "grup": "A:KAYNAK",
+   "ad": "etiket.COSE_Sign1 -> RFC9052:485",
+   "gecti": true,
+   "ayrinti": "| 18       | cose-sign1    | COSE_Sign1    | COSE Single Signer    |"
+  },
+  {
+   "grup": "A:KAYNAK",
+   "ad": "sig_structure.baglam -> RFC9052:1025",
+   "gecti": true,
+   "ayrinti": "context : \"Signature\" / \"Signature1\","
+  },
+  {
+   "grup": "A:KAYNAK",
+   "ad": "sig_structure.Signature -> RFC9052:1001",
+   "gecti": true,
+   "ayrinti": "\"Signature\" for signatures using the COSE_Signature structure."
+  },
+  {
+   "grup": "A:KAYNAK",
+   "ad": "sig_structure.Signature1 -> RFC9052:1003",
+   "gecti": true,
+   "ayrinti": "\"Signature1\" for signatures using the COSE_Sign1 structure."
+  },
+  {
+   "grup": "A:KAYNAK",
+   "ad": "imza.ecdsa_rs -> RFC9053:275",
+   "gecti": true,
+   "ayrinti": "concatenated together to form a byte string that is the resulting"
+  },
+  {
+   "grup": "A:KAYNAK",
+   "ad": "anahtar.kty -> RFC9052:1607",
+   "gecti": true,
+   "ayrinti": "| kty     | 1     | tstr / | COSE Key   | Identification of  |"
+  },
+  {
+   "grup": "A:KAYNAK",
+   "ad": "anahtar.kid -> RFC9052:1610",
+   "gecti": true,
+   "ayrinti": "| kid     | 2     | bstr   |            | Key identification |"
+  },
+  {
+   "grup": "A:KAYNAK",
+   "ad": "anahtar.alg -> RFC9052:1614",
+   "gecti": true,
+   "ayrinti": "| alg     | 3     | tstr / | COSE       | Key usage          |"
+  },
+  {
+   "grup": "A:KAYNAK",
+   "ad": "kty.OKP -> RFC9053:1627",
+   "gecti": true,
+   "ayrinti": "| OKP       |   1   | Octet Key Pair           |"
+  },
+  {
+   "grup": "A:KAYNAK",
+   "ad": "kty.EC2 -> RFC9053:1629",
+   "gecti": true,
+   "ayrinti": "| EC2       |   2   | Elliptic Curve Keys w/   |"
+  },
+  {
+   "grup": "A:KAYNAK",
+   "ad": "kty.AKP -> RFC9964:405",
+   "gecti": true,
+   "ayrinti": "Value:  7"
+  },
+  {
+   "grup": "A:KAYNAK",
+   "ad": "crv.P-256 -> RFC9053:1654",
+   "gecti": true,
+   "ayrinti": "| P-256   |   1   |   EC2    | NIST P-256, also known as secp256r1 |"
+  },
+  {
+   "grup": "A:KAYNAK",
+   "ad": "crv.Ed25519 -> RFC9053:1664",
+   "gecti": true,
+   "ayrinti": "| Ed25519 |   6   |   OKP    | Ed25519 for use w/ EdDSA only       |"
+  },
+  {
+   "grup": "A:KAYNAK",
+   "ad": "ec2.crv -> RFC9053:1716",
+   "gecti": true,
+   "ayrinti": "|  2   | crv  |   -1  | int /  | EC identifier -- Taken from the |"
+  },
+  {
+   "grup": "A:KAYNAK",
+   "ad": "ec2.x -> RFC9053:1719",
+   "gecti": true,
+   "ayrinti": "|  2   |  x   |   -2  | bstr   | x-coordinate                    |"
+  },
+  {
+   "grup": "A:KAYNAK",
+   "ad": "ec2.y -> RFC9053:1721",
+   "gecti": true,
+   "ayrinti": "|  2   |  y   |   -3  | bstr / | y-coordinate                    |"
+  },
+  {
+   "grup": "A:KAYNAK",
+   "ad": "okp.crv -> RFC9053:1760",
+   "gecti": true,
+   "ayrinti": "| crv  |    1     |   -1  | int / | EC identifier -- Taken from the |"
+  },
+  {
+   "grup": "A:KAYNAK",
+   "ad": "okp.x -> RFC9053:1763",
+   "gecti": true,
+   "ayrinti": "| x    |    1     |   -2  | bstr  | Public Key                      |"
+  },
+  {
+   "grup": "A:KAYNAK",
+   "ad": "akp.pub -> RFC9964:427",
+   "gecti": true,
+   "ayrinti": "Label:  -1"
+  },
+  {
+   "grup": "A:KAYNAK",
+   "ad": "akp.priv -> RFC9964:441",
+   "gecti": true,
+   "ayrinti": "Label:  -2"
+  },
+  {
+   "grup": "A:ALG",
+   "ad": "ES256 = -7 kaynak metninde geciyor",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "A:ALG",
+   "ad": "EdDSA = -8 kaynak metninde geciyor",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "A:ALG",
+   "ad": "Ed25519 = -19 kaynak metninde geciyor",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "A:ALG",
+   "ad": "ML-DSA-44 = -48 kaynak metninde geciyor",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "A:ALG",
+   "ad": "ML-DSA-65 = -49 kaynak metninde geciyor",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "A:ALG",
+   "ad": "ML-DSA-87 = -50 kaynak metninde geciyor",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "A:ALG",
+   "ad": "ML-DSA-44-ES256 = -54 kaynak metninde geciyor",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "A:ALG",
+   "ad": "ML-DSA-65-ES256 = -55 kaynak metninde geciyor",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "A:ALG",
+   "ad": "ML-DSA-87-ES384 = -56 kaynak metninde geciyor",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "A:ALG",
+   "ad": "ML-DSA-44-Ed25519 = -57 kaynak metninde geciyor",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "A:ALG",
+   "ad": "ML-DSA-65-Ed25519 = -58 kaynak metninde geciyor",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "A:ALG",
+   "ad": "ML-DSA-87-Ed448 = -59 kaynak metninde geciyor",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "B:RFC9964-COSE-ML-DSA-44",
+   "ad": "COSE_Key ekleme sirasiyla yeniden kodlaninca bayt-ayni",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "B:RFC9964-COSE-ML-DSA-44",
+   "ad": "COSE_Key kanonik (belirlenimci) sirada mi",
+   "gecti": null,
+   "ayrinti": false
+  },
+  {
+   "grup": "B:RFC9964-COSE-ML-DSA-44",
+   "ad": "AKP anahtari: tohumdan acik anahtar == -1",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "B:RFC9964-COSE-ML-DSA-44",
+   "ad": "AKP COSE parmak izi (RFC 9964 §6: kty, alg, pub) == kid",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "B:RFC9964-COSE-ML-DSA-44",
+   "ad": "COSE_Sign1 ayristirildi; korumali baslik {1: alg, 4: kid}",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "B:RFC9964-COSE-ML-DSA-44",
+   "ad": "Sig_structure (bizim kodlama) == raw_to_be_signed",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "B:RFC9964-COSE-ML-DSA-44",
+   "ad": "imza == raw_signature",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "B:RFC9964-COSE-ML-DSA-44",
+   "ad": "COSE_Sign1 dogrulandi (pqjose)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "B:RFC9964-COSE-ML-DSA-44",
+   "ad": "dilithium-py capraz dogrulama",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "B:RFC9964-COSE-ML-DSA-44",
+   "ad": "belirlenimci yeniden imzalama: COSE_Sign1 BAYT-AYNI",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "B:RFC9964-COSE-ML-DSA-65",
+   "ad": "COSE_Key ekleme sirasiyla yeniden kodlaninca bayt-ayni",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "B:RFC9964-COSE-ML-DSA-65",
+   "ad": "COSE_Key kanonik (belirlenimci) sirada mi",
+   "gecti": null,
+   "ayrinti": false
+  },
+  {
+   "grup": "B:RFC9964-COSE-ML-DSA-65",
+   "ad": "AKP anahtari: tohumdan acik anahtar == -1",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "B:RFC9964-COSE-ML-DSA-65",
+   "ad": "AKP COSE parmak izi (RFC 9964 §6: kty, alg, pub) == kid",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "B:RFC9964-COSE-ML-DSA-65",
+   "ad": "COSE_Sign1 ayristirildi; korumali baslik {1: alg, 4: kid}",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "B:RFC9964-COSE-ML-DSA-65",
+   "ad": "Sig_structure (bizim kodlama) == raw_to_be_signed",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "B:RFC9964-COSE-ML-DSA-65",
+   "ad": "imza == raw_signature",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "B:RFC9964-COSE-ML-DSA-65",
+   "ad": "COSE_Sign1 dogrulandi (pqjose)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "B:RFC9964-COSE-ML-DSA-65",
+   "ad": "dilithium-py capraz dogrulama",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "B:RFC9964-COSE-ML-DSA-65",
+   "ad": "belirlenimci yeniden imzalama: COSE_Sign1 BAYT-AYNI",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "B:RFC9964-COSE-ML-DSA-87",
+   "ad": "COSE_Key ekleme sirasiyla yeniden kodlaninca bayt-ayni",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "B:RFC9964-COSE-ML-DSA-87",
+   "ad": "COSE_Key kanonik (belirlenimci) sirada mi",
+   "gecti": null,
+   "ayrinti": false
+  },
+  {
+   "grup": "B:RFC9964-COSE-ML-DSA-87",
+   "ad": "AKP anahtari: tohumdan acik anahtar == -1",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "B:RFC9964-COSE-ML-DSA-87",
+   "ad": "AKP COSE parmak izi (RFC 9964 §6: kty, alg, pub) == kid",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "B:RFC9964-COSE-ML-DSA-87",
+   "ad": "COSE_Sign1 ayristirildi; korumali baslik {1: alg, 4: kid}",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "B:RFC9964-COSE-ML-DSA-87",
+   "ad": "Sig_structure (bizim kodlama) == raw_to_be_signed",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "B:RFC9964-COSE-ML-DSA-87",
+   "ad": "imza == raw_signature",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "B:RFC9964-COSE-ML-DSA-87",
+   "ad": "COSE_Sign1 dogrulandi (pqjose)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "B:RFC9964-COSE-ML-DSA-87",
+   "ad": "dilithium-py capraz dogrulama",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "B:RFC9964-COSE-ML-DSA-87",
+   "ad": "belirlenimci yeniden imzalama: COSE_Sign1 BAYT-AYNI",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "C:genel",
+   "ad": "-04 Ek A.2 COSE ornek sayisi 6",
+   "gecti": true,
+   "ayrinti": [
+    "ML-DSA-44-ES256",
+    "ML-DSA-44-Ed25519",
+    "ML-DSA-65-ES256",
+    "ML-DSA-65-Ed25519",
+    "ML-DSA-87-ES384",
+    "ML-DSA-87-Ed448"
+   ]
+  },
+  {
+   "grup": "C:ML-DSA-44-ES256",
+   "ad": "COSE alg degeri = -54 (-04 Tablo 6, talep edilen)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "C:ML-DSA-44-ES256",
+   "ad": "cikarim tutarliligi (kid x3, payload x2, aad bos)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "C:ML-DSA-44-ES256",
+   "ad": "COSE_Key priv = tohum || klasik ozel; pub tutarli",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "C:ML-DSA-44-ES256",
+   "ad": "ECDSA d cikarimi == anahtar",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "C:ML-DSA-44-ES256",
+   "ad": "M' (bizim korumali baslik + Sig_structure kodlamamizla) BIREBIR",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "C:ML-DSA-44-ES256",
+   "ad": "composite COSE imzasi dogrulandi (ml ve trad)",
+   "gecti": true,
+   "ayrinti": {
+    "ml": true,
+    "trad": true,
+    "hata": null
+   }
+  },
+  {
+   "grup": "C:ML-DSA-44-ES256",
+   "ad": "dilithium-py: ML-DSA bileseni (ctx=Label)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "C:ML-DSA-44-ES256",
+   "ad": "OpenSSL CLI: ML-DSA bileseni (ctx=Label)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "C:ML-DSA-44-ES256",
+   "ad": "OpenSSL CLI: ECDSA bileseni",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "C:ML-DSA-44-ES256",
+   "ad": "ML-DSA bileseni belirlenimci mi (taslak)",
+   "gecti": null,
+   "ayrinti": true
+  },
+  {
+   "grup": "C:ML-DSA-44-Ed25519",
+   "ad": "COSE alg degeri = -57 (-04 Tablo 6, talep edilen)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "C:ML-DSA-44-Ed25519",
+   "ad": "cikarim tutarliligi (kid x3, payload x2, aad bos)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "C:ML-DSA-44-Ed25519",
+   "ad": "COSE_Key priv = tohum || klasik ozel; pub tutarli",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "C:ML-DSA-44-Ed25519",
+   "ad": "EdDSA tohumu == anahtar",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "C:ML-DSA-44-Ed25519",
+   "ad": "M' (bizim korumali baslik + Sig_structure kodlamamizla) BIREBIR",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "C:ML-DSA-44-Ed25519",
+   "ad": "composite COSE imzasi dogrulandi (ml ve trad)",
+   "gecti": true,
+   "ayrinti": {
+    "ml": true,
+    "trad": true,
+    "hata": null
+   }
+  },
+  {
+   "grup": "C:ML-DSA-44-Ed25519",
+   "ad": "dilithium-py: ML-DSA bileseni (ctx=Label)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "C:ML-DSA-44-Ed25519",
+   "ad": "OpenSSL CLI: ML-DSA bileseni (ctx=Label)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "C:ML-DSA-44-Ed25519",
+   "ad": "OpenSSL CLI: EdDSA bileseni",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "C:ML-DSA-44-Ed25519",
+   "ad": "ML-DSA bileseni belirlenimci mi (taslak)",
+   "gecti": null,
+   "ayrinti": true
+  },
+  {
+   "grup": "C:ML-DSA-44-Ed25519",
+   "ad": "EdDSA bileseni bayt-ayni (belirlenimci)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "C:ML-DSA-44-Ed25519",
+   "ad": "bizim COSE_Sign1 imzamiz bayt-ayni",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "C:ML-DSA-65-ES256",
+   "ad": "COSE alg degeri = -55 (-04 Tablo 6, talep edilen)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "C:ML-DSA-65-ES256",
+   "ad": "cikarim tutarliligi (kid x3, payload x2, aad bos)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "C:ML-DSA-65-ES256",
+   "ad": "COSE_Key priv = tohum || klasik ozel; pub tutarli",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "C:ML-DSA-65-ES256",
+   "ad": "ECDSA d cikarimi == anahtar",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "C:ML-DSA-65-ES256",
+   "ad": "M' (bizim korumali baslik + Sig_structure kodlamamizla) BIREBIR",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "C:ML-DSA-65-ES256",
+   "ad": "composite COSE imzasi dogrulandi (ml ve trad)",
+   "gecti": true,
+   "ayrinti": {
+    "ml": true,
+    "trad": true,
+    "hata": null
+   }
+  },
+  {
+   "grup": "C:ML-DSA-65-ES256",
+   "ad": "dilithium-py: ML-DSA bileseni (ctx=Label)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "C:ML-DSA-65-ES256",
+   "ad": "OpenSSL CLI: ML-DSA bileseni (ctx=Label)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "C:ML-DSA-65-ES256",
+   "ad": "OpenSSL CLI: ECDSA bileseni",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "C:ML-DSA-65-ES256",
+   "ad": "ML-DSA bileseni belirlenimci mi (taslak)",
+   "gecti": null,
+   "ayrinti": true
+  },
+  {
+   "grup": "C:ML-DSA-65-Ed25519",
+   "ad": "COSE alg degeri = -58 (-04 Tablo 6, talep edilen)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "C:ML-DSA-65-Ed25519",
+   "ad": "cikarim tutarliligi (kid x3, payload x2, aad bos)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "C:ML-DSA-65-Ed25519",
+   "ad": "COSE_Key priv = tohum || klasik ozel; pub tutarli",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "C:ML-DSA-65-Ed25519",
+   "ad": "EdDSA tohumu == anahtar",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "C:ML-DSA-65-Ed25519",
+   "ad": "M' (bizim korumali baslik + Sig_structure kodlamamizla) BIREBIR",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "C:ML-DSA-65-Ed25519",
+   "ad": "composite COSE imzasi dogrulandi (ml ve trad)",
+   "gecti": true,
+   "ayrinti": {
+    "ml": true,
+    "trad": true,
+    "hata": null
+   }
+  },
+  {
+   "grup": "C:ML-DSA-65-Ed25519",
+   "ad": "dilithium-py: ML-DSA bileseni (ctx=Label)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "C:ML-DSA-65-Ed25519",
+   "ad": "OpenSSL CLI: ML-DSA bileseni (ctx=Label)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "C:ML-DSA-65-Ed25519",
+   "ad": "OpenSSL CLI: EdDSA bileseni",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "C:ML-DSA-65-Ed25519",
+   "ad": "ML-DSA bileseni belirlenimci mi (taslak)",
+   "gecti": null,
+   "ayrinti": true
+  },
+  {
+   "grup": "C:ML-DSA-65-Ed25519",
+   "ad": "EdDSA bileseni bayt-ayni (belirlenimci)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "C:ML-DSA-65-Ed25519",
+   "ad": "bizim COSE_Sign1 imzamiz bayt-ayni",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "C:ML-DSA-87-ES384",
+   "ad": "COSE alg degeri = -56 (-04 Tablo 6, talep edilen)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "C:ML-DSA-87-ES384",
+   "ad": "cikarim tutarliligi (kid x3, payload x2, aad bos)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "C:ML-DSA-87-ES384",
+   "ad": "COSE_Key priv = tohum || klasik ozel; pub tutarli",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "C:ML-DSA-87-ES384",
+   "ad": "ECDSA d cikarimi == anahtar",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "C:ML-DSA-87-ES384",
+   "ad": "BILINEN TUTARSIZLIK (erratum adayi) suruyor: PH(Sig_structure) != M' icindeki PH",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "C:ML-DSA-87-ES384",
+   "ad": "imza bilesenleri taslagin GOSTERDIGI M' uzerinde gecerli",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "C:ML-DSA-87-ES384",
+   "ad": "ayni anahtar/baslik/yukle bizim COSE_Sign1 imzamiz gecerli (ic tutarli ornek)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "C:ML-DSA-87-ES384",
+   "ad": "not",
+   "gecti": null,
+   "ayrinti": "COSE_Sign1 olarak dogrulanamaz; JOSE Ek A.1 esi (T01) gecerli; NOTLAR H"
+  },
+  {
+   "grup": "C:ML-DSA-87-Ed448",
+   "ad": "COSE alg degeri = -59 (-04 Tablo 6, talep edilen)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "C:ML-DSA-87-Ed448",
+   "ad": "cikarim tutarliligi (kid x3, payload x2, aad bos)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "C:ML-DSA-87-Ed448",
+   "ad": "COSE_Key priv = tohum || klasik ozel; pub tutarli",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "C:ML-DSA-87-Ed448",
+   "ad": "EdDSA tohumu == anahtar",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "C:ML-DSA-87-Ed448",
+   "ad": "M' (bizim korumali baslik + Sig_structure kodlamamizla) BIREBIR",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "C:ML-DSA-87-Ed448",
+   "ad": "composite COSE imzasi dogrulandi (ml ve trad)",
+   "gecti": true,
+   "ayrinti": {
+    "ml": true,
+    "trad": true,
+    "hata": null
+   }
+  },
+  {
+   "grup": "C:ML-DSA-87-Ed448",
+   "ad": "dilithium-py: ML-DSA bileseni (ctx=Label)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "C:ML-DSA-87-Ed448",
+   "ad": "OpenSSL CLI: ML-DSA bileseni (ctx=Label)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "C:ML-DSA-87-Ed448",
+   "ad": "OpenSSL CLI: EdDSA bileseni",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "C:ML-DSA-87-Ed448",
+   "ad": "ML-DSA bileseni belirlenimci mi (taslak)",
+   "gecti": null,
+   "ayrinti": true
+  },
+  {
+   "grup": "C:ML-DSA-87-Ed448",
+   "ad": "EdDSA bileseni bayt-ayni (belirlenimci)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "C:ML-DSA-87-Ed448",
+   "ad": "bizim COSE_Sign1 imzamiz bayt-ayni",
+   "gecti": true,
+   "ayrinti": null
+  }
+ ]
+}

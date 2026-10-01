@@ -1,0 +1,6 @@
+modul Guardian OK
+modul Guardian.Token.Jwt OK
+modul JOSE.JWS OK
+modul JOSE.JWK OK
+ortam erlang-crypto [{"OpenSSL", 810549360, "OpenSSL 3.5.7 9 Jun 2026"}]
+bagimlilik jose (erlang-jose) 1.11.12

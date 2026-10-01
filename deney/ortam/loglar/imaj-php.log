@@ -1,0 +1,63 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 DONE 0.0s
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.14kB 0.0s done
+#1 DONE 0.1s
+
+#2 [internal] load metadata for docker.io/library/composer:2.10.3@sha256:9715c7f69044da2a212a5fbde29ee7da24e364d426560ae6367b060236f847d7
+#2 DONE 0.1s
+
+#3 [internal] load metadata for docker.io/library/php:8.4-cli-alpine3.24@sha256:de082dce8399ed408c47a303ac7f126de659088b403d791cefc81a7b707ea0c1
+#3 DONE 0.1s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 2B done
+#4 DONE 0.1s
+
+#5 [stage-1 1/3] FROM docker.io/library/php:8.4-cli-alpine3.24@sha256:de082dce8399ed408c47a303ac7f126de659088b403d791cefc81a7b707ea0c1
+#5 resolve docker.io/library/php:8.4-cli-alpine3.24@sha256:de082dce8399ed408c47a303ac7f126de659088b403d791cefc81a7b707ea0c1 0.1s done
+#5 DONE 1.0s
+
+#6 [composer 1/1] FROM docker.io/library/composer:2.10.3@sha256:9715c7f69044da2a212a5fbde29ee7da24e364d426560ae6367b060236f847d7
+#6 resolve docker.io/library/composer:2.10.3@sha256:9715c7f69044da2a212a5fbde29ee7da24e364d426560ae6367b060236f847d7 0.1s done
+#6 DONE 1.4s
+
+#7 [stage-1 2/3] COPY --from=composer /usr/bin/composer /usr/bin/composer
+#7 DONE 0.1s
+
+#8 [stage-1 3/3] RUN set -eux; echo "SURUM $(php -v | head -1)"; echo "SURUM $(composer --version 2>/dev/null)";     echo "SURUM php-openssl $(php -r 'echo OPENSSL_VERSION_TEXT;')"; echo "SURUM alpine $(cat /etc/alpine-release)";     echo "SURUM modüller $(php -m | grep -v '^\[' | tr '\n' ' ')"
+#8 0.247 + php -v
+#8 0.247 + head -1
+#8 0.259 SURUM PHP 8.4.26 (cli) (built: Sep 24 2026 19:14:36) (NTS)
+#8 0.259 + echo 'SURUM PHP 8.4.26 (cli) (built: Sep 24 2026 19:14:36) (NTS)'
+#8 0.259 + composer --version
+#8 0.292 SURUM Composer version 2.10.3 2026-08-27 13:34:23
+#8 0.292 + echo 'SURUM Composer version 2.10.3 2026-08-27 13:34:23'
+#8 0.292 + php -r 'echo OPENSSL_VERSION_TEXT;'
+#8 0.302 + echo 'SURUM php-openssl OpenSSL 3.5.8 25 Aug 2026'
+#8 0.302 SURUM php-openssl OpenSSL 3.5.8 25 Aug 2026
+#8 0.302 + cat /etc/alpine-release
+#8 0.303 + echo 'SURUM alpine 3.24.2'
+#8 0.303 SURUM alpine 3.24.2
+#8 0.303 + php -m
+#8 0.304 + grep -v '^\['
+#8 0.304 + tr '\n' ' '
+#8 0.315 SURUM modüller Core ctype curl date dom fileinfo filter hash iconv json libxml mbstring mysqlnd openssl pcre PDO pdo_sqlite Phar posix random readline Reflection session SimpleXML sodium SPL sqlite3 standard tokenizer xml xmlreader xmlwriter Zend OPcache zlib  Zend OPcache  
+#8 0.315 + echo 'SURUM modüller Core ctype curl date dom fileinfo filter hash iconv json libxml mbstring mysqlnd openssl pcre PDO pdo_sqlite Phar posix random readline Reflection session SimpleXML sodium SPL sqlite3 standard tokenizer xml xmlreader xmlwriter Zend OPcache zlib  Zend OPcache  '
+#8 DONE 0.4s
+
+#9 exporting to image
+#9 exporting layers
+#9 exporting layers 0.2s done
+#9 exporting manifest sha256:c627681eb77237ef9946629eca3cf22834e1c1daeed8ae7a18faf3bc688edee4 0.0s done
+#9 exporting config sha256:218767587d0dcf19dc7b0300ab1073a2eef7d28c0234d4067bcdd57ed974d75b 0.1s done
+#9 exporting attestation manifest sha256:2d12f1aaaedd20a61d94de2d512493c7b8d80d0a34ff56a8660850cb2abe9261 0.1s done
+#9 exporting manifest list sha256:a89612973cf41e3cb0597817bc85206aa10f11aa86b633636457a9fb99ad95c4
+#9 exporting manifest list sha256:a89612973cf41e3cb0597817bc85206aa10f11aa86b633636457a9fb99ad95c4 0.1s done
+#9 naming to docker.io/library/pq-a09-env-php:1.0 done
+#9 unpacking to docker.io/library/pq-a09-env-php:1.0
+#9 unpacking to docker.io/library/pq-a09-env-php:1.0 0.2s done
+#9 DONE 0.8s

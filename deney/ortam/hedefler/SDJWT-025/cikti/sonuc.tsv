@@ -1,0 +1,15 @@
+baslangic	2026-09-25T13:13:33Z
+hedef	SDJWT-025
+ekosistem	crates.io
+paket	ssi-sd-jwt
+istenen_surum	0.6.0
+arac	rustc 1.98.1; cargo 1.98.1
+kilit_dosyasi	Cargo.lock
+kilit_sha256	94b8d8f49c1e45c2ea5fea82408b2ab7359336277b0ed465d654d9127b0a5910
+bagimlilik_sayisi	218
+paket_ozeti	sha256:0eadfb39ff2554976db49985fd8b61ddf46829acc15ca528831efc5f175ba6ed (Cargo.lock checksum)
+kurulan_surum	0.6.0
+commit	16cd58715aa209f3151560ad59bd6ac65b90fa89
+commit_kaynagi	.cargo_vcs_info.json (crate içinde)
+ice_aktar	basarili
+bitis	2026-09-25T13:14:00Z

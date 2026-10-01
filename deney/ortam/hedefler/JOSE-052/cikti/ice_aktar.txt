@@ -1,0 +1,5 @@
+jar=java-jwt-4.6.1.jar sinif_yuklendi=55 sinif_yuklenemedi=0
+ad_eslesen_siniflar (Verif|Validat; bilgi): com.auth0.jwt.exceptions.SignatureVerificationException,com.auth0.jwt.exceptions.JWTVerificationException,com.auth0.jwt.JWTVerifier,com.auth0.jwt.interfaces.JWTVerifier,com.auth0.jwt.interfaces.Verification
+anahtar_sinif com.auth0.jwt.JWT OK
+anahtar_sinif com.auth0.jwt.JWTVerifier OK
+anahtar_sinif com.auth0.jwt.algorithms.Algorithm OK

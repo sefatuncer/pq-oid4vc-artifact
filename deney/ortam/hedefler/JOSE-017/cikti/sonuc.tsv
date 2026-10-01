@@ -1,0 +1,15 @@
+baslangic	2026-09-25T19:27:29Z
+hedef	JOSE-017
+ekosistem	kaynak (git), başlık-yalnız
+paket	jwt-cpp
+istenen_surum	git:0a503e75084cfdb48cc2186e6b961444eb819007
+arac	g++ (GCC) 15.3.0; sistem OpenSSL 3.5.7
+commit	0a503e75084cfdb48cc2186e6b961444eb819007
+commit_kaynagi	git checkout (CERCEVE son_commit_sha)
+paket_ozeti	git-tree:14718023ed3453637214de6b8d272e4d42556013
+kurulan_surum	git:0a503e75084c
+kilit_dosyasi	yok (başlık-yalnız; bağımlılık: sistem OpenSSL + gömülü picojson)
+kilit_sha256	14718023ed3453637214de6b8d272e4d42556013
+lisans_kayit	MIT
+ice_aktar	basarili
+bitis	2026-09-25T19:27:31Z

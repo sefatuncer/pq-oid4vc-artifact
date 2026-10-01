@@ -1,0 +1,61 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 1.09kB 0.0s done
+#1 DONE 0.1s
+
+#2 [internal] load metadata for mcr.microsoft.com/dotnet/sdk:10.0.401-resolute@sha256:d818bb3014d94172e93820d985130135870bd1760f02588a61263a85c966860e
+#2 DONE 0.1s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.1s
+
+#4 [internal] load build context
+#4 DONE 0.0s
+
+#5 [1/3] FROM mcr.microsoft.com/dotnet/sdk:10.0.401-resolute@sha256:d818bb3014d94172e93820d985130135870bd1760f02588a61263a85c966860e
+#5 resolve mcr.microsoft.com/dotnet/sdk:10.0.401-resolute@sha256:d818bb3014d94172e93820d985130135870bd1760f02588a61263a85c966860e 0.0s done
+#5 DONE 0.0s
+
+#4 [internal] load build context
+#4 transferring context: 1.28kB done
+#4 DONE 0.1s
+
+#5 [1/3] FROM mcr.microsoft.com/dotnet/sdk:10.0.401-resolute@sha256:d818bb3014d94172e93820d985130135870bd1760f02588a61263a85c966860e
+#5 DONE 0.8s
+
+#6 [2/3] COPY yetenek /opt/pq/yetenek
+#6 DONE 0.1s
+
+#7 [3/3] RUN set -eux; echo "SURUM dotnet-sdk $(dotnet --version)"; echo "SURUM sistem $(openssl version)";     echo "SURUM $(grep PRETTY_NAME /etc/os-release)";     cd /opt/pq/yetenek && dotnet run -c Release 2>&1 | sed 's/^/SURUM /'; rm -rf /opt/pq/yetenek/bin /opt/pq/yetenek/obj
+#7 0.262 + dotnet --version
+#7 0.342 + echo SURUM dotnet-sdk 10.0.401
+#7 0.342 SURUM dotnet-sdk 10.0.401
+#7 0.343 + openssl version
+#7 0.346 + echo SURUM sistem OpenSSL 3.5.5 27 Jan 2026 (Library: OpenSSL 3.5.5 27 Jan 2026)
+#7 0.347 SURUM sistem OpenSSL 3.5.5 27 Jan 2026 (Library: OpenSSL 3.5.5 27 Jan 2026)
+#7 0.347 + grep PRETTY_NAME /etc/os-release
+#7 0.347 SURUM PRETTY_NAME="Ubuntu 26.04.1 LTS"
+#7 0.347 + echo SURUM PRETTY_NAME="Ubuntu 26.04.1 LTS"
+#7 0.347 + cd /opt/pq/yetenek
+#7 0.347 + dotnet run -c Release
+#7 0.348 + sed s/^/SURUM /
+#7 2.844 SURUM .NET System.Security.Cryptography.MLDsa: tur=var IsSupported=True
+#7 2.844 SURUM .NET System.Security.Cryptography.CompositeMLDsa: tur=var IsSupported=True
+#7 2.844 SURUM .NET System.Security.Cryptography.SlhDsa: tur=var IsSupported=True
+#7 2.844 SURUM .NET çalışma zamanı 10.0.12
+#7 2.852 + rm -rf /opt/pq/yetenek/bin /opt/pq/yetenek/obj
+#7 DONE 2.9s
+
+#8 exporting to image
+#8 exporting layers
+#8 exporting layers 0.3s done
+#8 exporting manifest sha256:59fadbb049d0a2f01e91e761658d2887af93e66961b523636c2876e8105ac984 0.0s done
+#8 exporting config sha256:863c068e1ab037d21240eee836ed59528f5e99adecb3a64bd61c9a738cde3a98 0.0s done
+#8 exporting attestation manifest sha256:7ed83d16576c38bab0fc390358e62879182f2d034749904cb90de185feb7d78b 0.1s done
+#8 exporting manifest list sha256:4f1b25cf1a6e359c5719da979e1c4e3e16f8a9f1ec6cc3c0e4232c7d146771e6
+#8 exporting manifest list sha256:4f1b25cf1a6e359c5719da979e1c4e3e16f8a9f1ec6cc3c0e4232c7d146771e6 0.0s done
+#8 naming to docker.io/library/pq-a09-env-dotnet:1.0 done
+#8 unpacking to docker.io/library/pq-a09-env-dotnet:1.0 0.1s done
+#8 DONE 0.6s

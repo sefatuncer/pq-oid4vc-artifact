@@ -1,0 +1,676 @@
+hedef,faz,tau,capa,politika,n_asgari,min_dugum,min_m2_agirlikli,gerekli_dugumler,asgari_kumeler
+g1,f1,hizli,onbellek,p0,0,,,,UNSAT
+g1,f1,hizli,onbellek,p1,0,,,,UNSAT
+g1,f1,hizli,onbellek,p2,0,,,,UNSAT
+g1,f1,hizli,onbellek,p3,0,,,,UNSAT
+g1,f1,hizli,onbellek,p4,2,5,111,a01 a02 a03 a04 a07,"a01 a02 a03 a04 a05 a07 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a05_meta) tasi(a05_meta,a07_kimlik) || a01 a02 a03 a04 a07 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a07_kimlik)"
+g1,f1,hizli,sabit,p0,0,,,,UNSAT
+g1,f1,hizli,sabit,p1,0,,,,UNSAT
+g1,f1,hizli,sabit,p2,0,,,,UNSAT
+g1,f1,hizli,sabit,p3,0,,,,UNSAT
+g1,f1,hizli,sabit,p4,2,5,111,a01 a02 a03 a04 a07,"a01 a02 a03 a04 a05 a07 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a05_meta) tasi(a05_meta,a07_kimlik) || a01 a02 a03 a04 a07 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a07_kimlik)"
+g1,f1,hizli,taze,p0,0,,,,UNSAT
+g1,f1,hizli,taze,p1,0,,,,UNSAT
+g1,f1,hizli,taze,p2,0,,,,UNSAT
+g1,f1,hizli,taze,p3,0,,,,UNSAT
+g1,f1,hizli,taze,p4,2,5,111,a01 a02 a03 a04 a07,"a01 a02 a03 a04 a05 a07 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a05_meta) tasi(a05_meta,a07_kimlik) || a01 a02 a03 a04 a07 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a07_kimlik)"
+g1,f1,orta,onbellek,p0,0,,,,UNSAT
+g1,f1,orta,onbellek,p1,0,,,,UNSAT
+g1,f1,orta,onbellek,p2,0,,,,UNSAT
+g1,f1,orta,onbellek,p3,0,,,,UNSAT
+g1,f1,orta,onbellek,p4,2,5,111,a01 a02 a03 a04 a07,"a01 a02 a03 a04 a05 a07 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a05_meta) tasi(a05_meta,a07_kimlik) || a01 a02 a03 a04 a07 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a07_kimlik)"
+g1,f1,orta,sabit,p0,0,,,,UNSAT
+g1,f1,orta,sabit,p1,0,,,,UNSAT
+g1,f1,orta,sabit,p2,0,,,,UNSAT
+g1,f1,orta,sabit,p3,0,,,,UNSAT
+g1,f1,orta,sabit,p4,2,5,111,a01 a02 a03 a04 a07,"a01 a02 a03 a04 a05 a07 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a05_meta) tasi(a05_meta,a07_kimlik) || a01 a02 a03 a04 a07 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a07_kimlik)"
+g1,f1,orta,taze,p0,0,,,,UNSAT
+g1,f1,orta,taze,p1,0,,,,UNSAT
+g1,f1,orta,taze,p2,0,,,,UNSAT
+g1,f1,orta,taze,p3,0,,,,UNSAT
+g1,f1,orta,taze,p4,2,5,111,a01 a02 a03 a04 a07,"a01 a02 a03 a04 a05 a07 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a05_meta) tasi(a05_meta,a07_kimlik) || a01 a02 a03 a04 a07 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a07_kimlik)"
+g1,f1,yavas,onbellek,p0,0,,,,UNSAT
+g1,f1,yavas,onbellek,p1,0,,,,UNSAT
+g1,f1,yavas,onbellek,p2,0,,,,UNSAT
+g1,f1,yavas,onbellek,p3,0,,,,UNSAT
+g1,f1,yavas,onbellek,p4,2,5,111,a01 a02 a03 a04 a07,"a01 a02 a03 a04 a05 a07 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a05_meta) tasi(a05_meta,a07_kimlik) || a01 a02 a03 a04 a07 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a07_kimlik)"
+g1,f1,yavas,sabit,p0,0,,,,UNSAT
+g1,f1,yavas,sabit,p1,0,,,,UNSAT
+g1,f1,yavas,sabit,p2,0,,,,UNSAT
+g1,f1,yavas,sabit,p3,0,,,,UNSAT
+g1,f1,yavas,sabit,p4,2,5,111,a01 a02 a03 a04 a07,"a01 a02 a03 a04 a05 a07 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a05_meta) tasi(a05_meta,a07_kimlik) || a01 a02 a03 a04 a07 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a07_kimlik)"
+g1,f1,yavas,taze,p0,0,,,,UNSAT
+g1,f1,yavas,taze,p1,0,,,,UNSAT
+g1,f1,yavas,taze,p2,0,,,,UNSAT
+g1,f1,yavas,taze,p3,0,,,,UNSAT
+g1,f1,yavas,taze,p4,2,5,111,a01 a02 a03 a04 a07,"a01 a02 a03 a04 a05 a07 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a05_meta) tasi(a05_meta,a07_kimlik) || a01 a02 a03 a04 a07 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a07_kimlik)"
+g1,f2,hizli,onbellek,p0,0,,,,UNSAT
+g1,f2,hizli,onbellek,p1,0,,,,UNSAT
+g1,f2,hizli,onbellek,p2,0,,,,UNSAT
+g1,f2,hizli,onbellek,p3,0,,,,UNSAT
+g1,f2,hizli,onbellek,p4,2,5,111,a01 a02 a03 a04 a07,"a01 a02 a03 a04 a05 a07 tasi(a02_lote_pid,a05_meta) tasi(a05_meta,a07_kimlik) || a01 a02 a03 a04 a07 tasi(a02_lote_pid,a07_kimlik)"
+g1,f2,hizli,sabit,p0,0,,,,UNSAT
+g1,f2,hizli,sabit,p1,0,,,,UNSAT
+g1,f2,hizli,sabit,p2,0,,,,UNSAT
+g1,f2,hizli,sabit,p3,0,,,,UNSAT
+g1,f2,hizli,sabit,p4,2,4,110,a02 a03 a04 a07,"a02 a03 a04 a05 a07 tasi(a02_lote_pid,a05_meta) tasi(a05_meta,a07_kimlik) || a02 a03 a04 a07 tasi(a02_lote_pid,a07_kimlik)"
+g1,f2,hizli,taze,p0,0,,,,UNSAT
+g1,f2,hizli,taze,p1,0,,,,UNSAT
+g1,f2,hizli,taze,p2,0,,,,UNSAT
+g1,f2,hizli,taze,p3,0,,,,UNSAT
+g1,f2,hizli,taze,p4,2,5,111,a01 a02 a03 a04 a07,"a01 a02 a03 a04 a05 a07 tasi(a02_lote_pid,a05_meta) tasi(a05_meta,a07_kimlik) || a01 a02 a03 a04 a07 tasi(a02_lote_pid,a07_kimlik)"
+g1,f2,orta,onbellek,p0,0,,,,UNSAT
+g1,f2,orta,onbellek,p1,0,,,,UNSAT
+g1,f2,orta,onbellek,p2,0,,,,UNSAT
+g1,f2,orta,onbellek,p3,0,,,,UNSAT
+g1,f2,orta,onbellek,p4,2,5,111,a01 a02 a03 a04 a07,"a01 a02 a03 a04 a05 a07 tasi(a02_lote_pid,a05_meta) tasi(a05_meta,a07_kimlik) || a01 a02 a03 a04 a07 tasi(a02_lote_pid,a07_kimlik)"
+g1,f2,orta,sabit,p0,0,,,,UNSAT
+g1,f2,orta,sabit,p1,0,,,,UNSAT
+g1,f2,orta,sabit,p2,0,,,,UNSAT
+g1,f2,orta,sabit,p3,0,,,,UNSAT
+g1,f2,orta,sabit,p4,2,4,110,a02 a03 a04 a07,"a02 a03 a04 a05 a07 tasi(a02_lote_pid,a05_meta) tasi(a05_meta,a07_kimlik) || a02 a03 a04 a07 tasi(a02_lote_pid,a07_kimlik)"
+g1,f2,orta,taze,p0,0,,,,UNSAT
+g1,f2,orta,taze,p1,0,,,,UNSAT
+g1,f2,orta,taze,p2,0,,,,UNSAT
+g1,f2,orta,taze,p3,0,,,,UNSAT
+g1,f2,orta,taze,p4,2,5,111,a01 a02 a03 a04 a07,"a01 a02 a03 a04 a05 a07 tasi(a02_lote_pid,a05_meta) tasi(a05_meta,a07_kimlik) || a01 a02 a03 a04 a07 tasi(a02_lote_pid,a07_kimlik)"
+g1,f2,yavas,onbellek,p0,0,,,,UNSAT
+g1,f2,yavas,onbellek,p1,0,,,,UNSAT
+g1,f2,yavas,onbellek,p2,0,,,,UNSAT
+g1,f2,yavas,onbellek,p3,0,,,,UNSAT
+g1,f2,yavas,onbellek,p4,2,5,111,a01 a02 a03 a04 a07,"a01 a02 a03 a04 a05 a07 tasi(a02_lote_pid,a05_meta) tasi(a05_meta,a07_kimlik) || a01 a02 a03 a04 a07 tasi(a02_lote_pid,a07_kimlik)"
+g1,f2,yavas,sabit,p0,0,,,,UNSAT
+g1,f2,yavas,sabit,p1,0,,,,UNSAT
+g1,f2,yavas,sabit,p2,0,,,,UNSAT
+g1,f2,yavas,sabit,p3,0,,,,UNSAT
+g1,f2,yavas,sabit,p4,2,4,110,a02 a03 a04 a07,"a02 a03 a04 a05 a07 tasi(a02_lote_pid,a05_meta) tasi(a05_meta,a07_kimlik) || a02 a03 a04 a07 tasi(a02_lote_pid,a07_kimlik)"
+g1,f2,yavas,taze,p0,0,,,,UNSAT
+g1,f2,yavas,taze,p1,0,,,,UNSAT
+g1,f2,yavas,taze,p2,0,,,,UNSAT
+g1,f2,yavas,taze,p3,0,,,,UNSAT
+g1,f2,yavas,taze,p4,2,5,111,a01 a02 a03 a04 a07,"a01 a02 a03 a04 a05 a07 tasi(a02_lote_pid,a05_meta) tasi(a05_meta,a07_kimlik) || a01 a02 a03 a04 a07 tasi(a02_lote_pid,a07_kimlik)"
+g1,f3,hizli,onbellek,p0,1,5,111,a01 a02 a03 a04 a07,a01 a02 a03 a04 a07
+g1,f3,hizli,onbellek,p1,1,5,111,a01 a02 a03 a04 a07,a01 a02 a03 a04 a07
+g1,f3,hizli,onbellek,p2,1,5,111,a01 a02 a03 a04 a07,a01 a02 a03 a04 a07
+g1,f3,hizli,onbellek,p3,1,5,111,a01 a02 a03 a04 a07,a01 a02 a03 a04 a07
+g1,f3,hizli,onbellek,p4,1,5,111,a01 a02 a03 a04 a07,a01 a02 a03 a04 a07
+g1,f3,hizli,sabit,p0,1,4,110,a02 a03 a04 a07,a02 a03 a04 a07
+g1,f3,hizli,sabit,p1,1,4,110,a02 a03 a04 a07,a02 a03 a04 a07
+g1,f3,hizli,sabit,p2,1,4,110,a02 a03 a04 a07,a02 a03 a04 a07
+g1,f3,hizli,sabit,p3,1,4,110,a02 a03 a04 a07,a02 a03 a04 a07
+g1,f3,hizli,sabit,p4,1,4,110,a02 a03 a04 a07,a02 a03 a04 a07
+g1,f3,hizli,taze,p0,1,5,111,a01 a02 a03 a04 a07,a01 a02 a03 a04 a07
+g1,f3,hizli,taze,p1,1,5,111,a01 a02 a03 a04 a07,a01 a02 a03 a04 a07
+g1,f3,hizli,taze,p2,1,5,111,a01 a02 a03 a04 a07,a01 a02 a03 a04 a07
+g1,f3,hizli,taze,p3,1,5,111,a01 a02 a03 a04 a07,a01 a02 a03 a04 a07
+g1,f3,hizli,taze,p4,1,5,111,a01 a02 a03 a04 a07,a01 a02 a03 a04 a07
+g1,f3,orta,onbellek,p0,1,5,111,a01 a02 a03 a04 a07,a01 a02 a03 a04 a07
+g1,f3,orta,onbellek,p1,1,5,111,a01 a02 a03 a04 a07,a01 a02 a03 a04 a07
+g1,f3,orta,onbellek,p2,1,5,111,a01 a02 a03 a04 a07,a01 a02 a03 a04 a07
+g1,f3,orta,onbellek,p3,1,5,111,a01 a02 a03 a04 a07,a01 a02 a03 a04 a07
+g1,f3,orta,onbellek,p4,1,5,111,a01 a02 a03 a04 a07,a01 a02 a03 a04 a07
+g1,f3,orta,sabit,p0,1,4,110,a02 a03 a04 a07,a02 a03 a04 a07
+g1,f3,orta,sabit,p1,1,4,110,a02 a03 a04 a07,a02 a03 a04 a07
+g1,f3,orta,sabit,p2,1,4,110,a02 a03 a04 a07,a02 a03 a04 a07
+g1,f3,orta,sabit,p3,1,4,110,a02 a03 a04 a07,a02 a03 a04 a07
+g1,f3,orta,sabit,p4,1,4,110,a02 a03 a04 a07,a02 a03 a04 a07
+g1,f3,orta,taze,p0,1,5,111,a01 a02 a03 a04 a07,a01 a02 a03 a04 a07
+g1,f3,orta,taze,p1,1,5,111,a01 a02 a03 a04 a07,a01 a02 a03 a04 a07
+g1,f3,orta,taze,p2,1,5,111,a01 a02 a03 a04 a07,a01 a02 a03 a04 a07
+g1,f3,orta,taze,p3,1,5,111,a01 a02 a03 a04 a07,a01 a02 a03 a04 a07
+g1,f3,orta,taze,p4,1,5,111,a01 a02 a03 a04 a07,a01 a02 a03 a04 a07
+g1,f3,yavas,onbellek,p0,1,5,111,a01 a02 a03 a04 a07,a01 a02 a03 a04 a07
+g1,f3,yavas,onbellek,p1,1,5,111,a01 a02 a03 a04 a07,a01 a02 a03 a04 a07
+g1,f3,yavas,onbellek,p2,1,5,111,a01 a02 a03 a04 a07,a01 a02 a03 a04 a07
+g1,f3,yavas,onbellek,p3,1,5,111,a01 a02 a03 a04 a07,a01 a02 a03 a04 a07
+g1,f3,yavas,onbellek,p4,1,5,111,a01 a02 a03 a04 a07,a01 a02 a03 a04 a07
+g1,f3,yavas,sabit,p0,1,4,110,a02 a03 a04 a07,a02 a03 a04 a07
+g1,f3,yavas,sabit,p1,1,4,110,a02 a03 a04 a07,a02 a03 a04 a07
+g1,f3,yavas,sabit,p2,1,4,110,a02 a03 a04 a07,a02 a03 a04 a07
+g1,f3,yavas,sabit,p3,1,4,110,a02 a03 a04 a07,a02 a03 a04 a07
+g1,f3,yavas,sabit,p4,1,4,110,a02 a03 a04 a07,a02 a03 a04 a07
+g1,f3,yavas,taze,p0,1,5,111,a01 a02 a03 a04 a07,a01 a02 a03 a04 a07
+g1,f3,yavas,taze,p1,1,5,111,a01 a02 a03 a04 a07,a01 a02 a03 a04 a07
+g1,f3,yavas,taze,p2,1,5,111,a01 a02 a03 a04 a07,a01 a02 a03 a04 a07
+g1,f3,yavas,taze,p3,1,5,111,a01 a02 a03 a04 a07,a01 a02 a03 a04 a07
+g1,f3,yavas,taze,p4,1,5,111,a01 a02 a03 a04 a07,a01 a02 a03 a04 a07
+g2,f1,hizli,onbellek,p0,0,,,,UNSAT
+g2,f1,hizli,onbellek,p1,0,,,,UNSAT
+g2,f1,hizli,onbellek,p2,0,,,,UNSAT
+g2,f1,hizli,onbellek,p3,0,,,,UNSAT
+g2,f1,hizli,onbellek,p4,4,6,112,a01 a02 a03 a04 a07 a10,"a01 a02 a03 a04 a05 a07 a10 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a05_meta) tasi(a02_lote_pid,a07_kimlik) tasi(a05_meta,a10_kbjwt) || a01 a02 a03 a04 a05 a07 a10 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a05_meta) tasi(a02_lote_pid,a10_kbjwt) tasi(a05_meta,a07_kimlik) || a01 a02 a03 a04 a05 a07 a10 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a05_meta) tasi(a05_meta,a07_kimlik) tasi(a05_meta,a10_kbjwt) || a01 a02 a03 a04 a07 a10 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a07_kimlik) tasi(a02_lote_pid,a10_kbjwt)"
+g2,f1,hizli,sabit,p0,0,,,,UNSAT
+g2,f1,hizli,sabit,p1,0,,,,UNSAT
+g2,f1,hizli,sabit,p2,0,,,,UNSAT
+g2,f1,hizli,sabit,p3,0,,,,UNSAT
+g2,f1,hizli,sabit,p4,4,6,112,a01 a02 a03 a04 a07 a10,"a01 a02 a03 a04 a05 a07 a10 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a05_meta) tasi(a02_lote_pid,a07_kimlik) tasi(a05_meta,a10_kbjwt) || a01 a02 a03 a04 a05 a07 a10 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a05_meta) tasi(a02_lote_pid,a10_kbjwt) tasi(a05_meta,a07_kimlik) || a01 a02 a03 a04 a05 a07 a10 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a05_meta) tasi(a05_meta,a07_kimlik) tasi(a05_meta,a10_kbjwt) || a01 a02 a03 a04 a07 a10 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a07_kimlik) tasi(a02_lote_pid,a10_kbjwt)"
+g2,f1,hizli,taze,p0,0,,,,UNSAT
+g2,f1,hizli,taze,p1,0,,,,UNSAT
+g2,f1,hizli,taze,p2,0,,,,UNSAT
+g2,f1,hizli,taze,p3,0,,,,UNSAT
+g2,f1,hizli,taze,p4,4,6,112,a01 a02 a03 a04 a07 a10,"a01 a02 a03 a04 a05 a07 a10 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a05_meta) tasi(a02_lote_pid,a07_kimlik) tasi(a05_meta,a10_kbjwt) || a01 a02 a03 a04 a05 a07 a10 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a05_meta) tasi(a02_lote_pid,a10_kbjwt) tasi(a05_meta,a07_kimlik) || a01 a02 a03 a04 a05 a07 a10 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a05_meta) tasi(a05_meta,a07_kimlik) tasi(a05_meta,a10_kbjwt) || a01 a02 a03 a04 a07 a10 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a07_kimlik) tasi(a02_lote_pid,a10_kbjwt)"
+g2,f1,orta,onbellek,p0,0,,,,UNSAT
+g2,f1,orta,onbellek,p1,0,,,,UNSAT
+g2,f1,orta,onbellek,p2,0,,,,UNSAT
+g2,f1,orta,onbellek,p3,0,,,,UNSAT
+g2,f1,orta,onbellek,p4,4,6,112,a01 a02 a03 a04 a07 a10,"a01 a02 a03 a04 a05 a07 a10 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a05_meta) tasi(a02_lote_pid,a07_kimlik) tasi(a05_meta,a10_kbjwt) || a01 a02 a03 a04 a05 a07 a10 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a05_meta) tasi(a02_lote_pid,a10_kbjwt) tasi(a05_meta,a07_kimlik) || a01 a02 a03 a04 a05 a07 a10 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a05_meta) tasi(a05_meta,a07_kimlik) tasi(a05_meta,a10_kbjwt) || a01 a02 a03 a04 a07 a10 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a07_kimlik) tasi(a02_lote_pid,a10_kbjwt)"
+g2,f1,orta,sabit,p0,0,,,,UNSAT
+g2,f1,orta,sabit,p1,0,,,,UNSAT
+g2,f1,orta,sabit,p2,0,,,,UNSAT
+g2,f1,orta,sabit,p3,0,,,,UNSAT
+g2,f1,orta,sabit,p4,4,6,112,a01 a02 a03 a04 a07 a10,"a01 a02 a03 a04 a05 a07 a10 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a05_meta) tasi(a02_lote_pid,a07_kimlik) tasi(a05_meta,a10_kbjwt) || a01 a02 a03 a04 a05 a07 a10 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a05_meta) tasi(a02_lote_pid,a10_kbjwt) tasi(a05_meta,a07_kimlik) || a01 a02 a03 a04 a05 a07 a10 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a05_meta) tasi(a05_meta,a07_kimlik) tasi(a05_meta,a10_kbjwt) || a01 a02 a03 a04 a07 a10 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a07_kimlik) tasi(a02_lote_pid,a10_kbjwt)"
+g2,f1,orta,taze,p0,0,,,,UNSAT
+g2,f1,orta,taze,p1,0,,,,UNSAT
+g2,f1,orta,taze,p2,0,,,,UNSAT
+g2,f1,orta,taze,p3,0,,,,UNSAT
+g2,f1,orta,taze,p4,4,6,112,a01 a02 a03 a04 a07 a10,"a01 a02 a03 a04 a05 a07 a10 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a05_meta) tasi(a02_lote_pid,a07_kimlik) tasi(a05_meta,a10_kbjwt) || a01 a02 a03 a04 a05 a07 a10 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a05_meta) tasi(a02_lote_pid,a10_kbjwt) tasi(a05_meta,a07_kimlik) || a01 a02 a03 a04 a05 a07 a10 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a05_meta) tasi(a05_meta,a07_kimlik) tasi(a05_meta,a10_kbjwt) || a01 a02 a03 a04 a07 a10 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a07_kimlik) tasi(a02_lote_pid,a10_kbjwt)"
+g2,f1,yavas,onbellek,p0,0,,,,UNSAT
+g2,f1,yavas,onbellek,p1,0,,,,UNSAT
+g2,f1,yavas,onbellek,p2,0,,,,UNSAT
+g2,f1,yavas,onbellek,p3,0,,,,UNSAT
+g2,f1,yavas,onbellek,p4,4,6,112,a01 a02 a03 a04 a07 a10,"a01 a02 a03 a04 a05 a07 a10 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a05_meta) tasi(a02_lote_pid,a07_kimlik) tasi(a05_meta,a10_kbjwt) || a01 a02 a03 a04 a05 a07 a10 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a05_meta) tasi(a02_lote_pid,a10_kbjwt) tasi(a05_meta,a07_kimlik) || a01 a02 a03 a04 a05 a07 a10 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a05_meta) tasi(a05_meta,a07_kimlik) tasi(a05_meta,a10_kbjwt) || a01 a02 a03 a04 a07 a10 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a07_kimlik) tasi(a02_lote_pid,a10_kbjwt)"
+g2,f1,yavas,sabit,p0,0,,,,UNSAT
+g2,f1,yavas,sabit,p1,0,,,,UNSAT
+g2,f1,yavas,sabit,p2,0,,,,UNSAT
+g2,f1,yavas,sabit,p3,0,,,,UNSAT
+g2,f1,yavas,sabit,p4,4,6,112,a01 a02 a03 a04 a07 a10,"a01 a02 a03 a04 a05 a07 a10 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a05_meta) tasi(a02_lote_pid,a07_kimlik) tasi(a05_meta,a10_kbjwt) || a01 a02 a03 a04 a05 a07 a10 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a05_meta) tasi(a02_lote_pid,a10_kbjwt) tasi(a05_meta,a07_kimlik) || a01 a02 a03 a04 a05 a07 a10 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a05_meta) tasi(a05_meta,a07_kimlik) tasi(a05_meta,a10_kbjwt) || a01 a02 a03 a04 a07 a10 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a07_kimlik) tasi(a02_lote_pid,a10_kbjwt)"
+g2,f1,yavas,taze,p0,0,,,,UNSAT
+g2,f1,yavas,taze,p1,0,,,,UNSAT
+g2,f1,yavas,taze,p2,0,,,,UNSAT
+g2,f1,yavas,taze,p3,0,,,,UNSAT
+g2,f1,yavas,taze,p4,4,6,112,a01 a02 a03 a04 a07 a10,"a01 a02 a03 a04 a05 a07 a10 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a05_meta) tasi(a02_lote_pid,a07_kimlik) tasi(a05_meta,a10_kbjwt) || a01 a02 a03 a04 a05 a07 a10 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a05_meta) tasi(a02_lote_pid,a10_kbjwt) tasi(a05_meta,a07_kimlik) || a01 a02 a03 a04 a05 a07 a10 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a05_meta) tasi(a05_meta,a07_kimlik) tasi(a05_meta,a10_kbjwt) || a01 a02 a03 a04 a07 a10 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a07_kimlik) tasi(a02_lote_pid,a10_kbjwt)"
+g2,f2,hizli,onbellek,p0,0,,,,UNSAT
+g2,f2,hizli,onbellek,p1,0,,,,UNSAT
+g2,f2,hizli,onbellek,p2,0,,,,UNSAT
+g2,f2,hizli,onbellek,p3,0,,,,UNSAT
+g2,f2,hizli,onbellek,p4,4,6,112,a01 a02 a03 a04 a07 a10,"a01 a02 a03 a04 a05 a07 a10 tasi(a02_lote_pid,a05_meta) tasi(a02_lote_pid,a07_kimlik) tasi(a05_meta,a10_kbjwt) || a01 a02 a03 a04 a05 a07 a10 tasi(a02_lote_pid,a05_meta) tasi(a02_lote_pid,a10_kbjwt) tasi(a05_meta,a07_kimlik) || a01 a02 a03 a04 a05 a07 a10 tasi(a02_lote_pid,a05_meta) tasi(a05_meta,a07_kimlik) tasi(a05_meta,a10_kbjwt) || a01 a02 a03 a04 a07 a10 tasi(a02_lote_pid,a07_kimlik) tasi(a02_lote_pid,a10_kbjwt)"
+g2,f2,hizli,sabit,p0,0,,,,UNSAT
+g2,f2,hizli,sabit,p1,0,,,,UNSAT
+g2,f2,hizli,sabit,p2,0,,,,UNSAT
+g2,f2,hizli,sabit,p3,0,,,,UNSAT
+g2,f2,hizli,sabit,p4,4,5,111,a02 a03 a04 a07 a10,"a02 a03 a04 a05 a07 a10 tasi(a02_lote_pid,a05_meta) tasi(a02_lote_pid,a07_kimlik) tasi(a05_meta,a10_kbjwt) || a02 a03 a04 a05 a07 a10 tasi(a02_lote_pid,a05_meta) tasi(a02_lote_pid,a10_kbjwt) tasi(a05_meta,a07_kimlik) || a02 a03 a04 a05 a07 a10 tasi(a02_lote_pid,a05_meta) tasi(a05_meta,a07_kimlik) tasi(a05_meta,a10_kbjwt) || a02 a03 a04 a07 a10 tasi(a02_lote_pid,a07_kimlik) tasi(a02_lote_pid,a10_kbjwt)"
+g2,f2,hizli,taze,p0,0,,,,UNSAT
+g2,f2,hizli,taze,p1,0,,,,UNSAT
+g2,f2,hizli,taze,p2,0,,,,UNSAT
+g2,f2,hizli,taze,p3,0,,,,UNSAT
+g2,f2,hizli,taze,p4,4,6,112,a01 a02 a03 a04 a07 a10,"a01 a02 a03 a04 a05 a07 a10 tasi(a02_lote_pid,a05_meta) tasi(a02_lote_pid,a07_kimlik) tasi(a05_meta,a10_kbjwt) || a01 a02 a03 a04 a05 a07 a10 tasi(a02_lote_pid,a05_meta) tasi(a02_lote_pid,a10_kbjwt) tasi(a05_meta,a07_kimlik) || a01 a02 a03 a04 a05 a07 a10 tasi(a02_lote_pid,a05_meta) tasi(a05_meta,a07_kimlik) tasi(a05_meta,a10_kbjwt) || a01 a02 a03 a04 a07 a10 tasi(a02_lote_pid,a07_kimlik) tasi(a02_lote_pid,a10_kbjwt)"
+g2,f2,orta,onbellek,p0,0,,,,UNSAT
+g2,f2,orta,onbellek,p1,0,,,,UNSAT
+g2,f2,orta,onbellek,p2,0,,,,UNSAT
+g2,f2,orta,onbellek,p3,0,,,,UNSAT
+g2,f2,orta,onbellek,p4,4,6,112,a01 a02 a03 a04 a07 a10,"a01 a02 a03 a04 a05 a07 a10 tasi(a02_lote_pid,a05_meta) tasi(a02_lote_pid,a07_kimlik) tasi(a05_meta,a10_kbjwt) || a01 a02 a03 a04 a05 a07 a10 tasi(a02_lote_pid,a05_meta) tasi(a02_lote_pid,a10_kbjwt) tasi(a05_meta,a07_kimlik) || a01 a02 a03 a04 a05 a07 a10 tasi(a02_lote_pid,a05_meta) tasi(a05_meta,a07_kimlik) tasi(a05_meta,a10_kbjwt) || a01 a02 a03 a04 a07 a10 tasi(a02_lote_pid,a07_kimlik) tasi(a02_lote_pid,a10_kbjwt)"
+g2,f2,orta,sabit,p0,0,,,,UNSAT
+g2,f2,orta,sabit,p1,0,,,,UNSAT
+g2,f2,orta,sabit,p2,0,,,,UNSAT
+g2,f2,orta,sabit,p3,0,,,,UNSAT
+g2,f2,orta,sabit,p4,4,5,111,a02 a03 a04 a07 a10,"a02 a03 a04 a05 a07 a10 tasi(a02_lote_pid,a05_meta) tasi(a02_lote_pid,a07_kimlik) tasi(a05_meta,a10_kbjwt) || a02 a03 a04 a05 a07 a10 tasi(a02_lote_pid,a05_meta) tasi(a02_lote_pid,a10_kbjwt) tasi(a05_meta,a07_kimlik) || a02 a03 a04 a05 a07 a10 tasi(a02_lote_pid,a05_meta) tasi(a05_meta,a07_kimlik) tasi(a05_meta,a10_kbjwt) || a02 a03 a04 a07 a10 tasi(a02_lote_pid,a07_kimlik) tasi(a02_lote_pid,a10_kbjwt)"
+g2,f2,orta,taze,p0,0,,,,UNSAT
+g2,f2,orta,taze,p1,0,,,,UNSAT
+g2,f2,orta,taze,p2,0,,,,UNSAT
+g2,f2,orta,taze,p3,0,,,,UNSAT
+g2,f2,orta,taze,p4,4,6,112,a01 a02 a03 a04 a07 a10,"a01 a02 a03 a04 a05 a07 a10 tasi(a02_lote_pid,a05_meta) tasi(a02_lote_pid,a07_kimlik) tasi(a05_meta,a10_kbjwt) || a01 a02 a03 a04 a05 a07 a10 tasi(a02_lote_pid,a05_meta) tasi(a02_lote_pid,a10_kbjwt) tasi(a05_meta,a07_kimlik) || a01 a02 a03 a04 a05 a07 a10 tasi(a02_lote_pid,a05_meta) tasi(a05_meta,a07_kimlik) tasi(a05_meta,a10_kbjwt) || a01 a02 a03 a04 a07 a10 tasi(a02_lote_pid,a07_kimlik) tasi(a02_lote_pid,a10_kbjwt)"
+g2,f2,yavas,onbellek,p0,0,,,,UNSAT
+g2,f2,yavas,onbellek,p1,0,,,,UNSAT
+g2,f2,yavas,onbellek,p2,0,,,,UNSAT
+g2,f2,yavas,onbellek,p3,0,,,,UNSAT
+g2,f2,yavas,onbellek,p4,4,6,112,a01 a02 a03 a04 a07 a10,"a01 a02 a03 a04 a05 a07 a10 tasi(a02_lote_pid,a05_meta) tasi(a02_lote_pid,a07_kimlik) tasi(a05_meta,a10_kbjwt) || a01 a02 a03 a04 a05 a07 a10 tasi(a02_lote_pid,a05_meta) tasi(a02_lote_pid,a10_kbjwt) tasi(a05_meta,a07_kimlik) || a01 a02 a03 a04 a05 a07 a10 tasi(a02_lote_pid,a05_meta) tasi(a05_meta,a07_kimlik) tasi(a05_meta,a10_kbjwt) || a01 a02 a03 a04 a07 a10 tasi(a02_lote_pid,a07_kimlik) tasi(a02_lote_pid,a10_kbjwt)"
+g2,f2,yavas,sabit,p0,0,,,,UNSAT
+g2,f2,yavas,sabit,p1,0,,,,UNSAT
+g2,f2,yavas,sabit,p2,0,,,,UNSAT
+g2,f2,yavas,sabit,p3,0,,,,UNSAT
+g2,f2,yavas,sabit,p4,4,5,111,a02 a03 a04 a07 a10,"a02 a03 a04 a05 a07 a10 tasi(a02_lote_pid,a05_meta) tasi(a02_lote_pid,a07_kimlik) tasi(a05_meta,a10_kbjwt) || a02 a03 a04 a05 a07 a10 tasi(a02_lote_pid,a05_meta) tasi(a02_lote_pid,a10_kbjwt) tasi(a05_meta,a07_kimlik) || a02 a03 a04 a05 a07 a10 tasi(a02_lote_pid,a05_meta) tasi(a05_meta,a07_kimlik) tasi(a05_meta,a10_kbjwt) || a02 a03 a04 a07 a10 tasi(a02_lote_pid,a07_kimlik) tasi(a02_lote_pid,a10_kbjwt)"
+g2,f2,yavas,taze,p0,0,,,,UNSAT
+g2,f2,yavas,taze,p1,0,,,,UNSAT
+g2,f2,yavas,taze,p2,0,,,,UNSAT
+g2,f2,yavas,taze,p3,0,,,,UNSAT
+g2,f2,yavas,taze,p4,4,6,112,a01 a02 a03 a04 a07 a10,"a01 a02 a03 a04 a05 a07 a10 tasi(a02_lote_pid,a05_meta) tasi(a02_lote_pid,a07_kimlik) tasi(a05_meta,a10_kbjwt) || a01 a02 a03 a04 a05 a07 a10 tasi(a02_lote_pid,a05_meta) tasi(a02_lote_pid,a10_kbjwt) tasi(a05_meta,a07_kimlik) || a01 a02 a03 a04 a05 a07 a10 tasi(a02_lote_pid,a05_meta) tasi(a05_meta,a07_kimlik) tasi(a05_meta,a10_kbjwt) || a01 a02 a03 a04 a07 a10 tasi(a02_lote_pid,a07_kimlik) tasi(a02_lote_pid,a10_kbjwt)"
+g2,f3,hizli,onbellek,p0,1,6,112,a01 a02 a03 a04 a07 a10,a01 a02 a03 a04 a07 a10
+g2,f3,hizli,onbellek,p1,1,6,112,a01 a02 a03 a04 a07 a10,a01 a02 a03 a04 a07 a10
+g2,f3,hizli,onbellek,p2,1,6,112,a01 a02 a03 a04 a07 a10,a01 a02 a03 a04 a07 a10
+g2,f3,hizli,onbellek,p3,1,6,112,a01 a02 a03 a04 a07 a10,a01 a02 a03 a04 a07 a10
+g2,f3,hizli,onbellek,p4,1,6,112,a01 a02 a03 a04 a07 a10,a01 a02 a03 a04 a07 a10
+g2,f3,hizli,sabit,p0,1,5,111,a02 a03 a04 a07 a10,a02 a03 a04 a07 a10
+g2,f3,hizli,sabit,p1,1,5,111,a02 a03 a04 a07 a10,a02 a03 a04 a07 a10
+g2,f3,hizli,sabit,p2,1,5,111,a02 a03 a04 a07 a10,a02 a03 a04 a07 a10
+g2,f3,hizli,sabit,p3,1,5,111,a02 a03 a04 a07 a10,a02 a03 a04 a07 a10
+g2,f3,hizli,sabit,p4,1,5,111,a02 a03 a04 a07 a10,a02 a03 a04 a07 a10
+g2,f3,hizli,taze,p0,1,6,112,a01 a02 a03 a04 a07 a10,a01 a02 a03 a04 a07 a10
+g2,f3,hizli,taze,p1,1,6,112,a01 a02 a03 a04 a07 a10,a01 a02 a03 a04 a07 a10
+g2,f3,hizli,taze,p2,1,6,112,a01 a02 a03 a04 a07 a10,a01 a02 a03 a04 a07 a10
+g2,f3,hizli,taze,p3,1,6,112,a01 a02 a03 a04 a07 a10,a01 a02 a03 a04 a07 a10
+g2,f3,hizli,taze,p4,1,6,112,a01 a02 a03 a04 a07 a10,a01 a02 a03 a04 a07 a10
+g2,f3,orta,onbellek,p0,1,6,112,a01 a02 a03 a04 a07 a10,a01 a02 a03 a04 a07 a10
+g2,f3,orta,onbellek,p1,1,6,112,a01 a02 a03 a04 a07 a10,a01 a02 a03 a04 a07 a10
+g2,f3,orta,onbellek,p2,1,6,112,a01 a02 a03 a04 a07 a10,a01 a02 a03 a04 a07 a10
+g2,f3,orta,onbellek,p3,1,6,112,a01 a02 a03 a04 a07 a10,a01 a02 a03 a04 a07 a10
+g2,f3,orta,onbellek,p4,1,6,112,a01 a02 a03 a04 a07 a10,a01 a02 a03 a04 a07 a10
+g2,f3,orta,sabit,p0,1,5,111,a02 a03 a04 a07 a10,a02 a03 a04 a07 a10
+g2,f3,orta,sabit,p1,1,5,111,a02 a03 a04 a07 a10,a02 a03 a04 a07 a10
+g2,f3,orta,sabit,p2,1,5,111,a02 a03 a04 a07 a10,a02 a03 a04 a07 a10
+g2,f3,orta,sabit,p3,1,5,111,a02 a03 a04 a07 a10,a02 a03 a04 a07 a10
+g2,f3,orta,sabit,p4,1,5,111,a02 a03 a04 a07 a10,a02 a03 a04 a07 a10
+g2,f3,orta,taze,p0,1,6,112,a01 a02 a03 a04 a07 a10,a01 a02 a03 a04 a07 a10
+g2,f3,orta,taze,p1,1,6,112,a01 a02 a03 a04 a07 a10,a01 a02 a03 a04 a07 a10
+g2,f3,orta,taze,p2,1,6,112,a01 a02 a03 a04 a07 a10,a01 a02 a03 a04 a07 a10
+g2,f3,orta,taze,p3,1,6,112,a01 a02 a03 a04 a07 a10,a01 a02 a03 a04 a07 a10
+g2,f3,orta,taze,p4,1,6,112,a01 a02 a03 a04 a07 a10,a01 a02 a03 a04 a07 a10
+g2,f3,yavas,onbellek,p0,1,6,112,a01 a02 a03 a04 a07 a10,a01 a02 a03 a04 a07 a10
+g2,f3,yavas,onbellek,p1,1,6,112,a01 a02 a03 a04 a07 a10,a01 a02 a03 a04 a07 a10
+g2,f3,yavas,onbellek,p2,1,6,112,a01 a02 a03 a04 a07 a10,a01 a02 a03 a04 a07 a10
+g2,f3,yavas,onbellek,p3,1,6,112,a01 a02 a03 a04 a07 a10,a01 a02 a03 a04 a07 a10
+g2,f3,yavas,onbellek,p4,1,6,112,a01 a02 a03 a04 a07 a10,a01 a02 a03 a04 a07 a10
+g2,f3,yavas,sabit,p0,1,5,111,a02 a03 a04 a07 a10,a02 a03 a04 a07 a10
+g2,f3,yavas,sabit,p1,1,5,111,a02 a03 a04 a07 a10,a02 a03 a04 a07 a10
+g2,f3,yavas,sabit,p2,1,5,111,a02 a03 a04 a07 a10,a02 a03 a04 a07 a10
+g2,f3,yavas,sabit,p3,1,5,111,a02 a03 a04 a07 a10,a02 a03 a04 a07 a10
+g2,f3,yavas,sabit,p4,1,5,111,a02 a03 a04 a07 a10,a02 a03 a04 a07 a10
+g2,f3,yavas,taze,p0,1,6,112,a01 a02 a03 a04 a07 a10,a01 a02 a03 a04 a07 a10
+g2,f3,yavas,taze,p1,1,6,112,a01 a02 a03 a04 a07 a10,a01 a02 a03 a04 a07 a10
+g2,f3,yavas,taze,p2,1,6,112,a01 a02 a03 a04 a07 a10,a01 a02 a03 a04 a07 a10
+g2,f3,yavas,taze,p3,1,6,112,a01 a02 a03 a04 a07 a10,a01 a02 a03 a04 a07 a10
+g2,f3,yavas,taze,p4,1,6,112,a01 a02 a03 a04 a07 a10,a01 a02 a03 a04 a07 a10
+g3,f1,hizli,onbellek,p0,0,,,,UNSAT
+g3,f1,hizli,onbellek,p1,0,,,,UNSAT
+g3,f1,hizli,onbellek,p2,0,,,,UNSAT
+g3,f1,hizli,onbellek,p3,0,,,,UNSAT
+g3,f1,hizli,onbellek,p4,2,5,111,a01 a02 a03 a04 a08,"a01 a02 a03 a04 a05 a08 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a05_meta) tasi(a05_meta,a08_durum) || a01 a02 a03 a04 a08 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a08_durum)"
+g3,f1,hizli,sabit,p0,0,,,,UNSAT
+g3,f1,hizli,sabit,p1,0,,,,UNSAT
+g3,f1,hizli,sabit,p2,0,,,,UNSAT
+g3,f1,hizli,sabit,p3,0,,,,UNSAT
+g3,f1,hizli,sabit,p4,2,5,111,a01 a02 a03 a04 a08,"a01 a02 a03 a04 a05 a08 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a05_meta) tasi(a05_meta,a08_durum) || a01 a02 a03 a04 a08 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a08_durum)"
+g3,f1,hizli,taze,p0,0,,,,UNSAT
+g3,f1,hizli,taze,p1,0,,,,UNSAT
+g3,f1,hizli,taze,p2,0,,,,UNSAT
+g3,f1,hizli,taze,p3,0,,,,UNSAT
+g3,f1,hizli,taze,p4,2,5,111,a01 a02 a03 a04 a08,"a01 a02 a03 a04 a05 a08 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a05_meta) tasi(a05_meta,a08_durum) || a01 a02 a03 a04 a08 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a08_durum)"
+g3,f1,orta,onbellek,p0,0,,,,UNSAT
+g3,f1,orta,onbellek,p1,0,,,,UNSAT
+g3,f1,orta,onbellek,p2,0,,,,UNSAT
+g3,f1,orta,onbellek,p3,0,,,,UNSAT
+g3,f1,orta,onbellek,p4,2,5,111,a01 a02 a03 a04 a08,"a01 a02 a03 a04 a05 a08 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a05_meta) tasi(a05_meta,a08_durum) || a01 a02 a03 a04 a08 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a08_durum)"
+g3,f1,orta,sabit,p0,0,,,,UNSAT
+g3,f1,orta,sabit,p1,0,,,,UNSAT
+g3,f1,orta,sabit,p2,0,,,,UNSAT
+g3,f1,orta,sabit,p3,0,,,,UNSAT
+g3,f1,orta,sabit,p4,2,5,111,a01 a02 a03 a04 a08,"a01 a02 a03 a04 a05 a08 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a05_meta) tasi(a05_meta,a08_durum) || a01 a02 a03 a04 a08 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a08_durum)"
+g3,f1,orta,taze,p0,0,,,,UNSAT
+g3,f1,orta,taze,p1,0,,,,UNSAT
+g3,f1,orta,taze,p2,0,,,,UNSAT
+g3,f1,orta,taze,p3,0,,,,UNSAT
+g3,f1,orta,taze,p4,2,5,111,a01 a02 a03 a04 a08,"a01 a02 a03 a04 a05 a08 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a05_meta) tasi(a05_meta,a08_durum) || a01 a02 a03 a04 a08 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a08_durum)"
+g3,f1,yavas,onbellek,p0,0,,,,UNSAT
+g3,f1,yavas,onbellek,p1,0,,,,UNSAT
+g3,f1,yavas,onbellek,p2,0,,,,UNSAT
+g3,f1,yavas,onbellek,p3,0,,,,UNSAT
+g3,f1,yavas,onbellek,p4,2,5,111,a01 a02 a03 a04 a08,"a01 a02 a03 a04 a05 a08 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a05_meta) tasi(a05_meta,a08_durum) || a01 a02 a03 a04 a08 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a08_durum)"
+g3,f1,yavas,sabit,p0,0,,,,UNSAT
+g3,f1,yavas,sabit,p1,0,,,,UNSAT
+g3,f1,yavas,sabit,p2,0,,,,UNSAT
+g3,f1,yavas,sabit,p3,0,,,,UNSAT
+g3,f1,yavas,sabit,p4,2,5,111,a01 a02 a03 a04 a08,"a01 a02 a03 a04 a05 a08 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a05_meta) tasi(a05_meta,a08_durum) || a01 a02 a03 a04 a08 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a08_durum)"
+g3,f1,yavas,taze,p0,0,,,,UNSAT
+g3,f1,yavas,taze,p1,0,,,,UNSAT
+g3,f1,yavas,taze,p2,0,,,,UNSAT
+g3,f1,yavas,taze,p3,0,,,,UNSAT
+g3,f1,yavas,taze,p4,2,5,111,a01 a02 a03 a04 a08,"a01 a02 a03 a04 a05 a08 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a05_meta) tasi(a05_meta,a08_durum) || a01 a02 a03 a04 a08 tasi(a00_ojeu,a01_lotl) tasi(a00_ojeu,a02_lote_pid) tasi(a01_lotl,a02_tl) tasi(a02_lote_pid,a03_ca) tasi(a02_lote_pid,a04_ihr) tasi(a02_lote_pid,a08_durum)"
+g3,f2,hizli,onbellek,p0,0,,,,UNSAT
+g3,f2,hizli,onbellek,p1,0,,,,UNSAT
+g3,f2,hizli,onbellek,p2,0,,,,UNSAT
+g3,f2,hizli,onbellek,p3,0,,,,UNSAT
+g3,f2,hizli,onbellek,p4,2,5,111,a01 a02 a03 a04 a08,"a01 a02 a03 a04 a05 a08 tasi(a02_lote_pid,a05_meta) tasi(a05_meta,a08_durum) || a01 a02 a03 a04 a08 tasi(a02_lote_pid,a08_durum)"
+g3,f2,hizli,sabit,p0,0,,,,UNSAT
+g3,f2,hizli,sabit,p1,0,,,,UNSAT
+g3,f2,hizli,sabit,p2,0,,,,UNSAT
+g3,f2,hizli,sabit,p3,0,,,,UNSAT
+g3,f2,hizli,sabit,p4,2,4,110,a02 a03 a04 a08,"a02 a03 a04 a05 a08 tasi(a02_lote_pid,a05_meta) tasi(a05_meta,a08_durum) || a02 a03 a04 a08 tasi(a02_lote_pid,a08_durum)"
+g3,f2,hizli,taze,p0,0,,,,UNSAT
+g3,f2,hizli,taze,p1,0,,,,UNSAT
+g3,f2,hizli,taze,p2,0,,,,UNSAT
+g3,f2,hizli,taze,p3,0,,,,UNSAT
+g3,f2,hizli,taze,p4,2,5,111,a01 a02 a03 a04 a08,"a01 a02 a03 a04 a05 a08 tasi(a02_lote_pid,a05_meta) tasi(a05_meta,a08_durum) || a01 a02 a03 a04 a08 tasi(a02_lote_pid,a08_durum)"
+g3,f2,orta,onbellek,p0,0,,,,UNSAT
+g3,f2,orta,onbellek,p1,0,,,,UNSAT
+g3,f2,orta,onbellek,p2,0,,,,UNSAT
+g3,f2,orta,onbellek,p3,0,,,,UNSAT
+g3,f2,orta,onbellek,p4,2,5,111,a01 a02 a03 a04 a08,"a01 a02 a03 a04 a05 a08 tasi(a02_lote_pid,a05_meta) tasi(a05_meta,a08_durum) || a01 a02 a03 a04 a08 tasi(a02_lote_pid,a08_durum)"
+g3,f2,orta,sabit,p0,0,,,,UNSAT
+g3,f2,orta,sabit,p1,0,,,,UNSAT
+g3,f2,orta,sabit,p2,0,,,,UNSAT
+g3,f2,orta,sabit,p3,0,,,,UNSAT
+g3,f2,orta,sabit,p4,2,4,110,a02 a03 a04 a08,"a02 a03 a04 a05 a08 tasi(a02_lote_pid,a05_meta) tasi(a05_meta,a08_durum) || a02 a03 a04 a08 tasi(a02_lote_pid,a08_durum)"
+g3,f2,orta,taze,p0,0,,,,UNSAT
+g3,f2,orta,taze,p1,0,,,,UNSAT
+g3,f2,orta,taze,p2,0,,,,UNSAT
+g3,f2,orta,taze,p3,0,,,,UNSAT
+g3,f2,orta,taze,p4,2,5,111,a01 a02 a03 a04 a08,"a01 a02 a03 a04 a05 a08 tasi(a02_lote_pid,a05_meta) tasi(a05_meta,a08_durum) || a01 a02 a03 a04 a08 tasi(a02_lote_pid,a08_durum)"
+g3,f2,yavas,onbellek,p0,0,,,,UNSAT
+g3,f2,yavas,onbellek,p1,0,,,,UNSAT
+g3,f2,yavas,onbellek,p2,0,,,,UNSAT
+g3,f2,yavas,onbellek,p3,0,,,,UNSAT
+g3,f2,yavas,onbellek,p4,2,5,111,a01 a02 a03 a04 a08,"a01 a02 a03 a04 a05 a08 tasi(a02_lote_pid,a05_meta) tasi(a05_meta,a08_durum) || a01 a02 a03 a04 a08 tasi(a02_lote_pid,a08_durum)"
+g3,f2,yavas,sabit,p0,0,,,,UNSAT
+g3,f2,yavas,sabit,p1,0,,,,UNSAT
+g3,f2,yavas,sabit,p2,0,,,,UNSAT
+g3,f2,yavas,sabit,p3,0,,,,UNSAT
+g3,f2,yavas,sabit,p4,2,4,110,a02 a03 a04 a08,"a02 a03 a04 a05 a08 tasi(a02_lote_pid,a05_meta) tasi(a05_meta,a08_durum) || a02 a03 a04 a08 tasi(a02_lote_pid,a08_durum)"
+g3,f2,yavas,taze,p0,0,,,,UNSAT
+g3,f2,yavas,taze,p1,0,,,,UNSAT
+g3,f2,yavas,taze,p2,0,,,,UNSAT
+g3,f2,yavas,taze,p3,0,,,,UNSAT
+g3,f2,yavas,taze,p4,2,5,111,a01 a02 a03 a04 a08,"a01 a02 a03 a04 a05 a08 tasi(a02_lote_pid,a05_meta) tasi(a05_meta,a08_durum) || a01 a02 a03 a04 a08 tasi(a02_lote_pid,a08_durum)"
+g3,f3,hizli,onbellek,p0,1,5,111,a01 a02 a03 a04 a08,a01 a02 a03 a04 a08
+g3,f3,hizli,onbellek,p1,1,5,111,a01 a02 a03 a04 a08,a01 a02 a03 a04 a08
+g3,f3,hizli,onbellek,p2,1,5,111,a01 a02 a03 a04 a08,a01 a02 a03 a04 a08
+g3,f3,hizli,onbellek,p3,1,5,111,a01 a02 a03 a04 a08,a01 a02 a03 a04 a08
+g3,f3,hizli,onbellek,p4,1,5,111,a01 a02 a03 a04 a08,a01 a02 a03 a04 a08
+g3,f3,hizli,sabit,p0,1,4,110,a02 a03 a04 a08,a02 a03 a04 a08
+g3,f3,hizli,sabit,p1,1,4,110,a02 a03 a04 a08,a02 a03 a04 a08
+g3,f3,hizli,sabit,p2,1,4,110,a02 a03 a04 a08,a02 a03 a04 a08
+g3,f3,hizli,sabit,p3,1,4,110,a02 a03 a04 a08,a02 a03 a04 a08
+g3,f3,hizli,sabit,p4,1,4,110,a02 a03 a04 a08,a02 a03 a04 a08
+g3,f3,hizli,taze,p0,1,5,111,a01 a02 a03 a04 a08,a01 a02 a03 a04 a08
+g3,f3,hizli,taze,p1,1,5,111,a01 a02 a03 a04 a08,a01 a02 a03 a04 a08
+g3,f3,hizli,taze,p2,1,5,111,a01 a02 a03 a04 a08,a01 a02 a03 a04 a08
+g3,f3,hizli,taze,p3,1,5,111,a01 a02 a03 a04 a08,a01 a02 a03 a04 a08
+g3,f3,hizli,taze,p4,1,5,111,a01 a02 a03 a04 a08,a01 a02 a03 a04 a08
+g3,f3,orta,onbellek,p0,1,5,111,a01 a02 a03 a04 a08,a01 a02 a03 a04 a08
+g3,f3,orta,onbellek,p1,1,5,111,a01 a02 a03 a04 a08,a01 a02 a03 a04 a08
+g3,f3,orta,onbellek,p2,1,5,111,a01 a02 a03 a04 a08,a01 a02 a03 a04 a08
+g3,f3,orta,onbellek,p3,1,5,111,a01 a02 a03 a04 a08,a01 a02 a03 a04 a08
+g3,f3,orta,onbellek,p4,1,5,111,a01 a02 a03 a04 a08,a01 a02 a03 a04 a08
+g3,f3,orta,sabit,p0,1,4,110,a02 a03 a04 a08,a02 a03 a04 a08
+g3,f3,orta,sabit,p1,1,4,110,a02 a03 a04 a08,a02 a03 a04 a08
+g3,f3,orta,sabit,p2,1,4,110,a02 a03 a04 a08,a02 a03 a04 a08
+g3,f3,orta,sabit,p3,1,4,110,a02 a03 a04 a08,a02 a03 a04 a08
+g3,f3,orta,sabit,p4,1,4,110,a02 a03 a04 a08,a02 a03 a04 a08
+g3,f3,orta,taze,p0,1,5,111,a01 a02 a03 a04 a08,a01 a02 a03 a04 a08
+g3,f3,orta,taze,p1,1,5,111,a01 a02 a03 a04 a08,a01 a02 a03 a04 a08
+g3,f3,orta,taze,p2,1,5,111,a01 a02 a03 a04 a08,a01 a02 a03 a04 a08
+g3,f3,orta,taze,p3,1,5,111,a01 a02 a03 a04 a08,a01 a02 a03 a04 a08
+g3,f3,orta,taze,p4,1,5,111,a01 a02 a03 a04 a08,a01 a02 a03 a04 a08
+g3,f3,yavas,onbellek,p0,1,5,111,a01 a02 a03 a04 a08,a01 a02 a03 a04 a08
+g3,f3,yavas,onbellek,p1,1,5,111,a01 a02 a03 a04 a08,a01 a02 a03 a04 a08
+g3,f3,yavas,onbellek,p2,1,5,111,a01 a02 a03 a04 a08,a01 a02 a03 a04 a08
+g3,f3,yavas,onbellek,p3,1,5,111,a01 a02 a03 a04 a08,a01 a02 a03 a04 a08
+g3,f3,yavas,onbellek,p4,1,5,111,a01 a02 a03 a04 a08,a01 a02 a03 a04 a08
+g3,f3,yavas,sabit,p0,1,4,110,a02 a03 a04 a08,a02 a03 a04 a08
+g3,f3,yavas,sabit,p1,1,4,110,a02 a03 a04 a08,a02 a03 a04 a08
+g3,f3,yavas,sabit,p2,1,4,110,a02 a03 a04 a08,a02 a03 a04 a08
+g3,f3,yavas,sabit,p3,1,4,110,a02 a03 a04 a08,a02 a03 a04 a08
+g3,f3,yavas,sabit,p4,1,4,110,a02 a03 a04 a08,a02 a03 a04 a08
+g3,f3,yavas,taze,p0,1,5,111,a01 a02 a03 a04 a08,a01 a02 a03 a04 a08
+g3,f3,yavas,taze,p1,1,5,111,a01 a02 a03 a04 a08,a01 a02 a03 a04 a08
+g3,f3,yavas,taze,p2,1,5,111,a01 a02 a03 a04 a08,a01 a02 a03 a04 a08
+g3,f3,yavas,taze,p3,1,5,111,a01 a02 a03 a04 a08,a01 a02 a03 a04 a08
+g3,f3,yavas,taze,p4,1,5,111,a01 a02 a03 a04 a08,a01 a02 a03 a04 a08
+g4,f1,hizli,onbellek,p0,0,,,,UNSAT
+g4,f1,hizli,onbellek,p1,0,,,,UNSAT
+g4,f1,hizli,onbellek,p2,0,,,,UNSAT
+g4,f1,hizli,onbellek,p3,0,,,,UNSAT
+g4,f1,hizli,onbellek,p4,0,,,,UNSAT
+g4,f1,hizli,sabit,p0,0,,,,UNSAT
+g4,f1,hizli,sabit,p1,0,,,,UNSAT
+g4,f1,hizli,sabit,p2,0,,,,UNSAT
+g4,f1,hizli,sabit,p3,0,,,,UNSAT
+g4,f1,hizli,sabit,p4,0,,,,UNSAT
+g4,f1,hizli,taze,p0,0,,,,UNSAT
+g4,f1,hizli,taze,p1,0,,,,UNSAT
+g4,f1,hizli,taze,p2,0,,,,UNSAT
+g4,f1,hizli,taze,p3,0,,,,UNSAT
+g4,f1,hizli,taze,p4,0,,,,UNSAT
+g4,f1,orta,onbellek,p0,0,,,,UNSAT
+g4,f1,orta,onbellek,p1,0,,,,UNSAT
+g4,f1,orta,onbellek,p2,0,,,,UNSAT
+g4,f1,orta,onbellek,p3,0,,,,UNSAT
+g4,f1,orta,onbellek,p4,0,,,,UNSAT
+g4,f1,orta,sabit,p0,0,,,,UNSAT
+g4,f1,orta,sabit,p1,0,,,,UNSAT
+g4,f1,orta,sabit,p2,0,,,,UNSAT
+g4,f1,orta,sabit,p3,0,,,,UNSAT
+g4,f1,orta,sabit,p4,0,,,,UNSAT
+g4,f1,orta,taze,p0,0,,,,UNSAT
+g4,f1,orta,taze,p1,0,,,,UNSAT
+g4,f1,orta,taze,p2,0,,,,UNSAT
+g4,f1,orta,taze,p3,0,,,,UNSAT
+g4,f1,orta,taze,p4,0,,,,UNSAT
+g4,f1,yavas,onbellek,p0,0,,,,UNSAT
+g4,f1,yavas,onbellek,p1,0,,,,UNSAT
+g4,f1,yavas,onbellek,p2,0,,,,UNSAT
+g4,f1,yavas,onbellek,p3,0,,,,UNSAT
+g4,f1,yavas,onbellek,p4,0,,,,UNSAT
+g4,f1,yavas,sabit,p0,0,,,,UNSAT
+g4,f1,yavas,sabit,p1,0,,,,UNSAT
+g4,f1,yavas,sabit,p2,0,,,,UNSAT
+g4,f1,yavas,sabit,p3,0,,,,UNSAT
+g4,f1,yavas,sabit,p4,0,,,,UNSAT
+g4,f1,yavas,taze,p0,0,,,,UNSAT
+g4,f1,yavas,taze,p1,0,,,,UNSAT
+g4,f1,yavas,taze,p2,0,,,,UNSAT
+g4,f1,yavas,taze,p3,0,,,,UNSAT
+g4,f1,yavas,taze,p4,0,,,,UNSAT
+g4,f2,hizli,onbellek,p0,0,,,,UNSAT
+g4,f2,hizli,onbellek,p1,0,,,,UNSAT
+g4,f2,hizli,onbellek,p2,0,,,,UNSAT
+g4,f2,hizli,onbellek,p3,0,,,,UNSAT
+g4,f2,hizli,onbellek,p4,0,,,,UNSAT
+g4,f2,hizli,sabit,p0,0,,,,UNSAT
+g4,f2,hizli,sabit,p1,0,,,,UNSAT
+g4,f2,hizli,sabit,p2,0,,,,UNSAT
+g4,f2,hizli,sabit,p3,0,,,,UNSAT
+g4,f2,hizli,sabit,p4,0,,,,UNSAT
+g4,f2,hizli,taze,p0,0,,,,UNSAT
+g4,f2,hizli,taze,p1,0,,,,UNSAT
+g4,f2,hizli,taze,p2,0,,,,UNSAT
+g4,f2,hizli,taze,p3,0,,,,UNSAT
+g4,f2,hizli,taze,p4,0,,,,UNSAT
+g4,f2,orta,onbellek,p0,0,,,,UNSAT
+g4,f2,orta,onbellek,p1,0,,,,UNSAT
+g4,f2,orta,onbellek,p2,0,,,,UNSAT
+g4,f2,orta,onbellek,p3,0,,,,UNSAT
+g4,f2,orta,onbellek,p4,0,,,,UNSAT
+g4,f2,orta,sabit,p0,0,,,,UNSAT
+g4,f2,orta,sabit,p1,0,,,,UNSAT
+g4,f2,orta,sabit,p2,0,,,,UNSAT
+g4,f2,orta,sabit,p3,0,,,,UNSAT
+g4,f2,orta,sabit,p4,0,,,,UNSAT
+g4,f2,orta,taze,p0,0,,,,UNSAT
+g4,f2,orta,taze,p1,0,,,,UNSAT
+g4,f2,orta,taze,p2,0,,,,UNSAT
+g4,f2,orta,taze,p3,0,,,,UNSAT
+g4,f2,orta,taze,p4,0,,,,UNSAT
+g4,f2,yavas,onbellek,p0,0,,,,UNSAT
+g4,f2,yavas,onbellek,p1,0,,,,UNSAT
+g4,f2,yavas,onbellek,p2,0,,,,UNSAT
+g4,f2,yavas,onbellek,p3,0,,,,UNSAT
+g4,f2,yavas,onbellek,p4,0,,,,UNSAT
+g4,f2,yavas,sabit,p0,0,,,,UNSAT
+g4,f2,yavas,sabit,p1,0,,,,UNSAT
+g4,f2,yavas,sabit,p2,0,,,,UNSAT
+g4,f2,yavas,sabit,p3,0,,,,UNSAT
+g4,f2,yavas,sabit,p4,0,,,,UNSAT
+g4,f2,yavas,taze,p0,0,,,,UNSAT
+g4,f2,yavas,taze,p1,0,,,,UNSAT
+g4,f2,yavas,taze,p2,0,,,,UNSAT
+g4,f2,yavas,taze,p3,0,,,,UNSAT
+g4,f2,yavas,taze,p4,0,,,,UNSAT
+g4,f3,hizli,onbellek,p0,0,,,,UNSAT
+g4,f3,hizli,onbellek,p1,0,,,,UNSAT
+g4,f3,hizli,onbellek,p2,0,,,,UNSAT
+g4,f3,hizli,onbellek,p3,0,,,,UNSAT
+g4,f3,hizli,onbellek,p4,0,,,,UNSAT
+g4,f3,hizli,sabit,p0,0,,,,UNSAT
+g4,f3,hizli,sabit,p1,0,,,,UNSAT
+g4,f3,hizli,sabit,p2,0,,,,UNSAT
+g4,f3,hizli,sabit,p3,0,,,,UNSAT
+g4,f3,hizli,sabit,p4,0,,,,UNSAT
+g4,f3,hizli,taze,p0,0,,,,UNSAT
+g4,f3,hizli,taze,p1,0,,,,UNSAT
+g4,f3,hizli,taze,p2,0,,,,UNSAT
+g4,f3,hizli,taze,p3,0,,,,UNSAT
+g4,f3,hizli,taze,p4,0,,,,UNSAT
+g4,f3,orta,onbellek,p0,0,,,,UNSAT
+g4,f3,orta,onbellek,p1,0,,,,UNSAT
+g4,f3,orta,onbellek,p2,0,,,,UNSAT
+g4,f3,orta,onbellek,p3,0,,,,UNSAT
+g4,f3,orta,onbellek,p4,0,,,,UNSAT
+g4,f3,orta,sabit,p0,0,,,,UNSAT
+g4,f3,orta,sabit,p1,0,,,,UNSAT
+g4,f3,orta,sabit,p2,0,,,,UNSAT
+g4,f3,orta,sabit,p3,0,,,,UNSAT
+g4,f3,orta,sabit,p4,0,,,,UNSAT
+g4,f3,orta,taze,p0,0,,,,UNSAT
+g4,f3,orta,taze,p1,0,,,,UNSAT
+g4,f3,orta,taze,p2,0,,,,UNSAT
+g4,f3,orta,taze,p3,0,,,,UNSAT
+g4,f3,orta,taze,p4,0,,,,UNSAT
+g4,f3,yavas,onbellek,p0,0,,,,UNSAT
+g4,f3,yavas,onbellek,p1,0,,,,UNSAT
+g4,f3,yavas,onbellek,p2,0,,,,UNSAT
+g4,f3,yavas,onbellek,p3,0,,,,UNSAT
+g4,f3,yavas,onbellek,p4,0,,,,UNSAT
+g4,f3,yavas,sabit,p0,0,,,,UNSAT
+g4,f3,yavas,sabit,p1,0,,,,UNSAT
+g4,f3,yavas,sabit,p2,0,,,,UNSAT
+g4,f3,yavas,sabit,p3,0,,,,UNSAT
+g4,f3,yavas,sabit,p4,0,,,,UNSAT
+g4,f3,yavas,taze,p0,0,,,,UNSAT
+g4,f3,yavas,taze,p1,0,,,,UNSAT
+g4,f3,yavas,taze,p2,0,,,,UNSAT
+g4,f3,yavas,taze,p3,0,,,,UNSAT
+g4,f3,yavas,taze,p4,0,,,,UNSAT
+tum,f1,hizli,onbellek,p0,0,,,,UNSAT
+tum,f1,hizli,onbellek,p1,0,,,,UNSAT
+tum,f1,hizli,onbellek,p2,0,,,,UNSAT
+tum,f1,hizli,onbellek,p3,0,,,,UNSAT
+tum,f1,hizli,onbellek,p4,0,,,,UNSAT
+tum,f1,hizli,sabit,p0,0,,,,UNSAT
+tum,f1,hizli,sabit,p1,0,,,,UNSAT
+tum,f1,hizli,sabit,p2,0,,,,UNSAT
+tum,f1,hizli,sabit,p3,0,,,,UNSAT
+tum,f1,hizli,sabit,p4,0,,,,UNSAT
+tum,f1,hizli,taze,p0,0,,,,UNSAT
+tum,f1,hizli,taze,p1,0,,,,UNSAT
+tum,f1,hizli,taze,p2,0,,,,UNSAT
+tum,f1,hizli,taze,p3,0,,,,UNSAT
+tum,f1,hizli,taze,p4,0,,,,UNSAT
+tum,f1,orta,onbellek,p0,0,,,,UNSAT
+tum,f1,orta,onbellek,p1,0,,,,UNSAT
+tum,f1,orta,onbellek,p2,0,,,,UNSAT
+tum,f1,orta,onbellek,p3,0,,,,UNSAT
+tum,f1,orta,onbellek,p4,0,,,,UNSAT
+tum,f1,orta,sabit,p0,0,,,,UNSAT
+tum,f1,orta,sabit,p1,0,,,,UNSAT
+tum,f1,orta,sabit,p2,0,,,,UNSAT
+tum,f1,orta,sabit,p3,0,,,,UNSAT
+tum,f1,orta,sabit,p4,0,,,,UNSAT
+tum,f1,orta,taze,p0,0,,,,UNSAT
+tum,f1,orta,taze,p1,0,,,,UNSAT
+tum,f1,orta,taze,p2,0,,,,UNSAT
+tum,f1,orta,taze,p3,0,,,,UNSAT
+tum,f1,orta,taze,p4,0,,,,UNSAT
+tum,f1,yavas,onbellek,p0,0,,,,UNSAT
+tum,f1,yavas,onbellek,p1,0,,,,UNSAT
+tum,f1,yavas,onbellek,p2,0,,,,UNSAT
+tum,f1,yavas,onbellek,p3,0,,,,UNSAT
+tum,f1,yavas,onbellek,p4,0,,,,UNSAT
+tum,f1,yavas,sabit,p0,0,,,,UNSAT
+tum,f1,yavas,sabit,p1,0,,,,UNSAT
+tum,f1,yavas,sabit,p2,0,,,,UNSAT
+tum,f1,yavas,sabit,p3,0,,,,UNSAT
+tum,f1,yavas,sabit,p4,0,,,,UNSAT
+tum,f1,yavas,taze,p0,0,,,,UNSAT
+tum,f1,yavas,taze,p1,0,,,,UNSAT
+tum,f1,yavas,taze,p2,0,,,,UNSAT
+tum,f1,yavas,taze,p3,0,,,,UNSAT
+tum,f1,yavas,taze,p4,0,,,,UNSAT
+tum,f2,hizli,onbellek,p0,0,,,,UNSAT
+tum,f2,hizli,onbellek,p1,0,,,,UNSAT
+tum,f2,hizli,onbellek,p2,0,,,,UNSAT
+tum,f2,hizli,onbellek,p3,0,,,,UNSAT
+tum,f2,hizli,onbellek,p4,0,,,,UNSAT
+tum,f2,hizli,sabit,p0,0,,,,UNSAT
+tum,f2,hizli,sabit,p1,0,,,,UNSAT
+tum,f2,hizli,sabit,p2,0,,,,UNSAT
+tum,f2,hizli,sabit,p3,0,,,,UNSAT
+tum,f2,hizli,sabit,p4,0,,,,UNSAT
+tum,f2,hizli,taze,p0,0,,,,UNSAT
+tum,f2,hizli,taze,p1,0,,,,UNSAT
+tum,f2,hizli,taze,p2,0,,,,UNSAT
+tum,f2,hizli,taze,p3,0,,,,UNSAT
+tum,f2,hizli,taze,p4,0,,,,UNSAT
+tum,f2,orta,onbellek,p0,0,,,,UNSAT
+tum,f2,orta,onbellek,p1,0,,,,UNSAT
+tum,f2,orta,onbellek,p2,0,,,,UNSAT
+tum,f2,orta,onbellek,p3,0,,,,UNSAT
+tum,f2,orta,onbellek,p4,0,,,,UNSAT
+tum,f2,orta,sabit,p0,0,,,,UNSAT
+tum,f2,orta,sabit,p1,0,,,,UNSAT
+tum,f2,orta,sabit,p2,0,,,,UNSAT
+tum,f2,orta,sabit,p3,0,,,,UNSAT
+tum,f2,orta,sabit,p4,0,,,,UNSAT
+tum,f2,orta,taze,p0,0,,,,UNSAT
+tum,f2,orta,taze,p1,0,,,,UNSAT
+tum,f2,orta,taze,p2,0,,,,UNSAT
+tum,f2,orta,taze,p3,0,,,,UNSAT
+tum,f2,orta,taze,p4,0,,,,UNSAT
+tum,f2,yavas,onbellek,p0,0,,,,UNSAT
+tum,f2,yavas,onbellek,p1,0,,,,UNSAT
+tum,f2,yavas,onbellek,p2,0,,,,UNSAT
+tum,f2,yavas,onbellek,p3,0,,,,UNSAT
+tum,f2,yavas,onbellek,p4,0,,,,UNSAT
+tum,f2,yavas,sabit,p0,0,,,,UNSAT
+tum,f2,yavas,sabit,p1,0,,,,UNSAT
+tum,f2,yavas,sabit,p2,0,,,,UNSAT
+tum,f2,yavas,sabit,p3,0,,,,UNSAT
+tum,f2,yavas,sabit,p4,0,,,,UNSAT
+tum,f2,yavas,taze,p0,0,,,,UNSAT
+tum,f2,yavas,taze,p1,0,,,,UNSAT
+tum,f2,yavas,taze,p2,0,,,,UNSAT
+tum,f2,yavas,taze,p3,0,,,,UNSAT
+tum,f2,yavas,taze,p4,0,,,,UNSAT
+tum,f3,hizli,onbellek,p0,0,,,,UNSAT
+tum,f3,hizli,onbellek,p1,0,,,,UNSAT
+tum,f3,hizli,onbellek,p2,0,,,,UNSAT
+tum,f3,hizli,onbellek,p3,0,,,,UNSAT
+tum,f3,hizli,onbellek,p4,0,,,,UNSAT
+tum,f3,hizli,sabit,p0,0,,,,UNSAT
+tum,f3,hizli,sabit,p1,0,,,,UNSAT
+tum,f3,hizli,sabit,p2,0,,,,UNSAT
+tum,f3,hizli,sabit,p3,0,,,,UNSAT
+tum,f3,hizli,sabit,p4,0,,,,UNSAT
+tum,f3,hizli,taze,p0,0,,,,UNSAT
+tum,f3,hizli,taze,p1,0,,,,UNSAT
+tum,f3,hizli,taze,p2,0,,,,UNSAT
+tum,f3,hizli,taze,p3,0,,,,UNSAT
+tum,f3,hizli,taze,p4,0,,,,UNSAT
+tum,f3,orta,onbellek,p0,0,,,,UNSAT
+tum,f3,orta,onbellek,p1,0,,,,UNSAT
+tum,f3,orta,onbellek,p2,0,,,,UNSAT
+tum,f3,orta,onbellek,p3,0,,,,UNSAT
+tum,f3,orta,onbellek,p4,0,,,,UNSAT
+tum,f3,orta,sabit,p0,0,,,,UNSAT
+tum,f3,orta,sabit,p1,0,,,,UNSAT
+tum,f3,orta,sabit,p2,0,,,,UNSAT
+tum,f3,orta,sabit,p3,0,,,,UNSAT
+tum,f3,orta,sabit,p4,0,,,,UNSAT
+tum,f3,orta,taze,p0,0,,,,UNSAT
+tum,f3,orta,taze,p1,0,,,,UNSAT
+tum,f3,orta,taze,p2,0,,,,UNSAT
+tum,f3,orta,taze,p3,0,,,,UNSAT
+tum,f3,orta,taze,p4,0,,,,UNSAT
+tum,f3,yavas,onbellek,p0,0,,,,UNSAT
+tum,f3,yavas,onbellek,p1,0,,,,UNSAT
+tum,f3,yavas,onbellek,p2,0,,,,UNSAT
+tum,f3,yavas,onbellek,p3,0,,,,UNSAT
+tum,f3,yavas,onbellek,p4,0,,,,UNSAT
+tum,f3,yavas,sabit,p0,0,,,,UNSAT
+tum,f3,yavas,sabit,p1,0,,,,UNSAT
+tum,f3,yavas,sabit,p2,0,,,,UNSAT
+tum,f3,yavas,sabit,p3,0,,,,UNSAT
+tum,f3,yavas,sabit,p4,0,,,,UNSAT
+tum,f3,yavas,taze,p0,0,,,,UNSAT
+tum,f3,yavas,taze,p1,0,,,,UNSAT
+tum,f3,yavas,taze,p2,0,,,,UNSAT
+tum,f3,yavas,taze,p3,0,,,,UNSAT
+tum,f3,yavas,taze,p4,0,,,,UNSAT

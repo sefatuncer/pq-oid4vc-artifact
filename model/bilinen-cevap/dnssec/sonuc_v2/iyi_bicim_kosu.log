@@ -1,0 +1,17 @@
+{'ad': 'wf01', 'model': 'KAT1_DNSSEC_v2.spthy', 'bayraklar': 'DS_CL,DK3_USABLE,ANYVALID', 'iyi_bicim': 'EVET', 'uyari_sayisi': 0, 'meta': 'rc=0 wall_s=1.85 mem_peak_MiB=75.4', 'ilk_kosu': 'K1-01.tam'}
+{'ad': 'wf02', 'model': 'KAT1_DNSSEC_v2.spthy', 'bayraklar': 'DS_CL,DK3_USABLE,COMPLETENESS', 'iyi_bicim': 'EVET', 'uyari_sayisi': 0, 'meta': 'rc=0 wall_s=2.11 mem_peak_MiB=76.6', 'ilk_kosu': 'K1-02.tam'}
+{'ad': 'wf03', 'model': 'KAT1_DNSSEC_v2.spthy', 'bayraklar': 'DS_PQ,DK3_USABLE,ANYVALID', 'iyi_bicim': 'EVET', 'uyari_sayisi': 0, 'meta': 'rc=0 wall_s=1.57 mem_peak_MiB=77.1', 'ilk_kosu': 'K1-03.tam'}
+{'ad': 'wf04', 'model': 'KAT1_DNSSEC_v2.spthy', 'bayraklar': 'DS_PQ,DK3_USABLE,COMPLETENESS', 'iyi_bicim': 'EVET', 'uyari_sayisi': 0, 'meta': 'rc=0 wall_s=2.38 mem_peak_MiB=77.3', 'ilk_kosu': 'K1-04.tam'}
+{'ad': 'wf05', 'model': 'KAT1_DNSSEC_v2.spthy', 'bayraklar': 'DS_PQ,OLD_DS_REPLAY,DK3_USABLE,COMPLETENESS', 'iyi_bicim': 'EVET', 'uyari_sayisi': 0, 'meta': 'rc=0 wall_s=2.85 mem_peak_MiB=77.2', 'ilk_kosu': 'K1-05.tam'}
+{'ad': 'wf06', 'model': 'KAT1_DNSSEC_v2.spthy', 'bayraklar': 'DS_PQ,DK3_USABLE,DK5,ANYVALID', 'iyi_bicim': 'EVET', 'uyari_sayisi': 0, 'meta': 'rc=0 wall_s=1.68 mem_peak_MiB=75.0', 'ilk_kosu': 'K1-07.tam'}
+{'ad': 'wf07', 'model': 'KAT1_DNSSEC_v2.spthy', 'bayraklar': 'DS_PQ,DK3_USABLE,DK5,ANYVALID,MONOTONE', 'iyi_bicim': 'EVET', 'uyari_sayisi': 0, 'meta': 'rc=0 wall_s=1.59 mem_peak_MiB=77.6', 'ilk_kosu': 'K1-08.tam'}
+{'ad': 'wf08', 'model': 'KAT1_DNSSEC_v2.spthy', 'bayraklar': 'DS_PQ,DK5,ANYVALID', 'iyi_bicim': 'EVET', 'uyari_sayisi': 0, 'meta': 'rc=0 wall_s=1.57 mem_peak_MiB=75.9', 'ilk_kosu': 'K1-09.tam'}
+{'ad': 'wf09', 'model': 'KAT1_DNSSEC_v2.spthy', 'bayraklar': 'DS_BOTH,DK3_USABLE,ANYVALID', 'iyi_bicim': 'EVET', 'uyari_sayisi': 0, 'meta': 'rc=0 wall_s=1.56 mem_peak_MiB=77.6', 'ilk_kosu': 'K1-10.tam'}
+{'ad': 'wf10', 'model': 'KAT1_DNSSEC_v2.spthy', 'bayraklar': 'DS_BOTH,DK3_USABLE,COMPLETENESS', 'iyi_bicim': 'EVET', 'uyari_sayisi': 0, 'meta': 'rc=0 wall_s=2.05 mem_peak_MiB=77.7', 'ilk_kosu': 'K1-11.tam'}
+{'ad': 'wf11', 'model': 'KAT1_DNSSEC_v2.spthy', 'bayraklar': 'DS_PQ,DK3_USABLE,COMPLETENESS,PARENT_CL', 'iyi_bicim': 'EVET', 'uyari_sayisi': 0, 'meta': 'rc=0 wall_s=2.48 mem_peak_MiB=79.3', 'ilk_kosu': 'K1-12.tam'}
+{'ad': 'wf12', 'model': 'KAT1_DNSSEC_v2.spthy', 'bayraklar': 'DS_PQ,DK3_USABLE,ANYVALID,NO_QDAY', 'iyi_bicim': 'EVET', 'uyari_sayisi': 0, 'meta': 'rc=0 wall_s=1.82 mem_peak_MiB=74.1', 'ilk_kosu': 'K1-13.tam'}
+{'ad': 'wf13', 'model': 'KAT1_DNSSEC_v2.spthy', 'bayraklar': 'DS_PQ,DK5,ANYVALID,EXTRA_TA', 'iyi_bicim': 'EVET', 'uyari_sayisi': 0, 'meta': 'rc=0 wall_s=2.27 mem_peak_MiB=78.1', 'ilk_kosu': 'K1-14.tam'}
+{'ad': 'wf14', 'model': 'KAT1_DNSSEC_v2.spthy', 'bayraklar': 'DS_PQ,DK3_USABLE,ALLPRESENT', 'iyi_bicim': 'EVET', 'uyari_sayisi': 0, 'meta': 'rc=0 wall_s=1.75 mem_peak_MiB=77.6', 'ilk_kosu': 'K1-15.tam'}
+{'ad': 'wf15', 'model': 'KAT1_DNSSEC_v2.spthy', 'bayraklar': 'DS_PQ,DK3_USABLE,COMPLETENESS,MUT_NO_DS_SIG', 'iyi_bicim': 'EVET', 'uyari_sayisi': 0, 'meta': 'rc=0 wall_s=2.09 mem_peak_MiB=77.6', 'ilk_kosu': 'MUT02.K1-04.tam'}
+{'ad': 'wf16', 'model': 'KAT1_DNSSEC_v2.spthy', 'bayraklar': 'DS_PQ,DK3_USABLE,COMPLETENESS,MUT_NO_DS_KSK_MATCH', 'iyi_bicim': 'EVET', 'uyari_sayisi': 0, 'meta': 'rc=0 wall_s=2.07 mem_peak_MiB=79.7', 'ilk_kosu': 'MUT03.K1-04.tam'}
+iyi_bicim rc=0

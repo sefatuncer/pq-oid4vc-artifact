@@ -1,0 +1,15 @@
+{
+ "kat": "KAT-2",
+ "clingo": "5.8.2",
+ "cekirdek_sha256_once": "a32372a7c646274ce672c9586e25b34f75f4febb2f966596cc97e7afb89e0b38",
+ "cekirdek_sha256_sonra": "a32372a7c646274ce672c9586e25b34f75f4febb2f966596cc97e7afb89e0b38",
+ "cekirdek_commit_45cbd0f_ile_ayni": true,
+ "taban_sha256": {
+  "kat2_x509.lp": "694420b087cd0522175272da6e73b1dafc58d556aece35d9447055448339af06"
+ },
+ "hucre": 40,
+ "hucre_uyum": 40,
+ "mutasyon_kosusu": 9,
+ "mutasyon_dondu": 9,
+ "en_uzun_s": 0.0033
+}

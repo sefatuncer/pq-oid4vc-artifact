@@ -1,0 +1,10 @@
+maude tool: 'maude'
+ checking version: 3.5.1. OK.
+ checking installation: OK.
+[Theory DelegationChain] Theory loaded
+[Theory DelegationChain] Theory translated
+[Theory DelegationChain] Derivation checks started
+[Theory DelegationChain] Derivation checks ended
+[Theory DelegationChain] Theory closed
+[Saturating Sources] Step 1 (Max 5)
+[Saturating Sources] Done

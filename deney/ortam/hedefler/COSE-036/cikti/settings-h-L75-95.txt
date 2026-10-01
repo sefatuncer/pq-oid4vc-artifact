@@ -1,0 +1,21 @@
+    #ifndef WOLFCOSE_NO_KEY_DECODE
+        #define WOLFCOSE_NO_KEY_DECODE
+    #endif
+#endif /* WOLFCOSE_LEAN_VERIFY */
+
+/* Verify-only COSE_Sign1 with ML-DSA (implies WOLFCOSE_LEAN_MLDSA, no signing). */
+#ifdef WOLFCOSE_LEAN_VERIFY_MLDSA
+    #ifndef WOLFCOSE_LEAN_MLDSA
+        #define WOLFCOSE_LEAN_MLDSA
+    #endif
+    #ifndef WOLFCOSE_NO_SIGN1_SIGN
+        #define WOLFCOSE_NO_SIGN1_SIGN
+    #endif
+#endif /* WOLFCOSE_LEAN_VERIFY_MLDSA */
+
+/* Verify-only COSE_Sign1 with HSS/LMS (implies WOLFCOSE_LEAN_LMS, no signing). */
+#ifdef WOLFCOSE_LEAN_VERIFY_LMS
+    #ifndef WOLFCOSE_LEAN_LMS
+        #define WOLFCOSE_LEAN_LMS
+    #endif
+    #ifndef WOLFCOSE_NO_SIGN1_SIGN

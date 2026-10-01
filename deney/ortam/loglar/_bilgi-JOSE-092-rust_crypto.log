@@ -1,0 +1,188 @@
+# hedef=_bilgi-JOSE-092-rust_crypto imaj=pq-a09-env-rust:1.0 (sha256:b21d9e67309a86054643e61d4f78c5da262aca261b5dea7e5e047144306be32b) baslangic=2026-09-25T13:13:07Z zaman_asimi=1800s
+# komut: docker run --rm --name pq-a09-ortam-_bilgi-jose-092-rust_crypto --label pq.agir=derleme --memory=6g --memory-swap=6g -v hedefler/_bilgi-JOSE-092-rust_crypto:/w -v betikler/konteyner:/b:ro pq-a09-env-rust:1.0 sh -c '(bash|sh) /w/kur.sh'
+[package]
+name = "ortam-deneme"
+version = "0.0.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+jsonwebtoken = { version = "=11.1.0", features = ["rust_crypto"] }
+== Aşama A: cargo build
+    Updating crates.io index
+     Locking 97 packages to latest compatible versions
+      Adding crypto-common v0.1.6 (available: v0.1.7)
+ Downloading crates ...
+  Downloaded base16ct v0.2.0
+  Downloaded autocfg v1.5.1
+  Downloaded curve25519-dalek-derive v0.1.1
+  Downloaded cfg-if v1.0.5
+  Downloaded subtle v2.6.1
+  Downloaded powerfmt v0.2.0
+  Downloaded rfc6979 v0.4.0
+  Downloaded time-core v0.1.9
+  Downloaded zeroize_derive v1.5.0
+  Downloaded version_check v0.9.5
+  Downloaded num-conv v0.2.2
+  Downloaded cpufeatures v0.2.17
+  Downloaded lazy_static v1.5.0
+  Downloaded rustc_version v0.4.1
+  Downloaded rand_chacha v0.3.1
+  Downloaded num-iter v0.1.46
+  Downloaded itoa v1.0.18
+  Downloaded primeorder v0.13.6
+  Downloaded thiserror v2.0.21
+  Downloaded zeroize v1.9.0
+  Downloaded pem v3.0.6
+  Downloaded quote v1.0.47
+  Downloaded signature v2.2.0
+  Downloaded pem-rfc7468 v0.7.0
+  Downloaded ed25519 v2.2.3
+  Downloaded block-buffer v0.10.4
+  Downloaded ppv-lite86 v0.2.21
+  Downloaded simple_asn1 v0.6.4
+  Downloaded digest v0.10.7
+  Downloaded group v0.13.0
+  Downloaded sec1 v0.7.3
+  Downloaded deranged v0.5.8
+  Downloaded ff v0.13.1
+  Downloaded num-integer v0.1.47
+  Downloaded zmij v1.0.23
+  Downloaded sha2 v0.10.9
+  Downloaded crypto-common v0.1.6
+  Downloaded thiserror-impl v2.0.21
+  Downloaded pkcs8 v0.10.2
+  Downloaded spki v0.7.3
+  Downloaded base64ct v1.8.3
+  Downloaded getrandom v0.2.17
+  Downloaded unicode-ident v1.0.26
+  Downloaded generic-array v0.14.9
+  Downloaded hmac v0.12.1
+  Downloaded time-macros v0.2.32
+  Downloaded rand_core v0.6.4
+  Downloaded spin v0.9.9
+  Downloaded smallvec v1.16.2
+  Downloaded p256 v0.13.2
+  Downloaded semver v1.0.28
+  Downloaded serde_core v1.0.229
+  Downloaded pkcs1 v0.7.5
+  Downloaded num-traits v0.2.19
+  Downloaded proc-macro2 v1.0.107
+  Downloaded const-oid v0.9.6
+  Downloaded ecdsa v0.16.9
+  Downloaded jsonwebtoken v11.1.0
+  Downloaded base64 v0.22.1
+  Downloaded serde_derive v1.0.229
+  Downloaded elliptic-curve v0.13.8
+  Downloaded rand v0.8.8
+  Downloaded crypto-bigint v0.5.5
+  Downloaded rsa v0.9.10
+  Downloaded serde v1.0.229
+  Downloaded der v0.7.10
+  Downloaded ed25519-dalek v2.2.0
+  Downloaded memchr v2.8.3
+  Downloaded num-bigint-dig v0.8.6
+  Downloaded num-bigint v0.4.8
+  Downloaded typenum v1.20.1
+  Downloaded hkdf v0.12.4
+  Downloaded libm v0.2.16
+  Downloaded serde_json v1.0.151
+  Downloaded p384 v0.13.1
+  Downloaded time v0.3.55
+  Downloaded zerocopy v0.8.58
+  Downloaded curve25519-dalek v4.1.3
+  Downloaded syn v2.0.119
+  Downloaded syn v3.0.6
+  Downloaded libc v0.2.189
+   Compiling proc-macro2 v1.0.107
+   Compiling unicode-ident v1.0.26
+   Compiling quote v1.0.47
+   Compiling version_check v0.9.5
+   Compiling const-oid v0.9.6
+   Compiling typenum v1.20.1
+   Compiling subtle v2.6.1
+   Compiling cfg-if v1.0.5
+   Compiling libc v0.2.189
+   Compiling base64ct v1.8.3
+   Compiling autocfg v1.5.1
+   Compiling libm v0.2.16
+   Compiling zerocopy v0.8.58
+   Compiling base16ct v0.2.0
+   Compiling cpufeatures v0.2.17
+   Compiling semver v1.0.28
+   Compiling serde_core v1.0.229
+   Compiling time-core v0.1.9
+   Compiling pem-rfc7468 v0.7.0
+   Compiling generic-array v0.14.9
+   Compiling num-conv v0.2.2
+   Compiling rustc_version v0.4.1
+   Compiling num-traits v0.2.19
+   Compiling spin v0.9.9
+   Compiling thiserror v2.0.21
+   Compiling num-bigint-dig v0.8.6
+   Compiling zmij v1.0.23
+   Compiling lazy_static v1.5.0
+   Compiling time-macros v0.2.32
+   Compiling powerfmt v0.2.0
+   Compiling serde v1.0.229
+   Compiling smallvec v1.16.2
+   Compiling curve25519-dalek v4.1.3
+   Compiling serde_json v1.0.151
+   Compiling deranged v0.5.8
+   Compiling itoa v1.0.18
+   Compiling memchr v2.8.3
+   Compiling base64 v0.22.1
+   Compiling syn v2.0.119
+   Compiling syn v3.0.6
+   Compiling pem v3.0.6
+   Compiling getrandom v0.2.17
+   Compiling rand_core v0.6.4
+   Compiling ff v0.13.1
+   Compiling group v0.13.0
+   Compiling num-integer v0.1.47
+   Compiling time v0.3.55
+   Compiling num-iter v0.1.46
+   Compiling num-bigint v0.4.8
+   Compiling thiserror-impl v2.0.21
+   Compiling serde_derive v1.0.229
+   Compiling simple_asn1 v0.6.4
+   Compiling ppv-lite86 v0.2.21
+   Compiling rand_chacha v0.3.1
+   Compiling rand v0.8.8
+   Compiling zeroize_derive v1.5.0
+   Compiling curve25519-dalek-derive v0.1.1
+   Compiling zeroize v1.9.0
+   Compiling der v0.7.10
+   Compiling block-buffer v0.10.4
+   Compiling crypto-common v0.1.6
+   Compiling crypto-bigint v0.5.5
+   Compiling digest v0.10.7
+   Compiling hmac v0.12.1
+   Compiling signature v2.2.0
+   Compiling sha2 v0.10.9
+   Compiling hkdf v0.12.4
+   Compiling rfc6979 v0.4.0
+   Compiling spki v0.7.3
+   Compiling pkcs8 v0.10.2
+   Compiling sec1 v0.7.3
+   Compiling ed25519 v2.2.3
+   Compiling pkcs1 v0.7.5
+   Compiling rsa v0.9.10
+   Compiling elliptic-curve v0.13.8
+   Compiling ed25519-dalek v2.2.0
+   Compiling primeorder v0.13.6
+   Compiling ecdsa v0.16.9
+   Compiling p256 v0.13.2
+   Compiling p384 v0.13.1
+   Compiling jsonwebtoken v11.1.0
+   Compiling ortam-deneme v0.0.0 (/tmp/p)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 9.71s
+== Aşama B: API tiplerine başvuran program
+   Compiling ortam-deneme v0.0.0 (/tmp/p)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.16s
+krate jsonwebtoken baglandi
+tip jsonwebtoken::validation::Validation
+tip jsonwebtoken::decoding::DecodingKey
+tip jsonwebtoken::algorithms::Algorithm
+== SONUC: basarili
+# cikis_kodu=0 sure_s=12 bitis=2026-09-25T13:13:19Z

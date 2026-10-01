@@ -1,0 +1,4 @@
+kosu,model,bayraklar,lemma,beklenen,gozlenen,uyum,lemma_ham_sonucu,adim,merdiven,meta,iyi_bicim,executable,imaj,ek,hucre,sutun
+EK.duy-ignore.tam,KAT2_X509.spthy,"INVALID_ALT_ISSUED,V_IGNORE",accept_with_invalid_pq,verified,verified,EVET,verified,7,1,rc=0 wall_s=0.42 mem_peak_MiB=70.2,EVET,verified,sha256:59b648d60829c4580504470be1b171df0e63ead38bebc8944ac8ee2bba6b9c60,duyarlilik,,
+EK.duy-enforce.tam,KAT2_X509.spthy,"INVALID_ALT_ISSUED,V_ENFORCE_IF_PRESENT",accept_with_invalid_pq,falsified,falsified,EVET,falsified,9,1,rc=0 wall_s=0.47 mem_peak_MiB=71.8,EVET,verified,sha256:59b648d60829c4580504470be1b171df0e63ead38bebc8944ac8ee2bba6b9c60,duyarlilik,,
+EK.duy-require.tam,KAT2_X509.spthy,"INVALID_ALT_ISSUED,V_REQUIRE",accept_with_invalid_pq,falsified,falsified,EVET,falsified,5,1,rc=0 wall_s=0.39 mem_peak_MiB=68.7,EVET,verified,sha256:59b648d60829c4580504470be1b171df0e63ead38bebc8944ac8ee2bba6b9c60,duyarlilik,,

@@ -1,0 +1,137 @@
+# JOSE-084 — API taraması (sözleşme §5.1)
+# imaj: a10-jose-084:1 (sha256:5bc245b6d2a2efaa6ba79a9bb1edbf49f19b2fd845f287bfbaa88669feb28098)
+# komut: docker run --rm --network none --entrypoint sh a10-jose-084:1 -c 'cd /e/lib/python3*/site-packages/jose && grep -rn -i -E 'algorithms|allow|register|deregister|required|eddsa|ed25519|ml-?dsa|mldsa|composite|okp|verifier|keyselector' --include=*.py . '
+
+./jwe.py:9:from .constants import ALGORITHMS, JWE_SIZE_LIMIT, ZIPS
+./jwe.py:14:def encrypt(plaintext, key, encryption=ALGORITHMS.A256GCM, algorithm=ALGORITHMS.DIR, zip=None, cty=None, kid=None):
+./jwe.py:46:    if algorithm not in ALGORITHMS.SUPPORTED:
+./jwe.py:48:    if encryption not in ALGORITHMS.SUPPORTED:
+./jwe.py:89:    # fields that it is required to support, whether required by this
+./jwe.py:90:    # specification, by the algorithms being used, or by the "crit"
+./jwe.py:99:        if alg not in ALGORITHMS.SUPPORTED:
+./jwe.py:101:        if enc not in ALGORITHMS.SUPPORTED:
+./jwe.py:105:        raise JWEParseError("alg and enc headers are required!")
+./jwe.py:119:    # the CEK.  The CEK MUST have a length equal to that required for
+./jwe.py:127:    if alg == ALGORITHMS.DIR:
+./jwe.py:237:    if enc in ALGORITHMS.HMAC_AUTH_TAG:
+./jwe.py:240:    elif enc in ALGORITHMS.GCM:
+./jwe.py:393:    if enc in ALGORITHMS.HMAC_AUTH_TAG:
+./jwe.py:397:    elif enc in ALGORITHMS.GCM:
+./jwe.py:483:    if alg == ALGORITHMS.DIR:
+./jwe.py:553:    if enc == ALGORITHMS.A128GCM:
+./jwe.py:555:    elif enc == ALGORITHMS.A192GCM:
+./jwe.py:557:    elif enc in (ALGORITHMS.A128CBC_HS256, ALGORITHMS.A256GCM):
+./jwe.py:559:    elif enc == ALGORITHMS.A192CBC_HS384:
+./jwe.py:561:    elif enc == ALGORITHMS.A256CBC_HS512:
+./constants.py:4:class Algorithms:
+./constants.py:5:    # DS Algorithms
+./constants.py:17:    # Content Encryption Algorithms
+./constants.py:30:    # CEK Encryption Algorithms
+./constants.py:49:    # Compression Algorithms
+./constants.py:89:ALGORITHMS = Algorithms()
+./jwt.py:19:from .constants import ALGORITHMS
+./jwt.py:24:def encode(claims, key, algorithm=ALGORITHMS.HS256, headers=None, access_token=None):
+./jwt.py:61:        claims["at_hash"] = calculate_at_hash(access_token, ALGORITHMS.HASHES[algorithm])
+./jwt.py:66:def decode(token, key, algorithms=None, options=None, audience=None, issuer=None, subject=None, access_token=None):
+./jwt.py:80:        algorithms (str or list): Valid algorithms that should be used to verify the JWS.
+./jwt.py:128:        >>> jwt.decode(payload, 'secret', algorithms='HS256')
+./jwt.py:159:        payload = jws.verify(token, key, algorithms, verify=verify_signature)
+./jwt.py:287:        leeway (int): The number of seconds of skew that is allowed.
+./jwt.py:317:        leeway (int): The number of seconds of skew that is allowed.
+./jwt.py:466:        expected_hash = calculate_at_hash(access_token, ALGORITHMS.HASHES[algorithm])
+./jwt.py:480:    required_claims = [e[len("require_") :] for e in options.keys() if e.startswith("require_") and options[e]]
+./jwt.py:481:    for require_claim in required_claims:
+./jwt.py:483:            raise JWTError('missing required key "%s" among claims' % require_claim)
+./jwt.py:485:            options["verify_" + require_claim] = True  # override verify when required
+./jws.py:11:from jose.constants import ALGORITHMS
+./jws.py:16:def sign(payload, key, headers=None, algorithm=ALGORITHMS.HS256):
+./jws.py:42:    if algorithm not in ALGORITHMS.SUPPORTED:
+./jws.py:52:def verify(token, key, algorithms, verify=True):
+./jws.py:59:        algorithms (str or list): Valid algorithms that should be used to verify the JWS.
+./jws.py:70:        >>> jws.verify(token, 'secret', algorithms='HS256')
+./jws.py:77:        _verify_signature(signing_input, header, signature, key, algorithms)
+./jws.py:253:def _verify_signature(signing_input, header, signature, key="", algorithms=None):
+./jws.py:258:    if algorithms is not None and alg not in algorithms:
+./jws.py:259:        raise JWSError("The specified alg value is not allowed")
+./backends/cryptography_backend.py:9:from cryptography.hazmat.primitives.ciphers import Cipher, aead, algorithms, modes
+./backends/cryptography_backend.py:16:from ..constants import ALGORITHMS
+./backends/cryptography_backend.py:39:        if algorithm not in ALGORITHMS.EC:
+./backends/cryptography_backend.py:43:            ALGORITHMS.ES256: self.SHA256,
+./backends/cryptography_backend.py:44:            ALGORITHMS.ES384: self.SHA384,
+./backends/cryptography_backend.py:45:            ALGORITHMS.ES512: self.SHA512,
+./backends/cryptography_backend.py:111:        This is the number of bytes required to encode the maximum key value.
+./backends/cryptography_backend.py:213:        if algorithm not in ALGORITHMS.RSA:
+./backends/cryptography_backend.py:217:            ALGORITHMS.RS256: self.SHA256,
+./backends/cryptography_backend.py:218:            ALGORITHMS.RS384: self.SHA384,
+./backends/cryptography_backend.py:219:            ALGORITHMS.RS512: self.SHA512,
+./backends/cryptography_backend.py:224:            ALGORITHMS.RSA1_5: self.RSA1_5,
+./backends/cryptography_backend.py:225:            ALGORITHMS.RSA_OAEP: self.RSA_OAEP,
+./backends/cryptography_backend.py:226:            ALGORITHMS.RSA_OAEP_256: self.RSA_OAEP_256,
+./backends/cryptography_backend.py:395:    KEY_128 = (ALGORITHMS.A128GCM, ALGORITHMS.A128GCMKW, ALGORITHMS.A128KW, ALGORITHMS.A128CBC)
+./backends/cryptography_backend.py:396:    KEY_192 = (ALGORITHMS.A192GCM, ALGORITHMS.A192GCMKW, ALGORITHMS.A192KW, ALGORITHMS.A192CBC)
+./backends/cryptography_backend.py:398:        ALGORITHMS.A256GCM,
+./backends/cryptography_backend.py:399:        ALGORITHMS.A256GCMKW,
+./backends/cryptography_backend.py:400:        ALGORITHMS.A256KW,
+./backends/cryptography_backend.py:401:        ALGORITHMS.A128CBC_HS256,
+./backends/cryptography_backend.py:402:        ALGORITHMS.A256CBC,
+./backends/cryptography_backend.py:404:    KEY_384 = (ALGORITHMS.A192CBC_HS384,)
+./backends/cryptography_backend.py:405:    KEY_512 = (ALGORITHMS.A256CBC_HS512,)
+./backends/cryptography_backend.py:407:    AES_KW_ALGS = (ALGORITHMS.A128KW, ALGORITHMS.A192KW, ALGORITHMS.A256KW)
+./backends/cryptography_backend.py:410:        ALGORITHMS.A128GCM: modes.GCM,
+./backends/cryptography_backend.py:411:        ALGORITHMS.A192GCM: modes.GCM,
+./backends/cryptography_backend.py:412:        ALGORITHMS.A256GCM: modes.GCM,
+./backends/cryptography_backend.py:413:        ALGORITHMS.A128CBC_HS256: modes.CBC,
+./backends/cryptography_backend.py:414:        ALGORITHMS.A192CBC_HS384: modes.CBC,
+./backends/cryptography_backend.py:415:        ALGORITHMS.A256CBC_HS512: modes.CBC,
+./backends/cryptography_backend.py:416:        ALGORITHMS.A128CBC: modes.CBC,
+./backends/cryptography_backend.py:417:        ALGORITHMS.A192CBC: modes.CBC,
+./backends/cryptography_backend.py:418:        ALGORITHMS.A256CBC: modes.CBC,
+./backends/cryptography_backend.py:419:        ALGORITHMS.A128GCMKW: modes.GCM,
+./backends/cryptography_backend.py:420:        ALGORITHMS.A192GCMKW: modes.GCM,
+./backends/cryptography_backend.py:421:        ALGORITHMS.A256GCMKW: modes.GCM,
+./backends/cryptography_backend.py:422:        ALGORITHMS.A128KW: None,
+./backends/cryptography_backend.py:423:        ALGORITHMS.A192KW: None,
+./backends/cryptography_backend.py:424:        ALGORITHMS.A256KW: None,
+./backends/cryptography_backend.py:427:    IV_BYTE_LENGTH_MODE_MAP = {"CBC": algorithms.AES.block_size // 8, "GCM": 96 // 8}
+./backends/cryptography_backend.py:430:        if algorithm not in ALGORITHMS.AES:
+./backends/cryptography_backend.py:432:        if algorithm not in ALGORITHMS.SUPPORTED.union(ALGORITHMS.AES_PSEUDO):
+./backends/cryptography_backend.py:458:            iv_byte_length = self.IV_BYTE_LENGTH_MODE_MAP.get(self._mode.name, algorithms.AES.block_size)
+./backends/cryptography_backend.py:467:                cipher = Cipher(algorithms.AES(self._key), mode, backend=default_backend())
+./backends/cryptography_backend.py:469:                padder = PKCS7(algorithms.AES.block_size).padder()
+./backends/cryptography_backend.py:493:                cipher = Cipher(algorithms.AES(self._key), mode, backend=default_backend())
+./backends/cryptography_backend.py:497:                unpadder = PKCS7(algorithms.AES.block_size).unpadder()
+./backends/cryptography_backend.py:525:    ALG_MAP = {ALGORITHMS.HS256: hashes.SHA256(), ALGORITHMS.HS384: hashes.SHA384(), ALGORITHMS.HS512: hashes.SHA512()}
+./backends/cryptography_backend.py:528:        if algorithm not in ALGORITHMS.HMAC:
+./backends/rsa_backend.py:15:from jose.constants import ALGORITHMS
+./backends/rsa_backend.py:19:ALGORITHMS.SUPPORTED.remove(ALGORITHMS.RSA_OAEP)  # RSA OAEP not supported
+./backends/rsa_backend.py:99:    key = RSAKey(pem, ALGORITHMS.RS256)
+./backends/rsa_backend.py:111:    # Only allow this processing if the prefix matches
+./backends/rsa_backend.py:126:        if algorithm not in ALGORITHMS.RSA:
+./backends/rsa_backend.py:129:        if algorithm in ALGORITHMS.RSA_KW and algorithm != ALGORITHMS.RSA1_5:
+./backends/rsa_backend.py:133:            ALGORITHMS.RS256: self.SHA256,
+./backends/rsa_backend.py:134:            ALGORITHMS.RS384: self.SHA384,
+./backends/rsa_backend.py:135:            ALGORITHMS.RS512: self.SHA512,
+./backends/_asn1.py:3:Required by rsa_backend but not cryptography_backend.
+./backends/ecdsa_backend.py:6:from jose.constants import ALGORITHMS
+./backends/ecdsa_backend.py:37:        if algorithm not in ALGORITHMS.EC:
+./backends/ecdsa_backend.py:41:            ALGORITHMS.ES256: self.SHA256,
+./backends/ecdsa_backend.py:42:            ALGORITHMS.ES384: self.SHA384,
+./backends/ecdsa_backend.py:43:            ALGORITHMS.ES512: self.SHA512,
+./backends/ecdsa_backend.py:100:            msg, hashfunc=self.hash_alg, sigencode=ecdsa.util.sigencode_string, allow_truncate=False
+./backends/ecdsa_backend.py:106:                sig, msg, hashfunc=self.hash_alg, sigdecode=ecdsa.util.sigdecode_string, allow_truncate=False
+./backends/native.py:6:from jose.constants import ALGORITHMS
+./backends/native.py:21:    HASHES = {ALGORITHMS.HS256: hashlib.sha256, ALGORITHMS.HS384: hashlib.sha384, ALGORITHMS.HS512: hashlib.sha512}
+./backends/native.py:24:        if algorithm not in ALGORITHMS.HMAC:
+./jwk.py:2:from jose.constants import ALGORITHMS
+./jwk.py:32:    if algorithm in ALGORITHMS.KEYS:
+./jwk.py:33:        return ALGORITHMS.KEYS[algorithm]
+./jwk.py:34:    elif algorithm in ALGORITHMS.HMAC:  # noqa: F811
+./jwk.py:36:    elif algorithm in ALGORITHMS.RSA:
+./jwk.py:40:    elif algorithm in ALGORITHMS.EC:
+./jwk.py:44:    elif algorithm in ALGORITHMS.AES:
+./jwk.py:48:    elif algorithm == ALGORITHMS.DIR:
+./jwk.py:55:def register_key(algorithm, key_class):
+./jwk.py:58:    ALGORITHMS.KEYS[algorithm] = key_class
+./jwk.py:59:    ALGORITHMS.SUPPORTED.add(algorithm)
+./jwk.py:69:    # Allow for pulling the algorithm off of the passed in jwk.
+./utils.py:148:    b"ssh-ed25519",

@@ -1,0 +1,15 @@
+baslangic	2026-09-25T13:24:31Z
+hedef	JOSE-102
+ekosistem	swiftpm
+paket	https://github.com/vapor/jwt-kit.git
+istenen_surum	5.3.0
+arac	Swift version 6.4
+kilit_dosyasi	Package.resolved (git revizyonları)
+kilit_sha256	9b102f31442d7c68690bb5ff6ee1351dbcdc0094fe3c249368d13c3d36a68388
+bagimlilik_sayisi	5
+commit	b5f82fb9dc238f2fcac53d721a222513a152613c
+commit_kaynagi	Package.resolved revision
+paket_ozeti	git:b5f82fb9dc238f2fcac53d721a222513a152613c (SwiftPM revizyonu)
+kurulan_surum	5.3.0
+ice_aktar	basarili
+bitis	2026-09-25T13:25:13Z

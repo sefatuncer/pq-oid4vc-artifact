@@ -1,0 +1,177 @@
+Process 0 (that is, the initial process):
+{1}new sktl: skey;
+{2}new skc: skey;
+{3}new skq: skey;
+{4}out(c, (pk(sktl),pk(skc),pk(skq)));
+(
+    {5}!
+    {6}let sktl_1: skey = sktl in
+    {7}let i: bitstring = issuerA in
+    {8}let pkc: pkey = pk(skc) in
+    {9}let pkq: pkey = pk(skq) in
+    {10}out(c, ((i,pkc,pkq,none),sign((i,pkc,pkq,none),sktl_1)))
+) | (
+    {11}!
+    {12}let i_1: bitstring = issuerA in
+    {13}let skc_1: skey = skc in
+    {14}let skq_1: skey = skq in
+    {15}new claims: bitstring;
+    {16}event Issued(i_1,claims);
+    {17}out(c, (i_1,claims,sign((i_1,claims),skq_1)));
+    {18}out(c, (i_1,claims,sign((i_1,claims),skc_1)))
+) | (
+    {19}phase 1;
+    (
+        {20}out(c, skc)
+    ) | (
+        {21}out(c, sktl)
+    ) | (
+        {22}!
+        {23}let pktl: pkey = pk(sktl) in
+        {24}in(c, ((i_2: bitstring,pkc_1: pkey,pkq_1: pkey,e: bitstring),tlsig: bitstring));
+        {25}if (verify(tlsig,(i_2,pkc_1,pkq_1,e),pktl) = true) then
+        {26}in(c, (=i_2,claims_1: bitstring,sigq: bitstring));
+        {27}if (verify(sigq,(i_2,claims_1),pkq_1) = true) then
+        {28}event Accept(i_2,claims_1)
+    ) | (
+        {29}!
+        {30}let pktl_1: pkey = pk(sktl) in
+        {31}in(c, ((i_3: bitstring,pkc_2: pkey,pkq_2: pkey,e_1: bitstring),tlsig_1: bitstring));
+        {32}if (verify(tlsig_1,(i_3,pkc_2,pkq_2,e_1),pktl_1) = true) then
+        {33}if (e_1 ≠ pq_required) then
+        {34}in(c, (=i_3,claims_2: bitstring,sigc: bitstring));
+        {35}if (verify(sigc,(i_3,claims_2),pkc_2) = true) then
+        {36}event Accept(i_3,claims_2)
+    )
+)
+
+--  Process 1 (that is, process 0, with let moved downwards):
+{1}new sktl: skey;
+{2}new skc: skey;
+{3}new skq: skey;
+{4}out(c, (pk(sktl),pk(skc),pk(skq)));
+(
+    {5}!
+    {9}let pkq: pkey = pk(skq) in
+    {8}let pkc: pkey = pk(skc) in
+    {7}let i: bitstring = issuerA in
+    {6}let sktl_1: skey = sktl in
+    {10}out(c, ((i,pkc,pkq,none),sign((i,pkc,pkq,none),sktl_1)))
+) | (
+    {11}!
+    {15}new claims: bitstring;
+    {12}let i_1: bitstring = issuerA in
+    {16}event Issued(i_1,claims);
+    {14}let skq_1: skey = skq in
+    {17}out(c, (i_1,claims,sign((i_1,claims),skq_1)));
+    {13}let skc_1: skey = skc in
+    {18}out(c, (i_1,claims,sign((i_1,claims),skc_1)))
+) | (
+    {19}phase 1;
+    (
+        {20}out(c, skc)
+    ) | (
+        {21}out(c, sktl)
+    ) | (
+        {22}!
+        {24}in(c, ((i_2: bitstring,pkc_1: pkey,pkq_1: pkey,e: bitstring),tlsig: bitstring));
+        {23}let pktl: pkey = pk(sktl) in
+        {25}if (verify(tlsig,(i_2,pkc_1,pkq_1,e),pktl) = true) then
+        {26}in(c, (=i_2,claims_1: bitstring,sigq: bitstring));
+        {27}if (verify(sigq,(i_2,claims_1),pkq_1) = true) then
+        {28}event Accept(i_2,claims_1)
+    ) | (
+        {29}!
+        {31}in(c, ((i_3: bitstring,pkc_2: pkey,pkq_2: pkey,e_1: bitstring),tlsig_1: bitstring));
+        {30}let pktl_1: pkey = pk(sktl) in
+        {32}if (verify(tlsig_1,(i_3,pkc_2,pkq_2,e_1),pktl_1) = true) then
+        {33}if (e_1 ≠ pq_required) then
+        {34}in(c, (=i_3,claims_2: bitstring,sigc: bitstring));
+        {35}if (verify(sigc,(i_3,claims_2),pkc_2) = true) then
+        {36}event Accept(i_3,claims_2)
+    )
+)
+
+-- Query event(Accept(i_4,x)) ==> event(Issued(i_4,x)) in process 1.
+Translating the process into Horn clauses...
+Completing...
+Starting query event(Accept(i_4,x)) ==> event(Issued(i_4,x))
+goal reachable: attacker_p1(x) && attacker_p1(i_4) -> event(Accept(i_4,x))
+
+Derivation:
+
+1. The message sktl[] may be sent to the attacker in phase 1 at output {21}.
+attacker_p1(sktl[]).
+
+2. The attacker has some term e_2 in phase 1.
+attacker_p1(e_2).
+
+3. The attacker has some term k in phase 1.
+attacker_p1(k).
+
+4. By 3, the attacker may know k in phase 1.
+Using the function pk the attacker may obtain pk(k) in phase 1.
+attacker_p1(pk(k)).
+
+5. The attacker has some term pkc_3 in phase 1.
+attacker_p1(pkc_3).
+
+6. We assume as hypothesis that
+attacker_p1(i_4).
+
+7. By 6, the attacker may know i_4 in phase 1.
+By 5, the attacker may know pkc_3 in phase 1.
+By 4, the attacker may know pk(k) in phase 1.
+By 2, the attacker may know e_2 in phase 1.
+Using the function 4-tuple the attacker may obtain (i_4,pkc_3,pk(k),e_2) in phase 1.
+attacker_p1((i_4,pkc_3,pk(k),e_2)).
+
+8. By 7, the attacker may know (i_4,pkc_3,pk(k),e_2) in phase 1.
+By 1, the attacker may know sktl[] in phase 1.
+Using the function sign the attacker may obtain sign((i_4,pkc_3,pk(k),e_2),sktl[]) in phase 1.
+attacker_p1(sign((i_4,pkc_3,pk(k),e_2),sktl[])).
+
+9. By 7, the attacker may know (i_4,pkc_3,pk(k),e_2) in phase 1.
+By 8, the attacker may know sign((i_4,pkc_3,pk(k),e_2),sktl[]) in phase 1.
+Using the function 2-tuple the attacker may obtain ((i_4,pkc_3,pk(k),e_2),sign((i_4,pkc_3,pk(k),e_2),sktl[])) in phase 1.
+attacker_p1(((i_4,pkc_3,pk(k),e_2),sign((i_4,pkc_3,pk(k),e_2),sktl[]))).
+
+10. We assume as hypothesis that
+attacker_p1(x).
+
+11. By 6, the attacker may know i_4 in phase 1.
+By 10, the attacker may know x in phase 1.
+Using the function 2-tuple the attacker may obtain (i_4,x) in phase 1.
+attacker_p1((i_4,x)).
+
+12. By 11, the attacker may know (i_4,x) in phase 1.
+By 3, the attacker may know k in phase 1.
+Using the function sign the attacker may obtain sign((i_4,x),k) in phase 1.
+attacker_p1(sign((i_4,x),k)).
+
+13. By 6, the attacker may know i_4 in phase 1.
+By 10, the attacker may know x in phase 1.
+By 12, the attacker may know sign((i_4,x),k) in phase 1.
+Using the function 3-tuple the attacker may obtain (i_4,x,sign((i_4,x),k)) in phase 1.
+attacker_p1((i_4,x,sign((i_4,x),k))).
+
+14. The message ((i_4,pkc_3,pk(k),e_2),sign((i_4,pkc_3,pk(k),e_2),sktl[])) that the attacker may have in phase 1 by 9 may be received at input {24}.
+The message (i_4,x,sign((i_4,x),k)) that the attacker may have in phase 1 by 13 may be received at input {26}.
+So event Accept(i_4,x) may be executed at {28}.
+event(Accept(i_4,x)).
+
+15. By 14, event(Accept(i_4,x)).
+The goal is reached, represented in the following fact:
+event(Accept(i_4,x)).
+
+
+Could not find a trace corresponding to this derivation.
+RESULT event(Accept(i_4,x)) ==> event(Issued(i_4,x)) cannot be proved.
+
+--------------------------------------------------------------
+Verification summary:
+
+Query event(Accept(i_4,x)) ==> event(Issued(i_4,x)) cannot be proved.
+
+--------------------------------------------------------------
+

@@ -1,0 +1,42 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 641B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/dart:3.13.4-sdk@sha256:33faf91bc941466a767ce845b4bbb5d578ecd180abe5ee243e9c8c039109d215
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context:
+#3 transferring context: 2B done
+#3 DONE 0.1s
+
+#4 [1/2] FROM docker.io/library/dart:3.13.4-sdk@sha256:33faf91bc941466a767ce845b4bbb5d578ecd180abe5ee243e9c8c039109d215
+#4 resolve docker.io/library/dart:3.13.4-sdk@sha256:33faf91bc941466a767ce845b4bbb5d578ecd180abe5ee243e9c8c039109d215 0.0s done
+#4 DONE 0.2s
+
+#5 [2/2] RUN set -eux; dart --disable-analytics; echo "SURUM $(dart --version 2>&1)"; echo "SURUM analitik: $(dart --disable-analytics 2>&1 | head -1)"
+#5 0.249 + dart --disable-analytics
+#5 0.509 Analytics reporting disabled. In order to enable it, run: dart --enable-analytics
+#5 0.513 + dart --version
+#5 0.515 SURUM Dart SDK version: 3.13.4 (stable) (Tue Sep 15 01:01:15 2026 -0700) on "linux_x64"
+#5 0.515 + echo SURUM Dart SDK version: 3.13.4 (stable) (Tue Sep 15 01:01:15 2026 -0700) on "linux_x64"
+#5 0.515 + dart --disable-analytics
+#5 0.516 + head -1
+#5 0.778 SURUM analitik: Analytics reporting disabled. In order to enable it, run: dart --enable-analytics
+#5 0.778 + echo SURUM analitik: Analytics reporting disabled. In order to enable it, run: dart --enable-analytics
+#5 DONE 1.2s
+
+#6 exporting to image
+#6 exporting layers
+#6 exporting layers 0.2s done
+#6 exporting manifest sha256:20eb8cb59a4b407b94a9d004cbccb76c35f03e60bfa89d45a0b4428b676df6fe 0.0s done
+#6 exporting config sha256:903c99fecb51e914e4cd7b60555b0a621c6e79868e0dd40fa5f38a7dfb75a69a 0.0s done
+#6 exporting attestation manifest sha256:d5769862849a7b5ff08d72db86f76f8ccc981de4fc0fad60f76907669778c22c
+#6 exporting attestation manifest sha256:d5769862849a7b5ff08d72db86f76f8ccc981de4fc0fad60f76907669778c22c 0.1s done
+#6 exporting manifest list sha256:ea785da036e5c926a7afe8e554dcaa0fa7f31dd13e1aba4f1163168994f6f643 0.0s done
+#6 naming to docker.io/library/pq-a09-env-dart:1.0
+#6 naming to docker.io/library/pq-a09-env-dart:1.0 done
+#6 unpacking to docker.io/library/pq-a09-env-dart:1.0 0.1s done
+#6 DONE 0.5s

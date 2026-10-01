@@ -1,0 +1,4 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"><modelVersion>4.0.0</modelVersion>
+<groupId>pq.a09</groupId><artifactId>ortam-deneme</artifactId><version>0</version><packaging>jar</packaging><dependencies>
+<dependency><groupId>at.asitplus.wallet</groupId><artifactId>vck-jvm</artifactId><version>7.0.1</version></dependency>
+</dependencies></project>

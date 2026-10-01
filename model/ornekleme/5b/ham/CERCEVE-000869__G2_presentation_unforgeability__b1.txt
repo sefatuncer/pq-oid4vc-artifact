@@ -1,0 +1,10 @@
+maude tool: 'maude'
+ checking version: 3.5.1. OK.
+ checking installation: OK.
+[Theory Ornek_CERCEVE_000869] Theory loaded
+[Theory Ornek_CERCEVE_000869] Theory translated
+[Theory Ornek_CERCEVE_000869] Derivation checks started
+[Theory Ornek_CERCEVE_000869] Derivation checks ended
+[Theory Ornek_CERCEVE_000869] Theory closed
+[Saturating Sources] Step 1 (Max 5)
+[Saturating Sources] Done

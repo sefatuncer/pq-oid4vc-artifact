@@ -1,0 +1,16 @@
+baslangic	2026-09-25T12:35:46Z
+hedef	COSE-014
+ekosistem	npm
+paket	cose-js
+istenen_surum	0.9.0
+arac	node v24.21.0; npm 11.19.0; node-openssl 3.5.8
+kilit_dosyasi	package-lock.json
+kilit_sha256	3ac9b90bd5d1e5efe9db9bc3633942f61a4b9b4e3d05e448d1817d8f0f73baaf
+bagimlilik_sayisi	19
+kurulan_surum	0.9.0
+paket_ozeti	sha512-iYQvus+3LmjqXE2VkNKPQMZ5x+frSrk7WfSB7asTHYqpBuAG1ezdUEqJ5lXDuGoLbOSDOFAIgslawjkI2fX/hQ==
+commit	421bcaa5dded58890d00243c91b9f7155a613458
+commit_kaynagi	npm gitHead
+lisans_kayit	Apache-2.0
+ice_aktar	basarili
+bitis	2026-09-25T12:35:49Z

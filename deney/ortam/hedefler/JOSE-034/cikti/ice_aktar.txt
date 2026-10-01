@@ -1,0 +1,3 @@
+paket github.com/dvsekhvalnov/jose2go baglandi
+sembol Decode func(string, interface {}) (string, map[string]interface {}, error)
+sembol RegisterJws func(jose.JwsAlgorithm)

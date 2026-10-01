@@ -1,0 +1,1092 @@
+maude tool: 'maude'
+ checking version: 3.5.1. OK.
+ checking installation: OK.
+[Theory Mg_Yol] Theory loaded
+[Theory Mg_Yol] Theory translated
+[Theory Mg_Yol] Derivation checks started
+[Theory Mg_Yol] Derivation checks ended
+[Theory Mg_Yol] Theory closed
+[Saturating Sources] Step 1 (Max 5)
+[Saturating Sources] Done
+theory Mg_Yol
+
+begin
+
+// Function signature and definition of the equational theory E
+
+functions: fst/1, pair/2, pk/1, sign/2, snd/1, true/0, verify/3
+equations:
+    fst(<x.1, x.2>) = x.1,
+    snd(<x.1, x.2>) = x.2,
+    verify(sign(x.1, x.2), x.1, pk(x.2)) = true
+
+restriction Equality:
+  "∀ x y #i. (Eq( x, y ) @ #i) ⇒ (x = y)"
+  // safety formula
+
+  /*
+  expanded formula:
+  "∀ x y #i. (Eq( x, y ) @ #i) ⇒ (x = y)"
+  */
+
+restriction Unique:
+  "∀ x #i #j. ((Unique( x ) @ #i) ∧ (Unique( x ) @ #j)) ⇒ (#i = #j)"
+  // safety formula
+
+  /*
+  expanded formula:
+  "∀ x #i #j. ((Unique( x ) @ #i) ∧ (Unique( x ) @ #j)) ⇒ (#i = #j)"
+  */
+
+restriction ClassicalIssuanceUntilSunset:
+  "∀ X #i.
+    (IssueClassical( X ) @ #i) ⇒ (¬(∃ #s. (Sunset( X ) @ #s) ∧ (#s < #i)))"
+  // safety formula
+
+  /*
+  expanded formula:
+  "∀ X #i.
+    (IssueClassical( X ) @ #i) ⇒ (¬(∃ #s. (Sunset( X ) @ #s) ∧ (#s < #i)))"
+  */
+
+restriction PQIssuanceAfterMigrate:
+  "∀ X #i. (IssuePQ( X ) @ #i) ⇒ (∃ #m. (Migrate( X ) @ #m) ∧ (#m < #i))"
+
+  /*
+  expanded formula:
+  "∀ X #i. (IssuePQ( X ) @ #i) ⇒ (∃ #m. (Migrate( X ) @ #m) ∧ (#m < #i))"
+  */
+
+restriction CacheEnforced:
+  "∀ V I #k #j.
+    (((SeenPQReq( V, I ) @ #k) ∧ (NoPolicy( V, I ) @ #j)) ∧ (#k < #j)) ⇒
+    (∃ #x. ((CacheEnd( V, I ) @ #x) ∧ (#k < #x)) ∧ (#x < #j))"
+
+  /*
+  expanded formula:
+  "∀ V I #k #j.
+    (((SeenPQReq( V, I ) @ #k) ∧ (NoPolicy( V, I ) @ #j)) ∧ (#k < #j)) ⇒
+    (∃ #x. ((CacheEnd( V, I ) @ #x) ∧ (#k < #x)) ∧ (#x < #j))"
+  */
+
+restriction SunsetAfterMigrate:
+  "∀ E #s. (Sunset( E ) @ #s) ⇒ (∃ #m. (Migrate( E ) @ #m) ∧ (#m < #s))"
+
+  /*
+  expanded formula:
+  "∀ E #s. (Sunset( E ) @ #s) ⇒ (∃ #m. (Migrate( E ) @ #m) ∧ (#m < #s))"
+  */
+
+restriction ReportNone:
+  "∀ E #r.
+    (StateIs( E, 'none' ) @ #r) ⇒ (¬(∃ #m. (Migrate( E ) @ #m) ∧ (#m < #r)))"
+  // safety formula
+
+  /*
+  expanded formula:
+  "∀ E #r.
+    (StateIs( E, 'none' ) @ #r) ⇒ (¬(∃ #m. (Migrate( E ) @ #m) ∧ (#m < #r)))"
+  */
+
+restriction ReportPQ:
+  "∀ E #r.
+    (StateIs( E, 'pq_required' ) @ #r) ⇒
+    ((∃ #m. (Migrate( E ) @ #m) ∧ (#m < #r)) ∧
+     (¬(∃ #s. (Sunset( E ) @ #s) ∧ (#s < #r))))"
+
+  /*
+  expanded formula:
+  "∀ E #r.
+    (StateIs( E, 'pq_required' ) @ #r) ⇒
+    ((∃ #m. (Migrate( E ) @ #m) ∧ (#m < #r)) ∧
+     (¬(∃ #s. (Sunset( E ) @ #s) ∧ (#s < #r))))"
+  */
+
+restriction ReportRetired:
+  "∀ E #r.
+    (StateIs( E, 'retired' ) @ #r) ⇒ (∃ #s. (Sunset( E ) @ #s) ∧ (#s < #r))"
+
+  /*
+  expanded formula:
+  "∀ E #r.
+    (StateIs( E, 'retired' ) @ #r) ⇒ (∃ #s. (Sunset( E ) @ #s) ∧ (#s < #r))"
+  */
+
+lemma G5_untimed:
+  all-traces
+  "∀ V E x #b #j.
+    ((BornMigrated( E ) @ #b) ∧ (AcceptClassical( V, E, x ) @ #j)) ⇒ (⊥)"
+/*
+guarded formula characterizing all counter-examples:
+"∃ V E x #b #j.
+  (BornMigrated( E ) @ #b) ∧ (AcceptClassical( V, E, x ) @ #j)"
+*/
+by sorry
+
+lemma G5_migrated:
+  all-traces
+  "∀ V E x #m #j.
+    (((Migrate( E ) @ #m) ∧ (AcceptClassical( V, E, x ) @ #j)) ∧ (#m < #j)) ⇒
+    (⊥)"
+/*
+guarded formula characterizing all counter-examples:
+"∃ V E x #m #j.
+  (Migrate( E ) @ #m) ∧ (AcceptClassical( V, E, x ) @ #j) ∧ #m < #j"
+*/
+by sorry
+
+lemma G5_timed:
+  all-traces
+  "∀ V E x #s #j.
+    (((Sunset( E ) @ #s) ∧ (AcceptClassical( V, E, x ) @ #j)) ∧ (#s < #j)) ⇒
+    (⊥)"
+/*
+guarded formula characterizing all counter-examples:
+"∃ V E x #s #j.
+  (Sunset( E ) @ #s) ∧ (AcceptClassical( V, E, x ) @ #j) ∧ #s < #j"
+*/
+by sorry
+
+lemma no_rollback:
+  all-traces
+  "∀ V E x #k #j.
+    (((SeenPQReq( V, E ) @ #k) ∧ (AcceptClassical( V, E, x ) @ #j)) ∧
+     (#k < #j)) ⇒
+    (⊥)"
+/*
+guarded formula characterizing all counter-examples:
+"∃ V E x #k #j.
+  (SeenPQReq( V, E ) @ #k) ∧ (AcceptClassical( V, E, x ) @ #j) ∧ #k < #j"
+*/
+by sorry
+
+lemma first_contact_downgrade:
+  exists-trace
+  "∃ V E x #m #j.
+    (((Migrate( E ) @ #m) ∧ (AcceptClassical( V, E, x ) @ #j)) ∧ (#m < #j)) ∧
+    (¬(∃ #k. SeenPQReq( V, E ) @ #k))"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ V E x #m #j.
+  (Migrate( E ) @ #m) ∧ (AcceptClassical( V, E, x ) @ #j)
+ ∧
+  (#m < #j) ∧ (∀ #k. (SeenPQReq( V, E ) @ #k) ⇒ ⊥)"
+*/
+by sorry
+
+rule (modulo E) Qday:
+   [ ] --[ Unique( 'qday' ), QdayEv( ) ]-> [ !CRQC( ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) CRQC_Break_Issuer_Classical:
+   [ !IssCl( X, k ), !CRQC( ), In( pk(k) ) ]
+  --[ Broken( <'iss_cl', X> ) ]->
+   [ Out( k ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) CRQC_Break_Classical_Anchor:
+   [ !ClAnchorSk( A, k ), !CRQC( ), In( pk(k) ) ]
+  --[ Broken( <'anchor', A> ) ]->
+   [ Out( k ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) CAM_Setup:
+   [ Fr( ~kcam ) ]
+  --[ Unique( 'setup_cam' ) ]->
+   [
+   !CASk( 'CAM', ~kcam ), !Anchor( 'CAM', pk(~kcam), 'pq' ),
+   Out( pk(~kcam) )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) ClassicalRoot_Setup:
+   [ Fr( ~kr ) ]
+  --[ Unique( 'setup_cl_root' ) ]->
+   [
+   !ClAnchorSk( 'ROOT', ~kr ), !Anchor( 'ROOT', pk(~kr), 'cl' ),
+   Out( pk(~kr) )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Issuer_Setup_Born:
+   [ !CASk( 'CAM', kcam ), Fr( ~kc ), Fr( ~kq ) ]
+  --[
+  Unique( <'iss', $I> ), Unique( <'migrate', $I> ), BornMigrated( $I ),
+  Migrate( $I ), StateChange( $I )
+  ]->
+   [
+   !IssCl( $I, ~kc ), !IssPQ( $I, ~kq ), Out( pk(~kc) ), Out( pk(~kq) ),
+   Out( <<'iss_cert', $I, pk(~kc), 'cl'>, 
+         sign(<'iss_cert', $I, pk(~kc), 'cl'>, kcam)>
+   ),
+   Out( <<'iss_cert', $I, pk(~kq), 'pq'>, 
+         sign(<'iss_cert', $I, pk(~kq), 'pq'>, kcam)>
+   )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Issuer_Setup_Migrating:
+   [ !CASk( 'CAM', kcam ), Fr( ~kc ), Fr( ~kq ) ]
+  --[ Unique( <'iss', $I> ), MigratingIssuer( $I ) ]->
+   [
+   !IssCl( $I, ~kc ), !IssPQ( $I, ~kq ), Out( pk(~kc) ), Out( pk(~kq) ),
+   Out( <<'iss_cert', $I, pk(~kc), 'cl'>, 
+         sign(<'iss_cert', $I, pk(~kc), 'cl'>, kcam)>
+   ),
+   Out( <<'iss_cert', $I, pk(~kq), 'pq'>, 
+         sign(<'iss_cert', $I, pk(~kq), 'pq'>, kcam)>
+   )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Issuer_Setup_Legacy:
+   [ !CASk( 'CAM', kcam ), Fr( ~kc ) ]
+  --[ Unique( <'iss', $L> ), Legacy( $L ) ]->
+   [
+   !IssCl( $L, ~kc ), Out( pk(~kc) ),
+   Out( <<'iss_cert', $L, pk(~kc), 'cl'>, 
+         sign(<'iss_cert', $L, pk(~kc), 'cl'>, kcam)>
+   )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Migrate:
+   [ !IssPQ( I, kq ) ]
+  --[ Unique( <'migrate', I> ), Migrate( I ), StateChange( I ) ]->
+   [ ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Sunset:
+   [ !IssPQ( I, kq ) ]
+  --[ Unique( <'sunset', I> ), Sunset( I ), StateChange( I ) ]->
+   [ ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Issue_Classical:
+   [ !IssCl( X, kc ), Fr( ~c ) ]
+  --[ Issued( X, ~c ), IssueClassical( X ) ]->
+   [
+   Out( <<'cred', X, ~c, 'nocommit'>, sign(<'cred', X, ~c, 'nocommit'>, kc)>
+   )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Issue_PQ:
+   [ !IssPQ( I, kq ), Fr( ~c ) ]
+  --[ Issued( I, ~c ), IssuePQ( I ) ]->
+   [ Out( <<'cred', I, ~c, 'commit'>, sign(<'cred', I, ~c, 'commit'>, kq)> )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Acc1_Classical:
+   [
+   !Anchor( A, pkA, aA ), In( <<'iss_cert', I, pkI, 'cl'>, s2> ),
+   In( <<'cred', I, c, 'nocommit'>, s3> )
+   ]
+  --[
+  Eq( verify(s2, <'iss_cert', I, pkI, 'cl'>, pkA), true ),
+  Eq( verify(s3, <'cred', I, c, 'nocommit'>, pkI), true ),
+  NoPolicy( $V, I ), UseClKey( I ), Accept( $V, I, c ),
+  AcceptClassical( $V, I, c )
+  ]->
+   [ ]
+
+  /*
+  rule (modulo AC) Acc1_Classical:
+     [
+     !Anchor( A, pkA, aA ), In( <<'iss_cert', I, pkI, 'cl'>, s2> ),
+     In( <<'cred', I, c, 'nocommit'>, s3> )
+     ]
+    --[
+    Eq( z, true ), Eq( z.1, true ), NoPolicy( $V, I ), UseClKey( I ),
+    Accept( $V, I, c ), AcceptClassical( $V, I, c )
+    ]->
+     [ ]
+    variants (modulo AC)
+    1. I     = I.23
+       c     = c.25
+       pkA   = pkA.26
+       pkI   = pkI.27
+       s2    = s2.28
+       s3    = s3.29
+       z     = verify(s2.28, <'iss_cert', I.23, pkI.27, 'cl'>, pkA.26)
+       z.1   = verify(s3.29, <'cred', I.23, c.25, 'nocommit'>, pkI.27)
+    
+    2. I     = I.59
+       c     = c.61
+       pkA   = pk(x.114)
+       pkI   = pkI.63
+       s2    = sign(<'iss_cert', I.59, pkI.63, 'cl'>, x.114)
+       s3    = s3.65
+       z     = true
+       z.1   = verify(s3.65, <'cred', I.59, c.61, 'nocommit'>, pkI.63)
+    
+    3. I     = I.60
+       c     = c.62
+       pkA   = pkA.63
+       pkI   = pk(x.116)
+       s2    = s2.65
+       s3    = sign(<'cred', I.60, c.62, 'nocommit'>, x.116)
+       z     = verify(s2.65, <'iss_cert', I.60, pk(x.116), 'cl'>, pkA.63)
+       z.1   = true
+    
+    4. I     = I.60
+       c     = c.62
+       pkA   = pk(x.115)
+       pkI   = pk(x.116)
+       s2    = sign(<'iss_cert', I.60, pk(x.116), 'cl'>, x.115)
+       s3    = sign(<'cred', I.60, c.62, 'nocommit'>, x.116)
+       z     = true
+       z.1   = true
+  */
+
+rule (modulo E) Acc1_PQ_Policy:
+   [
+   !Anchor( A, pkA, aA ), In( <<'iss_cert', I, pkI, 'pq'>, s2> ),
+   In( <<'cred', I, c, m>, s3> )
+   ]
+  --[
+  Eq( verify(s2, <'iss_cert', I, pkI, 'pq'>, pkA), true ),
+  Eq( verify(s3, <'cred', I, c, m>, pkI), true ), Accept( $V, I, c ),
+  AcceptPQ( $V, I, c ), EdgeAlg( $V, I, c, aA )
+  ]->
+   [ Committed( $V, I, m ) ]
+
+  /*
+  rule (modulo AC) Acc1_PQ_Policy:
+     [
+     !Anchor( A, pkA, aA ), In( <<'iss_cert', I, pkI, 'pq'>, s2> ),
+     In( <<'cred', I, c, m>, s3> )
+     ]
+    --[
+    Eq( z, true ), Eq( z.1, true ), Accept( $V, I, c ), AcceptPQ( $V, I, c ),
+    EdgeAlg( $V, I, c, aA )
+    ]->
+     [ Committed( $V, I, m ) ]
+    variants (modulo AC)
+    1. I     = I.24
+       c     = c.26
+       m     = m.27
+       pkA   = pkA.28
+       pkI   = pkI.29
+       s2    = s2.30
+       s3    = s3.31
+       z     = verify(s2.30, <'iss_cert', I.24, pkI.29, 'pq'>, pkA.28)
+       z.1   = verify(s3.31, <'cred', I.24, c.26, m.27>, pkI.29)
+    
+    2. I     = I.47
+       c     = c.49
+       m     = m.50
+       pkA   = pk(x.90)
+       pkI   = pkI.52
+       s2    = sign(<'iss_cert', I.47, pkI.52, 'pq'>, x.90)
+       s3    = s3.54
+       z     = true
+       z.1   = verify(s3.54, <'cred', I.47, c.49, m.50>, pkI.52)
+    
+    3. I     = I.48
+       c     = c.50
+       m     = m.51
+       pkA   = pkA.52
+       pkI   = pk(x.92)
+       s2    = s2.54
+       s3    = sign(<'cred', I.48, c.50, m.51>, x.92)
+       z     = verify(s2.54, <'iss_cert', I.48, pk(x.92), 'pq'>, pkA.52)
+       z.1   = true
+    
+    4. I     = I.48
+       c     = c.50
+       m     = m.51
+       pkA   = pk(x.91)
+       pkI   = pk(x.92)
+       s2    = sign(<'iss_cert', I.48, pk(x.92), 'pq'>, x.91)
+       s3    = sign(<'cred', I.48, c.50, m.51>, x.92)
+       z     = true
+       z.1   = true
+  */
+
+rule (modulo E) Acc2_Classical:
+   [
+   !Anchor( A, pkA, aA ), In( <<'int_cert', N, pkN, aN>, s1> ),
+   In( <<'iss_cert', I, pkI, 'cl'>, s2> ),
+   In( <<'cred', I, c, 'nocommit'>, s3> )
+   ]
+  --[
+  Eq( verify(s1, <'int_cert', N, pkN, aN>, pkA), true ),
+  Eq( verify(s2, <'iss_cert', I, pkI, 'cl'>, pkN), true ),
+  Eq( verify(s3, <'cred', I, c, 'nocommit'>, pkI), true ),
+  NoPolicy( $V, I ), UseClKey( I ), Accept( $V, I, c ),
+  AcceptClassical( $V, I, c )
+  ]->
+   [ ]
+
+  /*
+  rule (modulo AC) Acc2_Classical:
+     [
+     !Anchor( A, pkA, aA ), In( <<'int_cert', N, pkN, aN>, s1> ),
+     In( <<'iss_cert', I, pkI, 'cl'>, s2> ),
+     In( <<'cred', I, c, 'nocommit'>, s3> )
+     ]
+    --[
+    Eq( z, true ), Eq( z.1, true ), Eq( z.2, true ), NoPolicy( $V, I ),
+    UseClKey( I ), Accept( $V, I, c ), AcceptClassical( $V, I, c )
+    ]->
+     [ ]
+    variants (modulo AC)
+    1. I     = I.33
+       N     = N.34
+       aN    = aN.36
+       c     = c.37
+       pkA   = pkA.38
+       pkI   = pkI.39
+       pkN   = pkN.40
+       s1    = s1.41
+       s2    = s2.42
+       s3    = s3.43
+       z     = verify(s1.41, <'int_cert', N.34, pkN.40, aN.36>, pkA.38)
+       z.1   = verify(s2.42, <'iss_cert', I.33, pkI.39, 'cl'>, pkN.40)
+       z.2   = verify(s3.43, <'cred', I.33, c.37, 'nocommit'>, pkI.39)
+    
+    2. I     = I.103
+       N     = N.104
+       aN    = aN.106
+       c     = c.107
+       pkA   = pk(x.202)
+       pkI   = pkI.109
+       pkN   = pkN.110
+       s1    = sign(<'int_cert', N.104, pkN.110, aN.106>, x.202)
+       s2    = s2.112
+       s3    = s3.113
+       z     = true
+       z.1   = verify(s2.112, <'iss_cert', I.103, pkI.109, 'cl'>, pkN.110)
+       z.2   = verify(s3.113, <'cred', I.103, c.107, 'nocommit'>, pkI.109)
+    
+    3. I     = I.105
+       N     = N.106
+       aN    = aN.108
+       c     = c.109
+       pkA   = pkA.110
+       pkI   = pk(x.206)
+       pkN   = pkN.112
+       s1    = s1.113
+       s2    = s2.114
+       s3    = sign(<'cred', I.105, c.109, 'nocommit'>, x.206)
+       z     = verify(s1.113, <'int_cert', N.106, pkN.112, aN.108>, pkA.110)
+       z.1   = verify(s2.114, <'iss_cert', I.105, pk(x.206), 'cl'>, pkN.112)
+       z.2   = true
+    
+    4. I     = I.105
+       N     = N.106
+       aN    = aN.108
+       c     = c.109
+       pkA   = pk(x.205)
+       pkI   = pk(x.206)
+       pkN   = pkN.112
+       s1    = sign(<'int_cert', N.106, pkN.112, aN.108>, x.205)
+       s2    = s2.114
+       s3    = sign(<'cred', I.105, c.109, 'nocommit'>, x.206)
+       z     = true
+       z.1   = verify(s2.114, <'iss_cert', I.105, pk(x.206), 'cl'>, pkN.112)
+       z.2   = true
+    
+    5. I     = I.106
+       N     = N.107
+       aN    = aN.109
+       c     = c.110
+       pkA   = pkA.111
+       pkI   = pkI.112
+       pkN   = pk(x.208)
+       s1    = s1.114
+       s2    = sign(<'iss_cert', I.106, pkI.112, 'cl'>, x.208)
+       s3    = s3.116
+       z     = verify(s1.114, <'int_cert', N.107, pk(x.208), aN.109>, pkA.111)
+       z.1   = true
+       z.2   = verify(s3.116, <'cred', I.106, c.110, 'nocommit'>, pkI.112)
+    
+    6. I     = I.106
+       N     = N.107
+       aN    = aN.109
+       c     = c.110
+       pkA   = pkA.111
+       pkI   = pk(x.207)
+       pkN   = pk(x.208)
+       s1    = s1.114
+       s2    = sign(<'iss_cert', I.106, pk(x.207), 'cl'>, x.208)
+       s3    = sign(<'cred', I.106, c.110, 'nocommit'>, x.207)
+       z     = verify(s1.114, <'int_cert', N.107, pk(x.208), aN.109>, pkA.111)
+       z.1   = true
+       z.2   = true
+    
+    7. I     = I.106
+       N     = N.107
+       aN    = aN.109
+       c     = c.110
+       pkA   = pk(x.206)
+       pkI   = pkI.112
+       pkN   = pk(x.208)
+       s1    = sign(<'int_cert', N.107, pk(x.208), aN.109>, x.206)
+       s2    = sign(<'iss_cert', I.106, pkI.112, 'cl'>, x.208)
+       s3    = s3.116
+       z     = true
+       z.1   = true
+       z.2   = verify(s3.116, <'cred', I.106, c.110, 'nocommit'>, pkI.112)
+    
+    8. I     = I.106
+       N     = N.107
+       aN    = aN.109
+       c     = c.110
+       pkA   = pk(x.206)
+       pkI   = pk(x.207)
+       pkN   = pk(x.208)
+       s1    = sign(<'int_cert', N.107, pk(x.208), aN.109>, x.206)
+       s2    = sign(<'iss_cert', I.106, pk(x.207), 'cl'>, x.208)
+       s3    = sign(<'cred', I.106, c.110, 'nocommit'>, x.207)
+       z     = true
+       z.1   = true
+       z.2   = true
+  */
+
+rule (modulo E) Acc2_PQ_Policy:
+   [
+   !Anchor( A, pkA, aA ), In( <<'int_cert', N, pkN, 'pq'>, s1> ),
+   In( <<'iss_cert', I, pkI, 'pq'>, s2> ), In( <<'cred', I, c, m>, s3> )
+   ]
+  --[
+  Eq( verify(s1, <'int_cert', N, pkN, 'pq'>, pkA), true ),
+  Eq( verify(s2, <'iss_cert', I, pkI, 'pq'>, pkN), true ),
+  Eq( verify(s3, <'cred', I, c, m>, pkI), true ), Accept( $V, I, c ),
+  AcceptPQ( $V, I, c ), EdgeAlg( $V, I, c, aA ), EdgeAlg( $V, I, c, 'pq' )
+  ]->
+   [ Committed( $V, I, m ) ]
+
+  /*
+  rule (modulo AC) Acc2_PQ_Policy:
+     [
+     !Anchor( A, pkA, aA ), In( <<'int_cert', N, pkN, 'pq'>, s1> ),
+     In( <<'iss_cert', I, pkI, 'pq'>, s2> ), In( <<'cred', I, c, m>, s3> )
+     ]
+    --[
+    Eq( z, true ), Eq( z.1, true ), Eq( z.2, true ), Accept( $V, I, c ),
+    AcceptPQ( $V, I, c ), EdgeAlg( $V, I, c, aA ), EdgeAlg( $V, I, c, 'pq' )
+    ]->
+     [ Committed( $V, I, m ) ]
+    variants (modulo AC)
+    1. I     = I.32
+       N     = N.33
+       c     = c.35
+       m     = m.36
+       pkA   = pkA.37
+       pkI   = pkI.38
+       pkN   = pkN.39
+       s1    = s1.40
+       s2    = s2.41
+       s3    = s3.42
+       z     = verify(s1.40, <'int_cert', N.33, pkN.39, 'pq'>, pkA.37)
+       z.1   = verify(s2.41, <'iss_cert', I.32, pkI.38, 'pq'>, pkN.39)
+       z.2   = verify(s3.42, <'cred', I.32, c.35, m.36>, pkI.38)
+    
+    2. I     = I.80
+       N     = N.81
+       c     = c.83
+       m     = m.84
+       pkA   = pk(x.156)
+       pkI   = pkI.86
+       pkN   = pkN.87
+       s1    = sign(<'int_cert', N.81, pkN.87, 'pq'>, x.156)
+       s2    = s2.89
+       s3    = s3.90
+       z     = true
+       z.1   = verify(s2.89, <'iss_cert', I.80, pkI.86, 'pq'>, pkN.87)
+       z.2   = verify(s3.90, <'cred', I.80, c.83, m.84>, pkI.86)
+    
+    3. I     = I.82
+       N     = N.83
+       c     = c.85
+       m     = m.86
+       pkA   = pkA.87
+       pkI   = pk(x.160)
+       pkN   = pkN.89
+       s1    = s1.90
+       s2    = s2.91
+       s3    = sign(<'cred', I.82, c.85, m.86>, x.160)
+       z     = verify(s1.90, <'int_cert', N.83, pkN.89, 'pq'>, pkA.87)
+       z.1   = verify(s2.91, <'iss_cert', I.82, pk(x.160), 'pq'>, pkN.89)
+       z.2   = true
+    
+    4. I     = I.82
+       N     = N.83
+       c     = c.85
+       m     = m.86
+       pkA   = pk(x.159)
+       pkI   = pk(x.160)
+       pkN   = pkN.89
+       s1    = sign(<'int_cert', N.83, pkN.89, 'pq'>, x.159)
+       s2    = s2.91
+       s3    = sign(<'cred', I.82, c.85, m.86>, x.160)
+       z     = true
+       z.1   = verify(s2.91, <'iss_cert', I.82, pk(x.160), 'pq'>, pkN.89)
+       z.2   = true
+    
+    5. I     = I.83
+       N     = N.84
+       c     = c.86
+       m     = m.87
+       pkA   = pkA.88
+       pkI   = pkI.89
+       pkN   = pk(x.162)
+       s1    = s1.91
+       s2    = sign(<'iss_cert', I.83, pkI.89, 'pq'>, x.162)
+       s3    = s3.93
+       z     = verify(s1.91, <'int_cert', N.84, pk(x.162), 'pq'>, pkA.88)
+       z.1   = true
+       z.2   = verify(s3.93, <'cred', I.83, c.86, m.87>, pkI.89)
+    
+    6. I     = I.83
+       N     = N.84
+       c     = c.86
+       m     = m.87
+       pkA   = pkA.88
+       pkI   = pk(x.161)
+       pkN   = pk(x.162)
+       s1    = s1.91
+       s2    = sign(<'iss_cert', I.83, pk(x.161), 'pq'>, x.162)
+       s3    = sign(<'cred', I.83, c.86, m.87>, x.161)
+       z     = verify(s1.91, <'int_cert', N.84, pk(x.162), 'pq'>, pkA.88)
+       z.1   = true
+       z.2   = true
+    
+    7. I     = I.83
+       N     = N.84
+       c     = c.86
+       m     = m.87
+       pkA   = pk(x.160)
+       pkI   = pkI.89
+       pkN   = pk(x.162)
+       s1    = sign(<'int_cert', N.84, pk(x.162), 'pq'>, x.160)
+       s2    = sign(<'iss_cert', I.83, pkI.89, 'pq'>, x.162)
+       s3    = s3.93
+       z     = true
+       z.1   = true
+       z.2   = verify(s3.93, <'cred', I.83, c.86, m.87>, pkI.89)
+    
+    8. I     = I.83
+       N     = N.84
+       c     = c.86
+       m     = m.87
+       pkA   = pk(x.160)
+       pkI   = pk(x.161)
+       pkN   = pk(x.162)
+       s1    = sign(<'int_cert', N.84, pk(x.162), 'pq'>, x.160)
+       s2    = sign(<'iss_cert', I.83, pk(x.161), 'pq'>, x.162)
+       s3    = sign(<'cred', I.83, c.86, m.87>, x.161)
+       z     = true
+       z.1   = true
+       z.2   = true
+  */
+
+rule (modulo E) Acc2_PQ_NoPolicy:
+   [
+   !Anchor( A, pkA, aA ), In( <<'int_cert', N, pkN, 'cl'>, s1> ),
+   In( <<'iss_cert', I, pkI, 'pq'>, s2> ),
+   In( <<'cred', I, c, 'nocommit'>, s3> )
+   ]
+  --[
+  Eq( verify(s1, <'int_cert', N, pkN, 'cl'>, pkA), true ),
+  Eq( verify(s2, <'iss_cert', I, pkI, 'pq'>, pkN), true ),
+  Eq( verify(s3, <'cred', I, c, 'nocommit'>, pkI), true ),
+  NoPolicy( $V, I ), Accept( $V, I, c ), AcceptPQ( $V, I, c ),
+  EdgeAlg( $V, I, c, aA ), EdgeAlg( $V, I, c, 'cl' )
+  ]->
+   [ ]
+
+  /*
+  rule (modulo AC) Acc2_PQ_NoPolicy:
+     [
+     !Anchor( A, pkA, aA ), In( <<'int_cert', N, pkN, 'cl'>, s1> ),
+     In( <<'iss_cert', I, pkI, 'pq'>, s2> ),
+     In( <<'cred', I, c, 'nocommit'>, s3> )
+     ]
+    --[
+    Eq( z, true ), Eq( z.1, true ), Eq( z.2, true ), NoPolicy( $V, I ),
+    Accept( $V, I, c ), AcceptPQ( $V, I, c ), EdgeAlg( $V, I, c, aA ),
+    EdgeAlg( $V, I, c, 'cl' )
+    ]->
+     [ ]
+    variants (modulo AC)
+    1. I     = I.32
+       N     = N.33
+       c     = c.35
+       pkA   = pkA.36
+       pkI   = pkI.37
+       pkN   = pkN.38
+       s1    = s1.39
+       s2    = s2.40
+       s3    = s3.41
+       z     = verify(s1.39, <'int_cert', N.33, pkN.38, 'cl'>, pkA.36)
+       z.1   = verify(s2.40, <'iss_cert', I.32, pkI.37, 'pq'>, pkN.38)
+       z.2   = verify(s3.41, <'cred', I.32, c.35, 'nocommit'>, pkI.37)
+    
+    2. I     = I.121
+       N     = N.122
+       c     = c.124
+       pkA   = pk(x.238)
+       pkI   = pkI.126
+       pkN   = pkN.127
+       s1    = sign(<'int_cert', N.122, pkN.127, 'cl'>, x.238)
+       s2    = s2.129
+       s3    = s3.130
+       z     = true
+       z.1   = verify(s2.129, <'iss_cert', I.121, pkI.126, 'pq'>, pkN.127)
+       z.2   = verify(s3.130, <'cred', I.121, c.124, 'nocommit'>, pkI.126)
+    
+    3. I     = I.123
+       N     = N.124
+       c     = c.126
+       pkA   = pkA.127
+       pkI   = pk(x.242)
+       pkN   = pkN.129
+       s1    = s1.130
+       s2    = s2.131
+       s3    = sign(<'cred', I.123, c.126, 'nocommit'>, x.242)
+       z     = verify(s1.130, <'int_cert', N.124, pkN.129, 'cl'>, pkA.127)
+       z.1   = verify(s2.131, <'iss_cert', I.123, pk(x.242), 'pq'>, pkN.129)
+       z.2   = true
+    
+    4. I     = I.123
+       N     = N.124
+       c     = c.126
+       pkA   = pk(x.241)
+       pkI   = pk(x.242)
+       pkN   = pkN.129
+       s1    = sign(<'int_cert', N.124, pkN.129, 'cl'>, x.241)
+       s2    = s2.131
+       s3    = sign(<'cred', I.123, c.126, 'nocommit'>, x.242)
+       z     = true
+       z.1   = verify(s2.131, <'iss_cert', I.123, pk(x.242), 'pq'>, pkN.129)
+       z.2   = true
+    
+    5. I     = I.124
+       N     = N.125
+       c     = c.127
+       pkA   = pkA.128
+       pkI   = pkI.129
+       pkN   = pk(x.244)
+       s1    = s1.131
+       s2    = sign(<'iss_cert', I.124, pkI.129, 'pq'>, x.244)
+       s3    = s3.133
+       z     = verify(s1.131, <'int_cert', N.125, pk(x.244), 'cl'>, pkA.128)
+       z.1   = true
+       z.2   = verify(s3.133, <'cred', I.124, c.127, 'nocommit'>, pkI.129)
+    
+    6. I     = I.124
+       N     = N.125
+       c     = c.127
+       pkA   = pkA.128
+       pkI   = pk(x.243)
+       pkN   = pk(x.244)
+       s1    = s1.131
+       s2    = sign(<'iss_cert', I.124, pk(x.243), 'pq'>, x.244)
+       s3    = sign(<'cred', I.124, c.127, 'nocommit'>, x.243)
+       z     = verify(s1.131, <'int_cert', N.125, pk(x.244), 'cl'>, pkA.128)
+       z.1   = true
+       z.2   = true
+    
+    7. I     = I.124
+       N     = N.125
+       c     = c.127
+       pkA   = pk(x.242)
+       pkI   = pkI.129
+       pkN   = pk(x.244)
+       s1    = sign(<'int_cert', N.125, pk(x.244), 'cl'>, x.242)
+       s2    = sign(<'iss_cert', I.124, pkI.129, 'pq'>, x.244)
+       s3    = s3.133
+       z     = true
+       z.1   = true
+       z.2   = verify(s3.133, <'cred', I.124, c.127, 'nocommit'>, pkI.129)
+    
+    8. I     = I.124
+       N     = N.125
+       c     = c.127
+       pkA   = pk(x.242)
+       pkI   = pk(x.243)
+       pkN   = pk(x.244)
+       s1    = sign(<'int_cert', N.125, pk(x.244), 'cl'>, x.242)
+       s2    = sign(<'iss_cert', I.124, pk(x.243), 'pq'>, x.244)
+       s3    = sign(<'cred', I.124, c.127, 'nocommit'>, x.243)
+       z     = true
+       z.1   = true
+       z.2   = true
+  */
+
+rule (modulo E) Cache_Set:
+   [ Committed( V, I, 'commit' ) ] --[ SeenPQReq( V, I ) ]-> [ ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Cache_Clear:
+   [ Committed( V, I, 'zero' ) ] --[ CacheEnd( V, I ) ]-> [ ]
+
+  /* has exactly the trivial AC variant */
+
+lemma executable:
+  exists-trace
+  "∃ V I c #m #j.
+    ((Migrate( I ) @ #m) ∧ (AcceptPQ( V, I, c ) @ #j)) ∧ (#m < #j)"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ V I c #m #j.
+  (Migrate( I ) @ #m) ∧ (AcceptPQ( V, I, c ) @ #j) ∧ #m < #j"
+*/
+by sorry
+
+lemma executable_legacy:
+  exists-trace
+  "∃ V L c #l #j. (Legacy( L ) @ #l) ∧ (AcceptClassical( V, L, c ) @ #j)"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ V L c #l #j. (Legacy( L ) @ #l) ∧ (AcceptClassical( V, L, c ) @ #j)"
+*/
+by sorry
+
+lemma executable_pre_migration:
+  exists-trace
+  "∃ V I c #s #j.
+    ((MigratingIssuer( I ) @ #s) ∧ (AcceptClassical( V, I, c ) @ #j)) ∧
+    (¬(∃ #m. Migrate( I ) @ #m))"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ V I c #s #j.
+  (MigratingIssuer( I ) @ #s) ∧ (AcceptClassical( V, I, c ) @ #j)
+ ∧
+  ∀ #m. (Migrate( I ) @ #m) ⇒ ⊥"
+*/
+by sorry
+
+lemma executable_lifecycle:
+  exists-trace
+  "∃ V I c #m #s #j.
+    (((Migrate( I ) @ #m) ∧ (Sunset( I ) @ #s)) ∧
+     (AcceptPQ( V, I, c ) @ #j)) ∧
+    (#s < #j)"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ V I c #m #s #j.
+  (Migrate( I ) @ #m) ∧ (Sunset( I ) @ #s) ∧ (AcceptPQ( V, I, c ) @ #j)
+ ∧
+  #s < #j"
+*/
+simplify
+solve( !IssPQ( I, kq ) ▶₀ #s )
+  case Issuer_Setup_Born
+  solve( Migrate( $I ) @ #m.2 )
+    case Issuer_Setup_Born
+    solve( AcceptPQ( V, $I, c ) @ #j )
+      case Acc1_PQ_Policy
+      solve( !Anchor( A, pk(x), aA ) ▶₀ #j )
+        case CAM_Setup
+        solve( Migrate( $I ) @ #m.1 )
+          case Issuer_Setup_Born
+          solve( Migrate( $I ) @ #m.1 )
+            case Issuer_Setup_Born
+            solve( !KU( sign(<'iss_cert', $I, pk(x), 'pq'>, ~kcam) ) @ #vk.11 )
+              case Issuer_Setup_Born
+              solve( !KU( sign(<'cred', $I, c, m>, ~kq) ) @ #vk.16 )
+                case Issue_PQ
+                solve( Migrate( $I ) @ #m )
+                  case Issuer_Setup_Born
+                  solve( !KU( ~c ) @ #vk.15 )
+                    case Issue_PQ
+                    solve( Migrate( $I ) @ #m.1 )
+                      case Issuer_Setup_Born
+                      solve( !KU( pk(~kq) ) @ #vk.13 )
+                        case Issuer_Setup_Born_case_1
+                        SOLVED // trace found
+                      qed
+                    qed
+                  qed
+                qed
+              qed
+            qed
+          qed
+        qed
+      qed
+    qed
+  qed
+qed
+
+lemma executable_learn:
+  exists-trace "∃ V I #k. SeenPQReq( V, I ) @ #k"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ V I #k. (SeenPQReq( V, I ) @ #k)"
+*/
+by sorry
+
+lemma attack_needs_crqc:
+  all-traces
+  "∀ V I c #m #j.
+    (((Migrate( I ) @ #m) ∧ (Accept( V, I, c ) @ #j)) ∧ (#m < #j)) ⇒
+    ((∃ #i. (Issued( I, c ) @ #i) ∧ (#i < #j)) ∨
+     (∃ k #b. (Broken( k ) @ #b) ∧ (#b < #j)))"
+/*
+guarded formula characterizing all counter-examples:
+"∃ V I c #m #j.
+  (Migrate( I ) @ #m) ∧ (Accept( V, I, c ) @ #j)
+ ∧
+  (#m < #j) ∧
+  (∀ #i. (Issued( I, c ) @ #i) ⇒ ¬(#i < #j)) ∧
+  (∀ k #b. (Broken( k ) @ #b) ⇒ ¬(#b < #j))"
+*/
+by sorry
+
+lemma G1_claims_unforgeability:
+  all-traces
+  "∀ V I c #m #j.
+    (((Migrate( I ) @ #m) ∧ (Accept( V, I, c ) @ #j)) ∧ (#m < #j)) ⇒
+    (∃ #i. (Issued( I, c ) @ #i) ∧ (#i < #j))"
+/*
+guarded formula characterizing all counter-examples:
+"∃ V I c #m #j.
+  (Migrate( I ) @ #m) ∧ (Accept( V, I, c ) @ #j)
+ ∧
+  (#m < #j) ∧ (∀ #i. (Issued( I, c ) @ #i) ⇒ ¬(#i < #j))"
+*/
+by sorry
+
+lemma G1_learned:
+  all-traces
+  "∀ V I c #k #j.
+    (((SeenPQReq( V, I ) @ #k) ∧ (Accept( V, I, c ) @ #j)) ∧ (#k < #j)) ⇒
+    (∃ #i. (Issued( I, c ) @ #i) ∧ (#i < #j))"
+/*
+guarded formula characterizing all counter-examples:
+"∃ V I c #k #j.
+  (SeenPQReq( V, I ) @ #k) ∧ (Accept( V, I, c ) @ #j)
+ ∧
+  (#k < #j) ∧ (∀ #i. (Issued( I, c ) @ #i) ⇒ ¬(#i < #j))"
+*/
+by sorry
+
+lemma G1_learned_pq:
+  all-traces
+  "∀ V I c #k #j.
+    (((SeenPQReq( V, I ) @ #k) ∧ (AcceptPQ( V, I, c ) @ #j)) ∧ (#k < #j)) ⇒
+    (∃ #i. (Issued( I, c ) @ #i) ∧ (#i < #j))"
+/*
+guarded formula characterizing all counter-examples:
+"∃ V I c #k #j.
+  (SeenPQReq( V, I ) @ #k) ∧ (AcceptPQ( V, I, c ) @ #j)
+ ∧
+  (#k < #j) ∧ (∀ #i. (Issued( I, c ) @ #i) ⇒ ¬(#i < #j))"
+*/
+by sorry
+
+lemma no_rollback_path:
+  all-traces
+  "∀ V I c #k #j.
+    ((((SeenPQReq( V, I ) @ #k) ∧ (AcceptPQ( V, I, c ) @ #j)) ∧
+      (EdgeAlg( V, I, c, 'cl' ) @ #j)) ∧
+     (#k < #j)) ⇒
+    (⊥)"
+/*
+guarded formula characterizing all counter-examples:
+"∃ V I c #k #j.
+  (SeenPQReq( V, I ) @ #k) ∧
+  (AcceptPQ( V, I, c ) @ #j) ∧
+  (EdgeAlg( V, I, c, 'cl' ) @ #j)
+ ∧
+  #k < #j"
+*/
+by sorry
+
+lemma M_downgrade_s1:
+  exists-trace
+  "∃ V I c #m #j.
+    (((Migrate( I ) @ #m) ∧ (AcceptClassical( V, I, c ) @ #j)) ∧ (#m < #j)) ∧
+    (¬(∃ #q. QdayEv( ) @ #q))"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ V I c #m #j.
+  (Migrate( I ) @ #m) ∧ (AcceptClassical( V, I, c ) @ #j)
+ ∧
+  (#m < #j) ∧ (∀ #q. (QdayEv( ) @ #q) ⇒ ⊥)"
+*/
+by sorry
+
+lemma M_forgery_crqc:
+  exists-trace
+  "∃ V I c k #m #j #b.
+    ((((Migrate( I ) @ #m) ∧ (Accept( V, I, c ) @ #j)) ∧ (#m < #j)) ∧
+     (Broken( k ) @ #b)) ∧
+    (¬(∃ #i. Issued( I, c ) @ #i))"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ V I c k #m #j #b.
+  (Migrate( I ) @ #m) ∧ (Accept( V, I, c ) @ #j) ∧ (Broken( k ) @ #b)
+ ∧
+  (#m < #j) ∧ (∀ #i. (Issued( I, c ) @ #i) ⇒ ⊥)"
+*/
+by sorry
+
+lemma M_cache_cleared:
+  exists-trace
+  "∃ V I #k #x.
+    ((SeenPQReq( V, I ) @ #k) ∧ (CacheEnd( V, I ) @ #x)) ∧ (#k < #x)"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ V I #k #x.
+  (SeenPQReq( V, I ) @ #k) ∧ (CacheEnd( V, I ) @ #x) ∧ #k < #x"
+*/
+by sorry
+
+/* All wellformedness checks were successful. */
+
+/*
+Generated from:
+Tamarin version 1.12.0
+Maude version 3.5.1
+Git revision: 82780bbaf3328a45f624ddb41e51bf75425f851c (with uncommited changes), branch: master
+Compiled at: 2026-03-07 14:22:39.174278293 UTC
+*/
+
+end
+
+==============================================================================
+summary of summaries:
+
+analyzed: /work/modeller/Mg_yol.spthy
+
+  processing time: 4.23s
+  
+  G5_untimed (all-traces): analysis incomplete (1 steps)
+  G5_migrated (all-traces): analysis incomplete (1 steps)
+  G5_timed (all-traces): analysis incomplete (1 steps)
+  no_rollback (all-traces): analysis incomplete (1 steps)
+  first_contact_downgrade (exists-trace): analysis incomplete (1 steps)
+  executable (exists-trace): analysis incomplete (1 steps)
+  executable_legacy (exists-trace): analysis incomplete (1 steps)
+  executable_pre_migration (exists-trace): analysis incomplete (1 steps)
+  executable_lifecycle (exists-trace): verified (14 steps)
+  executable_learn (exists-trace): analysis incomplete (1 steps)
+  attack_needs_crqc (all-traces): analysis incomplete (1 steps)
+  G1_claims_unforgeability (all-traces): analysis incomplete (1 steps)
+  G1_learned (all-traces): analysis incomplete (1 steps)
+  G1_learned_pq (all-traces): analysis incomplete (1 steps)
+  no_rollback_path (all-traces): analysis incomplete (1 steps)
+  M_downgrade_s1 (exists-trace): analysis incomplete (1 steps)
+  M_forgery_crqc (exists-trace): analysis incomplete (1 steps)
+  M_cache_cleared (exists-trace): analysis incomplete (1 steps)
+
+==============================================================================

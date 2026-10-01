@@ -1,0 +1,15 @@
+{
+ "kat": "KAT-1",
+ "clingo": "5.8.2",
+ "cekirdek_sha256_once": "a32372a7c646274ce672c9586e25b34f75f4febb2f966596cc97e7afb89e0b38",
+ "cekirdek_sha256_sonra": "a32372a7c646274ce672c9586e25b34f75f4febb2f966596cc97e7afb89e0b38",
+ "cekirdek_commit_45cbd0f_ile_ayni": true,
+ "taban_sha256": {
+  "kat1_dnssec.lp": "b6e0ac67dff72d2060712a99e33edeb4d6b42f8e97bb956826c3da2e254c2692"
+ },
+ "hucre": 15,
+ "hucre_uyum": 15,
+ "mutasyon_kosusu": 7,
+ "mutasyon_dondu": 7,
+ "en_uzun_s": 0.0035
+}

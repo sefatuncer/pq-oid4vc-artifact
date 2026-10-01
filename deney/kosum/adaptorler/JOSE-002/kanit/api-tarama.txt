@@ -1,0 +1,230 @@
+# JOSE-002 JWT (jwt-dotnet) 11.1.0 — API taraması (sözleşme §5.1; derlenmiş paket: yansıma ile genel türler/üyeler/sabitler)
+# imaj: a10-jose-002:1 (sha256:a232c1f7f9a4e3b2041e771396cd81c2bc319fef451b81d9c0c00f57bc3ad25d)
+# komut: docker run --rm --network none a10-jose-002:1 adaptor tara 'Algorithm|Factory|Validat|Verify|EdDSA|Ed25519|MlDsa|ML-DSA|Composite|Jwk|Crit|Required|Allow|DateTimeProvider'  (TARA_DERLEMELER=JWT)
+
+## derleme JWT 11.0.0.0 (11.1.0)
+tip JWT.Algorithms.CertificateAlgorithm`1
+  uye Method JWT.Algorithms.CertificateAlgorithm`1.get_Name
+  uye Method JWT.Algorithms.CertificateAlgorithm`1.get_HashAlgorithmName
+  uye Method JWT.Algorithms.CertificateAlgorithm`1.Sign
+  uye Method JWT.Algorithms.CertificateAlgorithm`1.Sign
+  uye Method JWT.Algorithms.CertificateAlgorithm`1.Verify
+  uye Property JWT.Algorithms.CertificateAlgorithm`1.Name
+  uye Property JWT.Algorithms.CertificateAlgorithm`1.HashAlgorithmName
+tip JWT.Algorithms.DelegateAlgorithmFactory
+  uye Method JWT.Algorithms.DelegateAlgorithmFactory.Create
+  uye Constructor JWT.Algorithms.DelegateAlgorithmFactory..ctor
+  uye Constructor JWT.Algorithms.DelegateAlgorithmFactory..ctor
+  uye Constructor JWT.Algorithms.DelegateAlgorithmFactory..ctor
+  uye Constructor JWT.Algorithms.DelegateAlgorithmFactory..ctor
+tip JWT.Algorithms.ECDSAAlgorithm
+tip JWT.Algorithms.ECDSAAlgorithmFactory
+  uye Constructor JWT.Algorithms.ECDSAAlgorithmFactory..ctor
+  uye Constructor JWT.Algorithms.ECDSAAlgorithmFactory..ctor
+  uye Constructor JWT.Algorithms.ECDSAAlgorithmFactory..ctor
+tip JWT.Algorithms.ES256Algorithm
+  uye Method JWT.Algorithms.ES256Algorithm.get_Name
+  uye Method JWT.Algorithms.ES256Algorithm.get_HashAlgorithmName
+  uye Constructor JWT.Algorithms.ES256Algorithm..ctor
+  uye Constructor JWT.Algorithms.ES256Algorithm..ctor
+  uye Constructor JWT.Algorithms.ES256Algorithm..ctor
+  uye Property JWT.Algorithms.ES256Algorithm.Name
+  uye Property JWT.Algorithms.ES256Algorithm.HashAlgorithmName
+tip JWT.Algorithms.ES384Algorithm
+  uye Method JWT.Algorithms.ES384Algorithm.get_Name
+  uye Method JWT.Algorithms.ES384Algorithm.get_HashAlgorithmName
+  uye Constructor JWT.Algorithms.ES384Algorithm..ctor
+  uye Constructor JWT.Algorithms.ES384Algorithm..ctor
+  uye Constructor JWT.Algorithms.ES384Algorithm..ctor
+  uye Property JWT.Algorithms.ES384Algorithm.Name
+  uye Property JWT.Algorithms.ES384Algorithm.HashAlgorithmName
+tip JWT.Algorithms.ES512Algorithm
+  uye Method JWT.Algorithms.ES512Algorithm.get_Name
+  uye Method JWT.Algorithms.ES512Algorithm.get_HashAlgorithmName
+  uye Constructor JWT.Algorithms.ES512Algorithm..ctor
+  uye Constructor JWT.Algorithms.ES512Algorithm..ctor
+  uye Constructor JWT.Algorithms.ES512Algorithm..ctor
+  uye Property JWT.Algorithms.ES512Algorithm.Name
+  uye Property JWT.Algorithms.ES512Algorithm.HashAlgorithmName
+tip JWT.Algorithms.GenericAlgorithmFactory`1
+  uye Method JWT.Algorithms.GenericAlgorithmFactory`1.Create
+  uye Constructor JWT.Algorithms.GenericAlgorithmFactory`1..ctor
+tip JWT.Algorithms.HMACSHA256Algorithm
+  uye Method JWT.Algorithms.HMACSHA256Algorithm.get_Name
+  uye Method JWT.Algorithms.HMACSHA256Algorithm.get_HashAlgorithmName
+  uye Constructor JWT.Algorithms.HMACSHA256Algorithm..ctor
+  uye Property JWT.Algorithms.HMACSHA256Algorithm.Name
+  uye Property JWT.Algorithms.HMACSHA256Algorithm.HashAlgorithmName
+tip JWT.Algorithms.HMACSHA384Algorithm
+  uye Method JWT.Algorithms.HMACSHA384Algorithm.get_Name
+  uye Method JWT.Algorithms.HMACSHA384Algorithm.get_HashAlgorithmName
+  uye Constructor JWT.Algorithms.HMACSHA384Algorithm..ctor
+  uye Property JWT.Algorithms.HMACSHA384Algorithm.Name
+  uye Property JWT.Algorithms.HMACSHA384Algorithm.HashAlgorithmName
+tip JWT.Algorithms.HMACSHA512Algorithm
+  uye Method JWT.Algorithms.HMACSHA512Algorithm.get_Name
+  uye Method JWT.Algorithms.HMACSHA512Algorithm.get_HashAlgorithmName
+  uye Constructor JWT.Algorithms.HMACSHA512Algorithm..ctor
+  uye Property JWT.Algorithms.HMACSHA512Algorithm.Name
+  uye Property JWT.Algorithms.HMACSHA512Algorithm.HashAlgorithmName
+tip JWT.Algorithms.HMACSHAAlgorithm
+  uye Method JWT.Algorithms.HMACSHAAlgorithm.get_Name
+  uye Method JWT.Algorithms.HMACSHAAlgorithm.get_HashAlgorithmName
+  uye Method JWT.Algorithms.HMACSHAAlgorithm.Sign
+  uye Property JWT.Algorithms.HMACSHAAlgorithm.Name
+  uye Property JWT.Algorithms.HMACSHAAlgorithm.HashAlgorithmName
+tip JWT.Algorithms.HMACSHAAlgorithmFactory
+  uye Constructor JWT.Algorithms.HMACSHAAlgorithmFactory..ctor
+tip JWT.Algorithms.IAlgorithmFactory
+  uye Method JWT.Algorithms.IAlgorithmFactory.Create
+tip JWT.Algorithms.IAsymmetricAlgorithm
+  uye Method JWT.Algorithms.IAsymmetricAlgorithm.Verify
+tip JWT.Algorithms.IJwtAlgorithm
+  uye Method JWT.Algorithms.IJwtAlgorithm.Sign
+  uye Method JWT.Algorithms.IJwtAlgorithm.get_Name
+  uye Method JWT.Algorithms.IJwtAlgorithm.get_HashAlgorithmName
+  uye Property JWT.Algorithms.IJwtAlgorithm.Name
+  uye Property JWT.Algorithms.IJwtAlgorithm.HashAlgorithmName
+tip JWT.Algorithms.JwtAlgorithmExtensions
+  uye Method JWT.Algorithms.JwtAlgorithmExtensions.IsAsymmetric
+tip JWT.Algorithms.JwtAlgorithmFactory
+  uye Method JWT.Algorithms.JwtAlgorithmFactory.Create
+tip JWT.Algorithms.JwtAlgorithmName
+  uye Field JWT.Algorithms.JwtAlgorithmName.value__
+  uye Field JWT.Algorithms.JwtAlgorithmName.HS256 = "0"
+  uye Field JWT.Algorithms.JwtAlgorithmName.HS384 = "1"
+  uye Field JWT.Algorithms.JwtAlgorithmName.HS512 = "2"
+  uye Field JWT.Algorithms.JwtAlgorithmName.RS256 = "3"
+  uye Field JWT.Algorithms.JwtAlgorithmName.RS384 = "4"
+  uye Field JWT.Algorithms.JwtAlgorithmName.RS512 = "5"
+  uye Field JWT.Algorithms.JwtAlgorithmName.RS1024 = "6"
+  uye Field JWT.Algorithms.JwtAlgorithmName.RS2048 = "7"
+  uye Field JWT.Algorithms.JwtAlgorithmName.RS4096 = "8"
+  uye Field JWT.Algorithms.JwtAlgorithmName.ES256 = "9"
+  uye Field JWT.Algorithms.JwtAlgorithmName.ES384 = "10"
+  uye Field JWT.Algorithms.JwtAlgorithmName.ES512 = "11"
+  uye Field JWT.Algorithms.JwtAlgorithmName.None = "12"
+tip JWT.Algorithms.NoneAlgorithm
+  uye Method JWT.Algorithms.NoneAlgorithm.get_Name
+  uye Method JWT.Algorithms.NoneAlgorithm.get_HashAlgorithmName
+  uye Method JWT.Algorithms.NoneAlgorithm.Sign
+  uye Constructor JWT.Algorithms.NoneAlgorithm..ctor
+  uye Property JWT.Algorithms.NoneAlgorithm.Name
+  uye Property JWT.Algorithms.NoneAlgorithm.HashAlgorithmName
+tip JWT.Algorithms.RS1024Algorithm
+  uye Method JWT.Algorithms.RS1024Algorithm.get_Name
+  uye Method JWT.Algorithms.RS1024Algorithm.get_HashAlgorithmName
+  uye Constructor JWT.Algorithms.RS1024Algorithm..ctor
+  uye Constructor JWT.Algorithms.RS1024Algorithm..ctor
+  uye Constructor JWT.Algorithms.RS1024Algorithm..ctor
+  uye Property JWT.Algorithms.RS1024Algorithm.Name
+  uye Property JWT.Algorithms.RS1024Algorithm.HashAlgorithmName
+tip JWT.Algorithms.RS2048Algorithm
+  uye Method JWT.Algorithms.RS2048Algorithm.get_Name
+  uye Method JWT.Algorithms.RS2048Algorithm.get_HashAlgorithmName
+  uye Constructor JWT.Algorithms.RS2048Algorithm..ctor
+  uye Constructor JWT.Algorithms.RS2048Algorithm..ctor
+  uye Constructor JWT.Algorithms.RS2048Algorithm..ctor
+  uye Property JWT.Algorithms.RS2048Algorithm.Name
+  uye Property JWT.Algorithms.RS2048Algorithm.HashAlgorithmName
+tip JWT.Algorithms.RS256Algorithm
+  uye Method JWT.Algorithms.RS256Algorithm.get_Name
+  uye Method JWT.Algorithms.RS256Algorithm.get_HashAlgorithmName
+  uye Constructor JWT.Algorithms.RS256Algorithm..ctor
+  uye Constructor JWT.Algorithms.RS256Algorithm..ctor
+  uye Constructor JWT.Algorithms.RS256Algorithm..ctor
+  uye Property JWT.Algorithms.RS256Algorithm.Name
+  uye Property JWT.Algorithms.RS256Algorithm.HashAlgorithmName
+tip JWT.Algorithms.RS384Algorithm
+  uye Method JWT.Algorithms.RS384Algorithm.get_Name
+  uye Method JWT.Algorithms.RS384Algorithm.get_HashAlgorithmName
+  uye Constructor JWT.Algorithms.RS384Algorithm..ctor
+  uye Constructor JWT.Algorithms.RS384Algorithm..ctor
+  uye Constructor JWT.Algorithms.RS384Algorithm..ctor
+  uye Property JWT.Algorithms.RS384Algorithm.Name
+  uye Property JWT.Algorithms.RS384Algorithm.HashAlgorithmName
+tip JWT.Algorithms.RS4096Algorithm
+  uye Method JWT.Algorithms.RS4096Algorithm.get_Name
+  uye Method JWT.Algorithms.RS4096Algorithm.get_HashAlgorithmName
+  uye Constructor JWT.Algorithms.RS4096Algorithm..ctor
+  uye Constructor JWT.Algorithms.RS4096Algorithm..ctor
+  uye Constructor JWT.Algorithms.RS4096Algorithm..ctor
+  uye Property JWT.Algorithms.RS4096Algorithm.Name
+  uye Property JWT.Algorithms.RS4096Algorithm.HashAlgorithmName
+tip JWT.Algorithms.RS512Algorithm
+  uye Method JWT.Algorithms.RS512Algorithm.get_Name
+  uye Method JWT.Algorithms.RS512Algorithm.get_HashAlgorithmName
+  uye Constructor JWT.Algorithms.RS512Algorithm..ctor
+  uye Constructor JWT.Algorithms.RS512Algorithm..ctor
+  uye Constructor JWT.Algorithms.RS512Algorithm..ctor
+  uye Property JWT.Algorithms.RS512Algorithm.Name
+  uye Property JWT.Algorithms.RS512Algorithm.HashAlgorithmName
+tip JWT.Algorithms.RSAlgorithm
+tip JWT.Algorithms.RSAlgorithmFactory
+  uye Constructor JWT.Algorithms.RSAlgorithmFactory..ctor
+  uye Constructor JWT.Algorithms.RSAlgorithmFactory..ctor
+  uye Constructor JWT.Algorithms.RSAlgorithmFactory..ctor
+  uye Field JWT.Builder.HeaderName.Algorithm = "2"
+  uye Method JWT.Builder.JwtBuilder.WithJsonSerializerFactory
+  uye Method JWT.Builder.JwtBuilder.WithDateTimeProvider
+  uye Method JWT.Builder.JwtBuilder.WithValidator
+  uye Method JWT.Builder.JwtBuilder.WithAlgorithmFactory
+  uye Method JWT.Builder.JwtBuilder.WithAlgorithm
+  uye Method JWT.Builder.JwtBuilder.MustVerifySignature
+  uye Method JWT.Builder.JwtBuilder.DoNotVerifySignature
+  uye Method JWT.Builder.JwtBuilder.WithVerifySignature
+  uye Method JWT.Builder.JwtBuilder.WithValidationParameters
+  uye Method JWT.Builder.JwtBuilder.WithValidationParameters
+  uye Method JWT.Builder.JwtHeader.get_Algorithm
+  uye Method JWT.Builder.JwtHeader.set_Algorithm
+  uye Property JWT.Builder.JwtHeader.Algorithm
+tip JWT.IDateTimeProvider
+  uye Method JWT.IDateTimeProvider.GetNow
+tip JWT.IJwtValidator
+  uye Method JWT.IJwtValidator.Validate
+  uye Method JWT.IJwtValidator.Validate
+  uye Method JWT.IJwtValidator.TryValidate
+  uye Method JWT.IJwtValidator.TryValidate
+  uye Method JWT.IJwtValidator.TryValidate
+  uye Method JWT.JwtDecoder.Validate
+  uye Method JWT.JwtDecoder.Validate
+  uye Method JWT.JwtDecoder.Validate
+tip JWT.JwtValidator
+  uye Method JWT.JwtValidator.Validate
+  uye Method JWT.JwtValidator.Validate
+  uye Method JWT.JwtValidator.TryValidate
+  uye Method JWT.JwtValidator.TryValidate
+  uye Method JWT.JwtValidator.TryValidate
+  uye Method JWT.JwtValidator.GetValidationException
+  uye Method JWT.JwtValidator.GetValidationException
+  uye Constructor JWT.JwtValidator..ctor
+  uye Constructor JWT.JwtValidator..ctor
+  uye Constructor JWT.JwtValidator..ctor
+tip JWT.Serializers.DefaultJsonSerializerFactory
+  uye Method JWT.Serializers.DefaultJsonSerializerFactory.Create
+  uye Constructor JWT.Serializers.DefaultJsonSerializerFactory..ctor
+tip JWT.Serializers.IJsonSerializerFactory
+  uye Method JWT.Serializers.IJsonSerializerFactory.Create
+tip JWT.UtcDateTimeProvider
+  uye Method JWT.UtcDateTimeProvider.GetNow
+  uye Constructor JWT.UtcDateTimeProvider..ctor
+tip JWT.ValidationParameters
+  uye Method JWT.ValidationParameters.get_ValidateSignature
+  uye Method JWT.ValidationParameters.set_ValidateSignature
+  uye Method JWT.ValidationParameters.get_ValidateExpirationTime
+  uye Method JWT.ValidationParameters.set_ValidateExpirationTime
+  uye Method JWT.ValidationParameters.get_ValidateIssuedTime
+  uye Method JWT.ValidationParameters.set_ValidateIssuedTime
+  uye Method JWT.ValidationParameters.get_TimeMargin
+  uye Method JWT.ValidationParameters.set_TimeMargin
+  uye Method JWT.ValidationParameters.get_Default
+  uye Method JWT.ValidationParameters.get_None
+  uye Constructor JWT.ValidationParameters..ctor
+  uye Property JWT.ValidationParameters.ValidateSignature
+  uye Property JWT.ValidationParameters.ValidateExpirationTime
+  uye Property JWT.ValidationParameters.ValidateIssuedTime
+  uye Property JWT.ValidationParameters.TimeMargin
+  uye Property JWT.ValidationParameters.Default
+  uye Property JWT.ValidationParameters.None
+tip JWT.ValidationParametersExtensions
+  uye Method JWT.ValidationParametersExtensions.With

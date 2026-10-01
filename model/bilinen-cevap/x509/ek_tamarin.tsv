@@ -1,0 +1,4 @@
+kosu	ek	motor	tamarin_bayraklari	tamarin_lemma	beklenen	kaynak
+EK.duy-ignore.tam	duyarlilik	tamarin	INVALID_ALT_ISSUED,V_IGNORE	accept_with_invalid_pq	verified	KAT-SPEC §3(d) Tamarin duyarlilik lemmalari (nsurum tablosunda yok; kapi hucresi DEGIL)
+EK.duy-enforce.tam	duyarlilik	tamarin	INVALID_ALT_ISSUED,V_ENFORCE_IF_PRESENT	accept_with_invalid_pq	falsified	KAT-SPEC §3(d) Tamarin duyarlilik lemmalari (nsurum tablosunda yok; kapi hucresi DEGIL)
+EK.duy-require.tam	duyarlilik	tamarin	INVALID_ALT_ISSUED,V_REQUIRE	accept_with_invalid_pq	falsified	KAT-SPEC §3(d) Tamarin duyarlilik lemmalari (nsurum tablosunda yok; kapi hucresi DEGIL)

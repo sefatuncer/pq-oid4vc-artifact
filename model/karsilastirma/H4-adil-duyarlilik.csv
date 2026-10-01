@@ -1,0 +1,55 @@
+webpki,faz,tau,capa,sat_hedef,gerekli_kokler,gereksiz_kokler
+cl-birincil,f1,hizli,onbellek,3,a01 a02,
+cl-birincil,f1,hizli,sabit,3,a01 a02,
+cl-birincil,f1,hizli,taze,3,a01 a02,
+cl-birincil,f1,orta,onbellek,3,a01 a02,
+cl-birincil,f1,orta,sabit,3,a01 a02,
+cl-birincil,f1,orta,taze,3,a01 a02,
+cl-birincil,f1,yavas,onbellek,3,a01 a02,
+cl-birincil,f1,yavas,sabit,3,a01 a02,
+cl-birincil,f1,yavas,taze,3,a01 a02,
+cl-birincil,f2,hizli,onbellek,3,a01 a02,
+cl-birincil,f2,hizli,sabit,3,a02,a01
+cl-birincil,f2,hizli,taze,3,a01 a02,
+cl-birincil,f2,orta,onbellek,3,a01 a02,
+cl-birincil,f2,orta,sabit,3,a02,a01
+cl-birincil,f2,orta,taze,3,a01 a02,
+cl-birincil,f2,yavas,onbellek,3,a01 a02,
+cl-birincil,f2,yavas,sabit,3,a02,a01
+cl-birincil,f2,yavas,taze,3,a01 a02,
+cl-birincil,f3,hizli,onbellek,3,a01 a02,
+cl-birincil,f3,hizli,sabit,3,a02,a01
+cl-birincil,f3,hizli,taze,3,a01 a02,
+cl-birincil,f3,orta,onbellek,3,a01 a02,
+cl-birincil,f3,orta,sabit,3,a02,a01
+cl-birincil,f3,orta,taze,3,a01 a02,
+cl-birincil,f3,yavas,onbellek,3,a01 a02,
+cl-birincil,f3,yavas,sabit,3,a02,a01
+cl-birincil,f3,yavas,taze,3,a01 a02,
+pq,f1,hizli,onbellek,3,a02,a01
+pq,f1,hizli,sabit,3,a02,a01
+pq,f1,hizli,taze,3,a02,a01
+pq,f1,orta,onbellek,3,a02,a01
+pq,f1,orta,sabit,3,a02,a01
+pq,f1,orta,taze,3,a02,a01
+pq,f1,yavas,onbellek,3,a02,a01
+pq,f1,yavas,sabit,3,a02,a01
+pq,f1,yavas,taze,3,a02,a01
+pq,f2,hizli,onbellek,3,,a01 a02
+pq,f2,hizli,sabit,3,,a01 a02
+pq,f2,hizli,taze,3,,a01 a02
+pq,f2,orta,onbellek,3,,a01 a02
+pq,f2,orta,sabit,3,,a01 a02
+pq,f2,orta,taze,3,,a01 a02
+pq,f2,yavas,onbellek,3,,a01 a02
+pq,f2,yavas,sabit,3,,a01 a02
+pq,f2,yavas,taze,3,,a01 a02
+pq,f3,hizli,onbellek,5,,a01 a02
+pq,f3,hizli,sabit,5,,a01 a02
+pq,f3,hizli,taze,5,,a01 a02
+pq,f3,orta,onbellek,5,,a01 a02
+pq,f3,orta,sabit,5,,a01 a02
+pq,f3,orta,taze,5,,a01 a02
+pq,f3,yavas,onbellek,5,,a01 a02
+pq,f3,yavas,sabit,5,,a01 a02
+pq,f3,yavas,taze,5,,a01 a02

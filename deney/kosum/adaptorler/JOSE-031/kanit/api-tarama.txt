@@ -1,0 +1,98 @@
+# JOSE-031 guardian 2.5.0 (+ erlang-jose 1.11.12) — API taraması (sözleşme §5.1)
+# imaj: a10-jose-031:1 (sha256:c140e1ff50af36516b8b58f395ce64158a87049ec11ddbe9727db05acda597e4)
+# komut: docker run --rm --network none a10-jose-031:1 sh -c 'cd /opt/a/deps && grep -rn -i -E "allowed_algos|verify_strict|secret_fetcher|verify_issuer|ml.?dsa|mldsa|composite|eddsa|ed25519|crit|signatures" guardian/lib guardian/README.md && echo "== erlang-jose 1.11.12 (alg tablosu ve verify_strict)" && grep -rn -i -E "verify_strict|ml.?dsa|mldsa|composite|<<\"ES\"|<<\"EdDSA\"|<<\"Ed25519\"" jose/src jose/lib | head -60'
+
+guardian/lib/guardian/token/jwt.ex:24:  * `allowed_algos` - The allowed algos to use for encoding and decoding. See
+guardian/lib/guardian/token/jwt.ex:30:  * `verify_issuer` Verify that the token was issued by the configured issuer. Default false
+guardian/lib/guardian/token/jwt.ex:31:  * `secret_fetcher` A module used to fetch the secret. Default: `Guardian.Token.Jwt.SecretFetcher`
+guardian/lib/guardian/token/jwt.ex:39:  * `allowed_algos` - A list of allowable algos
+guardian/lib/guardian/token/jwt.ex:271:  * `allowed_algos`
+guardian/lib/guardian/token/jwt.ex:276:    with {:ok, secret_fetcher} <- fetch_secret_fetcher(mod),
+guardian/lib/guardian/token/jwt.ex:277:         {:ok, secret} <- secret_fetcher.fetch_signing_secret(mod, options) do
+guardian/lib/guardian/token/jwt.ex:326:  * `allowed_algos` - A list of allowable algos
+guardian/lib/guardian/token/jwt.ex:329:    with {:ok, secret_fetcher} <- fetch_secret_fetcher(mod),
+guardian/lib/guardian/token/jwt.ex:331:         {:ok, raw_secret} <- secret_fetcher.fetch_verifying_secret(mod, headers, options) do
+guardian/lib/guardian/token/jwt.ex:333:      algos = fetch_allowed_algos(mod, options)
+guardian/lib/guardian/token/jwt.ex:334:      verify_result = JWT.verify_strict(secret, algos, token)
+guardian/lib/guardian/token/jwt.ex:382:  * `allowed_algos` - A list of allowable algos
+guardian/lib/guardian/token/jwt.ex:404:  * `allowed_algos` - A list of allowable algos
+guardian/lib/guardian/token/jwt.ex:430:    algos = fetch_allowed_algos(mod, opts) || @default_algos
+guardian/lib/guardian/token/jwt.ex:440:  defp fetch_allowed_algos(mod, opts) do
+guardian/lib/guardian/token/jwt.ex:442:    |> Keyword.get(:allowed_algos)
+guardian/lib/guardian/token/jwt.ex:443:    |> Config.resolve_value() || apply(mod, :config, [:allowed_algos, @default_algos])
+guardian/lib/guardian/token/jwt.ex:560:  defp fetch_secret_fetcher(mod) do
+guardian/lib/guardian/token/jwt.ex:561:    {:ok, mod.config(:secret_fetcher, SecretFetcherDefaultImpl)}
+guardian/lib/guardian/token/jwt/verify.ex:20:    verify_issuer = apply(mod, :config, [:verify_issuer])
+guardian/lib/guardian/token/jwt/verify.ex:23:      verify_issuer && issuer == iss -> {:ok, claims}
+guardian/lib/guardian/token/jwt/verify.ex:24:      verify_issuer -> {:error, :invalid_issuer}
+guardian/README.md:222:* `allowed_algos` - The allowed algos to use for encoding and decoding.
+guardian/README.md:227:* `verify_issuer` Default false
+guardian/README.md:228:* `secret_fetcher` A module used to fetch the secret. Default: `Guardian.Token.Jwt.SecretFetcher`
+guardian/README.md:498:  allowed_algos: ["ES512"],
+guardian/README.md:525:  allowed_algos: ["RS512"],
+guardian/README.md:539:  allowed_algos: ["Ed25519"],
+guardian/README.md:549:This makes it possible to rotate private keys while maintaining a list of valid public keys that can be used both for validating signatures as well as serving public keys to external services.
+guardian/README.md:606:    private_key = JOSE.JWK.generate_key({:okp, :Ed25519})
+guardian/README.md:663:  allowed_algos: ["Ed25519"],
+guardian/README.md:664:  secret_fetcher: MyApp.Guardian.KeyServer
+== erlang-jose 1.11.12 (alg tablosu ve verify_strict)
+jose/src/jwa/jose_jwa.erl:340:		{<<"Ed25519">>, public_keys, ed25519},
+jose/src/jwa/jose_jwa.erl:348:		{<<"Ed25519">>, public_keys, ed25519},
+jose/src/jwa/jose_jwa.erl:352:		{<<"EdDSA">>, public_keys, ed25519},
+jose/src/jws/jose_jws.erl:50:-export([verify_strict/3]).
+jose/src/jws/jose_jws.erl:395:verify_strict(Key, Allow, SignedMap) when is_map(SignedMap) ->
+jose/src/jws/jose_jws.erl:396:	verify_strict(Key, Allow, {#{}, SignedMap});
+jose/src/jws/jose_jws.erl:397:verify_strict(Key, Allow, SignedBinary) when is_binary(SignedBinary) ->
+jose/src/jws/jose_jws.erl:398:	verify_strict(Key, Allow, expand(SignedBinary));
+jose/src/jws/jose_jws.erl:399:verify_strict(Key, Allow, {Modules, SignedBinary}) when is_binary(SignedBinary) ->
+jose/src/jws/jose_jws.erl:400:	verify_strict(Key, Allow, expand({Modules, SignedBinary}));
+jose/src/jws/jose_jws.erl:401:verify_strict(Key, Allow, {Modules, #{
+jose/src/jws/jose_jws.erl:421:verify_strict(Keys = [_ | _], Allow, {Modules, Signed=#{
+jose/src/jws/jose_jws.erl:426:		{Key, verify_strict(Key, Allow, {Modules, Signed})}
+jose/src/jws/jose_jws.erl:428:verify_strict(Key, Allow, {Modules, #{
+jose/src/jws/jose_jws.erl:433:		verify_strict(Key, Allow, {Modules, maps:put(<<"payload">>, Payload, EncodedSignature)})
+jose/src/jws/jose_jws_alg_eddsa.erl:34:from_map(F = #{ <<"alg">> := <<"Ed25519">> }) ->
+jose/src/jws/jose_jws_alg_eddsa.erl:42:from_map(F = #{ <<"alg">> := <<"EdDSA">> }) ->
+jose/src/jws/jose_jws_alg_eddsa.erl:46:	F#{ <<"alg">> => <<"Ed25519">> };
+jose/src/jws/jose_jws_alg_eddsa.erl:54:	F#{ <<"alg">> => <<"EdDSA">> }.
+jose/src/jws/jose_jws_alg_eddsa.erl:67:	jose_jws_alg:generate_key({okp, 'Ed25519'}, <<"EdDSA">>).
+jose/src/jwk/jose_jwk_kty_okp_ed25519ph.erl:127:		<<"alg">> => <<"EdDSA">>
+jose/src/jwk/jose_jwk_kty_okp_ed25519ph.erl:135:	[?crv, <<"EdDSA">>].
+jose/src/jwk/jose_jwk.erl:137:-export([verify_strict/3]).
+jose/src/jwk/jose_jwk.erl:312:from_map({JWK, Modules, Map=#{ <<"kty">> := <<"OKP">>, <<"crv">> := <<"Ed25519">> }}) ->
+jose/src/jwk/jose_jwk.erl:1048:verify_strict(Signed, Allow, JWK=#jose_jwk{}) ->
+jose/src/jwk/jose_jwk.erl:1049:	jose_jws:verify_strict(JWK, Allow, Signed);
+jose/src/jwk/jose_jwk.erl:1050:verify_strict(Signed, Allow, Other) ->
+jose/src/jwk/jose_jwk.erl:1051:	verify_strict(Signed, Allow, from(Other)).
+jose/src/jwk/jose_jwk_kty_okp_ed448ph.erl:127:		<<"alg">> => <<"EdDSA">>
+jose/src/jwk/jose_jwk_kty_okp_ed448ph.erl:135:	[?crv, <<"EdDSA">>].
+jose/src/jwk/jose_jwk_kty_okp_ed25519.erl:49:-define(crv, <<"Ed25519">>).
+jose/src/jwk/jose_jwk_kty_okp_ed25519.erl:141:		<<"alg">> => <<"EdDSA">>
+jose/src/jwk/jose_jwk_kty_okp_ed25519.erl:149:	[?crv, <<"EdDSA">>].
+jose/src/jwk/jose_jwk_kty_okp_ed448.erl:141:		<<"alg">> => <<"EdDSA">>
+jose/src/jwk/jose_jwk_kty_okp_ed448.erl:149:	[?crv, <<"EdDSA">>].
+jose/src/jwt/jose_jwt.erl:38:-export([verify_strict/3]).
+jose/src/jwt/jose_jwt.erl:202:verify_strict(JWK=#jose_jwk{}, Allow, {Modules, Signed}) ->
+jose/src/jwt/jose_jwt.erl:203:	{Verified, JWTBinary, JWS} = jose_jwk:verify_strict({Modules, Signed}, Allow, JWK),
+jose/src/jwt/jose_jwt.erl:205:verify_strict(Other, Allow, SignedBinary) when is_binary(SignedBinary) ->
+jose/src/jwt/jose_jwt.erl:206:	verify_strict(Other, Allow, {#{}, SignedBinary});
+jose/src/jwt/jose_jwt.erl:207:verify_strict(Other, Allow, SignedMap) when is_map(SignedMap) ->
+jose/src/jwt/jose_jwt.erl:208:	verify_strict(Other, Allow, {#{}, SignedMap});
+jose/src/jwt/jose_jwt.erl:209:verify_strict(JWK=#jose_jwk{}, Allow, Signed) ->
+jose/src/jwt/jose_jwt.erl:211:verify_strict([], Allow, Signed) ->
+jose/src/jwt/jose_jwt.erl:213:verify_strict(Other, Allow, Signed) ->
+jose/src/jwt/jose_jwt.erl:214:	verify_strict(jose_jwk:from(Other), Allow, Signed).
+jose/lib/jose/jwt.ex:13:  See `JOSE.JWS` for more Signature examples.  For security purposes, `verify_strict/3` is recommended over `verify/2`.
+jose/lib/jose/jwt.ex:24:      # verify_strict/3 is recommended over verify/2
+jose/lib/jose/jwt.ex:25:      iex> JOSE.JWT.verify_strict(jwk_hs256, ["HS256"], signed_hs256)
+jose/lib/jose/jwt.ex:310:  Verifies the `signed` using the `jwk`, whitelists the `"alg"` using `allow`, and calls `from/1` on the payload.  See `JOSE.JWS.verify_strict/3`.
+jose/lib/jose/jwt.ex:312:  @spec verify_strict(JOSE.JWK.t(), [String.t()], binary()) :: {valid? :: boolean(), jwt :: t(), jws :: JOSE.JWS.t()}
+jose/lib/jose/jwt.ex:313:  def verify_strict(jwk = %JOSE.JWK{}, allow, signed), do: verify_strict(JOSE.JWK.to_record(jwk), allow, signed)
+jose/lib/jose/jwt.ex:315:  def verify_strict(jwk = [%JOSE.JWK{} | _], allow, signed) do
+jose/lib/jose/jwt.ex:316:    verify_strict(
+jose/lib/jose/jwt.ex:331:  def verify_strict(key, allow, signed) do
+jose/lib/jose/jwt.ex:333:      case :jose_jwt.verify_strict(key, allow, signed) do
+jose/lib/jose/jws.ex:18:  `JOSE.JWS.verify_strict/3` is recommended over `JOSE.JWS.verify/2` so that
+jose/lib/jose/jws.ex:704:      iex> JOSE.JWS.verify_strict(jwk, ["HS256"], signed_hs256) |> elem(0)
+jose/lib/jose/jws.ex:706:      iex> JOSE.JWS.verify_strict(jwk, ["HS256"], signed_hs512) |> elem(0)
+jose/lib/jose/jws.ex:708:      iex> JOSE.JWS.verify_strict(jwk, ["HS256", "HS512"], signed_hs512) |> elem(0)

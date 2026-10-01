@@ -1,0 +1,2 @@
+jwt-cpp baglandi; tip N3jwt8verifierINS_13default_clockENS_6traits15kazuho_picojsonEEE
+tip N3jwt9algorithm5es256E

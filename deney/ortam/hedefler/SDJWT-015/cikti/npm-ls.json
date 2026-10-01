@@ -1,0 +1,18 @@
+{
+  "version": "0.0.0",
+  "name": "pq-a09-ortam",
+  "dependencies": {
+    "@sd-jwt/core": {
+      "version": "0.21.0",
+      "resolved": "https://registry.npmjs.org/@sd-jwt/core/-/core-0.21.0.tgz",
+      "overridden": false,
+      "dependencies": {
+        "@owf/identity-common": {
+          "version": "0.4.0",
+          "resolved": "https://registry.npmjs.org/@owf/identity-common/-/identity-common-0.4.0.tgz",
+          "overridden": false
+        }
+      }
+    }
+  }
+}

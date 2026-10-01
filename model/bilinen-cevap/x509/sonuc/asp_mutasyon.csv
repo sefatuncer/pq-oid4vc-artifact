@@ -1,0 +1,10 @@
+kosu,mutasyon,temel,beklenen,gozlenen,dondu,cekirdek_dayanagi,sure_s,tanik
+MUT06.K2b-03.asp,MUT06,K2b-03,SALDIRI,SALDIRI,EVET,g1,0.0025,"ihlal(tum,g1) ihlal(tum,g5) ihlal(tum,tum) sahte(tum,ee) sahte(tum,pq_kanit_varligi) kirilir(tum,pq_kanit_varligi) kirilir_alt(tum,ee) klasik_alt(ee) pq(ee) tasi(pq_kanit_varligi,ee)"
+MUT07.K2b-06.asp,MUT07,K2b-06,SALDIRI,SALDIRI,EVET,g1,0.0018,"ihlal(tum,g1) ihlal(tum,tum) sahte(tum,ee) kirilir(tum,ee)"
+MUT07.K2a-16.asp,MUT07,K2a-16,accept,accept_hybrid,EVET,G5 yok,0.0024,"beklenir(bos,ee) tasi(yerel_politika,ee)"
+MUT08.K2c-revoked.req.asp,MUT08,K2c-revoked,accept_classical,accept_classical,EVET,G5,0.0022,"ihlal(bos,g5) klasik_alt(ee) pq(ee)"
+MUT08.K2c-expired.req.asp,MUT08,K2c-expired,accept_classical,accept_classical,EVET,G5,0.0019,"ihlal(bos,g5) klasik_alt(ee) pq(ee)"
+MUT08.K2c-unknown.req.asp,MUT08,K2c-unknown,accept_classical,accept_classical,EVET,G5,0.0017,"ihlal(bos,g5) klasik_alt(ee) pq(ee)"
+MUT08.K2c-absent.req.asp,MUT08,K2c-absent,accept_classical,accept_classical,EVET,G5,0.0017,"ihlal(bos,g5) klasik_alt(ee) pq(ee)"
+MUT08.K2c-valid.req.asp,MUT08,K2c-valid,accept_classical,accept_classical,EVET,G5,0.0022,"ihlal(bos,g5) klasik_alt(ee) pq(ee)"
+MUT09.K2d-04.asp,MUT09,K2d-04,accept_classical,accept_classical,EVET,G5,0.0025,"ihlal(bos,g5) klasik_alt(ee) pq(ee)"

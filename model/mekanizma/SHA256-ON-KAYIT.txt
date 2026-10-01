@@ -1,0 +1,13 @@
+# Adım 7 görev 0 | ön kayıt SHA-256 listesi | 25.09.2026; EK Değişiklik 8: 2026-09-26T13:18:47+0300 | koşum yok (--prove yok)
+# Çapaya alınacak asıl dosyalar: on_kayit_varyantlar.tsv ve modeller/*.spthy. Diğerleri destekleyici.
+ebb87d64216d81e927d9d117f792b99f59e83b1d72ea964d92bb440412f3a5e2 *on_kayit_varyantlar.tsv
+42e79bd0ca472808d288c4f089ec608d45c745b3c9c68bb92162af9c3e30b750 *modeller/ortak_g5.spthy
+74b0e4407e390b3c548c11d73f603ab647d279ff6c9a7611b8fb8377baf41cf5 *modeller/M_istek.spthy
+f56fb4ce22c9a269384e55d35432d7cf853ae7a3094f3c87b7cd3d54f8ad72f7 *modeller/M_metaveri.spthy
+00c1b35d7dda7db5740b46c189f87cd6384e15059daf15659fb31cf06f4dcfa4 *modeller/Mf_yol.spthy
+1fb460cf9820f0f285a8238f971e688db33477ee776f9c1cf8bf164e56f543d5 *modeller/M_h.spthy
+5a6a8060d56182a88b1ad591fee4a5206830417822a8b6591ea2f52cc1692601 *modeller/Mg_yol.spthy
+31f3665ca316fa22dca466e62baa928bfbf860aeae38675324ba66e8acbaf182 *modeller/Mf_ek.spthy
+d5da725136307d35f784e800364dfbae23a7f392da0dc7f03ac1bcddb05875d8 *ON-KAYIT-GEREKCE.md
+fdb8bf9b41b69f02607a98be92c47fa60665382554208d6b8e1492da0b7a5cf7 *betik/iyi_bicimlilik.sh
+ea24fec9150deda7fb3d953efaf140273811f0318c12ab4b02a24c0240d4e7c5 *iyi_bicimlilik_on_kayit.txt

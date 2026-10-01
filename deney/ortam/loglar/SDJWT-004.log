@@ -1,0 +1,22 @@
+# hedef=SDJWT-004 imaj=pq-a09-env-jvm:1.0 (sha256:1900053fd579a7ca0b4cfd6334a30f202d5ffdf737bb6bf06d56bd94d1cdb944) baslangic=2026-09-25T12:49:36Z zaman_asimi=1200s
+# komut: docker run --rm --name pq-a09-ortam-sdjwt-004 --label pq.agir=derleme --memory=6g --memory-swap=6g -v hedefler/SDJWT-004:/w -v betikler/konteyner:/b:ro pq-a09-env-jvm:1.0 bash /w/kur.sh
+== mvn copy-dependencies (com.authlete:sd-jwt:1.9 )
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] ------------------------< pq.a09:ortam-deneme >-------------------------
+[INFO] Building ortam-deneme 0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- dependency:3.8.1:copy-dependencies (default-cli) @ ortam-deneme ---
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  8.922 s
+[INFO] Finished at: 2026-09-25T12:49:47Z
+[INFO] ------------------------------------------------------------------------
+== bağlama kontrolü (sınıflar ilklendirilmeden yüklenir; imza doğrulama YOK)
+jar=sd-jwt-1.9.jar sinif_yuklendi=9 sinif_yuklenemedi=0
+ad_eslesen_siniflar (Verif|Validat; bilgi): 
+== SONUC: basarili
+# cikis_kodu=0 sure_s=13 bitis=2026-09-25T12:49:49Z

@@ -1,0 +1,20 @@
+{
+ "_aciklama": "Ön kayıt §2D madde 11 keşifsel 2×2 ızgarası ve ca_baglama sağlık denetimi için ÖNCEDEN YAZILAN beklentiler (Adım 3, ASP). Tam ızgara koşumundan ÖNCE yazıldı; SHA-256 beklenti_2x2.sha256 dosyasında.",
+ "_seffaflik": "Bu dosyadan önce, uygulama duman testi olarak TEK bir Q hücresinde (hedef g1, Φ3, P0, çıpa taze, τ hızlı) altı kombinasyon koşuldu (ca_baglama × ayni_ad_klasik_ca, diger_ca var/yok). Tam ızgaranın (Q × 2×2 × sağlık) hiçbir sonucu görülmedi. Beklentiler kural semantiğinden (kenarlar.lp) türetildi ve Tamarin R7hx hükümleriyle (koşumdan önce biliniyordu) aynıdır.",
+ "_tarih": "2026-09-25",
+ "yapilandirma": {
+  "ortak": "birincil yapılandırma (§2C 2.3) + diger_ca = var (aynı çıpa altında alternatif klasik CA; Tamarin ALT_CA karşılığı) + diger_ca_rejimi = klasik_sabit (alternatif CA'nın anahtarı göç ettirilemez: süresi dolana kadar geçerli eski/başka sertifika)",
+  "izgara": {"ca_baglama": ["ad", "anahtar"], "ayni_ad_klasik_ca": ["yok", "var"]},
+  "saglik": "ca_baglama = yok × ayni_ad_klasik_ca {yok, var}, hem diger_ca = var hem diger_ca = yok (birincil)",
+  "sorgu_uzayi": "her kombinasyon için Q (hedef × Φ × τ × çıpa × politika = 675)"
+ },
+ "beklentiler": {
+  "ad/yok": {"tamarin_karsiligi": "R7hx X_namebind_unique = V", "asp": "Q'nun 675 hücresinin hepsinde asgari kümeler birincil yapılandırmayla birebir aynı (farklı adlı alternatif CA ad bağlamayla dışlanır)", "hukum": "korur"},
+  "ad/var": {"tamarin_karsiligi": "R7hx X_namebind_samename = F", "asp": "g1, g2, g3 ve tum hedefli bütün hücreler UNSAT (aynı adlı klasik CA yolu açık; anahtarı strateji dışı); birincil asgari kümeler bu hücrelerde değerlendirildiğinde 'falsified'. g4 hücreleri birincilde de UNSAT (wrprc faz0 + imzasız istek) ve öyle kalır", "hukum": "atlatılır"},
+  "anahtar/yok": {"tamarin_karsiligi": "R7hx X_keybind_distinct = V", "asp": "675 hücrede birincil ile birebir aynı", "hukum": "korur"},
+  "anahtar/var": {"tamarin_karsiligi": "R7hx X_keybind_samename = V", "asp": "675 hücrede birincil ile birebir aynı", "hukum": "korur"},
+  "saglik_yok_diger_var": {"asp": "ayni_ad_klasik_ca yok ve var için 675 hücrede sonuçlar birbirinin aynısı (bayrak etkisiz); g1/g2/g3/tum hücreleri UNSAT (bağlamasız alternatif klasik CA)", "hukum": "bayrak etkisiz"},
+  "saglik_yok_diger_yok_birincil": {"asp": "ayni_ad_klasik_ca yok ve var için 675 hücrede sonuçlar birincil ile birebir aynı (§2D m.11: 'ca_baglama = yok iken bayrak etkisizdir')", "hukum": "bayrak etkisiz"}
+ },
+ "G5_notu": "Tamarin R7hx'te G5_no_classical_acceptance ile G1 bütün varyantlarda aynı hükmü verir. ASP'de alternatif CA yolu bir K2 (tanıtıcı) yoludur ve G1 ihlali olarak görünür; G5-zamansız tanımı (K4/varyant) bu yolu ayrıca saymaz. Karşılaştırma G1 üzerinden yapılır."
+}

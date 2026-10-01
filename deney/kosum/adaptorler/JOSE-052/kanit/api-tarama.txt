@@ -1,0 +1,44 @@
+# JOSE-052 — API taraması (sözleşme §5.1)
+# imaj: a10-jvm:1 (sha256:efda0bc4fca2edcbbdc46158e5a231b04cdd8b575bca3e41151cea71fdd4b0b6)
+# komut: docker run --rm --network none --entrypoint sh a10-jvm:1 -c 'javap -public -cp /a/adaptor.jar com.auth0.jwt.algorithms.Algorithm | grep -i -E 'static|verify'; javap -public -cp /a/adaptor.jar com.auth0.jwt.interfaces.Verification | head -5'
+
+  public static com.auth0.jwt.algorithms.Algorithm RSA256(com.auth0.jwt.interfaces.RSAKeyProvider) throws java.lang.IllegalArgumentException;
+  public static com.auth0.jwt.algorithms.Algorithm RSA256(java.security.interfaces.RSAPublicKey, java.security.interfaces.RSAPrivateKey) throws java.lang.IllegalArgumentException;
+  public static com.auth0.jwt.algorithms.Algorithm RSA256(java.security.interfaces.RSAKey) throws java.lang.IllegalArgumentException;
+  public static com.auth0.jwt.algorithms.Algorithm RSA384(com.auth0.jwt.interfaces.RSAKeyProvider) throws java.lang.IllegalArgumentException;
+  public static com.auth0.jwt.algorithms.Algorithm RSA384(java.security.interfaces.RSAPublicKey, java.security.interfaces.RSAPrivateKey) throws java.lang.IllegalArgumentException;
+  public static com.auth0.jwt.algorithms.Algorithm RSA384(java.security.interfaces.RSAKey) throws java.lang.IllegalArgumentException;
+  public static com.auth0.jwt.algorithms.Algorithm RSA512(com.auth0.jwt.interfaces.RSAKeyProvider) throws java.lang.IllegalArgumentException;
+  public static com.auth0.jwt.algorithms.Algorithm RSA512(java.security.interfaces.RSAPublicKey, java.security.interfaces.RSAPrivateKey) throws java.lang.IllegalArgumentException;
+  public static com.auth0.jwt.algorithms.Algorithm RSA512(java.security.interfaces.RSAKey) throws java.lang.IllegalArgumentException;
+  public static com.auth0.jwt.algorithms.Algorithm RSA256PSS(com.auth0.jwt.interfaces.RSAKeyProvider) throws java.lang.IllegalArgumentException;
+  public static com.auth0.jwt.algorithms.Algorithm RSA256PSS(java.security.interfaces.RSAPublicKey, java.security.interfaces.RSAPrivateKey) throws java.lang.IllegalArgumentException;
+  public static com.auth0.jwt.algorithms.Algorithm RSA256PSS(java.security.interfaces.RSAKey) throws java.lang.IllegalArgumentException;
+  public static com.auth0.jwt.algorithms.Algorithm RSA384PSS(com.auth0.jwt.interfaces.RSAKeyProvider) throws java.lang.IllegalArgumentException;
+  public static com.auth0.jwt.algorithms.Algorithm RSA384PSS(java.security.interfaces.RSAPublicKey, java.security.interfaces.RSAPrivateKey) throws java.lang.IllegalArgumentException;
+  public static com.auth0.jwt.algorithms.Algorithm RSA384PSS(java.security.interfaces.RSAKey) throws java.lang.IllegalArgumentException;
+  public static com.auth0.jwt.algorithms.Algorithm RSA512PSS(com.auth0.jwt.interfaces.RSAKeyProvider) throws java.lang.IllegalArgumentException;
+  public static com.auth0.jwt.algorithms.Algorithm RSA512PSS(java.security.interfaces.RSAPublicKey, java.security.interfaces.RSAPrivateKey) throws java.lang.IllegalArgumentException;
+  public static com.auth0.jwt.algorithms.Algorithm RSA512PSS(java.security.interfaces.RSAKey) throws java.lang.IllegalArgumentException;
+  public static com.auth0.jwt.algorithms.Algorithm HMAC256(java.lang.String) throws java.lang.IllegalArgumentException;
+  public static com.auth0.jwt.algorithms.Algorithm HMAC256(byte[]) throws java.lang.IllegalArgumentException;
+  public static com.auth0.jwt.algorithms.Algorithm HMAC384(java.lang.String) throws java.lang.IllegalArgumentException;
+  public static com.auth0.jwt.algorithms.Algorithm HMAC384(byte[]) throws java.lang.IllegalArgumentException;
+  public static com.auth0.jwt.algorithms.Algorithm HMAC512(java.lang.String) throws java.lang.IllegalArgumentException;
+  public static com.auth0.jwt.algorithms.Algorithm HMAC512(byte[]) throws java.lang.IllegalArgumentException;
+  public static com.auth0.jwt.algorithms.Algorithm ECDSA256(com.auth0.jwt.interfaces.ECDSAKeyProvider) throws java.lang.IllegalArgumentException;
+  public static com.auth0.jwt.algorithms.Algorithm ECDSA256(java.security.interfaces.ECPublicKey, java.security.interfaces.ECPrivateKey) throws java.lang.IllegalArgumentException;
+  public static com.auth0.jwt.algorithms.Algorithm ECDSA256(java.security.interfaces.ECKey) throws java.lang.IllegalArgumentException;
+  public static com.auth0.jwt.algorithms.Algorithm ECDSA384(com.auth0.jwt.interfaces.ECDSAKeyProvider) throws java.lang.IllegalArgumentException;
+  public static com.auth0.jwt.algorithms.Algorithm ECDSA384(java.security.interfaces.ECPublicKey, java.security.interfaces.ECPrivateKey) throws java.lang.IllegalArgumentException;
+  public static com.auth0.jwt.algorithms.Algorithm ECDSA384(java.security.interfaces.ECKey) throws java.lang.IllegalArgumentException;
+  public static com.auth0.jwt.algorithms.Algorithm ECDSA512(com.auth0.jwt.interfaces.ECDSAKeyProvider) throws java.lang.IllegalArgumentException;
+  public static com.auth0.jwt.algorithms.Algorithm ECDSA512(java.security.interfaces.ECPublicKey, java.security.interfaces.ECPrivateKey) throws java.lang.IllegalArgumentException;
+  public static com.auth0.jwt.algorithms.Algorithm ECDSA512(java.security.interfaces.ECKey) throws java.lang.IllegalArgumentException;
+  public static com.auth0.jwt.algorithms.Algorithm none();
+  public abstract void verify(com.auth0.jwt.interfaces.DecodedJWT) throws com.auth0.jwt.exceptions.SignatureVerificationException;
+Compiled from "Verification.java"
+public interface com.auth0.jwt.interfaces.Verification {
+  public default com.auth0.jwt.interfaces.Verification withIssuer(java.lang.String);
+  public abstract com.auth0.jwt.interfaces.Verification withIssuer(java.lang.String...);
+  public abstract com.auth0.jwt.interfaces.Verification withSubject(java.lang.String);

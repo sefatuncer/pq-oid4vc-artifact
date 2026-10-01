@@ -1,0 +1,444 @@
+{
+ "ozet": {
+  "sorgu": 48,
+  "pilot_kaydi_yeniden_uretim": 48,
+  "sistem_cekirdegi_esit": 48,
+  "z3_esit": 48,
+  "toplam_asgari_kume_pilot": 82,
+  "sure_s": 2.05
+ },
+ "satirlar": [
+  {
+   "sorgu": "coexist/p256/lotl/all",
+   "pilot_kayit_yeniden_uretildi": true,
+   "n_pilot": 0,
+   "n_sistem": 0,
+   "sistem_esit": true,
+   "z3_esit": true,
+   "sistem_s": 0.0329
+  },
+  {
+   "sorgu": "coexist/p256/lotl/claims",
+   "pilot_kayit_yeniden_uretildi": true,
+   "n_pilot": 3,
+   "n_sistem": 3,
+   "sistem_esit": true,
+   "z3_esit": true,
+   "sistem_s": 0.0321
+  },
+  {
+   "sorgu": "coexist/p256/lotl/holder",
+   "pilot_kayit_yeniden_uretildi": true,
+   "n_pilot": 0,
+   "n_sistem": 0,
+   "sistem_esit": true,
+   "z3_esit": true,
+   "sistem_s": 0.0224
+  },
+  {
+   "sorgu": "coexist/p256/lotl/revocation",
+   "pilot_kayit_yeniden_uretildi": true,
+   "n_pilot": 2,
+   "n_sistem": 2,
+   "sistem_esit": true,
+   "z3_esit": true,
+   "sistem_s": 0.0214
+  },
+  {
+   "sorgu": "coexist/p256/lotl/rp_auth",
+   "pilot_kayit_yeniden_uretildi": true,
+   "n_pilot": 2,
+   "n_sistem": 2,
+   "sistem_esit": true,
+   "z3_esit": true,
+   "sistem_s": 0.0234
+  },
+  {
+   "sorgu": "coexist/p256/lotl/wscd_assurance",
+   "pilot_kayit_yeniden_uretildi": true,
+   "n_pilot": 1,
+   "n_sistem": 1,
+   "sistem_esit": true,
+   "z3_esit": true,
+   "sistem_s": 0.0292
+  },
+  {
+   "sorgu": "coexist/p256/pinned_tl/all",
+   "pilot_kayit_yeniden_uretildi": true,
+   "n_pilot": 0,
+   "n_sistem": 0,
+   "sistem_esit": true,
+   "z3_esit": true,
+   "sistem_s": 0.0257
+  },
+  {
+   "sorgu": "coexist/p256/pinned_tl/claims",
+   "pilot_kayit_yeniden_uretildi": true,
+   "n_pilot": 3,
+   "n_sistem": 3,
+   "sistem_esit": true,
+   "z3_esit": true,
+   "sistem_s": 0.034
+  },
+  {
+   "sorgu": "coexist/p256/pinned_tl/holder",
+   "pilot_kayit_yeniden_uretildi": true,
+   "n_pilot": 0,
+   "n_sistem": 0,
+   "sistem_esit": true,
+   "z3_esit": true,
+   "sistem_s": 0.0367
+  },
+  {
+   "sorgu": "coexist/p256/pinned_tl/revocation",
+   "pilot_kayit_yeniden_uretildi": true,
+   "n_pilot": 2,
+   "n_sistem": 2,
+   "sistem_esit": true,
+   "z3_esit": true,
+   "sistem_s": 0.0304
+  },
+  {
+   "sorgu": "coexist/p256/pinned_tl/rp_auth",
+   "pilot_kayit_yeniden_uretildi": true,
+   "n_pilot": 2,
+   "n_sistem": 2,
+   "sistem_esit": true,
+   "z3_esit": true,
+   "sistem_s": 0.0286
+  },
+  {
+   "sorgu": "coexist/p256/pinned_tl/wscd_assurance",
+   "pilot_kayit_yeniden_uretildi": true,
+   "n_pilot": 1,
+   "n_sistem": 1,
+   "sistem_esit": true,
+   "z3_esit": true,
+   "sistem_s": 0.0251
+  },
+  {
+   "sorgu": "coexist/pq/lotl/all",
+   "pilot_kayit_yeniden_uretildi": true,
+   "n_pilot": 12,
+   "n_sistem": 12,
+   "sistem_esit": true,
+   "z3_esit": true,
+   "sistem_s": 0.0297
+  },
+  {
+   "sorgu": "coexist/pq/lotl/claims",
+   "pilot_kayit_yeniden_uretildi": true,
+   "n_pilot": 3,
+   "n_sistem": 3,
+   "sistem_esit": true,
+   "z3_esit": true,
+   "sistem_s": 0.023
+  },
+  {
+   "sorgu": "coexist/pq/lotl/holder",
+   "pilot_kayit_yeniden_uretildi": true,
+   "n_pilot": 3,
+   "n_sistem": 3,
+   "sistem_esit": true,
+   "z3_esit": true,
+   "sistem_s": 0.0257
+  },
+  {
+   "sorgu": "coexist/pq/lotl/revocation",
+   "pilot_kayit_yeniden_uretildi": true,
+   "n_pilot": 2,
+   "n_sistem": 2,
+   "sistem_esit": true,
+   "z3_esit": true,
+   "sistem_s": 0.0251
+  },
+  {
+   "sorgu": "coexist/pq/lotl/rp_auth",
+   "pilot_kayit_yeniden_uretildi": true,
+   "n_pilot": 2,
+   "n_sistem": 2,
+   "sistem_esit": true,
+   "z3_esit": true,
+   "sistem_s": 0.0233
+  },
+  {
+   "sorgu": "coexist/pq/lotl/wscd_assurance",
+   "pilot_kayit_yeniden_uretildi": true,
+   "n_pilot": 1,
+   "n_sistem": 1,
+   "sistem_esit": true,
+   "z3_esit": true,
+   "sistem_s": 0.0212
+  },
+  {
+   "sorgu": "coexist/pq/pinned_tl/all",
+   "pilot_kayit_yeniden_uretildi": true,
+   "n_pilot": 12,
+   "n_sistem": 12,
+   "sistem_esit": true,
+   "z3_esit": true,
+   "sistem_s": 0.0286
+  },
+  {
+   "sorgu": "coexist/pq/pinned_tl/claims",
+   "pilot_kayit_yeniden_uretildi": true,
+   "n_pilot": 3,
+   "n_sistem": 3,
+   "sistem_esit": true,
+   "z3_esit": true,
+   "sistem_s": 0.0273
+  },
+  {
+   "sorgu": "coexist/pq/pinned_tl/holder",
+   "pilot_kayit_yeniden_uretildi": true,
+   "n_pilot": 3,
+   "n_sistem": 3,
+   "sistem_esit": true,
+   "z3_esit": true,
+   "sistem_s": 0.0287
+  },
+  {
+   "sorgu": "coexist/pq/pinned_tl/revocation",
+   "pilot_kayit_yeniden_uretildi": true,
+   "n_pilot": 2,
+   "n_sistem": 2,
+   "sistem_esit": true,
+   "z3_esit": true,
+   "sistem_s": 0.0311
+  },
+  {
+   "sorgu": "coexist/pq/pinned_tl/rp_auth",
+   "pilot_kayit_yeniden_uretildi": true,
+   "n_pilot": 2,
+   "n_sistem": 2,
+   "sistem_esit": true,
+   "z3_esit": true,
+   "sistem_s": 0.0196
+  },
+  {
+   "sorgu": "coexist/pq/pinned_tl/wscd_assurance",
+   "pilot_kayit_yeniden_uretildi": true,
+   "n_pilot": 1,
+   "n_sistem": 1,
+   "sistem_esit": true,
+   "z3_esit": true,
+   "sistem_s": 0.0294
+  },
+  {
+   "sorgu": "post/p256/lotl/all",
+   "pilot_kayit_yeniden_uretildi": true,
+   "n_pilot": 0,
+   "n_sistem": 0,
+   "sistem_esit": true,
+   "z3_esit": true,
+   "sistem_s": 0.0262
+  },
+  {
+   "sorgu": "post/p256/lotl/claims",
+   "pilot_kayit_yeniden_uretildi": true,
+   "n_pilot": 1,
+   "n_sistem": 1,
+   "sistem_esit": true,
+   "z3_esit": true,
+   "sistem_s": 0.0252
+  },
+  {
+   "sorgu": "post/p256/lotl/holder",
+   "pilot_kayit_yeniden_uretildi": true,
+   "n_pilot": 0,
+   "n_sistem": 0,
+   "sistem_esit": true,
+   "z3_esit": true,
+   "sistem_s": 0.0253
+  },
+  {
+   "sorgu": "post/p256/lotl/revocation",
+   "pilot_kayit_yeniden_uretildi": true,
+   "n_pilot": 1,
+   "n_sistem": 1,
+   "sistem_esit": true,
+   "z3_esit": true,
+   "sistem_s": 0.0238
+  },
+  {
+   "sorgu": "post/p256/lotl/rp_auth",
+   "pilot_kayit_yeniden_uretildi": true,
+   "n_pilot": 1,
+   "n_sistem": 1,
+   "sistem_esit": true,
+   "z3_esit": true,
+   "sistem_s": 0.0328
+  },
+  {
+   "sorgu": "post/p256/lotl/wscd_assurance",
+   "pilot_kayit_yeniden_uretildi": true,
+   "n_pilot": 1,
+   "n_sistem": 1,
+   "sistem_esit": true,
+   "z3_esit": true,
+   "sistem_s": 0.034
+  },
+  {
+   "sorgu": "post/p256/pinned_tl/all",
+   "pilot_kayit_yeniden_uretildi": true,
+   "n_pilot": 0,
+   "n_sistem": 0,
+   "sistem_esit": true,
+   "z3_esit": true,
+   "sistem_s": 0.0338
+  },
+  {
+   "sorgu": "post/p256/pinned_tl/claims",
+   "pilot_kayit_yeniden_uretildi": true,
+   "n_pilot": 1,
+   "n_sistem": 1,
+   "sistem_esit": true,
+   "z3_esit": true,
+   "sistem_s": 0.0294
+  },
+  {
+   "sorgu": "post/p256/pinned_tl/holder",
+   "pilot_kayit_yeniden_uretildi": true,
+   "n_pilot": 0,
+   "n_sistem": 0,
+   "sistem_esit": true,
+   "z3_esit": true,
+   "sistem_s": 0.028
+  },
+  {
+   "sorgu": "post/p256/pinned_tl/revocation",
+   "pilot_kayit_yeniden_uretildi": true,
+   "n_pilot": 1,
+   "n_sistem": 1,
+   "sistem_esit": true,
+   "z3_esit": true,
+   "sistem_s": 0.0209
+  },
+  {
+   "sorgu": "post/p256/pinned_tl/rp_auth",
+   "pilot_kayit_yeniden_uretildi": true,
+   "n_pilot": 1,
+   "n_sistem": 1,
+   "sistem_esit": true,
+   "z3_esit": true,
+   "sistem_s": 0.0303
+  },
+  {
+   "sorgu": "post/p256/pinned_tl/wscd_assurance",
+   "pilot_kayit_yeniden_uretildi": true,
+   "n_pilot": 1,
+   "n_sistem": 1,
+   "sistem_esit": true,
+   "z3_esit": true,
+   "sistem_s": 0.0257
+  },
+  {
+   "sorgu": "post/pq/lotl/all",
+   "pilot_kayit_yeniden_uretildi": true,
+   "n_pilot": 1,
+   "n_sistem": 1,
+   "sistem_esit": true,
+   "z3_esit": true,
+   "sistem_s": 0.023
+  },
+  {
+   "sorgu": "post/pq/lotl/claims",
+   "pilot_kayit_yeniden_uretildi": true,
+   "n_pilot": 1,
+   "n_sistem": 1,
+   "sistem_esit": true,
+   "z3_esit": true,
+   "sistem_s": 0.0281
+  },
+  {
+   "sorgu": "post/pq/lotl/holder",
+   "pilot_kayit_yeniden_uretildi": true,
+   "n_pilot": 1,
+   "n_sistem": 1,
+   "sistem_esit": true,
+   "z3_esit": true,
+   "sistem_s": 0.0307
+  },
+  {
+   "sorgu": "post/pq/lotl/revocation",
+   "pilot_kayit_yeniden_uretildi": true,
+   "n_pilot": 1,
+   "n_sistem": 1,
+   "sistem_esit": true,
+   "z3_esit": true,
+   "sistem_s": 0.0361
+  },
+  {
+   "sorgu": "post/pq/lotl/rp_auth",
+   "pilot_kayit_yeniden_uretildi": true,
+   "n_pilot": 1,
+   "n_sistem": 1,
+   "sistem_esit": true,
+   "z3_esit": true,
+   "sistem_s": 0.0331
+  },
+  {
+   "sorgu": "post/pq/lotl/wscd_assurance",
+   "pilot_kayit_yeniden_uretildi": true,
+   "n_pilot": 1,
+   "n_sistem": 1,
+   "sistem_esit": true,
+   "z3_esit": true,
+   "sistem_s": 0.0347
+  },
+  {
+   "sorgu": "post/pq/pinned_tl/all",
+   "pilot_kayit_yeniden_uretildi": true,
+   "n_pilot": 1,
+   "n_sistem": 1,
+   "sistem_esit": true,
+   "z3_esit": true,
+   "sistem_s": 0.0321
+  },
+  {
+   "sorgu": "post/pq/pinned_tl/claims",
+   "pilot_kayit_yeniden_uretildi": true,
+   "n_pilot": 1,
+   "n_sistem": 1,
+   "sistem_esit": true,
+   "z3_esit": true,
+   "sistem_s": 0.0327
+  },
+  {
+   "sorgu": "post/pq/pinned_tl/holder",
+   "pilot_kayit_yeniden_uretildi": true,
+   "n_pilot": 1,
+   "n_sistem": 1,
+   "sistem_esit": true,
+   "z3_esit": true,
+   "sistem_s": 0.0262
+  },
+  {
+   "sorgu": "post/pq/pinned_tl/revocation",
+   "pilot_kayit_yeniden_uretildi": true,
+   "n_pilot": 1,
+   "n_sistem": 1,
+   "sistem_esit": true,
+   "z3_esit": true,
+   "sistem_s": 0.0236
+  },
+  {
+   "sorgu": "post/pq/pinned_tl/rp_auth",
+   "pilot_kayit_yeniden_uretildi": true,
+   "n_pilot": 1,
+   "n_sistem": 1,
+   "sistem_esit": true,
+   "z3_esit": true,
+   "sistem_s": 0.0234
+  },
+  {
+   "sorgu": "post/pq/pinned_tl/wscd_assurance",
+   "pilot_kayit_yeniden_uretildi": true,
+   "n_pilot": 1,
+   "n_sistem": 1,
+   "sistem_esit": true,
+   "z3_esit": true,
+   "sistem_s": 0.0253
+  }
+ ]
+}

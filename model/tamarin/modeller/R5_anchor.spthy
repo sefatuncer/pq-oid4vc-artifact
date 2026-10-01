@@ -1,0 +1,151 @@
+theory R5_Anchor
+begin
+
+/*
+ * =====================================================================
+ *  PQ-OID4VC | Adım 4 | Katman 2 kural şeması R5 — ÇIPA (anchor / pinning)
+ * =====================================================================
+ *  EN  A PQ-authenticated anchor pinned out of band (the national TL
+ *      signing key) cuts the classical chain above it: even if the LOTL
+ *      signing key is classical and extracted after Q-day, credentials
+ *      verified against the pinned PQ TL key are unforgeable (G1). Without
+ *      the pin the verifier reaches the TL key through the LOTL pointer and
+ *      the chain rule R1 applies; if the pinned TL key itself is classical,
+ *      pinning does not help.
+ *  TR  Bant dışı sabitlenmiş, PQ ile doğrulanmış bir çıpa (ulusal TL imza
+ *      anahtarı) üstündeki klasik zinciri keser: LOTL imza anahtarı klasik
+ *      olsa ve Q-day'den sonra çıkarılsa bile, sabitlenmiş PQ TL anahtarına
+ *      göre doğrulanan kimlik bilgileri sahtelenemez (G1). Sabitleme yoksa
+ *      doğrulayıcı TL anahtarına LOTL işaretçisi üzerinden ulaşır ve R1
+ *      geçerlidir; sabitlenen TL anahtarı klasikse sabitleme işe yaramaz.
+ *
+ *  Chain:
+ *      LOTL key (pinned) --signs--> lotl_ptr = <'lotl_ptr', T, pk(skT)>
+ *      TL key            --signs--> tl_entry = <'tl_entry', I, pk(skI)>
+ *      issuer key (PQ)   --signs--> cred     = <'cred',     I, c>
+ *  The issuer key is PQ throughout (issuer-side effects are R1).
+ *
+ *  Flags (-D=...)
+ *      PIN_TL   TL signing key pinned out of band at the verifier <=> Datalog anchored(tl)
+ *      TL_PQ    TL signing key PQ                                  <=> Datalog pq(tl)
+ *      LOTL_PQ  LOTL signing key PQ                                <=> Datalog pq(lotl)
+ *  Datalog: anchored(lotl) always (LOTL key pinned, e.g. via OJEU);
+ *           signed_under(tl,lotl), signed_under(cred,tl), pq(cred).
+ *
+ *  Protected : -D=PIN_TL -D=TL_PQ  (LOTL classical)   -> G1 verified
+ *  Mutants   : drop PIN_TL (pin removed)              -> G1 falsified, M_pin_removed verified
+ *              drop TL_PQ  (pinned anchor classical)  -> G1 falsified, M_anchor_classical verified
+ */
+
+builtins: signing
+
+restriction Equality: "All x y #i. Eq(x, y) @ #i ==> x = y"
+restriction Unique:   "All x #i #j. Unique(x) @ #i & Unique(x) @ #j ==> #i = #j"
+
+/* ---------------- Q-day ---------------- */
+rule Qday:
+    [ ] --[ Unique('qday'), QdayEv() ]-> [ !CRQC() ]
+
+/* ---------------- LOTL and TL operators ---------------- */
+rule LOTL_Setup:
+    [ Fr(~skL) ]
+  --[ Unique('lotl') ]->
+    [ !LOTLSk(~skL), !LOTLPin(pk(~skL)), Out(pk(~skL)) ]
+
+rule TL_Setup:
+    let ptr = <'lotl_ptr', $T, pk(~skT)> in
+    [ !LOTLSk(skL), Fr(~skT) ]
+  --[ Unique('tl') ]->
+    [ !TLSk($T, ~skT), Out(pk(~skT)), Out(<ptr, sign(ptr, skL)>) ]
+
+#ifdef PIN_TL
+/* out-of-band pinning of the TL signing key at the verifier */
+rule Pin_TL_Out_Of_Band:
+    [ !TLSk(T, skT) ] --[ Pinned(T) ]-> [ !TLPin(T, pk(skT)) ]
+#endif
+
+/* ---------------- issuer (PQ) listed in the TL ---------------- */
+rule Issuer_Setup:
+    let e = <'tl_entry', $I, pk(~skI)> in
+    [ !TLSk(T, skT), Fr(~skI) ]
+  --[ Unique(<'iss', $I>) ]->
+    [ !IssSk($I, ~skI), Out(pk(~skI)), Out(<e, sign(e, skT)>) ]
+
+rule Issue:
+    let crb = <'cred', I, ~c> in
+    [ !IssSk(I, skI), Fr(~c) ]
+  --[ Issued(I, ~c) ]->
+    [ Out(<crb, sign(crb, skI)>) ]
+
+/* ---------------- verifier ---------------- */
+#ifdef PIN_TL
+rule Verify_Pinned_TL:
+    let e   = <'tl_entry', I, pkI>
+        crb = <'cred', I, c>
+    in
+    [ !TLPin(T, pkT), In(<e, s2>), In(<crb, s3>) ]
+  --[ Eq(verify(s2, e, pkT), true),
+      Eq(verify(s3, crb, pkI), true),
+      Accept(I, c) ]->
+    [ ]
+#endif
+
+#ifdef not PIN_TL
+rule Verify_via_LOTL:
+    let ptr = <'lotl_ptr', T, pkT>
+        e   = <'tl_entry', I, pkI>
+        crb = <'cred', I, c>
+    in
+    [ !LOTLPin(pkL), In(<ptr, s1>), In(<e, s2>), In(<crb, s3>) ]
+  --[ Eq(verify(s1, ptr, pkL), true),
+      Eq(verify(s2, e, pkT), true),
+      Eq(verify(s3, crb, pkI), true),
+      Accept(I, c) ]->
+    [ ]
+#endif
+
+/* ---------------- CRQC ---------------- */
+#ifdef not LOTL_PQ
+rule CRQC_Break_LOTL:
+    [ !LOTLSk(sk), !CRQC(), In(pk(sk)) ] --[ Broken('lotl') ]-> [ Out(sk) ]
+#endif
+
+#ifdef not TL_PQ
+rule CRQC_Break_TL:
+    [ !TLSk(T, sk), !CRQC(), In(pk(sk)) ] --[ Broken('tl') ]-> [ Out(sk) ]
+#endif
+
+/* ================= health lemmas (H0) ================= */
+
+lemma executable:
+  exists-trace
+  "Ex I c #i #j. Issued(I, c) @ #i & Accept(I, c) @ #j"
+
+lemma executable_post_qday:
+  exists-trace
+  "Ex I c #q #i #j. QdayEv() @ #q & Issued(I, c) @ #i & Accept(I, c) @ #j & #q < #j"
+
+lemma attack_needs_crqc:
+  "All I c #j. Accept(I, c) @ #j ==>
+      (Ex #i. Issued(I, c) @ #i & #i < #j) | (Ex k #b. Broken(k) @ #b & #b < #j)"
+
+/* ================= security goal G1 ================= */
+lemma G1_claims_unforgeability:
+  "All I c #j. Accept(I, c) @ #j ==> (Ex #i. Issued(I, c) @ #i & #i < #j)"
+
+/* ================= mutation lemmas ================= */
+/* pin removed while the LOTL is classical (the R5 premise) */
+#ifdef not PIN_TL & not LOTL_PQ
+lemma M_pin_removed:
+  exists-trace
+  "Ex I c #j #b. Accept(I, c) @ #j & Broken('lotl') @ #b & not (Ex #i. Issued(I, c) @ #i)"
+#endif
+
+/* the (pinned) anchor itself is classical */
+#ifdef not TL_PQ
+lemma M_anchor_classical:
+  exists-trace
+  "Ex I c #j #b. Accept(I, c) @ #j & Broken('tl') @ #b & not (Ex #i. Issued(I, c) @ #i)"
+#endif
+
+end

@@ -1,0 +1,12 @@
+# S_online_core sonucu (yürütücü, 2026-09-24 19:56:21 +0300); ön kayıt: betik/on_kayit_h3_sadelestirme.tsv c8fe3ee5…; çapa 4 = 6f55589
+executable	beklenen=V	gözlenen=V	ESIT
+executable_legacy	beklenen=V	gözlenen=V	ESIT
+executable_pre_migration	beklenen=V	gözlenen=V	ESIT
+executable_lifecycle	beklenen=V	gözlenen=V	ESIT
+executable_learn	beklenen=V	gözlenen=V	ESIT
+G5_migrated	beklenen=V	gözlenen=V	ESIT
+G5_timed	beklenen=V	gözlenen=V	ESIT
+no_rollback	beklenen=V	gözlenen=V	ESIT
+first_contact_downgrade	beklenen=F	gözlenen=F	ESIT
+M_rollback	beklenen=F	gözlenen=F	ESIT
+M_after_sunset	beklenen=F	gözlenen=F	ESIT

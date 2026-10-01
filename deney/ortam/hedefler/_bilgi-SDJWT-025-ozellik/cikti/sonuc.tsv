@@ -1,0 +1,13 @@
+baslangic	2026-09-25T13:14:57Z
+hedef	_bilgi-SDJWT-025-ozellik
+ekosistem	crates.io
+paket	ssi-sd-jwt
+istenen_surum	0.6.0
+arac	rustc 1.98.1
+kilit_sha256	ff56d6e7d9a2df324b0743c9775b7a2497f8a8015b6b2a377d8bc806da6097e9
+not	kilitte p256: 1
+not	kilitte ed25519-dalek: 1
+not	kilitte rsa: 1
+not	kilitte k256: 1
+ice_aktar	basarili
+bitis	2026-09-25T13:15:22Z

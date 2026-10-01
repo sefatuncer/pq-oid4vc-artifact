@@ -1,0 +1,154 @@
+# COSE-034 — API taraması (sözleşme §5.1)
+# imaj: pq-a10-go-b:gecici (sha256:429c02b4261e58730eaf30649a20f7a693a147687a18a15cf527458de93a5bd9)
+# komut: docker run --rm --network none --entrypoint sh pq-a10-go-b:gecici -c 'cd /go/pkg/mod/github.com/veraison/go-cose@*/ && grep -rn -i -E 'algorithms|allow|register|deregister|required|eddsa|ed25519|ml-?dsa|mldsa|composite|okp|verifier|keyselector|AlgorithmEdDSA|AlgorithmES256|AlgorithmMLDSA|NewVerifier' --include=*.go . | grep -v _test.go | head -150'
+
+./sign1.go:126:func (m *Sign1Message) Verify(external []byte, verifier Verifier) error {
+./sign1.go:139:	alg := verifier.Algorithm()
+./sign1.go:150:	return verifier.Verify(toBeSigned, m.Signature)
+./sign1.go:300:func (m *UntaggedSign1Message) Verify(external []byte, verifier Verifier) error {
+./sign1.go:301:	return (*Sign1Message)(m).Verify(external, verifier)
+./headers.go:12:// COSE Header labels registered in the IANA "COSE Header Parameters" registry.
+./headers.go:158:// processing a message is required to understand.
+./headers.go:230:	// In order to unmarshal Countersignature structs, it is required to make it
+./headers.go:295:// holding information about content, algorithms, keys, or evaluation
+./headers.go:433:			return fmt.Errorf("%w: verifier %v: header %v", ErrAlgorithmMismatch, alg, candidate)
+./headers.go:495:				return errors.New("header parameter: crit: not allowed")
+./headers.go:558:				return errors.New("header parameter: counter signature: not allowed")
+./headers.go:567:				return errors.New("header parameter: countersignature0: not allowed")
+./headers.go:574:				return errors.New("header parameter: Countersignature version 2: not allowed")
+./headers.go:583:				return errors.New("header parameter: Countersignature0 version 2: not allowed")
+./verifier.go:6:	"crypto/ed25519"
+./verifier.go:12:// Verifier is an interface for public keys to verify COSE signatures.
+./verifier.go:13:type Verifier interface {
+./verifier.go:25:// DigestVerifier is an interface for public keys to verify digested COSE signatures.
+./verifier.go:26:type DigestVerifier interface {
+./verifier.go:36:// NewVerifier returns a verifier with a given public key.
+./verifier.go:38:// `*ecdsa.PublicKey`, and `ed25519.PublicKey` are accepted.
+./verifier.go:44:func NewVerifier(alg Algorithm, key crypto.PublicKey) (Verifier, error) {
+./verifier.go:57:		return &rsaVerifier{
+./verifier.go:61:	case AlgorithmES256, AlgorithmES384, AlgorithmES512:
+./verifier.go:72:		return &ecdsaVerifier{
+./verifier.go:76:	case AlgorithmEdDSA:
+./verifier.go:77:		vk, ok := key.(ed25519.PublicKey)
+./verifier.go:81:		return &ed25519Verifier{
+./verifier.go:91:	return nil, fmt.Errorf("can't create new Verifier for %s: %s: %w", alg, errReason, ErrAlgorithmNotSupported)
+./countersign.go:108:func (s *Countersignature) Verify(verifier Verifier, parent any, external []byte) error {
+./countersign.go:118:	alg := verifier.Algorithm()
+./countersign.go:129:	return verifier.Verify(toBeSigned, s.Signature)
+./countersign.go:291:// using the provided Verifier.
+./countersign.go:299:func VerifyCountersign0(verifier Verifier, parent any, external, signature []byte) error {
+./countersign.go:304:	return verifier.Verify(toBeSigned, signature)
+./cbor.go:11:// CBOR Tags for COSE signatures registered in the IANA "CBOR Tags" registry.
+./cbor.go:41:		DupMapKey:   cbor.DupMapKeyEnforcedAPF, // duplicated key not allowed
+./cbor.go:125:	// error checking is not required since `data` has been validataed
+./ecdsa.go:148:// ecdsaVerifier is a ECDSA based verifier with golang built-in keys.
+./ecdsa.go:149:type ecdsaVerifier struct {
+./ecdsa.go:155:func (ev *ecdsaVerifier) Algorithm() Algorithm {
+./ecdsa.go:164:func (ev *ecdsaVerifier) Verify(content []byte, signature []byte) error {
+./ecdsa.go:178:func (ev *ecdsaVerifier) VerifyDigest(digest []byte, signature []byte) error {
+./sign.go:180:func (s *Signature) Verify(verifier Verifier, protected cbor.RawMessage, payload, external []byte) error {
+./sign.go:196:	alg := verifier.Algorithm()
+./sign.go:207:	return verifier.Verify(toBeSigned, s.Signature)
+./sign.go:434:// verifier, returning nil on success or a suitable error if verification fails.
+./sign.go:445:func (m *SignMessage) Verify(external []byte, verifiers ...Verifier) error {
+./sign.go:455:	case len(verifiers):
+./sign.go:458:		return fmt.Errorf("%d verifiers for %d signatures", len(verifiers), len(m.Signatures))
+./sign.go:470:		if err := signature.Verify(verifiers[i], protected, m.Payload, external); err != nil {
+./signer.go:6:	"crypto/ed25519"
+./signer.go:46:// `ed25519.PublicKey` are accepted.
+./signer.go:50:// Note: `*rsa.PrivateKey`, `*ecdsa.PrivateKey`, and `ed25519.PrivateKey`
+./signer.go:69:	case AlgorithmES256, AlgorithmES384, AlgorithmES512:
+./signer.go:85:	case AlgorithmEdDSA:
+./signer.go:86:		if _, ok := key.Public().(ed25519.PublicKey); !ok {
+./signer.go:89:		return &ed25519Signer{
+./algorithm.go:8:// Algorithms supported by this library.
+./algorithm.go:27:	AlgorithmES256 Algorithm = -7
+./algorithm.go:37:	// PureEdDSA by RFC 8152.
+./algorithm.go:39:	// Deprecated: use AlgorithmEdDSA instead, which has
+./algorithm.go:41:	AlgorithmEd25519 Algorithm = -8
+./algorithm.go:43:	// PureEdDSA by RFC 8152.
+./algorithm.go:44:	AlgorithmEdDSA Algorithm = -8
+./algorithm.go:50:// Algorithms known, but not supported by this library.
+./algorithm.go:52:// Signers and Verifiers requiring the algorithms below are not
+./algorithm.go:54:// as an external [cose.Signer] or [cose.Verifier] implementation.
+./algorithm.go:56:// An example use case where RS256 is allowed and used is in
+./algorithm.go:69:// Algorithm represents an IANA algorithm entry in the COSE Algorithms registry.
+./algorithm.go:73:// COSE Algorithms: https://www.iana.org/assignments/cose/cose.xhtml#algorithms
+./algorithm.go:93:	case AlgorithmES256:
+./algorithm.go:99:	case AlgorithmEdDSA:
+./algorithm.go:100:		// As stated in RFC 8152 8.2, only the pure EdDSA version is used for
+./algorithm.go:102:		return "EdDSA"
+./algorithm.go:114:	case AlgorithmPS256, AlgorithmES256:
+./ed25519.go:5:	"crypto/ed25519"
+./ed25519.go:9:// ed25519Signer is a Pure EdDSA based signer with a generic crypto.Signer.
+./ed25519.go:10:type ed25519Signer struct {
+./ed25519.go:15:func (es *ed25519Signer) Algorithm() Algorithm {
+./ed25519.go:16:	return AlgorithmEdDSA
+./ed25519.go:24:func (es *ed25519Signer) Sign(rand io.Reader, content []byte) ([]byte, error) {
+./ed25519.go:26:	// Reference: https://pkg.go.dev/crypto/ed25519#PrivateKey.Sign
+./ed25519.go:30:// ed25519Verifier is a Pure EdDSA based verifier with golang built-in keys.
+./ed25519.go:31:type ed25519Verifier struct {
+./ed25519.go:32:	key ed25519.PublicKey
+./ed25519.go:36:func (ev *ed25519Verifier) Algorithm() Algorithm {
+./ed25519.go:37:	return AlgorithmEdDSA
+./ed25519.go:45:func (ev *ed25519Verifier) Verify(content []byte, signature []byte) error {
+./ed25519.go:46:	if verified := ed25519.Verify(ev.key, content, signature); !verified {
+./errors.go:22:	ErrOKPNoPub              = errors.New("cannot create PrivateKey from OKP key: missing x")
+./key.go:6:	"crypto/ed25519"
+./key.go:16:	KeyLabelOKPCurve int64 = -1
+./key.go:17:	KeyLabelOKPX     int64 = -2
+./key.go:18:	KeyLabelOKPD     int64 = -4
+./key.go:144:	KeyTypeOKP       KeyType = 1
+./key.go:154:	case KeyTypeOKP:
+./key.go:155:		return "OKP"
+./key.go:167:// Curve represents the EC2/OKP key's curve.
+./key.go:191:	// Ed25519 for use /w EdDSA only
+./key.go:192:	CurveEd25519 Curve = 6
+./key.go:194:	// Ed448 for use /w EdDSA only
+./key.go:213:	case CurveEd25519:
+./key.go:214:		return "Ed25519"
+./key.go:225:// Note: currently, this does NOT support RFC8230 (RSA algorithms).
+./key.go:245:// NewKeyOKP returns a Key created using the provided Octet Key Pair data.
+./key.go:246:func NewKeyOKP(alg Algorithm, x, d []byte) (*Key, error) {
+./key.go:247:	if alg != AlgorithmEdDSA {
+./key.go:252:		Type:      KeyTypeOKP,
+./key.go:255:			KeyLabelOKPCurve: CurveEd25519,
+./key.go:259:		key.Params[KeyLabelOKPX] = x
+./key.go:262:		key.Params[KeyLabelOKPD] = d
+./key.go:305:// OKP returns the Octet Key Pair parameters for the key.
+./key.go:306:func (k *Key) OKP() (crv Curve, x []byte, d []byte) {
+./key.go:307:	v, ok := k.ParamInt(KeyLabelOKPCurve)
+./key.go:311:	x, _ = k.ParamBytes(KeyLabelOKPX)
+./key.go:312:	d, _ = k.ParamBytes(KeyLabelOKPD)
+./key.go:322:	case AlgorithmES256:
+./key.go:384:// Supported key formats are: *ecdsa.PublicKey and ed25519.PublicKey
+./key.go:395:	case ed25519.PublicKey:
+./key.go:396:		return NewKeyOKP(AlgorithmEdDSA, []byte(vk), nil)
+./key.go:403:// Supported key formats are: *ecdsa.PrivateKey and ed25519.PrivateKey
+./key.go:414:	case ed25519.PrivateKey:
+./key.go:415:		return NewKeyOKP(AlgorithmEdDSA, []byte(sk[32:]), []byte(sk[:32]))
+./key.go:426:	errReqParamsMissing = fmt.Errorf("%w: required parameters missing", ErrInvalidKey)
+./key.go:453:			// here to allow for omitted leading zero octets, we will add them back
+./key.go:460:		case CurveX25519, CurveX448, CurveEd25519, CurveEd448:
+./key.go:466:	case KeyTypeOKP:
+./key.go:467:		crv, x, d := k.OKP()
+./key.go:471:				return ErrOKPNoPub
+./key.go:481:		if (len(x) > 0 && len(x) != ed25519.PublicKeySize) || (len(d) > 0 && len(d) != ed25519.SeedSize) {
+./key.go:641:				if (k.Type == KeyTypeEC2 || k.Type == KeyTypeOKP) &&
+./key.go:642:					(lbl == KeyLabelEC2Curve || lbl == KeyLabelOKPCurve) {
+./key.go:667:	case AlgorithmES256, AlgorithmES384, AlgorithmES512:
+./key.go:671:		case AlgorithmES256:
+./key.go:686:	case AlgorithmEdDSA:
+./key.go:687:		_, x, _ := k.OKP()
+./key.go:688:		return ed25519.PublicKey(x), nil
+./key.go:706:	case AlgorithmES256, AlgorithmES384, AlgorithmES512:
+./key.go:714:		case AlgorithmES256:
+./key.go:730:	case AlgorithmEdDSA:
+./key.go:731:		_, x, d := k.OKP()
+./key.go:733:			return ed25519.NewKeyFromSeed(d), nil
+./key.go:736:		buf := make([]byte, ed25519.PrivateKeySize)
+./key.go:741:		return ed25519.PrivateKey(buf), nil
+./key.go:782:// Verifier returns a Verifier created using Key.
+./key.go:783:func (k *Key) Verifier() (Verifier, error) {
+./key.go:797:	return NewVerifier(alg, pub)
+./key.go:810:			return AlgorithmES256, nil

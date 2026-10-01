@@ -1,0 +1,34 @@
+theory DelegationChain
+begin
+/* Pilot: unbounded certificate-delegation loop; tests autoprove termination */
+builtins: signing
+
+restriction Equality: "All x y #i. Eq(x,y) @i ==> x = y"
+restriction OnlyOnce: "All x #i #j. OnlyOnce(x) @i & OnlyOnce(x) @j ==> #i = #j"
+
+rule Root_Setup:
+  [ Fr(~skr) ] --[ OnlyOnce('root'), RootKey(pk(~skr)) ]-> [ !CA('root', ~skr), !RootPk(pk(~skr)), Out(pk(~skr)) ]
+
+rule Delegate:
+  [ !CA(A, ska), Fr(~skb) ]
+  --[ Delegated(A, $B, pk(~skb)) ]->
+  [ !CA($B, ~skb), Out(<$B, pk(~skb), sign(<$B, pk(~skb)>, ska)>) ]
+
+rule Verify_Start:
+  [ !RootPk(pkr) ] --[ TrustedKey('root', pkr) ]-> [ Trusted('root', pkr) ]
+
+rule Verify_Step:
+  [ Trusted(A, pka), In(<B, pkb, sig>) ]
+  --[ Eq(verify(sig, <B, pkb>, pka), true), TrustedKey(B, pkb) ]->
+  [ Trusted(B, pkb) ]
+
+#ifdef INDUCTION
+lemma trusted_keys_are_delegated [use_induction]:
+  "All B pkb #i. TrustedKey(B, pkb) @i ==>
+     (Ex #r. RootKey(pkb) @r) | (Ex A #j. Delegated(A, B, pkb) @j)"
+#else
+lemma trusted_keys_are_delegated:
+  "All B pkb #i. TrustedKey(B, pkb) @i ==>
+     (Ex #r. RootKey(pkb) @r) | (Ex A #j. Delegated(A, B, pkb) @j)"
+#endif
+end

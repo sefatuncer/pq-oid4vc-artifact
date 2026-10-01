@@ -1,0 +1,112 @@
+kosu	nsurum_hucre	nsurum_sutun	motor	asp_sabitler	tamarin_bayraklari	tamarin_lemma	model	grup	sonda	aciklama
+o1.kati.asp	o1	-	asp	kat_vektor(o1). kat_prob(kati). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	kati	KAT-SPEC §4(d) KAT-3a; sonda kati
+o1.gecis.asp	o1	-	asp	kat_vektor(o1). kat_prob(gecis). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	gecis	KAT-SPEC §4(d) KAT-3a; sonda gecis
+o1.klasik.asp	o1	-	asp	kat_vektor(o1). kat_prob(klasik). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	klasik	KAT-SPEC §4(d) KAT-3a; sonda klasik
+o1.bilinmeyen.asp	o1	-	asp	kat_vektor(o1). kat_prob(bilinmeyen). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	bilinmeyen	KAT-SPEC §4(d) KAT-3a; sonda bilinmeyen
+o1.gecersiz.asp	o1	-	asp	kat_vektor(o1). kat_prob(gecersiz). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	gecersiz	KAT-SPEC §4(d) KAT-3a; sonda gecersiz
+o1.pq_hibrit.asp	o1	-	asp	kat_vektor(o1). kat_prob(pq_hibrit). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	pq_hibrit	KAT-SPEC §4(d) KAT-3a; sonda pq_hibrit
+o1.tum_klasik_yol.asp	o1	-	asp	kat_vektor(o1). kat_prob(tum_klasik_yol). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	tum_klasik_yol	KAT-SPEC §4(d) KAT-3a; sonda tum_klasik_yol
+o2.kati.asp	o2	-	asp	kat_vektor(o2). kat_prob(kati). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	kati	KAT-SPEC §4(d) KAT-3a; sonda kati
+o2.gecis.asp	o2	-	asp	kat_vektor(o2). kat_prob(gecis). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	gecis	KAT-SPEC §4(d) KAT-3a; sonda gecis
+o2.klasik.asp	o2	-	asp	kat_vektor(o2). kat_prob(klasik). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	klasik	KAT-SPEC §4(d) KAT-3a; sonda klasik
+o2.bilinmeyen.asp	o2	-	asp	kat_vektor(o2). kat_prob(bilinmeyen). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	bilinmeyen	KAT-SPEC §4(d) KAT-3a; sonda bilinmeyen
+o2.gecersiz.asp	o2	-	asp	kat_vektor(o2). kat_prob(gecersiz). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	gecersiz	KAT-SPEC §4(d) KAT-3a; sonda gecersiz
+o2.pq_hibrit.asp	o2	-	asp	kat_vektor(o2). kat_prob(pq_hibrit). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	pq_hibrit	KAT-SPEC §4(d) KAT-3a; sonda pq_hibrit
+o2.tum_klasik_yol.asp	o2	-	asp	kat_vektor(o2). kat_prob(tum_klasik_yol). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	tum_klasik_yol	KAT-SPEC §4(d) KAT-3a; sonda tum_klasik_yol
+o3.kati.asp	o3	-	asp	kat_vektor(o3). kat_prob(kati). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	kati	KAT-SPEC §4(d) KAT-3a; sonda kati
+o3.gecis.asp	o3	-	asp	kat_vektor(o3). kat_prob(gecis). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	gecis	KAT-SPEC §4(d) KAT-3a; sonda gecis
+o3.klasik.asp	o3	-	asp	kat_vektor(o3). kat_prob(klasik). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	klasik	KAT-SPEC §4(d) KAT-3a; sonda klasik
+o3.bilinmeyen.asp	o3	-	asp	kat_vektor(o3). kat_prob(bilinmeyen). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	bilinmeyen	KAT-SPEC §4(d) KAT-3a; sonda bilinmeyen
+o3.gecersiz.asp	o3	-	asp	kat_vektor(o3). kat_prob(gecersiz). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	gecersiz	KAT-SPEC §4(d) KAT-3a; sonda gecersiz
+o3.pq_hibrit.asp	o3	-	asp	kat_vektor(o3). kat_prob(pq_hibrit). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	pq_hibrit	KAT-SPEC §4(d) KAT-3a; sonda pq_hibrit
+o3.tum_klasik_yol.asp	o3	-	asp	kat_vektor(o3). kat_prob(tum_klasik_yol). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	tum_klasik_yol	KAT-SPEC §4(d) KAT-3a; sonda tum_klasik_yol
+o4.kati.asp	o4	-	asp	kat_vektor(o4). kat_prob(kati). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	kati	KAT-SPEC §4(d) KAT-3a; sonda kati
+o4.gecis.asp	o4	-	asp	kat_vektor(o4). kat_prob(gecis). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	gecis	KAT-SPEC §4(d) KAT-3a; sonda gecis
+o4.klasik.asp	o4	-	asp	kat_vektor(o4). kat_prob(klasik). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	klasik	KAT-SPEC §4(d) KAT-3a; sonda klasik
+o4.bilinmeyen.asp	o4	-	asp	kat_vektor(o4). kat_prob(bilinmeyen). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	bilinmeyen	KAT-SPEC §4(d) KAT-3a; sonda bilinmeyen
+o4.gecersiz.asp	o4	-	asp	kat_vektor(o4). kat_prob(gecersiz). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	gecersiz	KAT-SPEC §4(d) KAT-3a; sonda gecersiz
+o4.pq_hibrit.asp	o4	-	asp	kat_vektor(o4). kat_prob(pq_hibrit). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	pq_hibrit	KAT-SPEC §4(d) KAT-3a; sonda pq_hibrit
+o4.tum_klasik_yol.asp	o4	-	asp	kat_vektor(o4). kat_prob(tum_klasik_yol). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	tum_klasik_yol	KAT-SPEC §4(d) KAT-3a; sonda tum_klasik_yol
+o5.kati.asp	o5	-	asp	kat_vektor(o5). kat_prob(kati). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	kati	KAT-SPEC §4(d) KAT-3a; sonda kati
+o5.gecis.asp	o5	-	asp	kat_vektor(o5). kat_prob(gecis). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	gecis	KAT-SPEC §4(d) KAT-3a; sonda gecis
+o5.klasik.asp	o5	-	asp	kat_vektor(o5). kat_prob(klasik). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	klasik	KAT-SPEC §4(d) KAT-3a; sonda klasik
+o5.bilinmeyen.asp	o5	-	asp	kat_vektor(o5). kat_prob(bilinmeyen). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	bilinmeyen	KAT-SPEC §4(d) KAT-3a; sonda bilinmeyen
+o5.gecersiz.asp	o5	-	asp	kat_vektor(o5). kat_prob(gecersiz). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	gecersiz	KAT-SPEC §4(d) KAT-3a; sonda gecersiz
+o5.pq_hibrit.asp	o5	-	asp	kat_vektor(o5). kat_prob(pq_hibrit). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	pq_hibrit	KAT-SPEC §4(d) KAT-3a; sonda pq_hibrit
+o5.tum_klasik_yol.asp	o5	-	asp	kat_vektor(o5). kat_prob(tum_klasik_yol). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	tum_klasik_yol	KAT-SPEC §4(d) KAT-3a; sonda tum_klasik_yol
+o6.kati.asp	o6	-	asp	kat_vektor(o6). kat_prob(kati). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	kati	KAT-SPEC §4(d) KAT-3a; sonda kati
+o6.gecis.asp	o6	-	asp	kat_vektor(o6). kat_prob(gecis). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	gecis	KAT-SPEC §4(d) KAT-3a; sonda gecis
+o6.klasik.asp	o6	-	asp	kat_vektor(o6). kat_prob(klasik). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	klasik	KAT-SPEC §4(d) KAT-3a; sonda klasik
+o6.bilinmeyen.asp	o6	-	asp	kat_vektor(o6). kat_prob(bilinmeyen). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	bilinmeyen	KAT-SPEC §4(d) KAT-3a; sonda bilinmeyen
+o6.gecersiz.asp	o6	-	asp	kat_vektor(o6). kat_prob(gecersiz). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	gecersiz	KAT-SPEC §4(d) KAT-3a; sonda gecersiz
+o6.pq_hibrit.asp	o6	-	asp	kat_vektor(o6). kat_prob(pq_hibrit). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	pq_hibrit	KAT-SPEC §4(d) KAT-3a; sonda pq_hibrit
+o6.tum_klasik_yol.asp	o6	-	asp	kat_vektor(o6). kat_prob(tum_klasik_yol). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	tum_klasik_yol	KAT-SPEC §4(d) KAT-3a; sonda tum_klasik_yol
+o7.kati.asp	o7	-	asp	kat_vektor(o7). kat_prob(kati). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	kati	KAT-SPEC §4(d) KAT-3a; sonda kati
+o7.gecis.asp	o7	-	asp	kat_vektor(o7). kat_prob(gecis). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	gecis	KAT-SPEC §4(d) KAT-3a; sonda gecis
+o7.klasik.asp	o7	-	asp	kat_vektor(o7). kat_prob(klasik). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	klasik	KAT-SPEC §4(d) KAT-3a; sonda klasik
+o7.bilinmeyen.asp	o7	-	asp	kat_vektor(o7). kat_prob(bilinmeyen). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	bilinmeyen	KAT-SPEC §4(d) KAT-3a; sonda bilinmeyen
+o7.gecersiz.asp	o7	-	asp	kat_vektor(o7). kat_prob(gecersiz). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	gecersiz	KAT-SPEC §4(d) KAT-3a; sonda gecersiz
+o7.pq_hibrit.asp	o7	-	asp	kat_vektor(o7). kat_prob(pq_hibrit). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	pq_hibrit	KAT-SPEC §4(d) KAT-3a; sonda pq_hibrit
+o7.tum_klasik_yol.asp	o7	-	asp	kat_vektor(o7). kat_prob(tum_klasik_yol). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	tum_klasik_yol	KAT-SPEC §4(d) KAT-3a; sonda tum_klasik_yol
+o8.kati.asp	o8	-	asp	kat_vektor(o8). kat_prob(kati). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	kati	KAT-SPEC §4(d) KAT-3a; sonda kati
+o8.gecis.asp	o8	-	asp	kat_vektor(o8). kat_prob(gecis). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	gecis	KAT-SPEC §4(d) KAT-3a; sonda gecis
+o8.klasik.asp	o8	-	asp	kat_vektor(o8). kat_prob(klasik). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	klasik	KAT-SPEC §4(d) KAT-3a; sonda klasik
+o8.bilinmeyen.asp	o8	-	asp	kat_vektor(o8). kat_prob(bilinmeyen). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	bilinmeyen	KAT-SPEC §4(d) KAT-3a; sonda bilinmeyen
+o8.gecersiz.asp	o8	-	asp	kat_vektor(o8). kat_prob(gecersiz). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	gecersiz	KAT-SPEC §4(d) KAT-3a; sonda gecersiz
+o8.pq_hibrit.asp	o8	-	asp	kat_vektor(o8). kat_prob(pq_hibrit). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	pq_hibrit	KAT-SPEC §4(d) KAT-3a; sonda pq_hibrit
+o8.tum_klasik_yol.asp	o8	-	asp	kat_vektor(o8). kat_prob(tum_klasik_yol). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	tum_klasik_yol	KAT-SPEC §4(d) KAT-3a; sonda tum_klasik_yol
+o9.kati.asp	o9	-	asp	kat_vektor(o9). kat_prob(kati). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	kati	KAT-SPEC §4(d) KAT-3a; sonda kati
+o9.gecis.asp	o9	-	asp	kat_vektor(o9). kat_prob(gecis). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	gecis	KAT-SPEC §4(d) KAT-3a; sonda gecis
+o9.klasik.asp	o9	-	asp	kat_vektor(o9). kat_prob(klasik). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	klasik	KAT-SPEC §4(d) KAT-3a; sonda klasik
+o9.bilinmeyen.asp	o9	-	asp	kat_vektor(o9). kat_prob(bilinmeyen). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	bilinmeyen	KAT-SPEC §4(d) KAT-3a; sonda bilinmeyen
+o9.gecersiz.asp	o9	-	asp	kat_vektor(o9). kat_prob(gecersiz). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	gecersiz	KAT-SPEC §4(d) KAT-3a; sonda gecersiz
+o9.pq_hibrit.asp	o9	-	asp	kat_vektor(o9). kat_prob(pq_hibrit). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	pq_hibrit	KAT-SPEC §4(d) KAT-3a; sonda pq_hibrit
+o9.tum_klasik_yol.asp	o9	-	asp	kat_vektor(o9). kat_prob(tum_klasik_yol). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	tum_klasik_yol	KAT-SPEC §4(d) KAT-3a; sonda tum_klasik_yol
+o10.kati.asp	o10	-	asp	kat_vektor(o10). kat_prob(kati). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	kati	KAT-SPEC §4(d) KAT-3a; sonda kati
+o10.gecis.asp	o10	-	asp	kat_vektor(o10). kat_prob(gecis). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	gecis	KAT-SPEC §4(d) KAT-3a; sonda gecis
+o10.klasik.asp	o10	-	asp	kat_vektor(o10). kat_prob(klasik). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	klasik	KAT-SPEC §4(d) KAT-3a; sonda klasik
+o10.bilinmeyen.asp	o10	-	asp	kat_vektor(o10). kat_prob(bilinmeyen). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	bilinmeyen	KAT-SPEC §4(d) KAT-3a; sonda bilinmeyen
+o10.gecersiz.asp	o10	-	asp	kat_vektor(o10). kat_prob(gecersiz). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	gecersiz	KAT-SPEC §4(d) KAT-3a; sonda gecersiz
+o10.pq_hibrit.asp	o10	-	asp	kat_vektor(o10). kat_prob(pq_hibrit). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	pq_hibrit	KAT-SPEC §4(d) KAT-3a; sonda pq_hibrit
+o10.tum_klasik_yol.asp	o10	-	asp	kat_vektor(o10). kat_prob(tum_klasik_yol). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	tum_klasik_yol	KAT-SPEC §4(d) KAT-3a; sonda tum_klasik_yol
+o11.kati.asp	o11	-	asp	kat_vektor(o11). kat_prob(kati). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	kati	KAT-SPEC §4(d) KAT-3a; sonda kati
+o11.gecis.asp	o11	-	asp	kat_vektor(o11). kat_prob(gecis). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	gecis	KAT-SPEC §4(d) KAT-3a; sonda gecis
+o11.klasik.asp	o11	-	asp	kat_vektor(o11). kat_prob(klasik). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	klasik	KAT-SPEC §4(d) KAT-3a; sonda klasik
+o11.bilinmeyen.asp	o11	-	asp	kat_vektor(o11). kat_prob(bilinmeyen). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	bilinmeyen	KAT-SPEC §4(d) KAT-3a; sonda bilinmeyen
+o11.gecersiz.asp	o11	-	asp	kat_vektor(o11). kat_prob(gecersiz). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	gecersiz	KAT-SPEC §4(d) KAT-3a; sonda gecersiz
+o11.pq_hibrit.asp	o11	-	asp	kat_vektor(o11). kat_prob(pq_hibrit). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	pq_hibrit	KAT-SPEC §4(d) KAT-3a; sonda pq_hibrit
+o11.tum_klasik_yol.asp	o11	-	asp	kat_vektor(o11). kat_prob(tum_klasik_yol). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	tum_klasik_yol	KAT-SPEC §4(d) KAT-3a; sonda tum_klasik_yol
+o12.kati.asp	o12	-	asp	kat_vektor(o12). kat_prob(kati). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	kati	KAT-SPEC §4(d) KAT-3a; sonda kati
+o12.gecis.asp	o12	-	asp	kat_vektor(o12). kat_prob(gecis). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	gecis	KAT-SPEC §4(d) KAT-3a; sonda gecis
+o12.klasik.asp	o12	-	asp	kat_vektor(o12). kat_prob(klasik). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	klasik	KAT-SPEC §4(d) KAT-3a; sonda klasik
+o12.bilinmeyen.asp	o12	-	asp	kat_vektor(o12). kat_prob(bilinmeyen). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	bilinmeyen	KAT-SPEC §4(d) KAT-3a; sonda bilinmeyen
+o12.gecersiz.asp	o12	-	asp	kat_vektor(o12). kat_prob(gecersiz). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	gecersiz	KAT-SPEC §4(d) KAT-3a; sonda gecersiz
+o12.pq_hibrit.asp	o12	-	asp	kat_vektor(o12). kat_prob(pq_hibrit). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	pq_hibrit	KAT-SPEC §4(d) KAT-3a; sonda pq_hibrit
+o12.tum_klasik_yol.asp	o12	-	asp	kat_vektor(o12). kat_prob(tum_klasik_yol). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3a	tum_klasik_yol	KAT-SPEC §4(d) KAT-3a; sonda tum_klasik_yol
+V1.qday0.asp	V1	attack(qday=0)	asp	kat_tl_sinifi(cl). kat_beklenti(0). kat_birlikte(1). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3b	qday0	KAT-SPEC §4(d) KAT-3b (pilot eşi V1)
+V1.qday200.asp	V1	attack(qday=200)	asp	kat_tl_sinifi(cl). kat_beklenti(0). kat_birlikte(1). kat_now(100). kat_qday(200). kat_tau(10).	-	-	-	KAT-3b	qday200	KAT-SPEC §4(d) KAT-3b (pilot eşi V1)
+V1.statik.asp	V1	violation(qday=0)	asp	kat_tl_sinifi(cl). kat_beklenti(0). kat_birlikte(1). kat_now(1000000000). kat_qday(0). kat_tau(0).	-	-	-	KAT-3b	statik	KAT-SPEC §4(d) KAT-3b (pilot eşi V1)
+V2.qday0.asp	V2	attack(qday=0)	asp	kat_tl_sinifi(cl). kat_beklenti(1). kat_birlikte(1). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3b	qday0	KAT-SPEC §4(d) KAT-3b (pilot eşi V2)
+V2.qday200.asp	V2	attack(qday=200)	asp	kat_tl_sinifi(cl). kat_beklenti(1). kat_birlikte(1). kat_now(100). kat_qday(200). kat_tau(10).	-	-	-	KAT-3b	qday200	KAT-SPEC §4(d) KAT-3b (pilot eşi V2)
+V2.statik.asp	V2	violation(qday=0)	asp	kat_tl_sinifi(cl). kat_beklenti(1). kat_birlikte(1). kat_now(1000000000). kat_qday(0). kat_tau(0).	-	-	-	KAT-3b	statik	KAT-SPEC §4(d) KAT-3b (pilot eşi V2)
+V3.qday0.asp	V3	attack(qday=0)	asp	kat_tl_sinifi(pq). kat_beklenti(0). kat_birlikte(1). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3b	qday0	KAT-SPEC §4(d) KAT-3b (pilot eşi V3)
+V3.qday200.asp	V3	attack(qday=200)	asp	kat_tl_sinifi(pq). kat_beklenti(0). kat_birlikte(1). kat_now(100). kat_qday(200). kat_tau(10).	-	-	-	KAT-3b	qday200	KAT-SPEC §4(d) KAT-3b (pilot eşi V3)
+V3.statik.asp	V3	violation(qday=0)	asp	kat_tl_sinifi(pq). kat_beklenti(0). kat_birlikte(1). kat_now(1000000000). kat_qday(0). kat_tau(0).	-	-	-	KAT-3b	statik	KAT-SPEC §4(d) KAT-3b (pilot eşi V3)
+V4.qday0.asp	V4	attack(qday=0)	asp	kat_tl_sinifi(pq). kat_beklenti(1). kat_birlikte(1). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3b	qday0	KAT-SPEC §4(d) KAT-3b (pilot eşi V4)
+V4.qday200.asp	V4	attack(qday=200)	asp	kat_tl_sinifi(pq). kat_beklenti(1). kat_birlikte(1). kat_now(100). kat_qday(200). kat_tau(10).	-	-	-	KAT-3b	qday200	KAT-SPEC §4(d) KAT-3b (pilot eşi V4)
+V4.statik.asp	V4	violation(qday=0)	asp	kat_tl_sinifi(pq). kat_beklenti(1). kat_birlikte(1). kat_now(1000000000). kat_qday(0). kat_tau(0).	-	-	-	KAT-3b	statik	KAT-SPEC §4(d) KAT-3b (pilot eşi V4)
+V5.qday0.asp	V5	attack(qday=0)	asp	kat_tl_sinifi(pq). kat_beklenti(0). kat_birlikte(0). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3b	qday0	KAT-SPEC §4(d) KAT-3b (pilot eşi V5)
+V5.qday200.asp	V5	attack(qday=200)	asp	kat_tl_sinifi(pq). kat_beklenti(0). kat_birlikte(0). kat_now(100). kat_qday(200). kat_tau(10).	-	-	-	KAT-3b	qday200	KAT-SPEC §4(d) KAT-3b (pilot eşi V5)
+V5.statik.asp	V5	violation(qday=0)	asp	kat_tl_sinifi(pq). kat_beklenti(0). kat_birlikte(0). kat_now(1000000000). kat_qday(0). kat_tau(0).	-	-	-	KAT-3b	statik	KAT-SPEC §4(d) KAT-3b (pilot eşi V5)
+V6.qday0.asp	V6	attack(qday=0)	asp	kat_tl_sinifi(cl). kat_beklenti(0). kat_birlikte(0). kat_now(100). kat_qday(0). kat_tau(10).	-	-	-	KAT-3b	qday0	KAT-SPEC §4(d) KAT-3b (pilot eşi V6)
+V6.qday200.asp	V6	attack(qday=200)	asp	kat_tl_sinifi(cl). kat_beklenti(0). kat_birlikte(0). kat_now(100). kat_qday(200). kat_tau(10).	-	-	-	KAT-3b	qday200	KAT-SPEC §4(d) KAT-3b (pilot eşi V6)
+V6.statik.asp	V6	violation(qday=0)	asp	kat_tl_sinifi(cl). kat_beklenti(0). kat_birlikte(0). kat_now(1000000000). kat_qday(0). kat_tau(0).	-	-	-	KAT-3b	statik	KAT-SPEC §4(d) KAT-3b (pilot eşi V6)
+MIXED.tam	MIXED	Tamarin:cek_secrecy	tamarin	-	MIXED	cek_secrecy	KAT3_SMIME.spthy	KAT-3a	-	KAT-SPEC §4(c)/(d) KAT-3a
+PQ_ONLY.tam	PQ_ONLY	Tamarin:cek_secrecy	tamarin	-	PQ_ONLY	cek_secrecy	KAT3_SMIME.spthy	KAT-3a	-	KAT-SPEC §4(c)/(d) KAT-3a
+HYBRID_KEM.tam	HYBRID_KEM	Tamarin:cek_secrecy	tamarin	-	HYBRID_KEM	cek_secrecy	KAT3_SMIME.spthy	KAT-3a	-	KAT-SPEC §4(c)/(d) KAT-3a
+V1.tam	V1	Tamarin:claims_unforgeability	tamarin	-	-	claims_unforgeability	weakest_link_wf.spthy	KAT-3b	-	KAT-SPEC §4(c) pilotu; yalniz iyi bicimlilik icin Qday() eylemi -> QdayOlayi() (tek sozcuk; ESLEME §4.5)
+V2.tam	V2	Tamarin:claims_unforgeability	tamarin	-	EXPECT_IN_TL	claims_unforgeability	weakest_link_wf.spthy	KAT-3b	-	KAT-SPEC §4(c) pilotu; yalniz iyi bicimlilik icin Qday() eylemi -> QdayOlayi() (tek sozcuk; ESLEME §4.5)
+V3.tam	V3	Tamarin:claims_unforgeability	tamarin	-	TL_PQ	claims_unforgeability	weakest_link_wf.spthy	KAT-3b	-	KAT-SPEC §4(c) pilotu; yalniz iyi bicimlilik icin Qday() eylemi -> QdayOlayi() (tek sozcuk; ESLEME §4.5)
+V4.tam	V4	Tamarin:claims_unforgeability	tamarin	-	TL_PQ,EXPECT_IN_TL	claims_unforgeability	weakest_link_wf.spthy	KAT-3b	-	KAT-SPEC §4(c) pilotu; yalniz iyi bicimlilik icin Qday() eylemi -> QdayOlayi() (tek sozcuk; ESLEME §4.5)
+V5.tam	V5	Tamarin:claims_unforgeability	tamarin	-	TL_PQ,NO_COEXIST	claims_unforgeability	weakest_link_wf.spthy	KAT-3b	-	KAT-SPEC §4(c) pilotu; yalniz iyi bicimlilik icin Qday() eylemi -> QdayOlayi() (tek sozcuk; ESLEME §4.5)
+V6.tam	V6	Tamarin:claims_unforgeability	tamarin	-	NO_COEXIST	claims_unforgeability	weakest_link_wf.spthy	KAT-3b	-	KAT-SPEC §4(c) pilotu; yalniz iyi bicimlilik icin Qday() eylemi -> QdayOlayi() (tek sozcuk; ESLEME §4.5)

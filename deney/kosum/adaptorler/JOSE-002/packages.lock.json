@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "dependencies": {
+    "net10.0": {
+      "JWT": {
+        "type": "Direct",
+        "requested": "[11.1.0, 11.1.0]",
+        "resolved": "11.1.0",
+        "contentHash": "GbmNr2WUyY3Ma0rwuvmTDnE5tIV8gFNDWeua9Fn54HwrpvGfwQzi7HtEAnMgI4quf4MuJr0iwPkt9sKrNCq1Tg==",
+        "dependencies": {
+          "Newtonsoft.Json": "13.0.4"
+        }
+      },
+      "Newtonsoft.Json": {
+        "type": "Transitive",
+        "resolved": "13.0.4",
+        "contentHash": "pdgNNMai3zv51W5aq268sujXUyx7SNdE2bj1wZcWjAQrKMFZV260lbqYop1d2GM67JI1huLRwxo9ZqnfF/lC6A=="
+      }
+    }
+  }
+}

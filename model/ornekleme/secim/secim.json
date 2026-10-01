@@ -1,0 +1,2976 @@
+{
+  "kural": "ÖK §2F madde 2 (çapa 6 = 998276a)",
+  "tohum": "20260926",
+  "cerceve": {
+    "yol": "model\\asp\\ornekleme\\cerceve.jsonl",
+    "sha256": "0a9b10d169a2898b97a6463fc481385a359744a981c392560ad0355f01942d87",
+    "satir": 2442
+  },
+  "kesif": {
+    "yol": "model\\asp\\ornekleme\\kesif_2x2.jsonl",
+    "sha256": "c1e810c8c5f077790e9feb27ab6ddd8c0031ac3019a2d0c1503a4a2e5a3fb2ec",
+    "satir": 8442,
+    "ad_var_satir": 279
+  },
+  "katmanlar": [
+    {
+      "katman": "G1/asgari",
+      "aday": 81,
+      "secilen": "CERCEVE-000588"
+    },
+    {
+      "katman": "G1/bir-eksik",
+      "aday": 546,
+      "secilen": "CERCEVE-000046"
+    },
+    {
+      "katman": "G2/asgari",
+      "aday": 117,
+      "secilen": "CERCEVE-001695"
+    },
+    {
+      "katman": "G2/bir-eksik",
+      "aday": 1071,
+      "secilen": "CERCEVE-001103"
+    },
+    {
+      "katman": "G3/asgari",
+      "aday": 81,
+      "secilen": "CERCEVE-002105"
+    },
+    {
+      "katman": "G3/bir-eksik",
+      "aday": 546,
+      "secilen": "CERCEVE-002239"
+    },
+    {
+      "katman": "G4/asgari",
+      "aday": 0,
+      "secilen": null
+    },
+    {
+      "katman": "G4/bir-eksik",
+      "aday": 0,
+      "secilen": null
+    },
+    {
+      "katman": "tümü/asgari",
+      "aday": 0,
+      "secilen": null
+    },
+    {
+      "katman": "tümü/bir-eksik",
+      "aday": 0,
+      "secilen": null
+    },
+    {
+      "tamamlama": [
+        "CERCEVE-001666",
+        "CERCEVE-002338",
+        "CERCEVE-001715",
+        "CERCEVE-000317"
+      ]
+    }
+  ],
+  "kapi_ornekleri": [
+    {
+      "alt_cizge": [
+        {
+          "artefakt": "a01_lotl",
+          "beklenti_var": false,
+          "dugum": "a01",
+          "kanal": "cekilen",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 157680000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": false,
+          "sabit": true,
+          "sahte": true,
+          "tanitici": [],
+          "tasima": [
+            "lotl_kanal"
+          ],
+          "tasima_sahtelenebilir": true,
+          "varyant": []
+        },
+        {
+          "artefakt": "a02_lote_pid",
+          "beklenti_var": false,
+          "dugum": "a02",
+          "kanal": "cekilen",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 157680000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": true,
+          "sabit": true,
+          "sahte": false,
+          "tanitici": [],
+          "tasima": [
+            "webpki"
+          ],
+          "tasima_sahtelenebilir": true,
+          "varyant": []
+        },
+        {
+          "artefakt": "a02_tl",
+          "beklenti_var": false,
+          "dugum": "a02",
+          "kanal": "cekilen",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 157680000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": true,
+          "sabit": true,
+          "sahte": false,
+          "tanitici": [
+            "a01_lotl"
+          ],
+          "tasima": [
+            "webpki"
+          ],
+          "tasima_sahtelenebilir": true,
+          "varyant": []
+        },
+        {
+          "artefakt": "a03_ca",
+          "beklenti_var": false,
+          "dugum": "a03",
+          "kanal": "aktarilan",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 157680000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": true,
+          "sabit": false,
+          "sahte": false,
+          "tanitici": [
+            "a02_lote_pid",
+            "a02_tl"
+          ],
+          "tasima": [],
+          "tasima_sahtelenebilir": false,
+          "varyant": []
+        },
+        {
+          "artefakt": "a04_ihr",
+          "beklenti_var": false,
+          "dugum": "a04",
+          "kanal": "aktarilan",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 157680000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": true,
+          "sabit": false,
+          "sahte": false,
+          "tanitici": [
+            "a03_ca"
+          ],
+          "tasima": [],
+          "tasima_sahtelenebilir": false,
+          "varyant": []
+        },
+        {
+          "artefakt": "a07_kimlik",
+          "beklenti_var": false,
+          "dugum": "a07",
+          "kanal": "aktarilan",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 31536000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": true,
+          "sabit": false,
+          "sahte": false,
+          "tanitici": [
+            "a04_ihr"
+          ],
+          "tasima": [],
+          "tasima_sahtelenebilir": false,
+          "varyant": []
+        },
+        {
+          "artefakt": "a13_lotl_kanal",
+          "beklenti_var": false,
+          "dugum": "a13",
+          "kanal": "aktarilan",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 31536000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": false,
+          "sabit": true,
+          "sahte": true,
+          "tanitici": [],
+          "tasima": [],
+          "tasima_sahtelenebilir": false,
+          "varyant": []
+        },
+        {
+          "artefakt": "a13_webpki",
+          "beklenti_var": false,
+          "dugum": "a13",
+          "kanal": "aktarilan",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 31536000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": false,
+          "sabit": true,
+          "sahte": true,
+          "tanitici": [],
+          "tasima": [],
+          "tasima_sahtelenebilir": false,
+          "varyant": []
+        }
+      ],
+      "asgari_no": 0,
+      "asp_tahmini": "verified",
+      "hedef": "G1",
+      "hucre": {
+        "capa": "sabit",
+        "faz": "f3",
+        "hedef": "g1",
+        "politika": "p3",
+        "tasarim": "birincil",
+        "tau": "yavas",
+        "tau_s": 2246400
+      },
+      "hucre_id": "birincil|g1|f3|yavas|sabit|p3",
+      "ihlal_edilen": [
+        "g2",
+        "g2i",
+        "g3",
+        "g4",
+        "tum"
+      ],
+      "kaynak": "birincil",
+      "kume": {
+        "pq_dugumler": [
+          "a02",
+          "a03",
+          "a04",
+          "a07"
+        ],
+        "tasiyicilar": []
+      },
+      "satir_id": "CERCEVE-000588",
+      "tamarin": {
+        "bayraklar": {
+          "CA_PQ": true,
+          "CEKILEN_TASIMA_PQ": false,
+          "COEXIST": false,
+          "ISS_PQ": true,
+          "LOTE_OJEU_YOLU": true,
+          "LOTL_KANAL_PQ": false,
+          "LOTL_PQ": false,
+          "PIN_TL": true,
+          "ROOT_PQ": true,
+          "TL_PQ": true
+        },
+        "lemma": "G1_claims_unforgeability",
+        "sablonlar": [
+          "R5",
+          "R1"
+        ],
+        "spthy_onerisi": {
+          "R1": "R1_chain.spthy",
+          "R1(WRPAC)": "R1_chain.spthy (yaprak = istek)",
+          "R2/R3": "R2_downgrade.spthy / R3_channel.spthy",
+          "R4": "R4_wscd.spthy",
+          "R5": "R5_anchor.spthy",
+          "R6/R6h5": "R6_time.spthy / R6_h5.spthy",
+          "R7hx": "R7_mh_x.spthy"
+        }
+      },
+      "tanik_sahte_artefaktlar": [
+        "a01_lotl",
+        "a13_lotl_kanal",
+        "a13_webpki"
+      ],
+      "tur": "asgari",
+      "kimlik": "CERCEVE-000588"
+    },
+    {
+      "alt_cizge": [
+        {
+          "artefakt": "a00_ojeu",
+          "beklenti_var": false,
+          "dugum": null,
+          "kanal": "sabitlenmis",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": false,
+          "pencere_s": null,
+          "pencere_sinifi": null,
+          "pq": false,
+          "sabit": false,
+          "sahte": false,
+          "tanitici": [],
+          "tasima": [],
+          "tasima_sahtelenebilir": false,
+          "varyant": []
+        },
+        {
+          "artefakt": "a01_lotl",
+          "beklenti_var": true,
+          "dugum": "a01",
+          "kanal": "cekilen",
+          "klasik_alternatif": true,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 157680000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": true,
+          "sabit": true,
+          "sahte": false,
+          "tanitici": [],
+          "tasima": [
+            "lotl_kanal"
+          ],
+          "tasima_sahtelenebilir": true,
+          "varyant": []
+        },
+        {
+          "artefakt": "a02_lote_pid",
+          "beklenti_var": true,
+          "dugum": "a02",
+          "kanal": "cekilen",
+          "klasik_alternatif": true,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 157680000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": true,
+          "sabit": true,
+          "sahte": false,
+          "tanitici": [],
+          "tasima": [
+            "webpki"
+          ],
+          "tasima_sahtelenebilir": true,
+          "varyant": []
+        },
+        {
+          "artefakt": "a02_tl",
+          "beklenti_var": true,
+          "dugum": "a02",
+          "kanal": "cekilen",
+          "klasik_alternatif": true,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 157680000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": true,
+          "sabit": true,
+          "sahte": false,
+          "tanitici": [
+            "a01_lotl"
+          ],
+          "tasima": [
+            "webpki"
+          ],
+          "tasima_sahtelenebilir": true,
+          "varyant": []
+        },
+        {
+          "artefakt": "a03_ca",
+          "beklenti_var": true,
+          "dugum": "a03",
+          "kanal": "aktarilan",
+          "klasik_alternatif": true,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 157680000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": true,
+          "sabit": false,
+          "sahte": false,
+          "tanitici": [
+            "a02_lote_pid",
+            "a02_tl"
+          ],
+          "tasima": [],
+          "tasima_sahtelenebilir": false,
+          "varyant": []
+        },
+        {
+          "artefakt": "a04_ihr",
+          "beklenti_var": true,
+          "dugum": "a04",
+          "kanal": "aktarilan",
+          "klasik_alternatif": true,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 157680000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": true,
+          "sabit": false,
+          "sahte": false,
+          "tanitici": [
+            "a03_ca"
+          ],
+          "tasima": [],
+          "tasima_sahtelenebilir": false,
+          "varyant": []
+        },
+        {
+          "artefakt": "a07_kimlik",
+          "beklenti_var": true,
+          "dugum": "a07",
+          "kanal": "aktarilan",
+          "klasik_alternatif": true,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 31536000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": false,
+          "sabit": false,
+          "sahte": true,
+          "tanitici": [
+            "a04_ihr"
+          ],
+          "tasima": [],
+          "tasima_sahtelenebilir": false,
+          "varyant": []
+        },
+        {
+          "artefakt": "a13_lotl_kanal",
+          "beklenti_var": false,
+          "dugum": "a13",
+          "kanal": "aktarilan",
+          "klasik_alternatif": true,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 31536000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": false,
+          "sabit": true,
+          "sahte": true,
+          "tanitici": [],
+          "tasima": [],
+          "tasima_sahtelenebilir": false,
+          "varyant": []
+        },
+        {
+          "artefakt": "a13_webpki",
+          "beklenti_var": false,
+          "dugum": "a13",
+          "kanal": "aktarilan",
+          "klasik_alternatif": true,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 31536000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": false,
+          "sabit": true,
+          "sahte": true,
+          "tanitici": [],
+          "tasima": [],
+          "tasima_sahtelenebilir": false,
+          "varyant": []
+        }
+      ],
+      "asp_tahmini": "falsified",
+      "hedef": "G1",
+      "hucre": {
+        "capa": "sabit",
+        "faz": "f1",
+        "hedef": "g1",
+        "politika": "p4",
+        "tasarim": "birincil",
+        "tau": "hizli",
+        "tau_s": 600
+      },
+      "hucre_id": "birincil|g1|f1|hizli|sabit|p4",
+      "ihlal_edilen": [
+        "g1",
+        "g2",
+        "g2i",
+        "g3",
+        "g4",
+        "tum"
+      ],
+      "kaynak": "birincil",
+      "kaynaklar": [
+        {
+          "asgari_no": 1,
+          "eksik": "pq(a07)"
+        }
+      ],
+      "kume": {
+        "pq_dugumler": [
+          "a01",
+          "a02",
+          "a03",
+          "a04"
+        ],
+        "tasiyicilar": [
+          [
+            "a00_ojeu",
+            "a01_lotl"
+          ],
+          [
+            "a00_ojeu",
+            "a02_lote_pid"
+          ],
+          [
+            "a01_lotl",
+            "a02_tl"
+          ],
+          [
+            "a02_lote_pid",
+            "a03_ca"
+          ],
+          [
+            "a02_lote_pid",
+            "a04_ihr"
+          ],
+          [
+            "a02_lote_pid",
+            "a07_kimlik"
+          ]
+        ]
+      },
+      "satir_id": "CERCEVE-000046",
+      "tamarin": {
+        "bayraklar": {
+          "BEKLENTI": {
+            "a01": true,
+            "a02": true,
+            "a03": true,
+            "a04": true
+          },
+          "BEKLENTI_TASIYICI_PQ": {
+            "a01_lotl": "a00_ojeu",
+            "a02_lote_pid": "a00_ojeu",
+            "a02_tl": "a01_lotl",
+            "a03_ca": "a02_lote_pid",
+            "a04_ihr": "a02_lote_pid",
+            "a07_kimlik": "a02_lote_pid"
+          },
+          "CA_PQ": true,
+          "CEKILEN_TASIMA_PQ": false,
+          "COEXIST": true,
+          "ISS_PQ": false,
+          "LOTE_OJEU_YOLU": true,
+          "LOTL_KANAL_PQ": false,
+          "LOTL_PQ": true,
+          "PIN_TL": true,
+          "ROOT_PQ": true,
+          "TL_PQ": true
+        },
+        "lemma": "G1_claims_unforgeability",
+        "sablonlar": [
+          "R5",
+          "R1",
+          "R2/R3"
+        ],
+        "spthy_onerisi": {
+          "R1": "R1_chain.spthy",
+          "R1(WRPAC)": "R1_chain.spthy (yaprak = istek)",
+          "R2/R3": "R2_downgrade.spthy / R3_channel.spthy",
+          "R4": "R4_wscd.spthy",
+          "R5": "R5_anchor.spthy",
+          "R6/R6h5": "R6_time.spthy / R6_h5.spthy",
+          "R7hx": "R7_mh_x.spthy"
+        }
+      },
+      "tanik_sahte_artefaktlar": [
+        "a07_kimlik",
+        "a13_lotl_kanal",
+        "a13_webpki"
+      ],
+      "tur": "bir-eksik",
+      "kimlik": "CERCEVE-000046"
+    },
+    {
+      "alt_cizge": [
+        {
+          "artefakt": "a01_lotl",
+          "beklenti_var": false,
+          "dugum": "a01",
+          "kanal": "cekilen",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 157680000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": true,
+          "sabit": true,
+          "sahte": false,
+          "tanitici": [],
+          "tasima": [
+            "lotl_kanal"
+          ],
+          "tasima_sahtelenebilir": true,
+          "varyant": []
+        },
+        {
+          "artefakt": "a02_lote_pid",
+          "beklenti_var": false,
+          "dugum": "a02",
+          "kanal": "cekilen",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 157680000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": true,
+          "sabit": true,
+          "sahte": false,
+          "tanitici": [],
+          "tasima": [
+            "webpki"
+          ],
+          "tasima_sahtelenebilir": true,
+          "varyant": []
+        },
+        {
+          "artefakt": "a02_tl",
+          "beklenti_var": false,
+          "dugum": "a02",
+          "kanal": "cekilen",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 157680000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": true,
+          "sabit": false,
+          "sahte": false,
+          "tanitici": [
+            "a01_lotl"
+          ],
+          "tasima": [
+            "webpki"
+          ],
+          "tasima_sahtelenebilir": true,
+          "varyant": []
+        },
+        {
+          "artefakt": "a03_ca",
+          "beklenti_var": false,
+          "dugum": "a03",
+          "kanal": "aktarilan",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 157680000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": true,
+          "sabit": false,
+          "sahte": false,
+          "tanitici": [
+            "a02_lote_pid",
+            "a02_tl"
+          ],
+          "tasima": [],
+          "tasima_sahtelenebilir": false,
+          "varyant": []
+        },
+        {
+          "artefakt": "a04_ihr",
+          "beklenti_var": false,
+          "dugum": "a04",
+          "kanal": "aktarilan",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 157680000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": true,
+          "sabit": false,
+          "sahte": false,
+          "tanitici": [
+            "a03_ca"
+          ],
+          "tasima": [],
+          "tasima_sahtelenebilir": false,
+          "varyant": []
+        },
+        {
+          "artefakt": "a07_kimlik",
+          "beklenti_var": false,
+          "dugum": "a07",
+          "kanal": "aktarilan",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 31536000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": true,
+          "sabit": false,
+          "sahte": false,
+          "tanitici": [
+            "a04_ihr"
+          ],
+          "tasima": [],
+          "tasima_sahtelenebilir": false,
+          "varyant": []
+        },
+        {
+          "artefakt": "a10_kbjwt",
+          "beklenti_var": false,
+          "dugum": "a10",
+          "kanal": "aktarilan",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 2592000,
+          "pencere_sinifi": "belirtec",
+          "pq": true,
+          "sabit": false,
+          "sahte": false,
+          "tanitici": [
+            "a07_kimlik"
+          ],
+          "tasima": [],
+          "tasima_sahtelenebilir": false,
+          "varyant": []
+        },
+        {
+          "artefakt": "a13_lotl_kanal",
+          "beklenti_var": false,
+          "dugum": "a13",
+          "kanal": "aktarilan",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 31536000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": false,
+          "sabit": true,
+          "sahte": true,
+          "tanitici": [],
+          "tasima": [],
+          "tasima_sahtelenebilir": false,
+          "varyant": []
+        },
+        {
+          "artefakt": "a13_webpki",
+          "beklenti_var": false,
+          "dugum": "a13",
+          "kanal": "aktarilan",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 31536000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": false,
+          "sabit": true,
+          "sahte": true,
+          "tanitici": [],
+          "tasima": [],
+          "tasima_sahtelenebilir": false,
+          "varyant": []
+        }
+      ],
+      "asgari_no": 0,
+      "asp_tahmini": "verified",
+      "hedef": "G2",
+      "hucre": {
+        "capa": "onbellek",
+        "faz": "f3",
+        "hedef": "g2",
+        "politika": "p2",
+        "tasarim": "birincil",
+        "tau": "orta",
+        "tau_s": 259200
+      },
+      "hucre_id": "birincil|g2|f3|orta|onbellek|p2",
+      "ihlal_edilen": [
+        "g2i",
+        "g3",
+        "g4",
+        "tum"
+      ],
+      "kaynak": "birincil",
+      "kume": {
+        "pq_dugumler": [
+          "a01",
+          "a02",
+          "a03",
+          "a04",
+          "a07",
+          "a10"
+        ],
+        "tasiyicilar": []
+      },
+      "satir_id": "CERCEVE-001695",
+      "tamarin": {
+        "bayraklar": {
+          "CA_PQ": true,
+          "CEKILEN_TASIMA_PQ": false,
+          "COEXIST": false,
+          "DEV_PQ": true,
+          "ISS_PQ": true,
+          "LOTE_OJEU_YOLU": true,
+          "LOTL_KANAL_PQ": false,
+          "LOTL_PQ": true,
+          "PIN_TL": false,
+          "R6": {
+            "a10_kbjwt": {
+              "pencere_s": 2592000,
+              "pq": true,
+              "sinif": "belirtec",
+              "tau_pencereden_uzun": false
+            }
+          },
+          "R6_tau_s": 259200,
+          "ROOT_PQ": true,
+          "SINGLE_USE": true,
+          "TL_PQ": true
+        },
+        "lemma": "G2_presentation_unforgeability",
+        "sablonlar": [
+          "R5",
+          "R1",
+          "R4",
+          "R6/R6h5"
+        ],
+        "spthy_onerisi": {
+          "R1": "R1_chain.spthy",
+          "R1(WRPAC)": "R1_chain.spthy (yaprak = istek)",
+          "R2/R3": "R2_downgrade.spthy / R3_channel.spthy",
+          "R4": "R4_wscd.spthy",
+          "R5": "R5_anchor.spthy",
+          "R6/R6h5": "R6_time.spthy / R6_h5.spthy",
+          "R7hx": "R7_mh_x.spthy"
+        }
+      },
+      "tanik_sahte_artefaktlar": [
+        "a13_lotl_kanal",
+        "a13_webpki"
+      ],
+      "tur": "asgari",
+      "kimlik": "CERCEVE-001695"
+    },
+    {
+      "alt_cizge": [
+        {
+          "artefakt": "a00_ojeu",
+          "beklenti_var": false,
+          "dugum": null,
+          "kanal": "sabitlenmis",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": false,
+          "pencere_s": null,
+          "pencere_sinifi": null,
+          "pq": false,
+          "sabit": false,
+          "sahte": false,
+          "tanitici": [],
+          "tasima": [],
+          "tasima_sahtelenebilir": false,
+          "varyant": []
+        },
+        {
+          "artefakt": "a01_lotl",
+          "beklenti_var": true,
+          "dugum": "a01",
+          "kanal": "cekilen",
+          "klasik_alternatif": true,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 157680000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": true,
+          "sabit": true,
+          "sahte": false,
+          "tanitici": [],
+          "tasima": [
+            "lotl_kanal"
+          ],
+          "tasima_sahtelenebilir": true,
+          "varyant": []
+        },
+        {
+          "artefakt": "a02_lote_pid",
+          "beklenti_var": true,
+          "dugum": "a02",
+          "kanal": "cekilen",
+          "klasik_alternatif": true,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 157680000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": true,
+          "sabit": true,
+          "sahte": false,
+          "tanitici": [],
+          "tasima": [
+            "webpki"
+          ],
+          "tasima_sahtelenebilir": true,
+          "varyant": []
+        },
+        {
+          "artefakt": "a02_tl",
+          "beklenti_var": false,
+          "dugum": "a02",
+          "kanal": "cekilen",
+          "klasik_alternatif": true,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 157680000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": true,
+          "sabit": true,
+          "sahte": true,
+          "tanitici": [
+            "a01_lotl"
+          ],
+          "tasima": [
+            "webpki"
+          ],
+          "tasima_sahtelenebilir": true,
+          "varyant": []
+        },
+        {
+          "artefakt": "a03_ca",
+          "beklenti_var": true,
+          "dugum": "a03",
+          "kanal": "aktarilan",
+          "klasik_alternatif": true,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 157680000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": true,
+          "sabit": false,
+          "sahte": true,
+          "tanitici": [
+            "a02_lote_pid",
+            "a02_tl"
+          ],
+          "tasima": [],
+          "tasima_sahtelenebilir": false,
+          "varyant": []
+        },
+        {
+          "artefakt": "a04_ihr",
+          "beklenti_var": true,
+          "dugum": "a04",
+          "kanal": "aktarilan",
+          "klasik_alternatif": true,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 157680000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": true,
+          "sabit": false,
+          "sahte": true,
+          "tanitici": [
+            "a03_ca"
+          ],
+          "tasima": [],
+          "tasima_sahtelenebilir": false,
+          "varyant": []
+        },
+        {
+          "artefakt": "a07_kimlik",
+          "beklenti_var": true,
+          "dugum": "a07",
+          "kanal": "aktarilan",
+          "klasik_alternatif": true,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 31536000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": true,
+          "sabit": false,
+          "sahte": true,
+          "tanitici": [
+            "a04_ihr"
+          ],
+          "tasima": [],
+          "tasima_sahtelenebilir": false,
+          "varyant": []
+        },
+        {
+          "artefakt": "a10_kbjwt",
+          "beklenti_var": true,
+          "dugum": "a10",
+          "kanal": "aktarilan",
+          "klasik_alternatif": true,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 2592000,
+          "pencere_sinifi": "belirtec",
+          "pq": true,
+          "sabit": false,
+          "sahte": true,
+          "tanitici": [
+            "a07_kimlik"
+          ],
+          "tasima": [],
+          "tasima_sahtelenebilir": false,
+          "varyant": []
+        },
+        {
+          "artefakt": "a13_lotl_kanal",
+          "beklenti_var": false,
+          "dugum": "a13",
+          "kanal": "aktarilan",
+          "klasik_alternatif": true,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 31536000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": false,
+          "sabit": true,
+          "sahte": true,
+          "tanitici": [],
+          "tasima": [],
+          "tasima_sahtelenebilir": false,
+          "varyant": []
+        },
+        {
+          "artefakt": "a13_webpki",
+          "beklenti_var": false,
+          "dugum": "a13",
+          "kanal": "aktarilan",
+          "klasik_alternatif": true,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 31536000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": false,
+          "sabit": true,
+          "sahte": true,
+          "tanitici": [],
+          "tasima": [],
+          "tasima_sahtelenebilir": false,
+          "varyant": []
+        }
+      ],
+      "asp_tahmini": "falsified",
+      "hedef": "G2",
+      "hucre": {
+        "capa": "sabit",
+        "faz": "f1",
+        "hedef": "g2",
+        "politika": "p4",
+        "tasarim": "birincil",
+        "tau": "yavas",
+        "tau_s": 2246400
+      },
+      "hucre_id": "birincil|g2|f1|yavas|sabit|p4",
+      "ihlal_edilen": [
+        "g1",
+        "g2",
+        "g2i",
+        "g3",
+        "g4",
+        "g5",
+        "tum"
+      ],
+      "kaynak": "birincil",
+      "kaynaklar": [
+        {
+          "asgari_no": 3,
+          "eksik": "tasi(a01_lotl,a02_tl)"
+        }
+      ],
+      "kume": {
+        "pq_dugumler": [
+          "a01",
+          "a02",
+          "a03",
+          "a04",
+          "a07",
+          "a10"
+        ],
+        "tasiyicilar": [
+          [
+            "a00_ojeu",
+            "a01_lotl"
+          ],
+          [
+            "a00_ojeu",
+            "a02_lote_pid"
+          ],
+          [
+            "a02_lote_pid",
+            "a03_ca"
+          ],
+          [
+            "a02_lote_pid",
+            "a04_ihr"
+          ],
+          [
+            "a02_lote_pid",
+            "a07_kimlik"
+          ],
+          [
+            "a02_lote_pid",
+            "a10_kbjwt"
+          ]
+        ]
+      },
+      "satir_id": "CERCEVE-001103",
+      "tamarin": {
+        "bayraklar": {
+          "BEKLENTI": {
+            "a01": true,
+            "a02": false,
+            "a03": true,
+            "a04": true,
+            "a07": true,
+            "a10": true
+          },
+          "BEKLENTI_TASIYICI_PQ": {
+            "a01_lotl": "a00_ojeu",
+            "a02_lote_pid": "a00_ojeu",
+            "a03_ca": "a02_lote_pid",
+            "a04_ihr": "a02_lote_pid",
+            "a07_kimlik": "a02_lote_pid",
+            "a10_kbjwt": "a02_lote_pid"
+          },
+          "CA_PQ": true,
+          "CEKILEN_TASIMA_PQ": false,
+          "COEXIST": true,
+          "DEV_PQ": true,
+          "ISS_PQ": true,
+          "LOTE_OJEU_YOLU": true,
+          "LOTL_KANAL_PQ": false,
+          "LOTL_PQ": true,
+          "PIN_TL": true,
+          "R6": {
+            "a10_kbjwt": {
+              "pencere_s": 2592000,
+              "pq": true,
+              "sinif": "belirtec",
+              "tau_pencereden_uzun": false
+            }
+          },
+          "R6_tau_s": 2246400,
+          "ROOT_PQ": true,
+          "SINGLE_USE": true,
+          "TL_PQ": true
+        },
+        "lemma": "G2_presentation_unforgeability",
+        "sablonlar": [
+          "R5",
+          "R1",
+          "R4",
+          "R2/R3",
+          "R6/R6h5"
+        ],
+        "spthy_onerisi": {
+          "R1": "R1_chain.spthy",
+          "R1(WRPAC)": "R1_chain.spthy (yaprak = istek)",
+          "R2/R3": "R2_downgrade.spthy / R3_channel.spthy",
+          "R4": "R4_wscd.spthy",
+          "R5": "R5_anchor.spthy",
+          "R6/R6h5": "R6_time.spthy / R6_h5.spthy",
+          "R7hx": "R7_mh_x.spthy"
+        }
+      },
+      "tanik_sahte_artefaktlar": [
+        "a02_tl",
+        "a03_ca",
+        "a04_ihr",
+        "a07_kimlik",
+        "a10_kbjwt",
+        "a13_lotl_kanal",
+        "a13_webpki"
+      ],
+      "tur": "bir-eksik",
+      "kimlik": "CERCEVE-001103"
+    },
+    {
+      "alt_cizge": [
+        {
+          "artefakt": "a01_lotl",
+          "beklenti_var": false,
+          "dugum": "a01",
+          "kanal": "cekilen",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 157680000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": true,
+          "sabit": true,
+          "sahte": false,
+          "tanitici": [],
+          "tasima": [
+            "lotl_kanal"
+          ],
+          "tasima_sahtelenebilir": true,
+          "varyant": []
+        },
+        {
+          "artefakt": "a02_lote_pid",
+          "beklenti_var": false,
+          "dugum": "a02",
+          "kanal": "cekilen",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 157680000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": true,
+          "sabit": true,
+          "sahte": false,
+          "tanitici": [],
+          "tasima": [
+            "webpki"
+          ],
+          "tasima_sahtelenebilir": true,
+          "varyant": []
+        },
+        {
+          "artefakt": "a02_tl",
+          "beklenti_var": false,
+          "dugum": "a02",
+          "kanal": "cekilen",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 157680000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": true,
+          "sabit": false,
+          "sahte": false,
+          "tanitici": [
+            "a01_lotl"
+          ],
+          "tasima": [
+            "webpki"
+          ],
+          "tasima_sahtelenebilir": true,
+          "varyant": []
+        },
+        {
+          "artefakt": "a03_ca",
+          "beklenti_var": false,
+          "dugum": "a03",
+          "kanal": "aktarilan",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 157680000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": true,
+          "sabit": false,
+          "sahte": false,
+          "tanitici": [
+            "a02_lote_pid",
+            "a02_tl"
+          ],
+          "tasima": [],
+          "tasima_sahtelenebilir": false,
+          "varyant": []
+        },
+        {
+          "artefakt": "a04_ihr",
+          "beklenti_var": false,
+          "dugum": "a04",
+          "kanal": "aktarilan",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 157680000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": true,
+          "sabit": false,
+          "sahte": false,
+          "tanitici": [
+            "a03_ca"
+          ],
+          "tasima": [],
+          "tasima_sahtelenebilir": false,
+          "varyant": []
+        },
+        {
+          "artefakt": "a08_durum",
+          "beklenti_var": true,
+          "dugum": "a08",
+          "kanal": "cekilen",
+          "klasik_alternatif": true,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 31536000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": true,
+          "sabit": false,
+          "sahte": false,
+          "tanitici": [
+            "a04_ihr"
+          ],
+          "tasima": [
+            "webpki"
+          ],
+          "tasima_sahtelenebilir": true,
+          "varyant": []
+        },
+        {
+          "artefakt": "a13_lotl_kanal",
+          "beklenti_var": false,
+          "dugum": "a13",
+          "kanal": "aktarilan",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 31536000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": false,
+          "sabit": true,
+          "sahte": true,
+          "tanitici": [],
+          "tasima": [],
+          "tasima_sahtelenebilir": false,
+          "varyant": []
+        },
+        {
+          "artefakt": "a13_webpki",
+          "beklenti_var": false,
+          "dugum": "a13",
+          "kanal": "aktarilan",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 31536000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": false,
+          "sabit": true,
+          "sahte": true,
+          "tanitici": [],
+          "tasima": [],
+          "tasima_sahtelenebilir": false,
+          "varyant": []
+        }
+      ],
+      "asgari_no": 1,
+      "asp_tahmini": "verified",
+      "hedef": "G3",
+      "hucre": {
+        "capa": "taze",
+        "faz": "f2",
+        "hedef": "g3",
+        "politika": "p4",
+        "tasarim": "birincil",
+        "tau": "orta",
+        "tau_s": 259200
+      },
+      "hucre_id": "birincil|g3|f2|orta|taze|p4",
+      "ihlal_edilen": [
+        "g1",
+        "g2",
+        "g2i",
+        "g4",
+        "tum"
+      ],
+      "kaynak": "birincil",
+      "kume": {
+        "pq_dugumler": [
+          "a01",
+          "a02",
+          "a03",
+          "a04",
+          "a08"
+        ],
+        "tasiyicilar": [
+          [
+            "a02_lote_pid",
+            "a08_durum"
+          ]
+        ]
+      },
+      "satir_id": "CERCEVE-002105",
+      "tamarin": {
+        "bayraklar": {
+          "BEKLENTI": {
+            "a08": true
+          },
+          "BEKLENTI_TASIYICI_PQ": {
+            "a08_durum": "a02_lote_pid"
+          },
+          "CA_PQ": true,
+          "CEKILEN_TASIMA_PQ": false,
+          "COEXIST": true,
+          "DURUM_CEKILEN_VIA_TLS": true,
+          "DURUM_YAPRAK_PQ": true,
+          "ISS_PQ": false,
+          "LOTE_OJEU_YOLU": true,
+          "LOTL_KANAL_PQ": false,
+          "LOTL_PQ": true,
+          "PIN_TL": false,
+          "ROOT_PQ": true,
+          "TL_PQ": true
+        },
+        "lemma": "G3_status_soundness",
+        "sablonlar": [
+          "R5",
+          "R1",
+          "R2/R3"
+        ],
+        "spthy_onerisi": {
+          "R1": "R1_chain.spthy",
+          "R1(WRPAC)": "R1_chain.spthy (yaprak = istek)",
+          "R2/R3": "R2_downgrade.spthy / R3_channel.spthy",
+          "R4": "R4_wscd.spthy",
+          "R5": "R5_anchor.spthy",
+          "R6/R6h5": "R6_time.spthy / R6_h5.spthy",
+          "R7hx": "R7_mh_x.spthy"
+        }
+      },
+      "tanik_sahte_artefaktlar": [
+        "a13_lotl_kanal",
+        "a13_webpki"
+      ],
+      "tur": "asgari",
+      "kimlik": "CERCEVE-002105"
+    },
+    {
+      "alt_cizge": [
+        {
+          "artefakt": "a01_lotl",
+          "beklenti_var": false,
+          "dugum": "a01",
+          "kanal": "cekilen",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 157680000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": false,
+          "sabit": true,
+          "sahte": true,
+          "tanitici": [],
+          "tasima": [
+            "lotl_kanal"
+          ],
+          "tasima_sahtelenebilir": true,
+          "varyant": []
+        },
+        {
+          "artefakt": "a02_lote_pid",
+          "beklenti_var": false,
+          "dugum": "a02",
+          "kanal": "cekilen",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 157680000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": false,
+          "sabit": true,
+          "sahte": true,
+          "tanitici": [],
+          "tasima": [
+            "webpki"
+          ],
+          "tasima_sahtelenebilir": true,
+          "varyant": []
+        },
+        {
+          "artefakt": "a02_tl",
+          "beklenti_var": false,
+          "dugum": "a02",
+          "kanal": "cekilen",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 157680000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": false,
+          "sabit": true,
+          "sahte": true,
+          "tanitici": [
+            "a01_lotl"
+          ],
+          "tasima": [
+            "webpki"
+          ],
+          "tasima_sahtelenebilir": true,
+          "varyant": []
+        },
+        {
+          "artefakt": "a03_ca",
+          "beklenti_var": false,
+          "dugum": "a03",
+          "kanal": "aktarilan",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 157680000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": true,
+          "sabit": false,
+          "sahte": true,
+          "tanitici": [
+            "a02_lote_pid",
+            "a02_tl"
+          ],
+          "tasima": [],
+          "tasima_sahtelenebilir": false,
+          "varyant": []
+        },
+        {
+          "artefakt": "a04_ihr",
+          "beklenti_var": false,
+          "dugum": "a04",
+          "kanal": "aktarilan",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 157680000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": true,
+          "sabit": false,
+          "sahte": true,
+          "tanitici": [
+            "a03_ca"
+          ],
+          "tasima": [],
+          "tasima_sahtelenebilir": false,
+          "varyant": []
+        },
+        {
+          "artefakt": "a08_durum",
+          "beklenti_var": false,
+          "dugum": "a08",
+          "kanal": "cekilen",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 31536000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": true,
+          "sabit": false,
+          "sahte": true,
+          "tanitici": [
+            "a04_ihr"
+          ],
+          "tasima": [
+            "webpki"
+          ],
+          "tasima_sahtelenebilir": true,
+          "varyant": []
+        },
+        {
+          "artefakt": "a13_lotl_kanal",
+          "beklenti_var": false,
+          "dugum": "a13",
+          "kanal": "aktarilan",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 31536000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": false,
+          "sabit": true,
+          "sahte": true,
+          "tanitici": [],
+          "tasima": [],
+          "tasima_sahtelenebilir": false,
+          "varyant": []
+        },
+        {
+          "artefakt": "a13_webpki",
+          "beklenti_var": false,
+          "dugum": "a13",
+          "kanal": "aktarilan",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 31536000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": false,
+          "sabit": true,
+          "sahte": true,
+          "tanitici": [],
+          "tasima": [],
+          "tasima_sahtelenebilir": false,
+          "varyant": []
+        }
+      ],
+      "asp_tahmini": "falsified",
+      "hedef": "G3",
+      "hucre": {
+        "capa": "sabit",
+        "faz": "f3",
+        "hedef": "g3",
+        "politika": "p4",
+        "tasarim": "birincil",
+        "tau": "hizli",
+        "tau_s": 600
+      },
+      "hucre_id": "birincil|g3|f3|hizli|sabit|p4",
+      "ihlal_edilen": [
+        "g1",
+        "g2",
+        "g2i",
+        "g3",
+        "g4",
+        "tum"
+      ],
+      "kaynak": "birincil",
+      "kaynaklar": [
+        {
+          "asgari_no": 0,
+          "eksik": "pq(a02)"
+        }
+      ],
+      "kume": {
+        "pq_dugumler": [
+          "a03",
+          "a04",
+          "a08"
+        ],
+        "tasiyicilar": []
+      },
+      "satir_id": "CERCEVE-002239",
+      "tamarin": {
+        "bayraklar": {
+          "CA_PQ": true,
+          "CEKILEN_TASIMA_PQ": false,
+          "COEXIST": false,
+          "DURUM_CEKILEN_VIA_TLS": true,
+          "DURUM_YAPRAK_PQ": true,
+          "ISS_PQ": false,
+          "LOTE_OJEU_YOLU": true,
+          "LOTL_KANAL_PQ": false,
+          "LOTL_PQ": false,
+          "PIN_TL": true,
+          "ROOT_PQ": true,
+          "TL_PQ": false
+        },
+        "lemma": "G3_status_soundness",
+        "sablonlar": [
+          "R5",
+          "R1"
+        ],
+        "spthy_onerisi": {
+          "R1": "R1_chain.spthy",
+          "R1(WRPAC)": "R1_chain.spthy (yaprak = istek)",
+          "R2/R3": "R2_downgrade.spthy / R3_channel.spthy",
+          "R4": "R4_wscd.spthy",
+          "R5": "R5_anchor.spthy",
+          "R6/R6h5": "R6_time.spthy / R6_h5.spthy",
+          "R7hx": "R7_mh_x.spthy"
+        }
+      },
+      "tanik_sahte_artefaktlar": [
+        "a01_lotl",
+        "a02_lote_pid",
+        "a02_tl",
+        "a03_ca",
+        "a04_ihr",
+        "a08_durum",
+        "a13_lotl_kanal",
+        "a13_webpki"
+      ],
+      "tur": "bir-eksik",
+      "kimlik": "CERCEVE-002239"
+    },
+    {
+      "alt_cizge": [
+        {
+          "artefakt": "a01_lotl",
+          "beklenti_var": false,
+          "dugum": "a01",
+          "kanal": "cekilen",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 157680000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": false,
+          "sabit": true,
+          "sahte": true,
+          "tanitici": [],
+          "tasima": [
+            "lotl_kanal"
+          ],
+          "tasima_sahtelenebilir": true,
+          "varyant": []
+        },
+        {
+          "artefakt": "a02_lote_pid",
+          "beklenti_var": false,
+          "dugum": "a02",
+          "kanal": "cekilen",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 157680000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": true,
+          "sabit": true,
+          "sahte": false,
+          "tanitici": [],
+          "tasima": [
+            "webpki"
+          ],
+          "tasima_sahtelenebilir": true,
+          "varyant": []
+        },
+        {
+          "artefakt": "a02_tl",
+          "beklenti_var": false,
+          "dugum": "a02",
+          "kanal": "cekilen",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 157680000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": true,
+          "sabit": true,
+          "sahte": false,
+          "tanitici": [
+            "a01_lotl"
+          ],
+          "tasima": [
+            "webpki"
+          ],
+          "tasima_sahtelenebilir": true,
+          "varyant": []
+        },
+        {
+          "artefakt": "a03_ca",
+          "beklenti_var": false,
+          "dugum": "a03",
+          "kanal": "aktarilan",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 157680000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": true,
+          "sabit": false,
+          "sahte": false,
+          "tanitici": [
+            "a02_lote_pid",
+            "a02_tl"
+          ],
+          "tasima": [],
+          "tasima_sahtelenebilir": false,
+          "varyant": []
+        },
+        {
+          "artefakt": "a04_ihr",
+          "beklenti_var": false,
+          "dugum": "a04",
+          "kanal": "aktarilan",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 157680000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": false,
+          "sabit": false,
+          "sahte": true,
+          "tanitici": [
+            "a03_ca"
+          ],
+          "tasima": [],
+          "tasima_sahtelenebilir": false,
+          "varyant": []
+        },
+        {
+          "artefakt": "a07_kimlik",
+          "beklenti_var": false,
+          "dugum": "a07",
+          "kanal": "aktarilan",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 31536000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": true,
+          "sabit": false,
+          "sahte": true,
+          "tanitici": [
+            "a04_ihr"
+          ],
+          "tasima": [],
+          "tasima_sahtelenebilir": false,
+          "varyant": []
+        },
+        {
+          "artefakt": "a10_kbjwt",
+          "beklenti_var": false,
+          "dugum": "a10",
+          "kanal": "aktarilan",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 2592000,
+          "pencere_sinifi": "belirtec",
+          "pq": true,
+          "sabit": false,
+          "sahte": true,
+          "tanitici": [
+            "a07_kimlik"
+          ],
+          "tasima": [],
+          "tasima_sahtelenebilir": false,
+          "varyant": []
+        },
+        {
+          "artefakt": "a13_lotl_kanal",
+          "beklenti_var": false,
+          "dugum": "a13",
+          "kanal": "aktarilan",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 31536000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": false,
+          "sabit": true,
+          "sahte": true,
+          "tanitici": [],
+          "tasima": [],
+          "tasima_sahtelenebilir": false,
+          "varyant": []
+        },
+        {
+          "artefakt": "a13_webpki",
+          "beklenti_var": false,
+          "dugum": "a13",
+          "kanal": "aktarilan",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 31536000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": false,
+          "sabit": true,
+          "sahte": true,
+          "tanitici": [],
+          "tasima": [],
+          "tasima_sahtelenebilir": false,
+          "varyant": []
+        }
+      ],
+      "asp_tahmini": "falsified",
+      "hedef": "G2",
+      "hucre": {
+        "capa": "sabit",
+        "faz": "f3",
+        "hedef": "g2",
+        "politika": "p2",
+        "tasarim": "birincil",
+        "tau": "orta",
+        "tau_s": 259200
+      },
+      "hucre_id": "birincil|g2|f3|orta|sabit|p2",
+      "ihlal_edilen": [
+        "g1",
+        "g2",
+        "g2i",
+        "g3",
+        "g4",
+        "tum"
+      ],
+      "kaynak": "birincil",
+      "kaynaklar": [
+        {
+          "asgari_no": 0,
+          "eksik": "pq(a04)"
+        }
+      ],
+      "kume": {
+        "pq_dugumler": [
+          "a02",
+          "a03",
+          "a07",
+          "a10"
+        ],
+        "tasiyicilar": []
+      },
+      "satir_id": "CERCEVE-001666",
+      "tamarin": {
+        "bayraklar": {
+          "CA_PQ": false,
+          "CEKILEN_TASIMA_PQ": false,
+          "COEXIST": false,
+          "DEV_PQ": true,
+          "ISS_PQ": true,
+          "LOTE_OJEU_YOLU": true,
+          "LOTL_KANAL_PQ": false,
+          "LOTL_PQ": false,
+          "PIN_TL": true,
+          "R6": {
+            "a10_kbjwt": {
+              "pencere_s": 2592000,
+              "pq": true,
+              "sinif": "belirtec",
+              "tau_pencereden_uzun": false
+            }
+          },
+          "R6_tau_s": 259200,
+          "ROOT_PQ": true,
+          "SINGLE_USE": true,
+          "TL_PQ": true
+        },
+        "lemma": "G2_presentation_unforgeability",
+        "sablonlar": [
+          "R5",
+          "R1",
+          "R4",
+          "R6/R6h5"
+        ],
+        "spthy_onerisi": {
+          "R1": "R1_chain.spthy",
+          "R1(WRPAC)": "R1_chain.spthy (yaprak = istek)",
+          "R2/R3": "R2_downgrade.spthy / R3_channel.spthy",
+          "R4": "R4_wscd.spthy",
+          "R5": "R5_anchor.spthy",
+          "R6/R6h5": "R6_time.spthy / R6_h5.spthy",
+          "R7hx": "R7_mh_x.spthy"
+        }
+      },
+      "tanik_sahte_artefaktlar": [
+        "a01_lotl",
+        "a04_ihr",
+        "a07_kimlik",
+        "a10_kbjwt",
+        "a13_lotl_kanal",
+        "a13_webpki"
+      ],
+      "tur": "bir-eksik",
+      "kimlik": "CERCEVE-001666"
+    },
+    {
+      "alt_cizge": [
+        {
+          "artefakt": "a01_lotl",
+          "beklenti_var": false,
+          "dugum": "a01",
+          "kanal": "cekilen",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 157680000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": true,
+          "sabit": true,
+          "sahte": false,
+          "tanitici": [],
+          "tasima": [
+            "lotl_kanal"
+          ],
+          "tasima_sahtelenebilir": true,
+          "varyant": []
+        },
+        {
+          "artefakt": "a02_lote_pid",
+          "beklenti_var": false,
+          "dugum": "a02",
+          "kanal": "cekilen",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 157680000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": true,
+          "sabit": true,
+          "sahte": false,
+          "tanitici": [],
+          "tasima": [
+            "webpki"
+          ],
+          "tasima_sahtelenebilir": true,
+          "varyant": []
+        },
+        {
+          "artefakt": "a02_tl",
+          "beklenti_var": false,
+          "dugum": "a02",
+          "kanal": "cekilen",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 157680000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": true,
+          "sabit": false,
+          "sahte": false,
+          "tanitici": [
+            "a01_lotl"
+          ],
+          "tasima": [
+            "webpki"
+          ],
+          "tasima_sahtelenebilir": true,
+          "varyant": []
+        },
+        {
+          "artefakt": "a03_ca",
+          "beklenti_var": false,
+          "dugum": "a03",
+          "kanal": "aktarilan",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 157680000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": true,
+          "sabit": false,
+          "sahte": false,
+          "tanitici": [
+            "a02_lote_pid",
+            "a02_tl"
+          ],
+          "tasima": [],
+          "tasima_sahtelenebilir": false,
+          "varyant": []
+        },
+        {
+          "artefakt": "a04_ihr",
+          "beklenti_var": false,
+          "dugum": "a04",
+          "kanal": "aktarilan",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 157680000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": false,
+          "sabit": false,
+          "sahte": true,
+          "tanitici": [
+            "a03_ca"
+          ],
+          "tasima": [],
+          "tasima_sahtelenebilir": false,
+          "varyant": []
+        },
+        {
+          "artefakt": "a08_durum",
+          "beklenti_var": false,
+          "dugum": "a08",
+          "kanal": "cekilen",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 31536000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": true,
+          "sabit": false,
+          "sahte": true,
+          "tanitici": [
+            "a04_ihr"
+          ],
+          "tasima": [
+            "webpki"
+          ],
+          "tasima_sahtelenebilir": true,
+          "varyant": []
+        },
+        {
+          "artefakt": "a13_lotl_kanal",
+          "beklenti_var": false,
+          "dugum": "a13",
+          "kanal": "aktarilan",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 31536000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": false,
+          "sabit": true,
+          "sahte": true,
+          "tanitici": [],
+          "tasima": [],
+          "tasima_sahtelenebilir": false,
+          "varyant": []
+        },
+        {
+          "artefakt": "a13_webpki",
+          "beklenti_var": false,
+          "dugum": "a13",
+          "kanal": "aktarilan",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 31536000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": false,
+          "sabit": true,
+          "sahte": true,
+          "tanitici": [],
+          "tasima": [],
+          "tasima_sahtelenebilir": false,
+          "varyant": []
+        }
+      ],
+      "asp_tahmini": "falsified",
+      "hedef": "G3",
+      "hucre": {
+        "capa": "onbellek",
+        "faz": "f3",
+        "hedef": "g3",
+        "politika": "p1",
+        "tasarim": "birincil",
+        "tau": "orta",
+        "tau_s": 259200
+      },
+      "hucre_id": "birincil|g3|f3|orta|onbellek|p1",
+      "ihlal_edilen": [
+        "g1",
+        "g2",
+        "g2i",
+        "g3",
+        "g4",
+        "tum"
+      ],
+      "kaynak": "birincil",
+      "kaynaklar": [
+        {
+          "asgari_no": 0,
+          "eksik": "pq(a04)"
+        }
+      ],
+      "kume": {
+        "pq_dugumler": [
+          "a01",
+          "a02",
+          "a03",
+          "a08"
+        ],
+        "tasiyicilar": []
+      },
+      "satir_id": "CERCEVE-002338",
+      "tamarin": {
+        "bayraklar": {
+          "CA_PQ": false,
+          "CEKILEN_TASIMA_PQ": false,
+          "COEXIST": false,
+          "DURUM_CEKILEN_VIA_TLS": true,
+          "DURUM_YAPRAK_PQ": true,
+          "ISS_PQ": false,
+          "LOTE_OJEU_YOLU": true,
+          "LOTL_KANAL_PQ": false,
+          "LOTL_PQ": true,
+          "PIN_TL": false,
+          "ROOT_PQ": true,
+          "TL_PQ": true
+        },
+        "lemma": "G3_status_soundness",
+        "sablonlar": [
+          "R5",
+          "R1"
+        ],
+        "spthy_onerisi": {
+          "R1": "R1_chain.spthy",
+          "R1(WRPAC)": "R1_chain.spthy (yaprak = istek)",
+          "R2/R3": "R2_downgrade.spthy / R3_channel.spthy",
+          "R4": "R4_wscd.spthy",
+          "R5": "R5_anchor.spthy",
+          "R6/R6h5": "R6_time.spthy / R6_h5.spthy",
+          "R7hx": "R7_mh_x.spthy"
+        }
+      },
+      "tanik_sahte_artefaktlar": [
+        "a04_ihr",
+        "a08_durum",
+        "a13_lotl_kanal",
+        "a13_webpki"
+      ],
+      "tur": "bir-eksik",
+      "kimlik": "CERCEVE-002338"
+    },
+    {
+      "alt_cizge": [
+        {
+          "artefakt": "a01_lotl",
+          "beklenti_var": false,
+          "dugum": "a01",
+          "kanal": "cekilen",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 157680000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": true,
+          "sabit": true,
+          "sahte": false,
+          "tanitici": [],
+          "tasima": [
+            "lotl_kanal"
+          ],
+          "tasima_sahtelenebilir": true,
+          "varyant": []
+        },
+        {
+          "artefakt": "a02_lote_pid",
+          "beklenti_var": false,
+          "dugum": "a02",
+          "kanal": "cekilen",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 157680000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": true,
+          "sabit": true,
+          "sahte": false,
+          "tanitici": [],
+          "tasima": [
+            "webpki"
+          ],
+          "tasima_sahtelenebilir": true,
+          "varyant": []
+        },
+        {
+          "artefakt": "a02_tl",
+          "beklenti_var": false,
+          "dugum": "a02",
+          "kanal": "cekilen",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 157680000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": true,
+          "sabit": false,
+          "sahte": false,
+          "tanitici": [
+            "a01_lotl"
+          ],
+          "tasima": [
+            "webpki"
+          ],
+          "tasima_sahtelenebilir": true,
+          "varyant": []
+        },
+        {
+          "artefakt": "a03_ca",
+          "beklenti_var": false,
+          "dugum": "a03",
+          "kanal": "aktarilan",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 157680000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": true,
+          "sabit": false,
+          "sahte": false,
+          "tanitici": [
+            "a02_lote_pid",
+            "a02_tl"
+          ],
+          "tasima": [],
+          "tasima_sahtelenebilir": false,
+          "varyant": []
+        },
+        {
+          "artefakt": "a04_ihr",
+          "beklenti_var": false,
+          "dugum": "a04",
+          "kanal": "aktarilan",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 157680000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": true,
+          "sabit": false,
+          "sahte": false,
+          "tanitici": [
+            "a03_ca"
+          ],
+          "tasima": [],
+          "tasima_sahtelenebilir": false,
+          "varyant": []
+        },
+        {
+          "artefakt": "a07_kimlik",
+          "beklenti_var": false,
+          "dugum": "a07",
+          "kanal": "aktarilan",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 31536000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": true,
+          "sabit": false,
+          "sahte": false,
+          "tanitici": [
+            "a04_ihr"
+          ],
+          "tasima": [],
+          "tasima_sahtelenebilir": false,
+          "varyant": []
+        },
+        {
+          "artefakt": "a10_kbjwt",
+          "beklenti_var": false,
+          "dugum": "a10",
+          "kanal": "aktarilan",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 2592000,
+          "pencere_sinifi": "belirtec",
+          "pq": false,
+          "sabit": false,
+          "sahte": true,
+          "tanitici": [
+            "a07_kimlik"
+          ],
+          "tasima": [],
+          "tasima_sahtelenebilir": false,
+          "varyant": []
+        },
+        {
+          "artefakt": "a13_lotl_kanal",
+          "beklenti_var": false,
+          "dugum": "a13",
+          "kanal": "aktarilan",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 31536000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": false,
+          "sabit": true,
+          "sahte": true,
+          "tanitici": [],
+          "tasima": [],
+          "tasima_sahtelenebilir": false,
+          "varyant": []
+        },
+        {
+          "artefakt": "a13_webpki",
+          "beklenti_var": false,
+          "dugum": "a13",
+          "kanal": "aktarilan",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 31536000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": false,
+          "sabit": true,
+          "sahte": true,
+          "tanitici": [],
+          "tasima": [],
+          "tasima_sahtelenebilir": false,
+          "varyant": []
+        }
+      ],
+      "asp_tahmini": "falsified",
+      "hedef": "G2",
+      "hucre": {
+        "capa": "onbellek",
+        "faz": "f3",
+        "hedef": "g2",
+        "politika": "p4",
+        "tasarim": "birincil",
+        "tau": "orta",
+        "tau_s": 259200
+      },
+      "hucre_id": "birincil|g2|f3|orta|onbellek|p4",
+      "ihlal_edilen": [
+        "g2",
+        "g2i",
+        "g3",
+        "g4",
+        "tum"
+      ],
+      "kaynak": "birincil",
+      "kaynaklar": [
+        {
+          "asgari_no": 0,
+          "eksik": "pq(a10)"
+        }
+      ],
+      "kume": {
+        "pq_dugumler": [
+          "a01",
+          "a02",
+          "a03",
+          "a04",
+          "a07"
+        ],
+        "tasiyicilar": []
+      },
+      "satir_id": "CERCEVE-001715",
+      "tamarin": {
+        "bayraklar": {
+          "CA_PQ": true,
+          "CEKILEN_TASIMA_PQ": false,
+          "COEXIST": false,
+          "DEV_PQ": false,
+          "ISS_PQ": true,
+          "LOTE_OJEU_YOLU": true,
+          "LOTL_KANAL_PQ": false,
+          "LOTL_PQ": true,
+          "PIN_TL": false,
+          "R6": {
+            "a10_kbjwt": {
+              "pencere_s": 2592000,
+              "pq": false,
+              "sinif": "belirtec",
+              "tau_pencereden_uzun": false
+            }
+          },
+          "R6_tau_s": 259200,
+          "ROOT_PQ": true,
+          "SINGLE_USE": true,
+          "TL_PQ": true
+        },
+        "lemma": "G2_presentation_unforgeability",
+        "sablonlar": [
+          "R5",
+          "R1",
+          "R4",
+          "R6/R6h5"
+        ],
+        "spthy_onerisi": {
+          "R1": "R1_chain.spthy",
+          "R1(WRPAC)": "R1_chain.spthy (yaprak = istek)",
+          "R2/R3": "R2_downgrade.spthy / R3_channel.spthy",
+          "R4": "R4_wscd.spthy",
+          "R5": "R5_anchor.spthy",
+          "R6/R6h5": "R6_time.spthy / R6_h5.spthy",
+          "R7hx": "R7_mh_x.spthy"
+        }
+      },
+      "tanik_sahte_artefaktlar": [
+        "a10_kbjwt",
+        "a13_lotl_kanal",
+        "a13_webpki"
+      ],
+      "tur": "bir-eksik",
+      "kimlik": "CERCEVE-001715"
+    },
+    {
+      "alt_cizge": [
+        {
+          "artefakt": "a01_lotl",
+          "beklenti_var": false,
+          "dugum": "a01",
+          "kanal": "cekilen",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 157680000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": true,
+          "sabit": true,
+          "sahte": false,
+          "tanitici": [],
+          "tasima": [
+            "lotl_kanal"
+          ],
+          "tasima_sahtelenebilir": true,
+          "varyant": []
+        },
+        {
+          "artefakt": "a02_lote_pid",
+          "beklenti_var": false,
+          "dugum": "a02",
+          "kanal": "cekilen",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 157680000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": true,
+          "sabit": true,
+          "sahte": false,
+          "tanitici": [],
+          "tasima": [
+            "webpki"
+          ],
+          "tasima_sahtelenebilir": true,
+          "varyant": []
+        },
+        {
+          "artefakt": "a02_tl",
+          "beklenti_var": false,
+          "dugum": "a02",
+          "kanal": "cekilen",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 157680000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": true,
+          "sabit": false,
+          "sahte": false,
+          "tanitici": [
+            "a01_lotl"
+          ],
+          "tasima": [
+            "webpki"
+          ],
+          "tasima_sahtelenebilir": true,
+          "varyant": []
+        },
+        {
+          "artefakt": "a03_ca",
+          "beklenti_var": false,
+          "dugum": "a03",
+          "kanal": "aktarilan",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 157680000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": true,
+          "sabit": false,
+          "sahte": false,
+          "tanitici": [
+            "a02_lote_pid",
+            "a02_tl"
+          ],
+          "tasima": [],
+          "tasima_sahtelenebilir": false,
+          "varyant": []
+        },
+        {
+          "artefakt": "a04_ihr",
+          "beklenti_var": false,
+          "dugum": "a04",
+          "kanal": "aktarilan",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 157680000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": true,
+          "sabit": false,
+          "sahte": false,
+          "tanitici": [
+            "a03_ca"
+          ],
+          "tasima": [],
+          "tasima_sahtelenebilir": false,
+          "varyant": []
+        },
+        {
+          "artefakt": "a05_meta",
+          "beklenti_var": true,
+          "dugum": "a05",
+          "kanal": "cekilen",
+          "klasik_alternatif": true,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 31536000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": true,
+          "sabit": false,
+          "sahte": false,
+          "tanitici": [
+            "a04_ihr"
+          ],
+          "tasima": [
+            "webpki"
+          ],
+          "tasima_sahtelenebilir": true,
+          "varyant": []
+        },
+        {
+          "artefakt": "a07_kimlik",
+          "beklenti_var": true,
+          "dugum": "a07",
+          "kanal": "aktarilan",
+          "klasik_alternatif": true,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 31536000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": false,
+          "sabit": false,
+          "sahte": true,
+          "tanitici": [
+            "a04_ihr"
+          ],
+          "tasima": [],
+          "tasima_sahtelenebilir": false,
+          "varyant": []
+        },
+        {
+          "artefakt": "a13_lotl_kanal",
+          "beklenti_var": false,
+          "dugum": "a13",
+          "kanal": "aktarilan",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 31536000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": false,
+          "sabit": true,
+          "sahte": true,
+          "tanitici": [],
+          "tasima": [],
+          "tasima_sahtelenebilir": false,
+          "varyant": []
+        },
+        {
+          "artefakt": "a13_webpki",
+          "beklenti_var": false,
+          "dugum": "a13",
+          "kanal": "aktarilan",
+          "klasik_alternatif": false,
+          "klasikse_pencerede_kirilir": true,
+          "pencere_s": 31536000,
+          "pencere_sinifi": "uzun_omurlu",
+          "pq": false,
+          "sabit": true,
+          "sahte": true,
+          "tanitici": [],
+          "tasima": [],
+          "tasima_sahtelenebilir": false,
+          "varyant": []
+        }
+      ],
+      "asp_tahmini": "falsified",
+      "hedef": "G1",
+      "hucre": {
+        "capa": "onbellek",
+        "faz": "f2",
+        "hedef": "g1",
+        "politika": "p4",
+        "tasarim": "birincil",
+        "tau": "orta",
+        "tau_s": 259200
+      },
+      "hucre_id": "birincil|g1|f2|orta|onbellek|p4",
+      "ihlal_edilen": [
+        "g1",
+        "g2",
+        "g2i",
+        "g3",
+        "g4",
+        "tum"
+      ],
+      "kaynak": "birincil",
+      "kaynaklar": [
+        {
+          "asgari_no": 0,
+          "eksik": "pq(a07)"
+        }
+      ],
+      "kume": {
+        "pq_dugumler": [
+          "a01",
+          "a02",
+          "a03",
+          "a04",
+          "a05"
+        ],
+        "tasiyicilar": [
+          [
+            "a02_lote_pid",
+            "a05_meta"
+          ],
+          [
+            "a05_meta",
+            "a07_kimlik"
+          ]
+        ]
+      },
+      "satir_id": "CERCEVE-000317",
+      "tamarin": {
+        "bayraklar": {
+          "BEKLENTI": {
+            "a05": true
+          },
+          "BEKLENTI_TASIYICI_PQ": {
+            "a05_meta": "a02_lote_pid",
+            "a07_kimlik": "a05_meta"
+          },
+          "CA_PQ": true,
+          "CEKILEN_TASIMA_PQ": false,
+          "COEXIST": true,
+          "ISS_PQ": false,
+          "LOTE_OJEU_YOLU": true,
+          "LOTL_KANAL_PQ": false,
+          "LOTL_PQ": true,
+          "PIN_TL": false,
+          "ROOT_PQ": true,
+          "TL_PQ": true
+        },
+        "lemma": "G1_claims_unforgeability",
+        "sablonlar": [
+          "R5",
+          "R1",
+          "R2/R3"
+        ],
+        "spthy_onerisi": {
+          "R1": "R1_chain.spthy",
+          "R1(WRPAC)": "R1_chain.spthy (yaprak = istek)",
+          "R2/R3": "R2_downgrade.spthy / R3_channel.spthy",
+          "R4": "R4_wscd.spthy",
+          "R5": "R5_anchor.spthy",
+          "R6/R6h5": "R6_time.spthy / R6_h5.spthy",
+          "R7hx": "R7_mh_x.spthy"
+        }
+      },
+      "tanik_sahte_artefaktlar": [
+        "a07_kimlik",
+        "a13_lotl_kanal",
+        "a13_webpki"
+      ],
+      "tur": "bir-eksik",
+      "kimlik": "CERCEVE-000317"
+    }
+  ],
+  "kesif_ornegi (kapı sayımına girmez)": {
+    "alt_cizge": [
+      {
+        "artefakt": "a01_lotl",
+        "beklenti_var": false,
+        "dugum": "a01",
+        "kanal": "cekilen",
+        "klasik_alternatif": false,
+        "klasikse_pencerede_kirilir": true,
+        "pencere_s": 157680000,
+        "pencere_sinifi": "uzun_omurlu",
+        "pq": true,
+        "sabit": true,
+        "sahte": false,
+        "tanitici": [],
+        "tasima": [
+          "lotl_kanal"
+        ],
+        "tasima_sahtelenebilir": true,
+        "varyant": []
+      },
+      {
+        "artefakt": "a02_lote_pid",
+        "beklenti_var": false,
+        "dugum": "a02",
+        "kanal": "cekilen",
+        "klasik_alternatif": false,
+        "klasikse_pencerede_kirilir": true,
+        "pencere_s": 157680000,
+        "pencere_sinifi": "uzun_omurlu",
+        "pq": true,
+        "sabit": true,
+        "sahte": false,
+        "tanitici": [],
+        "tasima": [
+          "webpki"
+        ],
+        "tasima_sahtelenebilir": true,
+        "varyant": []
+      },
+      {
+        "artefakt": "a02_tl",
+        "beklenti_var": false,
+        "dugum": "a02",
+        "kanal": "cekilen",
+        "klasik_alternatif": false,
+        "klasikse_pencerede_kirilir": true,
+        "pencere_s": 157680000,
+        "pencere_sinifi": "uzun_omurlu",
+        "pq": true,
+        "sabit": false,
+        "sahte": false,
+        "tanitici": [
+          "a01_lotl"
+        ],
+        "tasima": [
+          "webpki"
+        ],
+        "tasima_sahtelenebilir": true,
+        "varyant": []
+      },
+      {
+        "artefakt": "a03_ca",
+        "beklenti_var": false,
+        "dugum": "a03",
+        "kanal": "aktarilan",
+        "klasik_alternatif": false,
+        "klasikse_pencerede_kirilir": true,
+        "pencere_s": 157680000,
+        "pencere_sinifi": "uzun_omurlu",
+        "pq": true,
+        "sabit": false,
+        "sahte": false,
+        "tanitici": [
+          "a02_lote_pid",
+          "a02_tl"
+        ],
+        "tasima": [],
+        "tasima_sahtelenebilir": false,
+        "varyant": []
+      },
+      {
+        "artefakt": "a03_diger",
+        "beklenti_var": false,
+        "dugum": null,
+        "kanal": "aktarilan",
+        "klasik_alternatif": false,
+        "klasikse_pencerede_kirilir": true,
+        "pencere_s": 157680000,
+        "pencere_sinifi": "uzun_omurlu",
+        "pq": false,
+        "sabit": false,
+        "sahte": true,
+        "tanitici": [
+          "a02_lote_pid",
+          "a02_tl"
+        ],
+        "tasima": [],
+        "tasima_sahtelenebilir": false,
+        "varyant": []
+      },
+      {
+        "artefakt": "a04_diger",
+        "beklenti_var": false,
+        "dugum": null,
+        "kanal": "aktarilan",
+        "klasik_alternatif": false,
+        "klasikse_pencerede_kirilir": true,
+        "pencere_s": 157680000,
+        "pencere_sinifi": "uzun_omurlu",
+        "pq": false,
+        "sabit": false,
+        "sahte": true,
+        "tanitici": [
+          "a03_diger"
+        ],
+        "tasima": [],
+        "tasima_sahtelenebilir": false,
+        "varyant": []
+      },
+      {
+        "artefakt": "a04_ihr",
+        "beklenti_var": false,
+        "dugum": "a04",
+        "kanal": "aktarilan",
+        "klasik_alternatif": false,
+        "klasikse_pencerede_kirilir": true,
+        "pencere_s": 157680000,
+        "pencere_sinifi": "uzun_omurlu",
+        "pq": true,
+        "sabit": false,
+        "sahte": false,
+        "tanitici": [
+          "a03_ca"
+        ],
+        "tasima": [],
+        "tasima_sahtelenebilir": false,
+        "varyant": []
+      },
+      {
+        "artefakt": "a07_kimlik",
+        "beklenti_var": true,
+        "dugum": "a07",
+        "kanal": "aktarilan",
+        "klasik_alternatif": true,
+        "klasikse_pencerede_kirilir": true,
+        "pencere_s": 31536000,
+        "pencere_sinifi": "uzun_omurlu",
+        "pq": true,
+        "sabit": false,
+        "sahte": true,
+        "tanitici": [
+          "a04_diger",
+          "a04_ihr"
+        ],
+        "tasima": [],
+        "tasima_sahtelenebilir": false,
+        "varyant": []
+      },
+      {
+        "artefakt": "a10_kbjwt",
+        "beklenti_var": true,
+        "dugum": "a10",
+        "kanal": "aktarilan",
+        "klasik_alternatif": true,
+        "klasikse_pencerede_kirilir": true,
+        "pencere_s": 2592000,
+        "pencere_sinifi": "belirtec",
+        "pq": true,
+        "sabit": false,
+        "sahte": true,
+        "tanitici": [
+          "a07_kimlik"
+        ],
+        "tasima": [],
+        "tasima_sahtelenebilir": false,
+        "varyant": []
+      },
+      {
+        "artefakt": "a13_lotl_kanal",
+        "beklenti_var": false,
+        "dugum": "a13",
+        "kanal": "aktarilan",
+        "klasik_alternatif": false,
+        "klasikse_pencerede_kirilir": true,
+        "pencere_s": 31536000,
+        "pencere_sinifi": "uzun_omurlu",
+        "pq": false,
+        "sabit": true,
+        "sahte": true,
+        "tanitici": [],
+        "tasima": [],
+        "tasima_sahtelenebilir": false,
+        "varyant": []
+      },
+      {
+        "artefakt": "a13_webpki",
+        "beklenti_var": false,
+        "dugum": "a13",
+        "kanal": "aktarilan",
+        "klasik_alternatif": false,
+        "klasikse_pencerede_kirilir": true,
+        "pencere_s": 31536000,
+        "pencere_sinifi": "uzun_omurlu",
+        "pq": false,
+        "sabit": true,
+        "sahte": true,
+        "tanitici": [],
+        "tasima": [],
+        "tasima_sahtelenebilir": false,
+        "varyant": []
+      }
+    ],
+    "asp_tahmini": "falsified",
+    "birincil_asgari_no": 3,
+    "hedef": "G2",
+    "hucre": {
+      "ayni_ad_klasik_ca": "var",
+      "ca_baglama": "ad",
+      "capa": "onbellek",
+      "faz": "f2",
+      "hedef": "g2",
+      "politika": "p4",
+      "tasarim": "cab_2x2",
+      "tau": "orta",
+      "tau_s": 259200
+    },
+    "hucre_id": "cab|ad|var|g2|f2|orta|onbellek|p4",
+    "ihlal_edilen": [
+      "g1",
+      "g2",
+      "g2i",
+      "g3",
+      "g4",
+      "tum"
+    ],
+    "kaynak": "kesif_2x2",
+    "kume": {
+      "pq_dugumler": [
+        "a01",
+        "a02",
+        "a03",
+        "a04",
+        "a07",
+        "a10"
+      ],
+      "tasiyicilar": [
+        [
+          "a02_lote_pid",
+          "a07_kimlik"
+        ],
+        [
+          "a02_lote_pid",
+          "a10_kbjwt"
+        ]
+      ]
+    },
+    "satir_id": "KESIF_2X2-002862",
+    "tamarin": {
+      "bayraklar": {
+        "ALT_CA": true,
+        "ALT_CA_KLASIK_SABIT": true,
+        "ALT_SAME_NAME": true,
+        "BEKLENTI": {
+          "a07": true,
+          "a10": true
+        },
+        "BEKLENTI_TASIYICI_PQ": {
+          "a07_kimlik": "a02_lote_pid",
+          "a10_kbjwt": "a02_lote_pid"
+        },
+        "CA_PQ": true,
+        "CEKILEN_TASIMA_PQ": false,
+        "COEXIST": true,
+        "DEV_PQ": true,
+        "ISS_PQ": true,
+        "KEY_BIND": false,
+        "LOTE_OJEU_YOLU": true,
+        "LOTL_KANAL_PQ": false,
+        "LOTL_PQ": true,
+        "NAME_BIND": true,
+        "PIN_TL": false,
+        "R6": {
+          "a10_kbjwt": {
+            "pencere_s": 2592000,
+            "pq": true,
+            "sinif": "belirtec",
+            "tau_pencereden_uzun": false
+          }
+        },
+        "R6_tau_s": 259200,
+        "ROOT_PQ": true,
+        "SINGLE_USE": true,
+        "TL_PQ": true
+      },
+      "lemma": "G2_presentation_unforgeability",
+      "sablonlar": [
+        "R5",
+        "R1",
+        "R4",
+        "R2/R3",
+        "R6/R6h5",
+        "R7hx"
+      ],
+      "spthy_onerisi": {
+        "R1": "R1_chain.spthy",
+        "R1(WRPAC)": "R1_chain.spthy (yaprak = istek)",
+        "R2/R3": "R2_downgrade.spthy / R3_channel.spthy",
+        "R4": "R4_wscd.spthy",
+        "R5": "R5_anchor.spthy",
+        "R6/R6h5": "R6_time.spthy / R6_h5.spthy",
+        "R7hx": "R7_mh_x.spthy"
+      }
+    },
+    "tanik_sahte_artefaktlar": [
+      "a03_diger",
+      "a04_diger",
+      "a07_kimlik",
+      "a10_kbjwt",
+      "a13_lotl_kanal",
+      "a13_webpki"
+    ],
+    "tur": "birincil-kume",
+    "kimlik": "KESIF_2X2-002862"
+  }
+}

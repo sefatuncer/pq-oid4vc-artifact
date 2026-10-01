@@ -1,0 +1,90 @@
+# JOSE-089 json-jwt 1.17.2 — API taraması (sözleşme §5.1)
+# imaj: a10-jose-089:1 (sha256:0133412d58ddcfae127540e7af5fec5be8c565ab041df847a56cd6e4d2a0172e)
+# komut: docker run --rm --network none a10-jose-089:1 sh -c 'cd /opt/a/vendor/bundle/ruby/3.4.0/gems/json-jwt-1.17.2 && grep -rn -i -E "algorithms|allow|register|required|enforce|signatures|eddsa|ed25519|ml-?dsa|composite|crit|x5c|jwks|kid|multi|first" lib/ README.md'
+
+lib/json/jws.rb:21:    def verify!(public_key_or_secret, algorithms = nil)
+lib/json/jws.rb:23:        raise UnexpectedAlgorithm unless algorithms.blank? || Array(algorithms).include?(:none)
+lib/json/jws.rb:26:      elsif algorithms.blank? || Array(algorithms).include?(alg&.to_sym)
+lib/json/jws.rb:178:      def decode_compact_serialized(input, public_key_or_secret, algorithms = nil, allow_blank_payload = false)
+lib/json/jws.rb:186:        if allow_blank_payload && claims == ''
+lib/json/jws.rb:195:        jws.verify! public_key_or_secret, algorithms unless public_key_or_secret == :skip_verification
+lib/json/jws.rb:199:      def decode_json_serialized(input, public_key_or_secret, algorithms = nil, allow_blank_payload = false)
+lib/json/jws.rb:201:        header, payload, signature = if input[:signatures].present?
+lib/json/jws.rb:203:            input[:signatures].first[:protected],
+lib/json/jws.rb:205:            input[:signatures].first[:signature]
+lib/json/jws.rb:215:        decode_compact_serialized compact_serialized, public_key_or_secret, algorithms, allow_blank_payload
+lib/json/jwk.rb:21:      calculate_default_kid if self[:kid].blank?
+lib/json/jwk.rb:92:    def calculate_default_kid
+lib/json/jwk.rb:93:      self[:kid] = thumbprint
+lib/json/jwk.rb:150:        OpenSSL::BN.new(['04' + x.unpack('H*').first + y.unpack('H*').first].pack('H*'), 2)
+lib/json/jwe.rb:22:    register_header_keys :enc, :epk, :zip, :apu, :apv
+lib/json/jwe.rb:42:    def decrypt!(private_key_or_secret, algorithms = nil, encryption_methods = nil)
+lib/json/jwe.rb:43:      raise UnexpectedAlgorithm.new('Unexpected alg header') unless algorithms.blank? || Array(algorithms).include?(alg)
+lib/json/jwe.rb:65:        # as for invalid signatures. This prevents padding-oracle attacks.
+lib/json/jwe.rb:262:      def decode_compact_serialized(input, private_key_or_secret, algorithms = nil, encryption_methods = nil, allow_blank_payload = false)
+lib/json/jwe.rb:263:        if allow_blank_payload
+lib/json/jwe.rb:277:        jwe.auth_data = input.split('.').first
+lib/json/jwe.rb:280:          jwe.decrypt! private_key_or_secret, algorithms, encryption_methods
+lib/json/jwe.rb:285:      def decode_json_serialized(input, private_key_or_secret, algorithms = nil, encryption_methods = nil, allow_blank_payload = false)
+lib/json/jwe.rb:288:          input[:recipients].first[:encrypted_key]
+lib/json/jwe.rb:299:        decode_compact_serialized compact_serialized, private_key_or_secret, algorithms, encryption_methods, allow_blank_payload
+lib/json/jwt.rb:39:      jws.kid ||= private_key_or_secret[:kid] if private_key_or_secret.is_a? JSON::JWK
+lib/json/jwt.rb:46:      jwe.kid ||= public_key_or_secret[:kid] if public_key_or_secret.is_a? JSON::JWK
+lib/json/jwt.rb:67:          signatures: [{
+lib/json/jwt.rb:107:      def decode_compact_serialized(jwt_string, key_or_secret, algorithms = nil, encryption_methods = nil, allow_blank_payload = false)
+lib/json/jwt.rb:110:          JWS.decode_compact_serialized jwt_string, key_or_secret, algorithms, allow_blank_payload
+lib/json/jwt.rb:112:          JWE.decode_compact_serialized jwt_string, key_or_secret, algorithms, encryption_methods, allow_blank_payload
+lib/json/jwt.rb:118:      def decode_json_serialized(input, key_or_secret, algorithms = nil, encryption_methods = nil, allow_blank_payload = false)
+lib/json/jwt.rb:120:        if (input[:signatures] || input[:signature]).present?
+lib/json/jwt.rb:121:          JWS.decode_json_serialized input, key_or_secret, algorithms, allow_blank_payload
+lib/json/jwt.rb:123:          JWE.decode_json_serialized input, key_or_secret, algorithms, encryption_methods, allow_blank_payload
+lib/json/jose.rb:9:      register_header_keys :alg, :jku, :jwk, :x5u, :x5t, :x5c, :kid, :typ, :cty, :crit
+lib/json/jose.rb:29:        key[kid]&.to_key or raise JWK::Set::KidNotFound
+lib/json/jose.rb:48:      def register_header_keys(*keys)
+lib/json/jose.rb:59:      def decode(input, key_or_secret = nil, algorithms = nil, encryption_methods = nil, allow_blank_payload = false)
+lib/json/jose.rb:61:          decode_json_serialized input, key_or_secret, algorithms, encryption_methods, allow_blank_payload
+lib/json/jose.rb:63:          decode_compact_serialized input, key_or_secret, algorithms, encryption_methods, allow_blank_payload
+lib/json/jwk/set/fetcher.rb:63:        def self.fetch(jwks_uri, kid:, auto_detect: true, **options)
+lib/json/jwk/set/fetcher.rb:66:            OpenSSL::Digest::MD5.hexdigest(jwks_uri),
+lib/json/jwk/set/fetcher.rb:67:            kid
+lib/json/jwk/set/fetcher.rb:70:          parsed_jwks = JSON.parse(
+lib/json/jwk/set/fetcher.rb:72:              http_client.get(jwks_uri).body
+lib/json/jwk/set/fetcher.rb:76:          unless parsed_jwks.is_a?(Hash) && parsed_jwks['keys'].is_a?(Array)
+lib/json/jwk/set/fetcher.rb:81:          jwks = Set.new(parsed_jwks)
+lib/json/jwk/set/fetcher.rb:82:          cache.delete(cache_key, options) if jwks[kid].blank?
+lib/json/jwk/set/fetcher.rb:85:            jwks[kid] or raise KidNotFound
+lib/json/jwk/set/fetcher.rb:87:            jwks
+lib/json/jwk/set.rb:4:      class KidNotFound < JWT::Exception; end
+lib/json/jwk/set.rb:6:      def initialize(*jwks)
+lib/json/jwk/set.rb:7:        jwks = if jwks.first.is_a?(Hash) && (keys = jwks.first.with_indifferent_access[:keys])
+lib/json/jwk/set.rb:10:          jwks
+lib/json/jwk/set.rb:12:        jwks = Array(jwks).flatten.collect do |jwk|
+lib/json/jwk/set.rb:15:        replace jwks
+lib/json/jwk/set.rb:22:      def [](kid)
+lib/json/jwk/set.rb:24:          jwk[:kid] && jwk[:kid] == kid
+README.md:50:If you need to get a JWK from `jwks_uri` of OpenID Connect IdP, you can use `JSON::JWK::Set::Fetcher` to fetch (& optionally cache) it.
+README.md:54:# NOTE: Optionally by setting cache instance, JWKs are cached by kid.
+README.md:57:JSON::JWK::Set::Fetcher.fetch(jwks_uri, kid: kid)
+README.md:58:# => returns JSON::JWK instance or raise JSON::JWK::Set::KidNotFound
+
+# ek: ML-DSA/composite/EdDSA deseni
+eslesme yok (0)
+# jws.rb decode_json_serialized (satir numarali):
+199:      def decode_json_serialized(input, public_key_or_secret, algorithms = nil, allow_blank_payload = false)
+200:        input = input.with_indifferent_access
+201:        header, payload, signature = if input[:signatures].present?
+202:          [
+203:            input[:signatures].first[:protected],
+204:            input[:payload],
+205:            input[:signatures].first[:signature]
+206:          ].collect do |segment|
+207:            segment
+208:          end
+209:        else
+210:          [:protected, :payload, :signature].collect do |key|
+211:            input[key]
+212:          end
+213:        end
+214:        compact_serialized = [header, payload, signature].join('.')
+215:        decode_compact_serialized compact_serialized, public_key_or_secret, algorithms, allow_blank_payload
+216:      end

@@ -1,0 +1,14 @@
+baslangic	2026-09-25T12:35:41Z
+hedef	SDJWT-015
+ekosistem	npm
+paket	@sd-jwt/core
+istenen_surum	0.21.0
+arac	node v24.21.0; npm 11.19.0; node-openssl 3.5.8
+kilit_dosyasi	package-lock.json
+kilit_sha256	bf34c3acdc71e7b07e38603ba40fa123291edbe0c26f0b3947ea467b37da526f
+bagimlilik_sayisi	2
+kurulan_surum	0.21.0
+paket_ozeti	sha512-b4ODdTXT+QvfZkYlu9i8goV3fybdXD7wkOugplO1OyDzPvePelgJlzqT4wjwnBIM+E6ktH4h79XMGKAlJJEq4A==
+lisans_kayit	Apache-2.0
+ice_aktar	basarili
+bitis	2026-09-25T12:35:44Z

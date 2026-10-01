@@ -1,0 +1,5 @@
+{"name":"pq-a09/ortam-deneme","type":"project","config":{"platform-check":true,"preferred-install":"dist"},
+    "require": {
+        "lcobucci/jwt": "5.6.0"
+    }
+}

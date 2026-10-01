@@ -1,0 +1,13 @@
+baslangic	2026-09-25T12:49:51Z
+hedef	COSE-001
+ekosistem	maven
+paket	at.asitplus.signum:indispensable-cosef-jvm
+istenen_surum	3.26.0
+arac	openjdk version "25.0.4" 2026-07-21 LTS; Apache Maven 3.9.16 
+kilit_dosyasi	jar-sha256.txt (çalışma zamanı JAR'ları; Maven --strict-checksums)
+kilit_sha256	e497cbb73b093fa6d646df4ad96a5c6bd308749fc000f90b14817428f3a36a72
+bagimlilik_sayisi	29
+paket_ozeti	sha256:ab78939913f1ee87a3784822163d82c05c7be5b644f87e2ddb3cb3b364bf3bd0 (indispensable-cosef-jvm-3.26.0.jar)
+kurulan_surum	3.26.0
+ice_aktar	basarili
+bitis	2026-09-25T12:50:07Z

@@ -1,0 +1,385 @@
+maude tool: 'maude'
+ checking version: 3.5.1. OK.
+ checking installation: OK.
+[Theory KAT1_DNSSEC_AnyValidPath] Theory loaded
+[Theory KAT1_DNSSEC_AnyValidPath] Theory translated
+[Theory KAT1_DNSSEC_AnyValidPath] Derivation checks started
+[Theory KAT1_DNSSEC_AnyValidPath] Derivation checks ended
+[Theory KAT1_DNSSEC_AnyValidPath] Theory closed
+theory KAT1_DNSSEC_AnyValidPath
+
+begin
+
+// Function signature and definition of the equational theory E
+
+functions: fst/1, none/0, pair/2, pk/1, sign/2, snd/1, true/0, verify/3
+equations:
+    fst(<x.1, x.2>) = x.1,
+    snd(<x.1, x.2>) = x.2,
+    verify(sign(x.1, x.2), x.1, pk(x.2)) = true
+
+restriction Eq:
+  "∀ x y #i. (Eq( x, y ) @ #i) ⇒ (x = y)"
+  // safety formula
+
+  /*
+  expanded formula:
+  "∀ x y #i. (Eq( x, y ) @ #i) ⇒ (x = y)"
+  */
+
+restriction Once:
+  "∀ x #i #j. ((Once( x ) @ #i) ∧ (Once( x ) @ #j)) ⇒ (#i = #j)"
+  // safety formula
+
+  /*
+  expanded formula:
+  "∀ x #i #j. ((Once( x ) @ #i) ∧ (Once( x ) @ #j)) ⇒ (#i = #j)"
+  */
+
+restriction NotEq:
+  "∀ x #i. (NotEq( x, x ) @ #i) ⇒ (⊥)"
+  // safety formula
+
+  /*
+  expanded formula:
+  "∀ x #i. (NotEq( x, x ) @ #i) ⇒ (⊥)"
+  */
+
+rule (modulo E) Qday:
+   [ ] --[ Once( 'qday' ) ]-> [ !Qday( ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Parent_Setup:
+   [ Fr( ~kp ) ]
+  --[ Once( 'parent' ) ]->
+   [ !Psk( ~kp ), !Ppk( pk(~kp) ), Out( pk(~kp) ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Zone_Setup:
+   [ Fr( ~kc ), Fr( ~kq ), Fr( ~zc ), Fr( ~zq ) ]
+  --[ Once( 'zone' ) ]->
+   [ !Z( ~kc, ~kq, ~zc, ~zq ), Out( <pk(~kc), pk(~kq), pk(~zc), pk(~zq)> ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Break_Zone_Classical:
+   [ !Z( kc, kq, zc, zq ), !Qday( ) ]
+  --[ Break( 'zone_cl' ) ]->
+   [ Out( <kc, zc> ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Publish_DS:
+   [ !Psk( kp ), !Z( kc, kq, zc, zq ) ]
+  --[ Once( 'ds' ) ]->
+   [ Out( <<'ds', none, pk(kq)>, sign(<'ds', none, pk(kq)>, kp)> ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Publish_DNSKEY_v3:
+   [ !Z( kc, kq, zc, zq ) ]
+  --[ Once( 'dk3' ) ]->
+   [
+   Out( <<'dnskey', 'v3', pk(kc), pk(kq), pk(zc), pk(zq)>, 
+         sign(<'dnskey', 'v3', pk(kc), pk(kq), pk(zc), pk(zq)>, kc), 
+         sign(<'dnskey', 'v3', pk(kc), pk(kq), pk(zc), pk(zq)>, kq)>
+   )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Sign_A:
+   [ !Z( kc, kq, zc, zq ), Fr( ~d ) ]
+  --[ SignedA( ~d ) ]->
+   [ Out( <<'A', ~d>, sign(<'A', ~d>, zc), sign(<'A', ~d>, zq)> ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Validate_DNSKEY_via_KSKcl:
+   [
+   !Ppk( pp ), In( <<'ds', dc, dq>, sds> ),
+   In( <<'dnskey', v, pkc, pkq, pzc, pzq>, s1, s2> )
+   ]
+  --[
+  Eq( verify(sds, <'ds', dc, dq>, pp), true ),
+  Eq( verify(s1, <'dnskey', v, pkc, pkq, pzc, pzq>, pkc), true ),
+  UseDK( v )
+  ]->
+   [ DKok( <'ds', dc, dq>, pzc, pzq ) ]
+
+  /*
+  rule (modulo AC) Validate_DNSKEY_via_KSKcl:
+     [
+     !Ppk( pp ), In( <<'ds', dc, dq>, sds> ),
+     In( <<'dnskey', v, pkc, pkq, pzc, pzq>, s1, s2> )
+     ]
+    --[ Eq( z, true ), Eq( z.1, true ), UseDK( v ) ]->
+     [ DKok( <'ds', dc, dq>, pzc, pzq ) ]
+    variants (modulo AC)
+    1. dc    = dc.27
+       dq    = dq.28
+       pkc   = pkc.29
+       pkq   = pkq.30
+       pp    = pp.31
+       pzc   = pzc.32
+       pzq   = pzq.33
+       s1    = s1.34
+       sds   = sds.36
+       v     = v.37
+       z     = verify(sds.36, <'ds', dc.27, dq.28>, pp.31)
+       z.1   = verify(s1.34, <'dnskey', v.37, pkc.29, pkq.30, pzc.32, pzq.33>,
+                      pkc.29)
+    
+    2. dc    = dc.32
+       dq    = dq.33
+       pkc   = pk(x.62)
+       pkq   = pkq.35
+       pp    = pp.36
+       pzc   = pzc.37
+       pzq   = pzq.38
+       s1    = sign(<'dnskey', v.42, pk(x.62), pkq.35, pzc.37, pzq.38>, x.62)
+       sds   = sds.41
+       v     = v.42
+       z     = verify(sds.41, <'ds', dc.32, dq.33>, pp.36)
+       z.1   = true
+    
+    3. dc    = dc.36
+       dq    = dq.37
+       pkc   = pkc.38
+       pkq   = pkq.39
+       pp    = pk(x.70)
+       pzc   = pzc.41
+       pzq   = pzq.42
+       s1    = s1.43
+       sds   = sign(<'ds', dc.36, dq.37>, x.70)
+       v     = v.46
+       z     = true
+       z.1   = verify(s1.43, <'dnskey', v.46, pkc.38, pkq.39, pzc.41, pzq.42>,
+                      pkc.38)
+    
+    4. dc    = dc.36
+       dq    = dq.37
+       pkc   = pk(x.68)
+       pkq   = pkq.39
+       pp    = pk(x.70)
+       pzc   = pzc.41
+       pzq   = pzq.42
+       s1    = sign(<'dnskey', v.46, pk(x.68), pkq.39, pzc.41, pzq.42>, x.68)
+       sds   = sign(<'ds', dc.36, dq.37>, x.70)
+       v     = v.46
+       z     = true
+       z.1   = true
+  */
+
+rule (modulo E) Validate_DNSKEY_via_KSKpq:
+   [
+   !Ppk( pp ), In( <<'ds', dc, dq>, sds> ),
+   In( <<'dnskey', v, pkc, pkq, pzc, pzq>, s1, s2> )
+   ]
+  --[
+  Eq( verify(sds, <'ds', dc, dq>, pp), true ),
+  Eq( verify(s2, <'dnskey', v, pkc, pkq, pzc, pzq>, pkq), true ),
+  UseDK( v )
+  ]->
+   [ DKok( <'ds', dc, dq>, pzc, pzq ) ]
+
+  /*
+  rule (modulo AC) Validate_DNSKEY_via_KSKpq:
+     [
+     !Ppk( pp ), In( <<'ds', dc, dq>, sds> ),
+     In( <<'dnskey', v, pkc, pkq, pzc, pzq>, s1, s2> )
+     ]
+    --[ Eq( z, true ), Eq( z.1, true ), UseDK( v ) ]->
+     [ DKok( <'ds', dc, dq>, pzc, pzq ) ]
+    variants (modulo AC)
+    1. dc    = dc.27
+       dq    = dq.28
+       pkc   = pkc.29
+       pkq   = pkq.30
+       pp    = pp.31
+       pzc   = pzc.32
+       pzq   = pzq.33
+       s2    = s2.35
+       sds   = sds.36
+       v     = v.37
+       z     = verify(sds.36, <'ds', dc.27, dq.28>, pp.31)
+       z.1   = verify(s2.35, <'dnskey', v.37, pkc.29, pkq.30, pzc.32, pzq.33>,
+                      pkq.30)
+    
+    2. dc    = dc.33
+       dq    = dq.34
+       pkc   = pkc.35
+       pkq   = pk(x.64)
+       pp    = pp.37
+       pzc   = pzc.38
+       pzq   = pzq.39
+       s2    = sign(<'dnskey', v.43, pkc.35, pk(x.64), pzc.38, pzq.39>, x.64)
+       sds   = sds.42
+       v     = v.43
+       z     = verify(sds.42, <'ds', dc.33, dq.34>, pp.37)
+       z.1   = true
+    
+    3. dc    = dc.36
+       dq    = dq.37
+       pkc   = pkc.38
+       pkq   = pkq.39
+       pp    = pk(x.70)
+       pzc   = pzc.41
+       pzq   = pzq.42
+       s2    = s2.44
+       sds   = sign(<'ds', dc.36, dq.37>, x.70)
+       v     = v.46
+       z     = true
+       z.1   = verify(s2.44, <'dnskey', v.46, pkc.38, pkq.39, pzc.41, pzq.42>,
+                      pkq.39)
+    
+    4. dc    = dc.36
+       dq    = dq.37
+       pkc   = pkc.38
+       pkq   = pk(x.69)
+       pp    = pk(x.70)
+       pzc   = pzc.41
+       pzq   = pzq.42
+       s2    = sign(<'dnskey', v.46, pkc.38, pk(x.69), pzc.41, pzq.42>, x.69)
+       sds   = sign(<'ds', dc.36, dq.37>, x.70)
+       v     = v.46
+       z     = true
+       z.1   = true
+  */
+
+rule (modulo E) Validate_A_complete_cl:
+   [ DKok( <'ds', c, none>, pzc, pzq ), In( <<'A', d>, sa, sb> ) ]
+  --[ Eq( verify(sa, <'A', d>, pzc), true ), AcceptA( d ) ]->
+   [ ]
+
+  /*
+  rule (modulo AC) Validate_A_complete_cl:
+     [ DKok( <'ds', c, none>, pzc, pzq ), In( <<'A', d>, sa, sb> ) ]
+    --[ Eq( z, true ), AcceptA( d ) ]->
+     [ ]
+    variants (modulo AC)
+    1. d     = d.14
+       pzc   = pzc.15
+       sa    = sa.17
+       z     = verify(sa.17, <'A', d.14>, pzc.15)
+    
+    2. d     = d.20
+       pzc   = pk(x.37)
+       sa    = sign(<'A', d.20>, x.37)
+       z     = true
+  */
+
+rule (modulo E) Validate_A_complete_pq:
+   [ DKok( <'ds', none, q>, pzc, pzq ), In( <<'A', d>, sa, sb> ) ]
+  --[ Eq( verify(sb, <'A', d>, pzq), true ), AcceptA( d ) ]->
+   [ ]
+
+  /*
+  rule (modulo AC) Validate_A_complete_pq:
+     [ DKok( <'ds', none, q>, pzc, pzq ), In( <<'A', d>, sa, sb> ) ]
+    --[ Eq( z, true ), AcceptA( d ) ]->
+     [ ]
+    variants (modulo AC)
+    1. d     = d.16
+       pzq   = pzq.18
+       sb    = sb.21
+       z     = verify(sb.21, <'A', d.16>, pzq.18)
+    
+    2. d     = d.22
+       pzq   = pk(x.42)
+       sb    = sign(<'A', d.22>, x.42)
+       z     = true
+  */
+
+rule (modulo E) Validate_A_complete_both:
+   [ DKok( <'ds', c, q>, pzc, pzq ), In( <<'A', d>, sa, sb> ) ]
+  --[
+  NotEq( c, none ), NotEq( q, none ),
+  Eq( verify(sa, <'A', d>, pzc), true ),
+  Eq( verify(sb, <'A', d>, pzq), true ), AcceptA( d )
+  ]->
+   [ ]
+
+  /*
+  rule (modulo AC) Validate_A_complete_both:
+     [ DKok( <'ds', c, q>, pzc, pzq ), In( <<'A', d>, sa, sb> ) ]
+    --[
+    NotEq( c, none ), NotEq( q, none ), Eq( z, true ), Eq( z.1, true ),
+    AcceptA( d )
+    ]->
+     [ ]
+    variants (modulo AC)
+    1. d     = d.18
+       pzc   = pzc.19
+       pzq   = pzq.20
+       sa    = sa.22
+       sb    = sb.23
+       z     = verify(sa.22, <'A', d.18>, pzc.19)
+       z.1   = verify(sb.23, <'A', d.18>, pzq.20)
+    
+    2. d     = d.24
+       pzc   = pk(x.45)
+       pzq   = pzq.26
+       sa    = sign(<'A', d.24>, x.45)
+       sb    = sb.29
+       z     = true
+       z.1   = verify(sb.29, <'A', d.24>, pzq.26)
+    
+    3. d     = d.25
+       pzc   = pzc.26
+       pzq   = pk(x.47)
+       sa    = sa.29
+       sb    = sign(<'A', d.25>, x.47)
+       z     = verify(sa.29, <'A', d.25>, pzc.26)
+       z.1   = true
+    
+    4. d     = d.25
+       pzc   = pk(x.46)
+       pzq   = pk(x.47)
+       sa    = sign(<'A', d.25>, x.46)
+       sb    = sign(<'A', d.25>, x.47)
+       z     = true
+       z.1   = true
+  */
+
+lemma executable:
+  exists-trace "∃ d #i #j. (SignedA( d ) @ #i) ∧ (AcceptA( d ) @ #j)"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ d #i #j. (SignedA( d ) @ #i) ∧ (AcceptA( d ) @ #j)"
+*/
+by sorry
+
+lemma a_rrset_authentic:
+  all-traces "∀ d #j. (AcceptA( d ) @ #j) ⇒ (∃ #i. SignedA( d ) @ #i)"
+/*
+guarded formula characterizing all counter-examples:
+"∃ d #j. (AcceptA( d ) @ #j) ∧ ∀ #i. (SignedA( d ) @ #i) ⇒ ⊥"
+*/
+by sorry
+
+/* All wellformedness checks were successful. */
+
+/*
+Generated from:
+Tamarin version 1.12.0
+Maude version 3.5.1
+Git revision: 82780bbaf3328a45f624ddb41e51bf75425f851c (with uncommited changes), branch: master
+Compiled at: 2026-03-07 14:22:39.174278293 UTC
+*/
+
+end
+
+==============================================================================
+summary of summaries:
+
+analyzed: /kat/KAT1_DNSSEC.spthy
+
+  processing time: 1.42s
+  
+  executable (exists-trace): analysis incomplete (1 steps)
+  a_rrset_authentic (all-traces): analysis incomplete (1 steps)
+
+==============================================================================

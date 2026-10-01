@@ -1,0 +1,16 @@
+baslangic	2026-09-25T13:12:40Z
+hedef	JOSE-092
+ekosistem	crates.io
+paket	jsonwebtoken
+istenen_surum	11.1.0
+not	özellikler [aws_lc_rs] varsayılan=true
+arac	rustc 1.98.1; cargo 1.98.1
+kilit_dosyasi	Cargo.lock
+kilit_sha256	f948fa46228b64f61af8352eb4ac5e1ceab99498b5088b762383798d8e5fc915
+bagimlilik_sayisi	62
+paket_ozeti	sha256:e75fe14a82d81e5f5af639997db37d8b96045938a7ac6ab18cdbe1c7467e05e1 (Cargo.lock checksum)
+kurulan_surum	11.1.0
+commit	4c0ae752e9acc108c8e2c4c8ed8128dc66014210
+commit_kaynagi	.cargo_vcs_info.json (crate içinde)
+ice_aktar	basarili
+bitis	2026-09-25T13:12:56Z

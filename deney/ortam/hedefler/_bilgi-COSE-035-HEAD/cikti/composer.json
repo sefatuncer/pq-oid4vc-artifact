@@ -1,0 +1,6 @@
+{"name":"pq-a09/ortam-deneme","type":"project","config":{"platform-check":true,"preferred-install":"dist"},
+    "require": {
+        "web-auth/cose-lib": "4.9.x-dev#1c854bf63c5cd8d872d1e57ec7b891030f4ed314",
+        "spomky-labs/cbor-php": "^3.4"
+    }
+}

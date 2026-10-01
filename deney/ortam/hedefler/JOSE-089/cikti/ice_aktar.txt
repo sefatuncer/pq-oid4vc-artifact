@@ -1,0 +1,3 @@
+modul=json/jwt yuklendi; surum=1.17.2
+sembol JSON::JWT.decode true
+sinif JSON::JWS var

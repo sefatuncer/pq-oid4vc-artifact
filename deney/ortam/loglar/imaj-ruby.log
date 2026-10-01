@@ -1,0 +1,46 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 691B 0.0s done
+#1 DONE 0.1s
+
+#2 [internal] load metadata for docker.io/library/ruby:3.4.11-trixie@sha256:da59b74df06952ff6e99b792ac7713010b8039c5989f0accaf6c97448b31d0ff
+#2 DONE 0.1s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.1s
+
+#4 [1/2] FROM docker.io/library/ruby:3.4.11-trixie@sha256:da59b74df06952ff6e99b792ac7713010b8039c5989f0accaf6c97448b31d0ff
+#4 resolve docker.io/library/ruby:3.4.11-trixie@sha256:da59b74df06952ff6e99b792ac7713010b8039c5989f0accaf6c97448b31d0ff 0.1s done
+#4 DONE 0.3s
+
+#5 [2/2] RUN set -eux; echo "SURUM $(ruby -v)"; echo "SURUM gem $(gem -v)"; echo "SURUM $(bundle -v)";     echo "SURUM ruby-openssl $(ruby -ropenssl -e 'puts OpenSSL::OPENSSL_LIBRARY_VERSION')"; echo "SURUM $(gcc --version | head -1)"
+#5 0.195 + ruby -v
+#5 0.199 + echo SURUM ruby 3.4.11 (2026-09-23 revision 592f1ffdb3) +PRISM [x86_64-linux]
+#5 0.199 SURUM ruby 3.4.11 (2026-09-23 revision 592f1ffdb3) +PRISM [x86_64-linux]
+#5 0.199 + gem -v
+#5 0.236 + echo SURUM gem 3.6.9
+#5 0.236 + bundle -v
+#5 0.236 SURUM gem 3.6.9
+#5 0.307 SURUM Bundler version 2.6.9
+#5 0.307 + echo SURUM Bundler version 2.6.9
+#5 0.307 + ruby -ropenssl -e puts OpenSSL::OPENSSL_LIBRARY_VERSION
+#5 0.364 SURUM ruby-openssl OpenSSL 3.5.7 9 Jun 2026
+#5 0.364 + echo SURUM ruby-openssl OpenSSL 3.5.7 9 Jun 2026
+#5 0.365 + gcc --version
+#5 0.365 + head -1
+#5 0.367 + echo SURUM gcc (Debian 14.2.0-19) 14.2.0
+#5 0.368 SURUM gcc (Debian 14.2.0-19) 14.2.0
+#5 DONE 0.4s
+
+#6 exporting to image
+#6 exporting layers 0.1s done
+#6 exporting manifest sha256:c7894c5896b0e6629c7369392e97397de2ffa60e1f0f96a4d92f6959d8eb2b5d 0.0s done
+#6 exporting config sha256:9a53097bdbe2003d41ec011113399bd8c4940b3b76d73ecbba90cb4dfb3ecfb6 0.0s done
+#6 exporting attestation manifest sha256:cceba7aa40b439c14f67ca9b5f26442b25169e678bcfeeb1fef3d06cc3bfb065 0.0s done
+#6 exporting manifest list sha256:031c9c53bb1acdfa376e00b9abd6590d425f4f2afe58262dc3b6da18adbb42a5
+#6 exporting manifest list sha256:031c9c53bb1acdfa376e00b9abd6590d425f4f2afe58262dc3b6da18adbb42a5 0.0s done
+#6 naming to docker.io/library/pq-a09-env-ruby:1.0 done
+#6 unpacking to docker.io/library/pq-a09-env-ruby:1.0 0.0s done
+#6 DONE 0.3s

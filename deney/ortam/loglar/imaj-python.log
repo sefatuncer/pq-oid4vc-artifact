@@ -1,0 +1,46 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 740B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/python:3.13-trixie@sha256:82c46c08c991d3d3ff10476ac5e386c2c28f27bbd3985a02c5e39fe99ab272eb
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context:
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/2] FROM docker.io/library/python:3.13-trixie@sha256:82c46c08c991d3d3ff10476ac5e386c2c28f27bbd3985a02c5e39fe99ab272eb
+#4 resolve docker.io/library/python:3.13-trixie@sha256:82c46c08c991d3d3ff10476ac5e386c2c28f27bbd3985a02c5e39fe99ab272eb 0.0s done
+#4 DONE 0.1s
+
+#5 [2/2] RUN set -eux; echo "SURUM python $(python --version 2>&1)"; echo "SURUM $(pip --version)";     echo "SURUM $(git --version)"; echo "SURUM $(gcc --version | head -1)"; echo "SURUM sistem $(openssl version)"
+#5 0.205 + python --version
+#5 0.207 SURUM python Python 3.13.15
+#5 0.207 + echo SURUM python Python 3.13.15
+#5 0.207 + pip --version
+#5 0.766 + echo SURUM pip 26.2.1 from /usr/local/lib/python3.13/site-packages/pip (python 3.13)
+#5 0.766 SURUM pip 26.2.1 from /usr/local/lib/python3.13/site-packages/pip (python 3.13)
+#5 0.767 + git --version
+#5 0.769 SURUM git version 2.47.3
+#5 0.769 + echo SURUM git version 2.47.3
+#5 0.769 + gcc --version
+#5 0.769 + head -1
+#5 0.770 + echo SURUM gcc (Debian 14.2.0-19) 14.2.0
+#5 0.770 SURUM gcc (Debian 14.2.0-19) 14.2.0
+#5 0.771 + openssl version
+#5 0.773 + echo SURUM sistem OpenSSL 3.5.7 9 Jun 2026 (Library: OpenSSL 3.5.7 9 Jun 2026)
+#5 0.773 SURUM sistem OpenSSL 3.5.7 9 Jun 2026 (Library: OpenSSL 3.5.7 9 Jun 2026)
+#5 DONE 0.8s
+
+#6 exporting to image
+#6 exporting layers 0.1s done
+#6 exporting manifest sha256:2623b15c73ddf4e9e02f98722f27ed03abeb042545200886eff3203a30ff8742 0.0s done
+#6 exporting config sha256:6f4b693db7f98b69c6bd4962fe1f2072f8eae669e1e3deed63fd10087c14a579 0.0s done
+#6 exporting attestation manifest sha256:535f2c1002f8faca33184331c41b8cd3537862f17527bd472d65221e7c74078a 0.0s done
+#6 exporting manifest list sha256:94dbdfc9282786cc2304d9bc08f951c078d22fb18e03c5055745d627e9fa3b9c 0.0s done
+#6 naming to docker.io/library/pq-a09-env-python:1.0 done
+#6 unpacking to docker.io/library/pq-a09-env-python:1.0 0.0s done
+#6 DONE 0.2s

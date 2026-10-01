@@ -1,0 +1,3 @@
+dusen_id,yedek_id,neden,kural_kolu,gerekce
+JOSE-104,JOSE-031,"K6 nihai (Linux derlemesi başarısız)","5.3-4-ii genel yedek; sıra 1/2 — ADAY, seçim yürütücüde","Swift/ObjC grubunda grup-içi yedek yok; genel yedek listesi iki aday içeriyor (brif: 'kural iki yedeğe izin veriyor' → seçim yapılmaz)"
+JOSE-104,JOSE-017,"K6 nihai (Linux derlemesi başarısız)","5.3-4-ii genel yedek; sıra 2/2 — ADAY, seçim yürütücüde","aynı gerekçe; ikisi de derlendi"

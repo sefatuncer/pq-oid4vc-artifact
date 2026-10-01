@@ -1,0 +1,1687 @@
+{
+ "hucreler": [
+  {
+   "asp_py_esit": true,
+   "dugum_adim_araligi": {
+    "a01": [
+     1,
+     1
+    ],
+    "a02": [
+     2,
+     4
+    ],
+    "a03": [
+     2,
+     4
+    ],
+    "a04": [
+     2,
+     4
+    ],
+    "a07": [
+     5,
+     5
+    ]
+   },
+   "dugumler": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a07"
+   ],
+   "en_iyi_deger": 8,
+   "en_iyi_sira_sayisi": 6,
+   "hedef": "g1",
+   "hucre": "birincil|g1|f1|hizli|taze|p4",
+   "ornek_sira": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a07"
+   ],
+   "tasi": 6
+  },
+  {
+   "asp_py_esit": true,
+   "dugum_adim_araligi": {
+    "a01": [
+     1,
+     1
+    ],
+    "a02": [
+     2,
+     4
+    ],
+    "a03": [
+     2,
+     4
+    ],
+    "a04": [
+     2,
+     4
+    ],
+    "a07": [
+     5,
+     5
+    ]
+   },
+   "dugumler": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a07"
+   ],
+   "en_iyi_deger": 8,
+   "en_iyi_sira_sayisi": 6,
+   "hedef": "g1",
+   "hucre": "birincil|g1|f1|orta|taze|p4",
+   "ornek_sira": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a07"
+   ],
+   "tasi": 6
+  },
+  {
+   "asp_py_esit": true,
+   "dugum_adim_araligi": {
+    "a01": [
+     1,
+     1
+    ],
+    "a02": [
+     2,
+     4
+    ],
+    "a03": [
+     2,
+     4
+    ],
+    "a04": [
+     2,
+     4
+    ],
+    "a07": [
+     5,
+     5
+    ]
+   },
+   "dugumler": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a07"
+   ],
+   "en_iyi_deger": 8,
+   "en_iyi_sira_sayisi": 6,
+   "hedef": "g1",
+   "hucre": "birincil|g1|f1|yavas|taze|p4",
+   "ornek_sira": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a07"
+   ],
+   "tasi": 6
+  },
+  {
+   "asp_py_esit": true,
+   "dugum_adim_araligi": {
+    "a01": [
+     1,
+     1
+    ],
+    "a02": [
+     2,
+     2
+    ],
+    "a03": [
+     3,
+     3
+    ],
+    "a04": [
+     4,
+     4
+    ],
+    "a07": [
+     5,
+     5
+    ]
+   },
+   "dugumler": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a07"
+   ],
+   "en_iyi_deger": 15,
+   "en_iyi_sira_sayisi": 1,
+   "hedef": "g1",
+   "hucre": "birincil|g1|f2|hizli|taze|p4",
+   "ornek_sira": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a07"
+   ],
+   "tasi": 1
+  },
+  {
+   "asp_py_esit": true,
+   "dugum_adim_araligi": {
+    "a01": [
+     1,
+     1
+    ],
+    "a02": [
+     2,
+     2
+    ],
+    "a03": [
+     3,
+     3
+    ],
+    "a04": [
+     4,
+     4
+    ],
+    "a07": [
+     5,
+     5
+    ]
+   },
+   "dugumler": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a07"
+   ],
+   "en_iyi_deger": 15,
+   "en_iyi_sira_sayisi": 1,
+   "hedef": "g1",
+   "hucre": "birincil|g1|f2|orta|taze|p4",
+   "ornek_sira": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a07"
+   ],
+   "tasi": 1
+  },
+  {
+   "asp_py_esit": true,
+   "dugum_adim_araligi": {
+    "a01": [
+     1,
+     1
+    ],
+    "a02": [
+     2,
+     2
+    ],
+    "a03": [
+     3,
+     3
+    ],
+    "a04": [
+     4,
+     4
+    ],
+    "a07": [
+     5,
+     5
+    ]
+   },
+   "dugumler": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a07"
+   ],
+   "en_iyi_deger": 15,
+   "en_iyi_sira_sayisi": 1,
+   "hedef": "g1",
+   "hucre": "birincil|g1|f2|yavas|taze|p4",
+   "ornek_sira": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a07"
+   ],
+   "tasi": 1
+  },
+  {
+   "asp_py_esit": true,
+   "dugum_adim_araligi": {
+    "a01": [
+     1,
+     1
+    ],
+    "a02": [
+     2,
+     2
+    ],
+    "a03": [
+     3,
+     3
+    ],
+    "a04": [
+     4,
+     4
+    ],
+    "a07": [
+     5,
+     5
+    ]
+   },
+   "dugumler": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a07"
+   ],
+   "en_iyi_deger": 15,
+   "en_iyi_sira_sayisi": 1,
+   "hedef": "g1",
+   "hucre": "birincil|g1|f3|hizli|taze|p0",
+   "ornek_sira": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a07"
+   ],
+   "tasi": 0
+  },
+  {
+   "asp_py_esit": true,
+   "dugum_adim_araligi": {
+    "a01": [
+     1,
+     1
+    ],
+    "a02": [
+     2,
+     2
+    ],
+    "a03": [
+     3,
+     3
+    ],
+    "a04": [
+     4,
+     4
+    ],
+    "a07": [
+     5,
+     5
+    ]
+   },
+   "dugumler": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a07"
+   ],
+   "en_iyi_deger": 15,
+   "en_iyi_sira_sayisi": 1,
+   "hedef": "g1",
+   "hucre": "birincil|g1|f3|hizli|taze|p4",
+   "ornek_sira": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a07"
+   ],
+   "tasi": 0
+  },
+  {
+   "asp_py_esit": true,
+   "dugum_adim_araligi": {
+    "a01": [
+     1,
+     1
+    ],
+    "a02": [
+     2,
+     2
+    ],
+    "a03": [
+     3,
+     3
+    ],
+    "a04": [
+     4,
+     4
+    ],
+    "a07": [
+     5,
+     5
+    ]
+   },
+   "dugumler": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a07"
+   ],
+   "en_iyi_deger": 15,
+   "en_iyi_sira_sayisi": 1,
+   "hedef": "g1",
+   "hucre": "birincil|g1|f3|orta|taze|p0",
+   "ornek_sira": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a07"
+   ],
+   "tasi": 0
+  },
+  {
+   "asp_py_esit": true,
+   "dugum_adim_araligi": {
+    "a01": [
+     1,
+     1
+    ],
+    "a02": [
+     2,
+     2
+    ],
+    "a03": [
+     3,
+     3
+    ],
+    "a04": [
+     4,
+     4
+    ],
+    "a07": [
+     5,
+     5
+    ]
+   },
+   "dugumler": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a07"
+   ],
+   "en_iyi_deger": 15,
+   "en_iyi_sira_sayisi": 1,
+   "hedef": "g1",
+   "hucre": "birincil|g1|f3|orta|taze|p4",
+   "ornek_sira": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a07"
+   ],
+   "tasi": 0
+  },
+  {
+   "asp_py_esit": true,
+   "dugum_adim_araligi": {
+    "a01": [
+     1,
+     1
+    ],
+    "a02": [
+     2,
+     2
+    ],
+    "a03": [
+     3,
+     3
+    ],
+    "a04": [
+     4,
+     4
+    ],
+    "a07": [
+     5,
+     5
+    ]
+   },
+   "dugumler": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a07"
+   ],
+   "en_iyi_deger": 15,
+   "en_iyi_sira_sayisi": 1,
+   "hedef": "g1",
+   "hucre": "birincil|g1|f3|yavas|taze|p0",
+   "ornek_sira": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a07"
+   ],
+   "tasi": 0
+  },
+  {
+   "asp_py_esit": true,
+   "dugum_adim_araligi": {
+    "a01": [
+     1,
+     1
+    ],
+    "a02": [
+     2,
+     2
+    ],
+    "a03": [
+     3,
+     3
+    ],
+    "a04": [
+     4,
+     4
+    ],
+    "a07": [
+     5,
+     5
+    ]
+   },
+   "dugumler": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a07"
+   ],
+   "en_iyi_deger": 15,
+   "en_iyi_sira_sayisi": 1,
+   "hedef": "g1",
+   "hucre": "birincil|g1|f3|yavas|taze|p4",
+   "ornek_sira": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a07"
+   ],
+   "tasi": 0
+  },
+  {
+   "asp_py_esit": true,
+   "dugum_adim_araligi": {
+    "a01": [
+     1,
+     1
+    ],
+    "a02": [
+     2,
+     4
+    ],
+    "a03": [
+     2,
+     4
+    ],
+    "a04": [
+     2,
+     4
+    ],
+    "a07": [
+     5,
+     5
+    ],
+    "a10": [
+     6,
+     6
+    ]
+   },
+   "dugumler": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a07",
+    "a10"
+   ],
+   "en_iyi_deger": 12,
+   "en_iyi_sira_sayisi": 6,
+   "hedef": "g2",
+   "hucre": "birincil|g2|f1|hizli|taze|p4",
+   "ornek_sira": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a07",
+    "a10"
+   ],
+   "tasi": 7
+  },
+  {
+   "asp_py_esit": true,
+   "dugum_adim_araligi": {
+    "a01": [
+     1,
+     1
+    ],
+    "a02": [
+     2,
+     4
+    ],
+    "a03": [
+     2,
+     4
+    ],
+    "a04": [
+     2,
+     4
+    ],
+    "a07": [
+     5,
+     5
+    ],
+    "a10": [
+     6,
+     6
+    ]
+   },
+   "dugumler": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a07",
+    "a10"
+   ],
+   "en_iyi_deger": 12,
+   "en_iyi_sira_sayisi": 6,
+   "hedef": "g2",
+   "hucre": "birincil|g2|f1|orta|taze|p4",
+   "ornek_sira": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a07",
+    "a10"
+   ],
+   "tasi": 7
+  },
+  {
+   "asp_py_esit": true,
+   "dugum_adim_araligi": {
+    "a01": [
+     1,
+     1
+    ],
+    "a02": [
+     2,
+     4
+    ],
+    "a03": [
+     2,
+     4
+    ],
+    "a04": [
+     2,
+     4
+    ],
+    "a07": [
+     5,
+     5
+    ],
+    "a10": [
+     6,
+     6
+    ]
+   },
+   "dugumler": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a07",
+    "a10"
+   ],
+   "en_iyi_deger": 12,
+   "en_iyi_sira_sayisi": 6,
+   "hedef": "g2",
+   "hucre": "birincil|g2|f1|yavas|taze|p4",
+   "ornek_sira": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a07",
+    "a10"
+   ],
+   "tasi": 7
+  },
+  {
+   "asp_py_esit": true,
+   "dugum_adim_araligi": {
+    "a01": [
+     1,
+     1
+    ],
+    "a02": [
+     2,
+     2
+    ],
+    "a03": [
+     3,
+     3
+    ],
+    "a04": [
+     4,
+     4
+    ],
+    "a07": [
+     5,
+     5
+    ],
+    "a10": [
+     6,
+     6
+    ]
+   },
+   "dugumler": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a07",
+    "a10"
+   ],
+   "en_iyi_deger": 21,
+   "en_iyi_sira_sayisi": 1,
+   "hedef": "g2",
+   "hucre": "birincil|g2|f2|hizli|taze|p4",
+   "ornek_sira": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a07",
+    "a10"
+   ],
+   "tasi": 2
+  },
+  {
+   "asp_py_esit": true,
+   "dugum_adim_araligi": {
+    "a01": [
+     1,
+     1
+    ],
+    "a02": [
+     2,
+     2
+    ],
+    "a03": [
+     3,
+     3
+    ],
+    "a04": [
+     4,
+     4
+    ],
+    "a07": [
+     5,
+     5
+    ],
+    "a10": [
+     6,
+     6
+    ]
+   },
+   "dugumler": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a07",
+    "a10"
+   ],
+   "en_iyi_deger": 21,
+   "en_iyi_sira_sayisi": 1,
+   "hedef": "g2",
+   "hucre": "birincil|g2|f2|orta|taze|p4",
+   "ornek_sira": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a07",
+    "a10"
+   ],
+   "tasi": 2
+  },
+  {
+   "asp_py_esit": true,
+   "dugum_adim_araligi": {
+    "a01": [
+     1,
+     1
+    ],
+    "a02": [
+     2,
+     2
+    ],
+    "a03": [
+     3,
+     3
+    ],
+    "a04": [
+     4,
+     4
+    ],
+    "a07": [
+     5,
+     5
+    ],
+    "a10": [
+     6,
+     6
+    ]
+   },
+   "dugumler": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a07",
+    "a10"
+   ],
+   "en_iyi_deger": 21,
+   "en_iyi_sira_sayisi": 1,
+   "hedef": "g2",
+   "hucre": "birincil|g2|f2|yavas|taze|p4",
+   "ornek_sira": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a07",
+    "a10"
+   ],
+   "tasi": 2
+  },
+  {
+   "asp_py_esit": true,
+   "dugum_adim_araligi": {
+    "a01": [
+     1,
+     1
+    ],
+    "a02": [
+     2,
+     2
+    ],
+    "a03": [
+     3,
+     3
+    ],
+    "a04": [
+     4,
+     4
+    ],
+    "a07": [
+     5,
+     5
+    ],
+    "a10": [
+     6,
+     6
+    ]
+   },
+   "dugumler": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a07",
+    "a10"
+   ],
+   "en_iyi_deger": 21,
+   "en_iyi_sira_sayisi": 1,
+   "hedef": "g2",
+   "hucre": "birincil|g2|f3|hizli|taze|p0",
+   "ornek_sira": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a07",
+    "a10"
+   ],
+   "tasi": 0
+  },
+  {
+   "asp_py_esit": true,
+   "dugum_adim_araligi": {
+    "a01": [
+     1,
+     1
+    ],
+    "a02": [
+     2,
+     2
+    ],
+    "a03": [
+     3,
+     3
+    ],
+    "a04": [
+     4,
+     4
+    ],
+    "a07": [
+     5,
+     5
+    ],
+    "a10": [
+     6,
+     6
+    ]
+   },
+   "dugumler": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a07",
+    "a10"
+   ],
+   "en_iyi_deger": 21,
+   "en_iyi_sira_sayisi": 1,
+   "hedef": "g2",
+   "hucre": "birincil|g2|f3|hizli|taze|p4",
+   "ornek_sira": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a07",
+    "a10"
+   ],
+   "tasi": 0
+  },
+  {
+   "asp_py_esit": true,
+   "dugum_adim_araligi": {
+    "a01": [
+     1,
+     1
+    ],
+    "a02": [
+     2,
+     2
+    ],
+    "a03": [
+     3,
+     3
+    ],
+    "a04": [
+     4,
+     4
+    ],
+    "a07": [
+     5,
+     5
+    ],
+    "a10": [
+     6,
+     6
+    ]
+   },
+   "dugumler": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a07",
+    "a10"
+   ],
+   "en_iyi_deger": 21,
+   "en_iyi_sira_sayisi": 1,
+   "hedef": "g2",
+   "hucre": "birincil|g2|f3|orta|taze|p0",
+   "ornek_sira": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a07",
+    "a10"
+   ],
+   "tasi": 0
+  },
+  {
+   "asp_py_esit": true,
+   "dugum_adim_araligi": {
+    "a01": [
+     1,
+     1
+    ],
+    "a02": [
+     2,
+     2
+    ],
+    "a03": [
+     3,
+     3
+    ],
+    "a04": [
+     4,
+     4
+    ],
+    "a07": [
+     5,
+     5
+    ],
+    "a10": [
+     6,
+     6
+    ]
+   },
+   "dugumler": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a07",
+    "a10"
+   ],
+   "en_iyi_deger": 21,
+   "en_iyi_sira_sayisi": 1,
+   "hedef": "g2",
+   "hucre": "birincil|g2|f3|orta|taze|p4",
+   "ornek_sira": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a07",
+    "a10"
+   ],
+   "tasi": 0
+  },
+  {
+   "asp_py_esit": true,
+   "dugum_adim_araligi": {
+    "a01": [
+     1,
+     1
+    ],
+    "a02": [
+     2,
+     2
+    ],
+    "a03": [
+     3,
+     3
+    ],
+    "a04": [
+     4,
+     4
+    ],
+    "a07": [
+     5,
+     5
+    ],
+    "a10": [
+     6,
+     6
+    ]
+   },
+   "dugumler": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a07",
+    "a10"
+   ],
+   "en_iyi_deger": 21,
+   "en_iyi_sira_sayisi": 1,
+   "hedef": "g2",
+   "hucre": "birincil|g2|f3|yavas|taze|p0",
+   "ornek_sira": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a07",
+    "a10"
+   ],
+   "tasi": 0
+  },
+  {
+   "asp_py_esit": true,
+   "dugum_adim_araligi": {
+    "a01": [
+     1,
+     1
+    ],
+    "a02": [
+     2,
+     2
+    ],
+    "a03": [
+     3,
+     3
+    ],
+    "a04": [
+     4,
+     4
+    ],
+    "a07": [
+     5,
+     5
+    ],
+    "a10": [
+     6,
+     6
+    ]
+   },
+   "dugumler": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a07",
+    "a10"
+   ],
+   "en_iyi_deger": 21,
+   "en_iyi_sira_sayisi": 1,
+   "hedef": "g2",
+   "hucre": "birincil|g2|f3|yavas|taze|p4",
+   "ornek_sira": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a07",
+    "a10"
+   ],
+   "tasi": 0
+  },
+  {
+   "asp_py_esit": true,
+   "dugum_adim_araligi": {
+    "a01": [
+     1,
+     1
+    ],
+    "a02": [
+     2,
+     4
+    ],
+    "a03": [
+     2,
+     4
+    ],
+    "a04": [
+     2,
+     4
+    ],
+    "a08": [
+     5,
+     5
+    ]
+   },
+   "dugumler": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a08"
+   ],
+   "en_iyi_deger": 8,
+   "en_iyi_sira_sayisi": 6,
+   "hedef": "g3",
+   "hucre": "birincil|g3|f1|hizli|taze|p4",
+   "ornek_sira": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a08"
+   ],
+   "tasi": 6
+  },
+  {
+   "asp_py_esit": true,
+   "dugum_adim_araligi": {
+    "a01": [
+     1,
+     1
+    ],
+    "a02": [
+     2,
+     4
+    ],
+    "a03": [
+     2,
+     4
+    ],
+    "a04": [
+     2,
+     4
+    ],
+    "a08": [
+     5,
+     5
+    ]
+   },
+   "dugumler": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a08"
+   ],
+   "en_iyi_deger": 8,
+   "en_iyi_sira_sayisi": 6,
+   "hedef": "g3",
+   "hucre": "birincil|g3|f1|orta|taze|p4",
+   "ornek_sira": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a08"
+   ],
+   "tasi": 6
+  },
+  {
+   "asp_py_esit": true,
+   "dugum_adim_araligi": {
+    "a01": [
+     1,
+     1
+    ],
+    "a02": [
+     2,
+     4
+    ],
+    "a03": [
+     2,
+     4
+    ],
+    "a04": [
+     2,
+     4
+    ],
+    "a08": [
+     5,
+     5
+    ]
+   },
+   "dugumler": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a08"
+   ],
+   "en_iyi_deger": 8,
+   "en_iyi_sira_sayisi": 6,
+   "hedef": "g3",
+   "hucre": "birincil|g3|f1|yavas|taze|p4",
+   "ornek_sira": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a08"
+   ],
+   "tasi": 6
+  },
+  {
+   "asp_py_esit": true,
+   "dugum_adim_araligi": {
+    "a01": [
+     1,
+     1
+    ],
+    "a02": [
+     2,
+     2
+    ],
+    "a03": [
+     3,
+     3
+    ],
+    "a04": [
+     4,
+     4
+    ],
+    "a08": [
+     5,
+     5
+    ]
+   },
+   "dugumler": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a08"
+   ],
+   "en_iyi_deger": 15,
+   "en_iyi_sira_sayisi": 1,
+   "hedef": "g3",
+   "hucre": "birincil|g3|f2|hizli|taze|p4",
+   "ornek_sira": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a08"
+   ],
+   "tasi": 1
+  },
+  {
+   "asp_py_esit": true,
+   "dugum_adim_araligi": {
+    "a01": [
+     1,
+     1
+    ],
+    "a02": [
+     2,
+     2
+    ],
+    "a03": [
+     3,
+     3
+    ],
+    "a04": [
+     4,
+     4
+    ],
+    "a08": [
+     5,
+     5
+    ]
+   },
+   "dugumler": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a08"
+   ],
+   "en_iyi_deger": 15,
+   "en_iyi_sira_sayisi": 1,
+   "hedef": "g3",
+   "hucre": "birincil|g3|f2|orta|taze|p4",
+   "ornek_sira": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a08"
+   ],
+   "tasi": 1
+  },
+  {
+   "asp_py_esit": true,
+   "dugum_adim_araligi": {
+    "a01": [
+     1,
+     1
+    ],
+    "a02": [
+     2,
+     2
+    ],
+    "a03": [
+     3,
+     3
+    ],
+    "a04": [
+     4,
+     4
+    ],
+    "a08": [
+     5,
+     5
+    ]
+   },
+   "dugumler": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a08"
+   ],
+   "en_iyi_deger": 15,
+   "en_iyi_sira_sayisi": 1,
+   "hedef": "g3",
+   "hucre": "birincil|g3|f2|yavas|taze|p4",
+   "ornek_sira": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a08"
+   ],
+   "tasi": 1
+  },
+  {
+   "asp_py_esit": true,
+   "dugum_adim_araligi": {
+    "a01": [
+     1,
+     1
+    ],
+    "a02": [
+     2,
+     2
+    ],
+    "a03": [
+     3,
+     3
+    ],
+    "a04": [
+     4,
+     4
+    ],
+    "a08": [
+     5,
+     5
+    ]
+   },
+   "dugumler": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a08"
+   ],
+   "en_iyi_deger": 15,
+   "en_iyi_sira_sayisi": 1,
+   "hedef": "g3",
+   "hucre": "birincil|g3|f3|hizli|taze|p0",
+   "ornek_sira": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a08"
+   ],
+   "tasi": 0
+  },
+  {
+   "asp_py_esit": true,
+   "dugum_adim_araligi": {
+    "a01": [
+     1,
+     1
+    ],
+    "a02": [
+     2,
+     2
+    ],
+    "a03": [
+     3,
+     3
+    ],
+    "a04": [
+     4,
+     4
+    ],
+    "a08": [
+     5,
+     5
+    ]
+   },
+   "dugumler": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a08"
+   ],
+   "en_iyi_deger": 15,
+   "en_iyi_sira_sayisi": 1,
+   "hedef": "g3",
+   "hucre": "birincil|g3|f3|hizli|taze|p4",
+   "ornek_sira": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a08"
+   ],
+   "tasi": 0
+  },
+  {
+   "asp_py_esit": true,
+   "dugum_adim_araligi": {
+    "a01": [
+     1,
+     1
+    ],
+    "a02": [
+     2,
+     2
+    ],
+    "a03": [
+     3,
+     3
+    ],
+    "a04": [
+     4,
+     4
+    ],
+    "a08": [
+     5,
+     5
+    ]
+   },
+   "dugumler": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a08"
+   ],
+   "en_iyi_deger": 15,
+   "en_iyi_sira_sayisi": 1,
+   "hedef": "g3",
+   "hucre": "birincil|g3|f3|orta|taze|p0",
+   "ornek_sira": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a08"
+   ],
+   "tasi": 0
+  },
+  {
+   "asp_py_esit": true,
+   "dugum_adim_araligi": {
+    "a01": [
+     1,
+     1
+    ],
+    "a02": [
+     2,
+     2
+    ],
+    "a03": [
+     3,
+     3
+    ],
+    "a04": [
+     4,
+     4
+    ],
+    "a08": [
+     5,
+     5
+    ]
+   },
+   "dugumler": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a08"
+   ],
+   "en_iyi_deger": 15,
+   "en_iyi_sira_sayisi": 1,
+   "hedef": "g3",
+   "hucre": "birincil|g3|f3|orta|taze|p4",
+   "ornek_sira": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a08"
+   ],
+   "tasi": 0
+  },
+  {
+   "asp_py_esit": true,
+   "dugum_adim_araligi": {
+    "a01": [
+     1,
+     1
+    ],
+    "a02": [
+     2,
+     2
+    ],
+    "a03": [
+     3,
+     3
+    ],
+    "a04": [
+     4,
+     4
+    ],
+    "a08": [
+     5,
+     5
+    ]
+   },
+   "dugumler": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a08"
+   ],
+   "en_iyi_deger": 15,
+   "en_iyi_sira_sayisi": 1,
+   "hedef": "g3",
+   "hucre": "birincil|g3|f3|yavas|taze|p0",
+   "ornek_sira": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a08"
+   ],
+   "tasi": 0
+  },
+  {
+   "asp_py_esit": true,
+   "dugum_adim_araligi": {
+    "a01": [
+     1,
+     1
+    ],
+    "a02": [
+     2,
+     2
+    ],
+    "a03": [
+     3,
+     3
+    ],
+    "a04": [
+     4,
+     4
+    ],
+    "a08": [
+     5,
+     5
+    ]
+   },
+   "dugumler": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a08"
+   ],
+   "en_iyi_deger": 15,
+   "en_iyi_sira_sayisi": 1,
+   "hedef": "g3",
+   "hucre": "birincil|g3|f3|yavas|taze|p4",
+   "ornek_sira": [
+    "a01",
+    "a02",
+    "a03",
+    "a04",
+    "a08"
+   ],
+   "tasi": 0
+  }
+ ],
+ "ozet": {
+  "asp_py_esit": 36,
+  "hucre": 36,
+  "pilot_p2b": {
+   "esit": true,
+   "pilot_siralar": [
+    [
+     "lotl",
+     "tl_pid",
+     "ca_iss",
+     "iss_cert",
+     "cred"
+    ]
+   ],
+   "yeni_en_iyi_deger": 15,
+   "yeni_siralar": [
+    [
+     "lotl",
+     "tl_pid",
+     "ca_iss",
+     "iss_cert",
+     "cred"
+    ]
+   ]
+  },
+  "tek_en_iyi_sirali_hucre": 27
+ }
+}

@@ -1,0 +1,349 @@
+theory M_Metaveri
+begin
+
+/*
+ * =====================================================================
+ *  PQ-OID4VC | Adım 7 | İHRAÇÇI META VERİSİ ve KAYIT mekanizmaları
+ *  M-e ("supported"), M-e′ ("required"), M-d (DCR/CIMD/bant dışı) — TASLAK, koşulmadı
+ * =====================================================================
+ *  ÖN KAYITTA KOŞULACAK bayrak kümeleri (kapsam ekonomisi, 25.09.2026):
+ *    ME,META_SIGNED,FRESH | MEP,META_SIGNED,FRESH | MEP,META_TLS | MD,REG_PQ
+ *  M-e′, M-e ailesinin "required" parametresidir (ayrı model yok). Diğer bayrak
+ *  kümeleri on_kayit_varyantlar.tsv'de "indirgendi" / "5A-kapsandi"dır; koşulmaz.
+ *  Varlık: ihraççı E. Doğrulayıcı V, E'nin kimlik bilgisini kabul eder:
+ *  PQ yolu her zaman; klasik yol mekanizmanın kapısından. İhraççı anahtarları
+ *  doğrulayıcıda özgün biçimde bilinir (sertifika yolu: Mf_yol).
+ *  Yaşam döngüsü durumu ('none' → 'pq_required' → 'retired') kanaldan bir değer
+ *  olarak gelir; mekanizma bu değeri şöyle okur (kısıt GateValue/LearnReq):
+ *    ME  (M-e, "supported"; T079): none → {cl}, pq_required → {pq, cl}, retired → {pq}.
+ *        Klasik kapı, klasik "desteklenenler" içindeyse açıktır (supported ≠ required).
+ *        Gereksinim yalnız 'retired' ile öğrenilir.
+ *    MEP (M-e′, "*_alg_values_required"; T393/T394): kapı yalnız 'none' iken açık.
+ *    MD  (M-d; #2153 madde 3 "DCR, CIMD and out-of-band configuration"): kapı
+ *        yalnız 'none' iken açık; değer kayıttan gelir.
+ *  Kanal bayrakları:
+ *    META_TLS     (ME/MEP) imzasız meta veri TLS ile çekilir (T071 "MUST support
+ *                 returning metadata in an unsigned form"; HAIP T086). Sunucu anahtarı
+ *                 klasik; WEBPKI_PQ ile PQ. Nonce'lu sorgu = taze.
+ *    META_SIGNED  (ME/MEP) imzalı meta veri (T073) ihraççının PQ anahtarıyla.
+ *                 FRESH ile nonce'a bağlı (iat/exp'in ideal biçimi; T075/T076);
+ *                 FRESH yoksa yeniden oynatılabilir nesne.
+ *    MD_STATIC    (MD) bant dışı, özgün ve eşzamanlı yapılandırma (sabitlenmiş görünüm).
+ *    (MD, MD_STATIC yok) kayıt iletileri bir kayıt kanalı anahtarıyla doğrulanır
+ *                 (REG_PQ ile PQ); güncelleme serbest, iletiler yeniden oynatılabilir
+ *                 (#2153 madde 5: kaydın PQ'ya taşınması).
+ *    MONOTONE     doğrulayıcı yapışkan durumu (ablasyon).
+ *  Kimlik bilgileri uzun ömürlüdür: göç öncesi ihraç edilmiş klasik kimlik bilgisinin
+ *  göçten ya da sunset'ten sonra sunulması G5'in sınadığı durumdur (kısıt konmadı).
+ */
+
+builtins: signing
+
+restriction Equality:   "All x y #i. Eq(x, y) @ #i ==> x = y"
+restriction Inequality: "All x #i. NotEq(x, x) @ #i ==> F"
+restriction Unique:     "All x #i #j. Unique(x) @ #i & Unique(x) @ #j ==> #i = #j"
+
+/* dürüst ihraç yaşam döngüsüne uyar */
+restriction ClassicalIssuanceUntilSunset:
+  "All X #i. IssueClassical(X) @ #i ==> not (Ex #s. Sunset(X) @ #s & #s < #i)"
+restriction PQIssuanceAfterMigrate:
+  "All X #i. IssuePQ(X) @ #i ==> (Ex #m. Migrate(X) @ #m & #m < #i)"
+
+/* mekanizmanın kapısı ve öğrenme koşulu */
+#ifdef ME
+restriction GateSupported: "All e #j. GateValue(e) @ #j ==> not (e = 'retired')"
+restriction LearnSupported: "All e #j. LearnReq(e) @ #j ==> e = 'retired'"
+#endif
+
+#ifdef MEP | MD
+restriction GateRequired: "All e #j. GateValue(e) @ #j ==> e = 'none'"
+restriction LearnRequired: "All e #j. LearnReq(e) @ #j ==> not (e = 'none')"
+#endif
+
+#ifdef META_TLS | FRESH
+/* taze yanıt, ihraççının durumu yeniden değişmeden kullanılır */
+restriction Freshness:
+  "All X n e #r #u #ch. Respond(n, X, e) @ #r & UseResp(n) @ #u & StateChange(X) @ #ch
+      ==> (#ch < #r) | (#u < #ch)"
+#endif
+
+#ifdef MONOTONE
+restriction Sticky:
+  "All V X c #k #j. SeenPQReq(V, X) @ #k & AcceptClassical(V, X, c) @ #j ==> #j < #k"
+#endif
+
+#include "ortak_g5.spthy"
+
+/* ---------------- Q-day ve CRQC ---------------- */
+rule Qday:
+    [ ] --[ Unique('qday'), QdayEv() ]-> [ !CRQC() ]
+
+rule CRQC_Break_Issuer_Classical:
+    [ !IssCl(X, k), !CRQC(), In(pk(k)) ] --[ Broken(<'iss_cl', X>) ]-> [ Out(k) ]
+
+#ifdef META_TLS & not WEBPKI_PQ
+rule CRQC_Break_Meta_TLS:
+    [ !IssTls(X, k), !CRQC(), In(pk(k)) ] --[ Broken(<'meta_tls', X>) ]-> [ Out(k) ]
+#endif
+
+#ifdef MD & not MD_STATIC & not REG_PQ
+rule CRQC_Break_Registration:
+    [ !RegSk(k), !CRQC(), In(pk(k)) ] --[ Broken('reg') ]-> [ Out(k) ]
+#endif
+
+/* ---------------- ihraççılar ve yaşam döngüsü ---------------- */
+rule Issuer_Setup_Born:
+    [ Fr(~kc), Fr(~kq), Fr(~kt) ]
+  --[ Unique(<'iss', $I>), Unique(<'migrate', $I>), BornMigrated($I), Migrate($I), StateChange($I) ]->
+    [ !IssCl($I, ~kc), !IssPQ($I, ~kq), !IssTls($I, ~kt), !MetaSk($I, ~kq),
+      !PinCl($I, pk(~kc)), !PinPQ($I, pk(~kq)), !PinTls($I, pk(~kt)), !PinMeta($I, pk(~kq)),
+      Out(pk(~kc)), Out(pk(~kq)), Out(pk(~kt)) ]
+
+rule Issuer_Setup_Migrating:
+    [ Fr(~kc), Fr(~kq), Fr(~kt) ]
+  --[ Unique(<'iss', $I>), MigratingIssuer($I) ]->
+    [ !IssCl($I, ~kc), !IssPQ($I, ~kq), !IssTls($I, ~kt), !MetaSk($I, ~kq),
+      !PinCl($I, pk(~kc)), !PinPQ($I, pk(~kq)), !PinTls($I, pk(~kt)), !PinMeta($I, pk(~kq)),
+      Out(pk(~kc)), Out(pk(~kq)), Out(pk(~kt)) ]
+
+/* eski ihraççı: yalnız klasik; meta verisini klasik anahtarıyla imzalar */
+rule Issuer_Setup_Legacy:
+    [ Fr(~kc), Fr(~kt) ]
+  --[ Unique(<'iss', $L>), Legacy($L) ]->
+    [ !IssCl($L, ~kc), !IssTls($L, ~kt), !MetaSk($L, ~kc),
+      !PinCl($L, pk(~kc)), !PinTls($L, pk(~kt)), !PinMeta($L, pk(~kc)),
+      Out(pk(~kc)), Out(pk(~kt)) ]
+
+rule Migrate:
+    [ !IssPQ(I, kq) ] --[ Unique(<'migrate', I>), Migrate(I), StateChange(I) ]-> [ ]
+
+rule Sunset:
+    [ !IssPQ(I, kq) ] --[ Unique(<'sunset', I>), Sunset(I), StateChange(I) ]-> [ ]
+
+rule Issue_Classical:
+    let crb = <'cred', X, ~c, 'cl'> in
+    [ !IssCl(X, kc), Fr(~c) ] --[ Issued(X, ~c), IssueClassical(X) ]-> [ Out(<crb, sign(crb, kc)>) ]
+
+rule Issue_PQ:
+    let crb = <'cred', I, ~c, 'pq'> in
+    [ !IssPQ(I, kq), Fr(~c) ] --[ Issued(I, ~c), IssuePQ(I) ]-> [ Out(<crb, sign(crb, kq)>) ]
+
+/* ---------------- doğrulayıcı: PQ yolu ---------------- */
+rule Verify_PQ:
+    let crb = <'cred', I, c, 'pq'> in
+    [ !PinPQ(I, pkq), In(<crb, s>) ]
+  --[ Eq(verify(s, crb, pkq), true), Accept($V, I, c), AcceptPQ($V, I, c) ]->
+    [ ]
+
+/* =====================================================================
+   Taze kanal (ME/MEP ile META_TLS ya da META_SIGNED+FRESH): nonce'lu sorgu
+   ===================================================================== */
+#ifdef META_TLS | FRESH
+rule Verifier_Query:
+    [ Fr(~n) ] --> [ Q($V, ~n, $X), Out(<'q', ~n, $X>) ]
+#endif
+
+/* ---- META_TLS: imzasız meta veri, TLS sunucu anahtarıyla bağlı yanıt ---- */
+#ifdef META_TLS
+rule Meta_Respond_None:
+    let rb = <'resp', n, X, 'none'> in
+    [ !IssTls(X, kt), !PinCl(X, pkc), In(<'q', n, X>) ]
+  --[ StateIs(X, 'none'), Respond(n, X, 'none') ]-> [ Out(<rb, sign(rb, kt)>) ]
+
+rule Meta_Respond_PQ:
+    let rb = <'resp', n, X, 'pq_required'> in
+    [ !IssTls(X, kt), !IssPQ(X, kq), In(<'q', n, X>) ]
+  --[ StateIs(X, 'pq_required'), Respond(n, X, 'pq_required') ]-> [ Out(<rb, sign(rb, kt)>) ]
+
+rule Meta_Respond_Retired:
+    let rb = <'resp', n, X, 'retired'> in
+    [ !IssTls(X, kt), !IssPQ(X, kq), In(<'q', n, X>) ]
+  --[ StateIs(X, 'retired'), Respond(n, X, 'retired') ]-> [ Out(<rb, sign(rb, kt)>) ]
+
+rule Verify_Classical_Fresh:
+    let rb  = <'resp', n, X, e>
+        crb = <'cred', X, c, 'cl'>
+    in
+    [ Q(V, n, X), !PinTls(X, pkt), In(<rb, rs>), !PinCl(X, pkc), In(<crb, s>) ]
+  --[ Eq(verify(rs, rb, pkt), true), Eq(verify(s, crb, pkc), true),
+      GateValue(e), UseResp(n), Accept(V, X, c), AcceptClassical(V, X, c) ]->
+    [ ]
+
+rule Learn_Fresh:
+    let rb = <'resp', n, X, e> in
+    [ Q(V, n, X), !PinTls(X, pkt), In(<rb, rs>) ]
+  --[ Eq(verify(rs, rb, pkt), true), LearnReq(e), UseResp(n), SeenPQReq(V, X) ]->
+    [ ]
+#endif
+
+/* ---- META_SIGNED + FRESH: imzalı, nonce'a bağlı meta veri ---- */
+#ifdef META_SIGNED & FRESH
+rule Meta_Respond_None:
+    let rb = <'resp', n, X, 'none'> in
+    [ !MetaSk(X, k), !PinCl(X, pkc), In(<'q', n, X>) ]
+  --[ StateIs(X, 'none'), Respond(n, X, 'none') ]-> [ Out(<rb, sign(rb, k)>) ]
+
+rule Meta_Respond_PQ:
+    let rb = <'resp', n, X, 'pq_required'> in
+    [ !MetaSk(X, k), !IssPQ(X, kq), In(<'q', n, X>) ]
+  --[ StateIs(X, 'pq_required'), Respond(n, X, 'pq_required') ]-> [ Out(<rb, sign(rb, k)>) ]
+
+rule Meta_Respond_Retired:
+    let rb = <'resp', n, X, 'retired'> in
+    [ !MetaSk(X, k), !IssPQ(X, kq), In(<'q', n, X>) ]
+  --[ StateIs(X, 'retired'), Respond(n, X, 'retired') ]-> [ Out(<rb, sign(rb, k)>) ]
+
+rule Verify_Classical_Fresh:
+    let rb  = <'resp', n, X, e>
+        crb = <'cred', X, c, 'cl'>
+    in
+    [ Q(V, n, X), !PinMeta(X, pkm), In(<rb, rs>), !PinCl(X, pkc), In(<crb, s>) ]
+  --[ Eq(verify(rs, rb, pkm), true), Eq(verify(s, crb, pkc), true),
+      GateValue(e), UseResp(n), Accept(V, X, c), AcceptClassical(V, X, c) ]->
+    [ ]
+
+rule Learn_Fresh:
+    let rb = <'resp', n, X, e> in
+    [ Q(V, n, X), !PinMeta(X, pkm), In(<rb, rs>) ]
+  --[ Eq(verify(rs, rb, pkm), true), LearnReq(e), UseResp(n), SeenPQReq(V, X) ]->
+    [ ]
+#endif
+
+/* ---- META_SIGNED, FRESH yok: yeniden oynatılabilir imzalı nesne ---- */
+#ifdef META_SIGNED & not FRESH
+rule Meta_Publish_None:
+    let ob = <'obj', X, 'none'> in
+    [ !MetaSk(X, k), !PinCl(X, pkc) ] --[ StateIs(X, 'none') ]-> [ Out(<ob, sign(ob, k)>) ]
+
+rule Meta_Publish_PQ:
+    let ob = <'obj', X, 'pq_required'> in
+    [ !MetaSk(X, k), !IssPQ(X, kq) ] --[ StateIs(X, 'pq_required') ]-> [ Out(<ob, sign(ob, k)>) ]
+
+rule Meta_Publish_Retired:
+    let ob = <'obj', X, 'retired'> in
+    [ !MetaSk(X, k), !IssPQ(X, kq) ] --[ StateIs(X, 'retired') ]-> [ Out(<ob, sign(ob, k)>) ]
+
+rule Verify_Classical_Obj:
+    let ob  = <'obj', X, e>
+        crb = <'cred', X, c, 'cl'>
+    in
+    [ !PinMeta(X, pkm), In(<ob, os>), !PinCl(X, pkc), In(<crb, s>) ]
+  --[ Eq(verify(os, ob, pkm), true), Eq(verify(s, crb, pkc), true),
+      GateValue(e), Accept($V, X, c), AcceptClassical($V, X, c) ]->
+    [ ]
+
+rule Learn_Obj:
+    let ob = <'obj', X, e> in
+    [ !PinMeta(X, pkm), In(<ob, os>) ]
+  --[ Eq(verify(os, ob, pkm), true), LearnReq(e), SeenPQReq($V, X) ]->
+    [ ]
+#endif
+
+/* =====================================================================
+   M-d: bant dışı durağan yapılandırma (MD_STATIC) ya da kayıt iletileri
+   ===================================================================== */
+#ifdef MD & MD_STATIC
+rule Verify_Classical_Static:
+    let crb = <'cred', X, c, 'cl'> in
+    [ !PinCl(X, pkc), In(<crb, s>) ]
+  --[ Eq(verify(s, crb, pkc), true), StateIs(X, 'none'),
+      Accept($V, X, c), AcceptClassical($V, X, c) ]->
+    [ ]
+
+rule Learn_Static_PQ:
+    [ !PinPQ(X, pkq) ] --[ StateIs(X, 'pq_required'), SeenPQReq($V, X) ]-> [ ]
+
+rule Learn_Static_Retired:
+    [ !PinPQ(X, pkq) ] --[ StateIs(X, 'retired'), SeenPQReq($V, X) ]-> [ ]
+#endif
+
+#ifdef MD & not MD_STATIC
+rule Registration_Setup:
+    [ Fr(~kr) ] --[ Unique('reg') ]-> [ !RegSk(~kr), !RegPin(pk(~kr)), Out(pk(~kr)) ]
+
+rule Register_None:
+    let rb = <'reg', X, 'none'> in
+    [ !RegSk(k), !PinCl(X, pkc) ] --[ StateIs(X, 'none') ]-> [ Out(<rb, sign(rb, k)>) ]
+
+rule Register_PQ:
+    let rb = <'reg', X, 'pq_required'> in
+    [ !RegSk(k), !IssPQ(X, kq) ] --[ StateIs(X, 'pq_required') ]-> [ Out(<rb, sign(rb, k)>) ]
+
+rule Register_Retired:
+    let rb = <'reg', X, 'retired'> in
+    [ !RegSk(k), !IssPQ(X, kq) ] --[ StateIs(X, 'retired') ]-> [ Out(<rb, sign(rb, k)>) ]
+
+rule Verify_Classical_Reg:
+    let rb  = <'reg', X, e>
+        crb = <'cred', X, c, 'cl'>
+    in
+    [ !RegPin(pkr), In(<rb, rs>), !PinCl(X, pkc), In(<crb, s>) ]
+  --[ Eq(verify(rs, rb, pkr), true), Eq(verify(s, crb, pkc), true),
+      GateValue(e), Accept($V, X, c), AcceptClassical($V, X, c) ]->
+    [ ]
+
+rule Learn_Reg:
+    let rb = <'reg', X, e> in
+    [ !RegPin(pkr), In(<rb, rs>) ]
+  --[ Eq(verify(rs, rb, pkr), true), LearnReq(e), SeenPQReq($V, X) ]->
+    [ ]
+#endif
+
+/* ================= sağlık lemmaları (H0) ================= */
+
+lemma executable:
+  exists-trace
+  "Ex V I c #m #j. Migrate(I) @ #m & AcceptPQ(V, I, c) @ #j & #m < #j"
+
+lemma executable_legacy:
+  exists-trace
+  "Ex V L c #l #j. Legacy(L) @ #l & AcceptClassical(V, L, c) @ #j"
+
+lemma executable_pre_migration:
+  exists-trace
+  "Ex V I c #s #j. MigratingIssuer(I) @ #s & AcceptClassical(V, I, c) @ #j
+                 & not (Ex #m. Migrate(I) @ #m)"
+
+lemma executable_lifecycle:
+  exists-trace
+  "Ex V I c #m #s #j. Migrate(I) @ #m & Sunset(I) @ #s & AcceptPQ(V, I, c) @ #j & #s < #j"
+
+lemma executable_learn:
+  exists-trace
+  "Ex V I #k. SeenPQReq(V, I) @ #k"
+
+lemma attack_needs_crqc:
+  "All V I c #m #j. Migrate(I) @ #m & Accept(V, I, c) @ #j & #m < #j ==>
+      (Ex #i. Issued(I, c) @ #i & #i < #j) | (Ex k #b. Broken(k) @ #b & #b < #j)"
+
+/* ================= güvenlik: G1 (göçten sonra) ================= */
+lemma G1_claims_unforgeability:
+  "All V I c #m #j. Migrate(I) @ #m & Accept(V, I, c) @ #j & #m < #j ==>
+      (Ex #i. Issued(I, c) @ #i & #i < #j)"
+
+/* ================= atıf (mutasyon) lemmaları ================= */
+lemma M_downgrade_s1:
+  exists-trace
+  "Ex V I c #m #j. Migrate(I) @ #m & AcceptClassical(V, I, c) @ #j & #m < #j
+                 & not (Ex #q. QdayEv() @ #q)"
+
+lemma M_forgery_crqc:
+  exists-trace
+  "Ex V I c k #m #j #b. Migrate(I) @ #m & Accept(V, I, c) @ #j & #m < #j
+                      & Broken(k) @ #b & not (Ex #i. Issued(I, c) @ #i)"
+
+/* ================= KEŞİF X1 (26.09.2026; çapa 8'den SONRA; ön kayıt dışı) =================
+   Gözlem: ME_signed_fresh/no_rollback = F (beklenen V). İzde eski ihraççının klasik meta veri
+   anahtarı kırılıyor, sahte 'retired' yanıtıyla öğrenme (SeenPQReq) oluyor, sonra gerçek 'none'
+   yanıtıyla klasik kabul geliyor. Varsayım: ihlal yalnız göç etmemiş varlıkta sahte öğrenmeden
+   doğar. Bu dosya modeller/M_metaveri.spthy'nin bayt-aynı kopyası + aşağıdaki iki lemmadır. */
+
+lemma X_no_rollback_migrated:
+  "All V E x #m #k #j. Migrate(E) @ #m & SeenPQReq(V, E) @ #k & AcceptClassical(V, E, x) @ #j
+      & #k < #j ==> F"
+
+lemma X_legacy_false_learning:
+  exists-trace
+  "Ex V L #l #k. Legacy(L) @ #l & SeenPQReq(V, L) @ #k"
+
+end

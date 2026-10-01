@@ -1,0 +1,2 @@
+paket=web-auth/cose-lib sinif_yuklendi=159 sinif_yuklenemedi=0
+anahtar_sinif Cose\Algorithm\Signature\MLDSA\MLDSA65 OK

@@ -1,0 +1,8 @@
+kosu,mutasyon,temel,beklenen,gozlenen,dondu,sure_s,tanik
+MUT01.K1-04.asp,MUT01,K1-04,SALDIRI,SALDIRI,EVET,0.0022,"sahte(tum,a_rr) sahte(tum,dns_yaniti) kirilir_alt(tum,a_rr) klasik_alt(a_rr) pq(a_rr) pq(dnskey) pq(ds)"
+MUT01.K1-11.asp,MUT01,K1-11,SALDIRI,SALDIRI,EVET,0.0027,"sahte(tum,a_rr) sahte(tum,dns_yaniti) sahte(tum,dnskey) kirilir_alt(tum,a_rr) kirilir_alt(tum,dnskey) klasik_alt(a_rr) klasik_alt(dnskey) pq(a_rr) pq(dnskey) pq(ds)"
+MUT02.K1-04.asp,MUT02,K1-04,SALDIRI,SALDIRI,EVET,0.0025,"sahte(tum,a_rr) sahte(tum,dns_yaniti) sahte(tum,dnskey) sahte(tum,ds) kirilir_alt(tum,a_rr) klasik_alt(a_rr) pq(a_rr) pq(dnskey)"
+MUT03.K1-04.asp,MUT03,K1-04,SALDIRI,SALDIRI,EVET,0.0024,"sahte(tum,a_rr) sahte(tum,dns_yaniti) sahte(tum,dnskey) kirilir_alt(tum,a_rr) beklenir(tum,a_rr) beklenir(tum,dnskey) klasik_alt(a_rr) pq(a_rr) pq(ds)"
+MUT04.K1-06.asp,MUT04,K1-06,SALDIRI,SALDIRI,EVET,0.0022,"sahte(tum,a_rr) sahte(tum,dns_yaniti) sahte(tum,dnskey) kirilir_alt(tum,a_rr) kirilir_alt(tum,dnskey) geri_alinir(ds) klasik_alt(a_rr) klasik_alt(dnskey) pq(a_rr) pq(dnskey) pq(ds)"
+MUT04.K1-08.asp,MUT04,K1-08,SALDIRI,SALDIRI,EVET,0.0024,"sahte(tum,a_rr) sahte(tum,dns_yaniti) kirilir_alt(tum,a_rr) klasik_alt(a_rr) pq(a_rr) pq(dnskey) pq(ds)"
+MUT05.K1-09.asp,MUT05,K1-09,SALDIRI,SALDIRI,EVET,0.0022,"sahte(tum,a_rr) sahte(tum,dns_yaniti) sahte(tum,dnskey) kirilir_alt(tum,a_rr) kirilir_alt(tum,dnskey) klasik_alt(a_rr) klasik_alt(dnskey) pq(a_rr) pq(dnskey) pq(ds)"

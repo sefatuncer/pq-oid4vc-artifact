@@ -1,0 +1,74 @@
+# hedef=JOSE-091 imaj=pq-a09-env-rust:1.0 (sha256:b21d9e67309a86054643e61d4f78c5da262aca261b5dea7e5e047144306be32b) baslangic=2026-09-25T13:12:29Z zaman_asimi=1500s
+# komut: docker run --rm --name pq-a09-ortam-jose-091 --label pq.agir=derleme --memory=6g --memory-swap=6g -v hedefler/JOSE-091:/w -v betikler/konteyner:/b:ro pq-a09-env-rust:1.0 sh -c '(bash|sh) /w/kur.sh'
+[package]
+name = "ortam-deneme"
+version = "0.0.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+frank_jwt = { version = "=3.1.4" }
+== Aşama A: cargo build
+    Updating crates.io index
+     Locking 27 packages to latest compatible versions
+ Downloading crates ...
+  Downloaded cfg-if v1.0.5
+  Downloaded foreign-types-shared v0.1.1
+  Downloaded itoa v1.0.18
+  Downloaded openssl-macros v0.1.1
+  Downloaded foreign-types v0.3.2
+  Downloaded find-msvc-tools v0.1.14
+  Downloaded quote v1.0.47
+  Downloaded zmij v1.0.23
+  Downloaded frank_jwt v3.1.4
+  Downloaded pkg-config v0.3.34
+  Downloaded bitflags v2.13.2
+  Downloaded unicode-ident v1.0.26
+  Downloaded shlex v2.0.1
+  Downloaded proc-macro2 v1.0.107
+  Downloaded serde_core v1.0.229
+  Downloaded serde v1.0.229
+  Downloaded base64 v0.22.1
+  Downloaded openssl-sys v0.9.117
+  Downloaded cc v1.5.0
+  Downloaded memchr v2.8.3
+  Downloaded serde_json v1.0.151
+  Downloaded vcpkg v0.2.15
+  Downloaded syn v2.0.119
+  Downloaded openssl v0.10.81
+  Downloaded libc v0.2.189
+   Compiling proc-macro2 v1.0.107
+   Compiling shlex v2.0.1
+   Compiling find-msvc-tools v0.1.14
+   Compiling pkg-config v0.3.34
+   Compiling vcpkg v0.2.15
+   Compiling unicode-ident v1.0.26
+   Compiling quote v1.0.47
+   Compiling serde_core v1.0.229
+   Compiling libc v0.2.189
+   Compiling zmij v1.0.23
+   Compiling foreign-types-shared v0.1.1
+   Compiling openssl v0.10.81
+   Compiling serde_json v1.0.151
+   Compiling serde v1.0.229
+   Compiling cc v1.5.0
+   Compiling foreign-types v0.3.2
+   Compiling bitflags v2.13.2
+   Compiling itoa v1.0.18
+   Compiling cfg-if v1.0.5
+   Compiling memchr v2.8.3
+   Compiling base64 v0.22.1
+   Compiling syn v2.0.119
+   Compiling openssl-sys v0.9.117
+   Compiling openssl-macros v0.1.1
+   Compiling frank_jwt v3.1.4
+   Compiling ortam-deneme v0.0.0 (/tmp/p)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 7.75s
+== Aşama B: API tiplerine başvuran program
+   Compiling ortam-deneme v0.0.0 (/tmp/p)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 0.11s
+krate frank_jwt baglandi
+tip frank_jwt::Algorithm
+tip frank_jwt::ValidationOptions
+== SONUC: basarili
+# cikis_kodu=0 sure_s=9 bitis=2026-09-25T13:12:38Z

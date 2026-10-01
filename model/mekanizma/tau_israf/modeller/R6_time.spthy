@@ -1,0 +1,233 @@
+theory R6_Time
+begin
+
+/*
+ * =====================================================================
+ *  PQ-OID4VC | Adım 5A | kural şeması R6 — ZAMAN PENCERESİ
+ *  (imzalayan anahtarın açıkta kalma penceresi; L-D3, H2)
+ * =====================================================================
+ *  EN  A classical signing key k may stay outside the minimal PQ set iff the
+ *      CRQC cannot finish extracting k before the verifier stops accepting
+ *      signatures under k, i.e. iff tau exceeds k's exposure window (public key
+ *      visible -> last acceptance). The window that matters is the KEY's, not
+ *      the artefact's: short-lived status tokens signed by a long-lived key are
+ *      forgeable in every regime, because the extracted key mints fresh tokens
+ *      at will. A short-window key is protected only if (i) tau exceeds its
+ *      window, (ii) it is bound to an identity the CRQC cannot break (PQ
+ *      identity; Anchuri et al.), and (iii) the key itself is not reused beyond
+ *      the window (rotating the certificate without rotating the key does not
+ *      help).
+ *  TR  Klasik bir imza anahtarı k, asgari PQ kümesinin dışında ancak şu
+ *      durumda kalabilir: CRQC k'yi, doğrulayıcı k altındaki imzaları kabul
+ *      etmeyi bırakmadan önce çıkaramıyorsa; yani τ, k'nin açıkta kalma
+ *      penceresinden (açık anahtar görünür → son kabul) uzunsa. Belirleyici
+ *      olan artefaktın değil ANAHTARIN penceresidir: uzun ömürlü bir anahtarla
+ *      imzalanan kısa ömürlü durum belirteçleri her rejimde sahtelenir, çünkü
+ *      çıkarılan anahtar istediği an taze belirteç üretir. Kısa pencereli bir
+ *      anahtar ancak (i) τ penceresinden uzunsa, (ii) CRQC'nin kıramayacağı
+ *      (PQ) bir kimliğe bağlıysa ve (iii) anahtarın kendisi pencere ötesinde
+ *      yeniden kullanılmıyorsa korunur.
+ *
+ *  Scenario (Token Status List): status provider S with a long-term identity
+ *  key idk (pinned at the verifier). Status signing keys are certified by idk:
+ *      cert = <'stkey', S, pk(k), ep>   signed with idk; ep = certificate window
+ *      tok  = <'status', S, c, 'valid'> signed with k
+ *  The verifier accepts tok if cert verifies under the pinned identity key, tok
+ *  verifies under the certified key and window ep has not ended (verifier clock
+ *  correct, §7.4). A forged certificate carries an attacker-chosen window.
+ *  Windows are encoded by restrictions (no linear-state loops).
+ *
+ *  Key modes (L-D3):
+ *    (none)     LONG      one status key for the whole run            class 'long'
+ *    ROTATED    fresh key per window, several tokens per key          class 'epoch'
+ *    PER_TOKEN  fresh key per token (ephemeral), one token per key    class 'token'
+ *    KEY_REUSE  with ROTATED: the certificate rotates, the key does not
+ *               (same key re-certified every window)                  class 'long'
+ *  CRQC regimes (ordinal: tau vs window length; CRQC-TAKVIMI grid):
+ *    (none)  FAST    tau shorter than every window: no constraint
+ *    MEDIUM          token window < tau < epoch window: a 'token' key is
+ *                    extracted only after its window has closed
+ *    SLOW            epoch window < tau: 'token' and 'epoch' keys are extracted
+ *                    only after their window has closed
+ *    'long' and 'identity' keys are exposed longer than any tau: never constrained.
+ *  ID_PQ    the identity key is PQ (otherwise classical, class 'identity').
+ *
+ *  Two-phase CRQC: CRQC_Start needs Q-day and the observed public key;
+ *  CRQC_Done hands out the private key; tau is the gap between them.
+ */
+
+builtins: signing
+
+restriction Equality: "All x y #i. Eq(x, y) @ #i ==> x = y"
+restriction Unique:   "All x #i #j. Unique(x) @ #i & Unique(x) @ #j ==> #i = #j"
+
+/* a certificate window is neither used nor signed under after it has ended */
+restriction WindowOpen:
+  "All ep #u #e. UseWindow(ep) @ #u & WindowEnd(ep) @ #e ==> #u < #e"
+
+#ifdef MEDIUM | SLOW
+restriction TauExceedsTokenWindow:
+  "All k #a #d. KeyClass(k, 'token') @ #a & CRQCDone(k) @ #d ==> (Ex #x. KeyClose(k) @ #x & #x < #d)"
+#endif
+
+#ifdef SLOW
+restriction TauExceedsEpochWindow:
+  "All k #a #d. KeyClass(k, 'epoch') @ #a & CRQCDone(k) @ #d ==> (Ex #x. KeyClose(k) @ #x & #x < #d)"
+#endif
+
+/* ---------------- Q-day and two-phase CRQC ---------------- */
+rule Qday:
+    [ ] --[ Unique('qday'), QdayEv() ]-> [ !CRQC() ]
+
+rule CRQC_Start:
+    [ !CRQC(), !Classical(k), In(pk(k)) ] --[ CRQCStart(k) ]-> [ Extracting(k) ]
+
+rule CRQC_Done:
+    [ Extracting(k) ] --[ CRQCDone(k) ]-> [ Out(k) ]
+
+/* ---------------- status provider identity ---------------- */
+#ifdef ID_PQ
+rule Provider_Setup:
+    [ Fr(~idk) ]
+  --[ Unique('provider'), KeyClass(~idk, 'identity') ]->
+    [ !ProvID($S, ~idk), !IDPin($S, pk(~idk)), Out(pk(~idk)) ]
+#endif
+
+#ifdef not ID_PQ
+rule Provider_Setup:
+    [ Fr(~idk) ]
+  --[ Unique('provider'), KeyClass(~idk, 'identity') ]->
+    [ !ProvID($S, ~idk), !IDPin($S, pk(~idk)), !Classical(~idk), Out(pk(~idk)) ]
+#endif
+
+/* ---------------- key mode LONG ---------------- */
+#ifdef not ROTATED & not PER_TOKEN
+rule Long_Key:
+    let cert = <'stkey', S, pk(~k), ~ep> in
+    [ !ProvID(S, idk), Fr(~k), Fr(~ep) ]
+  --[ Unique('longkey'), KeyClass(~k, 'long') ]->
+    [ !Signer(S, ~k, ~ep), !Classical(~k), Out(pk(~k)), Out(<cert, sign(cert, idk)>) ]
+#endif
+
+/* ---------------- key mode ROTATED (fresh key per window) ---------------- */
+#ifdef ROTATED & not KEY_REUSE
+rule Epoch_Start:
+    let cert = <'stkey', S, pk(~k), ~ep> in
+    [ !ProvID(S, idk), Fr(~k), Fr(~ep) ]
+  --[ KeyClass(~k, 'epoch') ]->
+    [ !Signer(S, ~k, ~ep), !Classical(~k), EpochLive(~k, ~ep),
+      Out(pk(~k)), Out(<cert, sign(cert, idk)>) ]
+
+rule Epoch_End:
+    [ EpochLive(k, ep) ] --[ WindowEnd(ep), KeyClose(k) ]-> [ ]
+#endif
+
+/* ---------------- ROTATED + KEY_REUSE (certificate rotates, key does not) ---------------- */
+#ifdef ROTATED & KEY_REUSE
+rule Reused_Key:
+    [ !ProvID(S, idk), Fr(~k) ]
+  --[ Unique('reusedkey'), KeyClass(~k, 'long') ]->
+    [ !ReusedKey(S, ~k), !Classical(~k), Out(pk(~k)) ]
+
+rule Epoch_Start_Reuse:
+    let cert = <'stkey', S, pk(k), ~ep> in
+    [ !ProvID(S, idk), !ReusedKey(S, k), Fr(~ep) ]
+  -->
+    [ !Signer(S, k, ~ep), EpochLiveR(~ep), Out(<cert, sign(cert, idk)>) ]
+
+rule Epoch_End_Reuse:
+    [ EpochLiveR(ep) ] --[ WindowEnd(ep) ]-> [ ]
+#endif
+
+/* ---------------- token issuance under LONG / ROTATED keys ---------------- */
+#ifdef not PER_TOKEN
+rule Issue_Status:
+    let tok = <'status', S, ~c, 'valid'> in
+    [ !Signer(S, k, ep), Fr(~c) ]
+  --[ StatusIssued(S, ~c, 'valid'), UseWindow(ep) ]->
+    [ Out(<tok, sign(tok, k)>) ]
+#endif
+
+/* ---------------- key mode PER_TOKEN (ephemeral key per token) ---------------- */
+#ifdef PER_TOKEN
+rule Issue_Status_PerToken:
+    let cert = <'stkey', S, pk(~k), ~ep>
+        tok  = <'status', S, ~c, 'valid'>
+    in
+    [ !ProvID(S, idk), Fr(~k), Fr(~ep), Fr(~c) ]
+  --[ KeyClass(~k, 'token'), StatusIssued(S, ~c, 'valid') ]->
+    [ !Classical(~k), TokLive(~k, ~ep), Out(pk(~k)),
+      Out(<cert, sign(cert, idk)>), Out(<tok, sign(tok, ~k)>) ]
+
+rule Token_End:
+    [ TokLive(k, ep) ] --[ WindowEnd(ep), KeyClose(k) ]-> [ ]
+#endif
+
+/* ---------------- verifier ---------------- */
+rule Verify_Status:
+    let cert = <'stkey', S, pkk, ep>
+        tok  = <'status', S, c, st>
+    in
+    [ !IDPin(S, pkid), In(<cert, s1>), In(<tok, s2>) ]
+  --[ Eq(verify(s1, cert, pkid), true),
+      Eq(verify(s2, tok, pkk), true),
+      UseWindow(ep),
+      AcceptStatus(S, c, st) ]->
+    [ ]
+
+/* ================= health lemmas (H0) ================= */
+
+lemma executable:
+  exists-trace
+  "Ex S c st #i #j. StatusIssued(S, c, st) @ #i & AcceptStatus(S, c, st) @ #j"
+
+lemma executable_post_qday:
+  exists-trace
+  "Ex S c st #q #i #j. QdayEv() @ #q & StatusIssued(S, c, st) @ #i
+                     & AcceptStatus(S, c, st) @ #j & #q < #j"
+
+#ifdef ROTATED | PER_TOKEN
+/* windows really end and service continues afterwards */
+lemma executable_after_window_end:
+  exists-trace
+  "Ex S c st ep #e #i #j. WindowEnd(ep) @ #e & StatusIssued(S, c, st) @ #i
+                        & AcceptStatus(S, c, st) @ #j & #e < #j"
+#endif
+
+lemma attack_needs_crqc:
+  "All S c st #j. AcceptStatus(S, c, st) @ #j ==>
+      (Ex #i. StatusIssued(S, c, st) @ #i & #i < #j) | (Ex k #d. CRQCDone(k) @ #d & #d < #j)"
+
+/* ================= security goal G3 (status token unforgeability) ================= */
+lemma G3_status_unforgeability:
+  "All S c st #j. AcceptStatus(S, c, st) @ #j ==> (Ex #i. StatusIssued(S, c, st) @ #i & #i < #j)"
+
+/* ================= mutation / attribution lemmas (expected per variant in varyantlar.tsv) ================= */
+
+/* forgery through a long-lived (or reused) status key */
+lemma M_long_key:
+  exists-trace
+  "Ex S c st k #a #d #j. KeyClass(k, 'long') @ #a & CRQCDone(k) @ #d & AcceptStatus(S, c, st) @ #j
+                       & #d < #j & not (Ex #i. StatusIssued(S, c, st) @ #i)"
+
+/* forgery through an epoch key extracted while its window is still open */
+lemma M_epoch_key_in_window:
+  exists-trace
+  "Ex S c st k #a #d #j. KeyClass(k, 'epoch') @ #a & CRQCDone(k) @ #d & AcceptStatus(S, c, st) @ #j
+                       & #d < #j & not (Ex #i. StatusIssued(S, c, st) @ #i)
+                       & not (Ex #x. KeyClose(k) @ #x & #x < #d)"
+
+/* forgery through a per-token key extracted while its window is still open */
+lemma M_token_key_in_window:
+  exists-trace
+  "Ex S c st k #a #d #j. KeyClass(k, 'token') @ #a & CRQCDone(k) @ #d & AcceptStatus(S, c, st) @ #j
+                       & #d < #j & not (Ex #i. StatusIssued(S, c, st) @ #i)
+                       & not (Ex #x. KeyClose(k) @ #x & #x < #d)"
+
+/* forgery through the (classical) identity key that certifies status keys */
+lemma M_identity_key:
+  exists-trace
+  "Ex S c st k #a #d #j. KeyClass(k, 'identity') @ #a & CRQCDone(k) @ #d & AcceptStatus(S, c, st) @ #j
+                       & #d < #j & not (Ex #i. StatusIssued(S, c, st) @ #i)"
+
+end

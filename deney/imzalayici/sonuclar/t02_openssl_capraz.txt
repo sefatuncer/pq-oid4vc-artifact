@@ -1,0 +1,70 @@
+t02_openssl_capraz: 68/68 gecti
+  [GECTI] ML-DSA-44 / O3:openssl-genpkey(hexseed)-acik-anahtar==pqjose
+  [GECTI] ML-DSA-44 / O3:dilithium-py-key_derive==pqjose
+  [GECTI] ML-DSA-44 / O1:pqjose(hedged)->openssl-dogrular
+  [GECTI] ML-DSA-44 / O1b:pqjose(hedged)->dilithium-py-dogrular
+  [GECTI] ML-DSA-44 / O2:openssl(hedged)->pqjose-JWS-kabul — ok
+  [GECTI] ML-DSA-44 / O2b:dilithium-py(hedged)->pqjose-JWS-kabul — ok
+  [GECTI] ML-DSA-44 / belirlenimci:openssl==dilithium-py
+  [GECTI] ML-DSA-44 / O1c:pqjose.sign(compact)->openssl
+  [GECTI] ML-DSA-65 / O3:openssl-genpkey(hexseed)-acik-anahtar==pqjose
+  [GECTI] ML-DSA-65 / O3:dilithium-py-key_derive==pqjose
+  [GECTI] ML-DSA-65 / O1:pqjose(hedged)->openssl-dogrular
+  [GECTI] ML-DSA-65 / O1b:pqjose(hedged)->dilithium-py-dogrular
+  [GECTI] ML-DSA-65 / O2:openssl(hedged)->pqjose-JWS-kabul — ok
+  [GECTI] ML-DSA-65 / O2b:dilithium-py(hedged)->pqjose-JWS-kabul — ok
+  [GECTI] ML-DSA-65 / belirlenimci:openssl==dilithium-py
+  [GECTI] ML-DSA-65 / O1c:pqjose.sign(compact)->openssl
+  [GECTI] ML-DSA-87 / O3:openssl-genpkey(hexseed)-acik-anahtar==pqjose
+  [GECTI] ML-DSA-87 / O3:dilithium-py-key_derive==pqjose
+  [GECTI] ML-DSA-87 / O1:pqjose(hedged)->openssl-dogrular
+  [GECTI] ML-DSA-87 / O1b:pqjose(hedged)->dilithium-py-dogrular
+  [GECTI] ML-DSA-87 / O2:openssl(hedged)->pqjose-JWS-kabul — ok
+  [GECTI] ML-DSA-87 / O2b:dilithium-py(hedged)->pqjose-JWS-kabul — ok
+  [GECTI] ML-DSA-87 / belirlenimci:openssl==dilithium-py
+  [GECTI] ML-DSA-87 / O1c:pqjose.sign(compact)->openssl
+  [GECTI] ES256 / O1:pqjose->openssl(ham r||s -> DER)
+  [GECTI] ES256 / O2:openssl->pqjose-JWS-kabul — ok
+  [GECTI] ES384 / O1:pqjose->openssl(ham r||s -> DER)
+  [GECTI] ES384 / O2:openssl->pqjose-JWS-kabul — ok
+  [GECTI] EdDSA / O1:pqjose->openssl
+  [GECTI] EdDSA / O2:openssl->pqjose-JWS-kabul — ok
+  [GECTI] Ed448 / O1:pqjose->openssl
+  [GECTI] Ed448 / O2:openssl->pqjose-JWS-kabul — ok
+  [GECTI] ML-DSA-44-ES256 / O4a:ML-DSA-bileseni(ctx=Label)->openssl
+  [GECTI] ML-DSA-44-ES256 / O4a:ECDSA-bileseni(DER)->openssl
+  [GECTI] ML-DSA-44-ES256 / O4a:ML-DSA-bileseni->dilithium-py
+  [GECTI] ML-DSA-44-ES256 / O4b:openssl-bilesenleri->pqjose-composite-JWS-kabul — ok
+  [GECTI] ML-DSA-44-ES256 / belirlenimci-composite-tekrar-ayni
+  [GECTI] ML-DSA-65-ES256 / O4a:ML-DSA-bileseni(ctx=Label)->openssl
+  [GECTI] ML-DSA-65-ES256 / O4a:ECDSA-bileseni(DER)->openssl
+  [GECTI] ML-DSA-65-ES256 / O4a:ML-DSA-bileseni->dilithium-py
+  [GECTI] ML-DSA-65-ES256 / O4b:openssl-bilesenleri->pqjose-composite-JWS-kabul — ok
+  [GECTI] ML-DSA-65-ES256 / belirlenimci-composite-tekrar-ayni
+  [GECTI] ML-DSA-87-ES384 / O4a:ML-DSA-bileseni(ctx=Label)->openssl
+  [GECTI] ML-DSA-87-ES384 / O4a:ECDSA-bileseni(DER)->openssl
+  [GECTI] ML-DSA-87-ES384 / O4a:ML-DSA-bileseni->dilithium-py
+  [GECTI] ML-DSA-87-ES384 / O4b:openssl-bilesenleri->pqjose-composite-JWS-kabul — ok
+  [GECTI] ML-DSA-87-ES384 / belirlenimci-composite-tekrar-ayni
+  [GECTI] ML-DSA-44-Ed25519 / O4a:ML-DSA-bileseni(ctx=Label)->openssl
+  [GECTI] ML-DSA-44-Ed25519 / O4a:EdDSA-bileseni->openssl
+  [GECTI] ML-DSA-44-Ed25519 / O4a:ML-DSA-bileseni->dilithium-py
+  [GECTI] ML-DSA-44-Ed25519 / O4b:openssl-bilesenleri->pqjose-composite-JWS-kabul — ok
+  [GECTI] ML-DSA-44-Ed25519 / belirlenimci-composite-tekrar-ayni
+  [GECTI] ML-DSA-65-Ed25519 / O4a:ML-DSA-bileseni(ctx=Label)->openssl
+  [GECTI] ML-DSA-65-Ed25519 / O4a:EdDSA-bileseni->openssl
+  [GECTI] ML-DSA-65-Ed25519 / O4a:ML-DSA-bileseni->dilithium-py
+  [GECTI] ML-DSA-65-Ed25519 / O4b:openssl-bilesenleri->pqjose-composite-JWS-kabul — ok
+  [GECTI] ML-DSA-65-Ed25519 / belirlenimci-composite-tekrar-ayni
+  [GECTI] ML-DSA-87-Ed448 / O4a:ML-DSA-bileseni(ctx=Label)->openssl
+  [GECTI] ML-DSA-87-Ed448 / O4a:EdDSA-bileseni->openssl
+  [GECTI] ML-DSA-87-Ed448 / O4a:ML-DSA-bileseni->dilithium-py
+  [GECTI] ML-DSA-87-Ed448 / O4b:openssl-bilesenleri->pqjose-composite-JWS-kabul — ok
+  [GECTI] ML-DSA-87-Ed448 / belirlenimci-composite-tekrar-ayni
+  [GECTI] X.509 / O5:int-ml<-root-ml cryptography-dogrular
+  [GECTI] X.509 / O5:leaf-ec@int-ml<-int-ml cryptography-dogrular
+  [GECTI] X.509 / O5:int-ec<-root-ec cryptography-dogrular
+  [GECTI] X.509 / O5:leaf-ml@int-ec<-int-ec cryptography-dogrular
+  [GECTI] X.509 / O5:openssl-verify leaf-ec@int-ml — /tmp/pqjose-qqdqndr_/leaf.pem: OK
+  [GECTI] X.509 / O5:openssl-verify leaf-ml@int-ec — /tmp/pqjose-u1cvcyu_/leaf.pem: OK
+  [BILGI] genel / sayac — {"openssl": "44/44", "dilithium-py": "18/18"}

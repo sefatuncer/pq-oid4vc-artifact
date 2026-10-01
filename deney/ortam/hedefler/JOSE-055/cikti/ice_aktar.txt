@@ -1,0 +1,7 @@
+jar=jjwt-api-0.13.0.jar sinif_yuklendi=196 sinif_yuklenemedi=0
+ad_eslesen_siniflar (Verif|Validat; bilgi): io.jsonwebtoken.security.VerifyDigestRequest,io.jsonwebtoken.security.VerifySecureDigestRequest
+anahtar_sinif io.jsonwebtoken.Jwts OK
+anahtar_sinif io.jsonwebtoken.JwtParserBuilder OK
+anahtar_sinif io.jsonwebtoken.impl.DefaultJwtParserBuilder OK
+jar=jjwt-impl-0.13.0.jar sinif_yuklendi=350 sinif_yuklenemedi=0
+ad_eslesen_siniflar (Verif|Validat; bilgi): io.jsonwebtoken.impl.security.DefaultVerifyDigestRequest,io.jsonwebtoken.impl.security.DefaultVerifySecureDigestRequest

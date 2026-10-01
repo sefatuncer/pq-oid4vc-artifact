@@ -1,0 +1,15 @@
+baslangic	2026-09-25T12:39:55Z
+hedef	SDJWT-018
+ekosistem	pypi
+paket	sd-jwt
+istenen_surum	0.10.4
+arac	python 3.13.15; pip 26.2.1
+paket_ozeti	sha256:d7ae669eb5d51bceeb38e0df8ab2faddd12e3b21ab64d831b6d048fc1e00ce75 (sd_jwt-0.10.4-py3-none-any.whl)
+bagimlilik_sayisi	7
+kilit_dosyasi	requirements.lock (pip --report'tan, --hash'li)
+kilit_sha256	b7c4ff60cae4106d2fa3c88046bec8ae0d5bf384048650faa0960e3eb027c8b0
+kurulan_surum	0.10.4
+lisans_kayit	
+ortam	cryptography 50.0.1; gömülü OpenSSL 4.0.2 25 Aug 2026; mldsa_modulu=var
+ice_aktar	basarili
+bitis	2026-09-25T12:40:09Z

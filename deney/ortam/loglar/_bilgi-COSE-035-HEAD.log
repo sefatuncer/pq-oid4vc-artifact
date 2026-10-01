@@ -1,0 +1,38 @@
+# hedef=_bilgi-COSE-035-HEAD imaj=pq-a09-env-php:1.0 (sha256:a89612973cf41e3cb0597817bc85206aa10f11aa86b633636457a9fb99ad95c4) baslangic=2026-09-25T13:08:15Z zaman_asimi=900s
+# komut: docker run --rm --name pq-a09-ortam-_bilgi-cose-035-head --label pq.agir=derleme --memory=6g --memory-swap=6g -v hedefler/_bilgi-COSE-035-HEAD:/w -v betikler/konteyner:/b:ro pq-a09-env-php:1.0 sh -c '(bash|sh) /w/kur.sh'
+== composer require web-auth/cose-lib:4.9.x-dev#1c854bf63c5cd8d872d1e57ec7b891030f4ed314
+./composer.json has been updated
+Running composer update web-auth/cose-lib spomky-labs/cbor-php
+Loading composer repositories with package information
+Updating dependencies
+Lock file operations: 6 installs, 0 updates, 0 removals
+  - Locking brick/math (1.0.0)
+  - Locking spomky-labs/aes-key-wrap (v7.0.0)
+  - Locking spomky-labs/cbor-php (3.4.2)
+  - Locking spomky-labs/pki-framework (1.6.3)
+  - Locking symfony/polyfill-php81 (v1.38.1)
+  - Locking web-auth/cose-lib (4.9.x-dev 1c854bf)
+Writing lock file
+Installing dependencies from lock file (including require-dev)
+Package operations: 6 installs, 0 updates, 0 removals
+  - Downloading symfony/polyfill-php81 (v1.38.1)
+  - Downloading brick/math (1.0.0)
+  - Downloading spomky-labs/cbor-php (3.4.2)
+  - Downloading spomky-labs/pki-framework (1.6.3)
+  - Downloading spomky-labs/aes-key-wrap (v7.0.0)
+  - Downloading web-auth/cose-lib (4.9.x-dev 1c854bf)
+  - Installing symfony/polyfill-php81 (v1.38.1): Extracting archive
+  - Installing brick/math (1.0.0): Extracting archive
+  - Installing spomky-labs/cbor-php (3.4.2): Extracting archive
+  - Installing spomky-labs/pki-framework (1.6.3): Extracting archive
+  - Installing spomky-labs/aes-key-wrap (v7.0.0): Extracting archive
+  - Installing web-auth/cose-lib (4.9.x-dev 1c854bf): Extracting archive
+6 package suggestions were added by new dependencies, use `composer suggest` to see details.
+Generating optimized autoload files
+6 packages you are using are looking for funding.
+Use the `composer fund` command to find out more!
+== sınıf yükleme kontrolü (hedef paketin sınıfları otomatik yükleyiciyle yüklenir; imza doğrulama YOK)
+paket=web-auth/cose-lib sinif_yuklendi=159 sinif_yuklenemedi=0
+anahtar_sinif Cose\Algorithm\Signature\MLDSA\MLDSA65 OK
+== SONUC: basarili
+# cikis_kodu=0 sure_s=4 bitis=2026-09-25T13:08:19Z

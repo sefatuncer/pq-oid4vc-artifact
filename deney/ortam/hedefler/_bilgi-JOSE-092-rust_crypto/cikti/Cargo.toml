@@ -1,0 +1,8 @@
+[package]
+name = "ortam-deneme"
+version = "0.0.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+jsonwebtoken = { version = "=11.1.0", features = ["rust_crypto"] }

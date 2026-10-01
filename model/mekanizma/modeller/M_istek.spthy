@@ -1,0 +1,317 @@
+theory M_Istek
+begin
+
+/*
+ * =====================================================================
+ *  PQ-OID4VC | Adım 7 | İSTEK YÖNÜ mekanizmaları (doğrulayıcı/RP → cüzdan)
+ *  M-b0, M-a, M-b, M-c, OID4VP A.3.2.2 (görev 3) — TASLAK, koşulmadı
+ * =====================================================================
+ *  ÖN KAYITTA KOŞULACAK bayrak kümeleri (kapsam ekonomisi, 25.09.2026):
+ *    MB0 | MA | MB   (MB satırı A.3.2.2'yi de temsil eder: MB ve A322 aynı kuralları açar)
+ *  Koşulmayacak (on_kayit_varyantlar.tsv'de "indirgendi" / "5A-kapsandi"):
+ *    MC (→ MB), A322 (≡ MB), WALLET_EXPECT (→ M-f çekirdeği), WEBPKI_PQ (→ kanal sınıfı),
+ *    KEY_EXPIRY (→ R7 sunset boyutu). Bu bayraklar ailenin parametresi olarak kalır.
+ *  Varlık: RP X (istek imzalayan). Cüzdan W, X'in isteğini kabul eder.
+ *  Göç eden RP'nin G5'i: göçten sonra cüzdan X'in isteğini yalnız klasik
+ *  kanıtla kabul etmemeli. G4: göçten sonra kabul edilen istek X'ten gelmeli.
+ *  RP türleri: doğuştan göçmüş (G5-zamansız), göç eden (yaşam döngüsü),
+ *  eski (hiç göç etmez; klasik yolu canlı tutar). RP anahtarları cüzdanda
+ *  özgün biçimde bilinir (erişim sertifikası zinciri dışarıda; zincir: Mf_yol).
+ *  İstekler cüzdanın taze nonce'una bağlıdır (wallet_nonce; yeniden oynatma yok).
+ *
+ *  Mekanizma (tam olarak biri):
+ *    MB0   imzasızlaştırma tabanı: cüzdan imzasız isteği destekler (HAIP 5.2, T281);
+ *          imzasız istek kaynağı (origin) WebPKI ile doğrulanır (T282). Cüzdan
+ *          imzalı istekte yalnız PQ kabul eder; tek geri düşüş imzasız yoldur.
+ *    MA    kimliği doğrulanmamış yetenek müzakeresi (#791, 12.09.2026):
+ *          "Accept-Signature-Algorithms" başlığı; RP "strongest mutually supported
+ *          algorithm" ile imzalar. Başlık kimliksiz (taklit edilen uç / aracı).
+ *    MB    çoklu imzalı istek, "biri yeter" (RFC 7515 §5.2, T314): cüzdan tek geçerli
+ *          imzayla yetinir; PQ imzasının soyulması klasik kabule düşürür.
+ *    MC    çoklu istek (#791 "request" + "request_pqc"): cüzdan hangisi gelirse
+ *          onu işler; saldırgan PQ parametresini düşürür.
+ *    A322  OID4VP A.3.2.2: çoklu client_id / güven çerçevesi (T269–T273): X'in F1
+ *          (PQ) ve F2 (klasik) kimlikleri; cüzdan güvendiği herhangi bir çerçeveyle
+ *          doğrular (semantik tanımsız, T273).
+ *  Koruma / koşul bayrakları:
+ *    WEBPKI_PQ      (MB0) kaynak doğrulaması PQ WebPKI ile (H1 koşulu)
+ *    WALLET_EXPECT  cüzdanda kimliği doğrulanmış, güncel, RP başına beklenti
+ *                   (M-f'nin istek yönündeki karşılığı; sabitlenmiş görünüm)
+ *    KEY_EXPIRY     RP'nin klasik anahtar sertifikası sunset'te biter ve cüzdan denetler
+ *  Saldırgan: Dolev–Yao (S1) + Q-day'den sonra gözlenen klasik anahtarları
+ *  çıkaran CRQC (S2, tek evreli, τ yok; zaman R6'da).
+ */
+
+builtins: signing
+
+restriction Equality: "All x y #i. Eq(x, y) @ #i ==> x = y"
+restriction Unique:   "All x #i #j. Unique(x) @ #i & Unique(x) @ #j ==> #i = #j"
+
+/* dürüst RP yaşam döngüsüne uyar */
+restriction HonestClassicalUntilSunset:
+  "All X #i. SignClassical(X) @ #i ==> not (Ex #s. Sunset(X) @ #s & #s < #i)"
+restriction HonestPQAfterMigrate:
+  "All X #i. SignPQ(X) @ #i ==> (Ex #m. Migrate(X) @ #m & #m < #i)"
+
+/* istek nesneleri kısa ömürlüdür: DÜRÜST bir istek, oluşturulduğu yaşam döngüsü
+   evresinde kabul edilir (göç/sunset sınırını aşan yapay yarış izlerini dışlar;
+   sahte isteklere uygulanmaz, çünkü onlarda ReqCreated yoktur) */
+restriction RequestSamePhase:
+  "All X W wn p #c #a #ch. ReqCreated(X, wn, p) @ #c & AcceptReq(W, X, wn, p) @ #a & StateChange(X) @ #ch
+      ==> (#ch < #c) | (#a < #ch)"
+
+#ifdef WALLET_EXPECT
+/* cüzdanın RP başına beklentisi karar anında güncel: göçten sonra klasik kapı kapalı */
+restriction WalletGate:
+  "All X #j. GateClassical(X) @ #j ==> not (Ex #m. Migrate(X) @ #m & #m < #j)"
+#endif
+
+#ifdef KEY_EXPIRY
+restriction ClassicalKeyExpiry:
+  "All X #j. UseClKey(X) @ #j ==> not (Ex #s. Sunset(X) @ #s & #s < #j)"
+#endif
+
+#include "ortak_g5.spthy"
+
+/* ---------------- Q-day ve CRQC ---------------- */
+rule Qday:
+    [ ] --[ Unique('qday'), QdayEv() ]-> [ !CRQC() ]
+
+rule CRQC_Break_RP_Classical:
+    [ !RPCl(X, k), !CRQC(), In(pk(k)) ] --[ Broken(<'rp_cl', X>) ]-> [ Out(k) ]
+
+#ifdef MB0 & not WEBPKI_PQ
+rule CRQC_Break_WebPKI:
+    [ !RPTls(X, k), !CRQC(), In(pk(k)) ] --[ Broken(<'webpki', X>) ]-> [ Out(k) ]
+#endif
+
+/* ---------------- RP'ler ve yaşam döngüsü ---------------- */
+rule RP_Setup_Born:
+    [ Fr(~kc), Fr(~kq), Fr(~kt) ]
+  --[ Unique(<'rp', $X>), Unique(<'migrate', $X>), BornMigrated($X), Migrate($X), StateChange($X) ]->
+    [ !RPCl($X, ~kc), !RPPQ($X, ~kq), !RPTls($X, ~kt),
+      !PinRPCl($X, pk(~kc)), !PinRPPQ($X, pk(~kq)), !PinTls($X, pk(~kt)),
+      Out(pk(~kc)), Out(pk(~kq)), Out(pk(~kt)) ]
+
+rule RP_Setup_Migrating:
+    [ Fr(~kc), Fr(~kq), Fr(~kt) ]
+  --[ Unique(<'rp', $X>), MigratingRP($X) ]->
+    [ !RPCl($X, ~kc), !RPPQ($X, ~kq), !RPTls($X, ~kt),
+      !PinRPCl($X, pk(~kc)), !PinRPPQ($X, pk(~kq)), !PinTls($X, pk(~kt)),
+      Out(pk(~kc)), Out(pk(~kq)), Out(pk(~kt)) ]
+
+rule RP_Setup_Legacy:
+    [ Fr(~kc), Fr(~kt) ]
+  --[ Unique(<'rp', $X>), Legacy($X) ]->
+    [ !RPCl($X, ~kc), !RPTls($X, ~kt), !PinRPCl($X, pk(~kc)), !PinTls($X, pk(~kt)),
+      Out(pk(~kc)), Out(pk(~kt)) ]
+
+rule Migrate:
+    [ !RPPQ(X, kq) ] --[ Unique(<'migrate', X>), Migrate(X), StateChange(X) ]-> [ ]
+
+rule Sunset:
+    [ !RPPQ(X, kq) ] --[ Unique(<'sunset', X>), Sunset(X), StateChange(X) ]-> [ ]
+
+/* ---------------- cüzdan oturumu (wallet_nonce) ---------------- */
+#ifdef MA
+/* M-a: cüzdan request_uri alımında yeteneklerini bildirir (ES256 + ML-DSA) */
+rule Wallet_Fetch:
+    [ Fr(~wn) ] --> [ WSess($W, ~wn), Out(<'fetch', ~wn, 'pq_cl'>) ]
+#endif
+
+#ifdef not MA
+rule Wallet_Session:
+    [ Fr(~wn) ] --> [ WSess($W, ~wn), Out(<'wn', ~wn>) ]
+#endif
+
+#ifdef WALLET_EXPECT
+/* cüzdan RP başına beklentiyi öğrenir (sabitlenmiş görünüm; bkz. R7 PINNED) */
+rule Wallet_Learn_PQ:
+    [ !PinRPPQ(X, pkq) ] --[ StateIs(X, 'pq_required'), SeenPQReq($W, X) ]-> [ ]
+rule Wallet_Learn_Retired:
+    [ !PinRPPQ(X, pkq) ] --[ StateIs(X, 'retired'), SeenPQReq($W, X) ]-> [ ]
+#endif
+
+/* ================= M-a: müzakere ================= */
+#ifdef MA
+/* göç etmiş RP, başlıkta PQ görünce en güçlü ortak algoritmayla (PQ) imzalar */
+rule RP_Serve_PQ:
+    let r = <'req', X, wn, ~p> in
+    [ !RPPQ(X, kq), In(<'fetch', wn, 'pq_cl'>), Fr(~p) ]
+  --[ ReqCreated(X, wn, ~p), SignPQ(X) ]->
+    [ Out(<'single', r, sign(r, kq)>) ]
+
+/* başlık yalnız klasik diyorsa (kimliksiz başlık) RP klasik imzalar */
+rule RP_Serve_Classical_Header:
+    let r = <'req', X, wn, ~p> in
+    [ !RPCl(X, kc), In(<'fetch', wn, 'cl'>), Fr(~p) ]
+  --[ ReqCreated(X, wn, ~p), SignClassical(X) ]->
+    [ Out(<'single', r, sign(r, kc)>) ]
+
+/* henüz göç etmemiş ya da eski RP her başlıkta klasik imzalar */
+rule RP_Serve_Pre_Migration:
+    let r = <'req', X, wn, ~p> in
+    [ !RPCl(X, kc), In(<'fetch', wn, algs>), Fr(~p) ]
+  --[ ReqCreated(X, wn, ~p), SignClassical(X), StateIs(X, 'none') ]->
+    [ Out(<'single', r, sign(r, kc)>) ]
+#endif
+
+/* ================= M-b / A.3.2.2: çoklu imza, "biri yeter" ================= */
+#ifdef MB | A322
+/* birlikte yaşama: aynı istek iki imzayla (M-b: klasik + PQ; A.3.2.2: F2 klasik + F1 PQ) */
+rule RP_Req_Dual:
+    let r = <'req', X, wn, ~p> in
+    [ !RPCl(X, kc), !RPPQ(X, kq), In(<'wn', wn>), Fr(~p) ]
+  --[ ReqCreated(X, wn, ~p), SignPQ(X), SignClassical(X) ]->
+    [ Out(<'multi', r, sign(r, kc), sign(r, kq)>) ]
+#endif
+
+/* ================= M-c: çoklu istek (request + request_pqc) ================= */
+#ifdef MC
+rule RP_Req_Two_Params:
+    let r = <'req', X, wn, ~p> in
+    [ !RPCl(X, kc), !RPPQ(X, kq), In(<'wn', wn>), Fr(~p) ]
+  --[ ReqCreated(X, wn, ~p), SignPQ(X), SignClassical(X) ]->
+    [ Out(<'request', r, sign(r, kc)>), Out(<'request_pqc', r, sign(r, kq)>) ]
+#endif
+
+/* ================= imzalı tek istekler (M-b0, M-b, M-c, A.3.2.2) ================= */
+/* göç öncesi ya da eski RP: klasik imzalı tek istek (M-b0'da imzasız, aşağıda) */
+#ifdef not MA & not MB0
+rule RP_Req_Classical:
+    let r = <'req', X, wn, ~p> in
+    [ !RPCl(X, kc), In(<'wn', wn>), Fr(~p) ]
+  --[ ReqCreated(X, wn, ~p), SignClassical(X), StateIs(X, 'none') ]->
+    [ Out(<'single', r, sign(r, kc)>) ]
+#endif
+
+#ifdef not MA
+/* göç etmiş RP: PQ imzalı tek istek */
+rule RP_Req_PQ:
+    let r = <'req', X, wn, ~p> in
+    [ !RPPQ(X, kq), In(<'wn', wn>), Fr(~p) ]
+  --[ ReqCreated(X, wn, ~p), SignPQ(X) ]->
+    [ Out(<'single', r, sign(r, kq)>) ]
+#endif
+
+/* ================= M-b0: imzasız istek, kaynak (origin) WebPKI ile ================= */
+#ifdef MB0
+/* göç öncesi ya da eski RP imzasız ister; kaynak TLS sunucu anahtarıyla bağlanır */
+rule RP_Req_Unsigned:
+    let o = <'origin', X, wn, ~p> in
+    [ !RPTls(X, kt), In(<'wn', wn>), Fr(~p) ]
+  --[ ReqCreated(X, wn, ~p), StateIs(X, 'none') ]->
+    [ Out(<o, sign(o, kt)>) ]
+#endif
+
+/* ================= cüzdan: kabul kuralları ================= */
+
+/* PQ imzalı tek istek (bütün mekanizmalar) */
+rule Wallet_Accept_Single_PQ:
+    let r = <'req', X, wn, p> in
+    [ WSess(W, wn), !PinRPPQ(X, pkq), In(<'single', r, s>) ]
+  --[ Eq(verify(s, r, pkq), true), AcceptReq(W, X, wn, p), AcceptPQ(W, X, <wn, p>) ]->
+    [ ]
+
+#ifdef not MB0
+/* klasik imzalı tek istek: cüzdanın desteklediği küme ES256'yı içerir */
+rule Wallet_Accept_Single_Classical:
+    let r = <'req', X, wn, p> in
+    [ WSess(W, wn), !PinRPCl(X, pkc), In(<'single', r, s>) ]
+  --[ Eq(verify(s, r, pkc), true), GateClassical(X), UseClKey(X),
+      AcceptReq(W, X, wn, p), AcceptClassical(W, X, <wn, p>) ]->
+    [ ]
+#endif
+
+#ifdef MB | A322
+/* çoklu imzalı istek: PQ imzası geçerliyse PQ kanıtıyla kabul */
+rule Wallet_Accept_Multi_PQ:
+    let r = <'req', X, wn, p> in
+    [ WSess(W, wn), !PinRPPQ(X, pkq), In(<'multi', r, s1, s2>) ]
+  --[ Eq(verify(s2, r, pkq), true), AcceptReq(W, X, wn, p), AcceptPQ(W, X, <wn, p>) ]->
+    [ ]
+#endif
+
+#ifdef MC
+rule Wallet_Accept_RequestPQC:
+    let r = <'req', X, wn, p> in
+    [ WSess(W, wn), !PinRPPQ(X, pkq), In(<'request_pqc', r, s>) ]
+  --[ Eq(verify(s, r, pkq), true), AcceptReq(W, X, wn, p), AcceptPQ(W, X, <wn, p>) ]->
+    [ ]
+
+/* "request" parametresi tek başına geldiğinde işlenir (request_pqc düşürülmüş olabilir) */
+rule Wallet_Accept_Request_Classical:
+    let r = <'req', X, wn, p> in
+    [ WSess(W, wn), !PinRPCl(X, pkc), In(<'request', r, s>) ]
+  --[ Eq(verify(s, r, pkc), true), GateClassical(X), UseClKey(X),
+      AcceptReq(W, X, wn, p), AcceptClassical(W, X, <wn, p>) ]->
+    [ ]
+#endif
+
+#ifdef MB0 & not WEBPKI_PQ
+/* imzasız istek: kanıt yalnız klasik WebPKI kaynak doğrulaması */
+rule Wallet_Accept_Unsigned:
+    let o = <'origin', X, wn, p> in
+    [ WSess(W, wn), !PinTls(X, pkt), In(<o, so>) ]
+  --[ Eq(verify(so, o, pkt), true), GateClassical(X),
+      AcceptReq(W, X, wn, p), AcceptClassical(W, X, <wn, p>) ]->
+    [ ]
+#endif
+
+#ifdef MB0 & WEBPKI_PQ
+/* imzasız istek, PQ WebPKI: taşıma kanıtı PQ (H1 koşulu) */
+rule Wallet_Accept_Unsigned:
+    let o = <'origin', X, wn, p> in
+    [ WSess(W, wn), !PinTls(X, pkt), In(<o, so>) ]
+  --[ Eq(verify(so, o, pkt), true),
+      AcceptReq(W, X, wn, p), AcceptPQ(W, X, <wn, p>) ]->
+    [ ]
+#endif
+
+/* ================= sağlık lemmaları (H0) ================= */
+
+lemma executable:
+  exists-trace
+  "Ex W X x #m #j. Migrate(X) @ #m & AcceptPQ(W, X, x) @ #j & #m < #j"
+
+lemma executable_legacy:
+  exists-trace
+  "Ex W X wn p #l #j. Legacy(X) @ #l & AcceptReq(W, X, wn, p) @ #j"
+
+lemma executable_pre_migration:
+  exists-trace
+  "Ex W X wn p #s #j. MigratingRP(X) @ #s & AcceptReq(W, X, wn, p) @ #j
+                    & not (Ex #m. Migrate(X) @ #m)"
+
+lemma executable_lifecycle:
+  exists-trace
+  "Ex W X x #m #s #j. Migrate(X) @ #m & Sunset(X) @ #s & AcceptPQ(W, X, x) @ #j & #s < #j"
+
+lemma executable_learn:
+  exists-trace
+  "Ex W X #k. SeenPQReq(W, X) @ #k"
+
+lemma attack_needs_crqc:
+  "All W X wn p #m #j. Migrate(X) @ #m & AcceptReq(W, X, wn, p) @ #j & #m < #j ==>
+      (Ex #i. ReqCreated(X, wn, p) @ #i & #i < #j) | (Ex k #b. Broken(k) @ #b & #b < #j)"
+
+/* ================= güvenlik: G4 (RP kimlik doğrulaması, göçten sonra) ================= */
+lemma G4_rp_authentication:
+  "All W X wn p #m #j. Migrate(X) @ #m & AcceptReq(W, X, wn, p) @ #j & #m < #j ==>
+      (Ex #i. ReqCreated(X, wn, p) @ #i & #i < #j)"
+
+/* ================= atıf (mutasyon) lemmaları ================= */
+
+/* S1 yeter: Q-day olmadan göç etmiş RP'nin isteği yalnız klasik kanıtla kabul */
+lemma M_downgrade_s1:
+  exists-trace
+  "Ex W X x #m #j. Migrate(X) @ #m & AcceptClassical(W, X, x) @ #j & #m < #j
+                 & not (Ex #q. QdayEv() @ #q)"
+
+/* S2: göçten sonra sahte istek, bir CRQC kırılmasıyla */
+lemma M_forgery_crqc:
+  exists-trace
+  "Ex W X wn p k #m #j #b. Migrate(X) @ #m & AcceptReq(W, X, wn, p) @ #j & #m < #j
+                         & Broken(k) @ #b & not (Ex #i. ReqCreated(X, wn, p) @ #i)"
+
+end

@@ -1,0 +1,630 @@
+{
+ "test": "t04_boyutlar",
+ "sure_s": 0.31,
+ "surumler": {
+  "pqjose": "1.0.0",
+  "python": "3.11.16",
+  "cryptography": "50.0.1",
+  "cryptography_openssl": "OpenSSL 4.0.2 25 Aug 2026",
+  "openssl_cli": "OpenSSL 3.5.7 9 Jun 2026 (Library: OpenSSL 3.5.7 9 Jun 2026)",
+  "spesifikasyonlar": {
+   "JWS": "RFC 7515",
+   "JWA": "RFC 7518 (RFC 9864 ile guncellendi)",
+   "ML-DSA": "RFC 9964 (Mayis 2026)",
+   "composite": "draft-ietf-jose-pq-composite-sigs-04 (10.09.2026)",
+   "EdDSA": "RFC 8037 / RFC 9864"
+  }
+ },
+ "ozet": {
+  "toplam": 29,
+  "gecen": 29,
+  "kalan": []
+ },
+ "kontroller": [
+  {
+   "grup": "P4:ML-DSA-44",
+   "ad": "spki_der_B",
+   "gecti": true,
+   "ayrinti": {
+    "biz": 1334,
+    "P4": 1334,
+    "fark": 0
+   }
+  },
+  {
+   "grup": "P4:ML-DSA-44",
+   "ad": "sig_B",
+   "gecti": true,
+   "ayrinti": {
+    "biz": 2420,
+    "P4": 2420,
+    "fark": 0
+   }
+  },
+  {
+   "grup": "P4:ML-DSA-44",
+   "ad": "ca_cert_der_B",
+   "gecti": true,
+   "ayrinti": {
+    "biz": 4054,
+    "P4": 4054,
+    "fark": 0
+   }
+  },
+  {
+   "grup": "P4:ML-DSA-44",
+   "ad": "leaf_cert_der_B",
+   "gecti": true,
+   "ayrinti": {
+    "biz": 4073,
+    "P4": 4073,
+    "fark": 0
+   }
+  },
+  {
+   "grup": "P4:ML-DSA-44",
+   "ad": "x5c_2certs_b64_chars",
+   "gecti": true,
+   "ayrinti": {
+    "biz": 10840,
+    "P4": 10840,
+    "fark": 0
+   }
+  },
+  {
+   "grup": "P4:ML-DSA-65",
+   "ad": "spki_der_B",
+   "gecti": true,
+   "ayrinti": {
+    "biz": 1974,
+    "P4": 1974,
+    "fark": 0
+   }
+  },
+  {
+   "grup": "P4:ML-DSA-65",
+   "ad": "sig_B",
+   "gecti": true,
+   "ayrinti": {
+    "biz": 3309,
+    "P4": 3309,
+    "fark": 0
+   }
+  },
+  {
+   "grup": "P4:ML-DSA-65",
+   "ad": "ca_cert_der_B",
+   "gecti": true,
+   "ayrinti": {
+    "biz": 5583,
+    "P4": 5583,
+    "fark": 0
+   }
+  },
+  {
+   "grup": "P4:ML-DSA-65",
+   "ad": "leaf_cert_der_B",
+   "gecti": true,
+   "ayrinti": {
+    "biz": 5602,
+    "P4": 5602,
+    "fark": 0
+   }
+  },
+  {
+   "grup": "P4:ML-DSA-65",
+   "ad": "x5c_2certs_b64_chars",
+   "gecti": true,
+   "ayrinti": {
+    "biz": 14916,
+    "P4": 14916,
+    "fark": 0
+   }
+  },
+  {
+   "grup": "P4:ML-DSA-87",
+   "ad": "spki_der_B",
+   "gecti": true,
+   "ayrinti": {
+    "biz": 2614,
+    "P4": 2614,
+    "fark": 0
+   }
+  },
+  {
+   "grup": "P4:ML-DSA-87",
+   "ad": "sig_B",
+   "gecti": true,
+   "ayrinti": {
+    "biz": 4627,
+    "P4": 4627,
+    "fark": 0
+   }
+  },
+  {
+   "grup": "P4:ML-DSA-87",
+   "ad": "ca_cert_der_B",
+   "gecti": true,
+   "ayrinti": {
+    "biz": 7541,
+    "P4": 7541,
+    "fark": 0
+   }
+  },
+  {
+   "grup": "P4:ML-DSA-87",
+   "ad": "leaf_cert_der_B",
+   "gecti": true,
+   "ayrinti": {
+    "biz": 7560,
+    "P4": 7560,
+    "fark": 0
+   }
+  },
+  {
+   "grup": "P4:ML-DSA-87",
+   "ad": "x5c_2certs_b64_chars",
+   "gecti": true,
+   "ayrinti": {
+    "biz": 20136,
+    "P4": 20136,
+    "fark": 0
+   }
+  },
+  {
+   "grup": "P4:EC-P256",
+   "ad": "spki_der_B",
+   "gecti": true,
+   "ayrinti": {
+    "biz": 91,
+    "P4": 91,
+    "fark": 0
+   }
+  },
+  {
+   "grup": "P4:EC-P256",
+   "ad": "sig_B",
+   "gecti": true,
+   "ayrinti": {
+    "biz": 72,
+    "P4": 70,
+    "fark": 2
+   }
+  },
+  {
+   "grup": "P4:EC-P256",
+   "ad": "ca_cert_der_B",
+   "gecti": true,
+   "ayrinti": {
+    "biz": 454,
+    "P4": 454,
+    "fark": 0
+   }
+  },
+  {
+   "grup": "P4:EC-P256",
+   "ad": "leaf_cert_der_B",
+   "gecti": true,
+   "ayrinti": {
+    "biz": 474,
+    "P4": 476,
+    "fark": -2
+   }
+  },
+  {
+   "grup": "P4:EC-P256",
+   "ad": "x5c_2certs_b64_chars",
+   "gecti": true,
+   "ayrinti": {
+    "biz": 1240,
+    "P4": 1244,
+    "fark": -4
+   }
+  },
+  {
+   "grup": "JWS",
+   "ad": "ES256",
+   "gecti": null,
+   "ayrinti": {
+    "alg": "ES256",
+    "imza_B": 64,
+    "jwk_acik_json_B": 126,
+    "compact_jws_B": 274,
+    "dpop_B": 440,
+    "dpop>nginx(8182)": false,
+    "dpop>node(16348)": false
+   }
+  },
+  {
+   "grup": "JWS",
+   "ad": "EdDSA",
+   "gecti": null,
+   "ayrinti": {
+    "alg": "EdDSA",
+    "imza_B": 64,
+    "jwk_acik_json_B": 79,
+    "compact_jws_B": 274,
+    "dpop_B": 378,
+    "dpop>nginx(8182)": false,
+    "dpop>node(16348)": false
+   }
+  },
+  {
+   "grup": "JWS",
+   "ad": "ML-DSA-44",
+   "gecti": null,
+   "ayrinti": {
+    "alg": "ML-DSA-44",
+    "imza_B": 2420,
+    "jwk_acik_json_B": 1790,
+    "compact_jws_B": 3420,
+    "dpop_B": 5805,
+    "dpop>nginx(8182)": false,
+    "dpop>node(16348)": false
+   }
+  },
+  {
+   "grup": "JWS",
+   "ad": "ML-DSA-65",
+   "gecti": null,
+   "ayrinti": {
+    "alg": "ML-DSA-65",
+    "imza_B": 3309,
+    "jwk_acik_json_B": 2643,
+    "compact_jws_B": 4605,
+    "dpop_B": 8128,
+    "dpop>nginx(8182)": false,
+    "dpop>node(16348)": false
+   }
+  },
+  {
+   "grup": "JWS",
+   "ad": "ML-DSA-87",
+   "gecti": null,
+   "ayrinti": {
+    "alg": "ML-DSA-87",
+    "imza_B": 4627,
+    "jwk_acik_json_B": 3496,
+    "compact_jws_B": 6363,
+    "dpop_B": 11023,
+    "dpop>nginx(8182)": true,
+    "dpop>node(16348)": false
+   }
+  },
+  {
+   "grup": "JWS",
+   "ad": "ML-DSA-44-ES256",
+   "gecti": null,
+   "ayrinti": {
+    "alg": "ML-DSA-44-ES256",
+    "imza_B": 2492,
+    "jwk_acik_json_B": 1882,
+    "compact_jws_B": 3524,
+    "dpop_B": 6029,
+    "dpop>nginx(8182)": false,
+    "dpop>node(16348)": false,
+    "composite_ml_B": 2420,
+    "composite_trad_B": 72
+   }
+  },
+  {
+   "grup": "JWS",
+   "ad": "ML-DSA-65-ES256",
+   "gecti": null,
+   "ayrinti": {
+    "alg": "ML-DSA-65-ES256",
+    "imza_B": 3379,
+    "jwk_acik_json_B": 2736,
+    "compact_jws_B": 4707,
+    "dpop_B": 8355,
+    "dpop>nginx(8182)": true,
+    "dpop>node(16348)": false,
+    "composite_ml_B": 3309,
+    "composite_trad_B": 70
+   }
+  },
+  {
+   "grup": "JWS",
+   "ad": "ML-DSA-87-ES384",
+   "gecti": null,
+   "ayrinti": {
+    "alg": "ML-DSA-87-ES384",
+    "imza_B": 4729,
+    "jwk_acik_json_B": 3632,
+    "compact_jws_B": 6507,
+    "dpop_B": 11349,
+    "dpop>nginx(8182)": true,
+    "dpop>node(16348)": false,
+    "composite_ml_B": 4627,
+    "composite_trad_B": 102
+   }
+  },
+  {
+   "grup": "JWS",
+   "ad": "ML-DSA-44-Ed25519",
+   "gecti": null,
+   "ayrinti": {
+    "alg": "ML-DSA-44-Ed25519",
+    "imza_B": 2484,
+    "jwk_acik_json_B": 1840,
+    "compact_jws_B": 3516,
+    "dpop_B": 5968,
+    "dpop>nginx(8182)": false,
+    "dpop>node(16348)": false,
+    "composite_ml_B": 2420,
+    "composite_trad_B": 64
+   }
+  },
+  {
+   "grup": "JWS",
+   "ad": "ML-DSA-65-Ed25519",
+   "gecti": null,
+   "ayrinti": {
+    "alg": "ML-DSA-65-Ed25519",
+    "imza_B": 3373,
+    "jwk_acik_json_B": 2694,
+    "compact_jws_B": 4702,
+    "dpop_B": 8292,
+    "dpop>nginx(8182)": true,
+    "dpop>node(16348)": false,
+    "composite_ml_B": 3309,
+    "composite_trad_B": 64
+   }
+  },
+  {
+   "grup": "JWS",
+   "ad": "ML-DSA-87-Ed448",
+   "gecti": null,
+   "ayrinti": {
+    "alg": "ML-DSA-87-Ed448",
+    "imza_B": 4741,
+    "jwk_acik_json_B": 3578,
+    "compact_jws_B": 6523,
+    "dpop_B": 11292,
+    "dpop>nginx(8182)": true,
+    "dpop>node(16348)": false,
+    "composite_ml_B": 4627,
+    "composite_trad_B": 114
+   }
+  },
+  {
+   "grup": "FIPS204",
+   "ad": "ML-DSA-44 imza",
+   "gecti": true,
+   "ayrinti": 2420
+  },
+  {
+   "grup": "FIPS204",
+   "ad": "ML-DSA-65 imza",
+   "gecti": true,
+   "ayrinti": 3309
+  },
+  {
+   "grup": "FIPS204",
+   "ad": "ML-DSA-87 imza",
+   "gecti": true,
+   "ayrinti": 4627
+  },
+  {
+   "grup": "-04 Tablo 1-2",
+   "ad": "ML-DSA-44-ES256 bilesen boyutlari",
+   "gecti": true,
+   "ayrinti": [
+    2420,
+    72
+   ]
+  },
+  {
+   "grup": "-04 Tablo 1-2",
+   "ad": "ML-DSA-65-ES256 bilesen boyutlari",
+   "gecti": true,
+   "ayrinti": [
+    3309,
+    70
+   ]
+  },
+  {
+   "grup": "-04 Tablo 1-2",
+   "ad": "ML-DSA-87-ES384 bilesen boyutlari",
+   "gecti": true,
+   "ayrinti": [
+    4627,
+    102
+   ]
+  },
+  {
+   "grup": "-04 Tablo 1-2",
+   "ad": "ML-DSA-44-Ed25519 bilesen boyutlari",
+   "gecti": true,
+   "ayrinti": [
+    2420,
+    64
+   ]
+  },
+  {
+   "grup": "-04 Tablo 1-2",
+   "ad": "ML-DSA-65-Ed25519 bilesen boyutlari",
+   "gecti": true,
+   "ayrinti": [
+    3309,
+    64
+   ]
+  },
+  {
+   "grup": "-04 Tablo 1-2",
+   "ad": "ML-DSA-87-Ed448 bilesen boyutlari",
+   "gecti": true,
+   "ayrinti": [
+    4627,
+    114
+   ]
+  }
+ ],
+ "p4_tablo": [
+  {
+   "alg": "ML-DSA-44",
+   "spki_der_B_biz": 1334,
+   "sig_B_biz": 2420,
+   "ca_cert_der_B_biz": 4054,
+   "leaf_cert_der_B_biz": 4073,
+   "x5c_2certs_b64_chars_biz": 10840,
+   "spki_der_B_P4": 1334,
+   "sig_B_P4": 2420,
+   "ca_cert_der_B_P4": 4054,
+   "leaf_cert_der_B_P4": 4073,
+   "x5c_2certs_b64_chars_P4": 10840
+  },
+  {
+   "alg": "ML-DSA-65",
+   "spki_der_B_biz": 1974,
+   "sig_B_biz": 3309,
+   "ca_cert_der_B_biz": 5583,
+   "leaf_cert_der_B_biz": 5602,
+   "x5c_2certs_b64_chars_biz": 14916,
+   "spki_der_B_P4": 1974,
+   "sig_B_P4": 3309,
+   "ca_cert_der_B_P4": 5583,
+   "leaf_cert_der_B_P4": 5602,
+   "x5c_2certs_b64_chars_P4": 14916
+  },
+  {
+   "alg": "ML-DSA-87",
+   "spki_der_B_biz": 2614,
+   "sig_B_biz": 4627,
+   "ca_cert_der_B_biz": 7541,
+   "leaf_cert_der_B_biz": 7560,
+   "x5c_2certs_b64_chars_biz": 20136,
+   "spki_der_B_P4": 2614,
+   "sig_B_P4": 4627,
+   "ca_cert_der_B_P4": 7541,
+   "leaf_cert_der_B_P4": 7560,
+   "x5c_2certs_b64_chars_P4": 20136
+  },
+  {
+   "alg": "EC-P256",
+   "spki_der_B_biz": 91,
+   "sig_B_biz": 72,
+   "ca_cert_der_B_biz": 454,
+   "leaf_cert_der_B_biz": 474,
+   "x5c_2certs_b64_chars_biz": 1240,
+   "spki_der_B_P4": 91,
+   "sig_B_P4": 70,
+   "ca_cert_der_B_P4": 454,
+   "leaf_cert_der_B_P4": 476,
+   "x5c_2certs_b64_chars_P4": 1244
+  }
+ ],
+ "jws_tablo": [
+  {
+   "alg": "ES256",
+   "imza_B": 64,
+   "jwk_acik_json_B": 126,
+   "compact_jws_B": 274,
+   "dpop_B": 440,
+   "dpop>nginx(8182)": false,
+   "dpop>node(16348)": false
+  },
+  {
+   "alg": "EdDSA",
+   "imza_B": 64,
+   "jwk_acik_json_B": 79,
+   "compact_jws_B": 274,
+   "dpop_B": 378,
+   "dpop>nginx(8182)": false,
+   "dpop>node(16348)": false
+  },
+  {
+   "alg": "ML-DSA-44",
+   "imza_B": 2420,
+   "jwk_acik_json_B": 1790,
+   "compact_jws_B": 3420,
+   "dpop_B": 5805,
+   "dpop>nginx(8182)": false,
+   "dpop>node(16348)": false
+  },
+  {
+   "alg": "ML-DSA-65",
+   "imza_B": 3309,
+   "jwk_acik_json_B": 2643,
+   "compact_jws_B": 4605,
+   "dpop_B": 8128,
+   "dpop>nginx(8182)": false,
+   "dpop>node(16348)": false
+  },
+  {
+   "alg": "ML-DSA-87",
+   "imza_B": 4627,
+   "jwk_acik_json_B": 3496,
+   "compact_jws_B": 6363,
+   "dpop_B": 11023,
+   "dpop>nginx(8182)": true,
+   "dpop>node(16348)": false
+  },
+  {
+   "alg": "ML-DSA-44-ES256",
+   "imza_B": 2492,
+   "jwk_acik_json_B": 1882,
+   "compact_jws_B": 3524,
+   "dpop_B": 6029,
+   "dpop>nginx(8182)": false,
+   "dpop>node(16348)": false,
+   "composite_ml_B": 2420,
+   "composite_trad_B": 72
+  },
+  {
+   "alg": "ML-DSA-65-ES256",
+   "imza_B": 3379,
+   "jwk_acik_json_B": 2736,
+   "compact_jws_B": 4707,
+   "dpop_B": 8355,
+   "dpop>nginx(8182)": true,
+   "dpop>node(16348)": false,
+   "composite_ml_B": 3309,
+   "composite_trad_B": 70
+  },
+  {
+   "alg": "ML-DSA-87-ES384",
+   "imza_B": 4729,
+   "jwk_acik_json_B": 3632,
+   "compact_jws_B": 6507,
+   "dpop_B": 11349,
+   "dpop>nginx(8182)": true,
+   "dpop>node(16348)": false,
+   "composite_ml_B": 4627,
+   "composite_trad_B": 102
+  },
+  {
+   "alg": "ML-DSA-44-Ed25519",
+   "imza_B": 2484,
+   "jwk_acik_json_B": 1840,
+   "compact_jws_B": 3516,
+   "dpop_B": 5968,
+   "dpop>nginx(8182)": false,
+   "dpop>node(16348)": false,
+   "composite_ml_B": 2420,
+   "composite_trad_B": 64
+  },
+  {
+   "alg": "ML-DSA-65-Ed25519",
+   "imza_B": 3373,
+   "jwk_acik_json_B": 2694,
+   "compact_jws_B": 4702,
+   "dpop_B": 8292,
+   "dpop>nginx(8182)": true,
+   "dpop>node(16348)": false,
+   "composite_ml_B": 3309,
+   "composite_trad_B": 64
+  },
+  {
+   "alg": "ML-DSA-87-Ed448",
+   "imza_B": 4741,
+   "jwk_acik_json_B": 3578,
+   "compact_jws_B": 6523,
+   "dpop_B": 11292,
+   "dpop>nginx(8182)": true,
+   "dpop>node(16348)": false,
+   "composite_ml_B": 4627,
+   "composite_trad_B": 114
+  }
+ ]
+}

@@ -1,0 +1,3 @@
+wolfcose baglandi (islevler CAGRILMAZ; yalniz adres)
+sembol wc_CoseSign1_Verify var
+sembol wc_CoseSign_Verify var

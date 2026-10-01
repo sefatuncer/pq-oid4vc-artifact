@@ -1,0 +1,43 @@
+(* =====================================================================
+   PQ-OID4VC | Adım 5A | ProVerif ikinci görüş — R5 çıpa (Tamarin: R5_anchor.spthy)
+   LOTL key (pinned) signs the TL pointer; TL key signs the issuer entry; the
+   issuer key (PQ) signs the credential. The LOTL key is classical (R5 premise)
+   and leaks in phase 1; the TL key leaks unless TL_PQ. With PIN_TL the
+   verifier uses the pinned TL key instead of the LOTL pointer.
+   Queries in order: executable (reachability), G1_claims_unforgeability
+   ===================================================================== *)
+free c: channel.
+type skey.
+type pkey.
+fun pk(skey): pkey.
+fun sign(bitstring, skey): bitstring.
+reduc forall m: bitstring, k: skey; verify(sign(m, k), m, pk(k)) = true.
+
+free lotl_tag, tl_tag, cred_tag, tlName, issA: bitstring.
+
+event Issued(bitstring, bitstring).
+event Accept(bitstring, bitstring).
+
+query i: bitstring, x: bitstring; event(Accept(i, x)).
+query i: bitstring, x: bitstring; event(Accept(i, x)) ==> event(Issued(i, x)).
+
+let Issuer(skI: skey) =
+  new claims: bitstring;
+  event Issued(issA, claims);
+  out(c, ((cred_tag, issA, claims), sign((cred_tag, issA, claims), skI))).
+
+let Verifier(pkL: pkey, pkT: pkey) =
+  in(c, ((=tl_tag, i: bitstring, pkI: pkey), s2: bitstring));
+  if verify(s2, (tl_tag, i, pkI), pkT) = true then
+  in(c, ((=cred_tag, =i, x: bitstring), s3: bitstring));
+  if verify(s3, (cred_tag, i, x), pkI) = true then
+  event Accept(i, x).
+
+process
+  new skL: skey; new skT: skey; new skI: skey;
+  out(c, (pk(skL), pk(skT), pk(skI)));
+  out(c, ((lotl_tag, tlName, pk(skT)), sign((lotl_tag, tlName, pk(skT)), skL)));
+  out(c, ((tl_tag, issA, pk(skI)), sign((tl_tag, issA, pk(skI)), skT)));
+  ( (!Issuer(skI)) | (!Verifier(pk(skL), pk(skT)))
+  | (phase 1; ( out(c, skL) |
+      (!Issuer(skI)) | (!Verifier(pk(skL), pk(skT))) )) )

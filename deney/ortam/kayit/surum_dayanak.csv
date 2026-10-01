@@ -1,0 +1,15 @@
+id,karar,sutun,envanter_degeri,dayanak,head_commit,surum,etiket_commit,head_desen,etiket_dosya,etiket_desen
+JOSE-009,SECILDI,ml_dsa_rfc9964,evet,https://github.com/panva/jose/blob/55c959fd16852462498b0d82c52c4eca07d48f26/src/types.d.ts#L23-L25,55c959fd1685,6.2.12,505a55b8f735,15,var,13
+JOSE-001,SECILDI,ml_dsa_rfc9964,evet,https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet/blob/80995d99c3dd434e34dee21eb3cdad1b08f3ec5f/src/Microsoft.IdentityModel.Tokens/SecurityAlgorithms.cs#L89-L91,80995d99c3dd,8.23.0,8b16f418b3d5,4,var,8
+JOSE-102,SECILDI,ml_dsa_rfc9964,kısmi,https://github.com/vapor/jwt-kit/blob/0c74d3201bff57aa5c7b62f72c6399dcdfa8ebcc/Sources/JWTKit/MLDSA/MLDSA.swift#L9-L20,0c74d3201bff,5.3.0,b5f82fb9dc23,50,var,14
+JOSE-074,YEDEK,ml_dsa_rfc9964,evet,https://github.com/web-token/jwt-framework/blob/e989bb936e7764f0b295b81d0be6d5ad023e9a61/src/Bundle/DependencyInjection/Source/Signature/SignatureSource.php#L119-L120,e989bb936e77,4.2.3,791788dad09a,3,var,0
+JOSE-038,YEDEK,ml_dsa_rfc9964,evet,https://github.com/lestrrat-go/jwx/blob/f8e9c3f4b6214d0f921f9a86eebb84c12e4c2e28/docs/10-extensions.md#L62-L68,f8e9c3f4b621,v4.5.0,024e6cf67b2d,109,var,109
+JOSE-038,YEDEK,composite_destegi,evet,https://github.com/lestrrat-go/jwx/blob/f8e9c3f4b6214d0f921f9a86eebb84c12e4c2e28/docs/10-extensions.md#L916-L937,f8e9c3f4b621,v4.5.0,024e6cf67b2d,14,var,14
+SDJWT-012,YEDEK,ml_dsa_rfc9964,kısmi,https://github.com/koalafacts/herosd-jwt/blob/93274ef33faefa8135c31adf88037d6a3c959d51/src/HeroSdJwt/Cryptography/JwtSigner.cs#L56-L57,93274ef33fae,1.1.7,f13358ac7a5e,16,var,16
+COSE-034,SECILDI,ml_dsa_rfc9964,kısmi,https://github.com/veraison/go-cose/blob/dea543bf9b89b0cef461c0d194747c9ed5e6666c/README.md#L270-L322,dea543bf9b89,v1.3.0,e5c68f97dfbb,7,var,0
+COSE-035,SECILDI,ml_dsa_rfc9964,evet,https://github.com/web-auth/cose-lib/blob/1c854bf63c5cd8d872d1e57ec7b891030f4ed314/README.md#L30-L31,1c854bf63c5c,4.8.2,8849e8bf043a,5,var,0
+COSE-036,SECILDI,ml_dsa_rfc9964,evet,https://github.com/wolfssl/wolfcose/blob/f907071b10127f3ae2dd7719749a91b039ff04a1/include/wolfcose/settings.h#L80-L88,f907071b1012,,,30,sürüm yok (commit sabit),
+COSE-016,YEDEK,ml_dsa_rfc9964,kısmi,https://github.com/google/coset/blob/dd458359623a459086aa296e34a3d8902e034223/src/iana/mod.rs#L271-L276,dd458359623a,0.4.2,dd458359623a,8,etiket=HEAD,8
+COSE-011,YEDEK,ml_dsa_rfc9964,kısmi,https://github.com/dark-bio/crypto-rs/blob/be6193ec3a0d8ee0f558f61fa7862fa20bf696b0/src/mldsa/mod.rs#L7-L57,be6193ec3a0d,0.18.2,9fa3673d3d3b,19,var,19
+COSE-011,YEDEK,composite_destegi,kısmi,https://github.com/dark-bio/crypto-rs/blob/be6193ec3a0d8ee0f558f61fa7862fa20bf696b0/src/cose/mod.rs#L156,be6193ec3a0d,0.18.2,9fa3673d3d3b,0,var,0
+REF-015,YEDEK,ml_dsa_rfc9964,evet,https://github.com/privacybydesign/irmago/blob/223bcad33d3f2e54504836bf9bcf8ea776181245/eudi/jwt/signature_algorithms.go#L19-L22,223bcad33d3f,v1.4.0,223bcad33d3f,4,etiket=HEAD,4

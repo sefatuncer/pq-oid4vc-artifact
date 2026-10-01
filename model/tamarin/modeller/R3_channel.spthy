@@ -1,0 +1,191 @@
+theory R3_Channel
+begin
+
+/*
+ * =====================================================================
+ *  PQ-OID4VC | Adım 4 | Katman 2 kural şeması R3 — KANAL (channel)
+ * =====================================================================
+ *  EN  The per-issuer "PQ required" expectation reaches the verifier over a
+ *      channel. If the channel is PQ-authenticated, neither the downgrade
+ *      (G5) nor the resulting forgery (G1) is possible. If the channel is
+ *      classically authenticated it is sound before Q-day, but after Q-day
+ *      the CRQC extracts the channel key, the attacker forges "no PQ
+ *      required", and the R2 downgrade + forgery follow.
+ *  TR  İhraççı başına "PQ zorunlu" beklentisi doğrulayıcıya bir kanaldan
+ *      ulaşır. Kanal PQ ile doğrulanmışsa ne downgrade (G5) ne de ondan
+ *      doğan sahtecilik (G1) mümkündür. Kanal klasik doğrulanmışsa Q-day'e
+ *      kadar sağlamdır; Q-day'den sonra CRQC kanal anahtarını çıkarır,
+ *      saldırgan "PQ gerekmez" beklentisini sahteler ve R2'deki downgrade
+ *      ile sahtecilik gelir.
+ *
+ *  Two channel kinds (H1: channel substitution for PULLED artefacts):
+ *    default  OBJECT signature: the expectation source signs
+ *             <'expect', I, e> (TL/LoTE entry, signed metadata); replayable,
+ *             no freshness (the expectation is static here; rollback = R7).
+ *    VIA_TLS  TRANSPORT authentication: the verifier pulls the unsigned
+ *             expectation from the authoritative source over a
+ *             server-authenticated session bound to a fresh verifier nonce.
+ *             The WebPKI chain is collapsed into one server-auth key (chain
+ *             effects are R1). A PUSHED artefact has no such session with the
+ *             authoritative source: that case is R2's EXPECT_UNAUTH.
+ *
+ *  Coexistence is always on: the migrated issuer keeps a breakable classical
+ *  key; a legacy issuer (classical only, expectation 'none') keeps the
+ *  classical path and the channel live in every variant.
+ *
+ *  Flags (-D=...)
+ *    CHAN_PQ   channel authentication key is PQ   <=> Datalog pq(chan)
+ *    VIA_TLS   transport channel instead of object signature (no Datalog
+ *              difference: both are convey(chan,cred) with the same key)
+ *  Protected : -D=CHAN_PQ [-D=VIA_TLS]  -> G1, G5 verified
+ *  Mutants   : drop CHAN_PQ             -> G1, G5 falsified,
+ *                                          M_channel_classical verified
+ */
+
+builtins: signing
+
+restriction Equality:   "All x y #i. Eq(x, y) @ #i ==> x = y"
+restriction Inequality: "All x #i. NotEq(x, x) @ #i ==> F"
+restriction Unique:     "All x #i #j. Unique(x) @ #i & Unique(x) @ #j ==> #i = #j"
+
+/* ---------------- Q-day ---------------- */
+rule Qday:
+    [ ] --[ Unique('qday'), QdayEv() ]-> [ !CRQC() ]
+
+/* ---------------- issuers (coexistence) ---------------- */
+rule Migrated_Issuer_Setup:
+    [ Fr(~skq), Fr(~skc) ]
+  --[ Unique(<'iss', $I>), Migrated($I) ]->
+    [ !IssPQSk($I, ~skq), !IssPQPk($I, pk(~skq)),
+      !IssClSk($I, ~skc), !IssClPk($I, pk(~skc)),
+      !ExpectOf($I, 'pq_required'), Out(pk(~skq)), Out(pk(~skc)) ]
+
+rule Issue_Migrated:
+    let crb = <'cred', I, ~c> in
+    [ !IssPQSk(I, skq), !IssClSk(I, skc), Fr(~c) ]
+  --[ Issued(I, ~c) ]->
+    [ Out(<crb, sign(crb, skq)>), Out(<crb, sign(crb, skc)>) ]
+
+rule Legacy_Issuer_Setup:
+    [ Fr(~skc) ]
+  --[ Unique(<'iss', $L>), Legacy($L) ]->
+    [ !IssClSk($L, ~skc), !IssClPk($L, pk(~skc)),
+      !ExpectOf($L, 'none'), Out(pk(~skc)) ]
+
+rule Issue_Legacy:
+    let crb = <'cred', L, ~c> in
+    [ !IssClSk(L, skc), !ExpectOf(L, 'none'), Fr(~c) ]
+  --[ Issued(L, ~c) ]->
+    [ Out(<crb, sign(crb, skc)>) ]
+
+/* ---------------- expectation source (TL/LoTE operator, registry, metadata host) ---------------- */
+rule Channel_Setup:
+    [ Fr(~skch) ]
+  --[ Unique('chan') ]->
+    [ !ChanSk(~skch), !ChanPin(pk(~skch)), Out(pk(~skch)) ]
+
+/* ---------------- CRQC ---------------- */
+rule CRQC_Break_Issuer_Classical:
+    [ !IssClSk(X, sk), !CRQC(), In(pk(sk)) ]
+  --[ Broken(<'iss_classical', X>) ]->
+    [ Out(sk) ]
+
+#ifdef not CHAN_PQ
+rule CRQC_Break_Channel:
+    [ !ChanSk(sk), !CRQC(), In(pk(sk)) ] --[ Broken('channel') ]-> [ Out(sk) ]
+#endif
+
+/* ---------------- verifier: PQ path (never needs the channel) ---------------- */
+rule Verify_PQ:
+    let crb = <'cred', I, c> in
+    [ !IssPQPk(I, pkq), In(<crb, s>) ]
+  --[ Eq(verify(s, crb, pkq), true), Accept(I, c), AcceptVia(I, c, 'pq') ]->
+    [ ]
+
+/* ---------------- (a) object-signature channel ---------------- */
+#ifdef not VIA_TLS
+rule Publish_Expectation_Object:
+    let eb = <'expect', X, e> in
+    [ !ChanSk(sk), !ExpectOf(X, e) ]
+  -->
+    [ Out(<eb, sign(eb, sk)>) ]
+
+rule Verify_Classical:
+    let eb  = <'expect', I, e>
+        crb = <'cred', I, c>
+    in
+    [ !ChanPin(pkch), In(<eb, se>), !IssClPk(I, pkc), In(<crb, s>) ]
+  --[ Eq(verify(se, eb, pkch), true), NotEq(e, 'pq_required'),
+      Eq(verify(s, crb, pkc), true),
+      Accept(I, c), AcceptVia(I, c, 'classical'), UsedExpectation(I, e) ]->
+    [ ]
+#endif
+
+/* ---------------- (b) transport channel (pulled, nonce-bound) ---------------- */
+#ifdef VIA_TLS
+rule Verifier_Fetch:
+    [ Fr(~n) ]
+  -->
+    [ Fetch(~n, $I), Out(<'fetch', ~n, $I>) ]
+
+rule Source_Respond:
+    let rb = <'resp', n, X, e> in
+    [ !ChanSk(sk), !ExpectOf(X, e), In(<'fetch', n, X>) ]
+  -->
+    [ Out(<rb, sign(rb, sk)>) ]
+
+rule Verify_Classical:
+    let rb  = <'resp', n, I, e>
+        crb = <'cred', I, c>
+    in
+    [ Fetch(n, I), !ChanPin(pkch), In(<rb, sr>), !IssClPk(I, pkc), In(<crb, s>) ]
+  --[ Eq(verify(sr, rb, pkch), true), NotEq(e, 'pq_required'),
+      Eq(verify(s, crb, pkc), true),
+      Accept(I, c), AcceptVia(I, c, 'classical'), UsedExpectation(I, e) ]->
+    [ ]
+#endif
+
+/* ================= health lemmas (H0) ================= */
+
+lemma executable:
+  exists-trace
+  "Ex I c #m #i #j. Migrated(I) @ #m & Issued(I, c) @ #i & AcceptVia(I, c, 'pq') @ #j"
+
+/* the channel is actually consumed: legacy classical acceptance goes through it */
+lemma executable_legacy:
+  exists-trace
+  "Ex L c #l #i #j. Legacy(L) @ #l & Issued(L, c) @ #i & AcceptVia(L, c, 'classical') @ #j
+                  & UsedExpectation(L, 'none') @ #j"
+
+lemma executable_post_qday:
+  exists-trace
+  "Ex I c #q #m #i #j. QdayEv() @ #q & Migrated(I) @ #m & Issued(I, c) @ #i
+                     & Accept(I, c) @ #j & #q < #j"
+
+lemma attack_needs_crqc:
+  "All I c #m #j. Migrated(I) @ #m & Accept(I, c) @ #j ==>
+      (Ex #i. Issued(I, c) @ #i & #i < #j) | (Ex k #b. Broken(k) @ #b & #b < #j)"
+
+/* an authenticated (even classical) channel is sound before Q-day:
+   any downgrade of a migrated issuer needs a CRQC break */
+lemma attack_needs_crqc_G5:
+  "All I c #m #j. Migrated(I) @ #m & AcceptVia(I, c, 'classical') @ #j ==>
+      (Ex k #b. Broken(k) @ #b & #b < #j)"
+
+/* ================= security goals ================= */
+lemma G1_claims_unforgeability:
+  "All I c #m #j. Migrated(I) @ #m & Accept(I, c) @ #j ==> (Ex #i. Issued(I, c) @ #i & #i < #j)"
+
+lemma G5_no_classical_acceptance:
+  "All I c #m #j. Migrated(I) @ #m & AcceptVia(I, c, 'classical') @ #j ==> F"
+
+/* ================= mutation lemma ================= */
+#ifdef not CHAN_PQ
+lemma M_channel_classical:
+  exists-trace
+  "Ex I c #m #j #b1 #b2. Migrated(I) @ #m & Accept(I, c) @ #j & UsedExpectation(I, 'none') @ #j
+                       & Broken('channel') @ #b1 & Broken(<'iss_classical', I>) @ #b2
+                       & not (Ex #i. Issued(I, c) @ #i)"
+#endif
+
+end

@@ -1,0 +1,326 @@
+Process 0 (that is, the initial process):
+{1}new skI: skey;
+{2}new d: skey;
+{3}new claims: bitstring;
+{4}let cb: bitstring = (cred_tag,issA,claims,pk(d)) in
+{5}let cs: bitstring = sign(cb,skI) in
+{6}out(c, pk(skI));
+(
+    {7}!
+    {8}let d_1: skey = d in
+    {9}in(c, (=nonce_tag,n: bitstring));
+    {10}event Presented(pk(d_1),n);
+    {11}out(c, ((cb,cs),((kb_tag,n,cb),sign((kb_tag,n,cb),d_1))))
+) | (
+    {12}!
+    {13}let pkI: pkey = pk(skI) in
+    {14}new n_1: bitstring;
+    {15}out(c, (nonce_tag,n_1));
+    {16}in(c, (((=cred_tag,i: bitstring,x: bitstring,pkd: pkey),s1: bitstring),((=kb_tag,=n_1,cb2: bitstring),s2: bitstring)));
+    {17}if (cb2 = (cred_tag,i,x,pkd)) then
+    {18}if (verify(s1,(cred_tag,i,x,pkd),pkI) = true) then
+    {19}if (verify(s2,(kb_tag,n_1,cb2),pkd) = true) then
+    {20}event AcceptPres(i,x,pkd,n_1)
+) | (
+    {21}phase 1;
+    (
+        {22}out(c, skI)
+    ) | (
+        {23}!
+        {24}let d_2: skey = d in
+        {25}in(c, (=nonce_tag,n_2: bitstring));
+        {26}event Presented(pk(d_2),n_2);
+        {27}out(c, ((cb,cs),((kb_tag,n_2,cb),sign((kb_tag,n_2,cb),d_2))))
+    ) | (
+        {28}!
+        {29}let pkI_1: pkey = pk(skI) in
+        {30}new n_3: bitstring;
+        {31}out(c, (nonce_tag,n_3));
+        {32}in(c, (((=cred_tag,i_1: bitstring,x_1: bitstring,pkd_1: pkey),s1_1: bitstring),((=kb_tag,=n_3,cb2_1: bitstring),s2_1: bitstring)));
+        {33}if (cb2_1 = (cred_tag,i_1,x_1,pkd_1)) then
+        {34}if (verify(s1_1,(cred_tag,i_1,x_1,pkd_1),pkI_1) = true) then
+        {35}if (verify(s2_1,(kb_tag,n_3,cb2_1),pkd_1) = true) then
+        {36}event AcceptPres(i_1,x_1,pkd_1,n_3)
+    )
+)
+
+--  Process 1 (that is, process 0, with let moved downwards):
+{1}new skI: skey;
+{2}new d: skey;
+{3}new claims: bitstring;
+{6}out(c, pk(skI));
+{4}let cb: bitstring = (cred_tag,issA,claims,pk(d)) in
+{5}let cs: bitstring = sign(cb,skI) in
+(
+    {7}!
+    {9}in(c, (=nonce_tag,n: bitstring));
+    {8}let d_1: skey = d in
+    {10}event Presented(pk(d_1),n);
+    {11}out(c, ((cb,cs),((kb_tag,n,cb),sign((kb_tag,n,cb),d_1))))
+) | (
+    {12}!
+    {14}new n_1: bitstring;
+    {15}out(c, (nonce_tag,n_1));
+    {16}in(c, (((=cred_tag,i: bitstring,x: bitstring,pkd: pkey),s1: bitstring),((=kb_tag,=n_1,cb2: bitstring),s2: bitstring)));
+    {17}if (cb2 = (cred_tag,i,x,pkd)) then
+    {13}let pkI: pkey = pk(skI) in
+    {18}if (verify(s1,(cred_tag,i,x,pkd),pkI) = true) then
+    {19}if (verify(s2,(kb_tag,n_1,cb2),pkd) = true) then
+    {20}event AcceptPres(i,x,pkd,n_1)
+) | (
+    {21}phase 1;
+    (
+        {22}out(c, skI)
+    ) | (
+        {23}!
+        {25}in(c, (=nonce_tag,n_2: bitstring));
+        {24}let d_2: skey = d in
+        {26}event Presented(pk(d_2),n_2);
+        {27}out(c, ((cb,cs),((kb_tag,n_2,cb),sign((kb_tag,n_2,cb),d_2))))
+    ) | (
+        {28}!
+        {30}new n_3: bitstring;
+        {31}out(c, (nonce_tag,n_3));
+        {32}in(c, (((=cred_tag,i_1: bitstring,x_1: bitstring,pkd_1: pkey),s1_1: bitstring),((=kb_tag,=n_3,cb2_1: bitstring),s2_1: bitstring)));
+        {33}if (cb2_1 = (cred_tag,i_1,x_1,pkd_1)) then
+        {29}let pkI_1: pkey = pk(skI) in
+        {34}if (verify(s1_1,(cred_tag,i_1,x_1,pkd_1),pkI_1) = true) then
+        {35}if (verify(s2_1,(kb_tag,n_3,cb2_1),pkd_1) = true) then
+        {36}event AcceptPres(i_1,x_1,pkd_1,n_3)
+    )
+)
+
+-- Query not event(AcceptPres(i_2,x_2,pkd_2,n_4)) in process 1.
+Translating the process into Horn clauses...
+Completing...
+Starting query not event(AcceptPres(i_2,x_2,pkd_2,n_4))
+goal reachable: attacker_p1(i_2) && attacker_p1(x_2) && attacker_p1(k) -> event(AcceptPres(i_2,x_2,pk(k),n_4))
+Abbreviations:
+n_4 = n_3[!1 = @sid]
+
+Derivation:
+Abbreviations:
+n_4 = n_3[!1 = @sid]
+
+1. We assume as hypothesis that
+attacker_p1(k).
+
+2. By 1, the attacker may know k in phase 1.
+Using the function pk the attacker may obtain pk(k) in phase 1.
+attacker_p1(pk(k)).
+
+3. We assume as hypothesis that
+attacker_p1(x_2).
+
+4. We assume as hypothesis that
+attacker_p1(i_2).
+
+5. The attacker initially knows cred_tag[] in phase 1.
+attacker_p1(cred_tag[]).
+
+6. By 5, the attacker may know cred_tag[] in phase 1.
+By 4, the attacker may know i_2 in phase 1.
+By 3, the attacker may know x_2 in phase 1.
+By 2, the attacker may know pk(k) in phase 1.
+Using the function 4-tuple the attacker may obtain (cred_tag[],i_2,x_2,pk(k)) in phase 1.
+attacker_p1((cred_tag[],i_2,x_2,pk(k))).
+
+7. The message (nonce_tag[],n_4) may be sent to the attacker in phase 1 at output {31}.
+attacker_p1((nonce_tag[],n_4)).
+
+8. By 7, the attacker may know (nonce_tag[],n_4) in phase 1.
+Using the function 2-proj-2-tuple the attacker may obtain n_4 in phase 1.
+attacker_p1(n_4).
+
+9. The attacker initially knows kb_tag[] in phase 1.
+attacker_p1(kb_tag[]).
+
+10. By 9, the attacker may know kb_tag[] in phase 1.
+By 8, the attacker may know n_4 in phase 1.
+By 6, the attacker may know (cred_tag[],i_2,x_2,pk(k)) in phase 1.
+Using the function 3-tuple the attacker may obtain (kb_tag[],n_4,(cred_tag[],i_2,x_2,pk(k))) in phase 1.
+attacker_p1((kb_tag[],n_4,(cred_tag[],i_2,x_2,pk(k)))).
+
+11. By 10, the attacker may know (kb_tag[],n_4,(cred_tag[],i_2,x_2,pk(k))) in phase 1.
+By 1, the attacker may know k in phase 1.
+Using the function sign the attacker may obtain sign((kb_tag[],n_4,(cred_tag[],i_2,x_2,pk(k))),k) in phase 1.
+attacker_p1(sign((kb_tag[],n_4,(cred_tag[],i_2,x_2,pk(k))),k)).
+
+12. By 10, the attacker may know (kb_tag[],n_4,(cred_tag[],i_2,x_2,pk(k))) in phase 1.
+By 11, the attacker may know sign((kb_tag[],n_4,(cred_tag[],i_2,x_2,pk(k))),k) in phase 1.
+Using the function 2-tuple the attacker may obtain ((kb_tag[],n_4,(cred_tag[],i_2,x_2,pk(k))),sign((kb_tag[],n_4,(cred_tag[],i_2,x_2,pk(k))),k)) in phase 1.
+attacker_p1(((kb_tag[],n_4,(cred_tag[],i_2,x_2,pk(k))),sign((kb_tag[],n_4,(cred_tag[],i_2,x_2,pk(k))),k))).
+
+13. The message skI[] may be sent to the attacker in phase 1 at output {22}.
+attacker_p1(skI[]).
+
+14. By 6, the attacker may know (cred_tag[],i_2,x_2,pk(k)) in phase 1.
+By 13, the attacker may know skI[] in phase 1.
+Using the function sign the attacker may obtain sign((cred_tag[],i_2,x_2,pk(k)),skI[]) in phase 1.
+attacker_p1(sign((cred_tag[],i_2,x_2,pk(k)),skI[])).
+
+15. By 6, the attacker may know (cred_tag[],i_2,x_2,pk(k)) in phase 1.
+By 14, the attacker may know sign((cred_tag[],i_2,x_2,pk(k)),skI[]) in phase 1.
+Using the function 2-tuple the attacker may obtain ((cred_tag[],i_2,x_2,pk(k)),sign((cred_tag[],i_2,x_2,pk(k)),skI[])) in phase 1.
+attacker_p1(((cred_tag[],i_2,x_2,pk(k)),sign((cred_tag[],i_2,x_2,pk(k)),skI[]))).
+
+16. By 15, the attacker may know ((cred_tag[],i_2,x_2,pk(k)),sign((cred_tag[],i_2,x_2,pk(k)),skI[])) in phase 1.
+By 12, the attacker may know ((kb_tag[],n_4,(cred_tag[],i_2,x_2,pk(k))),sign((kb_tag[],n_4,(cred_tag[],i_2,x_2,pk(k))),k)) in phase 1.
+Using the function 2-tuple the attacker may obtain (((cred_tag[],i_2,x_2,pk(k)),sign((cred_tag[],i_2,x_2,pk(k)),skI[])),((kb_tag[],n_4,(cred_tag[],i_2,x_2,pk(k))),sign((kb_tag[],n_4,(cred_tag[],i_2,x_2,pk(k))),k))) in phase 1.
+attacker_p1((((cred_tag[],i_2,x_2,pk(k)),sign((cred_tag[],i_2,x_2,pk(k)),skI[])),((kb_tag[],n_4,(cred_tag[],i_2,x_2,pk(k))),sign((kb_tag[],n_4,(cred_tag[],i_2,x_2,pk(k))),k)))).
+
+17. The message (((cred_tag[],i_2,x_2,pk(k)),sign((cred_tag[],i_2,x_2,pk(k)),skI[])),((kb_tag[],n_4,(cred_tag[],i_2,x_2,pk(k))),sign((kb_tag[],n_4,(cred_tag[],i_2,x_2,pk(k))),k))) that the attacker may have in phase 1 by 16 may be received at input {32}.
+So event AcceptPres(i_2,x_2,pk(k),n_4) may be executed at {36}.
+event(AcceptPres(i_2,x_2,pk(k),n_4)).
+
+18. By 17, event(AcceptPres(i_2,x_2,pk(k),n_4)).
+The goal is reached, represented in the following fact:
+event(AcceptPres(i_2,x_2,pk(k),n_4)).
+
+
+A more detailed output of the traces is available with
+  set traceDisplay = long.
+
+new skI: skey creating skI_1 at {1}
+
+new d: skey creating d_3 at {2}
+
+new claims: bitstring creating claims_1 at {3}
+
+out(c, ~M) with ~M = pk(skI_1) at {6}
+
+new n_3: bitstring creating n_5 at {30} in copy a
+
+out(c, (~M_1,~M_2)) with ~M_1 = nonce_tag, ~M_2 = n_5 at {31} in copy a
+
+out(c, ~M_3) with ~M_3 = skI_1 at {22}
+
+in(c, (((cred_tag,a_1,a_2,pk(a_3)),sign((cred_tag,a_1,a_2,pk(a_3)),~M_3)),((kb_tag,~M_2,(cred_tag,a_1,a_2,pk(a_3))),sign((kb_tag,~M_2,(cred_tag,a_1,a_2,pk(a_3))),a_3)))) with sign((cred_tag,a_1,a_2,pk(a_3)),~M_3) = sign((cred_tag,a_1,a_2,pk(a_3)),skI_1), ~M_2 = n_5, sign((kb_tag,~M_2,(cred_tag,a_1,a_2,pk(a_3))),a_3) = sign((kb_tag,n_5,(cred_tag,a_1,a_2,pk(a_3))),a_3) at {32} in copy a
+
+event AcceptPres(a_1,a_2,pk(a_3),n_5) at {36} in copy a (goal)
+
+The event AcceptPres(a_1,a_2,pk(a_3),n_5) is executed at {36} in copy a.
+A trace has been found.
+RESULT not event(AcceptPres(i_2,x_2,pkd_2,n_4)) is false.
+-- Query event(AcceptPres(i_2,x_2,pkd_2,n_4)) ==> event(Presented(pkd_2,n_4)) in process 1.
+Translating the process into Horn clauses...
+Completing...
+Starting query event(AcceptPres(i_2,x_2,pkd_2,n_4)) ==> event(Presented(pkd_2,n_4))
+goal reachable: attacker_p1(i_2) && attacker_p1(x_2) && attacker_p1(k) -> event(AcceptPres(i_2,x_2,pk(k),n_4))
+Abbreviations:
+n_4 = n_3[!1 = @sid]
+
+Derivation:
+Abbreviations:
+n_4 = n_3[!1 = @sid]
+
+1. We assume as hypothesis that
+attacker_p1(k).
+
+2. By 1, the attacker may know k in phase 1.
+Using the function pk the attacker may obtain pk(k) in phase 1.
+attacker_p1(pk(k)).
+
+3. We assume as hypothesis that
+attacker_p1(x_2).
+
+4. We assume as hypothesis that
+attacker_p1(i_2).
+
+5. The attacker initially knows cred_tag[] in phase 1.
+attacker_p1(cred_tag[]).
+
+6. By 5, the attacker may know cred_tag[] in phase 1.
+By 4, the attacker may know i_2 in phase 1.
+By 3, the attacker may know x_2 in phase 1.
+By 2, the attacker may know pk(k) in phase 1.
+Using the function 4-tuple the attacker may obtain (cred_tag[],i_2,x_2,pk(k)) in phase 1.
+attacker_p1((cred_tag[],i_2,x_2,pk(k))).
+
+7. The message (nonce_tag[],n_4) may be sent to the attacker in phase 1 at output {31}.
+attacker_p1((nonce_tag[],n_4)).
+
+8. By 7, the attacker may know (nonce_tag[],n_4) in phase 1.
+Using the function 2-proj-2-tuple the attacker may obtain n_4 in phase 1.
+attacker_p1(n_4).
+
+9. The attacker initially knows kb_tag[] in phase 1.
+attacker_p1(kb_tag[]).
+
+10. By 9, the attacker may know kb_tag[] in phase 1.
+By 8, the attacker may know n_4 in phase 1.
+By 6, the attacker may know (cred_tag[],i_2,x_2,pk(k)) in phase 1.
+Using the function 3-tuple the attacker may obtain (kb_tag[],n_4,(cred_tag[],i_2,x_2,pk(k))) in phase 1.
+attacker_p1((kb_tag[],n_4,(cred_tag[],i_2,x_2,pk(k)))).
+
+11. By 10, the attacker may know (kb_tag[],n_4,(cred_tag[],i_2,x_2,pk(k))) in phase 1.
+By 1, the attacker may know k in phase 1.
+Using the function sign the attacker may obtain sign((kb_tag[],n_4,(cred_tag[],i_2,x_2,pk(k))),k) in phase 1.
+attacker_p1(sign((kb_tag[],n_4,(cred_tag[],i_2,x_2,pk(k))),k)).
+
+12. By 10, the attacker may know (kb_tag[],n_4,(cred_tag[],i_2,x_2,pk(k))) in phase 1.
+By 11, the attacker may know sign((kb_tag[],n_4,(cred_tag[],i_2,x_2,pk(k))),k) in phase 1.
+Using the function 2-tuple the attacker may obtain ((kb_tag[],n_4,(cred_tag[],i_2,x_2,pk(k))),sign((kb_tag[],n_4,(cred_tag[],i_2,x_2,pk(k))),k)) in phase 1.
+attacker_p1(((kb_tag[],n_4,(cred_tag[],i_2,x_2,pk(k))),sign((kb_tag[],n_4,(cred_tag[],i_2,x_2,pk(k))),k))).
+
+13. The message skI[] may be sent to the attacker in phase 1 at output {22}.
+attacker_p1(skI[]).
+
+14. By 6, the attacker may know (cred_tag[],i_2,x_2,pk(k)) in phase 1.
+By 13, the attacker may know skI[] in phase 1.
+Using the function sign the attacker may obtain sign((cred_tag[],i_2,x_2,pk(k)),skI[]) in phase 1.
+attacker_p1(sign((cred_tag[],i_2,x_2,pk(k)),skI[])).
+
+15. By 6, the attacker may know (cred_tag[],i_2,x_2,pk(k)) in phase 1.
+By 14, the attacker may know sign((cred_tag[],i_2,x_2,pk(k)),skI[]) in phase 1.
+Using the function 2-tuple the attacker may obtain ((cred_tag[],i_2,x_2,pk(k)),sign((cred_tag[],i_2,x_2,pk(k)),skI[])) in phase 1.
+attacker_p1(((cred_tag[],i_2,x_2,pk(k)),sign((cred_tag[],i_2,x_2,pk(k)),skI[]))).
+
+16. By 15, the attacker may know ((cred_tag[],i_2,x_2,pk(k)),sign((cred_tag[],i_2,x_2,pk(k)),skI[])) in phase 1.
+By 12, the attacker may know ((kb_tag[],n_4,(cred_tag[],i_2,x_2,pk(k))),sign((kb_tag[],n_4,(cred_tag[],i_2,x_2,pk(k))),k)) in phase 1.
+Using the function 2-tuple the attacker may obtain (((cred_tag[],i_2,x_2,pk(k)),sign((cred_tag[],i_2,x_2,pk(k)),skI[])),((kb_tag[],n_4,(cred_tag[],i_2,x_2,pk(k))),sign((kb_tag[],n_4,(cred_tag[],i_2,x_2,pk(k))),k))) in phase 1.
+attacker_p1((((cred_tag[],i_2,x_2,pk(k)),sign((cred_tag[],i_2,x_2,pk(k)),skI[])),((kb_tag[],n_4,(cred_tag[],i_2,x_2,pk(k))),sign((kb_tag[],n_4,(cred_tag[],i_2,x_2,pk(k))),k)))).
+
+17. The message (((cred_tag[],i_2,x_2,pk(k)),sign((cred_tag[],i_2,x_2,pk(k)),skI[])),((kb_tag[],n_4,(cred_tag[],i_2,x_2,pk(k))),sign((kb_tag[],n_4,(cred_tag[],i_2,x_2,pk(k))),k))) that the attacker may have in phase 1 by 16 may be received at input {32}.
+So event AcceptPres(i_2,x_2,pk(k),n_4) may be executed at {36}.
+event(AcceptPres(i_2,x_2,pk(k),n_4)).
+
+18. By 17, event(AcceptPres(i_2,x_2,pk(k),n_4)).
+The goal is reached, represented in the following fact:
+event(AcceptPres(i_2,x_2,pk(k),n_4)).
+
+
+A more detailed output of the traces is available with
+  set traceDisplay = long.
+
+new skI: skey creating skI_1 at {1}
+
+new d: skey creating d_3 at {2}
+
+new claims: bitstring creating claims_1 at {3}
+
+out(c, ~M) with ~M = pk(skI_1) at {6}
+
+new n_3: bitstring creating n_5 at {30} in copy a
+
+out(c, (~M_1,~M_2)) with ~M_1 = nonce_tag, ~M_2 = n_5 at {31} in copy a
+
+out(c, ~M_3) with ~M_3 = skI_1 at {22}
+
+in(c, (((cred_tag,a_1,a_2,pk(a_3)),sign((cred_tag,a_1,a_2,pk(a_3)),~M_3)),((kb_tag,~M_2,(cred_tag,a_1,a_2,pk(a_3))),sign((kb_tag,~M_2,(cred_tag,a_1,a_2,pk(a_3))),a_3)))) with sign((cred_tag,a_1,a_2,pk(a_3)),~M_3) = sign((cred_tag,a_1,a_2,pk(a_3)),skI_1), ~M_2 = n_5, sign((kb_tag,~M_2,(cred_tag,a_1,a_2,pk(a_3))),a_3) = sign((kb_tag,n_5,(cred_tag,a_1,a_2,pk(a_3))),a_3) at {32} in copy a
+
+event AcceptPres(a_1,a_2,pk(a_3),n_5) at {36} in copy a (goal)
+
+The event AcceptPres(a_1,a_2,pk(a_3),n_5) is executed at {36} in copy a.
+A trace has been found.
+RESULT event(AcceptPres(i_2,x_2,pkd_2,n_4)) ==> event(Presented(pkd_2,n_4)) is false.
+
+--------------------------------------------------------------
+Verification summary:
+
+Query not event(AcceptPres(i_2,x_2,pkd_2,n_4)) is false.
+
+Query event(AcceptPres(i_2,x_2,pkd_2,n_4)) ==> event(Presented(pkd_2,n_4)) is false.
+
+--------------------------------------------------------------
+

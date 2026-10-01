@@ -1,0 +1,17 @@
+# hedef=REF-011 imaj=pq-a09-env-node:1.0 (sha256:e2650858bc9c0b6bfd491eb6d27f91c0a80cb8ea718c0d7f06e3e957b984f3be) baslangic=2026-09-25T12:35:57Z zaman_asimi=1200s
+# komut: docker run --rm --name pq-a09-ortam-ref-011 --label pq.agir=derleme --memory=6g --memory-swap=6g -v hedefler/REF-011:/w -v betikler/konteyner:/b:ro pq-a09-env-node:1.0 bash /w/kur.sh
+== npm install @credo-ts/openid4vc@0.7.1 (ignore-scripts=true)
+npm warn deprecated @sd-jwt/utils@0.7.2: Package got merged into @sd-jwt/core, please use this instead
+npm warn deprecated @sd-jwt/types@0.7.2: Package got merged into @sd-jwt/core, please use this instead
+npm warn deprecated @sd-jwt/present@0.7.2: Package got merged into @sd-jwt/core, please use this instead
+npm warn deprecated @sd-jwt/decode@0.7.2: Merged into @sd-jwt/core (>= 0.20.0). Security: GHSA-f9j6-8p6x-r9j6.
+npm warn deprecated @sd-jwt/utils@0.9.2: Package got merged into @sd-jwt/core, please use this instead
+npm warn deprecated @sd-jwt/types@0.9.2: Package got merged into @sd-jwt/core, please use this instead
+npm warn deprecated @sd-jwt/decode@0.9.2: Merged into @sd-jwt/core (>= 0.20.0). Security: GHSA-f9j6-8p6x-r9j6.
+
+added 222 packages in 18s
+== içe aktarma kontrolü (imza doğrulama YOK)
+modul=@credo-ts/openid4vc yuklendi; disa_aktarim_sayisi=44
+Verifier iceren semboller=OpenId4VcVerifierApi,OpenId4VcVerifierEvents,OpenId4VcVerifierModule,OpenId4VcVerifierModuleConfig,OpenId4VcVerifierRecord,OpenId4VcVerifierRepository,OpenId4VpVerifierService
+== SONUC: basarili
+# cikis_kodu=0 sure_s=23 bitis=2026-09-25T12:36:20Z

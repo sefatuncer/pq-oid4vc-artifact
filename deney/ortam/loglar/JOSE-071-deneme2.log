@@ -1,0 +1,26 @@
+# hedef=JOSE-071 imaj=pq-a09-env-php:1.0 (sha256:a89612973cf41e3cb0597817bc85206aa10f11aa86b633636457a9fb99ad95c4) baslangic=2026-09-25T13:04:25Z zaman_asimi=900s
+# komut: docker run --rm --name pq-a09-ortam-jose-071 --label pq.agir=derleme --memory=6g --memory-swap=6g -v hedefler/JOSE-071:/w -v betikler/konteyner:/b:ro pq-a09-env-php:1.0 sh -c '(bash|sh) /w/kur.sh'
+== composer require lcobucci/jwt:5.6.0
+./composer.json has been updated
+Running composer update lcobucci/jwt
+Loading composer repositories with package information
+Updating dependencies
+Lock file operations: 2 installs, 0 updates, 0 removals
+  - Locking lcobucci/jwt (5.6.0)
+  - Locking psr/clock (1.0.0)
+Writing lock file
+Installing dependencies from lock file (including require-dev)
+Package operations: 2 installs, 0 updates, 0 removals
+  - Downloading psr/clock (1.0.0)
+  - Downloading lcobucci/jwt (5.6.0)
+  - Installing psr/clock (1.0.0): Extracting archive
+  - Installing lcobucci/jwt (5.6.0): Extracting archive
+1 package suggestions were added by new dependencies, use `composer suggest` to see details.
+Generating optimized autoload files
+1 package you are using is looking for funding.
+Use the `composer fund` command to find out more!
+== sınıf yükleme kontrolü (hedef paketin sınıfları otomatik yükleyiciyle yüklenir; imza doğrulama YOK)
+
+Parse error: syntax error, unexpected single-quoted string " . $t->getMessage(); }", expecting ")" in /tmp/kontrol.php on line 13
+== SONUC: basarisiz
+# cikis_kodu=20 sure_s=3 bitis=2026-09-25T13:04:28Z

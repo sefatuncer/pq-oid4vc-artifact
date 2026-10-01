@@ -1,0 +1,16 @@
+{
+	"Path": "github.com/golang-jwt/jwt/v5",
+	"Version": "v5.3.1",
+	"Info": "/go/pkg/mod/cache/download/github.com/golang-jwt/jwt/v5/@v/v5.3.1.info",
+	"GoMod": "/go/pkg/mod/cache/download/github.com/golang-jwt/jwt/v5/@v/v5.3.1.mod",
+	"Zip": "/go/pkg/mod/cache/download/github.com/golang-jwt/jwt/v5/@v/v5.3.1.zip",
+	"Dir": "/go/pkg/mod/github.com/golang-jwt/jwt/v5@v5.3.1",
+	"Sum": "h1:kYf81DTWFe7t+1VvL7eS+jKFVWaUnK9cB1qbwn63YCY=",
+	"GoModSum": "h1:fxCRLWMO43lRc8nhHWY6LGqRcf+1gQWArsqaEUEa5bE=",
+	"Origin": {
+		"VCS": "git",
+		"URL": "https://github.com/golang-jwt/jwt",
+		"Hash": "7ceae619e739dc8a7bf577214aa8ebf26668e9db",
+		"Ref": "refs/tags/v5.3.1"
+	}
+}

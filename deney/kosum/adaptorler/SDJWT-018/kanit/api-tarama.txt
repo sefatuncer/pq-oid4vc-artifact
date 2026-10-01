@@ -1,0 +1,118 @@
+# SDJWT-018 — API taraması (sözleşme §5.1)
+# imaj: a10-sdjwt-018:1 (sha256:6f1fbe464b3f04bdd99311c99538f1683b88cdc51daaa1bc8378ba603e2af6cd)
+# komut: docker run --rm --network none --entrypoint sh a10-sdjwt-018:1 -c 'cd /e/lib/python3*/site-packages && grep -rn -i -E 'algorithms|allow|register|deregister|required|eddsa|ed25519|ml-?dsa|mldsa|composite|okp|verifier|keyselector|cb_get_issuer_key|ES256' --include=*.py sd_jwt; grep -n -i -E 'ML-DSA|mldsa|EdDSA|Ed25519|OKP|AKP' jwcrypto/jwa.py jwcrypto/jwk.py | head -80'
+
+sd_jwt/common.py:12:DEFAULT_SIGNING_ALG = "ES256"
+sd_jwt/common.py:79:            # and allows for repeatable output for the generation of the examples.
+sd_jwt/bin/generate.py:19:from sd_jwt.verifier import SDJWTVerifier
+sd_jwt/bin/generate.py:76:        settings["identifiers"]["verifier"]
+sd_jwt/bin/generate.py:86:    def cb_get_issuer_key(issuer, header_parameters):
+sd_jwt/bin/generate.py:87:        # Do not use in production - this allows to use any issuer name for demo purposes
+sd_jwt/bin/generate.py:93:    sdjwt_at_verifier = SDJWTVerifier(
+sd_jwt/bin/generate.py:95:        cb_get_issuer_key,
+sd_jwt/bin/generate.py:96:        settings["identifiers"]["verifier"]
+sd_jwt/bin/generate.py:104:    verified = sdjwt_at_verifier.get_verified_payload()
+sd_jwt/bin/demo.py:18:from sd_jwt.verifier import SDJWTVerifier
+sd_jwt/bin/demo.py:54:        required=False,
+sd_jwt/bin/demo.py:62:        required=False,
+sd_jwt/bin/demo.py:72:        required=False,
+sd_jwt/bin/demo.py:78:        "--iat", required=False, type=int, help=("issued at, UTC Timestamp")
+sd_jwt/bin/demo.py:81:        "--exp", required=False, type=int, help=("expire at, UTC Timestamp")
+sd_jwt/bin/demo.py:85:        required=False,
+sd_jwt/bin/demo.py:92:        required=False,
+sd_jwt/bin/demo.py:100:        required=False,
+sd_jwt/bin/demo.py:109:        required=False,
+sd_jwt/bin/demo.py:172:        settings.VERIFIER if example.get("key_binding", False) else None,
+sd_jwt/bin/demo.py:181:    def cb_get_issuer_key(issuer):
+sd_jwt/bin/demo.py:182:        # Do not use in production - this allows to use any issuer name for demo purposes
+sd_jwt/bin/demo.py:190:    sdjwt_at_verifier = SDJWTVerifier(
+sd_jwt/bin/demo.py:192:        cb_get_issuer_key,
+sd_jwt/bin/demo.py:193:        settings.VERIFIER if example.get("key_binding", False) else None,
+sd_jwt/bin/demo.py:196:    verified = sdjwt_at_verifier.get_verified_payload()
+sd_jwt/verifier.py:17:class SDJWTVerifier(SDJWTCommon):
+sd_jwt/verifier.py:25:        cb_get_issuer_key: Callable[[str, Dict], str],
+sd_jwt/verifier.py:34:        self._verify_sd_jwt(cb_get_issuer_key)
+sd_jwt/verifier.py:54:        cb_get_issuer_key,
+sd_jwt/verifier.py:62:        issuer_public_key = cb_get_issuer_key(unverified_issuer, unverified_header_parameters)
+sd_jwt/verifier.py:127:                # TODO: Support other hash algorithms
+sd_jwt/verifier.py:172:                            f"Duplicate key found when unpacking disclosed claim: '{key}' in {pre_output}. This is not allowed."
+jwcrypto/jwa.py:51:algorithms that remain in wide use (e.g. EdDSA). Set to True to audit
+jwcrypto/jwa.py:778:        if key['kty'] not in ['EC', 'OKP']:
+jwcrypto/jwa.py:779:            raise InvalidJWEKeyType('EC or OKP', key['kty'])
+jwcrypto/jwa.py:780:        if key['kty'] == 'OKP':
+jwcrypto/jwa.py:902:class _EdDsa(_RawJWS, JWAAlgorithm):
+jwcrypto/jwa.py:904:    name = 'EdDSA'
+jwcrypto/jwa.py:905:    description = 'EdDSA using Ed25519 or Ed448 algorithms'
+jwcrypto/jwa.py:910:    deprecated_by = 'Ed25519 or Ed448'
+jwcrypto/jwa.py:913:        if key['crv'] in ['Ed25519', 'Ed448']:
+jwcrypto/jwa.py:919:        if key['crv'] in ['Ed25519', 'Ed448']:
+jwcrypto/jwa.py:925:class _Ed25519(_RawJWS, JWAAlgorithm):
+jwcrypto/jwa.py:927:    name = 'Ed25519'
+jwcrypto/jwa.py:928:    description = 'EdDSA using Ed25519'
+jwcrypto/jwa.py:934:        if key['crv'] != 'Ed25519':
+jwcrypto/jwa.py:935:            raise InvalidJWEKeyType('Ed25519', key['crv'])
+jwcrypto/jwa.py:940:        if key['crv'] != 'Ed25519':
+jwcrypto/jwa.py:941:            raise InvalidJWEKeyType('Ed25519', key['crv'])
+jwcrypto/jwa.py:949:    description = 'EdDSA using Ed448'
+jwcrypto/jwa.py:967:class _RawMLDSA(_RawJWS):
+jwcrypto/jwa.py:972:        if key['kty'] != 'AKP':
+jwcrypto/jwa.py:973:            raise InvalidJWEKeyType('AKP', key['kty'])
+jwcrypto/jwa.py:988:class _MLDSA44(_RawMLDSA, JWAAlgorithm):
+jwcrypto/jwa.py:990:    name = 'ML-DSA-44'
+jwcrypto/jwa.py:991:    description = 'ML-DSA using ML-DSA-44 parameter set'
+jwcrypto/jwa.py:995:    _alg_name = 'ML-DSA-44'
+jwcrypto/jwa.py:998:class _MLDSA65(_RawMLDSA, JWAAlgorithm):
+jwcrypto/jwa.py:1000:    name = 'ML-DSA-65'
+jwcrypto/jwa.py:1001:    description = 'ML-DSA using ML-DSA-65 parameter set'
+jwcrypto/jwa.py:1005:    _alg_name = 'ML-DSA-65'
+jwcrypto/jwa.py:1008:class _MLDSA87(_RawMLDSA, JWAAlgorithm):
+jwcrypto/jwa.py:1010:    name = 'ML-DSA-87'
+jwcrypto/jwa.py:1011:    description = 'ML-DSA using ML-DSA-87 parameter set'
+jwcrypto/jwa.py:1015:    _alg_name = 'ML-DSA-87'
+jwcrypto/jwa.py:1297:        'EdDSA': _EdDsa,
+jwcrypto/jwa.py:1313:        'Ed25519': _Ed25519,
+jwcrypto/jwa.py:1315:        'ML-DSA-44': _MLDSA44,
+jwcrypto/jwa.py:1316:        'ML-DSA-65': _MLDSA65,
+jwcrypto/jwa.py:1317:        'ML-DSA-87': _MLDSA87,
+jwcrypto/jwk.py:21:class UnimplementedOKPCurveKey:
+jwcrypto/jwk.py:35:ImplementedOkpCurves = []
+jwcrypto/jwk.py:41:    from cryptography.hazmat.primitives.asymmetric.ed25519 import (
+jwcrypto/jwk.py:42:        Ed25519PublicKey, Ed25519PrivateKey
+jwcrypto/jwk.py:44:    ImplementedOkpCurves.append('Ed25519')
+jwcrypto/jwk.py:46:    Ed25519PublicKey = UnimplementedOKPCurveKey
+jwcrypto/jwk.py:47:    Ed25519PrivateKey = UnimplementedOKPCurveKey
+jwcrypto/jwk.py:52:    ImplementedOkpCurves.append('Ed448')
+jwcrypto/jwk.py:54:    Ed448PublicKey = UnimplementedOKPCurveKey
+jwcrypto/jwk.py:55:    Ed448PrivateKey = UnimplementedOKPCurveKey
+jwcrypto/jwk.py:63:    ImplementedOkpCurves.append('X25519')
+jwcrypto/jwk.py:65:    X25519PublicKey = UnimplementedOKPCurveKey
+jwcrypto/jwk.py:66:    X25519PrivateKey = UnimplementedOKPCurveKey
+jwcrypto/jwk.py:71:    ImplementedOkpCurves.append('X448')
+jwcrypto/jwk.py:73:    X448PublicKey = UnimplementedOKPCurveKey
+jwcrypto/jwk.py:74:    X448PrivateKey = UnimplementedOKPCurveKey
+jwcrypto/jwk.py:77:_Ed25519_CURVE = namedtuple('Ed25519', 'pubkey privkey')
+jwcrypto/jwk.py:81:_OKP_CURVES_TABLE = {
+jwcrypto/jwk.py:82:    'Ed25519': _Ed25519_CURVE(Ed25519PublicKey, Ed25519PrivateKey),
+jwcrypto/jwk.py:89:class UnimplementedAKPAlgorithm:
+jwcrypto/jwk.py:103:ImplementedAKPAlgorithms = []
+jwcrypto/jwk.py:106:    from cryptography.hazmat.primitives.asymmetric.mldsa import (
+jwcrypto/jwk.py:107:        MLDSA44PublicKey, MLDSA44PrivateKey
+jwcrypto/jwk.py:109:    ImplementedAKPAlgorithms.append('ML-DSA-44')
+jwcrypto/jwk.py:111:    MLDSA44PublicKey = UnimplementedAKPAlgorithm
+jwcrypto/jwk.py:112:    MLDSA44PrivateKey = UnimplementedAKPAlgorithm
+jwcrypto/jwk.py:114:    from cryptography.hazmat.primitives.asymmetric.mldsa import (
+jwcrypto/jwk.py:115:        MLDSA65PublicKey, MLDSA65PrivateKey
+jwcrypto/jwk.py:117:    ImplementedAKPAlgorithms.append('ML-DSA-65')
+jwcrypto/jwk.py:119:    MLDSA65PublicKey = UnimplementedAKPAlgorithm
+jwcrypto/jwk.py:120:    MLDSA65PrivateKey = UnimplementedAKPAlgorithm
+jwcrypto/jwk.py:122:    from cryptography.hazmat.primitives.asymmetric.mldsa import (
+jwcrypto/jwk.py:123:        MLDSA87PublicKey, MLDSA87PrivateKey
+jwcrypto/jwk.py:125:    ImplementedAKPAlgorithms.append('ML-DSA-87')
+jwcrypto/jwk.py:127:    MLDSA87PublicKey = UnimplementedAKPAlgorithm
+jwcrypto/jwk.py:128:    MLDSA87PrivateKey = UnimplementedAKPAlgorithm
+jwcrypto/jwk.py:130:_AKPAlg = namedtuple('AKPAlg', 'pubkey privkey')
+jwcrypto/jwk.py:131:_AKP_ALG_TABLE = {
+jwcrypto/jwk.py:132:    'ML-DSA-44': _AKPAlg(MLDSA44PublicKey, MLDSA44PrivateKey),
+jwcrypto/jwk.py:133:    'ML-DSA-65': _AKPAlg(MLDSA65PublicKey, MLDSA65PrivateKey),
+jwcrypto/jwk.py:134:    'ML-DSA-87': _AKPAlg(MLDSA87PublicKey, MLDSA87PrivateKey),
+jwcrypto/jwk.py:142:                    'OKP': 'Octet Key Pair',

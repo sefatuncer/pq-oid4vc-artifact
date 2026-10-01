@@ -1,0 +1,45 @@
+kural,varyant,rol,bayraklar,hedef,datalog_ihlal,datalog_forgeable,datalog_tahmini,tamarin,uyum,naive_tahmin,naive_uyum
+R1,P_all_pq,korumali,ROOT_PQ+CA_PQ+ISS_PQ,g1,hayir,-,verified,verified,EVET,verified,EVET
+R1,M_root,mutant:kok_anahtari_PQ,CA_PQ+ISS_PQ,g1,evet,ca_cert cred iss_cert,falsified,falsified,EVET,falsified,EVET
+R1,M_ca,mutant:CA_anahtari_PQ,ROOT_PQ+ISS_PQ,g1,evet,cred iss_cert,falsified,falsified,EVET,falsified,EVET
+R1,M_iss,mutant:ihracci_imzasi_PQ,ROOT_PQ+CA_PQ,g1,evet,cred,falsified,falsified,EVET,falsified,EVET
+R1,E_iss_only,ek,ISS_PQ,g1,evet,ca_cert cred iss_cert,falsified,falsified,EVET,falsified,EVET
+R1,E_ca_only,ek,CA_PQ,g1,evet,ca_cert cred iss_cert,falsified,falsified,EVET,falsified,EVET
+R1,E_root_only,ek,ROOT_PQ,g1,evet,cred iss_cert,falsified,falsified,EVET,falsified,EVET
+R1,E_none,ek,-,g1,evet,ca_cert cred iss_cert,falsified,falsified,EVET,falsified,EVET
+R1,X_alt_ca,ek-sinir,ROOT_PQ+CA_PQ+ISS_PQ+ALT_CA,g1,evet,cred iss_cert,falsified,falsified,EVET,verified,HAYIR
+R1,X_alt_ca_namebind,ek-sinir,ROOT_PQ+CA_PQ+ISS_PQ+ALT_CA+NAME_BIND,g1,hayir,-,verified,verified,EVET,verified,EVET
+R2,P_expect_auth,korumali,EXPECT_AUTH,g1,hayir,net,verified,verified,EVET,verified,EVET
+R2,P_expect_auth,korumali,EXPECT_AUTH,g5,hayir,net,verified,verified,EVET,verified,EVET
+R2,M_expect_unauth,mutant:beklentinin_kimlik_dogrulamasi,EXPECT_UNAUTH,g1,evet,cred net,falsified,falsified,EVET,falsified,EVET
+R2,M_expect_unauth,mutant:beklentinin_kimlik_dogrulamasi,EXPECT_UNAUTH,g5,evet,cred net,falsified,falsified,EVET,falsified,EVET
+R2,M_expect_absent,mutant:beklenti,-,g1,evet,cred net,falsified,falsified,EVET,falsified,EVET
+R2,M_expect_absent,mutant:beklenti,-,g5,evet,cred net,falsified,falsified,EVET,falsified,EVET
+R2,E_nocoexist_auth,ek,NO_COEXIST+EXPECT_AUTH,g1,hayir,net,verified,verified,EVET,verified,EVET
+R2,E_nocoexist_auth,ek,NO_COEXIST+EXPECT_AUTH,g5,hayir,net,verified,verified,EVET,verified,EVET
+R2,E_nocoexist_unauth,ek,NO_COEXIST+EXPECT_UNAUTH,g1,hayir,net,verified,verified,EVET,verified,EVET
+R2,E_nocoexist_unauth,ek,NO_COEXIST+EXPECT_UNAUTH,g5,hayir,net,verified,verified,EVET,verified,EVET
+R2,E_nocoexist_none,ek,NO_COEXIST,g1,hayir,net,verified,verified,EVET,verified,EVET
+R2,E_nocoexist_none,ek,NO_COEXIST,g5,hayir,net,verified,verified,EVET,verified,EVET
+R3,P_obj_pq,korumali,CHAN_PQ,g1,hayir,-,verified,verified,EVET,verified,EVET
+R3,P_obj_pq,korumali,CHAN_PQ,g5,hayir,-,verified,verified,EVET,verified,EVET
+R3,P_tls_pq,korumali,CHAN_PQ+VIA_TLS,g1,hayir,-,verified,verified,EVET,verified,EVET
+R3,P_tls_pq,korumali,CHAN_PQ+VIA_TLS,g5,hayir,-,verified,verified,EVET,verified,EVET
+R3,M_obj_classical,mutant:PQ_kanal_nesne_imzasi,-,g1,evet,chan cred,falsified,falsified,EVET,falsified,EVET
+R3,M_obj_classical,mutant:PQ_kanal_nesne_imzasi,-,g5,evet,chan cred,falsified,falsified,EVET,falsified,EVET
+R3,M_tls_classical,mutant:PQ_kanal_tasima,VIA_TLS,g1,evet,chan cred,falsified,falsified,EVET,falsified,EVET
+R3,M_tls_classical,mutant:PQ_kanal_tasima,VIA_TLS,g5,evet,chan cred,falsified,falsified,EVET,falsified,EVET
+R4,P_dev_iss_pq,korumali,DEV_PQ+ISS_PQ,g2,hayir,-,verified,verified,EVET,verified,EVET
+R4,M_dev,mutant:PQ_cihaz_anahtari,ISS_PQ,g2,evet,kb,falsified,falsified,EVET,falsified,EVET
+R4,M_iss,mutant:PQ_ihracci_imzasi,DEV_PQ,g2,evet,cred kb,falsified,falsified,EVET,falsified,EVET
+R4,E_none,ek,-,g2,evet,cred kb,falsified,falsified,EVET,falsified,EVET
+R4,H5_single_use_dev_classical,ek-h5,ISS_PQ+SINGLE_USE,g2,evet,kb,falsified,falsified,EVET,falsified,EVET
+R4,H5_single_use_protected,ek-h5,DEV_PQ+ISS_PQ+SINGLE_USE,g2,hayir,-,verified,verified,EVET,verified,EVET
+R5,P_pin_tlpq,korumali,PIN_TL+TL_PQ,g1,hayir,lotl,verified,verified,EVET,verified,EVET
+R5,M_pin,mutant:sabitleme,TL_PQ,g1,evet,cred lotl tl,falsified,falsified,EVET,falsified,EVET
+R5,M_tl,mutant:capa_anahtari_PQ,PIN_TL,g1,evet,cred lotl tl,falsified,falsified,EVET,falsified,EVET
+R5,E_none,ek,-,g1,evet,cred lotl tl,falsified,falsified,EVET,falsified,EVET
+R5,E_lotlpq,ek,LOTL_PQ,g1,evet,cred tl,falsified,falsified,EVET,falsified,EVET
+R5,E_lotlpq_tlpq,ek,LOTL_PQ+TL_PQ,g1,hayir,-,verified,verified,EVET,verified,EVET
+R5,E_pin_lotlpq,ek,PIN_TL+LOTL_PQ,g1,evet,cred tl,falsified,falsified,EVET,falsified,EVET
+R5,E_all_pq_pin,ek,PIN_TL+TL_PQ+LOTL_PQ,g1,hayir,-,verified,verified,EVET,verified,EVET

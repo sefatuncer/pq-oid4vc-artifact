@@ -1,0 +1,8 @@
+Alinti dogrulama raporu (izlenebilirlik.csv -> 01-korpus/metin)
+Toplam satir (N): 400
+Dogrulanan (n): 400  ->  400/400
+  D1 (yalniz bosluk daraltma) ile: 396
+  D2 (D1 + satir sonu tire birlestirme) ile: 4
+Bulunamayan: 0
+300 karakteri asan alinti: 0
+Metin dosyasi bulunamayan satir: 0 []

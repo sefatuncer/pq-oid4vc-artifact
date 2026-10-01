@@ -1,0 +1,342 @@
+maude tool: 'maude'
+ checking version: 3.5.1. OK.
+ checking installation: OK.
+[Theory R1_Chain] Theory loaded
+[Theory R1_Chain] Theory translated
+[Theory R1_Chain] Derivation checks started
+[Theory R1_Chain] Derivation checks ended
+[Theory R1_Chain] Theory closed
+[Saturating Sources] Step 1 (Max 5)
+[Saturating Sources] Done
+theory R1_Chain
+
+begin
+
+// Function signature and definition of the equational theory E
+
+functions: fst/1, pair/2, pk/1, sign/2, snd/1, true/0, verify/3
+equations:
+    fst(<x.1, x.2>) = x.1,
+    snd(<x.1, x.2>) = x.2,
+    verify(sign(x.1, x.2), x.1, pk(x.2)) = true
+
+restriction Equality:
+  "∀ x y #i. (Eq( x, y ) @ #i) ⇒ (x = y)"
+  // safety formula
+
+  /*
+  expanded formula:
+  "∀ x y #i. (Eq( x, y ) @ #i) ⇒ (x = y)"
+  */
+
+restriction Unique:
+  "∀ x #i #j. ((Unique( x ) @ #i) ∧ (Unique( x ) @ #j)) ⇒ (#i = #j)"
+  // safety formula
+
+  /*
+  expanded formula:
+  "∀ x #i #j. ((Unique( x ) @ #i) ∧ (Unique( x ) @ #j)) ⇒ (#i = #j)"
+  */
+
+rule (modulo E) Qday:
+   [ ] --[ Unique( 'qday' ), QdayEv( ) ]-> [ !CRQC( ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Root_Setup:
+   [ Fr( ~skR ) ]
+  --[ Unique( 'root' ) ]->
+   [ !RootSk( ~skR ), !RootPin( pk(~skR) ), Out( pk(~skR) ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) CA_Setup:
+   [ !RootSk( skR ), Fr( ~skCA ) ]
+  --[ Unique( <'ca', $CA> ) ]->
+   [
+   !CASk( $CA, ~skCA ), Out( pk(~skCA) ),
+   Out( <<'ca_cert', $CA, pk(~skCA)>, sign(<'ca_cert', $CA, pk(~skCA)>, skR)
+        >
+   )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Issuer_Setup:
+   [ !CASk( CA, skCA ), Fr( ~skI ) ]
+  --[ Unique( <'iss', $I> ), IssuerRegistered( $I, CA ) ]->
+   [
+   !IssSk( $I, ~skI ), !IssuerOfCA( $I, CA ), Out( pk(~skI) ),
+   Out( <<'iss_cert', $I, pk(~skI)>, sign(<'iss_cert', $I, pk(~skI)>, skCA)>
+   )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) AltCA_Setup:
+   [ !RootSk( skR ), Fr( ~skA ) ]
+  --[ Unique( <'ca', $A> ) ]->
+   [
+   !AltCASk( $A, ~skA ), Out( pk(~skA) ),
+   Out( <<'ca_cert', $A, pk(~skA)>, sign(<'ca_cert', $A, pk(~skA)>, skR)> )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) CRQC_Break_AltCA:
+   [ !AltCASk( A, sk ), !CRQC( ), In( pk(sk) ) ]
+  --[ Broken( 'alt_ca' ) ]->
+   [ Out( sk ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Issue:
+   [ !IssSk( I, skI ), Fr( ~c ) ]
+  --[ Issued( I, ~c ) ]->
+   [ Out( <<'cred', I, ~c>, sign(<'cred', I, ~c>, skI)> ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Verify:
+   [
+   !RootPin( pkR ), In( <<'ca_cert', CA, pkCA>, s1> ),
+   In( <<'iss_cert', I, pkI>, s2> ), In( <<'cred', I, c>, s3> )
+   ]
+  --[
+  Eq( verify(s1, <'ca_cert', CA, pkCA>, pkR), true ),
+  Eq( verify(s2, <'iss_cert', I, pkI>, pkCA), true ),
+  Eq( verify(s3, <'cred', I, c>, pkI), true ), Accept( I, c )
+  ]->
+   [ ]
+
+  /*
+  rule (modulo AC) Verify:
+     [
+     !RootPin( pkR ), In( <<'ca_cert', CA, pkCA>, s1> ),
+     In( <<'iss_cert', I, pkI>, s2> ), In( <<'cred', I, c>, s3> )
+     ]
+    --[ Eq( z, true ), Eq( z.1, true ), Eq( z.2, true ), Accept( I, c ) ]->
+     [ ]
+    variants (modulo AC)
+    1. CA    = CA.25
+       I     = I.26
+       c     = c.27
+       pkCA  = pkCA.28
+       pkI   = pkI.29
+       pkR   = pkR.30
+       s1    = s1.31
+       s2    = s2.32
+       s3    = s3.33
+       z     = verify(s1.31, <'ca_cert', CA.25, pkCA.28>, pkR.30)
+       z.1   = verify(s2.32, <'iss_cert', I.26, pkI.29>, pkCA.28)
+       z.2   = verify(s3.33, <'cred', I.26, c.27>, pkI.29)
+    
+    2. CA    = CA.49
+       I     = I.50
+       c     = c.51
+       pkCA  = pk(x.96)
+       pkI   = pkI.53
+       pkR   = pkR.54
+       s1    = s1.55
+       s2    = sign(<'iss_cert', I.50, pkI.53>, x.96)
+       s3    = s3.57
+       z     = verify(s1.55, <'ca_cert', CA.49, pk(x.96)>, pkR.54)
+       z.1   = true
+       z.2   = verify(s3.57, <'cred', I.50, c.51>, pkI.53)
+    
+    3. CA    = CA.50
+       I     = I.51
+       c     = c.52
+       pkCA  = pkCA.53
+       pkI   = pk(x.98)
+       pkR   = pkR.55
+       s1    = s1.56
+       s2    = s2.57
+       s3    = sign(<'cred', I.51, c.52>, x.98)
+       z     = verify(s1.56, <'ca_cert', CA.50, pkCA.53>, pkR.55)
+       z.1   = verify(s2.57, <'iss_cert', I.51, pk(x.98)>, pkCA.53)
+       z.2   = true
+    
+    4. CA    = CA.50
+       I     = I.51
+       c     = c.52
+       pkCA  = pk(x.97)
+       pkI   = pk(x.98)
+       pkR   = pkR.55
+       s1    = s1.56
+       s2    = sign(<'iss_cert', I.51, pk(x.98)>, x.97)
+       s3    = sign(<'cred', I.51, c.52>, x.98)
+       z     = verify(s1.56, <'ca_cert', CA.50, pk(x.97)>, pkR.55)
+       z.1   = true
+       z.2   = true
+    
+    5. CA    = CA.52
+       I     = I.53
+       c     = c.54
+       pkCA  = pkCA.55
+       pkI   = pkI.56
+       pkR   = pk(x.102)
+       s1    = sign(<'ca_cert', CA.52, pkCA.55>, x.102)
+       s2    = s2.59
+       s3    = s3.60
+       z     = true
+       z.1   = verify(s2.59, <'iss_cert', I.53, pkI.56>, pkCA.55)
+       z.2   = verify(s3.60, <'cred', I.53, c.54>, pkI.56)
+    
+    6. CA    = CA.52
+       I     = I.53
+       c     = c.54
+       pkCA  = pkCA.55
+       pkI   = pk(x.101)
+       pkR   = pk(x.102)
+       s1    = sign(<'ca_cert', CA.52, pkCA.55>, x.102)
+       s2    = s2.59
+       s3    = sign(<'cred', I.53, c.54>, x.101)
+       z     = true
+       z.1   = verify(s2.59, <'iss_cert', I.53, pk(x.101)>, pkCA.55)
+       z.2   = true
+    
+    7. CA    = CA.52
+       I     = I.53
+       c     = c.54
+       pkCA  = pk(x.100)
+       pkI   = pkI.56
+       pkR   = pk(x.102)
+       s1    = sign(<'ca_cert', CA.52, pk(x.100)>, x.102)
+       s2    = sign(<'iss_cert', I.53, pkI.56>, x.100)
+       s3    = s3.60
+       z     = true
+       z.1   = true
+       z.2   = verify(s3.60, <'cred', I.53, c.54>, pkI.56)
+    
+    8. CA    = CA.52
+       I     = I.53
+       c     = c.54
+       pkCA  = pk(x.100)
+       pkI   = pk(x.101)
+       pkR   = pk(x.102)
+       s1    = sign(<'ca_cert', CA.52, pk(x.100)>, x.102)
+       s2    = sign(<'iss_cert', I.53, pk(x.101)>, x.100)
+       s3    = sign(<'cred', I.53, c.54>, x.101)
+       z     = true
+       z.1   = true
+       z.2   = true
+  */
+
+lemma executable:
+  exists-trace "∃ I c #i #j. (Issued( I, c ) @ #i) ∧ (Accept( I, c ) @ #j)"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ I c #i #j. (Issued( I, c ) @ #i) ∧ (Accept( I, c ) @ #j)"
+*/
+by sorry
+
+lemma executable_post_qday:
+  exists-trace
+  "∃ I c #q #i #j.
+    (((QdayEv( ) @ #q) ∧ (Issued( I, c ) @ #i)) ∧ (Accept( I, c ) @ #j)) ∧
+    (#q < #j)"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ I c #q #i #j.
+  (QdayEv( ) @ #q) ∧ (Issued( I, c ) @ #i) ∧ (Accept( I, c ) @ #j)
+ ∧
+  #q < #j"
+*/
+by sorry
+
+lemma attack_needs_crqc:
+  all-traces
+  "∀ I c #j.
+    (Accept( I, c ) @ #j) ⇒
+    ((∃ #i. (Issued( I, c ) @ #i) ∧ (#i < #j)) ∨
+     (∃ k #b. (Broken( k ) @ #b) ∧ (#b < #j)))"
+/*
+guarded formula characterizing all counter-examples:
+"∃ I c #j.
+  (Accept( I, c ) @ #j)
+ ∧
+  (∀ #i. (Issued( I, c ) @ #i) ⇒ ¬(#i < #j)) ∧
+  (∀ k #b. (Broken( k ) @ #b) ⇒ ¬(#b < #j))"
+*/
+by sorry
+
+lemma G1_claims_unforgeability:
+  all-traces
+  "∀ I c #j.
+    (Accept( I, c ) @ #j) ⇒ (∃ #i. (Issued( I, c ) @ #i) ∧ (#i < #j))"
+/*
+guarded formula characterizing all counter-examples:
+"∃ I c #j.
+  (Accept( I, c ) @ #j) ∧ ∀ #i. (Issued( I, c ) @ #i) ⇒ ¬(#i < #j)"
+*/
+simplify
+solve( !RootPin( pk(x) ) ▶₀ #j )
+  case Root_Setup
+  solve( !KU( sign(<'ca_cert', CA, pk(x)>, ~skR) ) @ #vk.6 )
+    case AltCA_Setup
+    solve( !KU( sign(<'iss_cert', I, pk(x)>, ~skA) ) @ #vk.16 )
+      case c_sign
+      solve( !KU( ~skA ) @ #vk.20 )
+        case CRQC_Break_AltCA
+        solve( !KU( sign(<'cred', I, c>, x) ) @ #vk.20 )
+          case c_sign
+          solve( !KU( pk(x) ) @ #vk.18 )
+            case AltCA_Setup_case_1
+            solve( !KU( ~skA.1 ) @ #vk.21 )
+              case CRQC_Break_AltCA
+              solve( !KU( pk(~skA) ) @ #vk.14 )
+                case AltCA_Setup_case_1
+                SOLVED // trace found
+              qed
+            qed
+          qed
+        qed
+      qed
+    qed
+  qed
+qed
+
+lemma X_alt_ca_forges_honest_issuer:
+  exists-trace
+  "∃ I CA c #r #j #b.
+    (((IssuerRegistered( I, CA ) @ #r) ∧ (Accept( I, c ) @ #j)) ∧
+     (Broken( 'alt_ca' ) @ #b)) ∧
+    (¬(∃ #i. Issued( I, c ) @ #i))"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ I CA c #r #j #b.
+  (IssuerRegistered( I, CA ) @ #r) ∧
+  (Accept( I, c ) @ #j) ∧
+  (Broken( 'alt_ca' ) @ #b)
+ ∧
+  ∀ #i. (Issued( I, c ) @ #i) ⇒ ⊥"
+*/
+by sorry
+
+/* All wellformedness checks were successful. */
+
+/*
+Generated from:
+Tamarin version 1.12.0
+Maude version 3.5.1
+Git revision: 82780bbaf3328a45f624ddb41e51bf75425f851c (with uncommited changes), branch: master
+Compiled at: 2026-03-07 14:22:39.174278293 UTC
+*/
+
+end
+
+==============================================================================
+summary of summaries:
+
+analyzed: /work/modeller/R1_chain.spthy
+
+  processing time: 1.21s
+  
+  executable (exists-trace): analysis incomplete (1 steps)
+  executable_post_qday (exists-trace): analysis incomplete (1 steps)
+  attack_needs_crqc (all-traces): analysis incomplete (1 steps)
+  G1_claims_unforgeability (all-traces): falsified - found trace (10 steps)
+  X_alt_ca_forges_honest_issuer (exists-trace): analysis incomplete (1 steps)
+
+==============================================================================

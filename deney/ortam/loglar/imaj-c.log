@@ -1,0 +1,64 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 828B done
+#1 DONE 0.1s
+
+#2 [internal] load metadata for docker.io/library/gcc:15.3.0-trixie@sha256:ead103e6d03b69232962d467f3520c3f70b6718c69ff71efcc08efe9011fadb6
+#2 DONE 0.1s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/2] FROM docker.io/library/gcc:15.3.0-trixie@sha256:ead103e6d03b69232962d467f3520c3f70b6718c69ff71efcc08efe9011fadb6
+#4 resolve docker.io/library/gcc:15.3.0-trixie@sha256:ead103e6d03b69232962d467f3520c3f70b6718c69ff71efcc08efe9011fadb6 0.0s done
+#4 DONE 0.2s
+
+#5 [2/2] RUN set -eux; echo "SURUM $(gcc --version | head -1)"; echo "SURUM $(g++ --version | head -1)"; echo "SURUM $(make --version | head -1)";     echo "SURUM $(autoconf --version | head -1)"; echo "SURUM $(automake --version | head -1)"; echo "SURUM $(libtool --version | head -1)";     echo "SURUM pkg-config $(pkg-config --version)"; echo "SURUM sistem $(openssl version)"; echo "SURUM $(git --version)"
+#5 0.190 + gcc --version
+#5 0.191 + head -1
+#5 0.192 + echo SURUM gcc (GCC) 15.3.0
+#5 0.192 SURUM gcc (GCC) 15.3.0
+#5 0.193 + g++ --version
+#5 0.193 + head -1
+#5 0.194 SURUM g++ (GCC) 15.3.0
+#5 0.194 + echo SURUM g++ (GCC) 15.3.0
+#5 0.196 + make --version+ 
+#5 0.196 head -1
+#5 0.198 + echo SURUM GNU Make 4.4.1
+#5 0.198 SURUM GNU Make 4.4.1
+#5 0.199 + head -1
+#5 0.199 + autoconf --version
+#5 0.284 SURUM autoconf (GNU Autoconf) 2.72
+#5 0.284 + echo SURUM autoconf (GNU Autoconf) 2.72
+#5 0.285 + automake --version
+#5 0.285 + head -1
+#5 0.394 + echo SURUM automake (GNU automake) 1.17
+#5 0.394 SURUM automake (GNU automake) 1.17
+#5 0.396 + head -1
+#5 0.396 + libtool --version
+#5 0.396 /bin/sh: 1: libtool: not found
+#5 0.397 + echo SURUM 
+#5 0.397 + pkg-config --version
+#5 0.397 SURUM 
+#5 0.403 + echo SURUM pkg-config 1.8.1
+#5 0.403 SURUM pkg-config 1.8.1
+#5 0.403 + openssl version
+#5 0.412 + echo SURUM sistem OpenSSL 3.5.7 9 Jun 2026 (Library: OpenSSL 3.5.7 9 Jun 2026)
+#5 0.412 SURUM sistem OpenSSL 3.5.7 9 Jun 2026 (Library: OpenSSL 3.5.7 9 Jun 2026)
+#5 0.412 + git --version
+#5 0.422 SURUM git version 2.47.3
+#5 0.422 + echo SURUM git version 2.47.3
+#5 DONE 0.4s
+
+#6 exporting to image
+#6 exporting layers 0.1s done
+#6 exporting manifest sha256:886d0265e6a77bb5afa108315925eb7711129aaa53ba818b123a6ec3f4d79d8f 0.0s done
+#6 exporting config sha256:428629e8d26b79687a50e2a6d30a480a8958a840d3086adc31825f12e6f02437 0.0s done
+#6 exporting attestation manifest sha256:18c8af44c03e5148c12f5d930f545b2b1472f2a8694a5f9971f6c4d146891613 0.1s done
+#6 exporting manifest list sha256:2fa966ecdb8a532de344d35fbb689ddf1474903e3b26bc5588a01dcb344431e5
+#6 exporting manifest list sha256:2fa966ecdb8a532de344d35fbb689ddf1474903e3b26bc5588a01dcb344431e5 0.0s done
+#6 naming to docker.io/library/pq-a09-env-c:1.0 done
+#6 unpacking to docker.io/library/pq-a09-env-c:1.0 0.0s done
+#6 DONE 0.4s

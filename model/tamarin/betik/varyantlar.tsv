@@ -1,0 +1,88 @@
+# Adım 4 varyant tablosu (sekmeyle ayrılmış). Beklenen değerler koşumdan ÖNCE, kural ifadelerinden yazıldı.
+# kural	varyant	rol	dosya	bayraklar	G_beklenen
+# rol: korumali | mutant:<kaldırılan koruma> | ek (bayrak uzayının geri kalanı; Datalog uyumu için) | ek-sinir (soyutlama sınırı) | ek-h5 (H5 ön sinyali)
+# G_beklenen: güvenlik lemmalarının (G1/G2/G5) beklenen sonucu: V=verified, F=falsified. Sağlık lemmaları (executable*, attack_needs_crqc*) ve M_/X_ lemmaları her varyantta V beklenir; S1_downgrade_trace, G=F ise V, G=V ise F beklenir.
+R1	P_all_pq	korumali	R1_chain.spthy	ROOT_PQ,CA_PQ,ISS_PQ	V
+R1	M_root	mutant:kok_anahtari_PQ	R1_chain.spthy	CA_PQ,ISS_PQ	F
+R1	M_ca	mutant:CA_anahtari_PQ	R1_chain.spthy	ROOT_PQ,ISS_PQ	F
+R1	M_iss	mutant:ihracci_imzasi_PQ	R1_chain.spthy	ROOT_PQ,CA_PQ	F
+R1	E_iss_only	ek	R1_chain.spthy	ISS_PQ	F
+R1	E_ca_only	ek	R1_chain.spthy	CA_PQ	F
+R1	E_root_only	ek	R1_chain.spthy	ROOT_PQ	F
+R1	E_none	ek	R1_chain.spthy	-	F
+R1	X_alt_ca	ek-sinir	R1_chain.spthy	ROOT_PQ,CA_PQ,ISS_PQ,ALT_CA	F
+R1	X_alt_ca_namebind	ek-sinir	R1_chain.spthy	ROOT_PQ,CA_PQ,ISS_PQ,ALT_CA,NAME_BIND	V
+R2	P_expect_auth	korumali	R2_downgrade.spthy	EXPECT_AUTH	V
+R2	M_expect_unauth	mutant:beklentinin_kimlik_dogrulamasi	R2_downgrade.spthy	EXPECT_UNAUTH	F
+R2	M_expect_absent	mutant:beklenti	R2_downgrade.spthy	-	F
+R2	E_nocoexist_auth	ek	R2_downgrade.spthy	NO_COEXIST,EXPECT_AUTH	V
+R2	E_nocoexist_unauth	ek	R2_downgrade.spthy	NO_COEXIST,EXPECT_UNAUTH	V
+R2	E_nocoexist_none	ek	R2_downgrade.spthy	NO_COEXIST	V
+R3	P_obj_pq	korumali	R3_channel.spthy	CHAN_PQ	V
+R3	P_tls_pq	korumali	R3_channel.spthy	CHAN_PQ,VIA_TLS	V
+R3	M_obj_classical	mutant:PQ_kanal_nesne_imzasi	R3_channel.spthy	-	F
+R3	M_tls_classical	mutant:PQ_kanal_tasima	R3_channel.spthy	VIA_TLS	F
+R4	P_dev_iss_pq	korumali	R4_wscd.spthy	DEV_PQ,ISS_PQ	V
+R4	M_dev	mutant:PQ_cihaz_anahtari	R4_wscd.spthy	ISS_PQ	F
+R4	M_iss	mutant:PQ_ihracci_imzasi	R4_wscd.spthy	DEV_PQ	F
+R4	E_none	ek	R4_wscd.spthy	-	F
+R4	H5_single_use_dev_classical	ek-h5	R4_wscd.spthy	ISS_PQ,SINGLE_USE	F
+R4	H5_single_use_protected	ek-h5	R4_wscd.spthy	DEV_PQ,ISS_PQ,SINGLE_USE	V
+R5	P_pin_tlpq	korumali	R5_anchor.spthy	PIN_TL,TL_PQ	V
+R5	M_pin	mutant:sabitleme	R5_anchor.spthy	TL_PQ	F
+R5	M_tl	mutant:capa_anahtari_PQ	R5_anchor.spthy	PIN_TL	F
+R5	E_none	ek	R5_anchor.spthy	-	F
+R5	E_lotlpq	ek	R5_anchor.spthy	LOTL_PQ	F
+R5	E_lotlpq_tlpq	ek	R5_anchor.spthy	LOTL_PQ,TL_PQ	V
+R5	E_pin_lotlpq	ek	R5_anchor.spthy	PIN_TL,LOTL_PQ	F
+R5	E_all_pq_pin	ek	R5_anchor.spthy	PIN_TL,TL_PQ,LOTL_PQ	V
+# ---------------------------------------------------------------------------------------------
+# Adım 5A (24.09.2026). Beklentiler koşumdan ÖNCE yazıldı. 7. sütun (lemma_beklenen): lemma başına beklenen (V/F).
+# Orada adı geçmeyen lemmalar varsayılan kurala uyar (sağlık ve M_/X_ = V). G_beklenen '-' ise güvenlik lemmaları 7. sütundadır.
+# R6 (R6_time): L-D3 ızgarası = anahtar kipi {LONG, ROTATED, PER_TOKEN} × rejim {FAST, MEDIUM, SLOW}; ID_PQ; KEY_REUSE.
+R6	E_long_fast	ek	R6_time.spthy	ID_PQ	-	G3_status_unforgeability=F;M_long_key=V;M_epoch_key_in_window=F;M_token_key_in_window=F;M_identity_key=F
+R6	M_long_medium	mutant:kisa_anahtar_penceresi(P_tok_medium)	R6_time.spthy	ID_PQ,MEDIUM	-	G3_status_unforgeability=F;M_long_key=V;M_epoch_key_in_window=F;M_token_key_in_window=F;M_identity_key=F
+R6	M_long_slow	mutant:kisa_anahtar_penceresi(P_rot_slow)	R6_time.spthy	ID_PQ,SLOW	-	G3_status_unforgeability=F;M_long_key=V;M_epoch_key_in_window=F;M_token_key_in_window=F;M_identity_key=F
+R6	M_rot_fast	mutant:tau_pencereden_uzun(P_rot_slow)	R6_time.spthy	ROTATED,ID_PQ	-	G3_status_unforgeability=F;M_long_key=F;M_epoch_key_in_window=V;M_token_key_in_window=F;M_identity_key=F
+R6	E_rot_medium	ek	R6_time.spthy	ROTATED,ID_PQ,MEDIUM	-	G3_status_unforgeability=F;M_long_key=F;M_epoch_key_in_window=V;M_token_key_in_window=F;M_identity_key=F
+R6	P_rot_slow	korumali	R6_time.spthy	ROTATED,ID_PQ,SLOW	-	G3_status_unforgeability=V;M_long_key=F;M_epoch_key_in_window=F;M_token_key_in_window=F;M_identity_key=F
+R6	M_tok_fast	mutant:tau_pencereden_uzun(P_tok_medium)	R6_time.spthy	PER_TOKEN,ID_PQ	-	G3_status_unforgeability=F;M_long_key=F;M_epoch_key_in_window=F;M_token_key_in_window=V;M_identity_key=F
+R6	P_tok_medium	korumali	R6_time.spthy	PER_TOKEN,ID_PQ,MEDIUM	-	G3_status_unforgeability=V;M_long_key=F;M_epoch_key_in_window=F;M_token_key_in_window=F;M_identity_key=F
+R6	E_tok_slow	ek	R6_time.spthy	PER_TOKEN,ID_PQ,SLOW	-	G3_status_unforgeability=V;M_long_key=F;M_epoch_key_in_window=F;M_token_key_in_window=F;M_identity_key=F
+R6	M_rot_id	mutant:PQ_kimlik_baglama(P_rot_slow)	R6_time.spthy	ROTATED,SLOW	-	G3_status_unforgeability=F;M_long_key=F;M_epoch_key_in_window=F;M_token_key_in_window=F;M_identity_key=V
+R6	M_rot_reuse	mutant:anahtar_yeniden_kullanilmaz(P_rot_slow)	R6_time.spthy	ROTATED,ID_PQ,SLOW,KEY_REUSE	-	G3_status_unforgeability=F;M_long_key=V;M_epoch_key_in_window=F;M_token_key_in_window=F;M_identity_key=F
+R6	M_tok_id	mutant:PQ_kimlik_baglama(P_tok_medium)	R6_time.spthy	PER_TOKEN,MEDIUM	-	G3_status_unforgeability=F;M_long_key=F;M_epoch_key_in_window=F;M_token_key_in_window=F;M_identity_key=V
+# R6h5 (R6_h5): R4 × R6, H5. Klasik cihaz anahtarı; SINGLE_USE = cüzdanda ve doğrulayıcıda tek kullanım.
+R6h5	P_single_slow	korumali	R6_h5.spthy	SINGLE_USE,SLOW	-	G2_presentation_unforgeability=V;M_device_key_in_window=F;M_device_key_reused=F
+R6h5	E_nosingle_slow	ek	R6_h5.spthy	SLOW	-	G2_presentation_unforgeability=V;M_device_key_in_window=F;M_device_key_reused=F
+R6h5	M_single_fast	mutant:gecerlilik_penceresi_tau_dan_kisa(P_single_slow)	R6_h5.spthy	SINGLE_USE	-	G2_presentation_unforgeability=F;M_device_key_in_window=V;M_device_key_reused=F
+R6h5	M_single_slow_reuse	mutant:kimlik_bilgisi_basina_cihaz_anahtari(P_single_slow)	R6_h5.spthy	SINGLE_USE,SLOW,KEY_REUSE	-	G2_presentation_unforgeability=F;M_device_key_in_window=F;M_device_key_reused=V
+R6h5	E_nosingle_fast	ek	R6_h5.spthy	-	-	G2_presentation_unforgeability=F;M_device_key_in_window=V;M_device_key_reused=F
+R6h5	E_devpq_single_fast	ek	R6_h5.spthy	DEV_PQ,SINGLE_USE	-	G2_presentation_unforgeability=V;M_device_key_in_window=F;M_device_key_reused=F
+# R7 (R7_monotone): M-f bileşen ablasyonu (A3) ve M-g.
+R7	P_mf_online	korumali	R7_monotone.spthy	PQ_CHAN,FRESH,MONOTONE,PER_ENTITY,SUNSET_CHECK	-	G5_migrated=V;G5_timed=V;no_rollback=V;first_contact_downgrade=F
+R7	P_mf_pinned	korumali	R7_monotone.spthy	PINNED,MONOTONE,PER_ENTITY,SUNSET_CHECK	-	G5_migrated=V;G5_timed=V;no_rollback=V;first_contact_downgrade=F
+R7	M_pq_chan	mutant:PQ_kanal(P_mf_online)	R7_monotone.spthy	FRESH,MONOTONE,PER_ENTITY,SUNSET_CHECK	-	G5_migrated=F;G5_timed=V;no_rollback=V;first_contact_downgrade=V;M_source_key_broken=V
+R7	M_fresh	mutant:tazelik_ya_da_sabitleme(P_mf_online)	R7_monotone.spthy	PQ_CHAN,MONOTONE,PER_ENTITY,SUNSET_CHECK	-	G5_migrated=F;G5_timed=V;no_rollback=V;first_contact_downgrade=V;M_stale_object=V
+R7	M_per_entity	mutant:varlik_basina_kapsam(P_mf_online)	R7_monotone.spthy	PQ_CHAN,FRESH,MONOTONE,SUNSET_CHECK	-	G5_migrated=F;G5_timed=V;no_rollback=V;first_contact_downgrade=V;M_global_expectation=V;executable_learn=F
+R7	A_online_no_monotone	ek-ablasyon	R7_monotone.spthy	PQ_CHAN,FRESH,PER_ENTITY,SUNSET_CHECK	-	G5_migrated=V;G5_timed=V;no_rollback=V;first_contact_downgrade=F;M_rollback=F
+R7	A_online_no_sunset	ek-ablasyon	R7_monotone.spthy	PQ_CHAN,FRESH,MONOTONE,PER_ENTITY	-	G5_migrated=V;G5_timed=V;no_rollback=V;first_contact_downgrade=F;M_after_sunset=F
+R7	A_pinned_min	ek-ablasyon	R7_monotone.spthy	PINNED,PER_ENTITY	-	G5_migrated=V;G5_timed=V;no_rollback=V;first_contact_downgrade=F;M_rollback=F;M_after_sunset=F
+R7	M_off_monotone	mutant:tekduzelik_cevrimdisi(M_fresh)	R7_monotone.spthy	PQ_CHAN,PER_ENTITY,SUNSET_CHECK	-	G5_migrated=F;G5_timed=V;no_rollback=F;first_contact_downgrade=V;M_stale_object=V;M_rollback=V
+R7	M_off_sunset	mutant:sunset_denetimi_cevrimdisi(M_fresh)	R7_monotone.spthy	PQ_CHAN,MONOTONE,PER_ENTITY	-	G5_migrated=F;G5_timed=F;no_rollback=V;first_contact_downgrade=V;M_stale_object=V;M_after_sunset=V
+R7	G_mg	ek-mekanizma	R7_monotone.spthy	MG,MONOTONE,SUNSET_CHECK	-	G5_migrated=F;G5_timed=V;no_rollback=V;first_contact_downgrade=V
+R7	G_mg_no_sunset	ek-mekanizma	R7_monotone.spthy	MG,MONOTONE	-	G5_migrated=F;G5_timed=F;no_rollback=V;first_contact_downgrade=V;M_after_sunset=V
+R7	G_mg_no_cache	ek-mekanizma	R7_monotone.spthy	MG,SUNSET_CHECK	-	G5_migrated=F;G5_timed=V;no_rollback=F;first_contact_downgrade=V;M_rollback=V
+# R7h (R7_mh): M-h sertifikaya gömülü taahhüt; X_alt_ca ile birleşim.
+R7h	P_ca_pq_alt_namebind	korumali	R7_mh.spthy	CA_PQ,ALT_CA,NAME_BIND	-	G5_no_classical_acceptance=V;G1_claims_unforgeability=V
+R7h	P_ca_pq_single	korumali	R7_mh.spthy	CA_PQ	-	G5_no_classical_acceptance=V;G1_claims_unforgeability=V
+R7h	M_ca_classical	mutant:taahhut_zinciri_PQ(P_ca_pq_alt_namebind)	R7_mh.spthy	ALT_CA,NAME_BIND	-	G5_no_classical_acceptance=F;G1_claims_unforgeability=F;M_commitment_chain_classical=V
+R7h	M_no_namebind	mutant:ad_baglama(P_ca_pq_alt_namebind)	R7_mh.spthy	CA_PQ,ALT_CA	-	G5_no_classical_acceptance=F;G1_claims_unforgeability=F;M_alt_ca_bypass=V
+R7h	E_ca_classical_single	ek	R7_mh.spthy	-	-	G5_no_classical_acceptance=F;G1_claims_unforgeability=F;M_commitment_chain_classical=V
+# R7hx (R7_mh_x): ÖN KAYIT SONRASI KEŞİF (24.09.2026). R7h P_ca_pq_alt_namebind'in beklenmeyen falsified sonucunun
+# nedenini ayrıştırır (izde alternatif CA meşru CA ile aynı adı taşıyor). Beklentiler bu koşumlardan ÖNCE yazıldı.
+R7hx	X_repro_prereg	kesif	R7_mh_x.spthy	CA_PQ,ALT_CA,NAME_BIND	-	G5_no_classical_acceptance=F;G1_claims_unforgeability=F;X_alt_ca_key_used=V
+R7hx	X_namebind_unique	kesif	R7_mh_x.spthy	CA_PQ,ALT_CA,NAME_BIND,UNIQUE_CA_NAMES	-	G5_no_classical_acceptance=V;G1_claims_unforgeability=V;X_alt_ca_key_used=F
+R7hx	X_namebind_samename	kesif	R7_mh_x.spthy	CA_PQ,ALT_CA,NAME_BIND,ALT_SAME_NAME	-	G5_no_classical_acceptance=F;G1_claims_unforgeability=F;X_alt_ca_key_used=V
+R7hx	X_keybind_samename	kesif	R7_mh_x.spthy	CA_PQ,ALT_CA,KEY_BIND,ALT_SAME_NAME	-	G5_no_classical_acceptance=V;G1_claims_unforgeability=V;X_alt_ca_key_used=F
+R7hx	X_keybind_distinct	kesif	R7_mh_x.spthy	CA_PQ,ALT_CA,KEY_BIND	-	G5_no_classical_acceptance=V;G1_claims_unforgeability=V;X_alt_ca_key_used=F

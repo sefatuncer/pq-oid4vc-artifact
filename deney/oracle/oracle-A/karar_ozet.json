@@ -1,0 +1,123 @@
+{
+ "satir": 858,
+ "dagilim": {
+  "accept-classical": 215,
+  "reject": 409,
+  "accept-hybrid": 159,
+  "indeterminate": 75
+ },
+ "politika_dagilimi": {
+  "GEC": {
+   "accept-classical": 36,
+   "accept-hybrid": 24,
+   "reject": 44,
+   "indeterminate": 6
+  },
+  "IZIN-A": {
+   "accept-classical": 16,
+   "reject": 42
+  },
+  "IZIN-AX": {
+   "accept-classical": 20,
+   "accept-hybrid": 6,
+   "reject": 30,
+   "indeterminate": 2
+  },
+  "L4": {
+   "accept-classical": 12,
+   "reject": 75,
+   "accept-hybrid": 26,
+   "indeterminate": 41
+  },
+  "L4-S": {
+   "accept-classical": 12,
+   "reject": 107,
+   "accept-hybrid": 26,
+   "indeterminate": 9
+  },
+  "L4-Y": {
+   "accept-classical": 30,
+   "reject": 75,
+   "accept-hybrid": 40,
+   "indeterminate": 9
+  },
+  "P0": {
+   "accept-classical": 67,
+   "accept-hybrid": 3,
+   "indeterminate": 3
+  },
+  "P1": {
+   "accept-classical": 16,
+   "reject": 23,
+   "accept-hybrid": 31,
+   "indeterminate": 3
+  },
+  "L4-YOL": {
+   "reject": 9,
+   "accept-hybrid": 1,
+   "indeterminate": 2
+  },
+  "GEC@-19": {
+   "accept-classical": 4,
+   "reject": 4
+  },
+  "L4@-19": {
+   "accept-hybrid": 2,
+   "accept-classical": 2
+  }
+ },
+ "birincil_satir": 316,
+ "birincil_dagilim": {
+  "accept-classical": 90,
+  "reject": 181,
+  "accept-hybrid": 41,
+  "indeterminate": 4
+ },
+ "vektor_kapsami": 153,
+ "madde_sayisi": 107,
+ "korpus_belgesi": [
+  "ACM2",
+  "HAIP",
+  "JOSECOMP",
+  "JWTBCP",
+  "LAMPSCOMP",
+  "OID4VP",
+  "RFC7515",
+  "RFC7518",
+  "RFC9449",
+  "RFC9864",
+  "RFC9901",
+  "RFC9964",
+  "SDJWTVC",
+  "SDJWTVC13",
+  "TSL"
+ ],
+ "insa_denetimi": 467,
+ "mr_oz_denetim": {
+  "MR4_esit_karar_cifti": 165,
+  "MR1_T1_kabul_T3_red": 12,
+  "MR2_S_red_Y_esit": 4
+ },
+ "indeterminate_birincil": [
+  [
+   "T7C_plus_kayitsiz",
+   "L4",
+   "tedavi-composite"
+  ],
+  [
+   "T7K_plus_kayitsiz",
+   "L4",
+   "kontrol-EdDSA"
+  ],
+  [
+   "T7K_plus_kayitsiz-ED25519",
+   "L4",
+   "kontrol-Ed25519"
+  ],
+  [
+   "T7P_plus_kayitsiz",
+   "L4",
+   "tedavi-ML-DSA-65"
+  ]
+ ]
+}

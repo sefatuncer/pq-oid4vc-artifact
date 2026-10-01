@@ -1,0 +1,35 @@
+# sema_surumu=c3-istat-girdi/1.0; veri_turu=sentetik
+hedef_id,tabaka,adaptor_gecersiz,adaptor_gecersiz_gerekce,tk_sinifi,l4_bicimi,kontrol_etiketi,Y_L4,L_duzeyi,F_K,F_T,D_soy,B1,B2,B3,B4_ozel_kod,B4_satir,B5,B6,surum_8725bis_sonrasi,son_surum_tarihi,pilot,devralan,devraldigi_hedef,belirsiz_nedenleri
+S-JOSE-01,JOSE,0,,TK3,L4c,EdDSA,0,1,0,1,1,red,0,0,0,,diger,0,0,,1,0,,
+S-JOSE-02,JOSE,0,,TK3,L4m,EdDSA,1,4,0,0,0,yok_sayma,0,1,0,,mevcut_tumu_gecerli,0,0,,0,0,,
+S-JOSE-03,JOSE,0,,TK3,L4m,EdDSA,1,4,0,0,1,dogrulama_duser,0,0,0,,diger,1,1,,0,0,,
+S-JOSE-04,JOSE,1,SENTETİK: V+/V− iki düzeltmeden sonra geçmedi,TK3,L4c,EdDSA,0,2,0,1,1,yok_sayma,0,0,1,8,gerekli_kume,0,0,,0,0,,
+S-JOSE-05,JOSE,0,,TK3,L4c,EdDSA,1,4,0,1,1,dogrulama_duser,0,1,0,,mevcut_tumu_gecerli,0,1,,0,0,,
+S-JOSE-06,JOSE,0,,TK1,L4c,EdDSA,,0,0,0,1,yok_sayma,1,0,0,,en_az_biri_gecerli,0,1,,0,0,,Y_L4:kanit_kurali
+S-JOSE-07,JOSE,0,,TK1,L4m,EdDSA,0,2,0,0,1,dogrulama_duser,0,1,0,,gerekli_kume,1,0,,0,0,,
+S-JOSE-08,JOSE,0,,TK3,L4m,EdDSA,0,2,0,0,0,yok_sayma,1,0,1,20,mevcut_tumu_gecerli,0,1,,0,0,,
+S-JOSE-09,JOSE,0,,TK2,L4c,EdDSA,0,0,0,1,0,dogrulama_duser,0,0,0,,gerekli_kume,1,0,,0,0,,
+S-JOSE-10,JOSE,0,,TK3,L4c,EdDSA,0,3,0,1,1,dogrulama_duser,0,1,0,,diger,1,0,2026-05-11,0,0,,
+S-JOSE-11,JOSE,0,,TK2,L4c,EdDSA,0,3,0,1,1,dogrulama_duser,0,0,0,,diger,0,0,,0,0,,
+S-JOSE-12,JOSE,0,,TK3,L4m,EdDSA,1,4,0,0,1,red,0,1,0,,diger,1,1,,0,0,,
+S-JOSE-13,JOSE,0,,TK1,L4m,EdDSA,1,5,0,0,0,yok_sayma,1,1,0,,mevcut_tumu_gecerli,0,1,,0,0,,
+S-JOSE-14,JOSE,0,,TK2,L4c,EdDSA,0,0,0,0,1,yok_sayma,0,1,1,55,mevcut_tumu_gecerli,1,0,,0,0,,
+S-JOSE-15,JOSE,0,,TK1,L4c,EdDSA,1,5,0,0,1,dogrulama_duser,0,1,0,,gerekli_kume,1,0,,0,0,,
+S-JOSE-16,JOSE,0,,TK3,L4c,EdDSA,0,2,0,0,1,red,0,1,0,,en_az_biri_gecerli,0,0,,0,0,,
+S-JOSE-17,JOSE,0,,TK1,L4c,EdDSA,0,0,0,1,1,red,0,1,0,,mevcut_tumu_gecerli,0,0,,0,0,,
+S-JOSE-18,JOSE,0,,TK3,L4c,EdDSA,1,5,0,0,1,dogrulama_duser,0,0,0,,gerekli_kume,1,1,,0,0,,
+S-SDJWT-01,SDJWT,0,,TK3,L4c,EdDSA,1,5,0,1,0,yok_sayma,0,0,0,,diger,0,1,,0,0,,
+S-SDJWT-02,SDJWT,0,,TK2,L4c,EdDSA,0,1,0,1,1,dogrulama_duser,0,1,0,,diger,0,1,,1,0,,
+S-SDJWT-03,SDJWT,0,,TK2,L4c,EdDSA,,2,0,0,0,red,0,0,1,19,gerekli_kume,0,0,,0,0,,Y_L4:oracle_uyusmazligi
+S-SDJWT-04,SDJWT,0,,TK3,L4m,EdDSA,0,1,0,0,0,dogrulama_duser,0,0,0,,mevcut_tumu_gecerli,0,1,,0,0,,
+S-SDJWT-05,SDJWT,0,,TK2,L4c,EdDSA,1,4,0,1,0,dogrulama_duser,0,1,0,,mevcut_tumu_gecerli,0,0,,0,1,S-JOSE-07,
+S-SDJWT-06,SDJWT,0,,TK3,L4m,EdDSA,0,3,0,0,1,yok_sayma,0,0,0,,en_az_biri_gecerli,0,1,,0,0,,
+S-SDJWT-07,SDJWT,0,,TK3,L4m,Ed25519,1,4,0,1,1,yok_sayma,0,1,0,,diger,0,1,,0,0,,
+S-SDJWT-08,SDJWT,0,,TK1,L4m,EdDSA,0,2,1,1,1,dogrulama_duser,0,0,1,9,mevcut_tumu_gecerli,0,0,,0,0,,
+S-COSE-01,COSE,0,,TK2,L4c,EdDSA,1,5,0,1,0,dogrulama_duser,,,0,,gerekli_kume,0,0,,0,0,,B2:uygulanamaz;B3:uygulanamaz
+S-COSE-02,COSE,0,,TK3,L4c,EdDSA,0,1,0,0,0,yok_sayma,,,0,,mevcut_tumu_gecerli,0,1,,0,0,,B2:uygulanamaz;B3:uygulanamaz
+S-COSE-03,COSE,0,,TK2,L4c,EdDSA,1,5,0,0,0,red,,,0,,diger,0,0,,0,0,,B2:uygulanamaz;B3:uygulanamaz
+S-COSE-04,COSE,0,,TK2,L4c,EdDSA,0,3,0,1,1,red,,,0,,mevcut_tumu_gecerli,0,0,,0,0,,B2:uygulanamaz;B3:uygulanamaz
+S-COSE-05,COSE,0,,TK3,L4c,EdDSA,0,2,1,1,1,dogrulama_duser,,,1,39,diger,0,0,,0,0,,B2:uygulanamaz;B3:uygulanamaz
+S-REF-01,REF,0,,,,,0,2,0,1,1,red,0,1,0,,diger,0,1,,0,0,,
+S-REF-02,REF,0,,,,,0,2,0,1,1,red,0,1,0,,diger,0,1,,0,0,,

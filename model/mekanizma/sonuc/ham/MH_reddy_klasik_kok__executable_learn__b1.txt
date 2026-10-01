@@ -1,0 +1,677 @@
+maude tool: 'maude'
+ checking version: 3.5.1. OK.
+ checking installation: OK.
+[Theory M_H] Theory loaded
+[Theory M_H] Theory translated
+[Theory M_H] Derivation checks started
+[Theory M_H] Derivation checks ended
+[Theory M_H] Theory closed
+[Saturating Sources] Step 1 (Max 5)
+[Saturating Sources] Done
+theory M_H
+
+begin
+
+// Function signature and definition of the equational theory E
+
+functions: fst/1, h/1, pair/2, pk/1, sign/2, snd/1, true/0, verify/3
+equations:
+    fst(<x.1, x.2>) = x.1,
+    snd(<x.1, x.2>) = x.2,
+    verify(sign(x.1, x.2), x.1, pk(x.2)) = true
+
+restriction Equality:
+  "∀ x y #i. (Eq( x, y ) @ #i) ⇒ (x = y)"
+  // safety formula
+
+  /*
+  expanded formula:
+  "∀ x y #i. (Eq( x, y ) @ #i) ⇒ (x = y)"
+  */
+
+restriction Unique:
+  "∀ x #i #j. ((Unique( x ) @ #i) ∧ (Unique( x ) @ #j)) ⇒ (#i = #j)"
+  // safety formula
+
+  /*
+  expanded formula:
+  "∀ x #i #j. ((Unique( x ) @ #i) ∧ (Unique( x ) @ #j)) ⇒ (#i = #j)"
+  */
+
+restriction ClassicalIssuanceUntilSunset:
+  "∀ X #i.
+    (IssueClassical( X ) @ #i) ⇒ (¬(∃ #s. (Sunset( X ) @ #s) ∧ (#s < #i)))"
+  // safety formula
+
+  /*
+  expanded formula:
+  "∀ X #i.
+    (IssueClassical( X ) @ #i) ⇒ (¬(∃ #s. (Sunset( X ) @ #s) ∧ (#s < #i)))"
+  */
+
+restriction PQIssuanceAfterMigrate:
+  "∀ X #i. (IssuePQ( X ) @ #i) ⇒ (∃ #m. (Migrate( X ) @ #m) ∧ (#m < #i))"
+
+  /*
+  expanded formula:
+  "∀ X #i. (IssuePQ( X ) @ #i) ⇒ (∃ #m. (Migrate( X ) @ #m) ∧ (#m < #i))"
+  */
+
+restriction ReddyContinuity:
+  "∀ V I #k #j.
+    (((SeenPQReq( V, I ) @ #k) ∧ (NoPolicy( V, I ) @ #j)) ∧ (#k < #j)) ⇒ (⊥)"
+  // safety formula
+
+  /*
+  expanded formula:
+  "∀ V I #k #j.
+    (((SeenPQReq( V, I ) @ #k) ∧ (NoPolicy( V, I ) @ #j)) ∧ (#k < #j)) ⇒ (⊥)"
+  */
+
+restriction SunsetAfterMigrate:
+  "∀ E #s. (Sunset( E ) @ #s) ⇒ (∃ #m. (Migrate( E ) @ #m) ∧ (#m < #s))"
+
+  /*
+  expanded formula:
+  "∀ E #s. (Sunset( E ) @ #s) ⇒ (∃ #m. (Migrate( E ) @ #m) ∧ (#m < #s))"
+  */
+
+restriction ReportNone:
+  "∀ E #r.
+    (StateIs( E, 'none' ) @ #r) ⇒ (¬(∃ #m. (Migrate( E ) @ #m) ∧ (#m < #r)))"
+  // safety formula
+
+  /*
+  expanded formula:
+  "∀ E #r.
+    (StateIs( E, 'none' ) @ #r) ⇒ (¬(∃ #m. (Migrate( E ) @ #m) ∧ (#m < #r)))"
+  */
+
+restriction ReportPQ:
+  "∀ E #r.
+    (StateIs( E, 'pq_required' ) @ #r) ⇒
+    ((∃ #m. (Migrate( E ) @ #m) ∧ (#m < #r)) ∧
+     (¬(∃ #s. (Sunset( E ) @ #s) ∧ (#s < #r))))"
+
+  /*
+  expanded formula:
+  "∀ E #r.
+    (StateIs( E, 'pq_required' ) @ #r) ⇒
+    ((∃ #m. (Migrate( E ) @ #m) ∧ (#m < #r)) ∧
+     (¬(∃ #s. (Sunset( E ) @ #s) ∧ (#s < #r))))"
+  */
+
+restriction ReportRetired:
+  "∀ E #r.
+    (StateIs( E, 'retired' ) @ #r) ⇒ (∃ #s. (Sunset( E ) @ #s) ∧ (#s < #r))"
+
+  /*
+  expanded formula:
+  "∀ E #r.
+    (StateIs( E, 'retired' ) @ #r) ⇒ (∃ #s. (Sunset( E ) @ #s) ∧ (#s < #r))"
+  */
+
+lemma G5_untimed:
+  all-traces
+  "∀ V E x #b #j.
+    ((BornMigrated( E ) @ #b) ∧ (AcceptClassical( V, E, x ) @ #j)) ⇒ (⊥)"
+/*
+guarded formula characterizing all counter-examples:
+"∃ V E x #b #j.
+  (BornMigrated( E ) @ #b) ∧ (AcceptClassical( V, E, x ) @ #j)"
+*/
+by sorry
+
+lemma G5_migrated:
+  all-traces
+  "∀ V E x #m #j.
+    (((Migrate( E ) @ #m) ∧ (AcceptClassical( V, E, x ) @ #j)) ∧ (#m < #j)) ⇒
+    (⊥)"
+/*
+guarded formula characterizing all counter-examples:
+"∃ V E x #m #j.
+  (Migrate( E ) @ #m) ∧ (AcceptClassical( V, E, x ) @ #j) ∧ #m < #j"
+*/
+by sorry
+
+lemma G5_timed:
+  all-traces
+  "∀ V E x #s #j.
+    (((Sunset( E ) @ #s) ∧ (AcceptClassical( V, E, x ) @ #j)) ∧ (#s < #j)) ⇒
+    (⊥)"
+/*
+guarded formula characterizing all counter-examples:
+"∃ V E x #s #j.
+  (Sunset( E ) @ #s) ∧ (AcceptClassical( V, E, x ) @ #j) ∧ #s < #j"
+*/
+by sorry
+
+lemma no_rollback:
+  all-traces
+  "∀ V E x #k #j.
+    (((SeenPQReq( V, E ) @ #k) ∧ (AcceptClassical( V, E, x ) @ #j)) ∧
+     (#k < #j)) ⇒
+    (⊥)"
+/*
+guarded formula characterizing all counter-examples:
+"∃ V E x #k #j.
+  (SeenPQReq( V, E ) @ #k) ∧ (AcceptClassical( V, E, x ) @ #j) ∧ #k < #j"
+*/
+by sorry
+
+lemma first_contact_downgrade:
+  exists-trace
+  "∃ V E x #m #j.
+    (((Migrate( E ) @ #m) ∧ (AcceptClassical( V, E, x ) @ #j)) ∧ (#m < #j)) ∧
+    (¬(∃ #k. SeenPQReq( V, E ) @ #k))"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ V E x #m #j.
+  (Migrate( E ) @ #m) ∧ (AcceptClassical( V, E, x ) @ #j)
+ ∧
+  (#m < #j) ∧ (∀ #k. (SeenPQReq( V, E ) @ #k) ⇒ ⊥)"
+*/
+by sorry
+
+rule (modulo E) Qday:
+   [ ] --[ Unique( 'qday' ), QdayEv( ) ]-> [ !CRQC( ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) CRQC_Break_Issuer_Classical:
+   [ !IssCl( X, k ), !CRQC( ), In( pk(k) ) ]
+  --[ Broken( <'iss_cl', X> ) ]->
+   [ Out( k ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) CRQC_Break_Classical_Anchor:
+   [ !ClAnchorSk( A, k ), !CRQC( ), In( pk(k) ) ]
+  --[ Broken( <'anchor', A> ) ]->
+   [ Out( k ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) CAM_Setup:
+   [ Fr( ~kcam ) ]
+  --[ Unique( 'setup_cam' ) ]->
+   [
+   !CASk( 'CAM', ~kcam ), !Anchor( 'CAM', pk(~kcam), 'pq' ),
+   Out( pk(~kcam) )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) ClassicalRoot_Setup:
+   [ Fr( ~kr ) ]
+  --[ Unique( 'setup_cl_root' ) ]->
+   [
+   !ClAnchorSk( 'ROOT', ~kr ), !Anchor( 'ROOT', pk(~kr), 'cl' ),
+   Out( pk(~kr) )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Issuer_Setup_Born:
+   [ !CASk( 'CAM', kcam ), Fr( ~kc ), Fr( ~kq ) ]
+  --[
+  Unique( <'iss', $I> ), Unique( <'migrate', $I> ), BornMigrated( $I ),
+  Migrate( $I ), StateChange( $I ), HonestPQKey( $I, pk(~kq) )
+  ]->
+   [
+   !IssCl( $I, ~kc ), !IssPQ( $I, ~kq ), Out( pk(~kc) ), Out( pk(~kq) ),
+   Out( <<'iss_cert', $I, pk(~kc), 'cl', 'noext'>, 
+         sign(<'iss_cert', $I, pk(~kc), 'cl', 'noext'>, kcam)>
+   ),
+   Out( <<'iss_cert', $I, pk(~kq), 'pq', 'pqchc'>, 
+         sign(<'iss_cert', $I, pk(~kq), 'pq', 'pqchc'>, kcam)>
+   )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Issuer_Setup_Migrating:
+   [ !CASk( 'CAM', kcam ), Fr( ~kc ), Fr( ~kq ) ]
+  --[
+  Unique( <'iss', $I> ), MigratingIssuer( $I ), HonestPQKey( $I, pk(~kq) )
+  ]->
+   [
+   !IssCl( $I, ~kc ), !IssPQ( $I, ~kq ), Out( pk(~kc) ), Out( pk(~kq) ),
+   Out( <<'iss_cert', $I, pk(~kc), 'cl', 'noext'>, 
+         sign(<'iss_cert', $I, pk(~kc), 'cl', 'noext'>, kcam)>
+   )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Migrate:
+   [ !IssPQ( I, kq ), !CASk( 'CAM', kcam ) ]
+  --[ Unique( <'migrate', I> ), Migrate( I ), StateChange( I ) ]->
+   [
+   Out( <<'iss_cert', I, pk(kq), 'pq', 'pqchc'>, 
+         sign(<'iss_cert', I, pk(kq), 'pq', 'pqchc'>, kcam)>
+   )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Issuer_Setup_Legacy:
+   [ !CASk( 'CAM', kcam ), Fr( ~kc ) ]
+  --[ Unique( <'iss', $L> ), Legacy( $L ) ]->
+   [
+   !IssCl( $L, ~kc ), Out( pk(~kc) ),
+   Out( <<'iss_cert', $L, pk(~kc), 'cl', 'noext'>, 
+         sign(<'iss_cert', $L, pk(~kc), 'cl', 'noext'>, kcam)>
+   )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Sunset:
+   [ !IssPQ( I, kq ) ]
+  --[ Unique( <'sunset', I> ), Sunset( I ), StateChange( I ) ]->
+   [ ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Issue_Classical:
+   [ !IssCl( X, kc ), Fr( ~c ) ]
+  --[ Issued( X, ~c ), IssueClassical( X ) ]->
+   [ Out( <<'cred', X, ~c>, sign(<'cred', X, ~c>, kc)> ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Issue_PQ:
+   [ !IssPQ( I, kq ), Fr( ~c ) ]
+  --[ Issued( I, ~c ), IssuePQ( I ) ]->
+   [ Out( <<'cred', I, ~c>, sign(<'cred', I, ~c>, kq)> ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Path1:
+   [ !Anchor( A, pkA, aA ), In( <<'iss_cert', I, pkI, la, x>, s> ) ]
+  --[ Eq( verify(s, <'iss_cert', I, pkI, la, x>, pkA), true ) ]->
+   [ VCert( I, pkI, la, x, A, aA, aA ) ]
+
+  /*
+  rule (modulo AC) Path1:
+     [ !Anchor( A, pkA, aA ), In( <<'iss_cert', I, pkI, la, x>, s> ) ]
+    --[ Eq( z, true ) ]->
+     [ VCert( I, pkI, la, x, A, aA, aA ) ]
+    variants (modulo AC)
+    1. I     = I.12
+       la    = la.14
+       pkA   = pkA.15
+       pkI   = pkI.16
+       s     = s.17
+       x     = x.18
+       z     = verify(s.17, <'iss_cert', I.12, pkI.16, la.14, x.18>, pkA.15)
+    
+    2. I     = I.17
+       la    = la.19
+       pkA   = pk(x.29)
+       pkI   = pkI.21
+       s     = sign(<'iss_cert', I.17, pkI.21, la.19, x.23>, x.29)
+       x     = x.23
+       z     = true
+  */
+
+rule (modulo E) Path2:
+   [
+   !Anchor( A, pkA, aA ), In( <<'int_cert', N, pkN, aN>, s1> ),
+   In( <<'iss_cert', I, pkI, la, x>, s2> )
+   ]
+  --[
+  Eq( verify(s1, <'int_cert', N, pkN, aN>, pkA), true ),
+  Eq( verify(s2, <'iss_cert', I, pkI, la, x>, pkN), true )
+  ]->
+   [ VCert( I, pkI, la, x, N, aA, aN ) ]
+
+  /*
+  rule (modulo AC) Path2:
+     [
+     !Anchor( A, pkA, aA ), In( <<'int_cert', N, pkN, aN>, s1> ),
+     In( <<'iss_cert', I, pkI, la, x>, s2> )
+     ]
+    --[ Eq( z, true ), Eq( z.1, true ) ]->
+     [ VCert( I, pkI, la, x, N, aA, aN ) ]
+    variants (modulo AC)
+    1. I     = I.28
+       N     = N.29
+       aN    = aN.31
+       la    = la.32
+       pkA   = pkA.33
+       pkI   = pkI.34
+       pkN   = pkN.35
+       s1    = s1.36
+       s2    = s2.37
+       x     = x.38
+       z     = verify(s1.36, <'int_cert', N.29, pkN.35, aN.31>, pkA.33)
+       z.1   = verify(s2.37, <'iss_cert', I.28, pkI.34, la.32, x.38>, pkN.35)
+    
+    2. I     = I.37
+       N     = N.38
+       aN    = aN.40
+       la    = la.41
+       pkA   = pk(x.71)
+       pkI   = pkI.43
+       pkN   = pkN.44
+       s1    = sign(<'int_cert', N.38, pkN.44, aN.40>, x.71)
+       s2    = s2.46
+       x     = x.47
+       z     = true
+       z.1   = verify(s2.46, <'iss_cert', I.37, pkI.43, la.41, x.47>, pkN.44)
+    
+    3. I     = I.40
+       N     = N.41
+       aN    = aN.43
+       la    = la.44
+       pkA   = pkA.45
+       pkI   = pkI.46
+       pkN   = pk(x.77)
+       s1    = s1.48
+       s2    = sign(<'iss_cert', I.40, pkI.46, la.44, x.50>, x.77)
+       x     = x.50
+       z     = verify(s1.48, <'int_cert', N.41, pk(x.77), aN.43>, pkA.45)
+       z.1   = true
+    
+    4. I     = I.40
+       N     = N.41
+       aN    = aN.43
+       la    = la.44
+       pkA   = pk(x.75)
+       pkI   = pkI.46
+       pkN   = pk(x.77)
+       s1    = sign(<'int_cert', N.41, pk(x.77), aN.43>, x.75)
+       s2    = sign(<'iss_cert', I.40, pkI.46, la.44, x.50>, x.77)
+       x     = x.50
+       z     = true
+       z.1   = true
+  */
+
+rule (modulo E) Leaf_Classical:
+   [ VCert( I, pkI, 'cl', x, N, e1, e2 ), In( <<'cred', I, c>, s> ) ]
+  --[
+  Eq( verify(s, <'cred', I, c>, pkI), true ), NoPolicy( $V, I ),
+  UsedIssuer( $V, I, N ), UseClKey( I ), Accept( $V, I, c ),
+  AcceptClassical( $V, I, c )
+  ]->
+   [ ]
+
+  /*
+  rule (modulo AC) Leaf_Classical:
+     [ VCert( I, pkI, 'cl', x, N, e1, e2 ), In( <<'cred', I, c>, s> ) ]
+    --[
+    Eq( z, true ), NoPolicy( $V, I ), UsedIssuer( $V, I, N ), UseClKey( I ),
+    Accept( $V, I, c ), AcceptClassical( $V, I, c )
+    ]->
+     [ ]
+    variants (modulo AC)
+    1. I     = I.20
+       c     = c.22
+       pkI   = pkI.25
+       s     = s.26
+       z     = verify(s.26, <'cred', I.20, c.22>, pkI.25)
+    
+    2. I     = I.30
+       c     = c.32
+       pkI   = pk(x.57)
+       s     = sign(<'cred', I.30, c.32>, x.57)
+       z     = true
+  */
+
+rule (modulo E) Leaf_PQ:
+   [ VCert( I, pkI, 'pq', x, N, e1, e2 ), In( <<'cred', I, c>, s> ) ]
+  --[
+  Eq( verify(s, <'cred', I, c>, pkI), true ), UsedIssuer( $V, I, N ),
+  Accept( $V, I, c ), AcceptPQ( $V, I, c ), EdgeAlg( $V, I, c, e1 ),
+  EdgeAlg( $V, I, c, e2 )
+  ]->
+   [ SawCert( $V, I, x, N ) ]
+
+  /*
+  rule (modulo AC) Leaf_PQ:
+     [ VCert( I, pkI, 'pq', x, N, e1, e2 ), In( <<'cred', I, c>, s> ) ]
+    --[
+    Eq( z, true ), UsedIssuer( $V, I, N ), Accept( $V, I, c ),
+    AcceptPQ( $V, I, c ), EdgeAlg( $V, I, c, e1 ), EdgeAlg( $V, I, c, e2 )
+    ]->
+     [ SawCert( $V, I, x, N ) ]
+    variants (modulo AC)
+    1. I     = I.20
+       c     = c.22
+       pkI   = pkI.25
+       s     = s.26
+       z     = verify(s.26, <'cred', I.20, c.22>, pkI.25)
+    
+    2. I     = I.30
+       c     = c.32
+       pkI   = pk(x.57)
+       s     = sign(<'cred', I.30, c.32>, x.57)
+       z     = true
+  */
+
+rule (modulo E) Learn_Reddy:
+   [ SawCert( V, I, 'pqchc', N ) ]
+  --[ SeenPQReq( V, I ), CachedIssuer( V, I, N ) ]->
+   [ ]
+
+  /* has exactly the trivial AC variant */
+
+lemma executable:
+  exists-trace
+  "∃ V I c #m #j.
+    ((Migrate( I ) @ #m) ∧ (AcceptPQ( V, I, c ) @ #j)) ∧ (#m < #j)"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ V I c #m #j.
+  (Migrate( I ) @ #m) ∧ (AcceptPQ( V, I, c ) @ #j) ∧ #m < #j"
+*/
+by sorry
+
+lemma executable_legacy:
+  exists-trace
+  "∃ V L c #l #j. (Legacy( L ) @ #l) ∧ (AcceptClassical( V, L, c ) @ #j)"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ V L c #l #j. (Legacy( L ) @ #l) ∧ (AcceptClassical( V, L, c ) @ #j)"
+*/
+by sorry
+
+lemma executable_pre_migration:
+  exists-trace
+  "∃ V I c #s #j.
+    ((MigratingIssuer( I ) @ #s) ∧ (AcceptClassical( V, I, c ) @ #j)) ∧
+    (¬(∃ #m. Migrate( I ) @ #m))"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ V I c #s #j.
+  (MigratingIssuer( I ) @ #s) ∧ (AcceptClassical( V, I, c ) @ #j)
+ ∧
+  ∀ #m. (Migrate( I ) @ #m) ⇒ ⊥"
+*/
+by sorry
+
+lemma executable_lifecycle:
+  exists-trace
+  "∃ V I c #m #s #j.
+    (((Migrate( I ) @ #m) ∧ (Sunset( I ) @ #s)) ∧
+     (AcceptPQ( V, I, c ) @ #j)) ∧
+    (#s < #j)"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ V I c #m #s #j.
+  (Migrate( I ) @ #m) ∧ (Sunset( I ) @ #s) ∧ (AcceptPQ( V, I, c ) @ #j)
+ ∧
+  #s < #j"
+*/
+by sorry
+
+lemma executable_learn:
+  exists-trace "∃ V I #k. SeenPQReq( V, I ) @ #k"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ V I #k. (SeenPQReq( V, I ) @ #k)"
+*/
+simplify
+solve( SawCert( V, I, 'pqchc', N ) ▶₀ #k )
+  case Leaf_PQ_case_2
+  solve( !KU( sign(<'iss_cert', I, pk(x), 'pq', 'pqchc'>, ~kr) ) @ #vk.16 )
+    case c_sign
+    solve( !KU( ~kr ) @ #vk.17 )
+      case CRQC_Break_Classical_Anchor
+      solve( !KU( sign(<'cred', I, c>, x) ) @ #vk.11 )
+        case c_sign
+        solve( !KU( pk(x) ) @ #vk.14 )
+          case ClassicalRoot_Setup
+          SOLVED // trace found
+        qed
+      qed
+    qed
+  qed
+qed
+
+lemma attack_needs_crqc:
+  all-traces
+  "∀ V I c #m #j.
+    (((Migrate( I ) @ #m) ∧ (Accept( V, I, c ) @ #j)) ∧ (#m < #j)) ⇒
+    ((∃ #i. (Issued( I, c ) @ #i) ∧ (#i < #j)) ∨
+     (∃ k #b. (Broken( k ) @ #b) ∧ (#b < #j)))"
+/*
+guarded formula characterizing all counter-examples:
+"∃ V I c #m #j.
+  (Migrate( I ) @ #m) ∧ (Accept( V, I, c ) @ #j)
+ ∧
+  (#m < #j) ∧
+  (∀ #i. (Issued( I, c ) @ #i) ⇒ ¬(#i < #j)) ∧
+  (∀ k #b. (Broken( k ) @ #b) ⇒ ¬(#b < #j))"
+*/
+by sorry
+
+lemma G1_claims_unforgeability:
+  all-traces
+  "∀ V I c #m #j.
+    (((Migrate( I ) @ #m) ∧ (Accept( V, I, c ) @ #j)) ∧ (#m < #j)) ⇒
+    (∃ #i. (Issued( I, c ) @ #i) ∧ (#i < #j))"
+/*
+guarded formula characterizing all counter-examples:
+"∃ V I c #m #j.
+  (Migrate( I ) @ #m) ∧ (Accept( V, I, c ) @ #j)
+ ∧
+  (#m < #j) ∧ (∀ #i. (Issued( I, c ) @ #i) ⇒ ¬(#i < #j))"
+*/
+by sorry
+
+lemma G1_learned:
+  all-traces
+  "∀ V I c #k #j.
+    (((SeenPQReq( V, I ) @ #k) ∧ (Accept( V, I, c ) @ #j)) ∧ (#k < #j)) ⇒
+    (∃ #i. (Issued( I, c ) @ #i) ∧ (#i < #j))"
+/*
+guarded formula characterizing all counter-examples:
+"∃ V I c #k #j.
+  (SeenPQReq( V, I ) @ #k) ∧ (Accept( V, I, c ) @ #j)
+ ∧
+  (#k < #j) ∧ (∀ #i. (Issued( I, c ) @ #i) ⇒ ¬(#i < #j))"
+*/
+by sorry
+
+lemma G1_learned_pq:
+  all-traces
+  "∀ V I c #k #j.
+    (((SeenPQReq( V, I ) @ #k) ∧ (AcceptPQ( V, I, c ) @ #j)) ∧ (#k < #j)) ⇒
+    (∃ #i. (Issued( I, c ) @ #i) ∧ (#i < #j))"
+/*
+guarded formula characterizing all counter-examples:
+"∃ V I c #k #j.
+  (SeenPQReq( V, I ) @ #k) ∧ (AcceptPQ( V, I, c ) @ #j)
+ ∧
+  (#k < #j) ∧ (∀ #i. (Issued( I, c ) @ #i) ⇒ ¬(#i < #j))"
+*/
+by sorry
+
+lemma no_rollback_path:
+  all-traces
+  "∀ V I c #k #j.
+    ((((SeenPQReq( V, I ) @ #k) ∧ (AcceptPQ( V, I, c ) @ #j)) ∧
+      (EdgeAlg( V, I, c, 'cl' ) @ #j)) ∧
+     (#k < #j)) ⇒
+    (⊥)"
+/*
+guarded formula characterizing all counter-examples:
+"∃ V I c #k #j.
+  (SeenPQReq( V, I ) @ #k) ∧
+  (AcceptPQ( V, I, c ) @ #j) ∧
+  (EdgeAlg( V, I, c, 'cl' ) @ #j)
+ ∧
+  #k < #j"
+*/
+by sorry
+
+lemma M_downgrade_s1:
+  exists-trace
+  "∃ V I c #m #j.
+    (((Migrate( I ) @ #m) ∧ (AcceptClassical( V, I, c ) @ #j)) ∧ (#m < #j)) ∧
+    (¬(∃ #q. QdayEv( ) @ #q))"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ V I c #m #j.
+  (Migrate( I ) @ #m) ∧ (AcceptClassical( V, I, c ) @ #j)
+ ∧
+  (#m < #j) ∧ (∀ #q. (QdayEv( ) @ #q) ⇒ ⊥)"
+*/
+by sorry
+
+lemma M_forgery_crqc:
+  exists-trace
+  "∃ V I c k #m #j #b.
+    ((((Migrate( I ) @ #m) ∧ (Accept( V, I, c ) @ #j)) ∧ (#m < #j)) ∧
+     (Broken( k ) @ #b)) ∧
+    (¬(∃ #i. Issued( I, c ) @ #i))"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ V I c k #m #j #b.
+  (Migrate( I ) @ #m) ∧ (Accept( V, I, c ) @ #j) ∧ (Broken( k ) @ #b)
+ ∧
+  (#m < #j) ∧ (∀ #i. (Issued( I, c ) @ #i) ⇒ ⊥)"
+*/
+by sorry
+
+/* All wellformedness checks were successful. */
+
+/*
+Generated from:
+Tamarin version 1.12.0
+Maude version 3.5.1
+Git revision: 82780bbaf3328a45f624ddb41e51bf75425f851c (with uncommited changes), branch: master
+Compiled at: 2026-03-07 14:22:39.174278293 UTC
+*/
+
+end
+
+==============================================================================
+summary of summaries:
+
+analyzed: /work/modeller/M_h.spthy
+
+  processing time: 3.03s
+  
+  G5_untimed (all-traces): analysis incomplete (1 steps)
+  G5_migrated (all-traces): analysis incomplete (1 steps)
+  G5_timed (all-traces): analysis incomplete (1 steps)
+  no_rollback (all-traces): analysis incomplete (1 steps)
+  first_contact_downgrade (exists-trace): analysis incomplete (1 steps)
+  executable (exists-trace): analysis incomplete (1 steps)
+  executable_legacy (exists-trace): analysis incomplete (1 steps)
+  executable_pre_migration (exists-trace): analysis incomplete (1 steps)
+  executable_lifecycle (exists-trace): analysis incomplete (1 steps)
+  executable_learn (exists-trace): verified (7 steps)
+  attack_needs_crqc (all-traces): analysis incomplete (1 steps)
+  G1_claims_unforgeability (all-traces): analysis incomplete (1 steps)
+  G1_learned (all-traces): analysis incomplete (1 steps)
+  G1_learned_pq (all-traces): analysis incomplete (1 steps)
+  no_rollback_path (all-traces): analysis incomplete (1 steps)
+  M_downgrade_s1 (exists-trace): analysis incomplete (1 steps)
+  M_forgery_crqc (exists-trace): analysis incomplete (1 steps)
+
+==============================================================================

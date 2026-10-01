@@ -1,0 +1,18 @@
+# hedef=JOSE-001 imaj=pq-a09-env-dotnet:1.0 (sha256:4f1b25cf1a6e359c5719da979e1c4e3e16f8a9f1ec6cc3c0e4232c7d146771e6) baslangic=2026-09-25T13:18:47Z zaman_asimi=1500s
+# komut: docker run --rm --name pq-a09-ortam-jose-001 --label pq.agir=derleme --memory=6g --memory-swap=6g -v hedefler/JOSE-001:/w -v betikler/konteyner:/b:ro pq-a09-env-dotnet:1.0 sh -c '(bash|sh) /w/kur.sh'
+== dotnet restore (kilit dosyasıyla)
+  Determining projects to restore...
+  Restored /tmp/p/Deneme.csproj (in 2.51 sec).
+== dotnet build + çalıştır
+  Deneme -> /tmp/p/bin/Release/net10.0/Deneme.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:01.60
+derleme=System.IdentityModel.Tokens.Jwt 8.23.0.0 tip_yuklendi=20 tip_yuklenemedi=0
+capa_tip System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler OK
+ad_eslesen_tipler (Valid|Verif; bilgi): 
+== SONUC: basarili
+# cikis_kodu=0 sure_s=6 bitis=2026-09-25T13:18:53Z

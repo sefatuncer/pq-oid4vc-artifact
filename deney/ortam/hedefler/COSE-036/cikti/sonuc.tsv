@@ -1,0 +1,16 @@
+baslangic	2026-09-25T19:26:35Z
+hedef	COSE-036
+ekosistem	kaynak (git) + make
+paket	wolfcose
+istenen_surum	git:f907071b10127f3ae2dd7719749a91b039ff04a1
+arac	gcc (GCC) 15.3.0; wolfSSL v5.9.2-stable
+not	wolfSSL v5.9.2-stable (ac01707f552c611fbd135cc723b2682b3e7f80f2) bayrakları: --enable-ecc --enable-ed25519 --enable-ed448 --enable-curve25519 --enable-aesgcm --enable-aesccm --enable-sha384 --enable-sha512 --enable-keygen --enable-rsapss --enable-chacha --enable-poly1305 --enable-mldsa --enable-lms --enable-hkdf --enable-aeskeywrap
+commit	f907071b10127f3ae2dd7719749a91b039ff04a1
+commit_kaynagi	git checkout (CERCEVE son_commit_sha)
+paket_ozeti	git-tree:78dd09da969fca6b067de1ea7916ff7ccc9d34d5
+kurulan_surum	git:f907071b1012
+kilit_dosyasi	yok (kaynak; wolfSSL etiket+commit ve wolfCOSE commit sabit)
+kilit_sha256	f826574ce2838835eb6cafcbf79ba9d5ee23aa47967e8852c492b163c9d98bf2 (libwolfcose.a; yeniden üretilebilirlik iddia edilmez)
+lisans_kayit	                    GNU GENERAL PUBLIC LICENSE              
+ice_aktar	basarili
+bitis	2026-09-25T19:27:20Z

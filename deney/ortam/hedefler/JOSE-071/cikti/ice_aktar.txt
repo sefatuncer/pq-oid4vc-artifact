@@ -1,0 +1,2 @@
+paket=lcobucci/jwt sinif_yuklendi=72 sinif_yuklenemedi=0
+anahtar_sinif Lcobucci\JWT\Validation\Validator OK

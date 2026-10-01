@@ -1,0 +1,112 @@
+{
+ "a5": {
+  "asgari_kume_asp": 964,
+  "asgari_kume_z3": 964,
+  "cegar_toplam": 0,
+  "esit": 964,
+  "fark": 0,
+  "ilk_farklar": [],
+  "sorgu": 964,
+  "z3_duvar_s": 0.93,
+  "z3_en_uzun_s": 0.0558
+ },
+ "birincil": {
+  "asgari_kume_asp": 279,
+  "asgari_kume_z3": 279,
+  "cegar_toplam": 0,
+  "esit": 675,
+  "fark": 0,
+  "ilk_farklar": [],
+  "sorgu": 675,
+  "z3_duvar_s": 0.46,
+  "z3_en_uzun_s": 0.069
+ },
+ "cab": {
+  "asgari_kume_asp": 1116,
+  "asgari_kume_z3": 1116,
+  "cegar_toplam": 0,
+  "esit": 4725,
+  "fark": 0,
+  "ilk_farklar": [],
+  "sorgu": 4725,
+  "z3_duvar_s": 4.14,
+  "z3_en_uzun_s": 0.1991
+ },
+ "h": {
+  "asgari_kume_asp": 249,
+  "asgari_kume_z3": 249,
+  "cegar_toplam": 37,
+  "esit": 115,
+  "fark": 0,
+  "ilk_farklar": [],
+  "sorgu": 115,
+  "z3_duvar_s": 1.42,
+  "z3_en_uzun_s": 1.2364
+ },
+ "h1": {
+  "asgari_kume_asp": 7434,
+  "asgari_kume_z3": 7434,
+  "cegar_toplam": 0,
+  "esit": 10125,
+  "fark": 0,
+  "ilk_farklar": [],
+  "sorgu": 10125,
+  "z3_duvar_s": 10.7,
+  "z3_en_uzun_s": 0.1943
+ },
+ "h2": {
+  "asgari_kume_asp": 1140,
+  "asgari_kume_z3": 1140,
+  "cegar_toplam": 0,
+  "esit": 2700,
+  "fark": 0,
+  "ilk_farklar": [],
+  "sorgu": 2700,
+  "z3_duvar_s": 2.48,
+  "z3_en_uzun_s": 0.0909
+ },
+ "h4": {
+  "asgari_kume_asp": 73,
+  "asgari_kume_z3": 73,
+  "cegar_toplam": 0,
+  "esit": 89,
+  "fark": 0,
+  "ilk_farklar": [],
+  "sorgu": 89,
+  "z3_duvar_s": 0.2,
+  "z3_en_uzun_s": 0.0513
+ },
+ "h5": {
+  "asgari_kume_asp": 255,
+  "asgari_kume_z3": 255,
+  "cegar_toplam": 0,
+  "esit": 675,
+  "fark": 0,
+  "ilk_farklar": [],
+  "sorgu": 675,
+  "z3_duvar_s": 0.68,
+  "z3_en_uzun_s": 0.0796
+ },
+ "oat": {
+  "asgari_kume_asp": 68142,
+  "asgari_kume_z3": 68142,
+  "cegar_toplam": 4668,
+  "esit": 31050,
+  "fark": 0,
+  "ilk_farklar": [],
+  "sorgu": 31050,
+  "z3_duvar_s": 252.46,
+  "z3_en_uzun_s": 201.8478
+ },
+ "tau": {
+  "asgari_kume_asp": 639,
+  "asgari_kume_z3": 639,
+  "cegar_toplam": 0,
+  "esit": 1575,
+  "fark": 0,
+  "ilk_farklar": [],
+  "sorgu": 1575,
+  "z3_duvar_s": 1.7,
+  "z3_en_uzun_s": 0.1547
+ }
+}

@@ -1,0 +1,15 @@
+kosu	mutasyon	kat_spec_6	temel	motor	asp_sabitler	tamarin_bayraklari	tamarin_lemma	beklenen
+MUT01.K1-04.asp	MUT01	COMPLETENESS -> ANYVALID	K1-04	asp	kat_asama(r3). kat_politika(anyvalid). kat_now(100). kat_qday(0). kat_tau(10). kat_tekduze(0). kat_ust_sinif(pq). kat_ek_capa(0).	-	-	SALDIRI
+MUT01.K1-11.asp	MUT01	COMPLETENESS -> ANYVALID	K1-11	asp	kat_asama(dds). kat_politika(anyvalid). kat_now(100). kat_qday(0). kat_tau(10). kat_tekduze(0). kat_ust_sinif(pq). kat_ek_capa(0).	-	-	SALDIRI
+MUT01.K1-04.tam	MUT01	COMPLETENESS -> ANYVALID	K1-04	tamarin	-	DS_PQ,DK3_USABLE,ANYVALID	a_rrset_authentic	falsified
+MUT01.K1-11.tam	MUT01	COMPLETENESS -> ANYVALID	K1-11	tamarin	-	DS_BOTH,DK3_USABLE,ANYVALID	a_rrset_authentic	falsified
+MUT02.K1-04.asp	MUT02	DS imza denetimini (Eq(verify(sds,...))) sil	K1-04	asp	kat_asama(r3). kat_politika(required). kat_now(100). kat_qday(0). kat_tau(10). kat_tekduze(0). kat_ust_sinif(pq). kat_ek_capa(0). kat_mutasyon(ds_imza_denetimi_yok).	-	-	SALDIRI
+MUT02.K1-04.tam	MUT02	DS imza denetimini (Eq(verify(sds,...))) sil	K1-04	tamarin	-	DS_PQ,DK3_USABLE,COMPLETENESS,MUT_NO_DS_SIG	a_rrset_authentic	falsified
+MUT03.K1-04.asp	MUT03	Eq(dq, pkq) (DS–KSK eşleşmesi) sil	K1-04	asp	kat_asama(r3). kat_politika(required). kat_now(100). kat_qday(0). kat_tau(10). kat_tekduze(0). kat_ust_sinif(pq). kat_ek_capa(0). kat_mutasyon(ds_ksk_eslesmesi_yok).	-	-	SALDIRI
+MUT03.K1-04.tam	MUT03	Eq(dq, pkq) (DS–KSK eşleşmesi) sil	K1-04	tamarin	-	DS_PQ,DK3_USABLE,COMPLETENESS,MUT_NO_DS_KSK_MATCH	a_rrset_authentic	falsified
+MUT04.K1-06.asp	MUT04	MONOTONE / monotone=1 kaldır	K1-06	asp	kat_asama(r3). kat_politika(required). kat_now(50). kat_qday(0). kat_tau(10). kat_tekduze(0). kat_ust_sinif(pq). kat_ek_capa(0).	-	-	SALDIRI
+MUT04.K1-08.asp	MUT04	MONOTONE / monotone=1 kaldır	K1-08	asp	kat_asama(r5). kat_politika(anyvalid). kat_now(100). kat_qday(0). kat_tau(10). kat_tekduze(0). kat_ust_sinif(pq). kat_ek_capa(0).	-	-	SALDIRI
+MUT04.K1-06.tam	MUT04	MONOTONE / monotone=1 kaldır	K1-06	tamarin	-	DS_PQ,OLD_DS_REPLAY,DK3_USABLE,COMPLETENESS	a_rrset_authentic	falsified
+MUT04.K1-08.tam	MUT04	MONOTONE / monotone=1 kaldır	K1-08	tamarin	-	DS_PQ,DK3_USABLE,DK5,ANYVALID	a_rrset_authentic	falsified
+MUT05.K1-09.asp	MUT05	eski sürüm geçerliliğini uzat (Exp=∞)	K1-09	asp	kat_asama(r5). kat_politika(anyvalid). kat_now(150). kat_qday(0). kat_tau(10). kat_tekduze(0). kat_ust_sinif(pq). kat_ek_capa(0). kat_mutasyon(eski_surum_suresiz).	-	-	SALDIRI
+MUT05.K1-09.tam	MUT05	eski sürüm geçerliliğini uzat (Exp=∞)	K1-09	tamarin	-	DS_PQ,DK3_USABLE,DK5,ANYVALID	a_rrset_authentic	falsified

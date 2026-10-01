@@ -1,0 +1,38 @@
+# hedef=JOSE-084 imaj=pq-a09-env-python:1.0 (sha256:94dbdfc9282786cc2304d9bc08f951c078d22fb18e03c5055745d627e9fa3b9c) baslangic=2026-09-25T12:39:38Z zaman_asimi=900s
+# komut: docker run --rm --name pq-a09-ortam-jose-084 --label pq.agir=derleme --memory=6g --memory-swap=6g -v hedefler/JOSE-084:/w -v betikler/konteyner:/b:ro pq-a09-env-python:1.0 bash /w/kur.sh
+== pip install python-jose[cryptography]==3.5.0
+Collecting python-jose==3.5.0 (from python-jose[cryptography]==3.5.0)
+  Downloading python_jose-3.5.0-py2.py3-none-any.whl.metadata (5.5 kB)
+Collecting ecdsa!=0.15 (from python-jose==3.5.0->python-jose[cryptography]==3.5.0)
+  Downloading ecdsa-0.19.2-py2.py3-none-any.whl.metadata (29 kB)
+Collecting rsa!=4.1.1,!=4.4,<5.0,>=4.0 (from python-jose==3.5.0->python-jose[cryptography]==3.5.0)
+  Downloading rsa-4.9.1-py3-none-any.whl.metadata (5.6 kB)
+Collecting pyasn1>=0.5.0 (from python-jose==3.5.0->python-jose[cryptography]==3.5.0)
+  Downloading pyasn1-0.6.4-py3-none-any.whl.metadata (8.4 kB)
+Collecting cryptography>=3.4.0 (from python-jose[cryptography]==3.5.0)
+  Downloading cryptography-50.0.1-cp311-abi3-manylinux_2_34_x86_64.whl.metadata (4.3 kB)
+Collecting cffi>=2.0.0 (from cryptography>=3.4.0->python-jose[cryptography]==3.5.0)
+  Downloading cffi-2.1.1-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.5 kB)
+Collecting pycparser (from cffi>=2.0.0->cryptography>=3.4.0->python-jose[cryptography]==3.5.0)
+  Downloading pycparser-3.0-py3-none-any.whl.metadata (8.2 kB)
+Collecting six>=1.9.0 (from ecdsa!=0.15->python-jose==3.5.0->python-jose[cryptography]==3.5.0)
+  Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+Downloading python_jose-3.5.0-py2.py3-none-any.whl (34 kB)
+Downloading rsa-4.9.1-py3-none-any.whl (34 kB)
+Downloading cryptography-50.0.1-cp311-abi3-manylinux_2_34_x86_64.whl (4.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.7/4.7 MB 8.4 MB/s  0:00:00
+Downloading cffi-2.1.1-cp313-cp313-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (221 kB)
+Downloading ecdsa-0.19.2-py2.py3-none-any.whl (150 kB)
+Downloading pyasn1-0.6.4-py3-none-any.whl (84 kB)
+Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+Downloading pycparser-3.0-py3-none-any.whl (48 kB)
+Installing collected packages: six, pycparser, pyasn1, rsa, ecdsa, cffi, python-jose, cryptography
+
+Successfully installed cffi-2.1.1 cryptography-50.0.1 ecdsa-0.19.2 pyasn1-0.6.4 pycparser-3.0 python-jose-3.5.0 rsa-4.9.1 six-1.17.0
+ORTAM cryptography 50.0.1; gömülü OpenSSL 4.0.2 25 Aug 2026; mldsa_modulu=var
+== içe aktarma kontrolü (imza doğrulama YOK)
+modul=jose (python-jose) yuklendi; surum=3.5.0
+sembol jws.verify True ; jwt.decode True
+secilen arka uc: ECKey=jose.backends.cryptography_backend RSAKey=jose.backends.cryptography_backend
+== SONUC: basarili
+# cikis_kodu=0 sure_s=14 bitis=2026-09-25T12:39:52Z

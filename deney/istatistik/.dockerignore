@@ -1,0 +1,8 @@
+**/__pycache__
+**/*.pyc
+sonuclar
+kayit
+kaynak
+*.md
+SHA256SUMS
+tumunu_calistir.sh

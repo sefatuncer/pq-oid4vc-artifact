@@ -1,0 +1,17 @@
+baslangic	2026-09-25T13:08:16Z
+hedef	_bilgi-COSE-035-HEAD
+ekosistem	packagist
+paket	web-auth/cose-lib
+istenen_surum	4.9.x-dev#1c854bf63c5cd8d872d1e57ec7b891030f4ed314
+arac	PHP 8.4.26 ; Composer version 2.10.3; php-openssl OpenSSL 3.5.8 25 Aug 2026
+kilit_dosyasi	composer.lock
+kilit_sha256	242305d44095613c04735b5024b041e8af0bff5c1448847b9687b23ced81fc7b
+bagimlilik_sayisi	6
+kurulan_surum	4.9.x-dev
+commit	1c854bf63c5cd8d872d1e57ec7b891030f4ed314
+commit_kaynagi	composer.lock dist.reference
+lisans_kayit	MIT
+paket_ozeti	sha256:29f9c6bd64fe72c8cd44aac90cff28bf4559ee470633d31f537d0155d5723a91 (Packagist dist zip)
+not	ek paket (ortam düzeltmesi): spomky-labs/cbor-php:^3.4
+ice_aktar	basarili
+bitis	2026-09-25T13:08:18Z

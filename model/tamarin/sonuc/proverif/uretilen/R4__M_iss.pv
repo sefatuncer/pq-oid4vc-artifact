@@ -1,0 +1,49 @@
+(* =====================================================================
+   PQ-OID4VC | Adım 5A | ProVerif ikinci görüş — R4 WSCD (Tamarin: R4_wscd.spthy)
+   One credential binding device key d (cnf); it becomes public only through
+   presentations (harvest). Holder and verifier run in both phases. In phase 1
+   the device key leaks unless DEV_PQ and the issuer key leaks unless ISS_PQ.
+   (One top-level credential instead of Tamarin's unbounded issuance: phase
+   instructions are kept out of replicated processes.)
+   Queries in order: executable (reachability), G2_presentation_unforgeability
+   ===================================================================== *)
+free c: channel.
+type skey.
+type pkey.
+fun pk(skey): pkey.
+fun sign(bitstring, skey): bitstring.
+reduc forall m: bitstring, k: skey; verify(sign(m, k), m, pk(k)) = true.
+
+free cred_tag, kb_tag, nonce_tag, issA: bitstring.
+
+event Presented(pkey, bitstring).
+event AcceptPres(bitstring, bitstring, pkey, bitstring).
+
+query i: bitstring, x: bitstring, pkd: pkey, n: bitstring; event(AcceptPres(i, x, pkd, n)).
+query i: bitstring, x: bitstring, pkd: pkey, n: bitstring;
+      event(AcceptPres(i, x, pkd, n)) ==> event(Presented(pkd, n)).
+
+let Holder(cb: bitstring, cs: bitstring, d: skey) =
+  in(c, (=nonce_tag, n: bitstring));
+  event Presented(pk(d), n);
+  out(c, ((cb, cs), ((kb_tag, n, cb), sign((kb_tag, n, cb), d)))).
+
+let Verifier(pkI: pkey) =
+  new n: bitstring;
+  out(c, (nonce_tag, n));
+  in(c, (((=cred_tag, i: bitstring, x: bitstring, pkd: pkey), s1: bitstring),
+         ((=kb_tag, =n, cb2: bitstring), s2: bitstring)));
+  if cb2 = (cred_tag, i, x, pkd) then
+  if verify(s1, (cred_tag, i, x, pkd), pkI) = true then
+  if verify(s2, (kb_tag, n, cb2), pkd) = true then
+  event AcceptPres(i, x, pkd, n).
+
+process
+  new skI: skey; new d: skey; new claims: bitstring;
+  let cb = (cred_tag, issA, claims, pk(d)) in
+  let cs = sign(cb, skI) in
+  out(c, pk(skI));
+  ( (!Holder(cb, cs, d)) | (!Verifier(pk(skI)))
+  | (phase 1; (
+      out(c, skI) |
+      (!Holder(cb, cs, d)) | (!Verifier(pk(skI))) )) )

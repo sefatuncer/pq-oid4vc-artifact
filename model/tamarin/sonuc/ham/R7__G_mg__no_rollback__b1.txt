@@ -1,0 +1,381 @@
+maude tool: 'maude'
+ checking version: 3.5.1. OK.
+ checking installation: OK.
+[Theory R7_Monotone] Theory loaded
+[Theory R7_Monotone] Theory translated
+[Theory R7_Monotone] Derivation checks started
+[Theory R7_Monotone] Derivation checks ended
+[Theory R7_Monotone] Theory closed
+theory R7_Monotone
+
+begin
+
+// Function signature and definition of the equational theory E
+
+functions: fst/1, pair/2, pk/1, sign/2, snd/1, true/0, verify/3
+equations:
+    fst(<x.1, x.2>) = x.1,
+    snd(<x.1, x.2>) = x.2,
+    verify(sign(x.1, x.2), x.1, pk(x.2)) = true
+
+restriction Equality:
+  "∀ x y #i. (Eq( x, y ) @ #i) ⇒ (x = y)"
+  // safety formula
+
+  /*
+  expanded formula:
+  "∀ x y #i. (Eq( x, y ) @ #i) ⇒ (x = y)"
+  */
+
+restriction Inequality:
+  "∀ x #i. (NotEq( x, x ) @ #i) ⇒ (⊥)"
+  // safety formula
+
+  /*
+  expanded formula:
+  "∀ x #i. (NotEq( x, x ) @ #i) ⇒ (⊥)"
+  */
+
+restriction Unique:
+  "∀ x #i #j. ((Unique( x ) @ #i) ∧ (Unique( x ) @ #j)) ⇒ (#i = #j)"
+  // safety formula
+
+  /*
+  expanded formula:
+  "∀ x #i #j. ((Unique( x ) @ #i) ∧ (Unique( x ) @ #j)) ⇒ (#i = #j)"
+  */
+
+restriction SunsetAfterMigrate:
+  "∀ I #s. (Sunset( I ) @ #s) ⇒ (∃ #m. (Migrate( I ) @ #m) ∧ (#m < #s))"
+
+  /*
+  expanded formula:
+  "∀ I #s. (Sunset( I ) @ #s) ⇒ (∃ #m. (Migrate( I ) @ #m) ∧ (#m < #s))"
+  */
+
+restriction ReportNone:
+  "∀ X #r.
+    (StateIs( X, 'none' ) @ #r) ⇒ (¬(∃ #m. (Migrate( X ) @ #m) ∧ (#m < #r)))"
+  // safety formula
+
+  /*
+  expanded formula:
+  "∀ X #r.
+    (StateIs( X, 'none' ) @ #r) ⇒ (¬(∃ #m. (Migrate( X ) @ #m) ∧ (#m < #r)))"
+  */
+
+restriction ReportPQ:
+  "∀ X #r.
+    (StateIs( X, 'pq_required' ) @ #r) ⇒
+    ((∃ #m. (Migrate( X ) @ #m) ∧ (#m < #r)) ∧
+     (¬(∃ #s. (Sunset( X ) @ #s) ∧ (#s < #r))))"
+
+  /*
+  expanded formula:
+  "∀ X #r.
+    (StateIs( X, 'pq_required' ) @ #r) ⇒
+    ((∃ #m. (Migrate( X ) @ #m) ∧ (#m < #r)) ∧
+     (¬(∃ #s. (Sunset( X ) @ #s) ∧ (#s < #r))))"
+  */
+
+restriction ReportRetired:
+  "∀ X #r.
+    (StateIs( X, 'retired' ) @ #r) ⇒ (∃ #s. (Sunset( X ) @ #s) ∧ (#s < #r))"
+
+  /*
+  expanded formula:
+  "∀ X #r.
+    (StateIs( X, 'retired' ) @ #r) ⇒ (∃ #s. (Sunset( X ) @ #s) ∧ (#s < #r))"
+  */
+
+restriction ClassicalIssuanceUntilSunset:
+  "∀ X #i.
+    (IssueClassical( X ) @ #i) ⇒ (¬(∃ #s. (Sunset( X ) @ #s) ∧ (#s < #i)))"
+  // safety formula
+
+  /*
+  expanded formula:
+  "∀ X #i.
+    (IssueClassical( X ) @ #i) ⇒ (¬(∃ #s. (Sunset( X ) @ #s) ∧ (#s < #i)))"
+  */
+
+restriction PQIssuanceAfterMigrate:
+  "∀ X #i. (IssuePQ( X ) @ #i) ⇒ (∃ #m. (Migrate( X ) @ #m) ∧ (#m < #i))"
+
+  /*
+  expanded formula:
+  "∀ X #i. (IssuePQ( X ) @ #i) ⇒ (∃ #m. (Migrate( X ) @ #m) ∧ (#m < #i))"
+  */
+
+restriction Sticky:
+  "∀ V X c #k #j.
+    ((SeenPQReq( V, X ) @ #k) ∧ (AcceptClassical( V, X, c ) @ #j)) ⇒
+    (#j < #k)"
+  // safety formula
+
+  /*
+  expanded formula:
+  "∀ V X c #k #j.
+    ((SeenPQReq( V, X ) @ #k) ∧ (AcceptClassical( V, X, c ) @ #j)) ⇒
+    (#j < #k)"
+  */
+
+restriction ClassicalKeyExpiry:
+  "∀ X #j.
+    (UseClKey( X ) @ #j) ⇒ (¬(∃ #s. (Sunset( X ) @ #s) ∧ (#s < #j)))"
+  // safety formula
+
+  /*
+  expanded formula:
+  "∀ X #j.
+    (UseClKey( X ) @ #j) ⇒ (¬(∃ #s. (Sunset( X ) @ #s) ∧ (#s < #j)))"
+  */
+
+rule (modulo E) Qday:
+   [ ] --[ Unique( 'qday' ), QdayEv( ) ]-> [ !CRQC( ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) CRQC_Break_Issuer_Classical:
+   [ !IssCl( X, k ), !CRQC( ), In( pk(k) ) ]
+  --[ Broken( <'iss_cl', X> ) ]->
+   [ Out( k ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Migrating_Issuer_Setup:
+   [ Fr( ~kc ), Fr( ~kq ) ]
+  --[ Unique( <'iss', $I> ), MigratingIssuer( $I ) ]->
+   [
+   !IssCl( $I, ~kc ), !IssPQ( $I, ~kq ), !PinCl( $I, pk(~kc) ),
+   !PinPQ( $I, pk(~kq) ), Out( pk(~kc) ), Out( pk(~kq) )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Legacy_Issuer_Setup:
+   [ Fr( ~kc ) ]
+  --[ Unique( <'iss', $L> ), Legacy( $L ) ]->
+   [ !IssCl( $L, ~kc ), !PinCl( $L, pk(~kc) ), Out( pk(~kc) ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Migrate:
+   [ !IssPQ( I, kq ) ]
+  --[ Unique( <'migrate', I> ), Migrate( I ), StateChange( I ) ]->
+   [ ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Sunset:
+   [ !IssPQ( I, kq ) ]
+  --[ Unique( <'sunset', I> ), Sunset( I ), StateChange( I ) ]->
+   [ ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Issue_Classical:
+   [ !IssCl( X, kc ), Fr( ~c ) ]
+  --[ Issued( X, ~c ), IssueClassical( X ) ]->
+   [ Out( <<'cred', X, ~c, 'cl'>, sign(<'cred', X, ~c, 'cl'>, kc)> ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Issue_PQ:
+   [ !IssPQ( I, kq ), Fr( ~c ) ]
+  --[ Issued( I, ~c ), IssuePQ( I ) ]->
+   [ Out( <<'cred', I, ~c, 'pq'>, sign(<'cred', I, ~c, 'pq'>, kq)> ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Verify_PQ:
+   [ !PinPQ( I, pkq ), In( <<'cred', I, c, 'pq'>, s> ) ]
+  --[
+  Eq( verify(s, <'cred', I, c, 'pq'>, pkq), true ), AcceptPQ( $V, I, c ),
+  SeenPQReq( $V, I )
+  ]->
+   [ ]
+
+  /*
+  rule (modulo AC) Verify_PQ:
+     [ !PinPQ( I, pkq ), In( <<'cred', I, c, 'pq'>, s> ) ]
+    --[ Eq( z, true ), AcceptPQ( $V, I, c ), SeenPQReq( $V, I ) ]->
+     [ ]
+    variants (modulo AC)
+    1. I     = I.13
+       c     = c.14
+       pkq   = pkq.15
+       s     = s.16
+       z     = verify(s.16, <'cred', I.13, c.14, 'pq'>, pkq.15)
+    
+    2. I     = I.19
+       c     = c.20
+       pkq   = pk(x.35)
+       s     = sign(<'cred', I.19, c.20, 'pq'>, x.35)
+       z     = true
+  */
+
+rule (modulo E) Verify_Classical:
+   [ !PinCl( X, pkc ), In( <<'cred', X, c, 'cl'>, s> ) ]
+  --[
+  Eq( verify(s, <'cred', X, c, 'cl'>, pkc), true ), UseClKey( X ),
+  AcceptClassical( $V, X, c )
+  ]->
+   [ ]
+
+  /*
+  rule (modulo AC) Verify_Classical:
+     [ !PinCl( X, pkc ), In( <<'cred', X, c, 'cl'>, s> ) ]
+    --[ Eq( z, true ), UseClKey( X ), AcceptClassical( $V, X, c ) ]->
+     [ ]
+    variants (modulo AC)
+    1. X     = X.13
+       c     = c.14
+       pkc   = pkc.15
+       s     = s.16
+       z     = verify(s.16, <'cred', X.13, c.14, 'cl'>, pkc.15)
+    
+    2. X     = X.19
+       c     = c.20
+       pkc   = pk(x.35)
+       s     = sign(<'cred', X.19, c.20, 'cl'>, x.35)
+       z     = true
+  */
+
+lemma executable:
+  exists-trace
+  "∃ V I c #m #j. (Migrate( I ) @ #m) ∧ (AcceptPQ( V, I, c ) @ #j)"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ V I c #m #j. (Migrate( I ) @ #m) ∧ (AcceptPQ( V, I, c ) @ #j)"
+*/
+by sorry
+
+lemma executable_legacy:
+  exists-trace
+  "∃ V L c #l #j. (Legacy( L ) @ #l) ∧ (AcceptClassical( V, L, c ) @ #j)"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ V L c #l #j. (Legacy( L ) @ #l) ∧ (AcceptClassical( V, L, c ) @ #j)"
+*/
+by sorry
+
+lemma executable_pre_migration:
+  exists-trace
+  "∃ V I c #s #j.
+    ((MigratingIssuer( I ) @ #s) ∧ (AcceptClassical( V, I, c ) @ #j)) ∧
+    (¬(∃ #m. Migrate( I ) @ #m))"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ V I c #s #j.
+  (MigratingIssuer( I ) @ #s) ∧ (AcceptClassical( V, I, c ) @ #j)
+ ∧
+  ∀ #m. (Migrate( I ) @ #m) ⇒ ⊥"
+*/
+by sorry
+
+lemma executable_lifecycle:
+  exists-trace
+  "∃ V I c #m #s #j.
+    (((Migrate( I ) @ #m) ∧ (Sunset( I ) @ #s)) ∧
+     (AcceptPQ( V, I, c ) @ #j)) ∧
+    (#s < #j)"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ V I c #m #s #j.
+  (Migrate( I ) @ #m) ∧ (Sunset( I ) @ #s) ∧ (AcceptPQ( V, I, c ) @ #j)
+ ∧
+  #s < #j"
+*/
+by sorry
+
+lemma executable_learn:
+  exists-trace "∃ V I #k. SeenPQReq( V, I ) @ #k"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ V I #k. (SeenPQReq( V, I ) @ #k)"
+*/
+by sorry
+
+lemma G5_migrated:
+  all-traces
+  "∀ V I c #m #j.
+    (((Migrate( I ) @ #m) ∧ (AcceptClassical( V, I, c ) @ #j)) ∧ (#m < #j)) ⇒
+    (⊥)"
+/*
+guarded formula characterizing all counter-examples:
+"∃ V I c #m #j.
+  (Migrate( I ) @ #m) ∧ (AcceptClassical( V, I, c ) @ #j) ∧ #m < #j"
+*/
+by sorry
+
+lemma G5_timed:
+  all-traces
+  "∀ V I c #s #j.
+    (((Sunset( I ) @ #s) ∧ (AcceptClassical( V, I, c ) @ #j)) ∧ (#s < #j)) ⇒
+    (⊥)"
+/*
+guarded formula characterizing all counter-examples:
+"∃ V I c #s #j.
+  (Sunset( I ) @ #s) ∧ (AcceptClassical( V, I, c ) @ #j) ∧ #s < #j"
+*/
+by sorry
+
+lemma no_rollback:
+  all-traces
+  "∀ V I c #k #j.
+    (((SeenPQReq( V, I ) @ #k) ∧ (AcceptClassical( V, I, c ) @ #j)) ∧
+     (#k < #j)) ⇒
+    (⊥)"
+/*
+guarded formula characterizing all counter-examples:
+"∃ V I c #k #j.
+  (SeenPQReq( V, I ) @ #k) ∧ (AcceptClassical( V, I, c ) @ #j) ∧ #k < #j"
+*/
+simplify
+by contradiction /* cyclic */
+
+lemma first_contact_downgrade:
+  exists-trace
+  "∃ V I c #m #j.
+    (((Migrate( I ) @ #m) ∧ (AcceptClassical( V, I, c ) @ #j)) ∧ (#m < #j)) ∧
+    (¬(∃ #k. SeenPQReq( V, I ) @ #k))"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ V I c #m #j.
+  (Migrate( I ) @ #m) ∧ (AcceptClassical( V, I, c ) @ #j)
+ ∧
+  (#m < #j) ∧ (∀ #k. (SeenPQReq( V, I ) @ #k) ⇒ ⊥)"
+*/
+by sorry
+
+/* All wellformedness checks were successful. */
+
+/*
+Generated from:
+Tamarin version 1.12.0
+Maude version 3.5.1
+Git revision: 82780bbaf3328a45f624ddb41e51bf75425f851c (with uncommited changes), branch: master
+Compiled at: 2026-03-07 14:22:39.174278293 UTC
+*/
+
+end
+
+==============================================================================
+summary of summaries:
+
+analyzed: /work/modeller/R7_monotone.spthy
+
+  processing time: 0.46s
+  
+  executable (exists-trace): analysis incomplete (1 steps)
+  executable_legacy (exists-trace): analysis incomplete (1 steps)
+  executable_pre_migration (exists-trace): analysis incomplete (1 steps)
+  executable_lifecycle (exists-trace): analysis incomplete (1 steps)
+  executable_learn (exists-trace): analysis incomplete (1 steps)
+  G5_migrated (all-traces): analysis incomplete (1 steps)
+  G5_timed (all-traces): analysis incomplete (1 steps)
+  no_rollback (all-traces): verified (2 steps)
+  first_contact_downgrade (exists-trace): analysis incomplete (1 steps)
+
+==============================================================================

@@ -1,0 +1,56 @@
+id,depo_url,son_surum,etiket,etiket_commit,son_commit_sha,etiket_eq_head,aday_etiketler,not_
+JOSE-065,https://github.com/auth0/node-jsonwebtoken,9.0.3,v9.0.3,ed59e76ea37a80f54b833668c02a5271984dcba3,b924272f29192e12926b5414546f7c5bfcc9579d,hayir,v9.0.3,
+JOSE-055,https://github.com/jwtk/jjwt,0.13.0,0.13.0,a757addce04f6b6d8086beeee8dafcf670550a5b,fb71496164c71442d08adec4571d9616ed5e1b8d,hayir,0.13.0,
+JOSE-083,https://github.com/jpadilla/pyjwt,2.15.0,2.15.0,1d41a6478e1562e68ff667fcd703356acf085f68,1d41a6478e1562e68ff667fcd703356acf085f68,evet,2.15.0,
+JOSE-070,https://github.com/firebase/php-jwt,v7.2.0,v7.2.0,f502cdbf279cd7532060b041f7c22a05208c0b93,f502cdbf279cd7532060b041f7c22a05208c0b93,evet,v7.2.0,
+JOSE-033,https://github.com/golang-jwt/jwt,v5.3.1,v5.3.1,7ceae619e739dc8a7bf577214aa8ebf26668e9db,73c870b18e68b6e654b2b03f485aa3c9fab32cea,hayir,v5.3.1,
+JOSE-034,https://github.com/dvsekhvalnov/jose2go,v1.11.0,v1.11.0,f18fd18d33eebaab5b2b2b8a8ebfb63e0290c359,84aab69306da1e050ff6c53499ee883ef1d61f21,hayir,v1.11.0,
+JOSE-009,https://github.com/panva/jose,6.2.12,v6.2.12,505a55b8f73536082367b2614cb77e927ba96ec1,55c959fd16852462498b0d82c52c4eca07d48f26,hayir,v6.2.12,
+JOSE-001,https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet,8.23.0,8.23.0,8b16f418b3d587416d293e9ba34c5d310781cdb3,80995d99c3dd434e34dee21eb3cdad1b08f3ec5f,hayir,8.23.0,
+JOSE-071,https://github.com/lcobucci/jwt,5.6.0,5.6.0,bb3e9f21e4196e8afc41def81ef649c164bca25e,2bead08a8cc2708d20169f5e77965b0a06e9a225,hayir,5.6.0,
+JOSE-052,https://github.com/auth0/java-jwt,4.6.1,4.6.1,29f252b2d6fea74df6576803d5fce5f6d6799cf3,29f252b2d6fea74df6576803d5fce5f6d6799cf3,evet,4.6.1,
+JOSE-087,https://github.com/jwt/ruby-jwt,3.3.0,v3.3.0,ccf24892fec805ecd64fec820fd4d2825b5a1267,9df1393e19728cf9975cee85039e5cb7fe5fe32f,hayir,v3.3.0,
+JOSE-002,https://github.com/jwt-dotnet/jwt,11.1.0,,,034f1fe9faef5ac6c9d59d108c82bbb367d053b2,,,sürüm etiketi bulunamadı
+JOSE-092,https://github.com/Keats/jsonwebtoken,11.1.0,v11.1.0,4c0ae752e9acc108c8e2c4c8ed8128dc66014210,4c0ae752e9acc108c8e2c4c8ed8128dc66014210,evet,v11.1.0,
+JOSE-084,https://github.com/mpdavis/python-jose,3.5.0,3.5.0,018b310ddb8b50dcfd09a0c152117835a21dd656,018b310ddb8b50dcfd09a0c152117835a21dd656,evet,3.5.0,
+JOSE-089,https://github.com/nov/json-jwt,1.17.2,v1.17.2,5fc6faed950f9dff9fd41ca663cf35ef12f46575,fa5ef904013bb96da5f6fa78c0fe02dfaee862e2,hayir,v1.17.2,
+JOSE-104,https://github.com/Kitura/Swift-JWT,,,,29fe084d874045d22546612d85fae1e9408c9091,,,son_surum yok -> son_commit_sha kullanılır
+JOSE-102,https://github.com/vapor/jwt-kit,5.3.0,5.3.0,b5f82fb9dc238f2fcac53d721a222513a152613c,0c74d3201bff57aa5c7b62f72c6399dcdfa8ebcc,hayir,5.3.0,
+JOSE-091,https://github.com/GildedHonour/rust-jwt,3.1.4,v3.1.4,556a9046563e8fd131aa6174da8c059acde77190,556a9046563e8fd131aa6174da8c059acde77190,evet,v3.1.4,
+JOSE-059,https://github.com/kjur/jsrsasign,11.1.5,11.1.5,c1b8432c913f19c75e6a48f2722e9c3647bfed04,c1b8432c913f19c75e6a48f2722e9c3647bfed04,evet,11.1.5,
+JOSE-054,https://bitbucket.org/connect2id/nimbus-jose-jwt,10.10,10.10,4de1c3319a8201aaecc4cd300486b945912afc59,ef3ddf236c93a2dfea3bd137f678bfec07acaf1c,hayir,10.10,
+JOSE-108,https://github.com/authlib/joserfc,1.7.5,1.7.5,357c319119773c021bc8da433bdf31e42f77974b,27d7c8a97d9452cde422aaa1bbcf0311cb8c223e,hayir,1.7.5,
+JOSE-074,https://github.com/web-token/jwt-framework,4.2.3,4.2.3,791788dad09abaefb7da8f699f29cefec3f31276,e989bb936e7764f0b295b81d0be6d5ad023e9a61,hayir,4.2.3,
+JOSE-038,https://github.com/lestrrat-go/jwx,v4.5.0,v4.5.0,024e6cf67b2d93d5f693255ff306580ed1c69dfb,f8e9c3f4b6214d0f921f9a86eebb84c12e4c2e28,hayir,v4.5.0,
+JOSE-003,https://github.com/dvsekhvalnov/jose-jwt,5.3.0,v5.3.0,20abc4ebf916e1e36586d67609c17d045af1d503,20abc4ebf916e1e36586d67609c17d045af1d503,evet,v5.3.0,
+JOSE-094,https://github.com/lawliet89/biscuit,0.8.0,v0.8.0,a6443895a894d89641710a68d82e870e190b57f4,a6443895a894d89641710a68d82e870e190b57f4,evet,v0.8.0,
+JOSE-031,https://github.com/ueberauth/guardian,2.5.0,v2.5.0,a9c9838b40f8348484af7e165db603ff7cb8eb87,6e86224f9c0aaebfb7062da2aa2b0f39001cb68a,hayir,v2.5.0,
+JOSE-017,https://github.com/Thalhammer/jwt-cpp,,,,0a503e75084cfdb48cc2186e6b961444eb819007,,,son_surum yok -> son_commit_sha kullanılır
+SDJWT-025,https://github.com/spruceid/ssi,0.6.0,ssi-sd-jwt/v0.6.0,16cd58715aa209f3151560ad59bd6ac65b90fa89,d7593b911ee4b15365adb5b352d3631bef2aaa3b,hayir,ssi-sd-jwt/v0.6.0;ssi/v0.6.0;ssi-vc/v0.6.0;did-ion/v0.6.0;ssi-jwt/v0.6.0;ssi-claims/v0.6.0,
+SDJWT-015,https://github.com/openwallet-foundation-labs/identity-common-ts,0.21.0,sd-jwt-v0.21.0,41008eb13640a02ff137379cab3d290a34bd94dc,e182c6444f6d185c3d4ec038386418bdcbbfcd20,hayir,sd-jwt-v0.21.0,
+SDJWT-018,https://github.com/openwallet-foundation-labs/sd-jwt-python,0.10.4,v0.10.4,cf27b5b89aba03fd676a51aec4737f5f46d4105d,c5fda017d15e65a6c61a31e696bcdbdab2966b1e,hayir,v0.10.4,
+SDJWT-001,https://github.com/a-sit-plus/vck,7.0.1,7.0.1,a3e66b1a4e80b3053b6921bb4dae3d704dc022bf,a3e66b1a4e80b3053b6921bb4dae3d704dc022bf,evet,7.0.1,
+SDJWT-021,https://github.com/openwallet-foundation-labs/wallet-framework-dotnet,3.1.0,3.1.0,2ed7a64b9c449b86bb2996359f2ca4a7e03a0cbb,091bea2207b97846776e0a4bad8855dc8908a8a3,hayir,3.1.0;v3.1.0,
+SDJWT-010,https://github.com/iotaledger/sd-jwt-payload,0.5.1,,,c47e52c31545f7ede55ad1259f275f31595e2322,,,sürüm etiketi bulunamadı
+SDJWT-004,https://github.com/authlete/sd-jwt,1.9,sd-jwt-1.9,573f7c46eb77cf1ce358790120d27a0976933c56,0a3727039d64d22989b4754c82d6c3e8f96364d5,hayir,sd-jwt-1.9,
+SDJWT-002,https://github.com/affinidi/affinidi-sdjwt-dart,1.1.1,selective_disclosure_jwt-v1.1.1,54a187b64095788a77da329c28e79ec30c606108,54a187b64095788a77da329c28e79ec30c606108,evet,selective_disclosure_jwt-v1.1.1,
+SDJWT-019,https://github.com/openwallet-foundation-labs/sd-jwt-rust,0.7.1,v0.7.1,41148610932b08bfbc68831d80d618130a850a07,60d68c3c662360ab3670c59a3cc50344ca60c794,hayir,v0.7.1,
+SDJWT-020,https://github.com/openwallet-foundation-labs/sd-jwt-vc-dm,0.1.1,,,93ea03337039a6a9d80014468cb1a5f7ce0d1819,,,sürüm etiketi bulunamadı
+SDJWT-006,https://github.com/eu-digital-identity-wallet/eudi-lib-jvm-sdjwt-kt,0.20.1,v0.20.1,e8a94cb6114efc73812843fb1338913eac427675,825639358b1704fae00cea0991d3e9c7699e6017,hayir,v0.20.1,
+SDJWT-012,https://github.com/koalafacts/herosd-jwt,1.1.7,v1.1.7,f13358ac7a5e3ea2dea52ea5803b9e2b2f87b9fb,93274ef33faefa8135c31adf88037d6a3c959d51,hayir,v1.1.7,
+SDJWT-003,https://github.com/affinidi/affinidi-tdk-rs,0.1.5,affinidi-sd-jwt-v0.1.5,ab65560b909636ae1f51d6bb60b2c6fc601021a0,ea5af50250c59f52086630f891c4a8a1569de4b5,hayir,affinidi-sd-jwt-v0.1.5;did-ebsi-v0.1.5;did-scid-v0.1.5;affinidi-tsp-v0.1.5;affinidi-crypto-v0.1.5;affinidi-did-web-v0.1.5,
+SDJWT-007,https://github.com/eu-digital-identity-wallet/eudi-lib-sdjwt-swift,v0.14.2,v0.14.2,6c63f4157c490fd1abc70317ab6f4329f9692a68,f3937ad2cd9efde5703fad1a3418811f2eaae316,hayir,v0.14.2,
+COSE-001,https://github.com/a-sit-plus/signum,3.26.0,3.26.0,84f24c5b99829874482cb6940a54304b4b590178,7d758fe14f809650d3380b0fb6716d6596ce6906,hayir,3.26.0,
+COSE-034,https://github.com/veraison/go-cose,v1.3.0,v1.3.0,e5c68f97dfbb7dc2677e891ceea9a8eafe42ddb4,dea543bf9b89b0cef461c0d194747c9ed5e6666c,hayir,v1.3.0,
+COSE-035,https://github.com/web-auth/cose-lib,4.8.2,4.8.2,8849e8bf043a2d42d0bec5bda5db2469ad376148,1c854bf63c5cd8d872d1e57ec7b891030f4ed314,hayir,4.8.2,
+COSE-036,https://github.com/wolfssl/wolfcose,,,,f907071b10127f3ae2dd7719749a91b039ff04a1,,,son_surum yok -> son_commit_sha kullanılır
+COSE-014,https://github.com/erdtman/cose-js,0.9.0,v0.9.0,421bcaa5dded58890d00243c91b9f7155a613458,b1d3eac995fc2b56180dc9e956095676c642a11c,hayir,v0.9.0,
+COSE-020,https://github.com/ldclabs/cose,v1.4.0,v1.4.0,2519a8538c924eba25e8e3cd1b7ce1a27ead84e1,2519a8538c924eba25e8e3cd1b7ce1a27ead84e1,evet,v1.4.0,
+COSE-019,https://github.com/laurencelundblade/t_cose,,,,98e34ed6403f01e1779fcfe84debc7c4dd6ed75f,,,son_surum yok -> son_commit_sha kullanılır
+COSE-016,https://github.com/google/coset,0.4.2,v0.4.2,dd458359623a459086aa296e34a3d8902e034223,dd458359623a459086aa296e34a3d8902e034223,evet,v0.4.2,
+COSE-011,https://github.com/dark-bio/crypto-rs,0.18.2,v0.18.2,9fa3673d3d3b236ed1a7d7946d5643f2eefc7d8b,be6193ec3a0d8ee0f558f61fa7862fa20bf696b0,hayir,v0.18.2,
+REF-011,https://github.com/openwallet-foundation/credo-ts,0.7.1,v0.7.1,fbb6517dcfc716d034aa7f08c5a77254d60531ef,7d825d122e5564960ac8e3ecc14f12bab1b955d9,hayir,v0.7.1,
+REF-003,https://github.com/eu-digital-identity-wallet/eudi-srv-verifier-endpoint,,,,b1f17e8fe247504e7541a0121c1b6c9f1c7d4908,,,son_surum yok -> son_commit_sha kullanılır
+REF-010,https://github.com/openwallet-foundation/acapy-plugins,,,,18c7d1f3c8497e0bc35797d26f3417ce96afeee9,,,son_surum yok -> son_commit_sha kullanılır
+REF-023,https://github.com/walt-id/waltid-identity,,,,bb5c4eb61e1f788483f46530d4d87818846e96e0,,,son_surum yok -> son_commit_sha kullanılır
+REF-015,https://github.com/privacybydesign/irmago,v1.4.0,v1.4.0,223bcad33d3f2e54504836bf9bcf8ea776181245,223bcad33d3f2e54504836bf9bcf8ea776181245,evet,v1.4.0,

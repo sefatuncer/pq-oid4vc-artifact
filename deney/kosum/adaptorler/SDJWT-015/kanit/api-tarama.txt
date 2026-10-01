@@ -1,0 +1,34 @@
+# SDJWT-015 — API taraması (sözleşme §5.1)
+# imaj: a10-sdjwt-015:1 (sha256:7b5fe90b3db159888cba6637916a5c0c56cf63201e16c0276ce2575a37193aa2)
+# komut: docker run --rm --network none --entrypoint sh a10-sdjwt-015:1 -c 'cd /a/node_modules/@sd-jwt/core && grep '"version"' package.json; grep -rn -i -E 'algorithms|allow|register|deregister|required|eddsa|ed25519|ml-?dsa|mldsa|composite|okp|verifier|keyselector|allowedIssuerAlgorithms|kbVerifier' dist/index.d.mts | head -120'
+
+  "version": "0.21.0",
+13:export declare const IANA_HASH_ALGORITHMS: readonly ['sha-256', 'sha-256-128', 'sha-256-120', 'sha-256-96', 'sha-256-64', 'sha-256-32', 'sha-384', 'sha-512', 'sha3-224', 'sha3-256', 'sha3-384', 'sha3-512', 'blake2s-256', 'blake2b-256', '
+14:export type HashAlgorithm = (typeof IANA_HASH_ALGORITHMS)[number];
+15:export declare const DEFAULT_SECURE_HASH_ALGORITHMS: readonly ["sha-256", "sha-384", "sha-512", "sha3-256", "sha3-384", "sha3-512", "blake2s-256", "blake2b-256", "blake2b-512", "k12-256", "k12-512"];
+20:  allowedDisclosureHashAlgorithms?: ReadonlyArray<HashAlgorithm>;
+24:  verifier?: Verifier<T>;
+27:  kbVerifier?: KbVerifier;
+76:export type Verifier<T = unknown> = (data: string, sig: string, options?: T) => OrPromise<boolean>;
+77:export type KbVerifier = (data: string, sig: string, payload: JwtPayload) => OrPromise<boolean>;
+85:export type VerifierSync = (data: string, sig: string) => boolean;
+191:export type VerificationErrorCode = 'HASHER_NOT_FOUND' | 'VERIFIER_NOT_FOUND' | 'INVALID_SD_JWT' | 'INVALID_JWT_FORMAT' | 'JWT_NOT_YET_VALID' | 'JWT_EXPIRED' | 'INVALID_JWT_SIGNATURE' | 'MISSING_REQUIRED_CLAIMS' | 'KEY_BINDING_JWT_MISSI
+322: * Options for the JWT verifier
+324:export type VerifierOptions = {
+330:   * allowed skew for the current time in seconds. Positive value that will lower the iat and nbf checks, and increase the exp check.
+334:   * required claim keys for the payload.
+337:  requiredClaimKeys?: string[];
+343:   * Allowed JOSE algorithms for issuer-signed JWTs. `none` is always rejected.
+345:  allowedIssuerAlgorithms?: string[];
+374:export declare const validateJwtPayload: (payload: Record<string, unknown> | undefined, options?: VerifierOptions) => void;
+393:   * Verify the JWT using the provided verifier function.
+395:   * @param verifier
+399:  verify<T>(verifier: Verifier<T>, options?: T & VerifierOptions): Promise<{
+408:    verifier: KbVerifier;
+415:    options?: VerifierOptions;
+512:export declare const getSDAlgAndPayload: (SdJwtPayload: Record<string, unknown>, allowedAlgorithms?: ReadonlyArray<HashAlgorithm>) => {
+596:  verify(encodedSDJwt: string, options?: T & VerifierOptions): Promise<{
+616:  safeVerify(encodedSDJwt: string, options?: T & VerifierOptions): Promise<SafeVerifyResult<{
+632:  validate(encodedSDJwt: string, options?: T & VerifierOptions): Promise<{
+670:  verify(generalJSON: GeneralJSON, options?: VerifierOptions): Promise<{
+683:  validate(generalJSON: GeneralJSON, options?: VerifierOptions): Promise<{

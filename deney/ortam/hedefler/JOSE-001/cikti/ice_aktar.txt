@@ -1,0 +1,3 @@
+derleme=System.IdentityModel.Tokens.Jwt 8.23.0.0 tip_yuklendi=20 tip_yuklenemedi=0
+anahtar_tip System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler OK
+ad_eslesen_tipler (Valid|Verif|SdJwt; bilgi): 

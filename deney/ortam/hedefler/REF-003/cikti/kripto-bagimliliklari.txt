@@ -1,0 +1,1 @@
+bcprov-jdk18on-1.84.jar cose-java-1.1.0.jar eudi-lib-jvm-sdjwt-kt-0.20.1.jar nimbus-jose-jwt-10.9.jar oauth2-oidc-sdk-11.37.2.jar tink-1.22.0.jar 

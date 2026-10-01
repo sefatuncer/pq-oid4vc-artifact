@@ -1,0 +1,1492 @@
+t10_oz_dogrulama_v1.3: 1440/1440 gecti
+  [GECTI] A:TSL-EkC / C.1 bits=1 cozme(bizim bayt dizisi == Ek C) — {"durum_sayisi": 11}
+  [GECTI] A:TSL-EkC / C.1 indeks degerleri
+  [BILGI] A:TSL-EkC / C.1 kodlama bayt-ayni (zlib 9) — True
+  [GECTI] A:TSL-EkC / C.2 bits=2 cozme(bizim bayt dizisi == Ek C) — {"durum_sayisi": 11}
+  [GECTI] A:TSL-EkC / C.2 indeks degerleri
+  [BILGI] A:TSL-EkC / C.2 kodlama bayt-ayni (zlib 9) — True
+  [GECTI] A:TSL-EkC / C.3 bits=4 cozme(bizim bayt dizisi == Ek C) — {"durum_sayisi": 15}
+  [GECTI] A:TSL-EkC / C.3 indeks degerleri
+  [BILGI] A:TSL-EkC / C.3 kodlama bayt-ayni (zlib 9) — True
+  [GECTI] A:TSL-EkC / C.4 bits=8 cozme(bizim bayt dizisi == Ek C) — {"durum_sayisi": 256}
+  [GECTI] A:TSL-EkC / C.4 indeks degerleri
+  [BILGI] A:TSL-EkC / C.4 kodlama bayt-ayni (zlib 9) — True
+  [GECTI] A:RFC9901 / 4.2.3 ozet ornegi — {"ifsa": "WyJfMjZiYzRMVC1hYzZxMktJNmNCVzVlcyIsICJmYW1pbHlfbmFtZSIsICJNw7ZiaXVzIl0", "ozet": "X9yH0Ajrdm1Oij4tWso9UzzKJvPoDxwmuEcO3XAdRC0"}
+  [GECTI] B:manifest / dosya SHA-256 == manifest (200 vektor) — []
+  [GECTI] B:manifest / vektorler/v1.3 SHA256SUMS (203 dosya) — []
+  [GECTI] B:manifest / anahtarlar/v1 SHA256SUMS (71 dosya) — []
+  [GECTI] B:manifest / anahtarlar/v1.3 SHA256SUMS (5 dosya) — []
+  [GECTI] C:belirlenimcilik / vektorler/v1.3/SHA256SUMS yeniden uretim bayt-bayt ayni
+  [GECTI] C:belirlenimcilik / vektorler/v1.3/MANIFEST.json yeniden uretim bayt-bayt ayni
+  [GECTI] C:belirlenimcilik / vektorler/v1.3/MANIFEST.csv yeniden uretim bayt-bayt ayni
+  [GECTI] C:belirlenimcilik / anahtarlar/v1.3/SHA256SUMS yeniden uretim bayt-bayt ayni
+  [GECTI] D:T / T1K_both_valid imza sayisi — [2, 2]
+  [GECTI] D:T / T1K_both_valid #0 (ES256) insa="gecerli" — True
+  [GECTI] D:T / T1K_both_valid #0 alg etiketi
+  [GECTI] D:T / T1K_both_valid #1 (EdDSA) insa="gecerli" — True
+  [GECTI] D:T / T1K_both_valid #1 alg etiketi
+  [GECTI] D:T / T2K_second_tampered imza sayisi — [2, 2]
+  [GECTI] D:T / T2K_second_tampered #0 (ES256) insa="gecerli" — True
+  [GECTI] D:T / T2K_second_tampered #0 alg etiketi
+  [GECTI] D:T / T2K_second_tampered #1 (EdDSA) insa="bozuk: bayt 5, bit 0 cevrildi" — False
+  [GECTI] D:T / T2K_second_tampered #1 alg etiketi
+  [GECTI] D:T / T3_stripped_to_ES256 imza sayisi — [1, 1]
+  [GECTI] D:T / T3_stripped_to_ES256 #0 (ES256) insa="gecerli" — True
+  [GECTI] D:T / T3_stripped_to_ES256 #0 alg etiketi
+  [GECTI] D:T / T1P_both_valid imza sayisi — [2, 2]
+  [GECTI] D:T / T1P_both_valid #0 (ES256) insa="gecerli" — True
+  [GECTI] D:T / T1P_both_valid #0 alg etiketi
+  [GECTI] D:T / T1P_both_valid #1 (ML-DSA-65) insa="gecerli" — True
+  [GECTI] D:T / T1P_both_valid #1 alg etiketi
+  [GECTI] D:T / T2P_second_tampered imza sayisi — [2, 2]
+  [GECTI] D:T / T2P_second_tampered #0 (ES256) insa="gecerli" — True
+  [GECTI] D:T / T2P_second_tampered #0 alg etiketi
+  [GECTI] D:T / T2P_second_tampered #1 (ML-DSA-65) insa="bozuk: bayt 5, bit 0 cevrildi" — False
+  [GECTI] D:T / T2P_second_tampered #1 alg etiketi
+  [GECTI] D:T / T1C_both_valid imza sayisi — [2, 2]
+  [GECTI] D:T / T1C_both_valid #0 (ES256) insa="gecerli" — True
+  [GECTI] D:T / T1C_both_valid #0 alg etiketi
+  [GECTI] D:T / T1C_both_valid #1 (ML-DSA-65-ES256) insa="gecerli" — True
+  [GECTI] D:T / T1C_both_valid #1 alg etiketi
+  [GECTI] D:T / T2C_second_tampered imza sayisi — [2, 2]
+  [GECTI] D:T / T2C_second_tampered #0 (ES256) insa="gecerli" — True
+  [GECTI] D:T / T2C_second_tampered #0 alg etiketi
+  [GECTI] D:T / T2C_second_tampered #1 (ML-DSA-65-ES256) insa="bozuk: bayt 5, bit 0 cevrildi (ML-DSA bileseni ici" — False
+  [GECTI] D:T / T2C_second_tampered #1 alg etiketi
+  [GECTI] D:T / T4K_plus_ML-DSA-65 imza sayisi — [3, 3]
+  [GECTI] D:T / T4K_plus_ML-DSA-65 #0 (ES256) insa="gecerli" — True
+  [GECTI] D:T / T4K_plus_ML-DSA-65 #0 alg etiketi
+  [GECTI] D:T / T4K_plus_ML-DSA-65 #1 (EdDSA) insa="gecerli" — True
+  [GECTI] D:T / T4K_plus_ML-DSA-65 #1 alg etiketi
+  [GECTI] D:T / T4K_plus_ML-DSA-65 #2 (ML-DSA-65) insa="gecerli" — True
+  [GECTI] D:T / T4K_plus_ML-DSA-65 #2 alg etiketi
+  [GECTI] D:T / T4P_plus_ML-DSA-65-ES256 imza sayisi — [3, 3]
+  [GECTI] D:T / T4P_plus_ML-DSA-65-ES256 #0 (ES256) insa="gecerli" — True
+  [GECTI] D:T / T4P_plus_ML-DSA-65-ES256 #0 alg etiketi
+  [GECTI] D:T / T4P_plus_ML-DSA-65-ES256 #1 (ML-DSA-65) insa="gecerli" — True
+  [GECTI] D:T / T4P_plus_ML-DSA-65-ES256 #1 alg etiketi
+  [GECTI] D:T / T4P_plus_ML-DSA-65-ES256 #2 (ML-DSA-65-ES256) insa="gecerli" — True
+  [GECTI] D:T / T4P_plus_ML-DSA-65-ES256 #2 alg etiketi
+  [GECTI] D:T / T4C_plus_ML-DSA-65 imza sayisi — [3, 3]
+  [GECTI] D:T / T4C_plus_ML-DSA-65 #0 (ES256) insa="gecerli" — True
+  [GECTI] D:T / T4C_plus_ML-DSA-65 #0 alg etiketi
+  [GECTI] D:T / T4C_plus_ML-DSA-65 #1 (ML-DSA-65-ES256) insa="gecerli" — True
+  [GECTI] D:T / T4C_plus_ML-DSA-65 #1 alg etiketi
+  [GECTI] D:T / T4C_plus_ML-DSA-65 #2 (ML-DSA-65) insa="gecerli" — True
+  [GECTI] D:T / T4C_plus_ML-DSA-65 #2 alg etiketi
+  [GECTI] D:T / T5P_only_ML-DSA-65 imza sayisi — [1, 1]
+  [GECTI] D:T / T5P_only_ML-DSA-65 #0 (ML-DSA-65) insa="gecerli" — True
+  [GECTI] D:T / T5P_only_ML-DSA-65 #0 alg etiketi
+  [GECTI] D:T / T5C_only_ML-DSA-65-ES256 imza sayisi — [1, 1]
+  [GECTI] D:T / T5C_only_ML-DSA-65-ES256 #0 (ML-DSA-65-ES256) insa="gecerli" — True
+  [GECTI] D:T / T5C_only_ML-DSA-65-ES256 #0 alg etiketi
+  [GECTI] D:T / T5K_only_EdDSA imza sayisi — [1, 1]
+  [GECTI] D:T / T5K_only_EdDSA #0 (EdDSA) insa="gecerli" — True
+  [GECTI] D:T / T5K_only_EdDSA #0 alg etiketi
+  [GECTI] D:T / T6_plus_composite imza sayisi — [3, 3]
+  [GECTI] D:T / T6_plus_composite #0 (ES256) insa="gecerli" — True
+  [GECTI] D:T / T6_plus_composite #0 alg etiketi
+  [GECTI] D:T / T6_plus_composite #1 (EdDSA) insa="gecerli" — True
+  [GECTI] D:T / T6_plus_composite #1 alg etiketi
+  [GECTI] D:T / T6_plus_composite #2 (ML-DSA-65-ES256) insa="gecerli" — True
+  [GECTI] D:T / T6_plus_composite #2 alg etiketi
+  [GECTI] D:UNK / UNK01_alg_ML-DSA-66 imza sayisi — [1, 1]
+  [GECTI] D:UNK / UNK01_alg_ML-DSA-66 #0 (ML-DSA-66) insa="ML-DSA-65 ile gecerli bayt; etiket kayitsiz" — True
+  [GECTI] D:UNK / UNK01_alg_ML-DSA-66 #0 alg etiketi
+  [GECTI] D:UNK / UNK02_alg_ML-DSA-65-P256 imza sayisi — [1, 1]
+  [GECTI] D:UNK / UNK02_alg_ML-DSA-65-P256 #0 (ML-DSA-65-P256) insa="ML-DSA-65-ES256 ile gecerli bayt; etiket kayitsiz" — True
+  [GECTI] D:UNK / UNK02_alg_ML-DSA-65-P256 #0 alg etiketi
+  [GECTI] D:UNK / UNK03_alg_kucuk_harf imza sayisi — [1, 1]
+  [GECTI] D:UNK / UNK03_alg_kucuk_harf #0 (ml-dsa-65) insa="ML-DSA-65 ile gecerli bayt; etiket kucuk harf" — True
+  [GECTI] D:UNK / UNK03_alg_kucuk_harf #0 alg etiketi
+  [GECTI] D:UNK / UNK04_general_arti_kayitsiz_composite imza sayisi — [3, 3]
+  [GECTI] D:UNK / UNK04_general_arti_kayitsiz_composite #0 (ES256) insa="gecerli" — True
+  [GECTI] D:UNK / UNK04_general_arti_kayitsiz_composite #0 alg etiketi
+  [GECTI] D:UNK / UNK04_general_arti_kayitsiz_composite #1 (ML-DSA-65) insa="gecerli" — True
+  [GECTI] D:UNK / UNK04_general_arti_kayitsiz_composite #1 alg etiketi
+  [GECTI] D:UNK / UNK04_general_arti_kayitsiz_composite #2 (ML-DSA-65-P256) insa="ML-DSA-65-ES256 ile gecerli bayt; etiket kayitsiz" — True
+  [GECTI] D:UNK / UNK04_general_arti_kayitsiz_composite #2 alg etiketi
+  [GECTI] D:UNK / UNK05_general_arti_alg_none imza sayisi — [3, 3]
+  [GECTI] D:UNK / UNK05_general_arti_alg_none #0 (ES256) insa="gecerli" — True
+  [GECTI] D:UNK / UNK05_general_arti_alg_none #0 alg etiketi
+  [GECTI] D:UNK / UNK05_general_arti_alg_none #1 (ML-DSA-65) insa="gecerli" — True
+  [GECTI] D:UNK / UNK05_general_arti_alg_none #1 alg etiketi
+  [GECTI] D:UNK / UNK05_general_arti_alg_none #2 alg=none bos imza
+  [GECTI] D:CMP / CMP00_gecerli_referans imza sayisi — [1, 1]
+  [GECTI] D:CMP / CMP00_gecerli_referans bilesen durumu — {"ml": true, "trad": true, "hata": null}
+  [GECTI] D:CMP / CMP01_ml_bileseni_bozuk imza sayisi — [1, 1]
+  [GECTI] D:CMP / CMP01_ml_bileseni_bozuk bilesen durumu — {"ml": false, "trad": true, "hata": null}
+  [GECTI] D:CMP / CMP02_ecdsa_bileseni_bozuk imza sayisi — [1, 1]
+  [GECTI] D:CMP / CMP02_ecdsa_bileseni_bozuk bilesen durumu — {"ml": true, "trad": false, "hata": null}
+  [GECTI] D:CMP / CMP03_ecdsa_der_uzunluk_bozuk imza sayisi — [1, 1]
+  [GECTI] D:CMP / CMP03_ecdsa_der_uzunluk_bozuk bilesen durumu — {"ml": false, "trad": false, "hata": "serilestirme: DER: SEQUENCE uzunluğu tutarsız / artık bayt"}
+  [GECTI] D:CMP / CMP04_ecdsa_ham_rs imza sayisi — [1, 1]
+  [GECTI] D:CMP / CMP04_ecdsa_ham_rs bilesen durumu — {"ml": false, "trad": false, "hata": "serilestirme: DER: SEQUENCE yok"}
+  [GECTI] D:CMP / CMP05_ecdsa_asgari_olmayan_der imza sayisi — [1, 1]
+  [GECTI] D:CMP / CMP05_ecdsa_asgari_olmayan_der bilesen durumu — {"ml": false, "trad": false, "hata": "serilestirme: DER: asgari olmayan INTEGER kodlaması"}
+  [GECTI] D:CMP / CMP06_sonda_artik_bayt imza sayisi — [1, 1]
+  [GECTI] D:CMP / CMP06_sonda_artik_bayt bilesen durumu — {"ml": false, "trad": false, "hata": "serilestirme: DER: SEQUENCE uzunluğu tutarsız / artık bayt"}
+  [GECTI] D:CMP / CMP07_yalniz_ml_bileseni imza sayisi — [1, 1]
+  [GECTI] D:CMP / CMP07_yalniz_ml_bileseni bilesen durumu — {"ml": false, "trad": false, "hata": "serilestirme: composite imza kisa"}
+  [GECTI] D:CMP / CMP08_bilesenler_farkli_iletilerden imza sayisi — [1, 1]
+  [GECTI] D:CMP / CMP08_bilesenler_farkli_iletilerden bilesen durumu — {"ml": false, "trad": true, "hata": null}
+  [GECTI] D:CMP / CMP09_ml_bileseni_ctx_bos imza sayisi — [1, 1]
+  [GECTI] D:CMP / CMP09_ml_bileseni_ctx_bos bilesen durumu — {"ml": false, "trad": true, "hata": null}
+  [GECTI] D:CMP / CMP09_ml_bileseni_ctx_bos sapmali M'/ctx ile tutarli (uygulayici hatasi taklidi dogru kuruldu)
+  [GECTI] D:CMP / CMP10_onozet_sha256 imza sayisi — [1, 1]
+  [GECTI] D:CMP / CMP10_onozet_sha256 bilesen durumu — {"ml": false, "trad": false, "hata": null}
+  [GECTI] D:CMP / CMP10_onozet_sha256 sapmali M'/ctx ile tutarli (uygulayici hatasi taklidi dogru kuruldu)
+  [GECTI] D:CMP / CMP11_bos_ctx_uzunlugu_yok imza sayisi — [1, 1]
+  [GECTI] D:CMP / CMP11_bos_ctx_uzunlugu_yok bilesen durumu — {"ml": false, "trad": false, "hata": null}
+  [GECTI] D:CMP / CMP11_bos_ctx_uzunlugu_yok sapmali M'/ctx ile tutarli (uygulayici hatasi taklidi dogru kuruldu)
+  [GECTI] D:CMP / CMP12_ayrilabilirlik_ecdsa_ES256 imza sayisi — [1, 1]
+  [GECTI] D:CMP / CMP12_ayrilabilirlik_ecdsa_ES256 JWS olarak gecersiz (bilesen M' uzerinde)
+  [GECTI] D:CMP / CMP12_ayrilabilirlik_ecdsa_ES256 imza gercek bir bilesen (M' uzerinde gecerli)
+  [GECTI] D:CMP / CMP13_ayrilabilirlik_ml_MLDSA65 imza sayisi — [1, 1]
+  [GECTI] D:CMP / CMP13_ayrilabilirlik_ml_MLDSA65 JWS olarak gecersiz (bilesen M' uzerinde)
+  [GECTI] D:CMP / CMP13_ayrilabilirlik_ml_MLDSA65 imza gercek bir bilesen (M' uzerinde gecerli)
+  [GECTI] D:CMP / CMP14_ed25519_ml_bileseni_bozuk imza sayisi — [1, 1]
+  [GECTI] D:CMP / CMP14_ed25519_ml_bileseni_bozuk bilesen durumu — {"ml": false, "trad": true, "hata": null}
+  [GECTI] D:CMP / CMP15_ed25519_eddsa_bileseni_bozuk imza sayisi — [1, 1]
+  [GECTI] D:CMP / CMP15_ed25519_eddsa_bileseni_bozuk bilesen durumu — {"ml": true, "trad": false, "hata": null}
+  [GECTI] D:CMP / CMP16_bilesen_sirasi_ters imza sayisi — [1, 1]
+  [GECTI] D:CMP / CMP16_bilesen_sirasi_ters bilesen durumu — {"ml": false, "trad": false, "hata": "serilestirme: DER: SEQUENCE yok"}
+  [GECTI] D:X5C / X5C01_klasik_zincir imza sayisi — [1, 1]
+  [GECTI] D:X5C / X5C01_klasik_zincir #0 (ES256) insa="gecerli" — True
+  [GECTI] D:X5C / X5C01_klasik_zincir #0 alg etiketi
+  [GECTI] D:X5C / X5C01_klasik_zincir x5c korumali mi == insa
+  [GECTI] D:X5C / X5C01_klasik_zincir x5c zinciri OpenSSL ile gecerli — /tmp/pqjose-lavdrtrx/leaf.pem: OK
+  [GECTI] D:X5C / X5C01_klasik_zincir zincir sinifi == insa (tam-klasik) — tam-klasik
+  [GECTI] D:X5C / X5C01_klasik_zincir kok x5c icinde mi == insa
+  [GECTI] D:X5C / X5C01_klasik_zincir yaprak anahtari == imzalayan rol
+  [GECTI] D:X5C / X5C01_klasik_zincir her ifsa ozeti yukte var — 10
+  [GECTI] D:X5C / X5C02_pq_zincir imza sayisi — [1, 1]
+  [GECTI] D:X5C / X5C02_pq_zincir #0 (ML-DSA-65) insa="gecerli" — True
+  [GECTI] D:X5C / X5C02_pq_zincir #0 alg etiketi
+  [GECTI] D:X5C / X5C02_pq_zincir x5c korumali mi == insa
+  [GECTI] D:X5C / X5C02_pq_zincir x5c zinciri OpenSSL ile gecerli — /tmp/pqjose-f0wwzds5/leaf.pem: OK
+  [GECTI] D:X5C / X5C02_pq_zincir zincir sinifi == insa (tam-pq) — tam-pq
+  [GECTI] D:X5C / X5C02_pq_zincir kok x5c icinde mi == insa
+  [GECTI] D:X5C / X5C02_pq_zincir yaprak anahtari == imzalayan rol
+  [GECTI] D:X5C / X5C02_pq_zincir her ifsa ozeti yukte var — 10
+  [GECTI] D:X5C / X5C03_karisik_klasik_yaprak_pq_ara imza sayisi — [1, 1]
+  [GECTI] D:X5C / X5C03_karisik_klasik_yaprak_pq_ara #0 (ES256) insa="gecerli" — True
+  [GECTI] D:X5C / X5C03_karisik_klasik_yaprak_pq_ara #0 alg etiketi
+  [GECTI] D:X5C / X5C03_karisik_klasik_yaprak_pq_ara x5c korumali mi == insa
+  [GECTI] D:X5C / X5C03_karisik_klasik_yaprak_pq_ara x5c zinciri OpenSSL ile gecerli — /tmp/pqjose-by1i6_hr/leaf.pem: OK
+  [GECTI] D:X5C / X5C03_karisik_klasik_yaprak_pq_ara zincir sinifi == insa (karisik) — karisik
+  [GECTI] D:X5C / X5C03_karisik_klasik_yaprak_pq_ara kok x5c icinde mi == insa
+  [GECTI] D:X5C / X5C03_karisik_klasik_yaprak_pq_ara yaprak anahtari == imzalayan rol
+  [GECTI] D:X5C / X5C03_karisik_klasik_yaprak_pq_ara her ifsa ozeti yukte var — 10
+  [GECTI] D:X5C / X5C04_karisik_pq_yaprak_klasik_ara imza sayisi — [1, 1]
+  [GECTI] D:X5C / X5C04_karisik_pq_yaprak_klasik_ara #0 (ML-DSA-65) insa="gecerli" — True
+  [GECTI] D:X5C / X5C04_karisik_pq_yaprak_klasik_ara #0 alg etiketi
+  [GECTI] D:X5C / X5C04_karisik_pq_yaprak_klasik_ara x5c korumali mi == insa
+  [GECTI] D:X5C / X5C04_karisik_pq_yaprak_klasik_ara x5c zinciri OpenSSL ile gecerli — /tmp/pqjose-zcvroqsi/leaf.pem: OK
+  [GECTI] D:X5C / X5C04_karisik_pq_yaprak_klasik_ara zincir sinifi == insa (karisik) — karisik
+  [GECTI] D:X5C / X5C04_karisik_pq_yaprak_klasik_ara kok x5c icinde mi == insa
+  [GECTI] D:X5C / X5C04_karisik_pq_yaprak_klasik_ara yaprak anahtari == imzalayan rol
+  [GECTI] D:X5C / X5C04_karisik_pq_yaprak_klasik_ara her ifsa ozeti yukte var — 10
+  [GECTI] D:X5C / X5C05_karisik_pq_ara_klasik_kok imza sayisi — [1, 1]
+  [GECTI] D:X5C / X5C05_karisik_pq_ara_klasik_kok #0 (ML-DSA-65) insa="gecerli" — True
+  [GECTI] D:X5C / X5C05_karisik_pq_ara_klasik_kok #0 alg etiketi
+  [GECTI] D:X5C / X5C05_karisik_pq_ara_klasik_kok x5c korumali mi == insa
+  [GECTI] D:X5C / X5C05_karisik_pq_ara_klasik_kok x5c zinciri OpenSSL ile gecerli — /tmp/pqjose-gq9wk8r_/leaf.pem: OK
+  [GECTI] D:X5C / X5C05_karisik_pq_ara_klasik_kok zincir sinifi == insa (karisik) — karisik
+  [GECTI] D:X5C / X5C05_karisik_pq_ara_klasik_kok kok x5c icinde mi == insa
+  [GECTI] D:X5C / X5C05_karisik_pq_ara_klasik_kok yaprak anahtari == imzalayan rol
+  [GECTI] D:X5C / X5C05_karisik_pq_ara_klasik_kok her ifsa ozeti yukte var — 10
+  [GECTI] D:X5C / X5C06_guven_capasi_x5c_icinde imza sayisi — [1, 1]
+  [GECTI] D:X5C / X5C06_guven_capasi_x5c_icinde #0 (ML-DSA-65) insa="gecerli" — True
+  [GECTI] D:X5C / X5C06_guven_capasi_x5c_icinde #0 alg etiketi
+  [GECTI] D:X5C / X5C06_guven_capasi_x5c_icinde x5c korumali mi == insa
+  [GECTI] D:X5C / X5C06_guven_capasi_x5c_icinde x5c zinciri OpenSSL ile gecerli — /tmp/pqjose-ivw8n96e/leaf.pem: OK
+  [GECTI] D:X5C / X5C06_guven_capasi_x5c_icinde zincir sinifi == insa (tam-pq) — tam-pq
+  [GECTI] D:X5C / X5C06_guven_capasi_x5c_icinde kok x5c icinde mi == insa
+  [GECTI] D:X5C / X5C06_guven_capasi_x5c_icinde yaprak anahtari == imzalayan rol
+  [GECTI] D:X5C / X5C06_guven_capasi_x5c_icinde her ifsa ozeti yukte var — 10
+  [GECTI] D:X5C / X5C07_korumasiz_x5c imza sayisi — [1, 1]
+  [GECTI] D:X5C / X5C07_korumasiz_x5c #0 (ML-DSA-65) insa="gecerli" — True
+  [GECTI] D:X5C / X5C07_korumasiz_x5c #0 alg etiketi
+  [GECTI] D:X5C / X5C07_korumasiz_x5c x5c korumali mi == insa
+  [GECTI] D:X5C / X5C07_korumasiz_x5c x5c zinciri OpenSSL ile gecerli — /tmp/pqjose-4ohaimrc/leaf.pem: OK
+  [GECTI] D:X5C / X5C07_korumasiz_x5c zincir sinifi == insa (tam-pq) — tam-pq
+  [GECTI] D:X5C / X5C07_korumasiz_x5c yaprak anahtari == imzalayan rol
+  [GECTI] D:X5C / X5C07_korumasiz_x5c her ifsa ozeti yukte var — 10
+  [GECTI] D:X5C / X5C08_korumasiz_x5c_zincir_degisimi imza sayisi — [1, 1]
+  [GECTI] D:X5C / X5C08_korumasiz_x5c_zincir_degisimi #0 (ML-DSA-65) insa="gecerli" — True
+  [GECTI] D:X5C / X5C08_korumasiz_x5c_zincir_degisimi #0 alg etiketi
+  [GECTI] D:X5C / X5C08_korumasiz_x5c_zincir_degisimi x5c korumali mi == insa
+  [GECTI] D:X5C / X5C08_korumasiz_x5c_zincir_degisimi x5c zinciri OpenSSL ile gecerli — /tmp/pqjose-s7o2xgwg/leaf.pem: OK
+  [GECTI] D:X5C / X5C08_korumasiz_x5c_zincir_degisimi zincir sinifi == insa (karisik) — karisik
+  [GECTI] D:X5C / X5C08_korumasiz_x5c_zincir_degisimi yaprak anahtari == imzalayan rol
+  [GECTI] D:X5C / X5C08_korumasiz_x5c_zincir_degisimi her ifsa ozeti yukte var — 10
+  [GECTI] D:X5C / X5C09_korumali_ve_korumasiz_x5c pqjose ayristirici ayriklik ihlalini yakalar
+  [GECTI] D:X5C / X5C09_korumali_ve_korumasiz_x5c imza sayisi — [1, 1]
+  [GECTI] D:X5C / X5C09_korumali_ve_korumasiz_x5c #0 (ML-DSA-65) insa="gecerli" — True
+  [GECTI] D:X5C / X5C09_korumali_ve_korumasiz_x5c #0 alg etiketi
+  [GECTI] D:X5C / X5C09_korumali_ve_korumasiz_x5c korumali x5c zinciri gecerli — ok
+  [GECTI] D:X5C / X5C09_korumali_ve_korumasiz_x5c korumasiz x5c zinciri gecerli — ok
+  [GECTI] D:X5C / X5C09_korumali_ve_korumasiz_x5c her ifsa ozeti yukte var — 10
+  [GECTI] D:X5C / X5C10_x5c_ve_baska_anahtar_kid imza sayisi — [1, 1]
+  [GECTI] D:X5C / X5C10_x5c_ve_baska_anahtar_kid #0 (ML-DSA-65) insa="x5c yapragiyla gecerli; kid issuer/ES256'yi goster" — True
+  [GECTI] D:X5C / X5C10_x5c_ve_baska_anahtar_kid #0 alg etiketi
+  [GECTI] D:X5C / X5C10_x5c_ve_baska_anahtar_kid x5c korumali mi == insa
+  [GECTI] D:X5C / X5C10_x5c_ve_baska_anahtar_kid x5c zinciri OpenSSL ile gecerli — /tmp/pqjose-wf7zlrcf/leaf.pem: OK
+  [GECTI] D:X5C / X5C10_x5c_ve_baska_anahtar_kid zincir sinifi == insa (tam-pq) — tam-pq
+  [GECTI] D:X5C / X5C10_x5c_ve_baska_anahtar_kid yaprak anahtari == imzalayan rol
+  [GECTI] D:X5C / X5C10_x5c_ve_baska_anahtar_kid her ifsa ozeti yukte var — 10
+  [GECTI] D:REQ / REQ01_imzali_ES256_x509_hash imza sayisi — [1, 1]
+  [GECTI] D:REQ / REQ01_imzali_ES256_x509_hash #0 (ES256) insa="gecerli" — True
+  [GECTI] D:REQ / REQ01_imzali_ES256_x509_hash #0 alg etiketi
+  [GECTI] D:X5C / REQ01_imzali_ES256_x509_hash x5c korumali mi == insa
+  [GECTI] D:X5C / REQ01_imzali_ES256_x509_hash x5c zinciri OpenSSL ile gecerli — /tmp/pqjose-ljzoi_4x/leaf.pem: OK
+  [GECTI] D:X5C / REQ01_imzali_ES256_x509_hash yaprak anahtari == imzalayan rol
+  [GECTI] D:REQ / REQ01_imzali_ES256_x509_hash client_id == x509_hash(yaprak)
+  [GECTI] D:REQ / REQ02_imzali_MLDSA65_x509_hash imza sayisi — [1, 1]
+  [GECTI] D:REQ / REQ02_imzali_MLDSA65_x509_hash #0 (ML-DSA-65) insa="gecerli" — True
+  [GECTI] D:REQ / REQ02_imzali_MLDSA65_x509_hash #0 alg etiketi
+  [GECTI] D:X5C / REQ02_imzali_MLDSA65_x509_hash x5c korumali mi == insa
+  [GECTI] D:X5C / REQ02_imzali_MLDSA65_x509_hash x5c zinciri OpenSSL ile gecerli — /tmp/pqjose-xfnjg5e5/leaf.pem: OK
+  [GECTI] D:X5C / REQ02_imzali_MLDSA65_x509_hash yaprak anahtari == imzalayan rol
+  [GECTI] D:REQ / REQ02_imzali_MLDSA65_x509_hash client_id == x509_hash(yaprak)
+  [GECTI] D:REQ / REQ03_imzali_composite_onkayitli imza sayisi — [1, 1]
+  [GECTI] D:REQ / REQ03_imzali_composite_onkayitli #0 (ML-DSA-65-ES256) insa="gecerli" — True
+  [GECTI] D:REQ / REQ03_imzali_composite_onkayitli #0 alg etiketi
+  [GECTI] D:REQ / REQ04_coklu_imzali imza sayisi — [2, 2]
+  [GECTI] D:REQ / REQ04_coklu_imzali #0 (ES256) insa="gecerli" — True
+  [GECTI] D:REQ / REQ04_coklu_imzali #0 alg etiketi
+  [GECTI] D:REQ / REQ04_coklu_imzali #1 (ML-DSA-65) insa="gecerli" — True
+  [GECTI] D:REQ / REQ04_coklu_imzali #1 alg etiketi
+  [GECTI] D:REQ / REQ04 client_id korumali baslikta ve x509_hash(yaprak)
+  [GECTI] D:REQ / REQ04 client_id korumali baslikta ve x509_hash(yaprak)
+  [GECTI] D:REQ / REQ04 yukte client_id yok (A.3.2.2)
+  [GECTI] D:REQ / REQ05_coklu_imzali_pq_soyuldu imza sayisi — [1, 1]
+  [GECTI] D:REQ / REQ05_coklu_imzali_pq_soyuldu #0 (ES256) insa="gecerli" — True
+  [GECTI] D:REQ / REQ05_coklu_imzali_pq_soyuldu #0 alg etiketi
+  [GECTI] D:REQ / REQ06_coklu_imzali_klasik_soyuldu imza sayisi — [1, 1]
+  [GECTI] D:REQ / REQ06_coklu_imzali_klasik_soyuldu #0 (ML-DSA-65) insa="gecerli" — True
+  [GECTI] D:REQ / REQ06_coklu_imzali_klasik_soyuldu #0 alg etiketi
+  [GECTI] D:REQ / REQ07_coklu_imzali_pq_bozuk imza sayisi — [2, 2]
+  [GECTI] D:REQ / REQ07_coklu_imzali_pq_bozuk #0 (ES256) insa="gecerli" — True
+  [GECTI] D:REQ / REQ07_coklu_imzali_pq_bozuk #0 alg etiketi
+  [GECTI] D:REQ / REQ07_coklu_imzali_pq_bozuk #1 (ML-DSA-65) insa="bozuk: bayt 5, bit 0" — False
+  [GECTI] D:REQ / REQ07_coklu_imzali_pq_bozuk #1 alg etiketi
+  [GECTI] D:REQ / REQ08_imzasiz_M-b0 imzasiz DC API istegi
+  [GECTI] D:REQ / REQ08_imzasiz_M-b0 client_id var mi == insa
+  [GECTI] D:REQ / REQ09_imzasiz_M-b0_client_id_korundu imzasiz DC API istegi
+  [GECTI] D:REQ / REQ09_imzasiz_M-b0_client_id_korundu client_id var mi == insa
+  [GECTI] D:REQ / REQ10_istek_alg_none imza sayisi — [1, 1]
+  [GECTI] D:REQ / REQ10_istek_alg_none #0 alg=none bos imza
+  [GECTI] D:VC / VC01_ES256_x5c imza sayisi — [1, 1]
+  [GECTI] D:VC / VC01_ES256_x5c #0 (ES256) insa="gecerli" — True
+  [GECTI] D:VC / VC01_ES256_x5c #0 alg etiketi
+  [GECTI] D:VC / VC01_ES256_x5c her ifsa ozeti yukte var — 10
+  [GECTI] D:VC / VC02_MLDSA65_x5c imza sayisi — [1, 1]
+  [GECTI] D:VC / VC02_MLDSA65_x5c #0 (ML-DSA-65) insa="gecerli" — True
+  [GECTI] D:VC / VC02_MLDSA65_x5c #0 alg etiketi
+  [GECTI] D:VC / VC02_MLDSA65_x5c her ifsa ozeti yukte var — 10
+  [GECTI] D:VC / VC03_composite_kid imza sayisi — [1, 1]
+  [GECTI] D:VC / VC03_composite_kid #0 (ML-DSA-65-ES256) insa="gecerli" — True
+  [GECTI] D:VC / VC03_composite_kid #0 alg etiketi
+  [GECTI] D:VC / VC03_composite_kid her ifsa ozeti yukte var — 10
+  [GECTI] D:VC / VC04_MLDSA44_kid imza sayisi — [1, 1]
+  [GECTI] D:VC / VC04_MLDSA44_kid #0 (ML-DSA-44) insa="gecerli" — True
+  [GECTI] D:VC / VC04_MLDSA44_kid #0 alg etiketi
+  [GECTI] D:VC / VC04_MLDSA44_kid her ifsa ozeti yukte var — 10
+  [GECTI] D:VC / VC05_MLDSA87_kid imza sayisi — [1, 1]
+  [GECTI] D:VC / VC05_MLDSA87_kid #0 (ML-DSA-87) insa="gecerli" — True
+  [GECTI] D:VC / VC05_MLDSA87_kid #0 alg etiketi
+  [GECTI] D:VC / VC05_MLDSA87_kid her ifsa ozeti yukte var — 10
+  [GECTI] D:VC / VC06_composite_Ed25519_kid imza sayisi — [1, 1]
+  [GECTI] D:VC / VC06_composite_Ed25519_kid #0 (ML-DSA-65-Ed25519) insa="gecerli" — True
+  [GECTI] D:VC / VC06_composite_Ed25519_kid #0 alg etiketi
+  [GECTI] D:VC / VC06_composite_Ed25519_kid her ifsa ozeti yukte var — 10
+  [GECTI] D:VC / VC07_GJ_ES256_MLDSA65 imza sayisi — [2, 2]
+  [GECTI] D:VC / VC07_GJ_ES256_MLDSA65 #0 (ES256) insa="gecerli" — True
+  [GECTI] D:VC / VC07_GJ_ES256_MLDSA65 #0 alg etiketi
+  [GECTI] D:VC / VC07_GJ_ES256_MLDSA65 #1 (ML-DSA-65) insa="gecerli" — True
+  [GECTI] D:VC / VC07_GJ_ES256_MLDSA65 #1 alg etiketi
+  [GECTI] D:VC / VC07_GJ_ES256_MLDSA65 her ifsa ozeti yukte var — 10
+  [GECTI] D:VC / VC08_GJ_ES256_composite imza sayisi — [2, 2]
+  [GECTI] D:VC / VC08_GJ_ES256_composite #0 (ES256) insa="gecerli" — True
+  [GECTI] D:VC / VC08_GJ_ES256_composite #0 alg etiketi
+  [GECTI] D:VC / VC08_GJ_ES256_composite #1 (ML-DSA-65-ES256) insa="gecerli" — True
+  [GECTI] D:VC / VC08_GJ_ES256_composite #1 alg etiketi
+  [GECTI] D:VC / VC08_GJ_ES256_composite her ifsa ozeti yukte var — 10
+  [GECTI] D:VC / VC09_GJ_ES256_EdDSA imza sayisi — [2, 2]
+  [GECTI] D:VC / VC09_GJ_ES256_EdDSA #0 (ES256) insa="gecerli" — True
+  [GECTI] D:VC / VC09_GJ_ES256_EdDSA #0 alg etiketi
+  [GECTI] D:VC / VC09_GJ_ES256_EdDSA #1 (EdDSA) insa="gecerli" — True
+  [GECTI] D:VC / VC09_GJ_ES256_EdDSA #1 alg etiketi
+  [GECTI] D:VC / VC09_GJ_ES256_EdDSA her ifsa ozeti yukte var — 10
+  [GECTI] D:VC / VC10_ikili_ihrac[0] imza sayisi — [1, 1]
+  [GECTI] D:VC / VC10_ikili_ihrac[0] #0 (ES256) insa="gecerli" — True
+  [GECTI] D:VC / VC10_ikili_ihrac[0] #0 alg etiketi
+  [GECTI] D:VC / VC10_ikili_ihrac[0] her ifsa ozeti yukte var — 10
+  [GECTI] D:VC / VC10_ikili_ihrac[1] imza sayisi — [1, 1]
+  [GECTI] D:VC / VC10_ikili_ihrac[1] #0 (ML-DSA-65) insa="gecerli" — True
+  [GECTI] D:VC / VC10_ikili_ihrac[1] #0 alg etiketi
+  [GECTI] D:VC / VC10_ikili_ihrac[1] her ifsa ozeti yukte var — 10
+  [GECTI] D:VC / VC11_typ_vc+sd-jwt imza sayisi — [1, 1]
+  [GECTI] D:VC / VC11_typ_vc+sd-jwt #0 (ES256) insa="gecerli" — True
+  [GECTI] D:VC / VC11_typ_vc+sd-jwt #0 alg etiketi
+  [GECTI] D:VC / VC11_typ_vc+sd-jwt her ifsa ozeti yukte var — 10
+  [GECTI] D:VC / VC12_alg_none imza sayisi — [1, 1]
+  [GECTI] D:VC / VC12_alg_none #0 alg=none bos imza
+  [GECTI] D:VC / VC12_alg_none her ifsa ozeti yukte var — 10
+  [GECTI] D:VP / VP01_ihracci_ES256_kb_ES256 imza sayisi — [1, 1]
+  [GECTI] D:VP / VP01_ihracci_ES256_kb_ES256 #0 (ES256) insa="gecerli" — True
+  [GECTI] D:VP / VP01_ihracci_ES256_kb_ES256 #0 alg etiketi
+  [GECTI] D:VP / VP01_ihracci_ES256_kb_ES256 her ifsa ozeti yukte var — 3
+  [GECTI] D:VP / VP01_ihracci_ES256_kb_ES256 KB-JWT cnf anahtariyla gecerli
+  [GECTI] D:VP / VP01_ihracci_ES256_kb_ES256 sd_hash, insa'daki imza sirasini (0) kapsiyor
+  [GECTI] D:VP / VP01_ihracci_ES256_kb_ES256 KB aud/nonce
+  [GECTI] D:VP / VP02_ihracci_MLDSA65_kb_ES256 imza sayisi — [1, 1]
+  [GECTI] D:VP / VP02_ihracci_MLDSA65_kb_ES256 #0 (ML-DSA-65) insa="gecerli" — True
+  [GECTI] D:VP / VP02_ihracci_MLDSA65_kb_ES256 #0 alg etiketi
+  [GECTI] D:VP / VP02_ihracci_MLDSA65_kb_ES256 her ifsa ozeti yukte var — 3
+  [GECTI] D:VP / VP02_ihracci_MLDSA65_kb_ES256 KB-JWT cnf anahtariyla gecerli
+  [GECTI] D:VP / VP02_ihracci_MLDSA65_kb_ES256 sd_hash, insa'daki imza sirasini (0) kapsiyor
+  [GECTI] D:VP / VP02_ihracci_MLDSA65_kb_ES256 KB aud/nonce
+  [GECTI] D:VP / VP03_ihracci_MLDSA65_kb_MLDSA65 imza sayisi — [1, 1]
+  [GECTI] D:VP / VP03_ihracci_MLDSA65_kb_MLDSA65 #0 (ML-DSA-65) insa="gecerli" — True
+  [GECTI] D:VP / VP03_ihracci_MLDSA65_kb_MLDSA65 #0 alg etiketi
+  [GECTI] D:VP / VP03_ihracci_MLDSA65_kb_MLDSA65 her ifsa ozeti yukte var — 3
+  [GECTI] D:VP / VP03_ihracci_MLDSA65_kb_MLDSA65 KB-JWT cnf anahtariyla gecerli
+  [GECTI] D:VP / VP03_ihracci_MLDSA65_kb_MLDSA65 sd_hash, insa'daki imza sirasini (0) kapsiyor
+  [GECTI] D:VP / VP03_ihracci_MLDSA65_kb_MLDSA65 KB aud/nonce
+  [GECTI] D:VP / VP04_ihracci_composite_kb_composite imza sayisi — [1, 1]
+  [GECTI] D:VP / VP04_ihracci_composite_kb_composite #0 (ML-DSA-65-ES256) insa="gecerli" — True
+  [GECTI] D:VP / VP04_ihracci_composite_kb_composite #0 alg etiketi
+  [GECTI] D:VP / VP04_ihracci_composite_kb_composite her ifsa ozeti yukte var — 3
+  [GECTI] D:VP / VP04_ihracci_composite_kb_composite KB-JWT cnf anahtariyla gecerli
+  [GECTI] D:VP / VP04_ihracci_composite_kb_composite sd_hash, insa'daki imza sirasini (0) kapsiyor
+  [GECTI] D:VP / VP04_ihracci_composite_kb_composite KB aud/nonce
+  [GECTI] D:VP / VP05_GJ_ES256_MLDSA65_kb imza sayisi — [2, 2]
+  [GECTI] D:VP / VP05_GJ_ES256_MLDSA65_kb #0 (ES256) insa="gecerli" — True
+  [GECTI] D:VP / VP05_GJ_ES256_MLDSA65_kb #0 alg etiketi
+  [GECTI] D:VP / VP05_GJ_ES256_MLDSA65_kb #1 (ML-DSA-65) insa="gecerli" — True
+  [GECTI] D:VP / VP05_GJ_ES256_MLDSA65_kb #1 alg etiketi
+  [GECTI] D:VP / VP05_GJ_ES256_MLDSA65_kb her ifsa ozeti yukte var — 3
+  [GECTI] D:VP / VP05_GJ_ES256_MLDSA65_kb KB-JWT cnf anahtariyla gecerli
+  [GECTI] D:VP / VP05_GJ_ES256_MLDSA65_kb sd_hash, insa'daki imza sirasini (0) kapsiyor
+  [GECTI] D:VP / VP05_GJ_ES256_MLDSA65_kb KB aud/nonce
+  [GECTI] D:VP / VP06_GJ_pq_soyuldu_kb_gecerli imza sayisi — [1, 1]
+  [GECTI] D:VP / VP06_GJ_pq_soyuldu_kb_gecerli #0 (ES256) insa="gecerli" — True
+  [GECTI] D:VP / VP06_GJ_pq_soyuldu_kb_gecerli #0 alg etiketi
+  [GECTI] D:VP / VP06_GJ_pq_soyuldu_kb_gecerli her ifsa ozeti yukte var — 3
+  [GECTI] D:VP / VP06_GJ_pq_soyuldu_kb_gecerli KB-JWT cnf anahtariyla gecerli
+  [GECTI] D:VP / VP06_GJ_pq_soyuldu_kb_gecerli sd_hash, insa'daki imza sirasini (0) kapsiyor
+  [GECTI] D:VP / VP06_GJ_pq_soyuldu_kb_gecerli KB aud/nonce
+  [GECTI] D:VP / VP07_GJ_sd_hash_ikinci_imza imza sayisi — [2, 2]
+  [GECTI] D:VP / VP07_GJ_sd_hash_ikinci_imza #0 (ES256) insa="gecerli" — True
+  [GECTI] D:VP / VP07_GJ_sd_hash_ikinci_imza #0 alg etiketi
+  [GECTI] D:VP / VP07_GJ_sd_hash_ikinci_imza #1 (ML-DSA-65) insa="gecerli" — True
+  [GECTI] D:VP / VP07_GJ_sd_hash_ikinci_imza #1 alg etiketi
+  [GECTI] D:VP / VP07_GJ_sd_hash_ikinci_imza her ifsa ozeti yukte var — 3
+  [GECTI] D:VP / VP07_GJ_sd_hash_ikinci_imza KB-JWT cnf anahtariyla gecerli
+  [GECTI] D:VP / VP07_GJ_sd_hash_ikinci_imza sd_hash, insa'daki imza sirasini (1) kapsiyor
+  [GECTI] D:VP / VP07_GJ_sd_hash_ikinci_imza KB aud/nonce
+  [GECTI] D:TSL / TSL01_ES256_x5c imza sayisi — [1, 1]
+  [GECTI] D:TSL / TSL01_ES256_x5c #0 (ES256) insa="gecerli" — True
+  [GECTI] D:TSL / TSL01_ES256_x5c #0 alg etiketi
+  [GECTI] D:TSL / TSL01_ES256_x5c durum degerleri == insa
+  [GECTI] D:TSL / TSL01_ES256_x5c typ=statuslist+jwt
+  [GECTI] D:TSL / TSL02_MLDSA65_x5c imza sayisi — [1, 1]
+  [GECTI] D:TSL / TSL02_MLDSA65_x5c #0 (ML-DSA-65) insa="gecerli" — True
+  [GECTI] D:TSL / TSL02_MLDSA65_x5c #0 alg etiketi
+  [GECTI] D:TSL / TSL02_MLDSA65_x5c durum degerleri == insa
+  [GECTI] D:TSL / TSL02_MLDSA65_x5c typ=statuslist+jwt
+  [GECTI] D:TSL / TSL03_composite_kid imza sayisi — [1, 1]
+  [GECTI] D:TSL / TSL03_composite_kid #0 (ML-DSA-65-ES256) insa="gecerli" — True
+  [GECTI] D:TSL / TSL03_composite_kid #0 alg etiketi
+  [GECTI] D:TSL / TSL03_composite_kid durum degerleri == insa
+  [GECTI] D:TSL / TSL03_composite_kid typ=statuslist+jwt
+  [GECTI] D:DPOP / DPOP01_ES256 imza sayisi — [1, 1]
+  [GECTI] D:DPOP / DPOP01_ES256 #0 (ES256) insa="gecerli" — True
+  [GECTI] D:DPOP / DPOP01_ES256 #0 alg etiketi
+  [GECTI] D:DPOP / DPOP01_ES256 jwk == rol acik anahtari
+  [GECTI] D:DPOP / DPOP01_ES256 bayt == manifest
+  [GECTI] D:DPOP / DPOP02_EdDSA imza sayisi — [1, 1]
+  [GECTI] D:DPOP / DPOP02_EdDSA #0 (EdDSA) insa="gecerli" — True
+  [GECTI] D:DPOP / DPOP02_EdDSA #0 alg etiketi
+  [GECTI] D:DPOP / DPOP02_EdDSA jwk == rol acik anahtari
+  [GECTI] D:DPOP / DPOP02_EdDSA bayt == manifest
+  [GECTI] D:DPOP / DPOP03_ML-DSA-44 imza sayisi — [1, 1]
+  [GECTI] D:DPOP / DPOP03_ML-DSA-44 #0 (ML-DSA-44) insa="gecerli" — True
+  [GECTI] D:DPOP / DPOP03_ML-DSA-44 #0 alg etiketi
+  [GECTI] D:DPOP / DPOP03_ML-DSA-44 jwk == rol acik anahtari
+  [GECTI] D:DPOP / DPOP03_ML-DSA-44 bayt == manifest
+  [GECTI] D:DPOP / DPOP04_ML-DSA-65 imza sayisi — [1, 1]
+  [GECTI] D:DPOP / DPOP04_ML-DSA-65 #0 (ML-DSA-65) insa="gecerli" — True
+  [GECTI] D:DPOP / DPOP04_ML-DSA-65 #0 alg etiketi
+  [GECTI] D:DPOP / DPOP04_ML-DSA-65 jwk == rol acik anahtari
+  [GECTI] D:DPOP / DPOP04_ML-DSA-65 bayt == manifest
+  [GECTI] D:DPOP / DPOP05_ML-DSA-87 imza sayisi — [1, 1]
+  [GECTI] D:DPOP / DPOP05_ML-DSA-87 #0 (ML-DSA-87) insa="gecerli" — True
+  [GECTI] D:DPOP / DPOP05_ML-DSA-87 #0 alg etiketi
+  [GECTI] D:DPOP / DPOP05_ML-DSA-87 jwk == rol acik anahtari
+  [GECTI] D:DPOP / DPOP05_ML-DSA-87 bayt == manifest
+  [GECTI] D:DPOP / DPOP06_ML-DSA-65-ES256 imza sayisi — [1, 1]
+  [GECTI] D:DPOP / DPOP06_ML-DSA-65-ES256 #0 (ML-DSA-65-ES256) insa="gecerli" — True
+  [GECTI] D:DPOP / DPOP06_ML-DSA-65-ES256 #0 alg etiketi
+  [GECTI] D:DPOP / DPOP06_ML-DSA-65-ES256 jwk == rol acik anahtari
+  [GECTI] D:DPOP / DPOP06_ML-DSA-65-ES256 bayt == manifest
+  [GECTI] D:DPOP / DPOP07_ML-DSA-65-Ed25519 imza sayisi — [1, 1]
+  [GECTI] D:DPOP / DPOP07_ML-DSA-65-Ed25519 #0 (ML-DSA-65-Ed25519) insa="gecerli" — True
+  [GECTI] D:DPOP / DPOP07_ML-DSA-65-Ed25519 #0 alg etiketi
+  [GECTI] D:DPOP / DPOP07_ML-DSA-65-Ed25519 jwk == rol acik anahtari
+  [GECTI] D:DPOP / DPOP07_ML-DSA-65-Ed25519 bayt == manifest
+  [GECTI] D:DPOP / DPOP08_ML-DSA-65_ath_nonce imza sayisi — [1, 1]
+  [GECTI] D:DPOP / DPOP08_ML-DSA-65_ath_nonce #0 (ML-DSA-65) insa="gecerli" — True
+  [GECTI] D:DPOP / DPOP08_ML-DSA-65_ath_nonce #0 alg etiketi
+  [GECTI] D:DPOP / DPOP08_ML-DSA-65_ath_nonce jwk == rol acik anahtari
+  [GECTI] D:DPOP / DPOP08_ML-DSA-65_ath_nonce bayt == manifest
+  [GECTI] D:DPOP / DPOP09_ML-DSA-65-ES256_ath_nonce imza sayisi — [1, 1]
+  [GECTI] D:DPOP / DPOP09_ML-DSA-65-ES256_ath_nonce #0 (ML-DSA-65-ES256) insa="gecerli" — True
+  [GECTI] D:DPOP / DPOP09_ML-DSA-65-ES256_ath_nonce #0 alg etiketi
+  [GECTI] D:DPOP / DPOP09_ML-DSA-65-ES256_ath_nonce jwk == rol acik anahtari
+  [GECTI] D:DPOP / DPOP09_ML-DSA-65-ES256_ath_nonce bayt == manifest
+  [GECTI] D:DPOP / DPOP10_jwk_ozel_anahtar_iceriyor imza sayisi — [1, 1]
+  [GECTI] D:DPOP / DPOP10_jwk_ozel_anahtar_iceriyor #0 (ML-DSA-65) insa="gecerli" — True
+  [GECTI] D:DPOP / DPOP10_jwk_ozel_anahtar_iceriyor #0 alg etiketi
+  [GECTI] D:DPOP / DPOP10_jwk_ozel_anahtar_iceriyor jwk ozel uye (priv) iceriyor
+  [GECTI] D:CRIT / CRIT01_bilinmeyen_parametre imza sayisi — [1, 1]
+  [GECTI] D:CRIT / CRIT01_bilinmeyen_parametre #0 (ML-DSA-65) insa="gecerli" — True
+  [GECTI] D:CRIT / CRIT01_bilinmeyen_parametre #0 alg etiketi
+  [GECTI] D:CRIT / CRIT01_bilinmeyen_parametre her ifsa ozeti yukte var — 10
+  [GECTI] D:CRIT / CRIT01_bilinmeyen_parametre crit konumu/degeri == insa
+  [GECTI] D:CRIT / CRIT03_kayitli_ad imza sayisi — [1, 1]
+  [GECTI] D:CRIT / CRIT03_kayitli_ad #0 (ML-DSA-65) insa="gecerli" — True
+  [GECTI] D:CRIT / CRIT03_kayitli_ad #0 alg etiketi
+  [GECTI] D:CRIT / CRIT03_kayitli_ad her ifsa ozeti yukte var — 10
+  [GECTI] D:CRIT / CRIT03_kayitli_ad crit konumu/degeri == insa
+  [GECTI] D:CRIT / CRIT04_bos_dizi imza sayisi — [1, 1]
+  [GECTI] D:CRIT / CRIT04_bos_dizi #0 (ML-DSA-65) insa="gecerli" — True
+  [GECTI] D:CRIT / CRIT04_bos_dizi #0 alg etiketi
+  [GECTI] D:CRIT / CRIT04_bos_dizi her ifsa ozeti yukte var — 10
+  [GECTI] D:CRIT / CRIT04_bos_dizi crit konumu/degeri == insa
+  [GECTI] D:CRIT / CRIT05_listelenen_parametre_yok imza sayisi — [1, 1]
+  [GECTI] D:CRIT / CRIT05_listelenen_parametre_yok #0 (ML-DSA-65) insa="gecerli" — True
+  [GECTI] D:CRIT / CRIT05_listelenen_parametre_yok #0 alg etiketi
+  [GECTI] D:CRIT / CRIT05_listelenen_parametre_yok her ifsa ozeti yukte var — 10
+  [GECTI] D:CRIT / CRIT05_listelenen_parametre_yok crit konumu/degeri == insa
+  [GECTI] D:CRIT / CRIT02_korumasiz_crit imza sayisi — [1, 1]
+  [GECTI] D:CRIT / CRIT02_korumasiz_crit #0 (ML-DSA-65) insa="gecerli" — True
+  [GECTI] D:CRIT / CRIT02_korumasiz_crit #0 alg etiketi
+  [GECTI] D:CRIT / CRIT02_korumasiz_crit her ifsa ozeti yukte var — 10
+  [GECTI] D:CRIT / CRIT02_korumasiz_crit crit konumu/degeri == insa
+  [GECTI] D:T / T1K_both_valid-ED25519 imza sayisi — [2, 2]
+  [GECTI] D:T / T1K_both_valid-ED25519 #0 (ES256) insa="gecerli" — True
+  [GECTI] D:T / T1K_both_valid-ED25519 #0 alg etiketi
+  [GECTI] D:T / T1K_both_valid-ED25519 #1 (Ed25519) insa="gecerli" — True
+  [GECTI] D:T / T1K_both_valid-ED25519 #1 alg etiketi
+  [GECTI] D:T / T2K_second_tampered-ED25519 imza sayisi — [2, 2]
+  [GECTI] D:T / T2K_second_tampered-ED25519 #0 (ES256) insa="gecerli" — True
+  [GECTI] D:T / T2K_second_tampered-ED25519 #0 alg etiketi
+  [GECTI] D:T / T2K_second_tampered-ED25519 #1 (Ed25519) insa="bozuk: bayt 5, bit 0 cevrildi" — False
+  [GECTI] D:T / T2K_second_tampered-ED25519 #1 alg etiketi
+  [GECTI] D:T / T4K_plus_ML-DSA-65-ED25519 imza sayisi — [3, 3]
+  [GECTI] D:T / T4K_plus_ML-DSA-65-ED25519 #0 (ES256) insa="gecerli" — True
+  [GECTI] D:T / T4K_plus_ML-DSA-65-ED25519 #0 alg etiketi
+  [GECTI] D:T / T4K_plus_ML-DSA-65-ED25519 #1 (Ed25519) insa="gecerli" — True
+  [GECTI] D:T / T4K_plus_ML-DSA-65-ED25519 #1 alg etiketi
+  [GECTI] D:T / T4K_plus_ML-DSA-65-ED25519 #2 (ML-DSA-65) insa="gecerli" — True
+  [GECTI] D:T / T4K_plus_ML-DSA-65-ED25519 #2 alg etiketi
+  [GECTI] D:T / T5K_only_EdDSA-ED25519 imza sayisi — [1, 1]
+  [GECTI] D:T / T5K_only_EdDSA-ED25519 #0 (Ed25519) insa="gecerli" — True
+  [GECTI] D:T / T5K_only_EdDSA-ED25519 #0 alg etiketi
+  [GECTI] D:T / T6_plus_composite-ED25519 imza sayisi — [3, 3]
+  [GECTI] D:T / T6_plus_composite-ED25519 #0 (ES256) insa="gecerli" — True
+  [GECTI] D:T / T6_plus_composite-ED25519 #0 alg etiketi
+  [GECTI] D:T / T6_plus_composite-ED25519 #1 (Ed25519) insa="gecerli" — True
+  [GECTI] D:T / T6_plus_composite-ED25519 #1 alg etiketi
+  [GECTI] D:T / T6_plus_composite-ED25519 #2 (ML-DSA-65-ES256) insa="gecerli" — True
+  [GECTI] D:T / T6_plus_composite-ED25519 #2 alg etiketi
+  [GECTI] D:VC / VC09_GJ_ES256_EdDSA-ED25519 imza sayisi — [2, 2]
+  [GECTI] D:VC / VC09_GJ_ES256_EdDSA-ED25519 #0 (ES256) insa="gecerli" — True
+  [GECTI] D:VC / VC09_GJ_ES256_EdDSA-ED25519 #0 alg etiketi
+  [GECTI] D:VC / VC09_GJ_ES256_EdDSA-ED25519 #1 (Ed25519) insa="gecerli" — True
+  [GECTI] D:VC / VC09_GJ_ES256_EdDSA-ED25519 #1 alg etiketi
+  [GECTI] D:VC / VC09_GJ_ES256_EdDSA-ED25519 her ifsa ozeti yukte var — 10
+  [GECTI] D:DPOP / DPOP02_EdDSA-ED25519 imza sayisi — [1, 1]
+  [GECTI] D:DPOP / DPOP02_EdDSA-ED25519 #0 (Ed25519) insa="gecerli" — True
+  [GECTI] D:DPOP / DPOP02_EdDSA-ED25519 #0 alg etiketi
+  [GECTI] D:DPOP / DPOP02_EdDSA-ED25519 jwk == rol acik anahtari
+  [GECTI] D:DPOP / DPOP02_EdDSA-ED25519 bayt == manifest
+  [GECTI] D:T / T1K_both_valid-SIRA-ters imza sayisi — [2, 2]
+  [GECTI] D:T / T1K_both_valid-SIRA-ters #0 (EdDSA) insa="gecerli" — True
+  [GECTI] D:T / T1K_both_valid-SIRA-ters #0 alg etiketi
+  [GECTI] D:T / T1K_both_valid-SIRA-ters #1 (ES256) insa="gecerli" — True
+  [GECTI] D:T / T1K_both_valid-SIRA-ters #1 alg etiketi
+  [GECTI] D:T / T1K_both_valid-SIRA-ters-ED25519 imza sayisi — [2, 2]
+  [GECTI] D:T / T1K_both_valid-SIRA-ters-ED25519 #0 (Ed25519) insa="gecerli" — True
+  [GECTI] D:T / T1K_both_valid-SIRA-ters-ED25519 #0 alg etiketi
+  [GECTI] D:T / T1K_both_valid-SIRA-ters-ED25519 #1 (ES256) insa="gecerli" — True
+  [GECTI] D:T / T1K_both_valid-SIRA-ters-ED25519 #1 alg etiketi
+  [GECTI] D:T / T1P_both_valid-SIRA-ters imza sayisi — [2, 2]
+  [GECTI] D:T / T1P_both_valid-SIRA-ters #0 (ML-DSA-65) insa="gecerli" — True
+  [GECTI] D:T / T1P_both_valid-SIRA-ters #0 alg etiketi
+  [GECTI] D:T / T1P_both_valid-SIRA-ters #1 (ES256) insa="gecerli" — True
+  [GECTI] D:T / T1P_both_valid-SIRA-ters #1 alg etiketi
+  [GECTI] D:T / T1C_both_valid-SIRA-ters imza sayisi — [2, 2]
+  [GECTI] D:T / T1C_both_valid-SIRA-ters #0 (ML-DSA-65-ES256) insa="gecerli" — True
+  [GECTI] D:T / T1C_both_valid-SIRA-ters #0 alg etiketi
+  [GECTI] D:T / T1C_both_valid-SIRA-ters #1 (ES256) insa="gecerli" — True
+  [GECTI] D:T / T1C_both_valid-SIRA-ters #1 alg etiketi
+  [GECTI] D:T / T2K_second_tampered-SIRA-ters imza sayisi — [2, 2]
+  [GECTI] D:T / T2K_second_tampered-SIRA-ters #0 (EdDSA) insa="bozuk: bayt 5, bit 0 cevrildi" — False
+  [GECTI] D:T / T2K_second_tampered-SIRA-ters #0 alg etiketi
+  [GECTI] D:T / T2K_second_tampered-SIRA-ters #1 (ES256) insa="gecerli" — True
+  [GECTI] D:T / T2K_second_tampered-SIRA-ters #1 alg etiketi
+  [GECTI] D:T / T2K_second_tampered-SIRA-ters-ED25519 imza sayisi — [2, 2]
+  [GECTI] D:T / T2K_second_tampered-SIRA-ters-ED25519 #0 (Ed25519) insa="bozuk: bayt 5, bit 0 cevrildi" — False
+  [GECTI] D:T / T2K_second_tampered-SIRA-ters-ED25519 #0 alg etiketi
+  [GECTI] D:T / T2K_second_tampered-SIRA-ters-ED25519 #1 (ES256) insa="gecerli" — True
+  [GECTI] D:T / T2K_second_tampered-SIRA-ters-ED25519 #1 alg etiketi
+  [GECTI] D:T / T2P_second_tampered-SIRA-ters imza sayisi — [2, 2]
+  [GECTI] D:T / T2P_second_tampered-SIRA-ters #0 (ML-DSA-65) insa="bozuk: bayt 5, bit 0 cevrildi" — False
+  [GECTI] D:T / T2P_second_tampered-SIRA-ters #0 alg etiketi
+  [GECTI] D:T / T2P_second_tampered-SIRA-ters #1 (ES256) insa="gecerli" — True
+  [GECTI] D:T / T2P_second_tampered-SIRA-ters #1 alg etiketi
+  [GECTI] D:T / T2C_second_tampered-SIRA-ters imza sayisi — [2, 2]
+  [GECTI] D:T / T2C_second_tampered-SIRA-ters #0 (ML-DSA-65-ES256) insa="bozuk: bayt 5, bit 0 cevrildi (ML-DSA bileseni ici" — False
+  [GECTI] D:T / T2C_second_tampered-SIRA-ters #0 alg etiketi
+  [GECTI] D:T / T2C_second_tampered-SIRA-ters #1 (ES256) insa="gecerli" — True
+  [GECTI] D:T / T2C_second_tampered-SIRA-ters #1 alg etiketi
+  [GECTI] D:T / T4K_plus_ML-DSA-65-SIRA-ek-once imza sayisi — [3, 3]
+  [GECTI] D:T / T4K_plus_ML-DSA-65-SIRA-ek-once #0 (ML-DSA-65) insa="gecerli" — True
+  [GECTI] D:T / T4K_plus_ML-DSA-65-SIRA-ek-once #0 alg etiketi
+  [GECTI] D:T / T4K_plus_ML-DSA-65-SIRA-ek-once #1 (ES256) insa="gecerli" — True
+  [GECTI] D:T / T4K_plus_ML-DSA-65-SIRA-ek-once #1 alg etiketi
+  [GECTI] D:T / T4K_plus_ML-DSA-65-SIRA-ek-once #2 (EdDSA) insa="gecerli" — True
+  [GECTI] D:T / T4K_plus_ML-DSA-65-SIRA-ek-once #2 alg etiketi
+  [GECTI] D:T / T4K_plus_ML-DSA-65-SIRA-ek-once-ED25519 imza sayisi — [3, 3]
+  [GECTI] D:T / T4K_plus_ML-DSA-65-SIRA-ek-once-ED25519 #0 (ML-DSA-65) insa="gecerli" — True
+  [GECTI] D:T / T4K_plus_ML-DSA-65-SIRA-ek-once-ED25519 #0 alg etiketi
+  [GECTI] D:T / T4K_plus_ML-DSA-65-SIRA-ek-once-ED25519 #1 (ES256) insa="gecerli" — True
+  [GECTI] D:T / T4K_plus_ML-DSA-65-SIRA-ek-once-ED25519 #1 alg etiketi
+  [GECTI] D:T / T4K_plus_ML-DSA-65-SIRA-ek-once-ED25519 #2 (Ed25519) insa="gecerli" — True
+  [GECTI] D:T / T4K_plus_ML-DSA-65-SIRA-ek-once-ED25519 #2 alg etiketi
+  [GECTI] D:T / T4K_plus_ML-DSA-65-SIRA-ters imza sayisi — [3, 3]
+  [GECTI] D:T / T4K_plus_ML-DSA-65-SIRA-ters #0 (ML-DSA-65) insa="gecerli" — True
+  [GECTI] D:T / T4K_plus_ML-DSA-65-SIRA-ters #0 alg etiketi
+  [GECTI] D:T / T4K_plus_ML-DSA-65-SIRA-ters #1 (EdDSA) insa="gecerli" — True
+  [GECTI] D:T / T4K_plus_ML-DSA-65-SIRA-ters #1 alg etiketi
+  [GECTI] D:T / T4K_plus_ML-DSA-65-SIRA-ters #2 (ES256) insa="gecerli" — True
+  [GECTI] D:T / T4K_plus_ML-DSA-65-SIRA-ters #2 alg etiketi
+  [GECTI] D:T / T4K_plus_ML-DSA-65-SIRA-ters-ED25519 imza sayisi — [3, 3]
+  [GECTI] D:T / T4K_plus_ML-DSA-65-SIRA-ters-ED25519 #0 (ML-DSA-65) insa="gecerli" — True
+  [GECTI] D:T / T4K_plus_ML-DSA-65-SIRA-ters-ED25519 #0 alg etiketi
+  [GECTI] D:T / T4K_plus_ML-DSA-65-SIRA-ters-ED25519 #1 (Ed25519) insa="gecerli" — True
+  [GECTI] D:T / T4K_plus_ML-DSA-65-SIRA-ters-ED25519 #1 alg etiketi
+  [GECTI] D:T / T4K_plus_ML-DSA-65-SIRA-ters-ED25519 #2 (ES256) insa="gecerli" — True
+  [GECTI] D:T / T4K_plus_ML-DSA-65-SIRA-ters-ED25519 #2 alg etiketi
+  [GECTI] D:T / T4P_plus_ML-DSA-65-ES256-SIRA-ek-once imza sayisi — [3, 3]
+  [GECTI] D:T / T4P_plus_ML-DSA-65-ES256-SIRA-ek-once #0 (ML-DSA-65-ES256) insa="gecerli" — True
+  [GECTI] D:T / T4P_plus_ML-DSA-65-ES256-SIRA-ek-once #0 alg etiketi
+  [GECTI] D:T / T4P_plus_ML-DSA-65-ES256-SIRA-ek-once #1 (ES256) insa="gecerli" — True
+  [GECTI] D:T / T4P_plus_ML-DSA-65-ES256-SIRA-ek-once #1 alg etiketi
+  [GECTI] D:T / T4P_plus_ML-DSA-65-ES256-SIRA-ek-once #2 (ML-DSA-65) insa="gecerli" — True
+  [GECTI] D:T / T4P_plus_ML-DSA-65-ES256-SIRA-ek-once #2 alg etiketi
+  [GECTI] D:T / T4P_plus_ML-DSA-65-ES256-SIRA-ters imza sayisi — [3, 3]
+  [GECTI] D:T / T4P_plus_ML-DSA-65-ES256-SIRA-ters #0 (ML-DSA-65-ES256) insa="gecerli" — True
+  [GECTI] D:T / T4P_plus_ML-DSA-65-ES256-SIRA-ters #0 alg etiketi
+  [GECTI] D:T / T4P_plus_ML-DSA-65-ES256-SIRA-ters #1 (ML-DSA-65) insa="gecerli" — True
+  [GECTI] D:T / T4P_plus_ML-DSA-65-ES256-SIRA-ters #1 alg etiketi
+  [GECTI] D:T / T4P_plus_ML-DSA-65-ES256-SIRA-ters #2 (ES256) insa="gecerli" — True
+  [GECTI] D:T / T4P_plus_ML-DSA-65-ES256-SIRA-ters #2 alg etiketi
+  [GECTI] D:T / T4C_plus_ML-DSA-65-SIRA-ek-once imza sayisi — [3, 3]
+  [GECTI] D:T / T4C_plus_ML-DSA-65-SIRA-ek-once #0 (ML-DSA-65) insa="gecerli" — True
+  [GECTI] D:T / T4C_plus_ML-DSA-65-SIRA-ek-once #0 alg etiketi
+  [GECTI] D:T / T4C_plus_ML-DSA-65-SIRA-ek-once #1 (ES256) insa="gecerli" — True
+  [GECTI] D:T / T4C_plus_ML-DSA-65-SIRA-ek-once #1 alg etiketi
+  [GECTI] D:T / T4C_plus_ML-DSA-65-SIRA-ek-once #2 (ML-DSA-65-ES256) insa="gecerli" — True
+  [GECTI] D:T / T4C_plus_ML-DSA-65-SIRA-ek-once #2 alg etiketi
+  [GECTI] D:T / T4C_plus_ML-DSA-65-SIRA-ters imza sayisi — [3, 3]
+  [GECTI] D:T / T4C_plus_ML-DSA-65-SIRA-ters #0 (ML-DSA-65) insa="gecerli" — True
+  [GECTI] D:T / T4C_plus_ML-DSA-65-SIRA-ters #0 alg etiketi
+  [GECTI] D:T / T4C_plus_ML-DSA-65-SIRA-ters #1 (ML-DSA-65-ES256) insa="gecerli" — True
+  [GECTI] D:T / T4C_plus_ML-DSA-65-SIRA-ters #1 alg etiketi
+  [GECTI] D:T / T4C_plus_ML-DSA-65-SIRA-ters #2 (ES256) insa="gecerli" — True
+  [GECTI] D:T / T4C_plus_ML-DSA-65-SIRA-ters #2 alg etiketi
+  [GECTI] D:T / T6_plus_composite-SIRA-ek-once imza sayisi — [3, 3]
+  [GECTI] D:T / T6_plus_composite-SIRA-ek-once #0 (ML-DSA-65-ES256) insa="gecerli" — True
+  [GECTI] D:T / T6_plus_composite-SIRA-ek-once #0 alg etiketi
+  [GECTI] D:T / T6_plus_composite-SIRA-ek-once #1 (ES256) insa="gecerli" — True
+  [GECTI] D:T / T6_plus_composite-SIRA-ek-once #1 alg etiketi
+  [GECTI] D:T / T6_plus_composite-SIRA-ek-once #2 (EdDSA) insa="gecerli" — True
+  [GECTI] D:T / T6_plus_composite-SIRA-ek-once #2 alg etiketi
+  [GECTI] D:T / T6_plus_composite-SIRA-ek-once-ED25519 imza sayisi — [3, 3]
+  [GECTI] D:T / T6_plus_composite-SIRA-ek-once-ED25519 #0 (ML-DSA-65-ES256) insa="gecerli" — True
+  [GECTI] D:T / T6_plus_composite-SIRA-ek-once-ED25519 #0 alg etiketi
+  [GECTI] D:T / T6_plus_composite-SIRA-ek-once-ED25519 #1 (ES256) insa="gecerli" — True
+  [GECTI] D:T / T6_plus_composite-SIRA-ek-once-ED25519 #1 alg etiketi
+  [GECTI] D:T / T6_plus_composite-SIRA-ek-once-ED25519 #2 (Ed25519) insa="gecerli" — True
+  [GECTI] D:T / T6_plus_composite-SIRA-ek-once-ED25519 #2 alg etiketi
+  [GECTI] D:T / T6_plus_composite-SIRA-ters imza sayisi — [3, 3]
+  [GECTI] D:T / T6_plus_composite-SIRA-ters #0 (ML-DSA-65-ES256) insa="gecerli" — True
+  [GECTI] D:T / T6_plus_composite-SIRA-ters #0 alg etiketi
+  [GECTI] D:T / T6_plus_composite-SIRA-ters #1 (EdDSA) insa="gecerli" — True
+  [GECTI] D:T / T6_plus_composite-SIRA-ters #1 alg etiketi
+  [GECTI] D:T / T6_plus_composite-SIRA-ters #2 (ES256) insa="gecerli" — True
+  [GECTI] D:T / T6_plus_composite-SIRA-ters #2 alg etiketi
+  [GECTI] D:T / T6_plus_composite-SIRA-ters-ED25519 imza sayisi — [3, 3]
+  [GECTI] D:T / T6_plus_composite-SIRA-ters-ED25519 #0 (ML-DSA-65-ES256) insa="gecerli" — True
+  [GECTI] D:T / T6_plus_composite-SIRA-ters-ED25519 #0 alg etiketi
+  [GECTI] D:T / T6_plus_composite-SIRA-ters-ED25519 #1 (Ed25519) insa="gecerli" — True
+  [GECTI] D:T / T6_plus_composite-SIRA-ters-ED25519 #1 alg etiketi
+  [GECTI] D:T / T6_plus_composite-SIRA-ters-ED25519 #2 (ES256) insa="gecerli" — True
+  [GECTI] D:T / T6_plus_composite-SIRA-ters-ED25519 #2 alg etiketi
+  [GECTI] D:VC / VC07_GJ_ES256_MLDSA65-SIRA-ters imza sayisi — [2, 2]
+  [GECTI] D:VC / VC07_GJ_ES256_MLDSA65-SIRA-ters #0 (ML-DSA-65) insa="gecerli" — True
+  [GECTI] D:VC / VC07_GJ_ES256_MLDSA65-SIRA-ters #0 alg etiketi
+  [GECTI] D:VC / VC07_GJ_ES256_MLDSA65-SIRA-ters #1 (ES256) insa="gecerli" — True
+  [GECTI] D:VC / VC07_GJ_ES256_MLDSA65-SIRA-ters #1 alg etiketi
+  [GECTI] D:VC / VC07_GJ_ES256_MLDSA65-SIRA-ters her ifsa ozeti yukte var — 10
+  [GECTI] D:VC / VC08_GJ_ES256_composite-SIRA-ters imza sayisi — [2, 2]
+  [GECTI] D:VC / VC08_GJ_ES256_composite-SIRA-ters #0 (ML-DSA-65-ES256) insa="gecerli" — True
+  [GECTI] D:VC / VC08_GJ_ES256_composite-SIRA-ters #0 alg etiketi
+  [GECTI] D:VC / VC08_GJ_ES256_composite-SIRA-ters #1 (ES256) insa="gecerli" — True
+  [GECTI] D:VC / VC08_GJ_ES256_composite-SIRA-ters #1 alg etiketi
+  [GECTI] D:VC / VC08_GJ_ES256_composite-SIRA-ters her ifsa ozeti yukte var — 10
+  [GECTI] D:VC / VC09_GJ_ES256_EdDSA-SIRA-ters imza sayisi — [2, 2]
+  [GECTI] D:VC / VC09_GJ_ES256_EdDSA-SIRA-ters #0 (EdDSA) insa="gecerli" — True
+  [GECTI] D:VC / VC09_GJ_ES256_EdDSA-SIRA-ters #0 alg etiketi
+  [GECTI] D:VC / VC09_GJ_ES256_EdDSA-SIRA-ters #1 (ES256) insa="gecerli" — True
+  [GECTI] D:VC / VC09_GJ_ES256_EdDSA-SIRA-ters #1 alg etiketi
+  [GECTI] D:VC / VC09_GJ_ES256_EdDSA-SIRA-ters her ifsa ozeti yukte var — 10
+  [GECTI] D:VC / VC09_GJ_ES256_EdDSA-SIRA-ters-ED25519 imza sayisi — [2, 2]
+  [GECTI] D:VC / VC09_GJ_ES256_EdDSA-SIRA-ters-ED25519 #0 (Ed25519) insa="gecerli" — True
+  [GECTI] D:VC / VC09_GJ_ES256_EdDSA-SIRA-ters-ED25519 #0 alg etiketi
+  [GECTI] D:VC / VC09_GJ_ES256_EdDSA-SIRA-ters-ED25519 #1 (ES256) insa="gecerli" — True
+  [GECTI] D:VC / VC09_GJ_ES256_EdDSA-SIRA-ters-ED25519 #1 alg etiketi
+  [GECTI] D:VC / VC09_GJ_ES256_EdDSA-SIRA-ters-ED25519 her ifsa ozeti yukte var — 10
+  [GECTI] D:REQ / REQ04_coklu_imzali-SIRA-ters imza sayisi — [2, 2]
+  [GECTI] D:REQ / REQ04_coklu_imzali-SIRA-ters #0 (ML-DSA-65) insa="gecerli" — True
+  [GECTI] D:REQ / REQ04_coklu_imzali-SIRA-ters #0 alg etiketi
+  [GECTI] D:REQ / REQ04_coklu_imzali-SIRA-ters #1 (ES256) insa="gecerli" — True
+  [GECTI] D:REQ / REQ04_coklu_imzali-SIRA-ters #1 alg etiketi
+  [GECTI] D:VP / VP05_GJ_ES256_MLDSA65_kb-SIRA-ters imza sayisi — [2, 2]
+  [GECTI] D:VP / VP05_GJ_ES256_MLDSA65_kb-SIRA-ters #0 (ML-DSA-65) insa="gecerli" — True
+  [GECTI] D:VP / VP05_GJ_ES256_MLDSA65_kb-SIRA-ters #0 alg etiketi
+  [GECTI] D:VP / VP05_GJ_ES256_MLDSA65_kb-SIRA-ters #1 (ES256) insa="gecerli" — True
+  [GECTI] D:VP / VP05_GJ_ES256_MLDSA65_kb-SIRA-ters #1 alg etiketi
+  [GECTI] D:VP / VP05_GJ_ES256_MLDSA65_kb-SIRA-ters her ifsa ozeti yukte var — 3
+  [GECTI] D:VP / VP05_GJ_ES256_MLDSA65_kb-SIRA-ters KB-JWT cnf anahtariyla gecerli
+  [GECTI] D:VP / VP05_GJ_ES256_MLDSA65_kb-SIRA-ters sd_hash, insa'daki imza sirasini (1) kapsiyor
+  [GECTI] D:VP / VP05_GJ_ES256_MLDSA65_kb-SIRA-ters KB aud/nonce
+  [GECTI] D:T / T7K_plus_kayitsiz imza sayisi — [3, 3]
+  [GECTI] D:T / T7K_plus_kayitsiz #0 (ES256) insa="gecerli" — True
+  [GECTI] D:T / T7K_plus_kayitsiz #0 alg etiketi
+  [GECTI] D:T / T7K_plus_kayitsiz #1 (EdDSA) insa="gecerli" — True
+  [GECTI] D:T / T7K_plus_kayitsiz #1 alg etiketi
+  [GECTI] D:T / T7K_plus_kayitsiz #2 anahtarsiz etiket X-KAYITSIZ-1, bayt mevcut
+  [GECTI] D:T / T7K_plus_kayitsiz-ED25519 imza sayisi — [3, 3]
+  [GECTI] D:T / T7K_plus_kayitsiz-ED25519 #0 (ES256) insa="gecerli" — True
+  [GECTI] D:T / T7K_plus_kayitsiz-ED25519 #0 alg etiketi
+  [GECTI] D:T / T7K_plus_kayitsiz-ED25519 #1 (Ed25519) insa="gecerli" — True
+  [GECTI] D:T / T7K_plus_kayitsiz-ED25519 #1 alg etiketi
+  [GECTI] D:T / T7K_plus_kayitsiz-ED25519 #2 anahtarsiz etiket X-KAYITSIZ-1, bayt mevcut
+  [GECTI] D:T / T7K_plus_kayitsiz-SIRA-kayitsiz-once imza sayisi — [3, 3]
+  [GECTI] D:T / T7K_plus_kayitsiz-SIRA-kayitsiz-once #0 anahtarsiz etiket X-KAYITSIZ-1, bayt mevcut
+  [GECTI] D:T / T7K_plus_kayitsiz-SIRA-kayitsiz-once #1 (ES256) insa="gecerli" — True
+  [GECTI] D:T / T7K_plus_kayitsiz-SIRA-kayitsiz-once #1 alg etiketi
+  [GECTI] D:T / T7K_plus_kayitsiz-SIRA-kayitsiz-once #2 (EdDSA) insa="gecerli" — True
+  [GECTI] D:T / T7K_plus_kayitsiz-SIRA-kayitsiz-once #2 alg etiketi
+  [GECTI] D:T / T7K_plus_kayitsiz-SIRA-kayitsiz-once-ED25519 imza sayisi — [3, 3]
+  [GECTI] D:T / T7K_plus_kayitsiz-SIRA-kayitsiz-once-ED25519 #0 anahtarsiz etiket X-KAYITSIZ-1, bayt mevcut
+  [GECTI] D:T / T7K_plus_kayitsiz-SIRA-kayitsiz-once-ED25519 #1 (ES256) insa="gecerli" — True
+  [GECTI] D:T / T7K_plus_kayitsiz-SIRA-kayitsiz-once-ED25519 #1 alg etiketi
+  [GECTI] D:T / T7K_plus_kayitsiz-SIRA-kayitsiz-once-ED25519 #2 (Ed25519) insa="gecerli" — True
+  [GECTI] D:T / T7K_plus_kayitsiz-SIRA-kayitsiz-once-ED25519 #2 alg etiketi
+  [GECTI] D:T / T7K_plus_kayitsiz-SIRA-ters imza sayisi — [3, 3]
+  [GECTI] D:T / T7K_plus_kayitsiz-SIRA-ters #0 anahtarsiz etiket X-KAYITSIZ-1, bayt mevcut
+  [GECTI] D:T / T7K_plus_kayitsiz-SIRA-ters #1 (EdDSA) insa="gecerli" — True
+  [GECTI] D:T / T7K_plus_kayitsiz-SIRA-ters #1 alg etiketi
+  [GECTI] D:T / T7K_plus_kayitsiz-SIRA-ters #2 (ES256) insa="gecerli" — True
+  [GECTI] D:T / T7K_plus_kayitsiz-SIRA-ters #2 alg etiketi
+  [GECTI] D:T / T7K_plus_kayitsiz-SIRA-ters-ED25519 imza sayisi — [3, 3]
+  [GECTI] D:T / T7K_plus_kayitsiz-SIRA-ters-ED25519 #0 anahtarsiz etiket X-KAYITSIZ-1, bayt mevcut
+  [GECTI] D:T / T7K_plus_kayitsiz-SIRA-ters-ED25519 #1 (Ed25519) insa="gecerli" — True
+  [GECTI] D:T / T7K_plus_kayitsiz-SIRA-ters-ED25519 #1 alg etiketi
+  [GECTI] D:T / T7K_plus_kayitsiz-SIRA-ters-ED25519 #2 (ES256) insa="gecerli" — True
+  [GECTI] D:T / T7K_plus_kayitsiz-SIRA-ters-ED25519 #2 alg etiketi
+  [GECTI] D:T / T7P_plus_kayitsiz imza sayisi — [3, 3]
+  [GECTI] D:T / T7P_plus_kayitsiz #0 (ES256) insa="gecerli" — True
+  [GECTI] D:T / T7P_plus_kayitsiz #0 alg etiketi
+  [GECTI] D:T / T7P_plus_kayitsiz #1 (ML-DSA-65) insa="gecerli" — True
+  [GECTI] D:T / T7P_plus_kayitsiz #1 alg etiketi
+  [GECTI] D:T / T7P_plus_kayitsiz #2 anahtarsiz etiket X-KAYITSIZ-1, bayt mevcut
+  [GECTI] D:T / T7P_plus_kayitsiz-SIRA-kayitsiz-once imza sayisi — [3, 3]
+  [GECTI] D:T / T7P_plus_kayitsiz-SIRA-kayitsiz-once #0 anahtarsiz etiket X-KAYITSIZ-1, bayt mevcut
+  [GECTI] D:T / T7P_plus_kayitsiz-SIRA-kayitsiz-once #1 (ES256) insa="gecerli" — True
+  [GECTI] D:T / T7P_plus_kayitsiz-SIRA-kayitsiz-once #1 alg etiketi
+  [GECTI] D:T / T7P_plus_kayitsiz-SIRA-kayitsiz-once #2 (ML-DSA-65) insa="gecerli" — True
+  [GECTI] D:T / T7P_plus_kayitsiz-SIRA-kayitsiz-once #2 alg etiketi
+  [GECTI] D:T / T7P_plus_kayitsiz-SIRA-ters imza sayisi — [3, 3]
+  [GECTI] D:T / T7P_plus_kayitsiz-SIRA-ters #0 anahtarsiz etiket X-KAYITSIZ-1, bayt mevcut
+  [GECTI] D:T / T7P_plus_kayitsiz-SIRA-ters #1 (ML-DSA-65) insa="gecerli" — True
+  [GECTI] D:T / T7P_plus_kayitsiz-SIRA-ters #1 alg etiketi
+  [GECTI] D:T / T7P_plus_kayitsiz-SIRA-ters #2 (ES256) insa="gecerli" — True
+  [GECTI] D:T / T7P_plus_kayitsiz-SIRA-ters #2 alg etiketi
+  [GECTI] D:T / T7C_plus_kayitsiz imza sayisi — [3, 3]
+  [GECTI] D:T / T7C_plus_kayitsiz #0 (ES256) insa="gecerli" — True
+  [GECTI] D:T / T7C_plus_kayitsiz #0 alg etiketi
+  [GECTI] D:T / T7C_plus_kayitsiz #1 (ML-DSA-65-ES256) insa="gecerli" — True
+  [GECTI] D:T / T7C_plus_kayitsiz #1 alg etiketi
+  [GECTI] D:T / T7C_plus_kayitsiz #2 anahtarsiz etiket X-KAYITSIZ-1, bayt mevcut
+  [GECTI] D:T / T7C_plus_kayitsiz-SIRA-kayitsiz-once imza sayisi — [3, 3]
+  [GECTI] D:T / T7C_plus_kayitsiz-SIRA-kayitsiz-once #0 anahtarsiz etiket X-KAYITSIZ-1, bayt mevcut
+  [GECTI] D:T / T7C_plus_kayitsiz-SIRA-kayitsiz-once #1 (ES256) insa="gecerli" — True
+  [GECTI] D:T / T7C_plus_kayitsiz-SIRA-kayitsiz-once #1 alg etiketi
+  [GECTI] D:T / T7C_plus_kayitsiz-SIRA-kayitsiz-once #2 (ML-DSA-65-ES256) insa="gecerli" — True
+  [GECTI] D:T / T7C_plus_kayitsiz-SIRA-kayitsiz-once #2 alg etiketi
+  [GECTI] D:T / T7C_plus_kayitsiz-SIRA-ters imza sayisi — [3, 3]
+  [GECTI] D:T / T7C_plus_kayitsiz-SIRA-ters #0 anahtarsiz etiket X-KAYITSIZ-1, bayt mevcut
+  [GECTI] D:T / T7C_plus_kayitsiz-SIRA-ters #1 (ML-DSA-65-ES256) insa="gecerli" — True
+  [GECTI] D:T / T7C_plus_kayitsiz-SIRA-ters #1 alg etiketi
+  [GECTI] D:T / T7C_plus_kayitsiz-SIRA-ters #2 (ES256) insa="gecerli" — True
+  [GECTI] D:T / T7C_plus_kayitsiz-SIRA-ters #2 alg etiketi
+  [GECTI] D:K10 / K10K_alg-EdDSA_anahtar-ES256 imza sayisi — [1, 1]
+  [GECTI] D:K10 / K10K_alg-EdDSA_anahtar-ES256 #0 (EdDSA) insa="gercek anahtarin algoritmasiyla (ES256) gecerli im" — True
+  [GECTI] D:K10 / K10K_alg-EdDSA_anahtar-ES256 #0 alg etiketi
+  [GECTI] D:K10 / K10K_alg-EdDSA_anahtar-ES256-ED25519 imza sayisi — [1, 1]
+  [GECTI] D:K10 / K10K_alg-EdDSA_anahtar-ES256-ED25519 #0 (Ed25519) insa="gercek anahtarin algoritmasiyla (ES256) gecerli im" — True
+  [GECTI] D:K10 / K10K_alg-EdDSA_anahtar-ES256-ED25519 #0 alg etiketi
+  [GECTI] D:K10 / K10K_alg-ES256_anahtar-Ed25519 imza sayisi — [1, 1]
+  [GECTI] D:K10 / K10K_alg-ES256_anahtar-Ed25519 #0 (ES256) insa="gercek anahtarin algoritmasiyla (EdDSA) gecerli im" — True
+  [GECTI] D:K10 / K10K_alg-ES256_anahtar-Ed25519 #0 alg etiketi
+  [GECTI] D:K10 / K10P_alg-ML-DSA-65_anahtar-ES256 imza sayisi — [1, 1]
+  [GECTI] D:K10 / K10P_alg-ML-DSA-65_anahtar-ES256 #0 (ML-DSA-65) insa="gercek anahtarin algoritmasiyla (ES256) gecerli im" — True
+  [GECTI] D:K10 / K10P_alg-ML-DSA-65_anahtar-ES256 #0 alg etiketi
+  [GECTI] D:K10 / K10P_alg-ES256_anahtar-ML-DSA-65 imza sayisi — [1, 1]
+  [GECTI] D:K10 / K10P_alg-ES256_anahtar-ML-DSA-65 #0 (ES256) insa="gercek anahtarin algoritmasiyla (ML-DSA-65) gecerl" — True
+  [GECTI] D:K10 / K10P_alg-ES256_anahtar-ML-DSA-65 #0 alg etiketi
+  [GECTI] D:K10 / K10C_alg-ML-DSA-65-ES256_anahtar-ML-DSA-65 imza sayisi — [1, 1]
+  [GECTI] D:K10 / K10C_alg-ML-DSA-65-ES256_anahtar-ML-DSA-65 #0 (ML-DSA-65-ES256) insa="gercek anahtarin algoritmasiyla (ML-DSA-65) gecerl" — True
+  [GECTI] D:K10 / K10C_alg-ML-DSA-65-ES256_anahtar-ML-DSA-65 #0 alg etiketi
+  [GECTI] D:K10 / K10C_alg-ML-DSA-65_anahtar-ML-DSA-65-ES256 imza sayisi — [1, 1]
+  [GECTI] D:K10 / K10C_alg-ML-DSA-65_anahtar-ML-DSA-65-ES256 #0 (ML-DSA-65) insa="gercek anahtarin algoritmasiyla (ML-DSA-65-ES256) " — True
+  [GECTI] D:K10 / K10C_alg-ML-DSA-65_anahtar-ML-DSA-65-ES256 #0 alg etiketi
+  [GECTI] D:V / VPLUS_ES256 imza sayisi — [1, 1]
+  [GECTI] D:V / VPLUS_ES256 #0 (ES256) insa="gecerli" — True
+  [GECTI] D:V / VPLUS_ES256 #0 alg etiketi
+  [GECTI] D:V / VMINUS_ES256 imza sayisi — [1, 1]
+  [GECTI] D:V / VMINUS_ES256 #0 (ES256) insa="bozuk: bayt 32, bit 0 cevrildi" — False
+  [GECTI] D:V / VMINUS_ES256 #0 alg etiketi
+  [GECTI] D:V / VPLUS_EdDSA imza sayisi — [1, 1]
+  [GECTI] D:V / VPLUS_EdDSA #0 (EdDSA) insa="gecerli" — True
+  [GECTI] D:V / VPLUS_EdDSA #0 alg etiketi
+  [GECTI] D:V / VPLUS_EdDSA-ED25519 imza sayisi — [1, 1]
+  [GECTI] D:V / VPLUS_EdDSA-ED25519 #0 (Ed25519) insa="gecerli" — True
+  [GECTI] D:V / VPLUS_EdDSA-ED25519 #0 alg etiketi
+  [GECTI] D:V / VMINUS_EdDSA imza sayisi — [1, 1]
+  [GECTI] D:V / VMINUS_EdDSA #0 (EdDSA) insa="bozuk: bayt 32, bit 0 cevrildi" — False
+  [GECTI] D:V / VMINUS_EdDSA #0 alg etiketi
+  [GECTI] D:V / VMINUS_EdDSA-ED25519 imza sayisi — [1, 1]
+  [GECTI] D:V / VMINUS_EdDSA-ED25519 #0 (Ed25519) insa="bozuk: bayt 32, bit 0 cevrildi" — False
+  [GECTI] D:V / VMINUS_EdDSA-ED25519 #0 alg etiketi
+  [GECTI] D:V / VPLUS_ML-DSA-65 imza sayisi — [1, 1]
+  [GECTI] D:V / VPLUS_ML-DSA-65 #0 (ML-DSA-65) insa="gecerli" — True
+  [GECTI] D:V / VPLUS_ML-DSA-65 #0 alg etiketi
+  [GECTI] D:V / VMINUS_ML-DSA-65 imza sayisi — [1, 1]
+  [GECTI] D:V / VMINUS_ML-DSA-65 #0 (ML-DSA-65) insa="bozuk: bayt 1654, bit 0 cevrildi" — False
+  [GECTI] D:V / VMINUS_ML-DSA-65 #0 alg etiketi
+  [GECTI] D:L4C / L4C-JOSE_eski_ES256 imza sayisi — [1, 1]
+  [GECTI] D:L4C / L4C-JOSE_eski_ES256 #0 (ES256) insa="gecerli" — True
+  [GECTI] D:L4C / L4C-JOSE_eski_ES256 #0 alg etiketi
+  [GECTI] G:v1.2-alt-kume / v1.2 vektorleri v1.3 icinde bayt-ayni ve manifest girdisi ayni (153/153)
+  [GECTI] G:v1.2-alt-kume / b-uyumlu/vectors.json bayt-ayni
+  [GECTI] G:capalar / v1.3 manifestindeki v1.2/v1.1/v1 capalari ve iki anahtar SHA256SUMS ozeti dogru
+  [GECTI] G:genel / yeni vektor sayisi 47 (COSE 45 + L4C 2) — {"COSE": 30, "COSE-MR4": 6, "COSE+ED25519": 7, "COSE-MR4+ED25519": 2, "L4C": 2}
+  [GECTI] G:kaynak / manifest cose_kimlik_kaynaklari == uretec/cose.py KAYNAK
+  [GECTI] G:kaynak / alg.ES256 -> RFC9053:248 korpus satirinda birebir
+  [GECTI] G:kaynak / alg.ES256.deprecated -> RFC9864:467 korpus satirinda birebir
+  [GECTI] G:kaynak / alg.ES256.haip -> HAIP:498 korpus satirinda birebir
+  [GECTI] G:kaynak / alg.EdDSA -> RFC9053:365 korpus satirinda birebir
+  [GECTI] G:kaynak / alg.EdDSA.deprecated -> RFC9864:491 korpus satirinda birebir
+  [GECTI] G:kaynak / alg.Ed25519 -> RFC9864:225 korpus satirinda birebir
+  [GECTI] G:kaynak / alg.Ed25519.kayit -> RFC9864:439 korpus satirinda birebir
+  [GECTI] G:kaynak / alg.ML-DSA-44 -> RFC9964:351 korpus satirinda birebir
+  [GECTI] G:kaynak / alg.ML-DSA-65 -> RFC9964:367 korpus satirinda birebir
+  [GECTI] G:kaynak / alg.ML-DSA-87 -> RFC9964:383 korpus satirinda birebir
+  [GECTI] G:kaynak / alg.ML-DSA-44-ES256 -> JOSECOMP:1251 korpus satirinda birebir
+  [GECTI] G:kaynak / alg.ML-DSA-65-ES256 -> JOSECOMP:1268 korpus satirinda birebir
+  [GECTI] G:kaynak / alg.ML-DSA-87-ES384 -> JOSECOMP:1289 korpus satirinda birebir
+  [GECTI] G:kaynak / alg.ML-DSA-44-Ed25519 -> JOSECOMP:1306 korpus satirinda birebir
+  [GECTI] G:kaynak / alg.ML-DSA-65-Ed25519 -> JOSECOMP:1323 korpus satirinda birebir
+  [GECTI] G:kaynak / alg.ML-DSA-87-Ed448 -> JOSECOMP:1345 korpus satirinda birebir
+  [GECTI] G:kaynak / hdr.alg -> RFC9052:751 korpus satirinda birebir
+  [GECTI] G:kaynak / hdr.kid -> RFC9052:762 korpus satirinda birebir
+  [GECTI] G:kaynak / hdr.x5chain -> RFC9360:296 korpus satirinda birebir
+  [GECTI] G:kaynak / etiket.COSE_Sign -> RFC9052:482 korpus satirinda birebir
+  [GECTI] G:kaynak / etiket.COSE_Sign1 -> RFC9052:485 korpus satirinda birebir
+  [GECTI] G:kaynak / sig_structure.baglam -> RFC9052:1025 korpus satirinda birebir
+  [GECTI] G:kaynak / sig_structure.Signature -> RFC9052:1001 korpus satirinda birebir
+  [GECTI] G:kaynak / sig_structure.Signature1 -> RFC9052:1003 korpus satirinda birebir
+  [GECTI] G:kaynak / imza.ecdsa_rs -> RFC9053:275 korpus satirinda birebir
+  [GECTI] G:kaynak / anahtar.kty -> RFC9052:1607 korpus satirinda birebir
+  [GECTI] G:kaynak / anahtar.kid -> RFC9052:1610 korpus satirinda birebir
+  [GECTI] G:kaynak / anahtar.alg -> RFC9052:1614 korpus satirinda birebir
+  [GECTI] G:kaynak / kty.OKP -> RFC9053:1627 korpus satirinda birebir
+  [GECTI] G:kaynak / kty.EC2 -> RFC9053:1629 korpus satirinda birebir
+  [GECTI] G:kaynak / kty.AKP -> RFC9964:405 korpus satirinda birebir
+  [GECTI] G:kaynak / crv.P-256 -> RFC9053:1654 korpus satirinda birebir
+  [GECTI] G:kaynak / crv.Ed25519 -> RFC9053:1664 korpus satirinda birebir
+  [GECTI] G:kaynak / ec2.crv -> RFC9053:1716 korpus satirinda birebir
+  [GECTI] G:kaynak / ec2.x -> RFC9053:1719 korpus satirinda birebir
+  [GECTI] G:kaynak / ec2.y -> RFC9053:1721 korpus satirinda birebir
+  [GECTI] G:kaynak / okp.crv -> RFC9053:1760 korpus satirinda birebir
+  [GECTI] G:kaynak / okp.x -> RFC9053:1763 korpus satirinda birebir
+  [GECTI] G:kaynak / akp.pub -> RFC9964:427 korpus satirinda birebir
+  [GECTI] G:kaynak / akp.priv -> RFC9964:441 korpus satirinda birebir
+  [GECTI] G:anahtar / eski ihracci anahtari "v1.3/issuer-eski/ES256" etiketinden yeniden turetildi (ozel JWK ayni, kid=RFC 7638)
+  [GECTI] G:anahtar / eski ihracci kid ve acik anahtari v1 anahtarlarindan farkli
+  [GECTI] G:anahtar / issuer/ES256 COSE_Key (belirlenimci CBOR) == JWK; kid = base64url-cozulmus JWK kid
+  [GECTI] G:anahtar / issuer/EdDSA COSE_Key (belirlenimci CBOR) == JWK; kid = base64url-cozulmus JWK kid
+  [GECTI] G:anahtar / issuer/ML-DSA-65 COSE_Key (belirlenimci CBOR) == JWK; kid = base64url-cozulmus JWK kid
+  [GECTI] G:anahtar / issuer/ML-DSA-65-ES256 COSE_Key (belirlenimci CBOR) == JWK; kid = base64url-cozulmus JWK kid
+  [GECTI] G:anahtar / issuer-eski/ES256 COSE_Key (belirlenimci CBOR) == JWK; kid = base64url-cozulmus JWK kid
+  [GECTI] G:anahtar / acik-jwks-l4c.json: goc etmis ihracci (3 anahtar) + eski ihracci (1), ihracci eslemesi
+  [GECTI] G:COSE / COSE nesneli vektor sayisi 46 (COSE 45 + L4C-COSE)
+  [GECTI] G:COSE-yapi / COSE-K1K_iki_gecerli COSE_Sign (etiket 98) == insa; dis ve ic CBOR belirlenimci
+  [GECTI] G:COSE-yapi / COSE-K1K_iki_gecerli yuk == {"iss","vct","given_name"} (iss=https://issuer.example)
+  [GECTI] G:COSE-yapi / COSE-K1K_iki_gecerli govde korumali h'' ve korumasiz {}
+  [GECTI] G:COSE-imza / COSE-K1K_iki_gecerli imzaci sayisi == insa
+  [GECTI] G:COSE-imza / COSE-K1K_iki_gecerli #0 alg etiketi korumali baslikta = -7
+  [GECTI] G:COSE-imza / COSE-K1K_iki_gecerli #0 alg degeri korpus kaynagiyla (RFC9053:248)
+  [GECTI] G:COSE-imza / COSE-K1K_iki_gecerli #0 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-K1K_iki_gecerli #0 (ES256) insa="gecerli" pqjose -> gecerli
+  [GECTI] G:COSE-openssl / COSE-K1K_iki_gecerli #0 (ES256) OpenSSL CLI -> gecerli
+  [GECTI] G:COSE-imza / COSE-K1K_iki_gecerli #1 alg etiketi korumali baslikta = -8
+  [GECTI] G:COSE-imza / COSE-K1K_iki_gecerli #1 alg degeri korpus kaynagiyla (RFC9053:365)
+  [GECTI] G:COSE-imza / COSE-K1K_iki_gecerli #1 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-K1K_iki_gecerli #1 (EdDSA) insa="gecerli" pqjose -> gecerli
+  [GECTI] G:COSE-openssl / COSE-K1K_iki_gecerli #1 (EdDSA) OpenSSL CLI -> gecerli
+  [GECTI] G:COSE-yapi / COSE-K2K_X_bozuk COSE_Sign (etiket 98) == insa; dis ve ic CBOR belirlenimci
+  [GECTI] G:COSE-yapi / COSE-K2K_X_bozuk yuk == {"iss","vct","given_name"} (iss=https://issuer.example)
+  [GECTI] G:COSE-yapi / COSE-K2K_X_bozuk govde korumali h'' ve korumasiz {}
+  [GECTI] G:COSE-imza / COSE-K2K_X_bozuk imzaci sayisi == insa
+  [GECTI] G:COSE-imza / COSE-K2K_X_bozuk #0 alg etiketi korumali baslikta = -7
+  [GECTI] G:COSE-imza / COSE-K2K_X_bozuk #0 alg degeri korpus kaynagiyla (RFC9053:248)
+  [GECTI] G:COSE-imza / COSE-K2K_X_bozuk #0 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-K2K_X_bozuk #0 (ES256) insa="gecerli" pqjose -> gecerli
+  [GECTI] G:COSE-openssl / COSE-K2K_X_bozuk #0 (ES256) OpenSSL CLI -> gecerli
+  [GECTI] G:COSE-imza / COSE-K2K_X_bozuk #1 alg etiketi korumali baslikta = -8
+  [GECTI] G:COSE-imza / COSE-K2K_X_bozuk #1 alg degeri korpus kaynagiyla (RFC9053:365)
+  [GECTI] G:COSE-imza / COSE-K2K_X_bozuk #1 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-K2K_X_bozuk #1 (EdDSA) insa="bozuk: bayt 5, bit 0 cevrildi" pqjose -> gecersiz
+  [GECTI] G:COSE-openssl / COSE-K2K_X_bozuk #1 (EdDSA) OpenSSL CLI -> gecersiz
+  [GECTI] G:COSE-yapi / COSE-K3_X_soyuldu COSE_Sign (etiket 98) == insa; dis ve ic CBOR belirlenimci
+  [GECTI] G:COSE-yapi / COSE-K3_X_soyuldu yuk == {"iss","vct","given_name"} (iss=https://issuer.example)
+  [GECTI] G:COSE-yapi / COSE-K3_X_soyuldu govde korumali h'' ve korumasiz {}
+  [GECTI] G:COSE-imza / COSE-K3_X_soyuldu imzaci sayisi == insa
+  [GECTI] G:COSE-imza / COSE-K3_X_soyuldu #0 alg etiketi korumali baslikta = -7
+  [GECTI] G:COSE-imza / COSE-K3_X_soyuldu #0 alg degeri korpus kaynagiyla (RFC9053:248)
+  [GECTI] G:COSE-imza / COSE-K3_X_soyuldu #0 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-K3_X_soyuldu #0 (ES256) insa="gecerli" pqjose -> gecerli
+  [GECTI] G:COSE-openssl / COSE-K3_X_soyuldu #0 (ES256) OpenSSL CLI -> gecerli
+  [GECTI] G:COSE-yapi / COSE-K4K_yalniz_X COSE_Sign (etiket 98) == insa; dis ve ic CBOR belirlenimci
+  [GECTI] G:COSE-yapi / COSE-K4K_yalniz_X yuk == {"iss","vct","given_name"} (iss=https://issuer.example)
+  [GECTI] G:COSE-yapi / COSE-K4K_yalniz_X govde korumali h'' ve korumasiz {}
+  [GECTI] G:COSE-imza / COSE-K4K_yalniz_X imzaci sayisi == insa
+  [GECTI] G:COSE-imza / COSE-K4K_yalniz_X #0 alg etiketi korumali baslikta = -8
+  [GECTI] G:COSE-imza / COSE-K4K_yalniz_X #0 alg degeri korpus kaynagiyla (RFC9053:365)
+  [GECTI] G:COSE-imza / COSE-K4K_yalniz_X #0 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-K4K_yalniz_X #0 (EdDSA) insa="gecerli" pqjose -> gecerli
+  [GECTI] G:COSE-openssl / COSE-K4K_yalniz_X #0 (EdDSA) OpenSSL CLI -> gecerli
+  [GECTI] G:COSE-yapi / COSE-K5K_arti_kayitsiz COSE_Sign (etiket 98) == insa; dis ve ic CBOR belirlenimci
+  [GECTI] G:COSE-yapi / COSE-K5K_arti_kayitsiz yuk == {"iss","vct","given_name"} (iss=https://issuer.example)
+  [GECTI] G:COSE-yapi / COSE-K5K_arti_kayitsiz govde korumali h'' ve korumasiz {}
+  [GECTI] G:COSE-imza / COSE-K5K_arti_kayitsiz imzaci sayisi == insa
+  [GECTI] G:COSE-imza / COSE-K5K_arti_kayitsiz #0 alg etiketi korumali baslikta = -7
+  [GECTI] G:COSE-imza / COSE-K5K_arti_kayitsiz #0 alg degeri korpus kaynagiyla (RFC9053:248)
+  [GECTI] G:COSE-imza / COSE-K5K_arti_kayitsiz #0 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-K5K_arti_kayitsiz #0 (ES256) insa="gecerli" pqjose -> gecerli
+  [GECTI] G:COSE-openssl / COSE-K5K_arti_kayitsiz #0 (ES256) OpenSSL CLI -> gecerli
+  [GECTI] G:COSE-imza / COSE-K5K_arti_kayitsiz #1 alg etiketi korumali baslikta = -8
+  [GECTI] G:COSE-imza / COSE-K5K_arti_kayitsiz #1 alg degeri korpus kaynagiyla (RFC9053:365)
+  [GECTI] G:COSE-imza / COSE-K5K_arti_kayitsiz #1 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-K5K_arti_kayitsiz #1 (EdDSA) insa="gecerli" pqjose -> gecerli
+  [GECTI] G:COSE-openssl / COSE-K5K_arti_kayitsiz #1 (EdDSA) OpenSSL CLI -> gecerli
+  [GECTI] G:COSE-imza / COSE-K5K_arti_kayitsiz #2 alg etiketi korumali baslikta = 'X-KAYITSIZ-1'
+  [GECTI] G:COSE-K5 / COSE-K5K_arti_kayitsiz #2 kayitsiz etiket 'X-KAYITSIZ-1', korumasiz baslik bos, 128 B HKDF baytlari
+  [GECTI] G:COSE-yapi / COSE-K1P_iki_gecerli COSE_Sign (etiket 98) == insa; dis ve ic CBOR belirlenimci
+  [GECTI] G:COSE-yapi / COSE-K1P_iki_gecerli yuk == {"iss","vct","given_name"} (iss=https://issuer.example)
+  [GECTI] G:COSE-yapi / COSE-K1P_iki_gecerli govde korumali h'' ve korumasiz {}
+  [GECTI] G:COSE-imza / COSE-K1P_iki_gecerli imzaci sayisi == insa
+  [GECTI] G:COSE-imza / COSE-K1P_iki_gecerli #0 alg etiketi korumali baslikta = -7
+  [GECTI] G:COSE-imza / COSE-K1P_iki_gecerli #0 alg degeri korpus kaynagiyla (RFC9053:248)
+  [GECTI] G:COSE-imza / COSE-K1P_iki_gecerli #0 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-K1P_iki_gecerli #0 (ES256) insa="gecerli" pqjose -> gecerli
+  [GECTI] G:COSE-openssl / COSE-K1P_iki_gecerli #0 (ES256) OpenSSL CLI -> gecerli
+  [GECTI] G:COSE-imza / COSE-K1P_iki_gecerli #1 alg etiketi korumali baslikta = -49
+  [GECTI] G:COSE-imza / COSE-K1P_iki_gecerli #1 alg degeri korpus kaynagiyla (RFC9964:367)
+  [GECTI] G:COSE-imza / COSE-K1P_iki_gecerli #1 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-K1P_iki_gecerli #1 (ML-DSA-65) insa="gecerli" pqjose -> gecerli
+  [GECTI] G:COSE-openssl / COSE-K1P_iki_gecerli #1 (ML-DSA-65) OpenSSL CLI -> gecerli
+  [GECTI] G:COSE-dilithium / COSE-K1P_iki_gecerli #1 dilithium-py -> gecerli
+  [GECTI] G:COSE-yapi / COSE-K2P_X_bozuk COSE_Sign (etiket 98) == insa; dis ve ic CBOR belirlenimci
+  [GECTI] G:COSE-yapi / COSE-K2P_X_bozuk yuk == {"iss","vct","given_name"} (iss=https://issuer.example)
+  [GECTI] G:COSE-yapi / COSE-K2P_X_bozuk govde korumali h'' ve korumasiz {}
+  [GECTI] G:COSE-imza / COSE-K2P_X_bozuk imzaci sayisi == insa
+  [GECTI] G:COSE-imza / COSE-K2P_X_bozuk #0 alg etiketi korumali baslikta = -7
+  [GECTI] G:COSE-imza / COSE-K2P_X_bozuk #0 alg degeri korpus kaynagiyla (RFC9053:248)
+  [GECTI] G:COSE-imza / COSE-K2P_X_bozuk #0 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-K2P_X_bozuk #0 (ES256) insa="gecerli" pqjose -> gecerli
+  [GECTI] G:COSE-openssl / COSE-K2P_X_bozuk #0 (ES256) OpenSSL CLI -> gecerli
+  [GECTI] G:COSE-imza / COSE-K2P_X_bozuk #1 alg etiketi korumali baslikta = -49
+  [GECTI] G:COSE-imza / COSE-K2P_X_bozuk #1 alg degeri korpus kaynagiyla (RFC9964:367)
+  [GECTI] G:COSE-imza / COSE-K2P_X_bozuk #1 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-K2P_X_bozuk #1 (ML-DSA-65) insa="bozuk: bayt 5, bit 0 cevrildi" pqjose -> gecersiz
+  [GECTI] G:COSE-openssl / COSE-K2P_X_bozuk #1 (ML-DSA-65) OpenSSL CLI -> gecersiz
+  [GECTI] G:COSE-dilithium / COSE-K2P_X_bozuk #1 dilithium-py -> gecersiz
+  [GECTI] G:COSE-yapi / COSE-K4P_yalniz_X COSE_Sign (etiket 98) == insa; dis ve ic CBOR belirlenimci
+  [GECTI] G:COSE-yapi / COSE-K4P_yalniz_X yuk == {"iss","vct","given_name"} (iss=https://issuer.example)
+  [GECTI] G:COSE-yapi / COSE-K4P_yalniz_X govde korumali h'' ve korumasiz {}
+  [GECTI] G:COSE-imza / COSE-K4P_yalniz_X imzaci sayisi == insa
+  [GECTI] G:COSE-imza / COSE-K4P_yalniz_X #0 alg etiketi korumali baslikta = -49
+  [GECTI] G:COSE-imza / COSE-K4P_yalniz_X #0 alg degeri korpus kaynagiyla (RFC9964:367)
+  [GECTI] G:COSE-imza / COSE-K4P_yalniz_X #0 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-K4P_yalniz_X #0 (ML-DSA-65) insa="gecerli" pqjose -> gecerli
+  [GECTI] G:COSE-openssl / COSE-K4P_yalniz_X #0 (ML-DSA-65) OpenSSL CLI -> gecerli
+  [GECTI] G:COSE-dilithium / COSE-K4P_yalniz_X #0 dilithium-py -> gecerli
+  [GECTI] G:COSE-yapi / COSE-K5P_arti_kayitsiz COSE_Sign (etiket 98) == insa; dis ve ic CBOR belirlenimci
+  [GECTI] G:COSE-yapi / COSE-K5P_arti_kayitsiz yuk == {"iss","vct","given_name"} (iss=https://issuer.example)
+  [GECTI] G:COSE-yapi / COSE-K5P_arti_kayitsiz govde korumali h'' ve korumasiz {}
+  [GECTI] G:COSE-imza / COSE-K5P_arti_kayitsiz imzaci sayisi == insa
+  [GECTI] G:COSE-imza / COSE-K5P_arti_kayitsiz #0 alg etiketi korumali baslikta = -7
+  [GECTI] G:COSE-imza / COSE-K5P_arti_kayitsiz #0 alg degeri korpus kaynagiyla (RFC9053:248)
+  [GECTI] G:COSE-imza / COSE-K5P_arti_kayitsiz #0 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-K5P_arti_kayitsiz #0 (ES256) insa="gecerli" pqjose -> gecerli
+  [GECTI] G:COSE-openssl / COSE-K5P_arti_kayitsiz #0 (ES256) OpenSSL CLI -> gecerli
+  [GECTI] G:COSE-imza / COSE-K5P_arti_kayitsiz #1 alg etiketi korumali baslikta = -49
+  [GECTI] G:COSE-imza / COSE-K5P_arti_kayitsiz #1 alg degeri korpus kaynagiyla (RFC9964:367)
+  [GECTI] G:COSE-imza / COSE-K5P_arti_kayitsiz #1 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-K5P_arti_kayitsiz #1 (ML-DSA-65) insa="gecerli" pqjose -> gecerli
+  [GECTI] G:COSE-openssl / COSE-K5P_arti_kayitsiz #1 (ML-DSA-65) OpenSSL CLI -> gecerli
+  [GECTI] G:COSE-dilithium / COSE-K5P_arti_kayitsiz #1 dilithium-py -> gecerli
+  [GECTI] G:COSE-imza / COSE-K5P_arti_kayitsiz #2 alg etiketi korumali baslikta = 'X-KAYITSIZ-1'
+  [GECTI] G:COSE-K5 / COSE-K5P_arti_kayitsiz #2 kayitsiz etiket 'X-KAYITSIZ-1', korumasiz baslik bos, 128 B HKDF baytlari
+  [GECTI] G:COSE-yapi / COSE-K1C_iki_gecerli COSE_Sign (etiket 98) == insa; dis ve ic CBOR belirlenimci
+  [GECTI] G:COSE-yapi / COSE-K1C_iki_gecerli yuk == {"iss","vct","given_name"} (iss=https://issuer.example)
+  [GECTI] G:COSE-yapi / COSE-K1C_iki_gecerli govde korumali h'' ve korumasiz {}
+  [GECTI] G:COSE-imza / COSE-K1C_iki_gecerli imzaci sayisi == insa
+  [GECTI] G:COSE-imza / COSE-K1C_iki_gecerli #0 alg etiketi korumali baslikta = -7
+  [GECTI] G:COSE-imza / COSE-K1C_iki_gecerli #0 alg degeri korpus kaynagiyla (RFC9053:248)
+  [GECTI] G:COSE-imza / COSE-K1C_iki_gecerli #0 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-K1C_iki_gecerli #0 (ES256) insa="gecerli" pqjose -> gecerli
+  [GECTI] G:COSE-openssl / COSE-K1C_iki_gecerli #0 (ES256) OpenSSL CLI -> gecerli
+  [GECTI] G:COSE-imza / COSE-K1C_iki_gecerli #1 alg etiketi korumali baslikta = -55
+  [GECTI] G:COSE-imza / COSE-K1C_iki_gecerli #1 alg degeri korpus kaynagiyla (JOSECOMP:1268)
+  [GECTI] G:COSE-imza / COSE-K1C_iki_gecerli #1 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-K1C_iki_gecerli #1 (ML-DSA-65-ES256) insa="gecerli" pqjose -> gecerli
+  [GECTI] G:COSE-openssl / COSE-K1C_iki_gecerli #1 (ML-DSA-65-ES256) OpenSSL CLI -> gecerli
+  [GECTI] G:COSE-composite / COSE-K1C_iki_gecerli #1 bilesen durumu (ml, ecdsa) == (True, True); dilithium-py ML bileseni (ctx=Label) — {"ml": true, "trad": true, "hata": null}
+  [GECTI] G:COSE-yapi / COSE-K2C_X_bozuk COSE_Sign (etiket 98) == insa; dis ve ic CBOR belirlenimci
+  [GECTI] G:COSE-yapi / COSE-K2C_X_bozuk yuk == {"iss","vct","given_name"} (iss=https://issuer.example)
+  [GECTI] G:COSE-yapi / COSE-K2C_X_bozuk govde korumali h'' ve korumasiz {}
+  [GECTI] G:COSE-imza / COSE-K2C_X_bozuk imzaci sayisi == insa
+  [GECTI] G:COSE-imza / COSE-K2C_X_bozuk #0 alg etiketi korumali baslikta = -7
+  [GECTI] G:COSE-imza / COSE-K2C_X_bozuk #0 alg degeri korpus kaynagiyla (RFC9053:248)
+  [GECTI] G:COSE-imza / COSE-K2C_X_bozuk #0 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-K2C_X_bozuk #0 (ES256) insa="gecerli" pqjose -> gecerli
+  [GECTI] G:COSE-openssl / COSE-K2C_X_bozuk #0 (ES256) OpenSSL CLI -> gecerli
+  [GECTI] G:COSE-imza / COSE-K2C_X_bozuk #1 alg etiketi korumali baslikta = -55
+  [GECTI] G:COSE-imza / COSE-K2C_X_bozuk #1 alg degeri korpus kaynagiyla (JOSECOMP:1268)
+  [GECTI] G:COSE-imza / COSE-K2C_X_bozuk #1 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-K2C_X_bozuk #1 (ML-DSA-65-ES256) insa="bozuk: bayt 5, bit 0 cevrildi" pqjose -> gecersiz
+  [GECTI] G:COSE-openssl / COSE-K2C_X_bozuk #1 (ML-DSA-65-ES256) OpenSSL CLI -> gecersiz
+  [GECTI] G:COSE-composite / COSE-K2C_X_bozuk #1 bilesen durumu (ml, ecdsa) == (False, True); dilithium-py ML bileseni (ctx=Label) — {"ml": false, "trad": true, "hata": null}
+  [GECTI] G:COSE-yapi / COSE-K4C_yalniz_X COSE_Sign (etiket 98) == insa; dis ve ic CBOR belirlenimci
+  [GECTI] G:COSE-yapi / COSE-K4C_yalniz_X yuk == {"iss","vct","given_name"} (iss=https://issuer.example)
+  [GECTI] G:COSE-yapi / COSE-K4C_yalniz_X govde korumali h'' ve korumasiz {}
+  [GECTI] G:COSE-imza / COSE-K4C_yalniz_X imzaci sayisi == insa
+  [GECTI] G:COSE-imza / COSE-K4C_yalniz_X #0 alg etiketi korumali baslikta = -55
+  [GECTI] G:COSE-imza / COSE-K4C_yalniz_X #0 alg degeri korpus kaynagiyla (JOSECOMP:1268)
+  [GECTI] G:COSE-imza / COSE-K4C_yalniz_X #0 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-K4C_yalniz_X #0 (ML-DSA-65-ES256) insa="gecerli" pqjose -> gecerli
+  [GECTI] G:COSE-openssl / COSE-K4C_yalniz_X #0 (ML-DSA-65-ES256) OpenSSL CLI -> gecerli
+  [GECTI] G:COSE-composite / COSE-K4C_yalniz_X #0 bilesen durumu (ml, ecdsa) == (True, True); dilithium-py ML bileseni (ctx=Label) — {"ml": true, "trad": true, "hata": null}
+  [GECTI] G:COSE-yapi / COSE-K5C_arti_kayitsiz COSE_Sign (etiket 98) == insa; dis ve ic CBOR belirlenimci
+  [GECTI] G:COSE-yapi / COSE-K5C_arti_kayitsiz yuk == {"iss","vct","given_name"} (iss=https://issuer.example)
+  [GECTI] G:COSE-yapi / COSE-K5C_arti_kayitsiz govde korumali h'' ve korumasiz {}
+  [GECTI] G:COSE-imza / COSE-K5C_arti_kayitsiz imzaci sayisi == insa
+  [GECTI] G:COSE-imza / COSE-K5C_arti_kayitsiz #0 alg etiketi korumali baslikta = -7
+  [GECTI] G:COSE-imza / COSE-K5C_arti_kayitsiz #0 alg degeri korpus kaynagiyla (RFC9053:248)
+  [GECTI] G:COSE-imza / COSE-K5C_arti_kayitsiz #0 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-K5C_arti_kayitsiz #0 (ES256) insa="gecerli" pqjose -> gecerli
+  [GECTI] G:COSE-openssl / COSE-K5C_arti_kayitsiz #0 (ES256) OpenSSL CLI -> gecerli
+  [GECTI] G:COSE-imza / COSE-K5C_arti_kayitsiz #1 alg etiketi korumali baslikta = -55
+  [GECTI] G:COSE-imza / COSE-K5C_arti_kayitsiz #1 alg degeri korpus kaynagiyla (JOSECOMP:1268)
+  [GECTI] G:COSE-imza / COSE-K5C_arti_kayitsiz #1 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-K5C_arti_kayitsiz #1 (ML-DSA-65-ES256) insa="gecerli" pqjose -> gecerli
+  [GECTI] G:COSE-openssl / COSE-K5C_arti_kayitsiz #1 (ML-DSA-65-ES256) OpenSSL CLI -> gecerli
+  [GECTI] G:COSE-composite / COSE-K5C_arti_kayitsiz #1 bilesen durumu (ml, ecdsa) == (True, True); dilithium-py ML bileseni (ctx=Label) — {"ml": true, "trad": true, "hata": null}
+  [GECTI] G:COSE-imza / COSE-K5C_arti_kayitsiz #2 alg etiketi korumali baslikta = 'X-KAYITSIZ-1'
+  [GECTI] G:COSE-K5 / COSE-K5C_arti_kayitsiz #2 kayitsiz etiket 'X-KAYITSIZ-1', korumasiz baslik bos, 128 B HKDF baytlari
+  [GECTI] G:COSE-yapi / COSE-K10K_alg-EdDSA_anahtar-ES256 COSE_Sign1 (etiket 18) == insa; dis ve ic CBOR belirlenimci
+  [GECTI] G:COSE-yapi / COSE-K10K_alg-EdDSA_anahtar-ES256 yuk == {"iss","vct","given_name"} (iss=https://issuer.example)
+  [GECTI] G:COSE-imza / COSE-K10K_alg-EdDSA_anahtar-ES256 imzaci sayisi == insa
+  [GECTI] G:COSE-imza / COSE-K10K_alg-EdDSA_anahtar-ES256 #0 alg etiketi korumali baslikta = -8
+  [GECTI] G:COSE-imza / COSE-K10K_alg-EdDSA_anahtar-ES256 #0 alg degeri korpus kaynagiyla (RFC9053:365)
+  [GECTI] G:COSE-imza / COSE-K10K_alg-EdDSA_anahtar-ES256 #0 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-K10K_alg-EdDSA_anahtar-ES256 #0 (ES256) insa="gercek anahtarin algoritmasiyla (ES256) " pqjose -> gecerli
+  [GECTI] G:COSE-openssl / COSE-K10K_alg-EdDSA_anahtar-ES256 #0 (ES256) OpenSSL CLI -> gecerli
+  [GECTI] G:COSE-K10 / COSE-K10K_alg-EdDSA_anahtar-ES256 baslik alg=-8 (EdDSA), anahtar ES256; anahtar baslik alg'ini desteklemiyor
+  [GECTI] G:COSE-K10 / COSE-K10K_alg-EdDSA_anahtar-ES256 dogrulama_girdileri.cose_key_hex == rol acik COSE_Key
+  [GECTI] G:COSE-yapi / COSE-K10K_alg-ES256_anahtar-Ed25519 COSE_Sign1 (etiket 18) == insa; dis ve ic CBOR belirlenimci
+  [GECTI] G:COSE-yapi / COSE-K10K_alg-ES256_anahtar-Ed25519 yuk == {"iss","vct","given_name"} (iss=https://issuer.example)
+  [GECTI] G:COSE-imza / COSE-K10K_alg-ES256_anahtar-Ed25519 imzaci sayisi == insa
+  [GECTI] G:COSE-imza / COSE-K10K_alg-ES256_anahtar-Ed25519 #0 alg etiketi korumali baslikta = -7
+  [GECTI] G:COSE-imza / COSE-K10K_alg-ES256_anahtar-Ed25519 #0 alg degeri korpus kaynagiyla (RFC9053:248)
+  [GECTI] G:COSE-imza / COSE-K10K_alg-ES256_anahtar-Ed25519 #0 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-K10K_alg-ES256_anahtar-Ed25519 #0 (EdDSA) insa="gercek anahtarin algoritmasiyla (EdDSA) " pqjose -> gecerli
+  [GECTI] G:COSE-openssl / COSE-K10K_alg-ES256_anahtar-Ed25519 #0 (EdDSA) OpenSSL CLI -> gecerli
+  [GECTI] G:COSE-K10 / COSE-K10K_alg-ES256_anahtar-Ed25519 baslik alg=-7 (ES256), anahtar Ed25519; anahtar baslik alg'ini desteklemiyor
+  [GECTI] G:COSE-K10 / COSE-K10K_alg-ES256_anahtar-Ed25519 dogrulama_girdileri.cose_key_hex == rol acik COSE_Key
+  [GECTI] G:COSE-yapi / COSE-K10P_alg-ML-DSA-65_anahtar-ES256 COSE_Sign1 (etiket 18) == insa; dis ve ic CBOR belirlenimci
+  [GECTI] G:COSE-yapi / COSE-K10P_alg-ML-DSA-65_anahtar-ES256 yuk == {"iss","vct","given_name"} (iss=https://issuer.example)
+  [GECTI] G:COSE-imza / COSE-K10P_alg-ML-DSA-65_anahtar-ES256 imzaci sayisi == insa
+  [GECTI] G:COSE-imza / COSE-K10P_alg-ML-DSA-65_anahtar-ES256 #0 alg etiketi korumali baslikta = -49
+  [GECTI] G:COSE-imza / COSE-K10P_alg-ML-DSA-65_anahtar-ES256 #0 alg degeri korpus kaynagiyla (RFC9964:367)
+  [GECTI] G:COSE-imza / COSE-K10P_alg-ML-DSA-65_anahtar-ES256 #0 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-K10P_alg-ML-DSA-65_anahtar-ES256 #0 (ES256) insa="gercek anahtarin algoritmasiyla (ES256) " pqjose -> gecerli
+  [GECTI] G:COSE-openssl / COSE-K10P_alg-ML-DSA-65_anahtar-ES256 #0 (ES256) OpenSSL CLI -> gecerli
+  [GECTI] G:COSE-K10 / COSE-K10P_alg-ML-DSA-65_anahtar-ES256 baslik alg=-49 (ML-DSA-65), anahtar ES256; anahtar baslik alg'ini desteklemiyor
+  [GECTI] G:COSE-K10 / COSE-K10P_alg-ML-DSA-65_anahtar-ES256 dogrulama_girdileri.cose_key_hex == rol acik COSE_Key
+  [GECTI] G:COSE-yapi / COSE-K10P_alg-ES256_anahtar-ML-DSA-65 COSE_Sign1 (etiket 18) == insa; dis ve ic CBOR belirlenimci
+  [GECTI] G:COSE-yapi / COSE-K10P_alg-ES256_anahtar-ML-DSA-65 yuk == {"iss","vct","given_name"} (iss=https://issuer.example)
+  [GECTI] G:COSE-imza / COSE-K10P_alg-ES256_anahtar-ML-DSA-65 imzaci sayisi == insa
+  [GECTI] G:COSE-imza / COSE-K10P_alg-ES256_anahtar-ML-DSA-65 #0 alg etiketi korumali baslikta = -7
+  [GECTI] G:COSE-imza / COSE-K10P_alg-ES256_anahtar-ML-DSA-65 #0 alg degeri korpus kaynagiyla (RFC9053:248)
+  [GECTI] G:COSE-imza / COSE-K10P_alg-ES256_anahtar-ML-DSA-65 #0 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-K10P_alg-ES256_anahtar-ML-DSA-65 #0 (ML-DSA-65) insa="gercek anahtarin algoritmasiyla (ML-DSA-" pqjose -> gecerli
+  [GECTI] G:COSE-openssl / COSE-K10P_alg-ES256_anahtar-ML-DSA-65 #0 (ML-DSA-65) OpenSSL CLI -> gecerli
+  [GECTI] G:COSE-dilithium / COSE-K10P_alg-ES256_anahtar-ML-DSA-65 #0 dilithium-py -> gecerli
+  [GECTI] G:COSE-K10 / COSE-K10P_alg-ES256_anahtar-ML-DSA-65 baslik alg=-7 (ES256), anahtar ML-DSA-65; anahtar baslik alg'ini desteklemiyor
+  [GECTI] G:COSE-K10 / COSE-K10P_alg-ES256_anahtar-ML-DSA-65 dogrulama_girdileri.cose_key_hex == rol acik COSE_Key
+  [GECTI] G:COSE-yapi / COSE-K10C_alg-ML-DSA-65-ES256_anahtar-ML-DSA-65 COSE_Sign1 (etiket 18) == insa; dis ve ic CBOR belirlenimci
+  [GECTI] G:COSE-yapi / COSE-K10C_alg-ML-DSA-65-ES256_anahtar-ML-DSA-65 yuk == {"iss","vct","given_name"} (iss=https://issuer.example)
+  [GECTI] G:COSE-imza / COSE-K10C_alg-ML-DSA-65-ES256_anahtar-ML-DSA-65 imzaci sayisi == insa
+  [GECTI] G:COSE-imza / COSE-K10C_alg-ML-DSA-65-ES256_anahtar-ML-DSA-65 #0 alg etiketi korumali baslikta = -55
+  [GECTI] G:COSE-imza / COSE-K10C_alg-ML-DSA-65-ES256_anahtar-ML-DSA-65 #0 alg degeri korpus kaynagiyla (JOSECOMP:1268)
+  [GECTI] G:COSE-imza / COSE-K10C_alg-ML-DSA-65-ES256_anahtar-ML-DSA-65 #0 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-K10C_alg-ML-DSA-65-ES256_anahtar-ML-DSA-65 #0 (ML-DSA-65) insa="gercek anahtarin algoritmasiyla (ML-DSA-" pqjose -> gecerli
+  [GECTI] G:COSE-openssl / COSE-K10C_alg-ML-DSA-65-ES256_anahtar-ML-DSA-65 #0 (ML-DSA-65) OpenSSL CLI -> gecerli
+  [GECTI] G:COSE-dilithium / COSE-K10C_alg-ML-DSA-65-ES256_anahtar-ML-DSA-65 #0 dilithium-py -> gecerli
+  [GECTI] G:COSE-K10 / COSE-K10C_alg-ML-DSA-65-ES256_anahtar-ML-DSA-65 baslik alg=-55 (ML-DSA-65-ES256), anahtar ML-DSA-65; anahtar baslik alg'ini desteklemiyor
+  [GECTI] G:COSE-K10 / COSE-K10C_alg-ML-DSA-65-ES256_anahtar-ML-DSA-65 dogrulama_girdileri.cose_key_hex == rol acik COSE_Key
+  [GECTI] G:COSE-yapi / COSE-K10C_alg-ML-DSA-65_anahtar-ML-DSA-65-ES256 COSE_Sign1 (etiket 18) == insa; dis ve ic CBOR belirlenimci
+  [GECTI] G:COSE-yapi / COSE-K10C_alg-ML-DSA-65_anahtar-ML-DSA-65-ES256 yuk == {"iss","vct","given_name"} (iss=https://issuer.example)
+  [GECTI] G:COSE-imza / COSE-K10C_alg-ML-DSA-65_anahtar-ML-DSA-65-ES256 imzaci sayisi == insa
+  [GECTI] G:COSE-imza / COSE-K10C_alg-ML-DSA-65_anahtar-ML-DSA-65-ES256 #0 alg etiketi korumali baslikta = -49
+  [GECTI] G:COSE-imza / COSE-K10C_alg-ML-DSA-65_anahtar-ML-DSA-65-ES256 #0 alg degeri korpus kaynagiyla (RFC9964:367)
+  [GECTI] G:COSE-imza / COSE-K10C_alg-ML-DSA-65_anahtar-ML-DSA-65-ES256 #0 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-K10C_alg-ML-DSA-65_anahtar-ML-DSA-65-ES256 #0 (ML-DSA-65-ES256) insa="gercek anahtarin algoritmasiyla (ML-DSA-" pqjose -> gecerli
+  [GECTI] G:COSE-openssl / COSE-K10C_alg-ML-DSA-65_anahtar-ML-DSA-65-ES256 #0 (ML-DSA-65-ES256) OpenSSL CLI -> gecerli
+  [GECTI] G:COSE-composite / COSE-K10C_alg-ML-DSA-65_anahtar-ML-DSA-65-ES256 #0 bilesen durumu (ml, ecdsa) == (True, True); dilithium-py ML bileseni (ctx=Label) — {"ml": true, "trad": true, "hata": null}
+  [GECTI] G:COSE-K10 / COSE-K10C_alg-ML-DSA-65_anahtar-ML-DSA-65-ES256 baslik alg=-49 (ML-DSA-65), anahtar ML-DSA-65-ES256; anahtar baslik alg'ini desteklemiyor
+  [GECTI] G:COSE-K10 / COSE-K10C_alg-ML-DSA-65_anahtar-ML-DSA-65-ES256 dogrulama_girdileri.cose_key_hex == rol acik COSE_Key
+  [GECTI] G:COSE-yapi / COSE-VPLUS_ES256 COSE_Sign1 (etiket 18) == insa; dis ve ic CBOR belirlenimci
+  [GECTI] G:COSE-yapi / COSE-VPLUS_ES256 yuk == {"iss","vct","given_name"} (iss=https://issuer.example)
+  [GECTI] G:COSE-imza / COSE-VPLUS_ES256 imzaci sayisi == insa
+  [GECTI] G:COSE-imza / COSE-VPLUS_ES256 #0 alg etiketi korumali baslikta = -7
+  [GECTI] G:COSE-imza / COSE-VPLUS_ES256 #0 alg degeri korpus kaynagiyla (RFC9053:248)
+  [GECTI] G:COSE-imza / COSE-VPLUS_ES256 #0 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-VPLUS_ES256 #0 (ES256) insa="gecerli" pqjose -> gecerli
+  [GECTI] G:COSE-openssl / COSE-VPLUS_ES256 #0 (ES256) OpenSSL CLI -> gecerli
+  [GECTI] G:COSE-yapi / COSE-VMINUS_ES256 COSE_Sign1 (etiket 18) == insa; dis ve ic CBOR belirlenimci
+  [GECTI] G:COSE-yapi / COSE-VMINUS_ES256 yuk == {"iss","vct","given_name"} (iss=https://issuer.example)
+  [GECTI] G:COSE-imza / COSE-VMINUS_ES256 imzaci sayisi == insa
+  [GECTI] G:COSE-imza / COSE-VMINUS_ES256 #0 alg etiketi korumali baslikta = -7
+  [GECTI] G:COSE-imza / COSE-VMINUS_ES256 #0 alg degeri korpus kaynagiyla (RFC9053:248)
+  [GECTI] G:COSE-imza / COSE-VMINUS_ES256 #0 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-VMINUS_ES256 #0 (ES256) insa="bozuk: bayt 32, bit 0 cevrildi" pqjose -> gecersiz
+  [GECTI] G:COSE-openssl / COSE-VMINUS_ES256 #0 (ES256) OpenSSL CLI -> gecersiz
+  [GECTI] G:COSE-yapi / COSE-VPLUS_EdDSA COSE_Sign1 (etiket 18) == insa; dis ve ic CBOR belirlenimci
+  [GECTI] G:COSE-yapi / COSE-VPLUS_EdDSA yuk == {"iss","vct","given_name"} (iss=https://issuer.example)
+  [GECTI] G:COSE-imza / COSE-VPLUS_EdDSA imzaci sayisi == insa
+  [GECTI] G:COSE-imza / COSE-VPLUS_EdDSA #0 alg etiketi korumali baslikta = -8
+  [GECTI] G:COSE-imza / COSE-VPLUS_EdDSA #0 alg degeri korpus kaynagiyla (RFC9053:365)
+  [GECTI] G:COSE-imza / COSE-VPLUS_EdDSA #0 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-VPLUS_EdDSA #0 (EdDSA) insa="gecerli" pqjose -> gecerli
+  [GECTI] G:COSE-openssl / COSE-VPLUS_EdDSA #0 (EdDSA) OpenSSL CLI -> gecerli
+  [GECTI] G:COSE-yapi / COSE-VMINUS_EdDSA COSE_Sign1 (etiket 18) == insa; dis ve ic CBOR belirlenimci
+  [GECTI] G:COSE-yapi / COSE-VMINUS_EdDSA yuk == {"iss","vct","given_name"} (iss=https://issuer.example)
+  [GECTI] G:COSE-imza / COSE-VMINUS_EdDSA imzaci sayisi == insa
+  [GECTI] G:COSE-imza / COSE-VMINUS_EdDSA #0 alg etiketi korumali baslikta = -8
+  [GECTI] G:COSE-imza / COSE-VMINUS_EdDSA #0 alg degeri korpus kaynagiyla (RFC9053:365)
+  [GECTI] G:COSE-imza / COSE-VMINUS_EdDSA #0 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-VMINUS_EdDSA #0 (EdDSA) insa="bozuk: bayt 32, bit 0 cevrildi" pqjose -> gecersiz
+  [GECTI] G:COSE-openssl / COSE-VMINUS_EdDSA #0 (EdDSA) OpenSSL CLI -> gecersiz
+  [GECTI] G:COSE-yapi / COSE-VPLUS_ML-DSA-65 COSE_Sign1 (etiket 18) == insa; dis ve ic CBOR belirlenimci
+  [GECTI] G:COSE-yapi / COSE-VPLUS_ML-DSA-65 yuk == {"iss","vct","given_name"} (iss=https://issuer.example)
+  [GECTI] G:COSE-imza / COSE-VPLUS_ML-DSA-65 imzaci sayisi == insa
+  [GECTI] G:COSE-imza / COSE-VPLUS_ML-DSA-65 #0 alg etiketi korumali baslikta = -49
+  [GECTI] G:COSE-imza / COSE-VPLUS_ML-DSA-65 #0 alg degeri korpus kaynagiyla (RFC9964:367)
+  [GECTI] G:COSE-imza / COSE-VPLUS_ML-DSA-65 #0 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-VPLUS_ML-DSA-65 #0 (ML-DSA-65) insa="gecerli" pqjose -> gecerli
+  [GECTI] G:COSE-openssl / COSE-VPLUS_ML-DSA-65 #0 (ML-DSA-65) OpenSSL CLI -> gecerli
+  [GECTI] G:COSE-dilithium / COSE-VPLUS_ML-DSA-65 #0 dilithium-py -> gecerli
+  [GECTI] G:COSE-yapi / COSE-VMINUS_ML-DSA-65 COSE_Sign1 (etiket 18) == insa; dis ve ic CBOR belirlenimci
+  [GECTI] G:COSE-yapi / COSE-VMINUS_ML-DSA-65 yuk == {"iss","vct","given_name"} (iss=https://issuer.example)
+  [GECTI] G:COSE-imza / COSE-VMINUS_ML-DSA-65 imzaci sayisi == insa
+  [GECTI] G:COSE-imza / COSE-VMINUS_ML-DSA-65 #0 alg etiketi korumali baslikta = -49
+  [GECTI] G:COSE-imza / COSE-VMINUS_ML-DSA-65 #0 alg degeri korpus kaynagiyla (RFC9964:367)
+  [GECTI] G:COSE-imza / COSE-VMINUS_ML-DSA-65 #0 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-VMINUS_ML-DSA-65 #0 (ML-DSA-65) insa="bozuk: bayt 1654, bit 0 cevrildi" pqjose -> gecersiz
+  [GECTI] G:COSE-openssl / COSE-VMINUS_ML-DSA-65 #0 (ML-DSA-65) OpenSSL CLI -> gecersiz
+  [GECTI] G:COSE-dilithium / COSE-VMINUS_ML-DSA-65 #0 dilithium-py -> gecersiz
+  [GECTI] G:COSE-yapi / COSE-K6_composite_gecerli COSE_Sign1 (etiket 18) == insa; dis ve ic CBOR belirlenimci
+  [GECTI] G:COSE-yapi / COSE-K6_composite_gecerli yuk == {"iss","vct","given_name"} (iss=https://issuer.example)
+  [GECTI] G:COSE-imza / COSE-K6_composite_gecerli imzaci sayisi == insa
+  [GECTI] G:COSE-imza / COSE-K6_composite_gecerli #0 alg etiketi korumali baslikta = -55
+  [GECTI] G:COSE-imza / COSE-K6_composite_gecerli #0 alg degeri korpus kaynagiyla (JOSECOMP:1268)
+  [GECTI] G:COSE-imza / COSE-K6_composite_gecerli #0 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-K6_composite_gecerli #0 (ML-DSA-65-ES256) insa="gecerli" pqjose -> gecerli
+  [GECTI] G:COSE-openssl / COSE-K6_composite_gecerli #0 (ML-DSA-65-ES256) OpenSSL CLI -> gecerli
+  [GECTI] G:COSE-composite / COSE-K6_composite_gecerli #0 bilesen durumu (ml, ecdsa) == (True, True); dilithium-py ML bileseni (ctx=Label) — {"ml": true, "trad": true, "hata": null}
+  [GECTI] G:COSE-yapi / COSE-K7_ml_bileseni_bozuk COSE_Sign1 (etiket 18) == insa; dis ve ic CBOR belirlenimci
+  [GECTI] G:COSE-yapi / COSE-K7_ml_bileseni_bozuk yuk == {"iss","vct","given_name"} (iss=https://issuer.example)
+  [GECTI] G:COSE-imza / COSE-K7_ml_bileseni_bozuk imzaci sayisi == insa
+  [GECTI] G:COSE-imza / COSE-K7_ml_bileseni_bozuk #0 alg etiketi korumali baslikta = -55
+  [GECTI] G:COSE-imza / COSE-K7_ml_bileseni_bozuk #0 alg degeri korpus kaynagiyla (JOSECOMP:1268)
+  [GECTI] G:COSE-imza / COSE-K7_ml_bileseni_bozuk #0 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-K7_ml_bileseni_bozuk #0 (ML-DSA-65-ES256) insa="ML-DSA bileseni bozuk (bayt 1654, bit 0)" pqjose -> gecersiz
+  [GECTI] G:COSE-openssl / COSE-K7_ml_bileseni_bozuk #0 (ML-DSA-65-ES256) OpenSSL CLI -> gecersiz
+  [GECTI] G:COSE-composite / COSE-K7_ml_bileseni_bozuk #0 bilesen durumu (ml, ecdsa) == (False, True); dilithium-py ML bileseni (ctx=Label) — {"ml": false, "trad": true, "hata": null}
+  [GECTI] G:COSE-yapi / COSE-K7_ecdsa_bileseni_bozuk COSE_Sign1 (etiket 18) == insa; dis ve ic CBOR belirlenimci
+  [GECTI] G:COSE-yapi / COSE-K7_ecdsa_bileseni_bozuk yuk == {"iss","vct","given_name"} (iss=https://issuer.example)
+  [GECTI] G:COSE-imza / COSE-K7_ecdsa_bileseni_bozuk imzaci sayisi == insa
+  [GECTI] G:COSE-imza / COSE-K7_ecdsa_bileseni_bozuk #0 alg etiketi korumali baslikta = -55
+  [GECTI] G:COSE-imza / COSE-K7_ecdsa_bileseni_bozuk #0 alg degeri korpus kaynagiyla (JOSECOMP:1268)
+  [GECTI] G:COSE-imza / COSE-K7_ecdsa_bileseni_bozuk #0 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-K7_ecdsa_bileseni_bozuk #0 (ML-DSA-65-ES256) insa="ECDSA bileseni bozuk (r son bayt); ML-DS" pqjose -> gecersiz
+  [GECTI] G:COSE-openssl / COSE-K7_ecdsa_bileseni_bozuk #0 (ML-DSA-65-ES256) OpenSSL CLI -> gecersiz
+  [GECTI] G:COSE-composite / COSE-K7_ecdsa_bileseni_bozuk #0 bilesen durumu (ml, ecdsa) == (True, False); dilithium-py ML bileseni (ctx=Label) — {"ml": true, "trad": false, "hata": null}
+  [GECTI] G:COSE-yapi / COSE-K8_x5chain_karisik COSE_Sign1 (etiket 18) == insa; dis ve ic CBOR belirlenimci
+  [GECTI] G:COSE-yapi / COSE-K8_x5chain_karisik yuk == {"iss","vct","given_name"} (iss=https://issuer.example)
+  [GECTI] G:COSE-imza / COSE-K8_x5chain_karisik imzaci sayisi == insa
+  [GECTI] G:COSE-imza / COSE-K8_x5chain_karisik #0 alg etiketi korumali baslikta = -49
+  [GECTI] G:COSE-imza / COSE-K8_x5chain_karisik #0 alg degeri korpus kaynagiyla (RFC9964:367)
+  [GECTI] G:COSE-imza / COSE-K8_x5chain_karisik #0 kid basligi yok (anahtar x5chain yapragindan)
+  [GECTI] G:COSE-imza / COSE-K8_x5chain_karisik #0 (ML-DSA-65) insa="gecerli" pqjose -> gecerli
+  [GECTI] G:COSE-openssl / COSE-K8_x5chain_karisik #0 (ML-DSA-65) OpenSSL CLI -> gecerli
+  [GECTI] G:COSE-dilithium / COSE-K8_x5chain_karisik #0 dilithium-py -> gecerli
+  [GECTI] G:COSE-x5chain / COSE-K8_x5chain_karisik x5chain (33) korumali baslikta, digerinde yok
+  [GECTI] G:COSE-x5chain / COSE-K8_x5chain_karisik zincir OpenSSL ile gecerli; sinif == karisik; yaprak anahtari == imzalayan — ok
+  [GECTI] G:COSE-yapi / COSE-K9_x5chain_korumasiz COSE_Sign1 (etiket 18) == insa; dis ve ic CBOR belirlenimci
+  [GECTI] G:COSE-yapi / COSE-K9_x5chain_korumasiz yuk == {"iss","vct","given_name"} (iss=https://issuer.example)
+  [GECTI] G:COSE-imza / COSE-K9_x5chain_korumasiz imzaci sayisi == insa
+  [GECTI] G:COSE-imza / COSE-K9_x5chain_korumasiz #0 alg etiketi korumali baslikta = -49
+  [GECTI] G:COSE-imza / COSE-K9_x5chain_korumasiz #0 alg degeri korpus kaynagiyla (RFC9964:367)
+  [GECTI] G:COSE-imza / COSE-K9_x5chain_korumasiz #0 kid basligi yok (anahtar x5chain yapragindan)
+  [GECTI] G:COSE-imza / COSE-K9_x5chain_korumasiz #0 (ML-DSA-65) insa="gecerli" pqjose -> gecerli
+  [GECTI] G:COSE-openssl / COSE-K9_x5chain_korumasiz #0 (ML-DSA-65) OpenSSL CLI -> gecerli
+  [GECTI] G:COSE-dilithium / COSE-K9_x5chain_korumasiz #0 dilithium-py -> gecerli
+  [GECTI] G:COSE-x5chain / COSE-K9_x5chain_korumasiz x5chain (33) korumasiz baslikta, digerinde yok
+  [GECTI] G:COSE-x5chain / COSE-K9_x5chain_korumasiz zincir OpenSSL ile gecerli; sinif == tam-pq; yaprak anahtari == imzalayan — ok
+  [GECTI] G:COSE-yapi / COSE-K1K_iki_gecerli-SIRA-ters COSE_Sign (etiket 98) == insa; dis ve ic CBOR belirlenimci
+  [GECTI] G:COSE-yapi / COSE-K1K_iki_gecerli-SIRA-ters yuk == {"iss","vct","given_name"} (iss=https://issuer.example)
+  [GECTI] G:COSE-yapi / COSE-K1K_iki_gecerli-SIRA-ters govde korumali h'' ve korumasiz {}
+  [GECTI] G:COSE-imza / COSE-K1K_iki_gecerli-SIRA-ters imzaci sayisi == insa
+  [GECTI] G:COSE-imza / COSE-K1K_iki_gecerli-SIRA-ters #0 alg etiketi korumali baslikta = -8
+  [GECTI] G:COSE-imza / COSE-K1K_iki_gecerli-SIRA-ters #0 alg degeri korpus kaynagiyla (RFC9053:365)
+  [GECTI] G:COSE-imza / COSE-K1K_iki_gecerli-SIRA-ters #0 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-K1K_iki_gecerli-SIRA-ters #0 (EdDSA) insa="gecerli" pqjose -> gecerli
+  [GECTI] G:COSE-openssl / COSE-K1K_iki_gecerli-SIRA-ters #0 (EdDSA) OpenSSL CLI -> gecerli
+  [GECTI] G:COSE-imza / COSE-K1K_iki_gecerli-SIRA-ters #1 alg etiketi korumali baslikta = -7
+  [GECTI] G:COSE-imza / COSE-K1K_iki_gecerli-SIRA-ters #1 alg degeri korpus kaynagiyla (RFC9053:248)
+  [GECTI] G:COSE-imza / COSE-K1K_iki_gecerli-SIRA-ters #1 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-K1K_iki_gecerli-SIRA-ters #1 (ES256) insa="gecerli" pqjose -> gecerli
+  [GECTI] G:COSE-openssl / COSE-K1K_iki_gecerli-SIRA-ters #1 (ES256) OpenSSL CLI -> gecerli
+  [GECTI] G:COSE-yapi / COSE-K2K_X_bozuk-SIRA-ters COSE_Sign (etiket 98) == insa; dis ve ic CBOR belirlenimci
+  [GECTI] G:COSE-yapi / COSE-K2K_X_bozuk-SIRA-ters yuk == {"iss","vct","given_name"} (iss=https://issuer.example)
+  [GECTI] G:COSE-yapi / COSE-K2K_X_bozuk-SIRA-ters govde korumali h'' ve korumasiz {}
+  [GECTI] G:COSE-imza / COSE-K2K_X_bozuk-SIRA-ters imzaci sayisi == insa
+  [GECTI] G:COSE-imza / COSE-K2K_X_bozuk-SIRA-ters #0 alg etiketi korumali baslikta = -8
+  [GECTI] G:COSE-imza / COSE-K2K_X_bozuk-SIRA-ters #0 alg degeri korpus kaynagiyla (RFC9053:365)
+  [GECTI] G:COSE-imza / COSE-K2K_X_bozuk-SIRA-ters #0 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-K2K_X_bozuk-SIRA-ters #0 (EdDSA) insa="bozuk: bayt 5, bit 0 cevrildi" pqjose -> gecersiz
+  [GECTI] G:COSE-openssl / COSE-K2K_X_bozuk-SIRA-ters #0 (EdDSA) OpenSSL CLI -> gecersiz
+  [GECTI] G:COSE-imza / COSE-K2K_X_bozuk-SIRA-ters #1 alg etiketi korumali baslikta = -7
+  [GECTI] G:COSE-imza / COSE-K2K_X_bozuk-SIRA-ters #1 alg degeri korpus kaynagiyla (RFC9053:248)
+  [GECTI] G:COSE-imza / COSE-K2K_X_bozuk-SIRA-ters #1 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-K2K_X_bozuk-SIRA-ters #1 (ES256) insa="gecerli" pqjose -> gecerli
+  [GECTI] G:COSE-openssl / COSE-K2K_X_bozuk-SIRA-ters #1 (ES256) OpenSSL CLI -> gecerli
+  [GECTI] G:COSE-yapi / COSE-K1P_iki_gecerli-SIRA-ters COSE_Sign (etiket 98) == insa; dis ve ic CBOR belirlenimci
+  [GECTI] G:COSE-yapi / COSE-K1P_iki_gecerli-SIRA-ters yuk == {"iss","vct","given_name"} (iss=https://issuer.example)
+  [GECTI] G:COSE-yapi / COSE-K1P_iki_gecerli-SIRA-ters govde korumali h'' ve korumasiz {}
+  [GECTI] G:COSE-imza / COSE-K1P_iki_gecerli-SIRA-ters imzaci sayisi == insa
+  [GECTI] G:COSE-imza / COSE-K1P_iki_gecerli-SIRA-ters #0 alg etiketi korumali baslikta = -49
+  [GECTI] G:COSE-imza / COSE-K1P_iki_gecerli-SIRA-ters #0 alg degeri korpus kaynagiyla (RFC9964:367)
+  [GECTI] G:COSE-imza / COSE-K1P_iki_gecerli-SIRA-ters #0 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-K1P_iki_gecerli-SIRA-ters #0 (ML-DSA-65) insa="gecerli" pqjose -> gecerli
+  [GECTI] G:COSE-openssl / COSE-K1P_iki_gecerli-SIRA-ters #0 (ML-DSA-65) OpenSSL CLI -> gecerli
+  [GECTI] G:COSE-dilithium / COSE-K1P_iki_gecerli-SIRA-ters #0 dilithium-py -> gecerli
+  [GECTI] G:COSE-imza / COSE-K1P_iki_gecerli-SIRA-ters #1 alg etiketi korumali baslikta = -7
+  [GECTI] G:COSE-imza / COSE-K1P_iki_gecerli-SIRA-ters #1 alg degeri korpus kaynagiyla (RFC9053:248)
+  [GECTI] G:COSE-imza / COSE-K1P_iki_gecerli-SIRA-ters #1 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-K1P_iki_gecerli-SIRA-ters #1 (ES256) insa="gecerli" pqjose -> gecerli
+  [GECTI] G:COSE-openssl / COSE-K1P_iki_gecerli-SIRA-ters #1 (ES256) OpenSSL CLI -> gecerli
+  [GECTI] G:COSE-yapi / COSE-K2P_X_bozuk-SIRA-ters COSE_Sign (etiket 98) == insa; dis ve ic CBOR belirlenimci
+  [GECTI] G:COSE-yapi / COSE-K2P_X_bozuk-SIRA-ters yuk == {"iss","vct","given_name"} (iss=https://issuer.example)
+  [GECTI] G:COSE-yapi / COSE-K2P_X_bozuk-SIRA-ters govde korumali h'' ve korumasiz {}
+  [GECTI] G:COSE-imza / COSE-K2P_X_bozuk-SIRA-ters imzaci sayisi == insa
+  [GECTI] G:COSE-imza / COSE-K2P_X_bozuk-SIRA-ters #0 alg etiketi korumali baslikta = -49
+  [GECTI] G:COSE-imza / COSE-K2P_X_bozuk-SIRA-ters #0 alg degeri korpus kaynagiyla (RFC9964:367)
+  [GECTI] G:COSE-imza / COSE-K2P_X_bozuk-SIRA-ters #0 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-K2P_X_bozuk-SIRA-ters #0 (ML-DSA-65) insa="bozuk: bayt 5, bit 0 cevrildi" pqjose -> gecersiz
+  [GECTI] G:COSE-openssl / COSE-K2P_X_bozuk-SIRA-ters #0 (ML-DSA-65) OpenSSL CLI -> gecersiz
+  [GECTI] G:COSE-dilithium / COSE-K2P_X_bozuk-SIRA-ters #0 dilithium-py -> gecersiz
+  [GECTI] G:COSE-imza / COSE-K2P_X_bozuk-SIRA-ters #1 alg etiketi korumali baslikta = -7
+  [GECTI] G:COSE-imza / COSE-K2P_X_bozuk-SIRA-ters #1 alg degeri korpus kaynagiyla (RFC9053:248)
+  [GECTI] G:COSE-imza / COSE-K2P_X_bozuk-SIRA-ters #1 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-K2P_X_bozuk-SIRA-ters #1 (ES256) insa="gecerli" pqjose -> gecerli
+  [GECTI] G:COSE-openssl / COSE-K2P_X_bozuk-SIRA-ters #1 (ES256) OpenSSL CLI -> gecerli
+  [GECTI] G:COSE-yapi / COSE-K1C_iki_gecerli-SIRA-ters COSE_Sign (etiket 98) == insa; dis ve ic CBOR belirlenimci
+  [GECTI] G:COSE-yapi / COSE-K1C_iki_gecerli-SIRA-ters yuk == {"iss","vct","given_name"} (iss=https://issuer.example)
+  [GECTI] G:COSE-yapi / COSE-K1C_iki_gecerli-SIRA-ters govde korumali h'' ve korumasiz {}
+  [GECTI] G:COSE-imza / COSE-K1C_iki_gecerli-SIRA-ters imzaci sayisi == insa
+  [GECTI] G:COSE-imza / COSE-K1C_iki_gecerli-SIRA-ters #0 alg etiketi korumali baslikta = -55
+  [GECTI] G:COSE-imza / COSE-K1C_iki_gecerli-SIRA-ters #0 alg degeri korpus kaynagiyla (JOSECOMP:1268)
+  [GECTI] G:COSE-imza / COSE-K1C_iki_gecerli-SIRA-ters #0 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-K1C_iki_gecerli-SIRA-ters #0 (ML-DSA-65-ES256) insa="gecerli" pqjose -> gecerli
+  [GECTI] G:COSE-openssl / COSE-K1C_iki_gecerli-SIRA-ters #0 (ML-DSA-65-ES256) OpenSSL CLI -> gecerli
+  [GECTI] G:COSE-composite / COSE-K1C_iki_gecerli-SIRA-ters #0 bilesen durumu (ml, ecdsa) == (True, True); dilithium-py ML bileseni (ctx=Label) — {"ml": true, "trad": true, "hata": null}
+  [GECTI] G:COSE-imza / COSE-K1C_iki_gecerli-SIRA-ters #1 alg etiketi korumali baslikta = -7
+  [GECTI] G:COSE-imza / COSE-K1C_iki_gecerli-SIRA-ters #1 alg degeri korpus kaynagiyla (RFC9053:248)
+  [GECTI] G:COSE-imza / COSE-K1C_iki_gecerli-SIRA-ters #1 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-K1C_iki_gecerli-SIRA-ters #1 (ES256) insa="gecerli" pqjose -> gecerli
+  [GECTI] G:COSE-openssl / COSE-K1C_iki_gecerli-SIRA-ters #1 (ES256) OpenSSL CLI -> gecerli
+  [GECTI] G:COSE-yapi / COSE-K2C_X_bozuk-SIRA-ters COSE_Sign (etiket 98) == insa; dis ve ic CBOR belirlenimci
+  [GECTI] G:COSE-yapi / COSE-K2C_X_bozuk-SIRA-ters yuk == {"iss","vct","given_name"} (iss=https://issuer.example)
+  [GECTI] G:COSE-yapi / COSE-K2C_X_bozuk-SIRA-ters govde korumali h'' ve korumasiz {}
+  [GECTI] G:COSE-imza / COSE-K2C_X_bozuk-SIRA-ters imzaci sayisi == insa
+  [GECTI] G:COSE-imza / COSE-K2C_X_bozuk-SIRA-ters #0 alg etiketi korumali baslikta = -55
+  [GECTI] G:COSE-imza / COSE-K2C_X_bozuk-SIRA-ters #0 alg degeri korpus kaynagiyla (JOSECOMP:1268)
+  [GECTI] G:COSE-imza / COSE-K2C_X_bozuk-SIRA-ters #0 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-K2C_X_bozuk-SIRA-ters #0 (ML-DSA-65-ES256) insa="bozuk: bayt 5, bit 0 cevrildi" pqjose -> gecersiz
+  [GECTI] G:COSE-openssl / COSE-K2C_X_bozuk-SIRA-ters #0 (ML-DSA-65-ES256) OpenSSL CLI -> gecersiz
+  [GECTI] G:COSE-composite / COSE-K2C_X_bozuk-SIRA-ters #0 bilesen durumu (ml, ecdsa) == (False, True); dilithium-py ML bileseni (ctx=Label) — {"ml": false, "trad": true, "hata": null}
+  [GECTI] G:COSE-imza / COSE-K2C_X_bozuk-SIRA-ters #1 alg etiketi korumali baslikta = -7
+  [GECTI] G:COSE-imza / COSE-K2C_X_bozuk-SIRA-ters #1 alg degeri korpus kaynagiyla (RFC9053:248)
+  [GECTI] G:COSE-imza / COSE-K2C_X_bozuk-SIRA-ters #1 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-K2C_X_bozuk-SIRA-ters #1 (ES256) insa="gecerli" pqjose -> gecerli
+  [GECTI] G:COSE-openssl / COSE-K2C_X_bozuk-SIRA-ters #1 (ES256) OpenSSL CLI -> gecerli
+  [GECTI] G:COSE-yapi / COSE-K1K_iki_gecerli-ED25519 COSE_Sign (etiket 98) == insa; dis ve ic CBOR belirlenimci
+  [GECTI] G:COSE-yapi / COSE-K1K_iki_gecerli-ED25519 yuk == {"iss","vct","given_name"} (iss=https://issuer.example)
+  [GECTI] G:COSE-yapi / COSE-K1K_iki_gecerli-ED25519 govde korumali h'' ve korumasiz {}
+  [GECTI] G:COSE-imza / COSE-K1K_iki_gecerli-ED25519 imzaci sayisi == insa
+  [GECTI] G:COSE-imza / COSE-K1K_iki_gecerli-ED25519 #0 alg etiketi korumali baslikta = -7
+  [GECTI] G:COSE-imza / COSE-K1K_iki_gecerli-ED25519 #0 alg degeri korpus kaynagiyla (RFC9053:248)
+  [GECTI] G:COSE-imza / COSE-K1K_iki_gecerli-ED25519 #0 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-K1K_iki_gecerli-ED25519 #0 (ES256) insa="gecerli" pqjose -> gecerli
+  [GECTI] G:COSE-openssl / COSE-K1K_iki_gecerli-ED25519 #0 (ES256) OpenSSL CLI -> gecerli
+  [GECTI] G:COSE-imza / COSE-K1K_iki_gecerli-ED25519 #1 alg etiketi korumali baslikta = -19
+  [GECTI] G:COSE-imza / COSE-K1K_iki_gecerli-ED25519 #1 alg degeri korpus kaynagiyla (RFC9864:225)
+  [GECTI] G:COSE-imza / COSE-K1K_iki_gecerli-ED25519 #1 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-K1K_iki_gecerli-ED25519 #1 (Ed25519) insa="gecerli" pqjose -> gecerli
+  [GECTI] G:COSE-openssl / COSE-K1K_iki_gecerli-ED25519 #1 (Ed25519) OpenSSL CLI -> gecerli
+  [GECTI] G:COSE-yapi / COSE-K2K_X_bozuk-ED25519 COSE_Sign (etiket 98) == insa; dis ve ic CBOR belirlenimci
+  [GECTI] G:COSE-yapi / COSE-K2K_X_bozuk-ED25519 yuk == {"iss","vct","given_name"} (iss=https://issuer.example)
+  [GECTI] G:COSE-yapi / COSE-K2K_X_bozuk-ED25519 govde korumali h'' ve korumasiz {}
+  [GECTI] G:COSE-imza / COSE-K2K_X_bozuk-ED25519 imzaci sayisi == insa
+  [GECTI] G:COSE-imza / COSE-K2K_X_bozuk-ED25519 #0 alg etiketi korumali baslikta = -7
+  [GECTI] G:COSE-imza / COSE-K2K_X_bozuk-ED25519 #0 alg degeri korpus kaynagiyla (RFC9053:248)
+  [GECTI] G:COSE-imza / COSE-K2K_X_bozuk-ED25519 #0 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-K2K_X_bozuk-ED25519 #0 (ES256) insa="gecerli" pqjose -> gecerli
+  [GECTI] G:COSE-openssl / COSE-K2K_X_bozuk-ED25519 #0 (ES256) OpenSSL CLI -> gecerli
+  [GECTI] G:COSE-imza / COSE-K2K_X_bozuk-ED25519 #1 alg etiketi korumali baslikta = -19
+  [GECTI] G:COSE-imza / COSE-K2K_X_bozuk-ED25519 #1 alg degeri korpus kaynagiyla (RFC9864:225)
+  [GECTI] G:COSE-imza / COSE-K2K_X_bozuk-ED25519 #1 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-K2K_X_bozuk-ED25519 #1 (Ed25519) insa="bozuk: bayt 5, bit 0 cevrildi" pqjose -> gecersiz
+  [GECTI] G:COSE-openssl / COSE-K2K_X_bozuk-ED25519 #1 (Ed25519) OpenSSL CLI -> gecersiz
+  [GECTI] G:COSE-yapi / COSE-K4K_yalniz_X-ED25519 COSE_Sign (etiket 98) == insa; dis ve ic CBOR belirlenimci
+  [GECTI] G:COSE-yapi / COSE-K4K_yalniz_X-ED25519 yuk == {"iss","vct","given_name"} (iss=https://issuer.example)
+  [GECTI] G:COSE-yapi / COSE-K4K_yalniz_X-ED25519 govde korumali h'' ve korumasiz {}
+  [GECTI] G:COSE-imza / COSE-K4K_yalniz_X-ED25519 imzaci sayisi == insa
+  [GECTI] G:COSE-imza / COSE-K4K_yalniz_X-ED25519 #0 alg etiketi korumali baslikta = -19
+  [GECTI] G:COSE-imza / COSE-K4K_yalniz_X-ED25519 #0 alg degeri korpus kaynagiyla (RFC9864:225)
+  [GECTI] G:COSE-imza / COSE-K4K_yalniz_X-ED25519 #0 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-K4K_yalniz_X-ED25519 #0 (Ed25519) insa="gecerli" pqjose -> gecerli
+  [GECTI] G:COSE-openssl / COSE-K4K_yalniz_X-ED25519 #0 (Ed25519) OpenSSL CLI -> gecerli
+  [GECTI] G:COSE-yapi / COSE-K5K_arti_kayitsiz-ED25519 COSE_Sign (etiket 98) == insa; dis ve ic CBOR belirlenimci
+  [GECTI] G:COSE-yapi / COSE-K5K_arti_kayitsiz-ED25519 yuk == {"iss","vct","given_name"} (iss=https://issuer.example)
+  [GECTI] G:COSE-yapi / COSE-K5K_arti_kayitsiz-ED25519 govde korumali h'' ve korumasiz {}
+  [GECTI] G:COSE-imza / COSE-K5K_arti_kayitsiz-ED25519 imzaci sayisi == insa
+  [GECTI] G:COSE-imza / COSE-K5K_arti_kayitsiz-ED25519 #0 alg etiketi korumali baslikta = -7
+  [GECTI] G:COSE-imza / COSE-K5K_arti_kayitsiz-ED25519 #0 alg degeri korpus kaynagiyla (RFC9053:248)
+  [GECTI] G:COSE-imza / COSE-K5K_arti_kayitsiz-ED25519 #0 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-K5K_arti_kayitsiz-ED25519 #0 (ES256) insa="gecerli" pqjose -> gecerli
+  [GECTI] G:COSE-openssl / COSE-K5K_arti_kayitsiz-ED25519 #0 (ES256) OpenSSL CLI -> gecerli
+  [GECTI] G:COSE-imza / COSE-K5K_arti_kayitsiz-ED25519 #1 alg etiketi korumali baslikta = -19
+  [GECTI] G:COSE-imza / COSE-K5K_arti_kayitsiz-ED25519 #1 alg degeri korpus kaynagiyla (RFC9864:225)
+  [GECTI] G:COSE-imza / COSE-K5K_arti_kayitsiz-ED25519 #1 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-K5K_arti_kayitsiz-ED25519 #1 (Ed25519) insa="gecerli" pqjose -> gecerli
+  [GECTI] G:COSE-openssl / COSE-K5K_arti_kayitsiz-ED25519 #1 (Ed25519) OpenSSL CLI -> gecerli
+  [GECTI] G:COSE-imza / COSE-K5K_arti_kayitsiz-ED25519 #2 alg etiketi korumali baslikta = 'X-KAYITSIZ-1'
+  [GECTI] G:COSE-K5 / COSE-K5K_arti_kayitsiz-ED25519 #2 kayitsiz etiket 'X-KAYITSIZ-1', korumasiz baslik bos, 128 B HKDF baytlari
+  [GECTI] G:COSE-yapi / COSE-K10K_alg-EdDSA_anahtar-ES256-ED25519 COSE_Sign1 (etiket 18) == insa; dis ve ic CBOR belirlenimci
+  [GECTI] G:COSE-yapi / COSE-K10K_alg-EdDSA_anahtar-ES256-ED25519 yuk == {"iss","vct","given_name"} (iss=https://issuer.example)
+  [GECTI] G:COSE-imza / COSE-K10K_alg-EdDSA_anahtar-ES256-ED25519 imzaci sayisi == insa
+  [GECTI] G:COSE-imza / COSE-K10K_alg-EdDSA_anahtar-ES256-ED25519 #0 alg etiketi korumali baslikta = -19
+  [GECTI] G:COSE-imza / COSE-K10K_alg-EdDSA_anahtar-ES256-ED25519 #0 alg degeri korpus kaynagiyla (RFC9864:225)
+  [GECTI] G:COSE-imza / COSE-K10K_alg-EdDSA_anahtar-ES256-ED25519 #0 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-K10K_alg-EdDSA_anahtar-ES256-ED25519 #0 (ES256) insa="gercek anahtarin algoritmasiyla (ES256) " pqjose -> gecerli
+  [GECTI] G:COSE-openssl / COSE-K10K_alg-EdDSA_anahtar-ES256-ED25519 #0 (ES256) OpenSSL CLI -> gecerli
+  [GECTI] G:COSE-K10 / COSE-K10K_alg-EdDSA_anahtar-ES256-ED25519 baslik alg=-19 (Ed25519), anahtar ES256; anahtar baslik alg'ini desteklemiyor
+  [GECTI] G:COSE-K10 / COSE-K10K_alg-EdDSA_anahtar-ES256-ED25519 dogrulama_girdileri.cose_key_hex == rol acik COSE_Key
+  [GECTI] G:COSE-yapi / COSE-VPLUS_EdDSA-ED25519 COSE_Sign1 (etiket 18) == insa; dis ve ic CBOR belirlenimci
+  [GECTI] G:COSE-yapi / COSE-VPLUS_EdDSA-ED25519 yuk == {"iss","vct","given_name"} (iss=https://issuer.example)
+  [GECTI] G:COSE-imza / COSE-VPLUS_EdDSA-ED25519 imzaci sayisi == insa
+  [GECTI] G:COSE-imza / COSE-VPLUS_EdDSA-ED25519 #0 alg etiketi korumali baslikta = -19
+  [GECTI] G:COSE-imza / COSE-VPLUS_EdDSA-ED25519 #0 alg degeri korpus kaynagiyla (RFC9864:225)
+  [GECTI] G:COSE-imza / COSE-VPLUS_EdDSA-ED25519 #0 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-VPLUS_EdDSA-ED25519 #0 (Ed25519) insa="gecerli" pqjose -> gecerli
+  [GECTI] G:COSE-openssl / COSE-VPLUS_EdDSA-ED25519 #0 (Ed25519) OpenSSL CLI -> gecerli
+  [GECTI] G:COSE-yapi / COSE-VMINUS_EdDSA-ED25519 COSE_Sign1 (etiket 18) == insa; dis ve ic CBOR belirlenimci
+  [GECTI] G:COSE-yapi / COSE-VMINUS_EdDSA-ED25519 yuk == {"iss","vct","given_name"} (iss=https://issuer.example)
+  [GECTI] G:COSE-imza / COSE-VMINUS_EdDSA-ED25519 imzaci sayisi == insa
+  [GECTI] G:COSE-imza / COSE-VMINUS_EdDSA-ED25519 #0 alg etiketi korumali baslikta = -19
+  [GECTI] G:COSE-imza / COSE-VMINUS_EdDSA-ED25519 #0 alg degeri korpus kaynagiyla (RFC9864:225)
+  [GECTI] G:COSE-imza / COSE-VMINUS_EdDSA-ED25519 #0 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-VMINUS_EdDSA-ED25519 #0 (Ed25519) insa="bozuk: bayt 32, bit 0 cevrildi" pqjose -> gecersiz
+  [GECTI] G:COSE-openssl / COSE-VMINUS_EdDSA-ED25519 #0 (Ed25519) OpenSSL CLI -> gecersiz
+  [GECTI] G:COSE-yapi / COSE-K1K_iki_gecerli-SIRA-ters-ED25519 COSE_Sign (etiket 98) == insa; dis ve ic CBOR belirlenimci
+  [GECTI] G:COSE-yapi / COSE-K1K_iki_gecerli-SIRA-ters-ED25519 yuk == {"iss","vct","given_name"} (iss=https://issuer.example)
+  [GECTI] G:COSE-yapi / COSE-K1K_iki_gecerli-SIRA-ters-ED25519 govde korumali h'' ve korumasiz {}
+  [GECTI] G:COSE-imza / COSE-K1K_iki_gecerli-SIRA-ters-ED25519 imzaci sayisi == insa
+  [GECTI] G:COSE-imza / COSE-K1K_iki_gecerli-SIRA-ters-ED25519 #0 alg etiketi korumali baslikta = -19
+  [GECTI] G:COSE-imza / COSE-K1K_iki_gecerli-SIRA-ters-ED25519 #0 alg degeri korpus kaynagiyla (RFC9864:225)
+  [GECTI] G:COSE-imza / COSE-K1K_iki_gecerli-SIRA-ters-ED25519 #0 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-K1K_iki_gecerli-SIRA-ters-ED25519 #0 (Ed25519) insa="gecerli" pqjose -> gecerli
+  [GECTI] G:COSE-openssl / COSE-K1K_iki_gecerli-SIRA-ters-ED25519 #0 (Ed25519) OpenSSL CLI -> gecerli
+  [GECTI] G:COSE-imza / COSE-K1K_iki_gecerli-SIRA-ters-ED25519 #1 alg etiketi korumali baslikta = -7
+  [GECTI] G:COSE-imza / COSE-K1K_iki_gecerli-SIRA-ters-ED25519 #1 alg degeri korpus kaynagiyla (RFC9053:248)
+  [GECTI] G:COSE-imza / COSE-K1K_iki_gecerli-SIRA-ters-ED25519 #1 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-K1K_iki_gecerli-SIRA-ters-ED25519 #1 (ES256) insa="gecerli" pqjose -> gecerli
+  [GECTI] G:COSE-openssl / COSE-K1K_iki_gecerli-SIRA-ters-ED25519 #1 (ES256) OpenSSL CLI -> gecerli
+  [GECTI] G:COSE-yapi / COSE-K2K_X_bozuk-SIRA-ters-ED25519 COSE_Sign (etiket 98) == insa; dis ve ic CBOR belirlenimci
+  [GECTI] G:COSE-yapi / COSE-K2K_X_bozuk-SIRA-ters-ED25519 yuk == {"iss","vct","given_name"} (iss=https://issuer.example)
+  [GECTI] G:COSE-yapi / COSE-K2K_X_bozuk-SIRA-ters-ED25519 govde korumali h'' ve korumasiz {}
+  [GECTI] G:COSE-imza / COSE-K2K_X_bozuk-SIRA-ters-ED25519 imzaci sayisi == insa
+  [GECTI] G:COSE-imza / COSE-K2K_X_bozuk-SIRA-ters-ED25519 #0 alg etiketi korumali baslikta = -19
+  [GECTI] G:COSE-imza / COSE-K2K_X_bozuk-SIRA-ters-ED25519 #0 alg degeri korpus kaynagiyla (RFC9864:225)
+  [GECTI] G:COSE-imza / COSE-K2K_X_bozuk-SIRA-ters-ED25519 #0 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-K2K_X_bozuk-SIRA-ters-ED25519 #0 (Ed25519) insa="bozuk: bayt 5, bit 0 cevrildi" pqjose -> gecersiz
+  [GECTI] G:COSE-openssl / COSE-K2K_X_bozuk-SIRA-ters-ED25519 #0 (Ed25519) OpenSSL CLI -> gecersiz
+  [GECTI] G:COSE-imza / COSE-K2K_X_bozuk-SIRA-ters-ED25519 #1 alg etiketi korumali baslikta = -7
+  [GECTI] G:COSE-imza / COSE-K2K_X_bozuk-SIRA-ters-ED25519 #1 alg degeri korpus kaynagiyla (RFC9053:248)
+  [GECTI] G:COSE-imza / COSE-K2K_X_bozuk-SIRA-ters-ED25519 #1 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / COSE-K2K_X_bozuk-SIRA-ters-ED25519 #1 (ES256) insa="gecerli" pqjose -> gecerli
+  [GECTI] G:COSE-openssl / COSE-K2K_X_bozuk-SIRA-ters-ED25519 #1 (ES256) OpenSSL CLI -> gecerli
+  [GECTI] G:COSE-yapi / L4C-COSE_eski_ES256 COSE_Sign1 (etiket 18) == insa; dis ve ic CBOR belirlenimci
+  [GECTI] G:COSE-yapi / L4C-COSE_eski_ES256 yuk == {"iss","vct","given_name"} (iss=https://legacy-issuer.example)
+  [GECTI] G:COSE-imza / L4C-COSE_eski_ES256 imzaci sayisi == insa
+  [GECTI] G:COSE-imza / L4C-COSE_eski_ES256 #0 alg etiketi korumali baslikta = -7
+  [GECTI] G:COSE-imza / L4C-COSE_eski_ES256 #0 alg degeri korpus kaynagiyla (RFC9053:248)
+  [GECTI] G:COSE-imza / L4C-COSE_eski_ES256 #0 korumasiz kid = base64url-cozulmus JWK kid
+  [GECTI] G:COSE-imza / L4C-COSE_eski_ES256 #0 (ES256) insa="gecerli" pqjose -> gecerli
+  [GECTI] G:COSE-openssl / L4C-COSE_eski_ES256 #0 (ES256) OpenSSL CLI -> gecerli
+  [GECTI] G:iliski / K3: tek imzaci == K1K/K1P/K1C ilk imzacisi (uc kolda ayni)
+  [GECTI] G:iliski / K2K: K1K ile ayni; yalniz X imzasinda tek bit (bayt 5) farkli — [[5, 1]]
+  [GECTI] G:iliski / K4K: tek imzaci == K1K ikinci imzacisi (ayni Sig_structure, belirlenimci)
+  [GECTI] G:iliski / K5K: ilk iki imzaci == K1K
+  [GECTI] G:iliski / K2P: K1P ile ayni; yalniz X imzasinda tek bit (bayt 5) farkli — [[5, 1]]
+  [GECTI] G:iliski / K4P: tek imzaci == K1P ikinci imzacisi (ayni Sig_structure, belirlenimci)
+  [GECTI] G:iliski / K5P: ilk iki imzaci == K1P
+  [GECTI] G:iliski / K2C: K1C ile ayni; yalniz X imzasinda tek bit (bayt 5) farkli — [[5, 1]]
+  [GECTI] G:iliski / K4C: tek imzaci == K1C ikinci imzacisi (ayni Sig_structure, belirlenimci)
+  [GECTI] G:iliski / K5C: ilk iki imzaci == K1C
+  [GECTI] G:iliski / V-_ES256: V+ ile ayni; imzada tek bit (orta bayt) farkli
+  [GECTI] G:iliski / V-_EdDSA: V+ ile ayni; imzada tek bit (orta bayt) farkli
+  [GECTI] G:iliski / V-_ML-DSA-65: V+ ile ayni; imzada tek bit (orta bayt) farkli
+  [GECTI] G:iliski / COSE-K7_ml_bileseni_bozuk: K6 ile tek bit farki ml bileseninde — [[1654, 1]]
+  [GECTI] G:iliski / COSE-K7_ecdsa_bileseni_bozuk: K6 ile tek bit farki ecdsa bileseninde — [[3344, 1]]
+  [GECTI] G:MR4 / COSE-K1K_iki_gecerli-SIRA-ters: sira [1, 0]; govde/yuk ve her COSE_Signature bayt-ayni tasindi — True
+  [GECTI] G:MR4 / COSE-K1K_iki_gecerli-SIRA-ters insa kayitlari permutasyonla birebir tasindi
+  [GECTI] G:MR4 / COSE-K2K_X_bozuk-SIRA-ters: sira [1, 0]; govde/yuk ve her COSE_Signature bayt-ayni tasindi — True
+  [GECTI] G:MR4 / COSE-K2K_X_bozuk-SIRA-ters insa kayitlari permutasyonla birebir tasindi
+  [GECTI] G:MR4 / COSE-K1P_iki_gecerli-SIRA-ters: sira [1, 0]; govde/yuk ve her COSE_Signature bayt-ayni tasindi — True
+  [GECTI] G:MR4 / COSE-K1P_iki_gecerli-SIRA-ters insa kayitlari permutasyonla birebir tasindi
+  [GECTI] G:MR4 / COSE-K2P_X_bozuk-SIRA-ters: sira [1, 0]; govde/yuk ve her COSE_Signature bayt-ayni tasindi — True
+  [GECTI] G:MR4 / COSE-K2P_X_bozuk-SIRA-ters insa kayitlari permutasyonla birebir tasindi
+  [GECTI] G:MR4 / COSE-K1C_iki_gecerli-SIRA-ters: sira [1, 0]; govde/yuk ve her COSE_Signature bayt-ayni tasindi — True
+  [GECTI] G:MR4 / COSE-K1C_iki_gecerli-SIRA-ters insa kayitlari permutasyonla birebir tasindi
+  [GECTI] G:MR4 / COSE-K2C_X_bozuk-SIRA-ters: sira [1, 0]; govde/yuk ve her COSE_Signature bayt-ayni tasindi — True
+  [GECTI] G:MR4 / COSE-K2C_X_bozuk-SIRA-ters insa kayitlari permutasyonla birebir tasindi
+  [GECTI] G:MR4 / COSE-K1K_iki_gecerli-SIRA-ters-ED25519: sira [1, 0]; govde/yuk ve her COSE_Signature bayt-ayni tasindi — True
+  [GECTI] G:MR4 / COSE-K1K_iki_gecerli-SIRA-ters-ED25519 insa kayitlari permutasyonla birebir tasindi
+  [GECTI] G:MR4 / COSE-K2K_X_bozuk-SIRA-ters-ED25519: sira [1, 0]; govde/yuk ve her COSE_Signature bayt-ayni tasindi — True
+  [GECTI] G:MR4 / COSE-K2K_X_bozuk-SIRA-ters-ED25519 insa kayitlari permutasyonla birebir tasindi
+  [GECTI] G:ED25519 / COSE-K1K_iki_gecerli-ED25519: COSE-K1K_iki_gecerli ile yalniz EdDSA(-8)->Ed25519(-19) etiketi ve o imza farkli — [1]
+  [GECTI] G:ED25519 / COSE-K2K_X_bozuk-ED25519: COSE-K2K_X_bozuk ile yalniz EdDSA(-8)->Ed25519(-19) etiketi ve o imza farkli — [1]
+  [GECTI] G:ED25519 / COSE-K4K_yalniz_X-ED25519: COSE-K4K_yalniz_X ile yalniz EdDSA(-8)->Ed25519(-19) etiketi ve o imza farkli — [0]
+  [GECTI] G:ED25519 / COSE-K5K_arti_kayitsiz-ED25519: COSE-K5K_arti_kayitsiz ile yalniz EdDSA(-8)->Ed25519(-19) etiketi ve o imza farkli — [1]
+  [GECTI] G:ED25519 / COSE-K10K_alg-EdDSA_anahtar-ES256-ED25519: COSE-K10K_alg-EdDSA_anahtar-ES256 ile yalniz EdDSA(-8)->Ed25519(-19) etiketi ve o imza farkli — [0]
+  [GECTI] G:ED25519 / COSE-VPLUS_EdDSA-ED25519: COSE-VPLUS_EdDSA ile yalniz EdDSA(-8)->Ed25519(-19) etiketi ve o imza farkli — [0]
+  [GECTI] G:ED25519 / COSE-VMINUS_EdDSA-ED25519: COSE-VMINUS_EdDSA ile yalniz EdDSA(-8)->Ed25519(-19) etiketi ve o imza farkli — [0]
+  [GECTI] G:ED25519 / COSE-K1K_iki_gecerli-SIRA-ters-ED25519: COSE-K1K_iki_gecerli-SIRA-ters ile yalniz EdDSA(-8)->Ed25519(-19) etiketi ve o imza farkli — [0]
+  [GECTI] G:ED25519 / COSE-K2K_X_bozuk-SIRA-ters-ED25519: COSE-K2K_X_bozuk-SIRA-ters ile yalniz EdDSA(-8)->Ed25519(-19) etiketi ve o imza farkli — [0]
+  [GECTI] G:ED25519 / EdDSA (-8) etiketi tasiyan her kontrol COSE vektorunun -ED25519 esi var — []
+  [GECTI] G:L4c / L4C-JOSE: baslik {alg:ES256, kid:eski, typ:JWT}; yuk iss=https://legacy-issuer.example; insa.ihracci tutarli
+  [GECTI] G:L4c / L4C-JOSE: eski ihracci anahtariyla gecerli (pqjose + OpenSSL CLI) — ok
+  [GECTI] G:L4c / L4C-JOSE: goc etmis ihraccinin ES256 anahtariyla gecersiz (ayri kimlik)
+  [GECTI] G:L4c / L4C-COSE: kid = eski ihracci; eski anahtarla gecerli (pqjose + OpenSSL); goc etmis ES256 ile gecersiz
+  [GECTI] G:L4c / goc etmis ihracci JOSE karsiligi VPLUS_ES256 mevcut (iss=https://issuer.example)
+  [GECTI] G:L4c / goc etmis ihracci JOSE karsiligi VPLUS_ML-DSA-65 mevcut (iss=https://issuer.example)
+  [GECTI] G:L4c / goc etmis ihracci JOSE karsiligi CMP00_gecerli_referans mevcut (iss=https://issuer.example)
+  [GECTI] G:L4c / goc etmis ihracci COSE karsiligi COSE-VPLUS_ES256 mevcut (iss=https://issuer.example)
+  [GECTI] G:L4c / goc etmis ihracci COSE karsiligi COSE-VPLUS_ML-DSA-65 mevcut (iss=https://issuer.example)
+  [GECTI] G:L4c / goc etmis ihracci COSE karsiligi COSE-K6_composite_gecerli mevcut (iss=https://issuer.example)
+  [BILGI] G:boyut / COSE-K1K_iki_gecerli — 286
+  [BILGI] G:boyut / COSE-K2K_X_bozuk — 286
+  [BILGI] G:boyut / COSE-K3_X_soyuldu — 179
+  [BILGI] G:boyut / COSE-K4K_yalniz_X — 179
+  [BILGI] G:boyut / COSE-K5K_arti_kayitsiz — 434
+  [BILGI] G:boyut / COSE-K1P_iki_gecerli — 3533
+  [BILGI] G:boyut / COSE-K2P_X_bozuk — 3533
+  [BILGI] G:boyut / COSE-K4P_yalniz_X — 3426
+  [BILGI] G:boyut / COSE-K5P_arti_kayitsiz — 3681
+  [BILGI] G:boyut / COSE-K1C_iki_gecerli — 3604
+  [BILGI] G:boyut / COSE-K2C_X_bozuk — 3604
+  [BILGI] G:boyut / COSE-K4C_yalniz_X — 3497
+  [BILGI] G:boyut / COSE-K5C_arti_kayitsiz — 3752
+  [BILGI] G:boyut / COSE-K10K_alg-EdDSA_anahtar-ES256 — 174
+  [BILGI] G:boyut / COSE-K10K_alg-ES256_anahtar-Ed25519 — 174
+  [BILGI] G:boyut / COSE-K10P_alg-ML-DSA-65_anahtar-ES256 — 175
+  [BILGI] G:boyut / COSE-K10P_alg-ES256_anahtar-ML-DSA-65 — 3420
+  [BILGI] G:boyut / COSE-K10C_alg-ML-DSA-65-ES256_anahtar-ML-DSA-65 — 3421
+  [BILGI] G:boyut / COSE-K10C_alg-ML-DSA-65_anahtar-ML-DSA-65-ES256 — 3492
+  [BILGI] G:boyut / COSE-VPLUS_ES256 — 174
+  [BILGI] G:boyut / COSE-VMINUS_ES256 — 174
+  [BILGI] G:boyut / COSE-VPLUS_EdDSA — 174
+  [BILGI] G:boyut / COSE-VMINUS_EdDSA — 174
+  [BILGI] G:boyut / COSE-VPLUS_ML-DSA-65 — 3421
+  [BILGI] G:boyut / COSE-VMINUS_ML-DSA-65 — 3421
+  [BILGI] G:boyut / COSE-K6_composite_gecerli — 3491
+  [BILGI] G:boyut / COSE-K7_ml_bileseni_bozuk — 3491
+  [BILGI] G:boyut / COSE-K7_ecdsa_bileseni_bozuk — 3491
+  [BILGI] G:boyut / COSE-K8_x5chain_karisik — 6295
+  [BILGI] G:boyut / COSE-K9_x5chain_korumasiz — 14659
+  [BILGI] G:boyut / COSE-K1K_iki_gecerli-SIRA-ters — 286
+  [BILGI] G:boyut / COSE-K2K_X_bozuk-SIRA-ters — 286
+  [BILGI] G:boyut / COSE-K1P_iki_gecerli-SIRA-ters — 3533
+  [BILGI] G:boyut / COSE-K2P_X_bozuk-SIRA-ters — 3533
+  [BILGI] G:boyut / COSE-K1C_iki_gecerli-SIRA-ters — 3604
+  [BILGI] G:boyut / COSE-K2C_X_bozuk-SIRA-ters — 3604
+  [BILGI] G:boyut / COSE-K1K_iki_gecerli-ED25519 — 286
+  [BILGI] G:boyut / COSE-K2K_X_bozuk-ED25519 — 286
+  [BILGI] G:boyut / COSE-K4K_yalniz_X-ED25519 — 179
+  [BILGI] G:boyut / COSE-K5K_arti_kayitsiz-ED25519 — 434
+  [BILGI] G:boyut / COSE-K10K_alg-EdDSA_anahtar-ES256-ED25519 — 174
+  [BILGI] G:boyut / COSE-VPLUS_EdDSA-ED25519 — 174
+  [BILGI] G:boyut / COSE-VMINUS_EdDSA-ED25519 — 174
+  [BILGI] G:boyut / COSE-K1K_iki_gecerli-SIRA-ters-ED25519 — 286
+  [BILGI] G:boyut / COSE-K2K_X_bozuk-SIRA-ters-ED25519 — 286
+  [BILGI] G:boyut / L4C-JOSE_eski_ES256 — 350
+  [BILGI] G:boyut / L4C-COSE_eski_ES256 — 182

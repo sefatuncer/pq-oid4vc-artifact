@@ -1,0 +1,173 @@
+t01_dis_vektorler: 156/156 gecti
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-44-ES256 / bilesenlerden-composite-acik-anahtar
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-44-ES256 / composite-priv-serilestirme==jwk.priv
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-44-ES256 / ECPrivateKey(Tablo4)
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-44-ES256 / jwk-ice-aktarma
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-44-ES256 / kid==RFC7638-parmak-izi
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-44-ES256 / jwk-disa-aktarma-ayni
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-44-ES256 / jws-imzalama-girdisi==raw_to_be_signed
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-44-ES256 / jws-imza==raw_composite_signature
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-44-ES256 / M'==raw_message_representative
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-44-ES256 / pqjose-dogrulayici:KABUL — {"valid": true, "reason": "ok", "serialization": "compact", "signatures": [{"index": 0, "alg": "ML-DSA-44-ES256", "ok": true, "reason": "ok", "kid": "bJ8aA7ZIsHYNGb4GVaIxupyHLmFNuU1jThxqAXK0Sio", "key_source": "keys", "alg_class": "hibrit", "components": {"ml": true, "trad": true, "hata": null}}]}
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-44-ES256 / bilesenler:ml=True,trad=True — {"ml": true, "trad": true, "hata": null}
+  [BILGI] JOSECOMP04-JOSE-ML-DSA-44-ES256 / boyutlar — {"imza": 2491, "ml": 2420, "trad": 71, "pub": 1377, "priv": 83, "M'": 98}
+  [BILGI] JOSECOMP04-JOSE-ML-DSA-44-ES256 / ML-DSA-bileseni-belirlenimci-mi(taslak) — True
+  [BILGI] JOSECOMP04-JOSE-ML-DSA-44-ES256 / ECDSA-bileseni-RFC6979-mi(taslak) — False
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-44-ES256 / uretici:belirlenimci-imza-dogrulanir
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-44-ES256 / dilithium-py:ML-DSA-bileseni(ctx=Label)
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-44-ES256 / openssl:ML-DSA-bileseni(ctx=Label)
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-44-ES256 / openssl:ECDSA-bileseni(DER,M')
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-44-Ed25519 / bilesenlerden-composite-acik-anahtar
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-44-Ed25519 / composite-priv-serilestirme==jwk.priv
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-44-Ed25519 / jwk-ice-aktarma
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-44-Ed25519 / kid==RFC7638-parmak-izi
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-44-Ed25519 / jwk-disa-aktarma-ayni
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-44-Ed25519 / jws-imzalama-girdisi==raw_to_be_signed
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-44-Ed25519 / jws-imza==raw_composite_signature
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-44-Ed25519 / M'==raw_message_representative
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-44-Ed25519 / pqjose-dogrulayici:KABUL — {"valid": true, "reason": "ok", "serialization": "compact", "signatures": [{"index": 0, "alg": "ML-DSA-44-Ed25519", "ok": true, "reason": "ok", "kid": "5ETztyaAQkvflhmjJ6mtdwlWEb3Nr4ymcDpN8eXQ8h4", "key_source": "keys", "alg_class": "hibrit", "components": {"ml": true, "trad": true, "hata": null}}]}
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-44-Ed25519 / bilesenler:ml=True,trad=True — {"ml": true, "trad": true, "hata": null}
+  [BILGI] JOSECOMP04-JOSE-ML-DSA-44-Ed25519 / boyutlar — {"imza": 2484, "ml": 2420, "trad": 64, "pub": 1344, "priv": 64, "M'": 127}
+  [BILGI] JOSECOMP04-JOSE-ML-DSA-44-Ed25519 / ML-DSA-bileseni-belirlenimci-mi(taslak) — True
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-44-Ed25519 / EdDSA-bileseni-bayt-ayni(belirlenimci)
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-44-Ed25519 / uretici:belirlenimci-imza-dogrulanir
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-44-Ed25519 / uretici:composite-imza-bayt-ayni
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-44-Ed25519 / dilithium-py:ML-DSA-bileseni(ctx=Label)
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-44-Ed25519 / openssl:ML-DSA-bileseni(ctx=Label)
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-44-Ed25519 / openssl:EdDSA-bileseni(M')
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-65-ES256 / bilesenlerden-composite-acik-anahtar
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-65-ES256 / composite-priv-serilestirme==jwk.priv
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-65-ES256 / ECPrivateKey(Tablo4)
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-65-ES256 / jwk-ice-aktarma
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-65-ES256 / kid==RFC7638-parmak-izi
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-65-ES256 / jwk-disa-aktarma-ayni
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-65-ES256 / jws-imzalama-girdisi==raw_to_be_signed
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-65-ES256 / jws-imza==raw_composite_signature
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-65-ES256 / M'==raw_message_representative
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-65-ES256 / pqjose-dogrulayici:KABUL — {"valid": true, "reason": "ok", "serialization": "compact", "signatures": [{"index": 0, "alg": "ML-DSA-65-ES256", "ok": true, "reason": "ok", "kid": "RKckYpZD-Fj494Q4vaeNmq6c3mqg_EhLkiUOo5mhNYE", "key_source": "keys", "alg_class": "hibrit", "components": {"ml": true, "trad": true, "hata": null}}]}
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-65-ES256 / bilesenler:ml=True,trad=True — {"ml": true, "trad": true, "hata": null}
+  [BILGI] JOSECOMP04-JOSE-ML-DSA-65-ES256 / boyutlar — {"imza": 3381, "ml": 3309, "trad": 72, "pub": 2017, "priv": 83, "M'": 130}
+  [BILGI] JOSECOMP04-JOSE-ML-DSA-65-ES256 / ML-DSA-bileseni-belirlenimci-mi(taslak) — True
+  [BILGI] JOSECOMP04-JOSE-ML-DSA-65-ES256 / ECDSA-bileseni-RFC6979-mi(taslak) — False
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-65-ES256 / uretici:belirlenimci-imza-dogrulanir
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-65-ES256 / dilithium-py:ML-DSA-bileseni(ctx=Label)
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-65-ES256 / openssl:ML-DSA-bileseni(ctx=Label)
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-65-ES256 / openssl:ECDSA-bileseni(DER,M')
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-65-Ed25519 / bilesenlerden-composite-acik-anahtar
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-65-Ed25519 / composite-priv-serilestirme==jwk.priv
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-65-Ed25519 / jwk-ice-aktarma
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-65-Ed25519 / kid==RFC7638-parmak-izi
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-65-Ed25519 / jwk-disa-aktarma-ayni
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-65-Ed25519 / jws-imzalama-girdisi==raw_to_be_signed
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-65-Ed25519 / jws-imza==raw_composite_signature
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-65-Ed25519 / M'==raw_message_representative
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-65-Ed25519 / pqjose-dogrulayici:KABUL — {"valid": true, "reason": "ok", "serialization": "compact", "signatures": [{"index": 0, "alg": "ML-DSA-65-Ed25519", "ok": true, "reason": "ok", "kid": "87Vn3JTmvTdxvpetv0rA5GwfoLnCkMxBDCJvYgFVuh4", "key_source": "keys", "alg_class": "hibrit", "components": {"ml": true, "trad": true, "hata": null}}]}
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-65-Ed25519 / bilesenler:ml=True,trad=True — {"ml": true, "trad": true, "hata": null}
+  [BILGI] JOSECOMP04-JOSE-ML-DSA-65-Ed25519 / boyutlar — {"imza": 3373, "ml": 3309, "trad": 64, "pub": 1984, "priv": 64, "M'": 127}
+  [BILGI] JOSECOMP04-JOSE-ML-DSA-65-Ed25519 / ML-DSA-bileseni-belirlenimci-mi(taslak) — True
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-65-Ed25519 / EdDSA-bileseni-bayt-ayni(belirlenimci)
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-65-Ed25519 / uretici:belirlenimci-imza-dogrulanir
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-65-Ed25519 / uretici:composite-imza-bayt-ayni
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-65-Ed25519 / dilithium-py:ML-DSA-bileseni(ctx=Label)
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-65-Ed25519 / openssl:ML-DSA-bileseni(ctx=Label)
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-65-Ed25519 / openssl:EdDSA-bileseni(M')
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-87-ES384 / bilesenlerden-composite-acik-anahtar
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-87-ES384 / composite-priv-serilestirme==jwk.priv
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-87-ES384 / ECPrivateKey(Tablo4)
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-87-ES384 / jwk-ice-aktarma
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-87-ES384 / kid==RFC7638-parmak-izi
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-87-ES384 / jwk-disa-aktarma-ayni
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-87-ES384 / jws-imzalama-girdisi==raw_to_be_signed
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-87-ES384 / jws-imza==raw_composite_signature
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-87-ES384 / M'==raw_message_representative
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-87-ES384 / pqjose-dogrulayici:KABUL — {"valid": true, "reason": "ok", "serialization": "compact", "signatures": [{"index": 0, "alg": "ML-DSA-87-ES384", "ok": true, "reason": "ok", "kid": "yH7Hzh-v4jQOca8n6vLtFOG31o0pT2MDZD5FtvQ7Reg", "key_source": "keys", "alg_class": "hibrit", "components": {"ml": true, "trad": true, "hata": null}}]}
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-87-ES384 / bilesenler:ml=True,trad=True — {"ml": true, "trad": true, "hata": null}
+  [BILGI] JOSECOMP04-JOSE-ML-DSA-87-ES384 / boyutlar — {"imza": 4730, "ml": 4627, "trad": 103, "pub": 2689, "priv": 96, "M'": 130}
+  [BILGI] JOSECOMP04-JOSE-ML-DSA-87-ES384 / ML-DSA-bileseni-belirlenimci-mi(taslak) — True
+  [BILGI] JOSECOMP04-JOSE-ML-DSA-87-ES384 / ECDSA-bileseni-RFC6979-mi(taslak) — False
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-87-ES384 / uretici:belirlenimci-imza-dogrulanir
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-87-ES384 / dilithium-py:ML-DSA-bileseni(ctx=Label)
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-87-ES384 / openssl:ML-DSA-bileseni(ctx=Label)
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-87-ES384 / openssl:ECDSA-bileseni(DER,M')
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-87-Ed448 / bilesenlerden-composite-acik-anahtar
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-87-Ed448 / composite-priv-serilestirme==jwk.priv
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-87-Ed448 / jwk-ice-aktarma
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-87-Ed448 / kid==RFC7638-parmak-izi
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-87-Ed448 / jwk-disa-aktarma-ayni
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-87-Ed448 / jws-imzalama-girdisi==raw_to_be_signed
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-87-Ed448 / jws-imza==raw_composite_signature
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-87-Ed448 / M'==raw_message_representative
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-87-Ed448 / pqjose-dogrulayici:KABUL — {"valid": true, "reason": "ok", "serialization": "compact", "signatures": [{"index": 0, "alg": "ML-DSA-87-Ed448", "ok": true, "reason": "ok", "kid": "qVsShuAUuE5EUbqI481LsrarR_kKdrix0rnVJ226Ko4", "key_source": "keys", "alg_class": "hibrit", "components": {"ml": true, "trad": true, "hata": null}}]}
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-87-Ed448 / bilesenler:ml=True,trad=True — {"ml": true, "trad": true, "hata": null}
+  [BILGI] JOSECOMP04-JOSE-ML-DSA-87-Ed448 / boyutlar — {"imza": 4741, "ml": 4627, "trad": 114, "pub": 2649, "priv": 89, "M'": 127}
+  [BILGI] JOSECOMP04-JOSE-ML-DSA-87-Ed448 / ML-DSA-bileseni-belirlenimci-mi(taslak) — True
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-87-Ed448 / EdDSA-bileseni-bayt-ayni(belirlenimci)
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-87-Ed448 / uretici:belirlenimci-imza-dogrulanir
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-87-Ed448 / uretici:composite-imza-bayt-ayni
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-87-Ed448 / dilithium-py:ML-DSA-bileseni(ctx=Label)
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-87-Ed448 / openssl:ML-DSA-bileseni(ctx=Label)
+  [GECTI] JOSECOMP04-JOSE-ML-DSA-87-Ed448 / openssl:EdDSA-bileseni(M')
+  [GECTI] RFC9964-COSE-ML-DSA-44 / tohumdan-acik-anahtar
+  [GECTI] RFC9964-COSE-ML-DSA-44 / imza-dogrulama(ham)
+  [GECTI] RFC9964-COSE-ML-DSA-44 / belirlenimci-imza-bayt-ayni
+  [GECTI] RFC9964-COSE-ML-DSA-44 / dilithium-py:acik-anahtar
+  [GECTI] RFC9964-COSE-ML-DSA-44 / dilithium-py:dogrulama
+  [GECTI] RFC9964-COSE-ML-DSA-44 / dilithium-py:belirlenimci-imza-ayni
+  [GECTI] RFC9964-COSE-ML-DSA-44 / openssl:dogrulama
+  [GECTI] RFC9964-COSE-ML-DSA-65 / tohumdan-acik-anahtar
+  [GECTI] RFC9964-COSE-ML-DSA-65 / imza-dogrulama(ham)
+  [GECTI] RFC9964-COSE-ML-DSA-65 / belirlenimci-imza-bayt-ayni
+  [GECTI] RFC9964-COSE-ML-DSA-65 / dilithium-py:acik-anahtar
+  [GECTI] RFC9964-COSE-ML-DSA-65 / dilithium-py:dogrulama
+  [GECTI] RFC9964-COSE-ML-DSA-65 / dilithium-py:belirlenimci-imza-ayni
+  [GECTI] RFC9964-COSE-ML-DSA-65 / openssl:dogrulama
+  [GECTI] RFC9964-COSE-ML-DSA-87 / tohumdan-acik-anahtar
+  [GECTI] RFC9964-COSE-ML-DSA-87 / imza-dogrulama(ham)
+  [GECTI] RFC9964-COSE-ML-DSA-87 / belirlenimci-imza-bayt-ayni
+  [GECTI] RFC9964-COSE-ML-DSA-87 / dilithium-py:acik-anahtar
+  [GECTI] RFC9964-COSE-ML-DSA-87 / dilithium-py:dogrulama
+  [GECTI] RFC9964-COSE-ML-DSA-87 / dilithium-py:belirlenimci-imza-ayni
+  [GECTI] RFC9964-COSE-ML-DSA-87 / openssl:dogrulama
+  [GECTI] RFC9964-JOSE-ML-DSA-44 / tohumdan-acik-anahtar
+  [GECTI] RFC9964-JOSE-ML-DSA-44 / imza-dogrulama(ham)
+  [GECTI] RFC9964-JOSE-ML-DSA-44 / belirlenimci-imza-bayt-ayni
+  [GECTI] RFC9964-JOSE-ML-DSA-44 / dilithium-py:acik-anahtar
+  [GECTI] RFC9964-JOSE-ML-DSA-44 / dilithium-py:dogrulama
+  [GECTI] RFC9964-JOSE-ML-DSA-44 / dilithium-py:belirlenimci-imza-ayni
+  [GECTI] RFC9964-JOSE-ML-DSA-44 / openssl:dogrulama
+  [GECTI] RFC9964-JOSE-ML-DSA-44 / jwk-ice-aktarma
+  [GECTI] RFC9964-JOSE-ML-DSA-44 / kid==RFC7638-parmak-izi
+  [GECTI] RFC9964-JOSE-ML-DSA-44 / jwk-disa-aktarma-ayni
+  [GECTI] RFC9964-JOSE-ML-DSA-44 / jws-imzalama-girdisi==raw_to_be_signed
+  [GECTI] RFC9964-JOSE-ML-DSA-44 / pqjose-dogrulayici:KABUL — {"valid": true, "reason": "ok", "serialization": "compact", "signatures": [{"index": 0, "alg": "ML-DSA-44", "ok": true, "reason": "ok", "kid": "T4xl70S7MT6Zeq6r9V9fPJGVn76wfnXJ21-gyo0Gu6o", "key_source": "keys", "alg_class": "pq"}]}
+  [GECTI] RFC9964-JOSE-ML-DSA-44 / baslik-serilestirme-ayni
+  [GECTI] RFC9964-JOSE-ML-DSA-44 / uretici:compact-JWS-bayt-ayni
+  [GECTI] RFC9964-JOSE-ML-DSA-65 / tohumdan-acik-anahtar
+  [GECTI] RFC9964-JOSE-ML-DSA-65 / imza-dogrulama(ham)
+  [GECTI] RFC9964-JOSE-ML-DSA-65 / belirlenimci-imza-bayt-ayni
+  [GECTI] RFC9964-JOSE-ML-DSA-65 / dilithium-py:acik-anahtar
+  [GECTI] RFC9964-JOSE-ML-DSA-65 / dilithium-py:dogrulama
+  [GECTI] RFC9964-JOSE-ML-DSA-65 / dilithium-py:belirlenimci-imza-ayni
+  [GECTI] RFC9964-JOSE-ML-DSA-65 / openssl:dogrulama
+  [GECTI] RFC9964-JOSE-ML-DSA-65 / jwk-ice-aktarma
+  [GECTI] RFC9964-JOSE-ML-DSA-65 / kid==RFC7638-parmak-izi
+  [GECTI] RFC9964-JOSE-ML-DSA-65 / jwk-disa-aktarma-ayni
+  [GECTI] RFC9964-JOSE-ML-DSA-65 / jws-imzalama-girdisi==raw_to_be_signed
+  [GECTI] RFC9964-JOSE-ML-DSA-65 / pqjose-dogrulayici:KABUL — {"valid": true, "reason": "ok", "serialization": "compact", "signatures": [{"index": 0, "alg": "ML-DSA-65", "ok": true, "reason": "ok", "kid": "Suiu29qbfuaBaR4Ats-c6XQBePB_OpAxAwcTR_0KXVM", "key_source": "keys", "alg_class": "pq"}]}
+  [GECTI] RFC9964-JOSE-ML-DSA-65 / baslik-serilestirme-ayni
+  [GECTI] RFC9964-JOSE-ML-DSA-65 / uretici:compact-JWS-bayt-ayni
+  [GECTI] RFC9964-JOSE-ML-DSA-87 / tohumdan-acik-anahtar
+  [GECTI] RFC9964-JOSE-ML-DSA-87 / imza-dogrulama(ham)
+  [GECTI] RFC9964-JOSE-ML-DSA-87 / belirlenimci-imza-bayt-ayni
+  [GECTI] RFC9964-JOSE-ML-DSA-87 / dilithium-py:acik-anahtar
+  [GECTI] RFC9964-JOSE-ML-DSA-87 / dilithium-py:dogrulama
+  [GECTI] RFC9964-JOSE-ML-DSA-87 / dilithium-py:belirlenimci-imza-ayni
+  [GECTI] RFC9964-JOSE-ML-DSA-87 / openssl:dogrulama
+  [GECTI] RFC9964-JOSE-ML-DSA-87 / jwk-ice-aktarma
+  [GECTI] RFC9964-JOSE-ML-DSA-87 / kid==RFC7638-parmak-izi
+  [GECTI] RFC9964-JOSE-ML-DSA-87 / jwk-disa-aktarma-ayni
+  [GECTI] RFC9964-JOSE-ML-DSA-87 / jws-imzalama-girdisi==raw_to_be_signed
+  [GECTI] RFC9964-JOSE-ML-DSA-87 / pqjose-dogrulayici:KABUL — {"valid": true, "reason": "ok", "serialization": "compact", "signatures": [{"index": 0, "alg": "ML-DSA-87", "ok": true, "reason": "ok", "kid": "tRn1JNIkgMsABVQBlXeDHxAIcclh-2IX0UdDEzPt5XU", "key_source": "keys", "alg_class": "pq"}]}
+  [GECTI] RFC9964-JOSE-ML-DSA-87 / baslik-serilestirme-ayni
+  [GECTI] RFC9964-JOSE-ML-DSA-87 / uretici:compact-JWS-bayt-ayni
+  [BILGI] genel / vektor-sayisi — 12

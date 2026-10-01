@@ -1,0 +1,2 @@
+388b48a27049b3d52ab559ab3c212fcafeb8f2e02f56ffe45e9ace18ce1931d4 *ornek_analiz1/sonuc.json
+388b48a27049b3d52ab559ab3c212fcafeb8f2e02f56ffe45e9ace18ce1931d4 *ornek_analiz2/sonuc.json

@@ -1,0 +1,1288 @@
+{
+ "test": "t01_dis_vektorler",
+ "sure_s": 0.64,
+ "surumler": {
+  "pqjose": "1.0.0",
+  "python": "3.11.16",
+  "cryptography": "50.0.1",
+  "cryptography_openssl": "OpenSSL 4.0.2 25 Aug 2026",
+  "openssl_cli": "OpenSSL 3.5.7 9 Jun 2026 (Library: OpenSSL 3.5.7 9 Jun 2026)",
+  "spesifikasyonlar": {
+   "JWS": "RFC 7515",
+   "JWA": "RFC 7518 (RFC 9864 ile guncellendi)",
+   "ML-DSA": "RFC 9964 (Mayis 2026)",
+   "composite": "draft-ietf-jose-pq-composite-sigs-04 (10.09.2026)",
+   "EdDSA": "RFC 8037 / RFC 9864"
+  }
+ },
+ "ozet": {
+  "toplam": 156,
+  "gecen": 156,
+  "kalan": []
+ },
+ "kontroller": [
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-44-ES256",
+   "ad": "bilesenlerden-composite-acik-anahtar",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-44-ES256",
+   "ad": "composite-priv-serilestirme==jwk.priv",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-44-ES256",
+   "ad": "ECPrivateKey(Tablo4)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-44-ES256",
+   "ad": "jwk-ice-aktarma",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-44-ES256",
+   "ad": "kid==RFC7638-parmak-izi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-44-ES256",
+   "ad": "jwk-disa-aktarma-ayni",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-44-ES256",
+   "ad": "jws-imzalama-girdisi==raw_to_be_signed",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-44-ES256",
+   "ad": "jws-imza==raw_composite_signature",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-44-ES256",
+   "ad": "M'==raw_message_representative",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-44-ES256",
+   "ad": "pqjose-dogrulayici:KABUL",
+   "gecti": true,
+   "ayrinti": {
+    "valid": true,
+    "reason": "ok",
+    "serialization": "compact",
+    "signatures": [
+     {
+      "index": 0,
+      "alg": "ML-DSA-44-ES256",
+      "ok": true,
+      "reason": "ok",
+      "kid": "bJ8aA7ZIsHYNGb4GVaIxupyHLmFNuU1jThxqAXK0Sio",
+      "key_source": "keys",
+      "alg_class": "hibrit",
+      "components": {
+       "ml": true,
+       "trad": true,
+       "hata": null
+      }
+     }
+    ]
+   }
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-44-ES256",
+   "ad": "bilesenler:ml=True,trad=True",
+   "gecti": true,
+   "ayrinti": {
+    "ml": true,
+    "trad": true,
+    "hata": null
+   }
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-44-ES256",
+   "ad": "boyutlar",
+   "gecti": null,
+   "ayrinti": {
+    "imza": 2491,
+    "ml": 2420,
+    "trad": 71,
+    "pub": 1377,
+    "priv": 83,
+    "M'": 98
+   }
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-44-ES256",
+   "ad": "ML-DSA-bileseni-belirlenimci-mi(taslak)",
+   "gecti": null,
+   "ayrinti": true
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-44-ES256",
+   "ad": "ECDSA-bileseni-RFC6979-mi(taslak)",
+   "gecti": null,
+   "ayrinti": false
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-44-ES256",
+   "ad": "uretici:belirlenimci-imza-dogrulanir",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-44-ES256",
+   "ad": "dilithium-py:ML-DSA-bileseni(ctx=Label)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-44-ES256",
+   "ad": "openssl:ML-DSA-bileseni(ctx=Label)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-44-ES256",
+   "ad": "openssl:ECDSA-bileseni(DER,M')",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-44-Ed25519",
+   "ad": "bilesenlerden-composite-acik-anahtar",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-44-Ed25519",
+   "ad": "composite-priv-serilestirme==jwk.priv",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-44-Ed25519",
+   "ad": "jwk-ice-aktarma",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-44-Ed25519",
+   "ad": "kid==RFC7638-parmak-izi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-44-Ed25519",
+   "ad": "jwk-disa-aktarma-ayni",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-44-Ed25519",
+   "ad": "jws-imzalama-girdisi==raw_to_be_signed",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-44-Ed25519",
+   "ad": "jws-imza==raw_composite_signature",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-44-Ed25519",
+   "ad": "M'==raw_message_representative",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-44-Ed25519",
+   "ad": "pqjose-dogrulayici:KABUL",
+   "gecti": true,
+   "ayrinti": {
+    "valid": true,
+    "reason": "ok",
+    "serialization": "compact",
+    "signatures": [
+     {
+      "index": 0,
+      "alg": "ML-DSA-44-Ed25519",
+      "ok": true,
+      "reason": "ok",
+      "kid": "5ETztyaAQkvflhmjJ6mtdwlWEb3Nr4ymcDpN8eXQ8h4",
+      "key_source": "keys",
+      "alg_class": "hibrit",
+      "components": {
+       "ml": true,
+       "trad": true,
+       "hata": null
+      }
+     }
+    ]
+   }
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-44-Ed25519",
+   "ad": "bilesenler:ml=True,trad=True",
+   "gecti": true,
+   "ayrinti": {
+    "ml": true,
+    "trad": true,
+    "hata": null
+   }
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-44-Ed25519",
+   "ad": "boyutlar",
+   "gecti": null,
+   "ayrinti": {
+    "imza": 2484,
+    "ml": 2420,
+    "trad": 64,
+    "pub": 1344,
+    "priv": 64,
+    "M'": 127
+   }
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-44-Ed25519",
+   "ad": "ML-DSA-bileseni-belirlenimci-mi(taslak)",
+   "gecti": null,
+   "ayrinti": true
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-44-Ed25519",
+   "ad": "EdDSA-bileseni-bayt-ayni(belirlenimci)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-44-Ed25519",
+   "ad": "uretici:belirlenimci-imza-dogrulanir",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-44-Ed25519",
+   "ad": "uretici:composite-imza-bayt-ayni",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-44-Ed25519",
+   "ad": "dilithium-py:ML-DSA-bileseni(ctx=Label)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-44-Ed25519",
+   "ad": "openssl:ML-DSA-bileseni(ctx=Label)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-44-Ed25519",
+   "ad": "openssl:EdDSA-bileseni(M')",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-65-ES256",
+   "ad": "bilesenlerden-composite-acik-anahtar",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-65-ES256",
+   "ad": "composite-priv-serilestirme==jwk.priv",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-65-ES256",
+   "ad": "ECPrivateKey(Tablo4)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-65-ES256",
+   "ad": "jwk-ice-aktarma",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-65-ES256",
+   "ad": "kid==RFC7638-parmak-izi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-65-ES256",
+   "ad": "jwk-disa-aktarma-ayni",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-65-ES256",
+   "ad": "jws-imzalama-girdisi==raw_to_be_signed",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-65-ES256",
+   "ad": "jws-imza==raw_composite_signature",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-65-ES256",
+   "ad": "M'==raw_message_representative",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-65-ES256",
+   "ad": "pqjose-dogrulayici:KABUL",
+   "gecti": true,
+   "ayrinti": {
+    "valid": true,
+    "reason": "ok",
+    "serialization": "compact",
+    "signatures": [
+     {
+      "index": 0,
+      "alg": "ML-DSA-65-ES256",
+      "ok": true,
+      "reason": "ok",
+      "kid": "RKckYpZD-Fj494Q4vaeNmq6c3mqg_EhLkiUOo5mhNYE",
+      "key_source": "keys",
+      "alg_class": "hibrit",
+      "components": {
+       "ml": true,
+       "trad": true,
+       "hata": null
+      }
+     }
+    ]
+   }
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-65-ES256",
+   "ad": "bilesenler:ml=True,trad=True",
+   "gecti": true,
+   "ayrinti": {
+    "ml": true,
+    "trad": true,
+    "hata": null
+   }
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-65-ES256",
+   "ad": "boyutlar",
+   "gecti": null,
+   "ayrinti": {
+    "imza": 3381,
+    "ml": 3309,
+    "trad": 72,
+    "pub": 2017,
+    "priv": 83,
+    "M'": 130
+   }
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-65-ES256",
+   "ad": "ML-DSA-bileseni-belirlenimci-mi(taslak)",
+   "gecti": null,
+   "ayrinti": true
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-65-ES256",
+   "ad": "ECDSA-bileseni-RFC6979-mi(taslak)",
+   "gecti": null,
+   "ayrinti": false
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-65-ES256",
+   "ad": "uretici:belirlenimci-imza-dogrulanir",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-65-ES256",
+   "ad": "dilithium-py:ML-DSA-bileseni(ctx=Label)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-65-ES256",
+   "ad": "openssl:ML-DSA-bileseni(ctx=Label)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-65-ES256",
+   "ad": "openssl:ECDSA-bileseni(DER,M')",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-65-Ed25519",
+   "ad": "bilesenlerden-composite-acik-anahtar",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-65-Ed25519",
+   "ad": "composite-priv-serilestirme==jwk.priv",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-65-Ed25519",
+   "ad": "jwk-ice-aktarma",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-65-Ed25519",
+   "ad": "kid==RFC7638-parmak-izi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-65-Ed25519",
+   "ad": "jwk-disa-aktarma-ayni",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-65-Ed25519",
+   "ad": "jws-imzalama-girdisi==raw_to_be_signed",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-65-Ed25519",
+   "ad": "jws-imza==raw_composite_signature",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-65-Ed25519",
+   "ad": "M'==raw_message_representative",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-65-Ed25519",
+   "ad": "pqjose-dogrulayici:KABUL",
+   "gecti": true,
+   "ayrinti": {
+    "valid": true,
+    "reason": "ok",
+    "serialization": "compact",
+    "signatures": [
+     {
+      "index": 0,
+      "alg": "ML-DSA-65-Ed25519",
+      "ok": true,
+      "reason": "ok",
+      "kid": "87Vn3JTmvTdxvpetv0rA5GwfoLnCkMxBDCJvYgFVuh4",
+      "key_source": "keys",
+      "alg_class": "hibrit",
+      "components": {
+       "ml": true,
+       "trad": true,
+       "hata": null
+      }
+     }
+    ]
+   }
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-65-Ed25519",
+   "ad": "bilesenler:ml=True,trad=True",
+   "gecti": true,
+   "ayrinti": {
+    "ml": true,
+    "trad": true,
+    "hata": null
+   }
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-65-Ed25519",
+   "ad": "boyutlar",
+   "gecti": null,
+   "ayrinti": {
+    "imza": 3373,
+    "ml": 3309,
+    "trad": 64,
+    "pub": 1984,
+    "priv": 64,
+    "M'": 127
+   }
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-65-Ed25519",
+   "ad": "ML-DSA-bileseni-belirlenimci-mi(taslak)",
+   "gecti": null,
+   "ayrinti": true
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-65-Ed25519",
+   "ad": "EdDSA-bileseni-bayt-ayni(belirlenimci)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-65-Ed25519",
+   "ad": "uretici:belirlenimci-imza-dogrulanir",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-65-Ed25519",
+   "ad": "uretici:composite-imza-bayt-ayni",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-65-Ed25519",
+   "ad": "dilithium-py:ML-DSA-bileseni(ctx=Label)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-65-Ed25519",
+   "ad": "openssl:ML-DSA-bileseni(ctx=Label)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-65-Ed25519",
+   "ad": "openssl:EdDSA-bileseni(M')",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-87-ES384",
+   "ad": "bilesenlerden-composite-acik-anahtar",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-87-ES384",
+   "ad": "composite-priv-serilestirme==jwk.priv",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-87-ES384",
+   "ad": "ECPrivateKey(Tablo4)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-87-ES384",
+   "ad": "jwk-ice-aktarma",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-87-ES384",
+   "ad": "kid==RFC7638-parmak-izi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-87-ES384",
+   "ad": "jwk-disa-aktarma-ayni",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-87-ES384",
+   "ad": "jws-imzalama-girdisi==raw_to_be_signed",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-87-ES384",
+   "ad": "jws-imza==raw_composite_signature",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-87-ES384",
+   "ad": "M'==raw_message_representative",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-87-ES384",
+   "ad": "pqjose-dogrulayici:KABUL",
+   "gecti": true,
+   "ayrinti": {
+    "valid": true,
+    "reason": "ok",
+    "serialization": "compact",
+    "signatures": [
+     {
+      "index": 0,
+      "alg": "ML-DSA-87-ES384",
+      "ok": true,
+      "reason": "ok",
+      "kid": "yH7Hzh-v4jQOca8n6vLtFOG31o0pT2MDZD5FtvQ7Reg",
+      "key_source": "keys",
+      "alg_class": "hibrit",
+      "components": {
+       "ml": true,
+       "trad": true,
+       "hata": null
+      }
+     }
+    ]
+   }
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-87-ES384",
+   "ad": "bilesenler:ml=True,trad=True",
+   "gecti": true,
+   "ayrinti": {
+    "ml": true,
+    "trad": true,
+    "hata": null
+   }
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-87-ES384",
+   "ad": "boyutlar",
+   "gecti": null,
+   "ayrinti": {
+    "imza": 4730,
+    "ml": 4627,
+    "trad": 103,
+    "pub": 2689,
+    "priv": 96,
+    "M'": 130
+   }
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-87-ES384",
+   "ad": "ML-DSA-bileseni-belirlenimci-mi(taslak)",
+   "gecti": null,
+   "ayrinti": true
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-87-ES384",
+   "ad": "ECDSA-bileseni-RFC6979-mi(taslak)",
+   "gecti": null,
+   "ayrinti": false
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-87-ES384",
+   "ad": "uretici:belirlenimci-imza-dogrulanir",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-87-ES384",
+   "ad": "dilithium-py:ML-DSA-bileseni(ctx=Label)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-87-ES384",
+   "ad": "openssl:ML-DSA-bileseni(ctx=Label)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-87-ES384",
+   "ad": "openssl:ECDSA-bileseni(DER,M')",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-87-Ed448",
+   "ad": "bilesenlerden-composite-acik-anahtar",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-87-Ed448",
+   "ad": "composite-priv-serilestirme==jwk.priv",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-87-Ed448",
+   "ad": "jwk-ice-aktarma",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-87-Ed448",
+   "ad": "kid==RFC7638-parmak-izi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-87-Ed448",
+   "ad": "jwk-disa-aktarma-ayni",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-87-Ed448",
+   "ad": "jws-imzalama-girdisi==raw_to_be_signed",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-87-Ed448",
+   "ad": "jws-imza==raw_composite_signature",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-87-Ed448",
+   "ad": "M'==raw_message_representative",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-87-Ed448",
+   "ad": "pqjose-dogrulayici:KABUL",
+   "gecti": true,
+   "ayrinti": {
+    "valid": true,
+    "reason": "ok",
+    "serialization": "compact",
+    "signatures": [
+     {
+      "index": 0,
+      "alg": "ML-DSA-87-Ed448",
+      "ok": true,
+      "reason": "ok",
+      "kid": "qVsShuAUuE5EUbqI481LsrarR_kKdrix0rnVJ226Ko4",
+      "key_source": "keys",
+      "alg_class": "hibrit",
+      "components": {
+       "ml": true,
+       "trad": true,
+       "hata": null
+      }
+     }
+    ]
+   }
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-87-Ed448",
+   "ad": "bilesenler:ml=True,trad=True",
+   "gecti": true,
+   "ayrinti": {
+    "ml": true,
+    "trad": true,
+    "hata": null
+   }
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-87-Ed448",
+   "ad": "boyutlar",
+   "gecti": null,
+   "ayrinti": {
+    "imza": 4741,
+    "ml": 4627,
+    "trad": 114,
+    "pub": 2649,
+    "priv": 89,
+    "M'": 127
+   }
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-87-Ed448",
+   "ad": "ML-DSA-bileseni-belirlenimci-mi(taslak)",
+   "gecti": null,
+   "ayrinti": true
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-87-Ed448",
+   "ad": "EdDSA-bileseni-bayt-ayni(belirlenimci)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-87-Ed448",
+   "ad": "uretici:belirlenimci-imza-dogrulanir",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-87-Ed448",
+   "ad": "uretici:composite-imza-bayt-ayni",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-87-Ed448",
+   "ad": "dilithium-py:ML-DSA-bileseni(ctx=Label)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-87-Ed448",
+   "ad": "openssl:ML-DSA-bileseni(ctx=Label)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "JOSECOMP04-JOSE-ML-DSA-87-Ed448",
+   "ad": "openssl:EdDSA-bileseni(M')",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-COSE-ML-DSA-44",
+   "ad": "tohumdan-acik-anahtar",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-COSE-ML-DSA-44",
+   "ad": "imza-dogrulama(ham)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-COSE-ML-DSA-44",
+   "ad": "belirlenimci-imza-bayt-ayni",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-COSE-ML-DSA-44",
+   "ad": "dilithium-py:acik-anahtar",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-COSE-ML-DSA-44",
+   "ad": "dilithium-py:dogrulama",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-COSE-ML-DSA-44",
+   "ad": "dilithium-py:belirlenimci-imza-ayni",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-COSE-ML-DSA-44",
+   "ad": "openssl:dogrulama",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-COSE-ML-DSA-65",
+   "ad": "tohumdan-acik-anahtar",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-COSE-ML-DSA-65",
+   "ad": "imza-dogrulama(ham)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-COSE-ML-DSA-65",
+   "ad": "belirlenimci-imza-bayt-ayni",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-COSE-ML-DSA-65",
+   "ad": "dilithium-py:acik-anahtar",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-COSE-ML-DSA-65",
+   "ad": "dilithium-py:dogrulama",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-COSE-ML-DSA-65",
+   "ad": "dilithium-py:belirlenimci-imza-ayni",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-COSE-ML-DSA-65",
+   "ad": "openssl:dogrulama",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-COSE-ML-DSA-87",
+   "ad": "tohumdan-acik-anahtar",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-COSE-ML-DSA-87",
+   "ad": "imza-dogrulama(ham)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-COSE-ML-DSA-87",
+   "ad": "belirlenimci-imza-bayt-ayni",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-COSE-ML-DSA-87",
+   "ad": "dilithium-py:acik-anahtar",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-COSE-ML-DSA-87",
+   "ad": "dilithium-py:dogrulama",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-COSE-ML-DSA-87",
+   "ad": "dilithium-py:belirlenimci-imza-ayni",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-COSE-ML-DSA-87",
+   "ad": "openssl:dogrulama",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-JOSE-ML-DSA-44",
+   "ad": "tohumdan-acik-anahtar",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-JOSE-ML-DSA-44",
+   "ad": "imza-dogrulama(ham)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-JOSE-ML-DSA-44",
+   "ad": "belirlenimci-imza-bayt-ayni",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-JOSE-ML-DSA-44",
+   "ad": "dilithium-py:acik-anahtar",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-JOSE-ML-DSA-44",
+   "ad": "dilithium-py:dogrulama",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-JOSE-ML-DSA-44",
+   "ad": "dilithium-py:belirlenimci-imza-ayni",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-JOSE-ML-DSA-44",
+   "ad": "openssl:dogrulama",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-JOSE-ML-DSA-44",
+   "ad": "jwk-ice-aktarma",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-JOSE-ML-DSA-44",
+   "ad": "kid==RFC7638-parmak-izi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-JOSE-ML-DSA-44",
+   "ad": "jwk-disa-aktarma-ayni",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-JOSE-ML-DSA-44",
+   "ad": "jws-imzalama-girdisi==raw_to_be_signed",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-JOSE-ML-DSA-44",
+   "ad": "pqjose-dogrulayici:KABUL",
+   "gecti": true,
+   "ayrinti": {
+    "valid": true,
+    "reason": "ok",
+    "serialization": "compact",
+    "signatures": [
+     {
+      "index": 0,
+      "alg": "ML-DSA-44",
+      "ok": true,
+      "reason": "ok",
+      "kid": "T4xl70S7MT6Zeq6r9V9fPJGVn76wfnXJ21-gyo0Gu6o",
+      "key_source": "keys",
+      "alg_class": "pq"
+     }
+    ]
+   }
+  },
+  {
+   "grup": "RFC9964-JOSE-ML-DSA-44",
+   "ad": "baslik-serilestirme-ayni",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-JOSE-ML-DSA-44",
+   "ad": "uretici:compact-JWS-bayt-ayni",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-JOSE-ML-DSA-65",
+   "ad": "tohumdan-acik-anahtar",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-JOSE-ML-DSA-65",
+   "ad": "imza-dogrulama(ham)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-JOSE-ML-DSA-65",
+   "ad": "belirlenimci-imza-bayt-ayni",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-JOSE-ML-DSA-65",
+   "ad": "dilithium-py:acik-anahtar",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-JOSE-ML-DSA-65",
+   "ad": "dilithium-py:dogrulama",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-JOSE-ML-DSA-65",
+   "ad": "dilithium-py:belirlenimci-imza-ayni",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-JOSE-ML-DSA-65",
+   "ad": "openssl:dogrulama",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-JOSE-ML-DSA-65",
+   "ad": "jwk-ice-aktarma",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-JOSE-ML-DSA-65",
+   "ad": "kid==RFC7638-parmak-izi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-JOSE-ML-DSA-65",
+   "ad": "jwk-disa-aktarma-ayni",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-JOSE-ML-DSA-65",
+   "ad": "jws-imzalama-girdisi==raw_to_be_signed",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-JOSE-ML-DSA-65",
+   "ad": "pqjose-dogrulayici:KABUL",
+   "gecti": true,
+   "ayrinti": {
+    "valid": true,
+    "reason": "ok",
+    "serialization": "compact",
+    "signatures": [
+     {
+      "index": 0,
+      "alg": "ML-DSA-65",
+      "ok": true,
+      "reason": "ok",
+      "kid": "Suiu29qbfuaBaR4Ats-c6XQBePB_OpAxAwcTR_0KXVM",
+      "key_source": "keys",
+      "alg_class": "pq"
+     }
+    ]
+   }
+  },
+  {
+   "grup": "RFC9964-JOSE-ML-DSA-65",
+   "ad": "baslik-serilestirme-ayni",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-JOSE-ML-DSA-65",
+   "ad": "uretici:compact-JWS-bayt-ayni",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-JOSE-ML-DSA-87",
+   "ad": "tohumdan-acik-anahtar",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-JOSE-ML-DSA-87",
+   "ad": "imza-dogrulama(ham)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-JOSE-ML-DSA-87",
+   "ad": "belirlenimci-imza-bayt-ayni",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-JOSE-ML-DSA-87",
+   "ad": "dilithium-py:acik-anahtar",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-JOSE-ML-DSA-87",
+   "ad": "dilithium-py:dogrulama",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-JOSE-ML-DSA-87",
+   "ad": "dilithium-py:belirlenimci-imza-ayni",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-JOSE-ML-DSA-87",
+   "ad": "openssl:dogrulama",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-JOSE-ML-DSA-87",
+   "ad": "jwk-ice-aktarma",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-JOSE-ML-DSA-87",
+   "ad": "kid==RFC7638-parmak-izi",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-JOSE-ML-DSA-87",
+   "ad": "jwk-disa-aktarma-ayni",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-JOSE-ML-DSA-87",
+   "ad": "jws-imzalama-girdisi==raw_to_be_signed",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-JOSE-ML-DSA-87",
+   "ad": "pqjose-dogrulayici:KABUL",
+   "gecti": true,
+   "ayrinti": {
+    "valid": true,
+    "reason": "ok",
+    "serialization": "compact",
+    "signatures": [
+     {
+      "index": 0,
+      "alg": "ML-DSA-87",
+      "ok": true,
+      "reason": "ok",
+      "kid": "tRn1JNIkgMsABVQBlXeDHxAIcclh-2IX0UdDEzPt5XU",
+      "key_source": "keys",
+      "alg_class": "pq"
+     }
+    ]
+   }
+  },
+  {
+   "grup": "RFC9964-JOSE-ML-DSA-87",
+   "ad": "baslik-serilestirme-ayni",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "RFC9964-JOSE-ML-DSA-87",
+   "ad": "uretici:compact-JWS-bayt-ayni",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "genel",
+   "ad": "vektor-sayisi",
+   "gecti": null,
+   "ayrinti": 12
+  }
+ ]
+}

@@ -1,0 +1,1846 @@
+vektor_id	politika	kol	karar	A	B	kaynak
+CMP00_gecerli_referans	GEC	tedavi-composite	accept-hybrid	accept-hybrid		tek-oracle
+CMP00_gecerli_referans	IZIN-A	tedavi-composite	reject	reject		tek-oracle
+CMP00_gecerli_referans	IZIN-AX	tedavi-composite	accept-hybrid	accept-hybrid		tek-oracle
+CMP00_gecerli_referans	L4	tedavi-composite	accept-hybrid	accept-hybrid	accept-hybrid	A=B
+CMP00_gecerli_referans	L4-S	tedavi-composite	accept-hybrid	accept-hybrid		tek-oracle
+CMP00_gecerli_referans	L4-Y	tedavi-composite	accept-hybrid	accept-hybrid		tek-oracle
+CMP00_gecerli_referans	P0	tedavi-composite	accept-hybrid		accept-hybrid	tek-oracle
+CMP00_gecerli_referans	P2	tedavi-composite	accept-hybrid		accept-hybrid	tek-oracle
+CMP01_ml_bileseni_bozuk	GEC	tedavi-composite	reject	reject		tek-oracle
+CMP01_ml_bileseni_bozuk	IZIN-A	tedavi-composite	reject	reject		tek-oracle
+CMP01_ml_bileseni_bozuk	IZIN-AX	tedavi-composite	reject	reject		tek-oracle
+CMP01_ml_bileseni_bozuk	L4	tedavi-composite	reject	reject	reject	A=B
+CMP01_ml_bileseni_bozuk	L4-S	tedavi-composite	reject	reject		tek-oracle
+CMP01_ml_bileseni_bozuk	L4-Y	tedavi-composite	reject	reject		tek-oracle
+CMP01_ml_bileseni_bozuk	P0	tedavi-composite	reject		reject	tek-oracle
+CMP01_ml_bileseni_bozuk	P2	tedavi-composite	reject		reject	tek-oracle
+CMP02_ecdsa_bileseni_bozuk	GEC	tedavi-composite	reject	reject		tek-oracle
+CMP02_ecdsa_bileseni_bozuk	IZIN-A	tedavi-composite	reject	reject		tek-oracle
+CMP02_ecdsa_bileseni_bozuk	IZIN-AX	tedavi-composite	reject	reject		tek-oracle
+CMP02_ecdsa_bileseni_bozuk	L4	tedavi-composite	reject	reject	reject	A=B
+CMP02_ecdsa_bileseni_bozuk	L4-S	tedavi-composite	reject	reject		tek-oracle
+CMP02_ecdsa_bileseni_bozuk	L4-Y	tedavi-composite	reject	reject		tek-oracle
+CMP02_ecdsa_bileseni_bozuk	P0	tedavi-composite	reject		reject	tek-oracle
+CMP02_ecdsa_bileseni_bozuk	P2	tedavi-composite	reject		reject	tek-oracle
+CMP03_ecdsa_der_uzunluk_bozuk	GEC	tedavi-composite	reject	reject		tek-oracle
+CMP03_ecdsa_der_uzunluk_bozuk	IZIN-A	tedavi-composite	reject	reject		tek-oracle
+CMP03_ecdsa_der_uzunluk_bozuk	IZIN-AX	tedavi-composite	reject	reject		tek-oracle
+CMP03_ecdsa_der_uzunluk_bozuk	L4	tedavi-composite	reject	reject	reject	A=B
+CMP03_ecdsa_der_uzunluk_bozuk	L4-S	tedavi-composite	reject	reject		tek-oracle
+CMP03_ecdsa_der_uzunluk_bozuk	L4-Y	tedavi-composite	reject	reject		tek-oracle
+CMP03_ecdsa_der_uzunluk_bozuk	P0	tedavi-composite	reject		reject	tek-oracle
+CMP03_ecdsa_der_uzunluk_bozuk	P2	tedavi-composite	reject		reject	tek-oracle
+CMP04_ecdsa_ham_rs	GEC	tedavi-composite	reject	reject		tek-oracle
+CMP04_ecdsa_ham_rs	IZIN-A	tedavi-composite	reject	reject		tek-oracle
+CMP04_ecdsa_ham_rs	IZIN-AX	tedavi-composite	reject	reject		tek-oracle
+CMP04_ecdsa_ham_rs	L4	tedavi-composite	reject	reject	reject	A=B
+CMP04_ecdsa_ham_rs	L4-S	tedavi-composite	reject	reject		tek-oracle
+CMP04_ecdsa_ham_rs	L4-Y	tedavi-composite	reject	reject		tek-oracle
+CMP04_ecdsa_ham_rs	P0	tedavi-composite	reject		reject	tek-oracle
+CMP04_ecdsa_ham_rs	P2	tedavi-composite	reject		reject	tek-oracle
+CMP05_ecdsa_asgari_olmayan_der	GEC	tedavi-composite	indeterminate	indeterminate		tek-oracle
+CMP05_ecdsa_asgari_olmayan_der	IZIN-A	tedavi-composite	reject	reject		tek-oracle
+CMP05_ecdsa_asgari_olmayan_der	IZIN-AX	tedavi-composite	indeterminate	indeterminate		tek-oracle
+CMP05_ecdsa_asgari_olmayan_der	L4	tedavi-composite	indeterminate	indeterminate	indeterminate	A=B
+CMP05_ecdsa_asgari_olmayan_der	L4-S	tedavi-composite	indeterminate	indeterminate		tek-oracle
+CMP05_ecdsa_asgari_olmayan_der	L4-Y	tedavi-composite	indeterminate	indeterminate		tek-oracle
+CMP05_ecdsa_asgari_olmayan_der	P0	tedavi-composite	indeterminate		indeterminate	tek-oracle
+CMP05_ecdsa_asgari_olmayan_der	P2	tedavi-composite	indeterminate		indeterminate	tek-oracle
+CMP06_sonda_artik_bayt	GEC	tedavi-composite	indeterminate	indeterminate		tek-oracle
+CMP06_sonda_artik_bayt	IZIN-A	tedavi-composite	reject	reject		tek-oracle
+CMP06_sonda_artik_bayt	IZIN-AX	tedavi-composite	indeterminate	indeterminate		tek-oracle
+CMP06_sonda_artik_bayt	L4	tedavi-composite	indeterminate	indeterminate	reject	A|B belirsiz
+CMP06_sonda_artik_bayt	L4-S	tedavi-composite	indeterminate	indeterminate		tek-oracle
+CMP06_sonda_artik_bayt	L4-Y	tedavi-composite	indeterminate	indeterminate		tek-oracle
+CMP06_sonda_artik_bayt	P0	tedavi-composite	reject		reject	tek-oracle
+CMP06_sonda_artik_bayt	P2	tedavi-composite	reject		reject	tek-oracle
+CMP07_yalniz_ml_bileseni	GEC	tedavi-composite	reject	reject		tek-oracle
+CMP07_yalniz_ml_bileseni	IZIN-A	tedavi-composite	reject	reject		tek-oracle
+CMP07_yalniz_ml_bileseni	IZIN-AX	tedavi-composite	reject	reject		tek-oracle
+CMP07_yalniz_ml_bileseni	L4	tedavi-composite	reject	reject	reject	A=B
+CMP07_yalniz_ml_bileseni	L4-S	tedavi-composite	reject	reject		tek-oracle
+CMP07_yalniz_ml_bileseni	L4-Y	tedavi-composite	reject	reject		tek-oracle
+CMP07_yalniz_ml_bileseni	P0	tedavi-composite	reject		reject	tek-oracle
+CMP07_yalniz_ml_bileseni	P2	tedavi-composite	reject		reject	tek-oracle
+CMP08_bilesenler_farkli_iletilerden	GEC	tedavi-composite	reject	reject		tek-oracle
+CMP08_bilesenler_farkli_iletilerden	IZIN-A	tedavi-composite	reject	reject		tek-oracle
+CMP08_bilesenler_farkli_iletilerden	IZIN-AX	tedavi-composite	reject	reject		tek-oracle
+CMP08_bilesenler_farkli_iletilerden	L4	tedavi-composite	reject	reject	reject	A=B
+CMP08_bilesenler_farkli_iletilerden	L4-S	tedavi-composite	reject	reject		tek-oracle
+CMP08_bilesenler_farkli_iletilerden	L4-Y	tedavi-composite	reject	reject		tek-oracle
+CMP08_bilesenler_farkli_iletilerden	P0	tedavi-composite	reject		reject	tek-oracle
+CMP08_bilesenler_farkli_iletilerden	P2	tedavi-composite	reject		reject	tek-oracle
+CMP09_ml_bileseni_ctx_bos	GEC	tedavi-composite	reject	reject		tek-oracle
+CMP09_ml_bileseni_ctx_bos	IZIN-A	tedavi-composite	reject	reject		tek-oracle
+CMP09_ml_bileseni_ctx_bos	IZIN-AX	tedavi-composite	reject	reject		tek-oracle
+CMP09_ml_bileseni_ctx_bos	L4	tedavi-composite	reject	reject	reject	A=B
+CMP09_ml_bileseni_ctx_bos	L4-S	tedavi-composite	reject	reject		tek-oracle
+CMP09_ml_bileseni_ctx_bos	L4-Y	tedavi-composite	reject	reject		tek-oracle
+CMP09_ml_bileseni_ctx_bos	P0	tedavi-composite	reject		reject	tek-oracle
+CMP09_ml_bileseni_ctx_bos	P2	tedavi-composite	reject		reject	tek-oracle
+CMP10_onozet_sha256	GEC	tedavi-composite	reject	reject		tek-oracle
+CMP10_onozet_sha256	IZIN-A	tedavi-composite	reject	reject		tek-oracle
+CMP10_onozet_sha256	IZIN-AX	tedavi-composite	reject	reject		tek-oracle
+CMP10_onozet_sha256	L4	tedavi-composite	reject	reject	reject	A=B
+CMP10_onozet_sha256	L4-S	tedavi-composite	reject	reject		tek-oracle
+CMP10_onozet_sha256	L4-Y	tedavi-composite	reject	reject		tek-oracle
+CMP10_onozet_sha256	P0	tedavi-composite	reject		reject	tek-oracle
+CMP10_onozet_sha256	P2	tedavi-composite	reject		reject	tek-oracle
+CMP11_bos_ctx_uzunlugu_yok	GEC	tedavi-composite	reject	reject		tek-oracle
+CMP11_bos_ctx_uzunlugu_yok	IZIN-A	tedavi-composite	reject	reject		tek-oracle
+CMP11_bos_ctx_uzunlugu_yok	IZIN-AX	tedavi-composite	reject	reject		tek-oracle
+CMP11_bos_ctx_uzunlugu_yok	L4	tedavi-composite	reject	reject	reject	A=B
+CMP11_bos_ctx_uzunlugu_yok	L4-S	tedavi-composite	reject	reject		tek-oracle
+CMP11_bos_ctx_uzunlugu_yok	L4-Y	tedavi-composite	reject	reject		tek-oracle
+CMP11_bos_ctx_uzunlugu_yok	P0	tedavi-composite	reject		reject	tek-oracle
+CMP11_bos_ctx_uzunlugu_yok	P2	tedavi-composite	reject		reject	tek-oracle
+CMP12_ayrilabilirlik_ecdsa_ES256	GEC	tedavi-composite	reject	reject		tek-oracle
+CMP12_ayrilabilirlik_ecdsa_ES256	IZIN-A	tedavi-composite	reject	reject		tek-oracle
+CMP12_ayrilabilirlik_ecdsa_ES256	IZIN-AX	tedavi-composite	reject	reject		tek-oracle
+CMP12_ayrilabilirlik_ecdsa_ES256	L4	tedavi-composite	reject	reject	reject	A=B
+CMP12_ayrilabilirlik_ecdsa_ES256	L4-S	tedavi-composite	reject	reject		tek-oracle
+CMP12_ayrilabilirlik_ecdsa_ES256	L4-Y	tedavi-composite	reject	reject		tek-oracle
+CMP12_ayrilabilirlik_ecdsa_ES256	P0	tedavi-composite	reject		reject	tek-oracle
+CMP12_ayrilabilirlik_ecdsa_ES256	P2	tedavi-composite	reject		reject	tek-oracle
+CMP13_ayrilabilirlik_ml_MLDSA65	GEC	tedavi-composite	reject	reject		tek-oracle
+CMP13_ayrilabilirlik_ml_MLDSA65	IZIN-A	tedavi-composite	reject	reject		tek-oracle
+CMP13_ayrilabilirlik_ml_MLDSA65	IZIN-AX	tedavi-composite	reject	reject		tek-oracle
+CMP13_ayrilabilirlik_ml_MLDSA65	L4	tedavi-composite	reject	reject	reject	A=B
+CMP13_ayrilabilirlik_ml_MLDSA65	L4-S	tedavi-composite	reject	reject		tek-oracle
+CMP13_ayrilabilirlik_ml_MLDSA65	L4-Y	tedavi-composite	reject	reject		tek-oracle
+CMP13_ayrilabilirlik_ml_MLDSA65	P0	tedavi-composite	reject		reject	tek-oracle
+CMP13_ayrilabilirlik_ml_MLDSA65	P2	tedavi-composite	reject		reject	tek-oracle
+CMP14_ed25519_ml_bileseni_bozuk	GEC	kapsam-hibrit	reject	reject		tek-oracle
+CMP14_ed25519_ml_bileseni_bozuk	L4	kontrol-Ed25519	reject		reject	tek-oracle
+CMP14_ed25519_ml_bileseni_bozuk	L4	kontrol-EdDSA	reject		reject	tek-oracle
+CMP14_ed25519_ml_bileseni_bozuk	L4	tedavi-ML-DSA-65	reject		reject	tek-oracle
+CMP14_ed25519_ml_bileseni_bozuk	L4	tedavi-composite	reject		reject	tek-oracle
+CMP14_ed25519_ml_bileseni_bozuk	P0	kontrol-Ed25519	reject		reject	tek-oracle
+CMP14_ed25519_ml_bileseni_bozuk	P0	kontrol-EdDSA	reject		reject	tek-oracle
+CMP14_ed25519_ml_bileseni_bozuk	P0	tedavi-ML-DSA-65	reject		reject	tek-oracle
+CMP14_ed25519_ml_bileseni_bozuk	P0	tedavi-composite	reject		reject	tek-oracle
+CMP14_ed25519_ml_bileseni_bozuk	P2	kontrol-Ed25519	reject		reject	tek-oracle
+CMP14_ed25519_ml_bileseni_bozuk	P2	kontrol-EdDSA	reject		reject	tek-oracle
+CMP14_ed25519_ml_bileseni_bozuk	P2	tedavi-ML-DSA-65	reject		reject	tek-oracle
+CMP14_ed25519_ml_bileseni_bozuk	P2	tedavi-composite	reject		reject	tek-oracle
+CMP15_ed25519_eddsa_bileseni_bozuk	GEC	kapsam-hibrit	reject	reject		tek-oracle
+CMP15_ed25519_eddsa_bileseni_bozuk	L4	kontrol-Ed25519	reject		reject	tek-oracle
+CMP15_ed25519_eddsa_bileseni_bozuk	L4	kontrol-EdDSA	reject		reject	tek-oracle
+CMP15_ed25519_eddsa_bileseni_bozuk	L4	tedavi-ML-DSA-65	reject		reject	tek-oracle
+CMP15_ed25519_eddsa_bileseni_bozuk	L4	tedavi-composite	reject		reject	tek-oracle
+CMP15_ed25519_eddsa_bileseni_bozuk	P0	kontrol-Ed25519	reject		reject	tek-oracle
+CMP15_ed25519_eddsa_bileseni_bozuk	P0	kontrol-EdDSA	reject		reject	tek-oracle
+CMP15_ed25519_eddsa_bileseni_bozuk	P0	tedavi-ML-DSA-65	reject		reject	tek-oracle
+CMP15_ed25519_eddsa_bileseni_bozuk	P0	tedavi-composite	reject		reject	tek-oracle
+CMP15_ed25519_eddsa_bileseni_bozuk	P2	kontrol-Ed25519	reject		reject	tek-oracle
+CMP15_ed25519_eddsa_bileseni_bozuk	P2	kontrol-EdDSA	reject		reject	tek-oracle
+CMP15_ed25519_eddsa_bileseni_bozuk	P2	tedavi-ML-DSA-65	reject		reject	tek-oracle
+CMP15_ed25519_eddsa_bileseni_bozuk	P2	tedavi-composite	reject		reject	tek-oracle
+CMP16_bilesen_sirasi_ters	GEC	tedavi-composite	reject	reject		tek-oracle
+CMP16_bilesen_sirasi_ters	IZIN-A	tedavi-composite	reject	reject		tek-oracle
+CMP16_bilesen_sirasi_ters	IZIN-AX	tedavi-composite	reject	reject		tek-oracle
+CMP16_bilesen_sirasi_ters	L4	tedavi-composite	reject	reject	reject	A=B
+CMP16_bilesen_sirasi_ters	L4-S	tedavi-composite	reject	reject		tek-oracle
+CMP16_bilesen_sirasi_ters	L4-Y	tedavi-composite	reject	reject		tek-oracle
+CMP16_bilesen_sirasi_ters	P0	tedavi-composite	reject		reject	tek-oracle
+CMP16_bilesen_sirasi_ters	P2	tedavi-composite	reject		reject	tek-oracle
+COSE-K10C_alg-ML-DSA-65-ES256_anahtar-ML-DSA-65	GEC	tedavi-composite	reject	reject		COSE←K10C_alg-ML-DSA-65-ES256_anahtar-ML-DSA-65 (tek-oracle)
+COSE-K10C_alg-ML-DSA-65-ES256_anahtar-ML-DSA-65	IZIN-A	tedavi-composite	reject	reject		COSE←K10C_alg-ML-DSA-65-ES256_anahtar-ML-DSA-65 (tek-oracle)
+COSE-K10C_alg-ML-DSA-65-ES256_anahtar-ML-DSA-65	IZIN-AX	tedavi-composite	reject	reject		COSE←K10C_alg-ML-DSA-65-ES256_anahtar-ML-DSA-65 (tek-oracle)
+COSE-K10C_alg-ML-DSA-65-ES256_anahtar-ML-DSA-65	L4	tedavi-composite	reject	reject	reject	COSE←K10C_alg-ML-DSA-65-ES256_anahtar-ML-DSA-65 (A=B)
+COSE-K10C_alg-ML-DSA-65-ES256_anahtar-ML-DSA-65	L4-S	tedavi-composite	reject	reject		COSE←K10C_alg-ML-DSA-65-ES256_anahtar-ML-DSA-65 (tek-oracle)
+COSE-K10C_alg-ML-DSA-65-ES256_anahtar-ML-DSA-65	L4-Y	tedavi-composite	reject	reject		COSE←K10C_alg-ML-DSA-65-ES256_anahtar-ML-DSA-65 (tek-oracle)
+COSE-K10C_alg-ML-DSA-65-ES256_anahtar-ML-DSA-65	P0	tedavi-composite	reject		reject	COSE←K10C_alg-ML-DSA-65-ES256_anahtar-ML-DSA-65 (tek-oracle)
+COSE-K10C_alg-ML-DSA-65-ES256_anahtar-ML-DSA-65	P2	tedavi-composite	reject		reject	COSE←K10C_alg-ML-DSA-65-ES256_anahtar-ML-DSA-65 (tek-oracle)
+COSE-K10C_alg-ML-DSA-65_anahtar-ML-DSA-65-ES256	GEC	tedavi-composite	reject	reject		COSE←K10C_alg-ML-DSA-65_anahtar-ML-DSA-65-ES256 (tek-oracle)
+COSE-K10C_alg-ML-DSA-65_anahtar-ML-DSA-65-ES256	IZIN-A	tedavi-composite	reject	reject		COSE←K10C_alg-ML-DSA-65_anahtar-ML-DSA-65-ES256 (tek-oracle)
+COSE-K10C_alg-ML-DSA-65_anahtar-ML-DSA-65-ES256	IZIN-AX	tedavi-composite	reject	reject		COSE←K10C_alg-ML-DSA-65_anahtar-ML-DSA-65-ES256 (tek-oracle)
+COSE-K10C_alg-ML-DSA-65_anahtar-ML-DSA-65-ES256	L4	tedavi-composite	reject	reject	reject	COSE←K10C_alg-ML-DSA-65_anahtar-ML-DSA-65-ES256 (A=B)
+COSE-K10C_alg-ML-DSA-65_anahtar-ML-DSA-65-ES256	L4-S	tedavi-composite	reject	reject		COSE←K10C_alg-ML-DSA-65_anahtar-ML-DSA-65-ES256 (tek-oracle)
+COSE-K10C_alg-ML-DSA-65_anahtar-ML-DSA-65-ES256	L4-Y	tedavi-composite	reject	reject		COSE←K10C_alg-ML-DSA-65_anahtar-ML-DSA-65-ES256 (tek-oracle)
+COSE-K10C_alg-ML-DSA-65_anahtar-ML-DSA-65-ES256	P0	tedavi-composite	reject		reject	COSE←K10C_alg-ML-DSA-65_anahtar-ML-DSA-65-ES256 (tek-oracle)
+COSE-K10C_alg-ML-DSA-65_anahtar-ML-DSA-65-ES256	P2	tedavi-composite	reject		reject	COSE←K10C_alg-ML-DSA-65_anahtar-ML-DSA-65-ES256 (tek-oracle)
+COSE-K10K_alg-ES256_anahtar-Ed25519	GEC	kontrol-Ed25519	reject	reject		COSE←K10K_alg-ES256_anahtar-Ed25519 (tek-oracle)
+COSE-K10K_alg-ES256_anahtar-Ed25519	GEC	kontrol-EdDSA	reject	reject		COSE←K10K_alg-ES256_anahtar-Ed25519 (tek-oracle)
+COSE-K10K_alg-ES256_anahtar-Ed25519	IZIN-A	kontrol-Ed25519	reject	reject		COSE←K10K_alg-ES256_anahtar-Ed25519 (tek-oracle)
+COSE-K10K_alg-ES256_anahtar-Ed25519	IZIN-A	kontrol-EdDSA	reject	reject		COSE←K10K_alg-ES256_anahtar-Ed25519 (tek-oracle)
+COSE-K10K_alg-ES256_anahtar-Ed25519	IZIN-AX	kontrol-Ed25519	reject	reject		COSE←K10K_alg-ES256_anahtar-Ed25519 (tek-oracle)
+COSE-K10K_alg-ES256_anahtar-Ed25519	IZIN-AX	kontrol-EdDSA	reject	reject		COSE←K10K_alg-ES256_anahtar-Ed25519 (tek-oracle)
+COSE-K10K_alg-ES256_anahtar-Ed25519	L4	kontrol-Ed25519	reject	reject	reject	COSE←K10K_alg-ES256_anahtar-Ed25519 (A=B)
+COSE-K10K_alg-ES256_anahtar-Ed25519	L4	kontrol-EdDSA	reject	reject	reject	COSE←K10K_alg-ES256_anahtar-Ed25519 (A=B)
+COSE-K10K_alg-ES256_anahtar-Ed25519	L4-S	kontrol-Ed25519	reject	reject		COSE←K10K_alg-ES256_anahtar-Ed25519 (tek-oracle)
+COSE-K10K_alg-ES256_anahtar-Ed25519	L4-S	kontrol-EdDSA	reject	reject		COSE←K10K_alg-ES256_anahtar-Ed25519 (tek-oracle)
+COSE-K10K_alg-ES256_anahtar-Ed25519	L4-Y	kontrol-Ed25519	reject	reject		COSE←K10K_alg-ES256_anahtar-Ed25519 (tek-oracle)
+COSE-K10K_alg-ES256_anahtar-Ed25519	L4-Y	kontrol-EdDSA	reject	reject		COSE←K10K_alg-ES256_anahtar-Ed25519 (tek-oracle)
+COSE-K10K_alg-ES256_anahtar-Ed25519	P0	kontrol-Ed25519	reject		reject	COSE←K10K_alg-ES256_anahtar-Ed25519 (tek-oracle)
+COSE-K10K_alg-ES256_anahtar-Ed25519	P0	kontrol-EdDSA	reject		reject	COSE←K10K_alg-ES256_anahtar-Ed25519 (tek-oracle)
+COSE-K10K_alg-ES256_anahtar-Ed25519	P2	kontrol-Ed25519	reject		reject	COSE←K10K_alg-ES256_anahtar-Ed25519 (tek-oracle)
+COSE-K10K_alg-ES256_anahtar-Ed25519	P2	kontrol-EdDSA	reject		reject	COSE←K10K_alg-ES256_anahtar-Ed25519 (tek-oracle)
+COSE-K10K_alg-EdDSA_anahtar-ES256	GEC	kontrol-EdDSA	reject	reject		COSE←K10K_alg-EdDSA_anahtar-ES256 (tek-oracle)
+COSE-K10K_alg-EdDSA_anahtar-ES256	IZIN-A	kontrol-EdDSA	reject	reject		COSE←K10K_alg-EdDSA_anahtar-ES256 (tek-oracle)
+COSE-K10K_alg-EdDSA_anahtar-ES256	IZIN-AX	kontrol-EdDSA	reject	reject		COSE←K10K_alg-EdDSA_anahtar-ES256 (tek-oracle)
+COSE-K10K_alg-EdDSA_anahtar-ES256	L4	kontrol-EdDSA	reject	reject	reject	COSE←K10K_alg-EdDSA_anahtar-ES256 (A=B)
+COSE-K10K_alg-EdDSA_anahtar-ES256	L4-S	kontrol-EdDSA	reject	reject		COSE←K10K_alg-EdDSA_anahtar-ES256 (tek-oracle)
+COSE-K10K_alg-EdDSA_anahtar-ES256	L4-Y	kontrol-EdDSA	reject	reject		COSE←K10K_alg-EdDSA_anahtar-ES256 (tek-oracle)
+COSE-K10K_alg-EdDSA_anahtar-ES256	P0	kontrol-EdDSA	reject		reject	COSE←K10K_alg-EdDSA_anahtar-ES256 (tek-oracle)
+COSE-K10K_alg-EdDSA_anahtar-ES256	P2	kontrol-EdDSA	reject		reject	COSE←K10K_alg-EdDSA_anahtar-ES256 (tek-oracle)
+COSE-K10K_alg-EdDSA_anahtar-ES256-ED25519	GEC	kontrol-Ed25519	reject	reject		COSE←K10K_alg-EdDSA_anahtar-ES256-ED25519 (tek-oracle)
+COSE-K10K_alg-EdDSA_anahtar-ES256-ED25519	IZIN-A	kontrol-Ed25519	reject	reject		COSE←K10K_alg-EdDSA_anahtar-ES256-ED25519 (tek-oracle)
+COSE-K10K_alg-EdDSA_anahtar-ES256-ED25519	IZIN-AX	kontrol-Ed25519	reject	reject		COSE←K10K_alg-EdDSA_anahtar-ES256-ED25519 (tek-oracle)
+COSE-K10K_alg-EdDSA_anahtar-ES256-ED25519	L4	kontrol-Ed25519	reject	reject	reject	COSE←K10K_alg-EdDSA_anahtar-ES256-ED25519 (A=B)
+COSE-K10K_alg-EdDSA_anahtar-ES256-ED25519	L4-S	kontrol-Ed25519	reject	reject		COSE←K10K_alg-EdDSA_anahtar-ES256-ED25519 (tek-oracle)
+COSE-K10K_alg-EdDSA_anahtar-ES256-ED25519	L4-Y	kontrol-Ed25519	reject	reject		COSE←K10K_alg-EdDSA_anahtar-ES256-ED25519 (tek-oracle)
+COSE-K10K_alg-EdDSA_anahtar-ES256-ED25519	P0	kontrol-Ed25519	reject		reject	COSE←K10K_alg-EdDSA_anahtar-ES256-ED25519 (tek-oracle)
+COSE-K10K_alg-EdDSA_anahtar-ES256-ED25519	P2	kontrol-Ed25519	reject		reject	COSE←K10K_alg-EdDSA_anahtar-ES256-ED25519 (tek-oracle)
+COSE-K10P_alg-ES256_anahtar-ML-DSA-65	GEC	tedavi-ML-DSA-65	reject	reject		COSE←K10P_alg-ES256_anahtar-ML-DSA-65 (tek-oracle)
+COSE-K10P_alg-ES256_anahtar-ML-DSA-65	IZIN-A	tedavi-ML-DSA-65	reject	reject		COSE←K10P_alg-ES256_anahtar-ML-DSA-65 (tek-oracle)
+COSE-K10P_alg-ES256_anahtar-ML-DSA-65	IZIN-AX	tedavi-ML-DSA-65	reject	reject		COSE←K10P_alg-ES256_anahtar-ML-DSA-65 (tek-oracle)
+COSE-K10P_alg-ES256_anahtar-ML-DSA-65	L4	tedavi-ML-DSA-65	reject	reject	reject	COSE←K10P_alg-ES256_anahtar-ML-DSA-65 (A=B)
+COSE-K10P_alg-ES256_anahtar-ML-DSA-65	L4-S	tedavi-ML-DSA-65	reject	reject		COSE←K10P_alg-ES256_anahtar-ML-DSA-65 (tek-oracle)
+COSE-K10P_alg-ES256_anahtar-ML-DSA-65	L4-Y	tedavi-ML-DSA-65	reject	reject		COSE←K10P_alg-ES256_anahtar-ML-DSA-65 (tek-oracle)
+COSE-K10P_alg-ES256_anahtar-ML-DSA-65	P0	tedavi-ML-DSA-65	reject		reject	COSE←K10P_alg-ES256_anahtar-ML-DSA-65 (tek-oracle)
+COSE-K10P_alg-ES256_anahtar-ML-DSA-65	P2	tedavi-ML-DSA-65	reject		reject	COSE←K10P_alg-ES256_anahtar-ML-DSA-65 (tek-oracle)
+COSE-K10P_alg-ML-DSA-65_anahtar-ES256	GEC	tedavi-ML-DSA-65	reject	reject		COSE←K10P_alg-ML-DSA-65_anahtar-ES256 (tek-oracle)
+COSE-K10P_alg-ML-DSA-65_anahtar-ES256	IZIN-A	tedavi-ML-DSA-65	reject	reject		COSE←K10P_alg-ML-DSA-65_anahtar-ES256 (tek-oracle)
+COSE-K10P_alg-ML-DSA-65_anahtar-ES256	IZIN-AX	tedavi-ML-DSA-65	reject	reject		COSE←K10P_alg-ML-DSA-65_anahtar-ES256 (tek-oracle)
+COSE-K10P_alg-ML-DSA-65_anahtar-ES256	L4	tedavi-ML-DSA-65	reject	reject	reject	COSE←K10P_alg-ML-DSA-65_anahtar-ES256 (A=B)
+COSE-K10P_alg-ML-DSA-65_anahtar-ES256	L4-S	tedavi-ML-DSA-65	reject	reject		COSE←K10P_alg-ML-DSA-65_anahtar-ES256 (tek-oracle)
+COSE-K10P_alg-ML-DSA-65_anahtar-ES256	L4-Y	tedavi-ML-DSA-65	reject	reject		COSE←K10P_alg-ML-DSA-65_anahtar-ES256 (tek-oracle)
+COSE-K10P_alg-ML-DSA-65_anahtar-ES256	P0	tedavi-ML-DSA-65	reject		reject	COSE←K10P_alg-ML-DSA-65_anahtar-ES256 (tek-oracle)
+COSE-K10P_alg-ML-DSA-65_anahtar-ES256	P2	tedavi-ML-DSA-65	reject		reject	COSE←K10P_alg-ML-DSA-65_anahtar-ES256 (tek-oracle)
+COSE-K1C_iki_gecerli	L4	tedavi-composite	accept-hybrid	accept-hybrid	accept-hybrid	COSE←T1C_both_valid (A=B)
+COSE-K1C_iki_gecerli	L4-S	tedavi-composite	accept-hybrid	accept-hybrid		COSE←T1C_both_valid (tek-oracle)
+COSE-K1C_iki_gecerli	L4-Y	tedavi-composite	accept-hybrid	accept-hybrid		COSE←T1C_both_valid (tek-oracle)
+COSE-K1C_iki_gecerli	P0	tedavi-composite	accept-classical	accept-classical	accept-classical	COSE←T1C_both_valid (A=B)
+COSE-K1C_iki_gecerli	P1	tedavi-composite	accept-hybrid	accept-hybrid		COSE←T1C_both_valid (tek-oracle)
+COSE-K1C_iki_gecerli	P2	tedavi-composite	accept-hybrid		accept-hybrid	COSE←T1C_both_valid (tek-oracle)
+COSE-K1C_iki_gecerli-SIRA-ters	L4	tedavi-composite	accept-hybrid	accept-hybrid	accept-hybrid	COSE←T1C_both_valid-SIRA-ters (A=B)
+COSE-K1C_iki_gecerli-SIRA-ters	L4-S	tedavi-composite	accept-hybrid	accept-hybrid		COSE←T1C_both_valid-SIRA-ters (tek-oracle)
+COSE-K1C_iki_gecerli-SIRA-ters	L4-Y	tedavi-composite	accept-hybrid	accept-hybrid		COSE←T1C_both_valid-SIRA-ters (tek-oracle)
+COSE-K1C_iki_gecerli-SIRA-ters	P0	tedavi-composite	accept-classical	accept-classical	accept-classical	COSE←T1C_both_valid-SIRA-ters (A=B)
+COSE-K1C_iki_gecerli-SIRA-ters	P1	tedavi-composite	accept-hybrid	accept-hybrid		COSE←T1C_both_valid-SIRA-ters (tek-oracle)
+COSE-K1C_iki_gecerli-SIRA-ters	P2	tedavi-composite	accept-hybrid		accept-hybrid	COSE←T1C_both_valid-SIRA-ters (tek-oracle)
+COSE-K1K_iki_gecerli	L4	kontrol-EdDSA	accept-classical	accept-classical	accept-classical	COSE←T1K_both_valid (A=B)
+COSE-K1K_iki_gecerli	L4-S	kontrol-EdDSA	accept-classical	accept-classical		COSE←T1K_both_valid (tek-oracle)
+COSE-K1K_iki_gecerli	L4-Y	kontrol-EdDSA	accept-classical	accept-classical		COSE←T1K_both_valid (tek-oracle)
+COSE-K1K_iki_gecerli	P0	kontrol-EdDSA	accept-classical	accept-classical	accept-classical	COSE←T1K_both_valid (A=B)
+COSE-K1K_iki_gecerli	P1	kontrol-EdDSA	accept-classical	accept-classical		COSE←T1K_both_valid (tek-oracle)
+COSE-K1K_iki_gecerli	P2	kontrol-EdDSA	accept-classical		accept-classical	COSE←T1K_both_valid (tek-oracle)
+COSE-K1K_iki_gecerli-ED25519	L4	kontrol-Ed25519	accept-classical	accept-classical	accept-classical	COSE←T1K_both_valid-ED25519 (A=B)
+COSE-K1K_iki_gecerli-ED25519	L4-S	kontrol-Ed25519	accept-classical	accept-classical		COSE←T1K_both_valid-ED25519 (tek-oracle)
+COSE-K1K_iki_gecerli-ED25519	L4-Y	kontrol-Ed25519	accept-classical	accept-classical		COSE←T1K_both_valid-ED25519 (tek-oracle)
+COSE-K1K_iki_gecerli-ED25519	P0	kontrol-Ed25519	accept-classical	accept-classical	accept-classical	COSE←T1K_both_valid-ED25519 (A=B)
+COSE-K1K_iki_gecerli-ED25519	P1	kontrol-Ed25519	accept-classical	accept-classical		COSE←T1K_both_valid-ED25519 (tek-oracle)
+COSE-K1K_iki_gecerli-ED25519	P2	kontrol-Ed25519	accept-classical		accept-classical	COSE←T1K_both_valid-ED25519 (tek-oracle)
+COSE-K1K_iki_gecerli-SIRA-ters	L4	kontrol-EdDSA	accept-classical	accept-classical	accept-classical	COSE←T1K_both_valid-SIRA-ters (A=B)
+COSE-K1K_iki_gecerli-SIRA-ters	L4-S	kontrol-EdDSA	accept-classical	accept-classical		COSE←T1K_both_valid-SIRA-ters (tek-oracle)
+COSE-K1K_iki_gecerli-SIRA-ters	L4-Y	kontrol-EdDSA	accept-classical	accept-classical		COSE←T1K_both_valid-SIRA-ters (tek-oracle)
+COSE-K1K_iki_gecerli-SIRA-ters	P0	kontrol-EdDSA	accept-classical	accept-classical	accept-classical	COSE←T1K_both_valid-SIRA-ters (A=B)
+COSE-K1K_iki_gecerli-SIRA-ters	P1	kontrol-EdDSA	accept-classical	accept-classical		COSE←T1K_both_valid-SIRA-ters (tek-oracle)
+COSE-K1K_iki_gecerli-SIRA-ters	P2	kontrol-EdDSA	accept-classical		accept-classical	COSE←T1K_both_valid-SIRA-ters (tek-oracle)
+COSE-K1K_iki_gecerli-SIRA-ters-ED25519	L4	kontrol-Ed25519	accept-classical	accept-classical	accept-classical	COSE←T1K_both_valid-SIRA-ters-ED25519 (A=B)
+COSE-K1K_iki_gecerli-SIRA-ters-ED25519	L4-S	kontrol-Ed25519	accept-classical	accept-classical		COSE←T1K_both_valid-SIRA-ters-ED25519 (tek-oracle)
+COSE-K1K_iki_gecerli-SIRA-ters-ED25519	L4-Y	kontrol-Ed25519	accept-classical	accept-classical		COSE←T1K_both_valid-SIRA-ters-ED25519 (tek-oracle)
+COSE-K1K_iki_gecerli-SIRA-ters-ED25519	P0	kontrol-Ed25519	accept-classical	accept-classical	accept-classical	COSE←T1K_both_valid-SIRA-ters-ED25519 (A=B)
+COSE-K1K_iki_gecerli-SIRA-ters-ED25519	P1	kontrol-Ed25519	accept-classical	accept-classical		COSE←T1K_both_valid-SIRA-ters-ED25519 (tek-oracle)
+COSE-K1K_iki_gecerli-SIRA-ters-ED25519	P2	kontrol-Ed25519	accept-classical		accept-classical	COSE←T1K_both_valid-SIRA-ters-ED25519 (tek-oracle)
+COSE-K1P_iki_gecerli	L4	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid	accept-hybrid	COSE←T1P_both_valid (A=B)
+COSE-K1P_iki_gecerli	L4-S	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		COSE←T1P_both_valid (tek-oracle)
+COSE-K1P_iki_gecerli	L4-Y	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		COSE←T1P_both_valid (tek-oracle)
+COSE-K1P_iki_gecerli	P0	tedavi-ML-DSA-65	accept-classical	accept-classical	accept-classical	COSE←T1P_both_valid (A=B)
+COSE-K1P_iki_gecerli	P1	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		COSE←T1P_both_valid (tek-oracle)
+COSE-K1P_iki_gecerli	P2	tedavi-ML-DSA-65	accept-hybrid		accept-hybrid	COSE←T1P_both_valid (tek-oracle)
+COSE-K1P_iki_gecerli-SIRA-ters	L4	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid	accept-hybrid	COSE←T1P_both_valid-SIRA-ters (A=B)
+COSE-K1P_iki_gecerli-SIRA-ters	L4-S	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		COSE←T1P_both_valid-SIRA-ters (tek-oracle)
+COSE-K1P_iki_gecerli-SIRA-ters	L4-Y	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		COSE←T1P_both_valid-SIRA-ters (tek-oracle)
+COSE-K1P_iki_gecerli-SIRA-ters	P0	tedavi-ML-DSA-65	accept-classical	accept-classical	accept-classical	COSE←T1P_both_valid-SIRA-ters (A=B)
+COSE-K1P_iki_gecerli-SIRA-ters	P1	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		COSE←T1P_both_valid-SIRA-ters (tek-oracle)
+COSE-K1P_iki_gecerli-SIRA-ters	P2	tedavi-ML-DSA-65	accept-hybrid		accept-hybrid	COSE←T1P_both_valid-SIRA-ters (tek-oracle)
+COSE-K2C_X_bozuk	L4	tedavi-composite	reject	reject	reject	COSE←T2C_second_tampered (A=B)
+COSE-K2C_X_bozuk	L4-S	tedavi-composite	reject	reject		COSE←T2C_second_tampered (tek-oracle)
+COSE-K2C_X_bozuk	L4-Y	tedavi-composite	reject	reject		COSE←T2C_second_tampered (tek-oracle)
+COSE-K2C_X_bozuk	P0	tedavi-composite	accept-classical	accept-classical	accept-classical	COSE←T2C_second_tampered (A=B)
+COSE-K2C_X_bozuk	P1	tedavi-composite	reject	reject		COSE←T2C_second_tampered (tek-oracle)
+COSE-K2C_X_bozuk	P2	tedavi-composite	reject		reject	COSE←T2C_second_tampered (tek-oracle)
+COSE-K2C_X_bozuk-SIRA-ters	L4	tedavi-composite	reject	reject	reject	COSE←T2C_second_tampered-SIRA-ters (A=B)
+COSE-K2C_X_bozuk-SIRA-ters	L4-S	tedavi-composite	reject	reject		COSE←T2C_second_tampered-SIRA-ters (tek-oracle)
+COSE-K2C_X_bozuk-SIRA-ters	L4-Y	tedavi-composite	reject	reject		COSE←T2C_second_tampered-SIRA-ters (tek-oracle)
+COSE-K2C_X_bozuk-SIRA-ters	P0	tedavi-composite	accept-classical	accept-classical	accept-classical	COSE←T2C_second_tampered-SIRA-ters (A=B)
+COSE-K2C_X_bozuk-SIRA-ters	P1	tedavi-composite	reject	reject		COSE←T2C_second_tampered-SIRA-ters (tek-oracle)
+COSE-K2C_X_bozuk-SIRA-ters	P2	tedavi-composite	reject		reject	COSE←T2C_second_tampered-SIRA-ters (tek-oracle)
+COSE-K2K_X_bozuk	L4	kontrol-EdDSA	reject	reject	reject	COSE←T2K_second_tampered (A=B)
+COSE-K2K_X_bozuk	L4-S	kontrol-EdDSA	reject	reject		COSE←T2K_second_tampered (tek-oracle)
+COSE-K2K_X_bozuk	L4-Y	kontrol-EdDSA	reject	reject		COSE←T2K_second_tampered (tek-oracle)
+COSE-K2K_X_bozuk	P0	kontrol-EdDSA	accept-classical	accept-classical	accept-classical	COSE←T2K_second_tampered (A=B)
+COSE-K2K_X_bozuk	P1	kontrol-EdDSA	reject	reject		COSE←T2K_second_tampered (tek-oracle)
+COSE-K2K_X_bozuk	P2	kontrol-EdDSA	reject		reject	COSE←T2K_second_tampered (tek-oracle)
+COSE-K2K_X_bozuk-ED25519	L4	kontrol-Ed25519	reject	reject	reject	COSE←T2K_second_tampered-ED25519 (A=B)
+COSE-K2K_X_bozuk-ED25519	L4-S	kontrol-Ed25519	reject	reject		COSE←T2K_second_tampered-ED25519 (tek-oracle)
+COSE-K2K_X_bozuk-ED25519	L4-Y	kontrol-Ed25519	reject	reject		COSE←T2K_second_tampered-ED25519 (tek-oracle)
+COSE-K2K_X_bozuk-ED25519	P0	kontrol-Ed25519	accept-classical	accept-classical	accept-classical	COSE←T2K_second_tampered-ED25519 (A=B)
+COSE-K2K_X_bozuk-ED25519	P1	kontrol-Ed25519	reject	reject		COSE←T2K_second_tampered-ED25519 (tek-oracle)
+COSE-K2K_X_bozuk-ED25519	P2	kontrol-Ed25519	reject		reject	COSE←T2K_second_tampered-ED25519 (tek-oracle)
+COSE-K2K_X_bozuk-SIRA-ters	L4	kontrol-EdDSA	reject	reject	reject	COSE←T2K_second_tampered-SIRA-ters (A=B)
+COSE-K2K_X_bozuk-SIRA-ters	L4-S	kontrol-EdDSA	reject	reject		COSE←T2K_second_tampered-SIRA-ters (tek-oracle)
+COSE-K2K_X_bozuk-SIRA-ters	L4-Y	kontrol-EdDSA	reject	reject		COSE←T2K_second_tampered-SIRA-ters (tek-oracle)
+COSE-K2K_X_bozuk-SIRA-ters	P0	kontrol-EdDSA	accept-classical	accept-classical	accept-classical	COSE←T2K_second_tampered-SIRA-ters (A=B)
+COSE-K2K_X_bozuk-SIRA-ters	P1	kontrol-EdDSA	reject	reject		COSE←T2K_second_tampered-SIRA-ters (tek-oracle)
+COSE-K2K_X_bozuk-SIRA-ters	P2	kontrol-EdDSA	reject		reject	COSE←T2K_second_tampered-SIRA-ters (tek-oracle)
+COSE-K2K_X_bozuk-SIRA-ters-ED25519	L4	kontrol-Ed25519	reject	reject	reject	COSE←T2K_second_tampered-SIRA-ters-ED25519 (A=B)
+COSE-K2K_X_bozuk-SIRA-ters-ED25519	L4-S	kontrol-Ed25519	reject	reject		COSE←T2K_second_tampered-SIRA-ters-ED25519 (tek-oracle)
+COSE-K2K_X_bozuk-SIRA-ters-ED25519	L4-Y	kontrol-Ed25519	reject	reject		COSE←T2K_second_tampered-SIRA-ters-ED25519 (tek-oracle)
+COSE-K2K_X_bozuk-SIRA-ters-ED25519	P0	kontrol-Ed25519	accept-classical	accept-classical	accept-classical	COSE←T2K_second_tampered-SIRA-ters-ED25519 (A=B)
+COSE-K2K_X_bozuk-SIRA-ters-ED25519	P1	kontrol-Ed25519	reject	reject		COSE←T2K_second_tampered-SIRA-ters-ED25519 (tek-oracle)
+COSE-K2K_X_bozuk-SIRA-ters-ED25519	P2	kontrol-Ed25519	reject		reject	COSE←T2K_second_tampered-SIRA-ters-ED25519 (tek-oracle)
+COSE-K2P_X_bozuk	L4	tedavi-ML-DSA-65	reject	reject	reject	COSE←T2P_second_tampered (A=B)
+COSE-K2P_X_bozuk	L4-S	tedavi-ML-DSA-65	reject	reject		COSE←T2P_second_tampered (tek-oracle)
+COSE-K2P_X_bozuk	L4-Y	tedavi-ML-DSA-65	reject	reject		COSE←T2P_second_tampered (tek-oracle)
+COSE-K2P_X_bozuk	P0	tedavi-ML-DSA-65	accept-classical	accept-classical	accept-classical	COSE←T2P_second_tampered (A=B)
+COSE-K2P_X_bozuk	P1	tedavi-ML-DSA-65	reject	reject		COSE←T2P_second_tampered (tek-oracle)
+COSE-K2P_X_bozuk	P2	tedavi-ML-DSA-65	reject		reject	COSE←T2P_second_tampered (tek-oracle)
+COSE-K2P_X_bozuk-SIRA-ters	L4	tedavi-ML-DSA-65	reject	reject	reject	COSE←T2P_second_tampered-SIRA-ters (A=B)
+COSE-K2P_X_bozuk-SIRA-ters	L4-S	tedavi-ML-DSA-65	reject	reject		COSE←T2P_second_tampered-SIRA-ters (tek-oracle)
+COSE-K2P_X_bozuk-SIRA-ters	L4-Y	tedavi-ML-DSA-65	reject	reject		COSE←T2P_second_tampered-SIRA-ters (tek-oracle)
+COSE-K2P_X_bozuk-SIRA-ters	P0	tedavi-ML-DSA-65	accept-classical	accept-classical	accept-classical	COSE←T2P_second_tampered-SIRA-ters (A=B)
+COSE-K2P_X_bozuk-SIRA-ters	P1	tedavi-ML-DSA-65	reject	reject		COSE←T2P_second_tampered-SIRA-ters (tek-oracle)
+COSE-K2P_X_bozuk-SIRA-ters	P2	tedavi-ML-DSA-65	reject		reject	COSE←T2P_second_tampered-SIRA-ters (tek-oracle)
+COSE-K3_X_soyuldu	GEC	kontrol-Ed25519	accept-classical	accept-classical		COSE←T3_stripped_to_ES256 (tek-oracle)
+COSE-K3_X_soyuldu	GEC	kontrol-EdDSA	accept-classical	accept-classical		COSE←T3_stripped_to_ES256 (tek-oracle)
+COSE-K3_X_soyuldu	GEC	tedavi-ML-DSA-65	accept-classical	accept-classical		COSE←T3_stripped_to_ES256 (tek-oracle)
+COSE-K3_X_soyuldu	GEC	tedavi-composite	accept-classical	accept-classical		COSE←T3_stripped_to_ES256 (tek-oracle)
+COSE-K3_X_soyuldu	IZIN-A	kontrol-Ed25519	accept-classical	accept-classical		COSE←T3_stripped_to_ES256 (tek-oracle)
+COSE-K3_X_soyuldu	IZIN-A	kontrol-EdDSA	accept-classical	accept-classical		COSE←T3_stripped_to_ES256 (tek-oracle)
+COSE-K3_X_soyuldu	IZIN-A	tedavi-ML-DSA-65	accept-classical	accept-classical		COSE←T3_stripped_to_ES256 (tek-oracle)
+COSE-K3_X_soyuldu	IZIN-A	tedavi-composite	accept-classical	accept-classical		COSE←T3_stripped_to_ES256 (tek-oracle)
+COSE-K3_X_soyuldu	IZIN-AX	kontrol-Ed25519	accept-classical	accept-classical		COSE←T3_stripped_to_ES256 (tek-oracle)
+COSE-K3_X_soyuldu	IZIN-AX	kontrol-EdDSA	accept-classical	accept-classical		COSE←T3_stripped_to_ES256 (tek-oracle)
+COSE-K3_X_soyuldu	IZIN-AX	tedavi-ML-DSA-65	accept-classical	accept-classical		COSE←T3_stripped_to_ES256 (tek-oracle)
+COSE-K3_X_soyuldu	IZIN-AX	tedavi-composite	accept-classical	accept-classical		COSE←T3_stripped_to_ES256 (tek-oracle)
+COSE-K3_X_soyuldu	L4	kontrol-Ed25519	reject	reject	reject	COSE←T3_stripped_to_ES256 (A=B)
+COSE-K3_X_soyuldu	L4	kontrol-EdDSA	reject	reject	reject	COSE←T3_stripped_to_ES256 (A=B)
+COSE-K3_X_soyuldu	L4	tedavi-ML-DSA-65	reject	reject	reject	COSE←T3_stripped_to_ES256 (A=B)
+COSE-K3_X_soyuldu	L4	tedavi-composite	reject	reject	reject	COSE←T3_stripped_to_ES256 (A=B)
+COSE-K3_X_soyuldu	L4-S	kontrol-Ed25519	reject	reject		COSE←T3_stripped_to_ES256 (tek-oracle)
+COSE-K3_X_soyuldu	L4-S	kontrol-EdDSA	reject	reject		COSE←T3_stripped_to_ES256 (tek-oracle)
+COSE-K3_X_soyuldu	L4-S	tedavi-ML-DSA-65	reject	reject		COSE←T3_stripped_to_ES256 (tek-oracle)
+COSE-K3_X_soyuldu	L4-S	tedavi-composite	reject	reject		COSE←T3_stripped_to_ES256 (tek-oracle)
+COSE-K3_X_soyuldu	L4-Y	kontrol-Ed25519	reject	reject		COSE←T3_stripped_to_ES256 (tek-oracle)
+COSE-K3_X_soyuldu	L4-Y	kontrol-EdDSA	reject	reject		COSE←T3_stripped_to_ES256 (tek-oracle)
+COSE-K3_X_soyuldu	L4-Y	tedavi-ML-DSA-65	reject	reject		COSE←T3_stripped_to_ES256 (tek-oracle)
+COSE-K3_X_soyuldu	L4-Y	tedavi-composite	reject	reject		COSE←T3_stripped_to_ES256 (tek-oracle)
+COSE-K3_X_soyuldu	P0	kontrol-Ed25519	accept-classical	accept-classical	accept-classical	COSE←T3_stripped_to_ES256 (A=B)
+COSE-K3_X_soyuldu	P0	kontrol-EdDSA	accept-classical	accept-classical	accept-classical	COSE←T3_stripped_to_ES256 (A=B)
+COSE-K3_X_soyuldu	P0	tedavi-ML-DSA-65	accept-classical	accept-classical	accept-classical	COSE←T3_stripped_to_ES256 (A=B)
+COSE-K3_X_soyuldu	P0	tedavi-composite	accept-classical	accept-classical	accept-classical	COSE←T3_stripped_to_ES256 (A=B)
+COSE-K3_X_soyuldu	P1	kontrol-Ed25519	accept-classical	accept-classical		COSE←T3_stripped_to_ES256 (tek-oracle)
+COSE-K3_X_soyuldu	P1	kontrol-EdDSA	accept-classical	accept-classical		COSE←T3_stripped_to_ES256 (tek-oracle)
+COSE-K3_X_soyuldu	P1	tedavi-ML-DSA-65	accept-classical	accept-classical		COSE←T3_stripped_to_ES256 (tek-oracle)
+COSE-K3_X_soyuldu	P1	tedavi-composite	accept-classical	accept-classical		COSE←T3_stripped_to_ES256 (tek-oracle)
+COSE-K3_X_soyuldu	P2	kontrol-Ed25519	accept-classical		accept-classical	COSE←T3_stripped_to_ES256 (tek-oracle)
+COSE-K3_X_soyuldu	P2	kontrol-EdDSA	accept-classical		accept-classical	COSE←T3_stripped_to_ES256 (tek-oracle)
+COSE-K3_X_soyuldu	P2	tedavi-ML-DSA-65	accept-classical		accept-classical	COSE←T3_stripped_to_ES256 (tek-oracle)
+COSE-K3_X_soyuldu	P2	tedavi-composite	accept-classical		accept-classical	COSE←T3_stripped_to_ES256 (tek-oracle)
+COSE-K4C_yalniz_X	GEC	tedavi-composite	accept-hybrid	accept-hybrid		COSE←T5C_only_ML-DSA-65-ES256 (tek-oracle)
+COSE-K4C_yalniz_X	IZIN-A	tedavi-composite	reject	reject		COSE←T5C_only_ML-DSA-65-ES256 (tek-oracle)
+COSE-K4C_yalniz_X	IZIN-AX	tedavi-composite	accept-hybrid	accept-hybrid		COSE←T5C_only_ML-DSA-65-ES256 (tek-oracle)
+COSE-K4C_yalniz_X	L4	tedavi-composite	accept-hybrid	accept-hybrid	accept-hybrid	COSE←T5C_only_ML-DSA-65-ES256 (A=B)
+COSE-K4C_yalniz_X	L4-S	tedavi-composite	accept-hybrid	accept-hybrid		COSE←T5C_only_ML-DSA-65-ES256 (tek-oracle)
+COSE-K4C_yalniz_X	L4-Y	tedavi-composite	accept-hybrid	accept-hybrid		COSE←T5C_only_ML-DSA-65-ES256 (tek-oracle)
+COSE-K4C_yalniz_X	P0	tedavi-composite	accept-hybrid	accept-hybrid	accept-hybrid	COSE←T5C_only_ML-DSA-65-ES256 (A=B)
+COSE-K4C_yalniz_X	P1	tedavi-composite	accept-hybrid	accept-hybrid		COSE←T5C_only_ML-DSA-65-ES256 (tek-oracle)
+COSE-K4C_yalniz_X	P2	tedavi-composite	accept-hybrid		accept-hybrid	COSE←T5C_only_ML-DSA-65-ES256 (tek-oracle)
+COSE-K4K_yalniz_X	GEC	kontrol-EdDSA	accept-classical	accept-classical		COSE←T5K_only_EdDSA (tek-oracle)
+COSE-K4K_yalniz_X	IZIN-A	kontrol-EdDSA	reject	reject		COSE←T5K_only_EdDSA (tek-oracle)
+COSE-K4K_yalniz_X	IZIN-AX	kontrol-EdDSA	accept-classical	accept-classical		COSE←T5K_only_EdDSA (tek-oracle)
+COSE-K4K_yalniz_X	L4	kontrol-EdDSA	accept-classical	accept-classical	accept-classical	COSE←T5K_only_EdDSA (A=B)
+COSE-K4K_yalniz_X	L4-S	kontrol-EdDSA	accept-classical	accept-classical		COSE←T5K_only_EdDSA (tek-oracle)
+COSE-K4K_yalniz_X	L4-Y	kontrol-EdDSA	accept-classical	accept-classical		COSE←T5K_only_EdDSA (tek-oracle)
+COSE-K4K_yalniz_X	P0	kontrol-EdDSA	accept-classical	accept-classical	accept-classical	COSE←T5K_only_EdDSA (A=B)
+COSE-K4K_yalniz_X	P1	kontrol-EdDSA	accept-classical	accept-classical		COSE←T5K_only_EdDSA (tek-oracle)
+COSE-K4K_yalniz_X	P2	kontrol-EdDSA	accept-classical		accept-classical	COSE←T5K_only_EdDSA (tek-oracle)
+COSE-K4K_yalniz_X-ED25519	GEC	kontrol-Ed25519	accept-classical	accept-classical		COSE←T5K_only_EdDSA-ED25519 (tek-oracle)
+COSE-K4K_yalniz_X-ED25519	IZIN-A	kontrol-Ed25519	reject	reject		COSE←T5K_only_EdDSA-ED25519 (tek-oracle)
+COSE-K4K_yalniz_X-ED25519	IZIN-AX	kontrol-Ed25519	accept-classical	accept-classical		COSE←T5K_only_EdDSA-ED25519 (tek-oracle)
+COSE-K4K_yalniz_X-ED25519	L4	kontrol-Ed25519	accept-classical	accept-classical	accept-classical	COSE←T5K_only_EdDSA-ED25519 (A=B)
+COSE-K4K_yalniz_X-ED25519	L4-S	kontrol-Ed25519	accept-classical	accept-classical		COSE←T5K_only_EdDSA-ED25519 (tek-oracle)
+COSE-K4K_yalniz_X-ED25519	L4-Y	kontrol-Ed25519	accept-classical	accept-classical		COSE←T5K_only_EdDSA-ED25519 (tek-oracle)
+COSE-K4K_yalniz_X-ED25519	P0	kontrol-Ed25519	accept-classical	accept-classical	accept-classical	COSE←T5K_only_EdDSA-ED25519 (A=B)
+COSE-K4K_yalniz_X-ED25519	P1	kontrol-Ed25519	accept-classical	accept-classical		COSE←T5K_only_EdDSA-ED25519 (tek-oracle)
+COSE-K4K_yalniz_X-ED25519	P2	kontrol-Ed25519	accept-classical		accept-classical	COSE←T5K_only_EdDSA-ED25519 (tek-oracle)
+COSE-K4P_yalniz_X	GEC	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		COSE←T5P_only_ML-DSA-65 (tek-oracle)
+COSE-K4P_yalniz_X	IZIN-A	tedavi-ML-DSA-65	reject	reject		COSE←T5P_only_ML-DSA-65 (tek-oracle)
+COSE-K4P_yalniz_X	IZIN-AX	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		COSE←T5P_only_ML-DSA-65 (tek-oracle)
+COSE-K4P_yalniz_X	L4	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid	accept-hybrid	COSE←T5P_only_ML-DSA-65 (A=B)
+COSE-K4P_yalniz_X	L4-S	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		COSE←T5P_only_ML-DSA-65 (tek-oracle)
+COSE-K4P_yalniz_X	L4-Y	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		COSE←T5P_only_ML-DSA-65 (tek-oracle)
+COSE-K4P_yalniz_X	P0	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid	accept-hybrid	COSE←T5P_only_ML-DSA-65 (A=B)
+COSE-K4P_yalniz_X	P1	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		COSE←T5P_only_ML-DSA-65 (tek-oracle)
+COSE-K4P_yalniz_X	P2	tedavi-ML-DSA-65	accept-hybrid		accept-hybrid	COSE←T5P_only_ML-DSA-65 (tek-oracle)
+COSE-K5C_arti_kayitsiz	L4	tedavi-composite	B1-bayragi	indeterminate	reject	COSE←T7C_plus_kayitsiz (madde-8)
+COSE-K5C_arti_kayitsiz	L4-S	tedavi-composite	B1-bayragi	reject		COSE←T7C_plus_kayitsiz (madde-8)
+COSE-K5C_arti_kayitsiz	L4-Y	tedavi-composite	B1-bayragi	accept-hybrid		COSE←T7C_plus_kayitsiz (madde-8)
+COSE-K5C_arti_kayitsiz	P0	tedavi-composite	accept-classical	accept-classical	accept-classical	COSE←T7C_plus_kayitsiz (A=B)
+COSE-K5C_arti_kayitsiz	P1	tedavi-composite	reject	reject		COSE←T7C_plus_kayitsiz (tek-oracle)
+COSE-K5C_arti_kayitsiz	P2	tedavi-composite	reject		reject	COSE←T7C_plus_kayitsiz (tek-oracle)
+COSE-K5K_arti_kayitsiz	L4	kontrol-EdDSA	B1-bayragi	indeterminate	reject	COSE←T7K_plus_kayitsiz (madde-8)
+COSE-K5K_arti_kayitsiz	L4-S	kontrol-EdDSA	B1-bayragi	reject		COSE←T7K_plus_kayitsiz (madde-8)
+COSE-K5K_arti_kayitsiz	L4-Y	kontrol-EdDSA	B1-bayragi	accept-classical		COSE←T7K_plus_kayitsiz (madde-8)
+COSE-K5K_arti_kayitsiz	P0	kontrol-EdDSA	accept-classical	accept-classical	accept-classical	COSE←T7K_plus_kayitsiz (A=B)
+COSE-K5K_arti_kayitsiz	P1	kontrol-EdDSA	reject	reject		COSE←T7K_plus_kayitsiz (tek-oracle)
+COSE-K5K_arti_kayitsiz	P2	kontrol-EdDSA	reject		reject	COSE←T7K_plus_kayitsiz (tek-oracle)
+COSE-K5K_arti_kayitsiz-ED25519	L4	kontrol-Ed25519	B1-bayragi	indeterminate	reject	COSE←T7K_plus_kayitsiz-ED25519 (madde-8)
+COSE-K5K_arti_kayitsiz-ED25519	L4-S	kontrol-Ed25519	B1-bayragi	reject		COSE←T7K_plus_kayitsiz-ED25519 (madde-8)
+COSE-K5K_arti_kayitsiz-ED25519	L4-Y	kontrol-Ed25519	B1-bayragi	accept-classical		COSE←T7K_plus_kayitsiz-ED25519 (madde-8)
+COSE-K5K_arti_kayitsiz-ED25519	P0	kontrol-Ed25519	accept-classical	accept-classical	accept-classical	COSE←T7K_plus_kayitsiz-ED25519 (A=B)
+COSE-K5K_arti_kayitsiz-ED25519	P1	kontrol-Ed25519	reject	reject		COSE←T7K_plus_kayitsiz-ED25519 (tek-oracle)
+COSE-K5K_arti_kayitsiz-ED25519	P2	kontrol-Ed25519	reject		reject	COSE←T7K_plus_kayitsiz-ED25519 (tek-oracle)
+COSE-K5P_arti_kayitsiz	L4	tedavi-ML-DSA-65	B1-bayragi	indeterminate	reject	COSE←T7P_plus_kayitsiz (madde-8)
+COSE-K5P_arti_kayitsiz	L4-S	tedavi-ML-DSA-65	B1-bayragi	reject		COSE←T7P_plus_kayitsiz (madde-8)
+COSE-K5P_arti_kayitsiz	L4-Y	tedavi-ML-DSA-65	B1-bayragi	accept-hybrid		COSE←T7P_plus_kayitsiz (madde-8)
+COSE-K5P_arti_kayitsiz	P0	tedavi-ML-DSA-65	accept-classical	accept-classical	accept-classical	COSE←T7P_plus_kayitsiz (A=B)
+COSE-K5P_arti_kayitsiz	P1	tedavi-ML-DSA-65	reject	reject		COSE←T7P_plus_kayitsiz (tek-oracle)
+COSE-K5P_arti_kayitsiz	P2	tedavi-ML-DSA-65	reject		reject	COSE←T7P_plus_kayitsiz (tek-oracle)
+COSE-K6_composite_gecerli	GEC	tedavi-composite	accept-hybrid	accept-hybrid		COSE←CMP00_gecerli_referans (tek-oracle)
+COSE-K6_composite_gecerli	IZIN-A	tedavi-composite	reject	reject		COSE←CMP00_gecerli_referans (tek-oracle)
+COSE-K6_composite_gecerli	IZIN-AX	tedavi-composite	accept-hybrid	accept-hybrid		COSE←CMP00_gecerli_referans (tek-oracle)
+COSE-K6_composite_gecerli	L4	tedavi-composite	accept-hybrid	accept-hybrid	accept-hybrid	COSE←CMP00_gecerli_referans (A=B)
+COSE-K6_composite_gecerli	L4-S	tedavi-composite	accept-hybrid	accept-hybrid		COSE←CMP00_gecerli_referans (tek-oracle)
+COSE-K6_composite_gecerli	L4-Y	tedavi-composite	accept-hybrid	accept-hybrid		COSE←CMP00_gecerli_referans (tek-oracle)
+COSE-K6_composite_gecerli	P0	tedavi-composite	accept-hybrid		accept-hybrid	COSE←CMP00_gecerli_referans (tek-oracle)
+COSE-K6_composite_gecerli	P2	tedavi-composite	accept-hybrid		accept-hybrid	COSE←CMP00_gecerli_referans (tek-oracle)
+COSE-K7_ecdsa_bileseni_bozuk	GEC	tedavi-composite	reject	reject		COSE←CMP02_ecdsa_bileseni_bozuk (tek-oracle)
+COSE-K7_ecdsa_bileseni_bozuk	IZIN-A	tedavi-composite	reject	reject		COSE←CMP02_ecdsa_bileseni_bozuk (tek-oracle)
+COSE-K7_ecdsa_bileseni_bozuk	IZIN-AX	tedavi-composite	reject	reject		COSE←CMP02_ecdsa_bileseni_bozuk (tek-oracle)
+COSE-K7_ecdsa_bileseni_bozuk	L4	tedavi-composite	reject	reject	reject	COSE←CMP02_ecdsa_bileseni_bozuk (A=B)
+COSE-K7_ecdsa_bileseni_bozuk	L4-S	tedavi-composite	reject	reject		COSE←CMP02_ecdsa_bileseni_bozuk (tek-oracle)
+COSE-K7_ecdsa_bileseni_bozuk	L4-Y	tedavi-composite	reject	reject		COSE←CMP02_ecdsa_bileseni_bozuk (tek-oracle)
+COSE-K7_ecdsa_bileseni_bozuk	P0	tedavi-composite	reject		reject	COSE←CMP02_ecdsa_bileseni_bozuk (tek-oracle)
+COSE-K7_ecdsa_bileseni_bozuk	P2	tedavi-composite	reject		reject	COSE←CMP02_ecdsa_bileseni_bozuk (tek-oracle)
+COSE-K7_ml_bileseni_bozuk	GEC	tedavi-composite	reject	reject		COSE←CMP01_ml_bileseni_bozuk (tek-oracle)
+COSE-K7_ml_bileseni_bozuk	IZIN-A	tedavi-composite	reject	reject		COSE←CMP01_ml_bileseni_bozuk (tek-oracle)
+COSE-K7_ml_bileseni_bozuk	IZIN-AX	tedavi-composite	reject	reject		COSE←CMP01_ml_bileseni_bozuk (tek-oracle)
+COSE-K7_ml_bileseni_bozuk	L4	tedavi-composite	reject	reject	reject	COSE←CMP01_ml_bileseni_bozuk (A=B)
+COSE-K7_ml_bileseni_bozuk	L4-S	tedavi-composite	reject	reject		COSE←CMP01_ml_bileseni_bozuk (tek-oracle)
+COSE-K7_ml_bileseni_bozuk	L4-Y	tedavi-composite	reject	reject		COSE←CMP01_ml_bileseni_bozuk (tek-oracle)
+COSE-K7_ml_bileseni_bozuk	P0	tedavi-composite	reject		reject	COSE←CMP01_ml_bileseni_bozuk (tek-oracle)
+COSE-K7_ml_bileseni_bozuk	P2	tedavi-composite	reject		reject	COSE←CMP01_ml_bileseni_bozuk (tek-oracle)
+COSE-K8_x5chain_karisik	GEC	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		COSE←X5C04_karisik_pq_yaprak_klasik_ara (tek-oracle)
+COSE-K8_x5chain_karisik	L4	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid	accept-hybrid	COSE←X5C04_karisik_pq_yaprak_klasik_ara (A=B)
+COSE-K8_x5chain_karisik	L4	tedavi-composite	kol-bagimsiz	accept-hybrid	reject	COSE←X5C04_karisik_pq_yaprak_klasik_ara (madde-9)
+COSE-K8_x5chain_karisik	L4-S	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		COSE←X5C04_karisik_pq_yaprak_klasik_ara (tek-oracle)
+COSE-K8_x5chain_karisik	L4-S	tedavi-composite	kol-bagimsiz	accept-hybrid		COSE←X5C04_karisik_pq_yaprak_klasik_ara (madde-9)
+COSE-K8_x5chain_karisik	L4-Y	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		COSE←X5C04_karisik_pq_yaprak_klasik_ara (tek-oracle)
+COSE-K8_x5chain_karisik	L4-Y	tedavi-composite	kol-bagimsiz	accept-hybrid		COSE←X5C04_karisik_pq_yaprak_klasik_ara (madde-9)
+COSE-K8_x5chain_karisik	L4-YOL	tedavi-ML-DSA-65	reject	reject		COSE←X5C04_karisik_pq_yaprak_klasik_ara (tek-oracle)
+COSE-K8_x5chain_karisik	L4-YOL	tedavi-composite	kol-bagimsiz	reject		COSE←X5C04_karisik_pq_yaprak_klasik_ara (madde-9)
+COSE-K8_x5chain_karisik	P0	tedavi-ML-DSA-65	accept-hybrid		accept-hybrid	COSE←X5C04_karisik_pq_yaprak_klasik_ara (tek-oracle)
+COSE-K8_x5chain_karisik	P0	tedavi-composite	kol-bagimsiz		reject	COSE←X5C04_karisik_pq_yaprak_klasik_ara (madde-9)
+COSE-K8_x5chain_karisik	P2	tedavi-ML-DSA-65	accept-hybrid		accept-hybrid	COSE←X5C04_karisik_pq_yaprak_klasik_ara (tek-oracle)
+COSE-K8_x5chain_karisik	P2	tedavi-composite	kol-bagimsiz		reject	COSE←X5C04_karisik_pq_yaprak_klasik_ara (madde-9)
+COSE-K9_x5chain_korumasiz	GEC	tedavi-ML-DSA-65	reject	reject		COSE←X5C07_korumasiz_x5c (tek-oracle)
+COSE-K9_x5chain_korumasiz	L4	tedavi-ML-DSA-65	reject	reject	reject	COSE←X5C07_korumasiz_x5c (A=B)
+COSE-K9_x5chain_korumasiz	L4	tedavi-composite	kol-bagimsiz	reject	reject	COSE←X5C07_korumasiz_x5c (madde-9)
+COSE-K9_x5chain_korumasiz	L4-S	tedavi-ML-DSA-65	reject	reject		COSE←X5C07_korumasiz_x5c (tek-oracle)
+COSE-K9_x5chain_korumasiz	L4-S	tedavi-composite	kol-bagimsiz	reject		COSE←X5C07_korumasiz_x5c (madde-9)
+COSE-K9_x5chain_korumasiz	L4-Y	tedavi-ML-DSA-65	reject	reject		COSE←X5C07_korumasiz_x5c (tek-oracle)
+COSE-K9_x5chain_korumasiz	L4-Y	tedavi-composite	kol-bagimsiz	reject		COSE←X5C07_korumasiz_x5c (madde-9)
+COSE-K9_x5chain_korumasiz	L4-YOL	tedavi-ML-DSA-65	reject	reject		COSE←X5C07_korumasiz_x5c (tek-oracle)
+COSE-K9_x5chain_korumasiz	L4-YOL	tedavi-composite	kol-bagimsiz	reject		COSE←X5C07_korumasiz_x5c (madde-9)
+COSE-K9_x5chain_korumasiz	P0	tedavi-ML-DSA-65	reject		reject	COSE←X5C07_korumasiz_x5c (tek-oracle)
+COSE-K9_x5chain_korumasiz	P0	tedavi-composite	kol-bagimsiz		reject	COSE←X5C07_korumasiz_x5c (madde-9)
+COSE-K9_x5chain_korumasiz	P2	tedavi-ML-DSA-65	reject		reject	COSE←X5C07_korumasiz_x5c (tek-oracle)
+COSE-K9_x5chain_korumasiz	P2	tedavi-composite	kol-bagimsiz		reject	COSE←X5C07_korumasiz_x5c (madde-9)
+COSE-VMINUS_ES256	GEC	kontrol-Ed25519	reject	reject		COSE←VMINUS_ES256 (tek-oracle)
+COSE-VMINUS_ES256	GEC	kontrol-EdDSA	reject	reject		COSE←VMINUS_ES256 (tek-oracle)
+COSE-VMINUS_ES256	GEC	tedavi-ML-DSA-65	reject	reject		COSE←VMINUS_ES256 (tek-oracle)
+COSE-VMINUS_ES256	GEC	tedavi-composite	reject	reject		COSE←VMINUS_ES256 (tek-oracle)
+COSE-VMINUS_ES256	IZIN-A	kontrol-Ed25519	reject	reject		COSE←VMINUS_ES256 (tek-oracle)
+COSE-VMINUS_ES256	IZIN-A	kontrol-EdDSA	reject	reject		COSE←VMINUS_ES256 (tek-oracle)
+COSE-VMINUS_ES256	IZIN-A	tedavi-ML-DSA-65	reject	reject		COSE←VMINUS_ES256 (tek-oracle)
+COSE-VMINUS_ES256	IZIN-A	tedavi-composite	reject	reject		COSE←VMINUS_ES256 (tek-oracle)
+COSE-VMINUS_ES256	IZIN-AX	kontrol-Ed25519	reject	reject		COSE←VMINUS_ES256 (tek-oracle)
+COSE-VMINUS_ES256	IZIN-AX	kontrol-EdDSA	reject	reject		COSE←VMINUS_ES256 (tek-oracle)
+COSE-VMINUS_ES256	IZIN-AX	tedavi-ML-DSA-65	reject	reject		COSE←VMINUS_ES256 (tek-oracle)
+COSE-VMINUS_ES256	IZIN-AX	tedavi-composite	reject	reject		COSE←VMINUS_ES256 (tek-oracle)
+COSE-VMINUS_ES256	L4	kontrol-Ed25519	reject	reject	reject	COSE←VMINUS_ES256 (A=B)
+COSE-VMINUS_ES256	L4	kontrol-EdDSA	reject	reject	reject	COSE←VMINUS_ES256 (A=B)
+COSE-VMINUS_ES256	L4	tedavi-ML-DSA-65	reject	reject	reject	COSE←VMINUS_ES256 (A=B)
+COSE-VMINUS_ES256	L4	tedavi-composite	reject	reject	reject	COSE←VMINUS_ES256 (A=B)
+COSE-VMINUS_ES256	L4-S	kontrol-Ed25519	reject	reject		COSE←VMINUS_ES256 (tek-oracle)
+COSE-VMINUS_ES256	L4-S	kontrol-EdDSA	reject	reject		COSE←VMINUS_ES256 (tek-oracle)
+COSE-VMINUS_ES256	L4-S	tedavi-ML-DSA-65	reject	reject		COSE←VMINUS_ES256 (tek-oracle)
+COSE-VMINUS_ES256	L4-S	tedavi-composite	reject	reject		COSE←VMINUS_ES256 (tek-oracle)
+COSE-VMINUS_ES256	L4-Y	kontrol-Ed25519	reject	reject		COSE←VMINUS_ES256 (tek-oracle)
+COSE-VMINUS_ES256	L4-Y	kontrol-EdDSA	reject	reject		COSE←VMINUS_ES256 (tek-oracle)
+COSE-VMINUS_ES256	L4-Y	tedavi-ML-DSA-65	reject	reject		COSE←VMINUS_ES256 (tek-oracle)
+COSE-VMINUS_ES256	L4-Y	tedavi-composite	reject	reject		COSE←VMINUS_ES256 (tek-oracle)
+COSE-VMINUS_ES256	P0	kontrol-Ed25519	reject		reject	COSE←VMINUS_ES256 (tek-oracle)
+COSE-VMINUS_ES256	P0	kontrol-EdDSA	reject		reject	COSE←VMINUS_ES256 (tek-oracle)
+COSE-VMINUS_ES256	P0	tedavi-ML-DSA-65	reject		reject	COSE←VMINUS_ES256 (tek-oracle)
+COSE-VMINUS_ES256	P0	tedavi-composite	reject		reject	COSE←VMINUS_ES256 (tek-oracle)
+COSE-VMINUS_ES256	P2	kontrol-Ed25519	reject		reject	COSE←VMINUS_ES256 (tek-oracle)
+COSE-VMINUS_ES256	P2	kontrol-EdDSA	reject		reject	COSE←VMINUS_ES256 (tek-oracle)
+COSE-VMINUS_ES256	P2	tedavi-ML-DSA-65	reject		reject	COSE←VMINUS_ES256 (tek-oracle)
+COSE-VMINUS_ES256	P2	tedavi-composite	reject		reject	COSE←VMINUS_ES256 (tek-oracle)
+COSE-VMINUS_EdDSA	GEC	kontrol-EdDSA	reject	reject		COSE←VMINUS_EdDSA (tek-oracle)
+COSE-VMINUS_EdDSA	IZIN-A	kontrol-EdDSA	reject	reject		COSE←VMINUS_EdDSA (tek-oracle)
+COSE-VMINUS_EdDSA	IZIN-AX	kontrol-EdDSA	reject	reject		COSE←VMINUS_EdDSA (tek-oracle)
+COSE-VMINUS_EdDSA	L4	kontrol-EdDSA	reject	reject	reject	COSE←VMINUS_EdDSA (A=B)
+COSE-VMINUS_EdDSA	L4-S	kontrol-EdDSA	reject	reject		COSE←VMINUS_EdDSA (tek-oracle)
+COSE-VMINUS_EdDSA	L4-Y	kontrol-EdDSA	reject	reject		COSE←VMINUS_EdDSA (tek-oracle)
+COSE-VMINUS_EdDSA	P0	kontrol-EdDSA	reject		reject	COSE←VMINUS_EdDSA (tek-oracle)
+COSE-VMINUS_EdDSA	P2	kontrol-EdDSA	reject		reject	COSE←VMINUS_EdDSA (tek-oracle)
+COSE-VMINUS_EdDSA-ED25519	GEC	kontrol-Ed25519	reject	reject		COSE←VMINUS_EdDSA-ED25519 (tek-oracle)
+COSE-VMINUS_EdDSA-ED25519	IZIN-A	kontrol-Ed25519	reject	reject		COSE←VMINUS_EdDSA-ED25519 (tek-oracle)
+COSE-VMINUS_EdDSA-ED25519	IZIN-AX	kontrol-Ed25519	reject	reject		COSE←VMINUS_EdDSA-ED25519 (tek-oracle)
+COSE-VMINUS_EdDSA-ED25519	L4	kontrol-Ed25519	reject	reject	reject	COSE←VMINUS_EdDSA-ED25519 (A=B)
+COSE-VMINUS_EdDSA-ED25519	L4-S	kontrol-Ed25519	reject	reject		COSE←VMINUS_EdDSA-ED25519 (tek-oracle)
+COSE-VMINUS_EdDSA-ED25519	L4-Y	kontrol-Ed25519	reject	reject		COSE←VMINUS_EdDSA-ED25519 (tek-oracle)
+COSE-VMINUS_EdDSA-ED25519	P0	kontrol-Ed25519	reject		reject	COSE←VMINUS_EdDSA-ED25519 (tek-oracle)
+COSE-VMINUS_EdDSA-ED25519	P2	kontrol-Ed25519	reject		reject	COSE←VMINUS_EdDSA-ED25519 (tek-oracle)
+COSE-VMINUS_ML-DSA-65	GEC	tedavi-ML-DSA-65	reject	reject		COSE←VMINUS_ML-DSA-65 (tek-oracle)
+COSE-VMINUS_ML-DSA-65	IZIN-A	tedavi-ML-DSA-65	reject	reject		COSE←VMINUS_ML-DSA-65 (tek-oracle)
+COSE-VMINUS_ML-DSA-65	IZIN-AX	tedavi-ML-DSA-65	reject	reject		COSE←VMINUS_ML-DSA-65 (tek-oracle)
+COSE-VMINUS_ML-DSA-65	L4	tedavi-ML-DSA-65	reject	reject	reject	COSE←VMINUS_ML-DSA-65 (A=B)
+COSE-VMINUS_ML-DSA-65	L4-S	tedavi-ML-DSA-65	reject	reject		COSE←VMINUS_ML-DSA-65 (tek-oracle)
+COSE-VMINUS_ML-DSA-65	L4-Y	tedavi-ML-DSA-65	reject	reject		COSE←VMINUS_ML-DSA-65 (tek-oracle)
+COSE-VMINUS_ML-DSA-65	P0	tedavi-ML-DSA-65	reject		reject	COSE←VMINUS_ML-DSA-65 (tek-oracle)
+COSE-VMINUS_ML-DSA-65	P2	tedavi-ML-DSA-65	reject		reject	COSE←VMINUS_ML-DSA-65 (tek-oracle)
+COSE-VPLUS_ES256	GEC	kontrol-Ed25519	accept-classical	accept-classical		COSE←VPLUS_ES256 (tek-oracle)
+COSE-VPLUS_ES256	GEC	kontrol-EdDSA	accept-classical	accept-classical		COSE←VPLUS_ES256 (tek-oracle)
+COSE-VPLUS_ES256	GEC	tedavi-ML-DSA-65	accept-classical	accept-classical		COSE←VPLUS_ES256 (tek-oracle)
+COSE-VPLUS_ES256	GEC	tedavi-composite	accept-classical	accept-classical		COSE←VPLUS_ES256 (tek-oracle)
+COSE-VPLUS_ES256	IZIN-A	kontrol-Ed25519	accept-classical	accept-classical		COSE←VPLUS_ES256 (tek-oracle)
+COSE-VPLUS_ES256	IZIN-A	kontrol-EdDSA	accept-classical	accept-classical		COSE←VPLUS_ES256 (tek-oracle)
+COSE-VPLUS_ES256	IZIN-A	tedavi-ML-DSA-65	accept-classical	accept-classical		COSE←VPLUS_ES256 (tek-oracle)
+COSE-VPLUS_ES256	IZIN-A	tedavi-composite	accept-classical	accept-classical		COSE←VPLUS_ES256 (tek-oracle)
+COSE-VPLUS_ES256	IZIN-AX	kontrol-Ed25519	accept-classical	accept-classical		COSE←VPLUS_ES256 (tek-oracle)
+COSE-VPLUS_ES256	IZIN-AX	kontrol-EdDSA	accept-classical	accept-classical		COSE←VPLUS_ES256 (tek-oracle)
+COSE-VPLUS_ES256	IZIN-AX	tedavi-ML-DSA-65	accept-classical	accept-classical		COSE←VPLUS_ES256 (tek-oracle)
+COSE-VPLUS_ES256	IZIN-AX	tedavi-composite	accept-classical	accept-classical		COSE←VPLUS_ES256 (tek-oracle)
+COSE-VPLUS_ES256	L4	kontrol-Ed25519	reject	reject	reject	COSE←VPLUS_ES256 (A=B)
+COSE-VPLUS_ES256	L4	kontrol-EdDSA	reject	reject	reject	COSE←VPLUS_ES256 (A=B)
+COSE-VPLUS_ES256	L4	tedavi-ML-DSA-65	reject	reject	reject	COSE←VPLUS_ES256 (A=B)
+COSE-VPLUS_ES256	L4	tedavi-composite	reject	reject	reject	COSE←VPLUS_ES256 (A=B)
+COSE-VPLUS_ES256	L4-S	kontrol-Ed25519	reject	reject		COSE←VPLUS_ES256 (tek-oracle)
+COSE-VPLUS_ES256	L4-S	kontrol-EdDSA	reject	reject		COSE←VPLUS_ES256 (tek-oracle)
+COSE-VPLUS_ES256	L4-S	tedavi-ML-DSA-65	reject	reject		COSE←VPLUS_ES256 (tek-oracle)
+COSE-VPLUS_ES256	L4-S	tedavi-composite	reject	reject		COSE←VPLUS_ES256 (tek-oracle)
+COSE-VPLUS_ES256	L4-Y	kontrol-Ed25519	reject	reject		COSE←VPLUS_ES256 (tek-oracle)
+COSE-VPLUS_ES256	L4-Y	kontrol-EdDSA	reject	reject		COSE←VPLUS_ES256 (tek-oracle)
+COSE-VPLUS_ES256	L4-Y	tedavi-ML-DSA-65	reject	reject		COSE←VPLUS_ES256 (tek-oracle)
+COSE-VPLUS_ES256	L4-Y	tedavi-composite	reject	reject		COSE←VPLUS_ES256 (tek-oracle)
+COSE-VPLUS_ES256	P0	kontrol-Ed25519	accept-classical		accept-classical	COSE←VPLUS_ES256 (tek-oracle)
+COSE-VPLUS_ES256	P0	kontrol-EdDSA	accept-classical		accept-classical	COSE←VPLUS_ES256 (tek-oracle)
+COSE-VPLUS_ES256	P0	tedavi-ML-DSA-65	accept-classical		accept-classical	COSE←VPLUS_ES256 (tek-oracle)
+COSE-VPLUS_ES256	P0	tedavi-composite	accept-classical		accept-classical	COSE←VPLUS_ES256 (tek-oracle)
+COSE-VPLUS_ES256	P2	kontrol-Ed25519	accept-classical		accept-classical	COSE←VPLUS_ES256 (tek-oracle)
+COSE-VPLUS_ES256	P2	kontrol-EdDSA	accept-classical		accept-classical	COSE←VPLUS_ES256 (tek-oracle)
+COSE-VPLUS_ES256	P2	tedavi-ML-DSA-65	accept-classical		accept-classical	COSE←VPLUS_ES256 (tek-oracle)
+COSE-VPLUS_ES256	P2	tedavi-composite	accept-classical		accept-classical	COSE←VPLUS_ES256 (tek-oracle)
+COSE-VPLUS_EdDSA	GEC	kontrol-EdDSA	accept-classical	accept-classical		COSE←VPLUS_EdDSA (tek-oracle)
+COSE-VPLUS_EdDSA	IZIN-A	kontrol-EdDSA	reject	reject		COSE←VPLUS_EdDSA (tek-oracle)
+COSE-VPLUS_EdDSA	IZIN-AX	kontrol-EdDSA	accept-classical	accept-classical		COSE←VPLUS_EdDSA (tek-oracle)
+COSE-VPLUS_EdDSA	L4	kontrol-EdDSA	accept-classical	accept-classical	accept-classical	COSE←VPLUS_EdDSA (A=B)
+COSE-VPLUS_EdDSA	L4-S	kontrol-EdDSA	accept-classical	accept-classical		COSE←VPLUS_EdDSA (tek-oracle)
+COSE-VPLUS_EdDSA	L4-Y	kontrol-EdDSA	accept-classical	accept-classical		COSE←VPLUS_EdDSA (tek-oracle)
+COSE-VPLUS_EdDSA	P0	kontrol-EdDSA	accept-classical		accept-classical	COSE←VPLUS_EdDSA (tek-oracle)
+COSE-VPLUS_EdDSA	P2	kontrol-EdDSA	accept-classical		accept-classical	COSE←VPLUS_EdDSA (tek-oracle)
+COSE-VPLUS_EdDSA-ED25519	GEC	kontrol-Ed25519	accept-classical	accept-classical		COSE←VPLUS_EdDSA-ED25519 (tek-oracle)
+COSE-VPLUS_EdDSA-ED25519	IZIN-A	kontrol-Ed25519	reject	reject		COSE←VPLUS_EdDSA-ED25519 (tek-oracle)
+COSE-VPLUS_EdDSA-ED25519	IZIN-AX	kontrol-Ed25519	accept-classical	accept-classical		COSE←VPLUS_EdDSA-ED25519 (tek-oracle)
+COSE-VPLUS_EdDSA-ED25519	L4	kontrol-Ed25519	accept-classical	accept-classical	accept-classical	COSE←VPLUS_EdDSA-ED25519 (A=B)
+COSE-VPLUS_EdDSA-ED25519	L4-S	kontrol-Ed25519	accept-classical	accept-classical		COSE←VPLUS_EdDSA-ED25519 (tek-oracle)
+COSE-VPLUS_EdDSA-ED25519	L4-Y	kontrol-Ed25519	accept-classical	accept-classical		COSE←VPLUS_EdDSA-ED25519 (tek-oracle)
+COSE-VPLUS_EdDSA-ED25519	P0	kontrol-Ed25519	accept-classical		accept-classical	COSE←VPLUS_EdDSA-ED25519 (tek-oracle)
+COSE-VPLUS_EdDSA-ED25519	P2	kontrol-Ed25519	accept-classical		accept-classical	COSE←VPLUS_EdDSA-ED25519 (tek-oracle)
+COSE-VPLUS_ML-DSA-65	GEC	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		COSE←VPLUS_ML-DSA-65 (tek-oracle)
+COSE-VPLUS_ML-DSA-65	IZIN-A	tedavi-ML-DSA-65	reject	reject		COSE←VPLUS_ML-DSA-65 (tek-oracle)
+COSE-VPLUS_ML-DSA-65	IZIN-AX	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		COSE←VPLUS_ML-DSA-65 (tek-oracle)
+COSE-VPLUS_ML-DSA-65	L4	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid	accept-hybrid	COSE←VPLUS_ML-DSA-65 (A=B)
+COSE-VPLUS_ML-DSA-65	L4-S	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		COSE←VPLUS_ML-DSA-65 (tek-oracle)
+COSE-VPLUS_ML-DSA-65	L4-Y	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		COSE←VPLUS_ML-DSA-65 (tek-oracle)
+COSE-VPLUS_ML-DSA-65	P0	tedavi-ML-DSA-65	accept-hybrid		accept-hybrid	COSE←VPLUS_ML-DSA-65 (tek-oracle)
+COSE-VPLUS_ML-DSA-65	P2	tedavi-ML-DSA-65	accept-hybrid		accept-hybrid	COSE←VPLUS_ML-DSA-65 (tek-oracle)
+CRIT01_bilinmeyen_parametre	GEC	tedavi-ML-DSA-65	reject	reject		tek-oracle
+CRIT01_bilinmeyen_parametre	L4	tedavi-ML-DSA-65	reject	reject	reject	A=B
+CRIT01_bilinmeyen_parametre	L4-S	tedavi-ML-DSA-65	reject	reject		tek-oracle
+CRIT01_bilinmeyen_parametre	L4-Y	tedavi-ML-DSA-65	reject	reject		tek-oracle
+CRIT01_bilinmeyen_parametre	P0	tedavi-ML-DSA-65	reject		reject	tek-oracle
+CRIT01_bilinmeyen_parametre	P2	tedavi-ML-DSA-65	reject		reject	tek-oracle
+CRIT02_korumasiz_crit	GEC	tedavi-ML-DSA-65	reject	reject		tek-oracle
+CRIT02_korumasiz_crit	L4	tedavi-ML-DSA-65	reject	reject	reject	A=B
+CRIT02_korumasiz_crit	L4-S	tedavi-ML-DSA-65	reject	reject		tek-oracle
+CRIT02_korumasiz_crit	L4-Y	tedavi-ML-DSA-65	reject	reject		tek-oracle
+CRIT02_korumasiz_crit	P0	tedavi-ML-DSA-65	reject		reject	tek-oracle
+CRIT02_korumasiz_crit	P2	tedavi-ML-DSA-65	reject		reject	tek-oracle
+CRIT03_kayitli_ad	GEC	tedavi-ML-DSA-65	indeterminate	indeterminate		tek-oracle
+CRIT03_kayitli_ad	L4	tedavi-ML-DSA-65	indeterminate	indeterminate	indeterminate	A=B
+CRIT03_kayitli_ad	L4-S	tedavi-ML-DSA-65	indeterminate	indeterminate		tek-oracle
+CRIT03_kayitli_ad	L4-Y	tedavi-ML-DSA-65	indeterminate	indeterminate		tek-oracle
+CRIT03_kayitli_ad	P0	tedavi-ML-DSA-65	indeterminate		indeterminate	tek-oracle
+CRIT03_kayitli_ad	P2	tedavi-ML-DSA-65	indeterminate		indeterminate	tek-oracle
+CRIT04_bos_dizi	GEC	tedavi-ML-DSA-65	indeterminate	indeterminate		tek-oracle
+CRIT04_bos_dizi	L4	tedavi-ML-DSA-65	indeterminate	indeterminate	indeterminate	A=B
+CRIT04_bos_dizi	L4-S	tedavi-ML-DSA-65	indeterminate	indeterminate		tek-oracle
+CRIT04_bos_dizi	L4-Y	tedavi-ML-DSA-65	indeterminate	indeterminate		tek-oracle
+CRIT04_bos_dizi	P0	tedavi-ML-DSA-65	indeterminate		indeterminate	tek-oracle
+CRIT04_bos_dizi	P2	tedavi-ML-DSA-65	indeterminate		indeterminate	tek-oracle
+CRIT05_listelenen_parametre_yok	GEC	tedavi-ML-DSA-65	reject	reject		tek-oracle
+CRIT05_listelenen_parametre_yok	L4	tedavi-ML-DSA-65	reject	reject	reject	A=B
+CRIT05_listelenen_parametre_yok	L4-S	tedavi-ML-DSA-65	reject	reject		tek-oracle
+CRIT05_listelenen_parametre_yok	L4-Y	tedavi-ML-DSA-65	reject	reject		tek-oracle
+CRIT05_listelenen_parametre_yok	P0	tedavi-ML-DSA-65	reject		reject	tek-oracle
+CRIT05_listelenen_parametre_yok	P2	tedavi-ML-DSA-65	reject		reject	tek-oracle
+DPOP01_ES256	GEC	klasik-taban	accept-classical	accept-classical		tek-oracle
+DPOP01_ES256	L4	kontrol-Ed25519	reject		reject	tek-oracle
+DPOP01_ES256	L4	kontrol-EdDSA	reject		reject	tek-oracle
+DPOP01_ES256	L4	tedavi-ML-DSA-65	reject		reject	tek-oracle
+DPOP01_ES256	L4	tedavi-composite	reject		reject	tek-oracle
+DPOP01_ES256	P0	kontrol-Ed25519	accept-classical		accept-classical	tek-oracle
+DPOP01_ES256	P0	kontrol-EdDSA	accept-classical		accept-classical	tek-oracle
+DPOP01_ES256	P0	tedavi-ML-DSA-65	accept-classical		accept-classical	tek-oracle
+DPOP01_ES256	P0	tedavi-composite	accept-classical		accept-classical	tek-oracle
+DPOP01_ES256	P2	kontrol-Ed25519	accept-classical		accept-classical	tek-oracle
+DPOP01_ES256	P2	kontrol-EdDSA	accept-classical		accept-classical	tek-oracle
+DPOP01_ES256	P2	tedavi-ML-DSA-65	accept-classical		accept-classical	tek-oracle
+DPOP01_ES256	P2	tedavi-composite	accept-classical		accept-classical	tek-oracle
+DPOP02_EdDSA	GEC	kontrol-EdDSA	accept-classical	accept-classical		tek-oracle
+DPOP02_EdDSA	L4	kontrol-EdDSA	accept-classical		accept-classical	tek-oracle
+DPOP02_EdDSA	P0	kontrol-EdDSA	accept-classical		accept-classical	tek-oracle
+DPOP02_EdDSA	P2	kontrol-EdDSA	accept-classical		accept-classical	tek-oracle
+DPOP02_EdDSA-ED25519	GEC	kontrol-Ed25519	accept-classical	accept-classical		tek-oracle
+DPOP02_EdDSA-ED25519	L4	kontrol-Ed25519	accept-classical		accept-classical	tek-oracle
+DPOP02_EdDSA-ED25519	P0	kontrol-Ed25519	accept-classical		accept-classical	tek-oracle
+DPOP02_EdDSA-ED25519	P2	kontrol-Ed25519	accept-classical		accept-classical	tek-oracle
+DPOP03_ML-DSA-44	GEC	kapsam-pq	accept-hybrid	accept-hybrid		tek-oracle
+DPOP03_ML-DSA-44	L4	kontrol-Ed25519	reject		reject	tek-oracle
+DPOP03_ML-DSA-44	L4	kontrol-EdDSA	reject		reject	tek-oracle
+DPOP03_ML-DSA-44	L4	tedavi-ML-DSA-65	reject		reject	tek-oracle
+DPOP03_ML-DSA-44	L4	tedavi-composite	reject		reject	tek-oracle
+DPOP03_ML-DSA-44	P0	kontrol-Ed25519	reject		reject	tek-oracle
+DPOP03_ML-DSA-44	P0	kontrol-EdDSA	reject		reject	tek-oracle
+DPOP03_ML-DSA-44	P0	tedavi-ML-DSA-65	reject		reject	tek-oracle
+DPOP03_ML-DSA-44	P0	tedavi-composite	reject		reject	tek-oracle
+DPOP03_ML-DSA-44	P2	kontrol-Ed25519	reject		reject	tek-oracle
+DPOP03_ML-DSA-44	P2	kontrol-EdDSA	reject		reject	tek-oracle
+DPOP03_ML-DSA-44	P2	tedavi-ML-DSA-65	reject		reject	tek-oracle
+DPOP03_ML-DSA-44	P2	tedavi-composite	reject		reject	tek-oracle
+DPOP04_ML-DSA-65	GEC	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+DPOP04_ML-DSA-65	L4	tedavi-ML-DSA-65	accept-hybrid		accept-hybrid	tek-oracle
+DPOP04_ML-DSA-65	P0	tedavi-ML-DSA-65	accept-hybrid		accept-hybrid	tek-oracle
+DPOP04_ML-DSA-65	P2	tedavi-ML-DSA-65	accept-hybrid		accept-hybrid	tek-oracle
+DPOP05_ML-DSA-87	GEC	kapsam-pq	accept-hybrid	accept-hybrid		tek-oracle
+DPOP05_ML-DSA-87	L4	kontrol-Ed25519	reject		reject	tek-oracle
+DPOP05_ML-DSA-87	L4	kontrol-EdDSA	reject		reject	tek-oracle
+DPOP05_ML-DSA-87	L4	tedavi-ML-DSA-65	reject		reject	tek-oracle
+DPOP05_ML-DSA-87	L4	tedavi-composite	reject		reject	tek-oracle
+DPOP05_ML-DSA-87	P0	kontrol-Ed25519	reject		reject	tek-oracle
+DPOP05_ML-DSA-87	P0	kontrol-EdDSA	reject		reject	tek-oracle
+DPOP05_ML-DSA-87	P0	tedavi-ML-DSA-65	reject		reject	tek-oracle
+DPOP05_ML-DSA-87	P0	tedavi-composite	reject		reject	tek-oracle
+DPOP05_ML-DSA-87	P2	kontrol-Ed25519	reject		reject	tek-oracle
+DPOP05_ML-DSA-87	P2	kontrol-EdDSA	reject		reject	tek-oracle
+DPOP05_ML-DSA-87	P2	tedavi-ML-DSA-65	reject		reject	tek-oracle
+DPOP05_ML-DSA-87	P2	tedavi-composite	reject		reject	tek-oracle
+DPOP06_ML-DSA-65-ES256	GEC	tedavi-composite	reject	reject		tek-oracle
+DPOP06_ML-DSA-65-ES256	L4	tedavi-composite	accept-hybrid		accept-hybrid	tek-oracle
+DPOP06_ML-DSA-65-ES256	P0	tedavi-composite	accept-hybrid		accept-hybrid	tek-oracle
+DPOP06_ML-DSA-65-ES256	P2	tedavi-composite	accept-hybrid		accept-hybrid	tek-oracle
+DPOP07_ML-DSA-65-Ed25519	GEC	kapsam-hibrit	reject	reject		tek-oracle
+DPOP07_ML-DSA-65-Ed25519	L4	kontrol-Ed25519	reject		reject	tek-oracle
+DPOP07_ML-DSA-65-Ed25519	L4	kontrol-EdDSA	reject		reject	tek-oracle
+DPOP07_ML-DSA-65-Ed25519	L4	tedavi-ML-DSA-65	reject		reject	tek-oracle
+DPOP07_ML-DSA-65-Ed25519	L4	tedavi-composite	reject		reject	tek-oracle
+DPOP07_ML-DSA-65-Ed25519	P0	kontrol-Ed25519	reject		reject	tek-oracle
+DPOP07_ML-DSA-65-Ed25519	P0	kontrol-EdDSA	reject		reject	tek-oracle
+DPOP07_ML-DSA-65-Ed25519	P0	tedavi-ML-DSA-65	reject		reject	tek-oracle
+DPOP07_ML-DSA-65-Ed25519	P0	tedavi-composite	reject		reject	tek-oracle
+DPOP07_ML-DSA-65-Ed25519	P2	kontrol-Ed25519	reject		reject	tek-oracle
+DPOP07_ML-DSA-65-Ed25519	P2	kontrol-EdDSA	reject		reject	tek-oracle
+DPOP07_ML-DSA-65-Ed25519	P2	tedavi-ML-DSA-65	reject		reject	tek-oracle
+DPOP07_ML-DSA-65-Ed25519	P2	tedavi-composite	reject		reject	tek-oracle
+DPOP08_ML-DSA-65_ath_nonce	GEC	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+DPOP08_ML-DSA-65_ath_nonce	L4	tedavi-ML-DSA-65	indeterminate		indeterminate	tek-oracle
+DPOP08_ML-DSA-65_ath_nonce	P0	tedavi-ML-DSA-65	indeterminate		indeterminate	tek-oracle
+DPOP08_ML-DSA-65_ath_nonce	P2	tedavi-ML-DSA-65	indeterminate		indeterminate	tek-oracle
+DPOP09_ML-DSA-65-ES256_ath_nonce	GEC	tedavi-composite	reject	reject		tek-oracle
+DPOP09_ML-DSA-65-ES256_ath_nonce	L4	tedavi-composite	indeterminate		indeterminate	tek-oracle
+DPOP09_ML-DSA-65-ES256_ath_nonce	P0	tedavi-composite	indeterminate		indeterminate	tek-oracle
+DPOP09_ML-DSA-65-ES256_ath_nonce	P2	tedavi-composite	indeterminate		indeterminate	tek-oracle
+DPOP10_jwk_ozel_anahtar_iceriyor	GEC	tedavi-ML-DSA-65	reject	reject		tek-oracle
+DPOP10_jwk_ozel_anahtar_iceriyor	L4	tedavi-ML-DSA-65	reject		reject	tek-oracle
+DPOP10_jwk_ozel_anahtar_iceriyor	P0	tedavi-ML-DSA-65	reject		reject	tek-oracle
+DPOP10_jwk_ozel_anahtar_iceriyor	P2	tedavi-ML-DSA-65	reject		reject	tek-oracle
+K10C_alg-ML-DSA-65-ES256_anahtar-ML-DSA-65	GEC	tedavi-composite	reject	reject		tek-oracle
+K10C_alg-ML-DSA-65-ES256_anahtar-ML-DSA-65	IZIN-A	tedavi-composite	reject	reject		tek-oracle
+K10C_alg-ML-DSA-65-ES256_anahtar-ML-DSA-65	IZIN-AX	tedavi-composite	reject	reject		tek-oracle
+K10C_alg-ML-DSA-65-ES256_anahtar-ML-DSA-65	L4	tedavi-composite	reject	reject	reject	A=B
+K10C_alg-ML-DSA-65-ES256_anahtar-ML-DSA-65	L4-S	tedavi-composite	reject	reject		tek-oracle
+K10C_alg-ML-DSA-65-ES256_anahtar-ML-DSA-65	L4-Y	tedavi-composite	reject	reject		tek-oracle
+K10C_alg-ML-DSA-65-ES256_anahtar-ML-DSA-65	P0	tedavi-composite	reject		reject	tek-oracle
+K10C_alg-ML-DSA-65-ES256_anahtar-ML-DSA-65	P2	tedavi-composite	reject		reject	tek-oracle
+K10C_alg-ML-DSA-65_anahtar-ML-DSA-65-ES256	GEC	tedavi-composite	reject	reject		tek-oracle
+K10C_alg-ML-DSA-65_anahtar-ML-DSA-65-ES256	IZIN-A	tedavi-composite	reject	reject		tek-oracle
+K10C_alg-ML-DSA-65_anahtar-ML-DSA-65-ES256	IZIN-AX	tedavi-composite	reject	reject		tek-oracle
+K10C_alg-ML-DSA-65_anahtar-ML-DSA-65-ES256	L4	tedavi-composite	reject	reject	reject	A=B
+K10C_alg-ML-DSA-65_anahtar-ML-DSA-65-ES256	L4-S	tedavi-composite	reject	reject		tek-oracle
+K10C_alg-ML-DSA-65_anahtar-ML-DSA-65-ES256	L4-Y	tedavi-composite	reject	reject		tek-oracle
+K10C_alg-ML-DSA-65_anahtar-ML-DSA-65-ES256	P0	tedavi-composite	reject		reject	tek-oracle
+K10C_alg-ML-DSA-65_anahtar-ML-DSA-65-ES256	P2	tedavi-composite	reject		reject	tek-oracle
+K10K_alg-ES256_anahtar-Ed25519	GEC	kontrol-Ed25519	reject	reject		tek-oracle
+K10K_alg-ES256_anahtar-Ed25519	GEC	kontrol-EdDSA	reject	reject		tek-oracle
+K10K_alg-ES256_anahtar-Ed25519	IZIN-A	kontrol-Ed25519	reject	reject		tek-oracle
+K10K_alg-ES256_anahtar-Ed25519	IZIN-A	kontrol-EdDSA	reject	reject		tek-oracle
+K10K_alg-ES256_anahtar-Ed25519	IZIN-AX	kontrol-Ed25519	reject	reject		tek-oracle
+K10K_alg-ES256_anahtar-Ed25519	IZIN-AX	kontrol-EdDSA	reject	reject		tek-oracle
+K10K_alg-ES256_anahtar-Ed25519	L4	kontrol-Ed25519	reject	reject	reject	A=B
+K10K_alg-ES256_anahtar-Ed25519	L4	kontrol-EdDSA	reject	reject	reject	A=B
+K10K_alg-ES256_anahtar-Ed25519	L4-S	kontrol-Ed25519	reject	reject		tek-oracle
+K10K_alg-ES256_anahtar-Ed25519	L4-S	kontrol-EdDSA	reject	reject		tek-oracle
+K10K_alg-ES256_anahtar-Ed25519	L4-Y	kontrol-Ed25519	reject	reject		tek-oracle
+K10K_alg-ES256_anahtar-Ed25519	L4-Y	kontrol-EdDSA	reject	reject		tek-oracle
+K10K_alg-ES256_anahtar-Ed25519	P0	kontrol-Ed25519	reject		reject	tek-oracle
+K10K_alg-ES256_anahtar-Ed25519	P0	kontrol-EdDSA	reject		reject	tek-oracle
+K10K_alg-ES256_anahtar-Ed25519	P2	kontrol-Ed25519	reject		reject	tek-oracle
+K10K_alg-ES256_anahtar-Ed25519	P2	kontrol-EdDSA	reject		reject	tek-oracle
+K10K_alg-EdDSA_anahtar-ES256	GEC	kontrol-EdDSA	reject	reject		tek-oracle
+K10K_alg-EdDSA_anahtar-ES256	IZIN-A	kontrol-EdDSA	reject	reject		tek-oracle
+K10K_alg-EdDSA_anahtar-ES256	IZIN-AX	kontrol-EdDSA	reject	reject		tek-oracle
+K10K_alg-EdDSA_anahtar-ES256	L4	kontrol-EdDSA	reject	reject	reject	A=B
+K10K_alg-EdDSA_anahtar-ES256	L4-S	kontrol-EdDSA	reject	reject		tek-oracle
+K10K_alg-EdDSA_anahtar-ES256	L4-Y	kontrol-EdDSA	reject	reject		tek-oracle
+K10K_alg-EdDSA_anahtar-ES256	P0	kontrol-EdDSA	reject		reject	tek-oracle
+K10K_alg-EdDSA_anahtar-ES256	P2	kontrol-EdDSA	reject		reject	tek-oracle
+K10K_alg-EdDSA_anahtar-ES256-ED25519	GEC	kontrol-Ed25519	reject	reject		tek-oracle
+K10K_alg-EdDSA_anahtar-ES256-ED25519	IZIN-A	kontrol-Ed25519	reject	reject		tek-oracle
+K10K_alg-EdDSA_anahtar-ES256-ED25519	IZIN-AX	kontrol-Ed25519	reject	reject		tek-oracle
+K10K_alg-EdDSA_anahtar-ES256-ED25519	L4	kontrol-Ed25519	reject	reject	reject	A=B
+K10K_alg-EdDSA_anahtar-ES256-ED25519	L4-S	kontrol-Ed25519	reject	reject		tek-oracle
+K10K_alg-EdDSA_anahtar-ES256-ED25519	L4-Y	kontrol-Ed25519	reject	reject		tek-oracle
+K10K_alg-EdDSA_anahtar-ES256-ED25519	P0	kontrol-Ed25519	reject		reject	tek-oracle
+K10K_alg-EdDSA_anahtar-ES256-ED25519	P2	kontrol-Ed25519	reject		reject	tek-oracle
+K10P_alg-ES256_anahtar-ML-DSA-65	GEC	tedavi-ML-DSA-65	reject	reject		tek-oracle
+K10P_alg-ES256_anahtar-ML-DSA-65	IZIN-A	tedavi-ML-DSA-65	reject	reject		tek-oracle
+K10P_alg-ES256_anahtar-ML-DSA-65	IZIN-AX	tedavi-ML-DSA-65	reject	reject		tek-oracle
+K10P_alg-ES256_anahtar-ML-DSA-65	L4	tedavi-ML-DSA-65	reject	reject	reject	A=B
+K10P_alg-ES256_anahtar-ML-DSA-65	L4-S	tedavi-ML-DSA-65	reject	reject		tek-oracle
+K10P_alg-ES256_anahtar-ML-DSA-65	L4-Y	tedavi-ML-DSA-65	reject	reject		tek-oracle
+K10P_alg-ES256_anahtar-ML-DSA-65	P0	tedavi-ML-DSA-65	reject		reject	tek-oracle
+K10P_alg-ES256_anahtar-ML-DSA-65	P2	tedavi-ML-DSA-65	reject		reject	tek-oracle
+K10P_alg-ML-DSA-65_anahtar-ES256	GEC	tedavi-ML-DSA-65	reject	reject		tek-oracle
+K10P_alg-ML-DSA-65_anahtar-ES256	IZIN-A	tedavi-ML-DSA-65	reject	reject		tek-oracle
+K10P_alg-ML-DSA-65_anahtar-ES256	IZIN-AX	tedavi-ML-DSA-65	reject	reject		tek-oracle
+K10P_alg-ML-DSA-65_anahtar-ES256	L4	tedavi-ML-DSA-65	reject	reject	reject	A=B
+K10P_alg-ML-DSA-65_anahtar-ES256	L4-S	tedavi-ML-DSA-65	reject	reject		tek-oracle
+K10P_alg-ML-DSA-65_anahtar-ES256	L4-Y	tedavi-ML-DSA-65	reject	reject		tek-oracle
+K10P_alg-ML-DSA-65_anahtar-ES256	P0	tedavi-ML-DSA-65	reject		reject	tek-oracle
+K10P_alg-ML-DSA-65_anahtar-ES256	P2	tedavi-ML-DSA-65	reject		reject	tek-oracle
+L4C-COSE_eski_ES256	GEC	kontrol-EdDSA	accept-classical			L4c-3 (BATARYA-ESLEME §4 alıntısı)
+L4C-COSE_eski_ES256	GEC	tedavi-ML-DSA-65	accept-classical			L4c-3 (BATARYA-ESLEME §4 alıntısı)
+L4C-COSE_eski_ES256	GEC	tedavi-composite	accept-classical			L4c-3 (BATARYA-ESLEME §4 alıntısı)
+L4C-COSE_eski_ES256	IZIN-A	kontrol-EdDSA	accept-classical			L4c-3 (BATARYA-ESLEME §4 alıntısı)
+L4C-COSE_eski_ES256	IZIN-A	tedavi-ML-DSA-65	accept-classical			L4c-3 (BATARYA-ESLEME §4 alıntısı)
+L4C-COSE_eski_ES256	IZIN-A	tedavi-composite	accept-classical			L4c-3 (BATARYA-ESLEME §4 alıntısı)
+L4C-COSE_eski_ES256	IZIN-AX	kontrol-EdDSA	accept-classical			L4c-3 (BATARYA-ESLEME §4 alıntısı)
+L4C-COSE_eski_ES256	IZIN-AX	tedavi-ML-DSA-65	accept-classical			L4c-3 (BATARYA-ESLEME §4 alıntısı)
+L4C-COSE_eski_ES256	IZIN-AX	tedavi-composite	accept-classical			L4c-3 (BATARYA-ESLEME §4 alıntısı)
+L4C-COSE_eski_ES256	L4	kontrol-EdDSA	accept-classical			L4c-3 (BATARYA-ESLEME §4 alıntısı)
+L4C-COSE_eski_ES256	L4	tedavi-ML-DSA-65	accept-classical			L4c-3 (BATARYA-ESLEME §4 alıntısı)
+L4C-COSE_eski_ES256	L4	tedavi-composite	accept-classical			L4c-3 (BATARYA-ESLEME §4 alıntısı)
+L4C-COSE_eski_ES256	L4-S	kontrol-EdDSA	accept-classical			L4c-3 (BATARYA-ESLEME §4 alıntısı)
+L4C-COSE_eski_ES256	L4-S	tedavi-ML-DSA-65	accept-classical			L4c-3 (BATARYA-ESLEME §4 alıntısı)
+L4C-COSE_eski_ES256	L4-S	tedavi-composite	accept-classical			L4c-3 (BATARYA-ESLEME §4 alıntısı)
+L4C-COSE_eski_ES256	L4-Y	kontrol-EdDSA	accept-classical			L4c-3 (BATARYA-ESLEME §4 alıntısı)
+L4C-COSE_eski_ES256	L4-Y	tedavi-ML-DSA-65	accept-classical			L4c-3 (BATARYA-ESLEME §4 alıntısı)
+L4C-COSE_eski_ES256	L4-Y	tedavi-composite	accept-classical			L4c-3 (BATARYA-ESLEME §4 alıntısı)
+L4C-JOSE_eski_ES256	GEC	kontrol-EdDSA	accept-classical			L4c-3 (BATARYA-ESLEME §4 alıntısı)
+L4C-JOSE_eski_ES256	GEC	tedavi-ML-DSA-65	accept-classical			L4c-3 (BATARYA-ESLEME §4 alıntısı)
+L4C-JOSE_eski_ES256	GEC	tedavi-composite	accept-classical			L4c-3 (BATARYA-ESLEME §4 alıntısı)
+L4C-JOSE_eski_ES256	IZIN-A	kontrol-EdDSA	accept-classical			L4c-3 (BATARYA-ESLEME §4 alıntısı)
+L4C-JOSE_eski_ES256	IZIN-A	tedavi-ML-DSA-65	accept-classical			L4c-3 (BATARYA-ESLEME §4 alıntısı)
+L4C-JOSE_eski_ES256	IZIN-A	tedavi-composite	accept-classical			L4c-3 (BATARYA-ESLEME §4 alıntısı)
+L4C-JOSE_eski_ES256	IZIN-AX	kontrol-EdDSA	accept-classical			L4c-3 (BATARYA-ESLEME §4 alıntısı)
+L4C-JOSE_eski_ES256	IZIN-AX	tedavi-ML-DSA-65	accept-classical			L4c-3 (BATARYA-ESLEME §4 alıntısı)
+L4C-JOSE_eski_ES256	IZIN-AX	tedavi-composite	accept-classical			L4c-3 (BATARYA-ESLEME §4 alıntısı)
+L4C-JOSE_eski_ES256	L4	kontrol-EdDSA	accept-classical			L4c-3 (BATARYA-ESLEME §4 alıntısı)
+L4C-JOSE_eski_ES256	L4	tedavi-ML-DSA-65	accept-classical			L4c-3 (BATARYA-ESLEME §4 alıntısı)
+L4C-JOSE_eski_ES256	L4	tedavi-composite	accept-classical			L4c-3 (BATARYA-ESLEME §4 alıntısı)
+L4C-JOSE_eski_ES256	L4-S	kontrol-EdDSA	accept-classical			L4c-3 (BATARYA-ESLEME §4 alıntısı)
+L4C-JOSE_eski_ES256	L4-S	tedavi-ML-DSA-65	accept-classical			L4c-3 (BATARYA-ESLEME §4 alıntısı)
+L4C-JOSE_eski_ES256	L4-S	tedavi-composite	accept-classical			L4c-3 (BATARYA-ESLEME §4 alıntısı)
+L4C-JOSE_eski_ES256	L4-Y	kontrol-EdDSA	accept-classical			L4c-3 (BATARYA-ESLEME §4 alıntısı)
+L4C-JOSE_eski_ES256	L4-Y	tedavi-ML-DSA-65	accept-classical			L4c-3 (BATARYA-ESLEME §4 alıntısı)
+L4C-JOSE_eski_ES256	L4-Y	tedavi-composite	accept-classical			L4c-3 (BATARYA-ESLEME §4 alıntısı)
+REQ01_imzali_ES256_x509_hash	GEC	tedavi-ML-DSA-65	accept-classical	accept-classical		tek-oracle
+REQ01_imzali_ES256_x509_hash	L4	kontrol-Ed25519	reject		reject	tek-oracle
+REQ01_imzali_ES256_x509_hash	L4	kontrol-EdDSA	reject		reject	tek-oracle
+REQ01_imzali_ES256_x509_hash	L4	tedavi-ML-DSA-65	reject	reject	reject	A=B
+REQ01_imzali_ES256_x509_hash	L4	tedavi-composite	reject		reject	tek-oracle
+REQ01_imzali_ES256_x509_hash	L4-S	tedavi-ML-DSA-65	reject	reject		tek-oracle
+REQ01_imzali_ES256_x509_hash	L4-Y	tedavi-ML-DSA-65	reject	reject		tek-oracle
+REQ01_imzali_ES256_x509_hash	P0	kontrol-Ed25519	accept-classical		accept-classical	tek-oracle
+REQ01_imzali_ES256_x509_hash	P0	kontrol-EdDSA	accept-classical		accept-classical	tek-oracle
+REQ01_imzali_ES256_x509_hash	P0	tedavi-ML-DSA-65	accept-classical		accept-classical	tek-oracle
+REQ01_imzali_ES256_x509_hash	P0	tedavi-composite	accept-classical		accept-classical	tek-oracle
+REQ01_imzali_ES256_x509_hash	P2	kontrol-Ed25519	accept-classical		accept-classical	tek-oracle
+REQ01_imzali_ES256_x509_hash	P2	kontrol-EdDSA	accept-classical		accept-classical	tek-oracle
+REQ01_imzali_ES256_x509_hash	P2	tedavi-ML-DSA-65	accept-classical		accept-classical	tek-oracle
+REQ01_imzali_ES256_x509_hash	P2	tedavi-composite	accept-classical		accept-classical	tek-oracle
+REQ02_imzali_MLDSA65_x509_hash	GEC	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+REQ02_imzali_MLDSA65_x509_hash	L4	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid	accept-hybrid	A=B
+REQ02_imzali_MLDSA65_x509_hash	L4-S	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+REQ02_imzali_MLDSA65_x509_hash	L4-Y	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+REQ02_imzali_MLDSA65_x509_hash	P0	tedavi-ML-DSA-65	accept-hybrid		accept-hybrid	tek-oracle
+REQ02_imzali_MLDSA65_x509_hash	P2	tedavi-ML-DSA-65	accept-hybrid		accept-hybrid	tek-oracle
+REQ03_imzali_composite_onkayitli	GEC	tedavi-composite	accept-hybrid	accept-hybrid		tek-oracle
+REQ03_imzali_composite_onkayitli	L4	tedavi-composite	accept-hybrid	accept-hybrid	accept-hybrid	A=B
+REQ03_imzali_composite_onkayitli	L4-S	tedavi-composite	accept-hybrid	accept-hybrid		tek-oracle
+REQ03_imzali_composite_onkayitli	L4-Y	tedavi-composite	accept-hybrid	accept-hybrid		tek-oracle
+REQ03_imzali_composite_onkayitli	P0	tedavi-composite	accept-hybrid		accept-hybrid	tek-oracle
+REQ03_imzali_composite_onkayitli	P2	tedavi-composite	accept-hybrid		accept-hybrid	tek-oracle
+REQ04_coklu_imzali	L4	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid	accept-hybrid	A=B
+REQ04_coklu_imzali	L4-S	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+REQ04_coklu_imzali	L4-Y	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+REQ04_coklu_imzali	P0	tedavi-ML-DSA-65	indeterminate	accept-classical	accept-hybrid	A≠B
+REQ04_coklu_imzali	P1	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+REQ04_coklu_imzali	P2	tedavi-ML-DSA-65	accept-hybrid		accept-hybrid	tek-oracle
+REQ04_coklu_imzali-SIRA-ters	L4	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid	accept-hybrid	A=B
+REQ04_coklu_imzali-SIRA-ters	L4-S	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+REQ04_coklu_imzali-SIRA-ters	L4-Y	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+REQ04_coklu_imzali-SIRA-ters	P0	tedavi-ML-DSA-65	indeterminate	accept-classical	accept-hybrid	A≠B
+REQ04_coklu_imzali-SIRA-ters	P1	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+REQ04_coklu_imzali-SIRA-ters	P2	tedavi-ML-DSA-65	accept-hybrid		accept-hybrid	tek-oracle
+REQ05_coklu_imzali_pq_soyuldu	GEC	tedavi-ML-DSA-65	accept-classical	accept-classical		tek-oracle
+REQ05_coklu_imzali_pq_soyuldu	L4	tedavi-ML-DSA-65	reject	reject	reject	A=B
+REQ05_coklu_imzali_pq_soyuldu	L4-S	tedavi-ML-DSA-65	reject	reject		tek-oracle
+REQ05_coklu_imzali_pq_soyuldu	L4-Y	tedavi-ML-DSA-65	reject	reject		tek-oracle
+REQ05_coklu_imzali_pq_soyuldu	P0	tedavi-ML-DSA-65	accept-classical	accept-classical	accept-classical	A=B
+REQ05_coklu_imzali_pq_soyuldu	P1	tedavi-ML-DSA-65	accept-classical	accept-classical		tek-oracle
+REQ05_coklu_imzali_pq_soyuldu	P2	tedavi-ML-DSA-65	accept-classical		accept-classical	tek-oracle
+REQ06_coklu_imzali_klasik_soyuldu	GEC	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+REQ06_coklu_imzali_klasik_soyuldu	L4	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid	accept-hybrid	A=B
+REQ06_coklu_imzali_klasik_soyuldu	L4-S	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+REQ06_coklu_imzali_klasik_soyuldu	L4-Y	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+REQ06_coklu_imzali_klasik_soyuldu	P0	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid	accept-hybrid	A=B
+REQ06_coklu_imzali_klasik_soyuldu	P1	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+REQ06_coklu_imzali_klasik_soyuldu	P2	tedavi-ML-DSA-65	accept-hybrid		accept-hybrid	tek-oracle
+REQ07_coklu_imzali_pq_bozuk	L4	tedavi-ML-DSA-65	reject	reject	reject	A=B
+REQ07_coklu_imzali_pq_bozuk	L4-S	tedavi-ML-DSA-65	reject	reject		tek-oracle
+REQ07_coklu_imzali_pq_bozuk	L4-Y	tedavi-ML-DSA-65	reject	reject		tek-oracle
+REQ07_coklu_imzali_pq_bozuk	P0	tedavi-ML-DSA-65	accept-classical	accept-classical	accept-classical	A=B
+REQ07_coklu_imzali_pq_bozuk	P1	tedavi-ML-DSA-65	reject	reject		tek-oracle
+REQ07_coklu_imzali_pq_bozuk	P2	tedavi-ML-DSA-65	reject		reject	tek-oracle
+REQ08_imzasiz_M-b0	GEC	tedavi-ML-DSA-65	accept-classical	accept-classical		tek-oracle
+REQ08_imzasiz_M-b0	L4	kontrol-Ed25519	indeterminate		indeterminate	tek-oracle
+REQ08_imzasiz_M-b0	L4	kontrol-EdDSA	indeterminate		indeterminate	tek-oracle
+REQ08_imzasiz_M-b0	L4	tedavi-ML-DSA-65	indeterminate	reject	indeterminate	A|B belirsiz
+REQ08_imzasiz_M-b0	L4	tedavi-composite	indeterminate		indeterminate	tek-oracle
+REQ08_imzasiz_M-b0	L4-S	tedavi-ML-DSA-65	reject	reject		tek-oracle
+REQ08_imzasiz_M-b0	L4-Y	tedavi-ML-DSA-65	reject	reject		tek-oracle
+REQ08_imzasiz_M-b0	P0	kontrol-Ed25519	accept-classical		accept-classical	tek-oracle
+REQ08_imzasiz_M-b0	P0	kontrol-EdDSA	accept-classical		accept-classical	tek-oracle
+REQ08_imzasiz_M-b0	P0	tedavi-ML-DSA-65	accept-classical		accept-classical	tek-oracle
+REQ08_imzasiz_M-b0	P0	tedavi-composite	accept-classical		accept-classical	tek-oracle
+REQ08_imzasiz_M-b0	P2	kontrol-Ed25519	accept-classical		accept-classical	tek-oracle
+REQ08_imzasiz_M-b0	P2	kontrol-EdDSA	accept-classical		accept-classical	tek-oracle
+REQ08_imzasiz_M-b0	P2	tedavi-ML-DSA-65	accept-classical		accept-classical	tek-oracle
+REQ08_imzasiz_M-b0	P2	tedavi-composite	accept-classical		accept-classical	tek-oracle
+REQ09_imzasiz_M-b0_client_id_korundu	GEC	tedavi-ML-DSA-65	accept-classical	accept-classical		tek-oracle
+REQ09_imzasiz_M-b0_client_id_korundu	L4	kontrol-Ed25519	indeterminate		indeterminate	tek-oracle
+REQ09_imzasiz_M-b0_client_id_korundu	L4	kontrol-EdDSA	indeterminate		indeterminate	tek-oracle
+REQ09_imzasiz_M-b0_client_id_korundu	L4	tedavi-ML-DSA-65	indeterminate	reject	indeterminate	A|B belirsiz
+REQ09_imzasiz_M-b0_client_id_korundu	L4	tedavi-composite	indeterminate		indeterminate	tek-oracle
+REQ09_imzasiz_M-b0_client_id_korundu	L4-S	tedavi-ML-DSA-65	reject	reject		tek-oracle
+REQ09_imzasiz_M-b0_client_id_korundu	L4-Y	tedavi-ML-DSA-65	reject	reject		tek-oracle
+REQ09_imzasiz_M-b0_client_id_korundu	P0	kontrol-Ed25519	accept-classical		accept-classical	tek-oracle
+REQ09_imzasiz_M-b0_client_id_korundu	P0	kontrol-EdDSA	accept-classical		accept-classical	tek-oracle
+REQ09_imzasiz_M-b0_client_id_korundu	P0	tedavi-ML-DSA-65	accept-classical		accept-classical	tek-oracle
+REQ09_imzasiz_M-b0_client_id_korundu	P0	tedavi-composite	accept-classical		accept-classical	tek-oracle
+REQ09_imzasiz_M-b0_client_id_korundu	P2	kontrol-Ed25519	accept-classical		accept-classical	tek-oracle
+REQ09_imzasiz_M-b0_client_id_korundu	P2	kontrol-EdDSA	accept-classical		accept-classical	tek-oracle
+REQ09_imzasiz_M-b0_client_id_korundu	P2	tedavi-ML-DSA-65	accept-classical		accept-classical	tek-oracle
+REQ09_imzasiz_M-b0_client_id_korundu	P2	tedavi-composite	accept-classical		accept-classical	tek-oracle
+REQ10_istek_alg_none	GEC	tedavi-ML-DSA-65	reject	reject		tek-oracle
+REQ10_istek_alg_none	L4	kontrol-Ed25519	reject		reject	tek-oracle
+REQ10_istek_alg_none	L4	kontrol-EdDSA	reject		reject	tek-oracle
+REQ10_istek_alg_none	L4	tedavi-ML-DSA-65	reject	reject	reject	A=B
+REQ10_istek_alg_none	L4	tedavi-composite	reject		reject	tek-oracle
+REQ10_istek_alg_none	L4-S	tedavi-ML-DSA-65	reject	reject		tek-oracle
+REQ10_istek_alg_none	L4-Y	tedavi-ML-DSA-65	reject	reject		tek-oracle
+REQ10_istek_alg_none	P0	kontrol-Ed25519	reject		reject	tek-oracle
+REQ10_istek_alg_none	P0	kontrol-EdDSA	reject		reject	tek-oracle
+REQ10_istek_alg_none	P0	tedavi-ML-DSA-65	reject		reject	tek-oracle
+REQ10_istek_alg_none	P0	tedavi-composite	reject		reject	tek-oracle
+REQ10_istek_alg_none	P2	kontrol-Ed25519	reject		reject	tek-oracle
+REQ10_istek_alg_none	P2	kontrol-EdDSA	reject		reject	tek-oracle
+REQ10_istek_alg_none	P2	tedavi-ML-DSA-65	reject		reject	tek-oracle
+REQ10_istek_alg_none	P2	tedavi-composite	reject		reject	tek-oracle
+T1C_both_valid	L4	tedavi-composite	accept-hybrid	accept-hybrid	accept-hybrid	A=B
+T1C_both_valid	L4-S	tedavi-composite	accept-hybrid	accept-hybrid		tek-oracle
+T1C_both_valid	L4-Y	tedavi-composite	accept-hybrid	accept-hybrid		tek-oracle
+T1C_both_valid	P0	tedavi-composite	accept-classical	accept-classical	accept-classical	A=B
+T1C_both_valid	P1	tedavi-composite	accept-hybrid	accept-hybrid		tek-oracle
+T1C_both_valid	P2	tedavi-composite	accept-hybrid		accept-hybrid	tek-oracle
+T1C_both_valid-SIRA-ters	L4	tedavi-composite	accept-hybrid	accept-hybrid	accept-hybrid	A=B
+T1C_both_valid-SIRA-ters	L4-S	tedavi-composite	accept-hybrid	accept-hybrid		tek-oracle
+T1C_both_valid-SIRA-ters	L4-Y	tedavi-composite	accept-hybrid	accept-hybrid		tek-oracle
+T1C_both_valid-SIRA-ters	P0	tedavi-composite	accept-classical	accept-classical	accept-classical	A=B
+T1C_both_valid-SIRA-ters	P1	tedavi-composite	accept-hybrid	accept-hybrid		tek-oracle
+T1C_both_valid-SIRA-ters	P2	tedavi-composite	accept-hybrid		accept-hybrid	tek-oracle
+T1K_both_valid	L4	kontrol-EdDSA	accept-classical	accept-classical	accept-classical	A=B
+T1K_both_valid	L4-S	kontrol-EdDSA	accept-classical	accept-classical		tek-oracle
+T1K_both_valid	L4-Y	kontrol-EdDSA	accept-classical	accept-classical		tek-oracle
+T1K_both_valid	P0	kontrol-EdDSA	accept-classical	accept-classical	accept-classical	A=B
+T1K_both_valid	P1	kontrol-EdDSA	accept-classical	accept-classical		tek-oracle
+T1K_both_valid	P2	kontrol-EdDSA	accept-classical		accept-classical	tek-oracle
+T1K_both_valid-ED25519	L4	kontrol-Ed25519	accept-classical	accept-classical	accept-classical	A=B
+T1K_both_valid-ED25519	L4-S	kontrol-Ed25519	accept-classical	accept-classical		tek-oracle
+T1K_both_valid-ED25519	L4-Y	kontrol-Ed25519	accept-classical	accept-classical		tek-oracle
+T1K_both_valid-ED25519	P0	kontrol-Ed25519	accept-classical	accept-classical	accept-classical	A=B
+T1K_both_valid-ED25519	P1	kontrol-Ed25519	accept-classical	accept-classical		tek-oracle
+T1K_both_valid-ED25519	P2	kontrol-Ed25519	accept-classical		accept-classical	tek-oracle
+T1K_both_valid-SIRA-ters	L4	kontrol-EdDSA	accept-classical	accept-classical	accept-classical	A=B
+T1K_both_valid-SIRA-ters	L4-S	kontrol-EdDSA	accept-classical	accept-classical		tek-oracle
+T1K_both_valid-SIRA-ters	L4-Y	kontrol-EdDSA	accept-classical	accept-classical		tek-oracle
+T1K_both_valid-SIRA-ters	P0	kontrol-EdDSA	accept-classical	accept-classical	accept-classical	A=B
+T1K_both_valid-SIRA-ters	P1	kontrol-EdDSA	accept-classical	accept-classical		tek-oracle
+T1K_both_valid-SIRA-ters	P2	kontrol-EdDSA	accept-classical		accept-classical	tek-oracle
+T1K_both_valid-SIRA-ters-ED25519	L4	kontrol-Ed25519	accept-classical	accept-classical	accept-classical	A=B
+T1K_both_valid-SIRA-ters-ED25519	L4-S	kontrol-Ed25519	accept-classical	accept-classical		tek-oracle
+T1K_both_valid-SIRA-ters-ED25519	L4-Y	kontrol-Ed25519	accept-classical	accept-classical		tek-oracle
+T1K_both_valid-SIRA-ters-ED25519	P0	kontrol-Ed25519	accept-classical	accept-classical	accept-classical	A=B
+T1K_both_valid-SIRA-ters-ED25519	P1	kontrol-Ed25519	accept-classical	accept-classical		tek-oracle
+T1K_both_valid-SIRA-ters-ED25519	P2	kontrol-Ed25519	accept-classical		accept-classical	tek-oracle
+T1P_both_valid	L4	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid	accept-hybrid	A=B
+T1P_both_valid	L4-S	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+T1P_both_valid	L4-Y	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+T1P_both_valid	P0	tedavi-ML-DSA-65	accept-classical	accept-classical	accept-classical	A=B
+T1P_both_valid	P1	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+T1P_both_valid	P2	tedavi-ML-DSA-65	accept-hybrid		accept-hybrid	tek-oracle
+T1P_both_valid-SIRA-ters	L4	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid	accept-hybrid	A=B
+T1P_both_valid-SIRA-ters	L4-S	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+T1P_both_valid-SIRA-ters	L4-Y	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+T1P_both_valid-SIRA-ters	P0	tedavi-ML-DSA-65	accept-classical	accept-classical	accept-classical	A=B
+T1P_both_valid-SIRA-ters	P1	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+T1P_both_valid-SIRA-ters	P2	tedavi-ML-DSA-65	accept-hybrid		accept-hybrid	tek-oracle
+T2C_second_tampered	L4	tedavi-composite	reject	reject	reject	A=B
+T2C_second_tampered	L4-S	tedavi-composite	reject	reject		tek-oracle
+T2C_second_tampered	L4-Y	tedavi-composite	reject	reject		tek-oracle
+T2C_second_tampered	P0	tedavi-composite	accept-classical	accept-classical	accept-classical	A=B
+T2C_second_tampered	P1	tedavi-composite	reject	reject		tek-oracle
+T2C_second_tampered	P2	tedavi-composite	reject		reject	tek-oracle
+T2C_second_tampered-SIRA-ters	L4	tedavi-composite	reject	reject	reject	A=B
+T2C_second_tampered-SIRA-ters	L4-S	tedavi-composite	reject	reject		tek-oracle
+T2C_second_tampered-SIRA-ters	L4-Y	tedavi-composite	reject	reject		tek-oracle
+T2C_second_tampered-SIRA-ters	P0	tedavi-composite	accept-classical	accept-classical	accept-classical	A=B
+T2C_second_tampered-SIRA-ters	P1	tedavi-composite	reject	reject		tek-oracle
+T2C_second_tampered-SIRA-ters	P2	tedavi-composite	reject		reject	tek-oracle
+T2K_second_tampered	L4	kontrol-EdDSA	reject	reject	reject	A=B
+T2K_second_tampered	L4-S	kontrol-EdDSA	reject	reject		tek-oracle
+T2K_second_tampered	L4-Y	kontrol-EdDSA	reject	reject		tek-oracle
+T2K_second_tampered	P0	kontrol-EdDSA	accept-classical	accept-classical	accept-classical	A=B
+T2K_second_tampered	P1	kontrol-EdDSA	reject	reject		tek-oracle
+T2K_second_tampered	P2	kontrol-EdDSA	reject		reject	tek-oracle
+T2K_second_tampered-ED25519	L4	kontrol-Ed25519	reject	reject	reject	A=B
+T2K_second_tampered-ED25519	L4-S	kontrol-Ed25519	reject	reject		tek-oracle
+T2K_second_tampered-ED25519	L4-Y	kontrol-Ed25519	reject	reject		tek-oracle
+T2K_second_tampered-ED25519	P0	kontrol-Ed25519	accept-classical	accept-classical	accept-classical	A=B
+T2K_second_tampered-ED25519	P1	kontrol-Ed25519	reject	reject		tek-oracle
+T2K_second_tampered-ED25519	P2	kontrol-Ed25519	reject		reject	tek-oracle
+T2K_second_tampered-SIRA-ters	L4	kontrol-EdDSA	reject	reject	reject	A=B
+T2K_second_tampered-SIRA-ters	L4-S	kontrol-EdDSA	reject	reject		tek-oracle
+T2K_second_tampered-SIRA-ters	L4-Y	kontrol-EdDSA	reject	reject		tek-oracle
+T2K_second_tampered-SIRA-ters	P0	kontrol-EdDSA	accept-classical	accept-classical	accept-classical	A=B
+T2K_second_tampered-SIRA-ters	P1	kontrol-EdDSA	reject	reject		tek-oracle
+T2K_second_tampered-SIRA-ters	P2	kontrol-EdDSA	reject		reject	tek-oracle
+T2K_second_tampered-SIRA-ters-ED25519	L4	kontrol-Ed25519	reject	reject	reject	A=B
+T2K_second_tampered-SIRA-ters-ED25519	L4-S	kontrol-Ed25519	reject	reject		tek-oracle
+T2K_second_tampered-SIRA-ters-ED25519	L4-Y	kontrol-Ed25519	reject	reject		tek-oracle
+T2K_second_tampered-SIRA-ters-ED25519	P0	kontrol-Ed25519	accept-classical	accept-classical	accept-classical	A=B
+T2K_second_tampered-SIRA-ters-ED25519	P1	kontrol-Ed25519	reject	reject		tek-oracle
+T2K_second_tampered-SIRA-ters-ED25519	P2	kontrol-Ed25519	reject		reject	tek-oracle
+T2P_second_tampered	L4	tedavi-ML-DSA-65	reject	reject	reject	A=B
+T2P_second_tampered	L4-S	tedavi-ML-DSA-65	reject	reject		tek-oracle
+T2P_second_tampered	L4-Y	tedavi-ML-DSA-65	reject	reject		tek-oracle
+T2P_second_tampered	P0	tedavi-ML-DSA-65	accept-classical	accept-classical	accept-classical	A=B
+T2P_second_tampered	P1	tedavi-ML-DSA-65	reject	reject		tek-oracle
+T2P_second_tampered	P2	tedavi-ML-DSA-65	reject		reject	tek-oracle
+T2P_second_tampered-SIRA-ters	L4	tedavi-ML-DSA-65	reject	reject	reject	A=B
+T2P_second_tampered-SIRA-ters	L4-S	tedavi-ML-DSA-65	reject	reject		tek-oracle
+T2P_second_tampered-SIRA-ters	L4-Y	tedavi-ML-DSA-65	reject	reject		tek-oracle
+T2P_second_tampered-SIRA-ters	P0	tedavi-ML-DSA-65	accept-classical	accept-classical	accept-classical	A=B
+T2P_second_tampered-SIRA-ters	P1	tedavi-ML-DSA-65	reject	reject		tek-oracle
+T2P_second_tampered-SIRA-ters	P2	tedavi-ML-DSA-65	reject		reject	tek-oracle
+T3_stripped_to_ES256	GEC	kontrol-Ed25519	accept-classical	accept-classical		tek-oracle
+T3_stripped_to_ES256	GEC	kontrol-EdDSA	accept-classical	accept-classical		tek-oracle
+T3_stripped_to_ES256	GEC	tedavi-ML-DSA-65	accept-classical	accept-classical		tek-oracle
+T3_stripped_to_ES256	GEC	tedavi-composite	accept-classical	accept-classical		tek-oracle
+T3_stripped_to_ES256	IZIN-A	kontrol-Ed25519	accept-classical	accept-classical		tek-oracle
+T3_stripped_to_ES256	IZIN-A	kontrol-EdDSA	accept-classical	accept-classical		tek-oracle
+T3_stripped_to_ES256	IZIN-A	tedavi-ML-DSA-65	accept-classical	accept-classical		tek-oracle
+T3_stripped_to_ES256	IZIN-A	tedavi-composite	accept-classical	accept-classical		tek-oracle
+T3_stripped_to_ES256	IZIN-AX	kontrol-Ed25519	accept-classical	accept-classical		tek-oracle
+T3_stripped_to_ES256	IZIN-AX	kontrol-EdDSA	accept-classical	accept-classical		tek-oracle
+T3_stripped_to_ES256	IZIN-AX	tedavi-ML-DSA-65	accept-classical	accept-classical		tek-oracle
+T3_stripped_to_ES256	IZIN-AX	tedavi-composite	accept-classical	accept-classical		tek-oracle
+T3_stripped_to_ES256	L4	kontrol-Ed25519	reject	reject	reject	A=B
+T3_stripped_to_ES256	L4	kontrol-EdDSA	reject	reject	reject	A=B
+T3_stripped_to_ES256	L4	tedavi-ML-DSA-65	reject	reject	reject	A=B
+T3_stripped_to_ES256	L4	tedavi-composite	reject	reject	reject	A=B
+T3_stripped_to_ES256	L4-S	kontrol-Ed25519	reject	reject		tek-oracle
+T3_stripped_to_ES256	L4-S	kontrol-EdDSA	reject	reject		tek-oracle
+T3_stripped_to_ES256	L4-S	tedavi-ML-DSA-65	reject	reject		tek-oracle
+T3_stripped_to_ES256	L4-S	tedavi-composite	reject	reject		tek-oracle
+T3_stripped_to_ES256	L4-Y	kontrol-Ed25519	reject	reject		tek-oracle
+T3_stripped_to_ES256	L4-Y	kontrol-EdDSA	reject	reject		tek-oracle
+T3_stripped_to_ES256	L4-Y	tedavi-ML-DSA-65	reject	reject		tek-oracle
+T3_stripped_to_ES256	L4-Y	tedavi-composite	reject	reject		tek-oracle
+T3_stripped_to_ES256	P0	kontrol-Ed25519	accept-classical	accept-classical	accept-classical	A=B
+T3_stripped_to_ES256	P0	kontrol-EdDSA	accept-classical	accept-classical	accept-classical	A=B
+T3_stripped_to_ES256	P0	tedavi-ML-DSA-65	accept-classical	accept-classical	accept-classical	A=B
+T3_stripped_to_ES256	P0	tedavi-composite	accept-classical	accept-classical	accept-classical	A=B
+T3_stripped_to_ES256	P1	kontrol-Ed25519	accept-classical	accept-classical		tek-oracle
+T3_stripped_to_ES256	P1	kontrol-EdDSA	accept-classical	accept-classical		tek-oracle
+T3_stripped_to_ES256	P1	tedavi-ML-DSA-65	accept-classical	accept-classical		tek-oracle
+T3_stripped_to_ES256	P1	tedavi-composite	accept-classical	accept-classical		tek-oracle
+T3_stripped_to_ES256	P2	kontrol-Ed25519	accept-classical		accept-classical	tek-oracle
+T3_stripped_to_ES256	P2	kontrol-EdDSA	accept-classical		accept-classical	tek-oracle
+T3_stripped_to_ES256	P2	tedavi-ML-DSA-65	accept-classical		accept-classical	tek-oracle
+T3_stripped_to_ES256	P2	tedavi-composite	accept-classical		accept-classical	tek-oracle
+T4C_plus_ML-DSA-65	L4	tedavi-composite	B1-bayragi	indeterminate	reject	madde-8
+T4C_plus_ML-DSA-65	L4-S	tedavi-composite	B1-bayragi	reject		madde-8
+T4C_plus_ML-DSA-65	L4-Y	tedavi-composite	B1-bayragi	accept-hybrid		madde-8
+T4C_plus_ML-DSA-65	P0	tedavi-composite	indeterminate	accept-classical	accept-hybrid	A≠B
+T4C_plus_ML-DSA-65	P1	tedavi-composite	accept-hybrid	accept-hybrid		tek-oracle
+T4C_plus_ML-DSA-65	P2	tedavi-composite	reject		reject	tek-oracle
+T4C_plus_ML-DSA-65-SIRA-ek-once	L4	tedavi-composite	B1-bayragi	indeterminate	reject	madde-8
+T4C_plus_ML-DSA-65-SIRA-ek-once	L4-S	tedavi-composite	B1-bayragi	reject		madde-8
+T4C_plus_ML-DSA-65-SIRA-ek-once	L4-Y	tedavi-composite	B1-bayragi	accept-hybrid		madde-8
+T4C_plus_ML-DSA-65-SIRA-ek-once	P0	tedavi-composite	indeterminate	accept-classical	accept-hybrid	A≠B
+T4C_plus_ML-DSA-65-SIRA-ek-once	P1	tedavi-composite	accept-hybrid	accept-hybrid		tek-oracle
+T4C_plus_ML-DSA-65-SIRA-ek-once	P2	tedavi-composite	reject		reject	tek-oracle
+T4C_plus_ML-DSA-65-SIRA-ters	L4	tedavi-composite	B1-bayragi	indeterminate	reject	madde-8
+T4C_plus_ML-DSA-65-SIRA-ters	L4-S	tedavi-composite	B1-bayragi	reject		madde-8
+T4C_plus_ML-DSA-65-SIRA-ters	L4-Y	tedavi-composite	B1-bayragi	accept-hybrid		madde-8
+T4C_plus_ML-DSA-65-SIRA-ters	P0	tedavi-composite	indeterminate	accept-classical	accept-hybrid	A≠B
+T4C_plus_ML-DSA-65-SIRA-ters	P1	tedavi-composite	accept-hybrid	accept-hybrid		tek-oracle
+T4C_plus_ML-DSA-65-SIRA-ters	P2	tedavi-composite	reject		reject	tek-oracle
+T4K_plus_ML-DSA-65	L4	kontrol-EdDSA	B1-bayragi	indeterminate	reject	madde-8
+T4K_plus_ML-DSA-65	L4-S	kontrol-EdDSA	B1-bayragi	reject		madde-8
+T4K_plus_ML-DSA-65	L4-Y	kontrol-EdDSA	B1-bayragi	accept-classical		madde-8
+T4K_plus_ML-DSA-65	P0	kontrol-EdDSA	accept-classical	accept-classical	accept-classical	A=B
+T4K_plus_ML-DSA-65	P1	kontrol-EdDSA	accept-hybrid	accept-hybrid		tek-oracle
+T4K_plus_ML-DSA-65	P2	kontrol-EdDSA	reject		reject	tek-oracle
+T4K_plus_ML-DSA-65-ED25519	L4	kontrol-Ed25519	B1-bayragi	indeterminate	reject	madde-8
+T4K_plus_ML-DSA-65-ED25519	L4-S	kontrol-Ed25519	B1-bayragi	reject		madde-8
+T4K_plus_ML-DSA-65-ED25519	L4-Y	kontrol-Ed25519	B1-bayragi	accept-classical		madde-8
+T4K_plus_ML-DSA-65-ED25519	P0	kontrol-Ed25519	accept-classical	accept-classical	accept-classical	A=B
+T4K_plus_ML-DSA-65-ED25519	P1	kontrol-Ed25519	accept-hybrid	accept-hybrid		tek-oracle
+T4K_plus_ML-DSA-65-ED25519	P2	kontrol-Ed25519	reject		reject	tek-oracle
+T4K_plus_ML-DSA-65-SIRA-ek-once	L4	kontrol-EdDSA	B1-bayragi	indeterminate	reject	madde-8
+T4K_plus_ML-DSA-65-SIRA-ek-once	L4-S	kontrol-EdDSA	B1-bayragi	reject		madde-8
+T4K_plus_ML-DSA-65-SIRA-ek-once	L4-Y	kontrol-EdDSA	B1-bayragi	accept-classical		madde-8
+T4K_plus_ML-DSA-65-SIRA-ek-once	P0	kontrol-EdDSA	accept-classical	accept-classical	accept-classical	A=B
+T4K_plus_ML-DSA-65-SIRA-ek-once	P1	kontrol-EdDSA	accept-hybrid	accept-hybrid		tek-oracle
+T4K_plus_ML-DSA-65-SIRA-ek-once	P2	kontrol-EdDSA	reject		reject	tek-oracle
+T4K_plus_ML-DSA-65-SIRA-ek-once-ED25519	L4	kontrol-Ed25519	B1-bayragi	indeterminate	reject	madde-8
+T4K_plus_ML-DSA-65-SIRA-ek-once-ED25519	L4-S	kontrol-Ed25519	B1-bayragi	reject		madde-8
+T4K_plus_ML-DSA-65-SIRA-ek-once-ED25519	L4-Y	kontrol-Ed25519	B1-bayragi	accept-classical		madde-8
+T4K_plus_ML-DSA-65-SIRA-ek-once-ED25519	P0	kontrol-Ed25519	accept-classical	accept-classical	accept-classical	A=B
+T4K_plus_ML-DSA-65-SIRA-ek-once-ED25519	P1	kontrol-Ed25519	accept-hybrid	accept-hybrid		tek-oracle
+T4K_plus_ML-DSA-65-SIRA-ek-once-ED25519	P2	kontrol-Ed25519	reject		reject	tek-oracle
+T4K_plus_ML-DSA-65-SIRA-ters	L4	kontrol-EdDSA	B1-bayragi	indeterminate	reject	madde-8
+T4K_plus_ML-DSA-65-SIRA-ters	L4-S	kontrol-EdDSA	B1-bayragi	reject		madde-8
+T4K_plus_ML-DSA-65-SIRA-ters	L4-Y	kontrol-EdDSA	B1-bayragi	accept-classical		madde-8
+T4K_plus_ML-DSA-65-SIRA-ters	P0	kontrol-EdDSA	accept-classical	accept-classical	accept-classical	A=B
+T4K_plus_ML-DSA-65-SIRA-ters	P1	kontrol-EdDSA	accept-hybrid	accept-hybrid		tek-oracle
+T4K_plus_ML-DSA-65-SIRA-ters	P2	kontrol-EdDSA	reject		reject	tek-oracle
+T4K_plus_ML-DSA-65-SIRA-ters-ED25519	L4	kontrol-Ed25519	B1-bayragi	indeterminate	reject	madde-8
+T4K_plus_ML-DSA-65-SIRA-ters-ED25519	L4-S	kontrol-Ed25519	B1-bayragi	reject		madde-8
+T4K_plus_ML-DSA-65-SIRA-ters-ED25519	L4-Y	kontrol-Ed25519	B1-bayragi	accept-classical		madde-8
+T4K_plus_ML-DSA-65-SIRA-ters-ED25519	P0	kontrol-Ed25519	accept-classical	accept-classical	accept-classical	A=B
+T4K_plus_ML-DSA-65-SIRA-ters-ED25519	P1	kontrol-Ed25519	accept-hybrid	accept-hybrid		tek-oracle
+T4K_plus_ML-DSA-65-SIRA-ters-ED25519	P2	kontrol-Ed25519	reject		reject	tek-oracle
+T4P_plus_ML-DSA-65-ES256	L4	tedavi-ML-DSA-65	B1-bayragi	indeterminate	reject	madde-8
+T4P_plus_ML-DSA-65-ES256	L4-S	tedavi-ML-DSA-65	B1-bayragi	reject		madde-8
+T4P_plus_ML-DSA-65-ES256	L4-Y	tedavi-ML-DSA-65	B1-bayragi	accept-hybrid		madde-8
+T4P_plus_ML-DSA-65-ES256	P0	tedavi-ML-DSA-65	indeterminate	accept-classical	accept-hybrid	A≠B
+T4P_plus_ML-DSA-65-ES256	P1	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+T4P_plus_ML-DSA-65-ES256	P2	tedavi-ML-DSA-65	reject		reject	tek-oracle
+T4P_plus_ML-DSA-65-ES256-SIRA-ek-once	L4	tedavi-ML-DSA-65	B1-bayragi	indeterminate	reject	madde-8
+T4P_plus_ML-DSA-65-ES256-SIRA-ek-once	L4-S	tedavi-ML-DSA-65	B1-bayragi	reject		madde-8
+T4P_plus_ML-DSA-65-ES256-SIRA-ek-once	L4-Y	tedavi-ML-DSA-65	B1-bayragi	accept-hybrid		madde-8
+T4P_plus_ML-DSA-65-ES256-SIRA-ek-once	P0	tedavi-ML-DSA-65	indeterminate	accept-classical	accept-hybrid	A≠B
+T4P_plus_ML-DSA-65-ES256-SIRA-ek-once	P1	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+T4P_plus_ML-DSA-65-ES256-SIRA-ek-once	P2	tedavi-ML-DSA-65	reject		reject	tek-oracle
+T4P_plus_ML-DSA-65-ES256-SIRA-ters	L4	tedavi-ML-DSA-65	B1-bayragi	indeterminate	reject	madde-8
+T4P_plus_ML-DSA-65-ES256-SIRA-ters	L4-S	tedavi-ML-DSA-65	B1-bayragi	reject		madde-8
+T4P_plus_ML-DSA-65-ES256-SIRA-ters	L4-Y	tedavi-ML-DSA-65	B1-bayragi	accept-hybrid		madde-8
+T4P_plus_ML-DSA-65-ES256-SIRA-ters	P0	tedavi-ML-DSA-65	indeterminate	accept-classical	accept-hybrid	A≠B
+T4P_plus_ML-DSA-65-ES256-SIRA-ters	P1	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+T4P_plus_ML-DSA-65-ES256-SIRA-ters	P2	tedavi-ML-DSA-65	reject		reject	tek-oracle
+T5C_only_ML-DSA-65-ES256	GEC	tedavi-composite	accept-hybrid	accept-hybrid		tek-oracle
+T5C_only_ML-DSA-65-ES256	IZIN-A	tedavi-composite	reject	reject		tek-oracle
+T5C_only_ML-DSA-65-ES256	IZIN-AX	tedavi-composite	accept-hybrid	accept-hybrid		tek-oracle
+T5C_only_ML-DSA-65-ES256	L4	tedavi-composite	accept-hybrid	accept-hybrid	accept-hybrid	A=B
+T5C_only_ML-DSA-65-ES256	L4-S	tedavi-composite	accept-hybrid	accept-hybrid		tek-oracle
+T5C_only_ML-DSA-65-ES256	L4-Y	tedavi-composite	accept-hybrid	accept-hybrid		tek-oracle
+T5C_only_ML-DSA-65-ES256	P0	tedavi-composite	accept-hybrid	accept-hybrid	accept-hybrid	A=B
+T5C_only_ML-DSA-65-ES256	P1	tedavi-composite	accept-hybrid	accept-hybrid		tek-oracle
+T5C_only_ML-DSA-65-ES256	P2	tedavi-composite	accept-hybrid		accept-hybrid	tek-oracle
+T5K_only_EdDSA	GEC	kontrol-EdDSA	accept-classical	accept-classical		tek-oracle
+T5K_only_EdDSA	IZIN-A	kontrol-EdDSA	reject	reject		tek-oracle
+T5K_only_EdDSA	IZIN-AX	kontrol-EdDSA	accept-classical	accept-classical		tek-oracle
+T5K_only_EdDSA	L4	kontrol-EdDSA	accept-classical	accept-classical	accept-classical	A=B
+T5K_only_EdDSA	L4-S	kontrol-EdDSA	accept-classical	accept-classical		tek-oracle
+T5K_only_EdDSA	L4-Y	kontrol-EdDSA	accept-classical	accept-classical		tek-oracle
+T5K_only_EdDSA	P0	kontrol-EdDSA	accept-classical	accept-classical	accept-classical	A=B
+T5K_only_EdDSA	P1	kontrol-EdDSA	accept-classical	accept-classical		tek-oracle
+T5K_only_EdDSA	P2	kontrol-EdDSA	accept-classical		accept-classical	tek-oracle
+T5K_only_EdDSA-ED25519	GEC	kontrol-Ed25519	accept-classical	accept-classical		tek-oracle
+T5K_only_EdDSA-ED25519	IZIN-A	kontrol-Ed25519	reject	reject		tek-oracle
+T5K_only_EdDSA-ED25519	IZIN-AX	kontrol-Ed25519	accept-classical	accept-classical		tek-oracle
+T5K_only_EdDSA-ED25519	L4	kontrol-Ed25519	accept-classical	accept-classical	accept-classical	A=B
+T5K_only_EdDSA-ED25519	L4-S	kontrol-Ed25519	accept-classical	accept-classical		tek-oracle
+T5K_only_EdDSA-ED25519	L4-Y	kontrol-Ed25519	accept-classical	accept-classical		tek-oracle
+T5K_only_EdDSA-ED25519	P0	kontrol-Ed25519	accept-classical	accept-classical	accept-classical	A=B
+T5K_only_EdDSA-ED25519	P1	kontrol-Ed25519	accept-classical	accept-classical		tek-oracle
+T5K_only_EdDSA-ED25519	P2	kontrol-Ed25519	accept-classical		accept-classical	tek-oracle
+T5P_only_ML-DSA-65	GEC	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+T5P_only_ML-DSA-65	IZIN-A	tedavi-ML-DSA-65	reject	reject		tek-oracle
+T5P_only_ML-DSA-65	IZIN-AX	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+T5P_only_ML-DSA-65	L4	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid	accept-hybrid	A=B
+T5P_only_ML-DSA-65	L4-S	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+T5P_only_ML-DSA-65	L4-Y	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+T5P_only_ML-DSA-65	P0	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid	accept-hybrid	A=B
+T5P_only_ML-DSA-65	P1	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+T5P_only_ML-DSA-65	P2	tedavi-ML-DSA-65	accept-hybrid		accept-hybrid	tek-oracle
+T6_plus_composite	L4	kontrol-EdDSA	B1-bayragi	indeterminate	reject	madde-8
+T6_plus_composite	L4-S	kontrol-EdDSA	B1-bayragi	reject		madde-8
+T6_plus_composite	L4-Y	kontrol-EdDSA	B1-bayragi	accept-classical		madde-8
+T6_plus_composite	P0	kontrol-EdDSA	accept-classical	accept-classical	accept-classical	A=B
+T6_plus_composite	P1	kontrol-EdDSA	accept-hybrid	accept-hybrid		tek-oracle
+T6_plus_composite	P2	kontrol-EdDSA	reject		reject	tek-oracle
+T6_plus_composite-ED25519	L4	kontrol-Ed25519	B1-bayragi	indeterminate	reject	madde-8
+T6_plus_composite-ED25519	L4-S	kontrol-Ed25519	B1-bayragi	reject		madde-8
+T6_plus_composite-ED25519	L4-Y	kontrol-Ed25519	B1-bayragi	accept-classical		madde-8
+T6_plus_composite-ED25519	P0	kontrol-Ed25519	accept-classical	accept-classical	accept-classical	A=B
+T6_plus_composite-ED25519	P1	kontrol-Ed25519	accept-hybrid	accept-hybrid		tek-oracle
+T6_plus_composite-ED25519	P2	kontrol-Ed25519	reject		reject	tek-oracle
+T6_plus_composite-SIRA-ek-once	L4	kontrol-EdDSA	B1-bayragi	indeterminate	reject	madde-8
+T6_plus_composite-SIRA-ek-once	L4-S	kontrol-EdDSA	B1-bayragi	reject		madde-8
+T6_plus_composite-SIRA-ek-once	L4-Y	kontrol-EdDSA	B1-bayragi	accept-classical		madde-8
+T6_plus_composite-SIRA-ek-once	P0	kontrol-EdDSA	accept-classical	accept-classical	accept-classical	A=B
+T6_plus_composite-SIRA-ek-once	P1	kontrol-EdDSA	accept-hybrid	accept-hybrid		tek-oracle
+T6_plus_composite-SIRA-ek-once	P2	kontrol-EdDSA	reject		reject	tek-oracle
+T6_plus_composite-SIRA-ek-once-ED25519	L4	kontrol-Ed25519	B1-bayragi	indeterminate	reject	madde-8
+T6_plus_composite-SIRA-ek-once-ED25519	L4-S	kontrol-Ed25519	B1-bayragi	reject		madde-8
+T6_plus_composite-SIRA-ek-once-ED25519	L4-Y	kontrol-Ed25519	B1-bayragi	accept-classical		madde-8
+T6_plus_composite-SIRA-ek-once-ED25519	P0	kontrol-Ed25519	accept-classical	accept-classical	accept-classical	A=B
+T6_plus_composite-SIRA-ek-once-ED25519	P1	kontrol-Ed25519	accept-hybrid	accept-hybrid		tek-oracle
+T6_plus_composite-SIRA-ek-once-ED25519	P2	kontrol-Ed25519	reject		reject	tek-oracle
+T6_plus_composite-SIRA-ters	L4	kontrol-EdDSA	B1-bayragi	indeterminate	reject	madde-8
+T6_plus_composite-SIRA-ters	L4-S	kontrol-EdDSA	B1-bayragi	reject		madde-8
+T6_plus_composite-SIRA-ters	L4-Y	kontrol-EdDSA	B1-bayragi	accept-classical		madde-8
+T6_plus_composite-SIRA-ters	P0	kontrol-EdDSA	accept-classical	accept-classical	accept-classical	A=B
+T6_plus_composite-SIRA-ters	P1	kontrol-EdDSA	accept-hybrid	accept-hybrid		tek-oracle
+T6_plus_composite-SIRA-ters	P2	kontrol-EdDSA	reject		reject	tek-oracle
+T6_plus_composite-SIRA-ters-ED25519	L4	kontrol-Ed25519	B1-bayragi	indeterminate	reject	madde-8
+T6_plus_composite-SIRA-ters-ED25519	L4-S	kontrol-Ed25519	B1-bayragi	reject		madde-8
+T6_plus_composite-SIRA-ters-ED25519	L4-Y	kontrol-Ed25519	B1-bayragi	accept-classical		madde-8
+T6_plus_composite-SIRA-ters-ED25519	P0	kontrol-Ed25519	accept-classical	accept-classical	accept-classical	A=B
+T6_plus_composite-SIRA-ters-ED25519	P1	kontrol-Ed25519	accept-hybrid	accept-hybrid		tek-oracle
+T6_plus_composite-SIRA-ters-ED25519	P2	kontrol-Ed25519	reject		reject	tek-oracle
+T7C_plus_kayitsiz	L4	tedavi-composite	B1-bayragi	indeterminate	reject	madde-8
+T7C_plus_kayitsiz	L4-S	tedavi-composite	B1-bayragi	reject		madde-8
+T7C_plus_kayitsiz	L4-Y	tedavi-composite	B1-bayragi	accept-hybrid		madde-8
+T7C_plus_kayitsiz	P0	tedavi-composite	accept-classical	accept-classical	accept-classical	A=B
+T7C_plus_kayitsiz	P1	tedavi-composite	reject	reject		tek-oracle
+T7C_plus_kayitsiz	P2	tedavi-composite	reject		reject	tek-oracle
+T7C_plus_kayitsiz-SIRA-kayitsiz-once	L4	tedavi-composite	B1-bayragi	indeterminate	reject	madde-8
+T7C_plus_kayitsiz-SIRA-kayitsiz-once	L4-S	tedavi-composite	B1-bayragi	reject		madde-8
+T7C_plus_kayitsiz-SIRA-kayitsiz-once	L4-Y	tedavi-composite	B1-bayragi	accept-hybrid		madde-8
+T7C_plus_kayitsiz-SIRA-kayitsiz-once	P0	tedavi-composite	accept-classical	accept-classical	accept-classical	A=B
+T7C_plus_kayitsiz-SIRA-kayitsiz-once	P1	tedavi-composite	reject	reject		tek-oracle
+T7C_plus_kayitsiz-SIRA-kayitsiz-once	P2	tedavi-composite	reject		reject	tek-oracle
+T7C_plus_kayitsiz-SIRA-ters	L4	tedavi-composite	B1-bayragi	indeterminate	reject	madde-8
+T7C_plus_kayitsiz-SIRA-ters	L4-S	tedavi-composite	B1-bayragi	reject		madde-8
+T7C_plus_kayitsiz-SIRA-ters	L4-Y	tedavi-composite	B1-bayragi	accept-hybrid		madde-8
+T7C_plus_kayitsiz-SIRA-ters	P0	tedavi-composite	accept-classical	accept-classical	accept-classical	A=B
+T7C_plus_kayitsiz-SIRA-ters	P1	tedavi-composite	reject	reject		tek-oracle
+T7C_plus_kayitsiz-SIRA-ters	P2	tedavi-composite	reject		reject	tek-oracle
+T7K_plus_kayitsiz	L4	kontrol-EdDSA	B1-bayragi	indeterminate	reject	madde-8
+T7K_plus_kayitsiz	L4-S	kontrol-EdDSA	B1-bayragi	reject		madde-8
+T7K_plus_kayitsiz	L4-Y	kontrol-EdDSA	B1-bayragi	accept-classical		madde-8
+T7K_plus_kayitsiz	P0	kontrol-EdDSA	accept-classical	accept-classical	accept-classical	A=B
+T7K_plus_kayitsiz	P1	kontrol-EdDSA	reject	reject		tek-oracle
+T7K_plus_kayitsiz	P2	kontrol-EdDSA	reject		reject	tek-oracle
+T7K_plus_kayitsiz-ED25519	L4	kontrol-Ed25519	B1-bayragi	indeterminate	reject	madde-8
+T7K_plus_kayitsiz-ED25519	L4-S	kontrol-Ed25519	B1-bayragi	reject		madde-8
+T7K_plus_kayitsiz-ED25519	L4-Y	kontrol-Ed25519	B1-bayragi	accept-classical		madde-8
+T7K_plus_kayitsiz-ED25519	P0	kontrol-Ed25519	accept-classical	accept-classical	accept-classical	A=B
+T7K_plus_kayitsiz-ED25519	P1	kontrol-Ed25519	reject	reject		tek-oracle
+T7K_plus_kayitsiz-ED25519	P2	kontrol-Ed25519	reject		reject	tek-oracle
+T7K_plus_kayitsiz-SIRA-kayitsiz-once	L4	kontrol-EdDSA	B1-bayragi	indeterminate	reject	madde-8
+T7K_plus_kayitsiz-SIRA-kayitsiz-once	L4-S	kontrol-EdDSA	B1-bayragi	reject		madde-8
+T7K_plus_kayitsiz-SIRA-kayitsiz-once	L4-Y	kontrol-EdDSA	B1-bayragi	accept-classical		madde-8
+T7K_plus_kayitsiz-SIRA-kayitsiz-once	P0	kontrol-EdDSA	accept-classical	accept-classical	accept-classical	A=B
+T7K_plus_kayitsiz-SIRA-kayitsiz-once	P1	kontrol-EdDSA	reject	reject		tek-oracle
+T7K_plus_kayitsiz-SIRA-kayitsiz-once	P2	kontrol-EdDSA	reject		reject	tek-oracle
+T7K_plus_kayitsiz-SIRA-kayitsiz-once-ED25519	L4	kontrol-Ed25519	B1-bayragi	indeterminate	reject	madde-8
+T7K_plus_kayitsiz-SIRA-kayitsiz-once-ED25519	L4-S	kontrol-Ed25519	B1-bayragi	reject		madde-8
+T7K_plus_kayitsiz-SIRA-kayitsiz-once-ED25519	L4-Y	kontrol-Ed25519	B1-bayragi	accept-classical		madde-8
+T7K_plus_kayitsiz-SIRA-kayitsiz-once-ED25519	P0	kontrol-Ed25519	accept-classical	accept-classical	accept-classical	A=B
+T7K_plus_kayitsiz-SIRA-kayitsiz-once-ED25519	P1	kontrol-Ed25519	reject	reject		tek-oracle
+T7K_plus_kayitsiz-SIRA-kayitsiz-once-ED25519	P2	kontrol-Ed25519	reject		reject	tek-oracle
+T7K_plus_kayitsiz-SIRA-ters	L4	kontrol-EdDSA	B1-bayragi	indeterminate	reject	madde-8
+T7K_plus_kayitsiz-SIRA-ters	L4-S	kontrol-EdDSA	B1-bayragi	reject		madde-8
+T7K_plus_kayitsiz-SIRA-ters	L4-Y	kontrol-EdDSA	B1-bayragi	accept-classical		madde-8
+T7K_plus_kayitsiz-SIRA-ters	P0	kontrol-EdDSA	accept-classical	accept-classical	accept-classical	A=B
+T7K_plus_kayitsiz-SIRA-ters	P1	kontrol-EdDSA	reject	reject		tek-oracle
+T7K_plus_kayitsiz-SIRA-ters	P2	kontrol-EdDSA	reject		reject	tek-oracle
+T7K_plus_kayitsiz-SIRA-ters-ED25519	L4	kontrol-Ed25519	B1-bayragi	indeterminate	reject	madde-8
+T7K_plus_kayitsiz-SIRA-ters-ED25519	L4-S	kontrol-Ed25519	B1-bayragi	reject		madde-8
+T7K_plus_kayitsiz-SIRA-ters-ED25519	L4-Y	kontrol-Ed25519	B1-bayragi	accept-classical		madde-8
+T7K_plus_kayitsiz-SIRA-ters-ED25519	P0	kontrol-Ed25519	accept-classical	accept-classical	accept-classical	A=B
+T7K_plus_kayitsiz-SIRA-ters-ED25519	P1	kontrol-Ed25519	reject	reject		tek-oracle
+T7K_plus_kayitsiz-SIRA-ters-ED25519	P2	kontrol-Ed25519	reject		reject	tek-oracle
+T7P_plus_kayitsiz	L4	tedavi-ML-DSA-65	B1-bayragi	indeterminate	reject	madde-8
+T7P_plus_kayitsiz	L4-S	tedavi-ML-DSA-65	B1-bayragi	reject		madde-8
+T7P_plus_kayitsiz	L4-Y	tedavi-ML-DSA-65	B1-bayragi	accept-hybrid		madde-8
+T7P_plus_kayitsiz	P0	tedavi-ML-DSA-65	accept-classical	accept-classical	accept-classical	A=B
+T7P_plus_kayitsiz	P1	tedavi-ML-DSA-65	reject	reject		tek-oracle
+T7P_plus_kayitsiz	P2	tedavi-ML-DSA-65	reject		reject	tek-oracle
+T7P_plus_kayitsiz-SIRA-kayitsiz-once	L4	tedavi-ML-DSA-65	B1-bayragi	indeterminate	reject	madde-8
+T7P_plus_kayitsiz-SIRA-kayitsiz-once	L4-S	tedavi-ML-DSA-65	B1-bayragi	reject		madde-8
+T7P_plus_kayitsiz-SIRA-kayitsiz-once	L4-Y	tedavi-ML-DSA-65	B1-bayragi	accept-hybrid		madde-8
+T7P_plus_kayitsiz-SIRA-kayitsiz-once	P0	tedavi-ML-DSA-65	accept-classical	accept-classical	accept-classical	A=B
+T7P_plus_kayitsiz-SIRA-kayitsiz-once	P1	tedavi-ML-DSA-65	reject	reject		tek-oracle
+T7P_plus_kayitsiz-SIRA-kayitsiz-once	P2	tedavi-ML-DSA-65	reject		reject	tek-oracle
+T7P_plus_kayitsiz-SIRA-ters	L4	tedavi-ML-DSA-65	B1-bayragi	indeterminate	reject	madde-8
+T7P_plus_kayitsiz-SIRA-ters	L4-S	tedavi-ML-DSA-65	B1-bayragi	reject		madde-8
+T7P_plus_kayitsiz-SIRA-ters	L4-Y	tedavi-ML-DSA-65	B1-bayragi	accept-hybrid		madde-8
+T7P_plus_kayitsiz-SIRA-ters	P0	tedavi-ML-DSA-65	accept-classical	accept-classical	accept-classical	A=B
+T7P_plus_kayitsiz-SIRA-ters	P1	tedavi-ML-DSA-65	reject	reject		tek-oracle
+T7P_plus_kayitsiz-SIRA-ters	P2	tedavi-ML-DSA-65	reject		reject	tek-oracle
+TSL01_ES256_x5c	GEC	klasik-taban	accept-classical	accept-classical		tek-oracle
+TSL01_ES256_x5c	L4	kontrol-Ed25519	reject		reject	tek-oracle
+TSL01_ES256_x5c	L4	kontrol-EdDSA	reject		reject	tek-oracle
+TSL01_ES256_x5c	L4	tedavi-ML-DSA-65	reject		reject	tek-oracle
+TSL01_ES256_x5c	L4	tedavi-composite	reject		reject	tek-oracle
+TSL01_ES256_x5c	P0	kontrol-Ed25519	accept-classical		accept-classical	tek-oracle
+TSL01_ES256_x5c	P0	kontrol-EdDSA	accept-classical		accept-classical	tek-oracle
+TSL01_ES256_x5c	P0	tedavi-ML-DSA-65	accept-classical		accept-classical	tek-oracle
+TSL01_ES256_x5c	P0	tedavi-composite	accept-classical		accept-classical	tek-oracle
+TSL01_ES256_x5c	P2	kontrol-Ed25519	accept-classical		accept-classical	tek-oracle
+TSL01_ES256_x5c	P2	kontrol-EdDSA	accept-classical		accept-classical	tek-oracle
+TSL01_ES256_x5c	P2	tedavi-ML-DSA-65	accept-classical		accept-classical	tek-oracle
+TSL01_ES256_x5c	P2	tedavi-composite	accept-classical		accept-classical	tek-oracle
+TSL02_MLDSA65_x5c	GEC	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+TSL02_MLDSA65_x5c	L4	tedavi-ML-DSA-65	accept-hybrid		accept-hybrid	tek-oracle
+TSL02_MLDSA65_x5c	P0	tedavi-ML-DSA-65	accept-hybrid		accept-hybrid	tek-oracle
+TSL02_MLDSA65_x5c	P2	tedavi-ML-DSA-65	accept-hybrid		accept-hybrid	tek-oracle
+TSL03_composite_kid	GEC	tedavi-composite	accept-hybrid	accept-hybrid		tek-oracle
+TSL03_composite_kid	L4	tedavi-composite	accept-hybrid		accept-hybrid	tek-oracle
+TSL03_composite_kid	P0	tedavi-composite	accept-hybrid		accept-hybrid	tek-oracle
+TSL03_composite_kid	P2	tedavi-composite	accept-hybrid		accept-hybrid	tek-oracle
+UNK01_alg_ML-DSA-66	GEC	tedavi-ML-DSA-65	reject	reject		tek-oracle
+UNK01_alg_ML-DSA-66	IZIN-A	tedavi-ML-DSA-65	reject	reject		tek-oracle
+UNK01_alg_ML-DSA-66	IZIN-AX	tedavi-ML-DSA-65	reject	reject		tek-oracle
+UNK01_alg_ML-DSA-66	L4	tedavi-ML-DSA-65	reject	reject	reject	A=B
+UNK01_alg_ML-DSA-66	L4-S	tedavi-ML-DSA-65	reject	reject		tek-oracle
+UNK01_alg_ML-DSA-66	L4-Y	tedavi-ML-DSA-65	reject	reject		tek-oracle
+UNK01_alg_ML-DSA-66	P0	tedavi-ML-DSA-65	reject		reject	tek-oracle
+UNK01_alg_ML-DSA-66	P2	tedavi-ML-DSA-65	reject		reject	tek-oracle
+UNK02_alg_ML-DSA-65-P256	GEC	tedavi-composite	reject	reject		tek-oracle
+UNK02_alg_ML-DSA-65-P256	IZIN-A	tedavi-composite	reject	reject		tek-oracle
+UNK02_alg_ML-DSA-65-P256	IZIN-AX	tedavi-composite	reject	reject		tek-oracle
+UNK02_alg_ML-DSA-65-P256	L4	tedavi-composite	reject	reject	reject	A=B
+UNK02_alg_ML-DSA-65-P256	L4-S	tedavi-composite	reject	reject		tek-oracle
+UNK02_alg_ML-DSA-65-P256	L4-Y	tedavi-composite	reject	reject		tek-oracle
+UNK02_alg_ML-DSA-65-P256	P0	tedavi-composite	reject		reject	tek-oracle
+UNK02_alg_ML-DSA-65-P256	P2	tedavi-composite	reject		reject	tek-oracle
+UNK03_alg_kucuk_harf	GEC	tedavi-ML-DSA-65	reject	reject		tek-oracle
+UNK03_alg_kucuk_harf	IZIN-A	tedavi-ML-DSA-65	reject	reject		tek-oracle
+UNK03_alg_kucuk_harf	IZIN-AX	tedavi-ML-DSA-65	reject	reject		tek-oracle
+UNK03_alg_kucuk_harf	L4	tedavi-ML-DSA-65	reject	reject	reject	A=B
+UNK03_alg_kucuk_harf	L4-S	tedavi-ML-DSA-65	reject	reject		tek-oracle
+UNK03_alg_kucuk_harf	L4-Y	tedavi-ML-DSA-65	reject	reject		tek-oracle
+UNK03_alg_kucuk_harf	P0	tedavi-ML-DSA-65	reject		reject	tek-oracle
+UNK03_alg_kucuk_harf	P2	tedavi-ML-DSA-65	reject		reject	tek-oracle
+UNK04_general_arti_kayitsiz_composite	L4	tedavi-ML-DSA-65	B1-bayragi	indeterminate	reject	madde-8
+UNK04_general_arti_kayitsiz_composite	L4-S	tedavi-ML-DSA-65	B1-bayragi	reject		madde-8
+UNK04_general_arti_kayitsiz_composite	L4-Y	tedavi-ML-DSA-65	B1-bayragi	accept-hybrid		madde-8
+UNK04_general_arti_kayitsiz_composite	P0	tedavi-ML-DSA-65	indeterminate	accept-classical	accept-hybrid	A≠B
+UNK04_general_arti_kayitsiz_composite	P1	tedavi-ML-DSA-65	reject	reject		tek-oracle
+UNK04_general_arti_kayitsiz_composite	P2	tedavi-ML-DSA-65	reject		reject	tek-oracle
+UNK05_general_arti_alg_none	L4	tedavi-ML-DSA-65	B1-bayragi	indeterminate	reject	madde-8
+UNK05_general_arti_alg_none	L4-S	tedavi-ML-DSA-65	B1-bayragi	reject		madde-8
+UNK05_general_arti_alg_none	L4-Y	tedavi-ML-DSA-65	B1-bayragi	accept-hybrid		madde-8
+UNK05_general_arti_alg_none	P0	tedavi-ML-DSA-65	indeterminate	accept-classical	accept-hybrid	A≠B
+UNK05_general_arti_alg_none	P1	tedavi-ML-DSA-65	reject	reject		tek-oracle
+UNK05_general_arti_alg_none	P2	tedavi-ML-DSA-65	reject		reject	tek-oracle
+VC01_ES256_x5c	GEC	kontrol-Ed25519	accept-classical	accept-classical		tek-oracle
+VC01_ES256_x5c	GEC	kontrol-EdDSA	accept-classical	accept-classical		tek-oracle
+VC01_ES256_x5c	GEC	tedavi-ML-DSA-65	accept-classical	accept-classical		tek-oracle
+VC01_ES256_x5c	GEC	tedavi-composite	accept-classical	accept-classical		tek-oracle
+VC01_ES256_x5c	GEC@-19	kontrol-Ed25519	accept-classical	accept-classical		tek-oracle
+VC01_ES256_x5c	GEC@-19	kontrol-EdDSA	accept-classical	accept-classical		tek-oracle
+VC01_ES256_x5c	GEC@-19	tedavi-ML-DSA-65	accept-classical	accept-classical		tek-oracle
+VC01_ES256_x5c	GEC@-19	tedavi-composite	accept-classical	accept-classical		tek-oracle
+VC01_ES256_x5c	IZIN-A	kontrol-Ed25519	accept-classical	accept-classical		tek-oracle
+VC01_ES256_x5c	IZIN-A	kontrol-EdDSA	accept-classical	accept-classical		tek-oracle
+VC01_ES256_x5c	IZIN-A	tedavi-ML-DSA-65	accept-classical	accept-classical		tek-oracle
+VC01_ES256_x5c	IZIN-A	tedavi-composite	accept-classical	accept-classical		tek-oracle
+VC01_ES256_x5c	IZIN-AX	kontrol-Ed25519	accept-classical	accept-classical		tek-oracle
+VC01_ES256_x5c	IZIN-AX	kontrol-EdDSA	accept-classical	accept-classical		tek-oracle
+VC01_ES256_x5c	IZIN-AX	tedavi-ML-DSA-65	accept-classical	accept-classical		tek-oracle
+VC01_ES256_x5c	IZIN-AX	tedavi-composite	accept-classical	accept-classical		tek-oracle
+VC01_ES256_x5c	L4	kontrol-Ed25519	reject	reject	reject	A=B
+VC01_ES256_x5c	L4	kontrol-EdDSA	reject	reject	reject	A=B
+VC01_ES256_x5c	L4	tedavi-ML-DSA-65	reject	reject	reject	A=B
+VC01_ES256_x5c	L4	tedavi-composite	reject	reject	reject	A=B
+VC01_ES256_x5c	L4-S	kontrol-Ed25519	reject	reject		tek-oracle
+VC01_ES256_x5c	L4-S	kontrol-EdDSA	reject	reject		tek-oracle
+VC01_ES256_x5c	L4-S	tedavi-ML-DSA-65	reject	reject		tek-oracle
+VC01_ES256_x5c	L4-S	tedavi-composite	reject	reject		tek-oracle
+VC01_ES256_x5c	L4-Y	kontrol-Ed25519	reject	reject		tek-oracle
+VC01_ES256_x5c	L4-Y	kontrol-EdDSA	reject	reject		tek-oracle
+VC01_ES256_x5c	L4-Y	tedavi-ML-DSA-65	reject	reject		tek-oracle
+VC01_ES256_x5c	L4-Y	tedavi-composite	reject	reject		tek-oracle
+VC01_ES256_x5c	P0	kontrol-Ed25519	accept-classical		accept-classical	tek-oracle
+VC01_ES256_x5c	P0	kontrol-EdDSA	accept-classical		accept-classical	tek-oracle
+VC01_ES256_x5c	P0	tedavi-ML-DSA-65	accept-classical		accept-classical	tek-oracle
+VC01_ES256_x5c	P0	tedavi-composite	accept-classical		accept-classical	tek-oracle
+VC01_ES256_x5c	P2	kontrol-Ed25519	accept-classical		accept-classical	tek-oracle
+VC01_ES256_x5c	P2	kontrol-EdDSA	accept-classical		accept-classical	tek-oracle
+VC01_ES256_x5c	P2	tedavi-ML-DSA-65	accept-classical		accept-classical	tek-oracle
+VC01_ES256_x5c	P2	tedavi-composite	accept-classical		accept-classical	tek-oracle
+VC02_MLDSA65_x5c	GEC	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+VC02_MLDSA65_x5c	IZIN-A	tedavi-ML-DSA-65	reject	reject		tek-oracle
+VC02_MLDSA65_x5c	IZIN-AX	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+VC02_MLDSA65_x5c	L4	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid	accept-hybrid	A=B
+VC02_MLDSA65_x5c	L4-S	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+VC02_MLDSA65_x5c	L4-Y	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+VC02_MLDSA65_x5c	P0	tedavi-ML-DSA-65	accept-hybrid		accept-hybrid	tek-oracle
+VC02_MLDSA65_x5c	P2	tedavi-ML-DSA-65	accept-hybrid		accept-hybrid	tek-oracle
+VC03_composite_kid	GEC	tedavi-composite	accept-hybrid	accept-hybrid		tek-oracle
+VC03_composite_kid	IZIN-A	tedavi-composite	reject	reject		tek-oracle
+VC03_composite_kid	IZIN-AX	tedavi-composite	accept-hybrid	accept-hybrid		tek-oracle
+VC03_composite_kid	L4	tedavi-composite	accept-hybrid	accept-hybrid	accept-hybrid	A=B
+VC03_composite_kid	L4-S	tedavi-composite	accept-hybrid	accept-hybrid		tek-oracle
+VC03_composite_kid	L4-Y	tedavi-composite	accept-hybrid	accept-hybrid		tek-oracle
+VC03_composite_kid	P0	tedavi-composite	accept-hybrid		accept-hybrid	tek-oracle
+VC03_composite_kid	P2	tedavi-composite	accept-hybrid		accept-hybrid	tek-oracle
+VC04_MLDSA44_kid	GEC	kapsam-pq	accept-hybrid	accept-hybrid		tek-oracle
+VC04_MLDSA44_kid	L4	kontrol-Ed25519	reject		reject	tek-oracle
+VC04_MLDSA44_kid	L4	kontrol-EdDSA	reject		reject	tek-oracle
+VC04_MLDSA44_kid	L4	tedavi-ML-DSA-65	reject		reject	tek-oracle
+VC04_MLDSA44_kid	L4	tedavi-composite	reject		reject	tek-oracle
+VC04_MLDSA44_kid	P0	kontrol-Ed25519	reject		reject	tek-oracle
+VC04_MLDSA44_kid	P0	kontrol-EdDSA	reject		reject	tek-oracle
+VC04_MLDSA44_kid	P0	tedavi-ML-DSA-65	reject		reject	tek-oracle
+VC04_MLDSA44_kid	P0	tedavi-composite	reject		reject	tek-oracle
+VC04_MLDSA44_kid	P2	kontrol-Ed25519	reject		reject	tek-oracle
+VC04_MLDSA44_kid	P2	kontrol-EdDSA	reject		reject	tek-oracle
+VC04_MLDSA44_kid	P2	tedavi-ML-DSA-65	reject		reject	tek-oracle
+VC04_MLDSA44_kid	P2	tedavi-composite	reject		reject	tek-oracle
+VC05_MLDSA87_kid	GEC	kapsam-pq	accept-hybrid	accept-hybrid		tek-oracle
+VC05_MLDSA87_kid	L4	kontrol-Ed25519	reject		reject	tek-oracle
+VC05_MLDSA87_kid	L4	kontrol-EdDSA	reject		reject	tek-oracle
+VC05_MLDSA87_kid	L4	tedavi-ML-DSA-65	reject		reject	tek-oracle
+VC05_MLDSA87_kid	L4	tedavi-composite	reject		reject	tek-oracle
+VC05_MLDSA87_kid	P0	kontrol-Ed25519	reject		reject	tek-oracle
+VC05_MLDSA87_kid	P0	kontrol-EdDSA	reject		reject	tek-oracle
+VC05_MLDSA87_kid	P0	tedavi-ML-DSA-65	reject		reject	tek-oracle
+VC05_MLDSA87_kid	P0	tedavi-composite	reject		reject	tek-oracle
+VC05_MLDSA87_kid	P2	kontrol-Ed25519	reject		reject	tek-oracle
+VC05_MLDSA87_kid	P2	kontrol-EdDSA	reject		reject	tek-oracle
+VC05_MLDSA87_kid	P2	tedavi-ML-DSA-65	reject		reject	tek-oracle
+VC05_MLDSA87_kid	P2	tedavi-composite	reject		reject	tek-oracle
+VC06_composite_Ed25519_kid	GEC	kapsam-hibrit	accept-hybrid	accept-hybrid		tek-oracle
+VC06_composite_Ed25519_kid	L4	kontrol-Ed25519	reject		reject	tek-oracle
+VC06_composite_Ed25519_kid	L4	kontrol-EdDSA	reject		reject	tek-oracle
+VC06_composite_Ed25519_kid	L4	tedavi-ML-DSA-65	reject		reject	tek-oracle
+VC06_composite_Ed25519_kid	L4	tedavi-composite	reject		reject	tek-oracle
+VC06_composite_Ed25519_kid	P0	kontrol-Ed25519	reject		reject	tek-oracle
+VC06_composite_Ed25519_kid	P0	kontrol-EdDSA	reject		reject	tek-oracle
+VC06_composite_Ed25519_kid	P0	tedavi-ML-DSA-65	reject		reject	tek-oracle
+VC06_composite_Ed25519_kid	P0	tedavi-composite	reject		reject	tek-oracle
+VC06_composite_Ed25519_kid	P2	kontrol-Ed25519	reject		reject	tek-oracle
+VC06_composite_Ed25519_kid	P2	kontrol-EdDSA	reject		reject	tek-oracle
+VC06_composite_Ed25519_kid	P2	tedavi-ML-DSA-65	reject		reject	tek-oracle
+VC06_composite_Ed25519_kid	P2	tedavi-composite	reject		reject	tek-oracle
+VC07_GJ_ES256_MLDSA65	L4	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+VC07_GJ_ES256_MLDSA65	L4-S	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+VC07_GJ_ES256_MLDSA65	L4-Y	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+VC07_GJ_ES256_MLDSA65	L4@-19	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+VC07_GJ_ES256_MLDSA65	L4|sdjwtvc=-13	tedavi-ML-DSA-65	accept-hybrid		accept-hybrid	tek-oracle
+VC07_GJ_ES256_MLDSA65	L4|sdjwtvc=-19	tedavi-ML-DSA-65	indeterminate		indeterminate	tek-oracle
+VC07_GJ_ES256_MLDSA65	P0	tedavi-ML-DSA-65	accept-classical	accept-classical		tek-oracle
+VC07_GJ_ES256_MLDSA65	P0|sdjwtvc=-13	tedavi-ML-DSA-65	accept-hybrid		accept-hybrid	tek-oracle
+VC07_GJ_ES256_MLDSA65	P0|sdjwtvc=-19	tedavi-ML-DSA-65	indeterminate		indeterminate	tek-oracle
+VC07_GJ_ES256_MLDSA65	P1	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+VC07_GJ_ES256_MLDSA65	P2|sdjwtvc=-13	tedavi-ML-DSA-65	accept-hybrid		accept-hybrid	tek-oracle
+VC07_GJ_ES256_MLDSA65	P2|sdjwtvc=-19	tedavi-ML-DSA-65	indeterminate		indeterminate	tek-oracle
+VC07_GJ_ES256_MLDSA65-SIRA-ters	L4	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+VC07_GJ_ES256_MLDSA65-SIRA-ters	L4-S	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+VC07_GJ_ES256_MLDSA65-SIRA-ters	L4-Y	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+VC07_GJ_ES256_MLDSA65-SIRA-ters	L4|sdjwtvc=-13	tedavi-ML-DSA-65	accept-hybrid		accept-hybrid	tek-oracle
+VC07_GJ_ES256_MLDSA65-SIRA-ters	L4|sdjwtvc=-19	tedavi-ML-DSA-65	indeterminate		indeterminate	tek-oracle
+VC07_GJ_ES256_MLDSA65-SIRA-ters	P0	tedavi-ML-DSA-65	accept-classical	accept-classical		tek-oracle
+VC07_GJ_ES256_MLDSA65-SIRA-ters	P0|sdjwtvc=-13	tedavi-ML-DSA-65	accept-hybrid		accept-hybrid	tek-oracle
+VC07_GJ_ES256_MLDSA65-SIRA-ters	P0|sdjwtvc=-19	tedavi-ML-DSA-65	indeterminate		indeterminate	tek-oracle
+VC07_GJ_ES256_MLDSA65-SIRA-ters	P1	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+VC07_GJ_ES256_MLDSA65-SIRA-ters	P2|sdjwtvc=-13	tedavi-ML-DSA-65	accept-hybrid		accept-hybrid	tek-oracle
+VC07_GJ_ES256_MLDSA65-SIRA-ters	P2|sdjwtvc=-19	tedavi-ML-DSA-65	indeterminate		indeterminate	tek-oracle
+VC08_GJ_ES256_composite	L4	tedavi-composite	accept-hybrid	accept-hybrid		tek-oracle
+VC08_GJ_ES256_composite	L4-S	tedavi-composite	accept-hybrid	accept-hybrid		tek-oracle
+VC08_GJ_ES256_composite	L4-Y	tedavi-composite	accept-hybrid	accept-hybrid		tek-oracle
+VC08_GJ_ES256_composite	L4@-19	tedavi-composite	accept-hybrid	accept-hybrid		tek-oracle
+VC08_GJ_ES256_composite	L4|sdjwtvc=-13	tedavi-composite	accept-hybrid		accept-hybrid	tek-oracle
+VC08_GJ_ES256_composite	L4|sdjwtvc=-19	tedavi-composite	indeterminate		indeterminate	tek-oracle
+VC08_GJ_ES256_composite	P0	tedavi-composite	accept-classical	accept-classical		tek-oracle
+VC08_GJ_ES256_composite	P0|sdjwtvc=-13	tedavi-composite	accept-hybrid		accept-hybrid	tek-oracle
+VC08_GJ_ES256_composite	P0|sdjwtvc=-19	tedavi-composite	indeterminate		indeterminate	tek-oracle
+VC08_GJ_ES256_composite	P1	tedavi-composite	accept-hybrid	accept-hybrid		tek-oracle
+VC08_GJ_ES256_composite	P2|sdjwtvc=-13	tedavi-composite	accept-hybrid		accept-hybrid	tek-oracle
+VC08_GJ_ES256_composite	P2|sdjwtvc=-19	tedavi-composite	indeterminate		indeterminate	tek-oracle
+VC08_GJ_ES256_composite-SIRA-ters	L4	tedavi-composite	accept-hybrid	accept-hybrid		tek-oracle
+VC08_GJ_ES256_composite-SIRA-ters	L4-S	tedavi-composite	accept-hybrid	accept-hybrid		tek-oracle
+VC08_GJ_ES256_composite-SIRA-ters	L4-Y	tedavi-composite	accept-hybrid	accept-hybrid		tek-oracle
+VC08_GJ_ES256_composite-SIRA-ters	L4|sdjwtvc=-13	tedavi-composite	accept-hybrid		accept-hybrid	tek-oracle
+VC08_GJ_ES256_composite-SIRA-ters	L4|sdjwtvc=-19	tedavi-composite	indeterminate		indeterminate	tek-oracle
+VC08_GJ_ES256_composite-SIRA-ters	P0	tedavi-composite	accept-classical	accept-classical		tek-oracle
+VC08_GJ_ES256_composite-SIRA-ters	P0|sdjwtvc=-13	tedavi-composite	accept-hybrid		accept-hybrid	tek-oracle
+VC08_GJ_ES256_composite-SIRA-ters	P0|sdjwtvc=-19	tedavi-composite	indeterminate		indeterminate	tek-oracle
+VC08_GJ_ES256_composite-SIRA-ters	P1	tedavi-composite	accept-hybrid	accept-hybrid		tek-oracle
+VC08_GJ_ES256_composite-SIRA-ters	P2|sdjwtvc=-13	tedavi-composite	accept-hybrid		accept-hybrid	tek-oracle
+VC08_GJ_ES256_composite-SIRA-ters	P2|sdjwtvc=-19	tedavi-composite	indeterminate		indeterminate	tek-oracle
+VC09_GJ_ES256_EdDSA	L4	kontrol-EdDSA	accept-classical	accept-classical		tek-oracle
+VC09_GJ_ES256_EdDSA	L4-S	kontrol-EdDSA	accept-classical	accept-classical		tek-oracle
+VC09_GJ_ES256_EdDSA	L4-Y	kontrol-EdDSA	accept-classical	accept-classical		tek-oracle
+VC09_GJ_ES256_EdDSA	L4@-19	kontrol-EdDSA	accept-classical	accept-classical		tek-oracle
+VC09_GJ_ES256_EdDSA	L4|sdjwtvc=-13	kontrol-EdDSA	accept-classical		accept-classical	tek-oracle
+VC09_GJ_ES256_EdDSA	L4|sdjwtvc=-19	kontrol-EdDSA	indeterminate		indeterminate	tek-oracle
+VC09_GJ_ES256_EdDSA	P0	kontrol-EdDSA	accept-classical	accept-classical		tek-oracle
+VC09_GJ_ES256_EdDSA	P0|sdjwtvc=-13	kontrol-EdDSA	accept-classical		accept-classical	tek-oracle
+VC09_GJ_ES256_EdDSA	P0|sdjwtvc=-19	kontrol-EdDSA	indeterminate		indeterminate	tek-oracle
+VC09_GJ_ES256_EdDSA	P1	kontrol-EdDSA	accept-classical	accept-classical		tek-oracle
+VC09_GJ_ES256_EdDSA	P2|sdjwtvc=-13	kontrol-EdDSA	accept-classical		accept-classical	tek-oracle
+VC09_GJ_ES256_EdDSA	P2|sdjwtvc=-19	kontrol-EdDSA	indeterminate		indeterminate	tek-oracle
+VC09_GJ_ES256_EdDSA-ED25519	L4	kontrol-Ed25519	accept-classical	accept-classical		tek-oracle
+VC09_GJ_ES256_EdDSA-ED25519	L4-S	kontrol-Ed25519	accept-classical	accept-classical		tek-oracle
+VC09_GJ_ES256_EdDSA-ED25519	L4-Y	kontrol-Ed25519	accept-classical	accept-classical		tek-oracle
+VC09_GJ_ES256_EdDSA-ED25519	L4@-19	kontrol-Ed25519	accept-classical	accept-classical		tek-oracle
+VC09_GJ_ES256_EdDSA-ED25519	L4|sdjwtvc=-13	kontrol-Ed25519	accept-classical		accept-classical	tek-oracle
+VC09_GJ_ES256_EdDSA-ED25519	L4|sdjwtvc=-19	kontrol-Ed25519	indeterminate		indeterminate	tek-oracle
+VC09_GJ_ES256_EdDSA-ED25519	P0	kontrol-Ed25519	accept-classical	accept-classical		tek-oracle
+VC09_GJ_ES256_EdDSA-ED25519	P0|sdjwtvc=-13	kontrol-Ed25519	accept-classical		accept-classical	tek-oracle
+VC09_GJ_ES256_EdDSA-ED25519	P0|sdjwtvc=-19	kontrol-Ed25519	indeterminate		indeterminate	tek-oracle
+VC09_GJ_ES256_EdDSA-ED25519	P1	kontrol-Ed25519	accept-classical	accept-classical		tek-oracle
+VC09_GJ_ES256_EdDSA-ED25519	P2|sdjwtvc=-13	kontrol-Ed25519	accept-classical		accept-classical	tek-oracle
+VC09_GJ_ES256_EdDSA-ED25519	P2|sdjwtvc=-19	kontrol-Ed25519	indeterminate		indeterminate	tek-oracle
+VC09_GJ_ES256_EdDSA-SIRA-ters	L4	kontrol-EdDSA	accept-classical	accept-classical		tek-oracle
+VC09_GJ_ES256_EdDSA-SIRA-ters	L4-S	kontrol-EdDSA	accept-classical	accept-classical		tek-oracle
+VC09_GJ_ES256_EdDSA-SIRA-ters	L4-Y	kontrol-EdDSA	accept-classical	accept-classical		tek-oracle
+VC09_GJ_ES256_EdDSA-SIRA-ters	L4|sdjwtvc=-13	kontrol-EdDSA	accept-classical		accept-classical	tek-oracle
+VC09_GJ_ES256_EdDSA-SIRA-ters	L4|sdjwtvc=-19	kontrol-EdDSA	indeterminate		indeterminate	tek-oracle
+VC09_GJ_ES256_EdDSA-SIRA-ters	P0	kontrol-EdDSA	accept-classical	accept-classical		tek-oracle
+VC09_GJ_ES256_EdDSA-SIRA-ters	P0|sdjwtvc=-13	kontrol-EdDSA	accept-classical		accept-classical	tek-oracle
+VC09_GJ_ES256_EdDSA-SIRA-ters	P0|sdjwtvc=-19	kontrol-EdDSA	indeterminate		indeterminate	tek-oracle
+VC09_GJ_ES256_EdDSA-SIRA-ters	P1	kontrol-EdDSA	accept-classical	accept-classical		tek-oracle
+VC09_GJ_ES256_EdDSA-SIRA-ters	P2|sdjwtvc=-13	kontrol-EdDSA	accept-classical		accept-classical	tek-oracle
+VC09_GJ_ES256_EdDSA-SIRA-ters	P2|sdjwtvc=-19	kontrol-EdDSA	indeterminate		indeterminate	tek-oracle
+VC09_GJ_ES256_EdDSA-SIRA-ters-ED25519	L4	kontrol-Ed25519	accept-classical	accept-classical		tek-oracle
+VC09_GJ_ES256_EdDSA-SIRA-ters-ED25519	L4-S	kontrol-Ed25519	accept-classical	accept-classical		tek-oracle
+VC09_GJ_ES256_EdDSA-SIRA-ters-ED25519	L4-Y	kontrol-Ed25519	accept-classical	accept-classical		tek-oracle
+VC09_GJ_ES256_EdDSA-SIRA-ters-ED25519	L4|sdjwtvc=-13	kontrol-Ed25519	accept-classical		accept-classical	tek-oracle
+VC09_GJ_ES256_EdDSA-SIRA-ters-ED25519	L4|sdjwtvc=-19	kontrol-Ed25519	indeterminate		indeterminate	tek-oracle
+VC09_GJ_ES256_EdDSA-SIRA-ters-ED25519	P0	kontrol-Ed25519	accept-classical	accept-classical		tek-oracle
+VC09_GJ_ES256_EdDSA-SIRA-ters-ED25519	P0|sdjwtvc=-13	kontrol-Ed25519	accept-classical		accept-classical	tek-oracle
+VC09_GJ_ES256_EdDSA-SIRA-ters-ED25519	P0|sdjwtvc=-19	kontrol-Ed25519	indeterminate		indeterminate	tek-oracle
+VC09_GJ_ES256_EdDSA-SIRA-ters-ED25519	P1	kontrol-Ed25519	accept-classical	accept-classical		tek-oracle
+VC09_GJ_ES256_EdDSA-SIRA-ters-ED25519	P2|sdjwtvc=-13	kontrol-Ed25519	accept-classical		accept-classical	tek-oracle
+VC09_GJ_ES256_EdDSA-SIRA-ters-ED25519	P2|sdjwtvc=-19	kontrol-Ed25519	indeterminate		indeterminate	tek-oracle
+VC10_ikili_ihrac	GEC	kontrol-Ed25519	accept-classical	accept-classical		tek-oracle
+VC10_ikili_ihrac	GEC	kontrol-EdDSA	accept-classical	accept-classical		tek-oracle
+VC10_ikili_ihrac	GEC	tedavi-ML-DSA-65	accept-classical	accept-classical		tek-oracle
+VC10_ikili_ihrac	GEC	tedavi-composite	accept-classical	accept-classical		tek-oracle
+VC10_ikili_ihrac	IZIN-A	kontrol-Ed25519	accept-classical	accept-classical		tek-oracle
+VC10_ikili_ihrac	IZIN-A	kontrol-EdDSA	accept-classical	accept-classical		tek-oracle
+VC10_ikili_ihrac	IZIN-A	tedavi-ML-DSA-65	accept-classical	accept-classical		tek-oracle
+VC10_ikili_ihrac	IZIN-A	tedavi-composite	accept-classical	accept-classical		tek-oracle
+VC10_ikili_ihrac	IZIN-AX	kontrol-Ed25519	accept-classical	accept-classical		tek-oracle
+VC10_ikili_ihrac	IZIN-AX	kontrol-EdDSA	accept-classical	accept-classical		tek-oracle
+VC10_ikili_ihrac	IZIN-AX	tedavi-ML-DSA-65	accept-classical	accept-classical		tek-oracle
+VC10_ikili_ihrac	IZIN-AX	tedavi-composite	accept-classical	accept-classical		tek-oracle
+VC10_ikili_ihrac	L4	kontrol-Ed25519	reject	reject	reject	A=B
+VC10_ikili_ihrac	L4	kontrol-EdDSA	reject	reject	reject	A=B
+VC10_ikili_ihrac	L4	tedavi-ML-DSA-65	reject	reject	reject	A=B
+VC10_ikili_ihrac	L4	tedavi-composite	reject	reject	reject	A=B
+VC10_ikili_ihrac	L4-S	kontrol-Ed25519	reject	reject		tek-oracle
+VC10_ikili_ihrac	L4-S	kontrol-EdDSA	reject	reject		tek-oracle
+VC10_ikili_ihrac	L4-S	tedavi-ML-DSA-65	reject	reject		tek-oracle
+VC10_ikili_ihrac	L4-S	tedavi-composite	reject	reject		tek-oracle
+VC10_ikili_ihrac	L4-Y	kontrol-Ed25519	reject	reject		tek-oracle
+VC10_ikili_ihrac	L4-Y	kontrol-EdDSA	reject	reject		tek-oracle
+VC10_ikili_ihrac	L4-Y	tedavi-ML-DSA-65	reject	reject		tek-oracle
+VC10_ikili_ihrac	L4-Y	tedavi-composite	reject	reject		tek-oracle
+VC10_ikili_ihrac	P0	kontrol-Ed25519	accept-classical		accept-classical	tek-oracle
+VC10_ikili_ihrac	P0	kontrol-EdDSA	accept-classical		accept-classical	tek-oracle
+VC10_ikili_ihrac	P0	tedavi-ML-DSA-65	accept-classical		accept-classical	tek-oracle
+VC10_ikili_ihrac	P0	tedavi-composite	accept-classical		accept-classical	tek-oracle
+VC10_ikili_ihrac	P2	kontrol-Ed25519	accept-classical		accept-classical	tek-oracle
+VC10_ikili_ihrac	P2	kontrol-EdDSA	accept-classical		accept-classical	tek-oracle
+VC10_ikili_ihrac	P2	tedavi-ML-DSA-65	accept-classical		accept-classical	tek-oracle
+VC10_ikili_ihrac	P2	tedavi-composite	accept-classical		accept-classical	tek-oracle
+VC11_typ_vc+sd-jwt	GEC	kontrol-Ed25519	accept-classical	accept-classical		tek-oracle
+VC11_typ_vc+sd-jwt	GEC	kontrol-EdDSA	accept-classical	accept-classical		tek-oracle
+VC11_typ_vc+sd-jwt	GEC	tedavi-ML-DSA-65	accept-classical	accept-classical		tek-oracle
+VC11_typ_vc+sd-jwt	GEC	tedavi-composite	accept-classical	accept-classical		tek-oracle
+VC11_typ_vc+sd-jwt	GEC@-19	kontrol-Ed25519	reject	reject		tek-oracle
+VC11_typ_vc+sd-jwt	GEC@-19	kontrol-EdDSA	reject	reject		tek-oracle
+VC11_typ_vc+sd-jwt	GEC@-19	tedavi-ML-DSA-65	reject	reject		tek-oracle
+VC11_typ_vc+sd-jwt	GEC@-19	tedavi-composite	reject	reject		tek-oracle
+VC11_typ_vc+sd-jwt	L4	kontrol-Ed25519	reject	reject		tek-oracle
+VC11_typ_vc+sd-jwt	L4	kontrol-EdDSA	reject	reject		tek-oracle
+VC11_typ_vc+sd-jwt	L4	tedavi-ML-DSA-65	reject	reject		tek-oracle
+VC11_typ_vc+sd-jwt	L4	tedavi-composite	reject	reject		tek-oracle
+VC11_typ_vc+sd-jwt	L4-S	kontrol-Ed25519	reject	reject		tek-oracle
+VC11_typ_vc+sd-jwt	L4-S	kontrol-EdDSA	reject	reject		tek-oracle
+VC11_typ_vc+sd-jwt	L4-S	tedavi-ML-DSA-65	reject	reject		tek-oracle
+VC11_typ_vc+sd-jwt	L4-S	tedavi-composite	reject	reject		tek-oracle
+VC11_typ_vc+sd-jwt	L4-Y	kontrol-Ed25519	reject	reject		tek-oracle
+VC11_typ_vc+sd-jwt	L4-Y	kontrol-EdDSA	reject	reject		tek-oracle
+VC11_typ_vc+sd-jwt	L4-Y	tedavi-ML-DSA-65	reject	reject		tek-oracle
+VC11_typ_vc+sd-jwt	L4-Y	tedavi-composite	reject	reject		tek-oracle
+VC11_typ_vc+sd-jwt	L4|sdjwtvc=-13	kontrol-Ed25519	reject		reject	tek-oracle
+VC11_typ_vc+sd-jwt	L4|sdjwtvc=-13	kontrol-EdDSA	reject		reject	tek-oracle
+VC11_typ_vc+sd-jwt	L4|sdjwtvc=-13	tedavi-ML-DSA-65	reject		reject	tek-oracle
+VC11_typ_vc+sd-jwt	L4|sdjwtvc=-13	tedavi-composite	reject		reject	tek-oracle
+VC11_typ_vc+sd-jwt	L4|sdjwtvc=-19	kontrol-Ed25519	reject		reject	tek-oracle
+VC11_typ_vc+sd-jwt	L4|sdjwtvc=-19	kontrol-EdDSA	reject		reject	tek-oracle
+VC11_typ_vc+sd-jwt	L4|sdjwtvc=-19	tedavi-ML-DSA-65	reject		reject	tek-oracle
+VC11_typ_vc+sd-jwt	L4|sdjwtvc=-19	tedavi-composite	reject		reject	tek-oracle
+VC11_typ_vc+sd-jwt	P0|sdjwtvc=-13	kontrol-Ed25519	indeterminate		indeterminate	tek-oracle
+VC11_typ_vc+sd-jwt	P0|sdjwtvc=-13	kontrol-EdDSA	indeterminate		indeterminate	tek-oracle
+VC11_typ_vc+sd-jwt	P0|sdjwtvc=-13	tedavi-ML-DSA-65	indeterminate		indeterminate	tek-oracle
+VC11_typ_vc+sd-jwt	P0|sdjwtvc=-13	tedavi-composite	indeterminate		indeterminate	tek-oracle
+VC11_typ_vc+sd-jwt	P0|sdjwtvc=-19	kontrol-Ed25519	indeterminate		indeterminate	tek-oracle
+VC11_typ_vc+sd-jwt	P0|sdjwtvc=-19	kontrol-EdDSA	indeterminate		indeterminate	tek-oracle
+VC11_typ_vc+sd-jwt	P0|sdjwtvc=-19	tedavi-ML-DSA-65	indeterminate		indeterminate	tek-oracle
+VC11_typ_vc+sd-jwt	P0|sdjwtvc=-19	tedavi-composite	indeterminate		indeterminate	tek-oracle
+VC11_typ_vc+sd-jwt	P2|sdjwtvc=-13	kontrol-Ed25519	indeterminate		indeterminate	tek-oracle
+VC11_typ_vc+sd-jwt	P2|sdjwtvc=-13	kontrol-EdDSA	indeterminate		indeterminate	tek-oracle
+VC11_typ_vc+sd-jwt	P2|sdjwtvc=-13	tedavi-ML-DSA-65	indeterminate		indeterminate	tek-oracle
+VC11_typ_vc+sd-jwt	P2|sdjwtvc=-13	tedavi-composite	indeterminate		indeterminate	tek-oracle
+VC11_typ_vc+sd-jwt	P2|sdjwtvc=-19	kontrol-Ed25519	indeterminate		indeterminate	tek-oracle
+VC11_typ_vc+sd-jwt	P2|sdjwtvc=-19	kontrol-EdDSA	indeterminate		indeterminate	tek-oracle
+VC11_typ_vc+sd-jwt	P2|sdjwtvc=-19	tedavi-ML-DSA-65	indeterminate		indeterminate	tek-oracle
+VC11_typ_vc+sd-jwt	P2|sdjwtvc=-19	tedavi-composite	indeterminate		indeterminate	tek-oracle
+VC12_alg_none	GEC	yok	reject	reject		tek-oracle
+VC12_alg_none	L4	kontrol-Ed25519	reject		reject	tek-oracle
+VC12_alg_none	L4	kontrol-EdDSA	reject		reject	tek-oracle
+VC12_alg_none	L4	tedavi-ML-DSA-65	reject		reject	tek-oracle
+VC12_alg_none	L4	tedavi-composite	reject		reject	tek-oracle
+VC12_alg_none	P0	kontrol-Ed25519	reject		reject	tek-oracle
+VC12_alg_none	P0	kontrol-EdDSA	reject		reject	tek-oracle
+VC12_alg_none	P0	tedavi-ML-DSA-65	reject		reject	tek-oracle
+VC12_alg_none	P0	tedavi-composite	reject		reject	tek-oracle
+VC12_alg_none	P2	kontrol-Ed25519	reject		reject	tek-oracle
+VC12_alg_none	P2	kontrol-EdDSA	reject		reject	tek-oracle
+VC12_alg_none	P2	tedavi-ML-DSA-65	reject		reject	tek-oracle
+VC12_alg_none	P2	tedavi-composite	reject		reject	tek-oracle
+VMINUS_ES256	GEC	kontrol-Ed25519	reject	reject		tek-oracle
+VMINUS_ES256	GEC	kontrol-EdDSA	reject	reject		tek-oracle
+VMINUS_ES256	GEC	tedavi-ML-DSA-65	reject	reject		tek-oracle
+VMINUS_ES256	GEC	tedavi-composite	reject	reject		tek-oracle
+VMINUS_ES256	IZIN-A	kontrol-Ed25519	reject	reject		tek-oracle
+VMINUS_ES256	IZIN-A	kontrol-EdDSA	reject	reject		tek-oracle
+VMINUS_ES256	IZIN-A	tedavi-ML-DSA-65	reject	reject		tek-oracle
+VMINUS_ES256	IZIN-A	tedavi-composite	reject	reject		tek-oracle
+VMINUS_ES256	IZIN-AX	kontrol-Ed25519	reject	reject		tek-oracle
+VMINUS_ES256	IZIN-AX	kontrol-EdDSA	reject	reject		tek-oracle
+VMINUS_ES256	IZIN-AX	tedavi-ML-DSA-65	reject	reject		tek-oracle
+VMINUS_ES256	IZIN-AX	tedavi-composite	reject	reject		tek-oracle
+VMINUS_ES256	L4	kontrol-Ed25519	reject	reject	reject	A=B
+VMINUS_ES256	L4	kontrol-EdDSA	reject	reject	reject	A=B
+VMINUS_ES256	L4	tedavi-ML-DSA-65	reject	reject	reject	A=B
+VMINUS_ES256	L4	tedavi-composite	reject	reject	reject	A=B
+VMINUS_ES256	L4-S	kontrol-Ed25519	reject	reject		tek-oracle
+VMINUS_ES256	L4-S	kontrol-EdDSA	reject	reject		tek-oracle
+VMINUS_ES256	L4-S	tedavi-ML-DSA-65	reject	reject		tek-oracle
+VMINUS_ES256	L4-S	tedavi-composite	reject	reject		tek-oracle
+VMINUS_ES256	L4-Y	kontrol-Ed25519	reject	reject		tek-oracle
+VMINUS_ES256	L4-Y	kontrol-EdDSA	reject	reject		tek-oracle
+VMINUS_ES256	L4-Y	tedavi-ML-DSA-65	reject	reject		tek-oracle
+VMINUS_ES256	L4-Y	tedavi-composite	reject	reject		tek-oracle
+VMINUS_ES256	P0	kontrol-Ed25519	reject		reject	tek-oracle
+VMINUS_ES256	P0	kontrol-EdDSA	reject		reject	tek-oracle
+VMINUS_ES256	P0	tedavi-ML-DSA-65	reject		reject	tek-oracle
+VMINUS_ES256	P0	tedavi-composite	reject		reject	tek-oracle
+VMINUS_ES256	P2	kontrol-Ed25519	reject		reject	tek-oracle
+VMINUS_ES256	P2	kontrol-EdDSA	reject		reject	tek-oracle
+VMINUS_ES256	P2	tedavi-ML-DSA-65	reject		reject	tek-oracle
+VMINUS_ES256	P2	tedavi-composite	reject		reject	tek-oracle
+VMINUS_EdDSA	GEC	kontrol-EdDSA	reject	reject		tek-oracle
+VMINUS_EdDSA	IZIN-A	kontrol-EdDSA	reject	reject		tek-oracle
+VMINUS_EdDSA	IZIN-AX	kontrol-EdDSA	reject	reject		tek-oracle
+VMINUS_EdDSA	L4	kontrol-EdDSA	reject	reject	reject	A=B
+VMINUS_EdDSA	L4-S	kontrol-EdDSA	reject	reject		tek-oracle
+VMINUS_EdDSA	L4-Y	kontrol-EdDSA	reject	reject		tek-oracle
+VMINUS_EdDSA	P0	kontrol-EdDSA	reject		reject	tek-oracle
+VMINUS_EdDSA	P2	kontrol-EdDSA	reject		reject	tek-oracle
+VMINUS_EdDSA-ED25519	GEC	kontrol-Ed25519	reject	reject		tek-oracle
+VMINUS_EdDSA-ED25519	IZIN-A	kontrol-Ed25519	reject	reject		tek-oracle
+VMINUS_EdDSA-ED25519	IZIN-AX	kontrol-Ed25519	reject	reject		tek-oracle
+VMINUS_EdDSA-ED25519	L4	kontrol-Ed25519	reject	reject	reject	A=B
+VMINUS_EdDSA-ED25519	L4-S	kontrol-Ed25519	reject	reject		tek-oracle
+VMINUS_EdDSA-ED25519	L4-Y	kontrol-Ed25519	reject	reject		tek-oracle
+VMINUS_EdDSA-ED25519	P0	kontrol-Ed25519	reject		reject	tek-oracle
+VMINUS_EdDSA-ED25519	P2	kontrol-Ed25519	reject		reject	tek-oracle
+VMINUS_ML-DSA-65	GEC	tedavi-ML-DSA-65	reject	reject		tek-oracle
+VMINUS_ML-DSA-65	IZIN-A	tedavi-ML-DSA-65	reject	reject		tek-oracle
+VMINUS_ML-DSA-65	IZIN-AX	tedavi-ML-DSA-65	reject	reject		tek-oracle
+VMINUS_ML-DSA-65	L4	tedavi-ML-DSA-65	reject	reject	reject	A=B
+VMINUS_ML-DSA-65	L4-S	tedavi-ML-DSA-65	reject	reject		tek-oracle
+VMINUS_ML-DSA-65	L4-Y	tedavi-ML-DSA-65	reject	reject		tek-oracle
+VMINUS_ML-DSA-65	P0	tedavi-ML-DSA-65	reject		reject	tek-oracle
+VMINUS_ML-DSA-65	P2	tedavi-ML-DSA-65	reject		reject	tek-oracle
+VP01_ihracci_ES256_kb_ES256	GEC	tedavi-ML-DSA-65	accept-classical	accept-classical		tek-oracle
+VP01_ihracci_ES256_kb_ES256	L4	kontrol-Ed25519	reject		reject	tek-oracle
+VP01_ihracci_ES256_kb_ES256	L4	kontrol-EdDSA	reject		reject	tek-oracle
+VP01_ihracci_ES256_kb_ES256	L4	tedavi-ML-DSA-65	reject	reject	reject	A=B
+VP01_ihracci_ES256_kb_ES256	L4	tedavi-composite	reject		reject	tek-oracle
+VP01_ihracci_ES256_kb_ES256	L4-S	tedavi-ML-DSA-65	reject	reject		tek-oracle
+VP01_ihracci_ES256_kb_ES256	L4-Y	tedavi-ML-DSA-65	reject	reject		tek-oracle
+VP01_ihracci_ES256_kb_ES256	P0	kontrol-Ed25519	accept-classical		accept-classical	tek-oracle
+VP01_ihracci_ES256_kb_ES256	P0	kontrol-EdDSA	accept-classical		accept-classical	tek-oracle
+VP01_ihracci_ES256_kb_ES256	P0	tedavi-ML-DSA-65	accept-classical		accept-classical	tek-oracle
+VP01_ihracci_ES256_kb_ES256	P0	tedavi-composite	accept-classical		accept-classical	tek-oracle
+VP01_ihracci_ES256_kb_ES256	P2	kontrol-Ed25519	accept-classical		accept-classical	tek-oracle
+VP01_ihracci_ES256_kb_ES256	P2	kontrol-EdDSA	accept-classical		accept-classical	tek-oracle
+VP01_ihracci_ES256_kb_ES256	P2	tedavi-ML-DSA-65	accept-classical		accept-classical	tek-oracle
+VP01_ihracci_ES256_kb_ES256	P2	tedavi-composite	accept-classical		accept-classical	tek-oracle
+VP02_ihracci_MLDSA65_kb_ES256	GEC	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+VP02_ihracci_MLDSA65_kb_ES256	L4	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid	accept-hybrid	A=B
+VP02_ihracci_MLDSA65_kb_ES256	L4-S	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+VP02_ihracci_MLDSA65_kb_ES256	L4-Y	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+VP02_ihracci_MLDSA65_kb_ES256	P0	tedavi-ML-DSA-65	accept-hybrid		accept-hybrid	tek-oracle
+VP02_ihracci_MLDSA65_kb_ES256	P2	tedavi-ML-DSA-65	accept-hybrid		accept-hybrid	tek-oracle
+VP03_ihracci_MLDSA65_kb_MLDSA65	GEC	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+VP03_ihracci_MLDSA65_kb_MLDSA65	L4	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid	accept-hybrid	A=B
+VP03_ihracci_MLDSA65_kb_MLDSA65	L4-S	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+VP03_ihracci_MLDSA65_kb_MLDSA65	L4-Y	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+VP03_ihracci_MLDSA65_kb_MLDSA65	P0	tedavi-ML-DSA-65	accept-hybrid		accept-hybrid	tek-oracle
+VP03_ihracci_MLDSA65_kb_MLDSA65	P2	tedavi-ML-DSA-65	accept-hybrid		accept-hybrid	tek-oracle
+VP04_ihracci_composite_kb_composite	GEC	tedavi-composite	accept-hybrid	accept-hybrid		tek-oracle
+VP04_ihracci_composite_kb_composite	L4	tedavi-composite	accept-hybrid	accept-hybrid	accept-hybrid	A=B
+VP04_ihracci_composite_kb_composite	L4-S	tedavi-composite	accept-hybrid	accept-hybrid		tek-oracle
+VP04_ihracci_composite_kb_composite	L4-Y	tedavi-composite	accept-hybrid	accept-hybrid		tek-oracle
+VP04_ihracci_composite_kb_composite	P0	tedavi-composite	accept-hybrid		accept-hybrid	tek-oracle
+VP04_ihracci_composite_kb_composite	P2	tedavi-composite	accept-hybrid		accept-hybrid	tek-oracle
+VP05_GJ_ES256_MLDSA65_kb	L4	tedavi-ML-DSA-65	indeterminate	indeterminate		tek-oracle
+VP05_GJ_ES256_MLDSA65_kb	L4-S	tedavi-ML-DSA-65	indeterminate	indeterminate		tek-oracle
+VP05_GJ_ES256_MLDSA65_kb	L4-Y	tedavi-ML-DSA-65	indeterminate	indeterminate		tek-oracle
+VP05_GJ_ES256_MLDSA65_kb	L4|sdjwtvc=-13	tedavi-ML-DSA-65	indeterminate		indeterminate	tek-oracle
+VP05_GJ_ES256_MLDSA65_kb	L4|sdjwtvc=-19	tedavi-ML-DSA-65	indeterminate		indeterminate	tek-oracle
+VP05_GJ_ES256_MLDSA65_kb	P0	tedavi-ML-DSA-65	indeterminate	indeterminate		tek-oracle
+VP05_GJ_ES256_MLDSA65_kb	P0|sdjwtvc=-13	tedavi-ML-DSA-65	indeterminate		indeterminate	tek-oracle
+VP05_GJ_ES256_MLDSA65_kb	P0|sdjwtvc=-19	tedavi-ML-DSA-65	indeterminate		indeterminate	tek-oracle
+VP05_GJ_ES256_MLDSA65_kb	P1	tedavi-ML-DSA-65	indeterminate	indeterminate		tek-oracle
+VP05_GJ_ES256_MLDSA65_kb	P2|sdjwtvc=-13	tedavi-ML-DSA-65	indeterminate		indeterminate	tek-oracle
+VP05_GJ_ES256_MLDSA65_kb	P2|sdjwtvc=-19	tedavi-ML-DSA-65	indeterminate		indeterminate	tek-oracle
+VP05_GJ_ES256_MLDSA65_kb-SIRA-ters	L4	tedavi-ML-DSA-65	indeterminate	indeterminate		tek-oracle
+VP05_GJ_ES256_MLDSA65_kb-SIRA-ters	L4-S	tedavi-ML-DSA-65	indeterminate	indeterminate		tek-oracle
+VP05_GJ_ES256_MLDSA65_kb-SIRA-ters	L4-Y	tedavi-ML-DSA-65	indeterminate	indeterminate		tek-oracle
+VP05_GJ_ES256_MLDSA65_kb-SIRA-ters	L4|sdjwtvc=-13	tedavi-ML-DSA-65	indeterminate		indeterminate	tek-oracle
+VP05_GJ_ES256_MLDSA65_kb-SIRA-ters	L4|sdjwtvc=-19	tedavi-ML-DSA-65	indeterminate		indeterminate	tek-oracle
+VP05_GJ_ES256_MLDSA65_kb-SIRA-ters	P0	tedavi-ML-DSA-65	indeterminate	indeterminate		tek-oracle
+VP05_GJ_ES256_MLDSA65_kb-SIRA-ters	P0|sdjwtvc=-13	tedavi-ML-DSA-65	indeterminate		indeterminate	tek-oracle
+VP05_GJ_ES256_MLDSA65_kb-SIRA-ters	P0|sdjwtvc=-19	tedavi-ML-DSA-65	indeterminate		indeterminate	tek-oracle
+VP05_GJ_ES256_MLDSA65_kb-SIRA-ters	P1	tedavi-ML-DSA-65	indeterminate	indeterminate		tek-oracle
+VP05_GJ_ES256_MLDSA65_kb-SIRA-ters	P2|sdjwtvc=-13	tedavi-ML-DSA-65	indeterminate		indeterminate	tek-oracle
+VP05_GJ_ES256_MLDSA65_kb-SIRA-ters	P2|sdjwtvc=-19	tedavi-ML-DSA-65	indeterminate		indeterminate	tek-oracle
+VP06_GJ_pq_soyuldu_kb_gecerli	GEC	tedavi-ML-DSA-65	accept-classical	accept-classical		tek-oracle
+VP06_GJ_pq_soyuldu_kb_gecerli	L4	tedavi-ML-DSA-65	reject	reject		tek-oracle
+VP06_GJ_pq_soyuldu_kb_gecerli	L4-S	tedavi-ML-DSA-65	reject	reject		tek-oracle
+VP06_GJ_pq_soyuldu_kb_gecerli	L4-Y	tedavi-ML-DSA-65	reject	reject		tek-oracle
+VP06_GJ_pq_soyuldu_kb_gecerli	L4|sdjwtvc=-13	tedavi-ML-DSA-65	reject		reject	tek-oracle
+VP06_GJ_pq_soyuldu_kb_gecerli	L4|sdjwtvc=-19	tedavi-ML-DSA-65	reject		reject	tek-oracle
+VP06_GJ_pq_soyuldu_kb_gecerli	P0	tedavi-ML-DSA-65	accept-classical	accept-classical		tek-oracle
+VP06_GJ_pq_soyuldu_kb_gecerli	P0|sdjwtvc=-13	tedavi-ML-DSA-65	accept-classical		accept-classical	tek-oracle
+VP06_GJ_pq_soyuldu_kb_gecerli	P0|sdjwtvc=-19	tedavi-ML-DSA-65	indeterminate		indeterminate	tek-oracle
+VP06_GJ_pq_soyuldu_kb_gecerli	P1	tedavi-ML-DSA-65	accept-classical	accept-classical		tek-oracle
+VP06_GJ_pq_soyuldu_kb_gecerli	P2|sdjwtvc=-13	tedavi-ML-DSA-65	accept-classical		accept-classical	tek-oracle
+VP06_GJ_pq_soyuldu_kb_gecerli	P2|sdjwtvc=-19	tedavi-ML-DSA-65	indeterminate		indeterminate	tek-oracle
+VP07_GJ_sd_hash_ikinci_imza	L4	tedavi-ML-DSA-65	indeterminate	indeterminate		tek-oracle
+VP07_GJ_sd_hash_ikinci_imza	L4-S	tedavi-ML-DSA-65	indeterminate	indeterminate		tek-oracle
+VP07_GJ_sd_hash_ikinci_imza	L4-Y	tedavi-ML-DSA-65	indeterminate	indeterminate		tek-oracle
+VP07_GJ_sd_hash_ikinci_imza	L4|sdjwtvc=-13	tedavi-ML-DSA-65	indeterminate		indeterminate	tek-oracle
+VP07_GJ_sd_hash_ikinci_imza	L4|sdjwtvc=-19	tedavi-ML-DSA-65	indeterminate		indeterminate	tek-oracle
+VP07_GJ_sd_hash_ikinci_imza	P0	tedavi-ML-DSA-65	indeterminate	indeterminate		tek-oracle
+VP07_GJ_sd_hash_ikinci_imza	P0|sdjwtvc=-13	tedavi-ML-DSA-65	indeterminate		indeterminate	tek-oracle
+VP07_GJ_sd_hash_ikinci_imza	P0|sdjwtvc=-19	tedavi-ML-DSA-65	indeterminate		indeterminate	tek-oracle
+VP07_GJ_sd_hash_ikinci_imza	P1	tedavi-ML-DSA-65	indeterminate	indeterminate		tek-oracle
+VP07_GJ_sd_hash_ikinci_imza	P2|sdjwtvc=-13	tedavi-ML-DSA-65	indeterminate		indeterminate	tek-oracle
+VP07_GJ_sd_hash_ikinci_imza	P2|sdjwtvc=-19	tedavi-ML-DSA-65	indeterminate		indeterminate	tek-oracle
+VPLUS_ES256	GEC	kontrol-Ed25519	accept-classical	accept-classical		tek-oracle
+VPLUS_ES256	GEC	kontrol-EdDSA	accept-classical	accept-classical		tek-oracle
+VPLUS_ES256	GEC	tedavi-ML-DSA-65	accept-classical	accept-classical		tek-oracle
+VPLUS_ES256	GEC	tedavi-composite	accept-classical	accept-classical		tek-oracle
+VPLUS_ES256	IZIN-A	kontrol-Ed25519	accept-classical	accept-classical		tek-oracle
+VPLUS_ES256	IZIN-A	kontrol-EdDSA	accept-classical	accept-classical		tek-oracle
+VPLUS_ES256	IZIN-A	tedavi-ML-DSA-65	accept-classical	accept-classical		tek-oracle
+VPLUS_ES256	IZIN-A	tedavi-composite	accept-classical	accept-classical		tek-oracle
+VPLUS_ES256	IZIN-AX	kontrol-Ed25519	accept-classical	accept-classical		tek-oracle
+VPLUS_ES256	IZIN-AX	kontrol-EdDSA	accept-classical	accept-classical		tek-oracle
+VPLUS_ES256	IZIN-AX	tedavi-ML-DSA-65	accept-classical	accept-classical		tek-oracle
+VPLUS_ES256	IZIN-AX	tedavi-composite	accept-classical	accept-classical		tek-oracle
+VPLUS_ES256	L4	kontrol-Ed25519	reject	reject	reject	A=B
+VPLUS_ES256	L4	kontrol-EdDSA	reject	reject	reject	A=B
+VPLUS_ES256	L4	tedavi-ML-DSA-65	reject	reject	reject	A=B
+VPLUS_ES256	L4	tedavi-composite	reject	reject	reject	A=B
+VPLUS_ES256	L4-S	kontrol-Ed25519	reject	reject		tek-oracle
+VPLUS_ES256	L4-S	kontrol-EdDSA	reject	reject		tek-oracle
+VPLUS_ES256	L4-S	tedavi-ML-DSA-65	reject	reject		tek-oracle
+VPLUS_ES256	L4-S	tedavi-composite	reject	reject		tek-oracle
+VPLUS_ES256	L4-Y	kontrol-Ed25519	reject	reject		tek-oracle
+VPLUS_ES256	L4-Y	kontrol-EdDSA	reject	reject		tek-oracle
+VPLUS_ES256	L4-Y	tedavi-ML-DSA-65	reject	reject		tek-oracle
+VPLUS_ES256	L4-Y	tedavi-composite	reject	reject		tek-oracle
+VPLUS_ES256	P0	kontrol-Ed25519	accept-classical		accept-classical	tek-oracle
+VPLUS_ES256	P0	kontrol-EdDSA	accept-classical		accept-classical	tek-oracle
+VPLUS_ES256	P0	tedavi-ML-DSA-65	accept-classical		accept-classical	tek-oracle
+VPLUS_ES256	P0	tedavi-composite	accept-classical		accept-classical	tek-oracle
+VPLUS_ES256	P2	kontrol-Ed25519	accept-classical		accept-classical	tek-oracle
+VPLUS_ES256	P2	kontrol-EdDSA	accept-classical		accept-classical	tek-oracle
+VPLUS_ES256	P2	tedavi-ML-DSA-65	accept-classical		accept-classical	tek-oracle
+VPLUS_ES256	P2	tedavi-composite	accept-classical		accept-classical	tek-oracle
+VPLUS_EdDSA	GEC	kontrol-EdDSA	accept-classical	accept-classical		tek-oracle
+VPLUS_EdDSA	IZIN-A	kontrol-EdDSA	reject	reject		tek-oracle
+VPLUS_EdDSA	IZIN-AX	kontrol-EdDSA	accept-classical	accept-classical		tek-oracle
+VPLUS_EdDSA	L4	kontrol-EdDSA	accept-classical	accept-classical	accept-classical	A=B
+VPLUS_EdDSA	L4-S	kontrol-EdDSA	accept-classical	accept-classical		tek-oracle
+VPLUS_EdDSA	L4-Y	kontrol-EdDSA	accept-classical	accept-classical		tek-oracle
+VPLUS_EdDSA	P0	kontrol-EdDSA	accept-classical		accept-classical	tek-oracle
+VPLUS_EdDSA	P2	kontrol-EdDSA	accept-classical		accept-classical	tek-oracle
+VPLUS_EdDSA-ED25519	GEC	kontrol-Ed25519	accept-classical	accept-classical		tek-oracle
+VPLUS_EdDSA-ED25519	IZIN-A	kontrol-Ed25519	reject	reject		tek-oracle
+VPLUS_EdDSA-ED25519	IZIN-AX	kontrol-Ed25519	accept-classical	accept-classical		tek-oracle
+VPLUS_EdDSA-ED25519	L4	kontrol-Ed25519	accept-classical	accept-classical	accept-classical	A=B
+VPLUS_EdDSA-ED25519	L4-S	kontrol-Ed25519	accept-classical	accept-classical		tek-oracle
+VPLUS_EdDSA-ED25519	L4-Y	kontrol-Ed25519	accept-classical	accept-classical		tek-oracle
+VPLUS_EdDSA-ED25519	P0	kontrol-Ed25519	accept-classical		accept-classical	tek-oracle
+VPLUS_EdDSA-ED25519	P2	kontrol-Ed25519	accept-classical		accept-classical	tek-oracle
+VPLUS_ML-DSA-65	GEC	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+VPLUS_ML-DSA-65	IZIN-A	tedavi-ML-DSA-65	reject	reject		tek-oracle
+VPLUS_ML-DSA-65	IZIN-AX	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+VPLUS_ML-DSA-65	L4	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid	accept-hybrid	A=B
+VPLUS_ML-DSA-65	L4-S	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+VPLUS_ML-DSA-65	L4-Y	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+VPLUS_ML-DSA-65	P0	tedavi-ML-DSA-65	accept-hybrid		accept-hybrid	tek-oracle
+VPLUS_ML-DSA-65	P2	tedavi-ML-DSA-65	accept-hybrid		accept-hybrid	tek-oracle
+X5C01_klasik_zincir	GEC	tedavi-ML-DSA-65	accept-classical	accept-classical		tek-oracle
+X5C01_klasik_zincir	L4	kontrol-Ed25519	reject		reject	tek-oracle
+X5C01_klasik_zincir	L4	kontrol-EdDSA	reject		reject	tek-oracle
+X5C01_klasik_zincir	L4	tedavi-ML-DSA-65	reject	reject	reject	A=B
+X5C01_klasik_zincir	L4	tedavi-composite	reject		reject	tek-oracle
+X5C01_klasik_zincir	L4-S	tedavi-ML-DSA-65	reject	reject		tek-oracle
+X5C01_klasik_zincir	L4-Y	tedavi-ML-DSA-65	reject	reject		tek-oracle
+X5C01_klasik_zincir	L4-YOL	tedavi-ML-DSA-65	reject	reject		tek-oracle
+X5C01_klasik_zincir	P0	kontrol-Ed25519	accept-classical		accept-classical	tek-oracle
+X5C01_klasik_zincir	P0	kontrol-EdDSA	accept-classical		accept-classical	tek-oracle
+X5C01_klasik_zincir	P0	tedavi-ML-DSA-65	accept-classical		accept-classical	tek-oracle
+X5C01_klasik_zincir	P0	tedavi-composite	accept-classical		accept-classical	tek-oracle
+X5C01_klasik_zincir	P2	kontrol-Ed25519	accept-classical		accept-classical	tek-oracle
+X5C01_klasik_zincir	P2	kontrol-EdDSA	accept-classical		accept-classical	tek-oracle
+X5C01_klasik_zincir	P2	tedavi-ML-DSA-65	accept-classical		accept-classical	tek-oracle
+X5C01_klasik_zincir	P2	tedavi-composite	accept-classical		accept-classical	tek-oracle
+X5C02_pq_zincir	GEC	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+X5C02_pq_zincir	L4	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid	accept-hybrid	A=B
+X5C02_pq_zincir	L4-S	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+X5C02_pq_zincir	L4-Y	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+X5C02_pq_zincir	L4-YOL	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+X5C02_pq_zincir	P0	tedavi-ML-DSA-65	accept-hybrid		accept-hybrid	tek-oracle
+X5C02_pq_zincir	P2	tedavi-ML-DSA-65	accept-hybrid		accept-hybrid	tek-oracle
+X5C03_karisik_klasik_yaprak_pq_ara	GEC	tedavi-ML-DSA-65	accept-classical	accept-classical		tek-oracle
+X5C03_karisik_klasik_yaprak_pq_ara	L4	kontrol-Ed25519	reject		reject	tek-oracle
+X5C03_karisik_klasik_yaprak_pq_ara	L4	kontrol-EdDSA	reject		reject	tek-oracle
+X5C03_karisik_klasik_yaprak_pq_ara	L4	tedavi-ML-DSA-65	reject	reject	reject	A=B
+X5C03_karisik_klasik_yaprak_pq_ara	L4	tedavi-composite	reject		reject	tek-oracle
+X5C03_karisik_klasik_yaprak_pq_ara	L4-S	tedavi-ML-DSA-65	reject	reject		tek-oracle
+X5C03_karisik_klasik_yaprak_pq_ara	L4-Y	tedavi-ML-DSA-65	reject	reject		tek-oracle
+X5C03_karisik_klasik_yaprak_pq_ara	L4-YOL	tedavi-ML-DSA-65	reject	reject		tek-oracle
+X5C03_karisik_klasik_yaprak_pq_ara	P0	kontrol-Ed25519	accept-classical		accept-classical	tek-oracle
+X5C03_karisik_klasik_yaprak_pq_ara	P0	kontrol-EdDSA	accept-classical		accept-classical	tek-oracle
+X5C03_karisik_klasik_yaprak_pq_ara	P0	tedavi-ML-DSA-65	accept-classical		accept-classical	tek-oracle
+X5C03_karisik_klasik_yaprak_pq_ara	P0	tedavi-composite	accept-classical		accept-classical	tek-oracle
+X5C03_karisik_klasik_yaprak_pq_ara	P2	kontrol-Ed25519	accept-classical		accept-classical	tek-oracle
+X5C03_karisik_klasik_yaprak_pq_ara	P2	kontrol-EdDSA	accept-classical		accept-classical	tek-oracle
+X5C03_karisik_klasik_yaprak_pq_ara	P2	tedavi-ML-DSA-65	accept-classical		accept-classical	tek-oracle
+X5C03_karisik_klasik_yaprak_pq_ara	P2	tedavi-composite	accept-classical		accept-classical	tek-oracle
+X5C04_karisik_pq_yaprak_klasik_ara	GEC	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+X5C04_karisik_pq_yaprak_klasik_ara	L4	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid	accept-hybrid	A=B
+X5C04_karisik_pq_yaprak_klasik_ara	L4	tedavi-composite	kol-bagimsiz	accept-hybrid	reject	madde-9
+X5C04_karisik_pq_yaprak_klasik_ara	L4-S	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+X5C04_karisik_pq_yaprak_klasik_ara	L4-S	tedavi-composite	kol-bagimsiz	accept-hybrid		madde-9
+X5C04_karisik_pq_yaprak_klasik_ara	L4-Y	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+X5C04_karisik_pq_yaprak_klasik_ara	L4-Y	tedavi-composite	kol-bagimsiz	accept-hybrid		madde-9
+X5C04_karisik_pq_yaprak_klasik_ara	L4-YOL	tedavi-ML-DSA-65	reject	reject		tek-oracle
+X5C04_karisik_pq_yaprak_klasik_ara	L4-YOL	tedavi-composite	kol-bagimsiz	reject		madde-9
+X5C04_karisik_pq_yaprak_klasik_ara	P0	tedavi-ML-DSA-65	accept-hybrid		accept-hybrid	tek-oracle
+X5C04_karisik_pq_yaprak_klasik_ara	P0	tedavi-composite	kol-bagimsiz		reject	madde-9
+X5C04_karisik_pq_yaprak_klasik_ara	P2	tedavi-ML-DSA-65	accept-hybrid		accept-hybrid	tek-oracle
+X5C04_karisik_pq_yaprak_klasik_ara	P2	tedavi-composite	kol-bagimsiz		reject	madde-9
+X5C05_karisik_pq_ara_klasik_kok	GEC	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+X5C05_karisik_pq_ara_klasik_kok	L4	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid	accept-hybrid	A=B
+X5C05_karisik_pq_ara_klasik_kok	L4-S	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+X5C05_karisik_pq_ara_klasik_kok	L4-Y	tedavi-ML-DSA-65	accept-hybrid	accept-hybrid		tek-oracle
+X5C05_karisik_pq_ara_klasik_kok	L4-YOL	tedavi-ML-DSA-65	reject	reject		tek-oracle
+X5C05_karisik_pq_ara_klasik_kok	P0	tedavi-ML-DSA-65	accept-hybrid		accept-hybrid	tek-oracle
+X5C05_karisik_pq_ara_klasik_kok	P2	tedavi-ML-DSA-65	accept-hybrid		accept-hybrid	tek-oracle
+X5C06_guven_capasi_x5c_icinde	GEC	tedavi-ML-DSA-65	indeterminate	indeterminate		tek-oracle
+X5C06_guven_capasi_x5c_icinde	L4	tedavi-ML-DSA-65	indeterminate	indeterminate	indeterminate	A=B
+X5C06_guven_capasi_x5c_icinde	L4-S	tedavi-ML-DSA-65	indeterminate	indeterminate		tek-oracle
+X5C06_guven_capasi_x5c_icinde	L4-Y	tedavi-ML-DSA-65	indeterminate	indeterminate		tek-oracle
+X5C06_guven_capasi_x5c_icinde	L4-YOL	tedavi-ML-DSA-65	indeterminate	indeterminate		tek-oracle
+X5C06_guven_capasi_x5c_icinde	P0	tedavi-ML-DSA-65	indeterminate		indeterminate	tek-oracle
+X5C06_guven_capasi_x5c_icinde	P2	tedavi-ML-DSA-65	indeterminate		indeterminate	tek-oracle
+X5C07_korumasiz_x5c	GEC	tedavi-ML-DSA-65	reject	reject		tek-oracle
+X5C07_korumasiz_x5c	L4	tedavi-ML-DSA-65	reject	reject	reject	A=B
+X5C07_korumasiz_x5c	L4	tedavi-composite	kol-bagimsiz	reject	reject	madde-9
+X5C07_korumasiz_x5c	L4-S	tedavi-ML-DSA-65	reject	reject		tek-oracle
+X5C07_korumasiz_x5c	L4-S	tedavi-composite	kol-bagimsiz	reject		madde-9
+X5C07_korumasiz_x5c	L4-Y	tedavi-ML-DSA-65	reject	reject		tek-oracle
+X5C07_korumasiz_x5c	L4-Y	tedavi-composite	kol-bagimsiz	reject		madde-9
+X5C07_korumasiz_x5c	L4-YOL	tedavi-ML-DSA-65	reject	reject		tek-oracle
+X5C07_korumasiz_x5c	L4-YOL	tedavi-composite	kol-bagimsiz	reject		madde-9
+X5C07_korumasiz_x5c	P0	tedavi-ML-DSA-65	reject		reject	tek-oracle
+X5C07_korumasiz_x5c	P0	tedavi-composite	kol-bagimsiz		reject	madde-9
+X5C07_korumasiz_x5c	P2	tedavi-ML-DSA-65	reject		reject	tek-oracle
+X5C07_korumasiz_x5c	P2	tedavi-composite	kol-bagimsiz		reject	madde-9
+X5C08_korumasiz_x5c_zincir_degisimi	GEC	tedavi-ML-DSA-65	reject	reject		tek-oracle
+X5C08_korumasiz_x5c_zincir_degisimi	L4	tedavi-ML-DSA-65	reject	reject	reject	A=B
+X5C08_korumasiz_x5c_zincir_degisimi	L4-S	tedavi-ML-DSA-65	reject	reject		tek-oracle
+X5C08_korumasiz_x5c_zincir_degisimi	L4-Y	tedavi-ML-DSA-65	reject	reject		tek-oracle
+X5C08_korumasiz_x5c_zincir_degisimi	L4-YOL	tedavi-ML-DSA-65	reject	reject		tek-oracle
+X5C08_korumasiz_x5c_zincir_degisimi	P0	tedavi-ML-DSA-65	reject		reject	tek-oracle
+X5C08_korumasiz_x5c_zincir_degisimi	P2	tedavi-ML-DSA-65	reject		reject	tek-oracle
+X5C09_korumali_ve_korumasiz_x5c	GEC	tedavi-ML-DSA-65	reject	reject		tek-oracle
+X5C09_korumali_ve_korumasiz_x5c	L4	tedavi-ML-DSA-65	reject	reject	reject	A=B
+X5C09_korumali_ve_korumasiz_x5c	L4-S	tedavi-ML-DSA-65	reject	reject		tek-oracle
+X5C09_korumali_ve_korumasiz_x5c	L4-Y	tedavi-ML-DSA-65	reject	reject		tek-oracle
+X5C09_korumali_ve_korumasiz_x5c	L4-YOL	tedavi-ML-DSA-65	reject	reject		tek-oracle
+X5C09_korumali_ve_korumasiz_x5c	P0	tedavi-ML-DSA-65	reject		reject	tek-oracle
+X5C09_korumali_ve_korumasiz_x5c	P2	tedavi-ML-DSA-65	reject		reject	tek-oracle
+X5C10_x5c_ve_baska_anahtar_kid	GEC	tedavi-ML-DSA-65	indeterminate	indeterminate		tek-oracle
+X5C10_x5c_ve_baska_anahtar_kid	L4	tedavi-ML-DSA-65	indeterminate	indeterminate	indeterminate	A=B
+X5C10_x5c_ve_baska_anahtar_kid	L4-S	tedavi-ML-DSA-65	indeterminate	indeterminate		tek-oracle
+X5C10_x5c_ve_baska_anahtar_kid	L4-Y	tedavi-ML-DSA-65	indeterminate	indeterminate		tek-oracle
+X5C10_x5c_ve_baska_anahtar_kid	L4-YOL	tedavi-ML-DSA-65	indeterminate	indeterminate		tek-oracle
+X5C10_x5c_ve_baska_anahtar_kid	P0	tedavi-ML-DSA-65	indeterminate		indeterminate	tek-oracle
+X5C10_x5c_ve_baska_anahtar_kid	P2	tedavi-ML-DSA-65	indeterminate		indeterminate	tek-oracle

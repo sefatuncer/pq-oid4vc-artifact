@@ -1,0 +1,2003 @@
+{
+ "test": "t03_negatif",
+ "sure_s": 0.17,
+ "surumler": {
+  "pqjose": "1.0.0",
+  "python": "3.11.16",
+  "cryptography": "50.0.1",
+  "cryptography_openssl": "OpenSSL 4.0.2 25 Aug 2026",
+  "openssl_cli": "OpenSSL 3.5.7 9 Jun 2026 (Library: OpenSSL 3.5.7 9 Jun 2026)",
+  "spesifikasyonlar": {
+   "JWS": "RFC 7515",
+   "JWA": "RFC 7518 (RFC 9864 ile guncellendi)",
+   "ML-DSA": "RFC 9964 (Mayis 2026)",
+   "composite": "draft-ietf-jose-pq-composite-sigs-04 (10.09.2026)",
+   "EdDSA": "RFC 8037 / RFC 9864"
+  }
+ },
+ "ozet": {
+  "toplam": 103,
+  "gecen": 103,
+  "kalan": []
+ },
+ "kontroller": [
+  {
+   "grup": "N1-bozuk-imza",
+   "ad": "POZITIF:ES256",
+   "gecti": true,
+   "ayrinti": "ok"
+  },
+  {
+   "grup": "N1-bozuk-imza",
+   "ad": "NEGATIF:ES256 (orta bayt bit cevirme)",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ES256:imza-gecersiz"
+   ]
+  },
+  {
+   "grup": "N1-bozuk-imza",
+   "ad": "POZITIF:ES384",
+   "gecti": true,
+   "ayrinti": "ok"
+  },
+  {
+   "grup": "N1-bozuk-imza",
+   "ad": "NEGATIF:ES384 (orta bayt bit cevirme)",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ES384:imza-gecersiz"
+   ]
+  },
+  {
+   "grup": "N1-bozuk-imza",
+   "ad": "POZITIF:EdDSA",
+   "gecti": true,
+   "ayrinti": "ok"
+  },
+  {
+   "grup": "N1-bozuk-imza",
+   "ad": "NEGATIF:EdDSA (orta bayt bit cevirme)",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 EdDSA:imza-gecersiz"
+   ]
+  },
+  {
+   "grup": "N1-bozuk-imza",
+   "ad": "POZITIF:Ed448",
+   "gecti": true,
+   "ayrinti": "ok"
+  },
+  {
+   "grup": "N1-bozuk-imza",
+   "ad": "NEGATIF:Ed448 (orta bayt bit cevirme)",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 Ed448:imza-gecersiz"
+   ]
+  },
+  {
+   "grup": "N1-bozuk-imza",
+   "ad": "POZITIF:ML-DSA-44",
+   "gecti": true,
+   "ayrinti": "ok"
+  },
+  {
+   "grup": "N1-bozuk-imza",
+   "ad": "NEGATIF:ML-DSA-44 (orta bayt bit cevirme)",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-44:imza-gecersiz"
+   ]
+  },
+  {
+   "grup": "N1-bozuk-imza",
+   "ad": "POZITIF:ML-DSA-65",
+   "gecti": true,
+   "ayrinti": "ok"
+  },
+  {
+   "grup": "N1-bozuk-imza",
+   "ad": "NEGATIF:ML-DSA-65 (orta bayt bit cevirme)",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65:imza-gecersiz"
+   ]
+  },
+  {
+   "grup": "N1-bozuk-imza",
+   "ad": "POZITIF:ML-DSA-87",
+   "gecti": true,
+   "ayrinti": "ok"
+  },
+  {
+   "grup": "N1-bozuk-imza",
+   "ad": "NEGATIF:ML-DSA-87 (orta bayt bit cevirme)",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-87:imza-gecersiz"
+   ]
+  },
+  {
+   "grup": "N1-bozuk-imza",
+   "ad": "POZITIF:ML-DSA-44-ES256",
+   "gecti": true,
+   "ayrinti": "ok"
+  },
+  {
+   "grup": "N1-bozuk-imza",
+   "ad": "NEGATIF:ML-DSA-44-ES256 (orta bayt bit cevirme)",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-44-ES256:imza-gecersiz:bilesen(ml=False,trad=True)"
+   ]
+  },
+  {
+   "grup": "N1-bozuk-imza",
+   "ad": "POZITIF:ML-DSA-65-ES256",
+   "gecti": true,
+   "ayrinti": "ok"
+  },
+  {
+   "grup": "N1-bozuk-imza",
+   "ad": "NEGATIF:ML-DSA-65-ES256 (orta bayt bit cevirme)",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65-ES256:imza-gecersiz:bilesen(ml=False,trad=True)"
+   ]
+  },
+  {
+   "grup": "N1-bozuk-imza",
+   "ad": "POZITIF:ML-DSA-87-ES384",
+   "gecti": true,
+   "ayrinti": "ok"
+  },
+  {
+   "grup": "N1-bozuk-imza",
+   "ad": "NEGATIF:ML-DSA-87-ES384 (orta bayt bit cevirme)",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-87-ES384:imza-gecersiz:bilesen(ml=False,trad=True)"
+   ]
+  },
+  {
+   "grup": "N1-bozuk-imza",
+   "ad": "POZITIF:ML-DSA-44-Ed25519",
+   "gecti": true,
+   "ayrinti": "ok"
+  },
+  {
+   "grup": "N1-bozuk-imza",
+   "ad": "NEGATIF:ML-DSA-44-Ed25519 (orta bayt bit cevirme)",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-44-Ed25519:imza-gecersiz:bilesen(ml=False,trad=True)"
+   ]
+  },
+  {
+   "grup": "N1-bozuk-imza",
+   "ad": "POZITIF:ML-DSA-65-Ed25519",
+   "gecti": true,
+   "ayrinti": "ok"
+  },
+  {
+   "grup": "N1-bozuk-imza",
+   "ad": "NEGATIF:ML-DSA-65-Ed25519 (orta bayt bit cevirme)",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65-Ed25519:imza-gecersiz:bilesen(ml=False,trad=True)"
+   ]
+  },
+  {
+   "grup": "N1-bozuk-imza",
+   "ad": "POZITIF:ML-DSA-87-Ed448",
+   "gecti": true,
+   "ayrinti": "ok"
+  },
+  {
+   "grup": "N1-bozuk-imza",
+   "ad": "NEGATIF:ML-DSA-87-Ed448 (orta bayt bit cevirme)",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-87-Ed448:imza-gecersiz:bilesen(ml=False,trad=True)"
+   ]
+  },
+  {
+   "grup": "N2-bozuk-yuk",
+   "ad": "NEGATIF:ES256",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ES256:imza-gecersiz"
+   ]
+  },
+  {
+   "grup": "N3-bozuk-baslik",
+   "ad": "NEGATIF:ES256 (typ degisti)",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ES256:imza-gecersiz"
+   ]
+  },
+  {
+   "grup": "N2-bozuk-yuk",
+   "ad": "NEGATIF:ML-DSA-65",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65:imza-gecersiz"
+   ]
+  },
+  {
+   "grup": "N3-bozuk-baslik",
+   "ad": "NEGATIF:ML-DSA-65 (typ degisti)",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65:imza-gecersiz"
+   ]
+  },
+  {
+   "grup": "N2-bozuk-yuk",
+   "ad": "NEGATIF:ML-DSA-65-ES256",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65-ES256:imza-gecersiz:bilesen(ml=False,trad=False)"
+   ]
+  },
+  {
+   "grup": "N3-bozuk-baslik",
+   "ad": "NEGATIF:ML-DSA-65-ES256 (typ degisti)",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65-ES256:imza-gecersiz:bilesen(ml=False,trad=False)"
+   ]
+  },
+  {
+   "grup": "N4-yanlis-alg",
+   "ad": "NEGATIF:ML-DSA-65 imzasi, alg=ML-DSA-44",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-44:anahtar-yok-ya-da-alg-uyumsuz"
+   ]
+  },
+  {
+   "grup": "N4-yanlis-alg",
+   "ad": "NEGATIF:ML-DSA-65 imzasi, alg=ML-DSA-87",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-87:anahtar-yok-ya-da-alg-uyumsuz"
+   ]
+  },
+  {
+   "grup": "N4-yanlis-alg",
+   "ad": "NEGATIF:ML-DSA-65 imzasi, alg=ML-DSA-65-ES256",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65-ES256:anahtar-yok-ya-da-alg-uyumsuz"
+   ]
+  },
+  {
+   "grup": "N4-yanlis-alg",
+   "ad": "NEGATIF:ES256 imzasi, alg=ES384",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ES384:anahtar-yok-ya-da-alg-uyumsuz"
+   ]
+  },
+  {
+   "grup": "N4-yanlis-alg",
+   "ad": "NEGATIF:EdDSA(Ed25519) imzasi, alg=Ed448",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 Ed448:anahtar-yok-ya-da-alg-uyumsuz"
+   ]
+  },
+  {
+   "grup": "N4-yanlis-alg",
+   "ad": "NEGATIF:alg=none, bos imza",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 none:alg-none"
+   ]
+  },
+  {
+   "grup": "N4-yanlis-alg",
+   "ad": "NEGATIF:bilinmeyen alg=ML-DSA-66 (gecerli ML-DSA-65 imza baytlari)",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-66:alg-bilinmiyor"
+   ]
+  },
+  {
+   "grup": "N4-yanlis-alg",
+   "ad": "NEGATIF:alg korumasiz baslikta (flattened)",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65:korumasiz-parametre:alg"
+   ]
+  },
+  {
+   "grup": "N5-composite-bilesen",
+   "ad": "NEGATIF:ML-DSA-44-ES256: ML-DSA bileseni bozuk",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-44-ES256:imza-gecersiz:bilesen(ml=False,trad=True)"
+   ]
+  },
+  {
+   "grup": "N5-composite-bilesen",
+   "ad": "NEGATIF:ML-DSA-44-ES256: klasik bilesen bozuk",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-44-ES256:imza-gecersiz:bilesen(ml=True,trad=False)"
+   ]
+  },
+  {
+   "grup": "N5-composite-bilesen",
+   "ad": "NEGATIF:ML-DSA-65-ES256: ML-DSA bileseni bozuk",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65-ES256:imza-gecersiz:bilesen(ml=False,trad=True)"
+   ]
+  },
+  {
+   "grup": "N5-composite-bilesen",
+   "ad": "NEGATIF:ML-DSA-65-ES256: klasik bilesen bozuk",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65-ES256:imza-gecersiz:bilesen(ml=True,trad=False)"
+   ]
+  },
+  {
+   "grup": "N5-composite-bilesen",
+   "ad": "NEGATIF:ML-DSA-87-ES384: ML-DSA bileseni bozuk",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-87-ES384:imza-gecersiz:bilesen(ml=False,trad=True)"
+   ]
+  },
+  {
+   "grup": "N5-composite-bilesen",
+   "ad": "NEGATIF:ML-DSA-87-ES384: klasik bilesen bozuk",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-87-ES384:imza-gecersiz:bilesen(ml=True,trad=False)"
+   ]
+  },
+  {
+   "grup": "N5-composite-bilesen",
+   "ad": "NEGATIF:ML-DSA-44-Ed25519: ML-DSA bileseni bozuk",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-44-Ed25519:imza-gecersiz:bilesen(ml=False,trad=True)"
+   ]
+  },
+  {
+   "grup": "N5-composite-bilesen",
+   "ad": "NEGATIF:ML-DSA-44-Ed25519: klasik bilesen bozuk",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-44-Ed25519:imza-gecersiz:bilesen(ml=True,trad=False)"
+   ]
+  },
+  {
+   "grup": "N5-composite-bilesen",
+   "ad": "NEGATIF:ML-DSA-65-Ed25519: ML-DSA bileseni bozuk",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65-Ed25519:imza-gecersiz:bilesen(ml=False,trad=True)"
+   ]
+  },
+  {
+   "grup": "N5-composite-bilesen",
+   "ad": "NEGATIF:ML-DSA-65-Ed25519: klasik bilesen bozuk",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65-Ed25519:imza-gecersiz:bilesen(ml=True,trad=False)"
+   ]
+  },
+  {
+   "grup": "N5-composite-bilesen",
+   "ad": "NEGATIF:ML-DSA-87-Ed448: ML-DSA bileseni bozuk",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-87-Ed448:imza-gecersiz:bilesen(ml=False,trad=True)"
+   ]
+  },
+  {
+   "grup": "N5-composite-bilesen",
+   "ad": "NEGATIF:ML-DSA-87-Ed448: klasik bilesen bozuk",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-87-Ed448:imza-gecersiz:bilesen(ml=True,trad=False)"
+   ]
+  },
+  {
+   "grup": "N5-composite-bilesen",
+   "ad": "NEGATIF:ML-DSA-65-ES256: DER SEQUENCE uzunlugu bozuk",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65-ES256:imza-gecersiz:serilestirme: DER: SEQUENCE uzunluğu tutarsız / artık bayt"
+   ]
+  },
+  {
+   "grup": "N5-composite-bilesen",
+   "ad": "NEGATIF:ML-DSA-65-ES256: asgari olmayan DER (r onunde fazla 0x00)",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65-ES256:imza-gecersiz:serilestirme: DER: asgari olmayan INTEGER kodlaması"
+   ]
+  },
+  {
+   "grup": "N5-composite-bilesen",
+   "ad": "NEGATIF:ML-DSA-65-ES256: sonda artik bayt",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65-ES256:imza-gecersiz:serilestirme: DER: SEQUENCE uzunluğu tutarsız / artık bayt"
+   ]
+  },
+  {
+   "grup": "N5-composite-bilesen",
+   "ad": "NEGATIF:ML-DSA-65-ES256: ECDSA bileseni kesilmis (yalniz ML-DSA)",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65-ES256:imza-gecersiz:serilestirme: composite imza kisa"
+   ]
+  },
+  {
+   "grup": "N5-composite-bilesen",
+   "ad": "NEGATIF:ML-DSA-65-ES256: ECDSA bileseni ham r||s (DER degil)",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65-ES256:imza-gecersiz:serilestirme: DER: SEQUENCE yok"
+   ]
+  },
+  {
+   "grup": "N5-composite-bilesen",
+   "ad": "NEGATIF:ML-DSA-65-ES256: bilesenler farkli iletilerden (ML-DSA yuk2, ECDSA yuk1)",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65-ES256:imza-gecersiz:bilesen(ml=False,trad=True)"
+   ]
+  },
+  {
+   "grup": "N5-composite-bilesen",
+   "ad": "NEGATIF:ML-DSA-65-ES256: bilesen sirasi ters (trad||ml)",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65-ES256:imza-gecersiz:serilestirme: DER: SEQUENCE yok"
+   ]
+  },
+  {
+   "grup": "N5-ayrilabilirlik",
+   "ad": "NEGATIF:ML-DSA-65-ES256: ECDSA bileseni ES256 diye sunuldu (Prefix/Label ayrimi)",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ES256:imza-gecersiz"
+   ]
+  },
+  {
+   "grup": "N5-ayrilabilirlik",
+   "ad": "NEGATIF:ML-DSA-65-ES256: ML-DSA bileseni ML-DSA-65 diye sunuldu (ctx=Label ayrimi)",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65:imza-gecersiz"
+   ]
+  },
+  {
+   "grup": "N5-ayrilabilirlik",
+   "ad": "NEGATIF:ML-DSA-65-ES256: ECDSA bileseni ayni korumali baslikla ES256 JWS",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ES256:imza-gecersiz"
+   ]
+  },
+  {
+   "grup": "N6-coklu-imza",
+   "ad": "POZITIF:ES256+EdDSA",
+   "gecti": true,
+   "ayrinti": "ok"
+  },
+  {
+   "grup": "N6-coklu-imza",
+   "ad": "NEGATIF:ES256+EdDSA -> EdDSA soyuldu",
+   "gecti": true,
+   "ayrinti": [
+    "gerekli-alg-eksik:EdDSA",
+    "#0 ES256:ok"
+   ]
+  },
+  {
+   "grup": "N6-coklu-imza",
+   "ad": "KONTROL(P0 any-valid): EdDSA soyulmus -> KABUL",
+   "gecti": null,
+   "ayrinti": "ok"
+  },
+  {
+   "grup": "N6-coklu-imza",
+   "ad": "KONTROL(P1 AND, beklenen kume YOK): EdDSA soyulmus -> KABUL",
+   "gecti": null,
+   "ayrinti": "ok"
+  },
+  {
+   "grup": "N6-coklu-imza",
+   "ad": "NEGATIF:ES256+EdDSA -> ES256 soyuldu",
+   "gecti": true,
+   "ayrinti": [
+    "gerekli-alg-eksik:ES256",
+    "#0 EdDSA:ok"
+   ]
+  },
+  {
+   "grup": "N6-coklu-imza",
+   "ad": "NEGATIF:ES256+EdDSA, EdDSA imzasi bozuk (T2)",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ES256:ok",
+    "#1 EdDSA:imza-gecersiz"
+   ]
+  },
+  {
+   "grup": "N6-coklu-imza",
+   "ad": "NEGATIF:ES256+EdDSA, EdDSA imzasi baska yukten",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ES256:ok",
+    "#1 EdDSA:imza-gecersiz"
+   ]
+  },
+  {
+   "grup": "N6-coklu-imza",
+   "ad": "POZITIF:ES256+ML-DSA-65",
+   "gecti": true,
+   "ayrinti": "ok"
+  },
+  {
+   "grup": "N6-coklu-imza",
+   "ad": "NEGATIF:ES256+ML-DSA-65 -> ML-DSA-65 soyuldu",
+   "gecti": true,
+   "ayrinti": [
+    "gerekli-alg-eksik:ML-DSA-65",
+    "#0 ES256:ok"
+   ]
+  },
+  {
+   "grup": "N6-coklu-imza",
+   "ad": "KONTROL(P0 any-valid): ML-DSA-65 soyulmus -> KABUL",
+   "gecti": null,
+   "ayrinti": "ok"
+  },
+  {
+   "grup": "N6-coklu-imza",
+   "ad": "KONTROL(P1 AND, beklenen kume YOK): ML-DSA-65 soyulmus -> KABUL",
+   "gecti": null,
+   "ayrinti": "ok"
+  },
+  {
+   "grup": "N6-coklu-imza",
+   "ad": "NEGATIF:ES256+ML-DSA-65 -> ES256 soyuldu",
+   "gecti": true,
+   "ayrinti": [
+    "gerekli-alg-eksik:ES256",
+    "#0 ML-DSA-65:ok"
+   ]
+  },
+  {
+   "grup": "N6-coklu-imza",
+   "ad": "NEGATIF:ES256+ML-DSA-65, ML-DSA-65 imzasi bozuk (T2)",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ES256:ok",
+    "#1 ML-DSA-65:imza-gecersiz"
+   ]
+  },
+  {
+   "grup": "N6-coklu-imza",
+   "ad": "NEGATIF:ES256+ML-DSA-65, ML-DSA-65 imzasi baska yukten",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ES256:ok",
+    "#1 ML-DSA-65:imza-gecersiz"
+   ]
+  },
+  {
+   "grup": "N6-coklu-imza",
+   "ad": "POZITIF:ES256+ML-DSA-65-ES256",
+   "gecti": true,
+   "ayrinti": "ok"
+  },
+  {
+   "grup": "N6-coklu-imza",
+   "ad": "NEGATIF:ES256+ML-DSA-65-ES256 -> ML-DSA-65-ES256 soyuldu",
+   "gecti": true,
+   "ayrinti": [
+    "gerekli-alg-eksik:ML-DSA-65-ES256",
+    "#0 ES256:ok"
+   ]
+  },
+  {
+   "grup": "N6-coklu-imza",
+   "ad": "KONTROL(P0 any-valid): ML-DSA-65-ES256 soyulmus -> KABUL",
+   "gecti": null,
+   "ayrinti": "ok"
+  },
+  {
+   "grup": "N6-coklu-imza",
+   "ad": "KONTROL(P1 AND, beklenen kume YOK): ML-DSA-65-ES256 soyulmus -> KABUL",
+   "gecti": null,
+   "ayrinti": "ok"
+  },
+  {
+   "grup": "N6-coklu-imza",
+   "ad": "NEGATIF:ES256+ML-DSA-65-ES256 -> ES256 soyuldu",
+   "gecti": true,
+   "ayrinti": [
+    "gerekli-alg-eksik:ES256",
+    "#0 ML-DSA-65-ES256:ok"
+   ]
+  },
+  {
+   "grup": "N6-coklu-imza",
+   "ad": "NEGATIF:ES256+ML-DSA-65-ES256, ML-DSA-65-ES256 imzasi bozuk (T2)",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ES256:ok",
+    "#1 ML-DSA-65-ES256:imza-gecersiz:bilesen(ml=False,trad=True)"
+   ]
+  },
+  {
+   "grup": "N6-coklu-imza",
+   "ad": "NEGATIF:ES256+ML-DSA-65-ES256, ML-DSA-65-ES256 imzasi baska yukten",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ES256:ok",
+    "#1 ML-DSA-65-ES256:imza-gecersiz:bilesen(ml=False,trad=False)"
+   ]
+  },
+  {
+   "grup": "N6-coklu-imza",
+   "ad": "NEGATIF:ES256 imzasi iki kez, ML-DSA-65 yok",
+   "gecti": true,
+   "ayrinti": [
+    "gerekli-alg-eksik:ML-DSA-65",
+    "#0 ES256:ok",
+    "#1 ES256:ok"
+   ]
+  },
+  {
+   "grup": "N6-coklu-imza",
+   "ad": "NEGATIF:ES256+ML-DSA-65 + bilinmeyen alg imzasi (T4 tipi)",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ES256:ok",
+    "#1 ML-DSA-65:ok",
+    "#2 ML-DSA-66:alg-bilinmiyor"
+   ]
+  },
+  {
+   "grup": "N6-coklu-imza",
+   "ad": "NEGATIF:ES256+ML-DSA-65 + alg=none imzasi",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ES256:ok",
+    "#1 ML-DSA-65:ok",
+    "#2 none:alg-none"
+   ]
+  },
+  {
+   "grup": "N6-coklu-imza",
+   "ad": "NEGATIF:izin listesi yalniz ML-DSA-65 iken ES256 imzasi var (L1/L2, AND)",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ES256:alg-izinli-degil",
+    "#1 ML-DSA-65:ok"
+   ]
+  },
+  {
+   "grup": "N7-crit",
+   "ad": "NEGATIF:anlasilmayan crit parametresi",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65:crit-anlasilmadi"
+   ]
+  },
+  {
+   "grup": "N7-crit",
+   "ad": "POZITIF:ayni nesne, parametre anlasiliyor",
+   "gecti": true,
+   "ayrinti": "ok"
+  },
+  {
+   "grup": "N7-crit",
+   "ad": "NEGATIF:crit kayitli parametre ('alg') listeliyor",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65:crit-gecersiz-ad"
+   ]
+  },
+  {
+   "grup": "N7-crit",
+   "ad": "NEGATIF:crit bos dizi",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65:crit-gecersiz-bicim"
+   ]
+  },
+  {
+   "grup": "N7-crit",
+   "ad": "NEGATIF:crit listelenen parametre baslikta yok",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65:crit-listelenen-parametre-yok"
+   ]
+  },
+  {
+   "grup": "N7-crit",
+   "ad": "NEGATIF:crit korumasiz baslikta",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65:korumasiz-parametre:crit"
+   ]
+  },
+  {
+   "grup": "N8-x5c",
+   "ad": "POZITIF:tam-PQ zincir",
+   "gecti": true,
+   "ayrinti": "ok"
+  },
+  {
+   "grup": "N8-x5c",
+   "ad": "NEGATIF:x5c korumasiz baslikta",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65:korumasiz-parametre:x5c"
+   ]
+  },
+  {
+   "grup": "N8-x5c",
+   "ad": "NEGATIF:guven capasi listede yok",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65:x5c-zincir-gecersiz"
+   ]
+  },
+  {
+   "grup": "N8-x5c",
+   "ad": "KONTROL(zincir politikasi yok): karisik: ML-DSA yaprak + klasik ara CA -> KABUL",
+   "gecti": null,
+   "ayrinti": [
+    "karisik"
+   ]
+  },
+  {
+   "grup": "N8-x5c",
+   "ad": "NEGATIF:karisik: ML-DSA yaprak + klasik ara CA (x5c_pq_only)",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65:x5c-klasik-halka"
+   ]
+  },
+  {
+   "grup": "N8-x5c",
+   "ad": "KONTROL(zincir politikasi yok): karisik: klasik yaprak + ML-DSA ara CA -> KABUL",
+   "gecti": null,
+   "ayrinti": [
+    "karisik"
+   ]
+  },
+  {
+   "grup": "N8-x5c",
+   "ad": "NEGATIF:karisik: klasik yaprak + ML-DSA ara CA (x5c_pq_only)",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ES256:x5c-klasik-halka"
+   ]
+  },
+  {
+   "grup": "N8-x5c",
+   "ad": "NEGATIF:baska anahtarla imza, gecerli x5c",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65:imza-gecersiz"
+   ]
+  },
+  {
+   "grup": "N8-x5c",
+   "ad": "NEGATIF:x5c yaprak anahtari EC, alg ML-DSA-65",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65:imza-gecersiz"
+   ]
+  },
+  {
+   "grup": "N8-x5c",
+   "ad": "NEGATIF:x5c base64 degil",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65:x5c-cozulemedi: x5c: standart base64 bekleniyor"
+   ]
+  },
+  {
+   "grup": "N9-bicim",
+   "ad": "NEGATIF:compact 4 parca",
+   "gecti": true,
+   "ayrinti": [
+    "bicim-hatasi: compact JWS 3 parcali olmali"
+   ]
+  },
+  {
+   "grup": "N9-bicim",
+   "ad": "NEGATIF:yinelenen baslik adi",
+   "gecti": true,
+   "ayrinti": [
+    "bicim-hatasi: JSON: yinelenen uye adi: 'alg'"
+   ]
+  },
+  {
+   "grup": "N9-bicim",
+   "ad": "NEGATIF:kanonik olmayan base64url (dolgu bitleri)",
+   "gecti": true,
+   "ayrinti": [
+    "bicim-hatasi: base64url: kanonik olmayan kodlama (dolgu bitleri)"
+   ]
+  },
+  {
+   "grup": "N9-bicim",
+   "ad": "NEGATIF:korumali/korumasiz ayni ad (kid)",
+   "gecti": true,
+   "ayrinti": [
+    "bicim-hatasi: korumali/korumasiz baslik adlari ayrik degil (RFC 7515 7.2.1)"
+   ]
+  },
+  {
+   "grup": "N9-bicim",
+   "ad": "NEGATIF:general JSON ust duzeyde signature",
+   "gecti": true,
+   "ayrinti": [
+    "bicim-hatasi: general JSON ust duzeyde protected/header/signature icermemeli"
+   ]
+  },
+  {
+   "grup": "N9-bicim",
+   "ad": "NEGATIF:gomulu 'jwk' ozel anahtar iceriyor (DPoP)",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ES256:jwk-ozel-anahtar-iceriyor"
+   ]
+  },
+  {
+   "grup": "N9-bicim",
+   "ad": "POZITIF:gomulu 'jwk' acik anahtar (DPoP)",
+   "gecti": true,
+   "ayrinti": "ok"
+  },
+  {
+   "grup": "N9-bicim",
+   "ad": "NEGATIF:typ beklenenden farkli",
+   "gecti": true,
+   "ayrinti": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ES256:typ-uyusmuyor"
+   ]
+  },
+  {
+   "grup": "genel",
+   "ad": "negatif",
+   "gecti": null,
+   "ayrinti": "84/84 reddedildi"
+  },
+  {
+   "grup": "genel",
+   "ad": "pozitif-kontrol",
+   "gecti": null,
+   "ayrinti": "19/19 kabul edildi"
+  }
+ ],
+ "negatif": {
+  "reddedilen": 84,
+  "toplam": 84
+ },
+ "pozitif_kontrol": {
+  "kabul": 19,
+  "toplam": 19
+ },
+ "tablo": [
+  {
+   "grup": "N1-bozuk-imza",
+   "test": "ES256 (orta bayt bit cevirme)",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ES256:imza-gecersiz"
+   ],
+   "bilesenler": null
+  },
+  {
+   "grup": "N1-bozuk-imza",
+   "test": "ES384 (orta bayt bit cevirme)",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ES384:imza-gecersiz"
+   ],
+   "bilesenler": null
+  },
+  {
+   "grup": "N1-bozuk-imza",
+   "test": "EdDSA (orta bayt bit cevirme)",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 EdDSA:imza-gecersiz"
+   ],
+   "bilesenler": null
+  },
+  {
+   "grup": "N1-bozuk-imza",
+   "test": "Ed448 (orta bayt bit cevirme)",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 Ed448:imza-gecersiz"
+   ],
+   "bilesenler": null
+  },
+  {
+   "grup": "N1-bozuk-imza",
+   "test": "ML-DSA-44 (orta bayt bit cevirme)",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-44:imza-gecersiz"
+   ],
+   "bilesenler": null
+  },
+  {
+   "grup": "N1-bozuk-imza",
+   "test": "ML-DSA-65 (orta bayt bit cevirme)",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65:imza-gecersiz"
+   ],
+   "bilesenler": null
+  },
+  {
+   "grup": "N1-bozuk-imza",
+   "test": "ML-DSA-87 (orta bayt bit cevirme)",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-87:imza-gecersiz"
+   ],
+   "bilesenler": null
+  },
+  {
+   "grup": "N1-bozuk-imza",
+   "test": "ML-DSA-44-ES256 (orta bayt bit cevirme)",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-44-ES256:imza-gecersiz:bilesen(ml=False,trad=True)"
+   ],
+   "bilesenler": [
+    {
+     "ml": false,
+     "trad": true,
+     "hata": null
+    }
+   ]
+  },
+  {
+   "grup": "N1-bozuk-imza",
+   "test": "ML-DSA-65-ES256 (orta bayt bit cevirme)",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65-ES256:imza-gecersiz:bilesen(ml=False,trad=True)"
+   ],
+   "bilesenler": [
+    {
+     "ml": false,
+     "trad": true,
+     "hata": null
+    }
+   ]
+  },
+  {
+   "grup": "N1-bozuk-imza",
+   "test": "ML-DSA-87-ES384 (orta bayt bit cevirme)",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-87-ES384:imza-gecersiz:bilesen(ml=False,trad=True)"
+   ],
+   "bilesenler": [
+    {
+     "ml": false,
+     "trad": true,
+     "hata": null
+    }
+   ]
+  },
+  {
+   "grup": "N1-bozuk-imza",
+   "test": "ML-DSA-44-Ed25519 (orta bayt bit cevirme)",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-44-Ed25519:imza-gecersiz:bilesen(ml=False,trad=True)"
+   ],
+   "bilesenler": [
+    {
+     "ml": false,
+     "trad": true,
+     "hata": null
+    }
+   ]
+  },
+  {
+   "grup": "N1-bozuk-imza",
+   "test": "ML-DSA-65-Ed25519 (orta bayt bit cevirme)",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65-Ed25519:imza-gecersiz:bilesen(ml=False,trad=True)"
+   ],
+   "bilesenler": [
+    {
+     "ml": false,
+     "trad": true,
+     "hata": null
+    }
+   ]
+  },
+  {
+   "grup": "N1-bozuk-imza",
+   "test": "ML-DSA-87-Ed448 (orta bayt bit cevirme)",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-87-Ed448:imza-gecersiz:bilesen(ml=False,trad=True)"
+   ],
+   "bilesenler": [
+    {
+     "ml": false,
+     "trad": true,
+     "hata": null
+    }
+   ]
+  },
+  {
+   "grup": "N2-bozuk-yuk",
+   "test": "ES256",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ES256:imza-gecersiz"
+   ],
+   "bilesenler": null
+  },
+  {
+   "grup": "N3-bozuk-baslik",
+   "test": "ES256 (typ degisti)",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ES256:imza-gecersiz"
+   ],
+   "bilesenler": null
+  },
+  {
+   "grup": "N2-bozuk-yuk",
+   "test": "ML-DSA-65",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65:imza-gecersiz"
+   ],
+   "bilesenler": null
+  },
+  {
+   "grup": "N3-bozuk-baslik",
+   "test": "ML-DSA-65 (typ degisti)",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65:imza-gecersiz"
+   ],
+   "bilesenler": null
+  },
+  {
+   "grup": "N2-bozuk-yuk",
+   "test": "ML-DSA-65-ES256",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65-ES256:imza-gecersiz:bilesen(ml=False,trad=False)"
+   ],
+   "bilesenler": [
+    {
+     "ml": false,
+     "trad": false,
+     "hata": null
+    }
+   ]
+  },
+  {
+   "grup": "N3-bozuk-baslik",
+   "test": "ML-DSA-65-ES256 (typ degisti)",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65-ES256:imza-gecersiz:bilesen(ml=False,trad=False)"
+   ],
+   "bilesenler": [
+    {
+     "ml": false,
+     "trad": false,
+     "hata": null
+    }
+   ]
+  },
+  {
+   "grup": "N4-yanlis-alg",
+   "test": "ML-DSA-65 imzasi, alg=ML-DSA-44",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-44:anahtar-yok-ya-da-alg-uyumsuz"
+   ],
+   "bilesenler": null
+  },
+  {
+   "grup": "N4-yanlis-alg",
+   "test": "ML-DSA-65 imzasi, alg=ML-DSA-87",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-87:anahtar-yok-ya-da-alg-uyumsuz"
+   ],
+   "bilesenler": null
+  },
+  {
+   "grup": "N4-yanlis-alg",
+   "test": "ML-DSA-65 imzasi, alg=ML-DSA-65-ES256",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65-ES256:anahtar-yok-ya-da-alg-uyumsuz"
+   ],
+   "bilesenler": null
+  },
+  {
+   "grup": "N4-yanlis-alg",
+   "test": "ES256 imzasi, alg=ES384",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ES384:anahtar-yok-ya-da-alg-uyumsuz"
+   ],
+   "bilesenler": null
+  },
+  {
+   "grup": "N4-yanlis-alg",
+   "test": "EdDSA(Ed25519) imzasi, alg=Ed448",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 Ed448:anahtar-yok-ya-da-alg-uyumsuz"
+   ],
+   "bilesenler": null
+  },
+  {
+   "grup": "N4-yanlis-alg",
+   "test": "alg=none, bos imza",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 none:alg-none"
+   ],
+   "bilesenler": null
+  },
+  {
+   "grup": "N4-yanlis-alg",
+   "test": "bilinmeyen alg=ML-DSA-66 (gecerli ML-DSA-65 imza baytlari)",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-66:alg-bilinmiyor"
+   ],
+   "bilesenler": null
+  },
+  {
+   "grup": "N4-yanlis-alg",
+   "test": "alg korumasiz baslikta (flattened)",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65:korumasiz-parametre:alg"
+   ],
+   "bilesenler": null
+  },
+  {
+   "grup": "N5-composite-bilesen",
+   "test": "ML-DSA-44-ES256: ML-DSA bileseni bozuk",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-44-ES256:imza-gecersiz:bilesen(ml=False,trad=True)"
+   ],
+   "bilesenler": [
+    {
+     "ml": false,
+     "trad": true,
+     "hata": null
+    }
+   ]
+  },
+  {
+   "grup": "N5-composite-bilesen",
+   "test": "ML-DSA-44-ES256: klasik bilesen bozuk",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-44-ES256:imza-gecersiz:bilesen(ml=True,trad=False)"
+   ],
+   "bilesenler": [
+    {
+     "ml": true,
+     "trad": false,
+     "hata": null
+    }
+   ]
+  },
+  {
+   "grup": "N5-composite-bilesen",
+   "test": "ML-DSA-65-ES256: ML-DSA bileseni bozuk",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65-ES256:imza-gecersiz:bilesen(ml=False,trad=True)"
+   ],
+   "bilesenler": [
+    {
+     "ml": false,
+     "trad": true,
+     "hata": null
+    }
+   ]
+  },
+  {
+   "grup": "N5-composite-bilesen",
+   "test": "ML-DSA-65-ES256: klasik bilesen bozuk",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65-ES256:imza-gecersiz:bilesen(ml=True,trad=False)"
+   ],
+   "bilesenler": [
+    {
+     "ml": true,
+     "trad": false,
+     "hata": null
+    }
+   ]
+  },
+  {
+   "grup": "N5-composite-bilesen",
+   "test": "ML-DSA-87-ES384: ML-DSA bileseni bozuk",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-87-ES384:imza-gecersiz:bilesen(ml=False,trad=True)"
+   ],
+   "bilesenler": [
+    {
+     "ml": false,
+     "trad": true,
+     "hata": null
+    }
+   ]
+  },
+  {
+   "grup": "N5-composite-bilesen",
+   "test": "ML-DSA-87-ES384: klasik bilesen bozuk",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-87-ES384:imza-gecersiz:bilesen(ml=True,trad=False)"
+   ],
+   "bilesenler": [
+    {
+     "ml": true,
+     "trad": false,
+     "hata": null
+    }
+   ]
+  },
+  {
+   "grup": "N5-composite-bilesen",
+   "test": "ML-DSA-44-Ed25519: ML-DSA bileseni bozuk",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-44-Ed25519:imza-gecersiz:bilesen(ml=False,trad=True)"
+   ],
+   "bilesenler": [
+    {
+     "ml": false,
+     "trad": true,
+     "hata": null
+    }
+   ]
+  },
+  {
+   "grup": "N5-composite-bilesen",
+   "test": "ML-DSA-44-Ed25519: klasik bilesen bozuk",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-44-Ed25519:imza-gecersiz:bilesen(ml=True,trad=False)"
+   ],
+   "bilesenler": [
+    {
+     "ml": true,
+     "trad": false,
+     "hata": null
+    }
+   ]
+  },
+  {
+   "grup": "N5-composite-bilesen",
+   "test": "ML-DSA-65-Ed25519: ML-DSA bileseni bozuk",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65-Ed25519:imza-gecersiz:bilesen(ml=False,trad=True)"
+   ],
+   "bilesenler": [
+    {
+     "ml": false,
+     "trad": true,
+     "hata": null
+    }
+   ]
+  },
+  {
+   "grup": "N5-composite-bilesen",
+   "test": "ML-DSA-65-Ed25519: klasik bilesen bozuk",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65-Ed25519:imza-gecersiz:bilesen(ml=True,trad=False)"
+   ],
+   "bilesenler": [
+    {
+     "ml": true,
+     "trad": false,
+     "hata": null
+    }
+   ]
+  },
+  {
+   "grup": "N5-composite-bilesen",
+   "test": "ML-DSA-87-Ed448: ML-DSA bileseni bozuk",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-87-Ed448:imza-gecersiz:bilesen(ml=False,trad=True)"
+   ],
+   "bilesenler": [
+    {
+     "ml": false,
+     "trad": true,
+     "hata": null
+    }
+   ]
+  },
+  {
+   "grup": "N5-composite-bilesen",
+   "test": "ML-DSA-87-Ed448: klasik bilesen bozuk",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-87-Ed448:imza-gecersiz:bilesen(ml=True,trad=False)"
+   ],
+   "bilesenler": [
+    {
+     "ml": true,
+     "trad": false,
+     "hata": null
+    }
+   ]
+  },
+  {
+   "grup": "N5-composite-bilesen",
+   "test": "ML-DSA-65-ES256: DER SEQUENCE uzunlugu bozuk",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65-ES256:imza-gecersiz:serilestirme: DER: SEQUENCE uzunluğu tutarsız / artık bayt"
+   ],
+   "bilesenler": [
+    {
+     "ml": false,
+     "trad": false,
+     "hata": "serilestirme: DER: SEQUENCE uzunluğu tutarsız / artık bayt"
+    }
+   ]
+  },
+  {
+   "grup": "N5-composite-bilesen",
+   "test": "ML-DSA-65-ES256: asgari olmayan DER (r onunde fazla 0x00)",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65-ES256:imza-gecersiz:serilestirme: DER: asgari olmayan INTEGER kodlaması"
+   ],
+   "bilesenler": [
+    {
+     "ml": false,
+     "trad": false,
+     "hata": "serilestirme: DER: asgari olmayan INTEGER kodlaması"
+    }
+   ]
+  },
+  {
+   "grup": "N5-composite-bilesen",
+   "test": "ML-DSA-65-ES256: sonda artik bayt",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65-ES256:imza-gecersiz:serilestirme: DER: SEQUENCE uzunluğu tutarsız / artık bayt"
+   ],
+   "bilesenler": [
+    {
+     "ml": false,
+     "trad": false,
+     "hata": "serilestirme: DER: SEQUENCE uzunluğu tutarsız / artık bayt"
+    }
+   ]
+  },
+  {
+   "grup": "N5-composite-bilesen",
+   "test": "ML-DSA-65-ES256: ECDSA bileseni kesilmis (yalniz ML-DSA)",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65-ES256:imza-gecersiz:serilestirme: composite imza kisa"
+   ],
+   "bilesenler": [
+    {
+     "ml": false,
+     "trad": false,
+     "hata": "serilestirme: composite imza kisa"
+    }
+   ]
+  },
+  {
+   "grup": "N5-composite-bilesen",
+   "test": "ML-DSA-65-ES256: ECDSA bileseni ham r||s (DER degil)",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65-ES256:imza-gecersiz:serilestirme: DER: SEQUENCE yok"
+   ],
+   "bilesenler": [
+    {
+     "ml": false,
+     "trad": false,
+     "hata": "serilestirme: DER: SEQUENCE yok"
+    }
+   ]
+  },
+  {
+   "grup": "N5-composite-bilesen",
+   "test": "ML-DSA-65-ES256: bilesenler farkli iletilerden (ML-DSA yuk2, ECDSA yuk1)",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65-ES256:imza-gecersiz:bilesen(ml=False,trad=True)"
+   ],
+   "bilesenler": [
+    {
+     "ml": false,
+     "trad": true,
+     "hata": null
+    }
+   ]
+  },
+  {
+   "grup": "N5-composite-bilesen",
+   "test": "ML-DSA-65-ES256: bilesen sirasi ters (trad||ml)",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65-ES256:imza-gecersiz:serilestirme: DER: SEQUENCE yok"
+   ],
+   "bilesenler": [
+    {
+     "ml": false,
+     "trad": false,
+     "hata": "serilestirme: DER: SEQUENCE yok"
+    }
+   ]
+  },
+  {
+   "grup": "N5-ayrilabilirlik",
+   "test": "ML-DSA-65-ES256: ECDSA bileseni ES256 diye sunuldu (Prefix/Label ayrimi)",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ES256:imza-gecersiz"
+   ],
+   "bilesenler": null
+  },
+  {
+   "grup": "N5-ayrilabilirlik",
+   "test": "ML-DSA-65-ES256: ML-DSA bileseni ML-DSA-65 diye sunuldu (ctx=Label ayrimi)",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65:imza-gecersiz"
+   ],
+   "bilesenler": null
+  },
+  {
+   "grup": "N5-ayrilabilirlik",
+   "test": "ML-DSA-65-ES256: ECDSA bileseni ayni korumali baslikla ES256 JWS",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ES256:imza-gecersiz"
+   ],
+   "bilesenler": null
+  },
+  {
+   "grup": "N6-coklu-imza",
+   "test": "ES256+EdDSA -> EdDSA soyuldu",
+   "reddedildi": true,
+   "gerekce": [
+    "gerekli-alg-eksik:EdDSA",
+    "#0 ES256:ok"
+   ],
+   "bilesenler": null
+  },
+  {
+   "grup": "N6-coklu-imza",
+   "test": "ES256+EdDSA -> ES256 soyuldu",
+   "reddedildi": true,
+   "gerekce": [
+    "gerekli-alg-eksik:ES256",
+    "#0 EdDSA:ok"
+   ],
+   "bilesenler": null
+  },
+  {
+   "grup": "N6-coklu-imza",
+   "test": "ES256+EdDSA, EdDSA imzasi bozuk (T2)",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ES256:ok",
+    "#1 EdDSA:imza-gecersiz"
+   ],
+   "bilesenler": null
+  },
+  {
+   "grup": "N6-coklu-imza",
+   "test": "ES256+EdDSA, EdDSA imzasi baska yukten",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ES256:ok",
+    "#1 EdDSA:imza-gecersiz"
+   ],
+   "bilesenler": null
+  },
+  {
+   "grup": "N6-coklu-imza",
+   "test": "ES256+ML-DSA-65 -> ML-DSA-65 soyuldu",
+   "reddedildi": true,
+   "gerekce": [
+    "gerekli-alg-eksik:ML-DSA-65",
+    "#0 ES256:ok"
+   ],
+   "bilesenler": null
+  },
+  {
+   "grup": "N6-coklu-imza",
+   "test": "ES256+ML-DSA-65 -> ES256 soyuldu",
+   "reddedildi": true,
+   "gerekce": [
+    "gerekli-alg-eksik:ES256",
+    "#0 ML-DSA-65:ok"
+   ],
+   "bilesenler": null
+  },
+  {
+   "grup": "N6-coklu-imza",
+   "test": "ES256+ML-DSA-65, ML-DSA-65 imzasi bozuk (T2)",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ES256:ok",
+    "#1 ML-DSA-65:imza-gecersiz"
+   ],
+   "bilesenler": null
+  },
+  {
+   "grup": "N6-coklu-imza",
+   "test": "ES256+ML-DSA-65, ML-DSA-65 imzasi baska yukten",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ES256:ok",
+    "#1 ML-DSA-65:imza-gecersiz"
+   ],
+   "bilesenler": null
+  },
+  {
+   "grup": "N6-coklu-imza",
+   "test": "ES256+ML-DSA-65-ES256 -> ML-DSA-65-ES256 soyuldu",
+   "reddedildi": true,
+   "gerekce": [
+    "gerekli-alg-eksik:ML-DSA-65-ES256",
+    "#0 ES256:ok"
+   ],
+   "bilesenler": null
+  },
+  {
+   "grup": "N6-coklu-imza",
+   "test": "ES256+ML-DSA-65-ES256 -> ES256 soyuldu",
+   "reddedildi": true,
+   "gerekce": [
+    "gerekli-alg-eksik:ES256",
+    "#0 ML-DSA-65-ES256:ok"
+   ],
+   "bilesenler": [
+    {
+     "ml": true,
+     "trad": true,
+     "hata": null
+    }
+   ]
+  },
+  {
+   "grup": "N6-coklu-imza",
+   "test": "ES256+ML-DSA-65-ES256, ML-DSA-65-ES256 imzasi bozuk (T2)",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ES256:ok",
+    "#1 ML-DSA-65-ES256:imza-gecersiz:bilesen(ml=False,trad=True)"
+   ],
+   "bilesenler": [
+    {
+     "ml": false,
+     "trad": true,
+     "hata": null
+    }
+   ]
+  },
+  {
+   "grup": "N6-coklu-imza",
+   "test": "ES256+ML-DSA-65-ES256, ML-DSA-65-ES256 imzasi baska yukten",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ES256:ok",
+    "#1 ML-DSA-65-ES256:imza-gecersiz:bilesen(ml=False,trad=False)"
+   ],
+   "bilesenler": [
+    {
+     "ml": false,
+     "trad": false,
+     "hata": null
+    }
+   ]
+  },
+  {
+   "grup": "N6-coklu-imza",
+   "test": "ES256 imzasi iki kez, ML-DSA-65 yok",
+   "reddedildi": true,
+   "gerekce": [
+    "gerekli-alg-eksik:ML-DSA-65",
+    "#0 ES256:ok",
+    "#1 ES256:ok"
+   ],
+   "bilesenler": null
+  },
+  {
+   "grup": "N6-coklu-imza",
+   "test": "ES256+ML-DSA-65 + bilinmeyen alg imzasi (T4 tipi)",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ES256:ok",
+    "#1 ML-DSA-65:ok",
+    "#2 ML-DSA-66:alg-bilinmiyor"
+   ],
+   "bilesenler": null
+  },
+  {
+   "grup": "N6-coklu-imza",
+   "test": "ES256+ML-DSA-65 + alg=none imzasi",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ES256:ok",
+    "#1 ML-DSA-65:ok",
+    "#2 none:alg-none"
+   ],
+   "bilesenler": null
+  },
+  {
+   "grup": "N6-coklu-imza",
+   "test": "izin listesi yalniz ML-DSA-65 iken ES256 imzasi var (L1/L2, AND)",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ES256:alg-izinli-degil",
+    "#1 ML-DSA-65:ok"
+   ],
+   "bilesenler": null
+  },
+  {
+   "grup": "N7-crit",
+   "test": "anlasilmayan crit parametresi",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65:crit-anlasilmadi"
+   ],
+   "bilesenler": null
+  },
+  {
+   "grup": "N7-crit",
+   "test": "crit kayitli parametre ('alg') listeliyor",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65:crit-gecersiz-ad"
+   ],
+   "bilesenler": null
+  },
+  {
+   "grup": "N7-crit",
+   "test": "crit bos dizi",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65:crit-gecersiz-bicim"
+   ],
+   "bilesenler": null
+  },
+  {
+   "grup": "N7-crit",
+   "test": "crit listelenen parametre baslikta yok",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65:crit-listelenen-parametre-yok"
+   ],
+   "bilesenler": null
+  },
+  {
+   "grup": "N7-crit",
+   "test": "crit korumasiz baslikta",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65:korumasiz-parametre:crit"
+   ],
+   "bilesenler": null
+  },
+  {
+   "grup": "N8-x5c",
+   "test": "x5c korumasiz baslikta",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65:korumasiz-parametre:x5c"
+   ],
+   "bilesenler": null
+  },
+  {
+   "grup": "N8-x5c",
+   "test": "guven capasi listede yok",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65:x5c-zincir-gecersiz"
+   ],
+   "bilesenler": null
+  },
+  {
+   "grup": "N8-x5c",
+   "test": "karisik: ML-DSA yaprak + klasik ara CA (x5c_pq_only)",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65:x5c-klasik-halka"
+   ],
+   "bilesenler": null
+  },
+  {
+   "grup": "N8-x5c",
+   "test": "karisik: klasik yaprak + ML-DSA ara CA (x5c_pq_only)",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ES256:x5c-klasik-halka"
+   ],
+   "bilesenler": null
+  },
+  {
+   "grup": "N8-x5c",
+   "test": "baska anahtarla imza, gecerli x5c",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65:imza-gecersiz"
+   ],
+   "bilesenler": null
+  },
+  {
+   "grup": "N8-x5c",
+   "test": "x5c yaprak anahtari EC, alg ML-DSA-65",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65:imza-gecersiz"
+   ],
+   "bilesenler": null
+  },
+  {
+   "grup": "N8-x5c",
+   "test": "x5c base64 degil",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ML-DSA-65:x5c-cozulemedi: x5c: standart base64 bekleniyor"
+   ],
+   "bilesenler": null
+  },
+  {
+   "grup": "N9-bicim",
+   "test": "compact 4 parca",
+   "reddedildi": true,
+   "gerekce": [
+    "bicim-hatasi: compact JWS 3 parcali olmali"
+   ],
+   "bilesenler": null
+  },
+  {
+   "grup": "N9-bicim",
+   "test": "yinelenen baslik adi",
+   "reddedildi": true,
+   "gerekce": [
+    "bicim-hatasi: JSON: yinelenen uye adi: 'alg'"
+   ],
+   "bilesenler": null
+  },
+  {
+   "grup": "N9-bicim",
+   "test": "kanonik olmayan base64url (dolgu bitleri)",
+   "reddedildi": true,
+   "gerekce": [
+    "bicim-hatasi: base64url: kanonik olmayan kodlama (dolgu bitleri)"
+   ],
+   "bilesenler": null
+  },
+  {
+   "grup": "N9-bicim",
+   "test": "korumali/korumasiz ayni ad (kid)",
+   "reddedildi": true,
+   "gerekce": [
+    "bicim-hatasi: korumali/korumasiz baslik adlari ayrik degil (RFC 7515 7.2.1)"
+   ],
+   "bilesenler": null
+  },
+  {
+   "grup": "N9-bicim",
+   "test": "general JSON ust duzeyde signature",
+   "reddedildi": true,
+   "gerekce": [
+    "bicim-hatasi: general JSON ust duzeyde protected/header/signature icermemeli"
+   ],
+   "bilesenler": null
+  },
+  {
+   "grup": "N9-bicim",
+   "test": "gomulu 'jwk' ozel anahtar iceriyor (DPoP)",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ES256:jwk-ozel-anahtar-iceriyor"
+   ],
+   "bilesenler": null
+  },
+  {
+   "grup": "N9-bicim",
+   "test": "typ beklenenden farkli",
+   "reddedildi": true,
+   "gerekce": [
+    "imzalardan-en-az-biri-gecersiz",
+    "#0 ES256:typ-uyusmuyor"
+   ],
+   "bilesenler": null
+  }
+ ]
+}

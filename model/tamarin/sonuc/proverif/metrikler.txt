@@ -1,0 +1,8 @@
+PQ-OID4VC Adım 5A — ProVerif 2.05 ikinci görüş (betik/proverif_degerlendir.py çıktısı)
+
+Model (varyant) sayısı: 15
+Güvenlik sorgusu (lemma) sayısı: 20
+  kesin sonuç: 20 ; 'cannot be proved' / bilinmiyor: 0
+  kesin sonuçlarda Tamarin ile uyum: 20/20
+Sağlık (executable ulaşılabilirliği) sorgusu: 15 ; Tamarin ile uyum 15/15 ; bilinmiyor 0
+ProVerif koşum süresi (model başına): en çok 0.776 s; bellek tepesi en çok 7.9 MiB

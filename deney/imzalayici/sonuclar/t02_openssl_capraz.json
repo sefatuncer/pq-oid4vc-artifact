@@ -1,0 +1,452 @@
+{
+ "test": "t02_openssl_capraz",
+ "sure_s": 0.89,
+ "surumler": {
+  "pqjose": "1.0.0",
+  "python": "3.11.16",
+  "cryptography": "50.0.1",
+  "cryptography_openssl": "OpenSSL 4.0.2 25 Aug 2026",
+  "openssl_cli": "OpenSSL 3.5.7 9 Jun 2026 (Library: OpenSSL 3.5.7 9 Jun 2026)",
+  "spesifikasyonlar": {
+   "JWS": "RFC 7515",
+   "JWA": "RFC 7518 (RFC 9864 ile guncellendi)",
+   "ML-DSA": "RFC 9964 (Mayis 2026)",
+   "composite": "draft-ietf-jose-pq-composite-sigs-04 (10.09.2026)",
+   "EdDSA": "RFC 8037 / RFC 9864"
+  }
+ },
+ "ozet": {
+  "toplam": 68,
+  "gecen": 68,
+  "kalan": []
+ },
+ "kontroller": [
+  {
+   "grup": "ML-DSA-44",
+   "ad": "O3:openssl-genpkey(hexseed)-acik-anahtar==pqjose",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "ML-DSA-44",
+   "ad": "O3:dilithium-py-key_derive==pqjose",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "ML-DSA-44",
+   "ad": "O1:pqjose(hedged)->openssl-dogrular",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "ML-DSA-44",
+   "ad": "O1b:pqjose(hedged)->dilithium-py-dogrular",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "ML-DSA-44",
+   "ad": "O2:openssl(hedged)->pqjose-JWS-kabul",
+   "gecti": true,
+   "ayrinti": "ok"
+  },
+  {
+   "grup": "ML-DSA-44",
+   "ad": "O2b:dilithium-py(hedged)->pqjose-JWS-kabul",
+   "gecti": true,
+   "ayrinti": "ok"
+  },
+  {
+   "grup": "ML-DSA-44",
+   "ad": "belirlenimci:openssl==dilithium-py",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "ML-DSA-44",
+   "ad": "O1c:pqjose.sign(compact)->openssl",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "ML-DSA-65",
+   "ad": "O3:openssl-genpkey(hexseed)-acik-anahtar==pqjose",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "ML-DSA-65",
+   "ad": "O3:dilithium-py-key_derive==pqjose",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "ML-DSA-65",
+   "ad": "O1:pqjose(hedged)->openssl-dogrular",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "ML-DSA-65",
+   "ad": "O1b:pqjose(hedged)->dilithium-py-dogrular",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "ML-DSA-65",
+   "ad": "O2:openssl(hedged)->pqjose-JWS-kabul",
+   "gecti": true,
+   "ayrinti": "ok"
+  },
+  {
+   "grup": "ML-DSA-65",
+   "ad": "O2b:dilithium-py(hedged)->pqjose-JWS-kabul",
+   "gecti": true,
+   "ayrinti": "ok"
+  },
+  {
+   "grup": "ML-DSA-65",
+   "ad": "belirlenimci:openssl==dilithium-py",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "ML-DSA-65",
+   "ad": "O1c:pqjose.sign(compact)->openssl",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "ML-DSA-87",
+   "ad": "O3:openssl-genpkey(hexseed)-acik-anahtar==pqjose",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "ML-DSA-87",
+   "ad": "O3:dilithium-py-key_derive==pqjose",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "ML-DSA-87",
+   "ad": "O1:pqjose(hedged)->openssl-dogrular",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "ML-DSA-87",
+   "ad": "O1b:pqjose(hedged)->dilithium-py-dogrular",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "ML-DSA-87",
+   "ad": "O2:openssl(hedged)->pqjose-JWS-kabul",
+   "gecti": true,
+   "ayrinti": "ok"
+  },
+  {
+   "grup": "ML-DSA-87",
+   "ad": "O2b:dilithium-py(hedged)->pqjose-JWS-kabul",
+   "gecti": true,
+   "ayrinti": "ok"
+  },
+  {
+   "grup": "ML-DSA-87",
+   "ad": "belirlenimci:openssl==dilithium-py",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "ML-DSA-87",
+   "ad": "O1c:pqjose.sign(compact)->openssl",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "ES256",
+   "ad": "O1:pqjose->openssl(ham r||s -> DER)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "ES256",
+   "ad": "O2:openssl->pqjose-JWS-kabul",
+   "gecti": true,
+   "ayrinti": "ok"
+  },
+  {
+   "grup": "ES384",
+   "ad": "O1:pqjose->openssl(ham r||s -> DER)",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "ES384",
+   "ad": "O2:openssl->pqjose-JWS-kabul",
+   "gecti": true,
+   "ayrinti": "ok"
+  },
+  {
+   "grup": "EdDSA",
+   "ad": "O1:pqjose->openssl",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "EdDSA",
+   "ad": "O2:openssl->pqjose-JWS-kabul",
+   "gecti": true,
+   "ayrinti": "ok"
+  },
+  {
+   "grup": "Ed448",
+   "ad": "O1:pqjose->openssl",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "Ed448",
+   "ad": "O2:openssl->pqjose-JWS-kabul",
+   "gecti": true,
+   "ayrinti": "ok"
+  },
+  {
+   "grup": "ML-DSA-44-ES256",
+   "ad": "O4a:ML-DSA-bileseni(ctx=Label)->openssl",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "ML-DSA-44-ES256",
+   "ad": "O4a:ECDSA-bileseni(DER)->openssl",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "ML-DSA-44-ES256",
+   "ad": "O4a:ML-DSA-bileseni->dilithium-py",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "ML-DSA-44-ES256",
+   "ad": "O4b:openssl-bilesenleri->pqjose-composite-JWS-kabul",
+   "gecti": true,
+   "ayrinti": "ok"
+  },
+  {
+   "grup": "ML-DSA-44-ES256",
+   "ad": "belirlenimci-composite-tekrar-ayni",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "ML-DSA-65-ES256",
+   "ad": "O4a:ML-DSA-bileseni(ctx=Label)->openssl",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "ML-DSA-65-ES256",
+   "ad": "O4a:ECDSA-bileseni(DER)->openssl",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "ML-DSA-65-ES256",
+   "ad": "O4a:ML-DSA-bileseni->dilithium-py",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "ML-DSA-65-ES256",
+   "ad": "O4b:openssl-bilesenleri->pqjose-composite-JWS-kabul",
+   "gecti": true,
+   "ayrinti": "ok"
+  },
+  {
+   "grup": "ML-DSA-65-ES256",
+   "ad": "belirlenimci-composite-tekrar-ayni",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "ML-DSA-87-ES384",
+   "ad": "O4a:ML-DSA-bileseni(ctx=Label)->openssl",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "ML-DSA-87-ES384",
+   "ad": "O4a:ECDSA-bileseni(DER)->openssl",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "ML-DSA-87-ES384",
+   "ad": "O4a:ML-DSA-bileseni->dilithium-py",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "ML-DSA-87-ES384",
+   "ad": "O4b:openssl-bilesenleri->pqjose-composite-JWS-kabul",
+   "gecti": true,
+   "ayrinti": "ok"
+  },
+  {
+   "grup": "ML-DSA-87-ES384",
+   "ad": "belirlenimci-composite-tekrar-ayni",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "ML-DSA-44-Ed25519",
+   "ad": "O4a:ML-DSA-bileseni(ctx=Label)->openssl",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "ML-DSA-44-Ed25519",
+   "ad": "O4a:EdDSA-bileseni->openssl",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "ML-DSA-44-Ed25519",
+   "ad": "O4a:ML-DSA-bileseni->dilithium-py",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "ML-DSA-44-Ed25519",
+   "ad": "O4b:openssl-bilesenleri->pqjose-composite-JWS-kabul",
+   "gecti": true,
+   "ayrinti": "ok"
+  },
+  {
+   "grup": "ML-DSA-44-Ed25519",
+   "ad": "belirlenimci-composite-tekrar-ayni",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "ML-DSA-65-Ed25519",
+   "ad": "O4a:ML-DSA-bileseni(ctx=Label)->openssl",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "ML-DSA-65-Ed25519",
+   "ad": "O4a:EdDSA-bileseni->openssl",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "ML-DSA-65-Ed25519",
+   "ad": "O4a:ML-DSA-bileseni->dilithium-py",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "ML-DSA-65-Ed25519",
+   "ad": "O4b:openssl-bilesenleri->pqjose-composite-JWS-kabul",
+   "gecti": true,
+   "ayrinti": "ok"
+  },
+  {
+   "grup": "ML-DSA-65-Ed25519",
+   "ad": "belirlenimci-composite-tekrar-ayni",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "ML-DSA-87-Ed448",
+   "ad": "O4a:ML-DSA-bileseni(ctx=Label)->openssl",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "ML-DSA-87-Ed448",
+   "ad": "O4a:EdDSA-bileseni->openssl",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "ML-DSA-87-Ed448",
+   "ad": "O4a:ML-DSA-bileseni->dilithium-py",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "ML-DSA-87-Ed448",
+   "ad": "O4b:openssl-bilesenleri->pqjose-composite-JWS-kabul",
+   "gecti": true,
+   "ayrinti": "ok"
+  },
+  {
+   "grup": "ML-DSA-87-Ed448",
+   "ad": "belirlenimci-composite-tekrar-ayni",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "X.509",
+   "ad": "O5:int-ml<-root-ml cryptography-dogrular",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "X.509",
+   "ad": "O5:leaf-ec@int-ml<-int-ml cryptography-dogrular",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "X.509",
+   "ad": "O5:int-ec<-root-ec cryptography-dogrular",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "X.509",
+   "ad": "O5:leaf-ml@int-ec<-int-ec cryptography-dogrular",
+   "gecti": true,
+   "ayrinti": null
+  },
+  {
+   "grup": "X.509",
+   "ad": "O5:openssl-verify leaf-ec@int-ml",
+   "gecti": true,
+   "ayrinti": "/tmp/pqjose-qqdqndr_/leaf.pem: OK"
+  },
+  {
+   "grup": "X.509",
+   "ad": "O5:openssl-verify leaf-ml@int-ec",
+   "gecti": true,
+   "ayrinti": "/tmp/pqjose-u1cvcyu_/leaf.pem: OK"
+  },
+  {
+   "grup": "genel",
+   "ad": "sayac",
+   "gecti": null,
+   "ayrinti": {
+    "openssl": "44/44",
+    "dilithium-py": "18/18"
+   }
+  }
+ ],
+ "capraz_sayac": {
+  "openssl": {
+   "gecen": 44,
+   "toplam": 44
+  },
+  "dilithium-py": {
+   "gecen": 18,
+   "toplam": 18
+  }
+ }
+}

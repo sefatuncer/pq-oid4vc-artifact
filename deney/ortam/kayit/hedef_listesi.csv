@@ -1,0 +1,56 @@
+id,tabaka,karar,sira,yedek_turu,yedek_grubu,ad,dil,dil_grubu,paket_ekosistemi,paket_adi,depo_url,alt_dizin,son_surum,son_surum_tarihi,son_commit_sha,son_commit,lisans
+JOSE-065,JOSE,SECILDI,1,,,node-jsonwebtoken,Node.js,JS/TS,npm,jsonwebtoken,https://github.com/auth0/node-jsonwebtoken,,9.0.3,2025-12-04,b924272f29192e12926b5414546f7c5bfcc9579d,2026-06-25,MIT
+JOSE-055,JOSE,SECILDI,2,,,jjwt,Java,JVM,maven,io.jsonwebtoken:jjwt-api,https://github.com/jwtk/jjwt,,0.13.0,2025-08-20,fb71496164c71442d08adec4571d9616ed5e1b8d,2026-09-03,Apache-2.0
+JOSE-083,JOSE,SECILDI,3,,,pyjwt,Python,Python,pypi,pyjwt,https://github.com/jpadilla/pyjwt,,2.15.0,2026-09-23,1d41a6478e1562e68ff667fcd703356acf085f68,2026-09-23,MIT
+JOSE-070,JOSE,SECILDI,4,,,php-jwt,PHP,PHP,packagist,firebase/php-jwt,https://github.com/firebase/php-jwt,,v7.2.0,2026-09-21,f502cdbf279cd7532060b041f7c22a05208c0b93,2026-09-21,BSD-3-Clause
+JOSE-033,JOSE,SECILDI,5,,,jwt,Go,Go,go,github.com/golang-jwt/jwt/v5,https://github.com/golang-jwt/jwt,,v5.3.1,2026-01-28,73c870b18e68b6e654b2b03f485aa3c9fab32cea,2026-09-14,MIT
+JOSE-034,JOSE,SECILDI,6,,,jose2go,Go,Go,go,github.com/dvsekhvalnov/jose2go,https://github.com/dvsekhvalnov/jose2go,,v1.11.0,2026-09-08,84aab69306da1e050ff6c53499ee883ef1d61f21,2026-09-08,MIT
+JOSE-009,JOSE,SECILDI,7,,,jose,Bun,JS/TS,npm,jose,https://github.com/panva/jose,,6.2.12,2026-09-05,55c959fd16852462498b0d82c52c4eca07d48f26,2026-09-14,MIT
+JOSE-001,JOSE,SECILDI,8,,,azure-activedirectory-identitymodel-extensions-for-dotnet,.NET,.NET,nuget,System.IdentityModel.Tokens.Jwt,https://github.com/AzureAD/azure-activedirectory-identitymodel-extensions-for-dotnet,,8.23.0,2026-09-18,80995d99c3dd434e34dee21eb3cdad1b08f3ec5f,2026-09-23,MIT
+JOSE-071,JOSE,SECILDI,9,,,jwt,PHP,PHP,packagist,lcobucci/jwt,https://github.com/lcobucci/jwt,,5.6.0,2025-10-17,2bead08a8cc2708d20169f5e77965b0a06e9a225,2026-09-23,BSD-3-Clause
+JOSE-052,JOSE,SECILDI,10,,,java-jwt,Java,JVM,maven,com.auth0:java-jwt,https://github.com/auth0/java-jwt,,4.6.1,2026-09-09,29f252b2d6fea74df6576803d5fce5f6d6799cf3,2026-09-08,MIT
+JOSE-087,JOSE,SECILDI,11,,,ruby-jwt,Ruby,Ruby,rubygems,jwt,https://github.com/jwt/ruby-jwt,,3.3.0,2026-09-11,9df1393e19728cf9975cee85039e5cb7fe5fe32f,2026-09-11,MIT
+JOSE-002,JOSE,SECILDI,12,,,jwt,.NET,.NET,nuget,JWT,https://github.com/jwt-dotnet/jwt,,11.1.0,2026-07-06,034f1fe9faef5ac6c9d59d108c82bbb367d053b2,2026-09-15,CC0-1.0
+JOSE-092,JOSE,SECILDI,13,,,jsonwebtoken,Rust,Rust,cargo,jsonwebtoken,https://github.com/Keats/jsonwebtoken,,11.1.0,2026-09-16,4c0ae752e9acc108c8e2c4c8ed8128dc66014210,2026-09-16,MIT
+JOSE-084,JOSE,SECILDI,14,,,python-jose,Python,Python,pypi,python-jose,https://github.com/mpdavis/python-jose,,3.5.0,2025-05-28,018b310ddb8b50dcfd09a0c152117835a21dd656,2025-05-28,MIT
+JOSE-089,JOSE,SECILDI,15,,,json-jwt,Ruby,Ruby,rubygems,json-jwt,https://github.com/nov/json-jwt,,1.17.2,2026-08-04,fa5ef904013bb96da5f6fa78c0fe02dfaee862e2,2026-09-15,MIT
+JOSE-104,JOSE,SECILDI,16,,,Swift-JWT,Swift,Swift/ObjC,swiftpm,https://github.com/Kitura/Swift-JWT,https://github.com/Kitura/Swift-JWT,,,,29fe084d874045d22546612d85fae1e9408c9091,2024-11-18,apache-2.0
+JOSE-102,JOSE,SECILDI,17,,,jwt-kit,Swift,Swift/ObjC,swiftpm,https://github.com/vapor/jwt-kit.git,https://github.com/vapor/jwt-kit,,5.3.0,2025-10-30,0c74d3201bff57aa5c7b62f72c6399dcdfa8ebcc,2026-09-18,MIT
+JOSE-091,JOSE,SECILDI,18,,,rust-jwt,Rust,Rust,cargo,frank_jwt,https://github.com/GildedHonour/rust-jwt,,3.1.4,2025-07-12,556a9046563e8fd131aa6174da8c059acde77190,2025-07-12,apache-2.0
+JOSE-059,JOSE,YEDEK,1,i,JS/TS,jsrsasign,JavaScript,JS/TS,npm,jsrsasign,https://github.com/kjur/jsrsasign,,11.1.5,2026-08-14,c1b8432c913f19c75e6a48f2722e9c3647bfed04,2026-08-19,MIT
+JOSE-054,JOSE,YEDEK,2,i,JVM,nimbus-jose-jwt,Java,JVM,maven,com.nimbusds:nimbus-jose-jwt,https://bitbucket.org/connect2id/nimbus-jose-jwt,,10.10,2026-09-17,ef3ddf236c93a2dfea3bd137f678bfec07acaf1c,2026-09-17,Apache-2.0
+JOSE-108,JOSE,YEDEK,3,i,Python,joserfc,python,Python,pypi,joserfc,https://github.com/authlib/joserfc,,1.7.5,2026-08-29,27d7c8a97d9452cde422aaa1bbcf0311cb8c223e,2026-09-13,BSD-3-Clause
+JOSE-074,JOSE,YEDEK,4,i,PHP,jwt-framework,PHP,PHP,packagist,web-token/jwt-framework,https://github.com/web-token/jwt-framework,,4.2.3,2026-09-12,e989bb936e7764f0b295b81d0be6d5ad023e9a61,2026-09-13,MIT
+JOSE-038,JOSE,YEDEK,5,i,Go,jwx,Go,Go,go,github.com/lestrrat-go/jwx/v4,https://github.com/lestrrat-go/jwx,,v4.5.0,2026-09-08,f8e9c3f4b6214d0f921f9a86eebb84c12e4c2e28,2026-09-21,MIT
+JOSE-003,JOSE,YEDEK,6,i,.NET,jose-jwt,.NET,.NET,nuget,jose-jwt,https://github.com/dvsekhvalnov/jose-jwt,,5.3.0,2026-03-27,20abc4ebf916e1e36586d67609c17d045af1d503,2026-03-26,MIT
+JOSE-094,JOSE,YEDEK,7,i,Rust,biscuit,Rust,Rust,cargo,biscuit,https://github.com/lawliet89/biscuit,,0.8.0,2026-04-05,a6443895a894d89641710a68d82e870e190b57f4,2026-04-05,MIT
+JOSE-031,JOSE,YEDEK,8,ii,genel,guardian,Elixir,Diğer,hex,guardian,https://github.com/ueberauth/guardian,,2.5.0,2026-08-17,6e86224f9c0aaebfb7062da2aa2b0f39001cb68a,2026-08-18,MIT
+JOSE-017,JOSE,YEDEK,9,ii,genel,jwt-cpp,C++,C/C++,kaynak,,https://github.com/Thalhammer/jwt-cpp,,,,0a503e75084cfdb48cc2186e6b961444eb819007,2026-04-02,MIT
+SDJWT-025,SDJWT,SECILDI,1,,,spruceid/ssi (ssi-sd-jwt),Rust,Rust,cargo,ssi-sd-jwt,https://github.com/spruceid/ssi,,0.6.0,2026-02-13,d7593b911ee4b15365adb5b352d3631bef2aaa3b,2026-09-14,Apache-2.0
+SDJWT-015,SDJWT,SECILDI,2,,,identity-common-ts (@sd-jwt/core),TypeScript,JS/TS,npm,@sd-jwt/core,https://github.com/openwallet-foundation-labs/identity-common-ts,packages/sd-jwt-core,0.21.0,2026-09-16,e182c6444f6d185c3d4ec038386418bdcbbfcd20,2026-09-22,apache-2.0
+SDJWT-018,SDJWT,SECILDI,3,,,sd-jwt-python,Python,Python,pypi,sd-jwt,https://github.com/openwallet-foundation-labs/sd-jwt-python,,0.10.4,2024-02-16,c5fda017d15e65a6c61a31e696bcdbdab2966b1e,2026-08-17,Apache-2.0
+SDJWT-001,SDJWT,SECILDI,4,,,vck,Kotlin,JVM,maven,at.asitplus.wallet:vck,https://github.com/a-sit-plus/vck,,7.0.1,2026-08-13,a3e66b1a4e80b3053b6921bb4dae3d704dc022bf,2026-08-12,Apache-2.0
+SDJWT-021,SDJWT,SECILDI,5,,,wallet-framework-dotnet (WalletFramework.SdJwtVc),.NET,.NET,nuget,WalletFramework.SdJwtVc,https://github.com/openwallet-foundation-labs/wallet-framework-dotnet,,3.1.0,2026-08-12,091bea2207b97846776e0a4bad8855dc8908a8a3,2026-09-24,Apache-2.0
+SDJWT-010,SDJWT,SECILDI,6,,,sd-jwt-payload,Rust,Rust,cargo,sd-jwt-payload,https://github.com/iotaledger/sd-jwt-payload,,0.5.1,2026-01-14,c47e52c31545f7ede55ad1259f275f31595e2322,2026-01-14,Apache-2.0
+SDJWT-004,SDJWT,SECILDI,7,,,authlete/sd-jwt,Java,JVM,maven,com.authlete:sd-jwt,https://github.com/authlete/sd-jwt,,1.9,2026-05-02,0a3727039d64d22989b4754c82d6c3e8f96364d5,2026-05-02,Apache-2.0
+SDJWT-002,SDJWT,SECILDI,8,,,affinidi-sdjwt-dart (selective_disclosure_jwt),Dart,Diğer,pub,selective_disclosure_jwt,https://github.com/affinidi/affinidi-sdjwt-dart,,1.1.1,2025-10-13,54a187b64095788a77da329c28e79ec30c606108,2025-10-13,apache-2.0
+SDJWT-019,SDJWT,YEDEK,1,i,Rust,sd-jwt-rust,Rust,Rust,cargo,sd-jwt-rs,https://github.com/openwallet-foundation-labs/sd-jwt-rust,,0.7.1,2024-10-18,60d68c3c662360ab3670c59a3cc50344ca60c794,2026-09-10,Apache-2.0
+SDJWT-020,SDJWT,YEDEK,2,i,JS/TS,sd-jwt-vc-dm,TypeScript,JS/TS,npm,sd-jwt-vcdm,https://github.com/openwallet-foundation-labs/sd-jwt-vc-dm,,0.1.1,2025-02-09,93ea03337039a6a9d80014468cb1a5f7ce0d1819,2025-04-23,apache-2.0
+SDJWT-006,SDJWT,YEDEK,3,i,JVM,eudi-lib-jvm-sdjwt-kt,Kotlin,JVM,maven,eu.europa.ec.eudi:eudi-lib-jvm-sdjwt-kt,https://github.com/eu-digital-identity-wallet/eudi-lib-jvm-sdjwt-kt,,0.20.1,2026-05-11,825639358b1704fae00cea0991d3e9c7699e6017,2026-09-21,Apache-2.0
+SDJWT-012,SDJWT,YEDEK,4,i,.NET,HeroSD-JWT,.NET,.NET,nuget,HeroSD-JWT,https://github.com/koalafacts/herosd-jwt,,1.1.7,2025-11-20,93274ef33faefa8135c31adf88037d6a3c959d51,2026-06-01,MIT
+SDJWT-003,SDJWT,YEDEK,5,ii,genel,affinidi-tdk-rs (affinidi-sd-jwt),Rust,Rust,cargo,affinidi-sd-jwt,https://github.com/affinidi/affinidi-tdk-rs,,0.1.5,2026-08-23,ea5af50250c59f52086630f891c4a8a1569de4b5,2026-09-23,Apache-2.0
+SDJWT-007,SDJWT,YEDEK,6,ii,genel,eudi-lib-sdjwt-swift,Swift,Swift/ObjC,swiftpm,https://github.com/eu-digital-identity-wallet/eudi-lib-sdjwt-swift,https://github.com/eu-digital-identity-wallet/eudi-lib-sdjwt-swift,,v0.14.2,2026-04-07,f3937ad2cd9efde5703fad1a3418811f2eaae316,2026-09-02,apache-2.0
+COSE-001,COSE,SECILDI,1,,,Signum (indispensable-cosef),Kotlin,JVM,maven,at.asitplus.signum:indispensable-cosef,https://github.com/a-sit-plus/signum,,3.26.0,2026-08-18,7d758fe14f809650d3380b0fb6716d6596ce6906,2026-08-28,Apache-2.0
+COSE-034,COSE,SECILDI,2,,,go-cose (veraison),Go,Go,go,github.com/veraison/go-cose,https://github.com/veraison/go-cose,,v1.3.0,2024-07-19,dea543bf9b89b0cef461c0d194747c9ed5e6666c,2026-08-26,mpl-2.0
+COSE-035,COSE,SECILDI,3,,,web-auth/cose-lib,PHP,PHP,packagist,web-auth/cose-lib,https://github.com/web-auth/cose-lib,,4.8.2,2026-09-15,1c854bf63c5cd8d872d1e57ec7b891030f4ed314,2026-09-15,MIT
+COSE-036,COSE,SECILDI,4,,,wolfCOSE,C,C/C++,kaynak,,https://github.com/wolfssl/wolfcose,,,,f907071b10127f3ae2dd7719749a91b039ff04a1,2026-09-17,gpl-3.0
+COSE-014,COSE,SECILDI,5,,,cose-js,JavaScript,JS/TS,npm,cose-js,https://github.com/erdtman/cose-js,,0.9.0,2023-09-22,b1d3eac995fc2b56180dc9e956095676c642a11c,2026-04-10,Apache-2.0
+COSE-020,COSE,YEDEK,1,i,Go,ldclabs/cose (Go),Go,Go,go,github.com/ldclabs/cose,https://github.com/ldclabs/cose,,v1.4.0,2026-06-15,2519a8538c924eba25e8e3cd1b7ce1a27ead84e1,2026-06-15,MIT
+COSE-019,COSE,YEDEK,2,i,C/C++,t_cose,C,C/C++,kaynak,,https://github.com/laurencelundblade/t_cose,,,,98e34ed6403f01e1779fcfe84debc7c4dd6ed75f,2026-05-05,BSD-3-Clause
+COSE-016,COSE,YEDEK,3,ii,genel,coset,Rust,Rust,cargo,coset,https://github.com/google/coset,,0.4.2,2026-03-02,dd458359623a459086aa296e34a3d8902e034223,2026-03-02,Apache-2.0
+COSE-011,COSE,YEDEK,4,ii,genel,dark-bio crypto-rs,Rust,Rust,cargo,darkbio-crypto,https://github.com/dark-bio/crypto-rs,,0.18.2,2026-09-11,be6193ec3a0d8ee0f558f61fa7862fa20bf696b0,2026-09-24,BSD-3-Clause
+REF-011,REF,SECILDI,1,,,Credo openid4vc,TypeScript,JS/TS,npm,@credo-ts/openid4vc,https://github.com/openwallet-foundation/credo-ts,packages/openid4vc,0.7.1,2026-09-17,7d825d122e5564960ac8e3ecc14f12bab1b955d9,2026-09-23,Apache-2.0
+REF-003,REF,SECILDI,2,,,EUDI verifier endpoint,Kotlin,JVM,kaynak,,https://github.com/eu-digital-identity-wallet/eudi-srv-verifier-endpoint,,,,b1f17e8fe247504e7541a0121c1b6c9f1c7d4908,2026-09-24,apache-2.0
+REF-010,REF,SECILDI,3,,,ACA-Py oid4vc eklentisi,Python,Python,,,https://github.com/openwallet-foundation/acapy-plugins,oid4vc,,,18c7d1f3c8497e0bc35797d26f3417ce96afeee9,2026-09-23,apache-2.0
+REF-023,REF,YEDEK,1,ii,genel,walt.id identity (verifier-api),Kotlin,JVM,,,https://github.com/walt-id/waltid-identity,waltid-services/waltid-verifier-api,,,bb5c4eb61e1f788483f46530d4d87818846e96e0,2026-09-24,Apache-2.0
+REF-015,REF,YEDEK,2,ii,genel,irmago (Yivi),Go,Go,go,github.com/privacybydesign/irmago,https://github.com/privacybydesign/irmago,,v1.4.0,2026-09-21,223bcad33d3f2e54504836bf9bcf8ea776181245,2026-09-21,Apache-2.0

@@ -1,0 +1,17 @@
+{'ad': 'wf01', 'model': 'KAT3_SMIME.spthy', 'bayraklar': 'MIXED', 'iyi_bicim': 'EVET', 'uyari_sayisi': 0, 'meta': 'rc=0 wall_s=0.2 mem_peak_MiB=64.8', 'ilk_kosu': 'MIXED.tam'}
+{'ad': 'wf02', 'model': 'KAT3_SMIME.spthy', 'bayraklar': 'PQ_ONLY', 'iyi_bicim': 'EVET', 'uyari_sayisi': 0, 'meta': 'rc=0 wall_s=0.18 mem_peak_MiB=62.5', 'ilk_kosu': 'PQ_ONLY.tam'}
+{'ad': 'wf03', 'model': 'KAT3_SMIME.spthy', 'bayraklar': 'HYBRID_KEM', 'iyi_bicim': 'EVET', 'uyari_sayisi': 0, 'meta': 'rc=0 wall_s=0.23 mem_peak_MiB=69.5', 'ilk_kosu': 'HYBRID_KEM.tam'}
+{'ad': 'wf04', 'model': 'weakest_link_wf.spthy', 'bayraklar': '', 'iyi_bicim': 'EVET', 'uyari_sayisi': 0, 'meta': 'rc=0 wall_s=0.74 mem_peak_MiB=73.0', 'ilk_kosu': 'V1.tam'}
+{'ad': 'wf05', 'model': 'weakest_link_wf.spthy', 'bayraklar': 'EXPECT_IN_TL', 'iyi_bicim': 'EVET', 'uyari_sayisi': 0, 'meta': 'rc=0 wall_s=0.73 mem_peak_MiB=72.8', 'ilk_kosu': 'V2.tam'}
+{'ad': 'wf06', 'model': 'weakest_link_wf.spthy', 'bayraklar': 'TL_PQ', 'iyi_bicim': 'EVET', 'uyari_sayisi': 0, 'meta': 'rc=0 wall_s=0.74 mem_peak_MiB=74.6', 'ilk_kosu': 'V3.tam'}
+{'ad': 'wf07', 'model': 'weakest_link_wf.spthy', 'bayraklar': 'TL_PQ,EXPECT_IN_TL', 'iyi_bicim': 'EVET', 'uyari_sayisi': 0, 'meta': 'rc=0 wall_s=0.7 mem_peak_MiB=72.4', 'ilk_kosu': 'V4.tam'}
+{'ad': 'wf08', 'model': 'weakest_link_wf.spthy', 'bayraklar': 'TL_PQ,NO_COEXIST', 'iyi_bicim': 'EVET', 'uyari_sayisi': 0, 'meta': 'rc=0 wall_s=0.48 mem_peak_MiB=73.3', 'ilk_kosu': 'V5.tam'}
+{'ad': 'wf09', 'model': 'weakest_link_wf.spthy', 'bayraklar': 'NO_COEXIST', 'iyi_bicim': 'EVET', 'uyari_sayisi': 0, 'meta': 'rc=0 wall_s=0.45 mem_peak_MiB=72.8', 'ilk_kosu': 'V6.tam'}
+{'ad': 'wf10', 'model': 'KAT3_SMIME.spthy', 'bayraklar': 'HYBRID_KEM,MUT_HYBRID_ONE', 'iyi_bicim': 'EVET', 'uyari_sayisi': 0, 'meta': 'rc=0 wall_s=0.23 mem_peak_MiB=68.0', 'ilk_kosu': 'MUT10.HYBRID_KEM.tam'}
+{'ad': 'wf11', 'model': '/pilot/weakest_link.spthy', 'bayraklar': '', 'iyi_bicim': 'HAYIR', 'uyari_sayisi': 2, 'meta': 'rc=0 wall_s=0.68 mem_peak_MiB=71.8', 'ilk_kosu': 'EK.V1.pilot_asli.tam'}
+{'ad': 'wf12', 'model': '/pilot/weakest_link.spthy', 'bayraklar': 'EXPECT_IN_TL', 'iyi_bicim': 'HAYIR', 'uyari_sayisi': 2, 'meta': 'rc=0 wall_s=0.74 mem_peak_MiB=73.3', 'ilk_kosu': 'EK.V2.pilot_asli.tam'}
+{'ad': 'wf13', 'model': '/pilot/weakest_link.spthy', 'bayraklar': 'TL_PQ', 'iyi_bicim': 'HAYIR', 'uyari_sayisi': 2, 'meta': 'rc=0 wall_s=0.68 mem_peak_MiB=70.5', 'ilk_kosu': 'EK.V3.pilot_asli.tam'}
+{'ad': 'wf14', 'model': '/pilot/weakest_link.spthy', 'bayraklar': 'TL_PQ,EXPECT_IN_TL', 'iyi_bicim': 'HAYIR', 'uyari_sayisi': 2, 'meta': 'rc=0 wall_s=0.69 mem_peak_MiB=73.6', 'ilk_kosu': 'EK.V4.pilot_asli.tam'}
+{'ad': 'wf15', 'model': '/pilot/weakest_link.spthy', 'bayraklar': 'TL_PQ,NO_COEXIST', 'iyi_bicim': 'HAYIR', 'uyari_sayisi': 2, 'meta': 'rc=0 wall_s=0.44 mem_peak_MiB=70.5', 'ilk_kosu': 'EK.V5.pilot_asli.tam'}
+{'ad': 'wf16', 'model': '/pilot/weakest_link.spthy', 'bayraklar': 'NO_COEXIST', 'iyi_bicim': 'HAYIR', 'uyari_sayisi': 2, 'meta': 'rc=0 wall_s=0.47 mem_peak_MiB=71.3', 'ilk_kosu': 'EK.V6.pilot_asli.tam'}
+rc=2

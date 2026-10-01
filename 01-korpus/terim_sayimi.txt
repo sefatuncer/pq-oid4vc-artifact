@@ -1,0 +1,19 @@
+Terim sayimi (terim_sayimi.py) — metin/ altindaki belgeler, buyuk/kucuk harf duyarsiz
+
+ARF v3.0.0 (13 dosya) toplam 'quantum': 0; 'ML-DSA': 0; 'hybrid': 8
+OID4VCI     quantum=0  post-quantum=0  PQC=0  ML-DSA=0  SLH-DSA=0  hybrid=0  composite=0  downgrade=0  stripping=0
+OID4VP      quantum=0  post-quantum=0  PQC=0  ML-DSA=0  SLH-DSA=0  hybrid=3  composite=0  downgrade=0  stripping=0
+HAIP        quantum=0  post-quantum=0  PQC=0  ML-DSA=0  SLH-DSA=0  hybrid=0  composite=0  downgrade=0  stripping=0
+SDJWTVC     quantum=1  post-quantum=0  PQC=0  ML-DSA=0  SLH-DSA=0  hybrid=0  composite=0  downgrade=0  stripping=0
+SDJWTVC13   quantum=1  post-quantum=0  PQC=0  ML-DSA=0  SLH-DSA=0  hybrid=0  composite=0  downgrade=0  stripping=0
+RFC9901     quantum=1  post-quantum=1  PQC=0  ML-DSA=0  SLH-DSA=0  hybrid=0  composite=4  downgrade=0  stripping=0
+TSL         quantum=0  post-quantum=0  PQC=0  ML-DSA=0  SLH-DSA=0  hybrid=0  composite=0  downgrade=0  stripping=0
+ABCA        quantum=0  post-quantum=0  PQC=0  ML-DSA=0  SLH-DSA=0  hybrid=0  composite=0  downgrade=0  stripping=0
+RFC9449     quantum=0  post-quantum=0  PQC=0  ML-DSA=0  SLH-DSA=0  hybrid=0  composite=0  downgrade=3  stripping=0
+JWTBCP      quantum=0  post-quantum=0  PQC=0  ML-DSA=0  SLH-DSA=0  hybrid=0  composite=0  downgrade=0  stripping=0
+RFC8725     quantum=0  post-quantum=0  PQC=0  ML-DSA=0  SLH-DSA=0  hybrid=0  composite=0  downgrade=0  stripping=0
+TS119612    quantum=0  post-quantum=0  PQC=0  ML-DSA=0  SLH-DSA=0  hybrid=0  composite=0  downgrade=0  stripping=0
+TS119602    quantum=0  post-quantum=0  PQC=0  ML-DSA=0  SLH-DSA=0  hybrid=0  composite=0  downgrade=0  stripping=0
+TS119475    quantum=0  post-quantum=0  PQC=0  ML-DSA=0  SLH-DSA=0  hybrid=0  composite=0  downgrade=0  stripping=0
+TS119411-8  quantum=0  post-quantum=0  PQC=0  ML-DSA=0  SLH-DSA=0  hybrid=0  composite=0  downgrade=0  stripping=0
+TS119312    quantum=65  post-quantum=44  PQC=20  ML-DSA=72  SLH-DSA=95  hybrid=39  composite=2  downgrade=0  stripping=0

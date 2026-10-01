@@ -1,0 +1,219 @@
+# JOSE-087 ruby-jwt 3.3.0 — API taraması (sözleşme §5.1)
+# imaj: a10-jose-087:1 (sha256:06fe397a9520d75b7d42f00e1cb2d6851cb9a1cc3d7f739cef9301a6eab80da0)
+# komut: docker run --rm --network none a10-jose-087:1 sh -c 'cd /opt/a/vendor/bundle/ruby/3.4.0/gems/jwt-3.3.0 && grep -rn -i -E "algorithms|allow|register_algorithm|required|enforce|signatures|eddsa|ed25519|ml-?dsa|composite|crit|x5c|jwks|multi" lib/ README.md'
+
+lib/jwt/x5c_key_finder.rb:4:  # If the x5c header certificate chain can be validated by trusted root
+lib/jwt/x5c_key_finder.rb:8:  class X5cKeyFinder
+lib/jwt/x5c_key_finder.rb:15:    def from(x5c_header_or_certificates)
+lib/jwt/x5c_key_finder.rb:16:      signing_certificate, *certificate_chain = parse_certificates(x5c_header_or_certificates)
+lib/jwt/x5c_key_finder.rb:42:    def parse_certificates(x5c_header_or_certificates)
+lib/jwt/x5c_key_finder.rb:43:      if x5c_header_or_certificates.all?(OpenSSL::X509::Certificate)
+lib/jwt/x5c_key_finder.rb:44:        x5c_header_or_certificates
+lib/jwt/x5c_key_finder.rb:46:        x5c_header_or_certificates.map do |encoded|
+lib/jwt/encoded_token.rb:154:      verifiers = JWA.create_verifiers(algorithms: algorithm, keys: keys, preferred_algorithm: header['alg'])
+lib/jwt/encoded_token.rb:205:        verify_claims!(crit: ['b64'])
+lib/jwt/encoded_token/claims_context.rb:8:    # Allow access to the unverified payload for claim verification.
+lib/jwt/jwa/hmac.rb:5:    # Implementation of the HMAC family of algorithms
+lib/jwt/jwa/hmac.rb:9:      # Minimum key lengths for HMAC algorithms based on RFC 7518 Section 3.2.
+lib/jwt/jwa/hmac.rb:35:      register_algorithm(new('HS256', OpenSSL::Digest::SHA256))
+lib/jwt/jwa/hmac.rb:36:      register_algorithm(new('HS384', OpenSSL::Digest::SHA384))
+lib/jwt/jwa/hmac.rb:37:      register_algorithm(new('HS512', OpenSSL::Digest::SHA512))
+lib/jwt/jwa/hmac.rb:49:        return unless JWT.configuration.decode.enforce_hmac_key_length
+lib/jwt/jwa/ps.rb:5:    # Implementation of the RSASSA-PSS family of algorithms
+lib/jwt/jwa/ps.rb:30:      register_algorithm(new('PS256'))
+lib/jwt/jwa/ps.rb:31:      register_algorithm(new('PS384'))
+lib/jwt/jwa/ps.rb:32:      register_algorithm(new('PS512'))
+lib/jwt/jwa/signing_algorithm.rb:4:  # JSON Web Algorithms
+lib/jwt/jwa/signing_algorithm.rb:6:    # Base functionality for signing algorithms
+lib/jwt/jwa/signing_algorithm.rb:10:        def register_algorithm(algo)
+lib/jwt/jwa/signing_algorithm.rb:11:          ::JWT::JWA.register_algorithm(algo)
+lib/jwt/jwa/signing_algorithm.rb:47:      def register_algorithm(algo)
+lib/jwt/jwa/signing_algorithm.rb:48:        algorithms[algo.alg.to_s.downcase] = algo
+lib/jwt/jwa/signing_algorithm.rb:52:        algorithms.fetch(algo.to_s.downcase, Unsupported)
+lib/jwt/jwa/signing_algorithm.rb:57:      def algorithms
+lib/jwt/jwa/signing_algorithm.rb:58:        @algorithms ||= {}
+lib/jwt/jwa/ecdsa.rb:62:        register_algorithm(new(v[:algorithm], v[:digest]))
+lib/jwt/jwa/rsa.rb:5:    # Implementation of the RSA family of algorithms
+lib/jwt/jwa/rsa.rb:30:      register_algorithm(new('RS256'))
+lib/jwt/jwa/rsa.rb:31:      register_algorithm(new('RS384'))
+lib/jwt/jwa/rsa.rb:32:      register_algorithm(new('RS512'))
+lib/jwt/jwa/none.rb:21:      register_algorithm(new)
+lib/jwt/configuration/decode_configuration.rb:23:      # @!attribute [rw] algorithms
+lib/jwt/configuration/decode_configuration.rb:24:      #   @return [Array<String>] the list of acceptable algorithms.
+lib/jwt/configuration/decode_configuration.rb:25:      # @!attribute [rw] required_claims
+lib/jwt/configuration/decode_configuration.rb:26:      #   @return [Array<String>] the list of required claims.
+lib/jwt/configuration/decode_configuration.rb:27:      # @!attribute [rw] enforce_hmac_key_length
+lib/jwt/configuration/decode_configuration.rb:28:      #   @return [Boolean] whether to enforce minimum HMAC key lengths. false disables validation (default).
+lib/jwt/configuration/decode_configuration.rb:38:                    :algorithms,
+lib/jwt/configuration/decode_configuration.rb:39:                    :required_claims,
+lib/jwt/configuration/decode_configuration.rb:40:                    :enforce_hmac_key_length
+lib/jwt/configuration/decode_configuration.rb:52:        @algorithms = ['HS256']
+lib/jwt/configuration/decode_configuration.rb:53:        @required_claims = []
+lib/jwt/configuration/decode_configuration.rb:54:        @enforce_hmac_key_length = false
+lib/jwt/configuration/decode_configuration.rb:68:          algorithms: algorithms,
+lib/jwt/configuration/decode_configuration.rb:69:          required_claims: required_claims,
+lib/jwt/configuration/decode_configuration.rb:70:          enforce_hmac_key_length: enforce_hmac_key_length
+lib/jwt/jwk/set.rb:7:    # JSON Web Key Set (JWKS) representation
+lib/jwt/jwk/set.rb:15:      def initialize(jwks = nil, options = {})
+lib/jwt/jwk/set.rb:16:        @keys = case jwks
+lib/jwt/jwk/set.rb:18:                when JWT::JWK::Set     then jwks.keys.dup
+lib/jwt/jwk/set.rb:19:                when JWT::JWK::KeyBase then [jwks]
+lib/jwt/jwk/set.rb:20:                when Hash              then build_supported_keys(jwks.transform_keys(&:to_sym)[:keys], options)
+lib/jwt/jwk/set.rb:21:                when Array             then build_keys(jwks, options)
+lib/jwt/jwk/set.rb:22:                else raise ArgumentError, 'Can only create new JWKS from Hash, Array and JWK'
+lib/jwt/jwk/ec.rb:202:        # It is know to have happened to exported JWKs on a Java application and
+lib/jwt/jwk/ec.rb:205:        # required byte is 0 because with any other byte the point is no longer
+lib/jwt/jwk/key_finder.rb:10:      # @option options [Proc, JWT::JWK::Set] :jwks the jwks or a loader proc
+lib/jwt/jwk/key_finder.rb:11:      # @option options [Boolean] :allow_nil_kid whether to allow nil kid
+lib/jwt/jwk/key_finder.rb:16:        @allow_nil_kid = options[:allow_nil_kid]
+lib/jwt/jwk/key_finder.rb:17:        jwks_or_loader = options[:jwks]
+lib/jwt/jwk/key_finder.rb:19:        @jwks_loader = if jwks_or_loader.respond_to?(:call)
+lib/jwt/jwk/key_finder.rb:20:                         jwks_or_loader
+lib/jwt/jwk/key_finder.rb:22:                         ->(_options) { jwks_or_loader }
+lib/jwt/jwk/key_finder.rb:35:        raise ::JWT::SignatureError, 'No keys found in jwks' unless @jwks.any?
+lib/jwt/jwk/key_finder.rb:50:        raise ::JWT::SignatureError, 'No key id (kid) or x5t found from token headers' unless @allow_nil_kid
+lib/jwt/jwk/key_finder.rb:59:        key_matcher = ->(key) { (kid.nil? && @allow_nil_kid) || key[key_field] == kid }
+lib/jwt/jwk/key_finder.rb:62:        @jwks ||= JWT::JWK::Set.new(@jwks_loader.call(key_field => kid))
+lib/jwt/jwk/key_finder.rb:63:        jwk = @jwks.find { |key| key_matcher.call(key) }
+lib/jwt/jwk/key_finder.rb:68:        @jwks = JWT::JWK::Set.new(@jwks_loader.call(invalidate: true, kid_not_found: true, key_field => kid))
+lib/jwt/jwk/key_finder.rb:69:        @jwks.find { |key| key_matcher.call(key) }
+lib/jwt/decode.rb:4:require 'jwt/x5c_key_finder'
+lib/jwt/decode.rb:12:                      'algorithms',
+lib/jwt/decode.rb:13:                      :algorithms].freeze
+lib/jwt/decode.rb:56:      token.verify_signature!(algorithm: allowed_and_valid_algorithms, key: @key)
+lib/jwt/decode.rb:60:      raise JWT::IncorrectAlgorithm, 'An algorithm must be specified' if allowed_algorithms.empty?
+lib/jwt/decode.rb:63:      raise JWT::IncorrectAlgorithm, 'Expected a different algorithm' if allowed_and_valid_algorithms.empty?
+lib/jwt/decode.rb:68:      if @options[:jwks]
+lib/jwt/decode.rb:70:          jwks: @options[:jwks],
+lib/jwt/decode.rb:71:          allow_nil_kid: @options[:allow_nil_kid],
+lib/jwt/decode.rb:76:      return unless (x5c_options = @options[:x5c])
+lib/jwt/decode.rb:78:      @key = X5cKeyFinder.new(x5c_options[:root_certificates], x5c_options[:crls]).from(token.header['x5c'])
+lib/jwt/decode.rb:81:    def allowed_and_valid_algorithms
+lib/jwt/decode.rb:82:      @allowed_and_valid_algorithms ||= allowed_algorithms.select { |alg| alg.valid_alg?(alg_in_header) }
+lib/jwt/decode.rb:85:    def given_algorithms
+lib/jwt/decode.rb:90:    def allowed_algorithms
+lib/jwt/decode.rb:91:      @allowed_algorithms ||= resolve_allowed_algorithms
+lib/jwt/decode.rb:94:    def resolve_allowed_algorithms
+lib/jwt/decode.rb:95:      given_algorithms.map { |alg| JWA.resolve(alg) }
+lib/jwt/decode.rb:109:      return if !@verify && segment_count == 2 # If no verifying required, the signature is not needed
+lib/jwt/claims.rb:4:require_relative 'claims/crit'
+lib/jwt/claims.rb:12:require_relative 'claims/required'
+lib/jwt/claims.rb:28:  # required
+lib/jwt/error.rb:64:  # The InvalidCritError class is raised when the JWT crit header is invalid.
+lib/jwt/error.rb:65:  class InvalidCritError < ClaimValidationError; end
+lib/jwt/error.rb:73:  # The MissingRequiredClaim class is raised when a required claim is missing from the JWT.
+lib/jwt/error.rb:74:  class MissingRequiredClaim < ClaimValidationError; end
+lib/jwt/jwa.rb:16:  # The JWA module contains all supported algorithms.
+lib/jwt/jwa.rb:25:        raise ArgumentError, 'Custom algorithms are required to include JWT::JWA::SigningAlgorithm' unless algorithm.is_a?(SigningAlgorithm)
+lib/jwt/jwa.rb:31:      def resolve_and_sort(algorithms:, preferred_algorithm:)
+lib/jwt/jwa.rb:32:        Array(algorithms).map { |alg| JWA.resolve(alg) }
+lib/jwt/jwa.rb:40:          validate_jwk_algorithms!(key, algorithm, EncodeError)
+lib/jwt/jwa.rb:49:      def create_verifiers(algorithms:, keys:, preferred_algorithm:)
+lib/jwt/jwa.rb:50:        jwks, other_keys = keys.partition { |key| key.is_a?(JWK::KeyBase) }
+lib/jwt/jwa.rb:52:        validate_jwk_algorithms!(jwks, algorithms, VerificationKeyError)
+lib/jwt/jwa.rb:54:        jwks + resolve_and_sort(algorithms: algorithms,
+lib/jwt/jwa.rb:60:      def validate_jwk_algorithms!(jwks, algorithms, error_class)
+lib/jwt/jwa.rb:61:        algorithms = Array(algorithms)
+lib/jwt/jwa.rb:63:        return if algorithms.empty?
+lib/jwt/jwa.rb:65:        return if Array(jwks).all? do |jwk|
+lib/jwt/jwa.rb:66:          algorithms.any? do |alg|
+lib/jwt/jwa.rb:71:        raise error_class, "Provided JWKs do not support one of the specified algorithms: #{algorithms.join(', ')}"
+lib/jwt/claims/crit.rb:5:    # Responsible of validation the crit header
+lib/jwt/claims/crit.rb:6:    class Crit
+lib/jwt/claims/crit.rb:7:      # Initializes a new Crit instance.
+lib/jwt/claims/crit.rb:9:      # @param expected_crits [String] the expected crit header values for the JWT token.
+lib/jwt/claims/crit.rb:10:      def initialize(expected_crits:)
+lib/jwt/claims/crit.rb:11:        @expected_crits = Array(expected_crits)
+lib/jwt/claims/crit.rb:14:      # Verifies the critical claim ('crit') in the JWT token header.
+lib/jwt/claims/crit.rb:18:      # @raise [JWT::InvalidCritError] if the crit claim is invalid.
+lib/jwt/claims/crit.rb:21:        raise(JWT::InvalidCritError, 'Crit header missing') unless context.header['crit']
+lib/jwt/claims/crit.rb:22:        raise(JWT::InvalidCritError, 'Crit header should be an array') unless context.header['crit'].is_a?(Array)
+lib/jwt/claims/crit.rb:24:        missing = (expected_crits - context.header['crit'])
+lib/jwt/claims/crit.rb:25:        raise(JWT::InvalidCritError, "Crit header missing expected values: #{missing.join(', ')}") if missing.any?
+lib/jwt/claims/crit.rb:32:      attr_reader :expected_crits
+lib/jwt/claims/issued_at.rb:9:      # @param leeway [Integer] the drift (in seconds) to allow between the clock of the issuer and the clock of the verifier. Default: 0.
+lib/jwt/claims/decode_verifier.rb:22:        required_claims: ->(options) { Claims::Required.new(required_claims: options[:required_claims]) }
+lib/jwt/claims/not_before.rb:9:      # @param leeway [Integer] the amount of leeway (in seconds) to allow when validating the 'nbf' claim. Defaults to 0.
+lib/jwt/claims/required.rb:5:    # The Required class is responsible for validating that all required claims are present in a JWT token.
+lib/jwt/claims/required.rb:6:    class Required
+lib/jwt/claims/required.rb:7:      # Initializes a new Required instance.
+lib/jwt/claims/required.rb:9:      # @param required_claims [Array<String>] the list of required claims.
+lib/jwt/claims/required.rb:10:      def initialize(required_claims:)
+lib/jwt/claims/required.rb:11:        @required_claims = required_claims
+lib/jwt/claims/required.rb:14:      # Verifies that all required claims are present in the JWT payload.
+lib/jwt/claims/required.rb:18:      # @raise [JWT::MissingRequiredClaim] if any required claim is missing.
+lib/jwt/claims/required.rb:21:        required_claims.each do |required_claim|
+lib/jwt/claims/required.rb:22:          next if context.payload.is_a?(Hash) && context.payload.key?(required_claim)
+lib/jwt/claims/required.rb:24:          raise JWT::MissingRequiredClaim, "Missing required claim #{required_claim}"
+lib/jwt/claims/required.rb:30:      attr_reader :required_claims
+lib/jwt/claims/verifier.rb:15:        crit: ->(options) { Claims::Crit.new(expected_crits: options[:crit]) },
+lib/jwt/claims/verifier.rb:16:        required: ->(options) { Claims::Required.new(required_claims: options[:required]) },
+lib/jwt/claims/expiration.rb:9:      # @param leeway [Integer] the amount of leeway (in seconds) to allow when validating the expiration time. Default: 0.
+README.md:44:## Algorithms and Usage
+README.md:46:The jwt gem natively supports the NONE, HMAC, RSASSA, ECDSA and RSASSA-PSS algorithms via the openssl library. The gem can be extended with additional or alternative implementations of the algorithms via extensions.
+README.md:48:Additionally the EdDSA algorithm is supported via a the [jwt-eddsa gem](https://rubygems.org/gems/jwt-eddsa).
+README.md:50:For safe cryptographic signing, you need to specify the algorithm in the options hash whenever you call `JWT.decode` to ensure that an attacker [cannot bypass the algorithm verification step](https://auth0.com/blog/critical-vulnerabilities-in-json-web-token-libraries/). **It is strongly recommended that you hard code the algorithm, as you may leave yourself vulnerable by dynamically picking the algorithm**
+README.md:52:See [JSON Web Algorithms (JWA) 3.1. "alg" (Algorithm) Header Parameter Values for JWS](https://tools.ietf.org/html/rfc7518#section-3.1)
+README.md:132:### **EdDSA**
+README.md:134:Since version 3.0, the EdDSA algorithm has been moved to the [jwt-eddsa gem](https://rubygems.org/gems/jwt-eddsa).
+README.md:157:### **Custom algorithms**
+README.md:231:The `JWT::EncodedToken` can be used as a token object that allows verification of signatures and claims.
+README.md:287:key_finder = JWT::JWK::KeyFinder.new(jwks: JWT::JWK::Set.new(jwk))
+README.md:437:You can pass multiple allowed issuers as an Array, verification will pass if one of them matches the `iss` value in the payload.
+README.md:508:> The `jti` (JWT ID) claim provides a unique identifier for the JWT. The identifier value MUST be assigned in a manner that ensures that there is a negligible probability that the same value will be accidentally assigned to a different data object; if the application uses multiple issuers, collisions MUST be prevented among values produced by different issuers as well. The `jti` claim can be used to prevent the JWT from being replayed. The `jti` value is a case-sensitive string. Use of this claim is OPTIONAL.
+README.md:537:The global `leeway` option does not apply to `iat`. To allow for clock drift, pass `leeway` under `verify_iat`, as shown below. The `iat_leeway` option was removed in version 2.2.0.
+README.md:553:By default, `iat` verification allows no clock drift. To allow drift between the issuer and verifier clocks, pass a leeway value explicitly:
+README.md:618:### Required Claims
+README.md:620:You can specify claims that must be present for decoding to be successful. JWT::MissingRequiredClaim will be raised if any are missing
+README.md:623:# Will raise a JWT::MissingRequiredClaim error if the 'exp' claim is absent
+README.md:624:JWT.decode(token, hmac_secret, true, { required_claims: ['exp'], algorithm: 'HS256' })
+README.md:627:### X.509 certificates in x5c header
+README.md:629:A JWT signature can be verified using certificate(s) given in the `x5c` header. Before doing that, the trustworthiness of these certificate(s) must be established. This is done in accordance with RFC 5280 which (among other things) verifies the certificate(s) are issued by a trusted root certificate, the timestamps are valid, and none of the certificate(s) are revoked (i.e. being present in the root certificate's Certificate Revocation List).
+README.md:642:  JWT.decode(token, nil, true, { x5c: { root_certificates: root_certificates, crls: crls } })
+README.md:644:  # Handle error, e.g. x5c header certificate revoked or expired
+README.md:650:JWK is a JSON structure representing a cryptographic key. This gem currently supports RSA, EC, OKP and HMAC keys. OKP support requires [RbNaCl](https://github.com/RubyCrypto/rbnacl) and currently only supports the Ed25519 curve.
+README.md:663:jwks_hash = JWT::JWK::Set.new(jwk).export
+README.md:666:To decode a JWT using a trusted entity's JSON Web Key Set (JWKS):
+README.md:669:jwks = JWT::JWK::Set.new(jwks_hash)
+README.md:670:jwks.filter! {|key| key[:use] == 'sig' } # Signing keys only!
+README.md:671:algorithms = jwks.map { |key| key[:alg] }.compact.uniq
+README.md:672:JWT.decode(token, nil, true, algorithms: algorithms, jwks: jwks)
+README.md:675:The `jwks` option can also be given as a lambda that evaluates every time a key identifier is resolved.
+README.md:683:This behaviour may be overwritten by setting the `allow_nil_kid` option for `decode` to `true`.
+README.md:686:jwks_loader = ->(options) do
+README.md:687:  # The jwk loader would fetch the set of JWKs from a trusted source.
+README.md:690:  # This example only allows cache invalidations every 5 minutes.
+README.md:697:    # Replace with your own JWKS fetching routine
+README.md:698:    jwks = JWT::JWK::Set.new(jwks_hash)
+README.md:699:    jwks.select! { |key| key[:use] == 'sig' } # Signing Keys only
+README.md:700:    jwks
+README.md:705:  JWT.decode(token, nil, true, { algorithms: ['RS512'], jwks: jwks_loader })
+README.md:707:  # Handle problems with the provided JWKs
+README.md:738:jwks_hash = { keys: [{ kty: 'oct', k: 'my-secret', kid: 'my-kid' }] }
+README.md:739:jwks = JWT::JWK::Set.new(jwks_hash)
+README.md:740:jwks_hash = jwks.export
+README.md:743:### Key ID (kid) and JWKs
+README.md:746:To use a standardized JWK thumbprint (RFC 7638) as the kid for JWKs a generator type can be specified in the global configuration
+
+# ek: ML-DSA/composite deseni sayımı
+eslesme yok (0)
+lib/jwt/jwa:
+ecdsa.rb
+hmac.rb
+none.rb
+ps.rb
+rsa.rb
+signer_context.rb
+signing_algorithm.rb
+unsupported.rb
+verifier_context.rb
+
+lib/jwt/jwk:
+ec.rb
+hmac.rb
+key_base.rb
+key_finder.rb
+kid_as_key_digest.rb
+rsa.rb
+set.rb
+thumbprint.rb

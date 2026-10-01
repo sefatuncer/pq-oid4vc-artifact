@@ -1,0 +1,5 @@
+# H3 sadeleştirme — ÖN KAYIT (yürütücü, 24.09.2026; ÖK Değişiklik 4, madde 9). Beklentiler koşumdan ÖNCE yazıldı.
+# Gerekçe: 5A'da MONOTONE ve SUNSET_CHECK çevrimiçi kurguda tek tek gereksiz çıktı (A_online_no_monotone, A_online_no_sunset).
+# H3 yanlışlama koşulu 2 → M-f sadeleştirilir; (c) sadeleştirilmiş çevrimiçi çekirdek için yeniden kanıtlanır (ÖK §3.4).
+# Sütunlar varyantlar.tsv ile aynı: kural, varyant, rol, dosya, bayraklar, G_beklenen, lemma_beklenen.
+R7	S_online_core	korumali-sadelestirilmis	R7_monotone.spthy	PQ_CHAN,FRESH,PER_ENTITY	-	executable=V;executable_legacy=V;executable_pre_migration=V;executable_lifecycle=V;executable_learn=V;G5_migrated=V;G5_timed=V;no_rollback=V;first_contact_downgrade=F;M_rollback=F;M_after_sunset=F

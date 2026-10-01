@@ -1,0 +1,2 @@
+kosu,model,bayraklar,lemma,beklenen,gozlenen,uyum,lemma_ham_sonucu,adim,merdiven,meta,iyi_bicim,executable,imaj,mutasyon,temel
+MUT10.HYBRID_KEM.tam,KAT3_SMIME.spthy,"HYBRID_KEM,MUT_HYBRID_ONE",cek_secrecy,falsified,falsified,EVET,falsified,7,1,rc=0 wall_s=0.44 mem_peak_MiB=73.6,EVET,verified,sha256:59b648d60829c4580504470be1b171df0e63ead38bebc8944ac8ee2bba6b9c60,MUT10,HYBRID_KEM

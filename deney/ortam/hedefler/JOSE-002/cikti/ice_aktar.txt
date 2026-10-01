@@ -1,0 +1,3 @@
+derleme=JWT 11.0.0.0 tip_yuklendi=80 tip_yuklenemedi=0
+anahtar_tip JWT.JwtDecoder OK
+ad_eslesen_tipler (Valid|Verif|SdJwt; bilgi): JWT.IJwtValidator,JWT.JwtValidator,JWT.ValidationParameters,JWT.ValidationParametersExtensions,JWT.Exceptions.SignatureVerificationException,JWT.Exceptions.TokenNotYetValidException

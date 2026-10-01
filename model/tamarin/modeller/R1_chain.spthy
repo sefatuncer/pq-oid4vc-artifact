@@ -1,0 +1,191 @@
+theory R1_Chain
+begin
+
+/*
+ * =====================================================================
+ *  PQ-OID4VC | Adım 4 | Katman 2 kural şeması R1 — ZİNCİR (chain)
+ * =====================================================================
+ *  EN  If a link above a credential is authenticated only by a classical
+ *      key, then after Q-day a CRQC extracts that key and every link below
+ *      it becomes forgeable by key substitution, even if the lower links
+ *      themselves carry PQ signatures. If every link from the pinned anchor
+ *      down to the credential is PQ, no credential forgery exists (G1).
+ *  TR  Kimlik bilgisinin üstündeki bir halka yalnız klasik bir anahtarla
+ *      doğrulanıyorsa, Q-day'den sonra CRQC o anahtarı çıkarır ve alttaki
+ *      her halka (kendisi PQ imzalı olsa bile) anahtar ikamesiyle
+ *      sahtelenebilir. Sabitlenmiş çıpadan kimlik bilgisine kadar her halka
+ *      PQ ise kimlik bilgisi sahteciliği yoktur (G1).
+ *
+ *  Chain (3 artefacts under a pinned anchor key):
+ *      root key (pinned) --signs--> ca_cert  = <'ca_cert',  CA, pk(skCA)>
+ *      CA key            --signs--> iss_cert = <'iss_cert', I,  pk(skI)>
+ *      issuer key        --signs--> cred     = <'cred',     I,  c>
+ *
+ *  Flags (-D=...). A flag means the protection is PRESENT: that key is PQ,
+ *  so no CRQC_Break rule exists for it.
+ *      ROOT_PQ   root/anchor key PQ   <=> Datalog pq(ca_cert)
+ *      CA_PQ     CA key PQ            <=> Datalog pq(iss_cert)
+ *      ISS_PQ    issuer key PQ        <=> Datalog pq(cred)
+ *  Datalog convention: pq(L) <=> the key that SIGNS artefact L is PQ;
+ *  anchored(ca_cert) because ca_cert is signed by the pinned root key.
+ *
+ *  Protected variant : -D=ROOT_PQ -D=CA_PQ -D=ISS_PQ  -> G1 verified
+ *  Mutants           : drop exactly one flag          -> G1 falsified,
+ *                      M_<key>_classical verified (trace uses that break)
+ *
+ *  EXTRA flags (abstraction-boundary test, not protections of R1):
+ *      ALT_CA     a second CA under the same root is still classical
+ *                 (partial migration of the CA class); the verifier accepts
+ *                 an iss_cert from any root-certified CA
+ *      NAME_BIND  the verifier binds each issuer name to its own CA
+ *                 (name constraint / per-entity CA expectation)
+ *  Question: does "pq(iss_cert)" mean the actual parent is PQ, or that every
+ *  signer the verifier ACCEPTS for this issuer is PQ?
+ *
+ *  Threat model: Dolev-Yao network attacker (S1) plus CRQC (S2). After the
+ *  single Qday event, rule CRQC_Break_* hands the attacker the private key
+ *  of a classical key whose public key it has observed (In(pk(sk))).
+ *  PQ keys never have a break rule. tau / acceptance windows: R6 (not here).
+ */
+
+builtins: signing
+
+restriction Equality: "All x y #i. Eq(x, y) @ #i ==> x = y"
+restriction Unique:   "All x #i #j. Unique(x) @ #i & Unique(x) @ #j ==> #i = #j"
+
+/* ---------------- Q-day (at most once, may never happen) ---------------- */
+rule Qday:
+    [ ] --[ Unique('qday'), QdayEv() ]-> [ !CRQC() ]
+
+/* ---------------- honest PKI ---------------- */
+rule Root_Setup:
+    [ Fr(~skR) ]
+  --[ Unique('root') ]->
+    [ !RootSk(~skR), !RootPin(pk(~skR)), Out(pk(~skR)) ]
+
+rule CA_Setup:
+    let cab = <'ca_cert', $CA, pk(~skCA)> in
+    [ !RootSk(skR), Fr(~skCA) ]
+  --[ Unique(<'ca', $CA>) ]->
+    [ !CASk($CA, ~skCA), Out(pk(~skCA)), Out(<cab, sign(cab, skR)>) ]
+
+rule Issuer_Setup:
+    let isb = <'iss_cert', $I, pk(~skI)> in
+    [ !CASk(CA, skCA), Fr(~skI) ]
+  --[ Unique(<'iss', $I>), IssuerRegistered($I, CA) ]->
+    [ !IssSk($I, ~skI), !IssuerOfCA($I, CA), Out(pk(~skI)), Out(<isb, sign(isb, skCA)>) ]
+
+#ifdef ALT_CA
+/* EXTRA: another CA under the same root, not yet migrated (its key stays classical).
+   It needs no honest issuers for the attack; it only has to be trusted by the verifier. */
+rule AltCA_Setup:
+    let cab = <'ca_cert', $A, pk(~skA)> in
+    [ !RootSk(skR), Fr(~skA) ]
+  --[ Unique(<'ca', $A>) ]->
+    [ !AltCASk($A, ~skA), Out(pk(~skA)), Out(<cab, sign(cab, skR)>) ]
+
+rule CRQC_Break_AltCA:
+    [ !AltCASk(A, sk), !CRQC(), In(pk(sk)) ] --[ Broken('alt_ca') ]-> [ Out(sk) ]
+#endif
+
+rule Issue:
+    let crb = <'cred', I, ~c> in
+    [ !IssSk(I, skI), Fr(~c) ]
+  --[ Issued(I, ~c) ]->
+    [ Out(<crb, sign(crb, skI)>) ]
+
+/* ---------------- verifier: anchor -> ca_cert -> iss_cert -> cred ---------------- */
+#ifdef not NAME_BIND
+rule Verify:
+    let cab = <'ca_cert', CA, pkCA>
+        isb = <'iss_cert', I, pkI>
+        crb = <'cred', I, c>
+    in
+    [ !RootPin(pkR), In(<cab, s1>), In(<isb, s2>), In(<crb, s3>) ]
+  --[ Eq(verify(s1, cab, pkR), true),
+      Eq(verify(s2, isb, pkCA), true),
+      Eq(verify(s3, crb, pkI), true),
+      Accept(I, c) ]->
+    [ ]
+#endif
+
+#ifdef NAME_BIND
+/* EXTRA: the issuer name must be certified by ITS OWN CA (authentic binding) */
+rule Verify:
+    let cab = <'ca_cert', CA, pkCA>
+        isb = <'iss_cert', I, pkI>
+        crb = <'cred', I, c>
+    in
+    [ !RootPin(pkR), !IssuerOfCA(I, CA), In(<cab, s1>), In(<isb, s2>), In(<crb, s3>) ]
+  --[ Eq(verify(s1, cab, pkR), true),
+      Eq(verify(s2, isb, pkCA), true),
+      Eq(verify(s3, crb, pkI), true),
+      Accept(I, c) ]->
+    [ ]
+#endif
+
+/* ---------------- CRQC: break rules exist only for classical keys ---------------- */
+#ifdef not ROOT_PQ
+rule CRQC_Break_Root:
+    [ !RootSk(sk), !CRQC(), In(pk(sk)) ] --[ Broken('root') ]-> [ Out(sk) ]
+#endif
+
+#ifdef not CA_PQ
+rule CRQC_Break_CA:
+    [ !CASk(CA, sk), !CRQC(), In(pk(sk)) ] --[ Broken('ca') ]-> [ Out(sk) ]
+#endif
+
+#ifdef not ISS_PQ
+rule CRQC_Break_Issuer:
+    [ !IssSk(I, sk), !CRQC(), In(pk(sk)) ] --[ Broken('issuer') ]-> [ Out(sk) ]
+#endif
+
+/* ================= health lemmas (H0) ================= */
+
+/* honest issuance and acceptance is reachable */
+lemma executable:
+  exists-trace
+  "Ex I c #i #j. Issued(I, c) @ #i & Accept(I, c) @ #j"
+
+/* non-vacuity: honest acceptance is still possible AFTER Q-day */
+lemma executable_post_qday:
+  exists-trace
+  "Ex I c #q #i #j. QdayEv() @ #q & Issued(I, c) @ #i & Accept(I, c) @ #j & #q < #j"
+
+/* every forgery needs a CRQC break (the model is sound before Q-day) */
+lemma attack_needs_crqc:
+  "All I c #j. Accept(I, c) @ #j ==>
+      (Ex #i. Issued(I, c) @ #i & #i < #j) | (Ex k #b. Broken(k) @ #b & #b < #j)"
+
+/* ================= security goal G1: claims unforgeability ================= */
+lemma G1_claims_unforgeability:
+  "All I c #j. Accept(I, c) @ #j ==> (Ex #i. Issued(I, c) @ #i & #i < #j)"
+
+/* ================= mutation lemmas: present only when the protection is removed ================= */
+#ifdef not ROOT_PQ
+lemma M_root_classical:
+  exists-trace
+  "Ex I c #j #b. Accept(I, c) @ #j & Broken('root') @ #b & not (Ex #i. Issued(I, c) @ #i)"
+#endif
+
+#ifdef not CA_PQ
+lemma M_ca_classical:
+  exists-trace
+  "Ex I c #j #b. Accept(I, c) @ #j & Broken('ca') @ #b & not (Ex #i. Issued(I, c) @ #i)"
+#endif
+
+#ifdef not ISS_PQ
+lemma M_issuer_classical:
+  exists-trace
+  "Ex I c #j #b. Accept(I, c) @ #j & Broken('issuer') @ #b & not (Ex #i. Issued(I, c) @ #i)"
+#endif
+
+/* EXTRA: forgery of an HONEST (set-up) issuer's name through the classical alternative CA */
+#ifdef ALT_CA & not NAME_BIND
+lemma X_alt_ca_forges_honest_issuer:
+  exists-trace
+  "Ex I CA c #r #j #b. IssuerRegistered(I, CA) @ #r & Accept(I, c) @ #j & Broken('alt_ca') @ #b
+                     & not (Ex #i. Issued(I, c) @ #i)"
+#endif
+
+end

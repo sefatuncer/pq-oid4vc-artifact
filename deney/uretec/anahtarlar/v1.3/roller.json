@@ -1,0 +1,13 @@
+{
+ "turetme": "pqjose.keys.derive_key(tur, etiket): HKDF-SHA256 (anahtarlar/v1/roller.json ile ayni IKM/salt)",
+ "roller": {
+  "issuer-eski/ES256": {
+   "tur": "ES256",
+   "kid": "GGKBh_lEw5eKZr0XX6kbRRp8H1HYW6hwLhLBagC8MHw",
+   "turetme_etiketi": "v1.3/issuer-eski/ES256",
+   "ozel_jwk": "ozel/issuer-eski__ES256.json",
+   "iss": "https://legacy-issuer.example"
+  }
+ },
+ "v1_anahtarlari": "anahtarlar/v1 (degismedi)"
+}

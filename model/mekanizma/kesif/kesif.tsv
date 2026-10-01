@@ -1,0 +1,10 @@
+# PQ-OID4VC | Adım 7 | KEŞİF KAYDI X1 (ön kayıt DIŞI; çapa 8'den sonra; kapı ve H3 değerlendirmesine girmez)
+# Tetikleyen gözlem: ME_signed_fresh / no_rollback = F (çapa 8 beklentisi V). İz: sonuc/json/ME_signed_fresh__no_rollback.json.
+# Varsayım (model hatası şüphesi değil, lemma kapsamı): ortak_g5'teki no_rollback varlık türünü sınırlamaz. Eski (göç
+#   etmeyen) ihraççının meta verisi klasik anahtarla imzalıdır (M_metaveri Issuer_Setup_Legacy: !MetaSk(L, kc)); Q-day'den
+#   sonra sahte 'retired'/'pq_required' yanıtıyla "öğrenme" olur, ardından gerçek 'none' yanıtıyla eski kimlik bilgisi
+#   klasik yoldan kabul edilir. Göç etmiş varlıkta geri dönüş beklenmez.
+# Beklentiler bu koşumlardan ÖNCE yazıldı. Model: kesif/M_metaveri_x.spthy = modeller/M_metaveri.spthy (bayt-aynı önek) + 2 lemma.
+# Sütunlar: kayit	varyant	dosya	bayraklar	lemma_beklenen
+X1	X1_ME_signed_fresh	M_metaveri_x.spthy	ME,META_SIGNED,FRESH	no_rollback=F;X_no_rollback_migrated=V;X_legacy_false_learning=V
+X1	X1_MEP_signed_fresh	M_metaveri_x.spthy	MEP,META_SIGNED,FRESH	no_rollback=F;X_no_rollback_migrated=V;X_legacy_false_learning=V

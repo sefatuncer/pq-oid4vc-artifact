@@ -1,0 +1,20 @@
+# PQ-OID4VC | ÖK §2H madde 3 / §4.21 (2a) ek koşulu | Ö3 τ-israfı hücreleri için Tamarin örnekleri
+# Beklentiler koşumdan ÖNCE yazıldı. Kaynak: model/asp/sorgular/sonuc/h4_karsilastirma.json (aday_2a[4..9], hucreler[88,93,94]).
+#   ASP: S5 a10 (G2) ya da a08 (G3) düğümünü göç ettiriyor; S7'nin asgari kümesi, τ penceresi aştığı için bu düğüm olmadan
+#   hedefi sağlıyor (israflı(τ)). Karşıt: hızlı τ'da (600 s) aynı düğüm S7'nin asgari kümesinde (gerekli).
+# Şablonlar model/tamarin/modeller'den bayt-aynı kopyalandı (SHA-256 aynı): R6_h5.spthy (R4 × R6), R6_time.spthy (R6).
+# Eşleme (pencereler: model/asp/olgular/pencereler.lp; birincil durum_ttl = 1 g, saat payı 300 s):
+#   cnf1g: kimlik bilgisi başına cihaz anahtarı (kimlik_basi), pencere 1 g (86 400 s). τ orta 259 200 s, yavaş 2 246 400 s
+#          > pencere -> R6h5 SLOW. Cihaz anahtarı klasik (DEV_PQ yok). tek_kullanim=cuzdan: R6h5 SINGLE_USE cüzdan+doğrulayıcı
+#          birlikte olduğundan temkinli seçim SINGLE_USE'suz (H5: tek kullanım sonucu değiştirmez; 5A P_single_slow/E_nosingle_slow).
+#   durum gunluk (V2): dönem anahtarı, pencere 1 g + TTL 1 g = 2 g < τ orta (3 g) < τ yavaş -> R6 ROTATED + SLOW.
+#   durum gecici (V3): belirteç anahtarı, pencere TTL 1 g < τ orta -> MEDIUM; τ yavaş -> SLOW (R6 PER_TOKEN).
+#   Durum imzacısını sertifikalayan anahtar (CA, a04) S7 kümesinde PQ -> ID_PQ.
+# Sütunlar: hucre	sablon	bayraklar	lemma	beklenen	rol
+h4|G2_cnf1g_orta+yavas	R6_h5.spthy	SLOW	G2_presentation_unforgeability	V	israf(tau): a10 klasik, τ > pencere
+h4|G2_cnf1g_hizli	R6_h5.spthy	-	G2_presentation_unforgeability	F	karsit: a10 klasik, τ < pencere
+h4|G3_durum_gunluk_orta+yavas	R6_time.spthy	ROTATED,ID_PQ,SLOW	G3_status_unforgeability	V	israf(tau): a08 klasik, τ > donem penceresi
+h4|G3_durum_gunluk_hizli	R6_time.spthy	ROTATED,ID_PQ	G3_status_unforgeability	F	karsit: a08 klasik, τ < pencere
+h4|G3_durum_gecici_orta	R6_time.spthy	PER_TOKEN,ID_PQ,MEDIUM	G3_status_unforgeability	V	israf(tau): a08 klasik, τ > belirtec penceresi
+h4|G3_durum_gecici_yavas	R6_time.spthy	PER_TOKEN,ID_PQ,SLOW	G3_status_unforgeability	V	israf(tau): a08 klasik, τ > belirtec penceresi
+h4|G3_durum_gecici_hizli	R6_time.spthy	PER_TOKEN,ID_PQ	G3_status_unforgeability	F	karsit: a08 klasik, τ < pencere

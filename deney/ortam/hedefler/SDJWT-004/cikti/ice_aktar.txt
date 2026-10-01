@@ -1,0 +1,2 @@
+jar=sd-jwt-1.9.jar sinif_yuklendi=9 sinif_yuklenemedi=0
+ad_eslesen_siniflar (Verif|Validat; bilgi): 

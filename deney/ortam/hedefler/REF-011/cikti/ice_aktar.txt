@@ -1,0 +1,2 @@
+modul=@credo-ts/openid4vc yuklendi; disa_aktarim_sayisi=44
+Verifier iceren semboller=OpenId4VcVerifierApi,OpenId4VcVerifierEvents,OpenId4VcVerifierModule,OpenId4VcVerifierModuleConfig,OpenId4VcVerifierRecord,OpenId4VcVerifierRepository,OpenId4VpVerifierService

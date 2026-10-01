@@ -1,0 +1,306 @@
+theory Mg_Yol
+begin
+
+/*
+ * =====================================================================
+ *  PQ-OID4VC | Adım 7 görev 0 EK (Değişiklik 8) | M-g (sheffer-02) + sertifika yolu:
+ *  zincir politikasının iki okuması × görev 3b'nin üç saldırısı — TASLAK, koşulmadı
+ * =====================================================================
+ *  Kaynak: draft-sheffer-tls-pqc-continuity-02 (literatur\metin\).
+ *    §3.1 "a PQC end-entity certificate is one that is not traditional-only: the EE
+ *          signature employs post-quantum cryptography"
+ *    §3.2 "the client MUST apply its PQC policy to every CertificateEntry in the
+ *          server's Certificate message using the same criterion as in Section 3.1"
+ *    §3.6 sıfırdan farklı süre önbelleğe alınır (SHOULD); önbellek varken sıfır gelirse
+ *          "the client MUST clear the cached information"; ek yoksa önbellek değişmez.
+ *  Okuma (tam olarak biri):
+ *    MG_ANAHTAR  her CertificateEntry'nin ANAHTARI PQ ("not traditional-only").
+ *                Çıpa CertificateEntry değildir (HAIP 6.1.1, T043): çıpadan çıkan kenar
+ *                denetlenmez.
+ *    MG_IMZA     her CertificateEntry'nin üzerindeki İMZA PQ ve yaprak anahtarı PQ
+ *                (§3.2'nin ilk cümlesi: "signatures along the entire path"); = yol_sinifi.
+ *  Saldırı yüzeyleri: ATK_DIFF / ATK_SAME / ATK_ROOT (Mf_yol ve M_h ile aynı).
+ *  Taahhüt, PQ imzalı kimlik bilgisinin içinde taşınır (TLS'teki Certificate iletisi
+ *  uzantısının karşılığı): <'cred', I, c, m>, m ∈ {'commit', 'zero', 'nocommit'}.
+ *  Önbellek süresi modellenmez (süresiz; süre boyutu 5A R7 G_mg_no_cache'te).
+ */
+
+builtins: signing
+
+restriction Equality: "All x y #i. Eq(x, y) @ #i ==> x = y"
+restriction Unique:   "All x #i #j. Unique(x) @ #i & Unique(x) @ #j ==> #i = #j"
+
+restriction ClassicalIssuanceUntilSunset:
+  "All X #i. IssueClassical(X) @ #i ==> not (Ex #s. Sunset(X) @ #s & #s < #i)"
+restriction PQIssuanceAfterMigrate:
+  "All X #i. IssuePQ(X) @ #i ==> (Ex #m. Migrate(X) @ #m & #m < #i)"
+
+/* önbellek dolduktan sonra politika dışı kabul yok; önbellek silinmedikçe (§3.2, §3.6) */
+restriction CacheEnforced:
+  "All V I #k #j. SeenPQReq(V, I) @ #k & NoPolicy(V, I) @ #j & #k < #j
+      ==> (Ex #x. CacheEnd(V, I) @ #x & #k < #x & #x < #j)"
+
+#include "ortak_g5.spthy"
+
+/* ---------------- Q-day ve CRQC ---------------- */
+rule Qday:
+    [ ] --[ Unique('qday'), QdayEv() ]-> [ !CRQC() ]
+
+rule CRQC_Break_Issuer_Classical:
+    [ !IssCl(X, k), !CRQC(), In(pk(k)) ] --[ Broken(<'iss_cl', X>) ]-> [ Out(k) ]
+
+rule CRQC_Break_Classical_Anchor:
+    [ !ClAnchorSk(A, k), !CRQC(), In(pk(k)) ] --[ Broken(<'anchor', A>) ]-> [ Out(k) ]
+
+/* ---------------- TL'de listelenen çıpalar ---------------- */
+rule CAM_Setup:
+    [ Fr(~kcam) ]
+  --[ Unique('setup_cam') ]->
+    [ !CASk('CAM', ~kcam), !Anchor('CAM', pk(~kcam), 'pq'), Out(pk(~kcam)) ]
+
+#ifdef ATK_DIFF
+rule AltCA_Setup:
+    [ Fr(~ka) ]
+  --[ Unique('setup_alt_ca') ]->
+    [ !ClAnchorSk('CAA', ~ka), !Anchor('CAA', pk(~ka), 'cl'), Out(pk(~ka)) ]
+#endif
+
+#ifdef ATK_SAME
+rule OldCAM_Setup:
+    [ Fr(~ko) ]
+  --[ Unique('setup_old_cam') ]->
+    [ !ClAnchorSk('CAM', ~ko), !Anchor('CAM', pk(~ko), 'cl'), Out(pk(~ko)) ]
+#endif
+
+#ifdef ATK_ROOT
+rule ClassicalRoot_Setup:
+    [ Fr(~kr) ]
+  --[ Unique('setup_cl_root') ]->
+    [ !ClAnchorSk('ROOT', ~kr), !Anchor('ROOT', pk(~kr), 'cl'), Out(pk(~kr)) ]
+#endif
+
+/* ---------------- ihraççılar ve yaşam döngüsü ---------------- */
+rule Issuer_Setup_Born:
+    let cc = <'iss_cert', $I, pk(~kc), 'cl'>
+        cq = <'iss_cert', $I, pk(~kq), 'pq'>
+    in
+    [ !CASk('CAM', kcam), Fr(~kc), Fr(~kq) ]
+  --[ Unique(<'iss', $I>), Unique(<'migrate', $I>), BornMigrated($I), Migrate($I), StateChange($I) ]->
+    [ !IssCl($I, ~kc), !IssPQ($I, ~kq), Out(pk(~kc)), Out(pk(~kq)),
+      Out(<cc, sign(cc, kcam)>), Out(<cq, sign(cq, kcam)>) ]
+
+rule Issuer_Setup_Migrating:
+    let cc = <'iss_cert', $I, pk(~kc), 'cl'>
+        cq = <'iss_cert', $I, pk(~kq), 'pq'>
+    in
+    [ !CASk('CAM', kcam), Fr(~kc), Fr(~kq) ]
+  --[ Unique(<'iss', $I>), MigratingIssuer($I) ]->
+    [ !IssCl($I, ~kc), !IssPQ($I, ~kq), Out(pk(~kc)), Out(pk(~kq)),
+      Out(<cc, sign(cc, kcam)>), Out(<cq, sign(cq, kcam)>) ]
+
+rule Issuer_Setup_Legacy:
+    let cc = <'iss_cert', $L, pk(~kc), 'cl'> in
+    [ !CASk('CAM', kcam), Fr(~kc) ]
+  --[ Unique(<'iss', $L>), Legacy($L) ]->
+    [ !IssCl($L, ~kc), Out(pk(~kc)), Out(<cc, sign(cc, kcam)>) ]
+
+rule Migrate:
+    [ !IssPQ(I, kq) ] --[ Unique(<'migrate', I>), Migrate(I), StateChange(I) ]-> [ ]
+
+rule Sunset:
+    [ !IssPQ(I, kq) ] --[ Unique(<'sunset', I>), Sunset(I), StateChange(I) ]-> [ ]
+
+/* klasik kimlik bilgisi uzantı taşımaz; PQ kimlik bilgisi sıfırdan farklı taahhüt taşır (§3.7) */
+rule Issue_Classical:
+    let crb = <'cred', X, ~c, 'nocommit'> in
+    [ !IssCl(X, kc), Fr(~c) ] --[ Issued(X, ~c), IssueClassical(X) ]-> [ Out(<crb, sign(crb, kc)>) ]
+
+rule Issue_PQ:
+    let crb = <'cred', I, ~c, 'commit'> in
+    [ !IssPQ(I, kq), Fr(~c) ] --[ Issued(I, ~c), IssuePQ(I) ]-> [ Out(<crb, sign(crb, kq)>) ]
+
+/* ===================== kabul: derinlik 1 (çıpa → iss_cert → cred) ===================== */
+
+/* politika dışı: klasik yaprak; uzantılı nesne politika dışı zincirle kabul edilmez (§3.2) */
+rule Acc1_Classical:
+    let isb = <'iss_cert', I, pkI, 'cl'>
+        crb = <'cred', I, c, 'nocommit'>
+    in
+    [ !Anchor(A, pkA, aA), In(<isb, s2>), In(<crb, s3>) ]
+  --[ Eq(verify(s2, isb, pkA), true), Eq(verify(s3, crb, pkI), true),
+      NoPolicy($V, I), UseClKey(I), Accept($V, I, c), AcceptClassical($V, I, c) ]->
+    [ ]
+
+#ifdef MG_IMZA
+rule Acc1_PQ_Policy:
+    let isb = <'iss_cert', I, pkI, 'pq'>
+        crb = <'cred', I, c, m>
+    in
+    [ !Anchor(A, pkA, 'pq'), In(<isb, s2>), In(<crb, s3>) ]
+  --[ Eq(verify(s2, isb, pkA), true), Eq(verify(s3, crb, pkI), true),
+      Accept($V, I, c), AcceptPQ($V, I, c), EdgeAlg($V, I, c, 'pq') ]->
+    [ Committed($V, I, m) ]
+
+rule Acc1_PQ_NoPolicy:
+    let isb = <'iss_cert', I, pkI, 'pq'>
+        crb = <'cred', I, c, 'nocommit'>
+    in
+    [ !Anchor(A, pkA, 'cl'), In(<isb, s2>), In(<crb, s3>) ]
+  --[ Eq(verify(s2, isb, pkA), true), Eq(verify(s3, crb, pkI), true),
+      NoPolicy($V, I), Accept($V, I, c), AcceptPQ($V, I, c), EdgeAlg($V, I, c, 'cl') ]->
+    [ ]
+#endif
+
+#ifdef MG_ANAHTAR
+/* tek CertificateEntry yapraktır; anahtarı PQ ise politika sağlanır, çıpanın kenarı denetlenmez */
+rule Acc1_PQ_Policy:
+    let isb = <'iss_cert', I, pkI, 'pq'>
+        crb = <'cred', I, c, m>
+    in
+    [ !Anchor(A, pkA, aA), In(<isb, s2>), In(<crb, s3>) ]
+  --[ Eq(verify(s2, isb, pkA), true), Eq(verify(s3, crb, pkI), true),
+      Accept($V, I, c), AcceptPQ($V, I, c), EdgeAlg($V, I, c, aA) ]->
+    [ Committed($V, I, m) ]
+#endif
+
+/* ===================== kabul: derinlik 2 (çıpa → int_cert → iss_cert → cred) ===================== */
+
+rule Acc2_Classical:
+    let inb = <'int_cert', N, pkN, aN>
+        isb = <'iss_cert', I, pkI, 'cl'>
+        crb = <'cred', I, c, 'nocommit'>
+    in
+    [ !Anchor(A, pkA, aA), In(<inb, s1>), In(<isb, s2>), In(<crb, s3>) ]
+  --[ Eq(verify(s1, inb, pkA), true), Eq(verify(s2, isb, pkN), true), Eq(verify(s3, crb, pkI), true),
+      NoPolicy($V, I), UseClKey(I), Accept($V, I, c), AcceptClassical($V, I, c) ]->
+    [ ]
+
+#ifdef MG_IMZA
+rule Acc2_PQ_Policy:
+    let inb = <'int_cert', N, pkN, 'pq'>
+        isb = <'iss_cert', I, pkI, 'pq'>
+        crb = <'cred', I, c, m>
+    in
+    [ !Anchor(A, pkA, 'pq'), In(<inb, s1>), In(<isb, s2>), In(<crb, s3>) ]
+  --[ Eq(verify(s1, inb, pkA), true), Eq(verify(s2, isb, pkN), true), Eq(verify(s3, crb, pkI), true),
+      Accept($V, I, c), AcceptPQ($V, I, c), EdgeAlg($V, I, c, 'pq') ]->
+    [ Committed($V, I, m) ]
+
+rule Acc2_PQ_NoPolicy_Anchor:
+    let inb = <'int_cert', N, pkN, aN>
+        isb = <'iss_cert', I, pkI, 'pq'>
+        crb = <'cred', I, c, 'nocommit'>
+    in
+    [ !Anchor(A, pkA, 'cl'), In(<inb, s1>), In(<isb, s2>), In(<crb, s3>) ]
+  --[ Eq(verify(s1, inb, pkA), true), Eq(verify(s2, isb, pkN), true), Eq(verify(s3, crb, pkI), true),
+      NoPolicy($V, I), Accept($V, I, c), AcceptPQ($V, I, c),
+      EdgeAlg($V, I, c, 'cl'), EdgeAlg($V, I, c, aN) ]->
+    [ ]
+
+rule Acc2_PQ_NoPolicy_Int:
+    let inb = <'int_cert', N, pkN, 'cl'>
+        isb = <'iss_cert', I, pkI, 'pq'>
+        crb = <'cred', I, c, 'nocommit'>
+    in
+    [ !Anchor(A, pkA, 'pq'), In(<inb, s1>), In(<isb, s2>), In(<crb, s3>) ]
+  --[ Eq(verify(s1, inb, pkA), true), Eq(verify(s2, isb, pkN), true), Eq(verify(s3, crb, pkI), true),
+      NoPolicy($V, I), Accept($V, I, c), AcceptPQ($V, I, c),
+      EdgeAlg($V, I, c, 'pq'), EdgeAlg($V, I, c, 'cl') ]->
+    [ ]
+#endif
+
+#ifdef MG_ANAHTAR
+/* CertificateEntry'ler: yaprak ve ara; ikisinin anahtarı PQ ise politika sağlanır */
+rule Acc2_PQ_Policy:
+    let inb = <'int_cert', N, pkN, 'pq'>
+        isb = <'iss_cert', I, pkI, 'pq'>
+        crb = <'cred', I, c, m>
+    in
+    [ !Anchor(A, pkA, aA), In(<inb, s1>), In(<isb, s2>), In(<crb, s3>) ]
+  --[ Eq(verify(s1, inb, pkA), true), Eq(verify(s2, isb, pkN), true), Eq(verify(s3, crb, pkI), true),
+      Accept($V, I, c), AcceptPQ($V, I, c), EdgeAlg($V, I, c, aA), EdgeAlg($V, I, c, 'pq') ]->
+    [ Committed($V, I, m) ]
+
+rule Acc2_PQ_NoPolicy:
+    let inb = <'int_cert', N, pkN, 'cl'>
+        isb = <'iss_cert', I, pkI, 'pq'>
+        crb = <'cred', I, c, 'nocommit'>
+    in
+    [ !Anchor(A, pkA, aA), In(<inb, s1>), In(<isb, s2>), In(<crb, s3>) ]
+  --[ Eq(verify(s1, inb, pkA), true), Eq(verify(s2, isb, pkN), true), Eq(verify(s3, crb, pkI), true),
+      NoPolicy($V, I), Accept($V, I, c), AcceptPQ($V, I, c),
+      EdgeAlg($V, I, c, aA), EdgeAlg($V, I, c, 'cl') ]->
+    [ ]
+#endif
+
+/* ---------------- önbellek (§3.6) ---------------- */
+rule Cache_Set:
+    [ Committed(V, I, 'commit') ] --[ SeenPQReq(V, I) ]-> [ ]
+
+rule Cache_Clear:
+    [ Committed(V, I, 'zero') ] --[ CacheEnd(V, I) ]-> [ ]
+
+/* ================= sağlık lemmaları (H0) ================= */
+
+lemma executable:
+  exists-trace
+  "Ex V I c #m #j. Migrate(I) @ #m & AcceptPQ(V, I, c) @ #j & #m < #j"
+
+lemma executable_legacy:
+  exists-trace
+  "Ex V L c #l #j. Legacy(L) @ #l & AcceptClassical(V, L, c) @ #j"
+
+lemma executable_pre_migration:
+  exists-trace
+  "Ex V I c #s #j. MigratingIssuer(I) @ #s & AcceptClassical(V, I, c) @ #j
+                 & not (Ex #m. Migrate(I) @ #m)"
+
+lemma executable_lifecycle:
+  exists-trace
+  "Ex V I c #m #s #j. Migrate(I) @ #m & Sunset(I) @ #s & AcceptPQ(V, I, c) @ #j & #s < #j"
+
+lemma executable_learn:
+  exists-trace
+  "Ex V I #k. SeenPQReq(V, I) @ #k"
+
+lemma attack_needs_crqc:
+  "All V I c #m #j. Migrate(I) @ #m & Accept(V, I, c) @ #j & #m < #j ==>
+      (Ex #i. Issued(I, c) @ #i & #i < #j) | (Ex k #b. Broken(k) @ #b & #b < #j)"
+
+/* ================= güvenlik ================= */
+
+lemma G1_claims_unforgeability:
+  "All V I c #m #j. Migrate(I) @ #m & Accept(V, I, c) @ #j & #m < #j ==>
+      (Ex #i. Issued(I, c) @ #i & #i < #j)"
+
+/* önbellek dolduktan sonra (ilk temas dışlanır) */
+lemma G1_learned:
+  "All V I c #k #j. SeenPQReq(V, I) @ #k & Accept(V, I, c) @ #j & #k < #j ==>
+      (Ex #i. Issued(I, c) @ #i & #i < #j)"
+
+lemma G1_learned_pq:
+  "All V I c #k #j. SeenPQReq(V, I) @ #k & AcceptPQ(V, I, c) @ #j & #k < #j ==>
+      (Ex #i. Issued(I, c) @ #i & #i < #j)"
+
+lemma no_rollback_path:
+  "All V I c #k #j. SeenPQReq(V, I) @ #k & AcceptPQ(V, I, c) @ #j & EdgeAlg(V, I, c, 'cl') @ #j
+      & #k < #j ==> F"
+
+/* ================= atıf (mutasyon) lemmaları ================= */
+
+lemma M_downgrade_s1:
+  exists-trace
+  "Ex V I c #m #j. Migrate(I) @ #m & AcceptClassical(V, I, c) @ #j & #m < #j
+                 & not (Ex #q. QdayEv() @ #q)"
+
+lemma M_forgery_crqc:
+  exists-trace
+  "Ex V I c k #m #j #b. Migrate(I) @ #m & Accept(V, I, c) @ #j & #m < #j
+                      & Broken(k) @ #b & not (Ex #i. Issued(I, c) @ #i)"
+
+/* dolmuş önbellek saldırgan tarafından sildirilebilir mi (§3.6 madde 2) */
+lemma M_cache_cleared:
+  exists-trace
+  "Ex V I #k #x. SeenPQReq(V, I) @ #k & CacheEnd(V, I) @ #x & #k < #x"
+
+end

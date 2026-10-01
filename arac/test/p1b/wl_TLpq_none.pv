@@ -1,0 +1,41 @@
+(* Pilot toy (ProVerif): weakest link after Q-day. TL=pq, EXP=none *)
+free c: channel.
+type skey. type pkey.
+fun pk(skey): pkey.
+fun sign(bitstring, skey): bitstring.
+reduc forall m: bitstring, k: skey; verify(sign(m, k), m, pk(k)) = true.
+free pq_required, none, issuerA: bitstring.
+event Issued(bitstring, bitstring).
+event Accept(bitstring, bitstring).
+query i: bitstring, x: bitstring; event(Accept(i, x)) ==> event(Issued(i, x)).
+
+let TLOperator(sktl: skey, i: bitstring, pkc: pkey, pkq: pkey) =
+  out(c, ((i, pkc, pkq, none), sign((i, pkc, pkq, none), sktl))).
+
+let Issuer(i: bitstring, skc: skey, skq: skey) =
+  new claims: bitstring;
+  event Issued(i, claims);
+  out(c, (i, claims, sign((i, claims), skq)));
+  out(c, (i, claims, sign((i, claims), skc))).
+
+let VerifierPQ(pktl: pkey) =
+  in(c, ((i: bitstring, pkc: pkey, pkq: pkey, e: bitstring), tlsig: bitstring));
+  if verify(tlsig, (i, pkc, pkq, e), pktl) = true then
+  in(c, (=i, claims: bitstring, sigq: bitstring));
+  if verify(sigq, (i, claims), pkq) = true then
+  event Accept(i, claims).
+
+let VerifierClassical(pktl: pkey) =
+  in(c, ((i: bitstring, pkc: pkey, pkq: pkey, e: bitstring), tlsig: bitstring));
+  if verify(tlsig, (i, pkc, pkq, e), pktl) = true then
+  if e <> pq_required then
+  in(c, (=i, claims: bitstring, sigc: bitstring));
+  if verify(sigc, (i, claims), pkc) = true then
+  event Accept(i, claims).
+
+process
+  new sktl: skey; new skc: skey; new skq: skey;
+  out(c, (pk(sktl), pk(skc), pk(skq)));
+  ( (!TLOperator(sktl, issuerA, pk(skc), pk(skq)))
+  | (!Issuer(issuerA, skc, skq))
+  | (phase 1; ( out(c, skc)  | (!VerifierPQ(pk(sktl))) | (!VerifierClassical(pk(sktl))) )) )

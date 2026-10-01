@@ -1,0 +1,307 @@
+anahtar,kaynaklar,sorgular,paketler,yildiz_ham,indirme_ham,aciklama,karar,tabaka,gerekce
+github.com/a-sit-plus/signum,T,topic:cose,,197,,Kotlin Multiplatform Crypto/PKI/ASN.1 Library with Attestation and Hardware-Backed Crypto Support on Mobile,aday,COSE,KMP kripto/PKI; COSE ve JWS veri türleri
+github.com/a-sit-plus/vck,T,topic:openid4vp; topic:sd-jwt,,73,,"Kotlin Multiplatform library implementing W3C VC Data Model, SD-JWT and ISO 18013-5 credentials",aday,SDJWT,"KMP VC kütüphanesi (SD-JWT, ISO mdoc, OID4VP)"
+github.com/a-sit-plus/wallet-relying-party,T,topic:openid4vp,,5,,Wallet Relying Party implementing OpenID4VP 1.0,aday,REF,OpenID4VP 1.0 RP
+github.com/abaxxtech/abaxx-vc-sdk,K,pkg.go.dev:q=sd-jwt,go:github.com/abaxxtech/abaxx-vc-sdk/sd-jwt,,,,uygulama,,kurum SDK'sı; depo ecosyste.ms'te bulunamadı
+github.com/affinidi/affinidi-sdjwt-dart,K,pub:q=sd-jwt,pub:selective_disclosure_jwt,,4186,A Dart SDK for working with Selective Disclosure JSON Web Tokens (SD-JWT) following the SD-JWT specification.,aday,SDJWT,pub.dev
+github.com/affinidi/affinidi-tdk-rs,K,crates:q=sd-jwt,cargo:affinidi-sd-jwt; cargo:affinidi-sd-jwt-vc,,25346,SD-JWT (Selective Disclosure JWT) implementation per IETF SD-JWT specification.,aday,SDJWT,birim affinidi-sd-jwt (affinidi-sd-jwt-vc: 'DEPRECATED — merged into affinidi-vc')
+github.com/agentic-research/signet,K,,,,,,taban-alti,,"gürültü tabanının altında (pkg.go.dev isabeti, GitHub <5★); önceki karar: ilgisiz"
+github.com/agentictrustlabs/agenticprimitives,K,npm:text=sd-jwt,npm:@agenticprimitives/privacy-credentials,,545,"Privacy presentation layer (spec 305 / G-6): selectively-disclosed SD-JWT VC presentations, pairwise relationship pseudo",uygulama,,agent protocol layer
+github.com/alangotbithin/vc-go,K,pkg.go.dev:q=sd-jwt,go:github.com/alangotbithin/vc-go/sdjwt/verifier,,,,yinelenen,,trustbloc/vc-go çatalı (pkg.go.dev yolu aynı yapı)
+github.com/alex-richards/tiny-cose,K,,,,,,taban-alti,COSE,"gürültü tabanının altında (pkg.go.dev isabeti, GitHub <5★); önceki karar: aday"
+github.com/altshiftab/utils_go,K,,,,,,taban-alti,,"gürültü tabanının altında (pkg.go.dev isabeti, GitHub <5★); önceki karar: ilgisiz"
+github.com/amosavian/jwsetkit,T,topic:sd-jwt,,68,,"A full-featured Swift library for JOSE standards with first-class support for CryptoKit keys, providing JWS, JWT, SD-JWT",yinelenen-jwtio,,jwt.io çerçevesinde zaten var (J kaynağı)
+github.com/animo/openid4vc-playground,T,topic:oid4vp; topic:sd-jwt-vc,,14,,OpenID4VC Playground for issuing and verifying SD-JWTs and mDOCs.,uygulama,,demo/oyun alanı
+github.com/animo/paradym-wallet,T,topic:oid4vp,,57,,"With Paradym Wallet, you can seamlessly manage and present your digital credentials",cuzdan,,cüzdan tarafı (C3 RP doğrulayıcılarını ölçer; istek nesnesi doğrulaması için OZET.md önerisine bakınız)
+github.com/apowers313/cose-to-jwk,K,npm:keywords:cose; npm:text=cose,npm:cose-to-jwk,,35121,COSE (RFC 8152) to JWK (RFC 7517) converter for node.js. Created for WebAuthn.,ilgisiz,,yalnız anahtar dönüştürme
+github.com/ar-agents/ar-agents,K,npm:text=sd-jwt,npm:@ar-agents/ap2,,153,"First faithful TypeScript implementation of the Agent Payments Protocol (AP2) v0.2. Schemas, ES256 SD-JWT VC mandates (C",ilgisiz,,AP2 ödeme protokolü
+github.com/auth0-lab/cose,K,npm:keywords:cose; npm:text=cose,npm:@auth0/cose,,1545,COSE library for node.js,aday,COSE,cose-kit'in halefi (cose-kit: 'DEPRECATED: Use @auth0/cose')
+github.com/authbound/sdk,K,npm:text=sd-jwt,npm:@authbound/core,,2176,"Authbound core SDK: framework-agnostic verification flows and protocol logic (OIDC4VP, SD-JWT VC).",uygulama,,hizmet SDK'sı
+github.com/authlete/sd-jwt,T,topic:sd-jwt,,37,,"A Java library for the ""Selective Disclosure for JWTs (SD-JWT)"" specification.",aday,SDJWT,Java SD-JWT kütüphanesi
+github.com/authlib/joserfc,H+K+P,pypi:ad=joserfc,pypi:joserfc,,,"The ultimate Python library for JOSE RFCs, including JWS, JWE, JWK, JWA, JWT",aday,JOSE,"authlib.jose uyarısı: 'authlib.jose module is deprecated, please use joserfc instead' (pilot p3_py_output.txt); pilot kütüphanesi"
+github.com/awslabs/aws-nitro-enclaves-cose,K+T,crates:q=cose; topic:cose,cargo:aws-nitro-enclaves-cose,29,323408,Implements COSE primitives in safe Rust.,aday,COSE,
+github.com/azure/azure-sdk-for-net,K,nuget:q=cose,nuget:Azure.Security.CodeTransparency,,5967,This is the Azure.Security.CodeTransparency client library for developing .NET applications with rich experience.,uygulama,,hizmet istemcisi (Azure Code Transparency)
+github.com/baur-software/pap,T,topic:sd-jwt,,14,,⚠️ Moved → https://gitlab.baursoftware.com/baur-software/pap,uygulama,,açıklama: 'Moved → gitlab.baursoftware.com' (GitHub'da arşiv); amaç belirsiz
+github.com/berendsliedrecht/sd-jwt-ts,T,topic:sd-jwt; topic:sd-jwt-vc,,16,,Selective Disclosure JWT (SD-JWT) Draft 06 & Selective Disclosure JWT VC (sd-jwt-vc) Draft 01 implementation,aday,SDJWT,GitHub konu sd-jwt; paket adı belirlenmedi
+github.com/bergzand/libcose,T,topic:cose,,25,,Constrained node COSE library,aday,COSE,
+github.com/blindspot22/rust_cbor_cose_ecies,T,topic:cose,,5,,Implementing an example in rust with CBOR / COSE and ECIES,uygulama,,örnek
+github.com/blockhousetech/eudi-rust-core,K,,,,,,taban-alti,SDJWT,"gürültü tabanının altında (pkg.go.dev isabeti, GitHub <5★); önceki karar: aday"
+github.com/bperin/trust,K,,,,,,taban-alti,,"gürültü tabanının altında (pkg.go.dev isabeti, GitHub <5★); önceki karar: ilgisiz"
+github.com/bsv-blockchain/ts-stack,K,npm:text=sd-jwt,npm:@bsv/did,,259,SD-JWT VC and did:key helpers for BSV SDK identities,uygulama,,platforma özgü yardımcılar
+github.com/bulwarkid/virtual-fido,K,pkg.go.dev:q=cose,go:github.com/bulwarkid/virtual-fido/cose,1403,,,ilgisiz,,FIDO
+github.com/cedarcode/cose-ruby,K+T,gem:q=cose; topic:cose,rubygems:cose,17,40914279,Ruby implementation of RFC 8152 CBOR Object Signing and Encryption (COSE),aday,COSE,
+github.com/cedarcode/openid4vp,K,gem:q=sd-jwt,rubygems:openid4vp,,2118,"Verifier and Wallet implementation of OpenID4VP 1.0: DCQL, JAR request objects, client identifier prefixes, direct_post/",aday,REF,RubyGems ('Verifier and Wallet implementation of OpenID4VP 1.0')
+github.com/cose-labs/lab2,K,,,,,,taban-alti,,"gürültü tabanının altında (pkg.go.dev isabeti, GitHub <5★); önceki karar: ilgisiz"
+github.com/cose-wg/alg-spec,O,org:cose-wg,,0,,A not very real algorithm spec to go with the draft format spec,belge,,spesifikasyon/taslak/belge/örnek deposu
+github.com/cose-wg/cbor-certificates,O,org:cose-wg,,17,,,ilgisiz,,C509 sertifikaları (COSE imza kütüphanesi değil)
+github.com/cose-wg/charter,O,org:cose-wg,,0,,Proposed COSE charter,belge,,spesifikasyon/taslak/belge/örnek deposu
+github.com/cose-wg/cose-algs,O,org:cose-wg,,1,,This document contains updates to COSE-spec for algorithms and headers that did not meet the first cut,belge,,spesifikasyon/taslak/belge/örnek deposu
+github.com/cose-wg/cose-c,O,org:cose-wg,,31,,Implementation of COSE in C++;  Provides a C interface; Crypto by openssl or mbedtls,aday,COSE,IETF COSE WG referans uygulaması
+github.com/cose-wg/cose-csharp,O,org:cose-wg,,4,,COSE Implementation using C#,aday,COSE,IETF COSE WG referans uygulaması
+github.com/cose-wg/cose-hash-sig,O,org:cose-wg,,1,,,belge,,spesifikasyon/taslak/belge/örnek deposu
+github.com/cose-wg/cose-implementations,O,org:cose-wg,,2,,,belge,,spesifikasyon/taslak/belge/örnek deposu
+github.com/cose-wg/cose-issues,O,org:cose-wg,,0,,COSE Working Group Issues,belge,,spesifikasyon/taslak/belge/örnek deposu
+github.com/cose-wg/cose-java,O,org:cose-wg,,35,,JAVA implementation of the COSE specification,aday,COSE,IETF COSE WG referans uygulaması
+github.com/cose-wg/cose-rfc8152bis,O,org:cose-wg,,8,,Update document for RFC 8152 - CBOR Object Signing and Encryption,belge,,spesifikasyon/taslak/belge/örnek deposu
+github.com/cose-wg/cose-spec,O,org:cose-wg,,14,,CBOR version of the JOSE specifications,belge,,spesifikasyon/taslak/belge/örnek deposu
+github.com/cose-wg/cose-webauthn-algs,O,org:cose-wg,,0,,,belge,,spesifikasyon/taslak/belge/örnek deposu
+github.com/cose-wg/countersign,O,org:cose-wg,,3,,,belge,,spesifikasyon/taslak/belge/örnek deposu
+github.com/cose-wg/draft-ietf-cose-dilithium,O,org:cose-wg,,2,,ML-DSA for JOSE and COSE,belge,,spesifikasyon/taslak/belge/örnek deposu
+github.com/cose-wg/draft-ietf-cose-falcon,O,org:cose-wg,,1,,FN-DSA for JOSE & COSE,belge,,spesifikasyon/taslak/belge/örnek deposu
+github.com/cose-wg/draft-ietf-cose-hash-envelope,O,org:cose-wg,,0,,Signed Hashes with COSE,belge,,spesifikasyon/taslak/belge/örnek deposu
+github.com/cose-wg/draft-ietf-cose-hpke,O,org:cose-wg,,3,,Repository for draft-ietf-cose-hpke,belge,,spesifikasyon/taslak/belge/örnek deposu
+github.com/cose-wg/draft-ietf-cose-merkle-tree-proofs,O,org:cose-wg,,0,,COSE Receipts,belge,,spesifikasyon/taslak/belge/örnek deposu
+github.com/cose-wg/draft-ietf-cose-sphincs-plus,O,org:cose-wg,,0,,SLH-DSA for JOSE and COSE,belge,,spesifikasyon/taslak/belge/örnek deposu
+github.com/cose-wg/draft-ietf-cose-split-signing-algs,O,org:cose-wg,,0,,Split Signing Algorithms for COSE,belge,,spesifikasyon/taslak/belge/örnek deposu
+github.com/cose-wg/examples,O,org:cose-wg,,20,,Examples for the cose-spec,belge,,spesifikasyon/taslak/belge/örnek deposu
+github.com/cose-wg/x509,O,org:cose-wg,,4,,Define a set of COSE header fields that can be used to carry and reference X.509 certificates,belge,,spesifikasyon/taslak/belge/örnek deposu
+github.com/cosee-gitlab/lock,K,,,,,,taban-alti,,"gürültü tabanının altında (pkg.go.dev isabeti, GitHub <5★); önceki karar: ilgisiz"
+github.com/cratestack/cratestack,K,crates:q=cose; crates:q=sd-jwt,cargo:cratestack-auth,,479,"CrateStack signed-request + identity-token auth: SigV4-style Ed25519 request signing/verification, SD-JWT id-token issua",ilgisiz,,çerçeve kimlik doğrulama bileşeni
+github.com/cytoscape/cytoscape.js-cose-bilkent,K,npm:text=cose,npm:cytoscape-cose-bilkent,,49711933,The CoSE layout for Cytoscape.js by Bilkent with enhanced compound node placement,ilgisiz,,ilgisiz (graf yerleşimi)
+github.com/cyware/ssi-sdk,K,pkg.go.dev:q=sd-jwt,go:github.com/cyware/ssi-sdk/sd-jwt,,,,yinelenen,,TBD ssi-sdk çatalı (pkg.go.dev yolu aynı yapı)
+github.com/dajiaji/python-cwt,K+T,pypi:ad=cwt; topic:cose,pypi:cwt,29,,A Python implementation of CWT/COSE.,aday,COSE,CWT/COSE
+github.com/dark-bio/crypto-go,K+T,pkg.go.dev:q=cose; topic:cose,go:github.com/dark-bio/crypto-go/cose; go:github.com/dark-bio/crypto-go/cwt,16,,Post-quantum cryptography in Go,aday,COSE,PQ kripto sarmalayıcıları + COSE
+github.com/dark-bio/crypto-rs,T,topic:cose,,66,,Post-quantum cryptography in Rust,aday,COSE,PQ kripto sarmalayıcıları + COSE
+github.com/dark-bio/crypto-ts,T,topic:cose,,10,,Post-quantum cryptography in TypeScript,aday,COSE,PQ kripto sarmalayıcıları + COSE
+github.com/datatrails/go-datatrails-common,K,,,,,,taban-alti,,"gürültü tabanının altında (pkg.go.dev isabeti, GitHub <5★); önceki karar: ilgisiz"
+github.com/decentralgabe/vc-jose-cose-go,K,pkg.go.dev:q=cose,go:github.com/decentralgabe/vc-jose-cose-go/cid; go:github.com/decentralgabe/vc-jose-cose-go/cose; go:github.com/decentralgabe/vc-jose-cose-go/credential; go:github.com/decentralgabe/vc-jose-cose-go/jose; go:github.com/decentralgabe/vc-jose-cose-go/sdjwt; go:github.com/decentralgabe/vc-jose-cose-go/util,,,,aday,COSE,TBD deposuyla aynı README; ilişki belirsiz (çatal/halef)
+github.com/definitelytyped/definitelytyped,K,npm:text=cose,npm:@types/cose-js,,2375,TypeScript definitions for cose-js,yinelenen,,yalnız tür tanımları (@types/cose-js)
+github.com/delegare/delegare,K,npm:text=sd-jwt,npm:@delegare/x402,,430,AP2-native x402 + MPP middleware for Express. Dual-rail by default (USDC on Base + Stripe fiat). Auto-discoverable on CD,ilgisiz,,AP2/x402 ödeme ara katmanı
+github.com/digitalbazaar/di-sd-primitives,K,npm:text=sd-jwt,npm:@digitalbazaar/di-sd-primitives,,20230,Data Integrity Selective Disclosure Primitives,ilgisiz,,Data Integrity SD (SD-JWT değil)
+github.com/digitalcredentialsdev/digitalcredentials.dev,T,topic:sd-jwt,,19,,source for digitalcredentials.dev,belge,,spesifikasyon/taslak/belge/örnek deposu
+github.com/dogrucanemek-alt/cedulon,K,npm:keywords:cose; npm:text=cose,npm:@cedulon/cose; npm:@cedulon/receipts,,3729,Deterministic CBOR and COSE_Sign1 (Ed25519) used by Cedulon.,ilgisiz,,uygulamaya özgü protokol (Cedulon)
+github.com/doocs/cose,T,topic:cose,,752,,😃 md 编辑器使用的浏览器扩展，支持一键将文章同步到多个内容平台。,ilgisiz,,ilgisiz (Markdown düzenleyici eklentisi)
+github.com/dualeai/c2patxt,T,topic:cose,,5,,"Embed, extract and verify C2PA Content Credentials in plain Unicode text.",ilgisiz,,C2PA
+github.com/erdtman/cose-js,K,npm:text=cose,npm:cose-js,,16546,JavaScript COSE implementation,aday,COSE,
+github.com/eu-digital-identity-wallet/av-srv-verifier-endpoint,O,org:eu-digital-identity-wallet,,0,,,kapsam-disi-mdoc,,mdoc/ISO 18013-5 ya da yaş doğrulama (ISO 23220-4) doğrulayıcısı; mdoc Sürüm 3 §7.4 gereği kapsam dışı
+github.com/eu-digital-identity-wallet/av-srv-web-issuing-avw-py,O,org:eu-digital-identity-wallet,,5,,APIs and code of the av provider backend issuer following OID4VCI,ihracci,,ihraççı hizmeti
+github.com/eu-digital-identity-wallet/av-srv-web-verifier-endpoint-23220-4-kt,O,org:eu-digital-identity-wallet,,4,,,kapsam-disi-mdoc,,mdoc/ISO 18013-5 ya da yaş doğrulama (ISO 23220-4) doğrulayıcısı; mdoc Sürüm 3 §7.4 gereği kapsam dışı
+github.com/eu-digital-identity-wallet/av-verifier-frontend-cinema,O,org:eu-digital-identity-wallet,,1,,,uygulama,,demo arayüzü
+github.com/eu-digital-identity-wallet/av-web-verifier-ui,O,org:eu-digital-identity-wallet,,5,,,uygulama,,arayüz
+github.com/eu-digital-identity-wallet/eudi-app-multiplatform-verifier-ui,O,org:eu-digital-identity-wallet,,13,,EUDI Multiplatform Verifier App,kapsam-disi-mdoc,,mdoc/ISO 18013-5 ya da yaş doğrulama (ISO 23220-4) doğrulayıcısı; mdoc Sürüm 3 §7.4 gereği kapsam dışı
+github.com/eu-digital-identity-wallet/eudi-lib-android-verifier-core,O,org:eu-digital-identity-wallet,,4,,"Android SDK for verifying EUDI identity documents, compliant with ISO 18013-5",kapsam-disi-mdoc,,mdoc/ISO 18013-5 ya da yaş doğrulama (ISO 23220-4) doğrulayıcısı; mdoc Sürüm 3 §7.4 gereği kapsam dışı
+github.com/eu-digital-identity-wallet/eudi-lib-android-wallet-core,T,topic:openid4vp,,63,,,cuzdan,,cüzdan tarafı (C3 RP doğrulayıcılarını ölçer; istek nesnesi doğrulaması için OZET.md önerisine bakınız)
+github.com/eu-digital-identity-wallet/eudi-lib-ios-openid4vp-swift,O,org:eu-digital-identity-wallet,,8,,Implementation of the OpenID4VP protocol (wallet's role) in Swift,cuzdan,,cüzdan tarafı (C3 RP doğrulayıcılarını ölçer; istek nesnesi doğrulaması için OZET.md önerisine bakınız)
+github.com/eu-digital-identity-wallet/eudi-lib-ios-wallet-kit,T,topic:openid4vp,,42,,This repository contains the EUDI Wallet Kit library for iOS. The library is a part of the EUDI Wallet Reference Impleme,cuzdan,,cüzdan tarafı (C3 RP doğrulayıcılarını ölçer; istek nesnesi doğrulaması için OZET.md önerisine bakınız)
+github.com/eu-digital-identity-wallet/eudi-lib-jvm-openid4vp-kt,O+T,org:eu-digital-identity-wallet; topic:openid4vp,,33,,Implementation of OpenID4VP protocol (wallet's role) in Kotlin,cuzdan,,cüzdan tarafı (C3 RP doğrulayıcılarını ölçer; istek nesnesi doğrulaması için OZET.md önerisine bakınız)
+github.com/eu-digital-identity-wallet/eudi-lib-jvm-sdjwt-kt,O+T,org:eu-digital-identity-wallet; topic:sd-jwt; topic:sd-jwt-vc,,25,,A library for issuing and verifying SD-JWT,aday,SDJWT,EUDI referans kütüphanesi (issue+verify)
+github.com/eu-digital-identity-wallet/eudi-lib-sdjwt-swift,O,org:eu-digital-identity-wallet,,8,,A library for issuing and verifying SD-JWT,aday,SDJWT,EUDI referans kütüphanesi (Swift)
+github.com/eu-digital-identity-wallet/eudi-srv-pid-issuer,T,topic:sd-jwt-vc,,41,,A micro-service acting like PID/mDL Issuer according to OpenID4VCI,ihracci,,ihraççı hizmeti
+github.com/eu-digital-identity-wallet/eudi-srv-verifier-endpoint,G+O+T,org:eu-digital-identity-wallet; topic:openid4vp,,63,,Web application (Backend Restful service) that acts as a Verifier/RP trusted end-point.,aday,REF,EUDI referans doğrulayıcı (plan §9.2)
+github.com/eu-digital-identity-wallet/eudi-srv-web-issuing-eudiw-py,O,org:eu-digital-identity-wallet,,33,,"APIs and code of the eudiw provider backend PID, mDL and EAA issuer following OID4VCI",ihracci,,ihraççı hizmeti
+github.com/eu-digital-identity-wallet/eudi-web-verifier,O,org:eu-digital-identity-wallet,,35,,,yinelenen,,EUDI verifier endpoint'in web arayüzü
+github.com/eu-digital-identity-wallet/pymdoc-cbor,O,org:eu-digital-identity-wallet,,1,,MDOC CBOR static Verifier and Issuer for EUDI Wallet PID and mDL use cases,kapsam-disi-mdoc,,mdoc/ISO 18013-5 ya da yaş doğrulama (ISO 23220-4) doğrulayıcısı; mdoc Sürüm 3 §7.4 gereği kapsam dışı
+github.com/exortek/auth,K,npm:text=cose,npm:@exortek/passkey,,354,WebAuthn / FIDO2 server verification for Node.js 22+ — registration + authentication with an in-house CBOR + COSE + ASN.,ilgisiz,,WebAuthn
+github.com/extrimian/ssi-sdk,K,,,,,,taban-alti,,"gürültü tabanının altında (pkg.go.dev isabeti, GitHub <5★); önceki karar: yinelenen"
+github.com/fido-device-onboard/go-fdo,K,pkg.go.dev:q=cose,go:github.com/fido-device-onboard/go-fdo/cose,34,,,ilgisiz,,FDO protokolü
+github.com/fil-forge/ingot,K,,,,,,taban-alti,,"gürültü tabanının altında (pkg.go.dev isabeti, GitHub <5★); önceki karar: ilgisiz"
+github.com/filecoin-project/go-fee,K,,,,,,taban-alti,,"gürültü tabanının altında (pkg.go.dev isabeti, GitHub <5★); önceki karar: ilgisiz"
+github.com/findy-network/findy-agent-auth,K,pkg.go.dev:q=cose,go:github.com/findy-network/findy-agent-auth/acator/cose,7,,,ilgisiz,,WebAuthn
+github.com/forestrie/canopy,K,npm:text=cose,npm:@forestrie/delegation-cose; npm:@forestrie/encoding,,2153,Shared CBOR/COSE wire helpers and the Forestrie grant wire types/codecs (ADR-0048),ilgisiz,,şeffaflık günlüğü (uygulamaya özgü)
+github.com/forestrie/forestrie-cli,K,npm:keywords:cose; npm:text=cose,npm:@forestrie/forestrie-cli,,477,forestrie — participant CLI for forestrie transparency logs (SCITT / COSE receipts),ilgisiz,,şeffaflık günlüğü CLI
+github.com/forestrie/go-merklelog,K,,,,,,taban-alti,,"gürültü tabanının altında (pkg.go.dev isabeti, GitHub <5★); önceki karar: ilgisiz"
+github.com/forkbombeu/credimi,T,topic:openid4vp,,18,,Automated interoperability/conformance testing and hub for EUDI and SSI.,uygulama,,uyum testi aracı
+github.com/forkbombeu/didroom-docs,T,topic:openid4vp; topic:sd-jwt-vc,,6,,DIDroom is an open-source multiplatform and multifunctional Identity DID/SSI wallet.,belge,,spesifikasyon/taslak/belge/örnek deposu
+github.com/franchb/rekor,K,pkg.go.dev:q=cose,go:github.com/franchb/rekor/pkg/types/cose; go:github.com/franchb/rekor/pkg/types/cose/v0.0.1,,,,ilgisiz,,Rekor çatalı
+github.com/franziskuskiefer/cose-c-api,K,crates:q=cose,cargo:cose-c,,233859,C API for the cose crate,yinelenen,,cose crate'inin C API sarmalayıcısı
+github.com/franziskuskiefer/cose-rust,K,crates:q=cose,cargo:cose,,649,Library to use COSE (https://tools.ietf.org/html/rfc8152) in Rust,aday,COSE,
+github.com/fxamacker/cbor,T,topic:cose,,1090,,"CBOR codec (RFC 8949, RFC 8742) with CBOR tags, Go struct tag options (toarray, keyasint, omitempty, omitzero), float64/",ilgisiz,,yalnız CBOR kodlayıcı
+github.com/georgepadayatti/mdoc,K,,,,,,taban-alti,,"gürültü tabanının altında (pkg.go.dev isabeti, GitHub <5★); önceki karar: kapsam-disi-mdoc"
+github.com/georgepadayatti/sdjwt,K,pkg.go.dev:q=sd-jwt,go:github.com/georgepadayatti/sdjwt/examples; go:github.com/georgepadayatti/sdjwt/sdjwt; go:github.com/georgepadayatti/sdjwt/sdjwtvc; go:github.com/georgepadayatti/sdjwt/verifier,,,,aday,SDJWT,pkg.go.dev (RFC 9901)
+github.com/gmb-eudi/go-dcql,K,,,,,,taban-alti,,"gürültü tabanının altında (pkg.go.dev isabeti, GitHub <5★); önceki karar: ilgisiz"
+github.com/gmb-eudi/go-sdjwt,K,,,,,,taban-alti,SDJWT,"gürültü tabanının altında (pkg.go.dev isabeti, GitHub <5★); önceki karar: aday"
+github.com/go-jose/go-jose,H,square/go-jose README,,,,,aday,JOSE,square/go-jose README: 'DEPRECATED … Development of Go JOSE has continued in a new organization: https://github.com/go-jose/go-jose'
+github.com/google/coset,K,crates:q=cose,cargo:coset,,3798930,Set of types for supporting COSE,aday,COSE,
+github.com/heyvito/gou2f,K,,,,,,taban-alti,,"gürültü tabanının altında (pkg.go.dev isabeti, GitHub <5★); önceki karar: ilgisiz"
+github.com/hiero-ledger/heka-identity-platform,T,topic:sd-jwt-vc,,15,,Decentralized identity platform for the Hiero ecosystem,aday,REF,
+github.com/hyperledger-identus/keycloak-plugins,T,topic:oid4vp,,5,,Keycloak plugins for Identus Cloud Agent integration,uygulama,,Keycloak eklentisi
+github.com/hyperledger/aries-framework-go,K,pkg.go.dev:q=sd-jwt,go:github.com/hyperledger/aries-framework-go/component/models/sdjwt/verifier; go:github.com/hyperledger/aries-framework-go/pkg/doc/sdjwt/verifier,,,,aday,SDJWT,pkg.go.dev; Hyperledger Aries Go
+github.com/hyperledger/aries-framework-javascript,K,npm:text=sd-jwt,npm:@aries-framework/sd-jwt-vc,,172,"<p align=""center"">   <br />   <img     alt=""Hyperledger Aries logo""     src=""https://raw.githubusercontent.com/hyperledg",yinelenen,,Credo'nun eski adı (credo-ts)
+github.com/ietf-wg-scitt/draft-ietf-scitt-scrapi,T,topic:cose,,5,,Transparency Service REST API,belge,,spesifikasyon/taslak/belge/örnek deposu
+github.com/impierce/openid4vc,T,topic:openid4vp,,42,,"Rust implementation of the OpenID4VC standards. The library will offer implementations for SIOPv2, OpenID4VP and OpenID4",aday,REF,
+github.com/imshi/golang-scripts,K,,,,,,taban-alti,,"gürültü tabanının altında (pkg.go.dev isabeti, GitHub <5★); önceki karar: ilgisiz"
+github.com/ink-33/authn,K,pkg.go.dev:q=cose,go:github.com/Ink-33/authn/api/cose,16,,,ilgisiz,,WebAuthn
+github.com/input-output-hk/catalyst-voices,K,pub:q=cose,pub:catalyst_cose,,2597,"A dart plugin implementing CBOR Object Signing and Encryption (RFC 9052, RFC 9053).",aday,COSE,tek-depo içinde paket
+github.com/iotaledger/sd-jwt-payload,K+T,crates:q=sd-jwt; topic:sd-jwt,cargo:sd-jwt-payload,9,3907,Rust implementation of Selective Disclosure for JWTs (SD-JWT),aday,SDJWT,IOTA
+github.com/italia/eudi-wallet-it-python,K,pypi:ad=pyeudiw,pypi:pyeudiw,,,Python toolchain for building an OpenID4VP RP with a SATOSA backend compliant to the Italian Wallet Solution.,yinelenen,,pyeudiw; iam-proxy-italia'nın doğrulama bileşeni (birim iam-proxy-italia)
+github.com/italia/iam-proxy-italia,T,topic:openid4vp,,59,,"Identity and Access Management Proxy with Spid/CIE/eIDAS and IT-Wallet/eduGain compliances supporting SAML2, OIDC and Op",aday,REF,doğrulama mantığı pyeudiw'de (italia/eudi-wallet-it-python)
+github.com/ivarprudnikov/cose-and-receipt-playground,K,,,,,,taban-alti,,"gürültü tabanının altında (pkg.go.dev isabeti, GitHub <5★); önceki karar: uygulama"
+github.com/ivis-at-bilkent/cose-base,K,npm:text=cose,npm:cose-base,,98821074,Core module for compound spring embedder based layout styles,ilgisiz,,ilgisiz (graf yerleşimi)
+github.com/ivis-at-bilkent/cytoscape.js-layout-service,T,topic:cose,,10,,Web-service on cytoscape.js to layout graphs,ilgisiz,,ilgisiz (graf yerleşimi)
+github.com/jahkeup/corecbor,K,,,,,,taban-alti,COSE,"gürültü tabanının altında (pkg.go.dev isabeti, GitHub <5★); önceki karar: aday"
+github.com/jaydencj/passkeypeek,K,pkg.go.dev:q=cose,go:github.com/JaydenCJ/passkeypeek/cmd/passkeypeek,,,,ilgisiz,,passkey aracı
+github.com/jfromaniello/cose-kit,K,npm:keywords:cose; npm:text=cose,npm:cose-kit,,12298,**DEPRECATED:** Use [@auth0/cose](https://www.npmjs.com/package/@auth0/cose).,yinelenen,,npm açıklaması: 'DEPRECATED: Use @auth0/cose'
+github.com/joesiltberg/sdjwt,K,,,,,,taban-alti,SDJWT,"gürültü tabanının altında (pkg.go.dev isabeti, GitHub <5★); önceki karar: aday"
+github.com/jtdowney/gose,T,topic:cose,,9,,Gleam implementation of JOSE (JSON Object Signing and Encryption) and COSE (CBOR Object Signing and Encryption) standard,aday,COSE,JOSE+COSE (Gleam)
+github.com/jwx-go/reddy-pqchpke,K,,,,,,taban-alti,,"gürültü tabanının altında (pkg.go.dev isabeti, GitHub <5★); önceki karar: ilgisiz"
+github.com/k2gl/sd-jwt,K,packagist:q=sd-jwt,packagist:k2gl/sd-jwt,0,341,"Selective Disclosure for JWTs (SD-JWT, RFC 9901) in pure PHP: issue, present, verify",aday,SDJWT,Packagist (PHP'deki tek SD-JWT isabeti)
+github.com/k2gl/sd-jwt-vc,K,packagist:q=sd-jwt,packagist:k2gl/sd-jwt-vc,0,73,SD-JWT-based Verifiable Credentials (SD-JWT VC) in pure PHP: issue and verify dc+sd-jwt credentials,yinelenen,,aynı yazarın SD-JWT VC katmanı; birim k2gl/sd-jwt
+github.com/kamil-kielbasa/libedhoc,T,topic:cose,,22,,"EDHOC (RFC 9528): Lightweight authenticated key exchange in C for constrained IoT devices, post-quantum ready",ilgisiz,,EDHOC protokolü
+github.com/keycloud/webauthn,K,,,,,,taban-alti,,"gürültü tabanının altında (pkg.go.dev isabeti, GitHub <5★); önceki karar: ilgisiz"
+github.com/koalafacts/herosd-jwt,K,nuget:q=sd-jwt,nuget:HeroSD-JWT,,22099,A production-ready .NET library implementing SD-JWT (Selective Disclosure for JSON Web Tokens) according to IETF draft-i,aday,SDJWT,NuGet
+github.com/koesie10/webauthn,K,pkg.go.dev:q=cose,go:github.com/koesie10/webauthn/cose,168,,,ilgisiz,,WebAuthn
+github.com/kotsyubin/virtual-fido,K,pkg.go.dev:q=cose,go:github.com/kotsyubin/virtual-fido/cose,,,,ilgisiz,,FIDO
+github.com/latias94/merman,K,crates:q=cose,cargo:manatee,,79036,Headless compound graph layout algorithms (COSE/FCoSE ports).,ilgisiz,,ilgisiz (graf yerleşimi)
+github.com/laurencelundblade/t_cose,T,topic:cose,,33,,Commercial quality COSE_Sign1 implementation in C for constrained environment. Works with MbtedTLS and OpenSSL Crypto.,aday,COSE,
+github.com/ldclabs/cbor2,K+T,crates:q=cose; topic:cose,cargo:cbor2; cargo:cbor2-derive,14,28459,"👾 Full-featured RFC 8949 CBOR for Rust: async item I/O, serde round trips, canonical/deterministic encoding, Value/RawVa",ilgisiz,,yalnız CBOR
+github.com/ldclabs/cose,K+T,pkg.go.dev:q=cose; topic:cose,go:github.com/ldclabs/cose/cose; go:github.com/ldclabs/cose/go/cose; go:github.com/ldclabs/cose/go/cwt; go:github.com/ldclabs/cose/go/key; go:github.com/ldclabs/cose/go/key/aesmac; go:github.com/ldclabs/cose/go/key/ecdsa; go:github.com/ldclabs/cose/go/key/ed25519; go:github.com/ldclabs/cose/iana; go:github.com/ldclabs/cose/key; go:github.com/ldclabs/cose/key/ecdh; go:github.com/ldclabs/cose/key/ed25519; go:github.com/ldclabs/cose/key/hmac,24,,"📧 Implemented Keys, Algorithms (RFC9053), COSE (RFC9052) and CWT (RFC8392) in Go.",aday,COSE,
+github.com/ldclabs/cose-ts,K,npm:keywords:cose; npm:text=cose,npm:@ldclabs/cose-ts,,512,"Implemented Keys, Algorithms (RFC9053), COSE (RFC9052) and CWT (RFC8392) in TypeScript.",aday,COSE,
+github.com/ldclabs/cose2,K,crates:q=cose,cargo:cose2,,2304,"A Rust library for CBOR Object Signing and Encryption (COSE, RFC 9052) and CBOR Web Token (CWT, RFC 8392), built on cbor",aday,COSE,
+github.com/ldclabs/ic-cose,K+T,crates:q=cose; topic:cose,cargo:ic_cose; cargo:ic_cose_types,9,2293,⚙️ A decentralized COnfiguration service with Signing and Encryption on the Internet Computer.,ilgisiz,,ICP yapılandırma hizmeti
+github.com/learningeconomy/learncard,K,npm:text=sd-jwt,npm:@learncard/sd-jwt-vc-plugin,,1302,SD-JWT-VC holder + verifier support for LearnCard. Implements RFC 9901 (SD-JWT) and draft-ietf-oauth-sd-jwt-vc.,uygulama,,platform eklentisi (@learncard/sd-jwt-vc-plugin)
+github.com/levischuck/tiny-cose,K,npm:text=cose,npm:@levischuck/tiny-cose,,390,Tiny COSE library for cryptographic operations in CBOR,aday,COSE,
+github.com/lfdt-verii/core,K,npm:text=cose,npm:@verii/cose-key,,4364,Set of cose key functions used in Verii projects,ilgisiz,,yalnız COSE anahtar işlevleri
+github.com/limike954/trajectory-data-00010,K,,,,,,taban-alti,,"gürültü tabanının altında (pkg.go.dev isabeti, GitHub <5★); önceki karar: ilgisiz"
+github.com/lovasoa/cosette,K,npm:text=cose,npm:cosette,,250,isomorphic Typescript COSE implementation,yinelenen,,erdtman/cose-js çatalı (ecosyste.ms fork=true)
+github.com/lukasjhan/sd-jwt-io,T,topic:sd-jwt,,5,,SD JWT debugging page,uygulama,,hata ayıklama sayfası
+github.com/lumoin/verifiable,T,topic:openid4vp,,39,,"A .NET implementation of decentralized identifiers and verifiable credentials, some associated protocols and cryptograph",aday,REF,
+github.com/manekinekko/digital-covid-certificate-decoder,T,topic:cose,,29,,An attempt to decode the Digital Covid Certificate (signed by the french app TousAntiCovid) - For Educational Purposes O,ilgisiz,,uygulamaya özgü (AB DCC)
+github.com/mashbean/twdiw-vp-verifier-lite,T,topic:sd-jwt-vc,,8,,One-click Cloudflare verifier for Taiwan Digital Identity Wallet OIDC4VP presentations,aday,REF,
+github.com/mattrglobal/cose,K,npm:text=cose,npm:@mattrglobal/cose,,8950,An implementation of RFC8152,aday,COSE,README: 'incomplete implementation of RFC 8152'
+github.com/meeco/sd-jwt,K,npm:text=sd-jwt,npm:@meeco/sd-jwt,,893,SD-JWT implementation in typescript,aday,SDJWT,npm
+github.com/meeco/sd-jwt-vc,K,npm:text=sd-jwt,npm:@meeco/sd-jwt-vc,,775,SD-JWT VC implementation in typescript,yinelenen,,aynı üreticinin SD-JWT VC katmanı; birim @meeco/sd-jwt
+github.com/melraidin/cardano-go,K,,,,,,taban-alti,,"gürültü tabanının altında (pkg.go.dev isabeti, GitHub <5★); önceki karar: ilgisiz"
+github.com/metastable-void/philharmonic-connector-common,K,crates:q=cose,cargo:philharmonic-connector-common,,343,"Shared vocabulary for the Philharmonic connector layer: COSE token and payload types, realm model, ConnectorCallContext,",ilgisiz,,ilgisiz
+github.com/michaelfraser99/go-sd-jwt,K,pkg.go.dev:q=sd-jwt,go:github.com/MichaelFraser99/go-sd-jwt; go:github.com/MichaelFraser99/go-sd-jwt/v2,9,,,aday,SDJWT,pkg.go.dev
+github.com/microsoft/cosesign1go,K,pkg.go.dev:q=cose,go:github.com/Microsoft/cosesign1go/cmd/attach_receipt,15,,,aday,COSE,COSE_Sign1 Go kütüphanesi
+github.com/microsoft/cosesigntool,T,topic:cose,,54,,CoseSignTool is a platform-agnostic command line application to COSE sign files and validate COSE signatures.  CoseHandl,aday,COSE,COSE_Sign1 kütüphanesi + CLI
+github.com/microsoft/notation-cose,K,pkg.go.dev:q=cose,go:github.com/microsoft/notation-cose/cmd/notation-cose; go:github.com/microsoft/notation-cose/pkg/cose; go:github.com/microsoft/notation-cose/pkg/protocol; go:github.com/microsoft/notation-cose/tools/cq,5,,,ilgisiz,,Notation eklentisi
+github.com/mindburn-labs/helm-ai-kernel,K,pkg.go.dev:q=sd-jwt,go:github.com/Mindburn-Labs/helm-ai-kernel/core/pkg/crypto/sdjwt,60,,,ilgisiz,,ilgisiz
+github.com/moisesja/dataproofs-dotnet,K,nuget:q=cose; nuget:q=sd-jwt,nuget:DataProofsDotnet.Core; nuget:DataProofsDotnet.Cose; nuget:DataProofsDotnet.Jose; nuget:DataProofsDotnet.Legacy; nuget:DataProofsDotnet.Rdfc,,4173,"Enveloping proofs over JOSE: JWS (compact/JSON, detached, multi-signature), JWE (compact/General JSON, multi-recipient, ",aday,COSE,JOSE/COSE zarflama kanıtları
+github.com/morrison76/rekor,K,,,,,,taban-alti,,"gürültü tabanının altında (pkg.go.dev isabeti, GitHub <5★); önceki karar: ilgisiz"
+github.com/motmedel/utils_go,K,,,,,,taban-alti,,"gürültü tabanının altında (pkg.go.dev isabeti, GitHub <5★); önceki karar: ilgisiz"
+github.com/mozilla-services/go-cose,K+T,pkg.go.dev:q=cose; topic:cose,go:go.mozilla.org/cose; go:go.mozilla.org/cose/example; go:gopkg.in/mozilla-services/go-cose.v0; go:gopkg.in/mozilla-services/go-cose.v1,40,,go library for CBOR Object Signing and Encryption (COSE),aday,COSE,
+github.com/nasa-ammos/bsl,T,topic:cose,,14,,Bundle Protocol Security Library (BSL),ilgisiz,,BPSec kütüphanesi
+github.com/notaryproject/notation-core-go,K,pkg.go.dev:q=cose,go:github.com/notaryproject/notation-core-go/signature/cose,14,,,ilgisiz,,Notation imza zarfı (go-cose kullanır)
+github.com/nov/cose-key,K,gem:q=cose,rubygems:cose-key,,17311,COSE Key (RSA & EC) in Ruby,ilgisiz,,yalnız COSE_Key
+github.com/oauth-wg/oauth-selective-disclosure-jwt,T,topic:sd-jwt,,62,,,belge,,spesifikasyon/taslak/belge/örnek deposu
+github.com/openbasil/basil,K,crates:q=cose,cargo:basil-cose,,439,"Strict deterministic COSE (RFC 9052/9053) profile for basil sealed invocations: signed, sealed, and seal-only constructi",aday,COSE,
+github.com/openeudi/openid4vp,K,npm:text=sd-jwt,npm:@openeudi/openid4vp,,1340,OpenID4VP credential parsing and validation for EUDI Wallets (SD-JWT VC + mDOC),aday,REF,
+github.com/openid/dchp,T,topic:openid4vp; topic:sd-jwt-vc,,19,,Digital Credentials Harmonized Presentation (DCHP) Working Group -  harmonizing ISO/IEC 18013-5 and OpenID4VP credential,belge,,spesifikasyon/taslak/belge/örnek deposu
+github.com/openid/openid4vp,T,topic:oid4vp; topic:openid4vp,,112,,,belge,,spesifikasyon/taslak/belge/örnek deposu
+github.com/openvtc/vta-browser-plugin,K,npm:text=cose,npm:@openvtc/pnm-core,,537,"Browser-side bridge between WebAuthn passkeys and VTA-managed DIDs. Wire types, WebAuthn ceremony helpers, COSE→Multikey",ilgisiz,,passkey köprüsü
+github.com/openwallet-foundation-labs/credhub,O,org:openwallet-foundation-labs,,9,,a cloud wallet for natural persons + minimal issuer and verifier implementations,uygulama,,bulut cüzdanı/uygulama (arşiv)
+github.com/openwallet-foundation-labs/identity-common-ts,H+K+P,npm:text=cose; npm:text=sd-jwt,npm:@owf/cose; npm:@sd-jwt/core; npm:@sd-jwt/sd-jwt-vc,,84606,SD-JWT VC (draft-ietf-oauth-sd-jwt-vc) implementation in TypeScript,aday,SDJWT,"sd-jwt-js'nin halefi: sd-jwt-js README 'PROJECT ARCHIVED … visit the Identity Common-TS Repository'; npm @sd-jwt/core repository.directory=packages/sd-jwt-core. Pilot kütüphanesi (0.21.0). Aynı depoda @owf/cose, @owf/mdoc, @openid4vc/* var; birim @sd-jwt/core"
+github.com/openwallet-foundation-labs/oid4vc-ts,O,org:openwallet-foundation-labs,,29,,OpenID for Verifiable Credentials - TypeScript,yinelenen,,README: 'PROJECT ARCHIVED … merge with Identity Common - TS'
+github.com/openwallet-foundation-labs/sd-jwt-dotnet,K+O+T,nuget:q=cose; nuget:q=sd-jwt; org:openwallet-foundation-labs; topic:sd-jwt,nuget:SdJwt.Net; nuget:SdJwt.Net.AgentTrust.Core; nuget:SdJwt.Net.AgentTrust.Maf; nuget:SdJwt.Net.AgentTrust.Policy; nuget:SdJwt.Net.Eudiw; nuget:SdJwt.Net.HAIP; nuget:SdJwt.Net.Mdoc; nuget:SdJwt.Net.Oid4Vci; nuget:SdJwt.Net.Oid4Vp; nuget:SdJwt.Net.OidFederation; nuget:SdJwt.Net.PresentationExchange; nuget:SdJwt.Net.StatusList; nuget:SdJwt.Net.Vc; nuget:SdJwt.Net.VcDm; nuget:SdJwt.Net.Wallet,5,7117,Selective Disclosure for JWTs (SD-JWT) .Net implement,aday,SDJWT,OWF-Labs; birim SdJwt.Net (SdJwt.Net.* alt paketleri aynı depo)
+github.com/openwallet-foundation-labs/sd-jwt-kotlin,O,org:openwallet-foundation-labs,,24,,A Kotlin implementation of the Selective Disclosure JWT (SD-JWT) spec.,aday,SDJWT,OWF-Labs
+github.com/openwallet-foundation-labs/sd-jwt-python,O,org:openwallet-foundation-labs,,20,,A Python implementation of the Selective Disclosure JWT (SD-JWT) spec.,aday,SDJWT,OWF-Labs referans uygulaması
+github.com/openwallet-foundation-labs/sd-jwt-rust,K+O,crates:q=sd-jwt; org:openwallet-foundation-labs,cargo:sd-jwt-rs,20,28124,Rust reference implementation of the IETF SD-JWT specification (v7).,aday,SDJWT,OWF-Labs referans uygulaması
+github.com/openwallet-foundation-labs/sd-jwt-vc-dm,O+T,org:openwallet-foundation-labs; topic:sd-jwt,,12,,Typescript implementation of SD JWT VCDM,aday,SDJWT,OWF-Labs; SD-JWT VCDM
+github.com/openwallet-foundation-labs/wallet-framework-dotnet,K,nuget:q=sd-jwt,nuget:WalletFramework.SdJwtLib; nuget:WalletFramework.SdJwtVc,,83343,Package Description,aday,SDJWT,OWF-Labs; .NET çerçevesinin SD-JWT VC paketi
+github.com/openwallet-foundation/acapy-plugins,G,Sürüm 3 §9.2; görev tanımı,,,,,aday,REF,plan §9.2 (ACA-Py oid4vc); depo yıldızı eklenti koleksiyonunundur
+github.com/openwallet-foundation/credo-ts,G+T,topic:sd-jwt-vc,,352,,Typescript framework for building decentralized identity and verifiable credential solutions,aday,REF,plan §9.2 (Credo openid4vc)
+github.com/openwallet-foundation/eudiplo,Gt,görev tanımı (Adım 9a) + OWF kuruluş listesi,,,,,aday,REF,OWF kuruluş listesinde (ad/açıklama süzgecine takılmadı: 'EUDI Wallet integration'); görev tanımındaki 'diğer açık kaynak OID4VP doğrulayıcıları' kapsamında elle eklendi
+github.com/openwallet-foundation/multipaz,T,topic:openid4vp,,295,,SDK for Digital Credentials,aday,REF,mdoc ağırlıklı SDK; SD-JWT VC doğrulayıcı rolü incelenecek
+github.com/openwallet-foundation/multipaz-wallet,T,topic:openid4vp,,6,,A wallet for Digital Credentials built using the Multipaz SDK,cuzdan,,cüzdan tarafı (C3 RP doğrulayıcılarını ölçer; istek nesnesi doğrulaması için OZET.md önerisine bakınız)
+github.com/openwallet-foundation/oid4vc-due-diligence-tf,O,org:openwallet-foundation,,4,,"This task force would investigate the specifications belonging to the OID4VC family thoroughly, check the existing imple",belge,,spesifikasyon/taslak/belge/örnek deposu
+github.com/openwallet-foundation/sd-jwt-js,O+T,org:openwallet-foundation; topic:sd-jwt,,83,,A JavaScript implementation of the Selective Disclosure JWT (SD-JWT) spec.,yinelenen,,README: 'PROJECT ARCHIVED … Identity Common-TS'; birim identity-common-ts
+github.com/parlesec/protocolsoup,T,topic:oid4vp,,30,,"Real protocols, real infrastructure, built to the spec. Run flows and see every message, token and decision. OAuth 2.0, ",uygulama,,eğitim/oyun alanı
+github.com/passkeybridge/passkeybridge,K,npm:text=sd-jwt,npm:@passkeybridge/vc-wallet-sdk,,226,Official PasskeyBridge SDK for issuing and verifying W3C Verifiable Credentials (JWT-VC + SD-JWT-VC) against the Passkey,uygulama,,hizmet SDK'sı
+github.com/polyrainbow/eudi-rp-ts,K,npm:text=sd-jwt,npm:@sauseschritt/eudi-rp-ts,,231,Reference implementation of an EU Digital Identity relying party for Node — verifies SD-JWT VC and ISO mdoc credentials ,aday,REF,
+github.com/pomerium/webauthn,K,pkg.go.dev:q=cose,go:github.com/pomerium/webauthn/cose,5,,,ilgisiz,,WebAuthn
+github.com/ponci-berlin/go-cose,K,,,,,,taban-alti,,"gürültü tabanının altında (pkg.go.dev isabeti, GitHub <5★); önceki karar: yinelenen"
+github.com/privacybydesign/irmago,K,pkg.go.dev:q=sd-jwt,go:github.com/privacybydesign/irmago/eudi/credentials/sdjwtvc; go:github.com/privacybydesign/irmago/eudi/credentials/sdjwtvc/typemetadata; go:github.com/privacybydesign/irmago/eudi/sdjwt; go:github.com/privacybydesign/irmago/eudi/sdjwt/sdjwttest,86,,,aday,REF,pkg.go.dev: eudi/credentials/sdjwtvc
+github.com/procivis/one-core,T,topic:oid4vp; topic:openid4vp; topic:sd-jwt; topic:sd-jwt-vc,,162,,"Issue, hold and verify digital identities and credentials on any device with eIDAS 2.0 compliancy, ISO 18013-5 mdocs, IE",aday,REF,
+github.com/procivis/one-wallet,T,topic:oid4vp; topic:openid4vp; topic:sd-jwt; topic:sd-jwt-vc,,150,,"Digital wallet with eIDAS 2.0 compliancy, ISO 18013-5 mdocs, IETF SD-JWT VC, OID4VC, and W3C VCs. ",cuzdan,,cüzdan tarafı (C3 RP doğrulayıcılarını ölçer; istek nesnesi doğrulaması için OZET.md önerisine bakınız)
+github.com/proof/proof-vc-common,T,topic:oid4vp; topic:sd-jwt; topic:sd-jwt-vc,,23,,"A digital passport. Verified once, usable everywhere.",uygulama,,ürün bileşeni
+github.com/proof/proof-vc-web,T,topic:oid4vp; topic:sd-jwt-vc,,20,,Web Components for Proof Digital Credentials.,uygulama,,ürün web bileşenleri
+github.com/rcbj/id-proto-debugger,T,topic:sd-jwt; topic:sd-jwt-vc,,174,,An Identity Protocol Debugger,uygulama,,hata ayıklama aracı
+github.com/robjsliwa/sd-jwt,K,crates:q=sd-jwt,cargo:sdjwt,,375,"SD-JWT support for Issuers, Holders, and Verifiers",aday,SDJWT,crates.io
+github.com/roughlever/go-fdo,K,,,,,,taban-alti,,"gürültü tabanının altında (pkg.go.dev isabeti, GitHub <5★); önceki karar: ilgisiz"
+github.com/rust-italia/dgc,T,topic:cose,,27,,A parser and validator for the EU Digital Green Certificate (dgc) a.k.a. greenpass,ilgisiz,,uygulamaya özgü (AB DCC)
+github.com/s1r-j/parse-cosekey,K,npm:keywords:cose; npm:text=cose,npm:parse-cosekey,,6443,Parse COSE(CBOR Object Signing and Encryption) to JWK(JSON Web Key) or PEM.,ilgisiz,,yalnız COSE_Key ayrıştırma
+github.com/safanaj/cardano-go,K,,,,,,taban-alti,,"gürültü tabanının altında (pkg.go.dev isabeti, GitHub <5★); önceki karar: ilgisiz"
+github.com/schulzesttsi/go-sd-jwt,K,,,,,,taban-alti,,"gürültü tabanının altında (pkg.go.dev isabeti, GitHub <5★); önceki karar: yinelenen"
+github.com/shizhmsft/cq,K,,,,,,taban-alti,,"gürültü tabanının altında (pkg.go.dev isabeti, GitHub <5★); önceki karar: ilgisiz"
+github.com/shizhmsft/go-cose-sm2,K,,,,,,taban-alti,,"gürültü tabanının altında (pkg.go.dev isabeti, GitHub <5★); önceki karar: ilgisiz"
+github.com/shogo82148/goat,K,,,,,,taban-alti,COSE,"gürültü tabanının altında (pkg.go.dev isabeti, GitHub <5★); önceki karar: aday"
+github.com/signatory-io/signatory-core,K,,,,,,taban-alti,,"gürültü tabanının altında (pkg.go.dev isabeti, GitHub <5★); önceki karar: ilgisiz"
+github.com/sigstore/rekor,K,pkg.go.dev:q=cose,go:github.com/sigstore/rekor/pkg/types/cose; go:github.com/sigstore/rekor/pkg/types/cose/v0.0.1,1208,,,ilgisiz,,Rekor şeffaflık günlüğü
+github.com/sirosfoundation/go-ts11client,K,,,,,,taban-alti,,"gürültü tabanının altında (pkg.go.dev isabeti, GitHub <5★); önceki karar: ilgisiz"
+github.com/sirosfoundation/mtcvctm,K,,,,,,taban-alti,,"gürültü tabanının altında (pkg.go.dev isabeti, GitHub <5★); önceki karar: ilgisiz"
+github.com/sirosfoundation/registry-cli,K,,,,,,taban-alti,,"gürültü tabanının altında (pkg.go.dev isabeti, GitHub <5★); önceki karar: ilgisiz"
+github.com/smartcontractkit/chainlink-common,K,pkg.go.dev:q=cose,go:github.com/smartcontractkit/chainlink-common/pkg/teeattestation/nitro/fake,34,,,ilgisiz,,Chainlink
+github.com/sorcha-platform/sorcha,K,nuget:q=sd-jwt,nuget:Sorcha.Cryptography,,4639,"Multi-algorithm cryptography: ED25519, P-256, RSA-4096, BLS threshold signatures, post-quantum (ML-KEM/ML-DSA), zero-kno",ilgisiz,,platform kriptosu
+github.com/sphereon-opensource/identity-development-kit,H,Sphereon SSI-SDK README: 'moving forward development will be focussed on our multiplatform IDK',,,,,aday,SDJWT,SSI-SDK README'sinin gösterdiği halef
+github.com/sphereon-opensource/oid4vc,Gt+T,topic:oid4vp,,92,,"OpenID for Verifiable Credentials - modules for issuers, holders and RPs",aday,REF,görev tanımı (Sphereon); SIOP-OID4VP bu depoya taşındı
+github.com/sphereon-opensource/oid4vc-demo,T,topic:oid4vp; topic:openid4vp,,24,,"Demo for OID4VC, containing a configurable agent, OID4VCI Issuer and demopage as well as SIOPv2 and OID4VP RPs with demo",uygulama,,demo
+github.com/sphereon-opensource/siop-oid4vp,T,topic:oid4vp; topic:openid4vp,,76,,Self Issued OpenID Provider v2 (SIOP) with optional OpenID for Verifiable Presentations (OpenID4VP),yinelenen,,README: 'This package has been moved to the OID4VCI monorepo at https://github.com/Sphereon-Opensource/OID4VC'
+github.com/sphereon-opensource/ssi-sdk,K+T,npm:text=sd-jwt; topic:oid4vp,npm:@sphereon/ssi-sdk.sd-jwt,75,1913,(Legacy) Self Sovereign Identity SDK,aday,SDJWT,README: 'legacy SDK … development will be focussed on our multiplatform IDK'
+github.com/sphereon-opensource/web-wallet,T,topic:oid4vp,,11,,A web wallet that can serve as an organizational digital identity wallet,cuzdan,,cüzdan tarafı (C3 RP doğrulayıcılarını ölçer; istek nesnesi doğrulaması için OZET.md önerisine bakınız)
+github.com/spruceid/openid4vp,Gt,görev tanımı (Adım 9a),,,,,aday,REF,görev tanımı (Spruce)
+github.com/spruceid/ssi,K,crates:q=cose; crates:q=sd-jwt,cargo:ssi-cose; cargo:ssi-sd-jwt; cargo:ssi-vc-jose-cose,,51569,Implementation of SD-JWT for the ssi library.,aday,SDJWT,Spruce ssi; birim ssi-sd-jwt (aynı depoda ssi-cose ve ssi-vc-jose-cose)
+github.com/stoprocent/node-edhoc,K,npm:keywords:cose; npm:text=cose,npm:edhoc,,586,A Node.js implementation of EDHOC (Ephemeral Diffie-Hellman Over COSE) protocol for lightweight authenticated key exchan,ilgisiz,,EDHOC protokolü
+github.com/sugarylentil/notation-core-go,K,pkg.go.dev:q=cose,go:github.com/sugarylentil/notation-core-go/signature/cose,,,,ilgisiz,,Notation çatalı
+github.com/sunet/vc,K,pkg.go.dev:q=sd-jwt,go:github.com/SUNET/vc/pkg/trust,14,,,aday,REF,pkg.go.dev
+github.com/svss-labs/email-verification-api,K,packagist:q=sd-jwt,packagist:svss-labs/email-verification-api,2,107,Verify Email Verification Protocol (EVT+KB) tokens issued by email providers like Gmail,ilgisiz,,e-posta doğrulama protokolü
+github.com/swiss-ssi-group/swiyu-aspire-aspnetcore,T,topic:oid4vp,,7,,swiyu using Aspire and ASP.NET Core,uygulama,,örnek uygulama
+github.com/swornmail/swornmail-go,K,,,,,,taban-alti,,"gürültü tabanının altında (pkg.go.dev isabeti, GitHub <5★); önceki karar: ilgisiz"
+github.com/tbd54566975/ssi-sdk,K,pkg.go.dev:q=sd-jwt,go:github.com/TBD54566975/ssi-sdk/sd-jwt,211,,,aday,SDJWT,README: 'not actively being maintained'
+github.com/tbd54566975/vc-jose-cose-go,K,,,,,,taban-alti,COSE,"gürültü tabanının altında (pkg.go.dev isabeti, GitHub <5★); önceki karar: aday"
+github.com/telesma-app/ctap,K,pkg.go.dev:q=cose,go:github.com/telesma-app/ctap/cose,14,,,ilgisiz,,CTAP/FIDO
+github.com/telesma-app/fido-registry,K,,,,,,taban-alti,,"gürültü tabanının altında (pkg.go.dev isabeti, GitHub <5★); önceki karar: ilgisiz"
+github.com/thomas-fossati/go-cose,K,,,,,,taban-alti,,"gürültü tabanının altında (pkg.go.dev isabeti, GitHub <5★); önceki karar: yinelenen"
+github.com/thomas-fossati/go-cose-cli,K,,,,,,taban-alti,,"gürültü tabanının altında (pkg.go.dev isabeti, GitHub <5★); önceki karar: uygulama"
+github.com/timothyclaeys/pycose,K+T,pypi:ad=pycose; topic:cose,pypi:pycose,45,,A Python implementation of the COSE specification (CBOR Object Signing and Encryption) described in RFC 8152.,aday,COSE,
+github.com/tradeverifyd/transparency-service,K,,,,,,taban-alti,,"gürültü tabanının altında (pkg.go.dev isabeti, GitHub <5★); önceki karar: ilgisiz"
+github.com/tramires/cose-rust,K+T,crates:q=cose; topic:cose,cargo:cose-rust,7,71111,"Rust implementation of the protocol CBOR Object Signing and Encryption, COSE, RFC 8152.",aday,COSE,
+github.com/transmute-industries/cose,K,npm:text=cose,npm:@transmute/cose,,148,COSE and related work.,aday,COSE,
+github.com/transmute-industries/vc-jwt-sd,T,topic:sd-jwt,,6,,Experimental implementation of sd-jwt for W3C Verifiable Credentials,aday,SDJWT,deneysel (açıklama)
+github.com/tripledownab/tessio-verifier,K,nuget:q=cose; nuget:q=sd-jwt,nuget:Tessio.Verifier.AspNetCore; nuget:Tessio.Verifier.Core; nuget:Tessio.Verifier.Core.Mdoc; nuget:Tessio.Verifier.OpenId4Vp; nuget:Tessio.Verifier.Trust,,4687,"Open source .NET and ASP.NET Core verifier for the EU Digital Identity Wallet, relying party side. OpenID4VP 1.0 with DC",aday,REF,
+github.com/trustasia-com/go-sdk,K,,,,,,taban-alti,,"gürültü tabanının altında (pkg.go.dev isabeti, GitHub <5★); önceki karar: ilgisiz"
+github.com/trustbloc/vc-go,K+T,pkg.go.dev:q=sd-jwt; topic:sd-jwt,go:github.com/trustbloc/vc-go/sdjwt/verifier,16,,Verifiable Credentials (and related code) for Go,aday,SDJWT,TrustBloc VC kütüphanesi; sdjwt paketi
+github.com/trustbloc/vcs,T,topic:oid4vp,,48,,Verifiable Credential Systems,aday,REF,
+github.com/trustbloc/wallet-sdk,T,topic:oid4vp,,30,,Verifiable Credential Wallet SDK and Demo/Reference Wallet App (Go / GoMobile | Android | iOS),cuzdan,,cüzdan tarafı (C3 RP doğrulayıcılarını ölçer; istek nesnesi doğrulaması için OZET.md önerisine bakınız)
+github.com/trustknots/vcknots,T,topic:oid4vp,,70,,Pluggable framework for building Verifiable Credentials ecosystems,aday,REF,
+github.com/ubirch/ubirch-cose-client-go,K,pkg.go.dev:q=cose,go:github.com/ubirch/ubirch-cose-client-go; go:github.com/ubirch/ubirch-cose-client-go/main; go:github.com/ubirch/ubirch-cose-client-go/main/auditlogger; go:github.com/ubirch/ubirch-cose-client-go/main/config; go:github.com/ubirch/ubirch-cose-client-go/main/encryption; go:github.com/ubirch/ubirch-cose-client-go/main/http-server; go:github.com/ubirch/ubirch-cose-client-go/main/profiling,,,,ilgisiz,,hizmet istemcisi
+github.com/vanaheimr/cose.ts,K,npm:keywords:cose; npm:text=cose,npm:@vanaheimr/cose,,450,"CBOR Object Signing and Encryption (RFC 9052) in TypeScript, on top of the Metrological CBOR codec — the TypeScript coun",aday,COSE,
+github.com/velocitycareerlabs/velocitycore,K,npm:text=cose,npm:@velocitycareerlabs/cose-key,,120,Set of cose key functions used in Verii projects,ilgisiz,,yalnız COSE anahtar işlevleri
+github.com/veraison/go-cose,K+T,pkg.go.dev:q=cose; topic:cose,go:github.com/veraison/go-cose,66,,go library for CBOR Object Signing and Encryption (COSE),aday,COSE,
+github.com/vldmkr/go-cose-es256k,K,,,,,,taban-alti,,"gürültü tabanının altında (pkg.go.dev isabeti, GitHub <5★); önceki karar: ilgisiz"
+github.com/vldmkr/go-cose-es256k1-signer,K,pkg.go.dev:q=cose,go:github.com/vldmkr/go-cose-es256k1-signer,,,,ilgisiz,,go-cose için ES256K imzalayıcı
+github.com/vul-os/kotva,K,crates:q=cose,cargo:kotva-sync,,304,"KOTVA substrate capability ③ — Sync (substrate/SYNC.md): the signed, deterministic, MULTI-AUTHOR CRDT operation algebra ",ilgisiz,,ilgisiz
+github.com/walt-id/waltid-identity,Gt+T,topic:cose; topic:sd-jwt; topic:sd-jwt-vc,,311,,All-in-one open-source identity and wallet toolkit. ,aday,REF,görev tanımı (walt.id)
+github.com/web-auth/cose-lib,T,topic:cose,,19,,Cose Key and Algorithms support,aday,COSE,açıklama: 'Cose Key and Algorithms support'
+github.com/wolfssl/wolfcose,T,topic:cose,,76,,"A fast, portable, and lightweight COSE + CBOR implementation for embedded systems. Supports PQC, FIPS 140-3, DO-178, and",aday,COSE,GPL-3.0
+github.com/wyattau/webauthn-kit,K,crates:q=cose,cargo:webauthn-kit,,1317,"Standalone WebAuthn/FIDO2 passkey verification kit: CTAP2 authenticator data parsing, COSE ES256/ES384/EdDSA/RS256 signa",ilgisiz,,WebAuthn
+github.com/ycrypto/cosey,K,crates:q=cose,cargo:cosey,,21580,Data types and serde for public COSE_Keys,ilgisiz,,yalnız COSE_Key
+github.com/zzdats/go-cose,K,,,,,,taban-alti,COSE,"gürültü tabanının altında (pkg.go.dev isabeti, GitHub <5★); önceki karar: aday"
+gitlab.com/ponci-berlin/ponci,K,pkg.go.dev:q=cose,go:gitlab.com/ponci-berlin/ponci/pkg/cose,,,,ilgisiz,,uygulamaya özgü
+pkg:go:codeberg.org/nomoi/nomos/nomoi/identity,K,pkg.go.dev:q=cose,go:codeberg.org/nomoi/nomos/nomoi/identity,,,,ilgisiz,,ilgisiz
+pkg:go:go.blackcatinformatics.ca/gts/cose,K,pkg.go.dev:q=cose,go:go.blackcatinformatics.ca/gts/cose,,,,ilgisiz,,uygulamaya özgü (GTS kapsayıcı)
+pkg:maven:at.asitplus.crypto:datatypes-cose,K,maven:q=cose,maven:at.asitplus.crypto:datatypes-cose,,,latestVersion=3.6.0,yinelenen,,Signum'un eski yapıt adı (a-sit-plus/signum)
+pkg:maven:at.asitplus.crypto:datatypes-cose-iosarm64,K,maven:q=cose,maven:at.asitplus.crypto:datatypes-cose-iosarm64,,,latestVersion=3.5.1,yinelenen,,Signum eski yapıtı
+pkg:maven:at.asitplus.crypto:datatypes-cose-iossimulatorarm64,K,maven:q=cose,maven:at.asitplus.crypto:datatypes-cose-iossimulatorarm64,,,latestVersion=3.5.1,yinelenen,,Signum eski yapıtı
+pkg:maven:at.asitplus.crypto:datatypes-cose-iosx64,K,maven:q=cose,maven:at.asitplus.crypto:datatypes-cose-iosx64,,,latestVersion=3.5.1,yinelenen,,Signum eski yapıtı
+pkg:maven:at.asitplus.crypto:datatypes-cose-jvm,K,maven:q=cose,maven:at.asitplus.crypto:datatypes-cose-jvm,,,latestVersion=3.5.1,yinelenen,,Signum eski yapıtı
+pkg:maven:at.asitplus.crypto:datatypes-cose-versioncatalog,K,maven:q=cose,maven:at.asitplus.crypto:datatypes-cose-versionCatalog,,,latestVersion=3.5.1,yinelenen,,Signum eski yapıtı
+pkg:maven:at.asitplus.wallet:eupidcredential-sdjwt,K,maven:q=sdjwt,maven:at.asitplus.wallet:eupidcredential-sdjwt,,,latestVersion=1.1.0,uygulama,,kimlik bilgisi şeması (kütüphane değil)
+pkg:maven:at.asitplus.wallet:eupidcredential-sdjwt-iosarm64,K,maven:q=sdjwt,maven:at.asitplus.wallet:eupidcredential-sdjwt-iosarm64,,,latestVersion=1.1.0,uygulama,,kimlik bilgisi şeması (kütüphane değil)
+pkg:maven:at.asitplus.wallet:eupidcredential-sdjwt-iossimulatorarm64,K,maven:q=sdjwt,maven:at.asitplus.wallet:eupidcredential-sdjwt-iossimulatorarm64,,,latestVersion=1.1.0,uygulama,,kimlik bilgisi şeması (kütüphane değil)
+pkg:maven:at.asitplus.wallet:eupidcredential-sdjwt-iosx64,K,maven:q=sdjwt,maven:at.asitplus.wallet:eupidcredential-sdjwt-iosx64,,,latestVersion=1.1.0,uygulama,,kimlik bilgisi şeması (kütüphane değil)
+pkg:maven:at.asitplus.wallet:eupidcredential-sdjwt-jvm,K,maven:q=sdjwt,maven:at.asitplus.wallet:eupidcredential-sdjwt-jvm,,,latestVersion=1.1.0,uygulama,,kimlik bilgisi şeması (kütüphane değil)
+pkg:maven:at.asitplus.wallet:eupidcredential-sdjwt-versioncatalog,K,maven:q=sdjwt,maven:at.asitplus.wallet:eupidcredential-sdjwt-versionCatalog,,,latestVersion=1.1.0,uygulama,,kimlik bilgisi şeması (kütüphane değil)
+pkg:maven:com.augustcellars.cose:cose-java,K,maven:q=cose,maven:com.augustcellars.cose:cose-java,,,latestVersion=1.1.0,yinelenen,,cose-wg/COSE-JAVA
+pkg:maven:com.authlete:sd-jwt,K,maven:q=sd-jwt,maven:com.authlete:sd-jwt,,,latestVersion=1.5,yinelenen,,authlete/sd-jwt
+pkg:maven:de.adorsys:sd-jwt,K,maven:q=sd-jwt,maven:de.adorsys:sd-jwt,,,latestVersion=1.2,aday,SDJWT,Maven araması
+pkg:maven:eu.europa.ec.eudi:eudi-lib-jvm-sdjwt-kt,K,maven:q=sdjwt,maven:eu.europa.ec.eudi:eudi-lib-jvm-sdjwt-kt,,,latestVersion=0.13.1,yinelenen,,eudi-lib-jvm-sdjwt-kt
+pkg:maven:io.iohk.atala:sd-jwt-kmp,K,maven:q=sd-jwt,maven:io.iohk.atala:sd-jwt-kmp,,,latestVersion=0.1.2,yinelenen,,deps.dev SOURCE_REPO: input-output-hk/sd-jwt-rust (OWF sd-jwt-rust türevi; KMP bağlamaları)
+pkg:maven:io.iohk.atala:sd-jwt-kmp-android,K,maven:q=sd-jwt,maven:io.iohk.atala:sd-jwt-kmp-android,,,latestVersion=0.1.2,yinelenen,,aynı (io.iohk.atala:sd-jwt-kmp)
+pkg:maven:io.iohk.atala:sd-jwt-kmp-android-debug,K,maven:q=sd-jwt,maven:io.iohk.atala:sd-jwt-kmp-android-debug,,,latestVersion=0.1.2,yinelenen,,aynı (io.iohk.atala:sd-jwt-kmp)
+pkg:maven:io.iohk.atala:sd-jwt-kmp-jvm,K,maven:q=sd-jwt,maven:io.iohk.atala:sd-jwt-kmp-jvm,,,latestVersion=0.1.2,yinelenen,,aynı (io.iohk.atala:sd-jwt-kmp)
+pkg:maven:org.sd-jwt:sd-jwt-kotlin,K,maven:q=sd-jwt,maven:org.sd-jwt:sd-jwt-kotlin,,,latestVersion=0.0.0,yinelenen,,openwallet-foundation-labs/sd-jwt-kotlin
+pkg:maven:org.webjars.npm:cose-base,K,maven:q=cose,maven:org.webjars.npm:cose-base,,,latestVersion=2.2.0,ilgisiz,,graf yerleşimi
+pkg:maven:org.webjars.npm:cose-js,K,maven:q=cose,maven:org.webjars.npm:cose-js,,,latestVersion=0.7.0,yinelenen,,WebJars yeniden paketlemesi (cose-js)
+pkg:maven:org.webjars.npm:cytoscape-cose-bilkent,K,maven:q=cose,maven:org.webjars.npm:cytoscape-cose-bilkent,,,latestVersion=4.1.0,ilgisiz,,graf yerleşimi
+pkg:maven:org.wso2.carbon.identity.openid4vc:org.wso2.carbon.identity.sdjwt,K,maven:q=sdjwt,maven:org.wso2.carbon.identity.openid4vc:org.wso2.carbon.identity.sdjwt,,,latestVersion=1.1.6,uygulama,,WSO2 Identity Server ürün bileşeni
+pkg:maven:org.wso2.carbon.identity.openid4vc:org.wso2.carbon.identity.sdjwt.server.feature,K,maven:q=sdjwt,maven:org.wso2.carbon.identity.openid4vc:org.wso2.carbon.identity.sdjwt.server.feature,,,latestVersion=1.1.6,uygulama,,WSO2 IS ürün özelliği
+pkg:npm:@lukachi/cose-ts,K,npm:text=cose,npm:@lukachi/cose-ts,,682,Typescript COSE implementation,uygulama,,depo URL'si yok ('git')
+pkg:npm:@lukas.j.han/sd-jwt,K,npm:text=sd-jwt,npm:@lukas.j.han/sd-jwt,,152,sd-jwt draft 6 implementation in typescript,yinelenen,,sd-jwt-js'nin öncül paketi (açıklama: 'sd-jwt draft 6'); depo yok
+pkg:npm:@metadium-did/platform-agent-js,K,npm:text=sd-jwt,npm:@metadium-did/platform-agent-js,,476,"METADIUM AI-agent holder client + CLI — did:jwk key, PoP JWT, SD-JWT VC presentation (KB-JWT), and the Briefick agent-au",uygulama,,agent client; depo yok
+pkg:npm:@terminal3/sd_jwt_vc,K,npm:text=sd-jwt,npm:@terminal3/sd_jwt_vc,,270,This SDK enables issuing a SD JWT VC using RS256 algorithm for signing and SHA-256 for hashing.,uygulama,,hizmet SDK'sı; depo yok
+pkg:nuget:com.augustcellars.coap,K,nuget:q=cose,nuget:Com.AugustCellars.CoAP,,326952,An implementation of various CoAP standards.  Both client and server sides are included.,ilgisiz,,CoAP
+pkg:nuget:com.augustcellars.cose,K,nuget:q=cose,nuget:Com.AugustCellars.COSE,,492651,An implementation of the CBOR Object Signing and Encryption standards.,yinelenen,,cose-wg/COSE-csharp
+pkg:nuget:com.augustcellars.webtoken,K,nuget:q=cose,nuget:Com.AugustCellars.WebToken,,3951,An implementation of the CWT specification.,ilgisiz,,CWT (aynı yazar; COSE-csharp'a dayanır)
+pkg:nuget:system.security.cryptography.cose,K,nuget:q=cose,nuget:System.Security.Cryptography.Cose,,680006,Provides support for CBOR Object Signing and Encryption (COSE).,aday,COSE,.NET çalışma zamanının COSE kütüphanesi (dotnet/runtime; depo yıldızı bu bileşeni temsil etmez)
+pkg:pypi:sd-jwt,K,pypi:ad=sd-jwt,pypi:sd-jwt,,,The reference implementation of the IETF SD-JWT specification.,yinelenen,,openwallet-foundation-labs/sd-jwt-python (PyPI project_urls boş)

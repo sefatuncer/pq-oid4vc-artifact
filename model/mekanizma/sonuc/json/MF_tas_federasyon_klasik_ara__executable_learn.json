@@ -1,0 +1,3315 @@
+{
+    "graphs": [
+        {
+            "jgAbbrevs": [
+                {
+                    "jgaAbbrev": {
+                        "jgnConst": "PQ1"
+                    },
+                    "jgaExpansion": {
+                        "jgnConst": "'pq_required'"
+                    },
+                    "jgaTerm": {
+                        "jgnConst": "'pq_required'"
+                    }
+                },
+                {
+                    "jgaAbbrev": {
+                        "jgnConst": "SI2"
+                    },
+                    "jgaExpansion": {
+                        "jgnFunct": "sign",
+                        "jgnParams": [
+                            {
+                                "jgnFunct": "pair",
+                                "jgnParams": [
+                                    {
+                                        "jgnConst": "'fed_int'"
+                                    },
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "'FEDINT'"
+                                            },
+                                            {
+                                                "jgnFunct": "pk",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "~kn"
+                                                    }
+                                                ],
+                                                "jgnShow": "pk(~kn)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair('FEDINT',pk(~kn))"
+                                    }
+                                ],
+                                "jgnShow": "pair('fed_int',pair('FEDINT',pk(~kn)))"
+                            },
+                            {
+                                "jgnConst": "~kta"
+                            }
+                        ],
+                        "jgnShow": "sign(pair('fed_int',pair('FEDINT',pk(~kn))),~kta)"
+                    },
+                    "jgaTerm": {
+                        "jgnFunct": "sign",
+                        "jgnParams": [
+                            {
+                                "jgnFunct": "pair",
+                                "jgnParams": [
+                                    {
+                                        "jgnConst": "'fed_int'"
+                                    },
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "'FEDINT'"
+                                            },
+                                            {
+                                                "jgnFunct": "pk",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "~kn"
+                                                    }
+                                                ],
+                                                "jgnShow": "pk(~kn)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair('FEDINT',pk(~kn))"
+                                    }
+                                ],
+                                "jgnShow": "pair('fed_int',pair('FEDINT',pk(~kn)))"
+                            },
+                            {
+                                "jgnConst": "~kta"
+                            }
+                        ],
+                        "jgnShow": "sign(pair('fed_int',pair('FEDINT',pk(~kn))),~kta)"
+                    }
+                },
+                {
+                    "jgaAbbrev": {
+                        "jgnConst": "SI1"
+                    },
+                    "jgaExpansion": {
+                        "jgnFunct": "sign",
+                        "jgnParams": [
+                            {
+                                "jgnFunct": "pair",
+                                "jgnParams": [
+                                    {
+                                        "jgnConst": "'fed_stmt'"
+                                    },
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~sid"
+                                            },
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "$I"
+                                                    },
+                                                    {
+                                                        "jgnConst": "PQ1"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair($I,PQ1)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(~sid,pair($I,PQ1))"
+                                    }
+                                ],
+                                "jgnShow": "pair('fed_stmt',pair(~sid,pair($I,PQ1)))"
+                            },
+                            {
+                                "jgnConst": "~kn"
+                            }
+                        ],
+                        "jgnShow": "sign(pair('fed_stmt',pair(~sid,pair($I,PQ1))),~kn)"
+                    },
+                    "jgaTerm": {
+                        "jgnFunct": "sign",
+                        "jgnParams": [
+                            {
+                                "jgnFunct": "pair",
+                                "jgnParams": [
+                                    {
+                                        "jgnConst": "'fed_stmt'"
+                                    },
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~sid"
+                                            },
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "$I"
+                                                    },
+                                                    {
+                                                        "jgnConst": "'pq_required'"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair($I,'pq_required')"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(~sid,pair($I,'pq_required'))"
+                                    }
+                                ],
+                                "jgnShow": "pair('fed_stmt',pair(~sid,pair($I,'pq_required')))"
+                            },
+                            {
+                                "jgnConst": "~kn"
+                            }
+                        ],
+                        "jgnShow": "sign(pair('fed_stmt',pair(~sid,pair($I,'pq_required'))),~kn)"
+                    }
+                }
+            ],
+            "jgClusters": [],
+            "jgDirected": true,
+            "jgEdges": [
+                {
+                    "jgeRelation": "PersistentFact",
+                    "jgeSource": "#m:c3",
+                    "jgeTarget": "#vr.4:p1"
+                },
+                {
+                    "jgeRelation": "default",
+                    "jgeSource": "#vf:c0",
+                    "jgeTarget": "#k:p2"
+                },
+                {
+                    "jgeRelation": "KFact",
+                    "jgeSource": "#vl:c0",
+                    "jgeTarget": "#vk:p0"
+                },
+                {
+                    "jgeRelation": "ProtoFact",
+                    "jgeSource": "#vr:c0",
+                    "jgeTarget": "#k:p0"
+                },
+                {
+                    "jgeRelation": "default",
+                    "jgeSource": "#vr:c1",
+                    "jgeTarget": "#vl.2:p0"
+                },
+                {
+                    "jgeRelation": "default",
+                    "jgeSource": "#vf.1:c0",
+                    "jgeTarget": "#k:p3"
+                },
+                {
+                    "jgeRelation": "KFact",
+                    "jgeSource": "#vl.1:c0",
+                    "jgeTarget": "#vr.5:p0"
+                },
+                {
+                    "jgeRelation": "ProtoFact",
+                    "jgeSource": "#vr.1:c0",
+                    "jgeTarget": "#vr:p0"
+                },
+                {
+                    "jgeRelation": "KFact",
+                    "jgeSource": "#vl.2:c0",
+                    "jgeTarget": "#vr.7:p0"
+                },
+                {
+                    "jgeRelation": "PersistentFact",
+                    "jgeSource": "#vr.2:c0",
+                    "jgeTarget": "#k:p1"
+                },
+                {
+                    "jgeRelation": "PersistentFact",
+                    "jgeSource": "#vr.2:c1",
+                    "jgeTarget": "#vr.4:p0"
+                },
+                {
+                    "jgeRelation": "KFact",
+                    "jgeSource": "#vr.2:c3",
+                    "jgeTarget": "#vk.3:p0"
+                },
+                {
+                    "jgeRelation": "default",
+                    "jgeSource": "#vr.2:c4",
+                    "jgeTarget": "#vl:p0"
+                },
+                {
+                    "jgeRelation": "default",
+                    "jgeSource": "#vr.4:c0",
+                    "jgeTarget": "#vl.1:p0"
+                },
+                {
+                    "jgeRelation": "default",
+                    "jgeSource": "#vf.5:c0",
+                    "jgeTarget": "#vr.4:p2"
+                },
+                {
+                    "jgeRelation": "KFact",
+                    "jgeSource": "#vr.5:c0",
+                    "jgeTarget": "#vk.1:p0"
+                },
+                {
+                    "jgeRelation": "PersistentFact",
+                    "jgeSource": "#vr.6:c0",
+                    "jgeTarget": "#m:p0"
+                },
+                {
+                    "jgeRelation": "KFact",
+                    "jgeSource": "#vr.7:c0",
+                    "jgeTarget": "#vk.2:p0"
+                },
+                {
+                    "jgeRelation": "LessAtoms",
+                    "jgeSource": "#vk",
+                    "jgeTarget": "#vf"
+                },
+                {
+                    "jgeRelation": "LessAtoms",
+                    "jgeSource": "#vl",
+                    "jgeTarget": "#vf"
+                },
+                {
+                    "jgeRelation": "LessAtoms",
+                    "jgeSource": "#vk.1",
+                    "jgeTarget": "#vf.1"
+                },
+                {
+                    "jgeRelation": "LessAtoms",
+                    "jgeSource": "#vl.1",
+                    "jgeTarget": "#vf.1"
+                },
+                {
+                    "jgeRelation": "LessAtoms",
+                    "jgeSource": "#vk.2",
+                    "jgeTarget": "#vf.1"
+                },
+                {
+                    "jgeRelation": "LessAtoms",
+                    "jgeSource": "#vk.2",
+                    "jgeTarget": "#vf.5"
+                },
+                {
+                    "jgeRelation": "LessAtoms",
+                    "jgeSource": "#vl.2",
+                    "jgeTarget": "#vf.5"
+                },
+                {
+                    "jgeRelation": "LessAtoms",
+                    "jgeSource": "#vk.3",
+                    "jgeTarget": "#vf"
+                },
+                {
+                    "jgeRelation": "LessAtoms",
+                    "jgeSource": "#vr.7",
+                    "jgeTarget": "#vf.5"
+                }
+            ],
+            "jgLabel": "trace_Mf_Yol_SL2-AS0-CL0-A1-C1-NB_executable_learn-Fed_Query-Fed_Setup-Fed_Setup-Fed_Respond_PQ_case_1-Issuer_Setup_Born-Fed_Query-Fed_Setup_case_1",
+            "jgNodes": [
+                {
+                    "jgnId": "#k",
+                    "jgnLabel": "Exp_Fed_Req",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Eq",
+                                "jgnFactShow": "Eq( true, true )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "true",
+                                        "jgnParams": [],
+                                        "jgnShow": "true"
+                                    },
+                                    {
+                                        "jgnFunct": "true",
+                                        "jgnParams": [],
+                                        "jgnShow": "true"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Eq",
+                                "jgnFactShow": "Eq( true, true )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "true",
+                                        "jgnParams": [],
+                                        "jgnShow": "true"
+                                    },
+                                    {
+                                        "jgnFunct": "true",
+                                        "jgnParams": [],
+                                        "jgnShow": "true"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "NotEq",
+                                "jgnFactShow": "NotEq( 'pq_required', 'none' )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "'pq_required'"
+                                    },
+                                    {
+                                        "jgnConst": "'none'"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "SeenPQReq",
+                                "jgnFactShow": "SeenPQReq( $V, $I )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$V"
+                                    },
+                                    {
+                                        "jgnConst": "$I"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#k:c0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Exp",
+                                "jgnFactShow": "Exp( $V, ~sid, $I, 'pq_required' )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$V"
+                                    },
+                                    {
+                                        "jgnConst": "~sid"
+                                    },
+                                    {
+                                        "jgnConst": "$I"
+                                    },
+                                    {
+                                        "jgnConst": "'pq_required'"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#k:p0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "FQ",
+                                "jgnFactShow": "FQ( $V, ~sid, $I )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$V"
+                                    },
+                                    {
+                                        "jgnConst": "~sid"
+                                    },
+                                    {
+                                        "jgnConst": "$I"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#k:p1",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!TAPin",
+                                "jgnFactShow": "!TAPin( pk(~kta) )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~kta"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~kta)"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#k:p2",
+                                "jgnFactMult": "",
+                                "jgnFactName": "In",
+                                "jgnFactShow": "In( <<'fed_int', 'FEDINT', pk(~kn)>, sign(<'fed_int', 'FEDINT', pk(~kn)>, ~kta)>)",
+                                "jgnFactTag": "InFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'fed_int'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'FEDINT'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pk",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~kn"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pk(~kn)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('FEDINT',pk(~kn))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('fed_int',pair('FEDINT',pk(~kn)))"
+                                            },
+                                            {
+                                                "jgnFunct": "sign",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'fed_int'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "'FEDINT'"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pk",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "~kn"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pk(~kn)"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair('FEDINT',pk(~kn))"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('fed_int',pair('FEDINT',pk(~kn)))"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~kta"
+                                                    }
+                                                ],
+                                                "jgnShow": "sign(pair('fed_int',pair('FEDINT',pk(~kn))),~kta)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('fed_int',pair('FEDINT',pk(~kn))),sign(pair('fed_int',pair('FEDINT',pk(~kn))),~kta))"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#k:p3",
+                                "jgnFactMult": "",
+                                "jgnFactName": "In",
+                                "jgnFactShow": "In( <<'fed_stmt', ~sid, $I, 'pq_required'>, sign(<'fed_stmt', ~sid, $I, 'pq_required'>, ~kn)>)",
+                                "jgnFactTag": "InFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'fed_stmt'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "~sid"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "$I"
+                                                                    },
+                                                                    {
+                                                                        "jgnConst": "'pq_required'"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair($I,'pq_required')"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair(~sid,pair($I,'pq_required'))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('fed_stmt',pair(~sid,pair($I,'pq_required')))"
+                                            },
+                                            {
+                                                "jgnFunct": "sign",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'fed_stmt'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~sid"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pair",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "$I"
+                                                                            },
+                                                                            {
+                                                                                "jgnConst": "'pq_required'"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pair($I,'pq_required')"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair(~sid,pair($I,'pq_required'))"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('fed_stmt',pair(~sid,pair($I,'pq_required')))"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~kn"
+                                                    }
+                                                ],
+                                                "jgnShow": "sign(pair('fed_stmt',pair(~sid,pair($I,'pq_required'))),~kn)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('fed_stmt',pair(~sid,pair($I,'pq_required'))),sign(pair('fed_stmt',pair(~sid,pair($I,'pq_required'))),~kn))"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isProtocolRule"
+                },
+                {
+                    "jgnId": "#m",
+                    "jgnLabel": "Issuer_Setup_Born",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Unique",
+                                "jgnFactShow": "Unique( <'iss', $I> )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "'iss'"
+                                            },
+                                            {
+                                                "jgnConst": "$I"
+                                            }
+                                        ],
+                                        "jgnShow": "pair('iss',$I)"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Unique",
+                                "jgnFactShow": "Unique( <'migrate', $I> )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "'migrate'"
+                                            },
+                                            {
+                                                "jgnConst": "$I"
+                                            }
+                                        ],
+                                        "jgnShow": "pair('migrate',$I)"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "BornMigrated",
+                                "jgnFactShow": "BornMigrated( $I )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$I"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Migrate",
+                                "jgnFactShow": "Migrate( $I )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$I"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "StateChange",
+                                "jgnFactShow": "StateChange( $I )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$I"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#m:c0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!IssCl",
+                                "jgnFactShow": "!IssCl( $I, ~kc )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$I"
+                                    },
+                                    {
+                                        "jgnConst": "~kc"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#m:c1",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!IssPQ",
+                                "jgnFactShow": "!IssPQ( $I, ~kq )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$I"
+                                    },
+                                    {
+                                        "jgnConst": "~kq"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#m:c2",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!PinCl",
+                                "jgnFactShow": "!PinCl( $I, pk(~kc) )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$I"
+                                    },
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~kc"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~kc)"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#m:c3",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!PinPQ",
+                                "jgnFactShow": "!PinPQ( $I, pk(~kq) )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$I"
+                                    },
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~kq"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~kq)"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#m:c4",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Out",
+                                "jgnFactShow": "Out( pk(~kc) )",
+                                "jgnFactTag": "OutFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~kc"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~kc)"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#m:c5",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Out",
+                                "jgnFactShow": "Out( pk(~kq) )",
+                                "jgnFactTag": "OutFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~kq"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~kq)"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#m:c6",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Out",
+                                "jgnFactShow": "Out( <<'iss_cert', $I, pk(~kc), 'cl'>, sign(<'iss_cert', $I, pk(~kc), 'cl'>, ~kcam)>)",
+                                "jgnFactTag": "OutFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'iss_cert'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "$I"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnFunct": "pk",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "~kc"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pk(~kc)"
+                                                                    },
+                                                                    {
+                                                                        "jgnConst": "'cl'"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair(pk(~kc),'cl')"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair($I,pair(pk(~kc),'cl'))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('iss_cert',pair($I,pair(pk(~kc),'cl')))"
+                                            },
+                                            {
+                                                "jgnFunct": "sign",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'iss_cert'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "$I"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pair",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnFunct": "pk",
+                                                                                "jgnParams": [
+                                                                                    {
+                                                                                        "jgnConst": "~kc"
+                                                                                    }
+                                                                                ],
+                                                                                "jgnShow": "pk(~kc)"
+                                                                            },
+                                                                            {
+                                                                                "jgnConst": "'cl'"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pair(pk(~kc),'cl')"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair($I,pair(pk(~kc),'cl'))"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('iss_cert',pair($I,pair(pk(~kc),'cl')))"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~kcam"
+                                                    }
+                                                ],
+                                                "jgnShow": "sign(pair('iss_cert',pair($I,pair(pk(~kc),'cl'))),~kcam)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('iss_cert',pair($I,pair(pk(~kc),'cl'))),sign(pair('iss_cert',pair($I,pair(pk(~kc),'cl'))),~kcam))"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#m:c7",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Out",
+                                "jgnFactShow": "Out( <<'iss_cert', $I, pk(~kq), 'pq'>, sign(<'iss_cert', $I, pk(~kq), 'pq'>, ~kcam)>)",
+                                "jgnFactTag": "OutFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'iss_cert'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "$I"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnFunct": "pk",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "~kq"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pk(~kq)"
+                                                                    },
+                                                                    {
+                                                                        "jgnConst": "'pq'"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair(pk(~kq),'pq')"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair($I,pair(pk(~kq),'pq'))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('iss_cert',pair($I,pair(pk(~kq),'pq')))"
+                                            },
+                                            {
+                                                "jgnFunct": "sign",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'iss_cert'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "$I"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pair",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnFunct": "pk",
+                                                                                "jgnParams": [
+                                                                                    {
+                                                                                        "jgnConst": "~kq"
+                                                                                    }
+                                                                                ],
+                                                                                "jgnShow": "pk(~kq)"
+                                                                            },
+                                                                            {
+                                                                                "jgnConst": "'pq'"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pair(pk(~kq),'pq')"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair($I,pair(pk(~kq),'pq'))"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('iss_cert',pair($I,pair(pk(~kq),'pq')))"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~kcam"
+                                                    }
+                                                ],
+                                                "jgnShow": "sign(pair('iss_cert',pair($I,pair(pk(~kq),'pq'))),~kcam)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('iss_cert',pair($I,pair(pk(~kq),'pq'))),sign(pair('iss_cert',pair($I,pair(pk(~kq),'pq'))),~kcam))"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#m:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!CASk",
+                                "jgnFactShow": "!CASk( 'CAM', ~kcam )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "'CAM'"
+                                    },
+                                    {
+                                        "jgnConst": "~kcam"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#m:p1",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Fr",
+                                "jgnFactShow": "Fr( ~kc )",
+                                "jgnFactTag": "FreshFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~kc"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#m:p2",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Fr",
+                                "jgnFactShow": "Fr( ~kq )",
+                                "jgnFactTag": "FreshFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~kq"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isProtocolRule"
+                },
+                {
+                    "jgnId": "#vf",
+                    "jgnLabel": "Send",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "K",
+                                "jgnFactShow": "K( <<'fed_int', 'FEDINT', pk(~kn)>, sign(<'fed_int', 'FEDINT', pk(~kn)>, ~kta)>)",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'fed_int'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'FEDINT'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pk",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~kn"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pk(~kn)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('FEDINT',pk(~kn))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('fed_int',pair('FEDINT',pk(~kn)))"
+                                            },
+                                            {
+                                                "jgnFunct": "sign",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'fed_int'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "'FEDINT'"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pk",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "~kn"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pk(~kn)"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair('FEDINT',pk(~kn))"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('fed_int',pair('FEDINT',pk(~kn)))"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~kta"
+                                                    }
+                                                ],
+                                                "jgnShow": "sign(pair('fed_int',pair('FEDINT',pk(~kn))),~kta)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('fed_int',pair('FEDINT',pk(~kn))),sign(pair('fed_int',pair('FEDINT',pk(~kn))),~kta))"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vf:c0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "In",
+                                "jgnFactShow": "In( <<'fed_int', 'FEDINT', pk(~kn)>, sign(<'fed_int', 'FEDINT', pk(~kn)>, ~kta)>)",
+                                "jgnFactTag": "InFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'fed_int'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'FEDINT'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pk",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~kn"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pk(~kn)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('FEDINT',pk(~kn))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('fed_int',pair('FEDINT',pk(~kn)))"
+                                            },
+                                            {
+                                                "jgnFunct": "sign",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'fed_int'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "'FEDINT'"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pk",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "~kn"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pk(~kn)"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair('FEDINT',pk(~kn))"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('fed_int',pair('FEDINT',pk(~kn)))"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~kta"
+                                                    }
+                                                ],
+                                                "jgnShow": "sign(pair('fed_int',pair('FEDINT',pk(~kn))),~kta)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('fed_int',pair('FEDINT',pk(~kn))),sign(pair('fed_int',pair('FEDINT',pk(~kn))),~kta))"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vf:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( <<'fed_int', 'FEDINT', pk(~kn)>, sign(<'fed_int', 'FEDINT', pk(~kn)>, ~kta)>)",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'fed_int'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'FEDINT'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pk",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~kn"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pk(~kn)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('FEDINT',pk(~kn))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('fed_int',pair('FEDINT',pk(~kn)))"
+                                            },
+                                            {
+                                                "jgnFunct": "sign",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'fed_int'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "'FEDINT'"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pk",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "~kn"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pk(~kn)"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair('FEDINT',pk(~kn))"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('fed_int',pair('FEDINT',pk(~kn)))"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~kta"
+                                                    }
+                                                ],
+                                                "jgnShow": "sign(pair('fed_int',pair('FEDINT',pk(~kn))),~kta)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('fed_int',pair('FEDINT',pk(~kn))),sign(pair('fed_int',pair('FEDINT',pk(~kn))),~kta))"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                },
+                {
+                    "jgnId": "#vk",
+                    "jgnLabel": "Coerce",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( sign(<'fed_int', 'FEDINT', pk(~kn)>, ~kta) )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "sign",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'fed_int'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'FEDINT'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pk",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~kn"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pk(~kn)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('FEDINT',pk(~kn))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('fed_int',pair('FEDINT',pk(~kn)))"
+                                            },
+                                            {
+                                                "jgnConst": "~kta"
+                                            }
+                                        ],
+                                        "jgnShow": "sign(pair('fed_int',pair('FEDINT',pk(~kn))),~kta)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vk:c0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( sign(<'fed_int', 'FEDINT', pk(~kn)>, ~kta) )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "sign",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'fed_int'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'FEDINT'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pk",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~kn"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pk(~kn)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('FEDINT',pk(~kn))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('fed_int',pair('FEDINT',pk(~kn)))"
+                                            },
+                                            {
+                                                "jgnConst": "~kta"
+                                            }
+                                        ],
+                                        "jgnShow": "sign(pair('fed_int',pair('FEDINT',pk(~kn))),~kta)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vk:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KD",
+                                "jgnFactShow": "!KD( sign(<'fed_int', 'FEDINT', pk(~kn)>, ~kta) )",
+                                "jgnFactTag": "KDFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "sign",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'fed_int'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'FEDINT'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pk",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~kn"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pk(~kn)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('FEDINT',pk(~kn))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('fed_int',pair('FEDINT',pk(~kn)))"
+                                            },
+                                            {
+                                                "jgnConst": "~kta"
+                                            }
+                                        ],
+                                        "jgnShow": "sign(pair('fed_int',pair('FEDINT',pk(~kn))),~kta)"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                },
+                {
+                    "jgnId": "#vl",
+                    "jgnLabel": "Recv",
+                    "jgnMetadata": {
+                        "jgnActs": [],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vl:c0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KD",
+                                "jgnFactShow": "!KD( <<'fed_int', 'FEDINT', pk(~kn)>, sign(<'fed_int', 'FEDINT', pk(~kn)>, ~kta)>)",
+                                "jgnFactTag": "KDFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'fed_int'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'FEDINT'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pk",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~kn"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pk(~kn)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('FEDINT',pk(~kn))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('fed_int',pair('FEDINT',pk(~kn)))"
+                                            },
+                                            {
+                                                "jgnFunct": "sign",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'fed_int'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "'FEDINT'"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pk",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "~kn"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pk(~kn)"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair('FEDINT',pk(~kn))"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('fed_int',pair('FEDINT',pk(~kn)))"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~kta"
+                                                    }
+                                                ],
+                                                "jgnShow": "sign(pair('fed_int',pair('FEDINT',pk(~kn))),~kta)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('fed_int',pair('FEDINT',pk(~kn))),sign(pair('fed_int',pair('FEDINT',pk(~kn))),~kta))"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vl:p0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Out",
+                                "jgnFactShow": "Out( <<'fed_int', 'FEDINT', pk(~kn)>, sign(<'fed_int', 'FEDINT', pk(~kn)>, ~kta)>)",
+                                "jgnFactTag": "OutFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'fed_int'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'FEDINT'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pk",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~kn"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pk(~kn)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('FEDINT',pk(~kn))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('fed_int',pair('FEDINT',pk(~kn)))"
+                                            },
+                                            {
+                                                "jgnFunct": "sign",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'fed_int'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "'FEDINT'"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pk",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "~kn"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pk(~kn)"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair('FEDINT',pk(~kn))"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('fed_int',pair('FEDINT',pk(~kn)))"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~kta"
+                                                    }
+                                                ],
+                                                "jgnShow": "sign(pair('fed_int',pair('FEDINT',pk(~kn))),~kta)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('fed_int',pair('FEDINT',pk(~kn))),sign(pair('fed_int',pair('FEDINT',pk(~kn))),~kta))"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                },
+                {
+                    "jgnId": "#vr",
+                    "jgnLabel": "Fed_Query",
+                    "jgnMetadata": {
+                        "jgnActs": [],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vr:c0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "FQ",
+                                "jgnFactShow": "FQ( $V, ~sid, $I )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$V"
+                                    },
+                                    {
+                                        "jgnConst": "~sid"
+                                    },
+                                    {
+                                        "jgnConst": "$I"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#vr:c1",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Out",
+                                "jgnFactShow": "Out( <'q', ~sid, $I> )",
+                                "jgnFactTag": "OutFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "'q'"
+                                            },
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "~sid"
+                                                    },
+                                                    {
+                                                        "jgnConst": "$I"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair(~sid,$I)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair('q',pair(~sid,$I))"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vr:p0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "VS",
+                                "jgnFactShow": "VS( $V, ~sid, $I )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$V"
+                                    },
+                                    {
+                                        "jgnConst": "~sid"
+                                    },
+                                    {
+                                        "jgnConst": "$I"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isProtocolRule"
+                },
+                {
+                    "jgnId": "#vf.1",
+                    "jgnLabel": "Send",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "K",
+                                "jgnFactShow": "K( <<'fed_stmt', ~sid, $I, 'pq_required'>, sign(<'fed_stmt', ~sid, $I, 'pq_required'>, ~kn)>)",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'fed_stmt'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "~sid"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "$I"
+                                                                    },
+                                                                    {
+                                                                        "jgnConst": "'pq_required'"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair($I,'pq_required')"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair(~sid,pair($I,'pq_required'))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('fed_stmt',pair(~sid,pair($I,'pq_required')))"
+                                            },
+                                            {
+                                                "jgnFunct": "sign",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'fed_stmt'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~sid"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pair",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "$I"
+                                                                            },
+                                                                            {
+                                                                                "jgnConst": "'pq_required'"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pair($I,'pq_required')"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair(~sid,pair($I,'pq_required'))"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('fed_stmt',pair(~sid,pair($I,'pq_required')))"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~kn"
+                                                    }
+                                                ],
+                                                "jgnShow": "sign(pair('fed_stmt',pair(~sid,pair($I,'pq_required'))),~kn)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('fed_stmt',pair(~sid,pair($I,'pq_required'))),sign(pair('fed_stmt',pair(~sid,pair($I,'pq_required'))),~kn))"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vf.1:c0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "In",
+                                "jgnFactShow": "In( <<'fed_stmt', ~sid, $I, 'pq_required'>, sign(<'fed_stmt', ~sid, $I, 'pq_required'>, ~kn)>)",
+                                "jgnFactTag": "InFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'fed_stmt'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "~sid"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "$I"
+                                                                    },
+                                                                    {
+                                                                        "jgnConst": "'pq_required'"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair($I,'pq_required')"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair(~sid,pair($I,'pq_required'))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('fed_stmt',pair(~sid,pair($I,'pq_required')))"
+                                            },
+                                            {
+                                                "jgnFunct": "sign",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'fed_stmt'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~sid"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pair",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "$I"
+                                                                            },
+                                                                            {
+                                                                                "jgnConst": "'pq_required'"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pair($I,'pq_required')"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair(~sid,pair($I,'pq_required'))"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('fed_stmt',pair(~sid,pair($I,'pq_required')))"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~kn"
+                                                    }
+                                                ],
+                                                "jgnShow": "sign(pair('fed_stmt',pair(~sid,pair($I,'pq_required'))),~kn)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('fed_stmt',pair(~sid,pair($I,'pq_required'))),sign(pair('fed_stmt',pair(~sid,pair($I,'pq_required'))),~kn))"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vf.1:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( <<'fed_stmt', ~sid, $I, 'pq_required'>, sign(<'fed_stmt', ~sid, $I, 'pq_required'>, ~kn)>)",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'fed_stmt'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "~sid"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "$I"
+                                                                    },
+                                                                    {
+                                                                        "jgnConst": "'pq_required'"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair($I,'pq_required')"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair(~sid,pair($I,'pq_required'))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('fed_stmt',pair(~sid,pair($I,'pq_required')))"
+                                            },
+                                            {
+                                                "jgnFunct": "sign",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'fed_stmt'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~sid"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pair",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "$I"
+                                                                            },
+                                                                            {
+                                                                                "jgnConst": "'pq_required'"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pair($I,'pq_required')"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair(~sid,pair($I,'pq_required'))"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('fed_stmt',pair(~sid,pair($I,'pq_required')))"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~kn"
+                                                    }
+                                                ],
+                                                "jgnShow": "sign(pair('fed_stmt',pair(~sid,pair($I,'pq_required'))),~kn)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('fed_stmt',pair(~sid,pair($I,'pq_required'))),sign(pair('fed_stmt',pair(~sid,pair($I,'pq_required'))),~kn))"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                },
+                {
+                    "jgnId": "#vk.1",
+                    "jgnLabel": "Coerce",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( sign(<'fed_stmt', ~sid, $I, 'pq_required'>, ~kn) )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "sign",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'fed_stmt'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "~sid"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "$I"
+                                                                    },
+                                                                    {
+                                                                        "jgnConst": "'pq_required'"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair($I,'pq_required')"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair(~sid,pair($I,'pq_required'))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('fed_stmt',pair(~sid,pair($I,'pq_required')))"
+                                            },
+                                            {
+                                                "jgnConst": "~kn"
+                                            }
+                                        ],
+                                        "jgnShow": "sign(pair('fed_stmt',pair(~sid,pair($I,'pq_required'))),~kn)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vk.1:c0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( sign(<'fed_stmt', ~sid, $I, 'pq_required'>, ~kn) )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "sign",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'fed_stmt'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "~sid"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "$I"
+                                                                    },
+                                                                    {
+                                                                        "jgnConst": "'pq_required'"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair($I,'pq_required')"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair(~sid,pair($I,'pq_required'))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('fed_stmt',pair(~sid,pair($I,'pq_required')))"
+                                            },
+                                            {
+                                                "jgnConst": "~kn"
+                                            }
+                                        ],
+                                        "jgnShow": "sign(pair('fed_stmt',pair(~sid,pair($I,'pq_required'))),~kn)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vk.1:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KD",
+                                "jgnFactShow": "!KD( sign(<'fed_stmt', ~sid, $I, 'pq_required'>, ~kn) )",
+                                "jgnFactTag": "KDFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "sign",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'fed_stmt'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "~sid"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "$I"
+                                                                    },
+                                                                    {
+                                                                        "jgnConst": "'pq_required'"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair($I,'pq_required')"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair(~sid,pair($I,'pq_required'))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('fed_stmt',pair(~sid,pair($I,'pq_required')))"
+                                            },
+                                            {
+                                                "jgnConst": "~kn"
+                                            }
+                                        ],
+                                        "jgnShow": "sign(pair('fed_stmt',pair(~sid,pair($I,'pq_required'))),~kn)"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                },
+                {
+                    "jgnId": "#vl.1",
+                    "jgnLabel": "Recv",
+                    "jgnMetadata": {
+                        "jgnActs": [],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vl.1:c0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KD",
+                                "jgnFactShow": "!KD( <<'fed_stmt', ~sid, $I, 'pq_required'>, sign(<'fed_stmt', ~sid, $I, 'pq_required'>, ~kn)>)",
+                                "jgnFactTag": "KDFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'fed_stmt'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "~sid"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "$I"
+                                                                    },
+                                                                    {
+                                                                        "jgnConst": "'pq_required'"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair($I,'pq_required')"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair(~sid,pair($I,'pq_required'))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('fed_stmt',pair(~sid,pair($I,'pq_required')))"
+                                            },
+                                            {
+                                                "jgnFunct": "sign",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'fed_stmt'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~sid"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pair",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "$I"
+                                                                            },
+                                                                            {
+                                                                                "jgnConst": "'pq_required'"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pair($I,'pq_required')"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair(~sid,pair($I,'pq_required'))"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('fed_stmt',pair(~sid,pair($I,'pq_required')))"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~kn"
+                                                    }
+                                                ],
+                                                "jgnShow": "sign(pair('fed_stmt',pair(~sid,pair($I,'pq_required'))),~kn)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('fed_stmt',pair(~sid,pair($I,'pq_required'))),sign(pair('fed_stmt',pair(~sid,pair($I,'pq_required'))),~kn))"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vl.1:p0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Out",
+                                "jgnFactShow": "Out( <<'fed_stmt', ~sid, $I, 'pq_required'>, sign(<'fed_stmt', ~sid, $I, 'pq_required'>, ~kn)>)",
+                                "jgnFactTag": "OutFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'fed_stmt'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "~sid"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "$I"
+                                                                    },
+                                                                    {
+                                                                        "jgnConst": "'pq_required'"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair($I,'pq_required')"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair(~sid,pair($I,'pq_required'))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('fed_stmt',pair(~sid,pair($I,'pq_required')))"
+                                            },
+                                            {
+                                                "jgnFunct": "sign",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'fed_stmt'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~sid"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pair",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "$I"
+                                                                            },
+                                                                            {
+                                                                                "jgnConst": "'pq_required'"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pair($I,'pq_required')"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair(~sid,pair($I,'pq_required'))"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('fed_stmt',pair(~sid,pair($I,'pq_required')))"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~kn"
+                                                    }
+                                                ],
+                                                "jgnShow": "sign(pair('fed_stmt',pair(~sid,pair($I,'pq_required'))),~kn)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('fed_stmt',pair(~sid,pair($I,'pq_required'))),sign(pair('fed_stmt',pair(~sid,pair($I,'pq_required'))),~kn))"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                },
+                {
+                    "jgnId": "#vr.1",
+                    "jgnLabel": "Verifier_Start",
+                    "jgnMetadata": {
+                        "jgnActs": [],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vr.1:c0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "VS",
+                                "jgnFactShow": "VS( $V, ~sid, $I )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$V"
+                                    },
+                                    {
+                                        "jgnConst": "~sid"
+                                    },
+                                    {
+                                        "jgnConst": "$I"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vr.1:p0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Fr",
+                                "jgnFactShow": "Fr( ~sid )",
+                                "jgnFactTag": "FreshFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~sid"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isProtocolRule"
+                },
+                {
+                    "jgnId": "#vk.2",
+                    "jgnLabel": "Coerce",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( ~sid )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~sid"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vk.2:c0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( ~sid )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~sid"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vk.2:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KD",
+                                "jgnFactShow": "!KD( ~sid )",
+                                "jgnFactTag": "KDFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~sid"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                },
+                {
+                    "jgnId": "#vl.2",
+                    "jgnLabel": "Recv",
+                    "jgnMetadata": {
+                        "jgnActs": [],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vl.2:c0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KD",
+                                "jgnFactShow": "!KD( <'q', ~sid, $I> )",
+                                "jgnFactTag": "KDFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "'q'"
+                                            },
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "~sid"
+                                                    },
+                                                    {
+                                                        "jgnConst": "$I"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair(~sid,$I)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair('q',pair(~sid,$I))"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vl.2:p0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Out",
+                                "jgnFactShow": "Out( <'q', ~sid, $I> )",
+                                "jgnFactTag": "OutFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "'q'"
+                                            },
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "~sid"
+                                                    },
+                                                    {
+                                                        "jgnConst": "$I"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair(~sid,$I)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair('q',pair(~sid,$I))"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                },
+                {
+                    "jgnId": "#vr.2",
+                    "jgnLabel": "Fed_Setup",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Unique",
+                                "jgnFactShow": "Unique( 'fed' )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "'fed'"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vr.2:c0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!TAPin",
+                                "jgnFactShow": "!TAPin( pk(~kta) )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~kta"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~kta)"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#vr.2:c1",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!FedIntSk",
+                                "jgnFactShow": "!FedIntSk( ~kn )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~kn"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#vr.2:c2",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Out",
+                                "jgnFactShow": "Out( pk(~kta) )",
+                                "jgnFactTag": "OutFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~kta"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~kta)"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#vr.2:c3",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Out",
+                                "jgnFactShow": "Out( pk(~kn) )",
+                                "jgnFactTag": "OutFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~kn"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~kn)"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#vr.2:c4",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Out",
+                                "jgnFactShow": "Out( <<'fed_int', 'FEDINT', pk(~kn)>, sign(<'fed_int', 'FEDINT', pk(~kn)>, ~kta)>)",
+                                "jgnFactTag": "OutFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'fed_int'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'FEDINT'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pk",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~kn"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pk(~kn)"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('FEDINT',pk(~kn))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('fed_int',pair('FEDINT',pk(~kn)))"
+                                            },
+                                            {
+                                                "jgnFunct": "sign",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'fed_int'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "'FEDINT'"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pk",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "~kn"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pk(~kn)"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair('FEDINT',pk(~kn))"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('fed_int',pair('FEDINT',pk(~kn)))"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~kta"
+                                                    }
+                                                ],
+                                                "jgnShow": "sign(pair('fed_int',pair('FEDINT',pk(~kn))),~kta)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('fed_int',pair('FEDINT',pk(~kn))),sign(pair('fed_int',pair('FEDINT',pk(~kn))),~kta))"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vr.2:p0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Fr",
+                                "jgnFactShow": "Fr( ~kta )",
+                                "jgnFactTag": "FreshFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~kta"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#vr.2:p1",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Fr",
+                                "jgnFactShow": "Fr( ~kn )",
+                                "jgnFactTag": "FreshFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~kn"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isProtocolRule"
+                },
+                {
+                    "jgnId": "#vk.3",
+                    "jgnLabel": "Coerce",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( pk(~kn) )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~kn"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~kn)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vk.3:c0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( pk(~kn) )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~kn"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~kn)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vk.3:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KD",
+                                "jgnFactShow": "!KD( pk(~kn) )",
+                                "jgnFactTag": "KDFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~kn"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~kn)"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                },
+                {
+                    "jgnId": "#vr.4",
+                    "jgnLabel": "Fed_Respond_PQ",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "StateIs",
+                                "jgnFactShow": "StateIs( $I, 'pq_required' )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$I"
+                                    },
+                                    {
+                                        "jgnConst": "'pq_required'"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Respond",
+                                "jgnFactShow": "Respond( ~sid, $I, 'pq_required' )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~sid"
+                                    },
+                                    {
+                                        "jgnConst": "$I"
+                                    },
+                                    {
+                                        "jgnConst": "'pq_required'"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vr.4:c0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Out",
+                                "jgnFactShow": "Out( <<'fed_stmt', ~sid, $I, 'pq_required'>, sign(<'fed_stmt', ~sid, $I, 'pq_required'>, ~kn)>)",
+                                "jgnFactTag": "OutFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'fed_stmt'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "~sid"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "$I"
+                                                                    },
+                                                                    {
+                                                                        "jgnConst": "'pq_required'"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair($I,'pq_required')"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair(~sid,pair($I,'pq_required'))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('fed_stmt',pair(~sid,pair($I,'pq_required')))"
+                                            },
+                                            {
+                                                "jgnFunct": "sign",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'fed_stmt'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~sid"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pair",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "$I"
+                                                                            },
+                                                                            {
+                                                                                "jgnConst": "'pq_required'"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pair($I,'pq_required')"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair(~sid,pair($I,'pq_required'))"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('fed_stmt',pair(~sid,pair($I,'pq_required')))"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~kn"
+                                                    }
+                                                ],
+                                                "jgnShow": "sign(pair('fed_stmt',pair(~sid,pair($I,'pq_required'))),~kn)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('fed_stmt',pair(~sid,pair($I,'pq_required'))),sign(pair('fed_stmt',pair(~sid,pair($I,'pq_required'))),~kn))"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vr.4:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!FedIntSk",
+                                "jgnFactShow": "!FedIntSk( ~kn )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~kn"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#vr.4:p1",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!PinPQ",
+                                "jgnFactShow": "!PinPQ( $I, pk(~kq) )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "$I"
+                                    },
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~kq"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~kq)"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#vr.4:p2",
+                                "jgnFactMult": "",
+                                "jgnFactName": "In",
+                                "jgnFactShow": "In( <'q', ~sid, $I> )",
+                                "jgnFactTag": "InFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "'q'"
+                                            },
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "~sid"
+                                                    },
+                                                    {
+                                                        "jgnConst": "$I"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair(~sid,$I)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair('q',pair(~sid,$I))"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isProtocolRule"
+                },
+                {
+                    "jgnId": "#vf.5",
+                    "jgnLabel": "Send",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "K",
+                                "jgnFactShow": "K( <'q', ~sid, $I> )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "'q'"
+                                            },
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "~sid"
+                                                    },
+                                                    {
+                                                        "jgnConst": "$I"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair(~sid,$I)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair('q',pair(~sid,$I))"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vf.5:c0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "In",
+                                "jgnFactShow": "In( <'q', ~sid, $I> )",
+                                "jgnFactTag": "InFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "'q'"
+                                            },
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "~sid"
+                                                    },
+                                                    {
+                                                        "jgnConst": "$I"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair(~sid,$I)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair('q',pair(~sid,$I))"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vf.5:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KU",
+                                "jgnFactShow": "!KU( <'q', ~sid, $I> )",
+                                "jgnFactTag": "KUFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "'q'"
+                                            },
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "~sid"
+                                                    },
+                                                    {
+                                                        "jgnConst": "$I"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair(~sid,$I)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair('q',pair(~sid,$I))"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                },
+                {
+                    "jgnId": "#vr.5",
+                    "jgnLabel": "Destrd_0_snd",
+                    "jgnMetadata": {
+                        "jgnActs": [],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vr.5:c0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KD",
+                                "jgnFactShow": "!KD( sign(<'fed_stmt', ~sid, $I, 'pq_required'>, ~kn) )",
+                                "jgnFactTag": "KDFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "sign",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'fed_stmt'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "~sid"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "$I"
+                                                                    },
+                                                                    {
+                                                                        "jgnConst": "'pq_required'"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair($I,'pq_required')"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair(~sid,pair($I,'pq_required'))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('fed_stmt',pair(~sid,pair($I,'pq_required')))"
+                                            },
+                                            {
+                                                "jgnConst": "~kn"
+                                            }
+                                        ],
+                                        "jgnShow": "sign(pair('fed_stmt',pair(~sid,pair($I,'pq_required'))),~kn)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vr.5:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KD",
+                                "jgnFactShow": "!KD( <<'fed_stmt', ~sid, $I, 'pq_required'>, sign(<'fed_stmt', ~sid, $I, 'pq_required'>, ~kn)>)",
+                                "jgnFactTag": "KDFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "'fed_stmt'"
+                                                    },
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "~sid"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "$I"
+                                                                    },
+                                                                    {
+                                                                        "jgnConst": "'pq_required'"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair($I,'pq_required')"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair(~sid,pair($I,'pq_required'))"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair('fed_stmt',pair(~sid,pair($I,'pq_required')))"
+                                            },
+                                            {
+                                                "jgnFunct": "sign",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnFunct": "pair",
+                                                        "jgnParams": [
+                                                            {
+                                                                "jgnConst": "'fed_stmt'"
+                                                            },
+                                                            {
+                                                                "jgnFunct": "pair",
+                                                                "jgnParams": [
+                                                                    {
+                                                                        "jgnConst": "~sid"
+                                                                    },
+                                                                    {
+                                                                        "jgnFunct": "pair",
+                                                                        "jgnParams": [
+                                                                            {
+                                                                                "jgnConst": "$I"
+                                                                            },
+                                                                            {
+                                                                                "jgnConst": "'pq_required'"
+                                                                            }
+                                                                        ],
+                                                                        "jgnShow": "pair($I,'pq_required')"
+                                                                    }
+                                                                ],
+                                                                "jgnShow": "pair(~sid,pair($I,'pq_required'))"
+                                                            }
+                                                        ],
+                                                        "jgnShow": "pair('fed_stmt',pair(~sid,pair($I,'pq_required')))"
+                                                    },
+                                                    {
+                                                        "jgnConst": "~kn"
+                                                    }
+                                                ],
+                                                "jgnShow": "sign(pair('fed_stmt',pair(~sid,pair($I,'pq_required'))),~kn)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(pair('fed_stmt',pair(~sid,pair($I,'pq_required'))),sign(pair('fed_stmt',pair(~sid,pair($I,'pq_required'))),~kn))"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                },
+                {
+                    "jgnId": "#vr.6",
+                    "jgnLabel": "CAM_Setup",
+                    "jgnMetadata": {
+                        "jgnActs": [
+                            {
+                                "jgnFactId": "action",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Unique",
+                                "jgnFactShow": "Unique( 'setup_cam' )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "'setup_cam'"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vr.6:c0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!CASk",
+                                "jgnFactShow": "!CASk( 'CAM', ~kcam )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "'CAM'"
+                                    },
+                                    {
+                                        "jgnConst": "~kcam"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#vr.6:c1",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!Anchor",
+                                "jgnFactShow": "!Anchor( 'CAM', pk(~kcam), 'pq' )",
+                                "jgnFactTag": "ProtoFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "'CAM'"
+                                    },
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~kcam"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~kcam)"
+                                    },
+                                    {
+                                        "jgnConst": "'pq'"
+                                    }
+                                ]
+                            },
+                            {
+                                "jgnFactId": "#vr.6:c2",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Out",
+                                "jgnFactShow": "Out( pk(~kcam) )",
+                                "jgnFactTag": "OutFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pk",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~kcam"
+                                            }
+                                        ],
+                                        "jgnShow": "pk(~kcam)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vr.6:p0",
+                                "jgnFactMult": "",
+                                "jgnFactName": "Fr",
+                                "jgnFactShow": "Fr( ~kcam )",
+                                "jgnFactTag": "FreshFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnConst": "~kcam"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isProtocolRule"
+                },
+                {
+                    "jgnId": "#vr.7",
+                    "jgnLabel": "Destrd_0_snd",
+                    "jgnMetadata": {
+                        "jgnActs": [],
+                        "jgnConcs": [
+                            {
+                                "jgnFactId": "#vr.7:c0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KD",
+                                "jgnFactShow": "!KD( <~sid, $I> )",
+                                "jgnFactTag": "KDFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "~sid"
+                                            },
+                                            {
+                                                "jgnConst": "$I"
+                                            }
+                                        ],
+                                        "jgnShow": "pair(~sid,$I)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "jgnPrems": [
+                            {
+                                "jgnFactId": "#vr.7:p0",
+                                "jgnFactMult": "!",
+                                "jgnFactName": "!KD",
+                                "jgnFactShow": "!KD( <'q', ~sid, $I> )",
+                                "jgnFactTag": "KDFact",
+                                "jgnFactTerms": [
+                                    {
+                                        "jgnFunct": "pair",
+                                        "jgnParams": [
+                                            {
+                                                "jgnConst": "'q'"
+                                            },
+                                            {
+                                                "jgnFunct": "pair",
+                                                "jgnParams": [
+                                                    {
+                                                        "jgnConst": "~sid"
+                                                    },
+                                                    {
+                                                        "jgnConst": "$I"
+                                                    }
+                                                ],
+                                                "jgnShow": "pair(~sid,$I)"
+                                            }
+                                        ],
+                                        "jgnShow": "pair('q',pair(~sid,$I))"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "jgnType": "isIntruderRule"
+                }
+            ],
+            "jgType": "Tamarin prover constraint system"
+        }
+    ]
+}

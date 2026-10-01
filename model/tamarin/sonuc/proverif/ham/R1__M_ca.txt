@@ -1,0 +1,372 @@
+Process 0 (that is, the initial process):
+{1}new skR: skey;
+{2}new skCA: skey;
+{3}new skI: skey;
+{4}out(c, (pk(skR),pk(skCA),pk(skI)));
+{5}out(c, ((cacert_tag,caName,pk(skCA)),sign((cacert_tag,caName,pk(skCA)),skR)));
+{6}out(c, ((isscert_tag,issA,pk(skI)),sign((isscert_tag,issA,pk(skI)),skCA)));
+(
+    {7}!
+    {8}let i: bitstring = issA in
+    {9}let skI_1: skey = skI in
+    {10}new claims: bitstring;
+    {11}event Issued(i,claims);
+    {12}out(c, ((cred_tag,i,claims),sign((cred_tag,i,claims),skI_1)))
+) | (
+    {13}!
+    {14}let pkR: pkey = pk(skR) in
+    {15}in(c, ((=cacert_tag,ca: bitstring,pkCA: pkey),s1: bitstring));
+    {16}if (verify(s1,(cacert_tag,ca,pkCA),pkR) = true) then
+    {17}in(c, ((=isscert_tag,i_1: bitstring,pkI: pkey),s2: bitstring));
+    {18}if (verify(s2,(isscert_tag,i_1,pkI),pkCA) = true) then
+    {19}in(c, ((=cred_tag,=i_1,x: bitstring),s3: bitstring));
+    {20}if (verify(s3,(cred_tag,i_1,x),pkI) = true) then
+    {21}event Accept(i_1,x)
+) | (
+    {22}phase 1;
+    (
+        {23}out(c, skCA)
+    ) | (
+        {24}!
+        {25}let i_2: bitstring = issA in
+        {26}let skI_2: skey = skI in
+        {27}new claims_1: bitstring;
+        {28}event Issued(i_2,claims_1);
+        {29}out(c, ((cred_tag,i_2,claims_1),sign((cred_tag,i_2,claims_1),skI_2)))
+    ) | (
+        {30}!
+        {31}let pkR_1: pkey = pk(skR) in
+        {32}in(c, ((=cacert_tag,ca_1: bitstring,pkCA_1: pkey),s1_1: bitstring));
+        {33}if (verify(s1_1,(cacert_tag,ca_1,pkCA_1),pkR_1) = true) then
+        {34}in(c, ((=isscert_tag,i_3: bitstring,pkI_1: pkey),s2_1: bitstring));
+        {35}if (verify(s2_1,(isscert_tag,i_3,pkI_1),pkCA_1) = true) then
+        {36}in(c, ((=cred_tag,=i_3,x_1: bitstring),s3_1: bitstring));
+        {37}if (verify(s3_1,(cred_tag,i_3,x_1),pkI_1) = true) then
+        {38}event Accept(i_3,x_1)
+    )
+)
+
+--  Process 1 (that is, process 0, with let moved downwards):
+{1}new skR: skey;
+{2}new skCA: skey;
+{3}new skI: skey;
+{4}out(c, (pk(skR),pk(skCA),pk(skI)));
+{5}out(c, ((cacert_tag,caName,pk(skCA)),sign((cacert_tag,caName,pk(skCA)),skR)));
+{6}out(c, ((isscert_tag,issA,pk(skI)),sign((isscert_tag,issA,pk(skI)),skCA)));
+(
+    {7}!
+    {10}new claims: bitstring;
+    {8}let i: bitstring = issA in
+    {11}event Issued(i,claims);
+    {9}let skI_1: skey = skI in
+    {12}out(c, ((cred_tag,i,claims),sign((cred_tag,i,claims),skI_1)))
+) | (
+    {13}!
+    {15}in(c, ((=cacert_tag,ca: bitstring,pkCA: pkey),s1: bitstring));
+    {14}let pkR: pkey = pk(skR) in
+    {16}if (verify(s1,(cacert_tag,ca,pkCA),pkR) = true) then
+    {17}in(c, ((=isscert_tag,i_1: bitstring,pkI: pkey),s2: bitstring));
+    {18}if (verify(s2,(isscert_tag,i_1,pkI),pkCA) = true) then
+    {19}in(c, ((=cred_tag,=i_1,x: bitstring),s3: bitstring));
+    {20}if (verify(s3,(cred_tag,i_1,x),pkI) = true) then
+    {21}event Accept(i_1,x)
+) | (
+    {22}phase 1;
+    (
+        {23}out(c, skCA)
+    ) | (
+        {24}!
+        {27}new claims_1: bitstring;
+        {25}let i_2: bitstring = issA in
+        {28}event Issued(i_2,claims_1);
+        {26}let skI_2: skey = skI in
+        {29}out(c, ((cred_tag,i_2,claims_1),sign((cred_tag,i_2,claims_1),skI_2)))
+    ) | (
+        {30}!
+        {32}in(c, ((=cacert_tag,ca_1: bitstring,pkCA_1: pkey),s1_1: bitstring));
+        {31}let pkR_1: pkey = pk(skR) in
+        {33}if (verify(s1_1,(cacert_tag,ca_1,pkCA_1),pkR_1) = true) then
+        {34}in(c, ((=isscert_tag,i_3: bitstring,pkI_1: pkey),s2_1: bitstring));
+        {35}if (verify(s2_1,(isscert_tag,i_3,pkI_1),pkCA_1) = true) then
+        {36}in(c, ((=cred_tag,=i_3,x_1: bitstring),s3_1: bitstring));
+        {37}if (verify(s3_1,(cred_tag,i_3,x_1),pkI_1) = true) then
+        {38}event Accept(i_3,x_1)
+    )
+)
+
+-- Query not event(Accept(i_4,x_2)) in process 1.
+Translating the process into Horn clauses...
+Completing...
+Starting query not event(Accept(i_4,x_2))
+goal reachable: attacker_p1(x_2) && attacker_p1(i_4) -> event(Accept(i_4,x_2))
+
+Derivation:
+
+1. The message ((cacert_tag[],caName[],pk(skCA[])),sign((cacert_tag[],caName[],pk(skCA[])),skR[])) may be sent to the attacker at output {5}.
+attacker(((cacert_tag[],caName[],pk(skCA[])),sign((cacert_tag[],caName[],pk(skCA[])),skR[]))).
+
+2. By 1, the attacker may know ((cacert_tag[],caName[],pk(skCA[])),sign((cacert_tag[],caName[],pk(skCA[])),skR[])).
+Using the function 2-proj-2-tuple the attacker may obtain sign((cacert_tag[],caName[],pk(skCA[])),skR[]).
+attacker(sign((cacert_tag[],caName[],pk(skCA[])),skR[])).
+
+3. By 2, the attacker may know sign((cacert_tag[],caName[],pk(skCA[])),skR[]).
+So the attacker may know sign((cacert_tag[],caName[],pk(skCA[])),skR[]) in phase 1.
+attacker_p1(sign((cacert_tag[],caName[],pk(skCA[])),skR[])).
+
+4. The message skCA[] may be sent to the attacker in phase 1 at output {23}.
+attacker_p1(skCA[]).
+
+5. By 4, the attacker may know skCA[] in phase 1.
+Using the function pk the attacker may obtain pk(skCA[]) in phase 1.
+attacker_p1(pk(skCA[])).
+
+6. The attacker initially knows caName[] in phase 1.
+attacker_p1(caName[]).
+
+7. The attacker initially knows cacert_tag[] in phase 1.
+attacker_p1(cacert_tag[]).
+
+8. By 7, the attacker may know cacert_tag[] in phase 1.
+By 6, the attacker may know caName[] in phase 1.
+By 5, the attacker may know pk(skCA[]) in phase 1.
+Using the function 3-tuple the attacker may obtain (cacert_tag[],caName[],pk(skCA[])) in phase 1.
+attacker_p1((cacert_tag[],caName[],pk(skCA[]))).
+
+9. By 8, the attacker may know (cacert_tag[],caName[],pk(skCA[])) in phase 1.
+By 3, the attacker may know sign((cacert_tag[],caName[],pk(skCA[])),skR[]) in phase 1.
+Using the function 2-tuple the attacker may obtain ((cacert_tag[],caName[],pk(skCA[])),sign((cacert_tag[],caName[],pk(skCA[])),skR[])) in phase 1.
+attacker_p1(((cacert_tag[],caName[],pk(skCA[])),sign((cacert_tag[],caName[],pk(skCA[])),skR[]))).
+
+10. The attacker has some term k in phase 1.
+attacker_p1(k).
+
+11. By 10, the attacker may know k in phase 1.
+Using the function pk the attacker may obtain pk(k) in phase 1.
+attacker_p1(pk(k)).
+
+12. We assume as hypothesis that
+attacker_p1(i_4).
+
+13. The attacker initially knows isscert_tag[] in phase 1.
+attacker_p1(isscert_tag[]).
+
+14. By 13, the attacker may know isscert_tag[] in phase 1.
+By 12, the attacker may know i_4 in phase 1.
+By 11, the attacker may know pk(k) in phase 1.
+Using the function 3-tuple the attacker may obtain (isscert_tag[],i_4,pk(k)) in phase 1.
+attacker_p1((isscert_tag[],i_4,pk(k))).
+
+15. By 14, the attacker may know (isscert_tag[],i_4,pk(k)) in phase 1.
+By 4, the attacker may know skCA[] in phase 1.
+Using the function sign the attacker may obtain sign((isscert_tag[],i_4,pk(k)),skCA[]) in phase 1.
+attacker_p1(sign((isscert_tag[],i_4,pk(k)),skCA[])).
+
+16. By 14, the attacker may know (isscert_tag[],i_4,pk(k)) in phase 1.
+By 15, the attacker may know sign((isscert_tag[],i_4,pk(k)),skCA[]) in phase 1.
+Using the function 2-tuple the attacker may obtain ((isscert_tag[],i_4,pk(k)),sign((isscert_tag[],i_4,pk(k)),skCA[])) in phase 1.
+attacker_p1(((isscert_tag[],i_4,pk(k)),sign((isscert_tag[],i_4,pk(k)),skCA[]))).
+
+17. We assume as hypothesis that
+attacker_p1(x_2).
+
+18. The attacker initially knows cred_tag[] in phase 1.
+attacker_p1(cred_tag[]).
+
+19. By 18, the attacker may know cred_tag[] in phase 1.
+By 12, the attacker may know i_4 in phase 1.
+By 17, the attacker may know x_2 in phase 1.
+Using the function 3-tuple the attacker may obtain (cred_tag[],i_4,x_2) in phase 1.
+attacker_p1((cred_tag[],i_4,x_2)).
+
+20. By 19, the attacker may know (cred_tag[],i_4,x_2) in phase 1.
+By 10, the attacker may know k in phase 1.
+Using the function sign the attacker may obtain sign((cred_tag[],i_4,x_2),k) in phase 1.
+attacker_p1(sign((cred_tag[],i_4,x_2),k)).
+
+21. By 19, the attacker may know (cred_tag[],i_4,x_2) in phase 1.
+By 20, the attacker may know sign((cred_tag[],i_4,x_2),k) in phase 1.
+Using the function 2-tuple the attacker may obtain ((cred_tag[],i_4,x_2),sign((cred_tag[],i_4,x_2),k)) in phase 1.
+attacker_p1(((cred_tag[],i_4,x_2),sign((cred_tag[],i_4,x_2),k))).
+
+22. The message ((cacert_tag[],caName[],pk(skCA[])),sign((cacert_tag[],caName[],pk(skCA[])),skR[])) that the attacker may have in phase 1 by 9 may be received at input {32}.
+The message ((isscert_tag[],i_4,pk(k)),sign((isscert_tag[],i_4,pk(k)),skCA[])) that the attacker may have in phase 1 by 16 may be received at input {34}.
+The message ((cred_tag[],i_4,x_2),sign((cred_tag[],i_4,x_2),k)) that the attacker may have in phase 1 by 21 may be received at input {36}.
+So event Accept(i_4,x_2) may be executed at {38}.
+event(Accept(i_4,x_2)).
+
+23. By 22, event(Accept(i_4,x_2)).
+The goal is reached, represented in the following fact:
+event(Accept(i_4,x_2)).
+
+
+A more detailed output of the traces is available with
+  set traceDisplay = long.
+
+new skR: skey creating skR_1 at {1}
+
+new skCA: skey creating skCA_1 at {2}
+
+new skI: skey creating skI_3 at {3}
+
+out(c, (~M,~M_1,~M_2)) with ~M = pk(skR_1), ~M_1 = pk(skCA_1), ~M_2 = pk(skI_3) at {4}
+
+out(c, ((~M_3,~M_4,~M_5),~M_6)) with ~M_3 = cacert_tag, ~M_4 = caName, ~M_5 = pk(skCA_1), ~M_6 = sign((cacert_tag,caName,pk(skCA_1)),skR_1) at {5}
+
+out(c, ((~M_7,~M_8,~M_9),~M_10)) with ~M_7 = isscert_tag, ~M_8 = issA, ~M_9 = pk(skI_3), ~M_10 = sign((isscert_tag,issA,pk(skI_3)),skCA_1) at {6}
+
+out(c, ~M_11) with ~M_11 = skCA_1 at {23}
+
+in(c, ((cacert_tag,caName,~M_1),~M_6)) with ~M_1 = pk(skCA_1), ~M_6 = sign((cacert_tag,caName,pk(skCA_1)),skR_1) at {32} in copy a
+
+in(c, ((isscert_tag,a_1,pk(a_2)),sign((isscert_tag,a_1,pk(a_2)),~M_11))) with sign((isscert_tag,a_1,pk(a_2)),~M_11) = sign((isscert_tag,a_1,pk(a_2)),skCA_1) at {34} in copy a
+
+in(c, ((cred_tag,a_1,a_3),sign((cred_tag,a_1,a_3),a_2))) at {36} in copy a
+
+event Accept(a_1,a_3) at {38} in copy a (goal)
+
+The event Accept(a_1,a_3) is executed at {38} in copy a.
+A trace has been found.
+RESULT not event(Accept(i_4,x_2)) is false.
+-- Query event(Accept(i_4,x_2)) ==> event(Issued(i_4,x_2)) in process 1.
+Translating the process into Horn clauses...
+Completing...
+Starting query event(Accept(i_4,x_2)) ==> event(Issued(i_4,x_2))
+goal reachable: attacker_p1(x_2) && attacker_p1(i_4) -> event(Accept(i_4,x_2))
+
+Derivation:
+
+1. The message ((cacert_tag[],caName[],pk(skCA[])),sign((cacert_tag[],caName[],pk(skCA[])),skR[])) may be sent to the attacker at output {5}.
+attacker(((cacert_tag[],caName[],pk(skCA[])),sign((cacert_tag[],caName[],pk(skCA[])),skR[]))).
+
+2. By 1, the attacker may know ((cacert_tag[],caName[],pk(skCA[])),sign((cacert_tag[],caName[],pk(skCA[])),skR[])).
+Using the function 2-proj-2-tuple the attacker may obtain sign((cacert_tag[],caName[],pk(skCA[])),skR[]).
+attacker(sign((cacert_tag[],caName[],pk(skCA[])),skR[])).
+
+3. By 2, the attacker may know sign((cacert_tag[],caName[],pk(skCA[])),skR[]).
+So the attacker may know sign((cacert_tag[],caName[],pk(skCA[])),skR[]) in phase 1.
+attacker_p1(sign((cacert_tag[],caName[],pk(skCA[])),skR[])).
+
+4. The message skCA[] may be sent to the attacker in phase 1 at output {23}.
+attacker_p1(skCA[]).
+
+5. By 4, the attacker may know skCA[] in phase 1.
+Using the function pk the attacker may obtain pk(skCA[]) in phase 1.
+attacker_p1(pk(skCA[])).
+
+6. The attacker initially knows caName[] in phase 1.
+attacker_p1(caName[]).
+
+7. The attacker initially knows cacert_tag[] in phase 1.
+attacker_p1(cacert_tag[]).
+
+8. By 7, the attacker may know cacert_tag[] in phase 1.
+By 6, the attacker may know caName[] in phase 1.
+By 5, the attacker may know pk(skCA[]) in phase 1.
+Using the function 3-tuple the attacker may obtain (cacert_tag[],caName[],pk(skCA[])) in phase 1.
+attacker_p1((cacert_tag[],caName[],pk(skCA[]))).
+
+9. By 8, the attacker may know (cacert_tag[],caName[],pk(skCA[])) in phase 1.
+By 3, the attacker may know sign((cacert_tag[],caName[],pk(skCA[])),skR[]) in phase 1.
+Using the function 2-tuple the attacker may obtain ((cacert_tag[],caName[],pk(skCA[])),sign((cacert_tag[],caName[],pk(skCA[])),skR[])) in phase 1.
+attacker_p1(((cacert_tag[],caName[],pk(skCA[])),sign((cacert_tag[],caName[],pk(skCA[])),skR[]))).
+
+10. The attacker has some term k in phase 1.
+attacker_p1(k).
+
+11. By 10, the attacker may know k in phase 1.
+Using the function pk the attacker may obtain pk(k) in phase 1.
+attacker_p1(pk(k)).
+
+12. We assume as hypothesis that
+attacker_p1(i_4).
+
+13. The attacker initially knows isscert_tag[] in phase 1.
+attacker_p1(isscert_tag[]).
+
+14. By 13, the attacker may know isscert_tag[] in phase 1.
+By 12, the attacker may know i_4 in phase 1.
+By 11, the attacker may know pk(k) in phase 1.
+Using the function 3-tuple the attacker may obtain (isscert_tag[],i_4,pk(k)) in phase 1.
+attacker_p1((isscert_tag[],i_4,pk(k))).
+
+15. By 14, the attacker may know (isscert_tag[],i_4,pk(k)) in phase 1.
+By 4, the attacker may know skCA[] in phase 1.
+Using the function sign the attacker may obtain sign((isscert_tag[],i_4,pk(k)),skCA[]) in phase 1.
+attacker_p1(sign((isscert_tag[],i_4,pk(k)),skCA[])).
+
+16. By 14, the attacker may know (isscert_tag[],i_4,pk(k)) in phase 1.
+By 15, the attacker may know sign((isscert_tag[],i_4,pk(k)),skCA[]) in phase 1.
+Using the function 2-tuple the attacker may obtain ((isscert_tag[],i_4,pk(k)),sign((isscert_tag[],i_4,pk(k)),skCA[])) in phase 1.
+attacker_p1(((isscert_tag[],i_4,pk(k)),sign((isscert_tag[],i_4,pk(k)),skCA[]))).
+
+17. We assume as hypothesis that
+attacker_p1(x_2).
+
+18. The attacker initially knows cred_tag[] in phase 1.
+attacker_p1(cred_tag[]).
+
+19. By 18, the attacker may know cred_tag[] in phase 1.
+By 12, the attacker may know i_4 in phase 1.
+By 17, the attacker may know x_2 in phase 1.
+Using the function 3-tuple the attacker may obtain (cred_tag[],i_4,x_2) in phase 1.
+attacker_p1((cred_tag[],i_4,x_2)).
+
+20. By 19, the attacker may know (cred_tag[],i_4,x_2) in phase 1.
+By 10, the attacker may know k in phase 1.
+Using the function sign the attacker may obtain sign((cred_tag[],i_4,x_2),k) in phase 1.
+attacker_p1(sign((cred_tag[],i_4,x_2),k)).
+
+21. By 19, the attacker may know (cred_tag[],i_4,x_2) in phase 1.
+By 20, the attacker may know sign((cred_tag[],i_4,x_2),k) in phase 1.
+Using the function 2-tuple the attacker may obtain ((cred_tag[],i_4,x_2),sign((cred_tag[],i_4,x_2),k)) in phase 1.
+attacker_p1(((cred_tag[],i_4,x_2),sign((cred_tag[],i_4,x_2),k))).
+
+22. The message ((cacert_tag[],caName[],pk(skCA[])),sign((cacert_tag[],caName[],pk(skCA[])),skR[])) that the attacker may have in phase 1 by 9 may be received at input {32}.
+The message ((isscert_tag[],i_4,pk(k)),sign((isscert_tag[],i_4,pk(k)),skCA[])) that the attacker may have in phase 1 by 16 may be received at input {34}.
+The message ((cred_tag[],i_4,x_2),sign((cred_tag[],i_4,x_2),k)) that the attacker may have in phase 1 by 21 may be received at input {36}.
+So event Accept(i_4,x_2) may be executed at {38}.
+event(Accept(i_4,x_2)).
+
+23. By 22, event(Accept(i_4,x_2)).
+The goal is reached, represented in the following fact:
+event(Accept(i_4,x_2)).
+
+
+A more detailed output of the traces is available with
+  set traceDisplay = long.
+
+new skR: skey creating skR_1 at {1}
+
+new skCA: skey creating skCA_1 at {2}
+
+new skI: skey creating skI_3 at {3}
+
+out(c, (~M,~M_1,~M_2)) with ~M = pk(skR_1), ~M_1 = pk(skCA_1), ~M_2 = pk(skI_3) at {4}
+
+out(c, ((~M_3,~M_4,~M_5),~M_6)) with ~M_3 = cacert_tag, ~M_4 = caName, ~M_5 = pk(skCA_1), ~M_6 = sign((cacert_tag,caName,pk(skCA_1)),skR_1) at {5}
+
+out(c, ((~M_7,~M_8,~M_9),~M_10)) with ~M_7 = isscert_tag, ~M_8 = issA, ~M_9 = pk(skI_3), ~M_10 = sign((isscert_tag,issA,pk(skI_3)),skCA_1) at {6}
+
+out(c, ~M_11) with ~M_11 = skCA_1 at {23}
+
+in(c, ((cacert_tag,caName,~M_1),~M_6)) with ~M_1 = pk(skCA_1), ~M_6 = sign((cacert_tag,caName,pk(skCA_1)),skR_1) at {32} in copy a
+
+in(c, ((isscert_tag,a_1,pk(a_2)),sign((isscert_tag,a_1,pk(a_2)),~M_11))) with sign((isscert_tag,a_1,pk(a_2)),~M_11) = sign((isscert_tag,a_1,pk(a_2)),skCA_1) at {34} in copy a
+
+in(c, ((cred_tag,a_1,a_3),sign((cred_tag,a_1,a_3),a_2))) at {36} in copy a
+
+event Accept(a_1,a_3) at {38} in copy a (goal)
+
+The event Accept(a_1,a_3) is executed at {38} in copy a.
+A trace has been found.
+RESULT event(Accept(i_4,x_2)) ==> event(Issued(i_4,x_2)) is false.
+
+--------------------------------------------------------------
+Verification summary:
+
+Query not event(Accept(i_4,x_2)) is false.
+
+Query event(Accept(i_4,x_2)) ==> event(Issued(i_4,x_2)) is false.
+
+--------------------------------------------------------------
+

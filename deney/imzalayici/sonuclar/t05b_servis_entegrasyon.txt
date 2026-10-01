@@ -1,0 +1,12 @@
+# T05b servis entegrasyonu (2026-09-24T16:31:22Z); imaj beeb05a70a97
+ag: pq-a09-net Internal=true
+## ic ag: istemci konteyneri -> http://pq-a09-pqdogrula:8765
+{"gecerli": true, "alg": "ML-DSA-65", "bilesenler": {"ml": true}, "hata": null, "servis": "pqdogrula/1"}
+{"gecerli": true, "alg": "ML-DSA-65-ES256", "bilesenler": {"ml": true, "trad": true}, "hata": null, "servis": "pqdogrula/1"}
+## yayinlanan portlar (ic ag konteyneri): 0 adet
+## yerel: 8765/tcp -> 127.0.0.1:18765
+## curl.sh (ana makine curl'u, 127.0.0.1:18765)
+{"servis": "pqdogrula/1", "durum": "ok", "desteklenen_alg": ["ML-DSA-44", "ML-DSA-65", "ML-DSA-87", "ML-DSA-44-ES256", "ML-DSA-65-ES256", "ML-DSA-87-ES384", "ML-DSA-44-Ed25519", "ML-DSA-65-Ed25519", "ML-DSA-87-Ed448"], "surumler": {"pqjose": "1.0.0", "python": "3.11.16", "cryptography": "50.0.1", "cryptography_openssl": "OpenSSL 4.0.2 25 Aug 2026", "openssl_cli": "OpenSSL 3.5.7 9 Jun 2026 (Library
+{"gecerli": true, "alg": "ML-DSA-65", "bilesenler": {"ml": true}, "hata": null, "servis": "pqdogrula/1"}
+{"gecerli": true, "alg": "ML-DSA-65-ES256", "bilesenler": {"ml": true, "trad": true}, "hata": null, "servis": "pqdogrula/1"}
+{"yanitlar": [{"gecerli": true, "alg": "ML-DSA-65", "bilesenler": {"ml": true}, "hata": null, "servis": "pqdogrula/1"}, {"gecerli": true, "alg": "ML-DSA-65-ES256", "bilesenler": {"ml": true, "trad": true}, "hata": null, "servis": "pqdogrula/1"}]}

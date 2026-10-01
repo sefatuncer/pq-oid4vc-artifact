@@ -1,0 +1,45 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 820B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/node:24.21.0-trixie@sha256:be40f6a87b9b22215ddb20da0a2320a5c6d583fe3ee3b0024d9fa4f05b40c8fd
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/2] FROM docker.io/library/node:24.21.0-trixie@sha256:be40f6a87b9b22215ddb20da0a2320a5c6d583fe3ee3b0024d9fa4f05b40c8fd
+#4 resolve docker.io/library/node:24.21.0-trixie@sha256:be40f6a87b9b22215ddb20da0a2320a5c6d583fe3ee3b0024d9fa4f05b40c8fd 0.0s done
+#4 DONE 0.2s
+
+#5 [2/2] RUN set -eux; node --version; npm --version; node -p "'node-openssl ' + process.versions.openssl"; openssl version;     git --version; python3 --version; gcc --version | head -1
+#5 0.179 + node --version
+#5 0.182 v24.21.0
+#5 0.182 + npm --version
+#5 0.240 11.19.0
+#5 0.243 + node -p 'node-openssl ' + process.versions.openssl
+#5 0.270 node-openssl 3.5.8
+#5 0.272 + openssl version
+#5 0.275 OpenSSL 3.5.7 9 Jun 2026 (Library: OpenSSL 3.5.7 9 Jun 2026)
+#5 0.276 + git --version
+#5 0.276 git version 2.47.3
+#5 0.276 + python3 --version
+#5 0.277 Python 3.13.5
+#5 0.278 + + gcc --version
+#5 0.278 head -1
+#5 0.278 gcc (Debian 14.2.0-19) 14.2.0
+#5 DONE 0.3s
+
+#6 exporting to image
+#6 exporting layers
+#6 exporting layers 0.7s done
+#6 exporting manifest sha256:398d1b8270ee1d5c49816608433ed34d24661ca85b121ced72281289175a9825 0.0s done
+#6 exporting config sha256:8ae654489495054632ed6af0cb89142a4c3232c0e47b74165fb4bd27aa1810b8 0.0s done
+#6 exporting attestation manifest sha256:0195f036a1bb18ecf5865e4027d19f0b659e49407fbf06a7f5b54d91a63be63c 0.0s done
+#6 exporting manifest list sha256:e2650858bc9c0b6bfd491eb6d27f91c0a80cb8ea718c0d7f06e3e957b984f3be 0.0s done
+#6 naming to docker.io/library/pq-a09-env-node:1.0 done
+#6 unpacking to docker.io/library/pq-a09-env-node:1.0 0.0s done
+#6 DONE 0.9s

@@ -1,0 +1,3 @@
+modul=jose (python-jose) yuklendi; surum=3.5.0
+sembol jws.verify True ; jwt.decode True
+secilen arka uc: ECKey=jose.backends.cryptography_backend RSAKey=jose.backends.cryptography_backend

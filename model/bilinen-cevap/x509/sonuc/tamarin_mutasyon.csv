@@ -1,0 +1,3 @@
+kosu,model,bayraklar,lemma,beklenen,gozlenen,uyum,lemma_ham_sonucu,adim,merdiven,meta,iyi_bicim,executable,imaj,mutasyon,temel
+MUT06.K2b-03.tam,KAT2_X509.spthy,"CRQC,V_ENFORCE_IF_PRESENT",cert_authentic,falsified,falsified,EVET,falsified,6,1,rc=0 wall_s=0.41 mem_peak_MiB=72.5,EVET,verified,sha256:59b648d60829c4580504470be1b171df0e63ead38bebc8944ac8ee2bba6b9c60,MUT06,K2b-03
+MUT07.K2b-06.tam,KAT2_X509.spthy,"CRQC,COMPOSITE,MUT_COMP_NO_PQ",cert_authentic,falsified,falsified,EVET,falsified,5,1,rc=0 wall_s=0.35 mem_peak_MiB=74.2,EVET,verified,sha256:59b648d60829c4580504470be1b171df0e63ead38bebc8944ac8ee2bba6b9c60,MUT07,K2b-06

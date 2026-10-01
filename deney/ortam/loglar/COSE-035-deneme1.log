@@ -1,0 +1,4 @@
+# hedef=COSE-035 imaj=pq-a09-env-php:1.0 (sha256:a89612973cf41e3cb0597817bc85206aa10f11aa86b633636457a9fb99ad95c4) baslangic=2026-09-25T13:03:10Z zaman_asimi=900s
+# komut: docker run --rm --name pq-a09-ortam-cose-035 --label pq.agir=derleme --memory=6g --memory-swap=6g -v hedefler/COSE-035:/w -v betikler/konteyner:/b:ro pq-a09-env-php:1.0 bash /w/kur.sh
+/usr/local/bin/docker-php-entrypoint: exec: line 9: bash: not found
+# cikis_kodu=127 sure_s=1 bitis=2026-09-25T13:03:11Z

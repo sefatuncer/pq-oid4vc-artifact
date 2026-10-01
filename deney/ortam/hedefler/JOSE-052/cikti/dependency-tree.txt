@@ -1,0 +1,5 @@
+pq.a09:ortam-deneme:jar:0
+\- com.auth0:java-jwt:jar:4.6.1:compile
+   +- com.fasterxml.jackson.core:jackson-core:jar:2.22.2:runtime
+   \- com.fasterxml.jackson.core:jackson-databind:jar:2.22.2:runtime
+      \- com.fasterxml.jackson.core:jackson-annotations:jar:2.22:runtime
