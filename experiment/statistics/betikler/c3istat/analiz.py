@@ -95,10 +95,12 @@ def _t1(degerler: list[tuple[str, int]], k: Karsilastirici, etiket: str, aciklam
     return s
 
 
-def h6_hukmu(birincil: dict, duyarlilik_i: dict) -> dict:
+def h6_hukmu(birincil: dict, duyarlilik_i: dict, duyarlilik_ii: dict | None = None) -> dict:
     """ÖK §6.10: 'destek' = birincil VE (i) X ≤ c; yalnız birincil => 'kirilgan_destek'.
-    n_eff < 20 => 'tanimlayici' (ÖK §6.3; çoğunluk/çoğunluğun yokluğu iddiası yapılmaz)."""
+    Simetrik kural (Değişiklik 8 madde 17): 'yanlislama' = birincil VE (ii) X ≥ u; yalnız birincil =>
+    'kirilgan_yanlislama'. n_eff < 20 => 'tanimlayici' (ÖK §6.3; çoğunluk/çoğunluğun yokluğu iddiası yapılmaz)."""
     kb, ki = birincil["karar"], duyarlilik_i["karar"]
+    kii = duyarlilik_ii["karar"] if duyarlilik_ii is not None else None
     if kb == "tanimlayici":
         return {"hukum": "tanimlayici", "birincil": kb, "duyarlilik_i": ki,
                 "gerekce": "n_eff < 20: yalnız tanımlayıcı sonuç (Wilson GA) verilir (ÖK §6.3)"}
@@ -109,12 +111,17 @@ def h6_hukmu(birincil: dict, duyarlilik_i: dict) -> dict:
         return {"hukum": "kirilgan_destek", "birincil": kb, "duyarlilik_i": ki,
                 "gerekce": "yalnız birincil analiz X ≤ c; duyarlılık (i) değil (ÖK §6.10)"}
     if kb == "yanlislama":
-        return {"hukum": "yanlislama", "birincil": kb, "duyarlilik_i": ki, "gerekce": "X ≥ u (ÖK §3.7, §2B.5)"}
+        if kii is None or kii == "yanlislama":
+            return {"hukum": "yanlislama", "birincil": kb, "duyarlilik_i": ki, "duyarlilik_ii": kii,
+                    "gerekce": "birincil analiz ve duyarlılık (ii) birlikte X ≥ u (ÖK §3.7, §2B.5; Değişiklik 8 m.17)"}
+        return {"hukum": "kirilgan_yanlislama", "birincil": kb, "duyarlilik_i": ki, "duyarlilik_ii": kii,
+                "gerekce": "yalnız birincil analiz X ≥ u; duyarlılık (ii) değil (Değişiklik 8 m.17)"}
     return {"hukum": "belirsiz", "birincil": kb, "duyarlilik_i": ki, "gerekce": "c < X < u (ÖK §6.13)"}
 
 
-def _t1_duyarliliklar(H_g: list[dict], k: Karsilastirici) -> dict:
+def _t1_duyarliliklar(H_g: list[dict], k: Karsilastirici, gecersiz: list[dict] | None = None) -> dict:
     belirli = [h for h in H_g if h["Y_L4"] is not None]
+    gecersiz = gecersiz or []
     belirsiz = [h for h in H_g if h["Y_L4"] is None]
     temel = [(h["hedef_id"], h["Y_L4"]) for h in belirli]
     ek1 = [(h["hedef_id"], 1) for h in belirsiz]
@@ -124,10 +131,13 @@ def _t1_duyarliliklar(H_g: list[dict], k: Karsilastirici) -> dict:
     d = {
         "i_belirsiz_1": _t1(temel + ek1, k, "T1.dus_i", "ÖK §6.10 (i): belirsiz hedefler Y = 1 (H6 aleyhine)"),
         "ii_belirsiz_0": _t1(temel + ek0, k, "T1.dus_ii", "ÖK §6.10 (ii): belirsiz hedefler Y = 0"),
-        "pilot_haric": _t1(pilot_haric, k, "T1.dus_pilot", "ÖK §0.3, §6.10: P3 pilot kütüphaneleri hariç"),
+        "pilot_haric": _t1(pilot_haric, k, "T1.dus_pilot", "ÖK §0.3, §6.10, §12.5: P3 ve ikinci pilotta görülen kütüphaneler hariç"),
         "devralan_haric": _t1(devir_haric, k, "T1.dus_devir",
                               "ÖK §2B.9: devralan hedefler hariç; tanımlayıcı, Holm dışı"),
+        "gecersiz_y0": _t1(temel + [(h["hedef_id"], 0) for h in gecersiz], k, "T1.dus_gecersiz",
+                           "Değişiklik 10: adaptör geçersiz hedefler (SDJWT-021) Y = 0 sayılarak; eşikler kendi n'inden"),
     }
+    d["gecersiz_y0"]["eklenen"] = _ids(gecersiz)
     d["i_belirsiz_1"]["eklenen"] = _ids(belirsiz)
     d["ii_belirsiz_0"]["eklenen"] = _ids(belirsiz)
     d["pilot_haric"]["dislanan"] = _ids(h for h in belirli if h["pilot"] == 1)
@@ -397,7 +407,7 @@ def analiz_et(girdi: sema.Girdi) -> dict:
     belirli = [(h["hedef_id"], h["Y_L4"]) for h in H_g if h["Y_L4"] is not None]
     T1 = _t1(belirli, k, "T1", "ÖK §3.7, §6.6 T1 (birincil, H6): tek yönlü (alt) kesin binom; Holm dışı; "
                                "eşikler Ek A kuralıyla n_eff'ten")
-    dus = _t1_duyarliliklar(H_g, k)
+    dus = _t1_duyarliliklar(H_g, k, [h for h in H_n if h["adaptor_gecersiz"] == 1])
 
     t2_kapsam = [h for h in H_g if h.get("tk_sinifi") in Y.T2_TK_KAPSAMI and h["F_K"] is not None
                  and h["F_T"] is not None]
@@ -426,7 +436,10 @@ def analiz_et(girdi: sema.Girdi) -> dict:
         },
         "T1": T1,
         "T1_duyarlilik": dus,
-        "H6_hukmu": h6_hukmu(T1, dus["i_belirsiz_1"]),
+        "H6_hukmu": h6_hukmu(T1, dus["i_belirsiz_1"], dus["ii_belirsiz_0"]),
+        "betimleyici_testler": {"testler": ["T2", "T2_devralan_haric", "T3", "T4", "T5", "holm"],
+                                "not": "Değişiklik 11 (01.10.2026): T2–T5 betimleyicidir; çıkarımsal iddia yapılmaz, "
+                                       "Holm ailesi raporlanır ama karar için kullanılmaz"},
         "T2": T2,
         "T2_devralan_haric": T2d,
         "TK3_tanimlayici": None,
