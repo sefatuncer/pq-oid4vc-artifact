@@ -1,22 +1,22 @@
-# Büyük ya da yeniden üretilebilir girdiler (SHA-256'ları MANIFEST'lerde kayıtlı)
-01-korpus/kaynak/
-literatur/tam-metin/
-arac/*/indir/
+# Large or re-downloadable inputs (SHA-256 values are recorded in the manifests)
+spec-corpus/kaynak/
+spec-corpus/metin/
+tools/*/indir/
 **/onbellek/
-# Geçici
+# Build outputs (reproducible; versions pinned in the build files)
+experiment/runs/adaptorler/_kt/build-*/
+experiment/runs/adaptorler/_kt/build/
+experiment/runs/adaptorler/_kt/.kotlin/
+experiment/runs/adaptorler/_kt/.gradle/
+experiment/runs/adaptorler/_jvm/lib/
+experiment/runs/adaptorler/_jvm/target/
+**/node_modules/
+**/target/
+# Python caches
 __pycache__/
 *.pyc
-# Adaptör derleme çıktıları (yeniden üretilebilir; sürümler derleme dosyalarında sabit)
-deney/kosum/adaptorler/_kt/build-*/
-deney/kosum/adaptorler/_kt/build/
-deney/kosum/adaptorler/_kt/.kotlin/
-deney/kosum/adaptorler/_kt/.gradle/
-deney/kosum/adaptorler/_jvm/lib/
-deney/kosum/adaptorler/_jvm/target/
-**/node_modules/
-# MAKALE BU DEPOYA GİRMEZ (makale klasörü: ..\PQ-OID4VC-makale\)
+# Manuscript sources are not part of this repository
+paper/
 makale/
 *.tex
 *.bib
-# Third-party specification texts (re-downloaded by spec-corpus scripts; not redistributed)
-01-korpus/metin/
