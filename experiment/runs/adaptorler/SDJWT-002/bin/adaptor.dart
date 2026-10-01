@@ -20,6 +20,13 @@ Map<String, dynamic> girdi(String id) {
     final y = File('/v/MANIFEST.json').existsSync() ? '/v/MANIFEST.json' : '/v/v1.3/MANIFEST.json';
     final m = jsonDecode(File(y).readAsStringSync()) as Map<String, dynamic>;
     _manifest = {for (final e in m['vektorler'] as List) e['id'] as String: (e['dogrulama_girdileri'] ?? {}) as Map<String, dynamic>};
+    // Pre-freeze SD-JWT validity vectors (not in the battery) carry their own manifest in the same schema.
+    final vpm = File('/v/vpm-sdjwt/MANIFEST.json');
+    if (vpm.existsSync()) {
+      for (final e in (jsonDecode(vpm.readAsStringSync()) as Map<String, dynamic>)['vektorler'] as List) {
+        _manifest![e['id'] as String] = (e['dogrulama_girdileri'] ?? {}) as Map<String, dynamic>;
+      }
+    }
   }
   return _manifest![id] ?? (throw StateError('manifestte yok: $id'));
 }

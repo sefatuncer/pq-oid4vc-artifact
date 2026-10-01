@@ -12,12 +12,18 @@ ISLER=$1; KOSU=$2; CIK=$3; shift 3
 D=$(cygpath -m "$(cd .. && pwd)" 2>/dev/null || (cd .. && pwd))   # deney
 mkdir -p "$CIK"
 CM=$(cygpath -m "$(cd "$CIK" && pwd)" 2>/dev/null || (cd "$CIK" && pwd))
+# Two calling conventions: adapters with their own folder and Dockerfile take "adaptor <jobs> <out>" (run label from
+# KOSU or the output file name); the shared adapters (_py, _node, _go, _jvm, _kt, _rs) take "<target> <jobs> <out> <run>".
+ADIR=$(cd "$(dirname "$0")/.." && pwd)
+cagri() { if [ -f "$ADIR/$1/Dockerfile" ]; then echo adaptor; else echo "$1"; fi; }
+son() { if [ -f "$ADIR/$1/Dockerfile" ]; then :; else echo "$KOSU"; fi; }
 for h in "$@"; do
   img="a10-$(echo "$h" | tr 'A-Z' 'a-z'):1"
   ad="$h.jsonl"; [ "$KOSU" = "oncesi" ] || ad="$h.$KOSU.jsonl"
   # Tek ikilide birden çok hedef taşıyan imajlarda (Go, JVM, Kotlin) hedef kimliği ilk bağımsız değişkendir; diğerlerinde de aynı sözleşme.
   t0=$(date +%s)
-  docker run --rm --network none --memory=4g -v "$D/vector-generator/vektorler:/v:ro" -v "$D/vector-generator/anahtarlar:/anahtarlar:ro" \
-    -v "$D/runs:/is:ro" -v "$CM:/c" "$img" "$h" "/is/$ISLER" "/c/$ad" "$KOSU" || echo "UYARI: $h çıkış kodu $?"
+  # EXTRA_MOUNT (optional): an additional vector folder, e.g. "<abs path>/vpm-sdjwt/vectors:/v/vpm-sdjwt:ro"
+  docker run --rm --network none --memory=4g -v "$D/vector-generator/vektorler:/v:ro" ${EXTRA_MOUNT:+-v "$EXTRA_MOUNT"} -v "$D/vector-generator/anahtarlar:/anahtarlar:ro" \
+    -v "$D/runs:/is:ro" -v "$CM:/c" -e KOSU="$KOSU" "$img" $(cagri "$h") "/is/$ISLER" "/c/$ad" $(son "$h") || echo "WARNING: $h exit code $?"
   echo "$h: $(wc -l < "$CIK/$ad") satır, $(( $(date +%s) - t0 )) s"
 done

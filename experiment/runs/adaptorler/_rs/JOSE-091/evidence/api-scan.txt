@@ -1,0 +1,163 @@
+# JOSE-091 API scan (contract section 5.1)
+# image: build stage of a10-jose-091:1, tagged temporarily as pq-a10-rs-b-jose-091:gecici (sha256:b87f39cda3d6a2bb883c5d39fc4e91f3a4cb86a38748becacb7bda530049ccc6)
+# command: docker run --rm --network none --entrypoint sh pq-a10-rs-b-jose-091:gecici -c 'cd /usr/local/cargo/registry/src/index.crates.io-*/frank_jwt-3.1.4 && grep -m1 '^version' Cargo.toml && cat .cargo_vcs_info.json  && echo '## public API, algorithm selection and header handling (src/lib.rs)'  && grep -n -i -E 'algorithms|allow|register|deregister|required|eddsa|ed25519|ml-?dsa|mldsa|composite|okp|verifier|keyselector|pub (enum|struct|trait|fn)|Algorithm::[A-Z]|verify_signature|decode_segments|header' src/lib.rs | grep -v -E '^[0-9]+:\s*(//|#\[test)' | head -150  && echo '## EdDSA / Ed25519 / ML-DSA / composite anywhere in the crate' && (grep -rn -i -E 'eddsa|ed25519|ml-?dsa|mldsa|composite' src README.md || echo '0 matches')'
+
+version = "3.1.4"
+{
+  "git": {
+    "sha1": "556a9046563e8fd131aa6174da8c059acde77190"
+  },
+  "path_in_vcs": ""
+}## public API, algorithm selection and header handling (src/lib.rs)
+10:* Unless required by applicable law or agreed to in writing, software
+42:use openssl::sign::{Signer, Verifier};
+50:const STANDARD_HEADER_TYPE: &str = "JWT";
+54:pub enum Algorithm {
+66:pub struct ValidationOptions {
+72:    pub fn new() -> ValidationOptions {
+76:    pub fn dangerous() -> ValidationOptions {
+96:            Algorithm::HS256 => "HS256",
+97:            Algorithm::HS384 => "HS384",
+98:            Algorithm::HS512 => "HS512",
+99:            Algorithm::RS256 => "RS256",
+100:            Algorithm::RS384 => "RS384",
+101:            Algorithm::RS512 => "RS512",
+102:            Algorithm::ES256 => "ES256",
+103:            Algorithm::ES384 => "ES384",
+104:            Algorithm::ES512 => "ES512",
+110:pub trait ToKey {
+141:pub fn encode<P: ToKey>(
+142:    mut header: JsonValue,
+147:    header["alg"] = JsonValue::String(algorithm.to_string());
+148:    if header["typ"].is_null() {
+149:        header["typ"] = JsonValue::String(STANDARD_HEADER_TYPE.to_owned());
+151:    let signing_input = get_signing_input(&payload, &header)?;
+153:        Algorithm::HS256 | Algorithm::HS384 | Algorithm::HS512 => {
+156:        Algorithm::RS256 | Algorithm::RS384 | Algorithm::RS512 => {
+159:        Algorithm::ES256 | Algorithm::ES384 | Algorithm::ES512 => {
+167:pub fn decode<P: ToKey>(
+173:    let (header, payload, signature, signing_input) = decode_segments(encoded_token)?;
+174:    if !verify_signature(algorithm, signing_input, &signature, signing_key)? {
+179:        Ok((header, payload))
+183:pub fn validate_signature<P: ToKey>(
+189:    verify_signature(algorithm, signing_input, &signature, signing_key)
+192:fn get_signing_input(payload: &JsonValue, header: &JsonValue) -> Result<String, Error> {
+193:    let header_json_str = serde_json::to_string(header)?;
+194:    let encoded_header = general_purpose::URL_SAFE_NO_PAD.encode(header_json_str.as_bytes());
+197:    Ok(format!("{}.{}", encoded_header, encoded_payload))
+202:        Algorithm::HS256 => MessageDigest::sha256(),
+203:        Algorithm::HS384 => MessageDigest::sha384(),
+204:        Algorithm::HS512 => MessageDigest::sha512(),
+221:        Algorithm::RS256 => MessageDigest::sha256(),
+222:        Algorithm::RS384 => MessageDigest::sha384(),
+223:        Algorithm::RS512 => MessageDigest::sha512(),
+239:        Algorithm::ES256 => MessageDigest::sha256(),
+240:        Algorithm::ES384 => MessageDigest::sha384(),
+241:        Algorithm::ES512 => MessageDigest::sha512(),
+267:fn decode_segments(encoded_token: &str) -> Result<(JsonValue, JsonValue, Vec<u8>, String), Error> {
+273:    let header_segment = raw_segments[0];
+276:    let (header, payload) = decode_header_and_payload(header_segment, payload_segment)?;
+278:    let signing_input = format!("{}.{}", header_segment, payload_segment);
+279:    Ok((header, payload, signature.clone(), signing_input))
+288:    let header_segment = raw_segments[0];
+292:    let signing_input = format!("{}.{}", header_segment, payload_segment);
+296:fn decode_header_and_payload(
+297:    header_segment: &str,
+305:    let header_json = b64_to_json(header_segment)?;
+307:    Ok((header_json, payload_json))
+312:        Algorithm::HS256 => MessageDigest::sha256(),
+313:        Algorithm::HS384 => MessageDigest::sha384(),
+314:        Algorithm::HS512 => MessageDigest::sha512(),
+326:        Algorithm::ES256 => 64,
+327:        Algorithm::ES384 => 96,
+328:        Algorithm::ES512 => 132,
+333:fn verify_signature<P: ToKey>(
+340:        Algorithm::HS256 | Algorithm::HS384 | Algorithm::HS512 => {
+345:        Algorithm::RS256 | Algorithm::RS384 | Algorithm::RS512 => {
+350:            let mut verifier = Verifier::new(digest, &key)?;
+351:            verifier.update(signing_input.as_bytes())?;
+352:            verifier.verify(&signature).map_err(Error::from)
+354:        Algorithm::ES256 | Algorithm::ES384 | Algorithm::ES512 => {
+379:        Algorithm::RS256 | Algorithm::ES256 => MessageDigest::sha256(),
+380:        Algorithm::RS384 | Algorithm::ES384 => MessageDigest::sha384(),
+381:        Algorithm::RS512 | Algorithm::ES512 => MessageDigest::sha512(),
+461:        Algorithm, STANDARD_HEADER_TYPE, ValidationOptions, decode, encode, secure_compare,
+475:        let header = json!({});
+476:        let jwt1 = encode(header, &secret, &p1, Algorithm::HS256).unwrap();
+480:            Algorithm::HS256,
+497:            Algorithm::HS256,
+507:        let maybe_res = validate_signature(&jwt, &secret, Algorithm::HS256);
+512:    fn test_validate_signature_with_header_jwt_hs256() {
+515:        let maybe_res = validate_signature(&jwt, &secret, Algorithm::HS256);
+523:        let maybe_res = validate_signature(&jwt, &secret, Algorithm::HS256);
+552:        let header = json!({});
+553:        let jwt1 = encode(header, &secret, &p1, Algorithm::HS384).unwrap();
+557:            Algorithm::HS384,
+572:        let header = json!({});
+573:        let jwt1 = encode(header, &secret, &p1, Algorithm::HS384).unwrap();
+574:        let maybe_res = validate_signature(&jwt1, &secret, Algorithm::HS384);
+587:        let header = json!({});
+588:        let jwt1 = encode(header, &secret, &p1, Algorithm::HS384).unwrap();
+590:        let maybe_res = validate_signature(&jwt1, &bad_secret, Algorithm::HS384);
+603:        let header = json!({});
+604:        let jwt1 = encode(header, &secret, &p1, Algorithm::HS512).unwrap();
+608:            Algorithm::HS512,
+623:        let header = json!({});
+624:        let jwt1 = encode(header, &secret, &p1, Algorithm::HS512).unwrap();
+625:        let maybe_res = validate_signature(&jwt1, &secret, Algorithm::HS512);
+638:        let header = json!({});
+639:        let jwt1 = encode(header, &secret, &p1, Algorithm::HS512).unwrap();
+641:        let maybe_res = validate_signature(&jwt1, &bad_secret, Algorithm::HS512);
+653:        let header = json!({});
+660:            header,
+663:            Algorithm::RS256,
+669:            Algorithm::RS256,
+683:        let header = json!({});
+690:            header,
+693:            Algorithm::RS256,
+697:            validate_signature(&jwt1, &get_rsa_256_public_key_full_path(), Algorithm::RS256);
+709:        let header = json!({});
+716:            header,
+719:            Algorithm::RS256,
+725:            Algorithm::RS256,
+741:        let header = json!({});
+746:            Algorithm::RS256,
+753:            header,
+756:            Algorithm::RS256,
+762:            Algorithm::RS256,
+777:        let header = json!({});
+780:            validate_signature(&jwt1, &get_rsa_256_public_key_full_path(), Algorithm::RS256);
+784:            header,
+787:            Algorithm::RS256,
+791:            validate_signature(&jwt2, &get_rsa_256_public_key_full_path(), Algorithm::RS256);
+802:        let header = json!({});
+805:            validate_signature(&jwt1, &get_rsa_256_public_key_full_path(), Algorithm::RS256);
+809:            header,
+812:            Algorithm::RS256,
+818:            Algorithm::RS256,
+830:        let h1 = json!({"typ" : STANDARD_HEADER_TYPE, "alg" : Algorithm::RS256.to_string()});
+835:            Algorithm::RS256,
+851:        let header = json!({});
+852:        let h1 = json!({"typ" : STANDARD_HEADER_TYPE, "alg" : Algorithm::ES256.to_string()});
+854:        let jwt1 = encode(header, &get_ec_private_key_path(), &p1, Algorithm::ES256).unwrap();
+855:        let (header, payload) = decode(
+858:            Algorithm::ES256,
+863:        assert_eq!(h1, header);
+873:        let header = json!({});
+877:            validate_signature(jwt1, &get_ec_public_key_path(), Algorithm::ES256);
+880:        let jwt2 = encode(header, &get_ec_private_key_path(), &p1, Algorithm::ES256).unwrap();
+882:            validate_signature(&jwt2, &get_ec_public_key_path(), Algorithm::ES256);
+893:        let header = json!({});
+897:            validate_signature(jwt1, &get_ec_public_key_path(), Algorithm::ES256);
+909:        let header = json!({});
+910:        let jwt1 = encode(header, &get_ec_private_key_path(), &p1, Algorithm::ES256).unwrap();
+912:            validate_signature(&jwt1, &get_bad_ec_public_key_path(), Algorithm::ES256);
+923:        let header = json!({});
+924:        let h1 = json!({"typ" : STANDARD_HEADER_TYPE, "alg" : Algorithm::ES512.to_string()});
+926:        let jwt1 = encode(header, &get_ec521_private_key_path(), &p1, Algorithm::ES512).unwrap();
+927:        let (header, payload) = decode(
+930:            Algorithm::ES512,
+935:        assert_eq!(h1, header);
+939:    fn test_header_typ_override() {
+## EdDSA / Ed25519 / ML-DSA / composite anywhere in the crate
+0 matches
