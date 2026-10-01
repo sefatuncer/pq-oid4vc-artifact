@@ -2,7 +2,7 @@
 
 Every kontrol-EdDSA job is copied to the kontrol-ES384 arm with the ES384 counterpart vector when one exists.
 v1.4 is mounted at /v/v1.3 (it is a byte-identical superset of v1.3), so file paths keep the v1.3 prefix.
-Output: isler_v14.jsonl (measurement), isler_dondurma_oncesi_V_v14.jsonl (validity gate incl. ES384 rows).
+Output: jobs-v1.4.jsonl (measurement), jobs-prefreeze-v1.4.jsonl (validity gate incl. ES384 rows).
 Usage: python make_jobs_v14.py
 """
 import io, json, os
@@ -35,5 +35,5 @@ def extend(src, dst):
             f.write(json.dumps(j, sort_keys=True, ensure_ascii=False) + '\n')
     return len(jobs), len(out)
 
-print('measurement', extend('isler.jsonl', 'isler_v14.jsonl'))
-print('validity gate', extend('isler_dondurma_oncesi_V.jsonl', 'isler_dondurma_oncesi_V_v14.jsonl'))
+print('measurement', extend('jobs-v1.3.jsonl', 'jobs-v1.4.jsonl'))
+print('validity gate', extend('jobs-prefreeze-v1.3.jsonl', 'jobs-prefreeze-v1.4.jsonl'))

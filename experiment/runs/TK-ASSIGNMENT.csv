@@ -1,0 +1,32 @@
+target,tk_mldsa_primary,tk_mldsa_sensitivity,tk_composite,basis
+COSE-001,TK3,TK3,TK3,no native ML-DSA-65 support (gate failed); TK2 out of scope
+COSE-014,TK3,TK3,TK3,no native ML-DSA-65 support (gate failed); TK2 out of scope
+COSE-034,TK3,TK3,TK3,no native ML-DSA-65 support (gate failed); TK2 out of scope
+COSE-035,TK3,TK3,TK3,no native ML-DSA-65 support (gate failed); TK2 out of scope
+COSE-036,TK1,TK1,TK3,ML-DSA-65 gate passed (native)
+JOSE-001,TK1,TK1,TK3,ML-DSA-65 gate passed (native)
+JOSE-002,TK3,TK3,TK3,no native ML-DSA-65 support (gate failed); TK2 out of scope
+JOSE-009,TK1,TK1,TK3,ML-DSA-65 gate passed (native)
+JOSE-031,TK3,TK3,TK3,no native ML-DSA-65 support (gate failed); TK2 out of scope
+JOSE-033,TK3,TK3,TK3,no native ML-DSA-65 support (gate failed); TK2 out of scope
+JOSE-034,TK3,TK3,TK3,no native ML-DSA-65 support (gate failed); TK2 out of scope
+JOSE-052,TK3,TK3,TK3,no native ML-DSA-65 support (gate failed); TK2 out of scope
+JOSE-055,TK3,TK3,TK3,no native ML-DSA-65 support (gate failed); TK2 out of scope
+JOSE-065,TK3,TK3,TK3,no native ML-DSA-65 support (gate failed); TK2 out of scope
+JOSE-070,TK3,TK3,TK3,no native ML-DSA-65 support (gate failed); TK2 out of scope
+JOSE-071,TK3,TK3,TK3,no native ML-DSA-65 support (gate failed); TK2 out of scope
+JOSE-083,TK3,TK3,TK3,no native ML-DSA-65 support (gate failed); TK2 out of scope
+JOSE-084,TK3,TK3,TK3,no native ML-DSA-65 support (gate failed); TK2 out of scope
+JOSE-087,TK3,TK3,TK3,no native ML-DSA-65 support (gate failed); TK2 out of scope
+JOSE-089,TK3,TK3,TK3,no native ML-DSA-65 support (gate failed); TK2 out of scope
+JOSE-091,TK3,TK3,TK3,no native ML-DSA-65 support (gate failed); TK2 out of scope
+JOSE-092,TK3,TK3,TK3,no native ML-DSA-65 support (gate failed); TK2 out of scope
+JOSE-102,TK3,TK1,TK3,ML-DSA-65 only through a non-public interface (decision D2)
+SDJWT-001,TK3,TK3,TK3,no native ML-DSA-65 support (gate failed); TK2 out of scope
+SDJWT-002,TK3,TK3,TK3,no native ML-DSA-65 support (gate failed); TK2 out of scope
+SDJWT-004,TK3,TK3,TK3,no native ML-DSA-65 support (gate failed); TK2 out of scope
+SDJWT-010,TK3,TK3,TK3,no native ML-DSA-65 support (gate failed); TK2 out of scope
+SDJWT-015,TK1,TK1,TK3,ML-DSA-65 gate passed (application-supplied verifier callback; policy in the library; decision D5)
+SDJWT-018,TK1,TK1,TK3,ML-DSA-65 gate passed (verification delegated to jwcrypto)
+SDJWT-021,TK3,TK3,TK3,no native ML-DSA-65 support (gate failed); TK2 out of scope
+SDJWT-025,TK3,TK3,TK3,no native ML-DSA-65 support (gate failed); TK2 out of scope

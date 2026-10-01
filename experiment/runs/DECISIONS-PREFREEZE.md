@@ -11,17 +11,17 @@ with a corrupted signature is rejected, per algorithm. It is not part of the mea
 
 | Source | Content |
 |---|---|
-| `kosu/oncesi/*.jsonl`, `kosu/oncesi/GATE-SUMMARY.csv` | JWS/COSE-level gate, 31 targets (`adaptorler/_belge/gate_summary.py`) |
+| `outputs/prefreeze-v1.3/*.jsonl`, `outputs/prefreeze-v1.3/GATE-SUMMARY.csv` | JWS/COSE-level gate, 31 targets (`adapters/_tools/gate_summary.py`) |
 | `vpm-sdjwt/` | SD-JWT-format gate vectors (16) and their generator; added because the JWS-level pair is not a well-formed SD-JWT VC for libraries that require `_sd_alg` or a specific `typ` |
-| `kosu/oncesi-sdjwt/*.jsonl`, `kosu/oncesi-sdjwt/GATE-SUMMARY-SDJWT.csv` | SD-JWT-format gate, 8 SD-JWT targets |
+| `outputs/prefreeze-sdjwt/*.jsonl`, `outputs/prefreeze-sdjwt/GATE-SUMMARY-SDJWT.csv` | SD-JWT-format gate, 8 SD-JWT targets |
 
-JWS/COSE-level gate, targets passing per algorithm: ES256 29, EdDSA 16, Ed25519 7, ES384 24, ML-DSA-65 6, composite ML-DSA-65-ES256 0 (`kosu/oncesi-v14/`).
+JWS/COSE-level gate, targets passing per algorithm: ES256 29, EdDSA 16, Ed25519 7, ES384 24, ML-DSA-65 6, composite ML-DSA-65-ES256 0 (`outputs/prefreeze-v1.4/`).
 
 ## Decisions
 
 **D1. SD-JWT targets are gated with SD-JWT-format vectors.**
 - SDJWT-021 accepts only the legacy `typ` value `vc+sd-jwt` and only ES256. It passes the gate in that form and is measured as is. Battery objects with `dc+sd-jwt` are expected to be rejected by this library, which is its documented behaviour.
-- SDJWT-002 accepts valid objects and also objects with a corrupted issuer signature (ES256 and EdDSA). The library computes the signature check but does not use its result (source and evidence in `adaptorler/SDJWT-002/kanit/`). The adapter is valid. The target is measured as is. Its outcomes are flagged `integrity-failure`, and every analysis is also reported without it.
+- SDJWT-002 accepts valid objects and also objects with a corrupted issuer signature (ES256 and EdDSA). The library computes the signature check but does not use its result (source and evidence in `adapters/SDJWT-002/evidence/`). The adapter is valid. The target is measured as is. Its outcomes are flagged `integrity-failure`, and every analysis is also reported without it.
 
 **D2. ML-DSA behind a non-public interface.**
 - JOSE-102 (jwt-kit 5.3.0) verifies ML-DSA-65 only through `@_spi(PostQuantum)`, which is not public API.
@@ -36,7 +36,7 @@ JWS/COSE-level gate, targets passing per algorithm: ES256 29, EdDSA 16, Ed25519 
 - The control arm measures policy expressibility with a second classical algorithm, separately from PQ support. At the JWS/COSE-level gate, 15 targets support neither EdDSA nor Ed25519.
 - Label order becomes EdDSA, then Ed25519, then **ES384**: a second classical algorithm of the same family, signed with the battery's deterministic `issuer/ES384` key.
 - Battery v1.4 = v1.3 (byte-identical) + 30 ES384 counterparts of the control-arm vectors. Every EdDSA signature is re-made with ES384, recorded corruptions are reproduced, and the K10 alg/key mismatch meaning is kept. The DPoP proof has no counterpart. Generator: `../vector-generator/uretec/v14.py`. Independent check: `../vector-generator/testler/t14_es384.py` (341/341, `../vector-generator/sonuclar/t14_es384.txt`).
-- Oracle v1.4: each kontrol-EdDSA row is copied to the kontrol-ES384 arm with the counterpart vector, which gives 357 rows (`../oracle/birlesik/turet_v14.py`, `karar_v14.tsv`). Jobs: `isler_v14.jsonl` (2,202 rows) and `isler_dondurma_oncesi_V_v14.jsonl`.
+- Oracle v1.4: each kontrol-EdDSA row is copied to the kontrol-ES384 arm with the counterpart vector, which gives 357 rows (`../oracle/birlesik/turet_v14.py`, `karar_v14.tsv`). Jobs: `jobs-v1.4.jsonl` (2,202 rows) and `jobs-prefreeze-v1.4.jsonl`.
 - v1.4 is mounted at `/v/v1.3` for the adapters. It is a byte-identical superset, so no adapter reads a different file for a v1.3 vector.
 - Result (`CONTROL-LABELS.csv`, from the gate on v1.4): EdDSA 17, ES384 13, none 1. SDJWT-021 verifies only ES256, so it cannot express a two-algorithm required set. It is excluded from the primary H6 analysis and counted as Y = 0 in a sensitivity analysis. SDJWT-002 keeps the label EdDSA and the D1 flag.
 - Effect on the H6 sample: n_eff for the primary analysis is 30 before any undetermined targets are removed.
@@ -55,4 +55,4 @@ JWS/COSE-level gate, targets passing per algorithm: ES256 29, EdDSA 16, Ed25519 
 **D7. Calling conventions.**
 - Adapters with their own folder and Dockerfile take `adaptor <jobs> <out>`.
 - The shared adapters (`_py`, `_node`, `_go`, `_jvm`, `_kt`, `_rs`) take `<target> <jobs> <out> <run>`.
-- `adaptorler/_belge/kos.sh` handles both.
+- `adapters/_tools/kos.sh` handles both.
