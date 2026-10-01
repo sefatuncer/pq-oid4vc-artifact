@@ -52,3 +52,223 @@
 [2026-10-01 17:25:57]   CERCEVE-000869 executable basamak=1 -> gecersiz_wf (NA adım) 180.53s 12288.0MiB rc=137
 [2026-10-01 17:26:49]   CERCEVE-000869 G2_presentation_unforgeability basamak=1 -> gecersiz_wf (NA adım) s MiB rc=
 [2026-10-01 17:26:49] Bitti (3 konteyner).
+[2026-10-01 17:59:05] Başlangıç. Filtre='CERCEVE-000869'. İmaj: pq-a02-tamarin:1.12.0 (sha256:59b648d60829c4580504470be1b171df0e63ead38bebc8944ac8ee2bba6b9c60)
+[2026-10-01 17:59:05] Çeviri özeti (on_ceviri.sha256) denetimi:
+    ceviri_plani.tsv: OK
+    secim.json: OK
+    ceviri_disi.tsv: OK
+[2026-10-01 17:59:06] == CERCEVE-000869 (kapi) hedef=G2 tur=bir-eksik model=ornekler/CERCEVE-000869.spthy lemma=G2_presentation_unforgeability
+[2026-10-01 18:03:20]   CERCEVE-000869 executable basamak=1 -> gecersiz_wf (NA adım) 246.43s 12288.0MiB rc=137
+[2026-10-01 18:07:59]   CERCEVE-000869 G2_presentation_unforgeability basamak=1 -> gecersiz_wf (NA adım) 277.67s 12288.0MiB rc=137
+[2026-10-01 18:07:59] Bitti (3 konteyner).
+[2026-10-01 18:08:00] Başlangıç. Filtre='CERCEVE-001004'. İmaj: pq-a02-tamarin:1.12.0 (sha256:59b648d60829c4580504470be1b171df0e63ead38bebc8944ac8ee2bba6b9c60)
+[2026-10-01 18:08:00] Çeviri özeti (on_ceviri.sha256) denetimi:
+    ceviri_plani.tsv: OK
+    secim.json: OK
+    ceviri_disi.tsv: OK
+[2026-10-01 18:08:00] == CERCEVE-001004 (kapi) hedef=G2 tur=asgari model=ornekler/CERCEVE-001004.spthy lemma=G2_presentation_unforgeability
+[2026-10-01 18:12:44]   CERCEVE-001004 executable basamak=1 -> gecersiz_wf (NA adım) 279.17s 12288.0MiB rc=137
+[2026-10-01 18:16:33]   CERCEVE-001004 G2_presentation_unforgeability basamak=1 -> verified (5016 adım) 226.86s 6071.3MiB rc=0
+[2026-10-01 18:16:33] Bitti (3 konteyner).
+[2026-10-01 18:16:34] Başlangıç. Filtre='CERCEVE-001853'. İmaj: pq-a02-tamarin:1.12.0 (sha256:59b648d60829c4580504470be1b171df0e63ead38bebc8944ac8ee2bba6b9c60)
+[2026-10-01 18:16:34] Çeviri özeti (on_ceviri.sha256) denetimi:
+    ceviri_plani.tsv: OK
+    secim.json: OK
+    ceviri_disi.tsv: OK
+[2026-10-01 18:16:34] == CERCEVE-001853 (kapi) hedef=G3 tur=bir-eksik model=ornekler/CERCEVE-001853.spthy lemma=G3_status_soundness
+[2026-10-01 18:21:09]   CERCEVE-001853 executable basamak=1 -> verified (14 adım) 270.27s 3911.8MiB rc=0
+[2026-10-01 18:23:39]   CERCEVE-001853 G3_status_soundness basamak=1 -> falsified (13 adım) 148.2s 6891.0MiB rc=0
+[2026-10-01 18:23:39] Bitti (3 konteyner).
+[2026-10-01 18:23:40] Başlangıç. Filtre='CERCEVE-001010'. İmaj: pq-a02-tamarin:1.12.0 (sha256:59b648d60829c4580504470be1b171df0e63ead38bebc8944ac8ee2bba6b9c60)
+[2026-10-01 18:23:40] Çeviri özeti (on_ceviri.sha256) denetimi:
+    ceviri_plani.tsv: OK
+    secim.json: OK
+    ceviri_disi.tsv: OK
+[2026-10-01 18:23:40] == CERCEVE-001010 (kapi) hedef=G2 tur=bir-eksik model=ornekler/CERCEVE-001010.spthy lemma=G2_presentation_unforgeability
+[2026-10-01 18:28:49]   CERCEVE-001010 executable basamak=1 -> gecersiz_wf (NA adım) 303.41s 12288.0MiB rc=137
+[2026-10-01 18:32:09]   CERCEVE-001010 G2_presentation_unforgeability basamak=1 -> falsified (15 adım) 198.68s 6234.6MiB rc=0
+[2026-10-01 18:32:09] Bitti (3 konteyner).
+[2026-10-01 18:32:10] Başlangıç. Filtre='CERCEVE-001296'. İmaj: pq-a02-tamarin:1.12.0 (sha256:59b648d60829c4580504470be1b171df0e63ead38bebc8944ac8ee2bba6b9c60)
+[2026-10-01 18:32:10] Çeviri özeti (on_ceviri.sha256) denetimi:
+    ceviri_plani.tsv: OK
+    secim.json: OK
+    ceviri_disi.tsv: OK
+[2026-10-01 18:32:10] == CERCEVE-001296 (kapi) hedef=G2 tur=bir-eksik model=ornekler/CERCEVE-001296.spthy lemma=G2_presentation_unforgeability
+[2026-10-01 18:33:11]   CERCEVE-001296 executable basamak=1 -> verified (16 adım) 55.89s 1209.0MiB rc=0
+[2026-10-01 18:34:30]   CERCEVE-001296 G2_presentation_unforgeability basamak=1 -> falsified (28 adım) 77.43s 5521.4MiB rc=0
+[2026-10-01 18:34:30] Bitti (3 konteyner).
+[2026-10-01 18:34:31] Başlangıç. Filtre='CERCEVE-000724'. İmaj: pq-a02-tamarin:1.12.0 (sha256:59b648d60829c4580504470be1b171df0e63ead38bebc8944ac8ee2bba6b9c60)
+[2026-10-01 18:34:31] Çeviri özeti (on_ceviri.sha256) denetimi:
+    ceviri_plani.tsv: OK
+    secim.json: OK
+    ceviri_disi.tsv: OK
+[2026-10-01 18:34:31] == CERCEVE-000724 (kapi) hedef=G2 tur=bir-eksik model=ornekler/CERCEVE-000724.spthy lemma=G2_presentation_unforgeability
+[2026-10-01 18:36:36]   CERCEVE-000724 executable basamak=1 -> gecersiz_wf (NA adım) 118.37s 12288.0MiB rc=137
+[2026-10-01 18:38:09]   CERCEVE-000724 G2_presentation_unforgeability basamak=1 -> gecersiz_wf (NA adım) 90.61s 12288.0MiB rc=137
+[2026-10-01 18:38:09] Bitti (3 konteyner).
+[2026-10-01 18:38:09] Başlangıç. Filtre='CERCEVE-000835'. İmaj: pq-a02-tamarin:1.12.0 (sha256:59b648d60829c4580504470be1b171df0e63ead38bebc8944ac8ee2bba6b9c60)
+[2026-10-01 18:38:10] Çeviri özeti (on_ceviri.sha256) denetimi:
+    ceviri_plani.tsv: OK
+    secim.json: OK
+    ceviri_disi.tsv: OK
+[2026-10-01 18:38:10] == CERCEVE-000835 (kapi) hedef=G2 tur=bir-eksik model=ornekler/CERCEVE-000835.spthy lemma=G2_presentation_unforgeability
+[2026-10-01 18:46:05]   CERCEVE-000835 executable basamak=1 -> verified (16 adım) 470.1s 10018.5MiB rc=0
+[2026-10-01 18:47:55]   CERCEVE-000835 G2_presentation_unforgeability basamak=1 -> falsified (16 adım) 108.34s 3453.5MiB rc=0
+[2026-10-01 18:47:55] Bitti (3 konteyner).
+[2026-10-01 18:47:56] Başlangıç. Filtre='CERCEVE-000671'. İmaj: pq-a02-tamarin:1.12.0 (sha256:59b648d60829c4580504470be1b171df0e63ead38bebc8944ac8ee2bba6b9c60)
+[2026-10-01 18:47:56] Çeviri özeti (on_ceviri.sha256) denetimi:
+    ceviri_plani.tsv: OK
+    secim.json: OK
+    ceviri_disi.tsv: OK
+[2026-10-01 18:47:56] == CERCEVE-000671 (kapi) hedef=G2 tur=bir-eksik model=ornekler/CERCEVE-000671.spthy lemma=G2_presentation_unforgeability
+[2026-10-01 18:50:12]   CERCEVE-000671 executable basamak=1 -> gecersiz_wf (NA adım) 130.27s 12288.0MiB rc=137
+[2026-10-01 18:56:52]   CERCEVE-000671 G2_presentation_unforgeability basamak=1 -> gecersiz_wf (NA adım) 399.09s 12288.0MiB rc=137
+[2026-10-01 18:56:52] Bitti (3 konteyner).
+[2026-10-01 18:56:53] Başlangıç. Filtre='CERCEVE-001108'. İmaj: pq-a02-tamarin:1.12.0 (sha256:59b648d60829c4580504470be1b171df0e63ead38bebc8944ac8ee2bba6b9c60)
+[2026-10-01 18:56:53] Çeviri özeti (on_ceviri.sha256) denetimi:
+    ceviri_plani.tsv: OK
+    secim.json: OK
+    ceviri_disi.tsv: OK
+[2026-10-01 18:56:53] == CERCEVE-001108 (kapi) hedef=G2 tur=asgari model=ornekler/CERCEVE-001108.spthy lemma=G2_presentation_unforgeability
+[2026-10-01 18:59:46]   CERCEVE-001108 executable basamak=1 -> gecersiz_wf (NA adım) 168.76s 12288.0MiB rc=137
+[2026-10-01 21:49:49]   CERCEVE-001108 G2_presentation_unforgeability basamak=1 -> verified (4784 adım) 10202.78s 4211.3MiB rc=0
+[2026-10-01 21:49:50] Bitti (3 konteyner).
+[2026-10-01 21:49:50] Başlangıç. Filtre='CERCEVE-001967'. İmaj: pq-a02-tamarin:1.12.0 (sha256:59b648d60829c4580504470be1b171df0e63ead38bebc8944ac8ee2bba6b9c60)
+[2026-10-01 21:49:50] Çeviri özeti (on_ceviri.sha256) denetimi:
+    ceviri_plani.tsv: OK
+    secim.json: OK
+    ceviri_disi.tsv: OK
+[2026-10-01 21:49:50] == CERCEVE-001967 (kapi) hedef=G3 tur=bir-eksik model=ornekler/CERCEVE-001967.spthy lemma=G3_status_soundness
+[2026-10-01 21:53:02]   CERCEVE-001967 executable basamak=1 -> gecersiz_wf (NA adım) 188.62s 12288.0MiB rc=137
+[2026-10-01 21:53:26]   CERCEVE-001967 G3_status_soundness basamak=1 -> falsified (16 adım) 22.54s 815.0MiB rc=0
+[2026-10-01 21:53:26] Bitti (3 konteyner).
+[2026-10-01 22:43:25] Başlangıç. Filtre='CERCEVE-000671'. İmaj: pq-a02-tamarin:1.12.0 ()
+[2026-10-01 22:43:25] Çeviri özeti (on_ceviri.sha256) denetimi:
+    ceviri_plani.tsv: OK
+    secim.json: OK
+    ceviri_disi.tsv: OK
+[2026-10-01 22:43:25] == CERCEVE-000671 lemma=G2_presentation_unforgeability basamaklar=3 5 (targeted rerun)
+[2026-10-01 22:49:40]   CERCEVE-000671 G2_presentation_unforgeability basamak=3 -> bellek (NA adım) 363.56s 12288.0MiB rc=137
+[2026-10-01 22:55:47]   CERCEVE-000671 G2_presentation_unforgeability basamak=5 -> bellek (NA adım) 365.91s 12288.0MiB rc=137
+[2026-10-01 22:55:47]   CERCEVE-000671 G2_presentation_unforgeability -> KAPANMADI (basamak 6)
+[2026-10-01 22:55:47] Bitti (2 konteyner).
+[2026-10-01 22:55:48] Başlangıç. Filtre='CERCEVE-000724'. İmaj: pq-a02-tamarin:1.12.0 (sha256:59b648d60829c4580504470be1b171df0e63ead38bebc8944ac8ee2bba6b9c60)
+[2026-10-01 22:55:48] Çeviri özeti (on_ceviri.sha256) denetimi:
+    ceviri_plani.tsv: OK
+    secim.json: OK
+    ceviri_disi.tsv: OK
+[2026-10-01 22:55:48] == CERCEVE-000724 lemma=G2_presentation_unforgeability basamaklar=3 5 (targeted rerun)
+[2026-10-01 22:57:32]   CERCEVE-000724 G2_presentation_unforgeability basamak=3 -> bellek (NA adım) 103.1s 12288.0MiB rc=137
+[2026-10-01 22:58:46]   CERCEVE-000724 G2_presentation_unforgeability basamak=5 -> bellek (NA adım) 72.76s 12288.0MiB rc=137
+[2026-10-01 22:58:46]   CERCEVE-000724 G2_presentation_unforgeability -> KAPANMADI (basamak 6)
+[2026-10-01 22:58:46] Bitti (2 konteyner).
+[2026-10-01 22:58:47] Başlangıç. Filtre='CERCEVE-000869'. İmaj: pq-a02-tamarin:1.12.0 (sha256:59b648d60829c4580504470be1b171df0e63ead38bebc8944ac8ee2bba6b9c60)
+[2026-10-01 22:58:47] Çeviri özeti (on_ceviri.sha256) denetimi:
+    ceviri_plani.tsv: OK
+    secim.json: OK
+    ceviri_disi.tsv: OK
+[2026-10-01 22:58:47] == CERCEVE-000869 lemma=G2_presentation_unforgeability basamaklar=3 5 (targeted rerun)
+[2026-10-01 23:02:34]   CERCEVE-000869 G2_presentation_unforgeability basamak=3 -> bellek (NA adım) 226.09s 12288.0MiB rc=137
+[2026-10-01 23:06:12]   CERCEVE-000869 G2_presentation_unforgeability basamak=5 -> bellek (NA adım) 216.36s 12288.0MiB rc=137
+[2026-10-01 23:06:12]   CERCEVE-000869 G2_presentation_unforgeability -> KAPANMADI (basamak 6)
+[2026-10-01 23:06:12] Bitti (2 konteyner).
+[2026-10-01 23:06:13] Başlangıç. Filtre='CERCEVE-000938'. İmaj: pq-a02-tamarin:1.12.0 (sha256:59b648d60829c4580504470be1b171df0e63ead38bebc8944ac8ee2bba6b9c60)
+[2026-10-01 23:06:13] Çeviri özeti (on_ceviri.sha256) denetimi:
+    ceviri_plani.tsv: OK
+    secim.json: OK
+    ceviri_disi.tsv: OK
+[2026-10-01 23:06:13] == CERCEVE-000938 lemma=G2_presentation_unforgeability basamaklar=3 5 (targeted rerun)
+[2026-10-01 23:09:23]   CERCEVE-000938 G2_presentation_unforgeability basamak=3 -> bellek (NA adım) 188.56s 12288.0MiB rc=137
+[2026-10-01 23:12:29]   CERCEVE-000938 G2_presentation_unforgeability basamak=5 -> bellek (NA adım) 185.07s 12288.0MiB rc=137
+[2026-10-01 23:12:29]   CERCEVE-000938 G2_presentation_unforgeability -> KAPANMADI (basamak 6)
+[2026-10-01 23:12:29] Bitti (2 konteyner).
+[2026-10-01 23:12:30] Başlangıç. Filtre='CERCEVE-000048'. İmaj: pq-a02-tamarin:1.12.0 (sha256:59b648d60829c4580504470be1b171df0e63ead38bebc8944ac8ee2bba6b9c60)
+[2026-10-01 23:12:30] Çeviri özeti (on_ceviri.sha256) denetimi:
+    ceviri_plani.tsv: OK
+    secim.json: OK
+    ceviri_disi.tsv: OK
+[2026-10-01 23:12:30] == CERCEVE-000048 lemma=executable basamaklar=3 5 (targeted rerun)
+[2026-10-01 23:16:35]   CERCEVE-000048 executable basamak=3 -> bellek (NA adım) 244.3s 12288.0MiB rc=137
+[2026-10-01 23:20:19]   CERCEVE-000048 executable basamak=5 -> bellek (NA adım) 222.88s 12288.0MiB rc=137
+[2026-10-01 23:20:19]   CERCEVE-000048 executable -> KAPANMADI (basamak 6)
+[2026-10-01 23:20:20] Bitti (2 konteyner).
+[2026-10-01 23:20:20] Başlangıç. Filtre='CERCEVE-000671'. İmaj: pq-a02-tamarin:1.12.0 (sha256:59b648d60829c4580504470be1b171df0e63ead38bebc8944ac8ee2bba6b9c60)
+[2026-10-01 23:20:20] Çeviri özeti (on_ceviri.sha256) denetimi:
+    ceviri_plani.tsv: OK
+    secim.json: OK
+    ceviri_disi.tsv: OK
+[2026-10-01 23:20:20] == CERCEVE-000671 lemma=executable basamaklar=3 5 (targeted rerun)
+[2026-10-01 23:22:54]   CERCEVE-000671 executable basamak=3 -> bellek (NA adım) 152.37s 12288.0MiB rc=137
+[2026-10-01 23:25:20]   CERCEVE-000671 executable basamak=5 -> bellek (NA adım) 144.76s 12288.0MiB rc=137
+[2026-10-01 23:25:20]   CERCEVE-000671 executable -> KAPANMADI (basamak 6)
+[2026-10-01 23:25:20] Bitti (2 konteyner).
+[2026-10-01 23:25:21] Başlangıç. Filtre='CERCEVE-000724'. İmaj: pq-a02-tamarin:1.12.0 (sha256:59b648d60829c4580504470be1b171df0e63ead38bebc8944ac8ee2bba6b9c60)
+[2026-10-01 23:25:21] Çeviri özeti (on_ceviri.sha256) denetimi:
+    ceviri_plani.tsv: OK
+    secim.json: OK
+    ceviri_disi.tsv: OK
+[2026-10-01 23:25:21] == CERCEVE-000724 lemma=executable basamaklar=3 5 (targeted rerun)
+[2026-10-01 23:27:07]   CERCEVE-000724 executable basamak=3 -> bellek (NA adım) 105.07s 12288.0MiB rc=137
+[2026-10-01 23:28:27]   CERCEVE-000724 executable basamak=5 -> bellek (NA adım) 78.59s 12288.0MiB rc=137
+[2026-10-01 23:28:27]   CERCEVE-000724 executable -> KAPANMADI (basamak 6)
+[2026-10-01 23:28:27] Bitti (2 konteyner).
+[2026-10-01 23:28:28] Başlangıç. Filtre='CERCEVE-000869'. İmaj: pq-a02-tamarin:1.12.0 (sha256:59b648d60829c4580504470be1b171df0e63ead38bebc8944ac8ee2bba6b9c60)
+[2026-10-01 23:28:28] Çeviri özeti (on_ceviri.sha256) denetimi:
+    ceviri_plani.tsv: OK
+    secim.json: OK
+    ceviri_disi.tsv: OK
+[2026-10-01 23:28:28] == CERCEVE-000869 lemma=executable basamaklar=3 5 (targeted rerun)
+[2026-10-01 23:31:02]   CERCEVE-000869 executable basamak=3 -> bellek (NA adım) 153.39s 12288.0MiB rc=137
+[2026-10-01 23:33:32]   CERCEVE-000869 executable basamak=5 -> bellek (NA adım) 147.96s 12288.0MiB rc=137
+[2026-10-01 23:33:32]   CERCEVE-000869 executable -> KAPANMADI (basamak 6)
+[2026-10-01 23:33:32] Bitti (2 konteyner).
+[2026-10-01 23:33:32] Başlangıç. Filtre='CERCEVE-001004'. İmaj: pq-a02-tamarin:1.12.0 (sha256:59b648d60829c4580504470be1b171df0e63ead38bebc8944ac8ee2bba6b9c60)
+[2026-10-01 23:33:32] Çeviri özeti (on_ceviri.sha256) denetimi:
+    ceviri_plani.tsv: OK
+    secim.json: OK
+    ceviri_disi.tsv: OK
+[2026-10-01 23:33:32] == CERCEVE-001004 lemma=executable basamaklar=3 5 (targeted rerun)
+[2026-10-01 23:37:46]   CERCEVE-001004 executable basamak=3 -> bellek (NA adım) 252.49s 12288.0MiB rc=137
+[2026-10-01 23:41:19]   CERCEVE-001004 executable basamak=5 -> bellek (NA adım) 212.01s 12288.0MiB rc=137
+[2026-10-01 23:41:20]   CERCEVE-001004 executable -> KAPANMADI (basamak 6)
+[2026-10-01 23:41:20] Bitti (2 konteyner).
+[2026-10-01 23:41:20] Başlangıç. Filtre='CERCEVE-001010'. İmaj: pq-a02-tamarin:1.12.0 (sha256:59b648d60829c4580504470be1b171df0e63ead38bebc8944ac8ee2bba6b9c60)
+[2026-10-01 23:41:20] Çeviri özeti (on_ceviri.sha256) denetimi:
+    ceviri_plani.tsv: OK
+    secim.json: OK
+    ceviri_disi.tsv: OK
+[2026-10-01 23:41:20] == CERCEVE-001010 lemma=executable basamaklar=3 5 (targeted rerun)
+[2026-10-01 23:46:40]   CERCEVE-001010 executable basamak=3 -> bellek (NA adım) 318.1s 12288.0MiB rc=137
+[2026-10-01 23:51:06]   CERCEVE-001010 executable basamak=5 -> bellek (NA adım) 264.42s 12288.0MiB rc=137
+[2026-10-01 23:51:06]   CERCEVE-001010 executable -> KAPANMADI (basamak 6)
+[2026-10-01 23:51:06] Bitti (2 konteyner).
+[2026-10-01 23:51:06] Başlangıç. Filtre='CERCEVE-001064'. İmaj: pq-a02-tamarin:1.12.0 (sha256:59b648d60829c4580504470be1b171df0e63ead38bebc8944ac8ee2bba6b9c60)
+[2026-10-01 23:51:06] Çeviri özeti (on_ceviri.sha256) denetimi:
+    ceviri_plani.tsv: OK
+    secim.json: OK
+    ceviri_disi.tsv: OK
+[2026-10-01 23:51:06] == CERCEVE-001064 lemma=executable basamaklar=3 5 (targeted rerun)
+[2026-10-01 23:55:05]   CERCEVE-001064 executable basamak=3 -> bellek (NA adım) 237.8s 12288.0MiB rc=137
+[2026-10-01 23:58:26]   CERCEVE-001064 executable basamak=5 -> bellek (NA adım) 199.28s 12288.0MiB rc=137
+[2026-10-01 23:58:26]   CERCEVE-001064 executable -> KAPANMADI (basamak 6)
+[2026-10-01 23:58:26] Bitti (2 konteyner).
+[2026-10-01 23:58:26] Başlangıç. Filtre='CERCEVE-001108'. İmaj: pq-a02-tamarin:1.12.0 (sha256:59b648d60829c4580504470be1b171df0e63ead38bebc8944ac8ee2bba6b9c60)
+[2026-10-01 23:58:27] Çeviri özeti (on_ceviri.sha256) denetimi:
+    ceviri_plani.tsv: OK
+    secim.json: OK
+    ceviri_disi.tsv: OK
+[2026-10-01 23:58:27] == CERCEVE-001108 lemma=executable basamaklar=3 5 (targeted rerun)
+[2026-10-02 00:01:05]   CERCEVE-001108 executable basamak=3 -> bellek (NA adım) 157.56s 12288.0MiB rc=137
+[2026-10-02 00:03:35]   CERCEVE-001108 executable basamak=5 -> bellek (NA adım) 148.18s 12288.0MiB rc=137
+[2026-10-02 00:03:35]   CERCEVE-001108 executable -> KAPANMADI (basamak 6)
+[2026-10-02 00:03:35] Bitti (2 konteyner).
+[2026-10-02 00:03:35] Başlangıç. Filtre='CERCEVE-001967'. İmaj: pq-a02-tamarin:1.12.0 (sha256:59b648d60829c4580504470be1b171df0e63ead38bebc8944ac8ee2bba6b9c60)
+[2026-10-02 00:03:36] Çeviri özeti (on_ceviri.sha256) denetimi:
+    ceviri_plani.tsv: OK
+    secim.json: OK
+    ceviri_disi.tsv: OK
+[2026-10-02 00:03:36] == CERCEVE-001967 lemma=executable basamaklar=3 5 (targeted rerun)
+[2026-10-02 00:07:16]   CERCEVE-001967 executable basamak=3 -> bellek (NA adım) 218.74s 12288.0MiB rc=137
+[2026-10-02 00:10:59]   CERCEVE-001967 executable basamak=5 -> bellek (NA adım) 222.44s 12288.0MiB rc=137
+[2026-10-02 00:10:59]   CERCEVE-001967 executable -> KAPANMADI (basamak 6)
+[2026-10-02 00:10:59] Bitti (2 konteyner).
