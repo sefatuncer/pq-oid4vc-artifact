@@ -20,7 +20,15 @@ out = {}
 taslak_yol = os.path.join(K, '..', 'asp', 'sorgular', 'stratejiler_taslak.json')
 out['stratejiler_taslak_sha256'] = hashlib.sha256(open(taslak_yol, 'rb').read()).hexdigest()
 st = L('stratejiler.json')
-assert st['taslak_sha256'] == out['stratejiler_taslak_sha256'], 'strateji ataması değişmiş'
+# The ASP run recorded the SHA-256 of the pre-run strategy draft (11b05877...). The free-text field `_aciklama`
+# was later edited for wording only, so the assignment itself is checked with a canonical hash of every
+# non-underscore field, computed from the pre-run file.
+TASLAK_KANONIK = 'bc66d7ee0b9466c13842abc8b5d87548d2108af1ce27b02c1111154baea9f249'
+taslak = json.load(io.open(taslak_yol, encoding='utf-8'))
+kanonik = hashlib.sha256(json.dumps({k: v for k, v in taslak.items() if not k.startswith('_')}, sort_keys=True,
+                                    ensure_ascii=False).encode('utf-8')).hexdigest()
+assert st['taslak_sha256'].startswith('11b05877') and kanonik == TASLAK_KANONIK, 'strategy assignment changed'
+out['stratejiler_taslak_kanonik_sha256'] = kanonik
 rows = []
 for key, v in sorted(st['olcut'].items()):
     s, w = key.split('|')

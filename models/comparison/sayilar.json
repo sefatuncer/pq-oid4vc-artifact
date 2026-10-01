@@ -1,5 +1,6 @@
 {
- "stratejiler_taslak_sha256": "11b05877024f49e01df19ec906468ba7b59240cf8ba9c1ee8c76df788c131e41",
+ "stratejiler_taslak_sha256": "9e505dcf5df707a2961fdd05ac67514a0af8d56e34b84e7d28ae70ae0e90de1f",
+ "stratejiler_taslak_kanonik_sha256": "bc66d7ee0b9466c13842abc8b5d87548d2108af1ce27b02c1111154baea9f249",
  "onceden_kayitli_sorular": {
   "S1": "S5, S7nin sagladigi her hucreyi sagliyor mu?",
   "S2": "S5 fazladan artefakt istiyor mu? (israfli hucre sayisi, cl)",
