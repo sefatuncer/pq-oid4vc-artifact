@@ -1,0 +1,8 @@
+# Exploratory variants of the H5 model with encrypted responses. Expectations written BEFORE the runs (2026-10-01).
+# variant	flags	expected
+E0_plain_fast	(none)	G2_presentation_unforgeability=F (sanity: same as R6h5 E_nosingle_fast)
+E1_enccl_fast	ENC,ENC_CL	G2_presentation_unforgeability=F;M_harvest_decrypt_forge=V
+E2_encpq_fast	ENC	G2_presentation_unforgeability=V
+E3_encpq_fast_single	ENC,SINGLE_USE	G2_presentation_unforgeability=V
+E4_enccl_slow	ENC,ENC_CL,SLOW	G2_presentation_unforgeability=V
+E5_encpq_reuse	ENC,KEY_REUSE	G2_presentation_unforgeability=V

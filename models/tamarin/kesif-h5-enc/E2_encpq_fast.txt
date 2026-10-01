@@ -1,0 +1,516 @@
+maude tool: 'maude'
+ checking version: 3.5.1. OK.
+ checking installation: OK.
+[Theory R6_H5_ENC] Theory loaded
+[Theory R6_H5_ENC] Theory translated
+[Theory R6_H5_ENC] Derivation checks started
+[Theory R6_H5_ENC] Derivation checks ended
+[Theory R6_H5_ENC] Theory closed
+[Saturating Sources] Step 1 (Max 5)
+[Saturating Sources] Done
+theory R6_H5_ENC
+
+begin
+
+// Function signature and definition of the equational theory E
+
+functions: adec/2, aenc/2, fst/1, pair/2, pk/1, sign/2, snd/1, true/0,
+           verify/3
+equations:
+    adec(aenc(x.1, pk(x.2)), x.2) = x.1,
+    fst(<x.1, x.2>) = x.1,
+    snd(<x.1, x.2>) = x.2,
+    verify(sign(x.1, x.2), x.1, pk(x.2)) = true
+
+restriction Equality:
+  "∀ x y #i. (Eq( x, y ) @ #i) ⇒ (x = y)"
+  // safety formula
+
+  /*
+  expanded formula:
+  "∀ x y #i. (Eq( x, y ) @ #i) ⇒ (x = y)"
+  */
+
+restriction Unique:
+  "∀ x #i #j. ((Unique( x ) @ #i) ∧ (Unique( x ) @ #j)) ⇒ (#i = #j)"
+  // safety formula
+
+  /*
+  expanded formula:
+  "∀ x #i #j. ((Unique( x ) @ #i) ∧ (Unique( x ) @ #j)) ⇒ (#i = #j)"
+  */
+
+restriction CredWindow:
+  "∀ c #u #e. ((UseCred( c ) @ #u) ∧ (CredEnd( c ) @ #e)) ⇒ (#u < #e)"
+  // safety formula
+
+  /*
+  expanded formula:
+  "∀ c #u #e. ((UseCred( c ) @ #u) ∧ (CredEnd( c ) @ #e)) ⇒ (#u < #e)"
+  */
+
+rule (modulo E) Qday:
+   [ ] --[ Unique( 'qday' ), QdayEv( ) ]-> [ !CRQC( ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) CRQC_Start_Device:
+   [ !CRQC( ), !DevKey( d ), In( pk(d) ) ]
+  --[ CRQCStart( d ) ]->
+   [ Extracting( d ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) CRQC_Done:
+   [ Extracting( d ) ] --[ CRQCDone( d ) ]-> [ Out( d ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) RP_Setup:
+   [ Fr( ~e ) ]
+  --[ Unique( <'rp', $V> ) ]->
+   [ !RPEnc( $V, ~e ), !RPEncPk( $V, pk(~e) ), Out( pk(~e) ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Issuer_Setup:
+   [ Fr( ~skI ) ]
+  --[ Unique( <'iss', $I> ) ]->
+   [ !IssSk( $I, ~skI ), !IssPin( $I, pk(~skI) ), Out( pk(~skI) ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Issue:
+   [ !IssSk( I, skI ), Fr( ~c ), Fr( ~d ) ]
+  --[ Issued( I, ~c, pk(~d) ), KeyClass( ~d, 'cred' ) ]->
+   [
+   !DevKey( ~d ),
+   !WalletCred( ~d, <'cred', I, ~c, pk(~d)>,
+                sign(<'cred', I, ~c, pk(~d)>, skI)
+   ),
+   CredLive( ~c, ~d )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Cred_Expire:
+   [ CredLive( c, d ) ] --[ CredEnd( c ), KeyClose( d ) ]-> [ ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Holder_Present:
+   [ !WalletCred( d, crb, sig ), In( <'nonce', V, n> ), !RPEncPk( V, pke ) ]
+  --[ Presented( pk(d), n ), WalletUse( crb ) ]->
+   [ Out( aenc(<<crb, sig>, <'kb', n, crb>, sign(<'kb', n, crb>, d)>, pke) )
+   ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Verifier_Challenge:
+   [ Fr( ~n ), !RPEnc( V, e ) ]
+  -->
+   [ Challenge( V, ~n ), Out( <'nonce', V, ~n> ) ]
+
+  /* has exactly the trivial AC variant */
+
+rule (modulo E) Verifier_Accept:
+   [
+   Challenge( V, n ), !RPEnc( V, e ), !IssPin( I, pkI ),
+   In( aenc(<<<'cred', I, c, pkd>, s1>, <'kb', n, 'cred', I, c, pkd>, s2>,
+            pk(e))
+   )
+   ]
+  --[
+  Eq( verify(s1, <'cred', I, c, pkd>, pkI), true ),
+  Eq( verify(s2, <'kb', n, 'cred', I, c, pkd>, pkd), true ),
+  AcceptPres( I, c, pkd, n ), UseOnce( <I, c> ), UseCred( c )
+  ]->
+   [ ]
+
+  /*
+  rule (modulo AC) Verifier_Accept:
+     [
+     Challenge( V, n ), !RPEnc( V, e ), !IssPin( I, pkI ),
+     In( aenc(<<<'cred', I, c, pkd>, s1>, <'kb', n, 'cred', I, c, pkd>, s2>,
+              pk(e))
+     )
+     ]
+    --[
+    Eq( z, true ), Eq( z.1, true ), AcceptPres( I, c, pkd, n ),
+    UseOnce( <I, c> ), UseCred( c )
+    ]->
+     [ ]
+    variants (modulo AC)
+    1. I     = I.23
+       c     = c.25
+       n     = n.27
+       pkI   = pkI.28
+       pkd   = pkd.29
+       s1    = s1.30
+       s2    = s2.31
+       z     = verify(s1.30, <'cred', I.23, c.25, pkd.29>, pkI.28)
+       z.1   = verify(s2.31, <'kb', n.27, 'cred', I.23, c.25, pkd.29>, pkd.29)
+    
+    2. I     = I.33
+       c     = c.35
+       n     = n.37
+       pkI   = pk(x.64)
+       pkd   = pkd.39
+       s1    = sign(<'cred', I.33, c.35, pkd.39>, x.64)
+       s2    = s2.41
+       z     = true
+       z.1   = verify(s2.41, <'kb', n.37, 'cred', I.33, c.35, pkd.39>, pkd.39)
+    
+    3. I     = I.34
+       c     = c.36
+       n     = n.38
+       pkI   = pkI.39
+       pkd   = pk(x.66)
+       s1    = s1.41
+       s2    = sign(<'kb', n.38, 'cred', I.34, c.36, pk(x.66)>, x.66)
+       z     = verify(s1.41, <'cred', I.34, c.36, pk(x.66)>, pkI.39)
+       z.1   = true
+    
+    4. I     = I.34
+       c     = c.36
+       n     = n.38
+       pkI   = pk(x.65)
+       pkd   = pk(x.66)
+       s1    = sign(<'cred', I.34, c.36, pk(x.66)>, x.65)
+       s2    = sign(<'kb', n.38, 'cred', I.34, c.36, pk(x.66)>, x.66)
+       z     = true
+       z.1   = true
+  */
+
+lemma executable:
+  exists-trace
+  "∃ I c pkd n #i #p #j.
+    ((Issued( I, c, pkd ) @ #i) ∧ (Presented( pkd, n ) @ #p)) ∧
+    (AcceptPres( I, c, pkd, n ) @ #j)"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ I c pkd n #i #p #j.
+  (Issued( I, c, pkd ) @ #i) ∧
+  (Presented( pkd, n ) @ #p) ∧
+  (AcceptPres( I, c, pkd, n ) @ #j)"
+*/
+simplify
+solve( !IssSk( I, skI ) ▶₀ #i )
+  case Issuer_Setup
+  solve( !WalletCred( ~d, crb, sig ) ▶₀ #p )
+    case Issue
+    solve( !RPEncPk( V.1, pke ) ▶₂ #p )
+      case RP_Setup
+      solve( Challenge( V, n ) ▶₀ #j )
+        case Verifier_Challenge
+        solve( !RPEnc( $V, e ) ▶₁ #j )
+          case RP_Setup
+          solve( !IssPin( $I, pk(x) ) ▶₂ #j )
+            case Issuer_Setup
+            solve( !KU( aenc(<
+                              <<'cred', $I, ~c, pk(~d)>, sign(<'cred', $I, ~c, pk(~d)>, ~skI)>, 
+                              <'kb', ~n, 'cred', $I, ~c, pk(~d)>, 
+                              sign(<'kb', ~n, 'cred', $I, ~c, pk(~d)>, ~d)>,
+                             pk(~e))
+                   ) @ #vk.5 )
+              case Holder_Present
+              solve( !KU( ~n ) @ #vk.6 )
+                case Verifier_Challenge
+                SOLVED // trace found
+              qed
+            qed
+          qed
+        qed
+      qed
+    qed
+  qed
+qed
+
+lemma executable_post_qday:
+  exists-trace
+  "∃ I c pkd n #q #i #p #j.
+    ((((QdayEv( ) @ #q) ∧ (Issued( I, c, pkd ) @ #i)) ∧
+      (Presented( pkd, n ) @ #p)) ∧
+     (AcceptPres( I, c, pkd, n ) @ #j)) ∧
+    (#q < #j)"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ I c pkd n #q #i #p #j.
+  (QdayEv( ) @ #q) ∧
+  (Issued( I, c, pkd ) @ #i) ∧
+  (Presented( pkd, n ) @ #p) ∧
+  (AcceptPres( I, c, pkd, n ) @ #j)
+ ∧
+  #q < #j"
+*/
+simplify
+solve( !IssSk( I, skI ) ▶₀ #i )
+  case Issuer_Setup
+  solve( !WalletCred( ~d, crb, sig ) ▶₀ #p )
+    case Issue
+    solve( !RPEncPk( V.1, pke ) ▶₂ #p )
+      case RP_Setup
+      solve( Challenge( V, n ) ▶₀ #j )
+        case Verifier_Challenge
+        solve( !RPEnc( $V, e ) ▶₁ #j )
+          case RP_Setup
+          solve( !IssPin( $I, pk(x) ) ▶₂ #j )
+            case Issuer_Setup
+            solve( !KU( aenc(<
+                              <<'cred', $I, ~c, pk(~d)>, sign(<'cred', $I, ~c, pk(~d)>, ~skI)>, 
+                              <'kb', ~n, 'cred', $I, ~c, pk(~d)>, 
+                              sign(<'kb', ~n, 'cred', $I, ~c, pk(~d)>, ~d)>,
+                             pk(~e))
+                   ) @ #vk.5 )
+              case Holder_Present
+              solve( !KU( ~n ) @ #vk.6 )
+                case Verifier_Challenge
+                SOLVED // trace found
+              qed
+            qed
+          qed
+        qed
+      qed
+    qed
+  qed
+qed
+
+lemma executable_after_expiry:
+  exists-trace
+  "∃ I c c2 pkd n #e #i #p #j.
+    ((((CredEnd( c ) @ #e) ∧ (Issued( I, c2, pkd ) @ #i)) ∧
+      (Presented( pkd, n ) @ #p)) ∧
+     (AcceptPres( I, c2, pkd, n ) @ #j)) ∧
+    (#e < #j)"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ I c c2 pkd n #e #i #p #j.
+  (CredEnd( c ) @ #e) ∧
+  (Issued( I, c2, pkd ) @ #i) ∧
+  (Presented( pkd, n ) @ #p) ∧
+  (AcceptPres( I, c2, pkd, n ) @ #j)
+ ∧
+  #e < #j"
+*/
+simplify
+solve( CredLive( c, d ) ▶₀ #e )
+  case Issue
+  solve( !IssSk( I, skI ) ▶₀ #i )
+    case Issuer_Setup
+    solve( !WalletCred( ~d.1, crb, sig ) ▶₀ #p )
+      case Issue
+      solve( !RPEncPk( V.1, pke ) ▶₂ #p )
+        case RP_Setup
+        solve( Challenge( V, n ) ▶₀ #j )
+          case Verifier_Challenge
+          solve( !RPEnc( $V, e.1 ) ▶₁ #j )
+            case RP_Setup
+            solve( !IssPin( $I, pk(x) ) ▶₂ #j )
+              case Issuer_Setup
+              solve( !KU( aenc(<
+                                <<'cred', $I, ~c.1, pk(~d.1)>, sign(<'cred', $I, ~c.1, pk(~d.1)>, ~skI)
+                                >, 
+                                <'kb', ~n, 'cred', $I, ~c.1, pk(~d.1)>, 
+                                sign(<'kb', ~n, 'cred', $I, ~c.1, pk(~d.1)>, ~d.1)>,
+                               pk(~e.1))
+                     ) @ #vk.5 )
+                case Holder_Present
+                solve( !KU( ~n ) @ #vk.6 )
+                  case Verifier_Challenge
+                  SOLVED // trace found
+                qed
+              qed
+            qed
+          qed
+        qed
+      qed
+    qed
+  qed
+qed
+
+lemma attack_needs_crqc:
+  all-traces
+  "∀ I c pkd n #j.
+    (AcceptPres( I, c, pkd, n ) @ #j) ⇒
+    ((∃ #p. (Presented( pkd, n ) @ #p) ∧ (#p < #j)) ∨
+     (∃ d #x. (CRQCDone( d ) @ #x) ∧ (#x < #j)))"
+/*
+guarded formula characterizing all counter-examples:
+"∃ I c pkd n #j.
+  (AcceptPres( I, c, pkd, n ) @ #j)
+ ∧
+  (∀ #p. (Presented( pkd, n ) @ #p) ⇒ ¬(#p < #j)) ∧
+  (∀ d #x. (CRQCDone( d ) @ #x) ⇒ ¬(#x < #j))"
+*/
+simplify
+solve( Challenge( V, n ) ▶₀ #j )
+  case Verifier_Challenge
+  solve( !RPEnc( $V, e ) ▶₁ #j )
+    case RP_Setup
+    solve( !IssPin( I, pk(x) ) ▶₂ #j )
+      case Issuer_Setup
+      solve( !KU( aenc(<
+                        <<'cred', $I, c, pk(x)>, sign(<'cred', $I, c, pk(x)>, ~skI)>, 
+                        <'kb', ~n, 'cred', $I, c, pk(x)>, 
+                        sign(<'kb', ~n, 'cred', $I, c, pk(x)>, x)>,
+                       pk(~e))
+             ) @ #vk )
+        case Holder_Present
+        by contradiction /* from formulas */
+      next
+        case c_aenc
+        solve( !KU( sign(<'cred', $I, c, pk(x)>, ~skI) ) @ #vk.12 )
+          case Holder_Present
+          by solve( !KU( ~e.1 ) @ #vk.23 )
+        next
+          case c_sign
+          by solve( !KU( ~skI ) @ #vk.18 )
+        qed
+      qed
+    qed
+  qed
+qed
+
+lemma G2_presentation_unforgeability:
+  all-traces
+  "∀ I c pkd n #j.
+    (AcceptPres( I, c, pkd, n ) @ #j) ⇒
+    (∃ #p. (Presented( pkd, n ) @ #p) ∧ (#p < #j))"
+/*
+guarded formula characterizing all counter-examples:
+"∃ I c pkd n #j.
+  (AcceptPres( I, c, pkd, n ) @ #j)
+ ∧
+  ∀ #p. (Presented( pkd, n ) @ #p) ⇒ ¬(#p < #j)"
+*/
+simplify
+solve( Challenge( V, n ) ▶₀ #j )
+  case Verifier_Challenge
+  solve( !RPEnc( $V, e ) ▶₁ #j )
+    case RP_Setup
+    solve( !IssPin( I, pk(x) ) ▶₂ #j )
+      case Issuer_Setup
+      solve( !KU( aenc(<
+                        <<'cred', $I, c, pk(x)>, sign(<'cred', $I, c, pk(x)>, ~skI)>, 
+                        <'kb', ~n, 'cred', $I, c, pk(x)>, 
+                        sign(<'kb', ~n, 'cred', $I, c, pk(x)>, x)>,
+                       pk(~e))
+             ) @ #vk )
+        case Holder_Present
+        by contradiction /* from formulas */
+      next
+        case c_aenc
+        solve( !KU( sign(<'cred', $I, c, pk(x)>, ~skI) ) @ #vk.12 )
+          case Holder_Present
+          by solve( !KU( ~e.1 ) @ #vk.23 )
+        next
+          case c_sign
+          by solve( !KU( ~skI ) @ #vk.18 )
+        qed
+      qed
+    qed
+  qed
+qed
+
+lemma M_device_key_in_window:
+  exists-trace
+  "∃ I c d n #a #i #x #j.
+    (((((KeyClass( d, 'cred' ) @ #a) ∧ (Issued( I, c, pk(d) ) @ #i)) ∧
+       (CRQCDone( d ) @ #x)) ∧
+      (AcceptPres( I, c, pk(d), n ) @ #j)) ∧
+     (#x < #j)) ∧
+    (¬(∃ #p. Presented( pk(d), n ) @ #p))"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ I c d n #a #i #x #j.
+  (KeyClass( d, 'cred' ) @ #a) ∧
+  (Issued( I, c, pk(d) ) @ #i) ∧
+  (CRQCDone( d ) @ #x) ∧
+  (AcceptPres( I, c, pk(d), n ) @ #j)
+ ∧
+  (#x < #j) ∧ (∀ #p. (Presented( pk(d), n ) @ #p) ⇒ ⊥)"
+*/
+simplify
+solve( !IssSk( I, skI ) ▶₀ #a )
+  case Issuer_Setup
+  solve( Extracting( ~d ) ▶₀ #x.1 )
+    case CRQC_Start_Device
+    solve( Challenge( V, n ) ▶₀ #j )
+      case Verifier_Challenge
+      solve( !RPEnc( $V, e ) ▶₁ #j )
+        case RP_Setup
+        solve( !IssPin( $I, pk(x) ) ▶₂ #j )
+          case Issuer_Setup
+          solve( !KU( aenc(<
+                            <<'cred', $I, ~c, pk(~d)>, sign(<'cred', $I, ~c, pk(~d)>, ~skI)>, 
+                            <'kb', ~n, 'cred', $I, ~c, pk(~d)>, 
+                            sign(<'kb', ~n, 'cred', $I, ~c, pk(~d)>, ~d)>,
+                           pk(~e))
+                 ) @ #vk )
+            case Holder_Present
+            by contradiction /* from formulas */
+          next
+            case c_aenc
+            solve( !KU( ~c ) @ #vk.11 )
+              case Holder_Present_case_1
+              by solve( !KU( ~e.1 ) @ #vk.23 )
+            next
+              case Holder_Present_case_2
+              by solve( !KU( ~e.1 ) @ #vk.23 )
+            qed
+          qed
+        qed
+      qed
+    qed
+  qed
+qed
+
+lemma M_device_key_reused:
+  exists-trace
+  "∃ I c d n #a #i #x #j.
+    (((((KeyClass( d, 'long' ) @ #a) ∧ (Issued( I, c, pk(d) ) @ #i)) ∧
+       (CRQCDone( d ) @ #x)) ∧
+      (AcceptPres( I, c, pk(d), n ) @ #j)) ∧
+     (#x < #j)) ∧
+    (¬(∃ #p. Presented( pk(d), n ) @ #p))"
+/*
+guarded formula characterizing all satisfying traces:
+"∃ I c d n #a #i #x #j.
+  (KeyClass( d, 'long' ) @ #a) ∧
+  (Issued( I, c, pk(d) ) @ #i) ∧
+  (CRQCDone( d ) @ #x) ∧
+  (AcceptPres( I, c, pk(d), n ) @ #j)
+ ∧
+  (#x < #j) ∧ (∀ #p. (Presented( pk(d), n ) @ #p) ⇒ ⊥)"
+*/
+by simplify
+
+/* All wellformedness checks were successful. */
+
+/*
+Generated from:
+Tamarin version 1.12.0
+Maude version 3.5.1
+Git revision: 82780bbaf3328a45f624ddb41e51bf75425f851c (with uncommited changes), branch: master
+Compiled at: 2026-03-07 14:22:39.174278293 UTC
+*/
+
+end
+
+==============================================================================
+summary of summaries:
+
+analyzed: R6_h5_enc.spthy
+
+  processing time: 2.21s
+  
+  executable (exists-trace): verified (10 steps)
+  executable_post_qday (exists-trace): verified (10 steps)
+  executable_after_expiry (exists-trace): verified (11 steps)
+  attack_needs_crqc (all-traces): verified (9 steps)
+  G2_presentation_unforgeability (all-traces): verified (9 steps)
+  M_device_key_in_window (exists-trace): falsified - no trace found (11 steps)
+  M_device_key_reused (exists-trace): falsified - no trace found (1 steps)
+
+==============================================================================
+rc=0

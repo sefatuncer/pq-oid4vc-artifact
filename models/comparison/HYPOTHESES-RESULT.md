@@ -24,6 +24,13 @@ These results are reported as they are and are not used to change any verdict ab
 2. **R7h same-name classical CA (expected V, observed F).** A classical CA with the same name bypasses name binding. In the Step 7 models, commitment extensions of the reddy and vicente type do not protect when they are carried only in a classical chain. M-f with path-class scope closes these attacks.
 3. **Health question on S1/S2** (`H0-RESULT.md`): S2 secures the 9 Φ3 cells, as the Φ3 definition implies.
 
+## Exploratory extension (not pre-registered)
+
+**H5 with encrypted responses** (`../tamarin/kesif-h5-enc/`):
+- Under classical response encryption (HAIP: ECDH-ES P-256), harvest-now-decrypt-later supplies the credential and `cnf` key that the forgery needs. G2 is falsified at fast τ.
+- With post-quantum response encryption, G2 is verified even with a classical device key, at fast τ and with key reuse. The model assumes confidential issuance and a network attacker that is not a registered verifier.
+- All six variants match the expectations recorded before the runs.
+
 ## Scope of the claims
 
 - All verdicts hold in the model: symbolic Dolev–Yao attacker, a CRQC that extracts classical keys after Q-day, the decision-node abstraction of `../asp/RAPOR.md` section 1, and the τ grid {10 min, 3 d, 26 d}.
