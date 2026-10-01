@@ -997,7 +997,7 @@ summary of summaries:
 
 analyzed: /work/ornekler/CERCEVE-000869.spthy
 
-  processing time: 1.75s
+  processing time: 3.70s
   
   executable (exists-trace): analysis incomplete (1 steps)
   G2_presentation_unforgeability (all-traces): analysis incomplete (1 steps)
