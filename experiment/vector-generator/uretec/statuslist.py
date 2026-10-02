@@ -1,11 +1,11 @@
-"""Token Status List (draft-ietf-oauth-status-list-21) — JSON bicimi ve JWT belirteci.
+"""Token Status List (draft-ietf-oauth-status-list-21) — JSON format and JWT token.
 
-4.1  bayt dizisi: indeks i, 'bits' genisliginde blok; LSB'den MSB'ye paketleme; DEFLATE+ZLIB,
-     en yuksek sikistirma duzeyi ONERILIR (zlib 9).
-4.2  {"bits": 1|2|4|8, "lst": base64url(sikistirilmis)}
-5.1  JWT: typ=statuslist+jwt; sub (URI, zorunlu), iat (zorunlu), exp/ttl (onerilen), status_list (zorunlu)
-6.2  Referans belirteci: "status": {"status_list": {"idx": i, "uri": U}}
-HAIP 1.0 6.1: Status List Token'i imzalayan acik anahtar x5c'de; guven capasi x5c'ye konmaz.
+4.1  byte array: index i, block of width 'bits'; packing from LSB to MSB; DEFLATE+ZLIB,
+     the highest compression level is RECOMMENDED (zlib 9).
+4.2  {"bits": 1|2|4|8, "lst": base64url(compressed)}
+5.1  JWT: typ=statuslist+jwt; sub (URI, mandatory), iat (mandatory), exp/ttl (recommended), status_list (mandatory)
+6.2  Referenced token: "status": {"status_list": {"idx": i, "uri": U}}
+HAIP 1.0 6.1: the public key that signs the Status List Token is in x5c; the trust anchor is not put into x5c.
 """
 import zlib
 
@@ -16,7 +16,7 @@ ALLOWED_BITS = (1, 2, 4, 8)
 
 
 def encode(statuses: dict, size: int, bits: int = 1) -> str:
-    """statuses: {indeks: deger} (diger indeksler 0 = VALID)."""
+    """statuses: {index: value} (other indices 0 = VALID)."""
     if bits not in ALLOWED_BITS:
         raise ValueError('bits 1,2,4,8 olmali')
     per = 8 // bits

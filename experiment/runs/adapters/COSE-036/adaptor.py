@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""COSE-036 wolfCOSE adaptör sürücüsü (C3 sözleşmesi 1.0 / KOSUCU §1–§3).
+"""COSE-036 wolfCOSE adapter driver (C3 contract 1.0, experiment/oracle/oracle-A/adapter-contract.md / RUNNER §1–§3).
 
-Doğrulamayı YALNIZ wolfCOSE yapar (kopru.c → wc_CoseKey_Decode + wc_CoseSign1_Verify / wc_CoseSign_Verify; ctypes ile
-aynı süreçte). Bu sürücü yalnız iş dosyasını/manifesti okur, kid'e göre COSE_Key seçer ve çıktı satırını yazar.
-Politika: wolfCOSE'ta izin listesi API'si yok; belgeli mekanizma anahtarın `alg` iğnesidir (WOLFCOSE_KEY.alg;
-sign1.c "Honour the key->alg pin on the verify path"). Manifestten yalnız dogrulama_girdileri okunur. Ağ yok.
+ONLY wolfCOSE verifies (kopru.c → wc_CoseKey_Decode + wc_CoseSign1_Verify / wc_CoseSign_Verify; in the same
+process via ctypes). This driver only reads the job file/manifest, selects the COSE_Key by kid and writes the output row.
+Policy: wolfCOSE has no allow-list API; the documented mechanism is the `alg` pin of the key (WOLFCOSE_KEY.alg;
+sign1.c "Honour the key->alg pin on the verify path"). Only dogrulama_girdileri is read from the manifest. No network.
 """
 import ctypes, json, os, sys, time
 
@@ -25,7 +25,7 @@ lib.a10_dogrula.argtypes = [ctypes.c_char_p, ctypes.c_size_t, ctypes.c_char_p, c
                             ctypes.c_int32, ctypes.c_long, ctypes.POINTER(ctypes.c_int32), ctypes.POINTER(ctypes.c_int)]
 
 
-# --- asgari CBOR okuyucu (yalnız yapı: etiket, kid, imzacı sayısı; doğrulama yapmaz) ---
+# --- minimal CBOR reader (structure only: tag, kid, number of signers; performs no verification) ---
 def cbor(b, i=0):
     ib = b[i]; mt, ai = ib >> 5, ib & 31; i += 1
     if ai < 24: n = ai
@@ -58,7 +58,7 @@ def girdi(vid, _m={}):
     if not _m:
         y = "/v/MANIFEST.json" if os.path.exists("/v/MANIFEST.json") else "/v/v1.3/MANIFEST.json"
         for e in json.load(open(y, encoding="utf-8"))["vektorler"]:
-            _m[e["id"]] = e.get("dogrulama_girdileri") or {}   # `insa` OKUNMAZ
+            _m[e["id"]] = e.get("dogrulama_girdileri") or {}   # `insa` is NOT read
     return _m[vid]
 
 
@@ -69,8 +69,8 @@ def vektor_yolu(d):
 
 
 def politika(isx):
-    taban = isx["politika"].split("|")[0].split("@")[0]; x = X_KOL.get(isx["kol"])  # ekler yalnız oracle'ı böler
-    if taban in ("GEC", "P0", "P1", "P2", "VARSAYILAN"): return taban, None, []      # pin yok = kütüphane varsayılanı
+    taban = isx["politika"].split("|")[0].split("@")[0]; x = X_KOL.get(isx["kol"])  # the suffixes only split the oracle
+    if taban in ("GEC", "P0", "P1", "P2", "VARSAYILAN"): return taban, None, []      # no pin = library default
     if taban == "IZIN-A": return taban, ["ES256"], []
     if x is None: raise ValueError("kol icin X tanimsiz")
     if taban == "IZIN-AX": return taban, ["ES256", x], []
@@ -106,8 +106,8 @@ def dogrula(isx):
     if seri == "COSE_Sign":
         imzalar = govde[3]
         if len(imzalar) != 1:
-            # Çoklu imzacı kuralı (P0/P1/R) için belgeli seçenek yok: wc_CoseSign_Verify imzacıyı tek tek doğrular;
-            # imzacılar üzerinde dolaşan döngü çağıranın kodu olur (B4, NOTES.md).
+            # No documented option for a multi-signer rule (P0/P1/R): wc_CoseSign_Verify verifies the signers one by one;
+            # a loop over the signers would be the caller's code (B4, NOTES.md).
             return {"sonuc_ham": "ifade-edilemedi", "hata_sinifi": None,
                     "hata_ozeti": "COSE_Sign coklu imzaci kurali (P0/P1/R) icin API secenegi yok (wc_CoseSign_Verify imzaci basina)", "api_yolu": API}
         imzaci = 0
@@ -125,7 +125,7 @@ def dogrula(isx):
     kmap = cbor(ck)[0]
     pin_kullan, pin = 0, 0
     if izin is not None:
-        # anahtar–alg bağlaması: anahtarın doğal alg'ı W içindeyse o, değilse W'nin ilk öğesi iğnelenir
+        # key–alg binding: the natural alg of the key is pinned if it is in W, otherwise the first element of W
         d = dogal_alg(kmap.get(1), kmap.get(-1), kmap.get(3), isx["kol"])
         ids = [COSE_ID[a] for a in izin if a in COSE_ID]
         pin_kullan, pin = 1, (d if d in ids else ids[0])
@@ -138,7 +138,7 @@ def dogrula(isx):
     ad = AD.get(alg_id)
     if asama.value < 4: sinif = "alg-desteklenmiyor" if ret in (-9021, -9015, -9011) or ad not in KUTUPHANE else "istisna-diger"
     elif ret == -9012: sinif = "imza-gecersiz"
-    # Ed25519/EdDSA'da bozuk imza wolfCrypt'ten WOLFCOSE_E_CRYPTO (-9020) olarak döner (sentetik duman: SENTC_MINUS_Ed*)
+    # For Ed25519/EdDSA a corrupted signature comes back from wolfCrypt as WOLFCOSE_E_CRYPTO (-9020) (synthetic smoke test: SENTC_MINUS_Ed*)
     elif ret == -9020 and ad in ("EdDSA", "Ed25519"): sinif = "imza-gecersiz"
     elif ret == -9011:
         sinif = "alg-desteklenmiyor" if ad not in KUTUPHANE else ("alg-izin-disi" if izin is not None and ad not in izin else "alg-anahtar-uyusmazligi")

@@ -1,31 +1,31 @@
-"""PQ ilkel dogrulama servisi (Adim 9b ek gereksinim; 9a D-E3/D-E5, C3 tedavi kolu TK2 "eklenti").
+"""PQ primitive verification service (Step 9b additional requirement; 9a D-E3/D-E5, C3 treatment class TK2 "plug-in").
 
-Hedef kutuphanenin KAMUYA ACIK genisletme noktasina (JWSVerifier, crypto arayuzu, SignatureProvider,
-algoritma kaydi, ozel dogrulayici...) takilan ince bir istemci bu servisi cagirir. Servis YALNIZ
-kriptografik ilkeli dogrular; politika karari (hangi alg kabul, kac imza, anahtar cozumleme, x5c,
-crit, typ...) hedef kutuphanede kalir.
+A thin client attached to a PUBLIC extension point of the target library (JWSVerifier, crypto interface, SignatureProvider,
+algorithm registry, custom verifier...) calls this service. The service verifies ONLY the
+cryptographic primitive; the policy decision (which alg is accepted, how many signatures, key resolution, x5c,
+crit, typ...) stays in the target library.
 
-Desteklenen alg: ML-DSA-44/65/87 (RFC 9964; ctx bos) ve composite -04: ML-DSA-44-ES256,
+Supported alg: ML-DSA-44/65/87 (RFC 9964; empty ctx) and composite -04: ML-DSA-44-ES256,
 ML-DSA-65-ES256, ML-DSA-87-ES384, ML-DSA-44-Ed25519, ML-DSA-65-Ed25519, ML-DSA-87-Ed448.
 
-Istek (JSON):
-  alg                      zorunlu
-  jwk | acik_anahtar(_hex) biri zorunlu. jwk: AKP (kty=AKP, alg ZORUNLU ve istek alg'ina esit, pub).
-                           acik_anahtar: base64url ham acik anahtar (ML-DSA: FIPS 204 pk;
-                           composite: mldsaPK || tradPK, -04 4.1). *_hex: onaltilik es degeri.
-  imzalama_girdisi(_hex)   zorunlu: imzalanan baytlar (JWS'te ASCII(protected '.' payload); COSE'da Sig_structure)
-  imza(_hex)               zorunlu: ham imza baytlari (JWS'te base64url cozulmus)
-Yanit (JSON):
+Request (JSON):
+  alg                      mandatory
+  jwk | acik_anahtar(_hex) one of them mandatory. jwk: AKP (kty=AKP, alg MANDATORY and equal to the request alg, pub).
+                           acik_anahtar: base64url raw public key (ML-DSA: FIPS 204 pk;
+                           composite: mldsaPK || tradPK, -04 4.1). *_hex: hexadecimal equivalent.
+  imzalama_girdisi(_hex)   mandatory: the signed bytes (in a JWS ASCII(protected '.' payload); in COSE the Sig_structure)
+  imza(_hex)               mandatory: raw signature bytes (in a JWS base64url-decoded)
+Response (JSON):
   {"gecerli": bool, "alg": str, "bilesenler": {"ml": bool, "trad": bool}|{"ml": bool}|null,
    "hata": null|str, "servis": "pqdogrula/1"}
-  'hata' dolu ise istek/serilestirme sorunu vardir (gecerli=false).
+  if 'hata' (error) is filled, there is a request/serialization problem (gecerli=false).
 
-HTTP (yalniz yerel / Docker ic agi; kimlik dogrulama YOK — disa ACILMAMALI):
-  GET  /v1/saglik          -> surumler, desteklenen alg'ler
-  POST /v1/dogrula         -> tek istek
+HTTP (only local / internal Docker network; NO authentication — must NOT be exposed):
+  GET  /v1/saglik          -> versions, supported algs
+  POST /v1/dogrula         -> single request
   POST /v1/dogrula/toplu   -> {"istekler": [...]} -> {"yanitlar": [...]}
 CLI:
-  python -m servis.pqdogrula dogrula [--istek DOSYA]     (DOSYA yoksa stdin) ; cikis kodu 0=gecerli 1=gecersiz 2=hata
+  python -m servis.pqdogrula dogrula [--istek FILE]     (stdin without FILE) ; exit code 0=valid 1=invalid 2=error
   python -m servis.pqdogrula sunucu [--host 127.0.0.1] [--port 8765]
 """
 import argparse
@@ -41,7 +41,7 @@ from pqjose.util import FormatError, b64u_decode
 
 SERVIS = 'pqdogrula/1'
 DESTEKLENEN = tuple(MLDSA) + tuple(COMPOSITE)
-AZAMI_GOVDE = 4 * 1024 * 1024      # 4 MiB (toplu istekler icin)
+AZAMI_GOVDE = 4 * 1024 * 1024      # 4 MiB (for batch requests)
 AZAMI_TOPLU = 256
 
 
@@ -143,7 +143,7 @@ class _H(BaseHTTPRequestHandler):
         else:
             self._yaz(404, {'hata': 'bulunamadi'})
 
-    def log_message(self, fmt, *args):  # sessiz (kisisel veri yok; yalniz yerel)
+    def log_message(self, fmt, *args):  # silent (no personal data; local only)
         pass
 
 

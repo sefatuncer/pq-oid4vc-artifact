@@ -1,15 +1,15 @@
-// SDJWT-002 selective_disclosure_jwt 1.1.1 (affinidi-sdjwt-dart) adaptörü — C3 sözleşmesi 1.0 / KOSUCU §1–§3.
-// Belgeli genel API (README "Usage"): SdJwtHandlerV1().decodeAndVerify(sdJwtToken:, verifier: SDKeyVerifier(
+// Adapter for SDJWT-002 selective_disclosure_jwt 1.1.1 (affinidi-sdjwt-dart) — C3 contract 1.0 (experiment/oracle/oracle-A/adapter-contract.md) / RUNNER §1–§3.
+// Documented public API (README "Usage"): SdJwtHandlerV1().decodeAndVerify(sdJwtToken:, verifier: SDKeyVerifier(
 // SdPublicKey(jwk_map, SdJwtSignAlgorithm)), verifyKeyBinding:) → SdJwt.isVerified.
-// Politika: SDKeyVerifier.isAllowedAlgorithm = "kütüphanede destekli her alg" (sabit); belgeli mekanizma anahtarın
-// SdPublicKey'e bağlandığı algoritmadır (doğrulama bu alg ile yapılır). Eşleme ve gerekçeler: MAPPING.md.
-// Doğrulama döngüsü YOK; manifestten yalnız dogrulama_girdileri okunur; ağ yok.
+// Policy: SDKeyVerifier.isAllowedAlgorithm = "every alg supported by the library" (fixed); the documented mechanism is the
+// algorithm to which the key is bound in SdPublicKey (verification is done with this alg). Mapping and reasons: MAPPING.md.
+// NO verification loop; only dogrulama_girdileri is read from the manifest; no network.
 import 'dart:convert';
 import 'dart:io';
 import 'package:selective_disclosure_jwt/selective_disclosure_jwt.dart';
 
 const xKol = {'kontrol-EdDSA': 'EdDSA', 'kontrol-Ed25519': 'Ed25519', 'kontrol-ES384': 'ES384', 'tedavi-ML-DSA-65': 'ML-DSA-65', 'tedavi-composite': 'ML-DSA-65-ES256'};
-// Bataryadaki algoritmalardan yerel destek (SdJwtSignAlgorithm: ES256/384/512, ES256K, RS*, HS*, EdDSA; ML-DSA yok)
+// Native support among the battery's algorithms (SdJwtSignAlgorithm: ES256/384/512, ES256K, RS*, HS*, EdDSA; no ML-DSA)
 const kutuphane = ['ES256', 'ES384', 'EdDSA'];
 const api = 'SdJwtHandlerV1().decodeAndVerify(sdJwtToken: sd_jwt, verifier: SDKeyVerifier(SdPublicKey(jwk, alg_ignesi)), verifyKeyBinding: kb) -> isVerified';
 final algAd = {'ES256': SdJwtSignAlgorithm.es256, 'ES384': SdJwtSignAlgorithm.es384, 'EdDSA': SdJwtSignAlgorithm.eddsa};
@@ -40,9 +40,9 @@ String vektorYolu(String d) {
 
 Map<String, dynamic> b64json(String s) => jsonDecode(utf8.decode(base64Url.decode(base64Url.normalize(s)))) as Map<String, dynamic>;
 
-// Politika → (taban, W|null, R). YONTEM.md §2; VARSAYILAN = sözleşme §5.2 L5.
+// Policy → (taban, W|null, R). METHOD.md §2; VARSAYILAN = contract §5.2 L5.
 (String, List<String>?, List<String>) politika(Map is_) {
-  final taban = (is_['politika'] as String).split('|').first.split('@').first; // ekler yalnız oracle'ı böler
+  final taban = (is_['politika'] as String).split('|').first.split('@').first; // the suffixes only split the oracle
   final x = xKol[is_['kol']];
   String gx() => x ?? (throw StateError('kol icin X tanimsiz'));
   switch (taban) {
@@ -54,7 +54,7 @@ Map<String, dynamic> b64json(String s) => jsonDecode(utf8.decode(base64Url.decod
   throw StateError('bilinmeyen politika ${is_['politika']}');
 }
 
-// Anahtar seçimi (sözleşme §8 m.1): başlık kid → vektörün JWKS'i; yoksa alg_kid[alg]; yoksa tek kid.
+// Key selection (contract §8 item 1): header kid → the vector's JWKS; otherwise alg_kid[alg]; otherwise the single kid.
 Map<String, dynamic>? jwkSec(Map<String, dynamic> baslik, Map<String, dynamic> dg) {
   if (dg['jwks'] == null) return null;
   var kid = baslik['kid'];
@@ -84,7 +84,7 @@ Map<String, dynamic> sonuc(String ham, String? sinif, String? ozet, {String? yol
 Map<String, dynamic> dogrula(Map<String, dynamic> is_) {
   final seri = is_['serilestirme'] as String;
   final artefakt = (is_['artefakt'] ?? '') as String;
-  final cekirdek = seri == 'compact' && artefakt == 'jws-cekirdek'; // yürütücü 01.10: "<jws>~"
+  final cekirdek = seri == 'compact' && artefakt == 'jws-cekirdek'; // maintainers 01.10: "<jws>~"
   if (!(seri == 'sd-jwt-compact' || cekirdek || seri == 'oid4vci-toplu-yanit')) {
     return sonuc('uygulanamaz', 'bicim-desteklenmiyor', 'B6: MAPPING.md (API incelemesi)');
   }
@@ -106,7 +106,7 @@ Map<String, dynamic> dogrula(Map<String, dynamic> is_) {
   final izin = w == null ? null : (r.isNotEmpty ? r : w);
   final jwk = jwkSec(baslik, dg);
   if (jwk == null) return sonuc('red', 'anahtar-bulunamadi', 'JWK secilemedi (kid/alg_kid)', yol: 'JWK');
-  // Anahtar–alg bağlaması: doğal alg W'de ve destekliyse o; değilse W ∩ destekli kümenin ilki iğnelenir.
+  // Key–alg binding: the natural alg if it is in W and supported; otherwise the first of W ∩ supported is pinned.
   final dogal = dogalAlg(jwk);
   String? igne;
   if (izin == null) {
@@ -128,10 +128,10 @@ Map<String, dynamic> dogrula(Map<String, dynamic> is_) {
   try {
     final s = SdJwtHandlerV1().decodeAndVerify(sdJwtToken: sunum, verifier: SDKeyVerifier(anahtar), verifyKeyBinding: kb);
     if (s.isVerified == true) {
-      // kütüphane imzayı SdPublicKey'in algoritmasıyla doğrular (jwt_verifier_base.dart → SDKeyVerifier.verify)
+      // the library verifies the signature with the algorithm of the SdPublicKey (jwt_verifier_base.dart → SDKeyVerifier.verify)
       return sonuc('kabul', null, null, yol: 'JWK', dog: [{'sira': 0, 'alg': igne, 'sonuc': 'gecerli'}]);
     }
-    // Kütüphane nedeni yutar (sd_jwt_verifier.dart: catch → _isJwsVerified = false); sınıf başlık alg'ı ve W ile çıkarılır.
+    // The library swallows the cause (sd_jwt_verifier.dart: catch → _isJwsVerified = false); the class is inferred from the header alg and W.
     String sinif;
     if (alg == null || !kutuphane.contains(alg)) {
       sinif = 'alg-desteklenmiyor';
@@ -144,10 +144,10 @@ Map<String, dynamic> dogrula(Map<String, dynamic> is_) {
     }
     return sonuc('red', sinif, 'isVerified=${s.isVerified} (alg=$alg, igne=$igne, kb=$kb)', yol: 'JWK');
   } catch (e, st) {
-    if (Platform.environment['ADAPTOR_HATA_TAM'] == '1') stderr.writeln('HATA ${is_['vektor_id']} $e $st');
+    if (Platform.environment['ADAPTOR_HATA_TAM'] == '1') stderr.writeln('ERROR ${is_['vektor_id']} $e $st');
     final m = e.toString();
-    // SdJwt.parse (sdjwt.dart L107-170) hataları: "Invalid SD-JWT ..." (Exception) ya da `_sd_alg` yokken
-    // Hasher.fromString(null) TypeError'ı (L143-144; RFC 9901'de _sd_alg isteğe bağlıdır) → ayrıştırma.
+    // Errors of SdJwt.parse (sdjwt.dart L107-170): "Invalid SD-JWT ..." (Exception), or the TypeError of
+    // Hasher.fromString(null) when `_sd_alg` is missing (L143-144; in RFC 9901 _sd_alg is optional) → parsing.
     final ayr = m.contains('Invalid SD-JWT') || m.contains('FormatException') || (e is TypeError && st.toString().contains('SdJwt.parse'));
     return sonuc(e is Exception ? 'red' : 'istisna', ayr ? 'ayristirma' : 'istisna-diger', m, yol: 'JWK');
   }
@@ -160,7 +160,7 @@ String sabit(String ad) {
 
 void main(List<String> a) {
   if (a.length < 2) {
-    stderr.writeln('kullanim: adaptor <jobs-v1.3.jsonl> <cikti.jsonl>');
+    stderr.writeln('usage: adaptor <jobs-v1.3.jsonl> <output.jsonl>');
     exit(2);
   }
   final ad = a[1].split('/').last.replaceAll(RegExp(r'\.jsonl$'), '').split('.');

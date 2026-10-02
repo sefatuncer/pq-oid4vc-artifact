@@ -1,6 +1,6 @@
-// Ortak adaptör iskeleti (C#) — C3 adaptör sözleşmesi 1.0 / RUNNER.md §1–§3.
-// Bu dosya JOSE-001, JOSE-002 ve SDJWT-021'de AYNIDIR. Kütüphaneye özgü doğrulama Adaptor.cs'dedir.
-// Doğrulama döngüsü YOK: imza doğrulamasını yalnız hedef kütüphanenin belgeli API'si yapar. Ağ erişimi yok.
+// Shared adapter skeleton (C#) — C3 adapter contract 1.0 (experiment/oracle/oracle-A/adapter-contract.md) / RUNNER.md §1–§3.
+// This file is IDENTICAL in JOSE-001, JOSE-002 and SDJWT-021. The library-specific verification is in Adaptor.cs.
+// NO verification loop: signature verification is done only by the documented API of the target library. No network access.
 using System.Diagnostics;
 using System.Reflection;
 using System.Text.Json;
@@ -36,7 +36,7 @@ public static class Ortak
         return "/v/" + dosya;
     }
 
-    // Manifestten YALNIZ dogrulama_girdileri okunur; `insa` ve diğer alanlar okunmaz (yürütücü 01.10).
+    // ONLY dogrulama_girdileri is read from the manifest; `insa` and the other fields are not read (maintainers 01.10).
     public static JsonObject Girdi(string id)
     {
         if (_manifest == null)
@@ -63,11 +63,11 @@ public static class Ortak
         return j;
     }
 
-    // Politika → (W, R). YONTEM.md §2; VARSAYILAN = sözleşme §5.2 L5 (yalnız anahtar).
+    // Policy → (W, R). METHOD.md §2; VARSAYILAN = contract §5.2 L5 (key only).
     public static Politika Pol(JsonObject isSatiri, IReadOnlyList<string> kutuphaneAlgleri)
     {
         var p = isSatiri["politika"]!.GetValue<string>();
-        var taban = p.Split('|')[0].Split('@')[0]; // '|sdjwtvc=..' ve '@-19' ekleri yalnız oracle'ı böler
+        var taban = p.Split('|')[0].Split('@')[0]; // the suffixes '|sdjwtvc=..' and '@-19' only split the oracle
         XKol.TryGetValue(isSatiri["kol"]!.GetValue<string>(), out var x);
         string X() => x ?? throw new InvalidOperationException("kol icin X tanimsiz");
         return taban switch
@@ -81,10 +81,10 @@ public static class Ortak
         };
     }
 
-    // Tek imzalı nesnede R ≠ ∅ ise etkin izin listesi R'dir (tek imza R'yi ancak kendisi X ise karşılar; R ⊆ W).
+    // For a single-signature object with R ≠ ∅ the effective allow-list is R (a single signature satisfies R only if it is X itself; R ⊆ W).
     public static List<string>? TekImzaIzin(Politika p) => p.W == null ? null : (p.R.Count > 0 ? p.R : p.W);
 
-    // Anahtar seçimi (sözleşme §8 m.1): başlık kid → vektörün JWKS'i; yoksa alg_kid[alg]; yoksa tek kid. DPoP: başlık jwk.
+    // Key selection (contract §8 item 1): header kid → the vector's JWKS; otherwise alg_kid[alg]; otherwise the single kid. DPoP: header jwk.
     public static (JsonObject? jwk, string yol) JwkSec(JsonObject baslik, JsonObject dg)
     {
         if (dg["anahtar"]?.GetValue<string>() == "jwk basligindan") return (baslik["jwk"] as JsonObject, "jwk-basligi");
@@ -123,11 +123,11 @@ public static class Ortak
     public static Sonuc B6(string api) => new("uygulanamaz", "bicim-desteklenmiyor", "B6: MAPPING.md (API incelemesi)", api);
     public static Sonuc IfadeEdilemedi(string neden, string api) => new("ifade-edilemedi", null, neden, api);
 
-    // Ana döngü: iş satırları tek süreçte sırayla; vektör başına 60 s (görev zaman aşımı).
+    // Main loop: job rows in sequence in one process; 60 s per vector (task timeout).
     public static int Kos(string[] args, Func<JsonObject, Sonuc> dogrula)
     {
         if (args.Length >= 1 && args[0] == "tara") { Tara(args.Length > 1 ? args[1] : "."); return 0; }
-        if (args.Length < 2) { Console.Error.WriteLine("kullanim: adaptor <jobs-v1.3.jsonl> <cikti.jsonl>"); return 2; }
+        if (args.Length < 2) { Console.Error.WriteLine("usage: adaptor <jobs-v1.3.jsonl> <output.jsonl>"); return 2; }
         var kosu = KosuAdi(args[1]);
         using var w = new StreamWriter(args[1]) { NewLine = "\n" };
         foreach (var l in File.ReadLines(args[0]))
@@ -174,7 +174,7 @@ public static class Ortak
         return 0;
     }
 
-    // API taraması (sözleşme §5.1): hedef derlemelerinin genel türleri ve üyeleri, düzenli ifadeyle süzülür.
+    // API scan (contract §5.1): the public types and members of the target assemblies, filtered with a regular expression.
     static void Tara(string desen)
     {
         var rx = new Regex(desen, RegexOptions.IgnoreCase);

@@ -1,14 +1,14 @@
-"""COSE (RFC 9052) COSE_Sign1 / COSE_Sign — uretim, ayristirma ve arac ici dogrulama (v1.3).
+"""COSE (RFC 9052) COSE_Sign1 / COSE_Sign — generation, parsing and verification inside the tool (v1.3).
 
-Kriptografik ilkeller pqjose'dan (algs, composite) gelir; burada yalniz COSE yapisi vardir.
-  RFC 9052 §4.1 COSE_Sign (etiket 98), §4.2 COSE_Sign1 (etiket 18), §4.4 Sig_structure:
+The cryptographic primitives come from pqjose (algs, composite); only the COSE structure is here.
+  RFC 9052 §4.1 COSE_Sign (tag 98), §4.2 COSE_Sign1 (tag 18), §4.4 Sig_structure:
     COSE_Sign1 : ToBeSigned = CBOR(["Signature1", body_protected, external_aad, payload])
     COSE_Sign  : ToBeSigned = CBOR(["Signature",  body_protected, sign_protected, external_aad, payload])
-  Bos korumali baslik = sifir uzunluklu bstr. external_aad = h'' (bos).
-  ECDSA (RFC 9053 §2.1): imza r||s (ayni uzunlukta tamsayilar birlestirilir); EdDSA saf; ML-DSA (RFC 9964) ctx bos;
-  composite (-04): ToBeSigned uzerinde composite imza (M' = Prefix||Label||0x00||PH(ToBeSigned)).
-Algoritma ve etiket degerleri KORPUSTAN BIREBIR alinmistir; KAYNAK tablosu (MANIFEST id, satir, beklenen metin)
-testte korpus satirlariyla yeniden karsilastirilir (T12). Tahmin YOK.
+  Empty protected header = zero-length bstr. external_aad = h'' (empty).
+  ECDSA (RFC 9053 §2.1): signature r||s (integers of equal length concatenated); EdDSA pure; ML-DSA (RFC 9964) empty ctx;
+  composite (-04): composite signature over ToBeSigned (M' = Prefix||Label||0x00||PH(ToBeSigned)).
+Algorithm and label values are taken VERBATIM FROM THE CORPUS; the KAYNAK table (MANIFEST id, line, expected text)
+is compared again with the corpus lines in the test (T12). NO guessing.
 """
 from pqjose import algs
 from pqjose.keys import CompositeKey, ECKey, MLDSAKey, OKPKey
@@ -18,7 +18,7 @@ from pqjose.util import b64u_decode
 from . import cbor
 from .cbor import Tag
 
-# alg adi -> COSE degeri
+# alg name -> COSE value
 ALG = {
     'ES256': -7, 'EdDSA': -8, 'Ed25519': -19,
     'ML-DSA-44': -48, 'ML-DSA-65': -49, 'ML-DSA-87': -50,
@@ -27,9 +27,9 @@ ALG = {
 }
 ALG_AD = {v: k for k, v in ALG.items()}
 KAYITLI_DEGIL = {'ML-DSA-44-ES256', 'ML-DSA-65-ES256', 'ML-DSA-87-ES384', 'ML-DSA-44-Ed25519', 'ML-DSA-65-Ed25519',
-                 'ML-DSA-87-Ed448'}   # -04 §7.2: "TBD (request assignment ...)" — talep edilen, kayitli degil
+                 'ML-DSA-87-Ed448'}   # -04 §7.2: "TBD (request assignment ...)" — requested, not registered
 
-# (MANIFEST id, satir no, satirda gecmesi gereken metin) — T12 korpustan yeniden dogrular
+# (MANIFEST id, line no, text that must occur in the line) — T12 re-verifies from the corpus
 KAYNAK = {
     'alg.ES256': ('RFC9053', 248, '| ES256 |   -7  |'),
     'alg.ES256.deprecated': ('RFC9864', 467, 'Recommended:  Deprecated'),
@@ -78,7 +78,7 @@ TAG_SIGN, TAG_SIGN1 = 98, 18
 
 
 def alg_deger(alg):
-    """Kayitli alg adi -> COSE tamsayisi; bilinmeyen/kayitsiz etiket tstr olarak kalir."""
+    """Registered alg name -> COSE integer; an unknown/unregistered label stays a tstr."""
     return ALG.get(alg, alg)
 
 
@@ -92,7 +92,7 @@ def kaynak_etiketi(anahtar):
 
 
 def kid_bytes(key) -> bytes:
-    """COSE kid = base64url-cozulmus JWK kid (RFC 7638 parmak izi, 32 B)."""
+    """COSE kid = base64url-decoded JWK kid (RFC 7638 thumbprint, 32 B)."""
     return b64u_decode(key.kid)
 
 
@@ -109,7 +109,7 @@ def sig_structure(body_prot: bytes, sign_prot: bytes, payload: bytes, aad: bytes
 
 
 def sign1_yapi(payload, key, alg, prot_ek=None, unprot=None, imza_alg=None, deterministic=True):
-    """COSE_Sign1 dizisi [prot, unprot, payload, sig] (etiketsiz); imza_alg verilirse imza o algoritmayla uretilir."""
+    """COSE_Sign1 array [prot, unprot, payload, sig] (untagged); if imza_alg is given, the signature is made with that algorithm."""
     hdr = {H_ALG: alg_deger(alg)}
     hdr.update(prot_ek or {})
     pb = prot(hdr)
@@ -118,7 +118,7 @@ def sign1_yapi(payload, key, alg, prot_ek=None, unprot=None, imza_alg=None, dete
 
 
 def imzaci(body_prot, payload, key, alg, prot_ek=None, unprot=None, imza_alg=None, deterministic=True, imza=None):
-    """COSE_Signature [sign_prot, unprot, sig]. imza verilirse (ör. kayitsiz etiket icin rastgele bayt) kullanilir."""
+    """COSE_Signature [sign_prot, unprot, sig]. If imza is given (e.g. random bytes for an unregistered label), it is used."""
     hdr = {H_ALG: alg_deger(alg)}
     hdr.update(prot_ek or {})
     sp = prot(hdr)
@@ -135,7 +135,7 @@ def kodla(yapi, etiket) -> bytes:
     return cbor.encode(Tag(etiket, yapi))
 
 
-# ------------------------------------------------------------------ ayristirma ve dogrulama
+# ------------------------------------------------------------------ parsing and verification
 def ayristir(data: bytes) -> dict:
     t = cbor.decode(data)
     if not isinstance(t, Tag) or t.tag not in (TAG_SIGN, TAG_SIGN1) or not isinstance(t.value, list) or len(t.value) != 4:
@@ -176,7 +176,7 @@ def dogrula_imza(imza: dict, key, alg_adi_=None) -> bool:
 
 # ------------------------------------------------------------------ COSE_Key
 def cose_key(key, kid: bytes = None) -> dict:
-    """Acik COSE_Key (RFC 9052 §7; RFC 9053 §7.1; RFC 9964 §8.1.2-8.1.3; -04 §3 AKP composite)."""
+    """Public COSE_Key (RFC 9052 §7; RFC 9053 §7.1; RFC 9964 §8.1.2-8.1.3; -04 §3 AKP composite)."""
     kid = kid if kid is not None else kid_bytes(key)
     if isinstance(key, ECKey):
         if key.crv != 'P-256':
@@ -193,7 +193,7 @@ def cose_key(key, kid: bytes = None) -> dict:
 
 
 def key_from_cose(m: dict):
-    """AKP COSE_Key (RFC 9964 / -04) -> pqjose anahtari (pub ve varsa priv)."""
+    """AKP COSE_Key (RFC 9964 / -04) -> pqjose key (pub and, if present, priv)."""
     if m.get(1) != 7:
         raise ValueError('AKP bekleniyor')
     ad = alg_adi(m.get(3))

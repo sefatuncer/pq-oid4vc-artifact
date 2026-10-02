@@ -1,1 +1,1 @@
-"""PQ ilkel dogrulama servisi (pqdogrula) — bkz. pqdogrula.py ve servis/README.md."""
+"""PQ primitive verification service (pqdogrula) — see pqdogrula.py and servis/README.md."""

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# JOSE-017 — jwt-cpp (YEDEK ADAYI; JOSE-104'ün yerine genel yedek 5.3-4-ii). Kaynak, commit sabit (sürüm yok).
-# Başlık-yalnız kütüphane: en küçük C++ programı derlenir ve sistem OpenSSL'ine bağlanır. İmza doğrulama YOK.
+# JOSE-017 — jwt-cpp (RESERVE CANDIDATE; general reserve 5.3-4-ii in place of JOSE-104). Source, commit pinned (no release).
+# Header-only library: the smallest C++ program is compiled and linked against the system OpenSSL. NO signature verification.
 set -uo pipefail
 source /b/ortak.sh
 DEPO=https://github.com/Thalhammer/jwt-cpp; SHA=0a503e75084cfdb48cc2186e6b961444eb819007
@@ -14,7 +14,7 @@ yaz paket_ozeti "git-tree:$(git rev-parse 'HEAD^{tree}')"; yaz kurulan_surum "gi
 yaz kilit_dosyasi "yok (başlık-yalnız; bağımlılık: sistem OpenSSL + gömülü picojson)"; yaz kilit_sha256 "$(git rev-parse 'HEAD^{tree}')"
 yaz lisans_kayit MIT
 cat > /tmp/baglanti.cpp <<'CPP'
-// Bağlama kontrolü: doğrulayıcı türü decltype ile (DEĞERLENDİRİLMEDEN) alınır; hiçbir işlev ÇAĞRILMAZ.
+// Link check: the verifier type is taken with decltype (WITHOUT EVALUATION); NO function is called.
 #include <jwt-cpp/jwt.h>
 #include <iostream>
 #include <typeinfo>

@@ -1,10 +1,10 @@
-"""Sistem OpenSSL (>= 3.5) komut satiri sarmalayicisi.
+"""Command-line wrapper for the system OpenSSL (>= 3.5).
 
-Kullanim yerleri:
-  * belirlenimci ML-DSA imzasi (FIPS 204 deterministic varyant; -pkeyopt deterministic:1)
-  * capraz dogrulama (imzalayicimizin ciktisini bagimsiz bir OpenSSL surumu dogrular)
-  * X.509 sertifika uretimi (belirlenimci: -sigopt deterministic:1 / nonce-type:1)
-  * x5c zincir dogrulamasi (openssl verify)
+Used for:
+  * deterministic ML-DSA signature (FIPS 204 deterministic variant; -pkeyopt deterministic:1)
+  * cross-verification (an independent OpenSSL version verifies the output of our signer)
+  * X.509 certificate generation (deterministic: -sigopt deterministic:1 / nonce-type:1)
+  * x5c chain validation (openssl verify)
 """
 import functools
 import os
@@ -59,7 +59,7 @@ class _Tmp:
 
 @functools.lru_cache(maxsize=256)
 def mldsa_private_pem(level: int, seed: bytes) -> bytes:
-    """ML-DSA ozel anahtari (PKCS#8, tohum bicimi) — FIPS 204 KeyGen_internal(seed)."""
+    """ML-DSA private key (PKCS#8, seed form) — FIPS 204 KeyGen_internal(seed)."""
     if len(seed) != 32:
         raise ValueError('ML-DSA tohumu 32 bayt olmali')
     return run(['genpkey', '-algorithm', 'ML-DSA-%d' % level, '-pkeyopt', 'hexseed:' + seed.hex()]).stdout
@@ -88,7 +88,7 @@ def mldsa_sign(level: int, seed: bytes, msg: bytes, ctx: bytes = b'', determinis
 
 
 def pkey_verify(pub_pem: bytes, msg: bytes, sig: bytes, ctx: bytes = b'') -> bool:
-    """pkeyutl -verify (ML-DSA, Ed25519, Ed448: ham ileti)."""
+    """pkeyutl -verify (ML-DSA, Ed25519, Ed448: raw message)."""
     with _Tmp() as t:
         k = t.path('p.pem', pub_pem)
         m = t.path('m.bin', msg)
@@ -110,7 +110,7 @@ def pkey_sign_raw(priv_pem: bytes, msg: bytes) -> bytes:
 
 
 def dgst_verify(pub_pem: bytes, msg: bytes, der_sig: bytes, md: str) -> bool:
-    """ECDSA dogrulamasi (imza DER Ecdsa-Sig-Value)."""
+    """ECDSA verification (signature DER Ecdsa-Sig-Value)."""
     with _Tmp() as t:
         k = t.path('p.pem', pub_pem)
         m = t.path('m.bin', msg)
@@ -120,7 +120,7 @@ def dgst_verify(pub_pem: bytes, msg: bytes, der_sig: bytes, md: str) -> bool:
 
 
 def dgst_sign(priv_pem: bytes, msg: bytes, md: str, deterministic: bool = True) -> bytes:
-    """ECDSA imzasi (DER). deterministic: RFC 6979 (nonce-type:1)."""
+    """ECDSA signature (DER). deterministic: RFC 6979 (nonce-type:1)."""
     with _Tmp() as t:
         k = t.path('k.pem', priv_pem)
         m = t.path('m.bin', msg)
@@ -132,7 +132,7 @@ def dgst_sign(priv_pem: bytes, msg: bytes, md: str, deterministic: bool = True) 
 
 
 def verify_chain(leaf_der: bytes, intermediates_der, anchors_der, attime: int, extra_args=()):
-    """openssl verify -x509_strict; (ok, cikti) dondurur."""
+    """openssl verify -x509_strict; returns (ok, output)."""
     with _Tmp() as t:
         leaf = t.path('leaf.pem', der_to_pem(leaf_der))
         anc = t.path('anchors.pem', b''.join(der_to_pem(a) for a in anchors_der))
@@ -161,10 +161,10 @@ def cert_pem_to_der(pem: bytes) -> bytes:
 def make_certificate(subject: str, subject_pub_pem: bytes, issuer_key_pem: bytes,
                      issuer_cert_pem, serial: int, not_before: str, not_after: str,
                      config_text: str, ext_section: str, sigopts=()) -> bytes:
-    """Belirlenimci sertifika (PEM). issuer_cert_pem None ise kendinden imzali kok.
+    """Deterministic certificate (PEM). If issuer_cert_pem is None, a self-signed root.
 
-    Kok: 'openssl req -new -x509'; digerleri: 'openssl x509 -new -force_pubkey -CA'.
-    Gecerlilik tarihleri sabit (-not_before/-not_after, OpenSSL >= 3.4).
+    Root: 'openssl req -new -x509'; the others: 'openssl x509 -new -force_pubkey -CA'.
+    Validity dates fixed (-not_before/-not_after, OpenSSL >= 3.4).
     """
     with _Tmp() as t:
         cnf = t.path('c.cnf', config_text.encode())

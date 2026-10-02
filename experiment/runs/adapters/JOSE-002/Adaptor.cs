@@ -1,7 +1,7 @@
-// JOSE-002 JWT (jwt-dotnet/jwt) 11.1.0 adaptörü. Belgeli genel API: JwtBuilder.Create().WithAlgorithm(IJwtAlgorithm)
-// .WithDateTimeProvider(..).MustVerifySignature().Decode(token); ES256Algorithm/ES384Algorithm(ECDsa açık anahtar).
-// JWT.NET'te JWK API'si ve izin listesi seçeneği yok: politika, anahtara bağlanan algoritma nesnesiyle kurulur.
-// Eşleme ve gerekçeler: MAPPING.md.
+// Adapter for JOSE-002 JWT (jwt-dotnet/jwt) 11.1.0. Documented public API: JwtBuilder.Create().WithAlgorithm(IJwtAlgorithm)
+// .WithDateTimeProvider(..).MustVerifySignature().Decode(token); ES256Algorithm/ES384Algorithm(ECDsa public key).
+// JWT.NET has no JWK API and no allow-list option: the policy is built with the algorithm object bound to the key.
+// Mapping and reasons: MAPPING.md.
 using System.Security.Cryptography;
 using System.Text.Json.Nodes;
 using JWT;
@@ -9,12 +9,12 @@ using JWT.Algorithms;
 using JWT.Builder;
 using JWT.Exceptions;
 
-// Bataryadaki algoritmalardan yerel destek (JwtAlgorithmName: HS*, RS*, ES256/384/512, None; EdDSA/ML-DSA/composite yok)
+// Native support among the battery's algorithms (JwtAlgorithmName: HS*, RS*, ES256/384/512, None; no EdDSA/ML-DSA/composite)
 string[] KutuphaneAlgleri = { "ES256", "ES384" };
 string[] DestekliBicim = { "compact" };
 const string Api = "JwtBuilder.Create().WithAlgorithm(new ES256Algorithm|ES384Algorithm(ECDsa(jwk))  [alg(anahtar_turu) ∈ W]).WithDateTimeProvider(simdi).MustVerifySignature().Decode(jwt)";
 
-// JWK (EC) → ECDsa: kütüphanenin beklediği doğrudan anahtar nesnesi (anahtar_yolu = "dogrudan").
+// JWK (EC) → ECDsa: the direct key object expected by the library (anahtar_yolu = "dogrudan").
 ECDsa? EcAnahtar(JsonObject jwk)
 {
     if (Ortak.Str(jwk, "kty") != "EC") return null;
@@ -43,13 +43,13 @@ Sonuc Dogrula(JsonObject isSatiri)
     var jwt = File.ReadAllText(Ortak.VektorYolu(isSatiri["dosya"]!.GetValue<string>())).Trim();
     var pol = Ortak.Pol(isSatiri, KutuphaneAlgleri);
     if (pol.Taban == "L4-YOL") return Ortak.IfadeEdilemedi("x5c/x5chain yol sinifi politikasi (L4-YOL, B2) icin belgeli API yok", Api);
-    var izin = Ortak.TekImzaIzin(pol) ?? KutuphaneAlgleri.ToList(); // VARSAYILAN: JWT.NET'te algoritma her zaman açıkça verilir
+    var izin = Ortak.TekImzaIzin(pol) ?? KutuphaneAlgleri.ToList(); // VARSAYILAN: in JWT.NET the algorithm is always given explicitly
     var baslik = Ortak.Baslik(jwt);
     var alg = Ortak.Str(baslik, "alg");
     var (jwk, anahtarYolu) = Ortak.JwkSec(baslik, dg);
     anahtarYolu = anahtarYolu == "jwk-basligi" ? "jwk-basligi" : "dogrudan";
     var simdi = DateTimeOffset.FromUnixTimeSeconds(dg["simdi"]?.GetValue<long>() ?? DateTimeOffset.UtcNow.ToUnixTimeSeconds());
-    // Anahtar–alg bağlaması: seçilen anahtarın türüne karşılık gelen algoritma nesnesi, alg W içindeyse yapılandırılır.
+    // Key–alg binding: the algorithm object matching the type of the selected key is configured if the alg is in W.
     IJwtAlgorithm? algoritma = null;
     var ec = jwk == null ? null : EcAnahtar(jwk);
     if (ec != null)
@@ -60,13 +60,13 @@ Sonuc Dogrula(JsonObject isSatiri)
     try
     {
         var b = JwtBuilder.Create().WithDateTimeProvider(new SabitSaat(simdi)).MustVerifySignature();
-        if (algoritma != null) b = b.WithAlgorithm(algoritma); // yapılandırılamıyorsa kütüphane kendi hatasını verir
+        if (algoritma != null) b = b.WithAlgorithm(algoritma); // if it cannot be configured, the library raises its own error
         b.Decode(jwt);
         return new Sonuc("kabul", null, null, Api, anahtarYolu, new() { (0, algoritma!.Name, "gecerli") });
     }
     catch (Exception e)
     {
-        // "Can't decode a token. Check if you have called WithAlgorithm": W içinde bu anahtar türüne bağlanabilen algoritma yok
+        // "Can't decode a token. Check if you have called WithAlgorithm": no algorithm in W can be bound to this key type
         var red = e is SignatureVerificationException || e is TokenExpiredException || e is TokenNotYetValidException || e is InvalidTokenPartsException
                   || (e is InvalidOperationException && algoritma == null);
         return new Sonuc(red ? "red" : "istisna", Sinifla(e, alg, izin), e.GetType().Name + ": " + e.Message, Api, anahtarYolu);

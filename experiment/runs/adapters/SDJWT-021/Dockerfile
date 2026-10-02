@@ -1,4 +1,4 @@
-# a10-sdjwt-021:1 — WalletFramework.SdJwtVc 3.1.0 (packages.lock.json = experiment/environments/hedefler/SDJWT-021/cikti; nuget.org, anonim; telemetri kapalı)
+# a10-sdjwt-021:1 — WalletFramework.SdJwtVc 3.1.0 (packages.lock.json = experiment/environments/hedefler/SDJWT-021/cikti; nuget.org, anonymous; telemetry off)
 FROM pq-a09-env-dotnet:1.0
 WORKDIR /opt/a/src
 COPY Adaptor.csproj packages.lock.json ./

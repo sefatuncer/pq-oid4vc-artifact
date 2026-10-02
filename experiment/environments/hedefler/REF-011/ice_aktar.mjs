@@ -1,4 +1,4 @@
-// İçe aktarma kontrolü. Hiçbir işlev ÇAĞRILMAZ; çalışma/doğrulayıcı örneği oluşturulmaz.
+// Import check. NO function is called; no instance/verifier object is created.
 const m = await import('@credo-ts/openid4vc');
 const ad = Object.keys(m);
 console.log('modul=@credo-ts/openid4vc yuklendi; disa_aktarim_sayisi=' + ad.length);

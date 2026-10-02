@@ -1,10 +1,10 @@
-"""x5c (RFC 7515 4.1.6) islemleri: cozumleme, zincir dogrulama (OpenSSL CLI), zincir sinifi.
+"""x5c (RFC 7515 4.1.6) operations: decoding, chain validation (OpenSSL CLI), chain class.
 
-* x5c degerleri standart base64 DER'dir (base64url degil).
-* Zincir dogrulama sistem OpenSSL'i ile yapilir (ML-DSA imzali sertifikalari destekler).
-* Zincir sinifi: her halkanin (yaprak anahtari + x5c'deki her sertifikanin imzasi) klasik/pq sinifi;
-  'karisik' zincir = en az bir klasik ve en az bir PQ halka.
-* Composite X.509 (draft-ietf-lamps-pq-composite-sigs) OpenSSL 3.5'te yok -> KAPSAM DISI.
+* x5c values are standard base64 DER (not base64url).
+* Chain validation is done with the system OpenSSL (supports ML-DSA-signed certificates).
+* Chain class: the classical/pq class of every link (leaf key + the signature of every certificate in x5c);
+  a 'karisik' (mixed) chain = at least one classical and at least one PQ link.
+* Composite X.509 (draft-ietf-lamps-pq-composite-sigs) is not in OpenSSL 3.5 -> OUT OF SCOPE.
 """
 from dataclasses import dataclass, field
 

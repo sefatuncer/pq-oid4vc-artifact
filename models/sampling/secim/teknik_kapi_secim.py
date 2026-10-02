@@ -1,20 +1,20 @@
 # -*- coding: utf-8 -*-
-"""Teknik kapının örneklem seçimi (ÖK §2F madde 2; yürütücü; 25.09.2026).
+"""Sample selection for the technical gate (PR §2F item 2; maintainers; 25.09.2026).
 
-Kullanım: python teknik_kapi_secim.py <cerceve.jsonl> <kesif_2x2.jsonl> <cikti.json>
+Usage: python teknik_kapi_secim.py <cerceve.jsonl> <kesif_2x2.jsonl> <output.json>
 
-Kural (ön kayıtlı):
-  * Çerçeve: ÖK §4.18 çerçevesi (birincil yapılandırma; asgari ve bir-eksik kümeler). Dosya seçimden
-    önce SHA-256 ile sabitlenir; özet çıktıya yazılır.
-  * Katmanlar: hedef {G1,G2,G3,G4,tümü} × tür {asgari, bir-eksik}. Her dolu katmandan 1 örnek; toplam 10.
-    Dolu katman sayısı < 10 ise eksik kalan örnekler bütün çerçeveden tamamlanır; > 10 olamaz (5×2).
-  * Tohum 20260926 (ÖK Ek C). Rastgelelik yerine SHA-256 sıralaması kullanılır: bir satırın anahtarı
-    sha256("20260926|<bağlam>|<satır_kimliği>"); katmanda en küçük anahtarlı satır seçilir. Bu, Python
-    sürümünden bağımsız ve elle denetlenebilir bir belirlenimci seçimdir.
-  * Ek zorunlu örnek (kapı sayımına GİRMEZ): keşifsel ızgaradan ca_baglama=ad, ayni_ad_klasik_ca=var
-    satırlarından en küçük sha256("20260926|kesif|<kimlik>") anahtarlı satır.
-Beklenen satır alanları: "kimlik" (ya da "id"), "hedef", "tur"; keşif dosyasında ayrıca "ca_baglama",
-"ayni_ad_klasik_ca". Alan adları farklıysa betik hata verir; sessizce tahmin etmez.
+Rule (pre-registered):
+  * Frame: the frame of PR §4.18 (primary configuration; minimal and one-less sets). The file is pinned with
+    SHA-256 before the selection; the digest is written to the output.
+  * Strata: goal {G1,G2,G3,G4,tümü} × kind {asgari, bir-eksik}. One sample from every filled stratum; 10 in total.
+    If the number of filled strata is < 10, the missing samples are completed from the whole frame; > 10 is impossible (5×2).
+  * Seed 20260926 (PR Appendix C). SHA-256 ordering is used instead of randomness: the key of a row is
+    sha256("20260926|<context>|<row_id>"); in a stratum the row with the smallest key is selected. This is a
+    deterministic selection that is independent of the Python version and can be checked by hand.
+  * Additional mandatory sample (NOT counted for the gate): from the exploratory grid, among the rows with ca_baglama=ad,
+    ayni_ad_klasik_ca=var, the row with the smallest key sha256("20260926|kesif|<id>").
+Expected row fields: "kimlik" (or "id"), "hedef", "tur"; in the exploration file also "ca_baglama",
+"ayni_ad_klasik_ca". If the field names differ, the script raises an error; it does not guess silently.
 """
 import hashlib, io, json, sys
 
@@ -87,7 +87,7 @@ def main(cerceve, kesif, cikti):
         secilen += ek
         kayit.append({"tamamlama": [r["_kimlik"] for r in ek]})
     k = oku(kesif)
-    def alan(r, ad):  # alan satırın üst düzeyinde ya da "hucre" nesnesinin içinde olabilir (SEMA.md)
+    def alan(r, ad):  # the field can be at the top level of the row or inside the "hucre" object (SCHEMA.md)
         return r.get(ad, (r.get("hucre") or {}).get(ad))
     adv = [r for r in k if str(alan(r, "ca_baglama")) == "ad" and str(alan(r, "ayni_ad_klasik_ca")) == "var"]
     if not adv:

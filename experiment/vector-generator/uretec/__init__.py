@@ -1,2 +1,2 @@
-"""pq-a09-credgen: PQ-OID4VC Adim 9b kimlik bilgisi ve test vektoru ureteci."""
+"""pq-a09-credgen: PQ-OID4VC Step 9b credential and test-vector generator."""
 __version__ = "1.0.0"

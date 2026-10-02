@@ -1,4 +1,4 @@
-# a10-jose-001:1 — System.IdentityModel.Tokens.Jwt 8.23.0 (packages.lock.json = experiment/environments/hedefler/JOSE-001/cikti; nuget.org, anonim; telemetri kapalı)
+# a10-jose-001:1 — System.IdentityModel.Tokens.Jwt 8.23.0 (packages.lock.json = experiment/environments/hedefler/JOSE-001/cikti; nuget.org, anonymous; telemetry off)
 FROM pq-a09-env-dotnet:1.0
 WORKDIR /opt/a/src
 COPY Adaptor.csproj packages.lock.json ./

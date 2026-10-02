@@ -1,55 +1,76 @@
-# pqdogrula — PQ ilkel doğrulama servisi (C3 tedavi kolu TK2 "eklenti")
+# pqdogrula — PQ primitive verification service (C3 treatment class TK2 "plug-in")
 
-**Gerekçe:** Adım 9a kararı D-E3/D-E5 (`gozden-gecirme\adim-09a.md`; ön kayıt §2B). C3'te TK2 kolunda hedef kütüphanenin **kamuya açık genişletme noktasına** (ör. Java Nimbus `JWSVerifier`, Go crypto arayüzü, .NET `SecurityKey`/`SignatureProvider`, PHP jwt-framework algoritma kaydı, JS `jose` özel doğrulayıcı) ince bir eklenti takılır; eklenti yalnız **kriptografik ilkeli** bu servise sordurur. **Politika kararı kütüphanede kalır** (hangi alg kabul edilir, kaç imza gerekir, anahtar nasıl seçilir, x5c/crit/typ). Hedefler 9 dil grubunda, bizim kitaplık Python olduğu için dil bağımsız bir HTTP arayüzü ve bir CLI sağlanır.
+**Rationale:** Step 9a decision D-E3/D-E5 (pre-registration §2B). In the TK2 class of C3, a thin
+plug-in is attached to the **public extension point** of the target library (for example Java
+Nimbus `JWSVerifier`, the Go crypto interface, .NET `SecurityKey`/`SignatureProvider`, the PHP
+jwt-framework algorithm registry, a custom verifier in JS `jose`); the plug-in asks this service
+only for the **cryptographic primitive**. **The policy decision stays in the library** (which alg is
+accepted, how many signatures are required, how the key is selected, x5c/crit/typ). The targets
+are in 9 language groups and our library is Python, so a language-independent HTTP interface and a
+CLI are provided.
 
-## 1. Ne yapar / ne yapmaz
+(`pqdogrula` = "PQ verify". The API field names and endpoints are Turkish identifiers and are
+explained below.)
 
-| Yapar | Yapmaz |
+## 1. What it does / does not do
+
+| Does | Does not |
 |---|---|
-| `alg` + açık anahtar + imzalanan baytlar + imza → `{gecerli, bilesenler, hata}` | JWS/JWT/SD-JWT ayrıştırma, başlık işleme, `kid`/`x5c` çözümleme, zincir doğrulama |
-| ML-DSA-44/65/87 (RFC 9964; ctx boş) | alg izin listesi, gerekli küme, çoklu imza semantiği (hepsi kütüphanede) |
-| composite -04: ML-DSA-44-ES256, ML-DSA-65-ES256, ML-DSA-87-ES384, ML-DSA-44-Ed25519, ML-DSA-65-Ed25519, ML-DSA-87-Ed448 — bileşen bazında sonuç | klasik alg (ES256, EdDSA…): kütüphanenin kendi desteği kullanılır; servis `hata` döner |
-| AKP JWK'de `jwk.alg == istek alg` denetimi (RFC 9964 §3: AKP'de `alg` ZORUNLU), uzunluk/kodlama denetimi | anahtar saklama, imzalama, günlük tutma |
+| `alg` + public key + signed bytes + signature → `{gecerli, bilesenler, hata}` (valid, components, error) | JWS/JWT/SD-JWT parsing, header processing, `kid`/`x5c` resolution, chain verification |
+| ML-DSA-44/65/87 (RFC 9964; empty ctx) | alg allow-list, required set, multi-signature semantics (all in the library) |
+| composite -04: ML-DSA-44-ES256, ML-DSA-65-ES256, ML-DSA-87-ES384, ML-DSA-44-Ed25519, ML-DSA-65-Ed25519, ML-DSA-87-Ed448 — result per component | classical algs (ES256, EdDSA…): the library's own support is used; the service returns `hata` |
+| check `jwk.alg == request alg` for an AKP JWK (RFC 9964 §3: `alg` is MANDATORY in AKP), length/encoding checks | key storage, signing, logging |
 
-Kriptografi `pqjose` ile aynı yoldan gider (cryptography 50.0.1 / gömülü OpenSSL 4.0.2; composite: -04 §4.3, bileşen AND).
+The cryptography takes the same path as `pqjose` (cryptography 50.0.1 / bundled OpenSSL 4.0.2;
+composite: -04 §4.3, component AND).
 
-## 2. Arayüz
+## 2. Interface
 
-**İstek (JSON):**
+**Request (JSON):**
 
-| Alan | Zorunlu | Açıklama |
+| Field | Required | Description |
 |---|---|---|
-| `alg` | ✔ | yukarıdaki 9 değerden biri |
-| `jwk` **ya da** `acik_anahtar` / `acik_anahtar_hex` | ✔ (biri) | `jwk`: AKP (`kty=AKP`, `alg`, `pub`); `priv` varsa **yok sayılır**. `acik_anahtar`: base64url ham açık anahtar (ML-DSA: FIPS 204 pk; composite: `mldsaPK ‖ tradPK`, -04 §4.1) |
-| `imzalama_girdisi` / `_hex` | ✔ | imzalanan baytlar. JWS: `ASCII(BASE64URL(protected) '.' BASE64URL(payload))`; COSE: `Sig_structure` baytları |
-| `imza` / `_hex` | ✔ | ham imza baytları (JWS'te base64url çözülmüş) |
+| `alg` | ✔ | one of the 9 values above |
+| `jwk` **or** `acik_anahtar` / `acik_anahtar_hex` (public key) | ✔ (one) | `jwk`: AKP (`kty=AKP`, `alg`, `pub`); `priv`, if present, is **ignored**. `acik_anahtar`: base64url raw public key (ML-DSA: FIPS 204 pk; composite: `mldsaPK ‖ tradPK`, -04 §4.1) |
+| `imzalama_girdisi` / `_hex` (signing input) | ✔ | the signed bytes. JWS: `ASCII(BASE64URL(protected) '.' BASE64URL(payload))`; COSE: the `Sig_structure` bytes |
+| `imza` / `_hex` (signature) | ✔ | raw signature bytes (base64url-decoded for JWS) |
 
-**Yanıt:** `{"gecerli": bool, "alg": str, "bilesenler": {"ml": bool} | {"ml": bool, "trad": bool} | null, "hata": null | str, "servis": "pqdogrula/1"}`. `hata` doluysa istek ya da serileştirme sorunu vardır ve `gecerli=false`'tur (ör. composite'te DER bozukluğu: `"serilestirme: DER: …"`).
+**Response:** `{"gecerli": bool, "alg": str, "bilesenler": {"ml": bool} | {"ml": bool, "trad": bool} | null, "hata": null | str, "servis": "pqdogrula/1"}`.
+If `hata` (error) is set, the request or the serialization has a problem and `gecerli=false`
+(for example a DER defect in a composite: `"serilestirme: DER: …"`).
 
-**HTTP uçları:** `GET /v1/saglik` (sürümler, desteklenen alg'ler) · `POST /v1/dogrula` (tek istek) · `POST /v1/dogrula/toplu` (`{"istekler": [...]}` → `{"yanitlar": [...]}`, en fazla 256). Gövde sınırı 4 MiB. Kimlik doğrulama **yok**; istek günlüğü tutulmaz.
+**HTTP endpoints:** `GET /v1/saglik` (health: versions, supported algs) · `POST /v1/dogrula`
+(verify, single request) · `POST /v1/dogrula/toplu` (batch: `{"istekler": [...]}` →
+`{"yanitlar": [...]}`, at most 256). Body limit 4 MiB. **No** authentication; no request log is kept.
 
-**CLI:** `python -m servis.pqdogrula dogrula [--istek DOSYA]` (DOSYA yoksa stdin); çıkış kodu `0`=geçerli, `1`=geçersiz, `2`=istek hatası. `python -m servis.pqdogrula saglik`. `python -m servis.pqdogrula sunucu --host H --port P`.
+**CLI:** `python -m servis.pqdogrula dogrula [--istek FILE]` (stdin if no FILE); exit code `0` =
+valid, `1` = invalid, `2` = request error. `python -m servis.pqdogrula saglik`.
+`python -m servis.pqdogrula sunucu --host H --port P` (server).
 
-## 3. Çalıştırma (yalnız yerel)
+## 3. Running (local only)
 
-> Kimlik doğrulama olmadığı için servis **dış ağa açılmaz**: ya iç Docker ağında (önerilen) ya da yalnız `127.0.0.1`'e yayınlanır. `-p 8765:8765` (tüm arayüzler) KULLANMAYIN.
+> Because there is no authentication, the service is **not exposed to an external network**: either
+> on an internal Docker network (recommended) or published only on `127.0.0.1`. DO NOT use
+> `-p 8765:8765` (all interfaces).
 
 ```bash
-# (a) C3 için önerilen: dış bağlantısı olmayan iç ağ; hedef kütüphane konteynerleri aynı ağa katılır
+# (a) recommended for C3: internal network without outside connectivity; target library containers join the same network
 docker network create --internal pq-a09-net
 docker run -d --name pq-a09-pqdogrula --network pq-a09-net pq-a09-signer:1.0 \
   python -m servis.pqdogrula sunucu --host 0.0.0.0 --port 8765
-#   hedefler: http://pq-a09-pqdogrula:8765/v1/dogrula
-# (b) elle deneme: yalnız ana makinenin 127.0.0.1'ine yayın
+#   targets: http://pq-a09-pqdogrula:8765/v1/dogrula
+# (b) manual test: publish only on the host's 127.0.0.1
 docker run -d --name pq-a09-pqdogrula-yerel -p 127.0.0.1:18765:8765 pq-a09-signer:1.0 \
   python -m servis.pqdogrula sunucu --host 0.0.0.0 --port 8765
-# kaldırma
+# removal
 docker rm -f pq-a09-pqdogrula pq-a09-pqdogrula-yerel; docker network rm pq-a09-net
 ```
 
-## 4. Çağrı örnekleri
+## 4. Call examples
 
-- **curl:** `servis/ornekler/curl.sh` (sağlık, tek istek ×2, toplu). İstek dosyaları dış test vektörlerinden üretildi: `istek_ML-DSA-65.json` (RFC 9964 Ek A), `istek_ML-DSA-65-ES256.json` (composite -04 Ek A.1).
+- **curl:** `servis/ornekler/curl.sh` (health, single request ×2, batch). The request files were
+  produced from the external test vectors: `istek_ML-DSA-65.json` (RFC 9964 Appendix A),
+  `istek_ML-DSA-65-ES256.json` (composite -04 Appendix A.1) (`istek` = request).
 
 ```bash
 curl -s -X POST -H 'Content-Type: application/json' \
@@ -57,18 +78,26 @@ curl -s -X POST -H 'Content-Type: application/json' \
 # {"gecerli": true, "alg": "ML-DSA-65-ES256", "bilesenler": {"ml": true, "trad": true}, "hata": null, ...}
 ```
 
-- **Python (yalnız standart kitaplık):** `servis/ornekler/istemci.py` — `compact_jws_dogrula(url, jws, jwk)`: JWS'ten imzalama girdisini ve imzayı çıkarıp servise yollar.
-- **Diğer diller (C3'te yazılacak eklentiler için kalıp):** genişletme noktasında `verify(alg, key, signingInput, signature)` çağrısı gelince → `POST /v1/dogrula` gövdesi `{"alg": alg, "jwk": <AKP açık JWK>, "imzalama_girdisi": b64url(signingInput), "imza": b64url(signature)}` → yalnız `gecerli` alanı kütüphaneye döndürülür; `bilesenler` ve `hata` ölçüm günlüğüne yazılır.
+- **Python (standard library only):** `servis/ornekler/istemci.py` (client) —
+  `compact_jws_dogrula(url, jws, jwk)`: extracts the signing input and the signature from the JWS and
+  sends them to the service.
+- **Other languages (pattern for the plug-ins written in C3):** when the extension point calls
+  `verify(alg, key, signingInput, signature)` → `POST /v1/dogrula` with body `{"alg": alg, "jwk":
+  <AKP public JWK>, "imzalama_girdisi": b64url(signingInput), "imza": b64url(signature)}` → only the
+  `gecerli` field is returned to the library; `bilesenler` and `hata` are written to the measurement
+  log.
 
-## 5. Kabul sonuçları
+## 5. Acceptance results
 
-| Test | Sonuç |
+| Test | Result |
 |---|---|
-| **T05** (`../testler/t05_servis.py`, `../sonuclar/t05_servis.*`) | **121/121**. t01 dış vektörleri (RFC 9964 JOSE + COSE-ham, composite -04 JOSE; jwk/hex/b64u anahtar biçimleri; imza/ileti/bileşen bozulmaları, artık bayt): **69/69 aynı sonuç**; t02 senaryoları (aynı belirlenimci anahtarlar; pqjose-hedged, OpenSSL, dilithium-py, belirlenimci imzalar; composite: pqjose ve OpenSSL bileşenli; bozuk/kesik): **45/45 aynı sonuç**. Her vaka üç yoldan (HTTP tek, HTTP toplu, CLI) ve `{gecerli, bilesenler}` kitaplıkla birebir; hata yolları (desteklenmeyen alg, jwk.alg uyuşmazlığı, bozuk hex, yanlış pub uzunluğu) ve sağlık ucu |
-| **T05b** entegrasyon (`../sonuclar/t05b_servis_entegrasyon.txt`) | iç ağ `pq-a09-net` (`Internal=true`, yayınlanan port 0) üzerinden başka konteynerden çağrı ✔; `127.0.0.1:18765` üzerinden ana makine `curl` ✔ |
+| **T05** (`../testler/t05_servis.py`, `../sonuclar/t05_servis.*`) | **121/121**. t01 external vectors (RFC 9964 JOSE + raw COSE, composite -04 JOSE; jwk/hex/b64u key formats; signature/message/component corruptions, trailing bytes): **69/69 same result**; t02 scenarios (the same deterministic keys; pqjose hedged, OpenSSL, dilithium-py, deterministic signatures; composite with pqjose and OpenSSL components; corrupted/truncated): **45/45 same result**. Every case via three paths (HTTP single, HTTP batch, CLI), and `{gecerli, bilesenler}` identical to the library; error paths (unsupported alg, jwk.alg mismatch, broken hex, wrong pub length) and the health endpoint |
+| **T05b** integration (`../sonuclar/t05b_servis_entegrasyon.txt`) | call from another container over the internal network `pq-a09-net` (`Internal=true`, published port 0) ✔; host `curl` via `127.0.0.1:18765` ✔ |
 
-## 6. Sınırlılıklar
+## 6. Limitations
 
-- HTTP gidiş-dönüşü ek gecikme getirir; C3'te **zamanlama** ölçümleri bu servisle yapılmamalı (yalnız karar/yetenek ölçümü için).
-- Servis yalnız PQ/composite ilkelini doğrular; composite X.509 zincirleri yoktur (bkz. imzalayıcı README §7).
-- Tek süreçli, iş parçacıklı `http.server`; yük testi amaçlı değildir.
+- The HTTP round trip adds latency; in C3, **timing** measurements must not be made with this
+  service (decision/capability measurement only).
+- The service verifies only the PQ/composite primitive; there are no composite X.509 chains (see the
+  signer README §7).
+- Single-process, threaded `http.server`; not meant for load testing.

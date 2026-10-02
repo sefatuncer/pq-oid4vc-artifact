@@ -1,4 +1,4 @@
-# a10-cose-035:1 — web-auth/cose-lib (composer.lock = experiment/environments/hedefler/COSE-035/cikti; dist zip'ler Packagist/GitHub, anonim)
+# a10-cose-035:1 — web-auth/cose-lib (composer.lock = experiment/environments/hedefler/COSE-035/cikti; dist zips from Packagist/GitHub, anonymous)
 FROM pq-a09-env-php:1.0
 WORKDIR /opt/a
 COPY composer.json composer.lock ./

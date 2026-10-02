@@ -1,0 +1,57 @@
+#!/usr/bin/env python3
+"""Adım 9 görev 4a — hedef listesini (SECILDI + YEDEK, E2) CERCEVE.csv ile birleştirir ve
+yedek türünü (5.3-4-i grup-içi / 5.3-4-ii genel) topla.py secim() mantığıyla yeniden türetir.
+Çıktı: kayit/hedef_listesi.csv. Ağ kullanmaz."""
+import csv, json, pathlib
+KOK = pathlib.Path(__file__).resolve().parents[3]          # proje kökü
+ENV = KOK / "experiment" / "inventory"
+CIKTI = KOK / "experiment" / "environments" / "kayit" / "hedef_listesi.csv"
+sec = list(csv.DictReader(open(ENV / "SECIM.csv", encoding="utf-8")))
+cer = {r["id"]: r for r in csv.DictReader(open(ENV / "CERCEVE.csv", encoding="utf-8"))}
+kayit = json.load(open(ENV / "topla_kayit.json", encoding="utf-8"))["secim"]
+kayit = kayit.get("E2", kayit)
+grup = {r["id"]: r["dil_grubu"] for r in sec}
+satirlar = []
+for tabaka, s in kayit.items():
+    secilen, yedek = s["secilen"], s["yedek"]
+    secilen_gruplar = list(dict.fromkeys(grup[i] for i in secilen))
+    # topla.py secim(): yedek listesine önce seçilen grupların sırasıyla grup-içi yedekler (5.3-4-i),
+    # sonra genel sıradaki ilk 2 seçilmemiş uygun aday (5.3-4-ii) eklenir. Sıralı yürüyüşle ayrıştırılır.
+    tur, kullanilan, konum, genel_kip = {}, set(), 0, False
+    for i in yedek:
+        g = grup[i]
+        if (not genel_kip and tabaka != "REF" and g in secilen_gruplar[konum:] and g not in kullanilan):
+            konum = secilen_gruplar.index(g) + 1
+            kullanilan.add(g)
+            tur[i] = ("i", g)
+        else:
+            genel_kip = True
+            tur[i] = ("ii", "genel")
+    for sira, i in enumerate(secilen, 1):
+        c = cer[i]
+        satirlar.append(dict(id=i, tabaka=tabaka, karar="SECILDI", sira=sira, yedek_turu="", yedek_grubu="",
+                             ad=c["ad"], dil=c["dil"], dil_grubu=grup[i], paket_ekosistemi=c["paket_ekosistemi"],
+                             paket_adi=c["paket_adi"], depo_url=c["depo_url"], alt_dizin=c["alt_dizin"],
+                             son_surum=c["son_surum"], son_surum_tarihi=c["son_surum_tarihi"],
+                             son_commit_sha=c["son_commit_sha"], son_commit=c["son_commit"], lisans=c["lisans"]))
+    for sira, i in enumerate(yedek, 1):
+        c = cer[i]
+        satirlar.append(dict(id=i, tabaka=tabaka, karar="YEDEK", sira=sira, yedek_turu=tur[i][0], yedek_grubu=tur[i][1],
+                             ad=c["ad"], dil=c["dil"], dil_grubu=grup[i], paket_ekosistemi=c["paket_ekosistemi"],
+                             paket_adi=c["paket_adi"], depo_url=c["depo_url"], alt_dizin=c["alt_dizin"],
+                             son_surum=c["son_surum"], son_surum_tarihi=c["son_surum_tarihi"],
+                             son_commit_sha=c["son_commit_sha"], son_commit=c["son_commit"], lisans=c["lisans"]))
+# SECIM.csv karar_E2 ile tutarlılık denetimi
+e2 = {r["id"]: r["karar_E2"] for r in sec}
+for r in satirlar:
+    assert e2[r["id"]] == r["karar"], (r["id"], e2[r["id"]], r["karar"])
+assert sum(1 for r in satirlar if r["karar"] == "SECILDI") == 34
+assert sum(1 for r in satirlar if r["karar"] == "YEDEK") == 21
+CIKTI.parent.mkdir(parents=True, exist_ok=True)
+with open(CIKTI, "w", encoding="utf-8", newline="") as f:
+    w = csv.DictWriter(f, fieldnames=list(satirlar[0].keys()))
+    w.writeheader(); w.writerows(satirlar)
+for r in satirlar:
+    if r["karar"] == "YEDEK":
+        print(r["tabaka"], r["id"], r["dil_grubu"], r["yedek_turu"], r["yedek_grubu"], r["ad"])
+print("yazıldı:", CIKTI, len(satirlar))

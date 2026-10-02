@@ -1,45 +1,45 @@
-# JOSE-070 firebase/php-jwt — politika → API eşlemesi (sözleşme 1.0 §2.2, KOSUCU §2)
+# JOSE-070 firebase/php-jwt — policy → API mapping (contract 1.0 §2.2, RUNNER §2)
 
-- **Hedef:** `firebase/php-jwt` v7.2.0 (`f502cdbf279c`, çerçeve HEAD ile aynı), `composer.lock` ortam kaydıyla aynı.
-- **İmaj:** `a10-jose-070:1` (`FROM pq-a09-env-php:1.0`; PHP 8.4.26, OpenSSL 3.5.8, sodium). `composer install` yalnız imaj yapımında.
-- **Çağrı:** `docker run --rm --network none -v <v1.3>:/v:ro -v <anahtarlar>:/anahtarlar:ro -v <isler>:/is:ro -v <cikti>:/c a10-jose-070:1 adaptor /is/<isler> /c/JOSE-070.<kosu>.jsonl`
-- **Kaynak:** `adaptor.php`, `ortak.php` (JOSE-071 ve COSE-035 ile aynı iskelet).
+- **Target:** `firebase/php-jwt` v7.2.0 (`f502cdbf279c`, the same as the frame HEAD), `composer.lock` the same as the environment record.
+- **Image:** `a10-jose-070:1` (`FROM pq-a09-env-php:1.0`; PHP 8.4.26, OpenSSL 3.5.8, sodium). `composer install` only when the image is built.
+- **Call:** `docker run --rm --network none -v <v1.3>:/v:ro -v <anahtarlar>:/anahtarlar:ro -v <isler>:/is:ro -v <cikti>:/c a10-jose-070:1 adaptor /is/<isler> /c/JOSE-070.<kosu>.jsonl`
+- **Source:** `adaptor.php`, `ortak.php` (same skeleton as JOSE-071 and COSE-035).
 
-## 1. Ortak kurallar
-`JOSE-087/MAPPING.md` §1 ile aynı (A/X, W/R, tek imzada etkin izin listesi = R, VARSAYILAN, yalnız `dogrulama_girdileri`). Saat: `JWT::$timestamp = simdi` (php-jwt'nin genel statik saat alanı; sözleşme §2.1).
-- **Politika adı normalleştirme (yürütücü 01.10):** `temel = politika.split('|')[0].split('@')[0]` (`|sdjwtvc=…`, `@-19` ekleri yalnız oracle'ı böler); çıktıya özgün `politika` yazılır. **P2** (P1 + anahtar–alg bağlama) GEC/P0/P1 kümesindedir.
+## 1. Shared rules
+The same as `JOSE-087/MAPPING.md` §1 (A/X, W/R, effective allow-list for a single signature = R, VARSAYILAN, only `dogrulama_girdileri`). Clock: `JWT::$timestamp = simdi` (the public static clock field of php-jwt; contract §2.1).
+- **Policy name normalisation (maintainers 01.10):** `temel = politika.split('|')[0].split('@')[0]` (the suffixes `|sdjwtvc=…`, `@-19` only split the oracle); the original `politika` is written to the output. **P2** (P1 + key–alg binding) is in the GEC/P0/P1 set.
 
-## 2. Politika mekanizması: anahtar–alg bağlaması
-php-jwt'de ayrı bir izin listesi yoktur; algoritma `Key(material, alg)` nesnesine bağlıdır ve `decode` başlık alg'ını anahtarın alg'ıyla karşılaştırır (`JWT.php` L148–158). W bu yüzden **anahtar kümesinin kuruluşuyla** ifade edilir:
-- Vektörün JWKS'indeki her JWK için anahtar türünün doğal alg'ı hesaplanır (EC P-256 → ES256, P-384 → ES384, OKP Ed25519 → EdDSA [kontrol-Ed25519 kolunda `Ed25519`], AKP → JWK `alg`).
-- Doğal alg ∈ W olan JWK'ler `JWK::parseKey($jwk, $alg)` ile `Key`'e çevrilir → `[kid => Key]` (`anahtar_yolu = JWKS`).
-- Başlıkta `kid` yoksa (REQ01/02, TSL01/02, DPoP) seçilen JWK tek `Key` olarak verilir (`anahtar_yolu = JWK` / `jwk-basligi`).
+## 2. Policy mechanism: key–alg binding
+php-jwt has no separate allow-list; the algorithm is bound to the object `Key(material, alg)`, and `decode` compares the header alg with the alg of the key (`JWT.php` L148–158). W is therefore expressed **by the construction of the key set**:
+- For every JWK in the vector's JWKS the natural alg of the key type is computed (EC P-256 → ES256, P-384 → ES384, OKP Ed25519 → EdDSA [`Ed25519` in the kontrol-Ed25519 arm], AKP → the JWK `alg`).
+- The JWKs whose natural alg ∈ W are converted into a `Key` with `JWK::parseKey($jwk, $alg)` → `[kid => Key]` (`anahtar_yolu = JWKS`).
+- If the header has no `kid` (REQ01/02, TSL01/02, DPoP), the selected JWK is given as a single `Key` (`anahtar_yolu = JWK` / `jwk-basligi`).
 
-| Politika | Yapılandırma |
+| Policy | Configuration |
 |---|---|
-| GEC / P0 / P1 | doğal alg ∈ {ES256, ES384, EdDSA} olan bütün anahtarlar |
-| IZIN-A / IZIN-AX | doğal alg ∈ {ES256} / {ES256, X} |
-| L4 / L4-S / L4-Y (kompakt, tek imza) | doğal alg ∈ {X} (etkin izin listesi = R) |
-| VARSAYILAN | GEC ile aynı (php-jwt'de alg her zaman anahtara bağlıdır) |
-| L4-YOL | X5C (SD-JWT) → B6; desteklenen biçimde `ifade-edilemedi` (yol sınıfı API'si yok) |
+| GEC / P0 / P1 | all keys whose natural alg ∈ {ES256, ES384, EdDSA} |
+| IZIN-A / IZIN-AX | natural alg ∈ {ES256} / {ES256, X} |
+| L4 / L4-S / L4-Y (compact, single signature) | natural alg ∈ {X} (effective allow-list = R) |
+| VARSAYILAN | the same as GEC (in php-jwt the alg is always bound to the key) |
+| L4-YOL | X5C (SD-JWT) → B6; in a supported format `ifade-edilemedi` (no path-class API) |
 
-Çağrı: `JWT::decode($jwt, $anahtarlar, $hdr)`; kabulde `dogrulanan_algoritmalar = [{alg: $hdr->alg}]` (php-jwt yalnız `Key` alg'ı başlık alg'ına eşitse doğrular).
+Call: `JWT::decode($jwt, $anahtarlar, $hdr)`; on acceptance `dogrulanan_algoritmalar = [{alg: $hdr->alg}]` (php-jwt verifies only if the `Key` alg equals the header alg).
 
-## 3. B6 kararları
-| Serileştirme | Karar | Dayanak |
+## 3. B6 decisions
+| Serialization | Decision | Basis |
 |---|---|---|
-| compact | desteklenir | `JWT::decode` (`explode('.', $jwt, 4)`, 3 bölüm) |
-| general, sd-jwt-* , oid4vci-toplu-yanit, dcapi-json-parametre | **B6** | JSON serileştirme ve SD-JWT API'si yok (`evidence/api-tarama.txt`) |
-| COSE_Sign, COSE_Sign1 | **B6** | COSE yok |
+| compact | supported | `JWT::decode` (`explode('.', $jwt, 4)`, 3 parts) |
+| general, sd-jwt-* , oid4vci-toplu-yanit, dcapi-json-parametre | **B6** | no JSON serialization and no SD-JWT API (`evidence/api-tarama.txt`) |
+| COSE_Sign, COSE_Sign1 | **B6** | no COSE |
 
-## 4. İstisna → hata_sinifi
-| Kütüphane istisnası | hata_sinifi |
+## 4. Exception → hata_sinifi
+| Library exception | hata_sinifi |
 |---|---|
 | `UnexpectedValueException` "Algorithm not supported" | `alg-desteklenmiyor` |
 | "Incorrect key for this algorithm" | `alg-anahtar-uyusmazligi` |
-| `"kid" invalid` / `"kid" empty` / `InvalidArgumentException` "Key may not be empty", başlık alg ∉ W | `alg-izin-disi` (W, anahtar bağlamasıyla kurulduğu için) |
-| aynı, başlık alg ∈ W | `anahtar-bulunamadi`; seçilen anahtar türü `parseKey` ile kurulamadıysa (AKP) `alg-desteklenmiyor` |
+| `"kid" invalid` / `"kid" empty` / `InvalidArgumentException` "Key may not be empty", header alg ∉ W | `alg-izin-disi` (because W is built with the key binding) |
+| the same, header alg ∈ W | `anahtar-bulunamadi`; `alg-desteklenmiyor` if the selected key type could not be built with `parseKey` (AKP) |
 | `SignatureInvalidException` | `imza-gecersiz` |
 | `ExpiredException`, `BeforeValidException` | `zaman` |
-| segment/kodlama/"Payload must be"/"Empty algorithm" iletileri | `ayristirma` |
-| `DomainException` (OpenSSL/sodium) ve diğerleri | `istisna-diger` |
+| segment/encoding/"Payload must be"/"Empty algorithm" messages | `ayristirma` |
+| `DomainException` (OpenSSL/sodium) and others | `istisna-diger` |

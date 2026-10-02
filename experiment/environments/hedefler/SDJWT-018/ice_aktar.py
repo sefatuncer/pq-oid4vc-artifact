@@ -1,4 +1,4 @@
-# İçe aktarma kontrolü. Hiçbir işlev ÇAĞRILMAZ.
+# Import check. NO function is called.
 import importlib.metadata as md
 import sd_jwt
 from sd_jwt.verifier import SDJWTVerifier

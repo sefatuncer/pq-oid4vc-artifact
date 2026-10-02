@@ -1,9 +1,9 @@
 <?php
-// COSE-035 web-auth/cose-lib 4.8.2 (+ spomky-labs/cbor-php 3.4.2) adaptörü.
-// cose-lib bir ilkel kütüphanesidir: README "Verifying a COSE_Sign1 Signature" bölümü belgeli doğrulayıcıyı çağıranın
-// yazdığı kalıp olarak verir (Decoder → CoseHeaders::fromMessage → alg denetimi → crit denetimi → Signature1 →
-// $algorithm->verify). Adaptör bu kalıbı BİREBİR izler; izin listesi W = Algorithm\Manager (Manager::has/get).
-// Eşleme ve gerekçeler: MAPPING.md.
+// Adapter for COSE-035 web-auth/cose-lib 4.8.2 (+ spomky-labs/cbor-php 3.4.2).
+// cose-lib is a primitives library: the README section "Verifying a COSE_Sign1 Signature" gives the documented verifier
+// as a pattern written by the caller (Decoder → CoseHeaders::fromMessage → alg check → crit check → Signature1 →
+// $algorithm->verify). The adapter follows this pattern EXACTLY; the allow-list W = Algorithm\Manager (Manager::has/get).
+// Mapping and reasons: MAPPING.md.
 declare(strict_types=1);
 require '/opt/a/vendor/autoload.php';
 require __DIR__ . '/ortak.php';
@@ -25,12 +25,12 @@ use Cose\Signature\Signature;
 use Cose\Signature\Signature1;
 use Cose\Structure\CoseHeaders;
 
-// JOSE adı → COSE kimliği (BATARYA-ESLEME §3; RFC 9053, RFC 9864, RFC 9964, composite -04 §7.2 talep edilen -55)
+// JOSE name → COSE id (BATARYA-ESLEME §3; RFC 9053, RFC 9864, RFC 9964, composite -04 §7.2 requested -55)
 const COSE_ID = ['ES256' => -7, 'ES384' => -35, 'EdDSA' => -8, 'Ed25519' => -19, 'ML-DSA-65' => -49, 'ML-DSA-65-ES256' => -55];
-// 4.8.2'de bataryayla kesişen yerel algoritmalar (src/Algorithm/Signature: ECDSA, EdDSA, FullySpecified; MLDSA dizini YOK)
+// Native algorithms of 4.8.2 that intersect with the battery (src/Algorithm/Signature: ECDSA, EdDSA, FullySpecified; NO MLDSA folder)
 const KUTUPHANE_ALGLERI = ['ES256', 'ES384', 'EdDSA', 'Ed25519'];
 const DESTEKLI_BICIM = ['COSE_Sign1', 'COSE_Sign'];
-const ANLASILAN_ETIKETLER = [1, 2]; // README kalıbı: 1 = alg, 2 = crit
+const ANLASILAN_ETIKETLER = [1, 2]; // README pattern: 1 = alg, 2 = crit
 const API = 'Decoder::decode → CoseHeaders::fromMessage → Manager(W)::has(alg) → crit → Signature1|Signature::create → Manager::get(alg)->verify(sig_structure, Key::createFromData(COSE_Key), sig)';
 
 function algoritma(string $ad): ?\Cose\Algorithm\Algorithm
@@ -54,7 +54,7 @@ function coseAnahtari(array $dg, ?string $kidHex): Key
     if ($kidHex === null || !isset($harita[$kidHex])) throw new Red('anahtar-bulunamadi', "COSE_Key bulunamadi (kid=$kidHex)");
     $veri = Decoder::create()->decode(new StringStream(hex2bin($harita[$kidHex])))->normalize();
     try {
-        return Key::createFromData($veri); // kty'ye göre Ec2Key / OkpKey / RsaKey / SymmetricKey
+        return Key::createFromData($veri); // Ec2Key / OkpKey / RsaKey / SymmetricKey by kty
     } catch (\Throwable $e) {
         throw new Red('alg-desteklenmiyor', 'Key::createFromData: ' . $e->getMessage());
     }
@@ -112,7 +112,7 @@ function dogrula(array $is): array
         } elseif ($mesaj instanceof CoseSignTag) {
             $imzalar = CoseSignature::all($mesaj->getSignatures());
             if (count($imzalar) !== 1 && $pol['taban'] !== 'VARSAYILAN') {
-                // Çoklu imzacı kuralı (P0/P1/R) için belgeli seçenek yok; her imzacıyı dolaşan döngü çağıranın kodu olur (B4).
+                // No documented option for a multi-signer rule (P0/P1/R); a loop over every signer would be the caller's code (B4).
                 return Ortak::ifadeEdilemedi('COSE_Sign coklu imzaci kurali (P0/P1/R) icin API secenegi yok', API);
             }
             if (count($imzalar) !== 1) return Ortak::ifadeEdilemedi('VARSAYILAN: COSE_Sign coklu imzaci icin varsayilan dogrulayici yok', API);

@@ -1,7 +1,7 @@
-# JOSE-031 guardian 2.5.0 adaptörü (doğrulamayı erlang-jose 1.11.12'ye devreder: JOSE.JWT.verify_strict).
-# Belgeli genel API: Guardian.decode_and_verify(mod, token, %{}, secret: jwk, allowed_algos: W)
-# (guardian/token/jwt.ex "allowed_algos", "secret" seçenekleri; decode_token L328-343). Eşleme: MAPPING.md.
-# Ortak iskelet (C3 sözleşmesi 1.0 / KOSUCU §1–§3) aynı dosyadadır; doğrulama döngüsü YOK. Ağ erişimi yok.
+# Adapter for JOSE-031 guardian 2.5.0 (delegates verification to erlang-jose 1.11.12: JOSE.JWT.verify_strict).
+# Documented public API: Guardian.decode_and_verify(mod, token, %{}, secret: jwk, allowed_algos: W)
+# (guardian/token/jwt.ex options "allowed_algos", "secret"; decode_token L328-343). Mapping: MAPPING.md.
+# The shared skeleton (C3 contract 1.0, experiment/oracle/oracle-A/adapter-contract.md / RUNNER §1–§3) is in the same file; NO verification loop. No network access.
 
 defmodule A10.Guardian do
   use Guardian, otp_app: :adaptor, issuer: "a10-adaptor"
@@ -20,7 +20,7 @@ defmodule A10.Ortak do
     Enum.find(adaylar, hd(adaylar), &File.exists?/1)
   end
 
-  # Manifestten YALNIZ dogrulama_girdileri okunur; `insa` ve diğer alanlar okunmaz (yürütücü 01.10).
+  # ONLY dogrulama_girdileri is read from the manifest; `insa` and the other fields are not read (maintainers 01.10).
   def manifest do
     case :persistent_term.get(:a10_manifest, nil) do
       nil ->
@@ -37,9 +37,9 @@ defmodule A10.Ortak do
     ("/anahtarlar/" <> String.replace_prefix(goreli, "anahtarlar/", "")) |> File.read!() |> JSON.decode!()
   end
 
-  # Politika → {taban, W | nil, R}. YONTEM.md §2; VARSAYILAN = sözleşme §5.2 L5.
+  # Policy → {taban, W | nil, R}. METHOD.md §2; VARSAYILAN = contract §5.2 L5.
   def politika(is, kutuphane) do
-    taban = is["politika"] |> String.split("|") |> hd() |> String.split("@") |> hd()  # ekler yalnız oracle'ı böler
+    taban = is["politika"] |> String.split("|") |> hd() |> String.split("@") |> hd()  # the suffixes only split the oracle
     x = @x_kol[is["kol"]]
     gx = fn -> x || raise "kol icin X tanimsiz" end
     case taban do
@@ -52,12 +52,12 @@ defmodule A10.Ortak do
     end
   end
 
-  # Tek imzalı nesnede R ≠ ∅ ise etkin izin listesi R'dir (tek imza R'yi ancak kendisi X ise karşılar; R ⊆ W).
+  # For a single-signature object with R ≠ ∅ the effective allow-list is R (a single signature satisfies R only if it is X itself; R ⊆ W).
   def tek_imza_izin({_, nil, _}), do: nil
   def tek_imza_izin({_, w, []}), do: w
   def tek_imza_izin({_, _, r}), do: r
 
-  # Anahtar seçimi (sözleşme §8 m.1): başlık kid → vektörün JWKS'i; yoksa alg_kid[alg]; yoksa tek kid. DPoP: başlık jwk.
+  # Key selection (contract §8 item 1): header kid → the vector's JWKS; otherwise alg_kid[alg]; otherwise the single kid. DPoP: header jwk.
   def jwk_sec(baslik, dg) do
     cond do
       dg["anahtar"] == "jwk basligindan" -> {baslik["jwk"], "jwk-basligi"}
@@ -109,14 +109,14 @@ end
 
 defmodule A10.Adaptor do
   alias A10.Ortak
-  # Bataryadaki algoritmalardan yerel destek (jose_jws.erl from_map: ES*, EdDSA/Ed25519/Ed448, HS, PS, RS; ML-DSA yok)
+  # Native support among the battery's algorithms (jose_jws.erl from_map: ES*, EdDSA/Ed25519/Ed448, HS, PS, RS; no ML-DSA)
   @kutuphane ["ES256", "ES384", "EdDSA", "Ed25519", "Ed448"]
   @api "Guardian.decode_and_verify(A10.Guardian, jwt, %{}, secret: JOSE.JWK.from_map(jwk), allowed_algos: W)"
 
   def b6, do: %{sonuc_ham: "uygulanamaz", hata_sinifi: "bicim-desteklenmiyor", hata_ozeti: "B6: MAPPING.md (API incelemesi)", api_yolu: @api}
 
-  # Guardian, verify_strict'in {false, _, _} sonucunu ve yakalanan istisnaları tek bir :invalid_token'a indirger
-  # (jwt.ex L336-342). İzin dışı alg ile imza hatası ayrımı başlık alg'ı ve W ile yapılır.
+  # Guardian reduces the {false, _, _} result of verify_strict and the caught exceptions to a single :invalid_token
+  # (jwt.ex L336-342). The distinction between a non-permitted alg and a signature error is made from the header alg and W.
   defp sinifla(:invalid_token, alg, izin) do
     cond do
       alg not in @kutuphane -> "alg-desteklenmiyor"

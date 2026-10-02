@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
-# REF-010 — ACA-Py oid4vc eklentisi: kaynaktan (commit sabit), depodaki poetry.lock ile kurulum.
-# Adım 9 görev 4a. İmza doğrulama YOK; çalışma/doğrulayıcı başlatılmaz.
+# REF-010 — ACA-Py oid4vc plug-in: from the source (commit pinned), installation with the poetry.lock of the repository.
+# Step 9 task 4a. NO signature verification; no instance/verifier is started.
 set -uo pipefail
 source /b/ortak.sh
 DEPO=https://github.com/openwallet-foundation/acapy-plugins
 SHA=18c7d1f3c8497e0bc35797d26f3417ce96afeee9
-POETRY_SURUM=2.3.2   # kilit dosyasını üreten sürüm (poetry.lock başlığı)
+POETRY_SURUM=2.3.2   # the version that produced the lock file (poetry.lock header)
 yaz ekosistem "kaynak (git) + poetry.lock"; yaz paket "acapy-plugins/oid4vc"; yaz istenen_surum "git:$SHA"
 mkdir -p /tmp/src && cd /tmp/src
 if ! { git_anonim init -q . && git_anonim remote add origin "$DEPO.git" && git_anonim fetch -q --depth 1 origin "$SHA" && git_anonim checkout -q FETCH_HEAD; }; then

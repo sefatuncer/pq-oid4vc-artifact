@@ -1,4 +1,4 @@
-// Bağlama kontrolü: hiçbir işlev ÇAĞRILMAZ.
+// Link check: NO function is called.
 package main
 
 import (

@@ -1,6 +1,6 @@
 #!/bin/sh
-# Packagist hedefi: sabit sürümle composer require, composer.lock kaydet, hedef paketin bütün sınıflarını yükle.
-# Girdi (kur.sh): PAKET (vendor/ad), SURUM. İmza doğrulama YOK.
+# Packagist target: composer require with a pinned version, record composer.lock, load all classes of the target package.
+# Input (kur.sh): PAKET (vendor/name), SURUM. NO signature verification.
 set -uo pipefail
 . /b/ortak.sh
 : "${PAKET:?}"; : "${SURUM:?}"

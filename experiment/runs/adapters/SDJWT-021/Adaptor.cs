@@ -1,20 +1,20 @@
-// SDJWT-021 WalletFramework.SdJwtVc 3.1.0 adaptörü. Doğrulayıcı rolü geçişli WalletFramework.SdJwtLib 3.1.0'dadır:
-// Roles.Implementation.Verifier.VerifyPresentation(string presentation, string issuerJwk) → bool (IVerifier; genel tür).
-// API yalnız ihraççı JWK'sını alır: alg izin listesi / gerekli küme parametresi YOK. Eşleme ve gerekçeler: MAPPING.md.
+// Adapter for SDJWT-021 WalletFramework.SdJwtVc 3.1.0. The verifier role is in the transitive WalletFramework.SdJwtLib 3.1.0:
+// Roles.Implementation.Verifier.VerifyPresentation(string presentation, string issuerJwk) → bool (IVerifier; public type).
+// The API takes only the issuer JWK: NO parameter for an alg allow-list / required set. Mapping and reasons: MAPPING.md.
 using System.Text.Json.Nodes;
 using WalletFramework.SdJwtLib.Models;
 using WalletFramework.SdJwtLib.Roles.Implementation;
 using Microsoft.IdentityModel.Logging;
 
-// Tanılama: iç IdentityModel istisnalarının IDX kodları/iletileri görünsün (belgeli statik; doğrulamayı değiştirmez).
+// Diagnosis: make the IDX codes/messages of the inner IdentityModel exceptions visible (documented static; does not change verification).
 IdentityModelEventSource.ShowPII = true;
 
-// Kütüphane imzayı IdentityModel'e (geçişli System.IdentityModel.Tokens.Jwt 7.5.2 / Microsoft.IdentityModel.Tokens 8.0.1)
-// devreder; GEC'te W kütüphanenin kendi varsayılanıdır (API'den verilemez). Sınıflama için bilinen yerel küme:
+// The library delegates the signature to IdentityModel (transitive System.IdentityModel.Tokens.Jwt 7.5.2 / Microsoft.IdentityModel.Tokens 8.0.1);
+// under GEC, W is the library's own default (cannot be given through the API). Known native set for the classification:
 string[] KutuphaneAlgleri = { "ES256", "ES384" };
 const string Api = "new SdJwtDoc(sd_jwt).AssertThatJwtSignatureIsValid(issuerJwk_json, expectedIssuer)";
 const string ApiSunum = "new Verifier().VerifyPresentation(sd_jwt_sunum, issuerJwk_json)";
-// Güvenilen ihraççı yapılandırması (anahtar ↔ iss): BATARYA-ESLEME §4 ve anahtarlar/v1.3/roller.json (issuer-eski).
+// Trusted issuer configuration (key ↔ iss): BATARYA-ESLEME §4 and anahtarlar/v1.3/roller.json (issuer-eski).
 const string IssGoc = "https://issuer.example";
 const string IssEskiKid = "GGKBh_lEw5eKZr0XX6kbRRp8H1HYW6hwLhLBagC8MHw";
 const string IssEski = "https://legacy-issuer.example";
@@ -40,11 +40,11 @@ Sonuc Dogrula(JsonObject isSatiri)
 {
     var seri = isSatiri["serilestirme"]!.GetValue<string>();
     var artefakt = isSatiri["artefakt"]?.GetValue<string>() ?? "";
-    // B6 (API incelemesi): SdJwtDoc '~' ile ayrılmış kompakt SD-JWT bekler. JSON serileştirmeleri, OID4VP istekleri,
-    // DPoP ve durum listesi belirteçleri bu API'nin girdisi değildir.
+    // B6 (API review): SdJwtDoc expects a '~'-separated compact SD-JWT. JSON serializations, OID4VP requests,
+    // DPoP and status list tokens are not inputs of this API.
     bool kompaktSdJwt = seri == "sd-jwt-compact";
-    bool cekirdekJws = seri == "compact" && artefakt == "jws-cekirdek"; // yürütücü 01.10: "<jws>~" (açıklamasız SD-JWT)
-    bool topluYanit = seri == "oid4vci-toplu-yanit";                  // BATARYA-ESLEME K11: credentials[0] değerlendirilir
+    bool cekirdekJws = seri == "compact" && artefakt == "jws-cekirdek"; // maintainers 01.10: "<jws>~" (SD-JWT without disclosures)
+    bool topluYanit = seri == "oid4vci-toplu-yanit";                  // BATARYA-ESLEME K11: credentials[0] is evaluated
     if (!kompaktSdJwt && !cekirdekJws && !topluYanit) return Ortak.B6(Api);
     var pol = Ortak.Pol(isSatiri, KutuphaneAlgleri);
     if (pol.Taban is not ("GEC" or "P0" or "P1" or "P2" or "VARSAYILAN"))
@@ -72,7 +72,7 @@ Sonuc Dogrula(JsonObject isSatiri)
         }
         var iss = Ortak.Str(jwk, "kid") == IssEskiKid ? IssEski : IssGoc;
         new SdJwtDoc(sunum).AssertThatJwtSignatureIsValid(jwk.ToJsonString(), iss);
-        // API void döndürür: hangi algoritmanın doğrulandığı gösterilemez → dogrulanan_algoritmalar = []
+        // The API returns void: which algorithm was verified cannot be shown → dogrulanan_algoritmalar = []
         return new Sonuc("kabul", null, null, Api, anahtarYolu);
     }
     catch (Exception e)

@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""T04 — Boyut olcumleri ve B'nin P4 degerleriyle karsilastirma.
+"""T04 — Size measurements and comparison with the P4 values of pilot B.
 
-P4 (referans/pilot/p4/mldsa_sizes.csv; OpenSSL 3.5.6): SPKI, imza, CA ve yaprak sertifika DER,
-2 sertifikali x5c base64 karakter sayisi. P4 sertifika profili (adlar, 20 baytlik seri no, 30 gunluk
-UTCTime gecerlilik, BC/KU/SKI/AKI) birebir kopyalanir; ML-DSA boyutlari sabit oldugundan birebir
-esitlik beklenir; ECDSA imzasi DER'de 70-72 bayt degistigi icin EC icin +-2 bayt tolerans.
-Ek olarak: JWS/JWK/composite/DPoP boyutlari (nginx 8.182 B ve Node 16.348 B esikleri, P4).
-Kullanim: python t04_boyutlar.py <p4 dizini> <sonuc dizini>
+P4 (referans/pilot/p4/mldsa_sizes.csv; OpenSSL 3.5.6): SPKI, signature, CA and leaf certificate DER,
+number of base64 characters of an x5c with 2 certificates. The P4 certificate profile (names, 20-byte serial number, 30-day
+UTCTime validity, BC/KU/SKI/AKI) is copied exactly; since the ML-DSA sizes are fixed, exact
+equality is expected; since the ECDSA signature varies by 70-72 bytes in DER, a tolerance of +-2 bytes for EC.
+In addition: JWS/JWK/composite/DPoP sizes (nginx 8,182 B and Node 16,348 B thresholds, P4).
+Usage: python t04_boyutlar.py <p4 folder> <result folder>
 """
 import csv
 import hashlib
@@ -81,7 +81,7 @@ def main(p4dir, out):
             K.kontrol('P4:' + alg_name, m, abs(d) <= tol_m, {'biz': biz[m], 'P4': ref[m], 'fark': d})
         tablo.append(dict(alg=alg_name, **{m + '_biz': biz[m] for m in biz}, **{m + '_P4': ref[m] for m in biz}))
 
-    # ---- JWS / JWK / composite / DPoP boyutlari
+    # ---- JWS / JWK / composite / DPoP sizes
     payload = json_bytes({'iss': 'https://issuer.example', 'vct': 'urn:eudi:pid:1', 'iat': 1790000000})
     jws_tablo = []
     for alg in ('ES256', 'EdDSA') + tuple(MLDSA) + tuple(COMPOSITE):
@@ -102,7 +102,7 @@ def main(p4dir, out):
             row['composite_trad_B'] = len(tr)
         jws_tablo.append(row)
         K.bilgi('JWS', alg, row)
-    # beklenen sabit boyutlar (RFC 9964 Tablo 1 / FIPS 204)
+    # expected fixed sizes (RFC 9964 Table 1 / FIPS 204)
     for r in jws_tablo:
         if r['alg'] in MLDSA:
             K.kontrol('FIPS204', r['alg'] + ' imza', r['imza_B'] == {44: 2420, 65: 3309, 87: 4627}[MLDSA[r['alg']]], r['imza_B'])

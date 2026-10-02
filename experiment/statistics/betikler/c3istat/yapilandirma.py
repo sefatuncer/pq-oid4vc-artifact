@@ -1,67 +1,67 @@
-"""Önceden kayıtlı analiz sabitleri. Her sabitin dayanağı yanında yazılıdır.
+"""Pre-registered analysis constants. The basis of every constant is written next to it.
 
-ÖK = 00-on-kayit/ON-KAYIT-TASLAK.md (taslak v0.6, çapa 5 `facbf26`). Çelişkide ÖK geçerlidir.
-Dondurmadan sonra bu dosya DEĞİŞMEZ; farklı bir değerle yapılan analiz yalnız "keşifsel" olarak raporlanır.
-Yürütücünün karar vermesi gereken yorumlar `KARAR-NOTLARI.md`'de numaralıdır (N-…).
+PR = 00-on-kayit/ON-KAYIT-TASLAK.md (draft v0.6, anchor 5 `facbf26`). In case of conflict the PR prevails.
+After the freeze this file does NOT change; an analysis made with a different value is reported only as "exploratory".
+Interpretations on which the maintainers have to decide are numbered in `DECISION-NOTES.md` (N-…).
 """
 from __future__ import annotations
 
 from fractions import Fraction
 
-SEMA_SURUMU = "c3-istat-girdi/1.0"                  # SEMA.md
+SEMA_SURUMU = "c3-istat-girdi/1.0"                  # SCHEMA.md
 
-# --- Anlamlılık, güven düzeyi -------------------------------------------------------------
-ALFA = Fraction(1, 20)                              # ÖK §6.6: α = 0,05 (T1 düzeltmesiz; T2–T5 Holm)
-GUVEN = Fraction(95, 100)                           # ÖK §6.7–§6.8: %95 GA
-P0 = Fraction(1, 2)                                 # ÖK §6.6: T1 H0 p ≥ 0,5; T5 p ≤ 0,5 (sınır 0,5)
+# --- Significance, confidence level ------------------------------------------------------
+ALFA = Fraction(1, 20)                              # PR §6.6: α = 0.05 (T1 uncorrected; T2–T5 Holm)
+GUVEN = Fraction(95, 100)                           # PR §6.7–§6.8: 95% CI
+P0 = Fraction(1, 2)                                 # PR §6.6: T1 H0 p ≥ 0.5; T5 p ≤ 0.5 (boundary 0.5)
 
-# --- Örneklem -----------------------------------------------------------------------------
-N_BEKLENEN = 31                                     # ÖK §2B.3 (E2 + kota 18/8/5)
-N_EFF_CIKARIMSAL_ALT_SINIR = 20                     # ÖK §6.3: n_eff < 20 => yalnız tanımlayıcı
-TABAKALAR_N = ("JOSE", "SDJWT", "COSE")             # ÖK §2B.1; "REF" n dışı (§2B.4)
+# --- Sample ------------------------------------------------------------------------------
+N_BEKLENEN = 31                                     # PR §2B.3 (E2 + quota 18/8/5)
+N_EFF_CIKARIMSAL_ALT_SINIR = 20                     # PR §6.3: n_eff < 20 => descriptive only
+TABAKALAR_N = ("JOSE", "SDJWT", "COSE")             # PR §2B.1; "REF" outside n (§2B.4)
 
-# --- Test aileleri ------------------------------------------------------------------------
-HOLM_AILESI = ("T2", "T3", "T4", "T5")              # ÖK §6.6 (m = 4; eşitlikte bu sıra)
-T2_TK_KAPSAMI = ("TK1", "TK2")                      # ÖK §2B.7: T2 yalnız TK1 + TK2
-T3_TABAKALAR = ("SDJWT", "JOSE")                    # ÖK §6.6 T3: "SD-JWT'ye özgü ve genel JOSE" (N-4: COSE dışarıda)
-T3_TK_KAPSAMI = ("TK1", "TK2", "TK3")               # ÖK'de T3 için TK kısıtı yok (N-4: yürütücü kararı)
-T4_L_ESIGI = 3                                      # ÖK §6.6 T4: "L ≥ 3 oranı"
-T4_KESIM_TARIHI = "2026-08-21"                      # ÖK §6.6 T4: 8725bis-10 (21.08.2026); "sonra" = kesin büyük (N-5)
+# --- Test families -----------------------------------------------------------------------
+HOLM_AILESI = ("T2", "T3", "T4", "T5")              # PR §6.6 (m = 4; in this order on ties)
+T2_TK_KAPSAMI = ("TK1", "TK2")                      # PR §2B.7: T2 only TK1 + TK2
+T3_TABAKALAR = ("SDJWT", "JOSE")                    # PR §6.6 T3: "specific to SD-JWT and general JOSE" (N-4: COSE excluded)
+T3_TK_KAPSAMI = ("TK1", "TK2", "TK3")               # no TK restriction for T3 in the PR (N-4: maintainers' decision)
+T4_L_ESIGI = 3                                      # PR §6.6 T4: "share with L ≥ 3"
+T4_KESIM_TARIHI = "2026-08-21"                      # PR §6.6 T4: 8725bis-10 (21.08.2026); "after" = strictly greater (N-5)
 
-# --- Etki büyüklükleri --------------------------------------------------------------------
-# Newcombe yöntem 10 (eşleştirilmiş): Wilson-hibrit + Newcombe'un düzeltilmiş korelasyonu φ*.
-# Kaynak ve sınırlılık: kaynak/NEWCOMBE-KAYNAK.md; NOTLAR N-3.
+# --- Effect sizes --------------------------------------------------------------------------
+# Newcombe method 10 (paired): Wilson hybrid + Newcombe's corrected correlation φ*.
+# Source and limitation: kaynak/NEWCOMBE-SOURCE.md; DECISION-NOTES N-3.
 NEWCOMBE_ESLESTIRILMIS_PHI = "newcombe_duzeltmeli"
 
-# --- Küme bootstrap -----------------------------------------------------------------------
+# --- Cluster bootstrap ---------------------------------------------------------------------
 BOOTSTRAP_B = 10000                                 # ÖK §6.9
 BOOTSTRAP_TOHUM = 20260927                          # ÖK §6.9, Ek C
-BOOTSTRAP_ALT = Fraction(1, 40)                     # yüzdelik GA %2,5 (ÖK §6.9 "yüzdelik GA"; %95)
-BOOTSTRAP_UST = Fraction(39, 40)                    # yüzdelik GA %97,5
-BOOTSTRAP_YUZDELIK_TIPI = 7                         # Hyndman–Fan tip 7 (N-7)
+BOOTSTRAP_ALT = Fraction(1, 40)                     # percentile CI 2.5% (PR §6.9 "percentile CI"; 95%)
+BOOTSTRAP_UST = Fraction(39, 40)                    # percentile CI 97.5%
+BOOTSTRAP_YUZDELIK_TIPI = 7                         # Hyndman–Fan type 7 (N-7)
 BOOTSTRAP_RNG = "Python random.Random(tohum).random(); indeks = floor(U*k); replikasyon-öncelikli"  # N-7
 
-# --- "Belirsiz" nedenleri (ÖK §4.15) ------------------------------------------------------
+# --- "Indeterminate" reasons (PR §4.15) --------------------------------------------------
 BELIRSIZ_NEDENLERI = ("oracle_uyusmazligi", "kanit_kurali", "kararsiz_3_tekrar", "deneme_celiskisi")
 DIGER_NEDENLER = ("uygulanamaz", "olculmedi")
 
-# --- İki uygulama karşılaştırma toleransları ----------------------------------------------
-# p   : kesin kesir ↔ kayan nokta p-değeri (mutlak)
-# ga  : Wilson / Newcombe sınırları (mutlak; kapalı biçim)
-# or  : koşullu MLE ve kesin GA (kök bulma; göreli + mutlak)
-# bootstrap : saf Python ↔ numpy (mutlak)
+# --- Tolerances for the comparison of the two implementations ----------------------------
+# p   : exact fraction ↔ floating-point p-value (absolute)
+# ga  : Wilson / Newcombe bounds (absolute; closed form)
+# or  : conditional MLE and exact CI (root finding; relative + absolute)
+# bootstrap : pure Python ↔ numpy (absolute)
 TOLERANSLAR = {
     "p": 1e-10,
     "ga": 1e-10,
     "or_goreli": 1e-8,
     "or_mutlak": 1e-12,
     "bootstrap": 1e-12,
-    "sinir": 1e-12,     # karar eşiğine bu kadar yakın kayan nokta değerleri "sınırda" sayılır (kesin aritmetik esastır)
+    "sinir": 1e-12,     # floating-point values this close to a decision threshold count as "borderline" (exact arithmetic is authoritative)
 }
 
 
 def ozet() -> dict:
-    """Çıktıya yazılan yapılandırma özeti (belirlenimci)."""
+    """Configuration summary written to the output (deterministic)."""
     return {
         "ALFA": str(ALFA),
         "GUVEN": str(GUVEN),

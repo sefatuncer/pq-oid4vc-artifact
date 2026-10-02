@@ -1,19 +1,19 @@
 # -*- coding: utf-8 -*-
-"""Adım 6 | KAT-1 DÜZELTME SONRASI Tamarin koşumu (v2; yürütücü kararı 26.09.2026, "sonuç görüldükten sonra düzeltme").
+"""Step 6 | KAT-1 Tamarin run AFTER THE CORRECTION (v2; maintainers' decision 26.09.2026, "correction after the result was seen").
 
-Dondurulmuş tamarin_kos.py'yi DEĞİŞTİRMEDEN içe aktarır ve yalnız iki şeyi değiştirir:
-  (i)  model: KAT1_DNSSEC_v2.spthy (düzeltilmiş kapı modeli; KAT1_DNSSEC.spthy dokunulmadan kalır);
-  (ii) bütün çıktılar sonuc_v2/ altına: sonuc_v2/tamarin_ham/*, sonuc_v2/iyi_bicim/*, sonuc_v2/tamarin.csv,
-       sonuc_v2/tamarin_mutasyon.csv. İlk koşumun sonuc/ ve iyi_bicim/ dosyalarına dokunulmaz.
-Hücreler, bayraklar, lemmalar, merdiven, zaman/bellek sınırları, bekleme kuralı ve beklenen değerlerin kaynağı
-(nsurum/kat_nsurum.tsv 'ilk_ajan'; mutasyonlarda mutasyonlar.tsv) ilk koşumla AYNIDIR (tk.kanitla, tk.tablo).
-Kipler: python tamarin_kos_v2.py iyi_bicim | kos
+Imports the frozen tamarin_kos.py WITHOUT CHANGING it and changes only two things:
+  (i)  model: KAT1_DNSSEC_v2.spthy (the corrected gate model; KAT1_DNSSEC.spthy is left untouched);
+  (ii) all outputs go under sonuc_v2/: sonuc_v2/tamarin_ham/*, sonuc_v2/iyi_bicim/*, sonuc_v2/tamarin.csv,
+       sonuc_v2/tamarin_mutasyon.csv. The sonuc/ and iyi_bicim/ files of the first run are not touched.
+Cells, flags, lemmas, ladder, time/memory limits, waiting rule and the source of the expected values
+(nsurum/kat_nsurum.tsv 'ilk_ajan'; for mutations mutasyonlar.tsv) are THE SAME as in the first run (tk.kanitla, tk.tablo).
+Modes: python tamarin_kos_v2.py iyi_bicim | kos
 """
 import csv, os, re, subprocess, sys
 
 KOK = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, KOK)
-import tamarin_kos as tk  # noqa: E402  (dondurulmuş koşucu; değiştirilmedi)
+import tamarin_kos as tk  # noqa: E402  (frozen runner; not changed)
 
 tk.MODEL = 'KAT1_DNSSEC_v2.spthy'
 CIKTI = 'sonuc_v2'
@@ -21,18 +21,18 @@ _asil_cagir = tk.cagir
 
 
 def cagir_v2(ad, model, bayraklar, argumanlar, cikti_dizin, bellek='12g'):
-    """tk.cagir ile aynı; yalnız çıktı dizini sonuc_v2/ altına yönlendirilir."""
+    """The same as tk.cagir; only the output folder is redirected to sonuc_v2/."""
     d = cikti_dizin.replace('\\', '/')
     d = CIKTI + '/' + (d[len('sonuc/'):] if d.startswith('sonuc/') else d)
     return _asil_cagir(ad, model, bayraklar, argumanlar, d, bellek)
 
 
-tk.cagir = cagir_v2          # tk.kanitla modül genelindeki 'cagir' adını çağrı anında çözer
+tk.cagir = cagir_v2          # tk.kanitla resolves the module-level name 'cagir' at call time
 TABLOLAR = [('hucreler.tsv', 'tamarin.csv'), ('mutasyonlar.tsv', 'tamarin_mutasyon.csv')]
 
 
 def iyi_bicim():
-    """tk.iyi_bicim ile aynı mantık; özet sonuc_v2/iyi_bicim/ozet.tsv'ye yazılır."""
+    """The same logic as tk.iyi_bicim; the summary is written to sonuc_v2/iyi_bicim/ozet.tsv."""
     satirlar = sum((tk.tablo(t) for t, _ in TABLOLAR), [])
     goruldu, cikti = {}, []
     for r in satirlar:
@@ -56,7 +56,7 @@ def iyi_bicim():
 
 
 def kos():
-    """tk.kos ile aynı mantık ve sütunlar; çıktılar sonuc_v2/ altına."""
+    """The same logic and columns as tk.kos; outputs under sonuc_v2/."""
     NS = {}
     with open(tk.NSURUM, encoding='utf-8', newline='') as f:
         for x in csv.DictReader(f, delimiter='\t'):
@@ -69,7 +69,7 @@ def kos():
             ex = tk.kanitla(r, 'executable')
             ln = tk.kanitla(r, r['tamarin_lemma'])
             if r.get('nsurum_hucre') and r.get('nsurum_sutun'):
-                bek = NS.get((r['nsurum_hucre'], r['nsurum_sutun']), 'YOK_ANAHTAR')   # tek kaynak
+                bek = NS.get((r['nsurum_hucre'], r['nsurum_sutun']), 'YOK_ANAHTAR')   # single source
             else:
                 bek = r['beklenen']
             gozlenen = ln[0] if ln[4] == 'EVET' else 'gecersiz_wf'

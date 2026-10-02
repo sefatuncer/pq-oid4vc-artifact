@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# NuGet hedefi: tam sürümle PackageReference ([x.y.z]), packages.lock.json (contentHash) kaydet, derle,
-# hedef derlemenin (assembly) bütün türlerini yükle (Assembly.GetTypes). İmza doğrulama YOK.
-# Girdi (kur.sh): PAKET, SURUM, [ASM (derleme adı; varsayılan PAKET)], [ANAHTAR "Tam.Tur.Adi ..."]
+# NuGet target: PackageReference with the exact version ([x.y.z]), record packages.lock.json (contentHash), build,
+# load all types of the target assembly (Assembly.GetTypes). NO signature verification.
+# Input (kur.sh): PAKET, SURUM, [ASM (assembly name; default PAKET)], [ANAHTAR "Full.Type.Name ..."]
 set -uo pipefail
 source /b/ortak.sh
 : "${PAKET:?}"; : "${SURUM:?}"; ASM="${ASM:-$PAKET}"
@@ -17,7 +17,7 @@ cat > Deneme.csproj <<X
 </Project>
 X
 cat > Program.cs <<X
-// Bağlama kontrolü: hedef derleme adla yüklenir, bütün türleri yüklenir (GetTypes); hiçbir yöntem ÇAĞRILMAZ.
+// Link check: the target assembly is loaded by name and all its types are loaded (GetTypes); NO method is called.
 using System.Reflection;
 var asm = Assembly.Load(new AssemblyName("$ASM"));
 Type[] tipler; int eksik = 0;
@@ -36,7 +36,7 @@ if ! dotnet restore; then yaz not "dotnet restore başarısız"; bitir basarisiz
 cp Deneme.csproj packages.lock.json "$C/"
 yaz kilit_dosyasi "packages.lock.json (NuGet contentHash)"; yaz kilit_sha256 "$(ozet packages.lock.json)"
 dotnet --list-runtimes > /dev/null
-# kilit dosyasından hedef paketin contentHash'i ve bağımlılık sayısı (jq/python yok: grep/sed)
+# contentHash of the target package and number of dependencies from the lock file (no jq/python: grep/sed)
 L=packages.lock.json
 yaz bagimlilik_sayisi "$(grep -c '"type": "\(Direct\|Transitive\|CentralTransitive\)"' $L)"
 CH=$(awk -v p="\"$PAKET\": {" 'index($0,p){a=1} a&&/"contentHash"/{gsub(/[",]/,"",$2);print $2;exit}' $L)

@@ -1,4 +1,4 @@
-"""Ortak yardimcilar: katı base64url, JSON (yinelenen ad reddi), ozetler."""
+"""Shared helpers: strict base64url, JSON (rejection of duplicate names), digests."""
 import base64
 import hashlib
 import json
@@ -9,7 +9,7 @@ _B64_STD_RE = re.compile(r'^[A-Za-z0-9+/]*={0,2}$')
 
 
 class FormatError(ValueError):
-    """Bicim (serilestirme) hatasi."""
+    """Format (serialization) error."""
 
 
 def b64u_encode(b: bytes) -> str:
@@ -17,7 +17,7 @@ def b64u_encode(b: bytes) -> str:
 
 
 def b64u_decode(s: str, strict: bool = True) -> bytes:
-    """RFC 7515 base64url (dolgusuz). strict: yalniz kanonik bicim kabul edilir."""
+    """RFC 7515 base64url (without padding). strict: only the canonical form is accepted."""
     if not isinstance(s, str):
         raise FormatError('base64url: dize bekleniyor')
     if not _B64U_RE.match(s) or len(s) % 4 == 1:
@@ -29,7 +29,7 @@ def b64u_decode(s: str, strict: bool = True) -> bytes:
 
 
 def b64_std_encode(b: bytes) -> str:
-    """x5c icin standart base64 (RFC 7515 4.1.6; base64url DEGIL)."""
+    """Standard base64 for x5c (RFC 7515 4.1.6; NOT base64url)."""
     return base64.b64encode(b).decode('ascii')
 
 
@@ -49,7 +49,7 @@ def _no_dup_hook(pairs):
 
 
 def json_loads_strict(b) -> object:
-    """Yinelenen uye adlarini reddeden JSON cozucu (RFC 7515 4 / RFC 7159 4)."""
+    """JSON decoder that rejects duplicate member names (RFC 7515 4 / RFC 7159 4)."""
     if isinstance(b, (bytes, bytearray)):
         try:
             b = bytes(b).decode('utf-8')
@@ -64,7 +64,7 @@ def json_loads_strict(b) -> object:
 
 
 def json_compact(obj) -> str:
-    """Belirlenimci, bosluksuz JSON (ekleme sirasi korunur)."""
+    """Deterministic JSON without whitespace (insertion order kept)."""
     return json.dumps(obj, separators=(',', ':'), ensure_ascii=False)
 
 

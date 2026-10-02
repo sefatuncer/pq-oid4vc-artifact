@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
-"""T12 — COSE uygulamasinin (uretec/cbor.py, uretec/cose.py) dis vektorlerle dogrulanmasi.
+"""T12 — Validation of the COSE implementation (uretec/cbor.py, uretec/cose.py) with external vectors.
 
-  A. KAYNAK: cose.KAYNAK'taki her algoritma/etiket/anahtar kimligi korpus satirinda BIREBIR geciyor (tahmin yok).
-  B. RFC 9964 Ek A.2 COSE (ML-DSA-44/65/87): COSE_Key cozulur ve (ekleme sirasiyla) bayt-ayni yeniden kodlanir;
-     AKP COSE parmak izi (RFC 9964 §6) = kid; COSE_Sign1 ayristirilir; Sig_structure == raw_to_be_signed;
-     imza dogrulanir; belirlenimci yeniden imzalama COSE_Sign1'i BAYT-AYNI uretir; dilithium-py capraz dogrular.
-  C. draft-ietf-jose-pq-composite-sigs-04 Ek A.2 COSE (6 composite): CBOR tani gosteriminden cikarilan
-     tohum/anahtar/payload/M'/imza; korumali baslik + Sig_structure bizim kodlamamizla M' birebir;
-     composite imza dogrulanir; bilesenler OpenSSL CLI ve dilithium-py ile ayri ayri dogrulanir;
-     belirlenimci bilesenler (ML-DSA; EdDSA) yeniden uretilir.
-Kullanim: python t12_cose.py <korpus_metin_dizini> <dis-vektorler dizini> <sonuc_dizini>
+  A. KAYNAK: every algorithm/label/key id in cose.KAYNAK occurs VERBATIM in a corpus line (no guessing).
+  B. RFC 9964 Appendix A.2 COSE (ML-DSA-44/65/87): the COSE_Key is decoded and re-encoded byte-identically (in insertion order);
+     AKP COSE thumbprint (RFC 9964 §6) = kid; COSE_Sign1 is parsed; Sig_structure == raw_to_be_signed;
+     the signature is verified; deterministic re-signing produces a BYTE-IDENTICAL COSE_Sign1; dilithium-py cross-verifies.
+  C. draft-ietf-jose-pq-composite-sigs-04 Appendix A.2 COSE (6 composite): the seed/key/payload/M'/signature
+     extracted from the CBOR diagnostic notation; protected header + Sig_structure with our encoding equal M' exactly;
+     the composite signature is verified; the components are verified separately with the OpenSSL CLI and dilithium-py;
+     the deterministic components (ML-DSA; EdDSA) are regenerated.
+Usage: python t12_cose.py <corpus_text_folder> <external-vectors folder> <result_folder>
 """
 import glob
 import hashlib
@@ -32,10 +32,10 @@ from pqjose.params import COMPOSITE  # noqa: E402
 from uretec import cbor, cose  # noqa: E402
 
 DPY = {44: ML_DSA_44, 65: ML_DSA_65, 87: ML_DSA_87}
-# -04 Ek A.2 ML-DSA-87-ES384 (Figure 11): gosterilen Sig_structure ["Signature1", <<{1: -56, 4: h'10da59a01e274d3d'}>>,
-# h'', payload]'in SHA-512'si, gosterilen M' icindeki PH ile eslesmiyor (alg -70..-1, 6 ornegin kid'leri, kid'siz,
-# kanonik/ekleme sirasi, SHA-512/SHAKE256-64/SHA3-512 denendi; hicbiri eslesmedi). Imzanin iki bileseni gosterilen
-# M' uzerinde gecerli. Sonuc: ornek COSE_Sign1 olarak dogrulanamaz (erratum adayi). JOSE Ek A.1 esi T01'de gecerli.
+# -04 Appendix A.2 ML-DSA-87-ES384 (Figure 11): the SHA-512 of the shown Sig_structure ["Signature1", <<{1: -56, 4: h'10da59a01e274d3d'}>>,
+# h'', payload] does not match the PH inside the shown M' (tried alg -70..-1, the kids of the 6 examples, no kid,
+# canonical/insertion order, SHA-512/SHAKE256-64/SHA3-512; none matched). Both components of the signature are valid over the shown
+# M'. Conclusion: the example cannot be verified as a COSE_Sign1 (erratum candidate). Its JOSE counterpart in Appendix A.1 is valid in T01.
 BILINEN_TUTARSIZLIK = {'ML-DSA-87-ES384'}
 
 
@@ -46,7 +46,7 @@ def test_A(K, korpus):
             cache[mid] = open(os.path.join(korpus, mid + '.txt'), encoding='utf-8').read().split('\n')
         line = cache[mid][satir - 1] if satir - 1 < len(cache[mid]) else ''
         K.kontrol('A:KAYNAK', '%s -> %s:%d' % (ad, mid, satir), metin in line, line.strip()[:90])
-    # tablo degerleri KAYNAK metinleriyle tutarli mi
+    # are the table values consistent with the KAYNAK texts
     for alg, v in cose.ALG.items():
         mid, satir, metin = cose.KAYNAK['alg.' + alg]
         K.kontrol('A:ALG', '%s = %d kaynak metninde geciyor' % (alg, v), str(v) in metin)
@@ -87,7 +87,7 @@ def _hex_bloklari(blok):
 
 def test_C(K, korpus):
     txt = open(os.path.join(korpus, 'JOSECOMP.txt'), encoding='utf-8').read()
-    a2 = txt[txt.rindex('A.2.  COSE'):txt.rindex('Appendix B.')]   # ilk gecisler icindekiler tablosunda
+    a2 = txt[txt.rindex('A.2.  COSE'):txt.rindex('Appendix B.')]   # the first occurrences are in the table of contents
     bloklar = re.split(r'\n\s+Figure \d+: (ML-DSA-[0-9A-Za-z-]+)\n', a2)
     ornekler = list(zip(bloklar[1::2], bloklar[0:-1:2]))
     K.kontrol('C:genel', '-04 Ek A.2 COSE ornek sayisi 6', len(ornekler) == 6, [a for a, _ in ornekler])
@@ -109,7 +109,7 @@ def test_C(K, korpus):
         tbs = cose.sig_structure1(pb, pl1)
         ml, tr = composite.split_signature(alg, sig)
         if alg in BILINEN_TUTARSIZLIK:
-            # Taslak ornegi ic tutarsiz: gosterilen Sig_structure'in PH'si M' ile eslesmiyor; imza gosterilen M' uzerinde.
+            # The draft example is internally inconsistent: the PH of the shown Sig_structure does not match M'; the signature is over the shown M'.
             K.kontrol(g, "BILINEN TUTARSIZLIK (erratum adayi) suruyor: PH(Sig_structure) != M' icindeki PH",
                       composite.message_representative(alg, tbs) != mp)
             K.kontrol(g, "imza bilesenleri taslagin GOSTERDIGI M' uzerinde gecerli",

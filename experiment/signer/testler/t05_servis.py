@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
-"""T05 — PQ ilkel dogrulama servisi (pqdogrula) kabul testi.
+"""T05 — Acceptance test of the PQ primitive verification service (pqdogrula).
 
-Kabul olcutu (9a D-E3/D-E5): t01 ve t02 vektorleri servisten de AYNI sonucu vermeli.
-  * t01: 12 dis vektor (RFC 9964 JOSE+COSE, composite -04 JOSE) + her birinin bozulmus varyantlari
-  * t02: ayni belirlenimci anahtarlarla (etiket 't02/<alg>') ayni senaryolar: pqjose (hedged), OpenSSL CLI,
-         dilithium-py imzalari; composite icin pqjose ve OpenSSL-bilesenli imzalar + bozulmus varyantlar
-  Her istek uc yoldan: HTTP /v1/dogrula, HTTP /v1/dogrula/toplu, CLI (python -m servis.pqdogrula dogrula).
-  Karsilastirma: servis {gecerli, bilesenler} == kitaplik (pqjose.mldsa / pqjose.composite) sonucu.
-Kullanim: python t05_servis.py <dis-vektorler dizini> <sonuc dizini>
+Acceptance criterion (9a D-E3/D-E5): the t01 and t02 vectors must give the SAME result from the service too.
+  * t01: 12 external vectors (RFC 9964 JOSE+COSE, composite -04 JOSE) + corrupted variants of each
+  * t02: the same scenarios with the same deterministic keys (label 't02/<alg>'): pqjose (hedged), OpenSSL CLI,
+         dilithium-py signatures; for composite pqjose and OpenSSL-component signatures + corrupted variants
+  Every request via three routes: HTTP /v1/dogrula, HTTP /v1/dogrula/toplu, CLI (python -m servis.pqdogrula dogrula).
+  Comparison: service {gecerli, bilesenler} == library (pqjose.mldsa / pqjose.composite) result.
+Usage: python t05_servis.py <external-vectors folder> <result folder>
 """
 import glob
 import json
@@ -77,9 +77,9 @@ def main(src, out):
     threading.Thread(target=srv.serve_forever, daemon=True).start()
     base = 'http://127.0.0.1:%d' % port
     durum = {'t01': [0, 0], 't02': [0, 0]}
-    vakalar = []  # (kaynak, ad, alg, key, m, s, bicim)
+    vakalar = []  # (source, name, alg, key, m, s, format)
 
-    # ---------------- t01 dis vektorler
+    # ---------------- t01 external vectors
     for f in sorted(glob.glob(os.path.join(src, '*.json'))):
         if os.path.basename(f).startswith('00-'):
             continue
@@ -106,7 +106,7 @@ def main(src, out):
             vakalar.append(('t01', v['id'] + '/sonda-artik-bayt', alg, key, m, s + b'\x00', 'jwk'))
             vakalar.append(('t01', v['id'] + '/ml-bileseni-bozuk', alg, key, m, flip(s, n // 2), 'jwk'))
 
-    # ---------------- t02 senaryolari (ayni belirlenimci anahtarlar)
+    # ---------------- t02 scenarios (same deterministic keys)
     payload = json_bytes({'iss': 'https://issuer.example', 'vct': 'urn:eudi:pid:1', 'iat': 1790000000})
     for alg, lvl in MLDSA.items():
         k = derive_key(alg, 't02/' + alg)
@@ -134,7 +134,7 @@ def main(src, out):
                       ('trad-bozuk', flip(s1, len(s1) - 3)), ('kesik', s1[:n])):
             vakalar.append(('t02', '%s/%s' % (alg, ad), alg, k.public_only(), m, s, 'jwk'))
 
-    # ---------------- karsilastirma: HTTP tek, CLI; sonra toplu
+    # ---------------- comparison: HTTP single, CLI; then batch
     istekler = []
     for kaynak, ad, alg, key, m, s, b in vakalar:
         beklenen = kitaplik(alg, key, m, s)
@@ -154,7 +154,7 @@ def main(src, out):
     ayni_toplu = all(t['gecerli'] == kitaplik(a, k_, m, s)['gecerli'] for t, (_, _, a, k_, m, s, _) in zip(toplu, vakalar))
     K.kontrol('toplu', '/v1/dogrula/toplu %d istek == kitaplik' % len(toplu), ayni_toplu and len(toplu) == len(vakalar))
 
-    # ---------------- hata yollari ve saglik
+    # ---------------- error paths and health
     k65 = derive_key('ML-DSA-65', 't02/ML-DSA-65')
     e1 = http_post(base + '/v1/dogrula', {'alg': 'ES256', 'acik_anahtar': 'AA', 'imzalama_girdisi': 'AA', 'imza': 'AA'})
     K.kontrol('hata', 'desteklenmeyen alg (ES256) -> hata, gecersiz', not e1['gecerli'] and 'desteklenmeyen' in e1['hata'], e1['hata'])

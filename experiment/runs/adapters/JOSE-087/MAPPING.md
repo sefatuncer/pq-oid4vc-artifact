@@ -1,64 +1,64 @@
-# JOSE-087 ruby-jwt — politika → API eşlemesi (sözleşme 1.0 §2.2, KOSUCU §2)
+# JOSE-087 ruby-jwt — policy → API mapping (contract 1.0 §2.2, RUNNER §2)
 
-- **Hedef:** `jwt` gem 3.3.0 (etiket v3.3.0 → `ccf24892fec8`), `Gemfile.lock` CHECKSUMS `sha256=44cc34fb…` (ortam kaydıyla aynı dosya, `experiment/environments/hedefler/JOSE-087/cikti/`).
-- **İmaj:** `a10-jose-087:1` (`FROM pq-a09-env-ruby:1.0`; Ruby 3.4.11, ruby-openssl → OpenSSL 3.5.7). `bundle install` yalnız imaj yapımında (rubygems.org, anonim); koşum `--network none`.
-- **Çağrı:** `docker run --rm --network none -v <v1.3>:/v:ro -v <anahtarlar>:/anahtarlar:ro -v <isler>:/is:ro -v <cikti>:/c a10-jose-087:1 adaptor /is/<isler> /c/JOSE-087.<kosu>.jsonl`
-- **Kaynak:** `adaptor.rb` (kütüphaneye özgü), `ortak.rb` (JOSE-089 ile aynı iskelet). `adaptor_sha256` = `sha256(sha256sum adaptor.rb ortak.rb)` imaj yapımında hesaplanır.
+- **Target:** `jwt` gem 3.3.0 (tag v3.3.0 → `ccf24892fec8`), `Gemfile.lock` CHECKSUMS `sha256=44cc34fb…` (the same file as the environment record, `experiment/environments/hedefler/JOSE-087/cikti/`).
+- **Image:** `a10-jose-087:1` (`FROM pq-a09-env-ruby:1.0`; Ruby 3.4.11, ruby-openssl → OpenSSL 3.5.7). `bundle install` only when the image is built (rubygems.org, anonymous); runs with `--network none`.
+- **Call:** `docker run --rm --network none -v <v1.3>:/v:ro -v <anahtarlar>:/anahtarlar:ro -v <isler>:/is:ro -v <cikti>:/c a10-jose-087:1 adaptor /is/<isler> /c/JOSE-087.<kosu>.jsonl`
+- **Source:** `adaptor.rb` (library-specific), `ortak.rb` (same skeleton as JOSE-089). `adaptor_sha256` = `sha256(sha256sum adaptor.rb ortak.rb)` is computed when the image is built.
 
-## 1. Ortak kurallar (bütün hedeflerimde aynı)
+## 1. Shared rules (the same for all my targets)
 
-| Konu | Kural |
+| Topic | Rule |
 |---|---|
-| Politika adı normalleştirme (yürütücü 01.10) | `temel = politika.split('|')[0].split('@')[0]`; `|sdjwtvc=-13/-19` ve `@-19` ekleri yalnız oracle beklentisini böler, kütüphane yapılandırmasını değiştirmez. Çıktının `politika` alanına iş satırındaki özgün değer yazılır |
-| P2 | P1 + anahtar–alg bağlama = kütüphane varsayılanı → GEC/P0/P1 ile aynı küme (W = yerel destek, R = ∅) |
-| A, X | A = ES256; X koldan: kontrol-EdDSA → EdDSA, kontrol-Ed25519 → Ed25519, tedavi-ML-DSA-65 → ML-DSA-65, tedavi-composite → ML-DSA-65-ES256 (KOSUCU §1) |
-| GEC, GEC@-19, P0, P1 | W = bataryadaki algoritmalardan kütüphanenin **yerel** desteklediği alt küme (YONTEM §2 "desteklenen tüm algoritmalar"), R = ∅ |
+| Policy name normalisation (maintainers 01.10) | `temel = politika.split('|')[0].split('@')[0]`; the suffixes `|sdjwtvc=-13/-19` and `@-19` only split the oracle expectation and do not change the library configuration. The original value of the job row is written to the `politika` field of the output |
+| P2 | P1 + key–alg binding = library default → the same set as GEC/P0/P1 (W = native support, R = ∅) |
+| A, X | A = ES256; X from the arm: kontrol-EdDSA → EdDSA, kontrol-Ed25519 → Ed25519, tedavi-ML-DSA-65 → ML-DSA-65, tedavi-composite → ML-DSA-65-ES256 (RUNNER §1) |
+| GEC, GEC@-19, P0, P1 | W = the subset of the battery's algorithms that the library supports **natively** (METHOD §2 "all supported algorithms"), R = ∅ |
 | IZIN-A / IZIN-AX | W = {A} / {A, X}, R = ∅ |
 | L4, L4-S, L4-Y, L4@-19, L4-YOL | W = {A, X}, R = {X} |
-| Tek imzalı nesne (kompakt; tek imzalı General JSON) | Çoklu imza kuralı boş kalır. R ≠ ∅ ise etkin izin listesi R'dir: tek imza R'yi ancak kendisi X ise karşılar ve R ⊆ W. Böylece L4/L4-S/L4-Y kompakt nesnede kütüphanenin **izin listesi** mekanizmasıyla kurulur (L4c "göç etmiş ihraççı" kaydı; sözleşme §5.2). P0/P1 tek imzada GEC'e eşittir |
-| Çok imzalı nesne | Kütüphanede belgeli çoklu imza kuralı (en-az-biri / tümü / gerekli küme) yoksa `ifade-edilemedi`; özel döngü yazılmaz (B4) |
-| Anahtar yolu (sözleşme §8 m.1) | **Bütün kollarda `JWK`:** başlıktaki `kid` vektörün JWKS'inde (`dogrulama_girdileri.jwks`) aranır; `kid` yoksa manifestteki `alg_kid[alg]`, o da yoksa tek `kid`. Seçilen JWK kütüphanenin belgeli JWK içe aktarma API'siyle anahtara çevrilir. DPoP'ta başlıktaki `jwk` (`jwk-basligi`). x5c, X5C dışı vektörlerde kullanılmaz (§8 m.2) |
-| Saat | Kütüphane gerçek saati kullanır (sahte saat API'si yok). V/T/CMP/K10 vektörlerinde `exp` = 1821536000 > gerçek saat; etkilenmez |
-| VARSAYILAN (ek, jobs-v1.3.jsonl'de yok) | Sözleşme §5.2 L5 / §5.4 B5 için: yalnız anahtar verilir, izin listesi verilmez. Dondurmadan sonra koşulabilsin diye desteklenir |
-| sonuc_ham | `kabul`: kütüphane hata vermedi. `red`: kütüphanenin doğrulama hata sınıfı (`JWT::Error` altı). `istisna`: başka istisna. Adaptör hatası → `adaptor-hatasi` |
-| dogrulanan_algoritmalar | Kabulde `JWT.decode`'un döndürdüğü başlığın `alg` değeri (kütüphane yalnız `valid_alg?(alg)` eşleşen doğrulayıcıyı kullanır; `jwa.rb` create_verifiers); redde `[]` |
+| Single-signature object (compact; General JSON with one signature) | The multi-signature rule stays empty. If R ≠ ∅, the effective allow-list is R: a single signature satisfies R only if it is X itself, and R ⊆ W. Thus L4/L4-S/L4-Y on a compact object are built with the library's **allow-list** mechanism (L4c "migrated issuer" record; contract §5.2). P0/P1 equal GEC for a single signature |
+| Multi-signature object | If the library has no documented multi-signature rule (at-least-one / all / required set), `ifade-edilemedi`; no custom loop is written (B4) |
+| Key path (contract §8 item 1) | **`JWK` in all arms:** the header `kid` is looked up in the vector's JWKS (`dogrulama_girdileri.jwks`); without `kid`, `alg_kid[alg]` of the manifest, and without that the single `kid`. The selected JWK is turned into a key with the library's documented JWK import API. For DPoP the header `jwk` (`jwk-basligi`). x5c is not used in non-X5C vectors (§8 item 2) |
+| Clock | The library uses the real clock (no fake-clock API). In the V/T/CMP/K10 vectors `exp` = 1821536000 > real clock; not affected |
+| VARSAYILAN (additional, not in jobs-v1.3.jsonl) | For contract §5.2 L5 / §5.4 B5: only the key is given, no allow-list. Supported so that it can be run after the freeze |
+| sonuc_ham | `kabul`: the library raised no error. `red`: the library's verification error class (under `JWT::Error`). `istisna`: another exception. Adapter error → `adaptor-hatasi` |
+| dogrulanan_algoritmalar | On acceptance the `alg` value of the header returned by `JWT.decode` (the library uses only the verifier matching `valid_alg?(alg)`; `jwa.rb` create_verifiers); on rejection `[]` |
 
-## 2. Politika → API
+## 2. Policy → API
 
-| Politika | API çağrısı |
+| Policy | API call |
 |---|---|
-| GEC / P0 / P1 (tek imza) | `JWT.decode(token, nil, true, algorithms: ["ES256","ES384"]) { \|hdr\| JWT::JWK.import(jwk).verify_key }` |
+| GEC / P0 / P1 (single signature) | `JWT.decode(token, nil, true, algorithms: ["ES256","ES384"]) { \|hdr\| JWT::JWK.import(jwk).verify_key }` |
 | IZIN-A | `… algorithms: ["ES256"] …` |
-| IZIN-AX | `… algorithms: ["ES256", X] …` (X = EdDSA/Ed25519/ML-DSA-65/ML-DSA-65-ES256 kütüphanede `JWA::Unsupported`'a çözülür) |
-| L4 / L4-S / L4-Y (kompakt) | `… algorithms: [X] …` (etkin izin listesi = R) |
-| L4-YOL | X5C vektörleri SD-JWT biçiminde → önce B6; desteklenen biçimde gelirse `ifade-edilemedi` (x5c yol sınıfı politikası API'si yok; bütün hedeflerimde aynı kural) |
-| VARSAYILAN | `JWT.decode(token, nil, true) { … }` (algoritma verilmez; kütüphane "An algorithm must be specified" ile reddeder) |
+| IZIN-AX | `… algorithms: ["ES256", X] …` (X = EdDSA/Ed25519/ML-DSA-65/ML-DSA-65-ES256 resolves to `JWA::Unsupported` in the library) |
+| L4 / L4-S / L4-Y (compact) | `… algorithms: [X] …` (effective allow-list = R) |
+| L4-YOL | the X5C vectors are in SD-JWT form → B6 first; if it comes in a supported format, `ifade-edilemedi` (no API for an x5c path-class policy; the same rule for all my targets) |
+| VARSAYILAN | `JWT.decode(token, nil, true) { … }` (no algorithm given; the library rejects with "An algorithm must be specified") |
 
-**Neden `verify_key`:** README "JSON Web Key (JWK)" bölümü `jwk.verify_key`'i belgeler. 3.3.0'da `JWT.decode` + JWK nesnesi birlikte verilince `validate_jwk_algorithms!` JWK'nın JWA'sını JWA **nesneleriyle** karşılaştırıyor ve geçerli ES256 imzasını da `VerificationKeyError` ile reddediyor (ilk sentetik duman koşusu; NOTLAR §4 m.2). `verify_key` yolu ECDSA doğrulayıcısının eğri–alg denetimini (`jwa/ecdsa.rb` `IncorrectAlgorithm`) korur.
+**Why `verify_key`:** the README section "JSON Web Key (JWK)" documents `jwk.verify_key`. In 3.3.0, when `JWT.decode` and a JWK object are given together, `validate_jwk_algorithms!` compares the JWA of the JWK with JWA **objects** and rejects even a valid ES256 signature with `VerificationKeyError` (first synthetic smoke run; NOTES §4 item 2). The `verify_key` path keeps the curve–alg check of the ECDSA verifier (`jwa/ecdsa.rb` `IncorrectAlgorithm`).
 
-## 3. B6 kararları (API incelemesiyle, vektör koşulmadan)
+## 3. B6 decisions (by API review, without running vectors)
 
-| Serileştirme | Karar | Dayanak |
+| Serialization | Decision | Basis |
 |---|---|---|
-| compact | desteklenir | `JWT.decode`, `EncodedToken` (3 bölüm) |
-| general, sd-jwt-flattened | **B6** | JSON serileştirme ayrıştırıcısı yok (`decode.rb` `validate_segment_count!`: yalnız nokta ayrımlı 3 bölüm); 8725bis §3.14 |
-| sd-jwt-compact, sd-jwt-general | **B6** | SD-JWT (`~` ayrımlı, disclosure) API'si yok |
-| oid4vci-toplu-yanit, dcapi-json-parametre | **B6** | JSON zarf; JWT kütüphanesinin girdisi değil |
-| COSE_Sign, COSE_Sign1 | **B6** | COSE API'si yok |
+| compact | supported | `JWT.decode`, `EncodedToken` (3 parts) |
+| general, sd-jwt-flattened | **B6** | no JSON serialization parser (`decode.rb` `validate_segment_count!`: only 3 dot-separated parts); 8725bis §3.14 |
+| sd-jwt-compact, sd-jwt-general | **B6** | no SD-JWT (`~`-separated, disclosure) API |
+| oid4vci-toplu-yanit, dcapi-json-parametre | **B6** | JSON envelope; not an input of a JWT library |
+| COSE_Sign, COSE_Sign1 | **B6** | no COSE API |
 
-## 4. İstisna → hata_sinifi
+## 4. Exception → hata_sinifi
 
-| Kütüphane istisnası (mesaj) | hata_sinifi |
+| Library exception (message) | hata_sinifi |
 |---|---|
 | `JWT::UnsupportedKeyType` (OKP/AKP JWK) | `alg-desteklenmiyor` |
 | `JWT::IncorrectAlgorithm` "payload algorithm is … verification key was provided" | `alg-anahtar-uyusmazligi` |
-| `JWT::IncorrectAlgorithm` "Expected a different algorithm", başlık alg kütüphane listesinde | `alg-izin-disi` |
-| aynı, başlık alg kütüphanede yok (EdDSA, ML-DSA-*, composite, none, kayıtsız) | `alg-desteklenmiyor` |
+| `JWT::IncorrectAlgorithm` "Expected a different algorithm", header alg in the library's list | `alg-izin-disi` |
+| the same, header alg not in the library (EdDSA, ML-DSA-*, composite, none, unregistered) | `alg-desteklenmiyor` |
 | `JWT::VerificationKeyError` "Algorithm not supported" / "do not support one of the specified" | `alg-desteklenmiyor` / `alg-anahtar-uyusmazligi` |
 | `JWT::VerificationError` "Signature verification failed" | `imza-gecersiz` |
 | `JWT::SignatureError` "No verification key available", "Could not find public key" | `anahtar-bulunamadi` |
 | `JWT::ExpiredSignature`, `ImmatureSignature`, `InvalidIatError` | `zaman` |
 | `JWT::InvalidCritError` | `crit` |
-| `JWT::MalformedTokenError` (ve `Base64DecodeError`) | `ayristirma` |
-| diğer `JWT::Error` / diğer istisna | `istisna-diger` |
-| 60 s aşımı (`Timeout`) | `zaman-asimi` |
+| `JWT::MalformedTokenError` (and `Base64DecodeError`) | `ayristirma` |
+| other `JWT::Error` / other exception | `istisna-diger` |
+| 60 s exceeded (`Timeout`) | `zaman-asimi` |

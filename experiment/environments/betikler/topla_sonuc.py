@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Adım 9 görev 4a — derleme-sonuc.csv'yi betikle üretir (elle sayı yazılmaz).
-Girdiler: kayit/hedef_listesi.csv, kayit/surum_commit.csv, kayit/<id>.kosu.json(l), hedefler/<id>/cikti/sonuc.tsv,
-          kayit/degisiklikler.csv (düşen -> yedek), kayit/notlar.csv (elle kurulum notları).
-Sonuç değerleri: basarili / basarisiz / erisilemedi (henüz koşulmamış satır: bekliyor)."""
+"""Step 9 task 4a — produces derleme-sonuc.csv by script (no numbers are written by hand).
+Inputs: kayit/hedef_listesi.csv, kayit/surum_commit.csv, kayit/<id>.kosu.json(l), hedefler/<id>/cikti/sonuc.tsv,
+          kayit/degisiklikler.csv (dropped -> reserve), kayit/notlar.csv (notes on manual installation).
+Result values: basarili (succeeded) / basarisiz (failed) / erisilemedi (unreachable) (a row not run yet: bekliyor, waiting)."""
 import csv, json, pathlib, sys
 K = pathlib.Path(__file__).resolve().parents[1]
 hedef = {r["id"]: r for r in csv.DictReader(open(K / "kayit/hedef_listesi.csv", encoding="utf-8"))}
@@ -32,7 +32,7 @@ def satir(i, yedek_mi):
     if kl.exists():
         denemeler = [json.loads(x) for x in kl.read_text(encoding="utf-8").splitlines() if x.strip()]
     n = []
-    # sürüm ve commit
+    # version and commit
     surum = t.get("kurulan_surum") or h["son_surum"] or ("git:" + h["son_commit_sha"][:12])
     commit, kaynak = t.get("commit", ""), t.get("commit_kaynagi", "")
     if not commit and e.get("etiket_commit"):
@@ -52,7 +52,7 @@ def satir(i, yedek_mi):
     if t.get("not"):
         n.append(t["not"])
     n += notlar.get(i, [])
-    # sonuç
+    # result
     if kj is None:
         sonuc = "bekliyor"
     elif t.get("sonuc") in ("erisilemedi", "basarisiz", "basarili"):

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# Maven Central hedefi: bağımlılıkları çöz (--strict-checksums), JAR özetlerini kaydet, sınıfları ilklendirmeden yükle.
-# Girdi (kur.sh): HEDEF_GAV (g:a:v), [EK_GAV "g:a:v ..."], [EK_KONTROL "jar-adi.jar ..."], [ANAHTAR "sinif ..."]
-# İmza doğrulama YOK.
+# Maven Central target: resolve the dependencies (--strict-checksums), record the JAR digests, load the classes without initialisation.
+# Input (kur.sh): HEDEF_GAV (g:a:v), [EK_GAV "g:a:v ..."], [EK_KONTROL "jar-name.jar ..."], [ANAHTAR "class ..."]
+# NO signature verification.
 set -uo pipefail
 source /b/ortak.sh
 : "${HEDEF_GAV:?}"
@@ -35,7 +35,7 @@ echo "== bağlama kontrolü (sınıflar ilklendirilmeden yüklenir; imza doğrul
 RC=0
 for j in "$J" ${EK_KONTROL:+$(for x in $EK_KONTROL; do echo "lib/$x"; done)}; do
   java -cp "lib/*:." KontrolYukle "$j" ${ANAHTAR:-} >> "$C/ice_aktar.txt" 2>&1 || RC=$?
-  ANAHTAR=""   # anahtar sınıflar yalnız ilk JAR turunda denetlenir
+  ANAHTAR=""   # the key classes are checked only in the first JAR round
 done
 cat "$C/ice_aktar.txt"
 [ $RC -eq 0 ] && bitir basarili 0 || { yaz not "bağlama hatası"; bitir basarisiz 20; }

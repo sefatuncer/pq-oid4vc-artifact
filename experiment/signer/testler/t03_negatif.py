@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""T03 — Negatif testler: BIZIM dogrulayicimiz (pqjose, AND + gerekli kume) hepsini reddetmeli.
+"""T03 — Negative tests: OUR verifier (pqjose, AND + required set) must reject them all.
 
-Her negatif ornegin tabani once POZITIF kontrol olarak kabul edilir (testin anlamli oldugunu gosterir).
-Politika (aksi belirtilmedikce): semantics='all' (AND), required_algs = beklenen kume (L4),
-alg/crit/x5c korumali, bilinmeyen alg ve anlasilmayan crit fail-closed.
+The base of every negative example is first accepted as a POSITIVE control (shows that the test is meaningful).
+Policy (unless stated otherwise): semantics='all' (AND), required_algs = expected set (L4),
+alg/crit/x5c protected, unknown alg and un-understood crit fail-closed.
 """
 import copy
 import json
@@ -88,7 +88,7 @@ def main(out):
         prot.update(extra or {})
         return jws.sign(payload, jws.Signer(keys[alg], prot, alg=alg), 'compact')
 
-    # ---------------- N1 bozuk imza (her alg)
+    # ---------------- N1 corrupted signature (every alg)
     for alg in keys:
         c = one(alg)
         t.pozitif('N1-bozuk-imza', alg, c, pol(alg))
@@ -96,7 +96,7 @@ def main(out):
         t.negatif('N1-bozuk-imza', alg + ' (orta bayt bit cevirme)', with_sig(c, flip(s, len(s) // 2)), pol(alg),
                   'imza-gecersiz')
 
-    # ---------------- N2 bozuk yuk / N3 bozuk korumali baslik
+    # ---------------- N2 corrupted payload / N3 corrupted protected header
     for alg in ('ES256', 'ML-DSA-65', 'ML-DSA-65-ES256'):
         c = one(alg)
         h, p, s = c.split('.')
@@ -104,7 +104,7 @@ def main(out):
         prot = {'alg': alg, 'kid': keys[alg].kid, 'typ': 'vc+sd-jwt'}
         t.negatif('N3-bozuk-baslik', alg + ' (typ degisti)', reheader(c, prot), pol(alg), 'imza-gecersiz')
 
-    # ---------------- N4 yanlis alg etiketi
+    # ---------------- N4 wrong alg label
     c65 = one('ML-DSA-65')
     base = {'kid': keys['ML-DSA-65'].kid, 'typ': 'dc+sd-jwt'}
     for wrong in ('ML-DSA-44', 'ML-DSA-87', 'ML-DSA-65-ES256'):
@@ -122,7 +122,7 @@ def main(out):
     unk = reheader(c65, {'alg': 'ML-DSA-66', 'kid': keys['ML-DSA-65'].kid})
     t.negatif('N4-yanlis-alg', 'bilinmeyen alg=ML-DSA-66 (gecerli ML-DSA-65 imza baytlari)', unk,
               jws.Policy(keys=list(pub.values())), 'alg-bilinmiyor')
-    # alg yalniz korumasiz baslikta (flattened)
+    # alg only in the unprotected header (flattened)
     k = keys['ML-DSA-65']
     pb64 = b64u_encode(json_bytes({'kid': k.kid}))
     from pqjose import algs
@@ -130,14 +130,14 @@ def main(out):
     fl = {'payload': b64u_encode(PAYLOAD), 'protected': pb64, 'header': {'alg': 'ML-DSA-65'}, 'signature': b64u_encode(sig)}
     t.negatif('N4-yanlis-alg', 'alg korumasiz baslikta (flattened)', fl, pol('ML-DSA-65'), 'korumasiz-parametre:alg')
 
-    # ---------------- N5 composite bilesen bozulmasi
+    # ---------------- N5 corruption of a composite component
     for alg, prm in COMPOSITE.items():
         c = one(alg)
         s = sig_of(c)
         n = len(composite.split_signature(alg, s)[0])
         t.negatif('N5-composite-bilesen', alg + ': ML-DSA bileseni bozuk', with_sig(c, flip(s, n // 2)), pol(alg), 'imza-gecersiz')
         if prm['trad'] == 'ECDSA':
-            # r degerinin son bayti (DER: 30 L 02 Lr [00] r...)
+            # last byte of the r value (DER: 30 L 02 Lr [00] r...)
             tr = s[n:]
             lr = tr[3]
             idx = n + 4 + lr - 1
@@ -152,7 +152,7 @@ def main(out):
     raw = der.ecdsa_der_to_raw(tr, 'P-256')
     t.negatif('N5-composite-bilesen', alg + ': DER SEQUENCE uzunlugu bozuk', with_sig(c, ml_sig + tr[:1] + bytes([tr[1] + 1]) + tr[2:]),
               pol(alg), 'serilestirme')
-    # asgari olmayan DER: r'ye fazladan 0x00
+    # non-minimal DER: an extra 0x00 for r
     r_, s_ = raw[:32], raw[32:]
 
     def dint(v, pad):
@@ -172,7 +172,7 @@ def main(out):
     t.negatif('N5-composite-bilesen', alg + ': bilesenler farkli iletilerden (ML-DSA yuk2, ECDSA yuk1)',
               with_sig(c, ml2 + tr), pol(alg), 'imza-gecersiz')
     t.negatif('N5-composite-bilesen', alg + ': bilesen sirasi ters (trad||ml)', with_sig(c, tr + ml_sig), pol(alg))
-    # ayrilabilirlik: ECDSA bileseni ES256 JWS olarak sunulur (ayni anahtar bagimsiz ES256 anahtari sayilir)
+    # separability: the ECDSA component presented as an ES256 JWS (the same key counts as an independent ES256 key)
     ec_as_es256 = keys[alg].trad.public_only()
     ec_as_es256.kid = 'reuse-ec'
     h_es = b64u_encode(json_bytes({'alg': 'ES256', 'kid': 'reuse-ec'}))
@@ -185,13 +185,13 @@ def main(out):
     t.negatif('N5-ayrilabilirlik', alg + ': ML-DSA bileseni ML-DSA-65 diye sunuldu (ctx=Label ayrimi)',
               h_ml + '.' + b64u_encode(PAYLOAD) + '.' + b64u_encode(ml_sig),
               jws.Policy(keys=[ml_as], required_algs=frozenset({'ML-DSA-65'})), 'imza-gecersiz')
-    # ayni imzalama girdisi uzerinde bile: bilesen M' uzerinde, JWS girdisi M uzerinde
+    # even over the same signing input: the component is over M', the JWS input over M
     h_c = c.split('.')[0]
     t.negatif('N5-ayrilabilirlik', alg + ': ECDSA bileseni ayni korumali baslikla ES256 JWS',
               reheader(h_c + '.' + b64u_encode(PAYLOAD) + '.' + b64u_encode(raw), {'alg': 'ES256', 'kid': 'reuse-ec'}),
               jws.Policy(keys=[ec_as_es256]), 'imza-gecersiz')
 
-    # ---------------- N6 soyulmus / karistirilmis coklu imza (General JSON)
+    # ---------------- N6 stripped / mixed multi-signature (General JSON)
     def general(*algs_, payload=PAYLOAD):
         return jws.sign(payload, [jws.Signer(keys[a], {'kid': keys[a].kid, 'typ': 'dc+sd-jwt'}, alg=a) for a in algs_],
                         'general')
@@ -284,7 +284,7 @@ def main(out):
     j_root = jws.sign(PAYLOAD, jws.Signer(lk_ml, {'x5c': ['!!!']}, alg='ML-DSA-65'), 'compact')
     t.negatif('N8-x5c', 'x5c base64 degil', j_root, jws.Policy(**PX), 'x5c-cozulemedi')
 
-    # ---------------- N9 bicim
+    # ---------------- N9 format
     c = one('ML-DSA-65')
     t.negatif('N9-bicim', 'compact 4 parca', c + '.AAAA', pol('ML-DSA-65'), 'bicim-hatasi')
     dup = b64u_encode(b'{"alg":"ML-DSA-65","alg":"ES256"}')
@@ -293,7 +293,7 @@ def main(out):
     h, p, s = ce.split('.')
     last = s[-1]
     alt = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_'
-    # 64 bayt -> 86 karakter; son karakterin alt 4 biti dolgu: kanonik olmayan esdeger
+    # 64 bytes -> 86 characters; the low 4 bits of the last character are padding: non-canonical equivalent
     idx = alt.index(last)
     s2 = s[:-1] + alt[(idx & ~0xF) | ((idx + 1) & 0xF)]
     t.negatif('N9-bicim', 'kanonik olmayan base64url (dolgu bitleri)', h + '.' + p + '.' + s2, pol('ES256'), 'bicim-hatasi')

@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""T01 — Dis test vektorleri: RFC 9964 Ek A (ML-DSA) ve draft-ietf-jose-pq-composite-sigs-04 Ek A.1.
+"""T01 — External test vectors: RFC 9964 Appendix A (ML-DSA) and draft-ietf-jose-pq-composite-sigs-04 Appendix A.1.
 
-Kontroller:
-  (a) bizim dogrulayici tum vektorleri DOGRULAR
-  (b) belirlenimci bilesenler: tohumdan acik anahtar, JWK/priv serilestirmesi, kid (RFC 7638), M',
-      EdDSA bileseni, (belirlenimci ise) ML-DSA imzasi — bizim ureticimiz bayt-bayt ayni cikti verir
-  (c) bagimsiz uygulamalar: sistem OpenSSL 3.5.7 CLI ve dilithium-py (saf Python FIPS 204)
-Kullanim: python t01_dis_vektorler.py <dis-vektorler dizini> <sonuc dizini>
+Checks:
+  (a) our verifier VERIFIES all vectors
+  (b) deterministic components: public key from seed, JWK/priv serialization, kid (RFC 7638), M',
+      EdDSA component, (if deterministic) ML-DSA signature — our generator produces byte-identical output
+  (c) independent implementations: system OpenSSL 3.5.7 CLI and dilithium-py (pure Python FIPS 204)
+Usage: python t01_dis_vektorler.py <external-vectors folder> <result folder>
 """
 import glob
 import json
@@ -42,12 +42,12 @@ def rfc9964(v, K):
     K.kontrol(g, 'imza-dogrulama(ham)', M.verify(lvl, pk, tbs, sig))
     det = M.sign(lvl, seed, tbs, b'', deterministic=True)
     K.kontrol(g, 'belirlenimci-imza-bayt-ayni', det == sig)
-    # bagimsiz: dilithium-py
+    # independent: dilithium-py
     dpk, dsk = DPY[lvl].key_derive(seed)
     K.kontrol(g, 'dilithium-py:acik-anahtar', dpk == pk)
     K.kontrol(g, 'dilithium-py:dogrulama', DPY[lvl].verify(pk, tbs, sig))
     K.kontrol(g, 'dilithium-py:belirlenimci-imza-ayni', DPY[lvl].sign(dsk, tbs, deterministic=True) == sig)
-    # bagimsiz: OpenSSL CLI
+    # independent: OpenSSL CLI
     K.kontrol(g, 'openssl:dogrulama', openssl.pkey_verify(k.public_pem(), tbs, sig))
     if 'jwk' in o:
         j = o['jwk']
@@ -61,7 +61,7 @@ def rfc9964(v, K):
         pol = jws.Policy(keys=[kj.public_only()], allowed_algs=frozenset({alg}), required_algs=frozenset({alg}))
         r = jws.verify(o['jws'], pol)
         K.kontrol(g, 'pqjose-dogrulayici:KABUL', r.valid, r.to_dict())
-        # uretici: ayni basligi yeniden kur ve belirlenimci imzala -> JWS bayt-bayt ayni
+        # generator: rebuild the same header and sign deterministically -> JWS byte-identical
         prot = {'alg': alg, 'kid': j['kid']}
         K.kontrol(g, 'baslik-serilestirme-ayni', b64u_encode(json_bytes(prot)) == e.protected_b64)
         k.kid = j['kid']
@@ -108,7 +108,7 @@ def josecomp(v, K):
     ml_sig, trad_sig = composite.split_signature(alg, sig)
     K.bilgi(g, 'boyutlar', {'imza': len(sig), 'ml': len(ml_sig), 'trad': len(trad_sig), 'pub': len(pk),
                             'priv': len(k.priv), "M'": len(mp)})
-    # belirlenimci bilesenler
+    # deterministic components
     det_ml = M.sign(p['ml'], seed, mp, ctx=p['label'], deterministic=True)
     K.bilgi(g, 'ML-DSA-bileseni-belirlenimci-mi(taslak)', det_ml == ml_sig)
     if p['trad'] == 'EdDSA':
@@ -119,12 +119,12 @@ def josecomp(v, K):
         md = {'sha256': hashes.SHA256, 'sha384': hashes.SHA384}[p['md']]()
         d6979 = trad.priv.sign(mp, ec.ECDSA(md, deterministic_signing=True))
         K.bilgi(g, 'ECDSA-bileseni-RFC6979-mi(taslak)', d6979 == trad_sig)
-    # ureticimiz: belirlenimci composite imza -> bizim dogrulayici + bagimsiz dogrulayicilar
+    # our generator: deterministic composite signature -> our verifier + independent verifiers
     ours = composite.sign(alg, k, tbs, deterministic=True)
     K.kontrol(g, 'uretici:belirlenimci-imza-dogrulanir', composite.verify(alg, kj, tbs, ours))
     if det_ml == ml_sig and (p['trad'] == 'EdDSA'):
         K.kontrol(g, 'uretici:composite-imza-bayt-ayni', ours == sig)
-    # bagimsiz dogrulayicilar (bilesen bazinda)
+    # independent verifiers (per component)
     K.kontrol(g, 'dilithium-py:ML-DSA-bileseni(ctx=Label)', DPY[p['ml']].verify(ml.pub, mp, ml_sig, ctx=p['label']))
     K.kontrol(g, 'openssl:ML-DSA-bileseni(ctx=Label)', openssl.pkey_verify(ml.public_pem(), mp, ml_sig, ctx=p['label']))
     if p['trad'] == 'ECDSA':

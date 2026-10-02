@@ -1,4 +1,4 @@
-# a10-jose-089:1 — json-jwt 1.17.2 (Gemfile.lock = experiment/environments/hedefler/JOSE-089/cikti, CHECKSUMS dahil)
+# a10-jose-089:1 — json-jwt 1.17.2 (Gemfile.lock = experiment/environments/hedefler/JOSE-089/cikti, CHECKSUMS included)
 FROM pq-a09-env-ruby:1.0
 WORKDIR /opt/a
 COPY Gemfile Gemfile.lock ./

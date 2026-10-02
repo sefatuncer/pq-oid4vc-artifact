@@ -1,9 +1,9 @@
-// SDJWT-001: A-SIT Plus vck 7.0.1 (Signum josef/supreme bağımlılıkları vck'nin kendi sürümleriyle).
-// Doğrulama yolu: SdJwtSigned.parseCatching → vck'nin JWS doğrulama işlevi VerifyJwsObject (ValidatorSdJwt'nin ihraççı
-// imzası için kullandığı aynı işlev; anahtar: başlıktaki jwk/x5c ya da PublicJsonWebKeyLookup = deney JWKS'i).
-// ValidatorSdJwt.verifySdJwt cüzdan tarafı içindir ve cnf bağlamasını zorunlu tutar ("cnf claim invalid"); doğrulayıcı
-// tarafı verifyVpSdJwt KB-JWT ister. V± ve batarya vektörlerinde ikisi de yok → imza katmanı ölçülür (ÖK §2H m.15 okuması;
-// NOTES.md). Yalnız SD-JWT compact (B6). Algoritma izin listesi API'si yok → IZIN-*/L4* ifade-edilemedi.
+// SDJWT-001: A-SIT Plus vck 7.0.1 (Signum josef/supreme dependencies with vck's own versions).
+// Verification route: SdJwtSigned.parseCatching → vck's JWS verification function VerifyJwsObject (the same function that
+// ValidatorSdJwt uses for the issuer signature; key: jwk/x5c in the header or PublicJsonWebKeyLookup = the experiment's JWKS).
+// ValidatorSdJwt.verifySdJwt is for the wallet side and requires the cnf binding ("cnf claim invalid"); the verifier
+// side verifyVpSdJwt requires a KB-JWT. Neither is present in the V± and battery vectors → the signature layer is measured (reading of PR §2H item 15;
+// NOTES.md). SD-JWT compact only (B6). No algorithm allow-list API → IZIN-*/L4* ifade-edilemedi.
 package c3
 
 import at.asitplus.signum.indispensable.josef.JsonWebKey
@@ -33,8 +33,8 @@ object Vck : T {
     var s = data.decodeToString().trim()
     if (job.s("serilestirme") == "compact") s += "~"
     val sd = SdJwtSigned.parseCatching(s).getOrElse { e ->
-      // Tanınmayan alg, JwsHeader ayrıştırmasında JwsAlgorithm serileştiricisinden çıkar; vck bunu
-      // "Invalid base64url content" iletisine sarar. Neden zincirinde serileştirici aranır.
+      // An unrecognised alg surfaces during JwsHeader parsing from the JwsAlgorithm serializer; vck wraps it into the
+      // message "Invalid base64url content". The serializer is searched in the cause chain.
       var c: Throwable? = e
       while (c != null) {
         if (c.stackTrace.any { it.className.contains("JwsAlgorithm") } || (c.message ?: "").contains("JwsAlgorithm"))

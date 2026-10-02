@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# crates.io hedefi: sabit sürüm (=x.y.z) bağımlılıkla ikili derle, Cargo.lock kaydet, bağlama kontrolü.
-# Aşama A: yalnız `use krate as _;` ile derleme (kurulum/derleme). Aşama B: /w/main.rs (API tiplerine başvuru).
-# Girdi (kur.sh): KRATE, SURUM, [OZELLIK "a,b"], [VARSAYILAN=false]. İmza doğrulama YOK.
+# crates.io target: build a binary with a pinned-version (=x.y.z) dependency, record Cargo.lock, link check.
+# Stage A: build with `use krate as _;` only (installation/build). Stage B: /w/main.rs (references to API types).
+# Input (kur.sh): KRATE, SURUM, [OZELLIK "a,b"], [VARSAYILAN=false]. NO signature verification.
 set -uo pipefail
 source /b/ortak.sh
 : "${KRATE:?}"; : "${SURUM:?}"

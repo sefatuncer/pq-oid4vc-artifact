@@ -1,12 +1,12 @@
-"""JWS (RFC 7515): compact, flattened ve general JSON serilestirme; politika tabanli dogrulama.
+"""JWS (RFC 7515): compact, flattened and general JSON serialization; policy-based verification.
 
-Dogrulayicinin varsayilan davranisi (BIZIM aracimiz; hedef kutuphane davranisi DEGIL):
-  * semantics='all'  : mevcut TUM imzalar gecerli olmali (AND) ve en az bir imza olmali
-    (RFC 7515 7.2 bunu uygulamaya birakir; asgari kosul 'en az biri' — semantics='any').
-  * required_algs     : gerekli algoritma kumesi (L4). AND tek basina SOYMAYI yakalayamaz;
-    soyma yalniz beklenen kume (L4) ile reddedilir.
-  * bilinmeyen alg, 'none', izinli olmayan alg, anlasilmayan crit -> o imza gecersiz (fail-closed).
-  * alg/crit/x5c/jwk/jku/x5u korumali baslikta olmali (katı politika; crit icin RFC 7515 4.1.11 zorunlu).
+Default behaviour of the verifier (OUR tool; NOT the behaviour of a target library):
+  * semantics='all'  : ALL present signatures must be valid (AND) and there must be at least one signature
+    (RFC 7515 7.2 leaves this to the application; the minimum condition is 'at least one' — semantics='any').
+  * required_algs     : required algorithm set (L4). AND alone cannot catch STRIPPING;
+    stripping is rejected only with the expected set (L4).
+  * unknown alg, 'none', a non-permitted alg, an un-understood crit -> that signature is invalid (fail-closed).
+  * alg/crit/x5c/jwk/jku/x5u must be in the protected header (strict policy; mandatory for crit by RFC 7515 4.1.11).
 """
 from dataclasses import dataclass, field
 
@@ -15,17 +15,17 @@ from .keys import Key, default_alg, key_from_jwk
 from .params import COMPOSITE, alg_class
 from .util import FormatError, b64u_decode, b64u_encode, json_bytes, json_loads_strict
 
-# RFC 7515 4.1 kayitli baslik parametreleri: 'crit' icinde listelenemez (4.1.11)
+# RFC 7515 4.1 registered header parameters: may not be listed in 'crit' (4.1.11)
 REGISTERED_PARAMS = frozenset({'alg', 'jku', 'jwk', 'kid', 'x5u', 'x5c', 'x5t', 'x5t#S256', 'typ', 'cty', 'crit'})
 DEFAULT_PROTECTED = frozenset({'alg', 'crit', 'x5c', 'x5u', 'jwk', 'jku', 'x5t', 'x5t#S256'})
 
 
-# ------------------------------------------------------------------ veri yapilari
+# ------------------------------------------------------------------ data structures
 @dataclass
 class Signer:
     key: Key
     protected: dict = None
-    header: dict = None      # korumasiz baslik (yalniz JSON serilestirme)
+    header: dict = None      # unprotected header (JSON serialization only)
     alg: str = None
 
 
@@ -70,7 +70,7 @@ class JWSObject:
         return {'payload': self.payload_b64, 'signatures': sigs}
 
 
-# ------------------------------------------------------------------ imzalama
+# ------------------------------------------------------------------ signing
 def _protected_with_alg(prot: dict, alg: str) -> dict:
     out = {'alg': alg}
     for k, v in (prot or {}).items():
@@ -120,7 +120,7 @@ def serialize(obj: JWSObject, serialization: str):
     raise ValueError(serialization)
 
 
-# ------------------------------------------------------------------ ayristirma
+# ------------------------------------------------------------------ parsing
 def _decode_protected(pb64):
     if pb64 is None:
         return None, {}
@@ -177,19 +177,19 @@ def parse(jws) -> JWSObject:
     return JWSObject('flattened', pl, b64u_decode(pl), [_entry(jws)])
 
 
-# ------------------------------------------------------------------ dogrulama
+# ------------------------------------------------------------------ verification
 @dataclass
 class Policy:
-    semantics: str = 'all'                 # 'all' (AND) | 'any' (RFC 7515 asgarisi)
-    allowed_algs: frozenset = None         # L1/L2 izin listesi (None: uygulanan tum alg'ler)
-    required_algs: frozenset = None        # L4 gerekli algoritma kumesi
-    keys: list = None                      # guvenilen anahtarlar (L3: anahtar-alg baglama)
-    trust_anchors: list = None             # DER; verilirse x5c dogrulanir ve yaprak anahtari kullanilir
-    attime: int = None                     # x5c dogrulama zamani (UNIX)
-    x5c_pq_only: bool = False              # karisik/klasik zinciri reddet
+    semantics: str = 'all'                 # 'all' (AND) | 'any' (RFC 7515 minimum)
+    allowed_algs: frozenset = None         # L1/L2 allow-list (None: all implemented algs)
+    required_algs: frozenset = None        # L4 required algorithm set
+    keys: list = None                      # trusted keys (L3: key–alg binding)
+    trust_anchors: list = None             # DER; if given, x5c is validated and the leaf key is used
+    attime: int = None                     # x5c validation time (UNIX)
+    x5c_pq_only: bool = False              # reject a mixed/classical chain
     require_protected: frozenset = DEFAULT_PROTECTED
     understood_crit: frozenset = frozenset()
-    allow_embedded_jwk: bool = False       # DPoP gibi: 'jwk' baslik anahtari ile dogrula
+    allow_embedded_jwk: bool = False       # like DPoP: verify with the 'jwk' header key
     expected_typ: str = None
 
 
@@ -248,7 +248,7 @@ def _check_crit(e: SigEntry, p: dict, policy: Policy):
 
 
 def _resolve_keys(p: dict, alg: str, policy: Policy):
-    """(anahtar listesi, kaynak, x5c sonucu, hata)"""
+    """(key list, source, x5c result, error)"""
     if 'x5c' in p and policy.trust_anchors is not None:
         r = x509.validate_x5c(p['x5c'], policy.trust_anchors, policy.attime or 0, policy.x5c_pq_only)
         if not r.ok:

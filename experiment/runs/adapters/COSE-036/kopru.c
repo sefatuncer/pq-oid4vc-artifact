@@ -1,8 +1,8 @@
-/* COSE-036 wolfCOSE köprüsü (libkopru.so). Yalnız wolfCOSE'un belgeli genel API'sini çağırır:
+/* COSE-036 wolfCOSE bridge (libkopru.so). It calls only the documented public API of wolfCOSE:
  * wc_CoseKey_PeekInfo / wc_CoseKey_Init / wc_CoseKey_SetEcc|SetEd25519|SetMlDsa / wc_CoseKey_Decode,
  * WOLFCOSE_KEY.alg ("alg pin"; wolfcose.h WOLFCOSE_KEY.alg, sign1.c "Honour the key->alg pin on the verify path"),
- * wc_CoseSign1_Verify ve wc_CoseSign_Verify (signerIndex). Doğrulama döngüsü YOK. JSON/G-Ç Python sürücüsündedir.
- * asama: 1 = PeekInfo, 2 = anahtar türü/ekleme, 3 = Decode, 4 = Verify. Dönüş: wolfCOSE/wolfCrypt kodu (0 = başarı). */
+ * wc_CoseSign1_Verify and wc_CoseSign_Verify (signerIndex). NO verification loop. JSON/I-O is in the Python driver.
+ * asama (stage): 1 = PeekInfo, 2 = key type/insertion, 3 = Decode, 4 = Verify. Return: wolfCOSE/wolfCrypt code (0 = success). */
 #include <string.h>
 #include <stdint.h>
 #include <wolfssl/options.h>
@@ -41,7 +41,7 @@ static int anahtar_yukle(WOLFCOSE_KEY* key, const uint8_t* ck, size_t ckLen, ecc
         if ((ret = wc_MlDsaKey_SetParams(ml, seviye)) != 0) return ret;
         ret = wc_CoseKey_SetMlDsa(key, info.alg, ml);
     } else {
-        return WOLFCOSE_E_UNSUPPORTED; /* kty/crv/alg bu yapıda desteklenmiyor (ör. AKP + composite -55) */
+        return WOLFCOSE_E_UNSUPPORTED; /* kty/crv/alg not supported in this build (e.g. AKP + composite -55) */
     }
     if (ret != 0) return ret;
     *asama = 3;
@@ -56,8 +56,8 @@ static void serbest(WOLFCOSE_KEY* key, int tur, ecc_key* ecc, ed25519_key* ed, w
     if (tur == 3) wc_MlDsaKey_Free(ml);
 }
 
-/* pinKullan = 1 ise key->alg = pin (0 = WOLFCOSE_ALG_UNSET); 0 ise Decode'un bıraktığı değer korunur.
- * imzaci < 0: COSE_Sign1; imzaci >= 0: COSE_Sign içinde o sıradaki imzacı. */
+/* If pinKullan = 1, key->alg = pin (0 = WOLFCOSE_ALG_UNSET); if 0, the value left by Decode is kept.
+ * imzaci < 0: COSE_Sign1; imzaci >= 0: the signer at that position in COSE_Sign. */
 int a10_dogrula(const uint8_t* msg, size_t msgLen, const uint8_t* ck, size_t ckLen, int pinKullan, int32_t pin,
                 long imzaci, int32_t* algOut, int* asama)
 {

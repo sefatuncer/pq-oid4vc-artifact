@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# npm hedefi: kur (sürüm sabit), kilit dosyası ve bütünlük özetini kaydet, içe aktarma kontrolü.
-# Girdi (kur.sh içinde): PAKET, SURUM, [IGNORE_SCRIPTS=true], /w/ice_aktar.mjs
+# npm target: install (version pinned), record the lock file and the integrity digest, import check.
+# Input (inside kur.sh): PAKET, SURUM, [IGNORE_SCRIPTS=true], /w/ice_aktar.mjs
 set -uo pipefail
 source /b/ortak.sh
 : "${PAKET:?}"; : "${SURUM:?}"

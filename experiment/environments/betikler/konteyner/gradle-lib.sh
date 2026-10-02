@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# Gradle ile kütüphane çözümleme (Kotlin çok platformlu yapıtlar için Gradle modül meta verisi):
-# kanonik koordinat → JVM varyantı; doğrulama meta verisi (sha256) kilit olarak yazılır; sınıflar ilklendirilmeden yüklenir.
-# Girdi (kur.sh): GAV (g:a:v), HEDEF_JAR (ör. vck-jvm-7.0.1.jar), [ANAHTAR]. İmza doğrulama YOK.
+# Library resolution with Gradle (Gradle module metadata for Kotlin multiplatform artefacts):
+# canonical coordinate → JVM variant; the verification metadata (sha256) is written as a lock; classes are loaded without initialisation.
+# Input (kur.sh): GAV (g:a:v), HEDEF_JAR (e.g. vck-jvm-7.0.1.jar), [ANAHTAR]. NO signature verification.
 set -uo pipefail
 source /b/ortak.sh
 : "${GAV:?}"; : "${HEDEF_JAR:?}"

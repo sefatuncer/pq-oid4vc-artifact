@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
-# BİLGİ (CSV dışı): WalletFramework.SdJwtVc 3.1.0 kurulumunda SD-JWT çekirdek derlemesi (WalletFramework.SdJwtLib) türleri. İmza doğrulama YOK.
+# INFORMATION (outside the CSV): types of the SD-JWT core assembly (WalletFramework.SdJwtLib) in the WalletFramework.SdJwtVc 3.1.0 installation. NO signature verification.
 export PAKET=WalletFramework.SdJwtVc SURUM=3.1.0 ASM=WalletFramework.SdJwtLib ANAHTAR=""
 exec bash /b/nuget.sh

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""Sürüm sabitleme özeti (bilgi): n+REF (34) hedefte kurulan commit ↔ çerçeve HEAD (CERCEVE son_commit_sha).
-Girdi: derleme-sonuc.csv, kayit/hedef_listesi.csv, kayit/surum_dayanak.csv. Çıktı: kayit/surum_ozet.csv + ekran."""
+"""Summary of version pinning (information): installed commit ↔ frame HEAD (CERCEVE son_commit_sha) for the n+REF (34) targets.
+Input: derleme-sonuc.csv, kayit/hedef_listesi.csv, kayit/surum_dayanak.csv. Output: kayit/surum_ozet.csv + screen."""
 import csv, pathlib
 K = pathlib.Path(__file__).resolve().parents[1]
 ds = {r["id"]: r for r in csv.DictReader(open(K / "derleme-sonuc.csv", encoding="utf-8"))}

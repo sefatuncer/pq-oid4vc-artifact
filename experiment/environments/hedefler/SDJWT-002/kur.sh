@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# SDJWT-002 — affinidi selective_disclosure_jwt (pub.dev). Adım 9 görev 4a. İmza doğrulama YOK.
-# pubspec.lock (sha256) kaydedilir; paket kitaplığı içe aktarılır, doğrulayıcı sınıf adlarına tür değişmezi olarak başvurulur.
+# SDJWT-002 — affinidi selective_disclosure_jwt (pub.dev). Step 9 task 4a. NO signature verification.
+# pubspec.lock (sha256) is recorded; the package library is imported and the verifier class names are referenced as type literals.
 set -uo pipefail
 source /b/ortak.sh
 PAKET=selective_disclosure_jwt; SURUM=1.1.1
@@ -19,7 +19,7 @@ yaz kurulan_surum "$(awk -v p="  $PAKET:" '$0==p{a=1} a&&/version:/{gsub(/"/,"",
 KOK=$(ls -d /root/.pub-cache/hosted/pub.dev/$PAKET-$SURUM 2>/dev/null | head -1)
 SINIF=$(grep -rhoE '^(abstract )?(final |base |interface )?class [A-Z][A-Za-z0-9]*Verif[A-Za-z0-9]*' "$KOK/lib" 2>/dev/null | awk '{print $NF}' | sort -u | head -3 | tr '\n' ' ')
 echo "doğrulayıcı sınıf adları (kaynak taraması): $SINIF"
-# Deneme 1: KbVerifyAction ve SdJwtVerifierInput ana kitaplıktan dışa aktarılmıyor; yalnız dışa aktarılan SDKeyVerifier kullanılır
+# Attempt 1: KbVerifyAction and SdJwtVerifierInput are not exported by the main library; only the exported SDKeyVerifier is used
 SINIF="SDKeyVerifier"
 { echo "import 'package:$PAKET/$PAKET.dart';"; echo "void main() {"; echo "  print('paket $PAKET ice aktarildi');"
   for s in $SINIF; do echo "  print('tip \${$s}');"; done; echo "}"; } > bin/main.dart

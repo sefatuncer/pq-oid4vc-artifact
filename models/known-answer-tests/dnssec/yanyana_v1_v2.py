@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-"""Adım 6 | KAT-1: ilk koşum (v1) ile düzeltme sonrası koşum (v2) YAN YANA (yürütücü kararı 26.09.2026).
-KOŞU YAPMAZ; yalnız okur: sonuc/{asp,asp_mutasyon,tamarin,tamarin_mutasyon}.csv, sonuc/KAT_OZET.json (v1),
-sonuc_v2/{tamarin,tamarin_mutasyon}.csv, sonuc_v2/KAT_OZET.json (v2). Çıktı: sonuc_v2/YANYANA.md (SONUC.md'ye alınır).
+"""Step 6 | KAT-1: first run (v1) and post-correction run (v2) SIDE BY SIDE (maintainers' decision 26.09.2026).
+RUNS NOTHING; only reads: sonuc/{asp,asp_mutasyon,tamarin,tamarin_mutasyon}.csv, sonuc/KAT_OZET.json (v1),
+sonuc_v2/{tamarin,tamarin_mutasyon}.csv, sonuc_v2/KAT_OZET.json (v2). Output: sonuc_v2/YANYANA.md (taken into RESULTS.md).
 """
 import csv, json, os, sys
 

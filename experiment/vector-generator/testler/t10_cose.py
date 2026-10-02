@@ -1,8 +1,8 @@
-"""T10-G (v1.3): v1.2 alt kumesi, COSE ve L4c insa gercekleri.
+"""T10-G (v1.3): v1.2 subset, COSE and L4c construction facts.
 
-Oracle DEGILDIR: yalniz vektorlerin manifestte tanimlandigi gibi uretildigini gosterir. Her imza uc bagimsiz yolla
-denetlenir: pqjose (uretimle ayni kitaplik), sistem OpenSSL CLI ve (ML-DSA icin) dilithium-py. t10_oz_dogrulama.py
-tarafindan 'v1.3' ile cagrilir.
+NOT an oracle: it only shows that the vectors were produced as defined in the manifest. Every signature is checked
+in three independent ways: pqjose (the same library as the generation), the system OpenSSL CLI and (for ML-DSA) dilithium-py. Called
+by t10_oz_dogrulama.py with 'v1.3'.
 """
 import hashlib
 import json
@@ -50,7 +50,7 @@ def test_G(K, kok, korpus, man, C, ossl):
     yol = lambda v: os.path.join(kok, 'vektorler', 'v1.3', v['dosya'])  # noqa: E731
     veri = lambda v: open(yol(v), 'rb').read()  # noqa: E731
 
-    # ---------------------------------------------------------------- G1: v1.2 alt kumesi
+    # ---------------------------------------------------------------- G1: v1.2 subset
     v12man = json.load(open(os.path.join(kok, 'vektorler', 'v1.2', 'MANIFEST.json'), encoding='utf-8'))
     v12ids = {v['id']: v for v in v12man['vektorler']}
     ayni = [v['id'] for v in man['vektorler'] if v['id'] in v12ids and v == v12ids[v['id']] and
@@ -75,7 +75,7 @@ def test_G(K, kok, korpus, man, C, ossl):
               sum(v['aile'] == 'COSE' for v in yeni) == 45 and sum(v['aile'] == 'L4C' for v in yeni) == 2,
               man['yeni_dagilim'])
 
-    # ---------------------------------------------------------------- G2: COSE kimlik kaynaklari korpusta birebir
+    # ---------------------------------------------------------------- G2: COSE id sources verbatim in the corpus
     cache = {}
     beklenen_kaynak = {k: '%s:%d %s' % v for k, v in cose.KAYNAK.items()}
     K.kontrol('G:kaynak', 'manifest cose_kimlik_kaynaklari == uretec/cose.py KAYNAK',
@@ -118,7 +118,7 @@ def test_G(K, kok, korpus, man, C, ossl):
               l4['keys'] == [C.keys[r].public_jwk() for r in goc] + [eski.public_jwk()] and
               l4['ihraccilar'] == {v13.A.ISS: [C.keys[r].kid for r in goc], v13.ESKI_ISS: [eski.kid]})
 
-    # ---------------------------------------------------------------- G4: COSE vektorleri
+    # ---------------------------------------------------------------- G4: COSE vectors
     cv = [v for v in man['vektorler'] if v['artefakt'] == 'cose']
     K.kontrol('G:COSE', 'COSE nesneli vektor sayisi 46 (COSE 45 + L4C-COSE)', len(cv) == 46)
     P = {}
@@ -200,7 +200,7 @@ def test_G(K, kok, korpus, man, C, ossl):
                 r.leaf_key.public_jwk(kid=False) == C.keys[ins['imzalar'][0]['anahtar_rolu']].public_jwk(kid=False),
                 r.reason)
 
-    # ---------------------------------------------------------------- G5: vakalar arasi insa iliskileri
+    # ---------------------------------------------------------------- G5: construction relations between cases
     def imzacilar(vid):
         return [(s['sp'], s['unprot'], s['imza']) for s in P[vid]['imzalar']]
     k3 = imzacilar('COSE-K3_X_soyuldu')
@@ -227,7 +227,7 @@ def test_G(K, kok, korpus, man, C, ossl):
         K.kontrol('G:iliski', '%s: K6 ile tek bit farki %s bileseninde' % (vid, bolum), fark is not None and (
             (fark[0][0] < ML65_SIG) == (bolum == 'ml')), fark)
 
-    # ---------------------------------------------------------------- G6: MR4 ve Ed25519 esleri
+    # ---------------------------------------------------------------- G6: MR4 and Ed25519 counterparts
     for v in [x for x in cv if 'mr4' in x['insa']]:
         mr = v['insa']['mr4']
         order = mr['yeni_siradaki_ozgun_indeksler']

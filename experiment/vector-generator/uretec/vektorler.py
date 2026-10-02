@@ -1,19 +1,19 @@
-"""Test vektoru seti v1 (Adim 9b) — tamami belirlenimci (sabit tohumlu anahtarlar, belirlenimci imzalar).
+"""Test vector set v1 (Step 9b) — fully deterministic (keys with fixed seeds, deterministic signatures).
 
-ONEMLI: Bu modul vektorun NE OLDUGUNU tanimlar (insa gercekleri, sinanan L basamagi/bayrak,
-spesifikasyon dayanagi). Beklenen karar (kabul/red) YAZILMAZ — oracle N-surum olarak ayri uretilir.
+IMPORTANT: this module defines WHAT the vector is (construction facts, tested L level/flag,
+specification basis). The expected decision (accept/reject) is NOT written — the oracle is produced separately as an N-version oracle.
 
-Aileler:
-  T    B'nin P3 pilotundaki T1-T6, GERCEK PQ/composite imzalarla (kontrol/tedavi kollari)
-  UNK  bilinmeyen / kayitsiz alg etiketleri
-  CMP  composite -04 bilesen bozulmalari, uygulayici hatasi taklitleri, ayrilabilirlik
-  X5C  klasik / PQ / karisik zincirler, korumasiz x5c, guven capasi x5c icinde
-  REQ  OID4VP istek nesneleri (compact, coklu imzali A.3.2.2, imzasizlastirma M-b0, alg=none)
-  VC   SD-JWT VC ihraci (-13/-19 kipleri; General JSON; ikili ihrac; typ; alg=none)
-  VP   SD-JWT+KB sunumlari (KB-JWT algoritmalari; General JSON sd_hash belirsizligi)
-  TSL  Token Status List belirtecleri
-  DPOP DPoP kanitlari (boyut esikleri, ozel anahtarli jwk)
-  CRIT crit basligi durumlari
+Families:
+  T    T1-T6 of the P3 pilot of B, with REAL PQ/composite signatures (control/treatment arms)
+  UNK  unknown / unregistered alg labels
+  CMP  composite -04 component corruptions, imitations of implementer errors, separability
+  X5C  classical / PQ / mixed chains, unprotected x5c, trust anchor inside x5c
+  REQ  OID4VP request objects (compact, multi-signed A.3.2.2, unsigning M-b0, alg=none)
+  VC   SD-JWT VC issuance (-13/-19 modes; General JSON; double issuance; typ; alg=none)
+  VP   SD-JWT+KB presentations (KB-JWT algorithms; General JSON sd_hash ambiguity)
+  TSL  Token Status List tokens
+  DPOP DPoP proofs (size thresholds, jwk with a private key)
+  CRIT cases of the crit header
 """
 import copy
 import csv
@@ -35,9 +35,9 @@ from . import sdjwt
 from .anahtar import ROLLER, AnahtarSeti
 
 SURUM = 'v1'
-SIMDI = A.T0 + 3700   # tum vektorler icin dogrulama anlik zamani (UNIX)
+SIMDI = A.T0 + 3700   # verification instant for all vectors (UNIX)
 
-# ------------------------------------------------------------------ dayanaklar (MANIFEST id + bolum)
+# ------------------------------------------------------------------ bases (MANIFEST id + section)
 R = dict(
     alg='RFC7515 §4.1.1', x5c='RFC7515 §4.1.6', crit='RFC7515 §4.1.11', dogr='RFC7515 §5.2',
     json='RFC7515 §7.2', gen='RFC7515 §7.2.1', flat='RFC7515 §7.2.2', algkoruma='RFC7515 §10.7',
@@ -85,7 +85,7 @@ class Uretici:
         self.items = []
         self.objs = {}
 
-    # ------------------------------------------------------------ yardimcilar
+    # ------------------------------------------------------------ helpers
     def kid(self, rol):
         return self.S[rol].kid
 
@@ -129,7 +129,7 @@ class Uretici:
         g.update(kw)
         return g
 
-    # ------------------------------------------------------------ T ailesi (B pilotu)
+    # ------------------------------------------------------------ T family (pilot B)
     def aile_T(self):
         S = self.S
         roles = {'ES256': 'issuer/ES256', 'EdDSA': 'issuer/EdDSA', 'ML-DSA-65': 'issuer/ML-DSA-65',
@@ -174,7 +174,7 @@ class Uretici:
                     b_pilot='T3_stripped_to_ES256', girdiler=G,
                     insa={'kaynak_vektor': 'T1K/T1P/T1C', 'imzalar': [self.sig_rec(0, 'ES256', roles['ES256'], 'gecerli')],
                           'soyulan': 'ikinci imza (EdDSA | ML-DSA-65 | ML-DSA-65-ES256)'}))
-        # T4: taban + bir gecerli imza daha (kolun taban kumesinde olmayan alg)
+        # T4: base + one more valid signature (an alg not in the base set of the arm)
         for sfx, base2, extra in (('K', 'EdDSA', 'ML-DSA-65'), ('P', 'ML-DSA-65', 'ML-DSA-65-ES256'),
                                   ('C', 'ML-DSA-65-ES256', 'ML-DSA-65')):
             t4 = gen('ES256', base2, extra)
@@ -205,7 +205,7 @@ class Uretici:
             insa={'imzalar': [self.sig_rec(0, 'ES256', roles['ES256'], 'gecerli'),
                               self.sig_rec(1, 'EdDSA', roles['EdDSA'], 'gecerli'),
                               self.sig_rec(2, 'ML-DSA-65-ES256', roles['ML-DSA-65-ES256'], 'gecerli')]}))
-        # B uyumlu dosya (B'nin p3_node.mjs / p3_py.py betikleriyle ayni yapi: pub1=ES256, pub2=EdDSA)
+        # B-compatible file (the same structure as B's scripts p3_node.mjs / p3_py.py: pub1=ES256, pub2=EdDSA)
         b = {'pub1': S['issuer/ES256'].public_jwk(kid=False), 'pub2': S['issuer/EdDSA'].public_jwk(kid=False),
              'pub_mldsa65': S['issuer/ML-DSA-65'].public_jwk(kid=False),
              'pub_composite': S['issuer/ML-DSA-65-ES256'].public_jwk(kid=False),
@@ -220,7 +220,7 @@ class Uretici:
             json.dump(b, f, indent=1)
             f.write('\n')
 
-    # ------------------------------------------------------------ UNK ailesi
+    # ------------------------------------------------------------ UNK family
     def _compact_with_sig(self, header, payload, sig):
         return b64u_encode(json_bytes(header)) + '.' + b64u_encode(payload) + '.' + b64u_encode(sig)
 
@@ -278,7 +278,7 @@ class Uretici:
                                                           self.sig_rec(1, 'ML-DSA-65', 'issuer/ML-DSA-65', 'gecerli'),
                                                           self.sig_rec(2, 'none', None, 'bos imza')]}))
 
-    # ------------------------------------------------------------ CMP ailesi
+    # ------------------------------------------------------------ CMP family
     def _cmp_parts(self, alg, ck, tbs, ph=None, ctx=True, zero=True):
         p = COMPOSITE[alg]
         mp = PREFIX + p['label'] + (b'\x00' if zero else b'') + composite.prehash(ph or p['ph'], tbs)
@@ -360,7 +360,7 @@ class Uretici:
         put('CMP11_bos_ctx_uzunlugu_yok', ml_nz + tr_nz,
             "M' icinde Label'dan sonraki 0x00 (bos baglam uzunlugu) atlandi; iki bilesen bu M' uzerinde tutarli.",
             ['uygulayici-hatasi-taklidi'], D, rec("iki bilesen de 0x00'siz M' uzerinde gecerli"))
-        # ayrilabilirlik: bilesen anahtarlarinin bagimsiz anahtar olarak yeniden kullanimi
+        # separability: reuse of the component keys as independent keys
         trad_pub = ck.trad.public_only()
         ml_pub = MLDSAKey('ML-DSA-65', pub=ck.ml.pub)
         tkid, mkid = trad_pub.thumbprint(), ml_pub.thumbprint()
@@ -385,7 +385,7 @@ class Uretici:
             insa={'kaynak_vektor': 'CMP00', 'imzalar': [{'sira': 0, 'alg': 'ML-DSA-65', 'alg_sinifi': 'pq',
                                                           'anahtar_rolu': 'issuer/ML-DSA-65-ES256#ml', 'kid': mkid,
                                                           'insa': "composite'in ML-DSA bileseni (M', ctx=Label)"}]}))
-        # EdDSA'li composite
+        # composite with EdDSA
         alg2 = 'ML-DSA-65-Ed25519'
         ck2 = S['issuer/' + alg2]
         h3 = {'alg': alg2, 'kid': ck2.kid, 'typ': 'JWT'}
@@ -399,7 +399,7 @@ class Uretici:
         put('CMP16_bilesen_sirasi_ters', tr + ml, 'ML-DSA-65-ES256: bilesen sirasi ters (tradSig || mldsaSig).',
             ['serilestirme'], D + [R['c_enc']], rec('bilesen sirasi ters'))
 
-    # ------------------------------------------------------------ X5C ailesi (SD-JWT VC ile)
+    # ------------------------------------------------------------ X5C family (with SD-JWT VC)
     def _vc_compact(self, cred_id, key, alg, prot, holder='holder/ES256'):
         payload, labeled = A.pid_payload(cred_id, self.S[holder].public_jwk(kid=False))
         jwt = jws.sign(json_bytes(payload), jws.Signer(key, prot, alg=alg), 'compact', True)
@@ -437,7 +437,7 @@ class Uretici:
                 sdjwtvc=['-13', '-19'], girdiler=self.girdi([rol], x5c=True),
                 insa={'imzalar': [self.sig_rec(0, alg, rol, 'gecerli')],
                       'x5c': {'zincir': zincir, 'sinif': cls, 'korumali': True, 'kok_x5c_icinde': False}}))
-        # guven capasi x5c icinde
+        # trust anchor inside x5c
         rol, alg, leaf = 'issuer/ML-DSA-65', 'ML-DSA-65', 'issuer-ml@int-ml'
         c = S.certs[leaf]
         prot = {'typ': 'dc+sd-jwt', 'x5c': pki.x5c(c, c.issuer, c.issuer.issuer)}
@@ -448,7 +448,7 @@ class Uretici:
             sdjwtvc=['-13', '-19'], girdiler=self.girdi([rol], x5c=True),
             insa={'imzalar': [self.sig_rec(0, alg, rol, 'gecerli')],
                   'x5c': {'zincir': [leaf, 'int-ml', 'root-ml'], 'sinif': 'tam-pq', 'korumali': True, 'kok_x5c_icinde': True}}))
-        # korumasiz x5c (flattened JSON SD-JWT)
+        # unprotected x5c (flattened JSON SD-JWT)
         fl = self._vc_flattened('X5C07', S[rol], alg, {'typ': 'dc+sd-jwt'}, {'x5c': S.x5c(leaf)})
         DD = [R['x5c'], R['flat'], R['sd_json'], R['sd_flat'], R['haip_x5c']]
         self.ekle('X5C07_korumasiz_x5c', 'X5C', fl, self.meta(
@@ -485,7 +485,7 @@ class Uretici:
             insa={'imzalar': [self.sig_rec(0, alg, rol, 'x5c yapragiyla gecerli; kid issuer/ES256\'yi gosteriyor')],
                   'x5c': {'zincir': [leaf, 'int-ml'], 'sinif': 'tam-pq', 'korumali': True}}))
 
-    # ------------------------------------------------------------ REQ ailesi
+    # ------------------------------------------------------------ REQ family
     def aile_REQ(self):
         S = self.S
         enc = S['rp/enc'].public_jwk(kid=False)
@@ -567,7 +567,7 @@ class Uretici:
             girdiler={'simdi': SIMDI, 'origin': A.ORIGIN}, dcapi='openid4vp-v1-signed',
             insa={'imzalar': [{'sira': 0, 'alg': 'none', 'insa': 'bos imza'}], 'client_id': cid_ml}))
 
-    # ------------------------------------------------------------ VC ailesi
+    # ------------------------------------------------------------ VC family
     def aile_VC(self):
         S = self.S
         hold = S['holder/ES256'].public_jwk(kid=False)
@@ -631,7 +631,7 @@ class Uretici:
             'sd-jwt-compact', ['L1'], ek=['alg-none'], dayanak=[R['sd_sign'], R['alg']], sdjwtvc=['-13', '-19'],
             girdiler={'simdi': SIMDI}, insa={'imzalar': [{'sira': 0, 'alg': 'none', 'insa': 'bos imza'}]}))
 
-    # ------------------------------------------------------------ VP ailesi
+    # ------------------------------------------------------------ VP family
     def aile_VP(self):
         S = self.S
         D = [R['sd_kb'], R['sd_kbbind'], R['sd_ver'], R['haip_kb'], R['vp_aud']]
@@ -685,7 +685,7 @@ class Uretici:
             girdiler=G, insa={'imzalar': sigs,
                               'kb_jwt': {'alg': 'ES256', 'anahtar_rolu': 'holder/ES256', 'sd_hash_imza_sirasi': 1}}))
 
-    # ------------------------------------------------------------ TSL ailesi
+    # ------------------------------------------------------------ TSL family
     def aile_TSL(self):
         S = self.S
         D = [R['tsl_jwt'], R['tsl_json'], R['tsl_bits'], R['haip_status'], R['haip_sig']]
@@ -700,7 +700,7 @@ class Uretici:
                 senaryo='a' if alg in COMPOSITE else None, girdiler=self.girdi([rol], x5c=bool(leaf)),
                 insa={'imzalar': [self.sig_rec(0, alg, rol, 'gecerli')], 'durumlar': {'3': 1, '7': 0, '12': 1}}))
 
-    # ------------------------------------------------------------ DPOP ailesi
+    # ------------------------------------------------------------ DPOP family
     def aile_DPOP(self):
         S = self.S
         D = [R['dpop'], R['dpop_chk'], R['haip_dpop']]
@@ -731,7 +731,7 @@ class Uretici:
             girdiler={'simdi': SIMDI, 'htm': 'POST', 'htu': A.ISS + '/token', 'anahtar': 'jwk basligindan'},
             insa={'imzalar': [self.sig_rec(0, 'ML-DSA-65', 'dpop/ML-DSA-65', 'gecerli')], 'jwk_ozel_uye': 'priv'}))
 
-    # ------------------------------------------------------------ CRIT ailesi
+    # ------------------------------------------------------------ CRIT family
     def aile_CRIT(self):
         S = self.S
         rol, alg, leaf = 'issuer/ML-DSA-65', 'ML-DSA-65', 'issuer-ml@int-ml'
@@ -764,7 +764,7 @@ class Uretici:
             kol='tedavi-ML-DSA-65', sdjwtvc=['-13'], girdiler=G,
             insa={'imzalar': [self.sig_rec(0, alg, rol, 'gecerli')], 'crit': ['x-pq-beklenti'], 'crit_korumali': False}))
 
-    # ------------------------------------------------------------ anahtar dosyalari ve manifest
+    # ------------------------------------------------------------ key files and manifest
     def yaz_anahtarlar(self):
         S = self.S
         os.makedirs(os.path.join(self.kdir, 'ozel'), exist_ok=True)

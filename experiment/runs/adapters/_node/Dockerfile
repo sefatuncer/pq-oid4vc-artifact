@@ -1,4 +1,4 @@
-# C3 adaptörü (Node). Kullanım: docker build --build-arg PAKET="jose@6.2.12" -t a10-jose-009:1 -f _node/Dockerfile _node
+# C3 adapter (Node). Usage: docker build --build-arg PAKET="jose@6.2.12" -t a10-jose-009:1 -f _node/Dockerfile _node
 FROM pq-a09-env-node:1.0
 ARG PAKET
 WORKDIR /a

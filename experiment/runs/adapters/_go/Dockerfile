@@ -1,4 +1,4 @@
-# C3 adaptörü (Go): üç hedef tek ikilide (sürümler go.mod/go.sum'da sabit)
+# C3 adapter (Go): three targets in one binary (versions pinned in go.mod/go.sum)
 FROM pq-a09-env-go:1.0 AS b
 WORKDIR /a
 COPY go.mod go.sum main.go /a/

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-# COSE-036 — wolfCOSE (kaynak, commit sabit; GPL-3.0: yalnız ölçülür, dağıtılmaz). Adım 9 görev 4a. İmza doğrulama YOK.
-# wolfSSL v5.9.2-stable, README'deki "Full Build (All Algorithms)" bayraklarıyla (--enable-mldsa dahil) derlenir.
-# COSE hedefi: yürütücü talimatıyla ek ortam uğraşı yapılmaz (başarısızsa kaydedilir).
+# COSE-036 — wolfCOSE (source, commit pinned; GPL-3.0: only measured, not distributed). Step 9 task 4a. NO signature verification.
+# wolfSSL v5.9.2-stable is built with the "Full Build (All Algorithms)" flags of the README (--enable-mldsa included).
+# COSE target: by the maintainers' instruction no extra environment effort is made (a failure is recorded).
 set -uo pipefail
 source /b/ortak.sh
 DEPO=https://github.com/wolfssl/wolfcose; SHA=f907071b10127f3ae2dd7719749a91b039ff04a1
@@ -27,7 +27,7 @@ if ! make -j8 all 2>&1 | tail -20; then :; fi
 [ -f libwolfcose.a ] || { yaz not "wolfCOSE make başarısız"; bitir basarisiz 12; }
 yaz kilit_dosyasi "yok (kaynak; wolfSSL etiket+commit ve wolfCOSE commit sabit)"; yaz kilit_sha256 "$(ozet libwolfcose.a) (libwolfcose.a; yeniden üretilebilirlik iddia edilmez)"
 yaz lisans_kayit "$(head -3 LICENSE | tr '\n' ' ' | cut -c1-60)"
-# Yalnız imza (COSE_Sign1 / COSE_Sign) doğrulama adları; wolfcose.h'de bildirilenler (deneme 1: EAT/MAC adları seçilmişti — çalışma hatası)
+# Only the names of the signature (COSE_Sign1 / COSE_Sign) verification functions declared in wolfcose.h (attempt 1 had picked EAT/MAC names — a work error)
 FN=$(grep -ohE '\bwc_CoseSign1?_Verify[A-Za-z0-9_]*[[:space:]]*\(' include/wolfcose/wolfcose.h | tr -d ' (' | sort -u | head -4)
 echo "doğrulama işlev adları (başlık): $FN"
 { echo '#include <stdio.h>'; echo '#include <wolfcose/wolfcose.h>'; echo 'int main(void) {'

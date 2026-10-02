@@ -1,6 +1,6 @@
-// C3 adaptörü (Go): JOSE-033 golang-jwt/jwt v5, JOSE-034 jose2go, COSE-034 veraison/go-cose.
-// Sözleşme: adaptor-sozlesme.md (1.0) + RUNNER.md. Oracle'ı GÖRMEZ; MANIFEST'ten yalnız dogrulama_girdileri.
-// Kullanım: /a/adaptor <hedef_id> <jobs-v1.3.jsonl> <cikti.jsonl> <kosu>
+// C3 adapter (Go): JOSE-033 golang-jwt/jwt v5, JOSE-034 jose2go, COSE-034 veraison/go-cose.
+// Contract: experiment/oracle/oracle-A/adapter-contract.md (1.0) + RUNNER.md. Does NOT see the oracle; only dogrulama_girdileri from the MANIFEST.
+// Usage: /a/adaptor <hedef_id> <jobs-v1.3.jsonl> <cikti.jsonl> <kosu>
 package main
 
 import (
@@ -62,7 +62,7 @@ func loadKeys() {
 	}
 }
 
-// Yalnız Go'nun yerleşik türleri (EC P-256/384, Ed25519); AKP (ML-DSA) bu kütüphanelerde desteklenmiyor.
+// Only Go's built-in types (EC P-256/384, Ed25519); AKP (ML-DSA) is not supported in these libraries.
 func pubOf(j JWK) (crypto.PublicKey, error) {
 	if j == nil {
 		return nil, errors.New("no key for kid/alg")
@@ -114,7 +114,7 @@ func jwkFor(h map[string]any) JWK {
 }
 
 func allowed(pol, X, iss string, supported []string) []string {
-	// Yapılandırma adı: `|sdjwtvc=…` ve `@-19` ekleri yalnız oracle beklentisini böler (oracle-B YONTEM §2).
+	// Configuration name: the suffixes `|sdjwtvc=…` and `@-19` only split the oracle expectation (oracle-B METHOD §2).
 	pol = strings.SplitN(strings.SplitN(pol, "|", 2)[0], "@", 2)[0]
 	switch pol {
 	case "GEC", "GEC@-19", "P0", "P1":
@@ -189,7 +189,7 @@ func (GJWT) verify(j Job, data []byte, X string) (Res, error) {
 }
 
 // ---------------- jose2go ----------------
-// Politika yalnız genel algoritma kaydıyla (RegisterJws/DeregisterJws; belgeli genel API) ifade edilir: L1.
+// The policy is expressed only with the global algorithm registry (RegisterJws/DeregisterJws; documented public API): L1.
 type JOSE2GO struct{}
 
 var j2gSupported = []string{"ES256", "ES384", "ES512", "RS256", "PS256"}
@@ -275,9 +275,9 @@ func (GOCOSE) verify(j Job, data []byte, X string) (Res, error) {
 		}
 		return Res{"kabul", []map[string]any{{"sira": 0, "alg": coseAlg[alg], "sonuc": "gecerli"}}}, nil
 	}
-	// COSE_Sign: SignMessage.Verify her imzayı konumsal doğrulayıcıyla doğrular (mevcut-tümü-geçerli).
-	// "R={X} zorunlu, A isteğe bağlı" (L4/L4-Y) ve "X mevcut olmalı" (L4-S) genel API'de yok → ifade-edilemedi.
-	if strings.HasPrefix(j.Politika, "L4") { // ekli biçimler (L4|sdjwtvc=…, L4@-19) da L4 ailesidir
+	// COSE_Sign: SignMessage.Verify verifies every signature with the positional verifier (all-present-valid).
+	// "R={X} mandatory, A optional" (L4/L4-Y) and "X must be present" (L4-S) are not in the public API → ifade-edilemedi.
+	if strings.HasPrefix(j.Politika, "L4") { // the forms with suffixes (L4|sdjwtvc=…, L4@-19) also belong to the L4 family
 		return Res{"ifade-edilemedi", nil}, nil
 	}
 	var m cose.SignMessage

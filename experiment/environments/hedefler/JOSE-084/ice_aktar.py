@@ -1,4 +1,4 @@
-# İçe aktarma kontrolü. Hiçbir işlev ÇAĞRILMAZ.
+# Import check. NO function is called.
 import jose
 from jose import jws, jwt
 from jose.backends import ECKey, RSAKey

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# JOSE-031 — guardian (YEDEK ADAYI; JOSE-104'ün yerine genel yedek 5.3-4-ii). Hex paketi. İmza doğrulama YOK.
+# JOSE-031 — guardian (RESERVE CANDIDATE; general reserve 5.3-4-ii in place of JOSE-104). Hex package. NO signature verification.
 set -uo pipefail
 source /b/ortak.sh
 PAKET=guardian; SURUM=2.5.0
@@ -20,7 +20,7 @@ yaz lisans_kayit MIT
 echo "== mix compile"
 if ! mix compile 2>&1; then yaz not "mix compile başarısız"; bitir basarisiz 12; fi
 cat > /tmp/kontrol.exs <<'EXS'
-# Bağlama kontrolü: modüller yüklenir (Code.ensure_loaded?); hiçbir doğrulama işlevi ÇAĞRILMAZ.
+# Link check: the modules are loaded (Code.ensure_loaded?); NO verification function is called.
 for m <- [Guardian, Guardian.Token.Jwt, JOSE.JWS, JOSE.JWK] do
   IO.puts("modul #{inspect(m)} #{if Code.ensure_loaded?(m), do: "OK", else: "HATA"}")
 end

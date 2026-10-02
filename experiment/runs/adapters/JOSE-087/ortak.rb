@@ -1,8 +1,8 @@
 # frozen_string_literal: true
-# Ortak adaptör iskeleti (Ruby) — C3 adaptör sözleşmesi 1.0 / RUNNER.md §1–§3.
-# Bu dosya JOSE-087 ve JOSE-089'da AYNIDIR. Kütüphaneye özgü doğrulama adaptor.rb'dedir.
-# Doğrulama döngüsü YOK: imza doğrulamasını yalnız hedef kütüphanenin belgeli API'si yapar.
-# Ağ erişimi yok; yalnız /v (vektörler), /anahtarlar ve iş dosyası okunur.
+# Shared adapter skeleton (Ruby) — C3 adapter contract 1.0 (experiment/oracle/oracle-A/adapter-contract.md) / RUNNER.md §1–§3.
+# This file is IDENTICAL in JOSE-087 and JOSE-089. The library-specific verification is in adaptor.rb.
+# NO verification loop: signature verification is done only by the documented API of the target library.
+# No network access; only /v (vectors), /anahtarlar and the job file are read.
 require 'json'
 require 'base64'
 
@@ -20,7 +20,7 @@ module Ortak
     Base64.urlsafe_decode64(s + '=' * ((4 - s.length % 4) % 4))
   end
 
-  # /v altında iş satırındaki yol: KOSUCU §2 (/v = v1.3) ya da /v = vektorler/ (dosya "v1.3/..." önekli)
+  # Path of the job row under /v: RUNNER §2 (/v = v1.3) or /v = vektorler/ (file with the prefix "v1.3/...")
   def vektor_yolu(dosya)
     adaylar = ["/v/#{dosya}", "/v/#{dosya.sub(%r{\Av1\.3/}, '')}"]
     adaylar.find { |y| File.exist?(y) } || adaylar.first
@@ -30,7 +30,7 @@ module Ortak
     @manifest ||= begin
       y = ['/v/MANIFEST.json', '/v/v1.3/MANIFEST.json'].find { |p| File.exist?(p) }
       raise 'MANIFEST.json bulunamadi' unless y
-      # Yalnız dogrulama_girdileri tutulur; `insa` (inşa gerçekleri) ve diğer alanlar OKUNMAZ (yürütücü 01.10).
+      # Only dogrulama_girdileri is kept; `insa` (construction facts) and the other fields are NOT read (maintainers 01.10).
       JSON.parse(File.read(y))['vektorler'].to_h { |e| [e['id'], { 'dogrulama_girdileri' => e['dogrulama_girdileri'] || {} }] }
     end
   end
@@ -44,9 +44,9 @@ module Ortak
     @jwks[goreli] ||= JSON.parse(File.read(anahtar_dosyasi(goreli)))
   end
 
-  # Politika → (W, R). YONTEM.md §2; KOSUCU §1. VARSAYILAN: sözleşme §5.2 L5 (yalnız anahtar).
+  # Policy → (W, R). METHOD.md §2; RUNNER §1. VARSAYILAN: contract §5.2 L5 (key only).
   def politika(is, kutuphane_algleri)
-    taban = is['politika'].split('|').first.split('@').first # yürütücü: '|sdjwtvc=..' ve '@-19' ekleri yalnız oracle'ı böler
+    taban = is['politika'].split('|').first.split('@').first # maintainers: the suffixes '|sdjwtvc=..' and '@-19' only split the oracle
     x = X_KOL[is['kol']]
     case taban
     when 'GEC', 'P0', 'P1', 'P2' then { w: kutuphane_algleri, r: [], taban: taban }
@@ -62,13 +62,13 @@ module Ortak
     end
   end
 
-  # Tek imzalı nesnede R ≠ ∅ ise etkin izin listesi R'dir (R ⊆ W; tek imza R'yi ancak kendisi X ise karşılar).
+  # For a single-signature object with R ≠ ∅ the effective allow-list is R (R ⊆ W; a single signature satisfies R only if it is X itself).
   def tek_imza_izin_listesi(pol)
     pol[:r].empty? ? pol[:w] : pol[:r]
   end
 
-  # Anahtar seçimi (sözleşme §8 m.1: bütün kollarda aynı yol = "JWK"): başlık kid → vektörün JWKS'i;
-  # kid yoksa manifest alg_kid[alg]; o da yoksa tek kid. DPoP: başlıktaki jwk ("jwk-basligi").
+  # Key selection (contract §8 item 1: the same path in all arms = "JWK"): header kid → the vector's JWKS;
+  # without a kid the manifest alg_kid[alg]; without that the single kid. DPoP: the jwk in the header ("jwk-basligi").
   def jwk_sec(baslik, giris)
     dg = giris['dogrulama_girdileri'] || {}
     if dg['anahtar'] == 'jwk basligindan'
@@ -118,11 +118,11 @@ module Ortak
     }
   end
 
-  # Ana döngü: her iş satırı tek süreçte sırayla; vektör başına 60 s (Timeout).
+  # Main loop: every job row in sequence in one process; 60 s per vector (Timeout).
   def kos(argv)
     require 'timeout'
     girdi, cikti = argv
-    raise 'kullanim: adaptor <jobs-v1.3.jsonl> <cikti.jsonl>' unless girdi && cikti
+    raise 'usage: adaptor <jobs-v1.3.jsonl> <output.jsonl>' unless girdi && cikti
     kosu = kosu_adi(cikti)
     File.open(cikti, 'w') do |out|
       File.foreach(girdi) do |l|

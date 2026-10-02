@@ -1,5 +1,5 @@
 # a10-sdjwt-002:1 — selective_disclosure_jwt 1.1.1 (affinidi-sdjwt-dart); pubspec.lock = experiment/environments/hedefler/SDJWT-002/cikti
-# pub.dev anonim; Dart analitiği kapalı. Koşum --network none.
+# pub.dev anonymous; Dart analytics off. Runs with --network none.
 FROM pq-a09-env-dart:1.0
 WORKDIR /opt/a
 COPY pubspec.yaml pubspec.lock ./

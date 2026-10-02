@@ -1,7 +1,7 @@
 <?php
-// Ortak adaptör iskeleti (PHP) — C3 adaptör sözleşmesi 1.0 / RUNNER.md §1–§3.
-// Bu dosya JOSE-070, JOSE-071 ve COSE-035'te AYNIDIR. Kütüphaneye özgü doğrulama adaptor.php'dedir.
-// Doğrulama döngüsü YOK: imza doğrulamasını yalnız hedef kütüphanenin belgeli API'si yapar. Ağ erişimi yok.
+// Shared adapter skeleton (PHP) — C3 adapter contract 1.0 (experiment/oracle/oracle-A/adapter-contract.md) / RUNNER.md §1–§3.
+// This file is IDENTICAL in JOSE-070, JOSE-071 and COSE-035. The library-specific verification is in adaptor.php.
+// NO verification loop: signature verification is done only by the documented API of the target library. No network access.
 declare(strict_types=1);
 
 final class Ortak
@@ -20,7 +20,7 @@ final class Ortak
         return (string) base64_decode(strtr($s, '-_', '+/') . str_repeat('=', (4 - strlen($s) % 4) % 4), false);
     }
 
-    // KOSUCU §2: /v = v1.3; iş satırındaki dosya "v1.3/..." önekli olabilir.
+    // RUNNER §2: /v = v1.3; the file in the job row may carry the prefix "v1.3/...".
     public static function vektorYolu(string $dosya): string
     {
         foreach (['/v/' . $dosya, '/v/' . preg_replace('#^v1\.3/#', '', $dosya)] as $y) {
@@ -29,7 +29,7 @@ final class Ortak
         return '/v/' . $dosya;
     }
 
-    // Manifestten YALNIZ dogrulama_girdileri okunur; `insa` ve diğer alanlar okunmaz (yürütücü 01.10).
+    // ONLY dogrulama_girdileri is read from the manifest; `insa` and the other fields are not read (maintainers 01.10).
     public static function girdi(string $id): array
     {
         if (self::$manifest === null) {
@@ -52,10 +52,10 @@ final class Ortak
         return self::$jwks[$goreli] ??= json_decode((string) file_get_contents(self::anahtarDosyasi($goreli)), true, 512, JSON_THROW_ON_ERROR);
     }
 
-    /** Politika → ['w' => W|null, 'r' => R, 'taban' => ...]. YONTEM.md §2; VARSAYILAN = sözleşme §5.2 L5. */
+    /** Policy → ['w' => W|null, 'r' => R, 'taban' => ...]. METHOD.md §2; VARSAYILAN = contract §5.2 L5. */
     public static function politika(array $is, array $kutuphaneAlgleri): array
     {
-        $taban = explode('@', explode('|', $is['politika'])[0])[0]; // '|sdjwtvc=..' ve '@-19' ekleri yalnız oracle'ı böler
+        $taban = explode('@', explode('|', $is['politika'])[0])[0]; // the suffixes '|sdjwtvc=..' and '@-19' only split the oracle
         $x = self::X_KOL[$is['kol']] ?? null;
         $gerekX = static function () use ($x, $is) { if ($x === null) throw new RuntimeException("kol {$is['kol']} icin X tanimsiz"); };
         switch ($taban) {
@@ -68,14 +68,14 @@ final class Ortak
         throw new RuntimeException("bilinmeyen politika {$is['politika']}");
     }
 
-    /** Tek imzalı nesnede R ≠ ∅ ise etkin izin listesi R'dir (tek imza R'yi ancak kendisi X ise karşılar; R ⊆ W). */
+    /** For a single-signature object with R ≠ ∅ the effective allow-list is R (a single signature satisfies R only if it is X itself; R ⊆ W). */
     public static function tekImzaIzin(array $pol): ?array
     {
         if ($pol['w'] === null) return null;
         return $pol['r'] ? $pol['r'] : $pol['w'];
     }
 
-    /** Anahtar seçimi (sözleşme §8 m.1): başlık kid → vektörün JWKS'i; yoksa alg_kid[alg]; yoksa tek kid. DPoP: başlık jwk. */
+    /** Key selection (contract §8 item 1): header kid → the vector's JWKS; otherwise alg_kid[alg]; otherwise the single kid. DPoP: header jwk. */
     public static function jwkSec(array $baslik, array $dg): array
     {
         if (($dg['anahtar'] ?? null) === 'jwk basligindan') return [$baslik['jwk'] ?? null, 'jwk-basligi'];
@@ -91,7 +91,7 @@ final class Ortak
         return [null, 'JWK'];
     }
 
-    /** JWK'nın anahtar türünden "doğal" JOSE algoritması (anahtar–alg bağlaması gerektiren kütüphaneler için). */
+    /** The "natural" JOSE algorithm of the JWK's key type (for libraries that need a key–alg binding). */
     public static function dogalAlg(array $jwk, string $kol): ?string
     {
         $kty = $jwk['kty'] ?? ''; $crv = $jwk['crv'] ?? '';
@@ -126,10 +126,10 @@ final class Ortak
         return ['sonuc_ham' => 'ifade-edilemedi', 'hata_sinifi' => null, 'hata_ozeti' => $neden, 'api_yolu' => $api];
     }
 
-    /** Ana döngü: iş satırları tek süreçte sırayla. $dogrula(array $is): array */
+    /** Main loop: job rows in sequence in one process. $dogrula(array $is): array */
     public static function kos(array $argv, callable $dogrula): void
     {
-        if (count($argv) < 3) { fwrite(STDERR, "kullanim: adaptor <jobs-v1.3.jsonl> <cikti.jsonl>\n"); exit(2); }
+        if (count($argv) < 3) { fwrite(STDERR, "usage: adaptor <jobs-v1.3.jsonl> <output.jsonl>\n"); exit(2); }
         [, $girdi, $cikti] = $argv;
         $kosu = self::kosuAdi($cikti);
         $out = fopen($cikti, 'w');

@@ -1,11 +1,11 @@
 # frozen_string_literal: true
-# JOSE-087 ruby-jwt 3.3.0 adaptörü. Belgeli genel API: JWT.decode(token, key, verify, options) { keyfinder } (README
-# "Algorithms and Usage", "JSON Web Key (JWK)"), JWT::JWK.import. Eşleme ve gerekçeler: MAPPING.md.
+# Adapter for JOSE-087 ruby-jwt 3.3.0. Documented public API: JWT.decode(token, key, verify, options) { keyfinder } (README
+# "Algorithms and Usage", "JSON Web Key (JWK)"), JWT::JWK.import. Mapping and reasons: MAPPING.md.
 require_relative 'ortak'
 require 'jwt'
 
-# Bataryadaki algoritmalardan kütüphanenin yerel desteklediği alt küme (evidence/api-tarama.txt: jwa/ecdsa.rb NAMED_CURVES;
-# EdDSA 3.0'dan beri ayrı jwt-eddsa gem'inde; ML-DSA/composite yok).
+# The subset of the battery's algorithms that the library supports natively (evidence/api-tarama.txt: jwa/ecdsa.rb NAMED_CURVES;
+# EdDSA is in the separate jwt-eddsa gem since 3.0; no ML-DSA/composite).
 KUTUPHANE_ALGLERI = %w[ES256 ES384].freeze
 DESTEKLI_BICIM = %w[compact].freeze
 API = 'JWT.decode(token, nil, true, algorithms: W) { |hdr| JWT::JWK.import(jwk).verify_key }'
@@ -50,13 +50,13 @@ def dogrula(is)
   alg = baslik_alg(token)
   anahtar_yolu = 'JWK'
   opts = {}
-  opts[:algorithms] = Ortak.tek_imza_izin_listesi(pol) unless pol[:w].nil? # VARSAYILAN: algoritma verilmez
+  opts[:algorithms] = Ortak.tek_imza_izin_listesi(pol) unless pol[:w].nil? # VARSAYILAN: no algorithm is given
   api = pol[:w].nil? ? 'JWT.decode(token, nil, true) { |hdr| JWT::JWK.import(jwk).verify_key }' : API
   begin
     _yuk, hdr = JWT.decode(token, nil, true, opts) do |baslik|
       jwk, anahtar_yolu = Ortak.jwk_sec(baslik, giris)
-      # JWK nesnesi yerine verify_key (README "JWK" bölümü): 3.3.0'da JWT.decode, JWK nesnesini JWA nesneleriyle
-      # karşılaştırıp geçerli ES256 imzasını da reddediyor (evidence/duman-testi.txt, ilk deneme).
+      # verify_key instead of the JWK object (README section "JWK"): in 3.3.0 JWT.decode compares the JWK object with JWA
+      # objects and also rejects a valid ES256 signature (evidence/duman-testi.txt, first attempt).
       jwk && JWT::JWK.import(jwk).verify_key
     end
     { sonuc_ham: 'kabul', hata_sinifi: nil, hata_ozeti: nil, api_yolu: api, anahtar_yolu: anahtar_yolu,

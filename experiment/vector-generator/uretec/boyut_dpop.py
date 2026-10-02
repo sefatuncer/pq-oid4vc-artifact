@@ -1,11 +1,11 @@
-"""DPoP boyut tablosu (yurutucu karari A6): talep kumesiyle birlikte ve composite imza UST SINIRIYLA.
+"""DPoP size table (maintainers' decision A6): together with the claim set and with the UPPER BOUND of the composite signature.
 
-Talep kumeleri: 'asgari' (jti, htm, htu, iat), '+ath' (kaynak erisimi; erisim belirteci ozeti),
-'+ath+nonce' (sunucu nonce'u ile). Anahtarlar: anahtarlar/v1 'dpop/<alg>' (belirlenimci).
-Composite ECDSA bileseni DER oldugundan imza boyu degiskendir (-04 Tablo 2: P-256 <= 72 B, P-384 <= 104 B);
-'bayt_ust_sinir' ML-DSA-65-ES256 icin 3309 + 72 = 3381 B imza ile hesaplanir.
-Bu bir RAPOR tablosudur; vektor seti (v1/v1.1) degismez.
-Kullanim: python -m uretec.boyut_dpop <cikti_kok>   -> <cikti_kok>/sonuclar/v1.1_dpop_boyutlari.{csv,json}
+Claim sets: 'asgari' (minimal: jti, htm, htu, iat), '+ath' (resource access; digest of the access token),
+'+ath+nonce' (with a server nonce). Keys: anahtarlar/v1 'dpop/<alg>' (deterministic).
+Since the composite ECDSA component is DER, the signature length varies (-04 Table 2: P-256 <= 72 B, P-384 <= 104 B);
+'bayt_ust_sinir' is computed for ML-DSA-65-ES256 with a signature of 3309 + 72 = 3381 B.
+This is a REPORT table; the vector set (v1/v1.1) does not change.
+Usage: python -m uretec.boyut_dpop <output_root>   -> <output_root>/sonuclar/v1.1_dpop_boyutlari.{csv,json}
 """
 import csv
 import json
@@ -27,7 +27,7 @@ TALEP = (('asgari', False, False), ('+ath', True, False), ('+ath+nonce', True, T
 
 
 def b64len(n):
-    return (4 * n + 2) // 3  # dolgusuz base64url uzunlugu
+    return (4 * n + 2) // 3  # base64url length without padding
 
 
 def ust_sinir_imza(alg, gercek):
