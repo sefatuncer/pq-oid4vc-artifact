@@ -1,4 +1,4 @@
-# C3 adaptörü (JVM/Java): java-jwt 4.6.1, jjwt 0.13.0, authlete sd-jwt 1.9 (+ Nimbus 10.10). Sürümler pom.xml'de sabit.
+# C3 adapter (JVM/Java): java-jwt 4.6.1, jjwt 0.13.0, authlete sd-jwt 1.9 (+ Nimbus 10.10). Versions pinned in pom.xml.
 FROM pq-a09-env-jvm:1.0 AS b
 WORKDIR /w
 COPY pom.xml /w/

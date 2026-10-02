@@ -1,4 +1,4 @@
-# İçe aktarma kontrolü: modül yüklenir, API sembollerinin varlığı yazılır. Hiçbir işlev ÇAĞRILMAZ.
+# Import check: the module is loaded and the presence of the API symbols is written. NO function is called.
 import jwt
 print("modul=jwt (pyjwt) yuklendi; surum=" + jwt.__version__)
 print("sembol decode", callable(getattr(jwt, "decode", None)))

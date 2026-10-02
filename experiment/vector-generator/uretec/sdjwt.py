@@ -1,17 +1,17 @@
-"""SD-JWT (RFC 9901) — ihrac, sunum (SD-JWT+KB) ve oz-dogrulama; compact ve JWS JSON (General).
+"""SD-JWT (RFC 9901) — issuance, presentation (SD-JWT+KB) and self-verification; compact and JWS JSON (General).
 
-Kurallar (RFC 9901):
+Rules (RFC 9901):
   4.     compact: <Issuer-signed JWT>~<D.1>~...~<D.N>~[<KB-JWT>]
-  4.1.1  _sd_alg (varsayilan sha-256)
-  4.2.1  nesne ozelligi ifsasi  [salt, ad, deger];  4.2.2 dizi ogesi ifsasi [salt, deger]
-  4.2.3  ozet = base64url(H(ASCII(base64url ifsa)))
-  4.2.4  _sd (nesne) / {"...": ozet} (dizi);  4.2.5 sahte (decoy) ozetler
+  4.1.1  _sd_alg (default sha-256)
+  4.2.1  object property disclosure  [salt, name, value];  4.2.2 array element disclosure [salt, value]
+  4.2.3  digest = base64url(H(ASCII(base64url disclosure)))
+  4.2.4  _sd (object) / {"...": digest} (array);  4.2.5 decoy digests
   4.3    KB-JWT: typ=kb+jwt; iat, aud, nonce, sd_hash
-  8.1    JSON: 'disclosures' ve 'kb_jwt' korumasiz baslikta; sd_hash, gecici compact bicim uzerinden
-  8.3    General: disclosures/kb_jwt YALNIZ ilk korumasiz baslikta
-BELIRSIZLIK (8.1): General JSON'da sd_hash icin "the signature" ifadesi coklu imzada hangi imzanin
-kullanilacagini belirtmiyor. Bu arac ILK imzayi kullanir (ifsalar da ilk basliktadir) ve bunu
-vektor meta verisinde acikca yazar.
+  8.1    JSON: 'disclosures' and 'kb_jwt' in the unprotected header; sd_hash over a temporary compact form
+  8.3    General: disclosures/kb_jwt ONLY in the first unprotected header
+AMBIGUITY (8.1): in General JSON, the phrase "the signature" for sd_hash does not say which signature is to be used
+with multiple signatures. This tool uses the FIRST signature (the disclosures are also in the first header) and states this
+explicitly in the vector metadata.
 """
 import hashlib
 
@@ -32,13 +32,13 @@ def disclosure(salt: str, name, value) -> str:
 
 
 class Builder:
-    """Belirlenimci SD yuk kurucusu. salt_fn(etiket)->str, decoy_fn(etiket)->ozet."""
+    """Deterministic SD payload builder. salt_fn(label)->str, decoy_fn(label)->digest."""
 
     def __init__(self, salt_fn, decoy_fn, sd_alg='sha-256'):
         self.salt_fn = salt_fn
         self.decoy_fn = decoy_fn
         self.sd_alg = sd_alg
-        self.disclosures = []   # (etiket, kodlanmis)
+        self.disclosures = []   # (label, encoded)
 
     def sd_prop(self, obj: dict, name: str, value, label: str):
         d = disclosure(self.salt_fn(label), name, value)
@@ -56,7 +56,7 @@ class Builder:
 
     @staticmethod
     def finalize(obj):
-        """_sd dizilerini siralar (RFC 9901 4.2.4.1: sira bilgi sizdirmamali)."""
+        """Sorts the _sd arrays (RFC 9901 4.2.4.1: the order must not leak information)."""
         if isinstance(obj, dict):
             for k, v in obj.items():
                 Builder.finalize(v)
@@ -68,14 +68,14 @@ class Builder:
         return obj
 
 
-# ------------------------------------------------------------------ ihrac
+# ------------------------------------------------------------------ issuance
 def issue_compact(payload: dict, disclosures, signer: jws.Signer, deterministic=True) -> str:
     jwt = jws.sign(json_bytes(payload), signer, 'compact', deterministic)
     return jwt + '~' + ''.join(d + '~' for d in disclosures)
 
 
 def issue_general(payload: dict, disclosures, signers, deterministic=True) -> dict:
-    """RFC 9901 8.3: disclosures yalniz ilk imzanin korumasiz basliginda."""
+    """RFC 9901 8.3: disclosures only in the unprotected header of the first signature."""
     signers = list(signers)
     first = signers[0]
     hdr = dict(first.header or {})
@@ -84,7 +84,7 @@ def issue_general(payload: dict, disclosures, signers, deterministic=True) -> di
     return jws.sign(json_bytes(payload), signers, 'general', deterministic)
 
 
-# ------------------------------------------------------------------ sunum
+# ------------------------------------------------------------------ presentation
 def sd_hash_compact(issuer_jwt: str, disclosures, sd_alg='sha-256') -> str:
     s = issuer_jwt + '~' + ''.join(d + '~' for d in disclosures)
     return b64u_encode(HASHES[sd_alg](s.encode('ascii')).digest())
@@ -98,7 +98,7 @@ def make_kb_jwt(holder_key, holder_alg, aud, nonce, iat, sd_hash, deterministic=
 
 def present_compact(sdjwt: str, keep_labels, all_labeled, holder_key=None, holder_alg=None, aud=None, nonce=None,
                     iat=None, sd_alg='sha-256', deterministic=True) -> str:
-    """keep_labels: acilacak ifsalarin etiketleri; all_labeled: [(etiket, ifsa)]."""
+    """keep_labels: labels of the disclosures to be opened; all_labeled: [(label, disclosure)]."""
     issuer_jwt = sdjwt.split('~')[0]
     sel = [d for (lab, d) in all_labeled if lab in keep_labels]
     base = issuer_jwt + '~' + ''.join(d + '~' for d in sel)
@@ -110,7 +110,7 @@ def present_compact(sdjwt: str, keep_labels, all_labeled, holder_key=None, holde
 
 def present_general(gj: dict, keep_labels, all_labeled, holder_key=None, holder_alg=None, aud=None, nonce=None,
                     iat=None, sd_alg='sha-256', sd_hash_sig_index=0, deterministic=True) -> dict:
-    """RFC 9901 8.1/8.3. sd_hash_sig_index: gecici compact bicim icin kullanilan imza (belirsizlik; varsayilan 0)."""
+    """RFC 9901 8.1/8.3. sd_hash_sig_index: the signature used for the temporary compact form (ambiguity; default 0)."""
     import copy
     out = copy.deepcopy(gj)
     sel = [d for (lab, d) in all_labeled if lab in keep_labels]
@@ -125,7 +125,7 @@ def present_general(gj: dict, keep_labels, all_labeled, holder_key=None, holder_
     return out
 
 
-# ------------------------------------------------------------------ oz-dogrulama (arac ici tutarlilik)
+# ------------------------------------------------------------------ self-verification (consistency inside the tool)
 def _collect_digests(obj, acc):
     if isinstance(obj, dict):
         for d in obj.get('_sd', []):
@@ -176,7 +176,7 @@ def _resolve(obj, dmap, used):
 
 
 def verify_sdjwt(obj, policy: jws.Policy, require_kb=False, kb_aud=None, kb_nonce=None, sd_hash_sig_index=0):
-    """RFC 9901 7.1/7.3 (arac ici). Dondurur: (gecerli, gerekce, cozulmus_talepler, ayrinti)."""
+    """RFC 9901 7.1/7.3 (inside the tool). Returns: (valid, reason, decoded_claims, detail)."""
     if isinstance(obj, str) and not obj.lstrip().startswith('{'):
         parts = obj.split('~')
         issuer_jwt, discl, kb = parts[0], [p for p in parts[1:-1]], parts[-1]

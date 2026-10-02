@@ -1,9 +1,9 @@
-"""ML-DSA (FIPS 204) arka uclari.
+"""ML-DSA (FIPS 204) back ends.
 
-* 'cryptography' (pyca, gomulu OpenSSL): tohumdan anahtar, bagli (hedged) imza, dogrulama
-* 'openssl-cli'  (sistem OpenSSL 3.5.x) : belirlenimci imza (rnd = 0^32), capraz dogrulama
+* 'cryptography' (pyca, embedded OpenSSL): key from seed, hedged signature, verification
+* 'openssl-cli'  (system OpenSSL 3.5.x) : deterministic signature (rnd = 0^32), cross-verification
 
-RFC 9964: JOSE'de ctx BOS dize olmalidir; composite -04'te ML-DSA bileseni ctx=Label ile cagrilir.
+RFC 9964: in JOSE ctx must be the EMPTY string; in composite -04 the ML-DSA component is called with ctx=Label.
 """
 import functools
 
@@ -12,7 +12,7 @@ from cryptography.hazmat.primitives.asymmetric import mldsa as _m
 
 from . import openssl
 
-# (acik anahtar, imza) boyutlari — FIPS 204 Tablo 2 / RFC 9964 Tablo 1
+# (public key, signature) sizes — FIPS 204 Table 2 / RFC 9964 Table 1
 SIZES = {44: (1312, 2420), 65: (1952, 3309), 87: (2592, 4627)}
 _PRIV = {44: _m.MLDSA44PrivateKey, 65: _m.MLDSA65PrivateKey, 87: _m.MLDSA87PrivateKey}
 _PUB = {44: _m.MLDSA44PublicKey, 65: _m.MLDSA65PublicKey, 87: _m.MLDSA87PublicKey}

@@ -1,51 +1,51 @@
 # -*- coding: utf-8 -*-
 """
-PQ-OID4VC | Teknik kapının son koşulu (ÖK §2F) | ASP örneği -> Tamarin çevirisi
+PQ-OID4VC | Last condition of the technical gate (PR §2F) | ASP instance -> Tamarin translation
 =================================================================================
 
-Girdi : model/sampling/secim/secim.json (yürütücünün seçimi; DEĞİŞTİRİLMEZ)
-Çıktı : ornekler/<satir_id>.spthy   örnek başına tek Tamarin teorisi
-        ceviri_plani.tsv            örnek başına çeviri özeti (hedef lemma, artefaktlar, anahtarlar)
+Input : model/sampling/secim/secim.json (the maintainers' selection; NOT CHANGED)
+Output: ornekler/<satir_id>.spthy   one Tamarin theory per instance
+        ceviri_plani.tsv            translation summary per instance (target lemma, artefacts, keys)
 
-KÖRLÜK KURALI
+BLINDNESS RULE
 -------------
-Çeviri yalnız ASP'nin GİRDİLERİNİ okur:
-  - atama: alt_cizge[].pq (düğüm kararı), kume.tasiyicilar (seçilen beklenti taşıyıcıları);
-  - model yapısı ve parametrelerden türeyenler: tanitici (etkin kenarlar), sabit, kanal,
-    klasik_alternatif (faz), klasikse_pencerede_kirilir (τ ve pencere), hucre.politika;
-  - tamarin.lemma (hedef lemma adı).
-ASP'nin ÇIKTILARI okunmaz ve çeviriye girmez: asp_tahmini, ihlal_edilen,
+The translation reads only the INPUTS of ASP:
+  - assignment: alt_cizge[].pq (node decision), kume.tasiyicilar (selected expectation carriers);
+  - what is derived from the model structure and parameters: tanitici (active edges), sabit, kanal,
+    klasik_alternatif (phase), klasikse_pencerede_kirilir (τ and window), hucre.politika;
+  - tamarin.lemma (name of the target lemma).
+The OUTPUTS of ASP are not read and do not enter the translation: asp_tahmini, ihlal_edilen,
 tanik_sahte_artefaktlar, alt_cizge[].sahte, alt_cizge[].beklenti_var, tamarin.bayraklar.BEKLENTI.
-Karşılaştırma ayrı betikte (karsilastir.py), koşumlardan sonra yapılır.
+The comparison is made in a separate script (karsilastir.py), after the runs.
 
-ÇEVİRİ KURALLARI (R1–R7 şablonlarının kalıplarından derleme)
+TRANSLATION RULES (compiled from the patterns of the R1–R7 templates)
 ------------------------------------------------------------
-Her imzalı artefakt A (a00_ojeu ve a13_* taşımaları hariç) için:
-  * Anahtarlar (R1/R5): ana anahtar ('main'); pq(A) ise PQ, değilse klasik.
-    Klasik alternatif ('alt', R2 birlikte yaşama): pq(A) ve klasik_alternatif(A) ise ayrıca klasik
-    bir anahtar vardır; dürüst taraf iki anahtarla birden imzalar (R2 Issue_Migrated gibi).
-  * CRQC (R1 CRQC_Break_*): klasik anahtar ancak klasikse_pencerede_kirilir ise Q-day'den sonra,
-    gözlenen açık anahtardan çıkarılabilir (R6: pencere τ'dan kısaysa kırma kuralı yoktur).
-  * Sabitleme (R5 Pin_TL_Out_Of_Band): sabit(A) ise A'nın imzacı anahtarları doğrulayıcıda bant
-    dışı güvenilir; tanıtıcı yolu yoktur (K2'yi keser).
-  * Tanıtma (R1 zinciri; R1 X_alt_ca "herhangi bir geçerli yol"): A sabit değilse, tanitici(A)'daki
-    HER B için: B'nin kabul edilmiş bir anahtarıyla imzalı <'intro', B, A, pk, tür> iletisi A için
-    pk'yi kabul ettirir. Dürüst B yalnız A'nın dürüst anahtarlarını tanıtır.
-  * Beklenti (R2 EXPECT_AUTH / R3 kanal; politika p4): (C, X) ∈ kume.tasiyicilar ise X'in klasik
-    alternatif ('alt') anahtarının kullanımı, C'nin kabul edilmiş anahtarıyla imzalı
-    <'exp', C, X, 'none'> iletisini gerektirir; dürüst C yalnız 'pq_required' yayımlar.
-    C = a00_ojeu (imzasız, sabitlenmiş kanal) özgündür: X'in 'alt' kullanımı hiç mümkün değildir.
-    Politika p0–p2'de beklenti kullanılmaz (ASP beklenti_politikasi); p3 bu örneklerde taşıyıcısızdır.
-  * Taşıma (R3a): bütün örneklerde a13 klasik ve kırılabilir, yani çekilen artefaktın sahtesi
-    ulaştırılabilir. Tamarin'in ağ saldırganı zaten her iletiyi ulaştırır; ayrı kural gerekmez.
-    Varsayım denetlenir: a13 PQ ya da kırılamaz çıkarsa çeviri durur.
-Hedefler (olgular/hedefler.lp):
-  G1 -> a07_kimlik: <'cred', c>; lemma "Accept(c) ⇒ Issued(c) önce" (R1/R5 G1).
-  G2 -> a10_kbjwt : doğrulayıcı nonce'u için <'kb', n>; cihaz anahtarı a07_kimlik ile tanıtılır
-        (cnf); lemma "AcceptPres(n) ⇒ Presented(n) önce" (R4 G2). SINGLE_USE sonucu değiştirmez
-        (R4/R6h5 H5 sonucu) ve modellenmez.
-  G3 -> a08_durum : <'status', s>; lemma "AcceptStatus(s) ⇒ IssuedStatus(s) önce".
-Her teoride ayrıca sağlık lemması `executable` (dürüst kabul erişilebilir) vardır.
+For every signed artefact A (except a00_ojeu and the a13_* transports):
+  * Keys (R1/R5): main key ('main'); PQ if pq(A), otherwise classical.
+    Classical alternative ('alt', R2 coexistence): if pq(A) and klasik_alternatif(A), there is additionally a classical
+    key; the honest party signs with both keys (like R2 Issue_Migrated).
+  * CRQC (R1 CRQC_Break_*): a classical key can be extracted from the observed public key after Q-day only if
+    klasikse_pencerede_kirilir holds (R6: if the window is shorter than τ, there is no breaking rule).
+  * Pinning (R5 Pin_TL_Out_Of_Band): if sabit(A), A's signer keys are trusted out of band at the verifier;
+    there is no introducer path (cuts K2).
+  * Introduction (R1 chain; R1 X_alt_ca "any valid path"): if A is not pinned, for EVERY B in tanitici(A):
+    a message <'intro', B, A, pk, tür> signed with an accepted key of B makes pk accepted for A.
+    An honest B introduces only the honest keys of A.
+  * Expectation (R2 EXPECT_AUTH / R3 channel; policy p4): if (C, X) ∈ kume.tasiyicilar, using the classical
+    alternative ('alt') key of X requires a message <'exp', C, X, 'none'> signed with an accepted key of C;
+    an honest C publishes only 'pq_required'.
+    C = a00_ojeu (unsigned, pinned channel) is authentic: using 'alt' for X is never possible.
+    Under policies p0–p2 no expectation is used (ASP beklenti_politikasi); p3 has no carrier in these instances.
+  * Transport (R3a): in all instances a13 is classical and breakable, i.e. a forged fetched artefact can be
+    delivered. Tamarin's network attacker already delivers every message; no separate rule is needed.
+    The assumption is checked: if a13 turns out PQ or unbreakable, the translation stops.
+Goals (olgular/hedefler.lp):
+  G1 -> a07_kimlik: <'cred', c>; lemma "Accept(c) ⇒ Issued(c) before" (R1/R5 G1).
+  G2 -> a10_kbjwt : <'kb', n> for the verifier nonce; the device key is introduced with a07_kimlik
+        (cnf); lemma "AcceptPres(n) ⇒ Presented(n) before" (R4 G2). SINGLE_USE does not change the result
+        (R4/R6h5 H5 result) and is not modelled.
+  G3 -> a08_durum : <'status', s>; lemma "AcceptStatus(s) ⇒ IssuedStatus(s) before".
+Every theory additionally has the sanity lemma `executable` (honest acceptance is reachable).
 """
 import io
 import json
@@ -67,7 +67,7 @@ def imzali_mi(a):
 
 
 def cevir(ornek, gorev):
-    """ornek: secim.json satırı (ASP çıktı alanları önceden silinmiş). Dönüş: (spthy, plan_satiri)."""
+    """ornek: a row of secim.json (ASP output fields removed beforehand). Return: (spthy, plan_row)."""
     sid = ornek['satir_id']
     hedef = ornek['hedef']
     if hedef not in HEDEF_ARTEFAKT:
@@ -81,7 +81,7 @@ def cevir(ornek, gorev):
     if hedef_a not in ad:
         raise CeviriHatasi('%s: hedef artefakt %s alt çizgede yok' % (sid, hedef_a))
 
-    # --- varsayım denetimleri (çeviri kapsamı dışındaki özellikler)
+    # --- assumption checks (properties outside the scope of the translation)
     for a in ornek['alt_cizge']:
         if a.get('varyant'):
             raise CeviriHatasi('%s: imzasız varyant (%s) desteklenmiyor' % (sid, a['artefakt']))
@@ -94,7 +94,7 @@ def cevir(ornek, gorev):
             if b not in ad:
                 raise CeviriHatasi('%s: %s tanıtıcısı %s imzalı artefakt değil' % (sid, a['artefakt'], b))
 
-    # --- beklenti taşıyıcıları
+    # --- expectation carriers
     tasiyici = {}  # X -> [C]
     if politika in ('p3', 'p4'):
         for c, x in ornek['kume']['tasiyicilar']:
@@ -138,7 +138,7 @@ def cevir(ornek, gorev):
     w("    [ ] --[ Unique('qday'), QdayEv() ]-> [ !CRQC() ]")
     w('')
 
-    # --- anahtar kurulumu ve kırma kuralları
+    # --- key setup and breaking rules
     w('/* ---------------- artefakt imzacı anahtarları (R1/R5; birlikte yaşamada ikinci klasik anahtar: R2) ---------------- */')
     plan_anahtar = []
     for a in imzali:
@@ -163,7 +163,7 @@ def cevir(ornek, gorev):
                                            '' if kir else '(kirilmaz)', '+sabit' if a['sabit'] else ''))
     w('')
 
-    # --- sabitleme
+    # --- pinning
     w('/* ---------------- sabitleme (R5): sabit artefaktın imzacı anahtarları bant dışı güvenilir ---------------- */')
     for a in imzali:
         if a['sabit']:
@@ -172,12 +172,12 @@ def cevir(ornek, gorev):
             w("    [ !Sk('%s', t, k) ] --> [ !Acc('%s', pk(k), t) ]" % (x, x))
     w('')
 
-    # --- kapı öncülleri
+    # --- gate premises
     def kapi_oncul(x):
         return ["!ExpVal('%s', '%s', 'none')" % (c, x) for c in tasiyici.get(x, [])]
 
     def kabul_kurallari(ad_kok, x, govde_oncul, govde_eylem, govde_sonuc, pk_ad):
-        """x'in kabul edilmiş anahtarı pk_ad ile doğrulama; x kapılıysa 'alt' ayrı ve kapılı."""
+        """Verification of x with the accepted key pk_ad; if x is gated, 'alt' is separate and gated."""
         if not kapili(x):
             w('rule %s:' % ad_kok)
             w("    [ !Acc('%s', %s, t)%s ]" % (x, pk_ad, govde_oncul))
@@ -196,7 +196,7 @@ def cevir(ornek, gorev):
         w('  --[ %s ]->' % govde_eylem)
         w('    [ %s ]' % govde_sonuc)
 
-    # --- tanıtma
+    # --- introduction
     w('/* ---------------- tanıtma (R1 zinciri; her tanıtıcı bir OR-kenarıdır: R1 X_alt_ca) ---------------- */')
     kenarlar = []
     for a in imzali:
@@ -215,7 +215,7 @@ def cevir(ornek, gorev):
             kabul_kurallari('AccIntro_%s__%s' % (b, x), b, govde_oncul, govde_eylem, govde_sonuc, 'pkB')
     w('')
 
-    # --- beklenti taşıyıcıları
+    # --- expectation carriers
     w('/* ---------------- beklenti (R2 EXPECT_AUTH / R3 kanal; politika %s) ---------------- */' % politika)
     for x, cs in sorted(tasiyici.items()):
         for c in cs:
@@ -231,7 +231,7 @@ def cevir(ornek, gorev):
             kabul_kurallari('ExpAcc_%s__%s' % (c, x), c, govde_oncul, govde_eylem, govde_sonuc, 'pkC')
     w('')
 
-    # --- hedef
+    # --- goal
     w('/* ---------------- hedef %s ---------------- */' % hedef)
     x = hedef_a
     if hedef == 'G1':
@@ -271,7 +271,7 @@ def cevir(ornek, gorev):
     w('')
     w('end')
     spthy = '\n'.join(L) + '\n'
-    # boş sonuç parantezi "[  ]" düzeltmesi
+    # correction of an empty result bracket "[  ]"
     spthy = spthy.replace('    [  ]\n', '    [ ]\n')
     plan = [sid, gorev, hedef, ornek['tur'], ornek['hucre_id'], lemma, 'ornekler/%s.spthy' % sid,
             ' '.join(plan_anahtar),

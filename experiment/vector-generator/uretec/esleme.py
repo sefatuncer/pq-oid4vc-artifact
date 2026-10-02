@@ -1,15 +1,15 @@
-"""BATARYA-ESLEME.md ureteci: ÖK §6.5 (K1-K11, V+/V-), MR1-MR4 ve L4c <-> test vektoru seti v1.3.
+"""Generator of BATARYA-ESLEME.md: PR §6.5 (K1-K11, V+/V-), MR1-MR4 and L4c <-> test vector set v1.3.
 
-* Oracle kararlari, MR tanimlari, L4c ve §2H alintilari ON-KAYIT-TASLAK.md'den AYRISTIRILARAK birebir alinir
-  (elle yazilmaz); bulunamazsa uretim DURUR.
-* Her vektor kimligi v1.3 MANIFEST'inde var olmali; yoksa uretim DURUR.
-* Kontrol kolundaki her kimligin '-ED25519' esi varsa hucreye otomatik eklenir (ÖK §2D m.2 yedek kurali).
-* Vektorler ve manifest oracle karari ICERMEZ; bu dosya yalniz ÖK'nin kararlarini alintilar.
-* Bolumler: §1-§2 JOSE/SD-JWT (v1.2 eslemesiyle ayni; tek fark K8/K9 kontrol ve composite hucreleri ÖK §2H m.9'a
-  uyarlandi), §3 COSE, §4 L4c, §5 durustluk notlari, §6 denetim.
-  v1.2 eslemesi (d7335217...) pq-a09-credgen:1.2 imajindaki esleme.py ile uretilmisti; kopyasi
+* Oracle decisions, MR definitions, L4c and the §2H quotations are taken verbatim BY PARSING ON-KAYIT-TASLAK.md
+  (not written by hand); if they are not found, the generation STOPS.
+* Every vector id must exist in the v1.3 MANIFEST; otherwise the generation STOPS.
+* If an id of the control arm has a '-ED25519' counterpart, it is added to the cell automatically (fallback rule of PR §2D item 2).
+* The vectors and the manifest contain NO oracle decision; this file only quotes the decisions of the PR.
+* Sections: §1-§2 JOSE/SD-JWT (the same as the v1.2 mapping; the only difference is that the K8/K9 control and composite cells were adapted to
+  PR §2H item 9), §3 COSE, §4 L4c, §5 honesty notes, §6 check.
+  The v1.2 mapping (d7335217...) was produced with the esleme.py in the image pq-a09-credgen:1.2; its copy is
   sonuclar/BATARYA-ESLEME_v1.2.md.
-Kullanim: python -m uretec.esleme <uretec_kok> <ON-KAYIT-TASLAK.md> [cikti.md]
+Usage: python -m uretec.esleme <generator_root> <ON-KAYIT-TASLAK.md> [output.md]
 """
 import hashlib
 import json

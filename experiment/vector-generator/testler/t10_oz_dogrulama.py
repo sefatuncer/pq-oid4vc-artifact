@@ -1,20 +1,20 @@
 #!/usr/bin/env python3
-"""T10 — Ureticinin oz-dogrulamasi (arac ici tutarlilik; hedef kutuphane OLCULMEZ).
+"""T10 — Self-verification of the generator (consistency inside the tool; the target library is NOT measured).
 
-  A. Spesifikasyon ornekleri: TSL Ek C (1/2/4/8 bit; cozme + kodlama), RFC 9901 4.2.3 ozet ornegi
-  B. MANIFEST butunlugu: her dosyanin SHA-256'si ve SHA256SUMS
-  C. Belirlenimcilik: gecici dizine yeniden uretim -> tum dosyalar bayt-bayt ayni
-  D. Insa gercekleri: her vektorde manifestin 'insa' alanindaki iddialar (hangi imza gecerli/bozuk,
-     composite bilesen durumu, x5c zincir sinifi, client_id=x509_hash, durum listesi degerleri, DPoP jwk,
-     KB-JWT sd_hash kapsami) pqjose/OpenSSL ile yeniden hesaplanarak teyit edilir.
-     Bu, oracle DEGILDIR: yalniz vektorun tanimlandigi gibi uretildigini gosterir.
-Kullanim: python t10_oz_dogrulama.py <uretec_kok> <korpus_metin_dizini> <sonuc_dizini> [v1|v1.1|v1.2|v1.3]
-  v1.3 ek olarak: G. v1.2 alt kumesi bayt-ayni; COSE (yapi, kimlik kaynaklari korpusta, imza gecerlilikleri pqjose +
-  OpenSSL CLI + dilithium-py, K2/K3/K5 insa iliskileri, K7 bilesen durumu, K8/K9 x5chain, K10, V+/V-, MR4, Ed25519
-  esleri); L4c eski ihracci (ayri anahtar/kid/iss; JOSE ve COSE); anahtarlar/v1.3 (turetme, COSE_Key == JWK).
-  v1.2 ek olarak: F. v1.1 alt kumesi bayt-ayni; MR4 esleri (icerik korunur), T7 (K5), K10, V+/V-, yeni Ed25519 esleri
-  v1.1 ek olarak: E. v1 alt kumesi bayt-ayni; Ed25519 esleri (yapisal denetim, OpenSSL capraz dogrulama,
-  pqjose'de 'Ed25519' etiketinin kabulu ve izin listesinde etiket duyarliligi).
+  A. Specification examples: TSL Appendix C (1/2/4/8 bits; decoding + encoding), RFC 9901 4.2.3 digest example
+  B. MANIFEST integrity: the SHA-256 of every file and SHA256SUMS
+  C. Determinism: regeneration into a temporary folder -> all files byte-identical
+  D. Construction facts: the claims in the 'insa' field of the manifest for every vector (which signature is valid/corrupted,
+     composite component state, x5c chain class, client_id=x509_hash, status list values, DPoP jwk,
+     KB-JWT sd_hash coverage) are confirmed by recomputing them with pqjose/OpenSSL.
+     This is NOT an oracle: it only shows that the vector was produced as defined.
+Usage: python t10_oz_dogrulama.py <generator_root> <corpus_text_folder> <result_folder> [v1|v1.1|v1.2|v1.3]
+  v1.3 additionally: G. v1.2 subset byte-identical; COSE (structure, id sources in the corpus, signature validities pqjose +
+  OpenSSL CLI + dilithium-py, construction relations K2/K3/K5, K7 component state, K8/K9 x5chain, K10, V+/V-, MR4, Ed25519
+  counterparts); L4c old issuer (separate key/kid/iss; JOSE and COSE); anahtarlar/v1.3 (derivation, COSE_Key == JWK).
+  v1.2 additionally: F. v1.1 subset byte-identical; MR4 counterparts (content preserved), T7 (K5), K10, V+/V-, new Ed25519 counterparts
+  v1.1 additionally: E. v1 subset byte-identical; Ed25519 counterparts (structural check, OpenSSL cross-verification,
+  acceptance of the label 'Ed25519' in pqjose and label sensitivity in the allow-list).
 """
 import glob
 import hashlib
@@ -25,7 +25,7 @@ import sys
 import tempfile
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-# ortak.py (Kayit): signer/testler — imajda /opt/pq/testler; depoda ../../signer/testler
+# ortak.py (Kayit): signer/testler — /opt/pq/testler in the image; ../../signer/testler in the repository
 sys.path.insert(0, os.path.join(HERE, '..', '..', 'signer', 'testler'))
 sys.path.insert(0, '/opt/pq/testler')
 from ortak import Kayit  # noqa: E402
@@ -39,7 +39,7 @@ from pqjose.util import b64u_decode, b64u_encode, json_bytes  # noqa: E402
 from uretec import sdjwt, statuslist  # noqa: E402
 from uretec.uret import main as uret_main  # noqa: E402
 
-SURUM = 'v1'   # main() ile 'v1' ya da 'v1.1' olarak ayarlanir
+SURUM = 'v1'   # set by main() to 'v1' or 'v1.1'
 
 
 def unwrap_json(txt):
@@ -146,7 +146,7 @@ def test_C(K, kok):
             K.kontrol('C:belirlenimcilik', '%s/v1 yeniden uretim bayt-bayt ayni' % sub, a == b)
 
 
-# ------------------------------------------------------------------ D: insa gercekleri
+# ------------------------------------------------------------------ D: construction facts
 class Ctx:
     def __init__(self, kok):
         self.kok = kok
@@ -173,7 +173,7 @@ def load(kok, v, surum=None):
 
 
 def jws_parts(obj):
-    """(serilestirme, [(protected_b64, protected, header, sig_bytes)], payload_b64)"""
+    """(serialization, [(protected_b64, protected, header, sig_bytes)], payload_b64)"""
     if isinstance(obj, str):
         jwt = obj.split('~')[0]
         h, p, s = jwt.split('.')
@@ -217,7 +217,7 @@ def check_sigs(K, C, v, obj):
     return res
 
 
-CMP_BEKLENEN = {  # (ml, trad) ya da 'serilestirme'
+CMP_BEKLENEN = {  # (ml, trad) or 'serilestirme'
     'CMP00_gecerli_referans': (True, True), 'CMP01_ml_bileseni_bozuk': (False, True),
     'CMP02_ecdsa_bileseni_bozuk': (True, False), 'CMP03_ecdsa_der_uzunluk_bozuk': 'serilestirme',
     'CMP04_ecdsa_ham_rs': 'serilestirme', 'CMP05_ecdsa_asgari_olmayan_der': 'serilestirme',
@@ -297,7 +297,7 @@ def check_x5c(K, C, v, obj):
 
 
 def check_sdjwt(K, C, v, obj):
-    """Ifsa ozetleri, tuzlar ve (varsa) KB-JWT sd_hash kapsami."""
+    """Disclosure digests, salts and (if present) the KB-JWT sd_hash coverage."""
     if isinstance(obj, str):
         parts = obj.split('~')
         issuer_jwt, discl, kb = parts[0], parts[1:-1], parts[-1]
@@ -390,7 +390,7 @@ def test_D(K, kok, man):
 
 
 def test_E(K, kok, man):
-    """v1.1: v1 alt kumesi bayt-ayni; Ed25519 esleri yapisal denetim, OpenSSL capraz dogrulama, kitaplik kabulu."""
+    """v1.1: v1 subset byte-identical; Ed25519 counterparts structural check, OpenSSL cross-verification, library acceptance."""
     from pqjose import openssl
     from uretec.v11 import ED_DAYANAK, koruma_denetimi
     v1man = json.load(open(os.path.join(kok, 'vektorler', 'v1', 'MANIFEST.json'), encoding='utf-8'))
@@ -474,7 +474,7 @@ def test_E(K, kok, man):
 
 
 def _ossl_dogrula(alg, key, m, sig):
-    """Bagimsiz capraz dogrulama (sistem OpenSSL CLI)."""
+    """Independent cross-verification (system OpenSSL CLI)."""
     from pqjose import openssl
     from pqjose.der import ecdsa_raw_to_der
     if alg in ('ES256', 'ES384'):
@@ -499,7 +499,7 @@ def _ossl_dogrula(alg, key, m, sig):
 
 
 def test_F(K, kok, man):
-    """v1.2: v1.1 alt kumesi bayt-ayni; MR4 esleri (icerik korunur), T7 (K5), K10, V+/V-, yeni Ed25519 esleri."""
+    """v1.2: v1.1 subset byte-identical; MR4 counterparts (content preserved), T7 (K5), K10, V+/V-, new Ed25519 counterparts."""
     from pqjose.keys import derive_bytes
     from uretec.v11 import koruma_denetimi
     from uretec.v12 import KAYITSIZ, KAYITSIZ_BAYT, mr4_denetimi
@@ -626,7 +626,7 @@ def test_F(K, kok, man):
         K.kontrol('F:V', '%s: pqjose %s' % (v['id'], 'KABUL' if beklenen else 'RED'), r.valid == beklenen, r.reason)
         K.kontrol('F:V', '%s: OpenSSL CLI %s' % (v['id'], 'gecerli' if beklenen else 'gecersiz'),
                   _ossl_dogrula(alg, key, (h + '.' + p).encode(), b64u_decode(s)) == beklenen)
-    # ---- yeni Ed25519 esleri
+    # ---- new Ed25519 counterparts
     for v in [x for x in yeni if x['id'].endswith('-ED25519')]:
         es_kaynak = v['insa']['etiket_esi']
         try:

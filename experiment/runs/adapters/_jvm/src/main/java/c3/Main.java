@@ -1,7 +1,7 @@
-// C3 adaptörü (JVM/Java): JOSE-052 auth0 java-jwt, JOSE-055 jjwt, SDJWT-004 authlete sd-jwt (+ belgeli doğrulama
-// yolu Nimbus JOSE+JWT; ÖK §2H m.15: imzayı kendisi doğrulamayan kütüphane önerdiği JOSE katmanıyla ölçülür).
-// Sözleşme: adaptor-sozlesme.md (1.0) + RUNNER.md. Oracle'ı GÖRMEZ; MANIFEST'ten yalnız dogrulama_girdileri.
-// Kullanım: java -jar adaptor.jar <hedef_id> <jobs-v1.3.jsonl> <cikti.jsonl> <kosu>
+// C3 adapter (JVM/Java): JOSE-052 auth0 java-jwt, JOSE-055 jjwt, SDJWT-004 authlete sd-jwt (+ documented verification
+// route Nimbus JOSE+JWT; PR §2H item 15: a library that does not verify the signature itself is measured with the JOSE layer it recommends).
+// Contract: experiment/oracle/oracle-A/adapter-contract.md (1.0) + RUNNER.md. Does NOT see the oracle; only dogrulama_girdileri from the MANIFEST.
+// Usage: java -jar adaptor.jar <hedef_id> <jobs-v1.3.jsonl> <cikti.jsonl> <kosu>
 package c3;
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -59,7 +59,7 @@ public class Main {
     throw new GeneralSecurityException("unsupported key type " + kty + " " + j.path("alg").asText());
   }
   static List<String> allowed(String pol, String X, String iss, List<String> sup) {
-    // Yapılandırma adı: `|sdjwtvc=…` ve `@-19` ekleri yalnız oracle beklentisini böler (oracle-B YONTEM §2).
+    // Configuration name: the suffixes `|sdjwtvc=…` and `@-19` only split the oracle expectation (oracle-B METHOD §2).
     pol = pol.split("[|]")[0].split("@")[0];
     switch (pol) {
       case "GEC", "GEC@-19", "P0", "P1": return sup;
@@ -81,7 +81,7 @@ public class Main {
 
   interface T { String ver(); String api(); Set<String> formats(); Object verify(JsonNode job, String data, String X) throws Exception; }
 
-  // ---------- auth0 java-jwt: bir Verifier = bir Algorithm (anahtar–alg bağlaması yapısal) ----------
+  // ---------- auth0 java-jwt: one Verifier = one Algorithm (the key–alg binding is structural) ----------
   static class JavaJwt implements T {
     static final List<String> SUP = List.of("ES256", "ES384", "ES512", "RS256", "PS256");
     public String ver() { return "4.6.1"; }
@@ -90,8 +90,8 @@ public class Main {
     public Object verify(JsonNode job, String data, String X) throws Exception {
       String tok = data.trim(); JsonNode h = hdr(tok); String alg = h.path("alg").asText();
       List<String> W = allowed(job.get("politika").asText(), X, iss(tok), SUP);
-      // Uygulama beklenen algoritmanın Verifier'ını kurar; başlıktaki alg W dışındaysa W'nin ilk algoritmasıyla kurulan
-      // Verifier kütüphanenin AlgorithmMismatchException'ını üretir.
+      // The application builds the Verifier of the expected algorithm; if the header alg is outside W, the Verifier built with
+      // the first algorithm of W produces the library's AlgorithmMismatchException.
       String use = W.contains(alg) ? alg : W.get(0);
       PublicKey pk = pub(W.contains(alg) ? jwkFor(h) : (KID.get(ALG2KID.get(use)) != null ? KID.get(ALG2KID.get(use)) : jwkFor(h)));
       com.auth0.jwt.algorithms.Algorithm a = switch (use) {
@@ -104,7 +104,7 @@ public class Main {
     }
   }
 
-  // ---------- jjwt: parser başına algoritma kayıt defteri (sig().remove) ----------
+  // ---------- jjwt: algorithm registry per parser (sig().remove) ----------
   static class Jjwt implements T {
     public String ver() { return "0.13.0"; }
     public String api() { return "Jwts.parser().sig().remove(alg∉W).and().keyLocator(…).build().parseSignedClaims(token)"; }
@@ -124,7 +124,7 @@ public class Main {
           catch (Exception e) { throw new io.jsonwebtoken.security.InvalidKeyException("no key: " + e.getMessage()); }
         }
       });
-      b.unsecured(); // 'none' yalnız kayıt defteri izin verirse; varsayılan kayıt 'none' içermez
+      b.unsecured(); // 'none' only if the registry permits it; the default registry does not contain 'none'
       b.clockSkewSeconds(Long.MAX_VALUE / 2000);
       var p = b.build();
       p.parseSignedClaims(tok);
@@ -132,7 +132,7 @@ public class Main {
     }
   }
 
-  // ---------- authlete sd-jwt (ayrıştırma) + Nimbus (belgeli imza yolu) ----------
+  // ---------- authlete sd-jwt (parsing) + Nimbus (documented signature route) ----------
   static class Authlete implements T {
     public String ver() { return "1.9 (+nimbus-jose-jwt 10.10)"; }
     public String api() { return "com.authlete.sd.SDJWT.parse(s).getCredentialJwt() → Nimbus DefaultJWTProcessor + JWSVerificationKeySelector(W)"; }

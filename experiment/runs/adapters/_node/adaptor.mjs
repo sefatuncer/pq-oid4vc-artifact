@@ -1,7 +1,7 @@
-// C3 adaptörü (Node.js): JOSE-009 jose, JOSE-065 jsonwebtoken, COSE-014 cose-js, SDJWT-015 @sd-jwt/core.
-// Sözleşme: experiment/oracle/oracle-A/adaptor-sozlesme.md (1.0), experiment/runs/RUNNER.md. Oracle'ı GÖRMEZ.
-// MANIFEST'ten YALNIZ `dogrulama_girdileri` okunur (`insa` alanı OKUNMAZ: inşa gerçeğidir).
-// Kullanım: node /a/adaptor.mjs <hedef_id> <jobs-v1.3.jsonl> <cikti.jsonl> <kosu>
+// C3 adapter (Node.js): JOSE-009 jose, JOSE-065 jsonwebtoken, COSE-014 cose-js, SDJWT-015 @sd-jwt/core.
+// Contract: experiment/oracle/oracle-A/adapter-contract.md (1.0), experiment/runs/RUNNER.md. Does NOT see the oracle.
+// ONLY `dogrulama_girdileri` is read from the MANIFEST (the field `insa` is NOT read: it is a construction fact).
+// Usage: node /a/adaptor.mjs <hedef_id> <jobs-v1.3.jsonl> <cikti.jsonl> <kosu>
 import { readFileSync, writeFileSync, appendFileSync } from 'node:fs';
 import { createHash, webcrypto } from 'node:crypto';
 import { createRequire } from 'node:module';
@@ -17,7 +17,7 @@ const MAN = {}; for (const v of JSON.parse(readFileSync('/v/v1.3/MANIFEST.json')
 const hdrOf = (c) => JSON.parse(b64d(c.split('.')[0]).toString());
 const issOf = (c) => { try { return JSON.parse(b64d(c.split('.')[1]).toString()).iss; } catch { return undefined; } };
 const jwkFor = (h) => KID[h.kid] ?? KID[ALG2KID[h.alg] ?? ALG2KID[h.alg === 'EdDSA' ? 'Ed25519' : h.alg]];
-// Politikanın yapılandırma adı: `|sdjwtvc=…` ve `@-19` ekleri yalnız oracle beklentisini böler (oracle-B YONTEM §2).
+// Configuration name of the policy: the suffixes `|sdjwtvc=…` and `@-19` only split the oracle expectation (oracle-B METHOD §2).
 const temel = (p) => p.split('|')[0].split('@')[0];
 function allowed(pol, X, iss, supported) {
   pol = temel(pol);
@@ -48,7 +48,7 @@ const T = {
       formats: new Set(['compact', 'general', 'flattened']),
       async verify(job, data, X) {
         const pol = temel(job.politika);
-        if (pol === 'L4-S') return 'ifade-edilemedi';        // "mevcut her imza W içinde ve geçerli" seçeneği yok
+        if (pol === 'L4-S') return 'ifade-edilemedi';        // no option "every present signature in W and valid"
         if (job.serilestirme === 'compact') {
           const tok = data.trim();
           const r = await jose.compactVerify(tok, resolver, { algorithms: allowed(pol, X, issOf(tok), supported) });
@@ -58,7 +58,7 @@ const T = {
         const iss = (() => { try { return JSON.parse(b64d(j.payload).toString()).iss; } catch { return undefined; } })();
         const W = allowed(pol, X, iss, supported);
         const r = j.signatures ? await jose.generalVerify(j, resolver, { algorithms: W }) : await jose.flattenedVerify(j, resolver, { algorithms: W });
-        return [{ sira: -1, alg: r.protectedHeader.alg, sonuc: 'gecerli' }];   // jose yalnız doğrulanan ilk imzayı bildirir
+        return [{ sira: -1, alg: r.protectedHeader.alg, sonuc: 'gecerli' }];   // jose reports only the first verified signature
       },
     };
   },
@@ -83,7 +83,7 @@ const T = {
       ver: require('cose-js/package.json').version, api: 'cose.sign.verify(cbor, {key:{x,y,kid}}) (key from the message kid or alg)', formats: new Set(['COSE_Sign1', 'COSE_Sign']),
       async verify(job, data, X) {
         const pol = temel(job.politika);
-        if (!['GEC', 'P0', 'P1', 'P2'].includes(pol)) return 'ifade-edilemedi';   // cose-js'te algoritma izin listesi ya da gerekli küme seçeneği yok
+        if (!['GEC', 'P0', 'P1', 'P2'].includes(pol)) return 'ifade-edilemedi';   // cose-js has no option for an algorithm allow-list or a required set
         const buf = Buffer.from(readFileSync(`/v/${job.dosya}`));
         // Verifier key (cose-js supports ES/PS/RS only; lib/sign.js AlgFromTags). For COSE_Sign1 the key is chosen
         // from the message's kid, or from its alg (-7 ES256, -35 ES384); COSE_Sign keeps the ES256 key.
@@ -106,7 +106,7 @@ const T = {
     const { SDJwtInstance, SDJwtGeneralJSONInstance, GeneralJSON } = require('@sd-jwt/core');
     const jose = require('jose');
     const hasher = async (data, alg) => new Uint8Array(createHash('sha256').update(typeof data === 'string' ? data : Buffer.from(data)).digest());
-    // Belgelenmiş entegrasyon: kriptoyu uygulama sağlar (verifier geri çağrısı yalnız "bu imza bu anahtarla geçerli mi?" sorusunu yanıtlar; politika kütüphanenin allowedIssuerAlgorithms seçeneğindedir)
+    // Documented integration: the application supplies the crypto (the verifier callback only answers "is this signature valid with this key?"; the policy is in the library's allowedIssuerAlgorithms option)
     const verifier = async (data, sig) => {
       const h = hdrOf(data); const j = jwkFor(h); if (!j || !SUBTLE[h.alg]) return false;
       try { const k = await jose.importJWK({ ...j }, h.alg); return await webcrypto.subtle.verify(SUBTLE[h.alg], k, b64d(sig), new TextEncoder().encode(data)); } catch { return false; }
@@ -123,7 +123,7 @@ const T = {
       formats: new Set(['sd-jwt-compact', 'sd-jwt-general', 'compact-as-sdjwt']),
       async verify(job, data, X) {
         const pol = temel(job.politika); const g = MAN[job.vektor_id];
-        if (['L4-Y'].includes(pol)) return 'ifade-edilemedi';   // W dışı imzayı yok sayma seçeneği yok (genel JSON'da her imza izin listesinde olmalı)
+        if (['L4-Y'].includes(pol)) return 'ifade-edilemedi';   // no option to ignore a signature outside W (in General JSON every signature must be in the allow-list)
         const opts = { skipJwtClaimValidation: true };
         if (job.artefakt?.startsWith('sd-jwt-vc+kb')) { opts.keyBindingNonce = g.kb_nonce; }
         if (job.serilestirme === 'sd-jwt-general') {
@@ -133,7 +133,7 @@ const T = {
           const r = await sdg.verify(GeneralJSON.fromSerialized(j), opts);
           return (r.headers ?? []).map((h, i) => ({ sira: i, alg: h.alg, sonuc: 'gecerli' }));
         }
-        let s = data.trim(); if (job.serilestirme === 'compact') s = s + '~';   // açıklamasız SD-JWT (imza/yük değişmez)
+        let s = data.trim(); if (job.serilestirme === 'compact') s = s + '~';   // SD-JWT without disclosures (signature/payload unchanged)
         opts.allowedIssuerAlgorithms = allowed(pol, X, issOf(s.split('~')[0]), supported);
         const r = await sd.verify(s, opts);
         return [{ sira: 0, alg: r.header?.alg, sonuc: 'gecerli' }];

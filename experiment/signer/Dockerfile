@@ -1,12 +1,12 @@
-# pq-a09-signer — PQ-OID4VC Adim 9b: PQ/composite JWS imzalayici ve dogrulayici (pqjose)
+# pq-a09-signer — PQ-OID4VC Step 9b: PQ/composite JWS signer and verifier (pqjose)
 #
-# Taban: resmi Docker Hub python:3.11-slim, OZET ile sabit (Debian 13 "trixie", Python 3.11.16).
-#   * Sistem OpenSSL 3.5.7-1~deb13u2 tabanda HAZIR (ML-DSA-44/65/87 yerlesik): apt KULLANILMAZ,
-#     boylece imaj yalniz taban ozeti + PyPI ozetleriyle yeniden uretilebilir.
-#   * Python paketleri PyPI'den surum + SHA-256 ile sabit (--require-hashes, yalniz tekerlek).
-#   * cryptography 50.0.1 kendi OpenSSL 4.0.2'sini gomulu getirir -> kitaplik (OpenSSL 4.0.2) ile
-#     capraz dogrulayici (sistem OpenSSL 3.5.7 CLI) FARKLI surumlerdir.
-# Insa:   docker build -t pq-a09-signer:1.0 experiment/signer
+# Base: official Docker Hub python:3.11-slim, pinned by DIGEST (Debian 13 "trixie", Python 3.11.16).
+#   * System OpenSSL 3.5.7-1~deb13u2 is READY in the base (ML-DSA-44/65/87 built in): apt is NOT used,
+#     so the image can be reproduced from the base digest + PyPI digests only.
+#   * Python packages from PyPI pinned by version + SHA-256 (--require-hashes, wheels only).
+#   * cryptography 50.0.1 brings its own embedded OpenSSL 4.0.2 -> the library (OpenSSL 4.0.2) and the
+#     cross-verifier (system OpenSSL 3.5.7 CLI) are DIFFERENT versions.
+# Build:   docker build -t pq-a09-signer:1.0 experiment/signer
 FROM python:3.11-slim@sha256:9534e5a8e315485d4061ed659af0fd78a284c015f9b73661b41d6bab25604534
 
 LABEL org.opencontainers.image.title="pq-a09-signer" \
@@ -28,7 +28,7 @@ COPY servis /opt/pq/servis
 COPY testler /opt/pq/testler
 COPY dis-vektorler /opt/pq/dis-vektorler
 
-# Surum kapisi: beklenen surumler degilse insa BASARISIZ olur
+# Version gate: if the versions are not the expected ones, the build FAILS
 RUN openssl version | grep -q '^OpenSSL 3\.5\.7 ' \
  && test "$(dpkg-query -W -f='${Version}' openssl)" = "3.5.7-1~deb13u2" \
  && python -c "import cryptography; assert cryptography.__version__ == '50.0.1'" \
@@ -36,7 +36,7 @@ RUN openssl version | grep -q '^OpenSSL 3\.5\.7 ' \
  && python -m pqjose info \
  && python -m servis.pqdogrula saglik > /dev/null
 
-# PQ ilkel dogrulama servisi (istege bagli): kimlik dogrulama YOK -> yalniz ic Docker agi ya da 127.0.0.1
+# PQ primitive verification service (optional): NO authentication -> only the internal Docker network or 127.0.0.1
 EXPOSE 8765
 WORKDIR /work
 CMD ["python", "-m", "pqjose", "info"]

@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# PyPI hedefi: sanal ortama sabit sürümle kur, pip --report'tan hash'li kilit üret, içe aktarma kontrolü.
-# Girdi (kur.sh): PAKET, SURUM, [EKSTRA], /w/ice_aktar.py. İmza doğrulama YOK.
+# PyPI target: install with a pinned version into a virtual environment, produce a lock with hashes from pip --report, import check.
+# Input (kur.sh): PAKET, SURUM, [EKSTRA], /w/ice_aktar.py. NO signature verification.
 set -uo pipefail
 source /b/ortak.sh
 : "${PAKET:?}"; : "${SURUM:?}"
@@ -28,7 +28,7 @@ PY
 yaz kilit_dosyasi "requirements.lock (pip --report'tan, --hash'li)"; yaz kilit_sha256 "$(ozet $C/requirements.lock)"
 yaz kurulan_surum "$(python -c "import importlib.metadata as m; print(m.version('$PAKET'))")"
 yaz lisans_kayit "$(python -c "import importlib.metadata as m; d=m.metadata('$PAKET'); print(d.get('License-Expression') or d.get('License') or '')" | head -1 | cut -c1-60)"
-# Ortam olgusu (imza doğrulama değil): cryptography sürümü, gömülü OpenSSL, ML-DSA modülünün varlığı
+# Environment fact (not signature verification): cryptography version, embedded OpenSSL, presence of the ML-DSA module
 python - <<'PY' | tee -a /w/cikti/ortam.txt
 import importlib.util
 try:

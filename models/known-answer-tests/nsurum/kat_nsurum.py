@@ -1,19 +1,19 @@
 # -*- coding: utf-8 -*-
-"""KAT N-sürüm karşılaştırması: ilk çalışma (KAT-SPEC (d) tabloları) ↔ kör çalışma (BEKLENEN-KOR.tsv). Yürütücü, 25.09.2026."""
+"""KAT N-version comparison: first work (KAT-SPEC (d) tables) ↔ blind work (BEKLENEN-KOR.tsv). Maintainers, 25.09.2026."""
 import sys, io, re, csv
 spec = io.open(sys.argv[1], encoding="utf-8").read().split("\n")
 kor = list(csv.DictReader(io.open(sys.argv[2], encoding="utf-8"), delimiter="\t"))
 A = {}
-# KAT-1: "| Hücre | ASP sabitleri | Tamarin bayrakları | Beklenen ASP | Beklenen Tamarin (...) | Dayanak |"
+# KAT-1: "| Hücre | ASP sabitleri | Tamarin bayrakları | Beklenen ASP | Beklenen Tamarin (...) | Dayanak |" (table header of KAT-SPEC: cell, ASP constants, Tamarin flags, expected ASP, expected Tamarin, basis)
 for s in spec:
     m = re.match(r"^\|\s*\**(K1-\d\d)\**\s*\|", s)
     if m:
         c = [x.strip().replace("*", "") for x in s.strip().strip("|").split("|")]
         A[(m.group(1), "ASP")] = c[3]; A[(m.group(1), "Tamarin:a_rrset_authentic")] = c[4]
-# KAT-2a (birleşik satırlar açıldı)
+# KAT-2a (merged rows expanded)
 k2a = {"K2a-01": ("pqev=valid", "accept_classical"), "K2a-02": ("pqev=invalid", "accept_classical"),
        "K2a-03": ("pqev=valid", "accept_classical"), "K2a-04": ("pqev=invalid", "accept_classical"),
-       "K2a-05": ("pqev=valid", "accept_classical"), "K2a-06": ("pqev=invalid", "accept_classical"),   # "aynı"
+       "K2a-05": ("pqev=valid", "accept_classical"), "K2a-06": ("pqev=invalid", "accept_classical"),   # "aynı" (the same)
        "K2a-07": ("leafb=valid", "accept_classical"), "K2a-08": ("leafb=revoked", "accept_classical"),
        "K2a-09": ("pqev=valid", "accept_hybrid"), "K2a-10": ("pqev=invalid", "reject"), "K2a-11": ("pqev=absent", "accept_classical"),
        "K2a-12": ("pqev=valid", "accept_hybrid"), "K2a-13": ("pqev=invalid", "reject"), "K2a-14": ("pqev=absent", "reject"),

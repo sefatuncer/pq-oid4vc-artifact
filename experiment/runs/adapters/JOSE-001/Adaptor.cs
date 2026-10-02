@@ -1,22 +1,22 @@
-// JOSE-001 Microsoft.IdentityModel.JsonWebTokens 8.23.0 (System.IdentityModel.Tokens.Jwt 8.23.0 paket kümesi) adaptörü.
-// Belgeli genel API: JsonWebTokenHandler.ValidateTokenAsync(string, TokenValidationParameters);
-// TokenValidationParameters.ValidAlgorithms (izin listesi), IssuerSigningKey = new JsonWebKey(json) (JWK; AKP/ML-DSA dahil).
-// Eşleme ve gerekçeler: MAPPING.md.
+// Adapter for JOSE-001 Microsoft.IdentityModel.JsonWebTokens 8.23.0 (package set of System.IdentityModel.Tokens.Jwt 8.23.0).
+// Documented public API: JsonWebTokenHandler.ValidateTokenAsync(string, TokenValidationParameters);
+// TokenValidationParameters.ValidAlgorithms (allow-list), IssuerSigningKey = new JsonWebKey(json) (JWK; AKP/ML-DSA included).
+// Mapping and reasons: MAPPING.md.
 using System.Text.Json.Nodes;
 using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.IdentityModel.Logging;
 
-// Tanılama: IDX10511 iletisindeki "Exceptions caught" bölümünün görünmesi için (belgeli statik; doğrulamayı değiştirmez).
+// Diagnosis: so that the "Exceptions caught" part of the IDX10511 message is visible (documented static; does not change verification).
 IdentityModelEventSource.ShowPII = true;
 
-// Bataryadaki algoritmalardan yerel destek (evidence/api-tarama.txt: SecurityAlgorithms.EcdsaSha256/384, MlDsa44/65/87;
-// EdDSA/Ed25519 ve composite yok).
+// Native support among the battery's algorithms (evidence/api-tarama.txt: SecurityAlgorithms.EcdsaSha256/384, MlDsa44/65/87;
+// no EdDSA/Ed25519 and no composite).
 string[] KutuphaneAlgleri = { "ES256", "ES384", "ML-DSA-44", "ML-DSA-65", "ML-DSA-87" };
 string[] DestekliBicim = { "compact" };
 const string Api = "JsonWebTokenHandler.ValidateTokenAsync(jwt, new TokenValidationParameters{ ValidAlgorithms = W, IssuerSigningKey = new JsonWebKey(jwk), ValidateIssuer=false, ValidateAudience=false, RequireExpirationTime=false })";
 
-// hata_ozeti: istisna türü + IDX10511'in "Exceptions caught" bölümü (asıl neden) kısaltılarak.
+// hata_ozeti: exception type + the "Exceptions caught" part of IDX10511 (the actual cause), shortened.
 string Ozet(Exception e)
 {
     var m = e.Message;
@@ -36,7 +36,7 @@ string Sinifla(Exception e, string? alg, List<string> izin)
     if (m.Contains("IDX10634") || m.Contains("IDX10652") || e is NotSupportedException)
         return kutuphanede ? "alg-anahtar-uyusmazligi" : "alg-desteklenmiyor";
     if (e is SecurityTokenSignatureKeyNotFoundException) return "anahtar-bulunamadi";
-    // Kütüphanenin tanımadığı alg (EdDSA, composite, kayıtsız): IDX10511 "Exceptions caught" boş döner, doğrulama denenmez.
+    // An alg the library does not know (EdDSA, composite, unregistered): IDX10511 "Exceptions caught" comes back empty, no verification is attempted.
     if (e is SecurityTokenInvalidSignatureException && !kutuphanede) return "alg-desteklenmiyor";
     if (e is SecurityTokenInvalidSignatureException) return "imza-gecersiz";
     if (e is SecurityTokenExpiredException || e is SecurityTokenNotYetValidException || e is SecurityTokenNoExpirationException
@@ -60,7 +60,7 @@ Sonuc Dogrula(JsonObject isSatiri)
     var tvp = new TokenValidationParameters
     {
         ValidateIssuer = false, ValidateAudience = false, RequireExpirationTime = false, ValidateLifetime = true,
-        ValidAlgorithms = izin,                       // VARSAYILAN: null (kütüphane varsayılanı)
+        ValidAlgorithms = izin,                       // VARSAYILAN: null (library default)
         IssuerSigningKey = jwkJson == null ? null : new JsonWebKey(jwkJson.ToJsonString()),
     };
     var api = izin == null ? Api.Replace("ValidAlgorithms = W, ", "") : Api;
@@ -73,7 +73,7 @@ Sonuc Dogrula(JsonObject isSatiri)
             return new Sonuc("kabul", null, null, api, anahtarYolu, new() { (0, algDog, "gecerli") });
         }
         var e = r.Exception ?? new Exception("IsValid=false");
-        if (Environment.GetEnvironmentVariable("ADAPTOR_HATA_TAM") == "1") Console.Error.WriteLine("HATA " + isSatiri["vektor_id"] + " " + e);
+        if (Environment.GetEnvironmentVariable("ADAPTOR_HATA_TAM") == "1") Console.Error.WriteLine("ERROR " + isSatiri["vektor_id"] + " " + e);
         return new Sonuc("red", Sinifla(e, alg, izin ?? new()), Ozet(e), api, anahtarYolu);
     }
     catch (Exception e)

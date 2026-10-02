@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# Go modülü hedefi: sabit sürümle al, go.sum kaydet, en küçük programı derle ve bağla (imza doğrulama YOK).
-# Girdi (kur.sh): MODUL, SURUM, /w/ice_aktar.go
+# Go module target: get with a pinned version, record go.sum, build and link the smallest program (NO signature verification).
+# Input (kur.sh): MODUL, SURUM, /w/ice_aktar.go
 set -uo pipefail
 source /b/ortak.sh
 : "${MODUL:?}"; : "${SURUM:?}"

@@ -1,19 +1,19 @@
-"""Test vektoru seti v1.1 = v1 (93 vektor, BAYT-AYNI) + kontrol kolunun Ed25519 etiketli esleri.
+"""Test vector set v1.1 = v1 (93 vectors, BYTE-IDENTICAL) + Ed25519-labelled counterparts of the control arm.
 
-Yurutucu karari A9 (24.09.2026): kontrol kolunun birincil etiketi 'EdDSA' kalir. YEDEK KURAL: bir hedef
-'EdDSA'yi desteklemiyor ama RFC 9864'teki 'Ed25519'u belgeli olarak destekliyorsa, o hedefin kontrol kolu
-'Ed25519' etiketli vektorlerle kosulur ve kullanilan etiket hedef basina kaydedilir.
+Maintainers' decision A9 (24.09.2026): the primary label of the control arm stays 'EdDSA'. FALLBACK RULE: if a target
+does not support 'EdDSA' but documents support for 'Ed25519' of RFC 9864, the control arm of that target
+is run with the 'Ed25519'-labelled vectors and the label used is recorded per target.
 
-Uretim (python -m uretec.v11 <cikti_kok> [<donmus_v1_kok>]):
-  1. v1 GECICI dizinde bastan uretilir ve donmus v1 ile (vektorler/v1 ve anahtarlar/v1 SHA256SUMS)
-     karsilastirilir; fark varsa uretim DURUR. Donmus v1/ ve anahtarlar/v1/ yalniz OKUNUR.
-  2. v1'in 93 vektor dosyasi (+ b-uyumlu/vectors.json) v1.1'e kopyalanir (bayt-ayni).
-  3. kol = kontrol-EdDSA olan HER v1 vektoru icin '<v1-id>-ED25519' esi uretilir: ayni anahtar
-     (issuer/EdDSA ya da dpop/EdDSA = Ed25519), ayni yuk, ayni yapi; YALNIZ 'EdDSA' etiketli imzanin
-     korumali basligindaki alg 'Ed25519' olur ve o imza yeniden hesaplanir (Ed25519 belirlenimci).
-     Bir koruma denetimi, esin v1'den yalniz bu noktalarda farkli oldugunu dogrular.
-  4. Yeni anahtar YOK: anahtarlar/v1 aynen kullanilir.
-Oracle karari YAZILMAZ.
+Generation (python -m uretec.v11 <output_root> [<frozen_v1_root>]):
+  1. v1 is generated from scratch in a TEMPORARY folder and compared with the frozen v1 (SHA256SUMS of vektorler/v1 and
+     anahtarlar/v1); on any difference the generation STOPS. The frozen v1/ and anahtarlar/v1/ are only READ.
+  2. The 93 vector files of v1 (+ b-uyumlu/vectors.json) are copied into v1.1 (byte-identical).
+  3. For EVERY v1 vector with kol = kontrol-EdDSA a counterpart '<v1-id>-ED25519' is produced: the same key
+     (issuer/EdDSA or dpop/EdDSA = Ed25519), the same payload, the same structure; ONLY the alg in the protected header of the
+     'EdDSA'-labelled signature becomes 'Ed25519' and that signature is recomputed (Ed25519 is deterministic).
+     A protection check confirms that the counterpart differs from v1 only at these points.
+  4. NO new key: anahtarlar/v1 is used as it is.
+NO oracle decision is written.
 """
 import copy
 import csv
@@ -50,7 +50,7 @@ def _decode_prot(pb64):
 
 
 def _sigs(obj):
-    """(payload_b64, [(protected_b64, signature_b64)], ifsalar) — compact JWS, General JSON JWS ya da SD-JWT."""
+    """(payload_b64, [(protected_b64, signature_b64)], disclosures) — compact JWS, General JSON JWS or SD-JWT."""
     if isinstance(obj, str):
         jwt = obj.split('~')[0]
         h, p, s = jwt.split('.')
@@ -60,7 +60,7 @@ def _sigs(obj):
 
 
 def koruma_denetimi(v1_obj, es_obj):
-    """Es, v1'den yalniz EdDSA->Ed25519 etiketinde ve o imzada farkli olmali. Donus: yeniden hesaplanan siralar."""
+    """The counterpart must differ from v1 only in the EdDSA->Ed25519 label and in that signature. Return: the recomputed positions."""
     p1, s1, d1 = _sigs(v1_obj)
     p2, s2, d2 = _sigs(es_obj)
     if p1 != p2 or d1 != d2 or len(s1) != len(s2):
@@ -87,7 +87,7 @@ def flip(b, i, bit=0):
 
 
 def es_uret(u: Uretici):
-    """v1 kontrol kolu vektorlerinin Ed25519 esleri: {v1_id: obj}."""
+    """Ed25519 counterparts of the v1 control-arm vectors: {v1_id: obj}."""
     S = u.S
     roles = {'ES256': 'issuer/ES256', 'EdDSA': 'issuer/EdDSA', 'Ed25519': 'issuer/EdDSA',
              'ML-DSA-65': 'issuer/ML-DSA-65', 'ML-DSA-65-ES256': 'issuer/ML-DSA-65-ES256'}
@@ -99,17 +99,17 @@ def es_uret(u: Uretici):
     out['T1K_both_valid'] = gen('ES256', 'Ed25519')
     t2 = copy.deepcopy(out['T1K_both_valid'])
     s = b64u_decode(t2['signatures'][1]['signature'])
-    t2['signatures'][1]['signature'] = b64u_encode(flip(s, 5, 0))       # v1 T2K ile ayni bozulma
+    t2['signatures'][1]['signature'] = b64u_encode(flip(s, 5, 0))       # same corruption as v1 T2K
     out['T2K_second_tampered'] = t2
     out['T4K_plus_ML-DSA-65'] = gen('ES256', 'Ed25519', 'ML-DSA-65')
     out['T5K_only_EdDSA'] = gen('Ed25519')
     out['T6_plus_composite'] = gen('ES256', 'Ed25519', 'ML-DSA-65-ES256')
     hold = S['holder/ES256'].public_jwk(kid=False)
-    vc = A.issue_vc('VC09_GJ_ES256_EdDSA',                                  # AYNI cred_id -> ayni tuzlar/yuk
+    vc = A.issue_vc('VC09_GJ_ES256_EdDSA',                                  # SAME cred_id -> same salts/payload
                     [(S['issuer/ES256'], 'ES256', S.x5c('issuer-ec@int-ec')), (S['issuer/EdDSA'], 'Ed25519', None)],
                     hold, serialization='general')
     out['VC09_GJ_ES256_EdDSA'] = vc['obj']
-    out['DPOP02_EdDSA'] = A.dpop(S['dpop/EdDSA'], 'Ed25519', 'DPOP02', iat=SIMDI - 10)   # ayni jti etiketi ve iat
+    out['DPOP02_EdDSA'] = A.dpop(S['dpop/EdDSA'], 'Ed25519', 'DPOP02', iat=SIMDI - 10)   # same jti label and iat
     return out
 
 
@@ -154,7 +154,7 @@ def es_meta(v, es_obj, data, degisen):
 
 
 def uret_v11(cikti_kok, v1_kok, surumler):
-    """cikti_kok/vektorler/v1.1 uretir. v1_kok: donmus v1'in bulundugu kok (yalniz okunur)."""
+    """Produces cikti_kok/vektorler/v1.1. v1_kok: root where the frozen v1 is (read only)."""
     out = os.path.join(cikti_kok, 'vektorler', SURUM)
     with tempfile.TemporaryDirectory(prefix='pq-v11-') as td:
         u = Uretici(td)

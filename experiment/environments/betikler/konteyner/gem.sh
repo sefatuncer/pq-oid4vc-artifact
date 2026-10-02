@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# RubyGems hedefi: Gemfile (sürüm sabit) → Gemfile.lock (CHECKSUMS dahil) → bundle install → içe aktarma kontrolü.
-# Girdi (kur.sh): PAKET, SURUM, /w/ice_aktar.rb. İmza doğrulama YOK.
+# RubyGems target: Gemfile (version pinned) → Gemfile.lock (CHECKSUMS included) → bundle install → import check.
+# Input (kur.sh): PAKET, SURUM, /w/ice_aktar.rb. NO signature verification.
 set -uo pipefail
 source /b/ortak.sh
 : "${PAKET:?}"; : "${SURUM:?}"

@@ -1,12 +1,12 @@
 # frozen_string_literal: true
-# JOSE-089 json-jwt 1.17.2 adaptörü. Belgeli genel API: JSON::JWT.decode(input, key, algorithms) — String girdi
-# kompakt, Hash girdi JSON serileştirme (lib/json/jose.rb:59-64; lib/json/jws.rb decode_json_serialized).
-# Anahtar: JSON::JWK.new(jwk_hash) (lib/json/jwk.rb). Eşleme ve gerekçeler: MAPPING.md.
+# Adapter for JOSE-089 json-jwt 1.17.2. Documented public API: JSON::JWT.decode(input, key, algorithms) — a String input
+# is compact, a Hash input is JSON serialization (lib/json/jose.rb:59-64; lib/json/jws.rb decode_json_serialized).
+# Key: JSON::JWK.new(jwk_hash) (lib/json/jwk.rb). Mapping and reasons: MAPPING.md.
 require_relative 'ortak'
 require 'json/jwt'
 
-KUTUPHANE_ALGLERI = %w[ES256 ES384].freeze # jws.rb ecdsa?: ES256/ES384/ES512/ES256K; EdDSA, ML-DSA, composite yok
-DESTEKLI_BICIM = %w[compact general].freeze  # general: decode_json_serialized (yalnız signatures.first doğrulanır)
+KUTUPHANE_ALGLERI = %w[ES256 ES384].freeze # jws.rb ecdsa?: ES256/ES384/ES512/ES256K; no EdDSA, ML-DSA, composite
+DESTEKLI_BICIM = %w[compact general].freeze  # general: decode_json_serialized (only signatures.first is verified)
 API_KOMPAKT = 'JSON::JWT.decode(token_str, JSON::JWK.new(jwk), W.map(&:to_sym))'
 API_GENEL = 'JSON::JWT.decode(JSON.parse(general_json), JSON::JWK.new(jwk), W.map(&:to_sym))'
 
@@ -17,7 +17,7 @@ def sinifla(e, alg, anahtar_var)
     if m.include?('Unexpected alg header')
       KUTUPHANE_ALGLERI.include?(alg) ? 'alg-izin-disi' : 'alg-desteklenmiyor'
     elsif m.include?('Unknown Signature Algorithm') then 'alg-desteklenmiyor'
-    else 'alg-anahtar-uyusmazligi' # valid? içindeki TypeError (anahtar türü ≠ alg)
+    else 'alg-anahtar-uyusmazligi' # TypeError inside valid? (key type ≠ alg)
     end
   when JSON::JWK::Set::KidNotFound then 'anahtar-bulunamadi'
   when JSON::JWK::UnknownAlgorithm then 'alg-desteklenmiyor' # 'Unknown Key Type' (OKP/AKP)
@@ -41,8 +41,8 @@ def dogrula(is)
     ilk_baslik = JSON.parse(Ortak.b64d(imzalar.first['protected']))
     api = API_GENEL
     if imzalar.size > 1 && pol[:taban] != 'VARSAYILAN'
-      # Çoklu imza kuralı (P0 en-az-biri / P1 tümü / L4 gerekli küme) için belgeli seçenek yok: kütüphane yalnız
-      # signatures.first'ü doğrular (jws.rb decode_json_serialized). Özel döngü yazılmaz (B4, NOTES.md).
+      # No documented option for a multi-signature rule (P0 at-least-one / P1 all / L4 required set): the library verifies only
+      # signatures.first (jws.rb decode_json_serialized). No custom loop is written (B4, NOTES.md).
       return Ortak.ifade_edilemedi('coklu imza kurali (P0/P1/R) icin API secenegi yok; yalniz signatures.first dogrulanir', api)
     end
   else

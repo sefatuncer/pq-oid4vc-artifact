@@ -1,52 +1,52 @@
-# JOSE-089 json-jwt — politika → API eşlemesi (sözleşme 1.0 §2.2, KOSUCU §2)
+# JOSE-089 json-jwt — policy → API mapping (contract 1.0 §2.2, RUNNER §2)
 
-- **Hedef:** `json-jwt` 1.17.2 (etiket v1.17.2 → `5fc6faed950f`), `Gemfile.lock` CHECKSUMS `sha256=97e37c1c…` (ortam kaydıyla aynı dosya).
-- **İmaj:** `a10-jose-089:1` (`FROM pq-a09-env-ruby:1.0`; Ruby 3.4.11, OpenSSL 3.5.7). Koşum `--network none`.
-- **Çağrı:** `docker run --rm --network none -v <v1.3>:/v:ro -v <anahtarlar>:/anahtarlar:ro -v <isler>:/is:ro -v <cikti>:/c a10-jose-089:1 adaptor /is/<isler> /c/JOSE-089.<kosu>.jsonl`
-- **Kaynak:** `adaptor.rb`, `ortak.rb` (JOSE-087 ile aynı iskelet).
+- **Target:** `json-jwt` 1.17.2 (tag v1.17.2 → `5fc6faed950f`), `Gemfile.lock` CHECKSUMS `sha256=97e37c1c…` (the same file as the environment record).
+- **Image:** `a10-jose-089:1` (`FROM pq-a09-env-ruby:1.0`; Ruby 3.4.11, OpenSSL 3.5.7). Runs with `--network none`.
+- **Call:** `docker run --rm --network none -v <v1.3>:/v:ro -v <anahtarlar>:/anahtarlar:ro -v <isler>:/is:ro -v <cikti>:/c a10-jose-089:1 adaptor /is/<isler> /c/JOSE-089.<kosu>.jsonl`
+- **Source:** `adaptor.rb`, `ortak.rb` (same skeleton as JOSE-087).
 
-## 1. Ortak kurallar
+## 1. Shared rules
 
-`JOSE-087/MAPPING.md` §1 ile aynıdır (A/X; GEC = kütüphanenin yerel desteklediği battery algoritmaları; IZIN-A/AX; L4 ailesi W = {A, X}, R = {X}; tek imzalı nesnede etkin izin listesi = R; anahtar yolu bütün kollarda `JWK`; manifestten yalnız `dogrulama_girdileri`; VARSAYILAN ek politikası; `sonuc_ham` kabul/red/istisna).
-- **Politika adı normalleştirme (yürütücü 01.10):** `temel = politika.split('|')[0].split('@')[0]` (`|sdjwtvc=…`, `@-19` ekleri yalnız oracle'ı böler); çıktıya özgün `politika` yazılır. **P2** (P1 + anahtar–alg bağlama) GEC/P0/P1 kümesindedir.
+The same as `JOSE-087/MAPPING.md` §1 (A/X; GEC = the battery algorithms the library supports natively; IZIN-A/AX; L4 family W = {A, X}, R = {X}; effective allow-list for a single-signature object = R; key path `JWK` in all arms; only `dogrulama_girdileri` from the manifest; the additional policy VARSAYILAN; `sonuc_ham` kabul/red/istisna).
+- **Policy name normalisation (maintainers 01.10):** `temel = politika.split('|')[0].split('@')[0]` (the suffixes `|sdjwtvc=…`, `@-19` only split the oracle); the original `politika` is written to the output. **P2** (P1 + key–alg binding) is in the GEC/P0/P1 set.
 
-## 2. Politika → API
+## 2. Policy → API
 
-| Politika | API çağrısı |
+| Policy | API call |
 |---|---|
-| GEC / P0 / P1 (tek imza) | `JSON::JWT.decode(girdi, JSON::JWK.new(jwk), [:ES256, :ES384])` |
+| GEC / P0 / P1 (single signature) | `JSON::JWT.decode(girdi, JSON::JWK.new(jwk), [:ES256, :ES384])` |
 | IZIN-A / IZIN-AX | `… [:ES256]` / `… [:ES256, X]` |
-| L4 / L4-S / L4-Y (tek imza: kompakt ya da tek imzalı General JSON) | `… [X]` (etkin izin listesi = R) |
-| P0 / P1 / L4 / L4-S / L4-Y — **çok imzalı General JSON** | **`ifade-edilemedi`**: kütüphanede çoklu imza kuralı seçeneği yok; `decode_json_serialized` yalnız `signatures.first`'ü doğrular (`lib/json/jws.rb` L199–216, `evidence/api-tarama.txt`). Her imzayı dolaşan döngü özel kod olur (B4, NOTLAR §4) |
-| VARSAYILAN | `JSON::JWT.decode(girdi, JSON::JWK.new(jwk))` (algoritma listesi yok → `algorithms.blank?` her alg'ı kabul eder; çok imzalıda yalnız ilk imza) |
-| L4-YOL | X5C (SD-JWT) → B6; desteklenen biçimde `ifade-edilemedi` (yol sınıfı API'si yok) |
+| L4 / L4-S / L4-Y (single signature: compact or General JSON with one signature) | `… [X]` (effective allow-list = R) |
+| P0 / P1 / L4 / L4-S / L4-Y — **multi-signed General JSON** | **`ifade-edilemedi`**: the library has no option for a multi-signature rule; `decode_json_serialized` verifies only `signatures.first` (`lib/json/jws.rb` L199–216, `evidence/api-tarama.txt`). A loop over every signature would be custom code (B4, NOTES §4) |
+| VARSAYILAN | `JSON::JWT.decode(girdi, JSON::JWK.new(jwk))` (no algorithm list → `algorithms.blank?` accepts every alg; for a multi-signed object only the first signature) |
+| L4-YOL | X5C (SD-JWT) → B6; in a supported format `ifade-edilemedi` (no path-class API) |
 
-`girdi`: kompakt için dize; General JSON için `JSON.parse` sonucu Hash (kütüphane Hash girdiyi JSON serileştirme olarak işler, `lib/json/jose.rb` L59–64). Çok imzalı nesnede anahtar ilk imzanın başlığından (`alg_kid`) seçilir.
+`girdi` (input): a string for compact; for General JSON the Hash returned by `JSON.parse` (the library treats a Hash input as JSON serialization, `lib/json/jose.rb` L59–64). For a multi-signed object the key is selected from the header of the first signature (`alg_kid`).
 
-**dogrulanan_algoritmalar:** kabulde dönen `JSON::JWS` nesnesinin `alg`'ı (General JSON'da ilk imza; kütüphane yalnız onu doğrular).
+**dogrulanan_algoritmalar:** on acceptance the `alg` of the returned `JSON::JWS` object (for General JSON the first signature; the library verifies only that one).
 
-## 3. B6 kararları (API incelemesiyle)
+## 3. B6 decisions (by API review)
 
-| Serileştirme | Karar | Dayanak |
+| Serialization | Decision | Basis |
 |---|---|---|
-| compact | desteklenir | `decode_compact_serialized` |
-| general | **desteklenir** (yalnız ilk imza doğrulanır) | `decode_json_serialized` (`signatures.first`) |
-| sd-jwt-compact, sd-jwt-general, sd-jwt-flattened | **B6** | SD-JWT API'si yok (disclosure/`~` işlenmez) |
-| oid4vci-toplu-yanit, dcapi-json-parametre | **B6** | JSON zarf, JWS değil |
-| COSE_Sign, COSE_Sign1 | **B6** | COSE API'si yok |
+| compact | supported | `decode_compact_serialized` |
+| general | **supported** (only the first signature is verified) | `decode_json_serialized` (`signatures.first`) |
+| sd-jwt-compact, sd-jwt-general, sd-jwt-flattened | **B6** | no SD-JWT API (disclosures/`~` are not processed) |
+| oid4vci-toplu-yanit, dcapi-json-parametre | **B6** | JSON envelope, not a JWS |
+| COSE_Sign, COSE_Sign1 | **B6** | no COSE API |
 
-## 4. İstisna → hata_sinifi
+## 4. Exception → hata_sinifi
 
-| Kütüphane istisnası | hata_sinifi |
+| Library exception | hata_sinifi |
 |---|---|
-| `JSON::JWS::UnexpectedAlgorithm` "Unexpected alg header", alg kütüphanede (ES256/ES384) | `alg-izin-disi` |
-| aynı, alg kütüphanede yok (EdDSA, ML-DSA, composite, kayıtsız, none) | `alg-desteklenmiyor` |
+| `JSON::JWS::UnexpectedAlgorithm` "Unexpected alg header", alg in the library (ES256/ES384) | `alg-izin-disi` |
+| the same, alg not in the library (EdDSA, ML-DSA, composite, unregistered, none) | `alg-desteklenmiyor` |
 | `UnexpectedAlgorithm` "Unknown Signature Algorithm" | `alg-desteklenmiyor` |
-| `UnexpectedAlgorithm` (TypeError kaynaklı, anahtar türü ≠ alg) | `alg-anahtar-uyusmazligi` |
+| `UnexpectedAlgorithm` (caused by a TypeError, key type ≠ alg) | `alg-anahtar-uyusmazligi` |
 | `JSON::JWK::UnknownAlgorithm` "Unknown Key Type" (OKP/AKP JWK) | `alg-desteklenmiyor` |
 | `JSON::JWK::Set::KidNotFound` | `anahtar-bulunamadi` |
-| `JSON::JWS::VerificationFailed` (anahtar var) / (anahtar seçilemedi) | `imza-gecersiz` / `anahtar-bulunamadi` |
+| `JSON::JWS::VerificationFailed` (key present) / (no key could be selected) | `imza-gecersiz` / `anahtar-bulunamadi` |
 | `JSON::JWT::InvalidFormat` | `ayristirma` |
-| diğer | `istisna-diger`; 60 s → `zaman-asimi` |
+| other | `istisna-diger`; 60 s → `zaman-asimi` |
 
-json-jwt `exp`/`iat` denetlemez (talep doğrulaması uygulamaya bırakılmış); saat ayarı gerekmez.
+json-jwt does not check `exp`/`iat` (claim validation is left to the application); no clock setting is needed.

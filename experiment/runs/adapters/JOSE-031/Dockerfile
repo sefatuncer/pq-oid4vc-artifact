@@ -1,4 +1,4 @@
-# a10-jose-031:1 — guardian 2.5.0 (doğrulamayı erlang-jose 1.11.12'ye devreder); hex.pm anonim, mix.lock ile sabit
+# a10-jose-031:1 — guardian 2.5.0 (delegates verification to erlang-jose 1.11.12); hex.pm anonymous, pinned with mix.lock
 FROM pq-a09-env-elixir:1.0
 WORKDIR /opt/a
 ENV MIX_ENV=prod

@@ -1,12 +1,12 @@
-"""Composite ML-DSA imzasi — draft-ietf-jose-pq-composite-sigs-04.
+"""Composite ML-DSA signature — draft-ietf-jose-pq-composite-sigs-04.
 
 4.2 Composite-ML-DSA.Sign(sk, M):
     M'       = Prefix || Label || 0x00 || PH(M)
-    mldsaSig = ML-DSA.Sign(mldsaSK, M', ctx=Label)          (saf ML-DSA; ctx = Label)
-    tradSig  = Trad.Sign(tradSK, M')                        (ECDSA: DER Ecdsa-Sig-Value; EdDSA: ham)
+    mldsaSig = ML-DSA.Sign(mldsaSK, M', ctx=Label)          (pure ML-DSA; ctx = Label)
+    tradSig  = Trad.Sign(tradSK, M')                        (ECDSA: DER Ecdsa-Sig-Value; EdDSA: raw)
     s        = mldsaSig || tradSig
-4.3 Verify: her iki bilesen gecerliyse gecerli (AND); serilestirme/uzunluk hatasi -> gecersiz.
-JOSE'de M = JWS Signing Input (ASCII). Uygulama baglami (ctx) BOS; 0x00 bu bos baglamin uzunlugudur.
+4.3 Verify: valid if both components are valid (AND); a serialization/length error -> invalid.
+In JOSE M = JWS Signing Input (ASCII). The application context (ctx) is EMPTY; 0x00 is the length of this empty context.
 """
 import hashlib
 
@@ -26,7 +26,7 @@ def prehash(ph: str, m: bytes) -> bytes:
     if ph == 'sha512':
         return hashlib.sha512(m).digest()
     if ph == 'shake256':
-        return hashlib.shake_256(m).digest(64)  # -04 Ek A.1 (ML-DSA-87-Ed448) ile dogrulandi: 64 bayt
+        return hashlib.shake_256(m).digest(64)  # verified with -04 Appendix A.1 (ML-DSA-87-Ed448): 64 bytes
     raise ValueError(ph)
 
 
@@ -38,11 +38,11 @@ def message_representative(alg: str, m: bytes) -> bytes:
 def _trad_sign(p, key, mp: bytes, deterministic: bool) -> bytes:
     if p['trad'] == 'ECDSA':
         return key.trad.priv.sign(mp, ec.ECDSA(_MD[p['md']](), deterministic_signing=deterministic))
-    return key.trad.priv.sign(mp)  # EdDSA (Ed25519/Ed448 saf)
+    return key.trad.priv.sign(mp)  # EdDSA (pure Ed25519/Ed448)
 
 
 def sign(alg: str, key, m: bytes, deterministic: bool = False) -> bytes:
-    """key: keys.CompositeKey (ozel)."""
+    """key: keys.CompositeKey (private)."""
     p = COMPOSITE[alg]
     if key.alg != alg:
         raise ValueError('anahtar alg uyusmuyor')
@@ -50,27 +50,27 @@ def sign(alg: str, key, m: bytes, deterministic: bool = False) -> bytes:
     ml_sig = mldsa.sign(p['ml'], key.ml.seed, mp, ctx=p['label'], deterministic=deterministic)
     trad_sig = _trad_sign(p, key, mp, deterministic)
     if p['trad'] == 'ECDSA':
-        # cryptography DER uretir; -04 4.5.1 kurallarina gore yeniden kodla (asgari DER, ayni bayt)
+        # cryptography produces DER; re-encode according to the rules of -04 4.5.1 (minimal DER, same bytes)
         trad_sig = der.ecdsa_raw_to_der(der.ecdsa_der_to_raw(trad_sig, p['crv']), p['crv'])
     return ml_sig + trad_sig
 
 
 def split_signature(alg: str, s: bytes):
-    """(mldsaSig, tradSig) — uzunluk/tip hatasinda ValueError (4.3 adim 1)."""
+    """(mldsaSig, tradSig) — ValueError on a length/type error (4.3 step 1)."""
     p = COMPOSITE[alg]
     n = mldsa.sig_len(p['ml'])
     if len(s) <= n:
         raise ValueError('composite imza kisa')
     ml_sig, trad_sig = s[:n], s[n:]
     if p['trad'] == 'ECDSA':
-        der.ecdsa_der_to_raw(trad_sig, p['crv'])  # katı DER; artik bayt reddedilir
+        der.ecdsa_der_to_raw(trad_sig, p['crv'])  # strict DER; trailing bytes are rejected
     elif len(trad_sig) != OKP_SIG_LEN[p['crv']]:
         raise ValueError('EdDSA bileseni uzunlugu hatali')
     return ml_sig, trad_sig
 
 
 def verify_components(alg: str, key, m: bytes, s: bytes):
-    """Bilesen bazinda sonuc: {'ml': bool, 'trad': bool, 'hata': str|None}. key: acik CompositeKey."""
+    """Per-component result: {'ml': bool, 'trad': bool, 'hata': str|None}. key: public CompositeKey."""
     p = COMPOSITE[alg]
     if key.alg != alg:
         return {'ml': False, 'trad': False, 'hata': 'anahtar-alg-uyumsuz'}

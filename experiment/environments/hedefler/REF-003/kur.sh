@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# REF-003 — EUDI verifier endpoint: kaynaktan (commit sabit) Gradle `assemble` (test koşulmaz) + bağlama kontrolü.
-# Adım 9 görev 4a. İmza doğrulama YOK; servis BAŞLATILMAZ.
+# REF-003 — EUDI verifier endpoint: Gradle `assemble` from the source (commit pinned) (no tests run) + link check.
+# Step 9 task 4a. NO signature verification; the service is NOT STARTED.
 set -uo pipefail
 source /b/ortak.sh
 DEPO=https://github.com/eu-digital-identity-wallet/eudi-srv-verifier-endpoint
@@ -28,7 +28,7 @@ yaz not "bootJar sha256 $(ozet "$BOOT" | cut -c1-16)… (yeniden üretilebilir y
 mkdir -p /tmp/x && (cd /tmp/x && jar xf "/tmp/src/$BOOT")
 (cd /tmp/x/BOOT-INF/lib && sha256sum *.jar | sort -k2) > "$C/jar-sha256.txt"
 yaz bagimlilik_sayisi "$(grep -c . "$C/jar-sha256.txt")"
-# MANIFEST satırları 72 baytta katlanır (devam satırı boşlukla başlar): önce katlamayı aç (deneme 1-2'deki betik hatası)
+# MANIFEST lines are folded at 72 bytes (a continuation line starts with a space): unfold first (the script error in attempts 1-2)
 BASLAT=$(tr -d '\r' < /tmp/x/META-INF/MANIFEST.MF | sed -e ':a' -e 'N' -e '$!ba' -e 's/\n //g' | grep -i '^Start-Class:' | cut -d' ' -f2)
 echo "Start-Class=$BASLAT"
 grep -o -E '(eudi-lib-jvm-sdjwt-kt[^ ]*|nimbus-jose-jwt[^ ]*|oauth2-oidc-sdk[^ ]*|bcprov[^ ]*|tink[^ ]*|cose-java[^ ]*)\.jar' "$C/jar-sha256.txt" | tr '\n' ' ' > "$C/kripto-bagimliliklari.txt"

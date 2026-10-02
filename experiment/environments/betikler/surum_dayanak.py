@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Adım 9 görev 4a — sürüm sabitleme etkisi (bilgi; davranış ölçümü değil):
-Envanterde ML-DSA / composite desteği 'evet' ya da 'kısmi' olan hedeflerde, dayanak dosyası (HEAD commit'li GitHub
-bağlantısı) sürüm etiketinin commit'inde var mı ve ML-DSA/composite deseni içeriyor mu? Anonim raw.githubusercontent.com.
-Çıktı: kayit/surum_dayanak.csv"""
+"""Step 9 task 4a — effect of version pinning (information; not a behaviour measurement):
+For targets whose ML-DSA / composite support is 'evet' (yes) or 'kısmi' (partial) in the inventory, does the evidence file (GitHub link with
+the HEAD commit) exist at the commit of the release tag, and does it contain the ML-DSA/composite pattern? Anonymous raw.githubusercontent.com.
+Output: kayit/surum_dayanak.csv"""
 import csv, pathlib, re, urllib.request
 K = pathlib.Path(__file__).resolve().parents[1]
 ENV = K.parents[0] / "inventory"
@@ -42,7 +42,7 @@ for i, h in hed.items():
             else:
                 sonuc["etiket_dosya"] = "sürüm yok (commit sabit)"
             satirlar.append(sonuc)
-            break   # sütun başına ilk dayanak yeterli
+            break   # the first evidence per column is enough
 with open(K / "kayit/surum_dayanak.csv", "w", encoding="utf-8", newline="") as f:
     w = csv.DictWriter(f, fieldnames=list(satirlar[0].keys())); w.writeheader(); w.writerows(satirlar)
 for s in satirlar:

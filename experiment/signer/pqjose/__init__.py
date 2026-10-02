@@ -1,6 +1,6 @@
-"""pqjose — PQ-OID4VC deneyleri icin PQ/composite JWS imzalayici ve dogrulayici (Adim 9b).
+"""pqjose — PQ/composite JWS signer and verifier for the PQ-OID4VC experiments (Step 9b).
 
-Bu paket deney ARACIDIR; hedef kutuphanelerin davranisini olcmez.
+This package is an experiment TOOL; it does not measure the behaviour of the target libraries.
 """
 __version__ = '1.0.0'
 

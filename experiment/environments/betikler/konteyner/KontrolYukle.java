@@ -1,5 +1,5 @@
-// Bağlama (link) kontrolü: hedef JAR'daki bütün sınıflar İLKLENDİRİLMEDEN yüklenir (Class.forName(ad, false, ...)).
-// Hiçbir yöntem çağrılmaz; imza doğrulama YOK. Çıkış 0 = anahtar sınıfların hepsi yüklendi.
+// Link check: all classes of the target JAR are loaded WITHOUT INITIALISATION (Class.forName(name, false, ...)).
+// No method is called; NO signature verification. Exit 0 = all key classes were loaded.
 import java.util.*;
 import java.util.jar.*;
 public class KontrolYukle {

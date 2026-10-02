@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
-# Adım 9 görev 4a — tek hedefin kurulum/derleme ön testini koşar (davranış ölçümü DEĞİL).
-# Kullanım: kos.sh <hedef-id> <imaj> [zaman_asimi_s]
-# - Kilitler (IS-PLANI §3.4): pq.agir=derleme / pq.agir=tamarin / pq.olcum=1 etiketli konteyner varken başlamaz.
-# - Konteyner: --rm, --memory=6g, ad pq-a09-ortam-<id>; yalnız experiment/environments/hedefler/<id> (rw) ve
-#   experiment/environments/betikler/konteyner (ro) bağlanır.
+# Step 9 task 4a — runs the installation/build pre-test of a single target (NOT a behaviour measurement).
+# Usage: kos.sh <target-id> <image> [timeout_s]
+# - Locks (work plan §3.4): does not start while a container labelled pq.agir=derleme / pq.agir=tamarin / pq.olcum=1 exists.
+# - Container: --rm, --memory=6g, name pq-a09-ortam-<id>; only experiment/environments/hedefler/<id> (rw) and
+#   experiment/environments/betikler/konteyner (ro) are mounted.
 set -u
 ID="$1"; IMAJ="$2"; ZA="${3:-1500}"
 ORTAM_WIN="C:/Users/tuncer/Desktop/Sefa/PQ-OID4VC/experiment/environments"
@@ -12,14 +12,14 @@ AD="pq-a09-ortam-$(echo "$ID" | tr '[:upper:]' '[:lower:]')"
 LOG="$ORTAM/loglar/$ID.log"
 KOSU="$ORTAM/kayit/$ID.kosu.json"
 [ -f "$ORTAM/hedefler/$ID/kur.sh" ] || { echo "kur.sh yok: $ID"; exit 2; }
-# kilit bekleme (en çok 60 dk)
+# lock wait (at most 60 min)
 for i in $(seq 1 120); do
   M=$(docker ps -q --filter label=pq.agir=derleme; docker ps -q --filter label=pq.agir=tamarin; docker ps -q --filter label=pq.olcum=1)
   [ -z "$M" ] && break
   echo "[kos] kilit dolu, bekleniyor ($i): $(echo $M | tr '\n' ' ')"; sleep 30
 done
 [ -n "${M:-}" ] && { echo "[kos] kilit 60 dk boşalmadı; çıkılıyor"; exit 3; }
-docker rm -f "$AD" >/dev/null 2>&1   # yalnız kendi adımızdaki artık konteyner
+docker rm -f "$AD" >/dev/null 2>&1   # only a leftover container with our own name
 rm -rf "$ORTAM/hedefler/$ID/cikti"; mkdir -p "$ORTAM/hedefler/$ID/cikti"
 IMAJ_ID=$(docker image inspect --format '{{.Id}}' "$IMAJ" 2>/dev/null)
 BAS=$(date -u +%s); BAS_ISO=$(date -u +%Y-%m-%dT%H:%M:%SZ)
@@ -39,6 +39,6 @@ BIT=$(date -u +%s); SURE=$((BIT-BAS))
 echo "# cikis_kodu=$KOD sure_s=$SURE bitis=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$LOG"
 printf '{"id":"%s","imaj":"%s","imaj_id":"%s","baslangic":"%s","sure_s":%d,"cikis_kodu":%d}\n' \
   "$ID" "$IMAJ" "$IMAJ_ID" "$BAS_ISO" "$SURE" "$KOD" > "$KOSU"
-cat "$KOSU" >> "${KOSU%.json}.jsonl"   # bütün denemeler (deneme sayısı ve toplam süre için)
+cat "$KOSU" >> "${KOSU%.json}.jsonl"   # all attempts (for the number of attempts and the total time)
 echo "[kos] $ID -> cikis=$KOD sure=${SURE}s log=loglar/$ID.log"
 exit $KOD

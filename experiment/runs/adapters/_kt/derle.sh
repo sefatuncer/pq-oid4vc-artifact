@@ -1,6 +1,6 @@
 #!/bin/sh
-# Kotlin adaptörünü konteynerde derler (Gradle önbelleği adlı birimde: pq-a10-kt-gradle; iş bitince adla silinir).
-# Kullanım: sh derle.sh cose|sdjwt   → build-<t>/kt-adaptor (installDist) + build-<t>/dep-tree.txt
+# Builds the Kotlin adapter in a container (Gradle cache in the named volume pq-a10-kt-gradle; deleted by name when the work is done).
+# Usage: sh derle.sh cose|sdjwt   → build-<t>/kt-adaptor (installDist) + build-<t>/dep-tree.txt
 set -e
 T=$1
 MSYS_NO_PATHCONV=1 docker run --rm -e GRADLE_USER_HOME=/gh -v pq-a10-kt-gradle:/gh -v "$(cygpath -m "$(pwd)" 2>/dev/null || pwd):/src" pq-a09-env-jvm:1.0 sh -c "

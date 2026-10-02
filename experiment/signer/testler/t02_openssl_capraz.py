@@ -1,18 +1,18 @@
 #!/usr/bin/env python3
-"""T02 — OpenSSL capraz dogrulama (iki yonlu) + bagimsiz uygulama (dilithium-py).
+"""T02 — OpenSSL cross-verification (both directions) + independent implementation (dilithium-py).
 
-pqjose'nin kripto yolu: cryptography 50.0.1 (gomulu OpenSSL 4.0.2).
-Capraz dogrulayici    : sistem OpenSSL 3.5.7 CLI (ayri surum, ayri surec).
-Ucuncu uygulama       : dilithium-py 1.4.0 (saf Python FIPS 204; OpenSSL kod tabanindan bagimsiz).
+pqjose's crypto path: cryptography 50.0.1 (embedded OpenSSL 4.0.2).
+Cross-verifier        : system OpenSSL 3.5.7 CLI (separate version, separate process).
+Third implementation  : dilithium-py 1.4.0 (pure Python FIPS 204; independent of the OpenSSL code base).
 
-Yonler:
-  O1  pqjose imzalar  -> OpenSSL dogrular     (JWS imzalama girdisi uzerinde)
-  O2  OpenSSL imzalar -> pqjose dogrular      (JWS'e yerlestirilip tam JWS dogrulamasi)
-  O3  tohumdan anahtar: OpenSSL genpkey == cryptography == dilithium-py
-  O4  composite -04: pqjose imzasinin BILESENLERI OpenSSL ile; OpenSSL bilesenlerinden kurulan
-      composite imza pqjose ile
-  O5  X.509: OpenSSL'in urettigi ML-DSA/karisik zincirlerde sertifika imzalari cryptography
-      (OpenSSL 4.0.2) ile de dogrulanir
+Directions:
+  O1  pqjose signs     -> OpenSSL verifies    (on the JWS signing input)
+  O2  OpenSSL signs    -> pqjose verifies     (placed into a JWS, full JWS verification)
+  O3  key from seed: OpenSSL genpkey == cryptography == dilithium-py
+  O4  composite -04: the COMPONENTS of the pqjose signature with OpenSSL; a composite signature built from
+      OpenSSL components with pqjose
+  O5  X.509: in the ML-DSA/mixed chains produced by OpenSSL the certificate signatures are also verified with
+      cryptography (OpenSSL 4.0.2)
 """
 import os
 import sys
@@ -56,15 +56,15 @@ def main(out):
         k.kid = k.thumbprint()
         pol = jws.Policy(keys=[k.public_only()], required_algs=frozenset({alg}))
         pb64, tbs = tbs_for(alg, k.kid)
-        # O3 anahtar turetme
+        # O3 key derivation
         ossl_pub = openssl.public_der_from_private(openssl.mldsa_private_pem(lvl, k.seed))
         ks(alg, 'O3:openssl-genpkey(hexseed)-acik-anahtar==pqjose', ossl_pub[-M.pk_len(lvl):] == k.pub)
         ks(alg, 'O3:dilithium-py-key_derive==pqjose', DPY[lvl].key_derive(k.seed)[0] == k.pub, 'dilithium-py')
-        # O1 pqjose (bagli/hedged) -> OpenSSL
+        # O1 pqjose (hedged) -> OpenSSL
         s1 = M.sign(lvl, k.seed, tbs, b'', deterministic=False)
         ks(alg, 'O1:pqjose(hedged)->openssl-dogrular', openssl.pkey_verify(k.public_pem(), tbs, s1))
         ks(alg, 'O1b:pqjose(hedged)->dilithium-py-dogrular', DPY[lvl].verify(k.pub, tbs, s1), 'dilithium-py')
-        # O2 OpenSSL (hedged) -> pqjose tam JWS
+        # O2 OpenSSL (hedged) -> pqjose full JWS
         s2 = openssl.mldsa_sign(lvl, k.seed, tbs, deterministic=False)
         r = jws.verify(compact(pb64, s2), pol)
         ks(alg, 'O2:openssl(hedged)->pqjose-JWS-kabul', r.valid, ayrinti=r.reason)
@@ -72,17 +72,17 @@ def main(out):
         s3 = DPY[lvl].sign(DPY[lvl].key_derive(k.seed)[1], tbs)
         r = jws.verify(compact(pb64, s3), pol)
         ks(alg, 'O2b:dilithium-py(hedged)->pqjose-JWS-kabul', r.valid, 'dilithium-py', r.reason)
-        # belirlenimci yol: OpenSSL(deterministic) == dilithium-py(deterministic)
+        # deterministic path: OpenSSL(deterministic) == dilithium-py(deterministic)
         sd = M.sign(lvl, k.seed, tbs, b'', deterministic=True)
         ks(alg, 'belirlenimci:openssl==dilithium-py', sd == DPY[lvl].sign(DPY[lvl].key_derive(k.seed)[1], tbs,
                                                                          deterministic=True), 'dilithium-py')
-        # uctan uca: pqjose.sign (hedged) compact -> OpenSSL
+        # end to end: pqjose.sign (hedged) compact -> OpenSSL
         c = jws.sign(PAYLOAD, jws.Signer(k, {'kid': k.kid}), 'compact')
         p = jws.parse(c)
         ks(alg, 'O1c:pqjose.sign(compact)->openssl', openssl.pkey_verify(k.public_pem(), p.signing_input(p.signatures[0]),
                                                                         p.signatures[0].signature))
 
-    # ---------------- Klasik kontrol kolu
+    # ---------------- Classical control arm
     for alg in ('ES256', 'ES384', 'EdDSA', 'Ed448'):
         k = derive_key(alg, 't02/' + alg)
         k.kid = k.thumbprint()
@@ -110,7 +110,7 @@ def main(out):
         pol = jws.Policy(keys=[k.public_only()], required_algs=frozenset({alg}))
         pb64, tbs = tbs_for(alg, k.kid)
         mp = composite.message_representative(alg, tbs)
-        # O4a: pqjose composite -> bilesenler OpenSSL ile
+        # O4a: pqjose composite -> components with OpenSSL
         s = composite.sign(alg, k, tbs, deterministic=False)
         ml_sig, tr_sig = composite.split_signature(alg, s)
         ks(alg, 'O4a:ML-DSA-bileseni(ctx=Label)->openssl', openssl.pkey_verify(k.ml.public_pem(), mp, ml_sig, ctx=prm['label']))
@@ -120,7 +120,7 @@ def main(out):
             ks(alg, 'O4a:EdDSA-bileseni->openssl', openssl.pkey_verify(k.trad.public_pem(), mp, tr_sig))
         ks(alg, 'O4a:ML-DSA-bileseni->dilithium-py', DPY[prm['ml']].verify(k.ml.pub, mp, ml_sig, ctx=prm['label']),
            'dilithium-py')
-        # O4b: OpenSSL bilesenleri -> pqjose
+        # O4b: OpenSSL components -> pqjose
         o_ml = openssl.mldsa_sign(prm['ml'], k.ml.seed, mp, ctx=prm['label'], deterministic=False)
         if prm['trad'] == 'ECDSA':
             o_tr = openssl.dgst_sign(k.trad.private_pem(), mp, prm['md'], deterministic=False)
@@ -129,12 +129,12 @@ def main(out):
             o_tr = openssl.pkey_sign_raw(k.trad.private_pem(), mp)
         r = jws.verify(compact(pb64, o_ml + o_tr), pol)
         ks(alg, 'O4b:openssl-bilesenleri->pqjose-composite-JWS-kabul', r.valid, ayrinti=r.reason)
-        # belirlenimci composite: iki calistirma bayt-ayni
+        # deterministic composite: two runs byte-identical
         d1 = composite.sign(alg, k, tbs, deterministic=True)
         d2 = composite.sign(alg, k, tbs, deterministic=True)
         K.kontrol(alg, 'belirlenimci-composite-tekrar-ayni', d1 == d2)
 
-    # ---------------- O5: X.509 (OpenSSL uretir; cryptography de dogrular)
+    # ---------------- O5: X.509 (OpenSSL produces; cryptography verifies too)
     root_ec = pki.make_root('root-ec', derive_key('ES256', 't02/root-ec'), '/C=EU/O=T02/CN=Root EC', 1)
     root_ml = pki.make_root('root-ml', derive_key('ML-DSA-65', 't02/root-ml'), '/C=EU/O=T02/CN=Root ML', 2)
     int_ml = pki.make_cert('int-ml', derive_key('ML-DSA-65', 't02/int-ml'), root_ml, '/C=EU/O=T02/CN=Int ML', 3, 'int')

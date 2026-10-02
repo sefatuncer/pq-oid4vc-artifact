@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# SwiftPM hedefi: yürütülebilir paket (bağımlılık: DEPO @ exact SURUM ya da REVIZYON), Package.resolved kaydet,
-# derle ve bağla; /w/main.swift yalnız modülü içe aktarır ve tür adlarına başvurur. İmza doğrulama YOK.
+# SwiftPM target: executable package (dependency: DEPO @ exact SURUM or REVIZYON), record Package.resolved,
+# build and link; /w/main.swift only imports the module and references type names. NO signature verification.
 set -uo pipefail
 source /b/ortak.sh
 : "${DEPO:?}"; : "${URUN:?}"; : "${PAKET_KIMLIK:?}"

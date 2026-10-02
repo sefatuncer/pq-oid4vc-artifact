@@ -1,21 +1,21 @@
-"""Test vektoru seti v1.2 = v1.1 (100 vektor, BAYT-AYNI) + ON-KAYIT §6.5 bataryasinin eksikleri.
+"""Test vector set v1.2 = v1.1 (100 vectors, BYTE-IDENTICAL) + the missing parts of the PRE-REGISTRATION §6.5 battery.
 
-Kaynak: yurutucu (gozden-gecirme/adim-09b.md §8 "Ek 2: Batarya esleme denetimi"), ON-KAYIT-TASLAK.md §6.5,
-§2B m.8 / §2C m.4 (MR4), §4.20 (MR1-MR3), §2D (Degisiklik 4), §2E (Degisiklik 5).
+Source: maintainers (gozden-gecirme/adim-09b.md §8 "Appendix 2: battery mapping check"), ON-KAYIT-TASLAK.md §6.5,
+§2B item 8 / §2C item 4 (MR4), §4.20 (MR1-MR3), §2D (Amendment 4), §2E (Amendment 5).
 
-Eklenenler:
-  1. MR4 (imza sirasi permutasyonu): T1*/T2* ters; T4*/T6/T7* 'ek-once'|'kayitsiz-once' ve 'ters'; VC07/VC08/VC09
-     ters (RFC 9901 §8.3: disclosures YENI ilk korumasiz baslikta); REQ04 ters. VP05 ters: MR4 DISI, tanimlayici
-     (KB sd_hash'in bagladigi imza degisir). Kimlik: <id>-SIRA-<kisa-ad>.
-  2. K10 (alg-anahtar uyusmazligi), her kolda iki yon; imza baslik alg'iyla DEGIL gercek anahtarin kendi
-     algoritmasiyla uretilmis gecerli imzadir.
-  3. K5: T7K/T7P/T7C_plus_kayitsiz = T1* + gercekten kayitsiz 'X-KAYITSIZ-1' etiketli ucuncu imza
-     (128 B rastgele, HKDF'den belirlenimci).
-  4. V+ / V-: tek imzali compact JWS (ES256, EdDSA, ML-DSA-65; composite icin CMP00/CMP01 yeniden kullanilir).
-  5. Yeni her kontrol-EdDSA vektorunun '-ED25519' esi (EdDSA etiketi icermeyen K10K(b) haric; bayt-ayni olurdu).
-Donmus v1/ ve v1.1/ yalniz OKUNUR; v1.1 once gecici dizinde bastan uretilip donmus v1.1 ile karsilastirilir.
-Yeni anahtar YOK: anahtarlar/v1. Oracle karari YAZILMAZ.
-Kullanim: python -m uretec.v12 <cikti_kok> [<donmus_kok>]
+Added:
+  1. MR4 (signature order permutation): T1*/T2* reversed; T4*/T6/T7* 'ek-once'|'kayitsiz-once' and 'ters'; VC07/VC08/VC09
+     reversed (RFC 9901 §8.3: disclosures in the NEW first unprotected header); REQ04 reversed. VP05 reversed: OUTSIDE MR4, descriptive
+     (the signature bound by KB sd_hash changes). Id: <id>-SIRA-<short-name>.
+  2. K10 (alg–key mismatch), two directions in every arm; the signature is a valid signature made NOT with the header alg but with the
+     key's own algorithm.
+  3. K5: T7K/T7P/T7C_plus_kayitsiz = T1* + a third signature labelled with the truly unregistered 'X-KAYITSIZ-1'
+     (128 B random, deterministic from HKDF).
+  4. V+ / V-: single-signature compact JWS (ES256, EdDSA, ML-DSA-65; for composite CMP00/CMP01 are reused).
+  5. The '-ED25519' counterpart of every new kontrol-EdDSA vector (except K10K(b), which carries no EdDSA label; it would be byte-identical).
+The frozen v1/ and v1.1/ are only READ; v1.1 is first regenerated from scratch in a temporary folder and compared with the frozen v1.1.
+NO new key: anahtarlar/v1. NO oracle decision is written.
+Usage: python -m uretec.v12 <output_root> [<frozen_root>]
 """
 import copy
 import csv
@@ -58,10 +58,10 @@ def flip(b, i, bit=0):
     return bytes(x)
 
 
-# ------------------------------------------------------------------ MR4 permutasyonu
+# ------------------------------------------------------------------ MR4 permutation
 def permute(obj, order):
-    """General JSON (JWS / SD-JWT) imza sirasi permutasyonu. order: yeni siradaki ozgun indeksler.
-    RFC 9901 §8.3: 'disclosures' ve 'kb_jwt' YALNIZ (yeni) ilk korumasiz baslikta bulunur."""
+    """Signature-order permutation of General JSON (JWS / SD-JWT). order: the original indices in the new order.
+    RFC 9901 §8.3: 'disclosures' and 'kb_jwt' are ONLY in the (new) first unprotected header."""
     sigs = obj['signatures']
     tasinan = {}
     for s in sigs:
@@ -85,7 +85,7 @@ def permute(obj, order):
 
 
 def mr4_denetimi(kaynak, perm, order):
-    """Permutasyon yalniz sirayi degistirmeli: yuk, her (protected, signature) cifti ve SD-JWT ifsalari korunur."""
+    """The permutation may change only the order: the payload, every (protected, signature) pair and the SD-JWT disclosures are preserved."""
     if perm['payload'] != kaynak['payload'] or len(perm['signatures']) != len(kaynak['signatures']):
         raise RuntimeError('MR4: yuk/imza sayisi degisti')
     if sorted(order) != list(range(len(order))):
@@ -111,7 +111,7 @@ def mr4_denetimi(kaynak, perm, order):
     return bool(tasinan)
 
 
-# ------------------------------------------------------------------ compact yardimcilari
+# ------------------------------------------------------------------ compact helpers
 def compact(header, payload, sig):
     return b64u_encode(json_bytes(header)) + '.' + b64u_encode(payload) + '.' + b64u_encode(sig)
 
@@ -124,17 +124,17 @@ class V12:
     def __init__(self, u: Uretici, esler: dict, v11_items: list, out: str):
         self.u = u
         self.S = u.S
-        self.esler = esler                      # v1.1 Ed25519 esleri (v1 id -> nesne)
+        self.esler = esler                      # v1.1 Ed25519 counterparts (v1 id -> object)
         self.v11 = {i['id']: i for i in v11_items}
         self.out = out
-        self.yeni = []                          # (nesne, girdi)
-        self.nesne = {}                          # id -> nesne (v1.1 + v1.2)
+        self.yeni = []                          # (object, entry)
+        self.nesne = {}                          # id -> object (v1.1 + v1.2)
         for vid, o in u.objs.items():
             self.nesne[vid] = o
         for vid, o in esler.items():
             self.nesne[vid + '-ED25519'] = o
 
-    # -------------------------------------------------------- yazma
+    # -------------------------------------------------------- writing
     def yaz(self, aile, vid, obj):
         if isinstance(obj, str):
             ext = 'sdjwt' if '~' in obj else 'jws'
@@ -153,15 +153,15 @@ class V12:
         girdi['dosya'] = rel
         girdi['sha256'] = hashlib.sha256(data).hexdigest()
         girdi['bayt'] = len(data)
-        sirali = {k: girdi[k] for k in ('id', 'dosya', 'sha256', 'bayt', 'aile')}   # v1 girdileriyle ayni anahtar sirasi
+        sirali = {k: girdi[k] for k in ('id', 'dosya', 'sha256', 'bayt', 'aile')}   # the same key order as the v1 entries
         sirali.update({k: v for k, v in girdi.items() if k not in sirali})
         self.yeni.append(sirali)
         self.nesne[sirali['id']] = obj
         return sirali
 
-    # -------------------------------------------------------- Ed25519 esi (A9 yedek kurali)
+    # -------------------------------------------------------- Ed25519 counterpart (fallback rule A9)
     def ed_esi(self, girdi, es_obj):
-        """girdi: EdDSA etiketli yeni vektorun manifest girdisi; es_obj: Ed25519 etiketli esi."""
+        """girdi: manifest entry of the new EdDSA-labelled vector; es_obj: its Ed25519-labelled counterpart."""
         degisen = v11.koruma_denetimi(self.nesne[girdi['id']], es_obj)
         e = copy.deepcopy(girdi)
         e['id'] = girdi['id'] + '-ED25519'
@@ -289,7 +289,7 @@ class V12:
     # -------------------------------------------------------- 2. K10
     def aile_K10(self):
         S = self.S
-        # (kol, baslik alg, gercek anahtar rolu, imzada kullanilan gercek alg)
+        # (arm, header alg, real key role, real alg used in the signature)
         cases = [
             ('K', 'EdDSA', 'issuer/ES256', 'ES256'),
             ('K', 'ES256', 'issuer/EdDSA', 'EdDSA'),
@@ -388,7 +388,7 @@ class V12:
 def uret_v12(cikti_kok, donmus_kok, surumler):
     out = os.path.join(cikti_kok, 'vektorler', SURUM)
     with tempfile.TemporaryDirectory(prefix='pq-v12-') as td:
-        # (i) v1.1'i (ve onun icinde v1'i) bastan uret; donmus v1.1 ile karsilastir
+        # (i) regenerate v1.1 (and v1 inside it) from scratch; compare with the frozen v1.1
         v11.uret_v11(td, donmus_kok, surumler)
         for fn in ('SHA256SUMS', 'MANIFEST.json'):
             a = open(os.path.join(donmus_kok, 'vektorler', 'v1.1', fn), 'rb').read()
@@ -396,12 +396,12 @@ def uret_v12(cikti_kok, donmus_kok, surumler):
             if a != b:
                 raise RuntimeError('v1.1 yeniden uretimi donmus v1.1 ile ayni degil (%s) — v1.2 uretilmedi' % fn)
         v11_man = json.load(open(os.path.join(td, 'vektorler', 'v1.1', 'MANIFEST.json'), encoding='utf-8'))
-        # (ii) bellekte v1 nesneleri + v1.1 esleri (belirlenimci; ayni nesneler)
+        # (ii) v1 objects in memory + v1.1 counterparts (deterministic; the same objects)
         with tempfile.TemporaryDirectory(prefix='pq-v12-v1-') as td2:
             u = Uretici(td2)
             u.uret(surumler)
         esler = v11.es_uret(u)
-        # (iii) v1.1 dosyalarini kopyala, yenileri ekle
+        # (iii) copy the v1.1 files, add the new ones
         if os.path.isdir(out):
             shutil.rmtree(out)
         src = os.path.join(td, 'vektorler', 'v1.1')

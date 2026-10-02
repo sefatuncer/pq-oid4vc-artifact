@@ -1,8 +1,8 @@
-"""Uretec giris noktasi: python -m uretec.uret <cikti_kok>
+"""Entry point of the generator: python -m uretec.uret <output_root>
 
-<cikti_kok>/anahtarlar/v1/   anahtarlar (ozel/acik JWK), PKI (PEM/DER), roller.json, SHA256SUMS
-<cikti_kok>/vektorler/v1/    vektor dosyalari, MANIFEST.json/.csv, b-uyumlu/vectors.json, SHA256SUMS
-<cikti_kok>/sonuclar/        v1_boyutlar.csv (artefakt boyutlari)
+<output_root>/anahtarlar/v1/   keys (private/public JWK), PKI (PEM/DER), roller.json, SHA256SUMS
+<output_root>/vektorler/v1/    vector files, MANIFEST.json/.csv, b-uyumlu/vectors.json, SHA256SUMS
+<output_root>/sonuclar/        v1_boyutlar.csv (artefact sizes)
 """
 import csv
 import json

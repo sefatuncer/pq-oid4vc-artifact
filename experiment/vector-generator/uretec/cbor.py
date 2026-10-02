@@ -1,10 +1,10 @@
-"""Asgari CBOR (RFC 8949) kodlayici/cozucu — COSE vektorleri icin.
+"""Minimal CBOR (RFC 8949) encoder/decoder — for the COSE vectors.
 
-Kodlama: belirlenimci (RFC 8949 §4.2.1 "core deterministic"): en kisa tamsayi/uzunluk bicimi, belirli
-uzunluklar, harita anahtarlari kodlanmis baytlarina gore sozluksel sirali (canonical=True). canonical=False
-ekleme sirasini korur (dis test vektorlerini — ornegin RFC 9964 Ek A COSE_Key — birebir yeniden uretmek icin).
-Cozme: yalniz belirli uzunluk; artik bayt reddi; etiketler Tag nesnesi olarak doner. Desteklenen turler:
-uint/nint, bstr, tstr, dizi, harita, etiket, false/true/null.
+Encoding: deterministic (RFC 8949 §4.2.1 "core deterministic"): shortest integer/length form, definite
+lengths, map keys in lexicographic order of their encoded bytes (canonical=True). canonical=False
+keeps the insertion order (to reproduce external test vectors — e.g. the COSE_Key of RFC 9964 Appendix A — exactly).
+Decoding: definite lengths only; trailing bytes rejected; tags are returned as Tag objects. Supported types:
+uint/nint, bstr, tstr, array, map, tag, false/true/null.
 """
 
 

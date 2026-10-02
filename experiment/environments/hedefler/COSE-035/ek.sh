@@ -1,4 +1,4 @@
-# COSE-035 ek kayıt (bilgi): cose-lib kaynağında ML-DSA izleri ve PHP openssl sabitleri. İmza doğrulama YOK.
+# COSE-035 additional record (information): ML-DSA traces in the cose-lib source and PHP openssl constants. NO signature verification.
 echo "== ML-DSA kaynak izleri (grep; bilgi)"
 grep -rn -i -E "ml-?dsa|mldsa|ml_dsa|dilithium" /tmp/p/vendor/web-auth/cose-lib/src 2>/dev/null | head -25 | tee "$C/mldsa-kaynak.txt"
 echo "== PHP openssl sabitlerinde ML/PQ adları (ortam; bilgi)"

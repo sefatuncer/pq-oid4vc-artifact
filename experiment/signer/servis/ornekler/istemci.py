@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""pqdogrula icin asgari Python istemcisi (yalniz standart kitaplik).
+"""Minimal Python client for pqdogrula (standard library only).
 
-Bir hedef kutuphanenin genisletme noktasina takilacak "eklenti"nin yapacagi is budur:
-JWS'ten imzalama girdisini ve imzayi cikar, alg + acik anahtarla servise gonder, yalniz
-{gecerli} sonucunu kutuphaneye dondur. Politika (hangi alg, kac imza, anahtar secimi) kutuphanede kalir.
+This is what a "plug-in" attached to the extension point of a target library would do:
+extract the signing input and the signature from the JWS, send them with alg + public key to the service, and return only
+the {gecerli} (valid) result to the library. The policy (which alg, how many signatures, key selection) stays in the library.
 
-Kullanim:
+Usage:
   python istemci.py --url http://127.0.0.1:18765 --jws belirtec.jws --jwk anahtar.json
   python istemci.py --url http://127.0.0.1:18765 --istek istek_ML-DSA-65.json
 """

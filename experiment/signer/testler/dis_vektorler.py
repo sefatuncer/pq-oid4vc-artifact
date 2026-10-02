@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
-"""Dis test vektorlerini korpus metinlerinden cikarir (Adim 9b).
+"""Extracts the external test vectors from the corpus texts (Step 9b).
 
-Kaynaklar (spec-corpus/metin, MANIFEST id'leri):
-  * RFC9964   Appendix A.1 (JOSE: ML-DSA-44/65/87) ve A.2 (COSE: ham alanlar)
+Sources (spec-corpus/metin, MANIFEST ids):
+  * RFC9964   Appendix A.1 (JOSE: ML-DSA-44/65/87) and A.2 (COSE: raw fields)
   * JOSECOMP  draft-ietf-jose-pq-composite-sigs-04 Appendix A.1 (JOSE, 6 composite alg)
 
-Metinlerde iki farkli satir kirma bicimi var:
-  * JOSECOMP: RFC 8792 tek ters bolu ('\\') satir kirma
-  * RFC9964 : dize degerleri satir basindan (girinti olmadan) devam eder
-Her ikisi de JSON dizeleri icinde bosluk, satir sonu ve ters bolu atilarak cozulur
-(base64url ve hex degerlerde bu karakterler bulunmaz).
+The texts use two different line-folding styles:
+  * JOSECOMP: RFC 8792 single-backslash ('\\') line folding
+  * RFC9964 : string values continue at the start of the line (without indentation)
+Both are resolved by dropping spaces, line breaks and backslashes inside the JSON strings
+(base64url and hex values do not contain these characters).
 
-Kullanim: python dis_vektorler.py <korpus_metin_dizini> <cikti_dizini>
+Usage: python dis_vektorler.py <corpus_text_folder> <output_folder>
 """
 import hashlib
 import json
@@ -21,7 +21,7 @@ import sys
 
 
 def _unwrap_json_text(txt: str) -> str:
-    """JSON dizeleri icindeki satir kirma artiklarini temizler."""
+    """Cleans the line-folding leftovers inside JSON strings."""
     out = []
     in_str = False
     i = 0
@@ -32,7 +32,7 @@ def _unwrap_json_text(txt: str) -> str:
                 in_str = False
                 out.append(c)
             elif c in '\\\n\r \t':
-                pass  # satir kirma artigi
+                pass  # line-folding leftover
             else:
                 out.append(c)
         else:
@@ -50,12 +50,12 @@ def _blocks_between(lines, start_pat, end_pat):
 
 
 def _json_objects_with_captions(lines, s, e):
-    """[s,e) araligindaki '{ ... }' + 'Figure N: ad' bloklarini dondurur."""
+    """Returns the '{ ... }' + 'Figure N: name' blocks in the range [s,e)."""
     res = []
     i = s
     while i < e:
         if lines[i].strip() == '{':
-            # es kapanis: ayni girinti duzeyindeki '}' (ic ice nesneler icin sayac)
+            # matching close: '}' at the same indentation level (counter for nested objects)
             depth = 0
             j = i
             buf = []
@@ -65,7 +65,7 @@ def _json_objects_with_captions(lines, s, e):
                     j += 1
                     continue
                 buf.append(l)
-                # yalniz dize disindaki ayraclari say
+                # count only the braces outside strings
                 t = re.sub(r'"[^"]*"', '""', l)
                 depth += t.count('{') - t.count('}')
                 j += 1

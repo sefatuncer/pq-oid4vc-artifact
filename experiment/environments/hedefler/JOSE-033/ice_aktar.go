@@ -1,4 +1,4 @@
-// Bağlama kontrolü: doğrulama API sembolleri ikiliye bağlanır; hiçbir işlev ÇAĞRILMAZ.
+// Link check: the verification API symbols are linked into the binary; NO function is called.
 package main
 
 import (

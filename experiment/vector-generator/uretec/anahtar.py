@@ -1,16 +1,16 @@
-"""v1 anahtar rolleri ve test PKI'si (tamami belirlenimci).
+"""v1 key roles and test PKI (fully deterministic).
 
-Anahtar: pqjose.keys.derive_key(tur, 'v1/<rol>') — HKDF-SHA256, sabit IKM. Ayni etiket -> ayni anahtar.
-Sertifika: pqjose.pki (sabit seri no, sabit gecerlilik 2026-01-01..2036-12-31, belirlenimci imza).
+Key: pqjose.keys.derive_key(kind, 'v1/<role>') — HKDF-SHA256, fixed IKM. Same label -> same key.
+Certificate: pqjose.pki (fixed serial number, fixed validity 2026-01-01..2036-12-31, deterministic signature).
 
-PKI (HAIP 1.0: x5c = [yaprak, ara CA]; kok x5c'ye KONMAZ; imzalayan sertifika kendinden imzali DEGIL):
-  root-ec  (P-256, kendinden imzali)          root-ml (ML-DSA-65, kendinden imzali)
-  int-ec   (P-256, root-ec imzali)            int-ml  (ML-DSA-65, root-ml imzali)
-  int-ml-rootec (ML-DSA-65 anahtari, root-ec imzali)   <- PQ ara CA / klasik kok (karisik kok halkasi)
-  Yapraklar: issuer-ec@int-ec, issuer-ml@int-ml, issuer-ml@int-ec (karisik), issuer-ec@int-ml (karisik),
-             issuer-ml@int-ml-rootec (karisik kok), status-ec@int-ec, status-ml@int-ml,
+PKI (HAIP 1.0: x5c = [leaf, intermediate CA]; the root is NOT put into x5c; the signing certificate is NOT self-signed):
+  root-ec  (P-256, self-signed)               root-ml (ML-DSA-65, self-signed)
+  int-ec   (P-256, signed by root-ec)         int-ml  (ML-DSA-65, signed by root-ml)
+  int-ml-rootec (ML-DSA-65 key, signed by root-ec)   <- PQ intermediate CA / classical root (mixed root link)
+  Leaves: issuer-ec@int-ec, issuer-ml@int-ml, issuer-ml@int-ec (mixed), issuer-ec@int-ml (mixed),
+             issuer-ml@int-ml-rootec (mixed root), status-ec@int-ec, status-ml@int-ml,
              rp-ec@int-ec, rp-ml@int-ml  (SAN: DNS issuer.example / verifier.example)
-Composite X.509 (LAMPS): OpenSSL 3.5'te yok -> composite anahtarlar kid/JWKS ile cozulur.
+Composite X.509 (LAMPS): not in OpenSSL 3.5 -> composite keys are resolved with kid/JWKS.
 """
 from pqjose import pki
 from pqjose.keys import derive_key
@@ -18,21 +18,21 @@ from pqjose.params import COMPOSITE, MLDSA
 
 SUBJ = '/C=EU/O=PQ-OID4VC Test PKI v1/CN='
 
-# rol -> anahtar turu
+# role -> key type
 ROLLER = {
-    # ihracci (kimlik bilgisi imzalayan)
+    # issuer (signs the credential)
     'issuer/ES256': 'ES256', 'issuer/ES384': 'ES384', 'issuer/EdDSA': 'EdDSA', 'issuer/Ed448': 'Ed448',
     **{'issuer/' + a: a for a in MLDSA}, **{'issuer/' + a: a for a in COMPOSITE},
-    # durum listesi imzalayan
+    # signs the status list
     'status/ES256': 'ES256', 'status/ML-DSA-65': 'ML-DSA-65', 'status/ML-DSA-65-ES256': 'ML-DSA-65-ES256',
-    # dogrulayici (RP) istek nesnesi imzalayan
+    # verifier (RP), signs the request object
     'rp/ES256': 'ES256', 'rp/ML-DSA-65': 'ML-DSA-65', 'rp/ML-DSA-65-ES256': 'ML-DSA-65-ES256',
-    'rp/enc': 'ES256',   # ECDH-ES P-256 yanit sifreleme anahtari (yalniz acik JWK kullanilir)
-    # kullanici (holder) — cnf.jwk ve KB-JWT
+    'rp/enc': 'ES256',   # ECDH-ES P-256 response encryption key (only the public JWK is used)
+    # user (holder) — cnf.jwk and KB-JWT
     'holder/ES256': 'ES256', 'holder/ML-DSA-65': 'ML-DSA-65', 'holder/ML-DSA-65-ES256': 'ML-DSA-65-ES256',
     # DPoP
     **{'dpop/' + a: a for a in ('ES256', 'EdDSA') + tuple(MLDSA) + tuple(COMPOSITE)},
-    # CA anahtarlari
+    # CA keys
     'ca/root-ec': 'ES256', 'ca/root-ml': 'ML-DSA-65', 'ca/int-ec': 'ES256', 'ca/int-ml': 'ML-DSA-65',
     'ca/int-ml-rootec': 'ML-DSA-65',
 }
@@ -76,7 +76,7 @@ class AnahtarSeti:
             c[name] = pki.make_cert(name, self.k[rol], c[issuer], SUBJ + cn, 100 + i, 'leaf', san_dns=san)
 
     def x5c(self, leaf):
-        """HAIP: [yaprak, ara CA] (kok haric)."""
+        """HAIP: [leaf, intermediate CA] (without the root)."""
         c = self.certs[leaf]
         return pki.x5c(c, c.issuer)
 

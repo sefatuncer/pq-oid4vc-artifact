@@ -1,10 +1,10 @@
-"""Belirlenimci test PKI'si (OpenSSL CLI).
+"""Deterministic test PKI (OpenSSL CLI).
 
-* Tum sertifikalar sabit seri no ve sabit gecerlilik (2026-01-01 .. 2036-12-31) ile uretilir.
-* Imzalar belirlenimci: ECDSA -> RFC 6979 (nonce-type:1), ML-DSA -> deterministic:1, EdDSA dogal.
-  Ayni anahtarlar -> bayt-bayt ayni sertifikalar.
-* HAIP 1.0 6.1.1 / 5: x5c guven capasini (kok) ICERMEZ; imzalayan sertifika kendinden imzali olmaz.
-* Composite X.509 (draft-ietf-lamps-pq-composite-sigs-19): OpenSSL 3.5'te yok -> kapsam disi.
+* All certificates are produced with a fixed serial number and a fixed validity (2026-01-01 .. 2036-12-31).
+* Signatures deterministic: ECDSA -> RFC 6979 (nonce-type:1), ML-DSA -> deterministic:1, EdDSA naturally.
+  Same keys -> byte-identical certificates.
+* HAIP 1.0 6.1.1 / 5: x5c does NOT contain the trust anchor (root); the signing certificate is not self-signed.
+* Composite X.509 (draft-ietf-lamps-pq-composite-sigs-19): not in OpenSSL 3.5 -> out of scope.
 """
 from dataclasses import dataclass
 
@@ -14,7 +14,7 @@ from .x509 import pem_to_der
 
 NOT_BEFORE = '20260101000000Z'
 NOT_AFTER = '20361231235959Z'
-ATTIME = 1790000000  # 2026-09-21: dogrulama anlik zamani (gecerlilik penceresi icinde)
+ATTIME = 1790000000  # 2026-09-21: verification instant (inside the validity window)
 
 _CNF = """[req]
 distinguished_name=dn

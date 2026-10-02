@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
-"""T11 — BATARYA-ESLEME.md <-> ON-KAYIT §6.5 / §4.20 / §2B m.6, m.8 / §2H bagimsiz satir satir denetimi.
+"""T11 — Independent row-by-row check BATARYA-ESLEME.md <-> PRE-REGISTRATION §6.5 / §4.20 / §2B items 6, 8 / §2H.
 
-Esleme ureticisinden (uretec/esleme.py) AYRI bir ayristirici ile: ÖK §6.5 satirlarinin (K1-K11, V+/V-) icerik ve
-oracle karari alintilarinin birebir oldugu, her kol hucresinin dolu ya da gerekceli "—" oldugu, K8 uyarlamasinin D-S1
-atifli oldugu, MR1-MR4 tanimlarinin birebir oldugu ve her vektor kimliginin manifestte bulundugu denetlenir.
-v1.3 eslemesinde ek olarak: COSE tablosu (K1-K11, V+/V-, MR1-MR4; COSE hucrelerinde yalniz COSE vektorleri, kol
-tutarliligi, K11/MR3 gerekceli "—"), K8/K9'un ÖK §2H m.9'a uyarlanmasi, L4c tablosu (ÖK §2B m.6 alintilari; goc etmis
-ve eski ihracci vektorlerinin iss degerleri dosyalardan) ve §2H alintilari.
-Kullanim: python t11_esleme_denetim.py <ON-KAYIT-TASLAK.md> <BATARYA-ESLEME.md> <MANIFEST.json (v1.2 ya da v1.3)>
+With a parser SEPARATE from the mapping generator (uretec/esleme.py) it checks that the content and the oracle-decision
+quotations of the PR §6.5 rows (K1-K11, V+/V-) are verbatim, that every arm cell is filled or a justified "—", that the K8 adaptation
+cites D-S1, that the definitions of MR1-MR4 are verbatim, and that every vector id exists in the manifest.
+For the v1.3 mapping additionally: the COSE table (K1-K11, V+/V-, MR1-MR4; only COSE vectors in the COSE cells, arm
+consistency, justified "—" for K11/MR3), the adaptation of K8/K9 to PR §2H item 9, the L4c table (quotations of PR §2B item 6; the iss
+values of the migrated and the old issuer vectors from the files) and the §2H quotations.
+Usage: python t11_esleme_denetim.py <ON-KAYIT-TASLAK.md> <BATARYA-ESLEME.md> <MANIFEST.json (v1.2 or v1.3)>
 """
 import base64
 import json
@@ -43,7 +43,7 @@ def kimlikler(hucre):
     return [v for v in re.findall(r'`([^`]+)`', hucre) if re.match(r'^[A-Z0-9]', v) and '_' in v]
 
 
-# ÖK §6.5 satirlari (bagimsiz ayristirma)
+# PR §6.5 rows (independent parsing)
 s65 = ok_txt.split('### 6.5 ', 1)[1].split('### 6.6', 1)[0]
 ok_rows = {}
 for line in s65.splitlines():
@@ -52,7 +52,7 @@ for line in s65.splitlines():
         ok_rows[cells[0]] = cells[1:]
 kontrol('ÖK §6.5 satir sayisi (K1-K11 + V+/V-) = 12', len(ok_rows) == 12, sorted(ok_rows))
 
-# JOSE tablosu: v1.3'te COSE bolumunden onceki kisim
+# JOSE table: in v1.3 the part before the COSE section
 jose_txt = es_txt.split('## 3. COSE', 1)[0] if V13 else es_txt
 es_rows = satirlar(jose_txt)
 beklenen = ['K%d' % i for i in range(1, 12)] + ['V+', 'V−', 'MR1', 'MR2', 'MR3', 'MR4']
@@ -87,7 +87,7 @@ def alinti_ve_hucreler(rows, etiket, izinli_kimlik=None):
 
 alinti_ve_hucreler(es_rows, 'JOSE' if V13 else 'Esleme')
 
-# K8 uyarlamasi D-S1'e atifli
+# K8 adaptation cites D-S1
 k8 = es_rows['K8']
 if V13:
     for k in ('K8', 'K9'):
@@ -104,19 +104,19 @@ else:
     kontrol('K8 ML-DSA hucresi X5C04 birincil', '**birincil:** `X5C04_karisik_pq_yaprak_klasik_ara`' in k8[-2])
     kontrol('K8 kontrol hucresi gerekceli (D-S1)', k8[-3].startswith('—') and 'D-S1' in k8[-3])
 kontrol('Durustluk notunda K8 uyarlamasi D-S1 atifli', '**K8 uyarlanmış (D-S1):**' in es_txt)
-# K6/K7 yalniz composite
+# K6/K7 composite only
 for k in ('K6', 'K7'):
     kontrol('%s kontrol ve ML-DSA hucreleri uygulanamaz (gerekceli)' % k,
             all(c.startswith('—') and 'uygulanamaz' in c for c in es_rows[k][-3:-1]))
     kontrol('%s composite hucresi dolu' % k, 'birincil' in es_rows[k][-1])
-# MR tanimlari birebir
+# MR definitions verbatim
 s420 = ok_txt.split('### 4.20 Oracle', 1)[1].split('### 4.21', 1)[0]
 mr_ok = {k: re.search(r'^\s*- %s: (.*)$' % k, s420, re.M).group(1).strip() for k in ('MR1', 'MR2', 'MR3')}
 mr_ok['MR4'] = re.search(r'\*\*Metamorfik ilişki MR4\*\* \([^)]*\): (.*)$', ok_txt, re.M).group(1).strip()
 for k in ('MR1', 'MR2', 'MR3'):
     kontrol('%s tanimi ÖK §4.20 ile birebir' % k, es_rows[k][0] == mr_ok[k], (es_rows[k][0], mr_ok[k]))
 kontrol('MR4 tanimi ÖK §2B m.8 ile birebir', es_rows['MR4'][0] == mr_ok['MR4'], (es_rows['MR4'][0], mr_ok['MR4']))
-# MR cift beklentileri
+# MR pair expectations
 kontrol('MR1: her kolda T1 <-> T3', all('`T1%s_both_valid` ↔ `T3_stripped_to_ES256`' % a in c
                                         for a, c in zip('KPC', es_rows['MR1'][-3:])))
 kontrol('MR2: her kolda T1 <-> T7 (birincil) ve T1 <-> T4', all('`T1%s_both_valid` ↔ `T7%s_plus_kayitsiz`' % (a, a) in c and
@@ -125,14 +125,14 @@ kontrol('MR2: her kolda T1 <-> T7 (birincil) ve T1 <-> T4', all('`T1%s_both_vali
 kontrol('MR3: -13/-19 ve VC11 her kolda', all('(-13 ↔ -19)' in c and '`VC11_typ_vc+sd-jwt`' in c for c in es_rows['MR3'][-3:]))
 kontrol('MR4: her kolda en az bir -SIRA- cifti', all('-SIRA-' in c for c in es_rows['MR4'][-3:]))
 kontrol('VP05 MR4 disi tanimlayici notu', 'MR4 dışı, tanımlayıcı' in es_txt and 'VP05_GJ_ES256_MLDSA65_kb-SIRA-ters' in es_txt)
-# ÖK politika ve senaryo alintisi
+# PR policy and scenario quotation
 pol = re.search(r'\*\*Politika:\*\* (.*)', s65).group(1).strip()
 kontrol('Politika alintisi birebir', pol in es_txt, pol)
 for sat in re.search(r'\*\*Senaryo etiketleri.*?\*\*\s*\n(.*?)\n\n', s65, re.S).group(1).strip().splitlines():
     kontrol('Senaryo satiri birebir: ' + sat[:40], sat in es_txt)
 
 if V13:
-    # ------------------------------------------------------------ COSE tablosu
+    # ------------------------------------------------------------ COSE table
     cose_txt = es_txt.split('## 3. COSE', 1)[1].split('## 4. L4c', 1)[0]
     c_rows = satirlar(cose_txt, 'COSE ')
     KOL_IZIN = [{'kontrol-EdDSA', 'kontrol-Ed25519', 'ortak'}, {'tedavi-ML-DSA-65', 'ortak'}, {'tedavi-composite', 'ortak'}]
@@ -185,7 +185,7 @@ if V13:
         if v['dosya'].endswith('.jws'):
             p = b.decode('ascii').split('.')[1]
             return json.loads(base64.urlsafe_b64decode(p + '=' * (-len(p) % 4)))['iss']
-        from uretec import cbor   # yalniz CBOR cozucu (esleme ureticisinden bagimsiz)
+        from uretec import cbor   # CBOR decoder only (independent of the mapping generator)
         return cbor.decode(cbor.decode(b).value[2])['iss']
     k4_ic, k4_kr = ok_rows['K4']
     goc_c, eski_c = [p.strip() for p in l4_ok.split('. ') if p.startswith('Göç etmiş')][0].split(', ')
@@ -210,7 +210,7 @@ if V13:
     kontrol('L4c vektorlerinde oracle karari yok (insa/aciklama "KABUL"/"RED" icermez)', all(
         not re.search(r'\b(KABUL|RED|accept|reject)\b', json.dumps(byid[v], ensure_ascii=False))
         for v in ('L4C-JOSE_eski_ES256', 'L4C-COSE_eski_ES256')))
-    # ------------------------------------------------------------ §2H alintilari ve denetim satiri
+    # ------------------------------------------------------------ §2H quotations and the check line
     for ad, desen in (('§2H m.9', r'^\*\*9\. K8/K9\.\*\* (.*)$'), ('§2H m.10', r'^\*\*10\. V±\.\*\* (.*)$'),
                       ('§2H m.12', r'^\*\*12\. COSE ve L4c\.\*\*\s*\n- (.*)$')):
         a = re.search(desen, ok_txt, re.M).group(1).strip()

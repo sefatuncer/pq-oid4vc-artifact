@@ -1,6 +1,6 @@
-// COSE-001: Signum indispensable-cosef 3.26.0 (+ supreme 0.16.0 doğrulayıcıları). Yalnız COSE_Sign1 (CoseSigned);
-// COSE_Sign (çoklu imzalayan) sınıfı yok → uygulanamaz (B6). Algoritma izin listesi API'si yok: doğrulayıcıyı
-// uygulama başlıktaki algoritmayla kurar, kütüphane başlık–doğrulayıcı uyumunu denetlemez → IZIN-*/L4* ifade-edilemedi.
+// COSE-001: Signum indispensable-cosef 3.26.0 (+ supreme 0.16.0 verifiers). Only COSE_Sign1 (CoseSigned);
+// there is no COSE_Sign (multi-signer) class → uygulanamaz (B6). No algorithm allow-list API: the application builds the
+// verifier with the algorithm of the header, and the library does not check the header–verifier match → IZIN-*/L4* ifade-edilemedi.
 package c3
 
 import at.asitplus.signum.indispensable.CryptoPublicKey
@@ -27,7 +27,7 @@ object Cose : T {
   override fun verify(job: JsonObject, data: ByteArray, X: String): List<Map<String, Any>> {
     if (temel(job.s("politika")) !in VARSAYILAN) throw IfadeEdilemedi("Signum: algoritma izin listesi API'si yok; doğrulayıcı başlıktaki alg ile kurulur")
     val cs = CoseSigned.deserialize(ByteArraySerializer(), data).getOrElse { e ->
-      // Tanınmayan alg değeri başlık ayrıştırmasında CoseAlgorithmSerializer'dan NoSuchElementException olarak çıkar.
+      // An unrecognised alg value surfaces during header parsing as a NoSuchElementException from CoseAlgorithmSerializer.
       if (e.stackTrace.any { it.className.endsWith("CoseAlgorithmSerializer") }) throw IllegalArgumentException("unsupported algorithm (CoseAlgorithmSerializer)", e)
       throw e
     }

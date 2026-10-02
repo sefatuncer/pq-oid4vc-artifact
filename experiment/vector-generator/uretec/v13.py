@@ -1,18 +1,18 @@
-"""Test vektoru seti v1.3 = v1.2 (153 vektor, BAYT-AYNI) + ASGARI ekler (Oracle A N-0 ve N-2; kullanici onayi).
+"""Test vector set v1.3 = v1.2 (153 vectors, BYTE-IDENTICAL) + MINIMAL additions (Oracle A N-0 and N-2; approved by the study lead).
 
-A) COSE (RFC 9052): COSE_Sign (etiket 98) ve COSE_Sign1 (etiket 18). Kimlikler korpustan birebir (uretec/cose.py KAYNAK):
+A) COSE (RFC 9052): COSE_Sign (tag 98) and COSE_Sign1 (tag 18). Ids verbatim from the corpus (uretec/cose.py KAYNAK):
    ES256 = -7 (RFC9053:248; RFC 9864 §4.2.2 "Deprecated"), EdDSA = -8 (RFC9053:365; "Deprecated"), Ed25519 = -19
    (RFC9864:225), ML-DSA-65 = -49 (RFC9964:367), ML-DSA-65-ES256 = -55 (JOSECOMP:1268 "TBD (request assignment -55)":
-   talep edilen, KAYITLI DEGIL). Vakalar her kolda: K1, K2, K3 (ortak), K4, K5 (kayitsiz tstr alg "X-KAYITSIZ-1"),
-   K10 (iki yon), V+/V- (COSE_Sign1), MR4 (K1/K2 imzaci sirasi ters); yalniz composite: K6, K7 (ML ve ECDSA ayri);
-   kol-bagimsiz: K8 (x5chain, ML-DSA-65 yaprak + klasik ara CA), K9 (korumasiz x5chain). K11 COSE'da uygulanamaz.
-   Kontrol kolunun EdDSA etiketli vektorlerinin Ed25519 (-19) esleri.
-B) L4c: ayri kimlikli "eski ihracci" (iss https://legacy-issuer.example, anahtar issuer-eski/ES256, turetme etiketi
-   v1.3/issuer-eski/ES256): JOSE compact ve COSE_Sign1, yalniz ES256. Goc etmis ihraccinin vektorleri MEVCUTTUR ve
-   yeniden kullanilir (bayt-ayni olacagindan yeniden uretilmez): JOSE VPLUS_ML-DSA-65 / CMP00 / VPLUS_ES256;
+   requested, NOT REGISTERED). Cases in every arm: K1, K2, K3 (shared), K4, K5 (unregistered tstr alg "X-KAYITSIZ-1"),
+   K10 (two directions), V+/V- (COSE_Sign1), MR4 (K1/K2 signer order reversed); composite only: K6, K7 (ML and ECDSA separately);
+   arm-independent: K8 (x5chain, ML-DSA-65 leaf + classical intermediate CA), K9 (unprotected x5chain). K11 is not applicable in COSE.
+   Ed25519 (-19) counterparts of the EdDSA-labelled vectors of the control arm.
+B) L4c: an "old issuer" with a separate identity (iss https://legacy-issuer.example, key issuer-eski/ES256, derivation label
+   v1.3/issuer-eski/ES256): JOSE compact and COSE_Sign1, ES256 only. The vectors of the migrated issuer EXIST and are
+   reused (not regenerated because they would be byte-identical): JOSE VPLUS_ML-DSA-65 / CMP00 / VPLUS_ES256;
    COSE COSE-VPLUS_ML-DSA-65 / COSE-K6 / COSE-VPLUS_ES256 (BATARYA-ESLEME.md).
-Donmus v1/, v1.1/, v1.2/ ve anahtarlar/v1/ yalniz OKUNUR. Yeni anahtar: anahtarlar/v1.3/. Oracle karari YAZILMAZ.
-Kullanim: python -m uretec.v13 <cikti_kok> [<donmus_kok>]
+The frozen v1/, v1.1/, v1.2/ and anahtarlar/v1/ are only READ. New key: anahtarlar/v1.3/. NO oracle decision is written.
+Usage: python -m uretec.v13 <output_root> [<frozen_root>]
 """
 import copy
 import csv
@@ -70,7 +70,7 @@ def _harita_algsiz(m):
 
 
 def cose_es_denetimi(o1: bytes, o2: bytes):
-    """Ed25519 esi: yalniz EdDSA(-8) -> Ed25519(-19) etiketi ve o imza farkli olmali."""
+    """Ed25519 counterpart: only the label EdDSA(-8) -> Ed25519(-19) and that signature may differ."""
     p1, p2 = cose.ayristir(o1), cose.ayristir(o2)
     if (p1['tur'], p1['payload'], p1['body_unprot']) != (p2['tur'], p2['payload'], p2['body_unprot']) or \
             len(p1['imzalar']) != len(p2['imzalar']):
@@ -118,7 +118,7 @@ class V13:
     def kidb(self, rol):
         return cose.kid_bytes(self.key(rol))
 
-    # -------------------------------------------------------- yazma
+    # -------------------------------------------------------- writing
     def yaz(self, aile, vid, obj):
         if isinstance(obj, (bytes, bytearray)):
             ext, data = 'cbor', bytes(obj)
@@ -141,7 +141,7 @@ class V13:
         self.nesne[vid] = obj
         return g
 
-    # -------------------------------------------------------- meta yardimcilari
+    # -------------------------------------------------------- metadata helpers
     def kayit(self, sira, alg, rol, durum, **kw):
         k = self.key(rol) if rol else None
         d = {'sira': sira, 'alg': alg, 'cose_alg': cose.alg_deger(alg), 'alg_sinifi': alg_class(alg), 'anahtar_rolu': rol,
@@ -181,7 +181,7 @@ class V13:
                 'dayanak': list(dayanak), 'insa': insa or {}, 'dogrulama_girdileri': girdiler or {},
                 'b_pilot_esi': None, 'dcapi_protokol': None}
 
-    # -------------------------------------------------------- COSE yapilari
+    # -------------------------------------------------------- COSE structures
     def imz(self, alg, rol=None, imza=None, prot_ek=None, unprot=None, imza_alg=None, yuk=COSE_YUK):
         rol = rol or ROLES[alg]
         return cose.imzaci(b'', yuk, self.key(rol) if imza is None else None, alg, prot_ek=prot_ek,
@@ -207,7 +207,7 @@ class V13:
                 'kid': 'COSE kid (etiket 4) = base64url-cozulmus JWK kid (RFC 7638 parmak izi, 32 B); korumasiz baslikta',
                 'basliklar': basliklar}
 
-    # -------------------------------------------------------- A) COSE ailesi
+    # -------------------------------------------------------- A) COSE family
     def aile_cose(self):
         kayitlar = {}
         for a in 'KPC':
@@ -316,7 +316,7 @@ class V13:
             senaryo='a', girdiler=self.girdi([rc]),
             insa={'imzalar': [self.kayit(0, c, rc, 'gecerli')], 'cose': self.cose_bilgi(18, bas1)}))
         sig = cbor.decode(self.nesne['COSE-K6_composite_gecerli']).value[3]
-        n = 3309                      # ML-DSA-65 imza uzunlugu (FIPS 204); composite = mldsaSig || DER(Ecdsa-Sig-Value)
+        n = 3309                      # ML-DSA-65 signature length (FIPS 204); composite = mldsaSig || DER(Ecdsa-Sig-Value)
         der = sig[n:]
         if der[0] != 0x30 or der[2] != 0x02:
             raise RuntimeError('K7: beklenmeyen DER yapisi')
@@ -363,7 +363,7 @@ class V13:
                   'cose': self.cose_bilgi(18, {'korumali': '{1: alg}', 'korumasiz': '{33: [yaprak, ara CA]}'})}))
         return out
 
-    # -------------------------------------------------------- MR4 ve Ed25519 esleri
+    # -------------------------------------------------------- MR4 and Ed25519 counterparts
     def mr4(self, kaynak_g):
         vid = kaynak_g['id'] + '-SIRA-ters'
         o = cbor.decode(self.nesne[kaynak_g['id']]).value
@@ -407,7 +407,7 @@ class V13:
         e['sinanan']['ek_etiketler'] = e['sinanan']['ek_etiketler'] + ['ed25519-etiketi(RFC 9864; A9 yedek kurali)']
         return self.ekle(g['id'] + '-ED25519', g['aile'], es_obj, e)
 
-    # -------------------------------------------------------- B) L4c eski ihracci
+    # -------------------------------------------------------- B) L4c old issuer
     def aile_l4c(self):
         from pqjose import jws
         e = self.eski
@@ -442,7 +442,7 @@ class V13:
         for a in 'KPC':
             mr4['K1' + a] = self.mr4(k['K1' + a])
             mr4['K2' + a] = self.mr4(k['K2' + a])
-        # Ed25519 esleri (kontrol kolu, EdDSA etiketi tasiyanlar)
+        # Ed25519 counterparts (control arm, those that carry the EdDSA label)
         E = self.imz
         k1e = self.sign([E('ES256'), E('Ed25519')])
         self.ed_esi(k['K1K'], k1e)

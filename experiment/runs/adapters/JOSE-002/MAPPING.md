@@ -1,38 +1,38 @@
-# JOSE-002 JWT (jwt-dotnet/jwt) — politika → API eşlemesi (sözleşme 1.0 §2.2, KOSUCU §2)
+# JOSE-002 JWT (jwt-dotnet/jwt) — policy → API mapping (contract 1.0 §2.2, RUNNER §2)
 
-- **Hedef:** NuGet `JWT` **11.1.0** (nuspec commit `5a4a865eaad9`; derleme sürümü 11.0.0.0), `packages.lock.json` ortamla aynı (+ Newtonsoft.Json 13.0.4).
-- **İmaj:** `a10-jose-002:1` (`FROM pq-a09-env-dotnet:1.0`). **Çağrı:** `… a10-jose-002:1 adaptor /is/<isler> /c/JOSE-002.<kosu>.jsonl`.
-- **Kaynak:** `Adaptor.cs`, `Ortak.cs` (JOSE-001 ile aynı iskelet).
+- **Target:** NuGet `JWT` **11.1.0** (nuspec commit `5a4a865eaad9`; assembly version 11.0.0.0), `packages.lock.json` the same as the environment (+ Newtonsoft.Json 13.0.4).
+- **Image:** `a10-jose-002:1` (`FROM pq-a09-env-dotnet:1.0`). **Call:** `… a10-jose-002:1 adaptor /is/<isler> /c/JOSE-002.<kosu>.jsonl`.
+- **Source:** `Adaptor.cs`, `Ortak.cs` (same skeleton as JOSE-001).
 
-## 1. Ortak kurallar
-`JOSE-087/MAPPING.md` §1 ile aynı (normalleştirme, P2, L4-YOL dahil). Saat: `WithDateTimeProvider(SabitSaat(simdi))` (kütüphanenin `IDateTimeProvider` arayüzü).
+## 1. Shared rules
+The same as `JOSE-087/MAPPING.md` §1 (normalisation, P2, L4-YOL included). Clock: `WithDateTimeProvider(SabitSaat(simdi))` (the library's `IDateTimeProvider` interface).
 
-## 2. Politika mekanizması: anahtara bağlı algoritma nesnesi
-JWT.NET'te izin listesi seçeneği ve JWK API'si yoktur. Belgeli kullanım: `JwtBuilder.Create().WithAlgorithm(new ES256Algorithm(ecdsaPublicKey)).MustVerifySignature().Decode(token)`.
-- **Anahtar yolu `dogrudan`:** seçilen JWK (EC) adaptörde `ECDsa.Create(ECParameters{Q = x,y})` nesnesine çevrilir (BCL).
-- **W:** anahtar türünün doğal alg'ı (P-256 → ES256, P-384 → ES384) W içindeyse o algoritma nesnesi yapılandırılır; değilse algoritma verilmez ve kütüphane `InvalidOperationException` ("Can't decode a token…") ile reddeder.
+## 2. Policy mechanism: algorithm object bound to the key
+JWT.NET has no allow-list option and no JWK API. Documented use: `JwtBuilder.Create().WithAlgorithm(new ES256Algorithm(ecdsaPublicKey)).MustVerifySignature().Decode(token)`.
+- **Key path `dogrudan` (direct):** the selected JWK (EC) is converted in the adapter into an `ECDsa.Create(ECParameters{Q = x,y})` object (BCL).
+- **W:** if the natural alg of the key type (P-256 → ES256, P-384 → ES384) is in W, that algorithm object is configured; otherwise no algorithm is given and the library rejects with `InvalidOperationException` ("Can't decode a token…").
 
-| Politika | Yapılandırma |
+| Policy | Configuration |
 |---|---|
-| GEC / P0 / P1 / P2 / VARSAYILAN | doğal alg ∈ {ES256, ES384} |
-| IZIN-A / IZIN-AX | doğal alg ∈ {ES256} / {ES256, X} (X'in JWT.NET karşılığı yoksa yalnız ES256) |
-| L4 / L4-S / L4-Y (kompakt) | doğal alg ∈ {X} — X ∈ {EdDSA, Ed25519, ML-DSA-65, composite} için hiçbir algoritma kurulamaz |
+| GEC / P0 / P1 / P2 / VARSAYILAN | natural alg ∈ {ES256, ES384} |
+| IZIN-A / IZIN-AX | natural alg ∈ {ES256} / {ES256, X} (only ES256 if X has no JWT.NET counterpart) |
+| L4 / L4-S / L4-Y (compact) | natural alg ∈ {X} — no algorithm can be set up for X ∈ {EdDSA, Ed25519, ML-DSA-65, composite} |
 | L4-YOL | `ifade-edilemedi` |
 
-`dogrulanan_algoritmalar`: kabulde yapılandırılan algoritma nesnesinin `Name`'i (doğrulamayı yapan nesne).
+`dogrulanan_algoritmalar`: on acceptance the `Name` of the configured algorithm object (the object that performs the verification).
 
-## 3. B6 kararları
-| Serileştirme | Karar |
+## 3. B6 decisions
+| Serialization | Decision |
 |---|---|
-| compact | desteklenir (`JwtDecoder`, 3 bölüm) |
-| general, sd-jwt-*, oid4vci-toplu-yanit, dcapi-json-parametre, COSE_* | **B6** (JSON serileştirme/SD-JWT/COSE API'si yok) |
+| compact | supported (`JwtDecoder`, 3 parts) |
+| general, sd-jwt-*, oid4vci-toplu-yanit, dcapi-json-parametre, COSE_* | **B6** (no JSON serialization/SD-JWT/COSE API) |
 
-## 4. İstisna → hata_sinifi
-| Kütüphane istisnası | hata_sinifi |
+## 4. Exception → hata_sinifi
+| Library exception | hata_sinifi |
 |---|---|
-| `SignatureVerificationException`, alg kütüphanede var / yok | `imza-gecersiz` (iletide "algorithm" geçerse `alg-anahtar-uyusmazligi`) / `alg-desteklenmiyor` |
-| `InvalidOperationException` "Can't decode a token" (algoritma yapılandırılmadı): alg kütüphanede yok / alg ∉ W / alg ∈ W | `alg-desteklenmiyor` / `alg-izin-disi` / `alg-anahtar-uyusmazligi` (`sonuc_ham = red`) |
+| `SignatureVerificationException`, alg exists in the library / does not exist | `imza-gecersiz` (`alg-anahtar-uyusmazligi` if the message contains "algorithm") / `alg-desteklenmiyor` |
+| `InvalidOperationException` "Can't decode a token" (no algorithm configured): alg not in the library / alg ∉ W / alg ∈ W | `alg-desteklenmiyor` / `alg-izin-disi` / `alg-anahtar-uyusmazligi` (`sonuc_ham = red`) |
 | `TokenExpiredException`, `TokenNotYetValidException` | `zaman` |
 | `InvalidTokenPartsException`, `FormatException`, `ArgumentException` | `ayristirma` |
 | `NotSupportedException` | `alg-desteklenmiyor` |
-| diğer | `istisna-diger` |
+| other | `istisna-diger` |

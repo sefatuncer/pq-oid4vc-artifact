@@ -1,4 +1,4 @@
-"""Test yardimcilari: kontrol kaydi ve sonuc dosyalari."""
+"""Test helpers: check log and result files."""
 import json
 import os
 import time

@@ -1,5 +1,5 @@
 // swift-tools-version:5.9
-// JOSE-102 jwt-kit 5.3.0 adaptörü — Package.resolved = deney/ortam/hedefler/JOSE-102/cikti (git revizyonları sabit)
+// Adapter for JOSE-102 jwt-kit 5.3.0 — Package.resolved = experiment/environments/hedefler/JOSE-102/cikti (git revisions pinned)
 import PackageDescription
 let package = Package(
   name: "Adaptor",

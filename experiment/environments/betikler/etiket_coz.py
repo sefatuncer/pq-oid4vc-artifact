@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Adım 9 görev 4a — sürüm etiketini commit'e çözer (anonim `git ls-remote`; kod indirmez).
-Her git çağrısı: GIT_TERMINAL_PROMPT=0, GCM_INTERACTIVE=never, -c credential.helper= (IS-PLANI §3.3, D-E12).
-Girdi: kayit/hedef_listesi.csv. Çıktı: kayit/surum_commit.csv ve kayit/lsremote/<id>.txt (ham ref listesi)."""
+"""Step 9 task 4a — resolves the release tag to a commit (anonymous `git ls-remote`; downloads no code).
+Every git call: GIT_TERMINAL_PROMPT=0, GCM_INTERACTIVE=never, -c credential.helper= (work plan §3.3, D-E12).
+Input: kayit/hedef_listesi.csv. Output: kayit/surum_commit.csv and kayit/lsremote/<id>.txt (raw ref list)."""
 import csv, os, pathlib, re, subprocess, concurrent.futures as cf
 KOK = pathlib.Path(__file__).resolve().parents[1]
 GIRDI = KOK / "kayit" / "hedef_listesi.csv"
@@ -54,7 +54,7 @@ def isle(r):
         sha, ref = satir.split("\t")
         ad = ref[len("refs/tags/"):]
         if ad.endswith("^{}"):
-            refs[ad[:-3]] = (refs.get(ad[:-3], (None, None))[0], sha)   # soyulmuş (peeled) commit
+            refs[ad[:-3]] = (refs.get(ad[:-3], (None, None))[0], sha)   # peeled commit
         else:
             refs[ad] = (sha, refs.get(ad, (None, None))[1])
     et, cands = etiket_sec(list(refs), r["son_surum"], r["paket_adi"])

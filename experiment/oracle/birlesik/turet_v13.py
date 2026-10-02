@@ -1,23 +1,23 @@
 # -*- coding: utf-8 -*-
 """
-PQ-OID4VC | Adım 9 kalanı (yürütücü, 01.10.2026) | v1.3 için birleşik oracle
+PQ-OID4VC | rest of Step 9 (maintainers, 01.10.2026) | merged oracle for v1.3
 ==============================================================================
-Girdi : oracle-A/karar.tsv (858 satır, v1.2), oracle-B/karar.tsv (732 satır, v1.2),
-        vector-generator/vektorler/v1.3/MANIFEST.csv, uretec/BATARYA-ESLEME.md (vaka eşlemesi)
-Çıktı : birlesik/karar_v13.tsv  (vektor_id, politika, kol, karar, A, B, kaynak, not)
+Input : oracle-A/karar.tsv (858 rows, v1.2), oracle-B/karar.tsv (732 rows, v1.2),
+        vector-generator/vektorler/v1.3/MANIFEST.csv, uretec/BATARYA-ESLEME.md (case mapping)
+Output: birlesik/karar_v13.tsv  (vektor_id, politika, kol, karar, A, B, kaynak, not)
         birlesik/OZET.json
-Kurallar (ÖK §2H madde 7–10, dondurmadan ÖNCE):
-  7  accept-hybrid ⇔ kabul PQ kanıtına dayanıyor (PQ kaldırılınca red). P0'da iki imza da geçerliyse
-     accept-classical (ÖK'deki örnek). L4'te kabul accept-hybrid; yalnız PQ imzayla kabul accept-hybrid.
-  8  K5 (tanınmayan algoritmalı ek imza: T7*, T4*, T6, UNK04/05) tek oracle kararı taşımaz → 'B1-bayragi'
-     (F_K/F_T'ye girmez; hedef davranışı L4-S/L4-Y satırlarıyla sınıflanır).
-  9  K8/K9 kol-bağımsız bayrak: composite kolundaki satırlar ölçüme girmez ('kol-bagimsiz').
-  10 V± yalnız GEC altında.
- COSE ve L4c (v1.3'te yeni): oracle kararı serileştirmeye değil vakaya bağlı olduğundan (BATARYA-ESLEME
- §3 "COSE Kn" ↔ §1 "Kn"), her COSE vektörü aynı vaka ve koldaki JOSE eşinin kararını alır. L4c-3 (eski
- ihraççı, yalnız ES256): BATARYA-ESLEME §4'teki alıntı ("eski ihraççının klasik imzalı belgesi kabul edilir")
- → IZIN-AX ve L4 ailesinde accept-classical; IZIN-A'da accept-classical; GEC'de accept-classical.
- Son karar: A = B → o değer; tek oracle'da varsa → o değer ('tek-oracle'); farklıysa → 'indeterminate'.
+Rules (PR §2H items 7–10, BEFORE the freeze):
+  7  accept-hybrid ⇔ the acceptance rests on the PQ evidence (rejection when PQ is removed). Under P0, if both signatures are valid,
+     accept-classical (the example in the PR). Under L4 an acceptance is accept-hybrid; acceptance with the PQ signature only is accept-hybrid.
+  8  K5 (additional signature with an unrecognised algorithm: T7*, T4*, T6, UNK04/05) carries no single oracle decision → 'B1-bayragi'
+     (does not enter F_K/F_T; the target behaviour is classified with the L4-S/L4-Y rows).
+  9  K8/K9 arm-independent flag: the rows in the composite arm do not enter the measurement ('kol-bagimsiz').
+  10 V± only under GEC.
+ COSE and L4c (new in v1.3): since the oracle decision depends on the case and not on the serialization (BATARYA-ESLEME
+ §3 "COSE Kn" ↔ §1 "Kn"), every COSE vector takes the decision of its JOSE counterpart in the same case and arm. L4c-3 (old
+ issuer, ES256 only): the quotation in BATARYA-ESLEME §4 (the old issuer's classically signed document is accepted)
+ → accept-classical in IZIN-AX and the L4 family; accept-classical in IZIN-A; accept-classical in GEC.
+ Final decision: A = B → that value; present in one oracle only → that value ('tek-oracle'); different → 'indeterminate'.
 """
 import csv, io, json, os, re, hashlib
 K = os.path.dirname(os.path.abspath(__file__))
@@ -29,7 +29,7 @@ MAN = {r['id']: r for r in csv.DictReader(io.open(os.path.join(D, 'vector-genera
 
 K5 = re.compile(r'^(T7|T4|T6|UNK04|UNK05)')
 def norm7(vid, pol, karar):
-    """Madde 7: P0'da kabulün sınıfı accept-classical (iki imza da geçerli olsa bile)."""
+    """Item 7: under P0 the class of an acceptance is accept-classical (even if both signatures are valid)."""
     if pol == 'P0' and karar == 'accept-hybrid' and vid.startswith(('T1', 'T7', 'VC07', 'VC08', 'VC09')):
         return 'accept-classical'
     return karar
@@ -49,12 +49,12 @@ def birlestir(key):
         return 'indeterminate', ka, kb, 'A≠B'
     return (ka or kb), ka, kb, 'tek-oracle'
 
-# ---- v1.2 satırları ----
+# ---- v1.2 rows ----
 rows = {}
 for key in set(A) | set(B):
     rows[key] = birlestir(key)
 
-# ---- COSE: vaka eşlemesi ----
+# ---- COSE: case mapping ----
 def jose_esi(cid):
     s = cid[len('COSE-'):]
     m = {'K1K_iki_gecerli': 'T1K_both_valid', 'K2K_X_bozuk': 'T2K_second_tampered', 'K3_X_soyuldu': 'T3_stripped_to_ES256',
@@ -72,7 +72,7 @@ def jose_esi(cid):
     else:
         base = m.get(s)
     if base is None: return None
-    # X5C kimlikleri öneklidir
+    # X5C ids carry a prefix
     if base in ('X5C04', 'X5C07'):
         base = next((v for v in MAN if v.startswith(base)), base)
     return base + suf
@@ -88,7 +88,7 @@ for cid, mr in MAN.items():
         karar, ka, kb, kay = rows[(jv, pol, kol)]
         rows[(cid, pol, kol)] = (karar, ka, kb, f'COSE←{jv} ({kay})')
 
-# ---- L4c-3: eski ihraççı ----
+# ---- L4c-3: old issuer ----
 for vid in ('L4C-JOSE_eski_ES256', 'L4C-COSE_eski_ES256'):
     for kol in ('tedavi-ML-DSA-65', 'tedavi-composite', 'kontrol-EdDSA'):
         for pol in ('GEC', 'IZIN-A', 'IZIN-AX', 'L4', 'L4-S', 'L4-Y'):

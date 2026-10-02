@@ -1,9 +1,9 @@
-"""JWS algoritma kaydi: imzalama ve dogrulama ilkelleri.
+"""JWS algorithm registry: signing and verification primitives.
 
-ES256/ES384 : RFC 7518 3.4 — imza HAM r||s (64/96 bayt); DER DEGIL.
-EdDSA       : RFC 8037 (egri anahtardan); Ed25519/Ed448: RFC 9864 tam belirtilmis adlar.
-ML-DSA-*    : RFC 9964 — saf ML-DSA, ctx bos.
-composite   : -04 (bkz. composite.py).
+ES256/ES384 : RFC 7518 3.4 — signature RAW r||s (64/96 bytes); NOT DER.
+EdDSA       : RFC 8037 (curve from the key); Ed25519/Ed448: fully specified names of RFC 9864.
+ML-DSA-*    : RFC 9964 — pure ML-DSA, empty ctx.
+composite   : -04 (see composite.py).
 """
 from cryptography.exceptions import InvalidSignature
 from cryptography.hazmat.primitives import hashes
@@ -26,7 +26,7 @@ def is_supported(alg) -> bool:
 
 
 def key_supports(key, alg) -> bool:
-    """Anahtar-alg baglama (RFC 8725 3.1 / 8725bis 3.1): anahtar tipi ve parametresi alg ile uyumlu mu?"""
+    """Key–alg binding (RFC 8725 3.1 / 8725bis 3.1): are the key type and parameter compatible with the alg?"""
     if alg in CLASSICAL:
         kty, crv, _ = CLASSICAL[alg]
         if kty == 'EC':

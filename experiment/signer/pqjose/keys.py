@@ -1,13 +1,13 @@
-"""Anahtarlar ve JWK gosterimi.
+"""Keys and JWK representation.
 
 * EC  (RFC 7518 6.2)  : P-256 / P-384
 * OKP (RFC 8037)      : Ed25519 / Ed448
-* AKP (RFC 9964 3)    : ML-DSA-44/65/87 — pub = FIPS 204 acik anahtar, priv = 32 baytlik tohum
+* AKP (RFC 9964 3)    : ML-DSA-44/65/87 — pub = FIPS 204 public key, priv = 32-byte seed
 * AKP composite (-04) : pub = mldsaPK || tradPK ; priv = mldsaSeed || tradSK
-    - ECDSA : tradPK = X9.62 sikistirilmamis nokta (0x04||x||y); tradSK = ECPrivateKey (Tablo 4)
-    - EdDSA : tradPK = ham 32/57 bayt; tradSK = ham 32/57 bayt tohum
-Parmak izi (RFC 7638): EC {crv,kty,x,y}; OKP {crv,kty,x}; AKP {alg,kty,pub} (RFC 9964 6).
-Belirlenimci anahtar turetme: HKDF-SHA256(IKM sabit, info=etiket) — ayni etiket ayni anahtari verir.
+    - ECDSA : tradPK = X9.62 uncompressed point (0x04||x||y); tradSK = ECPrivateKey (Table 4)
+    - EdDSA : tradPK = raw 32/57 bytes; tradSK = raw 32/57-byte seed
+Thumbprint (RFC 7638): EC {crv,kty,x,y}; OKP {crv,kty,x}; AKP {alg,kty,pub} (RFC 9964 6).
+Deterministic key derivation: HKDF-SHA256(fixed IKM, info=label) — the same label gives the same key.
 """
 from cryptography.hazmat.primitives import hashes, serialization
 from cryptography.hazmat.primitives.asymmetric import ec, ed448, ed25519
@@ -104,7 +104,7 @@ class ECKey(Key):
 
     @classmethod
     def from_point(cls, crv, point: bytes):
-        der.x962_decode(point, crv)  # uzunluk/onek denetimi
+        der.x962_decode(point, crv)  # length/prefix check
         return cls(crv, pub=ec.EllipticCurvePublicKey.from_encoded_point(_CURVES[crv], point))
 
     def algs(self):
@@ -220,7 +220,7 @@ class MLDSAKey(Key):
                 raise JWKError('AKP pub uzunlugu alg ile uyusmuyor (RFC 9964 5)')
             if derived is not None and derived != pub:
                 raise JWKError('AKP pub/priv uyusmuyor (RFC 9964 7.4)')
-            mldsa.public_key_object(self.level, pub)  # pkDecode denetimi
+            mldsa.public_key_object(self.level, pub)  # pkDecode check
             self.pub = pub
         else:
             self.pub = derived
@@ -271,7 +271,7 @@ class CompositeKey(Key):
         self.ml = ml
         self.trad = trad
 
-    # --- -04 4.1 serilestirme ---
+    # --- -04 4.1 serialization ---
     def trad_pub_bytes(self) -> bytes:
         return self.trad.point() if self.p['trad'] == 'ECDSA' else self.trad.raw_pub()
 
@@ -340,7 +340,7 @@ class CompositeKey(Key):
         return cls(alg, ml, trad)
 
 
-# ---------------------------------------------------------------- JWK ice aktarma
+# ---------------------------------------------------------------- JWK import
 def _b(j, name, required=True):
     if name not in j:
         if required:
@@ -405,7 +405,7 @@ def key_from_jwk(j: dict) -> Key:
 
 
 def key_from_public_object(obj) -> Key:
-    """cryptography acik anahtar nesnesi (ornegin sertifikadan) -> Key."""
+    """cryptography public key object (for example from a certificate) -> Key."""
     if isinstance(obj, ec.EllipticCurvePublicKey):
         crv = {'secp256r1': 'P-256', 'secp384r1': 'P-384'}.get(obj.curve.name)
         if crv is None:
@@ -423,12 +423,12 @@ def key_from_public_object(obj) -> Key:
     raise JWKError('desteklenmeyen acik anahtar tipi: %s' % type(obj).__name__)
 
 
-# ---------------------------------------------------------------- belirlenimci turetme
+# ---------------------------------------------------------------- deterministic derivation
 def derive_key(kind: str, label: str, ikm: bytes = MASTER_IKM) -> Key:
-    """kind: alg adi (ES256, ES384, EdDSA/Ed25519, Ed448, ML-DSA-*, composite) veya egri adi."""
+    """kind: alg name (ES256, ES384, EdDSA/Ed25519, Ed448, ML-DSA-*, composite) or curve name."""
     if kind in ('ES256', 'P-256', 'ES384', 'P-384'):
         crv = 'P-256' if kind in ('ES256', 'P-256') else 'P-384'
-        nb = EC_LEN[crv] + 8  # FIPS 186-5 A.2.1 benzeri: fazla bit ile modulo yanliligini azalt
+        nb = EC_LEN[crv] + 8  # similar to FIPS 186-5 A.2.1: extra bits reduce the modulo bias
         d = int.from_bytes(derive_bytes(label + '|' + crv, nb, ikm), 'big') % (_ORDER[crv] - 1) + 1
         k = ECKey.from_d(crv, d)
     elif kind in ('EdDSA', 'Ed25519'):
@@ -439,7 +439,7 @@ def derive_key(kind: str, label: str, ikm: bytes = MASTER_IKM) -> Key:
         k = MLDSAKey(kind, seed=derive_bytes(label + '|' + kind, 32, ikm))
     elif kind in COMPOSITE:
         p = COMPOSITE[kind]
-        # -04 6.2: bilesen anahtarlari baska baglamda kullanilmaz -> ayri etiketlerle taze uretim
+        # -04 6.2: component keys are not used in another context -> fresh generation with separate labels
         ml = MLDSAKey('ML-DSA-%d' % p['ml'], seed=derive_bytes(label + '|' + kind + '|mldsa', 32, ikm))
         trad_kind = p['crv'] if p['trad'] == 'ECDSA' else p['crv']
         trad = derive_key(trad_kind, label + '|' + kind + '|trad', ikm)

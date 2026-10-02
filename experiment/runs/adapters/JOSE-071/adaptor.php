@@ -1,7 +1,7 @@
 <?php
-// JOSE-071 lcobucci/jwt 5.6.0 adaptörü. Belgeli genel API: Token\Parser(JoseEncoder)->parse(), Validation\Validator->assert(
+// Adapter for JOSE-071 lcobucci/jwt 5.6.0. Documented public API: Token\Parser(JoseEncoder)->parse(), Validation\Validator->assert(
 // $token, SignedWithOneInSet(SignedWithUntilDate(Signer, Key, validUntil, clock)...), LooseValidAt(clock)),
-// Signer\Ecdsa\Sha256|Sha384, Signer\Eddsa, Signer\Key\InMemory::plainText. Eşleme ve gerekçeler: MAPPING.md.
+// Signer\Ecdsa\Sha256|Sha384, Signer\Eddsa, Signer\Key\InMemory::plainText. Mapping and reasons: MAPPING.md.
 declare(strict_types=1);
 require '/opt/a/vendor/autoload.php';
 require __DIR__ . '/ortak.php';
@@ -18,7 +18,7 @@ use Lcobucci\JWT\Validation\RequiredConstraintsViolated;
 use Lcobucci\JWT\Validation\Validator;
 use Psr\Clock\ClockInterface;
 
-// Bataryadaki algoritmalardan yerel destek (src/Signer: Ecdsa\Sha256/384/512, Eddsa, Rsa, Hmac, Blake2b; ML-DSA yok)
+// Native support among the battery's algorithms (src/Signer: Ecdsa\Sha256/384/512, Eddsa, Rsa, Hmac, Blake2b; no ML-DSA)
 const KUTUPHANE_ALGLERI = ['ES256', 'ES384', 'EdDSA'];
 const DESTEKLI_BICIM = ['compact'];
 const API = 'Validator::assert(Parser::parse($jwt), SignedWithOneInSet(SignedWithUntilDate(Signer(a), InMemory::plainText(anahtar), ...) | a ∈ W), LooseValidAt(saat=simdi))';
@@ -33,8 +33,8 @@ function imzalayici(string $alg): ?Signer
     };
 }
 
-// lcobucci'de JWK API'si yok: JWK, kütüphanenin beklediği biçime adaptörde çevrilir (anahtar_yolu = "dogrudan").
-// EC → SubjectPublicKeyInfo PEM (RFC 5480 sabit öneki + 04||x||y); OKP Ed25519 → ham 32 bayt (Eddsa sodium bekler).
+// lcobucci has no JWK API: the JWK is converted in the adapter into the form the library expects (anahtar_yolu = "dogrudan").
+// EC → SubjectPublicKeyInfo PEM (fixed RFC 5480 prefix + 04||x||y); OKP Ed25519 → raw 32 bytes (Eddsa expects sodium).
 function anahtarMalzemesi(array $jwk): ?string
 {
     $kty = $jwk['kty'] ?? '';
@@ -50,7 +50,7 @@ function anahtarMalzemesi(array $jwk): ?string
     return null;
 }
 
-// hata_ozeti 200 karakterle kesildiği için kütüphanenin sabit giriş cümleleri kısaltılır (ihlal metinleri korunur).
+// Because hata_ozeti is cut at 200 characters, the fixed introductory sentences of the library are shortened (the violation texts are kept).
 function kisalt(string $m): string
 {
     return str_replace(["\n", 'The token violates some mandatory constraints, details:', 'It was not possible to verify the signature of the token, reasons:'],
@@ -83,7 +83,7 @@ function dogrula(array $is): array
     $jwt = trim((string) file_get_contents(Ortak::vektorYolu($is['dosya'])));
     $pol = Ortak::politika($is, KUTUPHANE_ALGLERI);
     if ($pol['taban'] === 'L4-YOL') return Ortak::ifadeEdilemedi('x5c/x5chain yol sinifi politikasi (L4-YOL, B2) icin belgeli API yok', API);
-    $izin = Ortak::tekImzaIzin($pol) ?? KUTUPHANE_ALGLERI; // VARSAYILAN: lcobucci'de imza kısıtı her zaman açıkça verilir
+    $izin = Ortak::tekImzaIzin($pol) ?? KUTUPHANE_ALGLERI; // VARSAYILAN: in lcobucci the signature constraint is always given explicitly
     $baslik = json_decode(Ortak::b64d(explode('.', $jwt)[0]), true) ?: [];
     $alg = is_string($baslik['alg'] ?? null) ? $baslik['alg'] : null;
     [$jwk, $anahtarYolu] = Ortak::jwkSec($baslik, $dg);
@@ -96,7 +96,7 @@ function dogrula(array $is): array
         public function __construct(private int $t) {}
         public function now(): \DateTimeImmutable { return new \DateTimeImmutable('@' . $this->t); }
     };
-    // W'deki her alg için (Signer, anahtar) çifti; lcobucci SignedWith önce başlık alg = Signer::algorithmId() denetler.
+    // A (Signer, key) pair for every alg in W; lcobucci SignedWith first checks header alg = Signer::algorithmId().
     $imzaKisitlari = [];
     foreach ($izin as $a) {
         $s = imzalayici($a);
@@ -105,7 +105,7 @@ function dogrula(array $is): array
     $kisitlar = $imzaKisitlari ? [new SignedWithOneInSet(...$imzaKisitlari), new LooseValidAt($saat)] : [];
     try {
         $token = (new Parser(new JoseEncoder()))->parse($jwt);
-        (new Validator())->assert($token, ...$kisitlar); // kısıt yoksa kütüphane NoConstraintsGiven atar
+        (new Validator())->assert($token, ...$kisitlar); // without constraints the library throws NoConstraintsGiven
         return ['sonuc_ham' => 'kabul', 'hata_sinifi' => null, 'hata_ozeti' => null, 'api_yolu' => API, 'anahtar_yolu' => $anahtarYolu,
                 'dogrulanan' => [['sira' => 0, 'alg' => (string) $token->headers()->get('alg'), 'sonuc' => 'gecerli']]];
     } catch (\Lcobucci\JWT\Exception $e) {

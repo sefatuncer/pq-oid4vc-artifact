@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# BİLGİ (derleme-sonuc.csv dışı): ssi-sd-jwt 0.6.0 + ssi-jws/ssi-jwk özellikleri (secp256r1, ed25519) açık derleniyor mu?
-# ssi-sd-jwt bu crate'lere default-features=false ile bağlı; özellik birleştirme (feature unification) ile algoritmalar açılır.
+# INFORMATION (outside derleme-sonuc.csv): does ssi-sd-jwt 0.6.0 build with the ssi-jws/ssi-jwk features (secp256r1, ed25519) enabled?
+# ssi-sd-jwt depends on these crates with default-features=false; the algorithms are enabled through feature unification.
 set -uo pipefail
 source /b/ortak.sh
 yaz ekosistem crates.io; yaz paket ssi-sd-jwt; yaz istenen_surum 0.6.0; yaz arac "$(rustc --version | cut -d' ' -f1-2)"

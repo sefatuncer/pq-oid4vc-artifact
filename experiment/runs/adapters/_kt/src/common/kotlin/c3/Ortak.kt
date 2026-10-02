@@ -1,6 +1,6 @@
-// C3 adaptörü (JVM/Kotlin) ortak çekirdeği: COSE-001 Signum indispensable-cosef ve SDJWT-001 A-SIT vck.
-// Sözleşme: adaptor-sozlesme.md (1.0) + RUNNER.md. Oracle'ı GÖRMEZ; MANIFEST'ten yalnız dogrulama_girdileri.
-// Kullanım: kt-adaptor <hedef_id> <jobs-v1.3.jsonl> <cikti.jsonl> <kosu>
+// Shared core of the C3 adapter (JVM/Kotlin): COSE-001 Signum indispensable-cosef and SDJWT-001 A-SIT vck.
+// Contract: experiment/oracle/oracle-A/adapter-contract.md (1.0) + RUNNER.md. Does NOT see the oracle; only dogrulama_girdileri from the MANIFEST.
+// Usage: kt-adaptor <hedef_id> <jobs-v1.3.jsonl> <cikti.jsonl> <kosu>
 package c3
 
 import kotlinx.serialization.json.*
@@ -28,15 +28,15 @@ fun loadKeys() {
       if (r.startsWith("issuer/")) ALG2KID.putIfAbsent(v.jsonObject.s("tur"), v.jsonObject.s("kid"))
 }
 
-/** Politikanın temel adı (sdjwtvc ve zaman ekleri kütüphane yapılandırmasını değiştirmez). */
+/** Base name of the policy (the sdjwtvc and time suffixes do not change the library configuration). */
 fun temel(pol: String) = pol.substringBefore('|').substringBefore('@')
 
-/** Algoritma izin listesi API'si olmayan hedefler için: kütüphane varsayılanıyla ölçülebilen politikalar. */
+/** For targets without an algorithm allow-list API: the policies that can be measured with the library default. */
 val VARSAYILAN = setOf("GEC", "P0", "P1", "P2")
 
 fun klass(e: Throwable): String {
   val m = (e.javaClass.simpleName + " " + e.message + " " + (e.cause?.message ?: "")).lowercase()
-  // Algoritma tanınmıyorsa ayrıştırma hatası olarak da yüzeye çıkabilir; algoritma sözcükleri önce aranır.
+  // An unrecognised algorithm can also surface as a parsing error; the algorithm words are searched first.
   val t = listOf("unknown alg" to "alg-desteklenmiyor", "unsupported" to "alg-desteklenmiyor", "not supported" to "alg-desteklenmiyor",
     "no key" to "anahtar-bulunamadi", "signature" to "imza-gecersiz", "verif" to "imza-gecersiz",
     "expired" to "zaman", "not yet valid" to "zaman", "serializ" to "ayristirma", "decod" to "ayristirma", "parse" to "ayristirma")

@@ -1,10 +1,10 @@
-"""Komut satiri: python -m pqjose <komut> ...
+"""Command line: python -m pqjose <command> ...
 
-  info                                         surumler
-  keygen  --alg ALG [--label ETIKET] [--private]   JWK uret (etiket verilirse belirlenimci)
-  sign    --key JWK --payload DOSYA [--alg ALG] [--serialization compact|flattened|general]
+  info                                         versions
+  keygen  --alg ALG [--label LABEL] [--private]   generate a JWK (deterministic if a label is given)
+  sign    --key JWK --payload FILE [--alg ALG] [--serialization compact|flattened|general]
           [--key JWK2 ...] [--typ T] [--deterministic]
-  verify  --jws DOSYA [--keys JWKS] [--anchors PEM ...] [--attime T] [--semantics all|any]
+  verify  --jws FILE [--keys JWKS] [--anchors PEM ...] [--attime T] [--semantics all|any]
           [--required A,B] [--allowed A,B] [--pq-only-chain] [--embedded-jwk]
   thumbprint --key JWK
 """

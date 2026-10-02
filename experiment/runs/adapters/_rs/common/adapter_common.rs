@@ -1,4 +1,4 @@
-// Shared runner for the C3 Rust adapters (contract: adaptor-sozlesme 1.0, call format: RUNNER.md).
+// Shared runner for the C3 Rust adapters (contract: experiment/oracle/oracle-A/adapter-contract.md, version adaptor-sozlesme/1.0; call format: RUNNER.md).
 //
 // Each target crate includes this file with
 //     #[path = "../../common/adapter_common.rs"] mod common;
@@ -154,7 +154,7 @@ pub fn temel(pol: &str) -> &str {
     p.split('@').next().unwrap_or(p)
 }
 
-/// Permitted algorithm set W (YONTEM.md section 2). For a single-signature compact object
+/// Permitted algorithm set W (METHOD.md section 2). For a single-signature compact object
 /// R = {X}: a migrated issuer may only use X, the legacy issuer may use A or X.
 pub fn allowed(pol: &str, x: &str, iss: Option<&str>, supported: &[&str]) -> Vec<String> {
     let all = || supported.iter().map(|s| s.to_string()).collect::<Vec<_>>();

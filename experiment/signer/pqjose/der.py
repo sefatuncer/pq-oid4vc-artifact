@@ -1,16 +1,16 @@
-"""ECDSA kodlamalari — draft-ietf-jose-pq-composite-sigs-04 Bolum 4.5.
+"""ECDSA encodings — draft-ietf-jose-pq-composite-sigs-04 Section 4.5.
 
-* Ecdsa-Sig-Value (RFC 3279)       : Bolum 4.5.1, Tablo 3 (katı DER; tek baytlık uzunluk)
-* ECPrivateKey (RFC 5915)          : Bolum 4.5.2, Tablo 4 (sabit on/son ekler)
-* X9.62 sıkıştırılmamış nokta      : Bolum 4.5.3 (0x04 || x || y)
+* Ecdsa-Sig-Value (RFC 3279)       : Section 4.5.1, Table 3 (strict DER; single-byte length)
+* ECPrivateKey (RFC 5915)          : Section 4.5.2, Table 4 (fixed prefixes/suffixes)
+* X9.62 uncompressed point         : Section 4.5.3 (0x04 || x || y)
 
-JWS'teki klasik ES256/ES384 imzası ise RFC 7518 3.4'e göre ham r||s'dir; ikisi karıştırılmamalıdır.
+The classical ES256/ES384 signature in a JWS, however, is raw r||s according to RFC 7518 3.4; the two must not be mixed up.
 """
 from .util import FormatError
 
 CURVE_LEN = {'P-256': 32, 'P-384': 48}
 
-# Tablo 4: d'nin önüne/arkasına gelen sabit baytlar
+# Table 4: fixed bytes that come before/after d
 _ECPRIV_FIX = {
     'P-256': (bytes.fromhex('30310201010420'), bytes.fromhex('A00A06082A8648CE3D030107')),
     'P-384': (bytes.fromhex('303E0201010430'), bytes.fromhex('A00706052B81040022')),
@@ -18,7 +18,7 @@ _ECPRIV_FIX = {
 
 
 def _der_int(v: bytes) -> bytes:
-    """Tablo 3: ham (sabit uzunluklu, big-endian) değeri DER INTEGER'a çevirir."""
+    """Table 3: converts a raw (fixed-length, big-endian) value into a DER INTEGER."""
     t = v.lstrip(b'\x00') or b'\x00'
     if t[0] >= 0x80:
         t = b'\x00' + t
@@ -57,7 +57,7 @@ def _parse_der_int(buf: bytes, i: int, n: int):
 
 
 def ecdsa_der_to_raw(der: bytes, crv: str) -> bytes:
-    """Katı Ecdsa-Sig-Value çözümü; artık bayt, uzun biçim, asgari olmayan kodlama reddedilir."""
+    """Strict decoding of Ecdsa-Sig-Value; trailing bytes, long form and non-minimal encoding are rejected."""
     n = CURVE_LEN[crv]
     if len(der) < 8 or der[0] != 0x30:
         raise FormatError('DER: SEQUENCE yok')

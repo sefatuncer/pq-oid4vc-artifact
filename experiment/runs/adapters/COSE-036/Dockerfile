@@ -1,8 +1,8 @@
-# a10-cose-036:1 — wolfCOSE @ f907071b10127f3ae2dd7719749a91b039ff04a1 (sürüm yok → CERCEVE son_commit_sha; ÖK madde 14)
-# wolfSSL v5.9.2-stable (ac01707f552c) README "Full Build" bayraklarıyla (--enable-mldsa dahil); ortam kaydıyla aynı
-# (experiment/environments/hedefler/COSE-036/kur.sh). GitHub anonim git; GPL-3.0: yalnız ölçülür, dağıtılmaz.
-# Ölçüm yapılandırması: belgeli derleme makrosu WOLFCOSE_ENABLE_DEPRECATED_ALGS (docs/Macros.md "Deprecated Algorithm IDs
-# (RFC 9864)"; Makefile EXTRA_CFLAGS kancası) — batarya ES256'yı RFC 9053 kimliği -7, EdDSA'yı -8 ile taşır. Kod değişmez.
+# a10-cose-036:1 — wolfCOSE @ f907071b10127f3ae2dd7719749a91b039ff04a1 (no release → frame son_commit_sha; PR item 14)
+# wolfSSL v5.9.2-stable (ac01707f552c) with the README "Full Build" flags (--enable-mldsa included); the same as the environment record
+# (experiment/environments/hedefler/COSE-036/kur.sh). Anonymous git from GitHub; GPL-3.0: only measured, not distributed.
+# Measurement configuration: the documented build macro WOLFCOSE_ENABLE_DEPRECATED_ALGS (docs/Macros.md "Deprecated Algorithm IDs
+# (RFC 9864)"; Makefile EXTRA_CFLAGS hook) — the battery carries ES256 with the RFC 9053 id -7 and EdDSA with -8. The code does not change.
 FROM pq-a09-env-c:1.0
 ARG WSHA=ac01707f552c611fbd135cc723b2682b3e7f80f2
 ARG CSHA=f907071b10127f3ae2dd7719749a91b039ff04a1
@@ -19,7 +19,7 @@ RUN mkdir -p /opt/wolfcose && cd /opt/wolfcose && git init -q . && git remote ad
  && ls -la /opt/wolfcose/*.so*
 WORKDIR /opt/a
 COPY kopru.c adaptor.py ./
-# Köprü yalnız wolfCOSE genel API'sini çağırır; wolfCOSE'un belgeli `make shared` hedefi (Makefile L184) kullanılır.
+# The bridge calls only the public wolfCOSE API; the documented `make shared` target of wolfCOSE (Makefile L184) is used.
 RUN gcc -std=gnu11 -O2 -shared -fPIC -DHAVE_ANONYMOUS_INLINE_AGGREGATES=1 -DWOLFCOSE_ENABLE_DEPRECATED_ALGS -I/opt/wolfcose/include -I/usr/local/include \
       kopru.c -L/opt/wolfcose -lwolfcose -L/usr/local/lib -lwolfssl -Wl,-rpath,/opt/wolfcose:/usr/local/lib -o /opt/a/libkopru.so \
  && echo "git:f907071b1012" > HEDEF_SURUM \

@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # =====================================================================
-#  PQ-OID4VC | C3 | yürütücü adaptörlerinin imajlarını kurar (sürümler burada ve derleme dosyalarında sabit)
-#  Kullanım: bash _tools/kur.sh [hedef_id]   (run from experiment/runs/adapters)
-#  Yardımcı çalışmanın hedefleri kendi klasörlerindeki Dockerfile ile kurulur (<hedef>/Dockerfile → a10-<hedef>:1).
+#  PQ-OID4VC | C3 | builds the images of the shared adapters (versions pinned here and in the build files)
+#  Usage: bash _tools/kur.sh [hedef_id]   (run from experiment/runs/adapters)
+#  The targets with their own folder are built with the Dockerfile in that folder (<hedef>/Dockerfile → a10-<hedef>:1).
 # =====================================================================
 set -eu
 cd "$(dirname "$0")/.."

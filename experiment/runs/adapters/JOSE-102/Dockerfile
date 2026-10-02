@@ -1,4 +1,4 @@
-# a10-jose-102:1 — jwt-kit 5.3.0 (vapor; swift-crypto/BoringSSL). SwiftPM = GitHub anonim git klonu; Package.resolved sabit.
+# a10-jose-102:1 — jwt-kit 5.3.0 (vapor; swift-crypto/BoringSSL). SwiftPM = anonymous git clone from GitHub; Package.resolved pinned.
 FROM pq-a09-env-swift:1.0
 WORKDIR /opt/a
 COPY Package.swift Package.resolved ./

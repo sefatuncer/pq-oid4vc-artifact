@@ -1,4 +1,4 @@
-// Ortam yeteneği (imza doğrulama DEĞİL): JCA sağlayıcılarının kayıtlı imza algoritma adlarında ML-DSA var mı?
+// Environment capability (NOT signature verification): does ML-DSA occur among the signature algorithm names registered by the JCA providers?
 import java.security.Provider;
 import java.security.Security;
 public class Yetenek {

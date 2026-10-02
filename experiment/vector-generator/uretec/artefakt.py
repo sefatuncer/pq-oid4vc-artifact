@@ -1,7 +1,7 @@
-"""Artefakt uretecleri: SD-JWT VC (PID), sunum (KB-JWT), Status List Token, OID4VP istek nesnesi, DPoP.
+"""Artefact generators: SD-JWT VC (PID), presentation (KB-JWT), Status List Token, OID4VP request object, DPoP.
 
-Tum zaman damgalari sabit (T0 = 1790000000 = 2026-09-21T14:13:20Z); tuz, jti ve sahte ozetler
-HKDF'den turetilir -> uretim bayt-bayt tekrarlanabilir. Kisisel veri YOK (sentetik PID: 'Erika Mustermann').
+All timestamps fixed (T0 = 1790000000 = 2026-09-21T14:13:20Z); salts, jti and decoy digests
+are derived from HKDF -> generation is byte-for-byte repeatable. NO personal data (synthetic PID: 'Erika Mustermann').
 """
 import hashlib
 
@@ -18,9 +18,9 @@ VCT = 'urn:eudi:pid:1'
 STATUS_URI = 'https://issuer.example/statuslists/1'
 ORIGIN = 'https://verifier.example'
 NONCE = 'n-0S6_WzA2Mj'
-KB_AUD_DCAPI = 'origin:' + ORIGIN + '/'          # OID4VP A.4: DC API'de aud = 'origin:' + Origin
-ACCESS_TOKEN = 'Kz~8mXK1EalYznwH-LC-1fBAo.4Ljp~zsPE_NeO.gxU'   # RFC 9449 7.1 ornek degeri
-DPOP_NONCE = 'eyJ7S_zG.eyJH0-Z.HX4w-7v'                     # RFC 9449 8 ornek degeri
+KB_AUD_DCAPI = 'origin:' + ORIGIN + '/'          # OID4VP A.4: with the DC API aud = 'origin:' + Origin
+ACCESS_TOKEN = 'Kz~8mXK1EalYznwH-LC-1fBAo.4Ljp~zsPE_NeO.gxU'   # example value of RFC 9449 7.1
+DPOP_NONCE = 'eyJ7S_zG.eyJH0-Z.HX4w-7v'                     # example value of RFC 9449 8
 SUPPORTED = ['ES256', 'ML-DSA-65', 'ML-DSA-65-ES256']
 
 
@@ -34,8 +34,8 @@ def decoy_fn(cred_id):
 
 # ------------------------------------------------------------------ SD-JWT VC (PID)
 def pid_payload(cred_id, holder_pub_jwk, status_idx=7):
-    """Sentetik PID. SD: given_name, family_name, birthdate, address.{4 alan}, nationalities[0],
-    age_equal_or_over.{18,21}; 2 sahte ozet. SD OLAMAZLAR (SD-JWT VC 2.2.2.3): iss, iat, exp, vct, cnf, status."""
+    """Synthetic PID. SD: given_name, family_name, birthdate, address.{4 fields}, nationalities[0],
+    age_equal_or_over.{18,21}; 2 decoy digests. They CANNOT be SD (SD-JWT VC 2.2.2.3): iss, iat, exp, vct, cnf, status."""
     b = sdjwt.Builder(salt_fn(cred_id), decoy_fn(cred_id))
     p = {'iss': ISS, 'iat': T0, 'exp': T0 + 365 * 86400, 'vct': VCT}
     b.sd_prop(p, 'given_name', 'Erika', 'given_name')
@@ -68,7 +68,7 @@ def vc_header(alg, x5c=None, kid=None, typ='dc+sd-jwt'):
 
 
 def issue_vc(cred_id, signer_specs, holder_pub_jwk, serialization='compact', typ='dc+sd-jwt', status_idx=7):
-    """signer_specs: [(key, alg, x5c|None)] ; x5c yoksa kid kullanilir."""
+    """signer_specs: [(key, alg, x5c|None)] ; without x5c the kid is used."""
     payload, labeled = pid_payload(cred_id, holder_pub_jwk, status_idx)
     discl = [d for _, d in labeled]
     signers = [jws.Signer(k, vc_header(a, x5c, None if x5c else k.kid, typ), alg=a) for (k, a, x5c) in signer_specs]
@@ -92,7 +92,7 @@ def present(vc, holder_key, holder_alg, aud=KB_AUD_DCAPI, nonce=NONCE, iat=T0 + 
 
 
 # ------------------------------------------------------------------ Status List Token
-STATUSES = {3: 1, 7: 0, 12: 1}    # 16 girdilik 1 bitlik liste; idx 7 (PID) = VALID
+STATUSES = {3: 1, 7: 0, 12: 1}    # 1-bit list with 16 entries; idx 7 (PID) = VALID
 STATUS_SIZE = 16
 
 
@@ -102,7 +102,7 @@ def status_token(key, alg, x5c=None):
     return statuslist.status_list_token(jws.Signer(key, prot, alg=alg), STATUS_URI, T0, T0 + 86400, 43200, lst, 1)
 
 
-# ------------------------------------------------------------------ OID4VP istek nesnesi (JAR / DC API)
+# ------------------------------------------------------------------ OID4VP request object (JAR / DC API)
 def dcql_pid():
     return {'credentials': [{'id': 'pid', 'format': 'dc+sd-jwt', 'meta': {'vct_values': [VCT]},
                              'claims': [{'path': ['given_name']}, {'path': ['family_name']},
@@ -143,7 +143,7 @@ def request_compact(key, alg, params, x5c=None):
 
 
 def request_multisigned(params, signer_specs):
-    """OID4VP A.3.2.2: client_id YALNIZ ilgili imzanin korumali basliginda; diger parametreler yukte.
+    """OID4VP A.3.2.2: client_id ONLY in the protected header of the relevant signature; the other parameters in the payload.
     signer_specs: [(key, alg, x5c|None, client_id)]"""
     signers = []
     for key, alg, x5c, cid in signer_specs:

@@ -1,4 +1,4 @@
-// İki ayrı derleme: -Pt=cose (COSE-001) ve -Pt=sdjwt (SDJWT-001). Ayrı imajlar, böylece vck kendi Signum sürümlerini çözer.
+// Two separate builds: -Pt=cose (COSE-001) and -Pt=sdjwt (SDJWT-001). Separate images, so that vck resolves its own Signum versions.
 plugins { kotlin("jvm") version "2.4.10"; application }
 repositories { mavenCentral() }
 val t = (findProperty("t") ?: "cose").toString()
@@ -12,7 +12,7 @@ dependencies {
   implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.10.2")
 }
 sourceSets { main { kotlin.srcDirs("src/common/kotlin", "src/$t/kotlin") } }
-// JVM 24 hedefi; JDK 25 ile derlenir (Signum 3.26 meta verisi Kotlin 2.4 ister).
+// JVM 24 target; built with JDK 25 (the Signum 3.26 metadata requires Kotlin 2.4).
 java { sourceCompatibility = JavaVersion.VERSION_24; targetCompatibility = JavaVersion.VERSION_24 }
 kotlin { compilerOptions { jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_24) } }
 application { mainClass.set("c3.MainKt"); applicationName = "kt-adaptor" }

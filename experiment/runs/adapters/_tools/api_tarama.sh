@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 # =====================================================================
-#  PQ-OID4VC | C3 | API taraması (sözleşme §5.1; ÖK §4.14) — yürütücünün yazdığı adaptörler
-#  Her hedef için imajın içindeki SABİT sürümlü kütüphane kaynağı (ya da JVM'de genel API'nin bayt kodu)
-#  taranır; komut ve çıktı <hedef>/evidence/api-tarama.txt'ye yazılır.
-#  Kullanım: bash _tools/api_tarama.sh [hedef_id]   (run from experiment/runs/adapters; all targets if none is given)
+#  PQ-OID4VC | C3 | API scan (contract §5.1; PR §4.14) — adapters written by the maintainers
+#  For every target the library source of the PINNED version inside the image (or, on the JVM, the bytecode of the public API)
+#  is scanned; the command and the output are written to <hedef>/evidence/api-tarama.txt.
+#  Usage: bash _tools/api_tarama.sh [hedef_id]   (run from experiment/runs/adapters; all targets if none is given)
 # =====================================================================
 set -u
 cd "$(dirname "$0")/.."
 export MSYS_NO_PATHCONV=1
 HEDEF="${1:-}"
 P='algorithms|allow|register|deregister|required|eddsa|ed25519|ml-?dsa|mldsa|composite|okp|verifier|keyselector'
-tara() { # <hedef> <imaj> <iç komut>
+tara() { # <target> <image> <inner command>
   local h=$1 img=$2 cmd=$3
   [ -n "$HEDEF" ] && [ "$h" != "$HEDEF" ] && return
   mkdir -p "$h/kanit"
@@ -32,14 +32,14 @@ tara JOSE-009 a10-jose-009:1 "cd /a/node_modules/jose && cat package.json | grep
 tara JOSE-065 a10-jose-065:1 "cd /a/node_modules/jsonwebtoken && grep '\"version\"' package.json; grep -rn -i -E '$P|PUB_KEY_ALGS|EC_KEY_ALGS' *.js lib/*.js"
 tara COSE-014 a10-cose-014:1 "cd /a/node_modules/cose-js && grep '\"version\"' package.json; grep -rn -i -E '$P|AlgToTags|ES256|-7|-8' lib/*.js | head -120"
 tara SDJWT-015 a10-sdjwt-015:1 "cd /a/node_modules/@sd-jwt/core && grep '\"version\"' package.json; grep -rn -i -E '$P|allowedIssuerAlgorithms|kbVerifier' dist/index.d.mts | head -120"
-# Go: kaynak yalnız derleme aşamasında (modül önbelleği); aynı Dockerfile'ın 'b' aşaması geçici imaj olarak kurulur
+# Go: the source exists only in the build stage (module cache); stage 'b' of the same Dockerfile is built as a temporary image
 docker build -q --target b -t pq-a10-go-b:gecici ./_go >/dev/null
 M=/go/pkg/mod/github.com
 tara JOSE-033 pq-a10-go-b:gecici "cd $M/golang-jwt/jwt/v5@*/ && grep -rn -i -E '$P|WithValidMethods|RegisterSigningMethod|SigningMethodEd' --include=*.go . | grep -v _test.go | head -150"
 tara JOSE-034 pq-a10-go-b:gecici "cd $M/dvsekhvalnov/jose2go@*/ && grep -rn -i -E '$P|RegisterJws|DeregisterJws|ES256|EdDSA' --include=*.go . | grep -v _test.go | head -150"
 tara COSE-034 pq-a10-go-b:gecici "cd $M/veraison/go-cose@*/ && grep -rn -i -E '$P|AlgorithmEdDSA|AlgorithmES256|AlgorithmMLDSA|NewVerifier' --include=*.go . | grep -v _test.go | head -150"
 docker image rm pq-a10-go-b:gecici >/dev/null
-# JVM: genel API'nin bayt kodu (javap -public) yağ JAR'dan
+# JVM: bytecode of the public API (javap -public) from the fat JAR
 J='javap -public -cp /a/adaptor.jar'
 tara JOSE-052 a10-jvm:1 "$J com.auth0.jwt.algorithms.Algorithm | grep -i -E 'static|verify'; $J com.auth0.jwt.interfaces.Verification | head -5"
 tara JOSE-055 a10-jvm:1 "$J 'io.jsonwebtoken.Jwts\$SIG' | head -40; $J io.jsonwebtoken.JwtParserBuilder | grep -i -E 'sig|key|unsecured'"

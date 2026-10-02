@@ -59,9 +59,9 @@ done
 ( cd "$SONUC" && sha256sum ornek_analiz1/sonuc.json ornek_analiz2/sonuc.json ) | tee "$SONUC/ornek_analiz_sha256.txt"
 
 echo "== 4. SHA256SUMS (dondurulacak dosyalar)"
-( cd "$BURASI" && sha256sum Dockerfile tumunu_calistir.sh SEMA.md .dockerignore betikler/requirements.txt \
+( cd "$BURASI" && sha256sum Dockerfile tumunu_calistir.sh SCHEMA.md .dockerignore betikler/requirements.txt \
     betikler/c3istat/*.py sentetik-testler/*.py sentetik-testler/data/*.json sentetik-testler/data/*.csv \
-    kaynak/NEWCOMBE-KAYNAK.md ) > "$BURASI/SHA256SUMS"
+    kaynak/NEWCOMBE-SOURCE.md ) > "$BURASI/SHA256SUMS"
 cat "$BURASI/SHA256SUMS"
 
 echo "== 5. Bitis imaj listesi (bu betik hicbir imaji silmez)"

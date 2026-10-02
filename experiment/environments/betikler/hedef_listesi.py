@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Adım 9 görev 4a — hedef listesini (SECILDI + YEDEK, E2) CERCEVE.csv ile birleştirir ve
-yedek türünü (5.3-4-i grup-içi / 5.3-4-ii genel) topla.py secim() mantığıyla yeniden türetir.
-Çıktı: kayit/hedef_listesi.csv. Ağ kullanmaz."""
+"""Step 9 task 4a — merges the target list (SECILDI + YEDEK, E2) with CERCEVE.csv and
+re-derives the reserve type (5.3-4-i within the group / 5.3-4-ii general) with the secim() logic of topla.py.
+Output: kayit/hedef_listesi.csv. Uses no network."""
 import csv, json, pathlib
-KOK = pathlib.Path(__file__).resolve().parents[3]          # proje kökü
+KOK = pathlib.Path(__file__).resolve().parents[3]          # project root
 ENV = KOK / "experiment" / "inventory"
 CIKTI = KOK / "experiment" / "environments" / "kayit" / "hedef_listesi.csv"
 sec = list(csv.DictReader(open(ENV / "SECIM.csv", encoding="utf-8")))
@@ -15,8 +15,8 @@ satirlar = []
 for tabaka, s in kayit.items():
     secilen, yedek = s["secilen"], s["yedek"]
     secilen_gruplar = list(dict.fromkeys(grup[i] for i in secilen))
-    # topla.py secim(): yedek listesine önce seçilen grupların sırasıyla grup-içi yedekler (5.3-4-i),
-    # sonra genel sıradaki ilk 2 seçilmemiş uygun aday (5.3-4-ii) eklenir. Sıralı yürüyüşle ayrıştırılır.
+    # topla.py secim(): the reserve list first gets the within-group reserves in the order of the selected groups (5.3-4-i),
+    # then the first 2 unselected eligible candidates of the general order (5.3-4-ii). Parsed by an ordered walk.
     tur, kullanilan, konum, genel_kip = {}, set(), 0, False
     for i in yedek:
         g = grup[i]
@@ -41,7 +41,7 @@ for tabaka, s in kayit.items():
                              paket_adi=c["paket_adi"], depo_url=c["depo_url"], alt_dizin=c["alt_dizin"],
                              son_surum=c["son_surum"], son_surum_tarihi=c["son_surum_tarihi"],
                              son_commit_sha=c["son_commit_sha"], son_commit=c["son_commit"], lisans=c["lisans"]))
-# SECIM.csv karar_E2 ile tutarlılık denetimi
+# consistency check with karar_E2 of SECIM.csv
 e2 = {r["id"]: r["karar_E2"] for r in sec}
 for r in satirlar:
     assert e2[r["id"]] == r["karar"], (r["id"], e2[r["id"]], r["karar"])

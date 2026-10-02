@@ -1,20 +1,20 @@
-// JOSE-102 jwt-kit 5.3.0 adaptörü — C3 sözleşmesi 1.0 / KOSUCU §1–§3.
-// Belgeli genel API (README): JWTKeyCollection().add(ecdsa:|eddsa:|mldsa:kid:) + verify(token, as: Payload.self).
-// ML-DSA README "MLDSA" bölümü: `@_spi(PostQuantum) import JWTKit` (SPI; README'de belgeli). jwt-kit'te izin listesi
-// seçeneği yok; politika, koleksiyona kaydedilen anahtar nesnesinin (algoritması anahtar türüne bağlı) seçimiyle kurulur.
-// Doğrulama döngüsü YOK; manifestten yalnız dogrulama_girdileri okunur; ağ yok. Eşleme: MAPPING.md.
+// Adapter for JOSE-102 jwt-kit 5.3.0 — C3 contract 1.0 (experiment/oracle/oracle-A/adapter-contract.md) / RUNNER §1–§3.
+// Documented public API (README): JWTKeyCollection().add(ecdsa:|eddsa:|mldsa:kid:) + verify(token, as: Payload.self).
+// ML-DSA, README section "MLDSA": `@_spi(PostQuantum) import JWTKit` (SPI; documented in the README). jwt-kit has no allow-list
+// option; the policy is built by choosing the key object registered in the collection (its algorithm is bound to the key type).
+// NO verification loop; only dogrulama_girdileri is read from the manifest; no network. Mapping: MAPPING.md.
 import Foundation
 @_spi(PostQuantum) import JWTKit
 
 let xKol = ["kontrol-EdDSA": "EdDSA", "kontrol-Ed25519": "Ed25519", "kontrol-ES384": "ES384", "tedavi-ML-DSA-65": "ML-DSA-65", "tedavi-composite": "ML-DSA-65-ES256"]
-// Bataryadaki algoritmalardan yerel destek (ECDSA ES256/384/512, EdDSA, MLDSA65/87 [SPI], RSA, HMAC; composite yok)
+// Native support among the battery's algorithms (ECDSA ES256/384/512, EdDSA, MLDSA65/87 [SPI], RSA, HMAC; no composite)
 let kutuphane: Set<String> = ["ES256", "ES384", "EdDSA", "ML-DSA-65", "ML-DSA-87"]
 let api = "JWTKeyCollection().add(ecdsa:|eddsa:|mldsa: <anahtar>, kid:) [alg(anahtar_turu) ∈ W]; verify(jwt, as: Yuk.self) (exp: simdi)"
 
 struct Yuk: JWTPayload {
     var exp: ExpirationClaim?
     func verify(using algorithm: some JWTAlgorithm) async throws {
-        // sözleşme §2.1: saat = simdi (çevre değişkeni üzerinden)
+        // contract §2.1: clock = simdi (through an environment variable)
         let simdi = Double(ProcessInfo.processInfo.environment["A10_SIMDI"] ?? "") ?? Date().timeIntervalSince1970
         try exp?.verifyNotExpired(currentDate: Date(timeIntervalSince1970: simdi))
     }
@@ -30,7 +30,7 @@ func jsonObj(_ d: Data) -> [String: Any]? {
         let o = try JSONSerialization.jsonObject(with: d, options: [.fragmentsAllowed])
         if let m = o as? [String: Any] { return m }
         if let m = o as? NSDictionary { return m as? [String: Any] }
-        FileHandle.standardError.write("json: beklenmeyen tur \(type(of: o))\n".data(using: .utf8)!)
+        FileHandle.standardError.write("json: unexpected type \(type(of: o))\n".data(using: .utf8)!)
     } catch {
         FileHandle.standardError.write("json: \(error)\n".data(using: .utf8)!)
     }
@@ -52,9 +52,9 @@ func vektorYolu(_ d: String) -> String {
     return "/v/" + d
 }
 
-// Politika → (taban, W|nil, R). YONTEM.md §2; VARSAYILAN = sözleşme §5.2 L5.
+// Policy → (taban, W|nil, R). METHOD.md §2; VARSAYILAN = contract §5.2 L5.
 func politika(_ isx: [String: Any]) throws -> (String, [String]?, [String]) {
-    let taban = (isx["politika"] as! String).components(separatedBy: "|")[0].components(separatedBy: "@")[0] // ekler yalnız oracle'ı böler
+    let taban = (isx["politika"] as! String).components(separatedBy: "|")[0].components(separatedBy: "@")[0] // the suffixes only split the oracle
     let x = xKol[isx["kol"] as! String]
     switch taban {
     case "GEC", "P0", "P1", "P2", "VARSAYILAN": return (taban, nil, [])
@@ -65,7 +65,7 @@ func politika(_ isx: [String: Any]) throws -> (String, [String]?, [String]) {
     }
 }
 
-// Anahtar seçimi (sözleşme §8 m.1): başlık kid → vektörün JWKS'i; yoksa alg_kid[alg]; yoksa tek kid.
+// Key selection (contract §8 item 1): header kid → the vector's JWKS; otherwise alg_kid[alg]; otherwise the single kid.
 func jwkSec(_ baslik: [String: Any], _ dg: [String: Any]) throws -> [String: Any]? {
     guard let jwksYol = dg["jwks"] as? String else { return nil }
     var kid = baslik["kid"] as? String
@@ -130,7 +130,7 @@ func dogrula(_ isx: [String: Any]) async throws -> [String: Any] {
     }
     do {
         _ = try await keys.verify(jwt, as: Yuk.self)
-        // jwt-kit imzayı kayıtlı anahtar nesnesinin algoritmasıyla doğrular (JWTSigner.verify; başlık alg'ı karşılaştırılmaz)
+        // jwt-kit verifies the signature with the algorithm of the registered key object (JWTSigner.verify; the header alg is not compared)
         return sonuc("kabul", nil, nil, yol: yol, dog: [["sira": 0, "alg": dogal ?? "?", "sonuc": "gecerli"]])
     } catch let e as JWTError {
         let s: String
@@ -156,16 +156,16 @@ func sabit(_ ad: String) -> String {
 struct Adaptor {
     static func main() async {
         let a = CommandLine.arguments
-        guard a.count >= 3 else { FileHandle.standardError.write("kullanim: adaptor <jobs-v1.3.jsonl> <cikti.jsonl>\n".data(using: .utf8)!); exit(2) }
+        guard a.count >= 3 else { FileHandle.standardError.write("usage: adaptor <jobs-v1.3.jsonl> <output.jsonl>\n".data(using: .utf8)!); exit(2) }
         let ad = URL(fileURLWithPath: a[2]).deletingPathExtension().lastPathComponent.components(separatedBy: ".")
         let env = ProcessInfo.processInfo.environment
         let kosu = (env["KOSU"].flatMap { $0.isEmpty ? nil : $0 }) ?? (ad.count >= 2 ? ad.last! : "oncesi")
         guard FileManager.default.createFile(atPath: a[2], contents: Data()),
               let out = FileHandle(forWritingAtPath: a[2]) else {
-            FileHandle.standardError.write("cikti dosyasi olusturulamadi: \(a[2])\n".data(using: .utf8)!)
+            FileHandle.standardError.write("could not create the output file: \(a[2])\n".data(using: .utf8)!)
             exit(3)
         }
-        // CRLF güvenli: Swift'te "\r\n" tek bir Character'dır; iş dosyaları CRLF satır sonu taşıyabilir.
+        // CRLF-safe: in Swift "\r\n" is a single Character; job files may carry CRLF line endings.
         let satirlar = ((try? String(contentsOfFile: a[1], encoding: .utf8)) ?? "").components(separatedBy: .newlines)
         for l in satirlar where !l.trimmingCharacters(in: .whitespaces).isEmpty {
             let isx = jsonObj(Data(l.utf8))!
