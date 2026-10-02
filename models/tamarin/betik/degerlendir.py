@@ -1,21 +1,21 @@
 #!/usr/bin/env python3
 # =====================================================================
-#  PQ-OID4VC | Adım 4 + 5A | Tamarin sonuçlarının değerlendirilmesi
+#  PQ-OID4VC | Step 4 + 5A | evaluation of the Tamarin results
 # =====================================================================
-#  Konteynerde koşar (clingo gerekir):
+#  Runs in the container (needs clingo):
 #     docker run --rm -v "<models/tamarin>:/work" -w /work pq-a02-solver:1.0 python betik/degerlendir.py
-#  Girdi : betik/varyantlar.tsv, sonuc/ozet.csv, sonuc/json/*.json, sonuc/ham/*.txt, modeller/datalog/*.lp
-#  Çıktı : sonuc/degerlendirme.csv   lemma başına beklenen / gözlenen / uyum
-#          sonuc/datalog_uyum.csv    güvenlik lemması başına Datalog (clingo) tahmini / Tamarin hükmü
-#                                    (yalnız Datalog karşılığı olan kurallar: R1–R5)
-#          sonuc/izler.csv           bulunan izlerdeki kurallar ve kırılan anahtarlar (JSON'dan)
-#          sonuc/varyant_ozeti.csv   varyant başına tek satır
-#          sonuc/metrikler.txt       kabul ölçütleri, mutasyon skoru, en uzun koşum, bellek tepesi,
-#                                    iyi biçimlilik taraması; Adım 4 ve Adım 5A ayrı bölümlerde
-#  Beklenti kuralı: varyantlar.tsv'nin 7. sütununda (lemma_beklenen) adı geçen lemma için oradaki
-#  değer; geçmeyenler için varsayılan: sağlık, M_ ve X_ lemmaları verified; güvenlik lemmaları
-#  G_beklenen'e göre; S1_downgrade_trace G_beklenen F ise verified.
-#  Bütün sayılar bu betiğin araç çıktılarından hesapladığı değerlerdir.
+#  Input : betik/varyantlar.tsv, sonuc/ozet.csv, sonuc/json/*.json, sonuc/ham/*.txt, modeller/datalog/*.lp
+#  Output: sonuc/degerlendirme.csv   expected / observed / agreement per lemma
+#          sonuc/datalog_uyum.csv    Datalog (clingo) prediction / Tamarin verdict per security lemma
+#                                    (only the rules that have a Datalog counterpart: R1–R5)
+#          sonuc/izler.csv           rules and broken keys in the traces found (from the JSON)
+#          sonuc/varyant_ozeti.csv   one row per variant
+#          sonuc/metrikler.txt       acceptance criteria, mutation score, longest run, memory peak,
+#                                    well-formedness scan; Step 4 and Step 5A in separate sections
+#  Expectation rule: for a lemma named in column 7 of varyantlar.tsv (lemma_beklenen) the value given there;
+#  for the others the default: sanity, M_ and X_ lemmas verified; security lemmas
+#  according to G_beklenen; S1_downgrade_trace verified if G_beklenen is F.
+#  All numbers are values computed by this script from the tool outputs.
 import csv
 import glob
 import json
@@ -131,7 +131,7 @@ def iz_kurallari(kural, varyant, lemma, dosya):
 
 
 def iyi_bicimlilik(kurallar):
-    """sonuc/ham/*.txt taraması: kural önekine göre dosya sayısı, başarılı ve uyarılı dosyalar."""
+    """Scan of sonuc/ham/*.txt: number of files per rule prefix, successful files and files with warnings."""
     toplam = basarili = uyarili = 0
     for p in glob.glob("sonuc/ham/*.txt"):
         k = os.path.basename(p).split("__")[0]
@@ -154,7 +154,7 @@ def main():
     kosulan = {(r["kural"], r["varyant"]) for r in satirlar}
     sira = [x for x in sira if x in kosulan]
 
-    # ---------- 1) beklenen / gözlenen ----------
+    # ---------- 1) expected / observed ----------
     deg = []
     for r in satirlar:
         m = varyantlar[(r["kural"], r["varyant"])]
@@ -167,7 +167,7 @@ def main():
         w.writeheader(); w.writerows(deg)
     dmap = {(d["kural"], d["varyant"], d["lemma"]): d for d in deg}
 
-    # ---------- 2) Datalog (clingo) uyumu: yalnız .lp karşılığı olan kurallar ----------
+    # ---------- 2) Datalog (clingo) agreement: only the rules with a .lp counterpart ----------
     du, naive_farklar = [], []
     for (k, v) in sira:
         m = varyantlar[(k, v)]
@@ -195,7 +195,7 @@ def main():
             w = csv.DictWriter(f, fieldnames=list(du[0].keys()))
             w.writeheader(); w.writerows(du)
 
-    # ---------- 3) iz içerikleri ----------
+    # ---------- 3) trace contents ----------
     iz = []
     for r in satirlar:
         t = tur(r["lemma"])
@@ -212,7 +212,7 @@ def main():
             w = csv.DictWriter(f, fieldnames=list(iz[0].keys()))
             w.writeheader(); w.writerows(iz)
 
-    # ---------- 4) varyant özeti ----------
+    # ---------- 4) variant summary ----------
     ozet = []
     for (k, v) in sira:
         m = varyantlar[(k, v)]
@@ -235,7 +235,7 @@ def main():
         w = csv.DictWriter(f, fieldnames=list(ozet[0].keys()))
         w.writeheader(); w.writerows(ozet)
 
-    # ---------- 5) metrikler (grup başına) ----------
+    # ---------- 5) metrics (per group) ----------
     L = ["PQ-OID4VC Adım 4 + 5A — Tamarin kural şemaları: metrikler (betik/degerlendir.py çıktısı)",
          "clingo %s" % clingo.__version__, ""]
     for ad, kurallar in GRUPLAR:
@@ -252,7 +252,7 @@ def main():
         L.append("Beklenen/gözlenen uyumu: %d/%d" % (len(gd) - len(uyumsuz), len(gd)))
         for d in uyumsuz:
             L.append("   UYUMSUZ: %s %s %s beklenen=%s gozlenen=%s" % (d["kural"], d["varyant"], d["lemma"], d["beklenen"], d["gozlenen"]))
-        # kabul ölçütü: korumalı ve mutant varyantlarda bütün lemmalar beklenen gibi + executable verified
+        # acceptance criterion: in the protected and mutant variants all lemmas as expected + executable verified
         L.append("")
         L.append("Kabul ölçütü (korumalı ve mutant varyantlarda bütün lemmalar beklenen gibi; executable verified):")
         for k in kurallar:
@@ -271,7 +271,7 @@ def main():
                                                                 or varyantlar[(k, d["varyant"])]["rol"].startswith("mutant"))]
             L.append("   %s: %s   (ek varyant lemmaları beklenen gibi: %d/%d)" %
                      (k, "GEÇTİ" if ok else "KALDI", sum(1 for d in ek if d["uyum"] == "EVET"), len(ek)))
-        # mutasyon skoru
+        # mutation score
         L.append("")
         mutantlar = [x for x in gs if varyantlar[x]["rol"].startswith("mutant")]
         olduruldu = []
@@ -302,7 +302,7 @@ def main():
                 L.append("   " + x)
         else:
             L.append("Datalog karşılaştırması: bu grupta .lp karşılığı yok (R6/R7 sayısal pencere ASP'de).")
-        # kaynak ve iyi biçimlilik
+        # source and well-formedness
         maxs = max(gr, key=lambda r: float(r["sure_s"]))
         maxm = max(gr, key=lambda r: float(r["bellek_MiB"]))
         kapanmayan = [r for r in gr if r["sonuc"] not in ("verified", "falsified")]

@@ -1,15 +1,15 @@
 # -*- coding: utf-8 -*-
 """
-PQ-OID4VC Adim 1 - korpus indirme, metne donusturme ve MANIFEST uretimi.
+PQ-OID4VC Step 1 - corpus download, conversion to text and MANIFEST generation.
 
-Kullanim (01-korpus klasorunden ya da herhangi bir yerden):
-    python korpus_indir.py                 # eksik dosyalari indirir, metinleri ve MANIFEST'i yeniden uretir
-    python korpus_indir.py --yeniden ID..  # verilen id'leri yeniden indirir (erisim_utc guncellenir)
-    python korpus_indir.py --sadece-metin  # indirme yapmaz; metin/ ve MANIFEST.csv'yi yeniden uretir
+Usage (from the spec-corpus/ folder or from anywhere):
+    python korpus_indir.py                 # downloads missing files, regenerates the texts and the MANIFEST
+    python korpus_indir.py --yeniden ID..  # downloads the given ids again (erisim_utc is updated)
+    python korpus_indir.py --sadece-metin  # no download; regenerates metin/ and MANIFEST.csv
 
-Gizlilik: Istekler anonimdir. HTTP basliklarinda yalniz genel bir User-Agent vardir;
-e-posta, ad ya da baska kisisel veri gonderilmez. Erisim kisitina (bot korumasi vb.)
-takilan belge "erisilemedi" olarak kaydedilir; kisit asilmaya calisilmaz.
+Privacy: the requests are anonymous. The HTTP headers carry only a generic User-Agent;
+no e-mail address, name or other personal data is sent. A document blocked by an access
+restriction (bot protection etc.) is recorded as "erisilemedi"; no attempt is made to bypass the restriction.
 """
 import csv
 import datetime as dt
@@ -45,7 +45,7 @@ def sha256_dosya(p: Path) -> str:
 
 
 def indir(url: str, hedef: Path, deneme: int = 3):
-    """Anonim indirme. (http_kodu, son_url, hata) dondurur."""
+    """Anonymous download. Returns (http_kodu, son_url, hata)."""
     son_hata = ""
     for i in range(deneme):
         try:
@@ -62,14 +62,14 @@ def indir(url: str, hedef: Path, deneme: int = 3):
         except urllib.error.HTTPError as e:
             son_hata = f"HTTPError {e.code}"
             if e.code in (401, 403, 404, 410, 451):
-                break  # erisim kisiti: asmaya calisma
-        except Exception as e:  # ag hatasi
+                break  # access restriction: do not try to bypass it
+        except Exception as e:  # network error
             son_hata = f"{type(e).__name__}: {e}"
         time.sleep(2 * (i + 1))
     return None, None, son_hata
 
 
-# ---------------------------------------------------------------- donusturuculer
+# ---------------------------------------------------------------- converters
 BLOK = {"p", "div", "section", "article", "header", "footer", "nav", "aside", "main",
         "h1", "h2", "h3", "h4", "h5", "h6", "ul", "ol", "li", "dl", "dt", "dd", "table",
         "thead", "tbody", "tfoot", "tr", "pre", "blockquote", "figure", "figcaption",
@@ -78,12 +78,12 @@ BOS = {"br", "hr", "img", "meta", "link", "input", "wbr", "col", "area", "base",
 
 
 class HtmlMetin(HTMLParser):
-    """xml2rfc HTML'sini okunur duz metne cevirir; pilcrow baglantilari ve betikler atlanir."""
+    """Converts xml2rfc HTML into readable plain text; pilcrow links and scripts are skipped."""
 
     def __init__(self):
         super().__init__(convert_charrefs=True)
         self.parca = []
-        self.yigin = []  # (etiket, atla_mi, pre_mi)
+        self.yigin = []  # (tag, skip?, pre?)
         self.atla = 0
         self.pre = 0
 
@@ -111,7 +111,7 @@ class HtmlMetin(HTMLParser):
     def handle_endtag(self, tag):
         if tag in BOS:
             return
-        # eslesen acilisa kadar geri sar
+        # unwind up to the matching opening tag
         for i in range(len(self.yigin) - 1, -1, -1):
             if self.yigin[i][0] == tag:
                 for (t, atla, pre) in self.yigin[i:]:
@@ -154,7 +154,7 @@ SAYFA_SONU = re.compile(r"\n[^\n]*\[Page \d+\]\n\f\n?[^\n]*\n")
 
 
 def ietf_metin(b: bytes) -> str:
-    """IETF .txt: BOM ve sayfalama (alt bilgi + form feed + ust bilgi) cikarilir; icerik degismez."""
+    """IETF .txt: the BOM and the pagination (footer + form feed + header) are removed; the content is unchanged."""
     s = b.decode("utf-8-sig").replace("\r\n", "\n")
     s = SAYFA_SONU.sub("\n", s)
     s = s.replace("\f", "\n")
@@ -172,7 +172,7 @@ def pdf_metin(p: Path) -> (str, str):
         if cikti.returncode == 0 and cikti.stdout.strip():
             s = cikti.stdout.decode("utf-8", errors="replace").replace("\r\n", "\n")
             return s, "pdftotext -enc UTF-8"
-    from pypdf import PdfReader  # saf Python yedek
+    from pypdf import PdfReader  # pure Python fallback
     r = PdfReader(str(p))
     s = "\n\f\n".join((pg.extract_text() or "") for pg in r.pages)
     return s, "pypdf"

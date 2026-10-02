@@ -1,10 +1,10 @@
-"""Yayımlanmış örnek değerler (Wilson; Newcombe yöntem 10 bağımsız ve eşleştirilmiş).
+"""Published example values (Wilson; Newcombe method 10, independent and paired).
 
-Kaynak: data/yayimlanmis_ornekler.json ve kaynak/NEWCOMBE-KAYNAK.md. Birincil metin erişilemedi;
-değerler açık erişimli ikincil kaynaktan (ratesci test3.R) BİREBİR aktarıldı.
+Source: veri/yayimlanmis_ornekler.json and kaynak/NEWCOMBE-SOURCE.md. The primary text could not be accessed;
+the values were copied VERBATIM from an open-access secondary source (ratesci test3.R).
 
-Her örnek iki uygulamayla ayrı ayrı yeniden üretilir: kendi kesin uygulama (Decimal) ve
-kütüphane (statsmodels; eşleştirilmişte numpy + statsmodels Wilson).
+Every example is reproduced separately with the two implementations: own exact implementation (Decimal) and
+library (statsmodels; for the paired case numpy + statsmodels Wilson).
 """
 from __future__ import annotations
 
@@ -17,8 +17,8 @@ from _ortak import VERI_DIZINI, kesin, referans
 
 
 def yuvarla(x: float, basamak: int) -> Decimal:
-    # Yayımlanmış değerler R'nin round() çıktısıdır (IEC 60559, yarıda çifte). Sınırda olmayan değerlerde
-    # yuvarlama kuralı sonucu değiştirmez; aşağıdaki test ayrıca sınıra uzaklığı denetler.
+    # The published values are the output of R's round() (IEC 60559, round half to even). For values that are not
+    # at a rounding boundary the rounding rule does not change the result; the test below also checks the distance to the boundary.
     return Decimal(repr(x)).quantize(Decimal(1).scaleb(-basamak), rounding=ROUND_HALF_EVEN)
 
 
@@ -55,7 +55,7 @@ class YayimlanmisOrnekler(unittest.TestCase):
                 self.assertEqual(yuvarla(ust, o["ondalik"]), Decimal(o["ust"]).quantize(Decimal(1).scaleb(-o["ondalik"])))
 
     def test_yuvarlama_siniri_degil(self):
-        # Hesaplanan değer, yuvarlama sınırına (…5) 1e-9'dan yakın olmamalı; aksi hâlde karşılaştırma kırılgandır.
+        # The computed value must not be closer than 1e-9 to a rounding boundary (…5); otherwise the comparison is fragile.
         for o in ornekler():
             for deger in hesapla(o, kesin):
                 with self.subTest(kod=o["kod"], deger=deger):
@@ -65,7 +65,7 @@ class YayimlanmisOrnekler(unittest.TestCase):
 
 
 class NewcombeTanimi(unittest.TestCase):
-    """Yöntem 10'un tanımından elle doğrulanabilir özellikler (kaynak/NEWCOMBE-KAYNAK.md §3)."""
+    """Properties that can be checked by hand from the definition of method 10 (kaynak/NEWCOMBE-SOURCE.md §3)."""
 
     def test_phi_duzeltmesi_y5(self):
         # (20, 12, 2, 16): ad − bc = 320 − 24 = 296 > 0; N = 50; φ* = (296 − 25)/√(32·18·22·28)
@@ -76,7 +76,7 @@ class NewcombeTanimi(unittest.TestCase):
         self.assertAlmostEqual(phi_duz, 296 / sqrt(32 * 18 * 22 * 28), delta=1e-15)
 
     def test_phi_negatifte_duzeltme_yok(self):
-        # ad − bc ≤ 0 ise φ* = φ̂ (düzeltme yalnız pozitif korelasyonda)
+        # if ad − bc ≤ 0 then φ* = φ̂ (the correction applies only to a positive correlation)
         for tablo in [(1, 7, 7, 1), (0, 5, 3, 2), (2, 6, 6, 2)]:
             with self.subTest(tablo=tablo):
                 a, b, c, d = tablo
@@ -87,17 +87,17 @@ class NewcombeTanimi(unittest.TestCase):
 
     def test_phi_alt_sinir_sifir(self):
         # 0 < ad − bc ≤ N/2 => φ* = 0 (max(·, 0))
-        a, b, c, d = 1, 1, 1, 2  # ad − bc = 1; N/2 = 2,5
+        a, b, c, d = 1, 1, 1, 2  # ad − bc = 1; N/2 = 2.5
         self.assertEqual(kesin.newcombe_eslestirilmis(a, b, c, d, phi_turu="newcombe_duzeltmeli")[3], 0.0)
-        # Y7 (Fagerland örneği, 1, 1, 7, 12): ad − bc = 5 ≤ N/2 = 10,5 => φ* = 0, oysa φ̂ > 0.
-        # Yayımlanmış değer (−0,507; −0,026) φ* ile üretiliyor (test_kendi_uygulama): düzeltme ayırt edici.
+        # Y7 (Fagerland example, 1, 1, 7, 12): ad − bc = 5 ≤ N/2 = 10.5 => φ* = 0, whereas φ̂ > 0.
+        # The published value (−0.507; −0.026) is reproduced with φ* (test_kendi_uygulama): the correction is decisive.
         self.assertEqual(kesin.newcombe_eslestirilmis(1, 1, 7, 12)[3], 0.0)
         self.assertGreater(kesin.newcombe_eslestirilmis(1, 1, 7, 12, phi_turu="duz")[3], 0.0)
         _, alt_duz, ust_duz, _ = kesin.newcombe_eslestirilmis(1, 1, 7, 12, phi_turu="duz")
         self.assertNotEqual((round(alt_duz, 3), round(ust_duz, 3)), (-0.507, -0.026))
 
     def test_phi_payda_sifir(self):
-        # Bir marjinal toplam 0 ise φ = 0 (ör. hiç olay yok)
+        # If a marginal total is 0, φ = 0 (e.g. no event at all)
         self.assertEqual(kesin.newcombe_eslestirilmis(0, 0, 0, 9)[3], 0.0)
         self.assertEqual(kesin.newcombe_eslestirilmis(5, 0, 0, 0)[3], 0.0)
 

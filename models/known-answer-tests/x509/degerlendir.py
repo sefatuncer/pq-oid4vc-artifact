@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
-"""Adım 6 | KAT-2 X.509 hibrit değerlendirmesi: koşum çıktılarından geçme ölçütü (ÖK §4.19; ESLEME.md §1, §3.5, §3.6).
-KOŞU YAPMAZ; yalnız okur. Girdi: sonuc/{asp,asp_mutasyon,tamarin,tamarin_mutasyon,tamarin_ek}.csv, sonuc/asp_ozet.json,
-iyi_bicim/ozet.tsv, sonuc/alinti_denetimi.tsv. Çıktı: sonuc/KAT_OZET.json, sonuc/KAT_OZET.md.
-ASP–Tamarin ortak hücreleri (ESLEME §3.5): K2b-01/02/03/06/07 'ASP' <-> 'Tamarin:cert_authentic' (SALDIRI<->falsified,
+"""Step 6 | KAT-2 X.509 hybrid evaluation: pass criterion from the run outputs (PR §4.19; MAPPING.md §1, §3.5, §3.6).
+DOES NOT RUN anything; only reads. Input: sonuc/{asp,asp_mutasyon,tamarin,tamarin_mutasyon,tamarin_ek}.csv, sonuc/asp_ozet.json,
+iyi_bicim/ozet.tsv, sonuc/alinti_denetimi.tsv. Output: sonuc/KAT_OZET.json, sonuc/KAT_OZET.md.
+Cells shared by ASP and Tamarin (MAPPING §3.5): K2b-01/02/03/06/07 'ASP' <-> 'Tamarin:cert_authentic' (SALDIRI<->falsified,
 YOK<->verified); K2d-01/02/03 'ASP:karar' <-> 'Tamarin' (no_silent_promotion; accept_classical<->falsified,
-reject<->verified, accept_hybrid<->verified). Ek (kapı değil): duyarlılık lemmaları (ek_tamarin.tsv).
+reject<->verified, accept_hybrid<->verified). Additional (not a gate): sensitivity lemmas (ek_tamarin.tsv).
 """
 import csv, json, os, sys
 from collections import defaultdict
@@ -36,8 +36,8 @@ def main():
     ort_uyum = [a for a, t, e in ortak if e.get(A[a]) == T[t]]
     kotu = [r['kosu'] for r in tam + tm if r['gozlenen'] in ('belirsiz', 'gecersiz_wf', 'yok')]
     ex = [r['kosu'] for r in tam + tm if r['executable'] != 'verified']
-    # Katı dönme ölçütü (KAT-SPEC §6 "dönmeli"): mutasyonlu değer beklenen değerde VE mutasyonsuz temel koşunun
-    # gözlenen değerinden farklı. Temel koşu: aynı adın 'MUTxx.' öneki atılmış hâli.
+    # Strict flip criterion (KAT-SPEC §6 "must flip"): the mutated value equals the expected value AND differs from the observed
+    # value of the unmutated base run. Base run: the same name with the 'MUTxx.' prefix removed.
     TA = {r['kosu']: r['gozlenen'] for r in asp}
     TT = {r['kosu']: r['gozlenen'] for r in tam}
     M = defaultdict(lambda: defaultdict(list))

@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
-"""Üçüncü bağımsız değerlendirici: Jacobi sabit-nokta yinelemesi (ön kayıt D2: 3 yönlü uyum).
+"""Third independent evaluator: Jacobi fixed-point iteration (pre-registration D2: three-way agreement).
 
-z3 kodlayıcısı formülleri bellekli özyinelemeyle kurarken, bu modül bütün yüklemleri (sahte,
-etkin_sahte, beklenir, basar, ulasir, yolda) her turda eşzamanlı olarak yeniden hesaplar ve değişim
-kalmayınca durur. Bağımlılık grafiği döngüsüzse yineleme en uzun yol sayısı kadar turda tek çözüme
-yakınsar; yakınsamama (salınım) döngü ya da tabakalanmamış olumsuzlama belirtisidir ve hata verir.
+While the z3 encoder builds the formulas by memoised recursion, this module recomputes all predicates (sahte,
+etkin_sahte, beklenir, basar, ulasir, yolda) simultaneously in every round and stops when nothing
+changes. If the dependency graph is acyclic, the iteration converges to the unique solution in as many rounds as the
+longest path; non-convergence (oscillation) indicates a cycle or an unstratified negation and raises an error.
 """
 from yapi import Yapi
 
@@ -22,9 +22,9 @@ def degerlendir_py(prm, pq=(), tasi=(), hedefler=('g1', 'g2', 'g3', 'g4'), kirik
         kirik_fn = lambda k: k in kirik
 
     def PQ(a):
-        if a in Y.karar:                # karar: düğümü seçilmiş mi (§2C: düğüm başına tek karar)
+        if a in Y.karar:                # karar: is the node selected (§2C: one decision per node)
             return Y.dugum[a] in pq
-        if a in pq:                     # regresyon örnekleri: karar dışı artefakta sabit atama
+        if a in pq:                     # regression instances: fixed assignment for an artefact outside the decisions
             return True
         if a in Y.pq_sabit:
             return True
@@ -33,9 +33,9 @@ def degerlendir_py(prm, pq=(), tasi=(), hedefler=('g1', 'g2', 'g3', 'g4'), kirik
         return False
 
     arts = sorted(Y.mevcut)
-    s = {a: False for a in arts}       # sahte
-    es = {a: False for a in arts}      # etkin sahte
-    bek = {a: False for a in arts}     # beklenir
+    s = {a: False for a in arts}       # forged
+    es = {a: False for a in arts}      # effectively forged
+    bek = {a: False for a in arts}     # expected
     pol = kat['politika']
     kapsam_engeli = ('kapsam' in Y.mf_kapali) and kat['faz'] in ('f1', 'f2')
     geri = ('tazelik' in Y.mf_kapali) and ('tekduzelik' in Y.mf_kapali)
@@ -103,7 +103,7 @@ def degerlendir_py(prm, pq=(), tasi=(), hedefler=('g1', 'g2', 'g3', 'g4'), kirik
         ihlal.add('tum')
     if ihl('g2i'):
         ihlal.add('g2i')
-    # G5: 'yolda' için de Jacobi (hedeflerden aşağı)
+    # G5: Jacobi for 'yolda' too (downwards from the goals)
     kap = [g for g in (g5_kapsam if g5_kapsam is not None else hedefler) if g in Y.ana]
     if kap:
         hedef_kume = set().union(*[Y.hedef[g] for g in kap])

@@ -1,6 +1,6 @@
 #!/bin/sh
-# Adım 2 kabul testi: B'nin P1 (Tamarin) ve P2 (ASP + z3) pilotlarını yeni imajlarla yeniden üretir.
-# Beklenen (B'nin ham çıktıları): V1,V2,V3,V6 falsified; V4,V5 verified; L2 verified; L1 zaman aşımı; P2 z3–clingo 48/48.
+# Step 2 acceptance test: reproduces the design-stage pilots P1 (Tamarin) and P2 (ASP + z3) of set B with the new images.
+# Expected (raw outputs of B): V1,V2,V3,V6 falsified; V4,V5 verified; L2 verified; L1 timeout; P2 z3–clingo 48/48.
 set -e
 cd "$(dirname "$0")"
 P1=$(cygpath -m "$PWD/p1"); P2=$(cygpath -m "$PWD/p2")

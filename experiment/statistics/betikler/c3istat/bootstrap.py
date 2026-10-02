@@ -1,16 +1,16 @@
-"""Küme bootstrap (ÖK §6.9): birim = kütüphane (hedef), B = 10.000, yüzdelik GA, tohum 20260927.
+"""Cluster bootstrap (PR §6.9): unit = library (target), B = 10,000, percentile CI, seed 20260927.
 
-İstatistik: havuzlanmış oran θ = Σ x_i / Σ m_i (x_i: hedef i'de oracle'a uymayan vaka; m_i: belirli vaka sayısı).
+Statistic: pooled proportion θ = Σ x_i / Σ m_i (x_i: cases of target i that disagree with the oracle; m_i: number of determinate cases).
 
-Rastgele akış (tam tanım; iki uygulama da aynı akışı kullanır):
-  rng = random.Random(tohum)          # Mersenne Twister; Python, random() dizisinin kararlılığını güvence eder
-  kümeler hedef_id'ye göre sözlük sırasında dizilir; m_i = 0 olan kümeler önceden dışlanır (k = kalan sayı)
-  r = 1..B için, j = 1..k için: indeks = floor(rng.random() * k)   (replikasyon-öncelikli sıra)
-Yüzdelik GA: Hyndman–Fan tip 7, q = 1/40 ve 39/40.
+Random stream (full definition; both implementations use the same stream):
+  rng = random.Random(tohum)          # Mersenne Twister; Python guarantees the stability of the random() sequence
+  clusters are ordered lexicographically by hedef_id; clusters with m_i = 0 are excluded beforehand (k = number remaining)
+  for r = 1..B, for j = 1..k: indeks = floor(rng.random() * k)   (replication-major order)
+Percentile CI: Hyndman–Fan type 7, q = 1/40 and 39/40.
 
-`kume_bootstrap_saf`: yalnız standart kütüphane (A).  `kume_bootstrap_numpy`: numpy vektörel (B).
-Sonuçta bootstrap dağılımının SHA-256'sı verilir (sıralı değerlerin '<d' ikili gösterimi); iki uygulamada
-bit düzeyinde aynı olmalıdır.
+`kume_bootstrap_saf`: standard library only (A).  `kume_bootstrap_numpy`: vectorised numpy (B).
+The result carries the SHA-256 of the bootstrap distribution (binary '<d' representation of the sorted values); it must be
+bit-identical in the two implementations.
 """
 from __future__ import annotations
 
@@ -80,7 +80,7 @@ def _veri_yok(dislanan, B, tohum, uygulama) -> dict:
 
 def kume_bootstrap_saf(kumeler, B: int = BOOTSTRAP_B, tohum: int = BOOTSTRAP_TOHUM,
                        alt_q: Fraction = BOOTSTRAP_ALT, ust_q: Fraction = BOOTSTRAP_UST) -> dict:
-    """kumeler: [(hedef_id, x_i, m_i), …]. Yalnız standart kütüphane."""
+    """kumeler: [(hedef_id, x_i, m_i), …]. Standard library only."""
     kalan, dislanan = _hazirla(kumeler)
     if not kalan:
         return _veri_yok(dislanan, B, tohum, "saf")
@@ -102,7 +102,7 @@ def kume_bootstrap_saf(kumeler, B: int = BOOTSTRAP_B, tohum: int = BOOTSTRAP_TOH
 
 def kume_bootstrap_numpy(kumeler, B: int = BOOTSTRAP_B, tohum: int = BOOTSTRAP_TOHUM,
                          alt_q: Fraction = BOOTSTRAP_ALT, ust_q: Fraction = BOOTSTRAP_UST) -> dict:
-    """Aynı akışla numpy vektörel hesap (B uygulaması); yüzdelik numpy.quantile(method='linear')."""
+    """The same stream as a vectorised numpy computation (implementation B); percentile numpy.quantile(method='linear')."""
     import numpy as np
 
     kalan, dislanan = _hazirla(kumeler)

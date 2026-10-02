@@ -1,15 +1,15 @@
 # -*- coding: utf-8 -*-
-"""H4 (ÖN): S5 (önce kök ve cihaz) ↔ S7 (hesaplanan asgari küme), ön kayıt §3.5, §4.21 (2a), Ö3, §2C 2.4.
-Hücreler: (i) birincil yapılandırmanın 36 hücresi (G1–G4 × Φ × τ; çıpa taze; WebPKI klasik),
-(ii) Ö3 adlandırılmış hücreleri (sorgular/sonuc/h4.json; kısa pencereli anahtarlar, G4, WebPKI, durum
-delegasyonu) — H4 tasarımı yalnız bunlardır (§2C 2.4).
-Sınıflama:
-  yetersiz(beklenti) : S5 sağlamaz, S7 sağlar, S5e (S5 kümesi + P4 + M-f) sağlar  -> H3 kaynaklı (Ö2), (2a) değil
-  yetersiz(dugum)    : S5e de sağlamaz; S7'nin her asgari kümesinde olup S5'te olmayan düğümler raporlanır
-  israfli(tau)       : ikisi de sağlar; S5'in fazlası, aynı hücrenin τ=hızlı karşılığında gerekli olan kısa
-                       pencereli bir anahtar düğümünü içerir (Ö3: sayılır)
-  israfli(diger)     : fazlalık yalnız yol dışı ya da uzun ömürlü düğümler (Ö3: sayılmaz)
-Her S5/S5e değerlendirmesi ASP, z3 ve Jacobi ile üç yönlü denetlenir.
+"""H4 (PRELIMINARY): S5 (root and device first) ↔ S7 (computed minimal set), pre-registration §3.5, §4.21 (2a), Ö3, §2C 2.4.
+Cells: (i) the 36 cells of the primary configuration (G1–G4 × Φ × τ; fresh anchor; WebPKI classical),
+(ii) the named cells of Ö3 (sorgular/sonuc/h4.json; short-window keys, G4, WebPKI, status
+delegation) — only these form the H4 design (§2C 2.4).
+Classification:
+  yetersiz(beklenti) : S5 does not satisfy, S7 satisfies, S5e (S5 set + P4 + M-f) satisfies  -> caused by H3 (Ö2), not (2a)
+  yetersiz(dugum)    : S5e does not satisfy either; the nodes that are in every minimal set of S7 but not in S5 are reported
+  israfli(tau)       : both satisfy; the surplus of S5 contains a short-window key node that is required in the
+                       τ=fast counterpart of the same cell (Ö3: counted)
+  israfli(diger)     : the surplus consists only of off-path or long-lived nodes (Ö3: not counted)
+Every S5/S5e evaluation is checked three ways with ASP, z3 and Jacobi.
 """
 import json, os, sys
 from collections import Counter
@@ -21,7 +21,7 @@ from z3_kodlama import degerlendir_z3
 from py_degerlendirici import degerlendir_py
 
 SON = os.path.join(KOK, 'sorgular', 'sonuc')
-KISA_PENCERE = {'a10', 'a09a', 'a07', 'a08'}     # kipine göre kısa pencereli olabilen imza anahtarları
+KISA_PENCERE = {'a10', 'a09a', 'a07', 'a08'}     # signing keys that can have a short window depending on the mode
 
 
 def dug(k):
@@ -78,7 +78,7 @@ def main():
     birincil = json.load(open(os.path.join(SON, 'birincil.json'), encoding='utf-8'))['sorgular']
     h4q = json.load(open(os.path.join(SON, 'h4.json'), encoding='utf-8'))['sorgular']
     isler = []
-    # (i) birincil 36 hücre (P4 = S7'nin politikası)
+    # (i) the 36 primary cells (P4 = the policy of S7)
     bi = {(q['etiket']['hedef'], q['etiket']['faz'], q['etiket']['tau'], q['etiket']['capa'], q['etiket']['politika']): q
           for q in birincil}
     for h in ['g1', 'g2', 'g3', 'g4']:
@@ -88,11 +88,11 @@ def main():
                 hq = bi[(h, fz, 'hizli', 'taze', 'p4')]
                 isler.append(('birincil|%s|%s|%s' % (h, fz, t), h, {'faz': fz, 'tau': TAU_NOMINAL[t], 'capa': 'taze'},
                               q['kumeler'], hq['kumeler']))
-    # (ii) Ö3 adlandırılmış hücreleri: S7 = hücrenin kendi asgari kümeleri (P4'lü hücreler) ya da politika P0 hücreleri
+    # (ii) named cells of Ö3: S7 = the cell's own minimal sets (cells with P4) or cells with policy P0
     ad2q = {q['id']: q for q in h4q}
     for q in h4q:
         if q['id'].startswith('h4|SADAKAT'):
-            continue                                  # sadakat hücresi H4 değildir (Ö3); ayrı raporlanır
+            continue                                  # a fidelity cell is not H4 (Ö3); reported separately
         d = dict(q['degisen'])
         d.pop('politika', None)
         hizli_id = None
@@ -115,7 +115,7 @@ def main():
         if d.get('kimlik_gecerlilik', 30 * 86400) <= 86400:
             k.add('a10')
         return set(r['fark']) & k
-    # Ö3: uzun ömürlü anahtar farkları (V1 a07/a08, a04, a03 ...) (2a) sayılmaz; öncelik kısa pencere, G4, WebPKI
+    # Ö3: differences in long-lived keys (V1 a07/a08, a04, a03 ...) are not counted as (2a); priority short window, G4, WebPKI
     aday_2a = [r for r in sonuc if r['sinif'] == 'israfli(tau)' or
                (r['sinif'] == 'yetersiz(dugum)' and (r['hedef'] == 'g4' or 'a13' in r['fark'] or kisa(r)))]
     ozet['aday_2a_sayisi'] = len(aday_2a)

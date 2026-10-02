@@ -1,7 +1,7 @@
 #!/bin/sh
-# Adım 6 | konteyner içi tek Tamarin çağrısı (Tamarin çalışmasının ic_kosum.sh'siyle aynı ölçüm biçimi).
-# Kullanım (konteyner içinde): sh /kat/tamarin_ic.sh <cikti_oneki> <zaman_asimi_s> <model_yolu> [tamarin argümanları...]
-# Yazar: <cikti_oneki>.txt (Tamarin'in tam çıktısı), <cikti_oneki>.meta (rc, duvar süresi, cgroup bellek tepesi)
+# Step 6 | a single Tamarin call inside the container (the same measurement format as ic_kosum.sh of the Tamarin work).
+# Usage (inside the container): sh /kat/tamarin_ic.sh <output_prefix> <timeout_s> <model_path> [tamarin arguments...]
+# Writes: <output_prefix>.txt (complete Tamarin output), <output_prefix>.meta (rc, wall time, cgroup memory peak)
 out=$1; to=$2; f=$3; shift 3
 s=$(date +%s.%N)
 timeout "$to" tamarin-prover "$@" "$f" > "$out.txt" 2>&1

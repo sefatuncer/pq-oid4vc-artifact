@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
-"""Pilot P2 regresyonu (48 sorgu) — referans/pilot/p2 (salt okunur, /referans bağı).
+"""Regression of pilot P2 (48 queries) — referans/pilot/p2 (read only, /referans mount).
 
-1) Pilotun KENDİ programı (trustchain_base.lp + trustchain_mig.lp) aynı seçeneklerle yeniden koşulur;
-   bütün asgari kümeler kesilmeden toplanır ve kayıtlı p2a_results.json ile (n, min_card, ilk ≤6 küme)
-   karşılaştırılır.
-2) Pilot topolojisi yeni çekirdeğin olgu biçimine çevrilir (regresyon/p2_ornegi.lp) ve cekirdek.lp ile
-   (ASP) ve z3 kodlamasıyla koşulur. Eşleme: link->karar artefakt (aktarılan, pencere sonsuz),
+1) The pilot's OWN program (trustchain_base.lp + trustchain_mig.lp) is run again with the same options;
+   all minimal sets are collected without truncation and compared with the recorded p2a_results.json
+   (n, min_card, first ≤6 sets).
+2) The pilot topology is translated into the fact format of the new core (regresyon/p2_ornegi.lp) and run with cekirdek.lp
+   (ASP) and with the z3 encoding. Mapping: link->karar artefact (conveyed, window infinite),
    signed_under->kenar, can_convey->tasiyabilir(m_f), anchored->sabit, coexist(yaprak)->klasik_alt_zorla,
-   wscd=p256 -> wscd_pq=yok, politika P4 (pilotun expected/K3 kuralı), convey->tasi.
-3) P2b sıra: pilotun sıra programı (order.lp) ile yeni sıra kodlaması (sorgular/sira.py) karşılaştırılır.
+   wscd=p256 -> wscd_pq=yok, policy P4 (the pilot's expected/K3 rule), convey->tasi.
+3) P2b order: the pilot's order program (order.lp) is compared with the new order encoding (sorgular/sira.py).
 """
 import itertools, json, os, sys, time
 import clingo
@@ -89,7 +89,7 @@ def main():
             kayit_ok = (k['n_min_sets'] == len(ref) and
                         k['min_card'] == min((sum(1 for a in s if a.startswith('pq(')) for s in ref), default=None) and
                         {tuple(x) for x in k['sets']} <= set(ref) and len(k['sets']) == min(6, len(ref)))
-            # kayıt yalnız ilk ≤6 kümeyi sayım sırasıyla saklar: küme olarak alt küme + sayı + asgari kardinalite
+            # the record keeps only the first ≤6 sets in enumeration order: compare as subset + count + minimal cardinality
             prm = prm_p2(phase, wscd, anchor)
             sis, bilgi = asgari_kumeler(prm, [HEDEF[target]], dosyalar=dosyalar)
             z, zb = asgari_kumeler_z3(prm, [HEDEF[target]], O=O)

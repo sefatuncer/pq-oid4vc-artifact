@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
-"""Adım 6 | KAT-1 DNSSEC değerlendirmesi: koşum çıktılarından geçme ölçütü (ÖK §4.19; ESLEME.md §1, §2.5, §2.6).
-KOŞU YAPMAZ; yalnız okur. Girdi: sonuc/{asp,asp_mutasyon,tamarin,tamarin_mutasyon}.csv, sonuc/asp_ozet.json,
-iyi_bicim/ozet.tsv, sonuc/alinti_denetimi.tsv. Çıktı: sonuc/KAT_OZET.json, sonuc/KAT_OZET.md.
-Geçme (hepsi): ASP %100; Tamarin %100 ('belirsiz', 'gecersiz_wf' ya da 'yok' => KALDI) ve her koşuda executable
-verified; ASP–Tamarin uyumu %100 (SALDIRI<->falsified, YOK<->verified; K1-01…K1-15); her mutasyon tanımlı
-olduğu her motorda listelenen hücrelerden en az birini döndürür; çekirdek özeti önce = sonra = 45cbd0f.
-Kullanım: python degerlendir.py (host ya da konteyner)
+"""Step 6 | KAT-1 DNSSEC evaluation: pass criterion from the run outputs (PR §4.19; MAPPING.md §1, §2.5, §2.6).
+DOES NOT RUN anything; only reads. Input: sonuc/{asp,asp_mutasyon,tamarin,tamarin_mutasyon}.csv, sonuc/asp_ozet.json,
+iyi_bicim/ozet.tsv, sonuc/alinti_denetimi.tsv. Output: sonuc/KAT_OZET.json, sonuc/KAT_OZET.md.
+Pass (all of): ASP 100%; Tamarin 100% ('belirsiz', 'gecersiz_wf' or 'yok' => KALDI) and executable verified in every
+run; ASP–Tamarin agreement 100% (SALDIRI<->falsified, YOK<->verified; K1-01…K1-15); every mutation flips at least one
+of the listed cells in every engine where it is defined; core digest before = after = 45cbd0f.
+Usage: python degerlendir.py (host or container)
 """
 import csv, json, os, sys
 from collections import defaultdict
@@ -34,8 +34,8 @@ def main():
     ort_uyum = [h for h in ortak if ESLE.get(A[h]) == T[h]]
     kotu = [r['kosu'] for r in tam + tm if r['gozlenen'] in ('belirsiz', 'gecersiz_wf', 'yok')]
     ex = [r['kosu'] for r in tam + tm if r['executable'] != 'verified']
-    # Katı dönme ölçütü (KAT-SPEC §6 "dönmeli"): mutasyonlu değer beklenen değerde VE mutasyonsuz temel koşunun
-    # gözlenen değerinden farklı. Temel koşu: aynı adın 'MUTxx.' öneki atılmış hâli.
+    # Strict flip criterion (KAT-SPEC §6 "must flip"): the mutated value equals the expected value AND differs from the observed
+    # value of the unmutated base run. Base run: the same name with the 'MUTxx.' prefix removed.
     TA = {r['kosu']: r['gozlenen'] for r in asp}
     TT = {r['kosu']: r['gozlenen'] for r in tam}
     M = defaultdict(lambda: defaultdict(list))

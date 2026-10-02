@@ -1,15 +1,15 @@
 # -*- coding: utf-8 -*-
-"""Teknik kapı örneklem ÇERÇEVESİ dışa aktarımı (ön kayıt §4.18, §2F madde 2). ASP çalışması ÖRNEK SEÇMEZ.
+"""Export of the technical-gate sampling FRAME (pre-registration §4.18, §2F item 2). The ASP work SELECTS NO SAMPLE.
 
-cerceve.jsonl  : birincil yapılandırmada Q'nun her hücresi için
-                 - her asgari küme ("asgari"; beklenti: Tamarin verified),
-                 - her asgari kümeden tek elemanı eksik her küme ("bir-eksik"; beklenti: iz / falsified).
-kesif_2x2.jsonl: §2D m.11 keşifsel 2×2 ızgarası {ca_baglama: ad, anahtar} × {ayni_ad_klasik_ca: yok, var}
-                 (diger_ca = var, klasik_sabit) için aynı biçim + her hücrede birincil asgari kümelerin o hücredeki
-                 hükmü ("birincil-kume"; ad/var hücresi UNSAT olduğundan zorunlu örnek bu türden seçilebilir).
-Her satırın ASP tahmini, kümenin DEĞERLENDİRME kipinde (cekirdek.lp) koşulmasıyla hesaplanır; tanık olarak
-ihlal edilen hedefler ve sahte artefaktlar verilir. Alt çizge ve bayrak eşlemesi SEMA.md'de tanımlıdır.
-Kullanım: ./calistir.sh sampling/disa_aktar.py
+cerceve.jsonl  : in the primary configuration, for every cell of Q
+                 - every minimal set ("asgari"; expectation: Tamarin verified),
+                 - every set that lacks exactly one element of a minimal set ("bir-eksik"; expectation: trace / falsified).
+kesif_2x2.jsonl: exploratory 2×2 grid of §2D item 11 {ca_baglama: ad, anahtar} × {ayni_ad_klasik_ca: yok, var}
+                 (diger_ca = var, klasik_sabit) in the same format + in every cell the verdict of the primary minimal sets in that cell
+                 ("birincil-kume"; since the ad/var cell is UNSAT, the mandatory instance can be selected from this kind).
+The ASP prediction of every row is computed by running the set in the EVALUATION mode (cekirdek.lp); as witnesses the
+violated goals and the forged artefacts are given. The subgraph and the flag mapping are defined in SCHEMA.md.
+Usage: ./calistir.sh sampling/disa_aktar.py
 """
 import hashlib, json, os, sys
 from collections import Counter, defaultdict
@@ -48,7 +48,7 @@ def degerlendir_ayrintili(prm, dugumler, tasilar, hedef):
 
 
 def alt_cizge(at):
-    """Hedef(ler)in yolundaki artefaktlar ve öznitelikleri (senaryo 'tum')."""
+    """Artefacts on the path of the goal(s) and their attributes (scenario 'tum')."""
     yol = sorted(a for (s, a) in at['yolda'] if s == 'tum')
     kab = defaultdict(list)
     for a, b in at['kabul_alti']:
@@ -83,7 +83,7 @@ def alt_cizge(at):
 
 
 def tamarin_esleme(hedef, prm, alt, dugumler, tasilar):
-    """R1–R7 düz Boole bayrakları (Tamarin çalışmasının şablonları; bkz. SEMA.md §4). Karar: ASP tahmini."""
+    """R1–R7 plain Boolean flags (templates of the Tamarin work; see SCHEMA.md §4). Decision: the ASP prediction."""
     D = set(dugumler)
     kat = prm['kat']
     art = {x['artefakt']: x for x in alt}
@@ -211,7 +211,7 @@ def main():
                       ('kesif_2x2.jsonl', isler_uret(cab2x2, 'kesif_2x2', birincil_ref=bref))]:
         with Pool(processes=int(os.environ.get('ISCI', '10'))) as havuz:
             satirlar = havuz.map(_satir, isler, chunksize=8)
-        # tutarlılık: asgari -> verified, bir-eksik -> falsified (asgarilik ve yukarı kapalılık gereği)
+        # consistency: asgari -> verified, bir-eksik -> falsified (because of minimality and upward closure)
         tutarsiz = [r for r in satirlar if (r['tur'] == 'asgari' and r['asp_tahmini'] != 'verified') or
                     (r['tur'] == 'bir-eksik' and r['asp_tahmini'] != 'falsified')]
         yol, h = yaz(ad, satirlar)

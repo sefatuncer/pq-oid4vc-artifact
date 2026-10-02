@@ -1,16 +1,16 @@
 # -*- coding: utf-8 -*-
-"""Adım 6 | K1-11 TANISI (SONUÇ GÖRÜLDÜKTEN SONRA; kapı hücresi DEĞİL).
+"""Step 6 | DIAGNOSIS of K1-11 (AFTER THE RESULT WAS SEEN; NOT a gate cell).
 
-Dondurulmuş ../tamarin_kos.py işlevlerini DEĞİŞTİRMEDEN kullanır (içe aktarma). Bütünlük testi (COMPLETENESS) kullanan
-altı KAT-1 hücresini, bütünlüğü DNSKEY adımına da uygulayan tanı modeliyle (KAT1_DNSSEC_tani.spthy) koşar.
-Beklenen değerler: nsurum/kat_nsurum.tsv 'ilk_ajan' (tek kaynak). Çıktı: tani/sonuc.csv.
-Kullanım (dnssec klasöründen): python tani/tani_kos.py
+Uses the functions of the frozen ../tamarin_kos.py WITHOUT CHANGING them (import). Runs the six KAT-1 cells that use the
+completeness test (COMPLETENESS) with the diagnosis model that also applies completeness to the DNSKEY step (KAT1_DNSSEC_tani.spthy).
+Expected values: nsurum/kat_nsurum.tsv 'ilk_ajan' (single source). Output: tani/sonuc.csv.
+Usage (from the dnssec folder): python tani/tani_kos.py
 """
 import csv, os, sys
 
 BURASI = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.dirname(BURASI))
-import tamarin_kos as tk  # noqa: E402  (dondurulmuş koşucu; değiştirilmedi)
+import tamarin_kos as tk  # noqa: E402  (frozen runner; not changed)
 
 HUCRELER = [('K1-02', 'DS_CL,DK3_USABLE,COMPLETENESS'), ('K1-04', 'DS_PQ,DK3_USABLE,COMPLETENESS'),
             ('K1-05', 'DS_PQ,OLD_DS_REPLAY,DK3_USABLE,COMPLETENESS'), ('K1-06', 'DS_PQ,DK3_USABLE,COMPLETENESS'),

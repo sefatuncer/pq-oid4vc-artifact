@@ -1,18 +1,18 @@
-"""C3 (H6) önceden kayıtlı analiz hattı.
+"""C3 (H6) pre-registered analysis pipeline.
 
-ÖK eşlemesi (ayrıntılı izlenebilirlik: DONDURMA-GIRDISI.md §4):
-  T1 (§3.7, §2B.5, §6.3, §6.6, §6.13, Ek A)  -> t1_karari, _t1
-  H6 hükmü, duyarlılık (i)/(ii) (§6.10)      -> h6_hukmu, _t1_duyarliliklar
-  pilot (§0.3, §6.10), devir (§2B.9)          -> _t1_duyarliliklar, _t2 (devralan hariç)
-  T2 (§6.6, §2B.7; yalnız TK1+TK2)            -> _t2
-  T3, T4 (§6.6)                               -> _fisher_blok
-  T5 (§6.6)                                   -> _t5
-  Holm T2–T5 (§6.6)                           -> _holm
-  Etki büyüklükleri (§6.7)                    -> _t1, _t2, _fisher_blok, _t5
-  Wilson: her L ve bayrak (§6.8)              -> _wilson_tablolari
-  Küme bootstrap (§6.9)                       -> _bootstrap
-  Kararsız hücre sayısı (§6.11)               -> _tanimlayici
-Her sayısal çıktı A (kesin) ile üretilir ve B (kütüphane) ile karşılaştırılır; uyuşmazlık = geçersiz analiz.
+PR mapping (detailed traceability: FREEZE-INPUT.md §4):
+  T1 (§3.7, §2B.5, §6.3, §6.6, §6.13, Annex A)  -> t1_karari, _t1
+  H6 verdict, sensitivity (i)/(ii) (§6.10)      -> h6_hukmu, _t1_duyarliliklar
+  pilot (§0.3, §6.10), delegation (§2B.9)       -> _t1_duyarliliklar, _t2 (delegating targets excluded)
+  T2 (§6.6, §2B.7; only TK1+TK2)                -> _t2
+  T3, T4 (§6.6)                                 -> _fisher_blok
+  T5 (§6.6)                                     -> _t5
+  Holm T2–T5 (§6.6)                             -> _holm
+  Effect sizes (§6.7)                           -> _t1, _t2, _fisher_blok, _t5
+  Wilson: every L and flag (§6.8)               -> _wilson_tablolari
+  Cluster bootstrap (§6.9)                      -> _bootstrap
+  Number of undecided cells (§6.11)             -> _tanimlayici
+Every numerical output is produced by A (exact) and compared with B (library); a disagreement = invalid analysis.
 """
 from __future__ import annotations
 
@@ -32,7 +32,7 @@ _ALFA_F = float(Y.ALFA)
 
 
 # ---------------------------------------------------------------------------------------------
-# yardımcılar
+# helpers
 # ---------------------------------------------------------------------------------------------
 def _p(kesin_deger: Fraction, ref_deger: float) -> dict:
     return {"kesin": str(kesin_deger), "deger": float(kesin_deger), "referans": ref_deger}
@@ -47,11 +47,11 @@ def _ids(hedefler) -> list[str]:
 
 
 # ---------------------------------------------------------------------------------------------
-# T1 ve H6
+# T1 and H6
 # ---------------------------------------------------------------------------------------------
 def t1_karari(X: int, n: int) -> dict:
-    """ÖK §6.3: n_eff < 20 => 'tanimlayici'. Aksi hâlde Ek A kuralıyla c(n), u = n − c:
-    X ≤ c => 'destek'; X ≥ u => 'yanlislama'; arada => 'belirsiz' (ÖK §3.7, §2B.5, §6.13)."""
+    """PR §6.3: n_eff < 20 => 'tanimlayici'. Otherwise c(n), u = n − c by the Annex A rule:
+    X ≤ c => 'destek'; X ≥ u => 'yanlislama'; in between => 'belirsiz' (PR §3.7, §2B.5, §6.13)."""
     kd = kesin.kritik_degerler(n)
     if n < Y.N_EFF_CIKARIMSAL_ALT_SINIR:
         karar = "tanimlayici"
@@ -77,7 +77,7 @@ def _t1(degerler: list[tuple[str, int]], k: Karsilastirici, etiket: str, aciklam
     k.ekle(f"{etiket}.p_alt", p_alt, r_alt, "p")
     k.ekle(f"{etiket}.p_ust", p_ust, r_ust, "p")
     if n >= Y.N_EFF_CIKARIMSAL_ALT_SINIR:
-        # Eşik kararı ile referans p-değeri kararı aynı olmalı (destek ⇔ P(X' ≤ X) ≤ α; yanlışlama ⇔ P(X' ≥ X) ≤ α)
+        # The threshold decision and the reference p-value decision must agree (support ⇔ P(X' ≤ X) ≤ α; falsification ⇔ P(X' ≥ X) ≤ α)
         karar_ekle(k, f"{etiket}.karar_destek", s["karar"] == "destek", r_alt <= _ALFA_F, r_alt, _ALFA_F)
         karar_ekle(k, f"{etiket}.karar_yanlislama", s["karar"] == "yanlislama", r_ust <= _ALFA_F, r_ust, _ALFA_F)
     w, wr = kesin.wilson(X, n), referans.wilson(X, n)
@@ -96,9 +96,9 @@ def _t1(degerler: list[tuple[str, int]], k: Karsilastirici, etiket: str, aciklam
 
 
 def h6_hukmu(birincil: dict, duyarlilik_i: dict, duyarlilik_ii: dict | None = None) -> dict:
-    """ÖK §6.10: 'destek' = birincil VE (i) X ≤ c; yalnız birincil => 'kirilgan_destek'.
-    Simetrik kural (Değişiklik 8 madde 17): 'yanlislama' = birincil VE (ii) X ≥ u; yalnız birincil =>
-    'kirilgan_yanlislama'. n_eff < 20 => 'tanimlayici' (ÖK §6.3; çoğunluk/çoğunluğun yokluğu iddiası yapılmaz)."""
+    """PR §6.10: 'destek' = primary AND (i) X ≤ c; primary only => 'kirilgan_destek'.
+    Symmetric rule (Amendment 8 item 17): 'yanlislama' = primary AND (ii) X ≥ u; primary only =>
+    'kirilgan_yanlislama'. n_eff < 20 => 'tanimlayici' (PR §6.3; no claim of a majority or of its absence is made)."""
     kb, ki = birincil["karar"], duyarlilik_i["karar"]
     kii = duyarlilik_ii["karar"] if duyarlilik_ii is not None else None
     if kb == "tanimlayici":
@@ -146,7 +146,7 @@ def _t1_duyarliliklar(H_g: list[dict], k: Karsilastirici, gecersiz: list[dict] |
 
 
 # ---------------------------------------------------------------------------------------------
-# T2 (kesin McNemar) ve eşleştirilmiş etki
+# T2 (exact McNemar) and paired effect
 # ---------------------------------------------------------------------------------------------
 def _ciftler_tablosu(hedefler: list[dict]) -> dict:
     t = {"a": 0, "b": 0, "c": 0, "d": 0}
@@ -176,7 +176,7 @@ def _t2(hedefler: list[dict], k: Karsilastirici, etiket: str, holm_disi: bool, a
 
 
 # ---------------------------------------------------------------------------------------------
-# T3, T4 (Fisher kesin) ve bağımsız etki büyüklükleri
+# T3, T4 (Fisher exact) and independent effect sizes
 # ---------------------------------------------------------------------------------------------
 def _fisher_blok(test: str, satirlar: list[str], sutunlar: list[str], tablo: list[list[int]],
                  k: Karsilastirici, aciklama: str) -> dict:
@@ -267,7 +267,7 @@ def _holm(testler: dict, k: Karsilastirici) -> dict:
 
 
 # ---------------------------------------------------------------------------------------------
-# Wilson tabloları (ÖK §6.8)
+# Wilson tables (PR §6.8)
 # ---------------------------------------------------------------------------------------------
 def _w(x: int, n: int, k: Karsilastirici, ad: str) -> dict:
     w, wr = kesin.wilson(x, n), referans.wilson(x, n)
@@ -301,7 +301,7 @@ def _wilson_tablolari(H_g: list[dict], k: Karsilastirici) -> dict:
 
 
 # ---------------------------------------------------------------------------------------------
-# Küme bootstrap (ÖK §6.9)
+# Cluster bootstrap (PR §6.9)
 # ---------------------------------------------------------------------------------------------
 def _bootstrap(H_g: list[dict], vakalar: list[dict], k: Karsilastirici) -> dict:
     gecerli = {h["hedef_id"] for h in H_g}
@@ -329,7 +329,7 @@ def _bootstrap(H_g: list[dict], vakalar: list[dict], k: Karsilastirici) -> dict:
 
 
 # ---------------------------------------------------------------------------------------------
-# Tanımlayıcılar
+# Descriptive statistics
 # ---------------------------------------------------------------------------------------------
 def _sayim(degerler) -> dict:
     s: dict = {}
@@ -374,7 +374,7 @@ def _tanimlayici(H_n: list[dict], H_g: list[dict], ref: list[dict], vakalar: lis
 
 
 # ---------------------------------------------------------------------------------------------
-# ana işlev
+# main function
 # ---------------------------------------------------------------------------------------------
 def _betik_ozetleri() -> dict:
     burasi = os.path.dirname(os.path.abspath(__file__))
@@ -462,10 +462,10 @@ def analiz_et(girdi: sema.Girdi) -> dict:
 
 
 # ---------------------------------------------------------------------------------------------
-# dosya çıktıları
+# file outputs
 # ---------------------------------------------------------------------------------------------
 def _json_temiz(x):
-    """Katı JSON: NaN/∞ -> dize; Fraction -> dize."""
+    """Strict JSON: NaN/∞ -> string; Fraction -> string."""
     if isinstance(x, float):
         if math.isnan(x):
             return "nan"
@@ -488,7 +488,7 @@ def json_yaz(yol: str, veri) -> None:
 
 
 def calistir(girdi_yolu: str, cikti_dizini: str, vakalar_yolu: str | None = None) -> int:
-    """Çıkış kodları: 0 = tamam; 2 = iki uygulama uyuşmuyor (analiz geçersiz); 3 = girdi doğrulanamadı."""
+    """Exit codes: 0 = ok; 2 = the two implementations disagree (analysis invalid); 3 = input could not be validated."""
     from . import rapor
 
     os.makedirs(cikti_dizini, exist_ok=True)

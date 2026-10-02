@@ -1,11 +1,11 @@
 #!/usr/bin/env bash
 # =====================================================================
-#  PQ-OID4VC | ÖK §2H madde 3 | Ö3 τ-israfı hücreleri: R6 / R6h5 Tamarin örnekleri
+#  PQ-OID4VC | PR §2H item 3 | Ö3 τ-waste cells: R6 / R6h5 Tamarin instances
 # =====================================================================
-#  Girdi : ornekler.tsv (on_kayit.sha256 ile koşumdan önce sabitlendi), modeller/R6_*.spthy (bayt-aynı kopya)
-#  Çıktı : sonuc/ham/*.{txt,meta}, sonuc/ozet.csv, sonuc/karsilastirma.csv
-#  Kurallar: model/mechanisms/betik/calistir.sh ile aynı (tek konteyner, 12 GB, 600 s, pq-a07-,
-#            --derivcheck-timeout=60, merdiven 1->3->5->6, iyi biçimlilik uyarısı = geçersiz).
+#  Input : ornekler.tsv (fixed before the run with on_kayit.sha256), modeller/R6_*.spthy (byte-identical copy)
+#  Output: sonuc/ham/*.{txt,meta}, sonuc/ozet.csv, sonuc/karsilastirma.csv
+#  Rules: the same as models/mechanisms/betik/calistir.sh (one container, 12 GB, 600 s, pq-a07-,
+#            --derivcheck-timeout=60, ladder 1->3->5->6, well-formedness warning = invalid).
 set -u
 BASE="$(cd "$(dirname "$0")" && pwd)"
 cd "$BASE" || exit 1
@@ -68,7 +68,7 @@ while IFS=$'\t' read -r hucre sablon bayr lemma bek rol; do
     echo "$hucre,$sablon,$bs,$l,$RES,$STEPS,$WALL,$MEM,$b,$wf" >> "$CSV"
   done
 done < ornekler.tsv
-# karşılaştırma (hedef lemma): beklenen ornekler.tsv, gözlenen ozet.csv
+# comparison (target lemma): expected ornekler.tsv, observed ozet.csv
 {
   echo "hucre,sablon,bayraklar,lemma,beklenen,gozlenen,uyum,executable"
   while IFS=$'\t' read -r hucre sablon bayr lemma bek rol; do

@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-metin/ altindaki her belgede PQ ile ilgili terimlerin gecis sayisini sayar (buyuk/kucuk harf duyarsiz).
-Cikti: terim_sayimi.csv (belge x terim) ve terim_sayimi.txt (ozet). Ag erisimi yoktur.
-Terimler bilincli olarak kaba tutulmustur; 'quantum' sayimi 'post-quantum'u da kapsar.
+Counts the occurrences of PQ-related terms in every document under metin/ (case-insensitive).
+Output: terim_sayimi.csv (document x term) and terim_sayimi.txt (summary). No network access.
+The terms are deliberately coarse; the count for 'quantum' also includes 'post-quantum'.
 """
 import csv
 import re

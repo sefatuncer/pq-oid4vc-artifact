@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 """
-PQ-OID4VC | Adım 5B | soyutlama örneklemesi seçimi (ÖK §4.18)
-- Çerçeve: models/asp/sampling/cerceve.jsonl (2442 satır, 189 hücre; SHA-256 ozet dosyasında).
-- Kural: çerçeve > 200 -> hücre katmanlı örneklem; her hücreden en az 1, toplam 200, tohum 20260926.
-- Belirlenimci seçim (teknik kapıyla aynı yöntem): anahtar = sha256("20260926|<bağlam>|<satır_kimliği>").
-  Her hücrede en küçük anahtarlı satır (bağlam "5B-hucre:<hucre_id>"); kalan kontenjan en küçük
-  sha256("20260926|5B-tamamlama|<kimlik>") anahtarlı satırlarla doldurulur.
-- Yalnız yürütücü yazar. ASP çıktı alanları satırda kalır; cevir.py bunları OKUMAZ (körlük kuralı).
-Kullanım: python model/sampling/5b/secim_5b.py
+PQ-OID4VC | Step 5B | selection for the abstraction sampling (PR §4.18)
+- Frame: models/asp/sampling/cerceve.jsonl (2442 rows, 189 cells; SHA-256 in the summary file).
+- Rule: frame > 200 -> sample stratified by cell; at least 1 from every cell, 200 in total, seed 20260926.
+- Deterministic selection (the same method as the technical gate): key = sha256("20260926|<context>|<row_id>").
+  In every cell the row with the smallest key (context "5B-hucre:<hucre_id>"); the remaining quota is filled with the rows
+  with the smallest key sha256("20260926|5B-tamamlama|<kimlik>").
+- Written by the maintainers only. The ASP output fields stay in the row; cevir.py does NOT READ them (blindness rule).
+Usage: python models/sampling/5b/secim_5b.py
 """
 import hashlib, io, json, os
 KOK = os.path.dirname(os.path.abspath(__file__))

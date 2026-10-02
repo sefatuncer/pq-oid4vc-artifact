@@ -1,17 +1,17 @@
 # -*- coding: utf-8 -*-
-"""Adım 6 | KAT-3 S/MIME (3a: CEK gizliliği; 3b: kimlik doğrulama ikiliği) — ASP koşucusu.
-TEK ÇEKİRDEK: yalnız /asp/cekirdek.lp + bu klasörün örnek dosyaları (kat3a_smime.lp ya da kat3b_auth.lp + ornekler/).
+"""Step 6 | KAT-3 S/MIME (3a: CEK confidentiality; 3b: authentication duality) — ASP runner.
+SINGLE CORE: only /asp/cekirdek.lp + the instance files of this folder (kat3a_smime.lp or kat3b_auth.lp + ornekler/).
 
-OKUMA KURALLARI (ESLEME.md §4.4–§4.5; koşumdan ÖNCE sabitlendi). Her koşuda E := ihlal(tum,g1).
- KAT-3a (vektör başına 7 sonda; etiket YALNIZ sonda sonuçlarından, Das Tablo 1 önceliği):
+READING RULES (MAPPING.md §4.4–§4.5; fixed BEFORE the run). In every run E := ihlal(tum,g1).
+ KAT-3a (7 probes per vector; label ONLY from the probe results, priority of Das Table 1):
    accept_strict = 1 - E(kati); accept_transitional = 1 - E(gecis)
-   out: E(gecersiz) -> invalid; değilse E(klasik) ve E(pq_hibrit) -> unsafe_mixed; değilse E(bilinmeyen) -> unknown;
-        değilse E(klasik) -> classical_only; değilse not E(kati) -> pqc_protected; değilse not E(gecis) -> hybrid_protected.
-   Ek (KAT-SPEC §4(d) geçme maddeleri; kapı değeri değil): kat3a_fail = accept_strict ve E(klasik) (boş olmalı);
-   model_gap = accept_strict ve E(tum_klasik_yol) (yalnız o8'de beklenir).
- KAT-3b: dinamik (qday0/qday200): SALDIRI <=> E; statik (violation): 1 <=> E.
-Beklenen değerler: /nsurum/kat_nsurum.tsv 'ilk_ajan' (tek kaynak); mutasyonlarda mutasyonlar.tsv 'beklenen'.
-Kullanım: ./calistir.sh kos.py  ->  sonuc/asp.csv, sonuc/asp_sondalar.csv, sonuc/asp_mutasyon.csv, sonuc/asp_ozet.json
+   out: E(gecersiz) -> invalid; otherwise E(klasik) and E(pq_hibrit) -> unsafe_mixed; otherwise E(bilinmeyen) -> unknown;
+        otherwise E(klasik) -> classical_only; otherwise not E(kati) -> pqc_protected; otherwise not E(gecis) -> hybrid_protected.
+   Additional (pass items of KAT-SPEC §4(d); not gate values): kat3a_fail = accept_strict and E(klasik) (must be empty);
+   model_gap = accept_strict and E(tum_klasik_yol) (expected only in o8).
+ KAT-3b: dynamic (qday0/qday200): SALDIRI <=> E; static (violation): 1 <=> E.
+Expected values: /nsurum/kat_nsurum.tsv 'ilk_ajan' (single source); for the mutations mutasyonlar.tsv 'beklenen'.
+Usage: ./calistir.sh kos.py  ->  sonuc/asp.csv, sonuc/asp_sondalar.csv, sonuc/asp_mutasyon.csv, sonuc/asp_ozet.json
 """
 import csv, hashlib, json, os, sys, time
 from collections import defaultdict

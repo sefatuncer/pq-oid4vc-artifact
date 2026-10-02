@@ -3,7 +3,7 @@
 // ValidatorSdJwt uses for the issuer signature; key: jwk/x5c in the header or PublicJsonWebKeyLookup = the experiment's JWKS).
 // ValidatorSdJwt.verifySdJwt is for the wallet side and requires the cnf binding ("cnf claim invalid"); the verifier
 // side verifyVpSdJwt requires a KB-JWT. Neither is present in the V± and battery vectors → the signature layer is measured (reading of PR §2H item 15;
-// NOTES.md). SD-JWT compact only (B6). No algorithm allow-list API → IZIN-*/L4* ifade-edilemedi.
+// noted here). SD-JWT compact only (B6). No algorithm allow-list API → IZIN-*/L4* ifade-edilemedi.
 package c3
 
 import at.asitplus.signum.indispensable.josef.JsonWebKey

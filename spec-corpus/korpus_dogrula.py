@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
 """
-MANIFEST.csv'deki SHA-256 ozetlerini ve boyutlari yeniden hesaplayip dogrular.
+Recomputes and checks the SHA-256 digests and the sizes in MANIFEST.csv.
 
-Denetlenenler (her satir icin):
-  1) kaynak/<dosya> var mi; SHA-256 == sha256_orijinal; bayt boyutu == boyut_bayt
-  2) metin/<id>.txt var mi; SHA-256 == sha256_metin; UTF-8 olarak cozulebiliyor mu
-Dosya adi eslemesi korpus_kaynaklari.json'dan alinir. Ag erisimi yoktur.
+Checked (for every row):
+  1) does kaynak/<file> exist; SHA-256 == sha256_orijinal; size in bytes == boyut_bayt
+  2) does metin/<id>.txt exist; SHA-256 == sha256_metin; can it be decoded as UTF-8
+The file name mapping is taken from korpus_kaynaklari.json. No network access.
 
-Kullanim: python korpus_dogrula.py  -> korpus_dogrulama.txt yazar; hata varsa cikis kodu 1.
+Usage: python korpus_dogrula.py  -> writes korpus_dogrulama.txt; exit code 1 if there is an error.
 """
 import csv
 import datetime as dt

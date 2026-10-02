@@ -1,10 +1,10 @@
-"""Komut satırı.
+"""Command line.
 
   python -m c3istat surum
   python -m c3istat dogrula --girdi GIRDI [--vakalar VAKALAR.csv]
   python -m c3istat analiz  --girdi GIRDI --cikti DIZIN [--vakalar VAKALAR.csv]
 
-Çıkış kodları: 0 tamam · 2 iki uygulama uyuşmuyor (analiz geçersiz) · 3 girdi doğrulanamadı.
+Exit codes: 0 ok · 2 the two implementations disagree (analysis invalid) · 3 input could not be validated.
 """
 from __future__ import annotations
 

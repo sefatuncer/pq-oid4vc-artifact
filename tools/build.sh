@@ -1,5 +1,5 @@
 #!/bin/sh
-# Adım 2 — araç imajlarını derler ve sürümlerini yazdırır. Git Bash'ten: sh tools/build.sh
+# Step 2 — builds the tool images and prints their versions. From Git Bash: sh tools/build.sh
 set -e
 cd "$(dirname "$0")"
 docker build -q -t pq-a02-tamarin:1.12.0 tamarin

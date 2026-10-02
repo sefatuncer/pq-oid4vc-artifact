@@ -1,21 +1,21 @@
 #!/usr/bin/env bash
 # =====================================================================
-#  PQ-OID4VC | Adım 5B soyutlama örneklemesi (ÖK §4.18) | örnek koşumu
+#  PQ-OID4VC | Step 5B abstraction sampling (PR §4.18) | instance run
 # =====================================================================
-#  Kullanım (Git Bash):  bash model/sampling/teknik-kapi/betik/calistir.sh [satir_id]
-#  Girdi : ceviri_plani.tsv (cevir.py çıktısı; on_ceviri.sha256 ile koşumdan önce sabitlendi)
-#  Çıktı : ham/<satir_id>__<lemma>__b<basamak>.{txt,meta}   Tamarin'in tam çıktısı, süre ve bellek
-#          ham/<satir_id>__liste.{txt,meta}                   iyi biçimlilik ve lemma listesi
-#          json/<satir_id>__<lemma>.json                      izler (--output-json)
+#  Usage (Git Bash):  bash models/sampling/teknik-kapi/betik/calistir.sh [satir_id]
+#  Input : ceviri_plani.tsv (output of cevir.py; fixed before the run with on_ceviri.sha256)
+#  Output: ham/<satir_id>__<lemma>__b<step>.{txt,meta}   complete Tamarin output, duration and memory
+#          ham/<satir_id>__liste.{txt,meta}                   well-formedness and lemma list
+#          json/<satir_id>__<lemma>.json                      traces (--output-json)
 #          tamarin_ham.csv, calistir_log.txt
-#  Kurallar:
-#   * Tek Tamarin konteyneri: başka bir pq-a02-tamarin konteyneri çalışıyorsa beklenir.
-#   * Her çağrı: --rm, --memory=12g --memory-swap=12g, timeout 600 s, ad öneki pq-a5b-.
-#   * --derivcheck-timeout=60 (öntanımlı süre büyük modellerde zaman aşımı uyarısı verir).
-#   * İyi biçimlilik uyarılı koşum geçersizdir ("gecersiz_wf").
-#   * Sonlanmama merdiveni (models/tamarin/betik/calistir.sh ile aynı): 1 --prove, 3 --auto-sources,
-#     5 --bound=40, 6 "kapanmadi". 2. ve 4. basamak model düzeyindedir (çeviri değiştirilmez).
-#   * ASP tahmini bu betikte OKUNMAZ; karşılaştırma karsilastir.py ile koşumdan sonra yapılır.
+#  Rules:
+#   * One Tamarin container: wait if another pq-a02-tamarin container is running.
+#   * Every call: --rm, --memory=12g --memory-swap=12g, timeout 600 s, name prefix pq-a5b-.
+#   * --derivcheck-timeout=60 (the default time gives a timeout warning on large models).
+#   * A run with a well-formedness warning is invalid ("gecersiz_wf").
+#   * Non-termination ladder (the same as models/tamarin/betik/calistir.sh): 1 --prove, 3 --auto-sources,
+#     5 --bound=40, 6 "kapanmadi". Steps 2 and 4 are at model level (the translation is not changed).
+#   * The ASP prediction is NOT READ in this script; the comparison is made with karsilastir.py after the run.
 #   * Correction (01.10.2026): a run killed at the memory limit (rc=137) or by the timeout has no summary, so it was
 #     recorded as "gecersiz_wf" and the ladder stopped. Well-formedness is checked by the separate __liste run of
 #     each model. Such a run is now recorded as "bellek" / "timeout" and the ladder continues, as pre-registered.
@@ -47,7 +47,7 @@ log "Çeviri özeti (on_ceviri.sha256) denetimi:"
 sha256sum -c on_ceviri.sha256 2>&1 | sed 's/^/    /' | tee -a "$LOG"
 
 N=0
-tamarin_run() { # <id> <model> [tamarin argümanları...]
+tamarin_run() { # <id> <model> [tamarin arguments...]
   local id=$1 model=$2; shift 2
   N=$((N+1))
   local bekledi=0

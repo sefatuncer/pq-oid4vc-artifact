@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""SENTETIK COSE duman testi fikstürü (BATARYA DEĞİL; oracle'sız). Geçici anahtarlarla COSE_Sign1 (ES256 -7, EdDSA -8,
-Ed25519 -19) ve tek/iki imzacılı COSE_Sign üretir; manifest alanları bataryanın dogrulama_girdileri YAPISINDADIR
-(cose_kid_hex, cose_key_hex). Kullanım: python sentetik_cose.py <cikti_klasoru>  (v/, anahtarlar/, isler.jsonl ekler)"""
+"""SYNTHETIC COSE smoke-test fixture (NOT the battery; no oracle). Produces COSE_Sign1 (ES256 -7, EdDSA -8,
+Ed25519 -19) and COSE_Sign with one or two signers from temporary keys; the manifest fields have the STRUCTURE of the battery's dogrulama_girdileri
+(cose_kid_hex, cose_key_hex). Usage: python sentetik_cose.py <output_folder>  (adds v/, anahtarlar/, isler.jsonl)"""
 import json, os, sys
 from cryptography.hazmat.primitives.asymmetric import ec, ed25519, utils
 from cryptography.hazmat.primitives import hashes
@@ -9,7 +9,7 @@ from cryptography.hazmat.primitives import hashes
 out = sys.argv[1]
 os.makedirs(f"{out}/v/C", exist_ok=True)
 
-def h(n, ai):  # CBOR başlık
+def h(n, ai):  # CBOR head
     if ai < 24: return bytes([n << 5 | ai])
     if ai < 256: return bytes([n << 5 | 24, ai])
     if ai < 65536: return bytes([n << 5 | 25]) + ai.to_bytes(2, "big")

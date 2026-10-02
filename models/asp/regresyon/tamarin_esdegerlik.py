@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
-"""Tamarin R1–R5 datalog eşdeğerliği (44 güvenlik hükmü) — sistem modelinin çekirdeğiyle.
+"""Datalog equivalence of Tamarin R1–R5 (44 security verdicts) — with the core of the system model.
 
-Girdi (salt okunur): ../tamarin/sonuc/datalog_uyum.csv (Tamarin hükümleri), ../tamarin/betik/varyantlar.tsv.
-Her (kural, varyant, bayraklar) için Tamarin modelinin yapısı, SİSTEM çekirdeğinin olgu biçimine çevrilir
-(regresyon/tamarin_datalog/ornekler/*.lp) ve cekirdek.lp ile (ASP), z3 kodlamasıyla ve Jacobi
-değerlendiricisiyle değerlendirilir. Zaman: Tamarin'de τ=0 ve pencere sınırsız (R6 kapsam dışı) =>
-her örnek artefaktın penceresi 'sonsuz', τ = 600 s. Kanal: Dolev–Yao her iletiyi taşır => 'aktarilan'.
-Ek: 'naif' okuma (yalnız gerçek ebeveyn; alternatif CA kenarı yok) aynı çekirdekle koşulur.
-Çıktı: regresyon/sonuc/tamarin_esdegerlik.csv ve .json
+Input (read only): ../tamarin/sonuc/datalog_uyum.csv (Tamarin verdicts), ../tamarin/betik/varyantlar.tsv.
+For every (rule, variant, flags) the structure of the Tamarin model is translated into the fact format of the SYSTEM core
+(regresyon/tamarin_datalog/ornekler/*.lp) and evaluated with cekirdek.lp (ASP), with the z3 encoding and with the Jacobi
+evaluator. Time: in Tamarin τ=0 and the window is unbounded (R6 out of scope) =>
+the window of every instance artefact is 'sonsuz', τ = 600 s. Channel: Dolev–Yao carries every message => 'aktarilan'.
+Additionally: the 'naive' reading (only the real parent; no alternative CA edge) is run with the same core.
+Output: regresyon/sonuc/tamarin_esdegerlik.csv and .json
 """
 import csv, json, os, sys
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'z3'))
@@ -16,7 +16,7 @@ from yapi import olgulari_oku
 from z3_kodlama import degerlendir_z3
 from py_degerlendirici import degerlendir_py
 
-TAMARIN = os.environ.get('TAMARIN_DIZIN', '/tamarin')   # salt okunur bağ (calistir.sh)
+TAMARIN = os.environ.get('TAMARIN_DIZIN', '/tamarin')   # read-only mount (calistir.sh)
 ORNEK_DIZIN = os.path.join(KOK, 'regresyon', 'tamarin_datalog', 'ornekler')
 BAS = 'sure(uzun,157680000). sure(sonsuz,2000000000).\n'
 
@@ -33,7 +33,7 @@ def art(a, imzali=True, sabit=False, kanal='aktarilan', karar=False):
 
 
 def R1(b, naif=False):
-    """kök (sabit) -> ca_cert -> iss_cert -> cred; ALT_CA: aynı kök altında klasik ikinci CA."""
+    """root (anchored) -> ca_cert -> iss_cert -> cred; ALT_CA: a second, classical CA under the same root."""
     s = BAS + art('ca_cert', sabit=True) + art('iss_cert') + art('cred')
     s += 'kenar(e1,iss_cert,ca_cert). kenar(e2,cred,iss_cert).\n'
     pq = [x for x, f in [('ca_cert', 'ROOT_PQ'), ('iss_cert', 'CA_PQ'), ('cred', 'ISS_PQ')] if f in b]
@@ -49,7 +49,7 @@ def R1(b, naif=False):
 
 
 def R2(b):
-    """göç etmiş ihraççı (klasik + PQ, birlikte yaşama); beklenti: kimliği doğrulanmış yapılandırma | kimliksiz alan | yok."""
+    """migrated issuer (classical + PQ, coexistence); expectation: authenticated configuration | unauthenticated field | none."""
     s = BAS + art('cred', sabit=True, karar=True) + 'hedef_artefakt(g1,cred). ana_hedef(g1).\n'
     tasi = []
     if 'EXPECT_AUTH' in b:
@@ -63,7 +63,7 @@ def R2(b):
 
 
 def R3(b):
-    """beklenti kanalı: nesne imzası (chan) ya da taşıma (VIA_TLS: yalnız-taşıma yanıt + kanal anahtarı)."""
+    """expectation channel: object signature (chan) or transport (VIA_TLS: transport-only response + channel key)."""
     s = BAS + art('cred', sabit=True, karar=True) + 'hedef_artefakt(g1,cred). ana_hedef(g1).\n'
     pq = ['cred']
     if 'VIA_TLS' in b:
@@ -81,14 +81,14 @@ def R3(b):
 
 
 def R4(b):
-    """cred (ihraççı anahtarı sabit) -> kb (cnf); SINGLE_USE'un karşılığı tek_kullanim (pencereyi değiştirmez: H5)."""
+    """cred (issuer key anchored) -> kb (cnf); SINGLE_USE corresponds to tek_kullanim (does not change the window: H5)."""
     s = BAS + art('cred', sabit=True) + art('kb') + 'kenar(e1,kb,cred). hedef_artefakt(g2,kb). ana_hedef(g2).\n'
     pq = [x for x, f in [('cred', 'ISS_PQ'), ('kb', 'DEV_PQ')] if f in b]
     return s, pq, [], 'f3', {'g2'}
 
 
 def R5(b):
-    """LOTL (sabit) -> tl -> cred (PQ); PIN_TL: TL anahtarı bant dışı sabit."""
+    """LOTL (anchored) -> tl -> cred (PQ); PIN_TL: the TL key is anchored out of band."""
     s = BAS + art('lotl', sabit=True) + art('tl', sabit=('PIN_TL' in b)) + art('cred')
     s += 'kenar(e1,tl,lotl). kenar(e2,cred,tl). hedef_artefakt(g1,cred). ana_hedef(g1).\n'
     pq = ['cred'] + [x for x, f in [('lotl', 'LOTL_PQ'), ('tl', 'TL_PQ')] if f in b]

@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
 # =====================================================================
-#  PQ-OID4VC | Adım 7 görev 0 | --prove OLMADAN iyi biçimlilik denetimi
+#  PQ-OID4VC | Step 7 task 0 | well-formedness check WITHOUT --prove
 # =====================================================================
-#  Kullanım (Git Bash):
-#     bash model/mechanisms/betik/iyi_bicimlilik.sh <model.spthy> [BAYRAK,BAYRAK,...|-]
-#  Çıktı: tek satır: rc, "All wellformedness checks were successful" sayısı, uyarı sayısı,
-#         lemma listesi, varsa ayrıştırma hatası.
-#  Koşum kuralı: bu betik lemma KANITLAMAZ (tamarin-prover --prove kullanılmaz).
-#  Konteyner: pq-a07-wf<pid>, --rm, 4 GB, dış süre sınırı 220 s, iç süre sınırı 170 s.
-#  Türetme denetimi (derivation checks) zaman aşımı: DCT ortam değişkeni, öntanımlı 60 s
-#  (Tamarin öntanımlısı kısa; büyük modelde "timed out" uyarısı verir — zaman aşımı
-#  uyarısı da başarısızlık sayılır, bu yüzden süre uzatılır, denetim kapatılmaz).
+#  Usage (Git Bash):
+#     bash models/mechanisms/betik/iyi_bicimlilik.sh <model.spthy> [FLAG,FLAG,...|-]
+#  Output: one line: rc, number of "All wellformedness checks were successful", number of warnings,
+#         lemma list, a parse error if any.
+#  Run rule: this script PROVES NO lemma (tamarin-prover --prove is not used).
+#  Container: pq-a07-wf<pid>, --rm, 4 GB, outer time limit 220 s, inner time limit 170 s.
+#  Timeout of the derivation checks: environment variable DCT, default 60 s
+#  (the Tamarin default is short; a large model gives a "timed out" warning — a timeout
+#  warning also counts as a failure, so the time is extended and the check is not disabled).
 set -u
 BASE="$(cd "$(dirname "$0")/.." && pwd)"
 W=$(cygpath -m "$BASE")

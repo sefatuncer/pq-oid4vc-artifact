@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
 # =====================================================================
-#  PQ-OID4VC | Adım 5A | ProVerif 2.05 ikinci görüş (R1–R5 alt kümesi)
+#  PQ-OID4VC | Step 5A | ProVerif 2.05 second opinion (subset of R1–R5)
 # =====================================================================
-#  Kullanım (Git Bash):  bash models/tamarin/betik/proverif_calistir.sh
-#  Girdi : betik/proverif_varyantlar.tsv, modeller/proverif/*.pvt (şablon), betik/pp.awk
-#  Çıktı : sonuc/proverif/uretilen/<kural>__<varyant>.pv   önişlenmiş model
-#          sonuc/proverif/ham/<kural>__<varyant>.{txt,meta} ProVerif çıktısı; rc, süre, bellek
-#          sonuc/proverif/ozet.csv                         sorgu başına ProVerif sonucu
+#  Usage (Git Bash):  bash models/tamarin/betik/proverif_calistir.sh
+#  Input : betik/proverif_varyantlar.tsv, modeller/proverif/*.pvt (template), betik/pp.awk
+#  Output: sonuc/proverif/uretilen/<rule>__<variant>.pv   preprocessed model
+#          sonuc/proverif/ham/<rule>__<variant>.{txt,meta} ProVerif output; rc, duration, memory
+#          sonuc/proverif/ozet.csv                         ProVerif result per query
 #          sonuc/proverif/karsilastirma.csv, metrikler.txt (betik/proverif_degerlendir.py)
-#  Kurallar: --rm, ad öneki pq-a04-, --memory=4g, timeout 600 s; başka bir Tamarin konteyneri
-#  çalışıyorsa beklenir (aynı anda tek ağır iş).
+#  Rules: --rm, name prefix pq-a04-, --memory=4g, timeout 600 s; wait if another Tamarin container
+#  is running (one heavy job at a time).
 set -u
 BASE="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$BASE" || exit 1

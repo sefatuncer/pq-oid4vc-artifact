@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
-"""Adım 6 | birebir alıntı denetimi (her KAT klasöründe aynı kod; IS-PLANI Adım 6 kabul ölçütü 4).
+"""Step 6 | verbatim quotation check (the same code in every KAT folder; work plan Step 6 acceptance criterion 4).
 
-alintilar.tsv'deki her alıntıyı sabitlenmiş metinde arar ve metnin SHA-256'sını MANIFEST değeriyle karşılaştırır.
-Eşleme adımları (hangisiyle bulunduğu raporlanır; alıntı metni DEĞİŞTİRİLMEZ):
-  1 'bosluk'   : boşluk dizileri tek boşluğa indirgenir (RFC sayfa/satır kırılmaları);
-  2 'unicode'  : + NFKC (bitişik harfler) ve kıvrık tırnak/uzun tire -> ASCII (PDF metin çıkarımı);
-  3 'tireleme' : + satır sonu tirelemesi ("classi- cal" -> "classical");
-  4 'tire_sil' : + sözcük içi tireler iki tarafta da silinir (PDF çıkarımı satır sonu tiresini düşürür:
-                 "alt-signature" -> metinde "altsignature").
-Çıktı: sonuc/alinti_denetimi.tsv. Kullanım: ./calistir.sh alinti_dogrula.py
+Looks up every quotation of alintilar.tsv in the pinned text and compares the SHA-256 of the text with the MANIFEST value.
+Matching steps (the step that found it is reported; the quotation text is NOT CHANGED):
+  1 'bosluk'   : whitespace sequences are reduced to one space (RFC page/line breaks);
+  2 'unicode'  : + NFKC (ligatures) and curly quotes/long dashes -> ASCII (PDF text extraction);
+  3 'tireleme' : + end-of-line hyphenation ("classi- cal" -> "classical");
+  4 'tire_sil' : + hyphens inside words are removed on both sides (PDF extraction drops the end-of-line hyphen:
+                 "alt-signature" -> "altsignature" in the text).
+Output: sonuc/alinti_denetimi.tsv. Usage: ./calistir.sh alinti_dogrula.py
 """
 import csv, hashlib, os, re, sys, unicodedata
 

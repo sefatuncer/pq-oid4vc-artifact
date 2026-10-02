@@ -1,10 +1,10 @@
 #!/bin/sh
 # =====================================================================
-#  PQ-OID4VC | Adım 5A | konteyner içi tek ProVerif çağrısı
+#  PQ-OID4VC | Step 5A | a single ProVerif call inside the container
 # =====================================================================
-#  Kullanım (konteyner içinde, /work = models/tamarin):
-#     sh /work/betik/ic_kosum_pv.sh <cikti_oneki> <zaman_asimi_s> <pv_goreli_yolu>
-#  Yazar: /work/<cikti_oneki>.txt (ProVerif çıktısı), /work/<cikti_oneki>.meta (rc, süre, cgroup bellek tepesi)
+#  Usage (inside the container, /work = models/tamarin):
+#     sh /work/betik/ic_kosum_pv.sh <output_prefix> <timeout_s> <pv_relative_path>
+#  Writes: /work/<output_prefix>.txt (ProVerif output), /work/<output_prefix>.meta (rc, duration, cgroup memory peak)
 out=$1; to=$2; f=$3
 s=$(date +%s.%N)
 timeout "$to" proverif "/work/$f" > "/work/$out.txt" 2>&1

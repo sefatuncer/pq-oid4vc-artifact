@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
 """
-izlenebilirlik.csv'den OZET.md icin sayisal tablolari uretir (her sayi betikten).
-Cikti: kapsama_tablolari.md
-  T1: artefakt x belge grubu (satir sayisi)
-  T2: artefakt x kanal (satir sayisi) ve kanal dayanak satir id'leri
-  T3: kategori, anahtar sozcuk ve hedef dagilimlari
-  T4: artefakt basina belge listesi
+Produces the numerical tables for SUMMARY.md from izlenebilirlik.csv (every number comes from the script).
+Output: kapsama_tablolari.md
+  T1: artefact x document group (number of rows)
+  T2: artefact x channel (number of rows) and the row ids supporting each channel
+  T3: distributions of category, keyword and target
+  T4: list of documents per artefact
 """
 import csv
 import json

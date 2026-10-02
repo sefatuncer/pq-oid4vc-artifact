@@ -3,7 +3,7 @@
 Contract: experiment/oracle/oracle-A/adapter-contract.md (1.0) and experiment/runs/RUNNER.md. Does NOT see the oracle.
 Usage (in the container): python /a/adaptor.py <hedef_id> <jobs-v1.3.jsonl> <cikti.jsonl> <kosu>
 Rules: only the documented public API; NO own verification loop is written for a policy (if needed,
-'ifade-edilemedi' + B4 in NOTES). Format support (B6) is fixed in advance by API review (MAPPING.md).
+'ifade-edilemedi', with B4 noted in the target's entry in this file). Format support (B6) is fixed in advance by API review (see the target's entry in this file).
 """
 import base64, hashlib, json, sys, time, traceback
 
@@ -132,7 +132,7 @@ class PyJose:
 class SdJwtPython:
     """sd-jwt 0.10.4: SDJWTVerifier(presentation, cb_get_issuer_key, expected_aud, expected_nonce,
     serialization_format). NO allow-list parameter (source: sd_jwt/verifier.py _verify_sd_jwt sign_alg=None,
-    not exposed in the public __init__). Therefore IZIN-*/L4* -> ifade-edilemedi (MAPPING.md; B4 alternative in NOTES.md)."""
+    not exposed in the public __init__). Therefore IZIN-*/L4* -> ifade-edilemedi (B4 alternative noted here)."""
     hid, api = "SDJWT-018", "sd_jwt.verifier.SDJWTVerifier(presentation, cb_get_issuer_key, aud, nonce, serialization_format)"
     def __init__(self):
         import importlib.metadata as md
@@ -150,7 +150,7 @@ class SdJwtPython:
         fmt = "compact" if ser in ("sd-jwt-compact", "compact") else "json"
         pres = data.strip()
         if ser == "compact":
-            pres = pres + "~"   # SD-JWT without disclosures (signature and payload unchanged; MAPPING.md)
+            pres = pres + "~"   # SD-JWT without disclosures (signature and payload unchanged; see the target's entry in this file)
         def cb(iss, header):
             j = jwk_for(header)
             if j is None:

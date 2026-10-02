@@ -1,15 +1,15 @@
 # -*- coding: utf-8 -*-
 """
-PQ-OID4VC | Adım 7 | beklenen (çapa 8) ↔ gözlenen karşılaştırması
+PQ-OID4VC | Step 7 | expected (anchor 8) ↔ observed comparison
 =================================================================
-Girdi : on_kayit_varyantlar.tsv (çapa 8; salt okunur), sonuc/ozet.csv, sonuc/json/*.json
-Çıktı : sonuc/karsilastirma.csv  her (varyant, lemma): beklenen, gözlenen, uyum, merdiven, süre, bellek
-        sonuc/beklenmeyen.csv    uyuşmayan hükümler + iz özeti (protokol kuralları, kırılan anahtarlar)
-        sonuc/izler.csv          falsified all-traces lemmaları ve verified exists-trace lemmaları için iz özeti
-        sonuc/varyant_ozeti.csv  varyant başına uyum sayısı
-Beklenti kuralı (dosya başlığı): lemma_beklenen'de adı geçmeyen sağlık lemmaları
-(executable*, attack_needs_crqc*) V beklenir. Beklentisi olmayan başka lemma "kayitsiz" işaretlenir.
-Sınıflama YAPILMAZ: beklenmeyen hüküm bir bulgudur; model değiştirilmez.
+Input : on_kayit_varyantlar.tsv (anchor 8; read only), sonuc/ozet.csv, sonuc/json/*.json
+Output: sonuc/karsilastirma.csv  every (variant, lemma): expected, observed, agreement, ladder, duration, memory
+        sonuc/beklenmeyen.csv    verdicts that do not agree + trace summary (protocol rules, broken keys)
+        sonuc/izler.csv          trace summary for falsified all-traces lemmas and verified exists-trace lemmas
+        sonuc/varyant_ozeti.csv  number of agreements per variant
+Expectation rule (file header): the sanity lemmas not named in lemma_beklenen
+(executable*, attack_needs_crqc*) are expected V. Any other lemma without an expectation is marked "kayitsiz".
+NO classification is made: an unexpected verdict is a finding; the model is not changed.
 """
 import csv
 import io

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-"""ASP ↔ z3: bütün sorgu gruplarında asgari kümelerin birebir karşılaştırılması (ön kayıt D2).
-Girdi: sorgular/sonuc/<grup>.json (ASP). Çıktı: z3/sonuc/uyum_<grup>.csv ve z3/sonuc/uyum_ozet.json.
-Kullanım: ./calistir.sh z3/capraz_kontrol.py ana k a5 h
+"""ASP ↔ z3: one-to-one comparison of the minimal sets in all query groups (pre-registration D2).
+Input: sorgular/sonuc/<group>.json (ASP). Output: z3/sonuc/uyum_<group>.csv and z3/sonuc/uyum_ozet.json.
+Usage: ./calistir.sh z3/capraz_kontrol.py ana k a5 h
 """
 import csv, json, os, sys, time
 from multiprocessing import Pool

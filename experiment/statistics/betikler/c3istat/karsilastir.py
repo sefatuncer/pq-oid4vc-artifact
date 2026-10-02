@@ -1,15 +1,15 @@
-"""İki uygulamanın (A = kesin, B = kütüphane) karşılaştırılması.
+"""Comparison of the two implementations (A = exact, B = library).
 
-Türler ve toleranslar (`yapilandirma.TOLERANSLAR`):
-- "tam"       : birebir eşitlik (tamsayılar, kararlar, özetler)
-- "p"         : mutlak ≤ 1e-10
-- "ga"        : mutlak ≤ 1e-10 (Wilson/Newcombe; demetler öğe öğe)
-- "or"        : |A − B| ≤ max(1e-12, 1e-8·max(|A|, |B|)); ∞ ve NaN birebir eşleşmeli
-- "bootstrap" : mutlak ≤ 1e-12
+Kinds and tolerances (`yapilandirma.TOLERANSLAR`):
+- "tam"       : exact equality (integers, decisions, digests)
+- "p"         : absolute ≤ 1e-10
+- "ga"        : absolute ≤ 1e-10 (Wilson/Newcombe; tuples element by element)
+- "or"        : |A − B| ≤ max(1e-12, 1e-8·max(|A|, |B|)); ∞ and NaN must match exactly
+- "bootstrap" : absolute ≤ 1e-12
 
-Kararlar "tam" karşılaştırılır. Bir karar farkı yalnız referans değeri karar eşiğine
-≤ TOLERANSLAR["sinir"] yakınsa "sınırda" sayılır. Bu durumda kesin aritmetik (A) esas alınır ve
-fark raporlanır. Diğer bütün farklar HATADIR.
+Decisions are compared with "tam". A decision difference counts as "borderline" (sinirda) only if the reference value
+is within TOLERANSLAR["sinir"] of the decision threshold. In that case the exact arithmetic (A) is authoritative and
+the difference is reported. All other differences are ERRORS.
 """
 from __future__ import annotations
 
@@ -34,7 +34,7 @@ def _goster(x):
 
 
 def yakin(kendi, ref, tur: str) -> tuple[bool, float]:
-    """(uyum, sapma) döner. Sapma "or" türünde görelidir."""
+    """Returns (agreement, deviation). The deviation is relative for kind "or"."""
     if tur == "tam":
         return (kendi == ref, 0.0 if kendi == ref else math.inf)
     if kendi is None or ref is None:
@@ -99,7 +99,7 @@ def _esige_yakin(deger: float, esik: float) -> bool:
 
 
 def karar_ekle(k: Karsilastirici, ad: str, kendi_karar, ref_karar, ref_deger: float, esik: float) -> bool:
-    """Bir kararı karşılaştırır; fark yalnız referans değeri eşiğe çok yakınsa 'sınırda' kabul edilir."""
+    """Compares a decision; a difference is accepted as 'borderline' only if the reference value is very close to the threshold."""
     return k.ekle(ad, kendi_karar, ref_karar, "tam", sinir=_esige_yakin(ref_deger, esik))
 
 
@@ -107,5 +107,5 @@ def holm_karsilastir(k: Karsilastirici, kendi: dict, ref: dict, alfa: float = 0.
     for t in kendi:
         k.ekle(f"{t}.p_duzeltilmis", kendi[t]["p_duzeltilmis"], ref[t]["p_duzeltilmis"], "p")
         sinirda = _esige_yakin(ref[t]["p_duzeltilmis"], alfa) or _esige_yakin(float(kendi[t]["p_duzeltilmis"]), alfa)
-        # statsmodels reddi p ≤ α/k ile verir; bu değer de eşiğe yakınsa sınırdadır
+        # statsmodels gives the rejection as p ≤ α/k; if this value is close to the threshold too, the case is borderline
         k.ekle(f"{t}.red", kendi[t]["red"], ref[t]["red"], "tam", sinir=sinirda)

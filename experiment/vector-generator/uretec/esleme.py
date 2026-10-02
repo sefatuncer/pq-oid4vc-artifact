@@ -207,7 +207,7 @@ L4C_SATIRLAR = [
 def _ara(desen, txt, ad, flags=re.M):
     m = re.search(desen, txt, flags)
     if not m:
-        raise SystemExit('ESLEME HATASI: ÖK metninde bulunamadi: %s' % ad)
+        raise SystemExit('MAPPING ERROR: not found in the PR text: %s' % ad)
     return m.group(1).strip()
 
 
@@ -246,7 +246,7 @@ def main(kok, onkayit, cikti=None):
 
     def chk(vid):
         if vid not in idset:
-            raise SystemExit('ESLEME HATASI: %s %s manifestinde yok' % (vid, SURUM))
+            raise SystemExit('MAPPING ERROR: %s not in the %s manifest' % (vid, SURUM))
         kullanilan.add(vid)
         return vid
 
@@ -382,7 +382,7 @@ def main(kok, onkayit, cikti=None):
     parca = [p.strip() for p in ek['L4c'].split('. ')]
     goc = next((p for p in parca if p.startswith('Göç etmiş ihraççının')), None)
     if not goc or ', eski ihraççının' not in goc:
-        raise SystemExit('ESLEME HATASI: L4c karar cumlesi ayristirilamadi')
+        raise SystemExit('MAPPING ERROR: the L4c decision sentence could not be parsed')
     goc_c, eski_c = goc.split(', eski ihraççının')
     eski_c = 'eski ihraççının' + eski_c.rstrip('.')
     dayanak = {'K4': 'ÖK §6.5 K4 (alıntı): "%s" → "%s"; L4c politikası "PQ/composite zorunlu"' % (k4_icerik, k4_karar),

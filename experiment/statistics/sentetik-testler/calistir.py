@@ -1,12 +1,12 @@
-"""Sentetik test takımını koşar; özeti JSON ve metin olarak yazar.
+"""Runs the synthetic test suite; writes the summary as JSON and as text.
 
-Kullanım:  python calistir.py [--cikti DIZIN]
-Çıkış kodu: 0 = hepsi geçti; 1 = en az bir başarısızlık/hata.
+Usage:  python calistir.py [--cikti DIZIN]
+Exit code: 0 = all passed; 1 = at least one failure or error.
 
-Sayım:
-- "test yöntemi": unittest test yöntemleri.
-- "alt test": subTest blokları (her biri ayrıca sayılır).
-- "iki uygulama": süpürme ailelerindeki vaka ve nicelik karşılaştırmaları (_ortak.SAYAC).
+Counting:
+- "test method": unittest test methods.
+- "subtest": subTest blocks (each counted separately).
+- "two implementations": case and quantity comparisons in the sweep families (_ortak.SAYAC).
 """
 from __future__ import annotations
 
@@ -21,7 +21,7 @@ import unittest
 BURASI = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, BURASI)
 
-import _ortak  # noqa: E402  (c3istat yolunu da kurar)
+import _ortak  # noqa: E402  (also sets the c3istat path)
 
 
 class SayanSonuc(unittest.TextTestResult):

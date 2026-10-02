@@ -1,15 +1,15 @@
 # -*- coding: utf-8 -*-
 """
-referans/korpus_on/ (onceden indirilmis kopyalar) ile spec-corpus/ taze indirmelerini karsilastirir.
-Cikti: korpus_on_karsilastirma.csv ve korpus_on_karsilastirma.txt (01-korpus altinda).
+Compares referans/korpus_on/ (copies downloaded earlier) with the fresh downloads in spec-corpus/.
+Output: korpus_on_karsilastirma.csv and korpus_on_karsilastirma.txt (in spec-corpus/).
 
-Karsilastirma adimlari:
- (1) korpus_on dosyasi bir .txt orijinal ise: bayt duzeyinde SHA-256 esitligi (taze orijinal ile).
- (2) korpus_on dosyasi bir PDF'ten cikarilmis metinse (orijinal PDF korpus_on'da yok):
-     taze PDF'ten ayni metni YENIDEN URETMEYI dener (pdftotext -layout [Latin-1 varsayilani],
-     pypdf sayfa metinleri "\n" ile birlestirilmis). Bayt/metin esitligi, taze PDF'in ayni belge
-     oldugunun kanitidir.
- (3) Her durumda bosluk-normallestirilmis sozcuk benzerligi (difflib) raporlanir.
+Comparison steps:
+ (1) if the korpus_on file is a .txt original: byte-level SHA-256 equality (with the fresh original).
+ (2) if the korpus_on file is text extracted from a PDF (the original PDF is not in korpus_on):
+     tries to REPRODUCE the same text from the fresh PDF (pdftotext -layout [Latin-1 default],
+     pypdf page texts joined with "\n"). Byte/text equality proves that the fresh PDF is the same
+     document.
+ (3) In every case the whitespace-normalised word similarity (difflib) is reported.
 """
 import csv
 import difflib
@@ -22,7 +22,7 @@ from pathlib import Path
 
 KOK = Path(__file__).resolve().parent
 ON = KOK.parent / "referans" / "korpus_on"
-ESLEME = {  # korpus_on dosyasi -> (korpus id, taze orijinal dosya)
+ESLEME = {  # korpus_on file -> (corpus id, fresh original file)
     "draft-ietf-jose-pq-composite-sigs-04.txt": ("JOSECOMP", "draft-ietf-jose-pq-composite-sigs-04.txt"),
     "draft-ietf-oauth-rfc8725bis-10.txt": ("JWTBCP", "draft-ietf-oauth-rfc8725bis-10.txt"),
     "rfc9955.txt": ("RFC9955", "rfc9955.txt"),
@@ -50,7 +50,7 @@ def norm(s: str) -> str:
 
 
 def pdf_yeniden_uret(pdf: Path, on_b: bytes):
-    """korpus_on metnini taze PDF'ten yeniden uretmeyi dener; basarili yontemi dondurur."""
+    """Tries to regenerate the korpus_on text from the fresh PDF; returns the method that succeeded."""
     exe = shutil.which("pdftotext")
     if exe:
         with tempfile.TemporaryDirectory() as d:
@@ -63,7 +63,7 @@ def pdf_yeniden_uret(pdf: Path, on_b: bytes):
         s = "\n".join((p.extract_text() or "") for p in PdfReader(str(pdf)).pages)
         if s == on_b.decode("utf-8", errors="replace").replace("\r\n", "\n"):
             return "pypdf sayfa metinleri '\\n' ile (CRLF normallestirilerek): METIN-OZDES"
-    except Exception as e:  # pypdf yoksa
+    except Exception as e:  # pypdf missing
         return f"pypdf denenemedi: {e}"
     return "yeniden uretilemedi"
 

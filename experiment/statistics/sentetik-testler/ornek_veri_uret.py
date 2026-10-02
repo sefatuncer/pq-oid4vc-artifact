@@ -1,9 +1,9 @@
-"""Örnek SENTETİK girdi üretir (gerçek ölçüm DEĞİLDİR): data/ornek_n31_sentetik.json ve CSV eşdeğeri.
+"""Generates a sample SYNTHETIC input (NOT a real measurement): veri/ornek_n31_sentetik.json and its CSV equivalent.
 
-- 31 hedef (JOSE 18, SDJWT 8, COSE 5; ÖK §2B.3 düzeni) + 2 REF satırı; kimlikler S-… (gerçek kütüphane adı yok).
-- 1 adaptör geçersiz, 2 Y_L4 belirsiz, 2 pilot, 1 devralan, TK1/TK2/TK3 karışımı, her hedefte 100 vaka.
-- Belirlenimci: random.Random(TEST_TOHUMU). Bu bir TEST tohumudur; ÖK analiz tohumlarından ayrıdır.
-Kullanım: python ornek_veri_uret.py [cikti_dizini]
+- 31 targets (JOSE 18, SDJWT 8, COSE 5; layout of PR §2B.3) + 2 REF rows; identifiers S-… (no real library name).
+- 1 invalid adapter, 2 Y_L4 undetermined, 2 pilots, 1 delegating target, a mix of TK1/TK2/TK3, 100 cases per target.
+- Deterministic: random.Random(TEST_TOHUMU). This is a TEST seed; it is separate from the PR analysis seeds.
+Usage: python ornek_veri_uret.py [cikti_dizini]
 """
 from __future__ import annotations
 
