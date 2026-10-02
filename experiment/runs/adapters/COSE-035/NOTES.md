@@ -6,10 +6,10 @@
 ## 2. TK proposal
 | Arm | Proposal | Evidence |
 |---|---|---|
-| ML-DSA-65 | **TK3** | 4.8.2 `src/Algorithm/Signature`: ECDSA, EdDSA, FullySpecified, RSA; ML-DSA/AKP/−49/−55 pattern 0 matches (end of `evidence/api-tarama.txt`). HEAD is a TK1 candidate (descriptive) |
+| ML-DSA-65 | **TK3** | 4.8.2 `src/Algorithm/Signature`: ECDSA, EdDSA, FullySpecified, RSA; ML-DSA/AKP/−49/−55 pattern 0 matches (end of `evidence/api-scan.txt`). HEAD is a TK1 candidate (descriptive) |
 | composite | **TK3** | the same |
 
-## 3. V± result (`evidence/vpm-kosu.txt`; COSE V± rows, maintainers 01.10)
+## 3. V± result (`evidence/vpm-run.txt`; COSE V± rows, maintainers 01.10)
 - COSE-VPLUS_ES256 ×4 `kabul`, COSE-VMINUS_ES256 ×4 `red/imza-gecersiz`.
 - COSE-VPLUS_EdDSA (−8) `kabul`, VMINUS `red/imza-gecersiz`; COSE-VPLUS_EdDSA-ED25519 (−19) `kabul`, VMINUS `red/imza-gecersiz`.
 - COSE-VPLUS/VMINUS_ML-DSA-65 and COSE-K6/K7 (−55): `red/alg-desteklenmiyor` (consistent with TK3).
@@ -20,7 +20,7 @@
 1. **The documented verifier is the caller's pattern:** according to the README, the alg and crit checks are the caller's responsibility. The adapter applies the README pattern exactly; the allow-list is `Algorithm\Manager` (documented `has/get`). Whether this counts as "documented configuration" or "README example code" in the L-level assessment is the maintainers' decision (code: `adaptor.php` `algKontrol`, 15 lines).
 2. **Multiple signers (COSE_Sign):** no documented rule → `ifade-edilemedi`; B4 alternative: loop over `CoseSignature::all()` + R/P0/P1 ≈ 10 lines (not written).
 3. **L3:** `Manager::withKeyRestrictionsEnforced()` enforces the `alg` field (label 3) of the key; the EC2/OKP COSE_Keys of the battery carry no `alg`, so the binding is left to the key-type check (verify exception).
-4. Synthetic COSE fixture: `evidence/sentetik_cose.py` (NOT the battery), smoke test `evidence/duman-testi.txt`.
+4. Synthetic COSE fixture: `evidence/make_synthetic_cose.py` (NOT the battery), smoke test `evidence/smoke-test.txt`.
 
 ## 5. Run record
 - Pre-freeze file: 13:00Z (32 rows, the first run passed the gate) and ~13:59Z (with the image after the policy-name normalisation; same result).

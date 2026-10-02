@@ -24,11 +24,11 @@
 | Input | Source |
 |---|---|
 | Target decisions | `experiment/runs/outputs/measurement/<target>.<r1|r2|r3>.jsonl` (`adapter-contract.md` §3; the original text named `kosu/r{1,2,3}/<target>.jsonl`) |
-| Oracle A, Oracle B | `experiment/oracle/oracle-A/karar.tsv`, the decision file of Oracle B (configuration names aligned with a mapping table; decision notes N-12) |
+| Oracle A, Oracle B | `experiment/oracle/oracle-A/decisions.tsv`, the decision file of Oracle B (configuration names aligned with a mapping table; decision notes N-12) |
 | TK assignment, control label | `experiment/runs/tk-atamasi.csv` |
 | L levels, L4 form | `experiment/runs/L-duzeyleri.csv` |
 | Delegation clusters | `adapter-contract.md` §7 |
-| Primary/secondary | column `sinif` of `karar.tsv` (PR §2G item 4) |
+| Primary/secondary | column `sinif` of `decisions.tsv` (PR §2G item 4) |
 
 ## 3. Cell and decision
 
@@ -87,7 +87,7 @@ This order only determines which divergence is examined first. It changes no tar
 | Column | Description |
 |---|---|
 | `hucre` | `<vektor_id>|<politika>|<kol>|<sdjwtvc_surum>` (label-normalised) |
-| `vektor_id`, `politika`, `kol`, `sinif`, `vaka` | from `karar.tsv` |
+| `vektor_id`, `politika`, `kol`, `sinif`, `vaka` | from `decisions.tsv` |
 | `tur` | `karar-ayrismasi` (decision divergence) / `kabul-turu-ayrismasi` (acceptance-type divergence) |
 | `oncelik` | 1–5 of §5 (priority) |
 | `oracle_A`, `oracle_B`, `oracle_uzlasi` | if there is no agreement, `A≠B (belirsiz)` |

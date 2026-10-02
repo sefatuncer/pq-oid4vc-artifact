@@ -1,6 +1,6 @@
 # JOSE-071 lcobucci/jwt — policy → API mapping (contract 1.0 §2.2, RUNNER §2)
 
-- **Target:** `lcobucci/jwt` 5.6.0 (`bb3e9f21e419`; not the frame HEAD `2bead08a8cc2`) + `psr/clock` 1.0.0; `composer.lock` the same as the environment record. (`SECIM.csv` JOSE-071 = packagist `lcobucci/jwt`.)
+- **Target:** `lcobucci/jwt` 5.6.0 (`bb3e9f21e419`; not the frame HEAD `2bead08a8cc2`) + `psr/clock` 1.0.0; `composer.lock` the same as the environment record. (`SELECTION.csv` JOSE-071 = packagist `lcobucci/jwt`.)
 - **Image:** `a10-jose-071:1` (`FROM pq-a09-env-php:1.0`). **Call:** `… a10-jose-071:1 adaptor /is/<isler> /c/JOSE-071.<kosu>.jsonl`.
 - **Source:** `adaptor.php`, `ortak.php` (same skeleton as JOSE-070).
 

@@ -1,0 +1,22 @@
+.......................................................................................H6: destek | n_eff=31 X=0 c=10 u=21 | iki uygulama 98/98 (hata 0)
+H6: destek | n_eff=31 X=0 c=10 u=21 | iki uygulama 98/98 (hata 0)
+...............................
+----------------------------------------------------------------------
+Ran 118 tests in 143.678s
+
+OK
+
+TEST YONTEMI: 118/118 gecti; alt test: 729 gecti, 0 kaldi
+IKI UYGULAMA: vaka 56269/56269; nicelik 90058/90058
+  binom_T1_T5                        vaka   1890/1890   en buyuk sapma 2.776e-16
+  ek_a_kurali                        vaka    100/100    en buyuk sapma 5.551e-17
+  fisher_T3_T4                       vaka  11626/11626  en buyuk sapma 3.331e-16
+  holm_T2_T5                         vaka   3256/3256   en buyuk sapma 0.000e+00
+  kosullu_or_T3_T4                   vaka   1301/1301   en buyuk sapma 4.584e-11
+  kume_bootstrap                     vaka     31/31     en buyuk sapma 4.441e-16
+  mcnemar_T2                         vaka    861/861    en buyuk sapma 4.441e-16
+  newcombe_bagimsiz_T3_T4            vaka  20225/20225  en buyuk sapma 5.551e-16
+  newcombe_eslestirilmis_T2          vaka   8814/8814   en buyuk sapma 5.551e-16
+  newcombe_phi0_statsmodels          vaka   4844/4844   en buyuk sapma 5.551e-16
+  wilson                             vaka   3321/3321   en buyuk sapma 3.331e-16
+SURE: 143.7 s

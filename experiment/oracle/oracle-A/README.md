@@ -7,8 +7,8 @@ construction facts of the manifest (`insa`) and header/claim facts read by base6
 vector files. No cryptography, no target library, no network. Oracle A also wrote the adapter
 contract that all C3 adapters follow, and the design of the divergence detector.
 
-**Inputs.** `experiment/vector-generator/vektorler/v1.2/` (`MANIFEST.json`, `SHA256SUMS`),
-`experiment/vector-generator/BATARYA-ESLEME.md`, the corpus texts `spec-corpus/metin/`, the
+**Inputs.** `experiment/vector-generator/vectors/v1.2/` (`MANIFEST.json`, `SHA256SUMS`),
+`experiment/vector-generator/BATTERY-MAPPING.md`, the corpus texts `spec-corpus/metin/`, the
 pre-registration `00-on-kayit/ON-KAYIT-TASLAK.md` (not included). The script checks the SHA-256 of
 these inputs against pinned values before it starts.
 
@@ -16,10 +16,10 @@ these inputs against pinned values before it starts.
 
 | File | Content |
 |---|---|
-| `karar.tsv` | Decisions: `vektor_id, politika, kol, sinif, vaka, karar, dayanak, not` (858 rows) |
-| `maddeler.tsv` | Clause register: every clause used, with document, section, version, URL, file, line and verbatim quote (107 clauses) |
-| `karar_ozet.json` | Distributions, coverage, number of construction checks, metamorphic self-checks, primary `indeterminate` rows |
-| `insa_denetimi.txt` | Construction audit: 467 checks of the vector files against the manifest, all passed |
+| `decisions.tsv` | Decisions: `vektor_id, politika, kol, sinif, vaka, karar, dayanak, not` (858 rows) |
+| `items.tsv` | Clause register: every clause used, with document, section, version, URL, file, line and verbatim quote (107 clauses) |
+| `decisions_summary.json` | Distributions, coverage, number of construction checks, metamorphic self-checks, primary `indeterminate` rows |
+| `construction_audit.txt` | Construction audit: 467 checks of the vector files against the manifest, all passed |
 | `SHA256SUMS` | Integrity list of the outputs and documents |
 
 Documents:
@@ -36,13 +36,13 @@ Documents:
 ## How to run
 
 ```
-PYTHONIOENCODING=utf-8 python experiment/oracle/oracle-A/karar_uret.py "<repository root>"
+PYTHONIOENCODING=utf-8 python experiment/oracle/oracle-A/make_decisions.py "<repository root>"
 sha256sum -c experiment/oracle/oracle-A/SHA256SUMS
 ```
 
 The script uses no randomness, clock or network; two runs are byte-identical.
 
-## Results (`karar_ozet.json`)
+## Results (`decisions_summary.json`)
 
 858 rows (316 primary): `reject` 409, `accept-classical` 215, `accept-hybrid` 159, `indeterminate`
 75. Primary rows: `reject` 181, `accept-classical` 90, `accept-hybrid` 41, `indeterminate` 4

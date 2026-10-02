@@ -13,9 +13,9 @@
 | 2 | 15:3x | `ls -la` | `./00-on-kayit/` |
 | 3 | 15:3x | `ls -la` | `./spec-corpus/` and `./spec-corpus/metin/` |
 | 4 | 15:3x | `ls -la` | `./traceability/` |
-| 5 | 15:3x | `ls -la` | `./experiment/` (sub-directory names: `inventory/`, `signer/`, `statistics/`, `environments/`, `uretec/`; `experiment/oracle/` was not in the listing at that moment) |
+| 5 | 15:3x | `ls -la` | `./experiment/` (sub-directory names: `inventory/`, `signer/`, `statistics/`, `environments/`, `generator/`; `experiment/oracle/` was not in the listing at that moment) |
 | 6 | 15:3x | `ls -la` | `./experiment/vector-generator/` |
-| 7 | 15:3x | `ls -la` | `./experiment/vector-generator/vektorler/` and `./experiment/vector-generator/vektorler/v1.2/` |
+| 7 | 15:3x | `ls -la` | `./experiment/vector-generator/vectors/` and `./experiment/vector-generator/vectors/v1.2/` |
 
 ## 2. Files opened
 
@@ -31,9 +31,9 @@
 | 8 | 15:3x | same | lines 939–948 (§4.20) | read |
 | 9 | 15:3x | same | lines 1039–1118 (§6.4, §6.5, §6.6–§6.11) | read |
 | 10 | 15:3x | same | `grep -n -i "MR4\|L4c\|L4m\|oracle\|..."` — matching lines (364 = name correction of §2C item 4; 888, 1232, 1259, 1270, 1307 as single lines) | grep |
-| 11 | 15:3x | `experiment/vector-generator/BATARYA-ESLEME.md` | complete | read |
-| 12 | 15:3x | `experiment/vector-generator/vektorler/v1.2/MANIFEST.json` | complete, with Python `json` (top-level fields + 153 vectors) | python |
-| 13 | 15:3x | SHA-256: `v1.2/MANIFEST.json`, `v1.2/SHA256SUMS`, `BATARYA-ESLEME.md`, `ON-KAYIT-TASLAK.md` | digest only | sha256sum |
+| 11 | 15:3x | `experiment/vector-generator/BATTERY-MAPPING.md` | complete | read |
+| 12 | 15:3x | `experiment/vector-generator/vectors/v1.2/MANIFEST.json` | complete, with Python `json` (top-level fields + 153 vectors) | python |
+| 13 | 15:3x | SHA-256: `v1.2/MANIFEST.json`, `v1.2/SHA256SUMS`, `BATTERY-MAPPING.md`, `ON-KAYIT-TASLAK.md` | digest only | sha256sum |
 | 14 | 15:4x | working dumps (scratchpad, outside the project): `manifest_dokum.txt`, `manifest_sikisik.txt` | readable dumps produced from MANIFEST.json with Python; not written to the project folder | python |
 | 15 | 15:4x | `spec-corpus/metin/JWTBCP.txt` (draft-ietf-oauth-rfc8725bis-10) | head (1–60), section list, lines 239–907 (§1.2–§6.1) | read/grep |
 | 16 | 15:4x | `spec-corpus/metin/JOSECOMP.txt` (draft-ietf-jose-pq-composite-sigs-04) | head, section list, lines 136–1183 (§1–§7.1.3) | read/grep |
@@ -52,17 +52,17 @@
 | 29 | 16:0x | `spec-corpus/metin/ACM2.txt` | `grep` (Note 50/51, lines 944–946) | grep |
 | 30 | 16:0x | `spec-corpus/metin/LAMPSCOMP.txt` (draft-ietf-lamps-pq-composite-sigs-19) | `grep`, lines 1256–1365 (§4.3), 3405–3444 (Appendix A) | read/grep |
 | 31 | 16:0x | SHA-256: the 15 cited corpus files + `izlenebilirlik.csv` | digest only (written to YONTEM.md §8, now `METHOD.md`) | sha256sum |
-| 32 | 16:1x–16:4x | runs of `turet_karar.py` (9 times including debugging: syntax/quote range fixes, cumulative generation for 4 arms, the last two runs byte-identical output) | The script reads **programmatically**: `MANIFEST.json` (complete); for the quote check, the PR and the complete text of 14 corpus documents (JWTBCP, JOSECOMP, LAMPSCOMP, RFC9964, RFC7515, RFC9864, RFC9901, SDJWTVC, SDJWTVC13, HAIP, OID4VP, RFC9449, TSL, ACM2). It opens no vector file | python |
+| 32 | 16:1x–16:4x | runs of `derive_decisions.py` (9 times including debugging: syntax/quote range fixes, cumulative generation for 4 arms, the last two runs byte-identical output) | The script reads **programmatically**: `MANIFEST.json` (complete); for the quote check, the PR and the complete text of 14 corpus documents (JWTBCP, JOSECOMP, LAMPSCOMP, RFC9964, RFC7515, RFC9864, RFC9901, SDJWTVC, SDJWTVC13, HAIP, OID4VP, RFC9449, TSL, ACM2). It opens no vector file | python |
 | 33 | 16:4x | quote-verification snippets of `L4-TURETME-B.md` and `BELIRSIZ.md` | full-text substring search in the same 12 documents | python |
-| 34 | 16:4x | `karar.tsv` | check of its own output (key uniqueness, value sets, basis format, coverage of 153 vectors; comparison with the manifest) | python |
+| 34 | 16:4x | `decisions.tsv` | check of its own output (key uniqueness, value sets, basis format, coverage of 153 vectors; comparison with the manifest) | python |
 
 ## 3. Not opened (additional statement)
 
-- **No vector file** under `experiment/vector-generator/vektorler/v1.2/` (`T/`, `CMP/`, `X5C/`, `VC/`, `VP/`, `REQ/`, `TSL/`, `DPOP/`, `CRIT/`, `UNK/`, `K10/`, `V/`, `b-uyumlu/`) was opened; `MANIFEST.csv` and `anahtarlar/` were not opened.
-- `experiment/vector-generator/README.md`, `uretec/`, `testler/`, `sonuclar/`, `Dockerfile` were not opened.
+- **No vector file** under `experiment/vector-generator/vectors/v1.2/` (`T/`, `CMP/`, `X5C/`, `VC/`, `VP/`, `REQ/`, `TSL/`, `DPOP/`, `CRIT/`, `UNK/`, `K10/`, `V/`, `b-uyumlu/`) was opened; `MANIFEST.csv` and `keys/` were not opened.
+- `experiment/vector-generator/README.md`, `generator/`, `tests/`, `results/`, `Dockerfile` were not opened.
 - `experiment/inventory/`, `experiment/signer/`, `experiment/statistics/`, `experiment/environments/` were not opened (only their names appeared in the output of `ls deney`).
 - Under `spec-corpus/`, files other than `metin/` were not opened; `threat-model/`, `literatur/`, `data/`, `tools/` and the `project notes` (project root) were not opened.
 
 ## 4. Files written (only `experiment/oracle/oracle-B/`)
 
-`ERISIM-KAYDI.md`, `YONTEM.md`, `turet_karar.py`, `karar.tsv`, `L4-TURETME-B.md`, `BELIRSIZ.md`, `KARAR-NOTLARI.md`, `SHA256SUMS` (the documents are now `ACCESS-LOG.md`, `METHOD.md`, `L4-DERIVATION-B.md`, `UNDETERMINED.md`, `DECISION-NOTES.md`). Temporary dumps in the scratchpad folder of the session (outside the project).
+`ERISIM-KAYDI.md`, `YONTEM.md`, `derive_decisions.py`, `decisions.tsv`, `L4-TURETME-B.md`, `BELIRSIZ.md`, `KARAR-NOTLARI.md`, `SHA256SUMS` (the documents are now `ACCESS-LOG.md`, `METHOD.md`, `L4-DERIVATION-B.md`, `UNDETERMINED.md`, `DECISION-NOTES.md`). Temporary dumps in the scratchpad folder of the session (outside the project).

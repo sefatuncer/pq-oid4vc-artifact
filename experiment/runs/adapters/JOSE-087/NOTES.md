@@ -6,10 +6,10 @@
 ## 2. TK proposal
 | Arm | Proposal | Evidence |
 |---|---|---|
-| ML-DSA-65 | **TK3** | `lib/jwt/jwa/` only ecdsa/hmac/none/ps/rsa; ML-DSA/composite pattern 0 matches (end of `evidence/api-tarama.txt`). `register_algorithm` / `SigningAlgorithm` is an extension point, but TK2 is out of scope (RUNNER §5) |
+| ML-DSA-65 | **TK3** | `lib/jwt/jwa/` only ecdsa/hmac/none/ps/rsa; ML-DSA/composite pattern 0 matches (end of `evidence/api-scan.txt`). `register_algorithm` / `SigningAlgorithm` is an extension point, but TK2 is out of scope (RUNNER §5) |
 | composite | **TK3** | the same |
 
-## 3. V± result (`evidence/vpm-kosu.txt`, `outputs/prefreeze-v1.3/JOSE-087.jsonl`)
+## 3. V± result (`evidence/vpm-run.txt`, `outputs/prefreeze-v1.3/JOSE-087.jsonl`)
 - ES256: VPLUS_ES256 `kabul` in 4 arms, VMINUS_ES256 `red/imza-gecersiz` in 4 arms → **passed**.
 - EdDSA / Ed25519: VPLUS and VMINUS `red/alg-desteklenmiyor`. Since 3.0 EdDSA is not in the core (README L48, L132–134: separate gem `jwt-eddsa`). The gate was assessed only for the supported alg (ES256).
 - ML-DSA-65 and CMP00/CMP01: `red/alg-desteklenmiyor` (consistent with TK3).
@@ -23,7 +23,7 @@
 4. No B4 candidate (multi-signature B6).
 
 ## 5. Run record
-- Synthetic smoke test (not the battery): `evidence/duman-testi.txt` (fixture generator `evidence/sentetik_uret.py`).
+- Synthetic smoke test (not the battery): `evidence/smoke-test.txt` (fixture generator `evidence/make_synthetic.py`).
 - The pre-freeze file of 16→32 rows was run three times: 12:45Z (16 rows, first version), 12:48Z (same image, rerun for the evidence record), 12:55Z (the 32-row file to which the maintainers added the COSE V± rows; after the skeleton change that makes not reading `insa` structural). The last output is valid; only the permitted job file was run.
 - **Last run (~13:59Z):** after the maintainers' policy-name normalisation rule (`|sdjwtvc=`, `@-19`; P2) was added, the image was rebuilt and the same 32-row file was rerun; the results did not change, `adaptor_sha256` reflects the current image.
 - **Last run (14:05Z):** after the rule L4-YOL → `ifade-edilemedi` was added, the image was rebuilt and the same 32-row file was rerun (V± results unchanged).

@@ -6,10 +6,10 @@
 ## 2. TK proposal
 | Arm | Proposal | Evidence |
 |---|---|---|
-| ML-DSA-65 | **TK3** | `JwtAlgorithmName`: HS256/384/512, RS256…RS4096, ES256/384/512, None; EdDSA/ML-DSA/JWK 0 matches (`evidence/api-tarama.txt`). `IAlgorithmFactory` extension point (TK2 out of scope) |
+| ML-DSA-65 | **TK3** | `JwtAlgorithmName`: HS256/384/512, RS256…RS4096, ES256/384/512, None; EdDSA/ML-DSA/JWK 0 matches (`evidence/api-scan.txt`). `IAlgorithmFactory` extension point (TK2 out of scope) |
 | composite | **TK3** | the same |
 
-## 3. V± result (`evidence/vpm-kosu.txt`)
+## 3. V± result (`evidence/vpm-run.txt`)
 - ES256: VPLUS ×4 `kabul`, VMINUS ×4 `red/imza-gecersiz`. EdDSA/Ed25519, ML-DSA-65, CMP: `red/alg-desteklenmiyor`. COSE B6.
 - **Gate: passed (ES256 only).**
 
@@ -20,5 +20,5 @@
 4. Multi-signature B6; no B4 candidate.
 
 ## 5. Run record
-- Smoke test `evidence/duman-testi.txt`. In the first smoke version `e.ToString()` (the stack trace contains "JWT.Algorithms") wrongly gave `alg-anahtar-uyusmazligi` → switched to `e.Message` (before the battery run).
+- Smoke test `evidence/smoke-test.txt`. In the first smoke version `e.ToString()` (the stack trace contains "JWT.Algorithms") wrongly gave `alg-anahtar-uyusmazligi` → switched to `e.Message` (before the battery run).
 - Pre-freeze file: 13:08Z, ~13:59Z, 14:05Z; V± results the same.

@@ -48,7 +48,7 @@ Value rules:
 
 | Field | Type | Required | Meaning and PR basis |
 |---|---|---|---|
-| `hedef_id` | string | yes | Unique id (e.g. `JOSE-009` of `SECIM.csv`). In the bootstrap the cluster order is the lexicographic order of this field |
+| `hedef_id` | string | yes | Unique id (e.g. `JOSE-009` of `SELECTION.csv`). In the bootstrap the cluster order is the lexicographic order of this field |
 | `tabaka` (stratum) | `JOSE` \| `SDJWT` \| `COSE` \| `REF` | yes | PR §2B.1–3. `REF` = reference verifier: **outside n**, outside all tests, only in the descriptive list (PR §2B.4) |
 | `adaptor_gecersiz` (adapter invalid) | binary | yes | 1 ⇒ outside n_eff (PR §4.15). The measurement fields may then be `null` |
 | `adaptor_gecersiz_gerekce` (reason) | string | yes if `adaptor_gecersiz = 1` | — |

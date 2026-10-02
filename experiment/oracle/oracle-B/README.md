@@ -12,12 +12,12 @@ manifest; vector files are not opened.
 `experiment/oracle/`; every opened file is recorded in `ACCESS-LOG.md`. No network, Docker or git
 was used.
 
-**Inputs.** `experiment/vector-generator/vektorler/v1.2/MANIFEST.json` (SHA-256 `bb17aaa7…`),
-`experiment/vector-generator/BATARYA-ESLEME.md` (case roles), `spec-corpus/metin/` (quotes), the
+**Inputs.** `experiment/vector-generator/vectors/v1.2/MANIFEST.json` (SHA-256 `bb17aaa7…`),
+`experiment/vector-generator/BATTERY-MAPPING.md` (case roles), `spec-corpus/metin/` (quotes), the
 pre-registration (`00-on-kayit/ON-KAYIT-TASLAK.md`, v0.8; not included — the script looks for the
 folders `00-on-kayit` and `spec-corpus` to find the repository root).
 
-**Outputs.** `karar.tsv` (`vektor_id, politika, kol, birincil_mi, karar, dayanak, not`; 732 rows)
+**Outputs.** `decisions.tsv` (`vektor_id, politika, kol, birincil_mi, karar, dayanak, not`; 732 rows)
 and `SHA256SUMS`.
 
 | Document | Content |
@@ -32,12 +32,12 @@ and `SHA256SUMS`.
 
 ```
 cd experiment/oracle/oracle-B
-PYTHONIOENCODING=utf-8 python turet_karar.py [--kollar k1,k2,...]
+PYTHONIOENCODING=utf-8 python derive_decisions.py [--kollar k1,k2,...]
 ```
 
 The script checks every quoted clause against the source text (whitespace-normalised, within the
 recorded line range) and stops if one is not found; it cross-checks the hand-written fact tables
-against the manifest. Two independent runs gave the same `karar.tsv` hash.
+against the manifest. Two independent runs gave the same `decisions.tsv` hash.
 
 ## Results (`METHOD.md` §13)
 

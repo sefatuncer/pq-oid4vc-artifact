@@ -1,0 +1,37 @@
+== ssi-sd-jwt 0.6.0 / ssi-jws 0.5.0 / ssi-jwk 0.4.0 (features secp256r1, ed25519)
+
+== 1. Validity check (one resolver holding the keys of both issuers)
+      resolver called with key_id = Some("mig-es256") (this is the only input)
+V+ migrated ES256                                      accept  expect=accept  OK        
+      resolver called with key_id = Some("mig-eddsa") (this is the only input)
+V+ migrated EdDSA                                      accept  expect=accept  OK        
+      resolver called with key_id = Some("leg-es256") (this is the only input)
+V+ legacy ES256                                        accept  expect=accept  OK        
+      resolver called with key_id = Some("mig-eddsa") (this is the only input)
+V- migrated EdDSA corrupted                            reject  expect=reject  OK        error: invalid signature
+
+== 2. Per-key algorithm binding (JWK alg member = the key's own algorithm)
+  migrated ES256 (L4c wants reject)                    accept  expect=reject  MISMATCH  
+  migrated EdDSA (L4c wants accept)                    accept  expect=accept  OK        
+  legacy ES256 (L4c wants accept)                      accept  expect=accept  OK        
+  EdDSA object naming the ES256-bound kid (L3 check)   reject  expect=-       -         error: invalid signature
+
+== 3. Paths that reach the L4c decisions only by changing the migrated issuer's key material
+  (a) resolver withholds the migrated ES256 key
+    migrated ES256                                     reject  expect=-       -         error: unknown key
+    migrated EdDSA                                     accept  expect=-       -         
+    legacy ES256                                       accept  expect=-       -         
+  (b) migrated P-256 key labelled alg=EdDSA (an inconsistent JWK)
+    migrated ES256                                     reject  expect=-       -         error: invalid signature
+    migrated EdDSA                                     accept  expect=-       -         
+    legacy ES256                                       accept  expect=-       -         
+  -> both remove the migrated ES256 key from use; the record no longer holds it (contract 5.3).
+
+== 4. Own code after verification (B4 record only): per-issuer check of header alg and iss
+  migrated ES256                                       reject  expect=-       -         alg ES256 not acceptable for https://issuer.example
+  migrated EdDSA                                       accept  expect=-       -         
+  legacy ES256                                         accept  expect=-       -         
+  (these decisions come from the own code above, not from a library mechanism)
+
+== SUMMARY: checked rows OK = 6 of 7
+23

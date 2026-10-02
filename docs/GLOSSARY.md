@@ -1,12 +1,15 @@
 # Glossary
 
-The study was carried out in Turkish. All documentation in this release is in English, but many
-directory names, file names, script identifiers, data fields and data values are still Turkish. They
-are embedded in recorded outputs (logs, manifests, hash lists, result tables) and in code, so they
-were kept unchanged on purpose. This page translates them.
+The study was carried out in Turkish. All documentation in this release is in English. The folders
+and the script, input and output files under `experiment/` and `tools/` have English names since
+03.10.2026; the other folders (`models/`, `spec-corpus/`, `traceability/`, ...), Python module names,
+the files inside the frozen vector and key sets, script identifiers, data fields and data values are
+still Turkish. The old names also remain inside recorded outputs (logs, manifests, hash lists, result
+tables), which were not edited. This page translates them.
 
 - Field names and field values of data files are explained in [`DATA-DICTIONARY.md`](DATA-DICTIONARY.md).
-- Old top-level folder names and renamed documents are listed in [`PATHS.md`](PATHS.md).
+- Old top-level folder names and renamed documents are listed in [`PATHS.md`](PATHS.md); every folder
+  and file renamed on 03.10.2026 is listed, old path → new path, in [`PATHS.tsv`](PATHS.tsv).
 
 Turkish letters are written without diacritics in most identifiers (`ç→c`, `ğ→g`, `ı→i`, `ö→o`,
 `ş→s`, `ü→u`); for example `sonuc` is *sonuç* (result) and `kosum` is *koşum* (run).
@@ -65,48 +68,51 @@ Several families share a letter. The documents always qualify them.
 
 ## 3. Directory names
 
+"→ `name/`" gives the current English name of a folder renamed on 03.10.2026 (`PATHS.tsv`); the
+Turkish name is still found in recorded outputs.
+
 | Directory | English | Notes |
 |---|---|---|
 | `adaptorler` | adapters | old name of `experiment/runs/adapters/` (see `PATHS.md`) |
-| `anahtarlar` | keys | test keys and test PKI; `ozel/` = private keys |
+| `anahtarlar` | keys | → `experiment/vector-generator/keys/`; test keys and test PKI; `ozel/` = private keys. Also the container mount point `/anahtarlar` |
 | `asp` | ASP (answer set programming) model | |
 | `b-uyumlu` | B-compatible | vector file in the format of the design-stage pilot P3 |
-| `betik`, `betikler` | script(s) | |
-| `birlesik` | merged | merged oracle |
+| `betik`, `betikler` | script(s) | `betikler/` → `scripts/` (environments, statistics); `betik/` in `models/` |
+| `birlesik` | merged | merged oracle → `experiment/oracle/merged/` |
 | `c3istat` | C3 statistics package | |
-| `cikti`, `cikti-maven` | output (Maven output) | third-party build output of a target; not translated |
+| `cikti`, `cikti-maven` | output (Maven output) | third-party build output of a target → `output/`, `output-maven/`; also the container mount point `/cikti` of the statistics runs |
 | `datalog` | Datalog counterpart of a Tamarin rule schema | |
-| `dis-vektorler` | external test vectors | |
+| `dis-vektorler` | external test vectors | → `experiment/signer/external-vectors/` |
 | `dnssec`, `x509`, `smime` | the three known-answer-test ecosystems | |
-| `hedefler` | targets | one folder per target library |
-| `_bilgi-<target>-…` | informational run | extra build of a target (for example HEAD instead of the release); not part of the sample |
+| `hedefler` | targets | one folder per target library → `experiment/environments/targets/` |
+| `_bilgi-<target>-…` | informational run | extra build of a target (for example HEAD instead of the release); not part of the sample → `_info-<target>-…` (`ozellik` → `feature`) |
 | `h3_sadelestirme` | H3 simplification | |
 | `ham` | raw | raw tool output |
-| `imajlar` | images | language environment Dockerfiles |
+| `imajlar` | images | language environment Dockerfiles → `experiment/environments/images/` |
 | `iyi_bicim` | well-formedness | Tamarin well-formedness check output |
 | `json` | JSON output of Tamarin runs | |
-| `kanit` | evidence | |
-| `kayit` | record, log | run records, Docker state snapshots |
-| `kaynak` | source | |
+| `kanit` | evidence | old name of `experiment/runs/adapters/<target>/evidence/` |
+| `kayit` | record, log | run records, Docker state snapshots → `records/` |
+| `kaynak` | source | `experiment/statistics/kaynak/` → `sources/`; `spec-corpus/kaynak/` (downloads, not in the repository) |
 | `kesif` | exploration | exploratory (not pre-registered as confirmatory) |
-| `konteyner` | container | in-container installer scripts |
+| `konteyner` | container | in-container installer scripts → `experiment/environments/scripts/container/` |
 | `kor-beklenen` | blind expected values | blind N-version derivation of KAT expected values |
 | `GIRDI` | input | the frozen input of the blind derivation |
 | `kosu` | run | |
-| `loglar` | logs | |
+| `loglar` | logs | → `experiment/environments/logs/` |
 | `me_gocmus` | M-e migrated | copy of the M-e model used by the exploration run |
 | `modeller` | models | |
 | `nsurum` | N-version | comparison of the two derivations |
 | `olgular` | facts | ASP fact files |
-| `ornekler` | samples, instances | generated model instances; not translated |
-| `ornek_analiz*`, `ornek_girdi` | sample analysis, sample input | statistics example on synthetic data |
+| `ornekler` | samples, instances | generated model instances in `models/`; not translated. `experiment/signer/servis/ornekler/` → `service/examples/` |
+| `ornek_analiz*`, `ornek_girdi` | sample analysis, sample input | statistics example on synthetic data → `sample_analysis*/`, `sample_input/` |
 | `ozel` | private | private keys |
 | `pki` | test PKI | |
 | `regresyon` | regression | |
 | `secim` | selection | sample selection of the technical gate |
-| `sentetik-testler` | synthetic tests | |
-| `servis` | service | local PQ verification service |
-| `sonuc`, `sonuclar`, `sonuc_v2` | result(s), results of the corrected run (v2) | |
+| `sentetik-testler` | synthetic tests | → `experiment/statistics/synthetic-tests/` |
+| `servis` | service | local PQ verification service → `experiment/signer/service/` |
+| `sonuc`, `sonuclar`, `sonuc_v2` | result(s), results of the corrected run (v2) | `sonuclar/` → `results/` (signer, statistics, vector generator), `tools/regression-tests/sonuc/` → `results/`; `sonuc/` in `models/` |
 | `sorgular` | queries | ASP query catalogue and driver |
 | `tamarin_datalog` | Tamarin-to-Datalog regression instances | |
 | `tamarin_ham` | raw Tamarin output | |
@@ -114,15 +120,18 @@ Several families share a letter. The documents always qualify them.
 | `tau_israf` | τ-waste | instances for wasted post-quantum effort under τ |
 | `teknik-kapi` | technical gate | |
 | `test1`, `test2` | first and second test run | |
-| `testler` | tests | |
-| `uretec` | generator | Python package of the vector generator |
+| `testler` | tests | → `tests/` (signer, vector generator) |
+| `uretec` | generator | Python package of the vector generator → `experiment/vector-generator/generator/` (package `generator`) |
 | `uretilen` | generated | generated ProVerif models |
-| `vektorler` | vectors | test vector sets v1, v1.1, v1.2, v1.3 |
-| `veri` | data | (only `experiment/statistics/sentetik-testler/veri/`; the top-level `veri/` is now `data/`) |
+| `vektorler` | vectors | test vector sets v1 … v1.4 → `experiment/vector-generator/vectors/`; also the manifest key `vektorler` and the module `generator/vektorler.py` |
+| `veri` | data | the top-level `veri/` is now `data/`; `experiment/statistics/sentetik-testler/veri/` → `synthetic-tests/data/` |
 | `yeniden_kosum_0110` | re-run of 01.10.2026 | |
-| `yetenek` | capability | capability probe of a language environment |
+| `yetenek` | capability | capability probe of a language environment; `images/dotnet/yetenek/` → `capability/` (the class `Yetenek` keeps its name) |
 
 ## 4. Words in file names
+
+Many of these words no longer occur in the file names under `experiment/` and `tools/` (see
+`PATHS.tsv`), but they still occur in recorded outputs, module names and the other folders.
 
 | Word | English |
 |---|---|
@@ -215,21 +224,23 @@ Several families share a letter. The documents always qualify them.
 | `yayimlanmis_ornekler` | published examples |
 | `yeniden_12g` | re-run with 12 GB memory |
 
-Test script prefixes in `experiment/signer/testler/` and `experiment/vector-generator/testler/`:
-`t01_dis_vektorler` external vectors, `t02_openssl_capraz` OpenSSL cross-verification,
-`t03_negatif` negative tests, `t04_boyutlar` sizes, `t05_servis` service, `t10_oz_dogrulama`
-self-verification, `t10_cose` COSE self-verification, `t11_esleme_denetim` battery-mapping audit,
-`t12_cose` COSE external vectors. In `experiment/statistics/sentetik-testler/`: `test_ek_a` PR
-Appendix A values, `test_iki_uygulama` two independent implementations, `test_sema` input schema,
-`test_sinir` boundary cases, `test_uctan_uca` end to end, `test_yayimlanmis` published values,
-`ornek_veri_uret` generate the synthetic example input.
+Test scripts in `experiment/signer/tests/` and `experiment/vector-generator/tests/` (old names, which
+the recorded results still carry in their `test` field, in brackets): `t01_external_vectors`
+(`t01_dis_vektorler`), `t02_openssl_cross` (`t02_openssl_capraz`), `t03_negative` (`t03_negatif`),
+`t04_sizes` (`t04_boyutlar`), `t05_service` (`t05_servis`), `t10_self_verification`
+(`t10_oz_dogrulama`), `t10_cose` COSE self-verification, `t11_mapping_audit` (`t11_esleme_denetim`),
+`t12_cose` COSE external vectors, `t14_es384` ES384 counterparts. In
+`experiment/statistics/synthetic-tests/` the test modules keep their names: `test_ek_a` PR Appendix A
+values, `test_iki_uygulama` two independent implementations, `test_sema` input schema, `test_sinir`
+boundary cases, `test_uctan_uca` end to end, `test_yayimlanmis` published values; `make_sample_data.py`
+(old `ornek_veri_uret.py`) generates the synthetic example input.
 
 ## 5. Identifier prefixes
 
 | Prefix | Meaning | Where |
 |---|---|---|
 | `T001`… | traceability row | `traceability/izlenebilirlik.csv` |
-| `JOSE-nnn`, `SDJWT-nnn`, `COSE-nnn`, `REF-nnn` | C3 target library ids per stratum (REF = reference verifier) | `experiment/inventory/`, `experiment/environments/hedefler/` |
+| `JOSE-nnn`, `SDJWT-nnn`, `COSE-nnn`, `REF-nnn` | C3 target library ids per stratum (REF = reference verifier) | `experiment/inventory/`, `experiment/environments/targets/` |
 | `CERCEVE-nnnnnn` | row of the ASP sampling frame | `models/asp/sampling/cerceve.jsonl` |
 | `KESIF_2X2-nnnnnn` | row of the exploratory 2×2 grid | `models/asp/sampling/kesif_2x2.jsonl` |
 | `K1-nn`, `K2a-nn` … `K2d-nn`, `K3a-…`, `o1`…`o12`, `V1`…`V6` | known-answer-test cells (KAT-1 DNSSEC, KAT-2 X.509 sub-tables a–d, KAT-3 S/MIME) | `models/known-answer-tests/*/hucreler.tsv` |

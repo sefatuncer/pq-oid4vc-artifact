@@ -1,0 +1,49 @@
+go version go1.27.1 linux/amd64
+== go-cose v1.3.0 (module pinned in go.mod/go.sum)
+
+== 1. Validity check
+V+ T1 both valid, Verify(nil, vES256, vX)                accept  expect=accept  OK        
+V- T2 X corrupted, Verify(nil, vES256, vX)               reject  expect=reject  OK        verification error
+V+ Sign1 migrated ES256                                  accept  expect=accept  OK        
+V+ Sign1 migrated EdDSA                                  accept  expect=accept  OK        
+V+ Sign1 legacy ES256                                    accept  expect=accept  OK        
+
+== 2. L4m (primary form), R = {EdDSA}, W = {ES256, EdDSA}: static configurations of SignMessage.Verify
+configuration: verifiers = W in order [vES256, vX]
+  T1 both valid                                          accept  expect=accept  OK        
+  T2 X corrupted                                         reject  expect=reject  OK        verification error
+  T3 stripped to ES256                                   reject  expect=reject  OK        2 verifiers for 1 signatures
+  T5 only X                                              reject  expect=accept  MISMATCH  2 verifiers for 1 signatures
+  T1 permuted (X first)                                  reject  expect=accept  MISMATCH  algorithm mismatch: verifier ES256: header EdDSA
+configuration: verifiers = R [vX]
+  T1 both valid                                          reject  expect=accept  MISMATCH  1 verifiers for 2 signatures
+  T2 X corrupted                                         reject  expect=reject  OK        1 verifiers for 2 signatures
+  T3 stripped to ES256                                   reject  expect=reject  OK        algorithm mismatch: verifier EdDSA: header ES256
+  T5 only X                                              accept  expect=accept  OK        
+  T1 permuted (X first)                                  reject  expect=accept  MISMATCH  1 verifiers for 2 signatures
+configuration: verifiers = [vX, vES256]
+  T1 both valid                                          reject  expect=accept  MISMATCH  algorithm mismatch: verifier EdDSA: header ES256
+  T2 X corrupted                                         reject  expect=reject  OK        algorithm mismatch: verifier EdDSA: header ES256
+  T3 stripped to ES256                                   reject  expect=reject  OK        2 verifiers for 1 signatures
+  T5 only X                                              reject  expect=accept  MISMATCH  2 verifiers for 1 signatures
+  T1 permuted (X first)                                  accept  expect=accept  OK        
+-> no static verifier list gives T1/T5 accept and T3 reject: Verify needs exactly one verifier per signature, in order.
+
+== 3. L4m with own code (B4 record only): loop over signatures with Signature.Verify
+  T1 both valid                                          accept  expect=-       -         
+  T2 X corrupted                                         reject  expect=-       -         verification error
+  T3 stripped to ES256                                   reject  expect=-       -         required algorithm EdDSA missing
+  T5 only X                                              accept  expect=-       -         
+  T1 permuted                                            accept  expect=-       -         
+
+== 4. L4c (supplement): COSE_Sign1, per-issuer records = verifier objects (alg bound to key)
+records: migrated = {vX}, legacy = {vLegES256}
+  migrated ES256 with migrated record                    reject  expect=reject  OK        algorithm mismatch: verifier EdDSA: header ES256
+  migrated EdDSA with migrated record                    accept  expect=accept  OK        
+  legacy ES256 with legacy record                        accept  expect=accept  OK        
+records: migrated record also holds its ES256 key = {vES256, vX}
+  migrated ES256 with vES256 of migrated record          accept  expect=-       -         
+-> Sign1Message.Verify takes one verifier; the record can only refuse ES256 if the ES256 key is left out.
+
+== SUMMARY: checked rows OK = 17 of 23
+go.sum unchanged

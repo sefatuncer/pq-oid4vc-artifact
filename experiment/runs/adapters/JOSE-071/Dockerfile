@@ -1,4 +1,4 @@
-# a10-jose-071:1 — lcobucci/jwt (composer.lock = experiment/environments/hedefler/JOSE-071/cikti; dist zips from Packagist/GitHub, anonymous)
+# a10-jose-071:1 — lcobucci/jwt (composer.lock = experiment/environments/targets/JOSE-071/output; dist zips from Packagist/GitHub, anonymous)
 FROM pq-a09-env-php:1.0
 WORKDIR /opt/a
 COPY composer.json composer.lock ./

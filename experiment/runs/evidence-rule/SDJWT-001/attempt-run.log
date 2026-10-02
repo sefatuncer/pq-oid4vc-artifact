@@ -1,0 +1,23 @@
+== vck 7.0.1, java 25.0.4
+
+== 1. Validity check: documented key lookup only (no policy)
+V+ migrated ES256                                        accept  expect=accept  OK        
+V+ migrated ES384                                        accept  expect=accept  OK        
+V+ legacy ES256                                          accept  expect=accept  OK        
+V- migrated ES256 corrupted                              reject  expect=reject  OK        Invalid Signature
+
+== 2. L4c through the documented PublicJsonWebKeyLookup callback (one ValidatorSdJwt instance)
+L4c migrated ES256                                       reject  expect=reject  OK        Invalid Signature
+L4c migrated ES384                                       accept  expect=accept  OK        
+L4c legacy ES256                                         accept  expect=accept  OK        
+L4c migrated ES256 with own key in header jwk            accept  expect=-       -         
+(VerifyJwsObject uses a header jwk/x5c/jku before the lookup, so the lookup is not consulted for that object)
+
+== 3. L4c through the documented VerifyJwsSignatureFun parameter (same policy, applied to every key)
+L4c migrated ES256                                       reject  expect=reject  OK        Invalid Signature
+L4c migrated ES384                                       accept  expect=accept  OK        
+L4c legacy ES256                                         accept  expect=accept  OK        
+L4c migrated ES256 with own key in header jwk            reject  expect=reject  OK        Invalid Signature
+L4c migrated ES384 corrupted                             reject  expect=reject  OK        Invalid Signature
+
+== SUMMARY: checked rows OK = 12 of 12

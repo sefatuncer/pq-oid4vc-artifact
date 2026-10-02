@@ -6,10 +6,10 @@
 ## 2. TK proposal
 | Arm | Proposal | Evidence |
 |---|---|---|
-| ML-DSA-65 | **TK3** | `JWT::$supported_algs` (`JWT.php` L57–69): ES384, ES256, ES256K, HS*, RS*, PS256, EdDSA; ML-DSA/composite/AKP 0 matches (`evidence/api-tarama.txt`) |
+| ML-DSA-65 | **TK3** | `JWT::$supported_algs` (`JWT.php` L57–69): ES384, ES256, ES256K, HS*, RS*, PS256, EdDSA; ML-DSA/composite/AKP 0 matches (`evidence/api-scan.txt`) |
 | composite | **TK3** | the same |
 
-## 3. V± result (`evidence/vpm-kosu.txt`)
+## 3. V± result (`evidence/vpm-run.txt`)
 - ES256: VPLUS `kabul` ×4, VMINUS `red/imza-gecersiz` ×4.
 - EdDSA (kontrol-EdDSA): VPLUS_EdDSA `kabul`, VMINUS_EdDSA `red/imza-gecersiz`.
 - Label `Ed25519` (kontrol-Ed25519): `red/alg-desteklenmiyor` → the control arm is run with `EdDSA` (contract §8 item 4).
@@ -23,7 +23,7 @@
 4. Multi-signature B6 → no L4m; no B4 candidate.
 
 ## 5. Run record
-- Synthetic smoke test `evidence/duman-testi.txt`. In the first smoke run, when only the selected key was given, "Key may not be empty" came in every non-permitted case; this was corrected so that the key set is built from the vector JWKS (before the battery run).
+- Synthetic smoke test `evidence/smoke-test.txt`. In the first smoke run, when only the selected key was given, "Key may not be empty" came in every non-permitted case; this was corrected so that the key set is built from the vector JWKS (before the battery run).
 - The pre-freeze file was run once (12:54Z, 32 rows).
 - **Last run (~13:59Z):** after the maintainers' policy-name normalisation rule (`|sdjwtvc=`, `@-19`; P2) was added, the image was rebuilt and the same 32-row file was rerun; the results did not change, `adaptor_sha256` reflects the current image.
 - **Last run (14:05Z):** after the rule L4-YOL → `ifade-edilemedi` was added, the image was rebuilt and the same 32-row file was rerun (V± results unchanged).

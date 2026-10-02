@@ -6,10 +6,10 @@
 ## 2. TK proposal
 | Arm | Proposal | Evidence |
 |---|---|---|
-| ML-DSA-65 | **TK1** | Public API: `SecurityAlgorithms.MlDsa65 = "ML-DSA-65"`, `MlDsaSecurityKey`, `JsonWebAlgorithmsKeyTypes.Akp = "AKP"`, `JsonWebKey.Pub`, `JsonWebKeyConverter.ConvertFromMlDsaSecurityKey` (`evidence/api-tarama.txt`). Runtime: .NET 10 `MLDsa` + OpenSSL 3.5.5. The V± gate passed in the ML-DSA arm (below) |
+| ML-DSA-65 | **TK1** | Public API: `SecurityAlgorithms.MlDsa65 = "ML-DSA-65"`, `MlDsaSecurityKey`, `JsonWebAlgorithmsKeyTypes.Akp = "AKP"`, `JsonWebKey.Pub`, `JsonWebKeyConverter.ConvertFromMlDsaSecurityKey` (`evidence/api-scan.txt`). Runtime: .NET 10 `MLDsa` + OpenSSL 3.5.5. The V± gate passed in the ML-DSA arm (below) |
 | composite | **TK3** | composite/`ML-DSA-65-ES256` pattern 0 matches; CMP00 `red/alg-desteklenmiyor` |
 
-## 3. V± result (`evidence/vpm-kosu.txt`)
+## 3. V± result (`evidence/vpm-run.txt`)
 - ES256: VPLUS ×4 `kabul` (`dogrulanan: ES256`), VMINUS ×4 `red/imza-gecersiz`.
 - **ML-DSA-65: VPLUS_ML-DSA-65 `kabul` (`dogrulanan: ML-DSA-65`), VMINUS_ML-DSA-65 `red/imza-gecersiz`** → TK1 confirmed.
 - EdDSA / Ed25519: `red/alg-desteklenmiyor` (IdentityModel has no EdDSA).
@@ -23,5 +23,5 @@
 4. Multi-signature B6 (no JWS JSON serialization); no B4 candidate.
 
 ## 5. Run record
-- Synthetic smoke test `evidence/duman-testi.txt` (synthetic ML-DSA-65 tokens are also accepted/rejected correctly).
+- Synthetic smoke test `evidence/smoke-test.txt` (synthetic ML-DSA-65 tokens are also accepted/rejected correctly).
 - Pre-freeze file: 13:06Z (first run), ~13:59Z (normalisation), 14:05Z (L4-YOL rule) — V± results the same in all three; the last output reflects the current image.

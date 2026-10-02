@@ -1,0 +1,37 @@
+== sd-jwt 0.10.4 jwcrypto 1.6.1
+
+== 1. Validity check (default callback, no policy)
+V+ migrated ES256                            accept  expect=accept  OK       
+V+ migrated EdDSA                            accept  expect=accept  OK       
+V+ legacy ES256                              accept  expect=accept  OK       
+V- migrated ES256 (corrupted sig)            reject  expect=reject  OK       JWKeyNotFound: No working key found in key set
+V- migrated EdDSA (corrupted sig)            reject  expect=reject  OK       JWKeyNotFound: No working key found in key set
+
+== 2. Native options only (no caller policy logic)
+SDJWTVerifier.__init__ parameters: ['sd_jwt_presentation', 'cb_get_issuer_key', 'expected_aud', 'expected_nonce', 'serialization_format']
+global jwcrypto.jws.default_allowed_algs = ['EdDSA']:
+  migrated ES256 (L4c wants reject)          reject  expect=reject  OK       JWKeyNotFound: No working key found in key set
+  migrated EdDSA (L4c wants accept)          accept  expect=accept  OK       
+  legacy ES256 (L4c wants accept)            reject  expect=accept  MISMATCH JWKeyNotFound: No working key found in key set
+-> a global list cannot separate the two issuers (legacy ES256 is rejected).
+
+== 3. L4c through the documented key-resolution callback (one shared policy configuration)
+L4c migrated ES256                           reject  expect=reject  OK       ValueError: alg ES256 not acceptable for issuer https://issuer.example
+L4c migrated EdDSA                           accept  expect=accept  OK       
+L4c legacy ES256                             accept  expect=accept  OK       
+L4c migrated EdDSA corrupted (still reject)  reject  expect=reject  OK       JWKeyNotFound: No working key found in key set
+L4c migrated ES256 relabelled alg=EdDSA      reject  expect=reject  OK       JWKeyNotFound: No working key found in key set
+
+== 4. Supplementary L4m (General JSON, two signatures) through the same callback mechanism
+default callback (full key set):
+  T1 both valid                              accept  expect=accept  OK       
+  T2 X corrupted                             accept  expect=reject  MISMATCH 
+  T3 stripped to ES256                       accept  expect=reject  MISMATCH 
+  T5 only X                                  accept  expect=accept  OK       
+L4m callback (keys restricted to R):
+  L4m T1 both valid                          accept  expect=accept  OK       
+  L4m T2 X corrupted                         reject  expect=reject  OK       JWKeyNotFound: No working key found in key set
+  L4m T3 stripped to ES256                   reject  expect=reject  OK       JWKeyNotFound: No working key found in key set
+  L4m T5 only X                              accept  expect=accept  OK       
+
+== SUMMARY: checked rows OK = 14 of 14

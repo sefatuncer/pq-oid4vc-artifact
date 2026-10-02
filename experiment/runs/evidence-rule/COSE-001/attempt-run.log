@@ -1,0 +1,31 @@
+== indispensable-cosef 3.26.0, java 25.0.4
+
+== 1. Public API of CoseSigned (reflection on the pinned jar)
+CoseSigned methods: [component1, component2, component3, component4, component5, copy$at_asitplus_signum_indispensable_cosef, copy$at_asitplus_signum_indispensable_cosef$default, equals, getPayload, getProtectedHeader, getSignature, getUnprotectedHeader, getWireFormat, hashCode, prepareCoseSignatureInput, prepareCoseSignatureInput$default, serialize, toString]
+CoseSigned.Companion methods: [create, create$default, deserialize, prepare, prepare$default, serializer]
+any method containing 'verif': false
+deserialize() of the migrated ES256 object succeeds; it carries alg=ES256 and is not verified
+
+== 2. Validity check (verification assembled by the caller, alg taken from the header)
+V+ migrated ES256                                      accept  expect=accept  OK        
+V+ migrated ES384                                      accept  expect=accept  OK        
+V+ legacy ES256                                        accept  expect=accept  OK        
+V- migrated ES256 corrupted                            reject  expect=reject  OK        
+
+== 3. L4c with own code (B4 record only): per-issuer policy + own verification
+L4c migrated ES256                                     reject  expect=reject  OK        alg ES256 not acceptable for https://issuer.example
+L4c migrated ES384                                     accept  expect=accept  OK        
+L4c legacy ES256                                       accept  expect=accept  OK        
+(these decisions come from the own code above, not from a library mechanism)
+
+== SUMMARY: checked rows OK = 7 of 7
++--- org.jetbrains.kotlin:kotlin-stdlib:2.4.10
+|    +--- org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.8.0 -> 2.0.0 (c)
+|    +--- org.jetbrains.kotlin:kotlin-stdlib-common:2.4.10 (c)
+|    \--- org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.8.0 -> 2.0.0 (c)
+\--- at.asitplus.signum:indispensable-cosef:3.26.0
+     \--- at.asitplus.signum:indispensable-cosef-jvm:3.26.0
+          +--- at.asitplus.signum:indispensable:3.26.0
+          |    \--- at.asitplus.signum:indispensable-jvm:3.26.0
+          |         +--- at.asitplus.signum:indispensable-asn1:3.26.0
+          |         |    \--- at.asitplus.signum:indispensable-asn1-jvm:3.26.0

@@ -1,0 +1,37 @@
+== json-jwt 1.17.2, ruby 3.4.11
+JSON::JWT.decode parameters: [[:req, :input], [:opt, :key_or_secret], [:opt, :algorithms], [:opt, :encryption_methods], [:opt, :allow_blank_payload]]
+
+== 1. Validity check (key set of the issuer, algorithms = W)
+V+ migrated ES256                                          accept  expect=accept  OK        
+V+ migrated ES384                                          accept  expect=accept  OK        
+V+ legacy ES256                                            accept  expect=accept  OK        
+V- migrated ES384 corrupted                                reject  expect=reject  OK        JSON::JWS::VerificationFailed: JSON::JWS::VerificationFailed
+
+== 2. One configuration for both issuers (all keys in one JWK set; the only policy input is algorithms)
+algorithms = [:ES384]
+  migrated ES256 (L4c wants reject)                        reject  expect=reject  OK        JSON::JWS::UnexpectedAlgorithm: Unexpected alg header
+  migrated ES384 (L4c wants accept)                        accept  expect=accept  OK        
+  legacy ES256 (L4c wants accept)                          reject  expect=accept  MISMATCH  JSON::JWS::UnexpectedAlgorithm: Unexpected alg header
+algorithms = [:ES256, :ES384]
+  migrated ES256 (L4c wants reject)                        accept  expect=reject  MISMATCH  
+  migrated ES384 (L4c wants accept)                        accept  expect=accept  OK        
+  legacy ES256 (L4c wants accept)                          accept  expect=accept  OK        
+-> no single configuration gives the three L4c decisions.
+
+== 3. Is an alg member of a JWK enforced? (migrated ES256 key labelled alg=ES384)
+  migrated ES256 with labelled key set, algorithms = W     accept  expect=-       -         
+-> accepted: the key set selects by kid only (lib/json/jose.rb L24-33); there is no per-key algorithm binding.
+
+== 4. Per-issuer records applied by the caller (contract §5.3 'L4c (consecutive)'): one decode call per record
+  migrated ES256                                           reject  expect=reject  OK        JSON::JWS::UnexpectedAlgorithm: Unexpected alg header
+  migrated ES384                                           accept  expect=accept  OK        
+  legacy ES256                                             accept  expect=accept  OK        
+-> the library applies a per-call allow-list (L2); choosing the record per object is caller code outside the library.
+
+== 5. Form basis: General JSON with two signatures (only the first is processed)
+  [ES256 valid, ES384 corrupted]                           accept  expect=-       -         
+  [ES384 corrupted, ES256 valid]                           reject  expect=-       -         JSON::JWS::VerificationFailed: JSON::JWS::VerificationFailed
+  [ES256 valid] only                                       accept  expect=-       -         
+-> the result depends only on signatures[0] (lib/json/jws.rb L199-216).
+
+== SUMMARY: checked rows OK = 11 of 13

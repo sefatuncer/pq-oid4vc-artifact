@@ -5,7 +5,7 @@
   - 12 environment images (`IMAGES.md`).
   - 34 targets: 33 succeeded, 1 failed (JOSE-104).
   - Two reserve candidates for JOSE-104 (JOSE-031, JOSE-017) were built; the choice lies with the maintainers (`TARGET-CHANGES.md`).
-  - Informational runs: `_bilgi-*` (6).
+  - Informational runs: `_info-*` (6).
   - `DECISION-NOTES.md`, `SHA256SUMS`.
 - **Next (maintainers):**
   - K1 choice of the reserve.

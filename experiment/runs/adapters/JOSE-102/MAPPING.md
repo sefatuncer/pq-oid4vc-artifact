@@ -8,7 +8,7 @@
 The same as `JOSE-087/MAPPING.md` §1 (normalisation, P2, L4-YOL → `ifade-edilemedi`). Clock: `exp.verifyNotExpired(currentDate: simdi)` inside the payload type `Yuk: JWTPayload` (the documented payload verification pattern of jwt-kit). The job file is read CRLF-safely.
 
 ## 2. Policy mechanism: key object registered in the collection
-jwt-kit has no allow-list. `JWTKeyCollection.verify` selects the signer by kid (the default if there is no kid) and **verifies the signature with the algorithm of the registered key object; the header `alg` is not compared with the signer** (`JWTSigner.swift` verify, `evidence/api-tarama.txt`). The policy is therefore built by **which key object is registered**:
+jwt-kit has no allow-list. `JWTKeyCollection.verify` selects the signer by kid (the default if there is no kid) and **verifies the signature with the algorithm of the registered key object; the header `alg` is not compared with the signer** (`JWTSigner.swift` verify, `evidence/api-scan.txt`). The policy is therefore built by **which key object is registered**:
 - Key path **`dogrudan`** (in all arms): EC → `ES256PublicKey/ES384PublicKey(parameters: (x, y))`, OKP → `EdDSA.PublicKey(x:curve: .ed25519)`, AKP → `MLDSA65PublicKey/MLDSA87PublicKey(rawRepresentation:)` (`@_spi(PostQuantum) import JWTKit`; README section "MLDSA").
 - If the natural alg of the key is in W_effective, `keys.add(ecdsa:|eddsa:|mldsa:, kid:)`; otherwise the collection stays empty → the library gives `JWTError.noKeyProvided`.
 

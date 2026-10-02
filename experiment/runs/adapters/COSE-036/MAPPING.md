@@ -1,7 +1,7 @@
 # COSE-036 wolfCOSE — policy → API mapping (contract 1.0 §2.2, RUNNER §2)
 
 - **Target:** wolfCOSE @ `f907071b10127f3ae2dd7719749a91b039ff04a1` (no release → frame `son_commit_sha`; PR item 14), wolfSSL **v5.9.2-stable** (`ac01707f552c`) with the README "Full Build" flags (`--enable-mldsa` included) — the same as the environment record.
-- **Measurement configuration:** `make shared` with the documented wolfCOSE build macro **`WOLFCOSE_ENABLE_DEPRECATED_ALGS`** (`docs/Macros.md` L149–157; Makefile `EXTRA_CFLAGS`). Reason: the battery carries ES256 with the RFC 9053 id **−7** and EdDSA with **−8**; the default build rejects these ids with `COSE_BAD_ALG` (`evidence/duman-varsayilan-derleme.txt`). The code does not change. Needs the maintainers' approval (NOTES §4).
+- **Measurement configuration:** `make shared` with the documented wolfCOSE build macro **`WOLFCOSE_ENABLE_DEPRECATED_ALGS`** (`docs/Macros.md` L149–157; Makefile `EXTRA_CFLAGS`). Reason: the battery carries ES256 with the RFC 9053 id **−7** and EdDSA with **−8**; the default build rejects these ids with `COSE_BAD_ALG` (`evidence/smoke-default-build.txt`). The code does not change. Needs the maintainers' approval (NOTES §4).
 - **Image:** `a10-cose-036:1` (`FROM pq-a09-env-c:1.0`). **Call:** `… a10-cose-036:1 adaptor /is/<isler> /c/COSE-036.<kosu>.jsonl`.
 - **Source:** `kopru.c` (libkopru.so; only the public wolfCOSE API), `adaptor.py` (JSON/I-O driver, same process via ctypes; a minimal CBOR reader only for the kid/number of signers).
 

@@ -1,8 +1,8 @@
 **/__pycache__
 **/*.pyc
-sonuclar
-kayit
-kaynak
+results
+records
+sources
 *.md
 SHA256SUMS
-tumunu_calistir.sh
+run_all.sh

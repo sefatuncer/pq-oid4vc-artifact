@@ -29,7 +29,7 @@
 - *Recommendation:* add an extra-signature rule to the L4 definition and write its relation to the three values of B1 (reject / ignore / verification falls through). If Oracle A reads (b), a divergence is expected in the 4 primary K5 rows (`T7K`, `T7K-ED25519`, `T7P`, `T7C`, `L4`) and in the K5 secondary rows.
 
 **N5 — The mapping has no K1–K3 counterparts for L4c.**
-- *Problem:* §2B item 6 defines Y_i with L4c for targets that support only compact serialization; but the §6.5 battery realises K1–K5 with General JSON, and `BATARYA-ESLEME.md` does not say which vectors give the behavioural criterion of L4c. It is unclear how F_K/F_T (which rest on K1–K3) are computed for a compact-only target.
+- *Problem:* §2B item 6 defines Y_i with L4c for targets that support only compact serialization; but the §6.5 battery realises K1–K5 with General JSON, and `BATTERY-MAPPING.md` does not say which vectors give the behavioural criterion of L4c. It is unclear how F_K/F_T (which rest on K1–K3) are computed for a compact-only target.
 - *Done:* the oracle gives the compact vectors under two issuer configurations (`L4-DERIVATION-B.md` §4).
 - *Recommendation:* L4c mapping: K1c ≈ `VPLUS_X` @`L4` (ACCEPT), K2c ≈ `VMINUS_X` @`L4` (REJECT), K3c ≈ `VPLUS_ES256` @`L4` (REJECT; migrated issuer), old-issuer check ≈ `VPLUS_ES256` @`P2` (ACCEPT); in the composite arm `CMP00` / `CMP01`.
 
@@ -56,7 +56,7 @@
 
 ## D — Clarity / statement
 
-**N14 — PR version.** `BATARYA-ESLEME.md` quotes PR v0.6 (`c239d423…`); Oracle B read PR v0.8 (`dcc84092…`). The items used (§6.5, §4.13, §4.20, §2B items 6–8) are identical to the quotes in the mapping.
+**N14 — PR version.** `BATTERY-MAPPING.md` quotes PR v0.6 (`c239d423…`); Oracle B read PR v0.8 (`dcc84092…`). The items used (§6.5, §4.13, §4.20, §2B items 6–8) are identical to the quotes in the mapping.
 
 **N15 — The "specification ambiguity" label of CMP10.** The normative Table 5 (pre-hash of ML-DSA-65-ES256 is SHA512) determines the decision (REJECT); the "SHA-256" in the IANA description of -04 §7.1.2 is the inner hash of the ECDSA component. The oracle did not count this as undetermined; it stays in the descriptive class D-S5 "wrong pre-hash".
 

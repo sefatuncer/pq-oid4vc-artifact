@@ -5,10 +5,10 @@ adapter contract sections 3.1 and 5, decisions in ../DECISIONS-PREFREEZE.md (D1-
 
 Inputs
   --runs DIR        measurement outputs <target>.r1.jsonl, <target>.r2.jsonl, <target>.r3.jsonl
-  --oracle FILE     merged oracle (../../oracle/birlesik/karar_v14.tsv)
+  --oracle FILE     merged oracle (../../oracle/merged/decisions_v14.tsv)
   --labels FILE     control labels (../CONTROL-LABELS.csv)
   --tk FILE         ML-DSA arm TK assignment (../TK-ASSIGNMENT.csv)
-  --inventory DIR   ../../inventory (CERCEVE.csv for release dates)
+  --inventory DIR   ../../inventory (FRAME.csv for release dates)
   --evidence FILE   optional: targets whose "not expressible" verdict satisfies the evidence rule (section 4.14)
 Outputs (in --out)
   decisions.csv     one row per (target, vector, policy, arm): decisions r1-r3, stable decision, oracle, match
@@ -24,7 +24,7 @@ from collections import defaultdict
 H = os.path.dirname(os.path.abspath(__file__))
 ap = argparse.ArgumentParser()
 ap.add_argument('--runs', default=os.path.join(H, '..', 'outputs', 'measurement'))
-ap.add_argument('--oracle', default=os.path.join(H, '..', '..', 'oracle', 'birlesik', 'karar_v14.tsv'))
+ap.add_argument('--oracle', default=os.path.join(H, '..', '..', 'oracle', 'merged', 'decisions_v14.tsv'))
 ap.add_argument('--labels', default=os.path.join(H, '..', 'CONTROL-LABELS.csv'))
 ap.add_argument('--tk', default=os.path.join(H, '..', 'TK-ASSIGNMENT.csv'))
 ap.add_argument('--inventory', default=os.path.join(H, '..', '..', 'inventory'))
@@ -59,9 +59,15 @@ labels = {r['target']: r['control_label'] for r in csv.DictReader(open(A.labels,
 tk_mldsa = {r['target']: r['tk_mldsa_primary'] for r in csv.DictReader(open(A.tk, encoding='utf-8'))} if os.path.exists(A.tk) else {}
 tk_mldsa_sens = {r['target']: r['tk_mldsa_sensitivity'] for r in csv.DictReader(open(A.tk, encoding='utf-8'))} if os.path.exists(A.tk) else {}
 oracle = {(r['vektor_id'], r['politika'], r['kol']): r for r in csv.DictReader(open(A.oracle, encoding='utf-8'), delimiter='\t')}
-evidence_ok = set()
+evidence_ok = set()                                                 # "not expressible" verdicts that are determined
+custom_code = {}                                                    # target -> lines of caller code (B4), decision D8
 if os.path.exists(A.evidence):
-    evidence_ok = {r['target'] for r in csv.DictReader(open(A.evidence, encoding='utf-8')) if r.get('rule_satisfied') == '1'}
+    for r in csv.DictReader(open(A.evidence, encoding='utf-8')):
+        if r.get('rule_satisfied') == '1' or r.get('outcome') == 'not-expressible':
+            evidence_ok.add(r['target'])
+        if r.get('outcome') == 'custom-code':                       # expressible only with caller code: level not raised
+            evidence_ok.add(r['target'])
+            custom_code[r['target']] = int(r['custom_code_lines']) if (r.get('custom_code_lines') or '').isdigit() else None
 
 def tk_of(target, kol, sensitivity=False):
     if kol == 'tedavi-ML-DSA-65':
@@ -167,7 +173,7 @@ def all_ok(checks):
 
 # ---------------------------------------------------------------- 3. per-target variables
 release = {}
-cer = os.path.join(A.inventory, 'CERCEVE.csv')
+cer = os.path.join(A.inventory, 'FRAME.csv')
 if os.path.exists(cer):
     for r in csv.DictReader(open(cer, encoding='utf-8')):
         release[r['id']] = r.get('son_surum_tarihi') or None
@@ -261,6 +267,8 @@ def target_vars(t, secondary=False):
     v['B3'] = 1 if any(d in ('accept-classical', 'accept-hybrid') for d in x5) else 0 if any(d == 'reject' for d in x5) else None
     if v['B3'] is None: v['belirsiz_nedenleri']['B3'] = 'uygulanamaz'
     v['B4_ozel_kod'] = 0; v['B4_satir'] = None                         # no custom verification code in any adapter
+    if t in custom_code:                                             # decision D8: expressible only with caller code
+        v['B4_ozel_kod'] = 1; v['B4_satir'] = custom_code[t]
     # B5: semantic class of the default configuration (P0 rows = library default)
     d1, d2, d3_, d7 = (get(t, b, 'P0', kol_k, lab) for b in ('T1K_both_valid', 'T2K_second_tampered', 'T3_stripped_to_ES256', 'T7K_plus_kayitsiz'))
     acc = lambda d: d in ('accept-classical', 'accept-hybrid')

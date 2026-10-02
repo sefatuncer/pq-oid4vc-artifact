@@ -6,7 +6,7 @@
 > - PR §4.13–§4.15 (L0–L5, B1–B6, evidence rule, indeterminate and adapter invalid), §6.4–§6.6 and §6.11;
 > - work plan Step 9 task 7/7a and Step 10.
 >
-> **Oracle:** `karar.tsv` (Oracle A) and the decisions of Oracle B. An A–B disagreement falls into the "indeterminate" class (PR §4.15).
+> **Oracle:** `decisions.tsv` (Oracle A) and the decisions of Oracle B. An A–B disagreement falls into the "indeterminate" class (PR §4.15).
 >
 > (Quotations from the pre-registration are translated from Turkish; quotations from specifications are verbatim.)
 
@@ -19,14 +19,14 @@ pre-registration v1.0 prevail. The runner interface is `experiment/runs/RUNNER.m
 
 | Body | Superseded by |
 |---|---|
-| Oracle: `karar.tsv` of Oracle A and the decisions of Oracle B | The merged oracle `experiment/oracle/birlesik/karar_v14.tsv` (2,202 rows; A–B disagreements are `indeterminate`, as before) |
+| Oracle: `decisions.tsv` of Oracle A and the decisions of Oracle B | The merged oracle `experiment/oracle/merged/decisions_v14.tsv` (2,202 rows; A–B disagreements are `indeterminate`, as before) |
 | Battery v1.2 (§2.1, the output example of §3, §4 item 3, §5.3, the COSE warning of §6) | Measurement battery **v1.4**: 230 vectors = the 200 vectors of v1.3 (byte-identical) + 30 ES384 counterparts (Amendment 10). v1.3 added 45 COSE vectors (the COSE warning, DECISION-NOTES N-0, no longer applies) and the legacy issuer `https://legacy-issuer.example` used by L4c (pre-registration Section 5.13; the first bullet of §5.3 no longer applies) |
 | Arms `kontrol-EdDSA`, `kontrol-Ed25519`, `tedavi-ML-DSA-65`, `tedavi-composite` (§2.2) and the two-label control rule (§8 item 4) | A fifth arm `kontrol-ES384` (X = ES384). Control label = first label in the order EdDSA, Ed25519, ES384 whose validity gate the target passes (Decision D4, Amendment 10); per target in `experiment/runs/CONTROL-LABELS.csv` |
 | Output path `outputs/r{1,2,3}/<target>.jsonl` and the full output object of §3 | `experiment/runs/outputs/measurement/<target>.<r1|r2|r3>.jsonl`. The mandatory fields are those of `RUNNER.md` §3. The adapter does not write `karar`: the analysis script `experiment/runs/analysis/analyze_c3.py` maps `sonuc_ham` to the decision with the table of §3.1. Fields that belong to TK2 (`tk`, `pq_servis_cagrilari`) are not used |
 | TK2 plug-in class (§3.1 "TK2 service log", §5.0, §6 items 2 and 4) and the preliminary assignment table of §6 | **TK2 out of scope** (2026-10-01): a target without native support is TK3. The assignment, made before the measurement by API review and validity gate only, is `experiment/runs/TK-ASSIGNMENT.csv` (JOSE-102: TK3 primary, TK1 sensitivity, Decision D2). Composite arm: TK3 for every target. T2 covers TK1 targets and is descriptive (Amendment 11) |
-| §4 item 1: pinning to `son_commit_sha` of `CERCEVE.csv`; historical baseline | Pinning to the versions of the build pretest, `experiment/environments/derleme-sonuc.csv` (Amendment 8, item 14). The historical baseline was removed (Amendment 11) |
+| §4 item 1: pinning to `son_commit_sha` of `FRAME.csv`; historical baseline | Pinning to the versions of the build pretest, `experiment/environments/build-results.csv` (Amendment 8, item 14). The historical baseline was removed (Amendment 11) |
 | §4 item 3: battery and oracle checked with `sha256sum -c` | `experiment/runs/run_measurement.sh` checks `docs/preregistration/FREEZE-SHA256SUMS` (battery v1.4, merged oracle, job list, adapter sources, analysis and statistics scripts) before the first run; any mismatch stops the measurement |
-| §4 timeouts | 60 s per vector inside the adapter process where the adapter implements it, and 30 min per target and run enforced by `experiment/runs/adapters/_tools/kos.sh`, which stops the container. Rows that a stopped run did not write are missing in that run, so the cell is unstable and becomes `indeterminate` (§4 repetition rule) |
+| §4 timeouts | 60 s per vector inside the adapter process where the adapter implements it, and 30 min per target and run enforced by `experiment/runs/adapters/_tools/run.sh`, which stops the container. Rows that a stopped run did not write are missing in that run, so the cell is unstable and becomes `indeterminate` (§4 repetition rule) |
 | §5 L ladder | Only Y_L4 (L4m or L4c) is confirmatory. L0–L3, L5 and B1–B6 are descriptive; L2 is inferred from the API path string and L3 is computed without the API-evidence condition (Amendment 11). A control-arm rejection with `hata_sinifi = alg-desteklenmiyor` counts as "not supported", never as agreement with an oracle `reject` (Amendment 11) |
 | §5.0 validity gate on SD-JWT targets with battery vectors | SD-JWT targets are gated with 16 SD-JWT-format vectors (`experiment/runs/vpm-sdjwt/`, Decision D1). SDJWT-002 does not use the result of its signature check: it is measured as is and flagged `integrity-failure` |
 | §2.2 and §3.2: per-target `MAPPING.md` | Targets with their own adapter folder and the four `_rs` targets have `MAPPING.md`. For the 15 targets of the shared adapters `_py`, `_node`, `_go`, `_jvm` and `_kt`, the policy → API mapping, the B6 format decisions and the exception mapping are fixed in the target's entry of the shared adapter source (part of the freeze package) |
@@ -45,7 +45,7 @@ pre-registration v1.0 prevail. The runner interface is `experiment/runs/RUNNER.m
 
 ### 2.1 Vector
 
-- `experiment/vector-generator/vektorler/v1.2/<family>/<id>.<jws|sdjwt|json>` and the MANIFEST entry.
+- `experiment/vector-generator/vectors/v1.2/<family>/<id>.<jws|sdjwt|json>` and the MANIFEST entry.
 - **`dogrulama_girdileri`:** `jwks`/`jwk`/`kid`, `guven_capalari`, `simdi` = 1790003700, `kb_aud`/`kb_nonce`, `htm`/`htu`, `beklenen_origin`.
 - **Clock:** the adapter supplies the time as `simdi`: a fake clock or the "current time" parameter of the API. On a target that cannot do this, vectors containing `exp` are still valid (exp = 1821536000). The KB-JWT and DPoP `iat` values, however, fall outside the validity window with the real clock. In that case `indeterminate` is written with `hata_sinifi = zaman`, and a note is added per target.
 
@@ -134,12 +134,12 @@ pre-registration v1.0 prevail. The runner interface is `experiment/runs/RUNNER.m
   - JVM/.NET warm-up is outside the measurement. The adapter processes all vectors in sequence in one process; the time is measured per vector.
 - **Repetition:** 3 runs (r1–r3), each in a fresh container. A cell value is valid only if 3/3 are the same; otherwise "unstable" → indeterminate (PR §6.11).
 - **Version pinning:**
-  1. The target is pinned to the `son_commit_sha` of `CERCEVE.csv` at the time of the freeze (CRITERIA §7 item 6).
+  1. The target is pinned to the `son_commit_sha` of `FRAME.csv` at the time of the freeze (CRITERIA §7 item 6).
      - The environment work (interim record of 25.09) recorded that for many targets the release tag differs from this commit.
      - **cose-lib 4.8.2 has no ML-DSA source; HEAD has it.**
      - **Proposed rule:** since the TK assignment was made according to the API at the commit the inventory relies on, the measurement is made with the target built from that commit. The release version and its commit are recorded separately. The historical baseline (PR §6.12) goes back from the release versions. The decision lies with the maintainers (DECISION-NOTES N-7).
   2. The digest of the lock file, the image digest and the SHA-256 of the adapter code are written to every output row.
-  3. The battery (v1.2, anchor 7) and the oracle (SHA-256 of `karar.tsv`) are checked with `sha256sum -c` before the first measurement. On a mismatch the measurement does not start (work plan Step 10.3).
+  3. The battery (v1.2, anchor 7) and the oracle (SHA-256 of `decisions.tsv`) are checked with `sha256sum -c` before the first measurement. On a mismatch the measurement does not start (work plan Step 10.3).
 
 ## 5. L-level determination protocol (PR §4.13; L4m/L4c PR §2B item 6)
 
@@ -153,7 +153,7 @@ The L level is determined **in the control arm** (X = EdDSA, Ed25519 if needed; 
 
 ### 5.1 API scan
 
-- Documented options, type definitions and public exports are scanned. Example command: `rg -n "algorithms|allowlist|RegisterJws|register_algorithm|required|all|any" <source>`. The command and its output are written to `evidence/<target>/api-tarama.txt` (PR §4.14).
+- Documented options, type definitions and public exports are scanned. Example command: `rg -n "algorithms|allowlist|RegisterJws|register_algorithm|required|all|any" <source>`. The command and its output are written to `<target>/evidence/api-scan.txt` (PR §4.14).
 - For each L level the candidate mechanism is listed:
   - global allow-list,
   - per-call allow-list,
@@ -216,7 +216,7 @@ If a condition is missing, the result is **indeterminate**.
 ## 6. Treatment arm assignment: TK1 / TK2 / TK3 (PR §2B item 7; CRITERIA §5.5)
 
 **Rule (separately per arm: ML-DSA-65 arm and composite arm):**
-1. **TK1 native:** the documented public API at the pinned commit verifies the algorithm natively. Evidence: a row with a pinned commit in `destek_kanitlari.csv` or a documentation line.
+1. **TK1 native:** the documented public API at the pinned commit verifies the algorithm natively. Evidence: a row with a pinned commit in `support_evidence.csv` or a documentation line.
    - The V± gate passes in that arm: `VPLUS_ML-DSA-65` / `VMINUS_ML-DSA-65` or `CMP00` / `CMP01`.
    - The runtime condition is met in a Linux container (e.g. PHP 8.4 + OpenSSL 3.5; .NET MLDsa).
 2. **TK2 plug-in:** no native support, but a documented public extension point exists: algorithm registration, verifier callback or a Signer/Verifier interface. The local PQ verification service in `experiment/signer` can be plugged into this point without changing the library code.
@@ -226,7 +226,7 @@ If a condition is missing, the result is **indeterminate**.
 4. **Priority:** TK1 > TK2 > TK3. If the plug-in requires changing the library code, it does not count as TK2.
 5. **Freeze:** the assignment is made before the measurement; only with API review and the V± gate (not with behaviour measurement). Targets marked "to be reviewed" are assigned to TK2 or TK3 by API review while the adapter is written (SUMMARY P5). The result is written to `tk-atamasi.csv` with a justification row.
 
-**Preliminary assignment (from the inventory; `SUMMARY.md` §2 and §3.2, `destek_kanitlari.csv`). Not binding; frozen with rule 5.**
+**Preliminary assignment (from the inventory; `SUMMARY.md` §2 and §3.2, `support_evidence.csv`). Not binding; frozen with rule 5.**
 
 | Target | ML-DSA-65 arm | composite arm | Basis and note |
 |---|---|---|---|
@@ -256,7 +256,7 @@ If a condition is missing, the result is **indeterminate**.
 | Delegating target | Verification delegated to | Inside n? | Source |
 |---|---|---|---|
 | SDJWT-021 WalletFramework.SdJwtVc | JOSE-001 Microsoft IdentityModel (`JwtSecurityTokenHandler`) | **yes: delegation set** | SUMMARY §4 |
-| SDJWT-001 vck | Signum `indispensable-josef/cosef` (same project as COSE-001) | candidate (environment 25.09) | note in `experiment/environments/derleme-sonuc.csv` |
+| SDJWT-001 vck | Signum `indispensable-josef/cosef` (same project as COSE-001) | candidate (environment 25.09) | note in `experiment/environments/build-results.csv` |
 | SDJWT-018 sd-jwt-python | jwcrypto | no (jwcrypto outside n) | SUMMARY §4 |
 | REF-003 EUDI verifier | eudi-lib-jvm-sdjwt-kt + Nimbus | outside n (REF) | SUMMARY §2.4 |
 | REF-011 Credo | SDJWT-015 identity-common-ts (`@openid4vc/*`) | REF outside n; target inside n | SUMMARY §4 |
@@ -270,7 +270,7 @@ If a condition is missing, the result is **indeterminate**.
 ## 8. Rules of task 7a (PR §2D items 1–2, §2E item 3)
 
 1. **Key path:** the verification key is given **in all arms** with the documented API of the target (JWK/JWKS or a direct key object). The **same path** is used across arms; the field `anahtar_yolu` is recorded in every row. For a target that uses different paths across arms, the control–treatment comparison is considered invalid.
-2. **`x5c` only in the X5C vectors:** in X5C01–X5C10 the key is resolved with x5c and the trust anchors (`anahtarlar/v1/pki/root-ec.pem`, `root-ml.pem`). In the other vectors the key is given with the documented API even if the header contains x5c. If the target cannot ignore x5c, it is still correct, because the chains in the battery are valid. This behaviour is noted.
+2. **`x5c` only in the X5C vectors:** in X5C01–X5C10 the key is resolved with x5c and the trust anchors (`keys/v1/pki/root-ec.pem`, `root-ml.pem`). In the other vectors the key is given with the documented API even if the header contains x5c. If the target cannot ignore x5c, it is still correct, because the chains in the battery are valid. This behaviour is noted.
 3. **Composite X.509 is out of scope:** composite objects are resolved with kid/JWKS and labelled "**HAIP §6.1.1 deviation**". K8 and K9 are run in the composite arm with X5C04/X5C07 with an ML-DSA-65 leaf (PR §2F item 4). In these rows the oracle instantiates the policy with X = ML-DSA-65.
 4. **Control label:**
    - The primary label is `EdDSA`.

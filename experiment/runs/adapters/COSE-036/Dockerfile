@@ -1,6 +1,6 @@
 # a10-cose-036:1 — wolfCOSE @ f907071b10127f3ae2dd7719749a91b039ff04a1 (no release → frame son_commit_sha; PR item 14)
 # wolfSSL v5.9.2-stable (ac01707f552c) with the README "Full Build" flags (--enable-mldsa included); the same as the environment record
-# (experiment/environments/hedefler/COSE-036/kur.sh). Anonymous git from GitHub; GPL-3.0: only measured, not distributed.
+# (experiment/environments/targets/COSE-036/install.sh). Anonymous git from GitHub; GPL-3.0: only measured, not distributed.
 # Measurement configuration: the documented build macro WOLFCOSE_ENABLE_DEPRECATED_ALGS (docs/Macros.md "Deprecated Algorithm IDs
 # (RFC 9864)"; Makefile EXTRA_CFLAGS hook) — the battery carries ES256 with the RFC 9053 id -7 and EdDSA with -8. The code does not change.
 FROM pq-a09-env-c:1.0

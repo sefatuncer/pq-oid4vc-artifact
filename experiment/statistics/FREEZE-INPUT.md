@@ -6,15 +6,15 @@
 
 **Basis:** PR `00-on-kayit/ON-KAYIT-TASLAK.md` draft v0.6 (anchor 5 `facbf26`): §2B, §2D-A, §2E, §3.7, §6, Appendix A, Appendix C.
 
-**Open decisions:** the interpretations that the maintainers must decide before the freeze are in `DECISION-NOTES.md` N-1…N-12. These decisions may change the constants in `betikler/c3istat/yapilandirma.py`. If they change, the tests are re-run and the digests in this file are renewed.
+**Open decisions:** the interpretations that the maintainers must decide before the freeze are in `DECISION-NOTES.md` N-1…N-12. These decisions may change the constants in `scripts/c3istat/yapilandirma.py`. If they change, the tests are re-run and the digests in this file are renewed.
 
 ## 1. Files to be frozen and their SHA-256
 
-Source: `SHA256SUMS`; produced by step 4 of `tumunu_calistir.sh`. To verify, run `sha256sum -c SHA256SUMS` in this folder.
+Source: `SHA256SUMS`; produced by step 4 of `run_all.sh`. To verify, run `sha256sum -c SHA256SUMS` in this folder.
 
 SHA-256 of the file `SHA256SUMS` itself: `513ac318770c2f7199fd878d4a6eb9fff8ec2cfcf01adeb6ccabec8e4f06f370`
 
-(The values below are those of 25.09.2026, before the files were renamed and translated for this release; the current list is `SHA256SUMS`, and `docs/INTEGRITY.md` maps the old values to the new ones.)
+(The values and file names below are those of 25.09.2026, before the files were translated and renamed for this release; the current list is `SHA256SUMS`. `docs/INTEGRITY.md` maps the old values to the new ones and `docs/PATHS.tsv` the old names: `betikler/` is now `scripts/`, `sentetik-testler/` `synthetic-tests/`, `veri/` `data/`, `kaynak/` `sources/`, `tumunu_calistir.sh` `run_all.sh`.)
 
 | File | SHA-256 |
 |---|---|
@@ -50,17 +50,17 @@ SHA-256 of the file `SHA256SUMS` itself: `513ac318770c2f7199fd878d4a6eb9fff8ec2c
 | `kaynak/NEWCOMBE-KAYNAK.md` (now `kaynak/NEWCOMBE-SOURCE.md`) | `a9eaf810614fd15fe25ec592f30dd1c513887d57097977459ef6f2d5b1500e35` |
 
 **NOT in the freeze package:**
-- `DECISION-NOTES.md`, this file and `sonuclar/` (evidence record; summaries in §6).
-- `kayit/` (Docker lists, build log).
+- `DECISION-NOTES.md`, this file and `results/` (evidence record; summaries in §6).
+- `records/` (Docker lists, build log).
 
 ## 2. Image
 
 | Item | Value |
 |---|---|
 | Name | `pq-a09-analiz:1.0` |
-| Image id | `sha256:f7bc4aa39c305a85d624de8ff9e75f25aa5fec943d035c664fbc2c5243c45966` (build of 25.09.2026; `kayit/imaj_kimligi.txt`) |
+| Image id | `sha256:f7bc4aa39c305a85d624de8ff9e75f25aa5fec943d035c664fbc2c5243c45966` (build of 25.09.2026; `records/image_id.txt`) |
 | Base | `python:3.11-slim@sha256:9534e5a8e315485d4061ed659af0fd78a284c015f9b73661b41d6bab25604534` (Python 3.11.16; official Docker Hub; the digest used in the project) |
-| Packages | `betikler/requirements.txt`: numpy 2.4.6, scipy 1.17.1, statsmodels 0.15.0 + the full dependency closure (pandas 3.0.6, patsy 1.0.3, formulaic 1.2.2, interface-meta 2.0.1, narwhals 2.26.0, packaging 26.3, python-dateutil 2.9.0.post0, six 1.17.0, typing-extensions 4.16.0, wrapt 2.4.1). All from PyPI, version and SHA-256 pinned; `pip install --require-hashes --only-binary=:all: --no-deps` + `pip check` |
+| Packages | `scripts/requirements.txt`: numpy 2.4.6, scipy 1.17.1, statsmodels 0.15.0 + the full dependency closure (pandas 3.0.6, patsy 1.0.3, formulaic 1.2.2, interface-meta 2.0.1, narwhals 2.26.0, packaging 26.3, python-dateutil 2.9.0.post0, six 1.17.0, typing-extensions 4.16.0, wrapt 2.4.1). All from PyPI, version and SHA-256 pinned; `pip install --require-hashes --only-binary=:all: --no-deps` + `pip check` |
 | Version gate | The build fails if Python 3.11.16 and the numpy/scipy/statsmodels versions differ from the expected ones |
 | Run | `--rm --memory=4g --network none`; container names `pq-a09-analiz-*` |
 
@@ -77,7 +77,7 @@ At the freeze the maintainers build the image once and write its id into the pac
 |---|---|---|---|
 | Bootstrap | **20260927** | `bootstrap.kume_bootstrap_saf/numpy`. Every bootstrap call (scope: all / K / T) starts with a new `random.Random(20260927)` | PR §6.9, Appendix C |
 | Other Appendix C seeds (20260924–26, 20260928–29) | — | **Not used** in the statistics scripts (generator, mutation, sampling, differential test, overhead) | — |
-| Test seeds | 910001–910005, 910010 | Synthetic test data only (`test_iki_uygulama.py`, `ornek_veri_uret.py`). Not an analysis seed | — |
+| Test seeds | 910001–910005, 910010 | Synthetic test data only (`test_iki_uygulama.py`, `make_sample_data.py`). Not an analysis seed | — |
 
 **Full definition of the random stream (not in the PR; decision notes N-7):**
 - `rng = random.Random(20260927)` (Mersenne Twister).
@@ -90,11 +90,11 @@ Python guarantees the stability of the `random()` sequence; therefore the defini
 
 ## 4. Traceability: PR item → implementation → test
 
-A = `betikler/c3istat/kesin.py`: standard library only, exact fractions and Decimal.
-B = `betikler/c3istat/referans.py`: scipy/statsmodels/numpy.
-Pipeline = `betikler/c3istat/analiz.py`.
+A = `scripts/c3istat/kesin.py`: standard library only, exact fractions and Decimal.
+B = `scripts/c3istat/referans.py`: scipy/statsmodels/numpy.
+Pipeline = `scripts/c3istat/analiz.py`.
 
-| PR item | Definition | A / B | Pipeline | Tests (`sentetik-testler/`) |
+| PR item | Definition | A / B | Pipeline | Tests (`synthetic-tests/`) |
 |---|---|---|---|---|
 | §2B.5, §3.7, §6.6 T1, Appendix A | One-sided exact binomial (lower), X = Σ Y_L4. c(n_eff) = max{c : P(X ≤ c) ≤ 0.05}, u = n_eff − c. X ≤ c support, X ≥ u falsification, in between undetermined | `kesin.binom_alt_p`, `kesin.kritik_degerler` / `referans.binom_alt_p`, `referans.kritik_degerler` | `t1_karari`, `_t1` | `test_ek_a` (EkATablosu, N31, GenelKural); `test_sinir.T1Karari`; `test_iki_uygulama.test_binom_p_degerleri`, `test_kritik_degerler` |
 | §6.3 | n_eff = included − adapter invalid − undetermined. If n_eff < 20, descriptive only (Wilson) | — | `analiz_et`, `t1_karari` | `test_sinir.T1Karari` (n_eff_20_alti, n_eff_degisimi, butun_hedefler_belirsiz); `test_uctan_uca.H6Hukmu.test_tanimlayici` |
@@ -144,9 +144,9 @@ Pipeline = `betikler/c3istat/analiz.py`.
    - `karsilastirma.json` (two-implementation comparison of every quantity).
 5. Exit codes: 0 done · 2 the two implementations disagree (analysis invalid) · 3 the input could not be validated (`dogrulama_hatalari.json`).
 
-## 6. Validation evidence (25.09.2026; `sonuclar/`)
+## 6. Validation evidence (25.09.2026; `results/`)
 
-**Synthetic test suite** run in two fresh containers; the `test_ozeti.json` of the two runs is byte-identical:
+**Synthetic test suite** run in two fresh containers; the `test_summary.json` of the two runs is byte-identical:
 - test methods **115/115**, sub-tests **729/729**,
 - two implementations **56,269/56,269 cases**, **90,058/90,058 quantities**. Largest deviations per family:
   - binomial 2.8e-16; Fisher 3.3e-16; McNemar 4.4e-16;
@@ -156,8 +156,8 @@ Pipeline = `betikler/c3istat/analiz.py`.
 
 **Appendix A:** all 21 rows n = 20…40 were reproduced exactly with both implementations (c, u, P(X ≤ c) to 4 decimals). **n = 31:** c = 10, u = 21, P(X ≤ 10) = 75973189/2147483648 = 0.035378 (PR: 0.0354).
 
-**Published examples (Y1–Y7):** reproduced with both implementations. The source is secondary; the primary text was not accessible (`kaynak/NEWCOMBE-SOURCE.md`).
+**Published examples (Y1–Y7):** reproduced with both implementations. The source is secondary; the primary text was not accessible (`sources/NEWCOMBE-SOURCE.md`).
 
 **Determinism:**
-- The example synthetic analysis (`sentetik-testler/veri/ornek_n31_sentetik.json`) was run in two fresh containers; `sonuc.json`, `sonuc.md` and `karsilastirma.json` byte-identical. SHA-256 of `sonuc.json`: `388b48a27049b3d52ab559ab3c212fcafeb8f2e02f56ffe45e9ace18ce1931d4`.
+- The example synthetic analysis (`synthetic-tests/data/sample_n31_synthetic.json`) was run in two fresh containers; `sonuc.json`, `sonuc.md` and `karsilastirma.json` byte-identical. SHA-256 of `sonuc.json`: `388b48a27049b3d52ab559ab3c212fcafeb8f2e02f56ffe45e9ace18ce1931d4`.
 - The run with CSV input is identical to the JSON run except for the `girdi` metadata block.

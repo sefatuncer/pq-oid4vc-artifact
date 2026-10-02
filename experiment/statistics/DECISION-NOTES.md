@@ -2,7 +2,7 @@
 
 **Rule:** the PR file was not touched. The recommendations below are submitted to the maintainers' decision before the freeze.
 
-**Applied reading:** written in each item. In `betikler/c3istat/yapilandirma.py` the relevant constant carries its N number. If a decision changes, the constant is changed, `tumunu_calistir.sh` is re-run, and `SHA256SUMS` and `FREEZE-INPUT.md` are renewed.
+**Applied reading:** written in each item. In `scripts/c3istat/yapilandirma.py` the relevant constant carries its N number. If a decision changes, the constant is changed, `run_all.sh` is re-run, and `SHA256SUMS` and `FREEZE-INPUT.md` are renewed.
 
 **Numbers:** all numbers here were computed by script in the image `pq-a09-analiz:1.0` (`c3istat.kesin`).
 
@@ -33,7 +33,7 @@
 
 ### N-3 — Newcombe method 10, paired: correlation correction φ\* and source limitation
 - **PR status:** §6.7 says only "Newcombe CI (paired, method 10)".
-- **Source finding** (`kaynak/NEWCOMBE-SOURCE.md`): according to the open-access secondary source (ratesci, CRAN; commit `7ad93a58…`), method 10 uses the Wilson-hybrid interval **with Newcombe's corrected correlation**:
+- **Source finding** (`sources/NEWCOMBE-SOURCE.md`): according to the open-access secondary source (ratesci, CRAN; commit `7ad93a58…`), method 10 uses the Wilson-hybrid interval **with Newcombe's corrected correlation**:
   - if ad − bc > 0, φ\* = max(ad − bc − N/2, 0)/√(efgh); otherwise φ̂; if the denominator is 0, φ = 0.
 - **Discriminating evidence** (by script):
   - for (20, 12, 2, 16), φ\* gives the published method 10 value: (0.0562; 0.3292). The plain φ̂ gives the "method 8" value: (0.0618; 0.3242).
@@ -45,7 +45,7 @@
   - Assurance has three layers: agreement of the two implementations on 8,814 cases; equality with the independent `newcomb` interval of statsmodels at φ = 0 on 4,844 cases; boundary cases derivable by hand.
 - **Recommendation:**
   - (a) Write the φ\* formula explicitly into PR v1.0 §6.7.
-  - (b) **Human step (optional):** compare once, with institutional access, the method 10 column of Newcombe 1998b Table II and the examples of 1998a (independent, 11 methods). The values can be added to `sentetik-testler/veri/yayimlanmis_ornekler.json` with the label "primary"; the test runs automatically.
+  - (b) **Human step (optional):** compare once, with institutional access, the method 10 column of Newcombe 1998b Table II and the examples of 1998a (independent, 11 methods). The values can be added to `synthetic-tests/data/published_examples.json` with the label "primary"; the test runs automatically.
 
 ### N-4 — Scope of T3: COSE and TK3
 - **COSE:** §6.6 says T3 is "on SD-JWT-specific and general JOSE targets".
@@ -150,6 +150,6 @@
    - Image `pq-a09-analiz:1.0` (`sha256:f7bc4aa3…`).
    - The old untagged image left from the first build disappeared by itself; there is no `pq-a09-analiz-*` container any more.
    - **The build cache was not cleaned:** `docker builder prune` is a prune command and forbidden by the project rule. The maintainers decide on the clean-up.
-   - The image lists at start and end are in `kayit/`. No other image or container was touched.
+   - The image lists at start and end are in `records/`. No other image or container was touched.
 6. **Time:** the test suite takes 95–112 s in one container. Most of it is the exhaustive two-implementation sweeps: all 2×2 tables, N ≤ 20.
 7. **Privacy:** the only external requests were: OpenAlex (anonymous, no `mailto`), the GitHub API and raw (anonymous, no credentials), the Wiley link (403), CiteSeerX (Wayback 429), Scholar Gateway (abstract only) and PyPI (package download). None contained an e-mail address or personal data. Git was not used.

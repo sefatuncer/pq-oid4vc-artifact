@@ -6,7 +6,7 @@
 #   * Runs are made without network (--network none); there are no external requests.
 # Build:  docker build -t pq-a09-analiz:1.0 experiment/statistics
 # Test:   docker run --rm --name pq-a09-analiz-test --memory=4g --network none -v <results>:/cikti \
-#           pq-a09-analiz:1.0 python /opt/c3istat/sentetik-testler/calistir.py --cikti /cikti/test
+#           pq-a09-analiz:1.0 python /opt/c3istat/synthetic-tests/run_tests.py --cikti /cikti/test
 # Analysis: docker run --rm --name pq-a09-analiz-kosu --memory=4g --network none -v <input-folder>:/girdi:ro \
 #           -v <output-folder>:/cikti pq-a09-analiz:1.0 python -m c3istat analiz --girdi /girdi/<file> --cikti /cikti
 FROM python:3.11-slim@sha256:9534e5a8e315485d4061ed659af0fd78a284c015f9b73661b41d6bab25604534
@@ -27,12 +27,12 @@ ENV PIP_NO_CACHE_DIR=1 \
     LC_ALL=C.UTF-8 \
     TZ=UTC
 
-COPY betikler/requirements.txt /opt/c3istat/requirements.txt
+COPY scripts/requirements.txt /opt/c3istat/requirements.txt
 RUN pip install --require-hashes --only-binary=:all: --no-deps -r /opt/c3istat/requirements.txt \
  && pip check
 
-COPY betikler/c3istat /opt/c3istat/c3istat
-COPY sentetik-testler /opt/c3istat/sentetik-testler
+COPY scripts/c3istat /opt/c3istat/c3istat
+COPY synthetic-tests /opt/c3istat/synthetic-tests
 
 # Version gate: the build FAILS if the versions are not the expected ones
 RUN python -c "import sys; assert sys.version_info[:3] == (3, 11, 16), sys.version" \

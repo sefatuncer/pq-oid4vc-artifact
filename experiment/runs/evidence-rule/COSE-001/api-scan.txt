@@ -1,0 +1,173 @@
+# API scan, COSE-001 Signum indispensable-cosef 3.26.0 (commit 84f24c5b99829874482cb6940a54304b4b590178)
+# Date (UTC): 2026-10-02T23:15:54Z
+# Sources: (a) at.asitplus.signum:indispensable-cosef:3.26.0 resolved by Gradle 9.6.1 in pq-a09-env-jvm:1.0;
+#              indispensable-cosef-jvm-3.26.0.jar sha256 ab78939913f1ee87a3784822163d82c05c7be5b644f87e2ddb3cb3b364bf3bd0 (= installation record)
+#          (b) https://codeload.github.com/a-sit-plus/signum/tar.gz/84f24c5b99829874482cb6940a54304b4b590178 (sha256 008438bb210956235abf86abd50ad2d8f4b30ecdccaf2ef1ff31f2cd3b2a32aa)
+# 'rg' is not installed on the host; 'grep -rnE' is used with the same patterns.
+
+$ ls repo/indispensable-cosef/src
+commonMain/
+commonTest/
+jvmTest/
+
+$ grep -rniE "verif|allow|required|policy|issuer|trust" repo/indispensable-cosef/src/commonMain repo/indispensable-cosef/src/jvmMain 2>/dev/null
+repo/indispensable-cosef/src/commonMain/kotlin/at/asitplus/signum/indispensable/cosef/CborWebToken.kt:22:     * The "iss" (issuer) claim has the same meaning and processing rules as
+repo/indispensable-cosef/src/commonMain/kotlin/at/asitplus/signum/indispensable/cosef/CborWebToken.kt:29:    val issuer: String? = null,
+repo/indispensable-cosef/src/commonMain/kotlin/at/asitplus/signum/indispensable/cosef/CborWebToken.kt:109:        return "CborWebToken(issuer=$issuer," +
+repo/indispensable-cosef/src/commonMain/kotlin/at/asitplus/signum/indispensable/cosef/CborWebToken.kt:126:        if (issuer != other.issuer) return false
+repo/indispensable-cosef/src/commonMain/kotlin/at/asitplus/signum/indispensable/cosef/CborWebToken.kt:145:        var result = issuer?.hashCode() ?: 0
+repo/indispensable-cosef/src/commonMain/kotlin/at/asitplus/signum/indispensable/cosef/CoseAlgorithm.kt:95:            Signature(-9, SignatureAlgorithm.ECDSA(Digest.SHA256, requiredCurve = ECCurve.SECP_256_R_1))
+repo/indispensable-cosef/src/commonMain/kotlin/at/asitplus/signum/indispensable/cosef/CoseAlgorithm.kt:102:            Signature(-51, SignatureAlgorithm.ECDSA(Digest.SHA384, requiredCurve = ECCurve.SECP_384_R_1))
+repo/indispensable-cosef/src/commonMain/kotlin/at/asitplus/signum/indispensable/cosef/CoseAlgorithm.kt:109:            Signature(-52, SignatureAlgorithm.ECDSA(Digest.SHA512, requiredCurve = ECCurve.SECP_521_R_1))
+repo/indispensable-cosef/src/commonMain/kotlin/at/asitplus/signum/indispensable/cosef/CoseAlgorithm.kt:293:            Digest.SHA256 -> when (this.requiredCurve) {
+repo/indispensable-cosef/src/commonMain/kotlin/at/asitplus/signum/indispensable/cosef/CoseAlgorithm.kt:296:                else -> throw UnsupportedCryptoException("ECDSA with ${this.digest} and $requiredCurve is unsupported by COSE")
+repo/indispensable-cosef/src/commonMain/kotlin/at/asitplus/signum/indispensable/cosef/CoseAlgorithm.kt:299:            Digest.SHA384 -> when (this.requiredCurve) {
+repo/indispensable-cosef/src/commonMain/kotlin/at/asitplus/signum/indispensable/cosef/CoseAlgorithm.kt:302:                else -> throw UnsupportedCryptoException("ECDSA with ${this.digest} and $requiredCurve is unsupported by COSE")
+repo/indispensable-cosef/src/commonMain/kotlin/at/asitplus/signum/indispensable/cosef/CoseAlgorithm.kt:305:            Digest.SHA512 -> when (this.requiredCurve) {
+repo/indispensable-cosef/src/commonMain/kotlin/at/asitplus/signum/indispensable/cosef/CoseAlgorithm.kt:308:                else -> throw UnsupportedCryptoException("ECDSA with ${this.digest} and $requiredCurve is unsupported by COSE")
+repo/indispensable-cosef/src/commonMain/kotlin/at/asitplus/signum/indispensable/cosef/CoseBytes.kt:16: * It represents the bytes of the object as it has been transferred, i.e. useful for signature/hmac verification.
+repo/indispensable-cosef/src/commonMain/kotlin/at/asitplus/signum/indispensable/cosef/CoseHeader.kt:32:     * message is required to understand. Header parameters defined in this document do not need to be included, as they
+repo/indispensable-cosef/src/commonMain/kotlin/at/asitplus/signum/indispensable/cosef/CoseHeader.kt:96:     * still required to do path building but that a candidate path is proposed in this header parameter.
+repo/indispensable-cosef/src/commonMain/kotlin/at/asitplus/signum/indispensable/cosef/CoseHeader.kt:98:     * This header parameter allows for a single X.509 certificate or a chain of X.509 certificates to be carried in
+repo/indispensable-cosef/src/commonMain/kotlin/at/asitplus/signum/indispensable/cosef/CoseKey.kt:38: * of human communication lack the fluid semantics required to truly capture the unique challenges of parsing COSE keys
+repo/indispensable-cosef/src/commonMain/kotlin/at/asitplus/signum/indispensable/cosef/CoseKeyOperation.kt:15:    VERIFY(2),
+repo/indispensable-cosef/src/commonMain/kotlin/at/asitplus/signum/indispensable/cosef/CoseKeyOperation.kt:23:    MAC_VERIFY(10);
+
+$ grep -rnE "^(data |sealed |abstract |open )?(class|interface|object|fun) |^\s+fun [a-zA-Z<]" repo/indispensable-cosef/src/commonMain/kotlin/at/asitplus/signum/indispensable/cosef/CoseSigned.kt repo/indispensable-cosef/src/commonMain/kotlin/at/asitplus/signum/indispensable/cosef/CoseBytes.kt repo/indispensable-cosef/src/commonMain/kotlin/at/asitplus/signum/indispensable/cosef/CoseInput.kt
+repo/indispensable-cosef/src/commonMain/kotlin/at/asitplus/signum/indispensable/cosef/CoseSigned.kt:34:data class CoseSigned<P : Any?> internal constructor(
+repo/indispensable-cosef/src/commonMain/kotlin/at/asitplus/signum/indispensable/cosef/CoseSigned.kt:45:    fun prepareCoseSignatureInput(
+repo/indispensable-cosef/src/commonMain/kotlin/at/asitplus/signum/indispensable/cosef/CoseSigned.kt:50:    fun serialize(parameterSerializer: KSerializer<P>): ByteArray = coseCompliantSerializer
+repo/indispensable-cosef/src/commonMain/kotlin/at/asitplus/signum/indispensable/cosef/CoseSigned.kt:89:        fun <P : Any> deserialize(parameterSerializer: KSerializer<P>, it: ByteArray): KmmResult<CoseSigned<P>> =
+repo/indispensable-cosef/src/commonMain/kotlin/at/asitplus/signum/indispensable/cosef/CoseSigned.kt:98:        fun <P : Any> create(
+repo/indispensable-cosef/src/commonMain/kotlin/at/asitplus/signum/indispensable/cosef/CoseSigned.kt:122:        fun <P : Any> prepare(
+repo/indispensable-cosef/src/commonMain/kotlin/at/asitplus/signum/indispensable/cosef/CoseBytes.kt:25:data class CoseBytes internal constructor(
+repo/indispensable-cosef/src/commonMain/kotlin/at/asitplus/signum/indispensable/cosef/CoseBytes.kt:66:    fun serialize(): ByteArray = coseCompliantSerializer.encodeToByteArray(this)
+repo/indispensable-cosef/src/commonMain/kotlin/at/asitplus/signum/indispensable/cosef/CoseBytes.kt:96:        fun deserialize(it: ByteArray): KmmResult<CoseBytes> = catching {
+repo/indispensable-cosef/src/commonMain/kotlin/at/asitplus/signum/indispensable/cosef/CoseInput.kt:15:data class CoseInput(
+repo/indispensable-cosef/src/commonMain/kotlin/at/asitplus/signum/indispensable/cosef/CoseInput.kt:26:    fun serialize() = coseCompliantSerializer.encodeToByteArray(this)
+repo/indispensable-cosef/src/commonMain/kotlin/at/asitplus/signum/indispensable/cosef/CoseInput.kt:62:        fun deserialize(it: ByteArray) = catching {
+
+$ grep -rnE "\"Signature1?\"|COSE_Sign\b" repo/indispensable-cosef/src/commonMain   # COSE_Sign support?
+repo/indispensable-cosef/src/commonMain/kotlin/at/asitplus/signum/indispensable/cosef/CoseBytes.kt:38:    ): ByteArray = toCoseInput(externalAad, detachedPayload, "Signature1")
+repo/indispensable-cosef/src/commonMain/kotlin/at/asitplus/signum/indispensable/cosef/CoseHeader.kt:22:     * construction (e.g., COSE_Sign and COSE_Mac0). This authentication can be done either by placing the header
+repo/indispensable-cosef/src/commonMain/kotlin/at/asitplus/signum/indispensable/cosef/CoseSigned.kt:128:            contextString = "Signature1",
+
+$ grep -nE "data object (ES|PS|RS|Ed)" repo/indispensable-cosef/src/commonMain/kotlin/at/asitplus/signum/indispensable/cosef/CoseAlgorithm.kt   # signature algorithms (no EdDSA)
+91:        data object ES256 : Signature(-7, SignatureAlgorithm.ECDSAwithSHA256)
+94:        data object ESP256 :
+98:        data object ES384 : Signature(-35, SignatureAlgorithm.ECDSAwithSHA384)
+101:        data object ESP384 :
+105:        data object ES512 : Signature(-36, SignatureAlgorithm.ECDSAwithSHA512)
+108:        data object ESP512 :
+113:        data object PS256 : Signature(-37, SignatureAlgorithm.RSAwithSHA256andPSSPadding)
+116:        data object PS384 : Signature(-38, SignatureAlgorithm.RSAwithSHA384andPSSPadding)
+119:        data object PS512 : Signature(-39, SignatureAlgorithm.RSAwithSHA512andPSSPadding)
+123:        data object RS256 : Signature(-257, SignatureAlgorithm.RSAwithSHA256andPKCS1Padding)
+126:        data object RS384 : Signature(-258, SignatureAlgorithm.RSAwithSHA384andPKCS1Padding)
+129:        data object RS512 : Signature(-259, SignatureAlgorithm.RSAwithSHA512andPKCS1Padding)
+133:        data object RS1 : Signature(-65535, SignatureAlgorithm.RSA(Digest.SHA1, RSAPadding.PKCS1))
+
+$ sed -n 19,48p repo/indispensable-cosef/src/commonMain/kotlin/at/asitplus/signum/indispensable/cosef/CoseSigned.kt
+/**
+ * Representation of a signed COSE_Sign1 object, i.e. consisting of protected header, unprotected header and payload.
+ *
+ * If the payload is a generic [ByteArray], then it will be serialized as-is. Should the payload be any other type,
+ * we will tag it with 24 (see
+ * [RFC8949 3.4.5.1](https://www.rfc-editor.org/rfc/rfc8949.html#name-encoded-cbor-data-item)) for serialization.
+ * In order to prevent nested wrapping of the payload and the resulting type erasure
+ * payloads of type [ByteStringWrapper] will be rejected.
+ * In this case the payload could be handed over as the wrapped class itself or manually serialized to [ByteArray]
+ *
+ * See [RFC 9052](https://www.rfc-editor.org/rfc/rfc9052.html).
+ */
+@OptIn(ExperimentalSerializationApi::class)
+@Serializable(with = CoseSignedSerializer::class)
+@ConsistentCopyVisibility
+data class CoseSigned<P : Any?> internal constructor(
+    val protectedHeader: CoseHeader,
+    val unprotectedHeader: CoseHeader? = null,
+    val payload: P?,
+    val signature: CryptoSignature.RawByteEncodable,
+    val wireFormat: CoseBytes,
+) {
+
+    /**
+     * @param detachedPayload only to be set when [payload] is null, i.e. it is transported externally
+     */
+    fun prepareCoseSignatureInput(
+        externalAad: ByteArray = byteArrayOf(),
+        detachedPayload: ByteArray? = null,
+    ): ByteArray = wireFormat.toCoseSignatureInput(externalAad, detachedPayload)
+
+$ grep -nE "verif|Verifier|cosef|supreme" repo/README.md | sed -n 1,40p   # documented verification path
+21:|    [![Android](https://img.shields.io/badge/Android_(Supreme)-SDK--30-37AA55?logo=android)](https://developer.android.com/tools/releases/platforms#11)     |       [![Maven Central (Supreme)](https://img.shields.io/maven-central/v/at.asitplus.signum/supreme?label=maven-central%20%28Supreme%29)](https://mvnrepository.com/artifact/at.asitplus.signum/supreme)        |              [![Maven SNAPSHOT (Supreme)](https://img.shields.io/nexus/snapshots/https/s01.oss.sonatype.org/at.asitplus.signum/supreme?label=SNAPSHOT%20%28Supreme%29)](https://s01.oss.sonatype.org/content/repositories/snapshots/at/asitplus/signum/supreme/)              |
+30:    * **ECDSA and RSA Signer and Verifier**
+58:The very first bit means that you can create and verify signatures on the JVM, Android and on iOS, using platform-native
+77:| <picture> <source media="(prefers-color-scheme: dark)" srcset="docs/docs/assets/cosef-light.png">   <source media="(prefers-color-scheme: light)" srcset="docs/docs/assets/cosef-dark.png">   <img alt="Indispensable Cosef" src="docs/docs/assets/cosef-dark.png"> </picture> | **Indispensable Cosef** COSE add-on module containing all COSE/CWT-specific data structures and extensions to convert from/to types contained in the base module. Includes all required kotlinx-serialization magic to allow for spec-compliant de-/serialization. |
+78:|    <picture> <source media="(prefers-color-scheme: dark)" srcset="docs/docs/assets/supreme-light.png">   <source media="(prefers-color-scheme: light)" srcset="docs/docs/assets/supreme-dark.png">   <img alt="Supreme" src="docs/docs/assets/supreme-dark.png"> </picture>    | **Supreme** KMP crypto provider implementing hardware-backed signature creation and verification across mobile platforms (Android KeyStore / iOS Secure Enclave) and JCA compatibility (on the JVM).                                                               | 
+94:implementation("at.asitplus.signum:indispensable-cosef:$version")
+98:implementation("at.asitplus.signum:supreme:$supremeVersion")
+206:  // see https://a-sit-plus.github.io/signum/supreme/at.asitplus.signum.supreme.sign/-platform-signing-key-configuration-base/-secure-hardware-configuration/index.html
+239:For more details, please refer to the provider's [configuration options](https://a-sit-plus.github.io/signum/dokka/supreme/at.asitplus.signum.supreme.os/-j-k-s-provider-configuration/index.html).
+253:To verify a signature, obtain a `Verifier` instance using `verifierFor(k: PublicKey)`, either directly on a `SignatureAlgorithm`, or on one of the specialized algorithms (`X509SignatureAlgorithm`, `CoseAlgorithm`, ...).
+256:As an example, here's how to verify a basic signature using a public key:
+261:val verifier = SignatureAlgorithm.ECDSAwithSHA256.verifierFor(publicKey).getOrThrow()
+262:val isValid = verifier.verify(plaintext, signature).isSuccess
+269:val untrustedCert: X509Certificate = TODO("You want to verify that this is trustworthy.")
+271:val verifier = untrustedCert.signatureAlgorithm.verifierFor(rootCert.publicKey).getOrThrow()
+274:val isValid = verifier.verify(plaintext, signature).isSuccess
+278:#### Platform Verifiers
+280:Not every platform supports every algorithm parameter. For example, iOS does not support raw ECDSA verification (of pre-hashed data) for curve P-521.
+281:If you use `.verifierFor`, and this happens, the library will transparently substitute a pure-Kotlin implementation.
+283:If this is not desired, you can specifically enforce a platform verifier by using `.platformVerifierFor`.
+286:You can also further configure the verifier, for example to specify the `provider` to use on the JVM.
+287:To do this, pass a DSL configuration lambda to `verifierFor`/`platformVerifierFor`.
+294:val verifier = SignatureAlgorithm.ECDSAwithSHA512
+295:    .platformVerifierFor(publicKey) { provider = "BC"} /* specify BouncyCastle */
+297:val isValid = verifier.verify(plaintext, signature).isSuccess
+
+$ sed -n 251,263p repo/README.md
+### Signature Verification
+
+To verify a signature, obtain a `Verifier` instance using `verifierFor(k: PublicKey)`, either directly on a `SignatureAlgorithm`, or on one of the specialized algorithms (`X509SignatureAlgorithm`, `CoseAlgorithm`, ...).
+A variety of constants, resembling the well-known JCA names, are also available in `SignatureAlgorithm`'s companion.
+
+As an example, here's how to verify a basic signature using a public key:
+```kotlin
+val publicKey: CryptoPublicKey.EC = TODO("You have this and trust it.")
+val plaintext = "You want to trust this.".encodeToByteArray()
+val signature: CryptoSignature = TODO("This was sent alongside the plaintext.")
+val verifier = SignatureAlgorithm.ECDSAwithSHA256.verifierFor(publicKey).getOrThrow()
+val isValid = verifier.verify(plaintext, signature).isSuccess
+println("Looks good? $isValid")
+
+$ grep -nE "supreme|verif" experiment/environments/hedefler/COSE-001/cikti/jar-sha256.txt || echo "no supreme/verifier artefact in the resolved closure"
+no supreme/verifier artefact in the resolved closure
+
+## Supreme 0.16.0 Verifier (same repository; documented verification path, not in the target closure)
+$ grep -nE "^(sealed )?interface|^fun |fun verify" repo/supreme/src/commonMain/kotlin/at/asitplus/signum/supreme/sign/Verifier.kt
+17:sealed interface Verifier {
+30:    fun verify(data: SignatureInput, sig: CryptoSignature): KmmResult<Success>
+54:fun Verifier.verify(data: ByteArray, sig: CryptoSignature) =
+61:sealed interface PlatformVerifier: Verifier
+63:sealed interface KotlinVerifier: Verifier
+70:internal expect fun verifyECDSAImpl
+84:    override fun verify(data: SignatureInput, sig: CryptoSignature) = catching {
+97:internal expect fun verifyRSAImpl
+111:    override fun verify(data: SignatureInput, sig: CryptoSignature) = catching {
+123:    override fun verify(data: SignatureInput, sig: CryptoSignature) = catching {
+161:fun SignatureAlgorithm.verifierFor
+174:fun SignatureAlgorithm.platformVerifierFor
+206:fun SignatureAlgorithm.ECDSA.verifierFor
+219:fun SignatureAlgorithm.ECDSA.platformVerifierFor
+243:fun SignatureAlgorithm.RSA.verifierFor
+256:fun SignatureAlgorithm.RSA.platformVerifierFor
+266:fun SpecializedSignatureAlgorithm.verifierFor
+271:fun SpecializedSignatureAlgorithm.platformVerifierFor
+
+## Runtime reflection on the pinned jar (from attempt-run.log)
+== 1. Public API of CoseSigned (reflection on the pinned jar)
+CoseSigned methods: [component1, component2, component3, component4, component5, copy$at_asitplus_signum_indispensable_cosef, copy$at_asitplus_signum_indispensable_cosef$default, equals, getPayload, getProtectedHeader, getSignature, getUnprotectedHeader, getWireFormat, hashCode, prepareCoseSignatureInput, prepareCoseSignatureInput$default, serialize, toString]
+CoseSigned.Companion methods: [create, create$default, deserialize, prepare, prepare$default, serializer]
+any method containing 'verif': false
+deserialize() of the migrated ES256 object succeeds; it carries alg=ES256 and is not verified

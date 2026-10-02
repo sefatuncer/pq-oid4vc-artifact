@@ -7,8 +7,12 @@ of these files were translated or renamed. The records themselves were not edite
 recorded bytes are kept under ``archive/hash-anchored/<original path>``. This script shows that
 every record entry is still accounted for.
 
+Recorded paths are resolved to the current layout in two steps: the old top-level folder names of
+``docs/PATHS.md`` (``OLD_PREFIX`` below), then the folder and file renames listed one per row in
+``docs/PATHS.tsv`` (old path -> new path; a folder row applies to everything below it).
+
 For each entry the script looks, in this order, at
-  1. the current file at the recorded path,
+  1. the current file at the recorded path (resolved as above),
   2. the archived copy ``archive/hash-anchored/<recorded path>``,
   3. ``archive/hash-anchored/ANCHOR-NOTES.tsv``, which lists entries whose file already differed
      from the record in the base commit of this release (edited earlier in the private working
@@ -19,7 +23,8 @@ Entry classes:
   current   the current file matches the record
   archived  the archived copy matches the record
   noted     not matched, but listed in ANCHOR-NOTES.tsv and the current or archived file has the
-            base-commit digest given there (or the path is outside the repository)
+            base-commit digest given there (or the path is outside the repository, or the file is a
+            machine record from which unrelated private entries were removed: redacted-private)
   FAIL      none of the above
 
 Usage: python tools/verify_anchors.py [--root DIR] [--list] [--fails-only]
@@ -38,8 +43,10 @@ RECORD_NAME = re.compile(
     r'|[^/]*_sha256\.txt|[^/]*\.sha256\.txt)$')
 ARCHIVE = 'archive/hash-anchored'
 NOTES = ARCHIVE + '/ANCHOR-NOTES.tsv'
-# Folders that are not part of the study's own records: third-party build output and the archive.
-SKIP_DIR = re.compile(r'(^|/)(\.git|archive|cikti[^/]*)(/|$)')
+PATHS_TSV = 'docs/PATHS.tsv'
+# Folders that are not part of the study's own records: third-party build output (output/, output-maven/;
+# called cikti/ before the rename) and the archive.
+SKIP_DIR = re.compile(r'(^|/)(\.git|archive|cikti[^/]*|output|output-maven)(/|$)')
 # Old top-level folder names (docs/PATHS.md) used to resolve paths written in the old layout.
 OLD_PREFIX = [
     ('01-korpus/', 'spec-corpus/'), ('02-izlenebilirlik/', 'traceability/'),
@@ -63,6 +70,61 @@ def sha256(path):
     return h.hexdigest()
 
 
+RENAMES = None   # (file renames {old: new}, folder renames [(old/, new/)] longest first), from docs/PATHS.tsv
+
+
+def load_renames(root):
+    """Read docs/PATHS.tsv (old_path, new_path, kind); folder rows end with '/'."""
+    global RENAMES
+    files, folders = {}, []
+    path = os.path.join(root, PATHS_TSV)
+    if os.path.exists(path):
+        with open(path, encoding='utf-8') as f:
+            for line in f:
+                if line.startswith('#') or not line.strip():
+                    continue
+                cols = line.rstrip('\n').split('\t')
+                if cols[0] == 'old_path' or len(cols) < 2:
+                    continue
+                old, new = cols[0], cols[1]
+                if old.endswith('/'):
+                    folders.append((old, new))
+                else:
+                    files[old] = new
+    folders.sort(key=lambda x: -len(x[0]))
+    RENAMES = (files, folders)
+    return RENAMES
+
+
+def renamed(path):
+    """Current path of a path written in the layout before docs/PATHS.tsv (None if it was not renamed)."""
+    files, folders = RENAMES if RENAMES is not None else load_renames(
+        os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    if path in files:
+        return files[path]
+    for old, new in folders:
+        if path.startswith(old):
+            return new + path[len(old):]
+    return None
+
+
+def unrenamed(path):
+    """Inverse of renamed(): the path before docs/PATHS.tsv (None if it was not renamed). A record that moved
+    to a renamed folder still lists its entries relative to its old folder."""
+    files, folders = RENAMES if RENAMES is not None else load_renames(
+        os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    for old, new in files.items():
+        if new == path:
+            return old
+    best = None
+    for old, new in folders:
+        if (path + '/').startswith(new) and (best is None or len(new) > len(best[1])):
+            best = (old, new)
+    if best:
+        return (best[0] + (path + '/')[len(best[1]):]).rstrip('/')
+    return None
+
+
 def find_records(root):
     out = []
     for d, dirs, files in os.walk(root):
@@ -84,18 +146,28 @@ def candidates(record_dir, raw):
         p = p[2:]
     base = []
     if not p.startswith('/'):
-        base.append(posixpath.normpath(posixpath.join(record_dir, p)))
-        d = record_dir
-        while d:
-            d = posixpath.dirname(d)
-            base.append(posixpath.normpath(posixpath.join(d, p)))
+        dirs = [record_dir]
+        old_dir = unrenamed(record_dir) if record_dir else None
+        if old_dir and old_dir != record_dir:
+            dirs.append(old_dir)
+        for rd in dirs:
+            base.append(posixpath.normpath(posixpath.join(rd, p)))
+            d = rd
+            while d:
+                d = posixpath.dirname(d)
+                base.append(posixpath.normpath(posixpath.join(d, p)))
     out = []
     for c in base:
-        out.append(c)
+        step = [c]
         for old, new in OLD_PREFIX:
             if c.startswith(old):
-                out.append(new + c[len(old):])
+                step.append(new + c[len(old):])
                 break
+        for s in list(step):
+            r = renamed(s)
+            if r:
+                step.append(r)
+        out.extend(step)
     seen, uniq = set(), []
     for c in out:
         if c not in seen and not c.startswith('..'):
@@ -129,6 +201,7 @@ def main():
     ap.add_argument('--fails-only', action='store_true', help='print only FAIL entries')
     a = ap.parse_args()
     root = a.root
+    load_renames(root)
     notes = load_notes(root)
     totals = {'current': 0, 'archived': 0, 'noted': 0, 'FAIL': 0}
     per_record = []
@@ -167,11 +240,13 @@ def main():
                 note = notes.get((rec, raw))
                 if note:
                     _, base_digest, status, actual = note
+                    if actual and not os.path.isfile(os.path.join(root, actual)) and renamed(actual):
+                        actual = renamed(actual)
                     if actual and os.path.isfile(os.path.join(root, actual)):
                         d = sha256(os.path.join(root, actual))
                         if d == anchor:
                             digests.append(base_digest)
-                    if status == 'outside-repository' or base_digest in digests:
+                    if status in ('outside-repository', 'redacted-private') or base_digest in digests:
                         cls, where = 'noted', status + (' ' + actual if actual else '')
             counts[cls] += 1
             if cls != 'current':

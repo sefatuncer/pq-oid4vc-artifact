@@ -3,7 +3,7 @@
 > **Date:** 25.09.2026 · **Work:** Oracle A (branch A of the N-version oracle).
 > **Independence:** `experiment/oracle/oracle-B/` was not read. As required by the task description, `referans/pilot/`, `model/` and `gozden-gecirme/adim-0*` (including adim-09a and adim-09b) were not read either. The content of the D-E and D-S decisions was taken from PR §2B, §2D and Step 9 of `IS-PLANI.md`.
 > **No measurement:** no target library was run. No vector was verified with a library or a cryptographic tool. The vector files were only decoded with base64url to read the construction facts (header, claims, time). No network access, Docker or git was used.
-> **Script that produces the output:** `karar_uret.py` (Python 3, standard library only). It produces a byte-identical `karar.tsv` on every run with the same inputs (§6).
+> **Script that produces the output:** `make_decisions.py` (Python 3, standard library only). It produces a byte-identical `decisions.tsv` on every run with the same inputs (§6).
 >
 > (Quotations from the pre-registration are translated from Turkish; quotations from specifications are verbatim.)
 
@@ -14,9 +14,9 @@ The script checks the digests below. It stops on a mismatch.
 | Input | SHA-256 |
 |---|---|
 | `00-on-kayit/ON-KAYIT-TASLAK.md` (v0.8, anchor 7) | `dcc84092e2ca5eee0fcca8277fbcbd6b06ff613dc3459f63195f44d1ce3df79a` |
-| `experiment/vector-generator/vektorler/v1.2/MANIFEST.json` (153 vectors) | `bb17aaa76a3d1859b2dd5df54c62e7039948a715e2c4b4628fed82d184c6e738` |
-| `experiment/vector-generator/vektorler/v1.2/SHA256SUMS` | `92663b48f477f51e5a4cdd2a6942d97d36b2d9591fa67af451fd33eb14f0b2a3` |
-| `experiment/vector-generator/BATARYA-ESLEME.md` | `d73352179cdf281825d498000b7f9dc6d1df0fe835c8258c6aa2c516e659e3fc` |
+| `experiment/vector-generator/vectors/v1.2/MANIFEST.json` (153 vectors) | `bb17aaa76a3d1859b2dd5df54c62e7039948a715e2c4b4628fed82d184c6e738` |
+| `experiment/vector-generator/vectors/v1.2/SHA256SUMS` | `92663b48f477f51e5a4cdd2a6942d97d36b2d9591fa67af451fd33eb14f0b2a3` |
+| `experiment/vector-generator/BATTERY-MAPPING.md` | `d73352179cdf281825d498000b7f9dc6d1df0fe835c8258c6aa2c516e659e3fc` |
 | `spec-corpus/metin/<document>.txt` (16 documents; quoted from 15, RFC 8725 checked by digest only) | identical to the `sha256_metin` column of `spec-corpus/MANIFEST.csv` |
 
 Primary texts used and their versions:
@@ -84,7 +84,7 @@ In every arm A = ES256. X changes with the arm: `kontrol-EdDSA` → EdDSA; `kont
    - Unregistered or unsupported alg (`ML-DSA-66`, `ML-DSA-65-P256`, `ml-dsa-65`, `X-KAYITSIZ-1`) → invalid [T319]. Case sensitivity is in RFC 7515 §4.1.1.
    - `none` → invalid (8725bis §3.2; RFC 9901 §4.1 [T102]).
    - K10 (header alg ≠ the key's algorithm) → invalid [T329], RFC 7515 §5.2 step 8, RFC 9864 §7 [T335], RFC 7518 §3.4.
-   - CMP corruptions: composite -04 §4.2, §4.3 [T345], Table 5 and LAMPS -19 §4.3 (table per vector in `karar_uret.py`, `CMP_KURAL`).
+   - CMP corruptions: composite -04 §4.2, §4.3 [T345], Table 5 and LAMPS -19 §4.3 (table per vector in `make_decisions.py`, `CMP_KURAL`).
    - CMP05 (non-minimal DER) and CMP06 (trailing byte) → **undetermined** (`UNDETERMINED.md` B-3).
    - CMP12/13 (component signature as an independent alg) → invalid. The signature was produced over M′; ES256/ML-DSA-65 verification is done over the JWS Signing Input with an empty ctx (RFC 7518 §3.4; RFC 9964 §5 [T338]). Independent use of a component key is forbidden [T057].
 2. **The rule of the configuration is applied to the set of signatures** (table of §2). Three-valued logic is used:
@@ -101,9 +101,9 @@ In every arm A = ES256. X changes with the arm: `kontrol-EdDSA` → EdDSA; `kont
    - in DPoP, alg registration and a private key inside `jwk` (RFC 9449 §4.3 items 5 and 7);
    - x509_hash and unsigned requests (OID4VP §5.9.3, A.2; HAIP §5.2).
 4. **The label** is given according to §1.
-5. **The basis** starts with the clauses that determine the decision, followed by the definition of the configuration. If the row is a PR §6.5 case (K1–K11, V±), the PR row of that case is added. Every quote is found by the script in the corpus text and its line number is computed. A quote that is not found stops the generation. The full clause list with URLs is in `maddeler.tsv` (107 clauses).
+5. **The basis** starts with the clauses that determine the decision, followed by the definition of the configuration. If the row is a PR §6.5 case (K1–K11, V±), the PR row of that case is added. Every quote is found by the script in the corpus text and its line number is computed. A quote that is not found stops the generation. The full clause list with URLs is in `items.tsv` (107 clauses).
 
-**Construction audit (`insa_denetimi.txt`, 467 checks, all passed).** Every construction fact on which a decision rests was verified by base64url-decoding the vector file:
+**Construction audit (`construction_audit.txt`, 467 checks, all passed).** Every construction fact on which a decision rests was verified by base64url-decoding the vector file:
 - time: every `exp` > `simdi` ≥ `iat`; KB-JWT `iat` = simdi − 100 s; DPoP `iat` = simdi − 10 s;
 - signature alg sequences identical to the manifest;
 - `typ` values, x5c position, `crit` position, K10 header alg ≠ key type;
@@ -111,7 +111,7 @@ In every arm A = ES256. X changes with the arm: `kontrol-EdDSA` → EdDSA; `kont
 
 ## 4. Primary / secondary (PR §2G item 4)
 
-- `sinif = birincil` (primary): the (vector, arm) pair appears as **primary** in that arm in §1 of `BATARYA-ESLEME.md`. The fallback arm is filled with the bracketed `-ED25519` twins and with the shared files (T3, VPLUS/VMINUS_ES256, VC10).
+- `sinif = birincil` (primary): the (vector, arm) pair appears as **primary** in that arm in §1 of `BATTERY-MAPPING.md`. The fallback arm is filled with the bracketed `-ED25519` twins and with the shared files (T3, VPLUS/VMINUS_ES256, VC10).
 - `sinif = ikincil` (secondary): everything else. This covers the secondary vectors of the mapping, the vectors that appear only in the MR table (including the MR4 permutations) and the vectors outside the mapping (UNK01–03, CRIT, DPOP, TSL, …).
 - The `vaka` column writes which case or relation the vector is bound to: `K1`, `K5(ikincil)`, `MR1`, `MR4(T1K_both_valid)`, `MR4-dışı tanımlayıcı(…)` (descriptive outside MR4), `eşleme-dışı` (outside the mapping).
 - The primary coverage check is done in the script. Every primary (vector, arm) has an `L4` row. V± also has a `GEC` row, K8/K9 an `L4-YOL` row.
@@ -127,12 +127,12 @@ In every arm A = ES256. X changes with the arm: `kontrol-EdDSA` → EdDSA; `kont
 
 ```bash
 cd <project root>
-PYTHONIOENCODING=utf-8 python experiment/oracle/oracle-A/karar_uret.py "$(cygpath -w "$PWD")"
+PYTHONIOENCODING=utf-8 python experiment/oracle/oracle-A/make_decisions.py "$(cygpath -w "$PWD")"
 sha256sum -c experiment/oracle/oracle-A/SHA256SUMS
 ```
 
-- **Outputs:** `karar.tsv`, `maddeler.tsv`, `karar_ozet.json`, `insa_denetimi.txt`.
+- **Outputs:** `decisions.tsv`, `items.tsv`, `decisions_summary.json`, `construction_audit.txt`.
 - **Determinism:** the script uses no randomness, clock or network. Two runs are byte-identical (checked with `SHA256SUMS`).
-- **Columns of `karar.tsv`:** `vektor_id`, `politika`, `kol`, `sinif`, `vaka`, `karar`, `dayanak`, `not`.
+- **Columns of `decisions.tsv`:** `vektor_id`, `politika`, `kol`, `sinif`, `vaka`, `karar`, `dayanak`, `not`.
   - Format of `dayanak`: `[Tnnn] DOCUMENT §section (version; metin/DOCUMENT.txt:line): "verbatim quote"`; several clauses are separated by ` | `.
   - The `not` column starts with an `insa:` summary and gives the reason for the decision. Clause mentions for information only (e.g. B6) are in square brackets in `not`.

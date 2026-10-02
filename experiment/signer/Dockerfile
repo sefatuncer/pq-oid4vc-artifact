@@ -7,6 +7,8 @@
 #   * cryptography 50.0.1 brings its own embedded OpenSSL 4.0.2 -> the library (OpenSSL 4.0.2) and the
 #     cross-verifier (system OpenSSL 3.5.7 CLI) are DIFFERENT versions.
 # Build:   docker build -t pq-a09-signer:1.0 experiment/signer
+# Layout inside the image: /opt/pq/{pqjose,service,tests,external-vectors} (renamed 03.10.2026; the images built
+# before that date have /opt/pq/servis, /opt/pq/testler and /opt/pq/dis-vektorler, see docs/PATHS.md).
 FROM python:3.11-slim@sha256:9534e5a8e315485d4061ed659af0fd78a284c015f9b73661b41d6bab25604534
 
 LABEL org.opencontainers.image.title="pq-a09-signer" \
@@ -24,9 +26,9 @@ COPY requirements.txt /opt/pq/requirements.txt
 RUN pip install --require-hashes --only-binary=:all: -r /opt/pq/requirements.txt
 
 COPY pqjose /opt/pq/pqjose
-COPY servis /opt/pq/servis
-COPY testler /opt/pq/testler
-COPY dis-vektorler /opt/pq/dis-vektorler
+COPY service /opt/pq/service
+COPY tests /opt/pq/tests
+COPY external-vectors /opt/pq/external-vectors
 
 # Version gate: if the versions are not the expected ones, the build FAILS
 RUN openssl version | grep -q '^OpenSSL 3\.5\.7 ' \
@@ -34,7 +36,7 @@ RUN openssl version | grep -q '^OpenSSL 3\.5\.7 ' \
  && python -c "import cryptography; assert cryptography.__version__ == '50.0.1'" \
  && python -c "from cryptography.hazmat.primitives.asymmetric import mldsa; mldsa.MLDSA65PrivateKey.from_seed_bytes(bytes(32))" \
  && python -m pqjose info \
- && python -m servis.pqdogrula saglik > /dev/null
+ && python -m service.pqdogrula saglik > /dev/null
 
 # PQ primitive verification service (optional): NO authentication -> only the internal Docker network or 127.0.0.1
 EXPOSE 8765

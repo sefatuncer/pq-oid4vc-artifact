@@ -154,7 +154,7 @@ Definitions: `experiment/oracle/oracle-A/METHOD.md` §2 and `experiment/oracle/o
 
 In the statistics input the arm is coded `K` (control), `T` (treatment) or `diger` (other).
 
-## 4. Test vectors (`experiment/vector-generator/vektorler/`)
+## 4. Test vectors (`experiment/vector-generator/vectors/`)
 
 ### 4.1 Vector ids {#vector-ids}
 
@@ -197,10 +197,10 @@ Key files: `acik-jwks.json` public JWKS, `ozel/<role>.json` private JWK, `roller
 
 | File | Columns |
 |---|---|
-| `oracle-A/karar.tsv` | `vektor_id`, `politika`, `kol`, `sinif` (`birincil` primary / `ikincil` secondary row, PR §2G item 4), `vaka` (battery cases, for example `K1;MR1;MR2`), `karar`, `dayanak` (verbatim clause quotes with file and line), `not` |
-| `oracle-B/karar.tsv` | `vektor_id`, `politika`, `kol`, `birincil_mi` (primary? `evet`/`hayır`), `karar`, `dayanak`, `not` |
-| `oracle-A/maddeler.tsv` | clause register: `anahtar` (key), `kimlik` (traceability id), `belge` (document), `bolum` (section), `surum` (version), `url`, `dosya`, `satir` (line), `alinti` (quote) |
-| `birlesik/karar_v13.tsv` | merged decision for battery v1.3: `vektor_id`, `politika`, `kol`, `karar`, `A`, `B` (the two oracle decisions; empty = no row), `kaynak` (source of the merged value) |
+| `oracle-A/decisions.tsv` (old `karar.tsv`) | `vektor_id`, `politika`, `kol`, `sinif` (`birincil` primary / `ikincil` secondary row, PR §2G item 4), `vaka` (battery cases, for example `K1;MR1;MR2`), `karar`, `dayanak` (verbatim clause quotes with file and line), `not` |
+| `oracle-B/decisions.tsv` (old `karar.tsv`) | `vektor_id`, `politika`, `kol`, `birincil_mi` (primary? `evet`/`hayır`), `karar`, `dayanak`, `not` |
+| `oracle-A/items.tsv` (old `maddeler.tsv`) | clause register: `anahtar` (key), `kimlik` (traceability id), `belge` (document), `bolum` (section), `surum` (version), `url`, `dosya`, `satir` (line), `alinti` (quote) |
+| `merged/decisions_v13.tsv`, `merged/decisions_v14.tsv` (old `birlesik/karar_v13.tsv`, `karar_v14.tsv`) | merged decision for battery v1.3 (v1.4 adds the `kontrol-ES384` rows): `vektor_id`, `politika`, `kol`, `karar`, `A`, `B` (the two oracle decisions; empty = no row), `kaynak` (source of the merged value) |
 
 Merged `karar` adds two values:
 
@@ -213,7 +213,7 @@ Merged `kaynak` values: `A=B` both agree; `A≠B` they disagree (→ `indetermin
 of the readings applies; `tek-oracle` only one oracle has the row; `madde-8`, `madde-9` PR §2H
 item 8/9; `COSE-esleme` COSE vector mapped to the JOSE case; `L4c-3` rule L4c-3 (old issuer).
 
-`OZET.json` (summary): `satir` rows, `karar_dagilimi` decision distribution, `kaynak_dagilimi`
+`SUMMARY.json` (old `OZET.json`): `satir` rows, `karar_dagilimi` decision distribution, `kaynak_dagilimi`
 source distribution, `cose_esi_bulunamayan` COSE vectors without a JOSE twin, `A_sha256`/`B_sha256`
 hashes of the two input tables.
 
@@ -329,13 +329,13 @@ not a gate value). Verdicts `GEÇTİ` passed, `KALDI` failed.
 
 | File | Columns |
 |---|---|
-| `experiment/inventory/CERCEVE.csv` (frame) | `tabaka` stratum, `ad` name, `dil` language, `dil_grubu` language group, `paket_ekosistemi` package ecosystem, `paket_adi` package name, `depo_url` repository, `alt_dizin` sub-directory, `kaynak` source, `yildiz` stars, `son_commit`(`_sha`) last commit, `son_surum`(`_tarihi`) last release (date), `lisans` licence, `aylik_indirme` monthly downloads, `toplam_indirme` total downloads, `bagimli_paket`/`bagimli_depo` dependent packages/repositories, `arsiv` archived, `pop_puani` popularity score, `p_*` percentile components, `jwtio_*` jwt.io support flags |
-| `experiment/inventory/TARAMA.csv` (screening) | `karar`: `aday` candidate, `ilgisiz` irrelevant, `taban-alti` below baseline, `uygulama` application, `yinelenen` duplicate, `belge` document, `cuzdan` wallet, `kapsam-disi-mdoc` out of scope (mdoc), `ihracci` issuer |
-| `experiment/inventory/SECIM.csv` (selection) | `uygun_E*`, `karar_E*`, `neden_E*` = eligible, decision, reason under threshold option E1–E5; decisions `SECILDI` selected, `YEDEK` reserve, `DISLANDI` excluded, `uygun-disarida` eligible but outside the quota; reasons cite the criteria K1–K8 |
-| `experiment/environments/derleme-sonuc.csv` (build results) | `surum` version, `commit`, `paket_ozeti` package digest, `imaj` image, `sonuc` result, `yedek_mi` is a reserve, `yerine_gectigi_id` replaces |
-| `experiment/environments/kayit/<target>.kosu.json` | run record: `imaj`, `imaj_id`, `baslangic` start, `sure_s`, `cikis_kodu` exit code |
-| `experiment/environments/kayit/*.csv` | `degisiklikler` target changes (`dusen_id` dropped, `yedek_id` reserve, `neden` reason, `kural_kolu` rule branch, `gerekce` rationale); `hedef_listesi` target list; `surum_commit`, `surum_dayanak`, `surum_ozet` version/commit evidence (`etiket` tag, `etiket_commit`, `kurulan_commit` installed commit, `cerceve_head` frame HEAD, `durum` status) |
-| `experiment/environments/hedefler/<target>/cikti/sonuc.tsv` | key/value record written by the install script (`yaz` = write): `kilit_dosyasi` lock file, `kilit_sha256`, `paket_ozeti`, `bagimlilik_sayisi` dependency count, `not` |
+| `experiment/inventory/FRAME.csv` (old `CERCEVE.csv`) | `tabaka` stratum, `ad` name, `dil` language, `dil_grubu` language group, `paket_ekosistemi` package ecosystem, `paket_adi` package name, `depo_url` repository, `alt_dizin` sub-directory, `kaynak` source, `yildiz` stars, `son_commit`(`_sha`) last commit, `son_surum`(`_tarihi`) last release (date), `lisans` licence, `aylik_indirme` monthly downloads, `toplam_indirme` total downloads, `bagimli_paket`/`bagimli_depo` dependent packages/repositories, `arsiv` archived, `pop_puani` popularity score, `p_*` percentile components, `jwtio_*` jwt.io support flags |
+| `experiment/inventory/SCREENING.csv` (old `TARAMA.csv`) | `karar`: `aday` candidate, `ilgisiz` irrelevant, `taban-alti` below baseline, `uygulama` application, `yinelenen` duplicate, `belge` document, `cuzdan` wallet, `kapsam-disi-mdoc` out of scope (mdoc), `ihracci` issuer |
+| `experiment/inventory/SELECTION.csv` (old `SECIM.csv`) | `uygun_E*`, `karar_E*`, `neden_E*` = eligible, decision, reason under threshold option E1–E5; decisions `SECILDI` selected, `YEDEK` reserve, `DISLANDI` excluded, `uygun-disarida` eligible but outside the quota; reasons cite the criteria K1–K8 |
+| `experiment/environments/build-results.csv` (old `derleme-sonuc.csv`) | `surum` version, `commit`, `paket_ozeti` package digest, `imaj` image, `sonuc` result, `yedek_mi` is a reserve, `yerine_gectigi_id` replaces |
+| `experiment/environments/records/<target>.run.json` (old `kayit/<target>.kosu.json`) | run record: `imaj`, `imaj_id`, `baslangic` start, `sure_s`, `cikis_kodu` exit code |
+| `experiment/environments/records/*.csv` | `changes.csv` (old `degisiklikler`) target changes (`dusen_id` dropped, `yedek_id` reserve, `neden` reason, `kural_kolu` rule branch, `gerekce` rationale); `target_list.csv` (`hedef_listesi`); `version_commit.csv`, `version_basis.csv`, `version_summary.csv` (`surum_commit`, `surum_dayanak`, `surum_ozet`) version/commit evidence (`etiket` tag, `etiket_commit`, `kurulan_commit` installed commit, `cerceve_head` frame HEAD, `durum` status) |
+| `experiment/environments/targets/<target>/output/result.tsv` (old `hedefler/<target>/cikti/sonuc.tsv`) | key/value record written by the install script (`yaz` = write): `kilit_dosyasi` lock file, `kilit_sha256`, `paket_ozeti`, `bagimlilik_sayisi` dependency count, `not` |
 
 ## 9. Corpus and traceability
 
