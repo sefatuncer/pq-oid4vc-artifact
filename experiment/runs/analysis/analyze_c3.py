@@ -14,6 +14,8 @@ Outputs (in --out)
   decisions.csv     one row per (target, vector, policy, arm): decisions r1-r3, stable decision, oracle, match
   targets.csv       per-target variables with the reason for every null
   c3-input-primary.json, c3-input-secondary-mldsa.json   statistics input (schema c3-istat-girdi/1.0)
+  c3-input-primary-without-SDJWT-002.json, c3-input-secondary-mldsa-without-SDJWT-002.json   decision D1 sensitivity
+  c3-input-secondary-mldsa-tk-sensitivity.json            decision D2 sensitivity (JOSE-102 as TK1)
 Usage: python analyze_c3.py --runs ../outputs/measurement --out . [paths default to the repository layout]
 """
 import argparse, csv, json, os
@@ -68,10 +70,19 @@ def tk_of(target, kol, sensitivity=False):
 
 targets = sorted({f.rsplit('.', 2)[0] for f in os.listdir(A.runs) if f.endswith('.jsonl')})
 obs = {}                                                            # target -> {(vid, pol, kol): stable decision}
-raw = {}                                                            # target -> {(vid, pol, kol): row of r1}
+obs_sens = {}                                                       # the same with the sensitivity TK assignment (decision D2)
+raw = {}                                                            # target -> {(vid, pol, kol): row of the last run read}
 dec_rows = []
+
+
+def stable(d):
+    vals = [d.get(r) for r in RUNS]
+    return vals, (vals[0] if len(set(vals)) == 1 and vals[0] is not None else 'kararsiz')
+
+
 for t in targets:
     per = defaultdict(dict)
+    per_s = defaultdict(dict)
     for r in RUNS:
         p = os.path.join(A.runs, '%s.%s.jsonl' % (t, r))
         if not os.path.exists(p):
@@ -81,17 +92,21 @@ for t in targets:
                 o = json.loads(line)
                 k = (o['vektor_id'], o['politika'], o['kol'])
                 per[k][r] = decision(o, tk_of(t, o['kol']))
+                per_s[k][r] = decision(o, tk_of(t, o['kol'], sensitivity=True))
                 raw.setdefault(t, {})[k] = o
     st = {}
     for k, d in per.items():
-        vals = [d.get(r) for r in RUNS]
-        stable = vals[0] if len(set(vals)) == 1 and vals[0] is not None else 'kararsiz'
-        st[k] = stable
+        vals, sd = stable(d)
+        st[k] = sd
         orc = oracle.get(k, {}).get('karar', '')
-        match = '' if stable in ('uygulanamaz', 'ifade-edilemedi', 'kararsiz', 'indeterminate') or orc not in ('accept-hybrid', 'accept-classical', 'reject')             else 0 if stable == 'desteklenmiyor' else int(stable == orc)
+        if sd in ('uygulanamaz', 'ifade-edilemedi', 'kararsiz', 'indeterminate') or orc not in ('accept-hybrid', 'accept-classical', 'reject'):
+            match = ''
+        else:
+            match = 0 if sd == 'desteklenmiyor' else int(sd == orc)
         dec_rows.append({'target': t, 'vektor_id': k[0], 'politika': k[1], 'kol': k[2], 'r1': vals[0], 'r2': vals[1], 'r3': vals[2],
-                         'decision': stable, 'oracle': orc, 'match': match})
+                         'decision': sd, 'oracle': orc, 'match': match})
     obs[t] = st
+    obs_sens[t] = {k: stable(d)[1] for k, d in per_s.items()}
 
 with open(os.path.join(A.out, 'decisions.csv'), 'w', newline='', encoding='utf-8') as f:
     w = csv.DictWriter(f, fieldnames=list(dec_rows[0]) if dec_rows else ['target'])
@@ -137,13 +152,18 @@ def ok(t, base, pol, kol, label=None):
     return int(d == o), None
 
 def all_ok(checks):
+    """Conjunction of checks: 0 as soon as one check deviates (the conjunction is then determined, whatever the
+    other checks give); otherwise None with a reason if a check cannot be judged; otherwise 1."""
     vals = [c[0] for c in checks]
+    if any(v == 0 for v in vals):
+        return 0, None
     reasons = [c[1] for c in checks if c[0] is None]
     if reasons:
         for r in ('kararsiz_3_tekrar', 'oracle_uyusmazligi', 'uygulanamaz', 'olculmedi'):
             if r in reasons:
                 return None, r
-    return int(all(v == 1 for v in vals)), None
+        return None, reasons[0]
+    return 1, None
 
 # ---------------------------------------------------------------- 3. per-target variables
 release = {}
@@ -161,6 +181,8 @@ def target_vars(t, secondary=False):
     rd = release.get(t)
     v['son_surum_tarihi'] = rd[:10] if rd else None
     v['surum_8725bis_sonrasi'] = (int(rd[:10] > '2026-08-21') if rd else None)
+    if not rd:
+        v['belirsiz_nedenleri']['surum_8725bis_sonrasi'] = 'uygulanamaz'   # no published release (pinned by commit)
     if not lab:
         v.update({'adaptor_gecersiz': 1, 'adaptor_gecersiz_gerekce': 'no second classical algorithm passes the validity gate (amendment 10)'})
         for k in ('Y_L4', 'L_duzeyi', 'F_K', 'F_T', 'D_soy', 'B1', 'B2', 'B3', 'B4_ozel_kod', 'B5', 'B6'):
@@ -231,7 +253,7 @@ def target_vars(t, secondary=False):
     v['B1'] = b1
     if b1 is None: v['belirsiz_nedenleri']['B1'] = 'uygulanamaz'
     # B2: path-class policy for mixed x5c (L4-YOL): not expressible by any target unless accepted rows show otherwise
-    yol = [obs[t].get((x, 'L4-YOL', k)) for (x, p, k) in obs[t] if p == 'L4-YOL']
+    yol = [d for (x, p, k), d in obs[t].items() if p == 'L4-YOL' and d not in ('uygulanamaz', 'kararsiz', 'indeterminate')]
     v['B2'] = 1 if yol and all(d == 'reject' for d in yol) else 0 if yol else None
     if v['B2'] is None: v['belirsiz_nedenleri']['B2'] = 'uygulanamaz'
     # B3: unprotected x5c processed (X5C07/X5C08 accepted under GEC or L4)
@@ -255,8 +277,22 @@ def target_vars(t, secondary=False):
     v['B6'] = int(any(d == 'uygulanamaz' for d in obs[t].values()))
     return v
 
-def build(secondary):
-    hs = [target_vars(t, secondary) for t in targets]
+def use_obs(table):
+    global obs
+    old, obs = obs, table
+    return old
+
+
+def build(secondary, drop=(), tk_sensitivity=False):
+    old = use_obs(obs_sens if tk_sensitivity else obs)
+    try:
+        hs = [target_vars(t, secondary) for t in targets if t not in drop]
+    finally:
+        use_obs(old)
+    if tk_sensitivity and secondary:
+        for h in hs:
+            if h.get('adaptor_gecersiz') != 1:
+                h['tk_sinifi'] = tk_of(h['hedef_id'], 'tedavi-ML-DSA-65', sensitivity=True)
     for h in hs:
         if not h['belirsiz_nedenleri']:
             h['belirsiz_nedenleri'] = {}
@@ -268,7 +304,15 @@ def build(secondary):
             h.pop('kontrol_etiketi', None)
     return hs
 
-def cases(hs):
+def cases(hs, tk_sensitivity=False):
+    old = use_obs(obs_sens if tk_sensitivity else obs)
+    try:
+        return _cases(hs)
+    finally:
+        use_obs(old)
+
+
+def _cases(hs):
     out = []
     for h in hs:
         if h['adaptor_gecersiz'] == 1:
@@ -284,13 +328,22 @@ def cases(hs):
                         'uyum': (None if m is None else int(m == 1)), 'belirsiz_neden': why if m is None else None})
     return out
 
-for name, secondary in (('primary', False), ('secondary-mldsa', True)):
-    hs = build(secondary)
+VARIANTS = (
+    ('primary', False, (), False, ''),
+    ('secondary-mldsa', True, (), False, ''),
+    # decision D1: every analysis is also reported without SDJWT-002 (integrity failure)
+    ('primary-without-SDJWT-002', False, NO_INTEGRITY, False, '; without SDJWT-002 (decision D1)'),
+    ('secondary-mldsa-without-SDJWT-002', True, NO_INTEGRITY, False, '; without SDJWT-002 (decision D1)'),
+    # decision D2: the analyses involving treatment classes are repeated with JOSE-102 as TK1
+    ('secondary-mldsa-tk-sensitivity', True, (), True, '; sensitivity TK assignment (decision D2: JOSE-102 as TK1)'),
+)
+for name, secondary, drop, tk_sens, note in VARIANTS:
+    hs = build(secondary, drop, tk_sens)
     doc = {'sema_surumu': 'c3-istat-girdi/1.0', 'veri_turu': A.data_type,
-           'aciklama': 'C3 measurement, battery v1.4, %s treatment arm' % ('ML-DSA-65 (secondary)' if secondary else 'composite (primary)'),
-           'hedefler': hs, 'vakalar': cases(hs)}
+           'aciklama': 'C3 measurement, battery v1.4, %s treatment arm%s' % ('ML-DSA-65 (secondary)' if secondary else 'composite (primary)', note),
+           'hedefler': hs, 'vakalar': cases(hs, tk_sens)}
     json.dump(doc, open(os.path.join(A.out, 'c3-input-%s.json' % name), 'w', encoding='utf-8'), indent=1, ensure_ascii=False)
-    if not secondary:
+    if name == 'primary':
         cols = sorted({k for h in hs for k in h})
         with open(os.path.join(A.out, 'targets.csv'), 'w', newline='', encoding='utf-8') as f:
             w = csv.DictWriter(f, fieldnames=cols)

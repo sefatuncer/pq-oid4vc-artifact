@@ -54,7 +54,7 @@ Value rules:
 | `adaptor_gecersiz_gerekce` (reason) | string | yes if `adaptor_gecersiz = 1` | — |
 | `tk_sinifi` | `TK1` \| `TK2` \| `TK3` | yes (except REF) | Treatment class (PR §2B.7). T2 only TK1 + TK2 |
 | `l4_bicimi` | `L4m` \| `L4c` | yes (except REF) | PR §2B.6. Reported descriptively |
-| `kontrol_etiketi` | `EdDSA` \| `Ed25519` | yes (except REF and `adaptor_gecersiz = 1`) | PR §2D-A.2, §2E.3: the label used is recorded per target. Descriptive |
+| `kontrol_etiketi` | `EdDSA` \| `Ed25519` \| `ES384` (amendment 10) | yes (except REF and `adaptor_gecersiz = 1`) | PR §2D-A.2, §2E.3: the label used is recorded per target. Descriptive |
 | `Y_L4` | binary \| null | yes | The primary variable of H6 (PR §3.7, §2B.6) |
 | `L_duzeyi` | 0…5 \| null | yes | Ordinal L0–L5 (PR §4.13) |
 | `F_K` | binary \| null | yes | Deviation from the oracle in at least one of K1–K3 in the control arm (PR §6.4) |

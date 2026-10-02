@@ -21,7 +21,7 @@ ENUM = {
     "tabaka": ("JOSE", "SDJWT", "COSE", "REF"),
     "tk_sinifi": ("TK1", "TK2", "TK3"),
     "l4_bicimi": ("L4m", "L4c"),
-    "kontrol_etiketi": ("EdDSA", "Ed25519"),
+    "kontrol_etiketi": ("EdDSA", "Ed25519", "ES384"),   # ES384: amendment 10
     "B1": ("red", "yok_sayma", "dogrulama_duser"),
     "B5": ("en_az_biri_gecerli", "mevcut_tumu_gecerli", "gerekli_kume", "diger"),
 }
