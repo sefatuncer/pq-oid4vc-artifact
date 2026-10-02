@@ -8,7 +8,7 @@
 #  Output: outputs/measurement/<target>.<r1|r2|r3>.jsonl, outputs/measurement/run-log.txt
 # =====================================================================
 set -u
-cd "$(dirname "$0")"
+cd "$(dirname "$0")" || exit 1
 FROZEN=../../docs/preregistration/FREEZE-SHA256SUMS
 if [ ! -f "$FROZEN" ]; then echo "no freeze manifest at $FROZEN: the pre-registration is not frozen"; exit 1; fi
 ( cd ../.. && sha256sum --quiet -c docs/preregistration/FREEZE-SHA256SUMS ) || { echo "frozen files changed: run aborted"; exit 1; }

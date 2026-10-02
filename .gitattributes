@@ -1,0 +1,2 @@
+# Shell scripts run on Linux and in Git Bash: always LF in the repository and in checkouts
+*.sh text eol=lf
