@@ -1,19 +1,19 @@
 # -*- coding: utf-8 -*-
-"""Adım 6 | KAT-2 X.509 hibrit — ASP koşucusu. TEK ÇEKİRDEK: yalnız /asp/cekirdek.lp + bu klasörün örnek dosyaları.
+"""Step 6 | KAT-2 X.509 hybrid — ASP runner. SINGLE CORE: only /asp/cekirdek.lp + the instance files of this folder.
 
-Yüklenen dosyalar (başka hiçbiri yok): /asp/cekirdek.lp, kat2_x509.lp, ornekler/<kosu>.lp.
-OKUMA KURALLARI (ESLEME.md §3.4; koşumdan ÖNCE sabitlendi):
-  saldiri kipi (K2b): SALDIRI <=> ihlal(tum,g1).
-  karar kipi (K2a/K2c/K2d): G5 := ihlal(bos,g5) (çekirdek: klasik kanıt, kimliği doğrulanmış PQ beklentisi
-    olmadan kabul ediliyor). Etiket (karar_oku):
+Loaded files (no others): /asp/cekirdek.lp, kat2_x509.lp, ornekler/<kosu>.lp.
+READING RULES (MAPPING.md §3.4; fixed BEFORE the run):
+  attack mode (K2b): SALDIRI <=> ihlal(tum,g1).
+  decision mode (K2a/K2c/K2d): G5 := ihlal(bos,g5) (core: classical evidence accepted without an authenticated PQ
+    expectation). Label (karar_oku):
       G5                                           -> accept_classical
-      değilse, Related:  bağlı PQ sertifikası geçerli -> accept_hybrid; 'unknown' -> indeterminate; diğer -> reject
-      değilse, diğer:    PQ kanıtı (doğrulayıcının gördüğü) geçerli ve algoritma tanınıyor -> accept_hybrid; diğer -> reject
-    'Doğrulayıcının gördüğü geçerlilik': kat_pqev = valid; §6 mutasyonu comp_pq_denetimi_yok'ta composite'in PQ
-    bileşeni denetlenmediği için geçerli görülür. 'Tanınıyor': kat_vb != legacy_oid (Kim Tablo IV loud-fail).
-Beklenen değerler: /nsurum/kat_nsurum.tsv 'ilk_ajan' (tek kaynak); mutasyonlarda mutasyonlar.tsv 'beklenen'
-('accept' = herhangi bir accept_* etiketi; KAT-SPEC §6 "K2a-16 -> accept").
-Kullanım: ./calistir.sh kos.py  ->  sonuc/asp.csv, sonuc/asp_mutasyon.csv, sonuc/asp_ozet.json
+      otherwise, Related:  bound PQ certificate valid -> accept_hybrid; 'unknown' -> indeterminate; other -> reject
+      otherwise, other:    PQ evidence (as seen by the verifier) valid and algorithm recognised -> accept_hybrid; other -> reject
+    'Validity as seen by the verifier': kat_pqev = valid; with the §6 mutation comp_pq_denetimi_yok the PQ component of
+    the composite is seen as valid because it is not checked. 'Recognised': kat_vb != legacy_oid (Kim Table IV loud-fail).
+Expected values: /nsurum/kat_nsurum.tsv 'ilk_ajan' (single source); for the mutations mutasyonlar.tsv 'beklenen'
+('accept' = any accept_* label; KAT-SPEC §6 "K2a-16 -> accept").
+Usage: ./calistir.sh kos.py  ->  sonuc/asp.csv, sonuc/asp_mutasyon.csv, sonuc/asp_ozet.json
 """
 import csv, hashlib, json, os, re, sys, time
 import clingo
@@ -61,7 +61,7 @@ def coz(ornek):
 
 
 def sabitler(asp_sabitler):
-    """'kat_x(y). kat_z(w).' -> {'kat_x': 'y', ...} (yalnız okuma kuralının girdileri için)."""
+    """'kat_x(y). kat_z(w).' -> {'kat_x': 'y', ...} (only for the inputs of the reading rule)."""
     return {m.group(1): m.group(2) for m in re.finditer(r'(kat_\w+)\(([^)]*)\)', asp_sabitler)}
 
 

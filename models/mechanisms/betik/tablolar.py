@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 """
-PQ-OID4VC | Adım 7 | sonuç tabloları (sonuc/karsilastirma.csv -> sonuc/tablolar.md)
-Hücre biçimi: gözlenen hüküm (V/F); beklentiden farklıysa "F≠V" (gözlenen≠beklenen); kapanmadıysa etiket.
-Betik yalnız biçimlendirir; hüküm ve beklenti karsilastirma.csv'den okunur.
+PQ-OID4VC | Step 7 | result tables (sonuc/karsilastirma.csv -> sonuc/tablolar.md)
+Cell format: observed verdict (V/F); "F≠V" (observed≠expected) if it differs from the expectation; a label if not closed.
+The script only formats; verdict and expectation are read from karsilastirma.csv.
 """
 import csv
 import io

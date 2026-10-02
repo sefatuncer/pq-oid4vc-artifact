@@ -1,18 +1,18 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-Oracle B (PQ-OID4VC, Adim 9 gorev 6) -- karar.tsv turetici.
+Oracle B (PQ-OID4VC, Step 9 task 6) -- derivation of karar.tsv.
 
-Ne yapar:
-  * v1.2 MANIFEST.json'u okur (yalniz 'insa' ve 'dogrulama_girdileri' gercekleri);
-    vektor dosyalarini ACMAZ, dogrulamaz; ag kullanmaz.
-  * Elle yazilmis olgu/rol tablolarini manifestle capraz denetler.
-  * Madde kutuphanesindeki her birebir alintiyi kaynak metinde (satir araliginda,
-    bosluk normalize) arar; bulunamazsa durur.
-  * YONTEM.md'deki uc yapilandirmayi (L4, P2, P0) ve kol atamasini uygular,
-    karar.tsv'yi yazar, dagilim ozetini basar.
+What it does:
+  * reads the v1.2 MANIFEST.json (only the 'insa' and 'dogrulama_girdileri' facts);
+    does NOT OPEN or verify the vector files; uses no network.
+  * cross-checks the hand-written fact/role tables against the manifest.
+  * looks up every verbatim quotation of the clause library in the source text (within the line range,
+    whitespace normalised); stops if one is not found.
+  * applies the three configurations of METHOD.md (L4, P2, P0) and the arm assignment,
+    writes karar.tsv and prints the distribution summary.
 
-Calistirma (klasor kokunden):
+Run (from the folder root):
   PYTHONIOENCODING=utf-8 python turet_karar.py [--kollar k1,k2,...]
 """
 import argparse
@@ -22,7 +22,7 @@ import os
 import re
 import sys
 
-# ---------------------------------------------------------------- yollar
+# ---------------------------------------------------------------- paths
 BU = os.path.dirname(os.path.abspath(__file__))
 
 
@@ -32,7 +32,7 @@ def proje_koku(bas):
         if os.path.isdir(os.path.join(d, '00-on-kayit')) and os.path.isdir(os.path.join(d, 'spec-corpus')):
             return d
         d = os.path.dirname(d)
-    sys.exit('proje koku bulunamadi')
+    sys.exit('project root not found')
 
 
 KOK = proje_koku(BU)
@@ -41,7 +41,7 @@ METIN = os.path.join(KOK, 'spec-corpus', 'metin')
 OK_DOSYA = os.path.join(KOK, '00-on-kayit', 'ON-KAYIT-TASLAK.md')
 CIKTI = os.path.join(BU, 'karar.tsv')
 
-# ---------------------------------------------------------------- belgeler
+# ---------------------------------------------------------------- documents
 BELGE = {
     'JWTBCP': ('draft-ietf-oauth-rfc8725bis-10', os.path.join(METIN, 'JWTBCP.txt'), 'JWTBCP.txt'),
     'JOSECOMP': ('draft-ietf-jose-pq-composite-sigs-04', os.path.join(METIN, 'JOSECOMP.txt'), 'JOSECOMP.txt'),
@@ -60,8 +60,8 @@ BELGE = {
     'OK': ('ON-KAYIT-TASLAK v0.8', OK_DOSYA, 'ON-KAYIT-TASLAK.md'),
 }
 
-# ---------------------------------------------------------------- madde kutuphanesi
-# kimlik: (belge, bolum, matris-kimligi, birebir alinti, (ilk satir, son satir))
+# ---------------------------------------------------------------- clause library
+# kimlik: (document, section, matrix identifier, verbatim quotation, (first line, last line))
 M = {
     # --- JWTBCP (8725bis-10)
     'J31-ALLOW': ('JWTBCP', '§3.1', 'T327', 'MUST NOT employ any algorithms outside this configured set', (463, 466)),
@@ -165,7 +165,7 @@ M = {
     'T51': ('TSL', '§5.1', 'T145', 'Relying Parties MUST reject JWTs with an invalid signature.', (788, 789)),
     # --- ACM2
     'A51': ('ACM2', 'Note 51', 'T135', 'the veriﬁcation function accepting if and only if all signatures are correct', (946, 946)),
-    # --- On kayit (ÖK) -- politika ve hedef tanimlari
+    # --- Pre-registration (PR) -- policy and target definitions
     'OK65': ('OK', '§6.5', '', 'İhraççı başına gerekli küme R = {X}, izinli küme {A, X}.', (1054, 1054)),
     'OK413': ('OK', '§4.13 L4', '', 'Yapılandırılmış hâlde K1 KABUL, K2 RED, K3 RED', (844, 844)),
     'OK2B6C': ('OK', '§2B m.6 (L4c)', '', 'Göç etmiş ihraççının yalnız klasik imzalı belgesi reddedilir, eski ihraççının klasik imzalı belgesi kabul edilir.', (256, 256)),
@@ -200,12 +200,12 @@ _ONBELLEK = {}
 def _satirlar(belge):
     if belge not in _ONBELLEK:
         with open(BELGE[belge][1], encoding='utf-8') as f:
-            _ONBELLEK[belge] = f.read().split('\n')  # grep/sed ile ayni satir numaralamasi
+            _ONBELLEK[belge] = f.read().split('\n')  # same line numbering as grep/sed
     return _ONBELLEK[belge]
 
 
 def _norm(s):
-    # satir sonundaki tire (RFC metinlerinde gercek tire: case-/sensitive, ML-DSA-/65) bosluksuz birlestirilir
+    # a hyphen at a line end (a real hyphen in the RFC texts: case-/sensitive, ML-DSA-/65) is joined without a space
     s = re.sub(r'-\n[ \t]*', '-', s)
     return re.sub(r'\s+', ' ', s).strip()
 
@@ -218,7 +218,7 @@ def alinti_denetimi():
         if _norm(alinti) not in parca:
             hatalar.append(f'{k}: "{alinti}" {belge}:{a}-{b} icinde yok')
     if hatalar:
-        print('ALINTI DENETIMI BASARISIZ:', file=sys.stderr)
+        print('QUOTATION CHECK FAILED:', file=sys.stderr)
         for h in hatalar:
             print('  ' + h, file=sys.stderr)
         sys.exit(2)
@@ -242,21 +242,21 @@ def dayanak(kimlikler):
     return ' ; '.join(madde(k) for k in gor)
 
 
-# ---------------------------------------------------------------- kollar
+# ---------------------------------------------------------------- arms
 KOLLAR = ['kontrol-EdDSA', 'kontrol-Ed25519', 'tedavi-ML-DSA-65', 'tedavi-composite']
 X = {'kontrol-EdDSA': 'EdDSA', 'kontrol-Ed25519': 'Ed25519',
      'tedavi-ML-DSA-65': 'ML-DSA-65', 'tedavi-composite': 'ML-DSA-65-ES256'}
 PQ = {'ML-DSA-44', 'ML-DSA-65', 'ML-DSA-87', 'ML-DSA-65-ES256', 'ML-DSA-65-Ed25519'}
 COKLU_KOL = {'ortak', 'klasik-taban', 'kapsam-pq', 'kapsam-hibrit', None}
-EK_KOL = {  # BATARYA-ESLEME kaynakli ek atamalar
+EK_KOL = {  # additional assignments taken from BATARYA-ESLEME
     'X5C04_karisik_pq_yaprak_klasik_ara': ['tedavi-composite'],
     'X5C07_korumasiz_x5c': ['tedavi-composite'],
     'K10K_alg-ES256_anahtar-Ed25519': ['kontrol-Ed25519'],
     'VC10_ikili_ihrac': ['kontrol-EdDSA', 'kontrol-Ed25519', 'tedavi-composite'],
 }
 
-# ---------------------------------------------------------------- roller (BATARYA-ESLEME.md §1-§2)
-# (vektor, kol) -> (rol metni, birincil_mi)
+# ---------------------------------------------------------------- roles (BATARYA-ESLEME.md §1-§2)
+# (vector, arm) -> (role text, is_primary)
 ROL = {}
 
 
@@ -349,15 +349,15 @@ rol('VMINUS_EdDSA', [KE], 'V− birincil', True)
 rol('VMINUS_EdDSA-ED25519', [K25], 'V− birincil (yedek etiket)', True)
 rol('VPLUS_ML-DSA-65', [P], 'V+ birincil', True)
 rol('VMINUS_ML-DSA-65', [P], 'V− birincil', True)
-# MR-yalniz
+# MR only
 rol('VP05_GJ_ES256_MLDSA65_kb', [P], 'MR1 eşi (VP05↔VP06, tanımlayıcı KB)', False)
 rol('REQ04_coklu_imzali', [P], 'MR1 eşi (REQ04↔REQ05, senaryo c, cüzdan tarafı)', False)
 rol('REQ05_coklu_imzali_pq_soyuldu', [P], 'MR1 eşi (REQ04↔REQ05, senaryo c, cüzdan tarafı)', False)
 rol('VC11_typ_vc+sd-jwt', TUM, 'MR3 eşi (VC01↔VC11; -13 geçişi)', False)
 rol('VP05_GJ_ES256_MLDSA65_kb-SIRA-ters', [P], 'MR4 DIŞI tanımlayıcı (sd_hash bağlaması değişir)', False)
 
-# ---------------------------------------------------------------- imza durumlari (insa != 'gecerli' olanlar)
-# (vektor, sira) -> (durum, kisa neden). durum: G gecerli bayt, B gecersiz, K alg-anahtar uyusmaz, U belirlenemez
+# ---------------------------------------------------------------- signature states (those with insa != 'gecerli')
+# (vector, index) -> (state, short reason). state: G valid bytes, B invalid, K alg-key mismatch, U undeterminable
 D = {}
 
 
@@ -410,7 +410,7 @@ for v in ['VMINUS_ES256', 'VMINUS_EdDSA', 'VMINUS_EdDSA-ED25519']:
     d(v, 0, 'B', 'bayt 32 bit 0 çevrildi')
 d('VMINUS_ML-DSA-65', 0, 'B', 'bayt 1654 bit 0 çevrildi')
 
-# ---------------------------------------------------------------- ozel kurallar
+# ---------------------------------------------------------------- special rules
 SURUM_BOLUNEN = {
     'VC07_GJ_ES256_MLDSA65', 'VC08_GJ_ES256_composite', 'VC09_GJ_ES256_EdDSA', 'VC09_GJ_ES256_EdDSA-ED25519',
     'VC07_GJ_ES256_MLDSA65-SIRA-ters', 'VC08_GJ_ES256_composite-SIRA-ters', 'VC09_GJ_ES256_EdDSA-SIRA-ters',
@@ -450,7 +450,7 @@ def imzalar(v):
     ins = v['insa'] or {}
     if 'imzalar' in ins:
         return [(s['alg'], s.get('insa', ''), s['sira']) for s in ins['imzalar']]
-    if 'kimlik_bilgileri' in ins:  # VC10: yalniz credentials[0] (ES256 kopya) degerlendirilir
+    if 'kimlik_bilgileri' in ins:  # VC10: only credentials[0] (the ES256 copy) is evaluated
         s = ins['kimlik_bilgileri'][0]
         return [(s['alg'], s.get('insa', ''), 0)]
     return []
@@ -474,11 +474,11 @@ def capraz_denetim():
         if vid not in VID:
             sorun.append(f'ozel: {vid} manifestte yok')
     if sorun:
-        print('CAPRAZ DENETIM BASARISIZ:', *sorun, sep='\n  ', file=sys.stderr)
+        print('CROSS-CHECK FAILED:', *sorun, sep='\n  ', file=sys.stderr)
         sys.exit(3)
 
 
-# ---------------------------------------------------------------- karar motoru
+# ---------------------------------------------------------------- decision engine
 def durum(v, alg, ins, sira):
     if (v['id'], sira) in D:
         return D[(v['id'], sira)]
@@ -486,7 +486,7 @@ def durum(v, alg, ins, sira):
 
 
 def genel(v, kol, cfg):
-    """P0 / P2 / L4 kurali. Donus: (karar, madde listesi, gerekce metni)."""
+    """P0 / P2 / L4 rule. Returns: (decision, list of clauses, rationale text)."""
     izinli = {'ES256', X[kol]}
     R = {X[kol]} if cfg == 'L4' else set()
     sig = imzalar(v)
@@ -530,7 +530,7 @@ def genel(v, kol, cfg):
         if belirsiz:
             return 'indeterminate', ['R52-ONE'], f'P0: tek aday imzanın geçerliliği belirlenemiyor [{ozet}]'
         return 'reject', ['R52-ONE'] + neden_md, f'P0: geçerli izinli imza yok [{ozet}]'
-    # P2 / L4: mevcut her imza gecerli olmali
+    # P2 / L4: every signature present must be valid
     if not sig:
         return 'reject', ['R52-ONE'], 'imza yok'
     if kotu:
@@ -569,12 +569,12 @@ def ek_kabul_maddesi(v):
 
 
 def karar_uret(v, kol, cfg, surum):
-    """Tek satir: (karar, madde listesi, not metni)."""
+    """One row: (decision, list of clauses, note text)."""
     vid = v['id']
     kr, md, gerekce = genel(v, kol, cfg)
     notlar = []
 
-    # ---- aile / vektor ozel kurallari
+    # ---- family / vector specific rules
     if vid in ('X5C07_korumasiz_x5c', 'X5C08_korumasiz_x5c_zincir_degisimi'):
         onceki = kr
         kr, md = 'reject', ['R6', 'V13-35A', 'V13-35B', 'H611', 'OK2D1A']
@@ -663,7 +663,7 @@ def karar_uret(v, kol, cfg, surum):
         kr, md = 'reject', ['D42-JWK', 'D43-7', 'M3-PRIV']
         gerekce = 'DPoP jwk başlığı özel anahtar üyesi (priv) içeriyor'
 
-    # ---- SD-JWT VC surum boyutu (senaryo d JSON)
+    # ---- SD-JWT VC version dimension (scenario d JSON)
     if surum == '-19' and vid in SURUM_BOLUNEN and vid != 'VC11_typ_vc+sd-jwt':
         if kr.startswith('accept'):
             kr, md = 'indeterminate', ['V19-22', 'H61-JSON', 'OK2D7']
@@ -674,11 +674,11 @@ def karar_uret(v, kol, cfg, surum):
     if surum == '-19' and vid in VP_SDHASH and kr == 'indeterminate':
         md = md + ['V19-22']
 
-    # ---- kabul satirlarina artefakt maddeleri
+    # ---- artefact clauses for the acceptance rows
     if kr.startswith('accept'):
         md = md + ek_kabul_maddesi(v)
 
-    # ---- notlar
+    # ---- notes
     if vid in ('X5C04_karisik_pq_yaprak_klasik_ara', 'X5C05_karisik_pq_ara_klasik_kok') and kr.startswith('accept'):
         notlar.append('accept-hybrid yalnız JWS katmanı: sertifika yolunda klasik kenar var (' +
                       ('ara CA int-ec' if vid.startswith('X5C04') else 'kök root-ec') +
@@ -728,7 +728,7 @@ def karar_uret(v, kol, cfg, surum):
     return kr, md, gerekce, notlar
 
 
-# ---------------------------------------------------------------- satir uretimi
+# ---------------------------------------------------------------- row generation
 def kollar_icin(v):
     k = v['kol']
     ks = KOLLAR[:] if k in COKLU_KOL else [k]
@@ -776,7 +776,7 @@ def satirlar(secili_kollar):
                     alanlar = [vid, pol, kol, 'evet' if bir else 'hayır', kr, dayanak(md), not_m]
                     for a in alanlar:
                         if '\t' in a or '\n' in a or '\r' in a:
-                            sys.exit(f'alan icinde sekme/yeni satir: {vid}')
+                            sys.exit(f'tab/newline inside a field: {vid}')
                     out.append(alanlar)
     return out
 
@@ -788,7 +788,7 @@ def main():
     secili = [k for k in a.kollar.split(',') if k]
     for k in secili:
         if k not in KOLLAR:
-            sys.exit(f'bilinmeyen kol {k}')
+            sys.exit(f'unknown arm {k}')
     n = alinti_denetimi()
     capraz_denetim()
     rows = satirlar(secili)

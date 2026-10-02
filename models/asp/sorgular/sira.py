@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
-"""Optimum göç sıraları (ön kayıt §4.9 S7 "asgari sıra"; pilot P2b amacı).
-Bir asgari küme M (düğümler) ve taşıyıcıları sabitken, her adımda bir düğüm göç eder. Amaç (pilot P2b ile aynı):
-    en büyükle  Σ_t |{ D ∈ önek_t : D'nin hedef yolundaki hiçbir artefaktı t anında etkin sahte değil }|
-Çözüm: düğüm alt kümeleri üzerinde dinamik programlama (2^|M| önek). Güvenlik yüklemi iki bağımsız
-değerlendiriciyle hesaplanır: ASP (cekirdek.lp, değerlendirme kipi) ve Jacobi (z3/py_degerlendirici.py);
-iki DP'nin en iyi değeri ve en iyi sıra kümesi karşılaştırılır.
-Regresyon: pilot P2b (referans/pilot/p2/order.lp) sırası yeniden üretilir.
-Kullanım: ./calistir.sh sorgular/sira.py
+"""Optimal migration orders (pre-registration §4.9 S7 "minimal order"; aim of pilot P2b).
+With a minimal set M (nodes) and its carriers fixed, one node migrates per step. Objective (the same as pilot P2b):
+    maximise  Σ_t |{ D ∈ prefix_t : no artefact on the goal path of D is effectively forged at time t }|
+Solution: dynamic programming over node subsets (2^|M| prefixes). The security predicate is computed with two independent
+evaluators: ASP (cekirdek.lp, evaluation mode) and Jacobi (z3/py_degerlendirici.py);
+the best value and the set of best orders of the two DPs are compared.
+Regression: the order of pilot P2b (referans/pilot/p2/order.lp) is reproduced.
+Usage: ./calistir.sh sorgular/sira.py
 """
 import itertools, json, os, sys
 from functools import lru_cache
@@ -22,13 +22,13 @@ M2_AGIRLIK = {'a02': 107}
 
 
 def en_iyi_siralar(dugumler, etkin_fn):
-    """etkin_fn(frozenset S) -> {D ∈ S : etkin}. Dönüş: (en iyi değer, en iyi sıraların listesi)."""
+    """etkin_fn(frozenset S) -> {D ∈ S : effective}. Returns: (best value, list of best orders)."""
     D = tuple(sorted(dugumler))
     n = len(D)
     bel = {}
 
     def f(S):
-        # S: önek (göç etmiş düğümler); en iyi kalan toplam: S'den sonra kalan adımlar
+        # S: prefix (migrated nodes); best remaining total: the steps that remain after S
         if S in bel:
             return bel[S]
         if len(S) == n:
@@ -53,7 +53,7 @@ def en_iyi_siralar(dugumler, etkin_fn):
 
 
 def yol_artefaktlari(prm, dugumler, tasi, hedef, O=None, dosyalar=None):
-    """Hedef yolundaki (tam küme altında) artefakt → düğüm eşlemesi."""
+    """Artefact → node mapping on the goal path (under the full set)."""
     Y = Yapi(prm, O)
     return {a: Y.dugum[a] for a in Y.karar if Y.dugum[a] in dugumler}
 
@@ -86,7 +86,7 @@ def hucre_sira(is_):
 
 
 def pilot_p2b():
-    """Pilotun kendi order.lp'si ile yeni çekirdek + DP'nin karşılaştırması (coexist/pq/lotl/claims, ilk küme)."""
+    """Comparison of the pilot's own order.lp with the new core + DP (coexist/pq/lotl/claims, first set)."""
     pilot = os.environ.get('PILOT_P2', '/referans/pilot/p2')
     base = open(os.path.join(pilot, 'trustchain_base.lp'), encoding='utf-8').read()
     order = open(os.path.join(pilot, 'order.lp'), encoding='utf-8').read()
@@ -101,7 +101,7 @@ def pilot_p2b():
                                                                         for s in m.symbols(shown=True))))
               if m.optimality_proven else None)
     pilot_siralar = sorted(set(en_iyi))
-    # yeni çekirdek: pilot örneği (regresyon/p2_ornegi.lp) üzerinde DP
+    # new core: DP on the pilot instance (regresyon/p2_ornegi.lp)
     dosyalar = ['regresyon/p2_ornegi.lp', 'olgular/parametreler.lp', 'olgular/pencereler.lp']
     O = olgulari_oku(['regresyon/p2_ornegi.lp', 'olgular/parametreler.lp'])
     prm = parametreler(faz='f3', politika='p4', tau=600, capa='taze', wscd_pq='var')

@@ -1,6 +1,6 @@
-"""Girdi şeması `c3-istat-girdi/1.0` (SEMA.md): JSON ya da CSV yükleme ve katı doğrulama.
+"""Input schema `c3-istat-girdi/1.0` (SCHEMA.md): loading of JSON or CSV and strict validation.
 
-Doğrulama başarısızsa `GirdiHatasi` (bütün mesajlarla) fırlatılır; analiz başlamaz.
+If validation fails, `GirdiHatasi` is raised (with all messages); the analysis does not start.
 """
 from __future__ import annotations
 
@@ -25,11 +25,11 @@ ENUM = {
     "B1": ("red", "yok_sayma", "dogrulama_duser"),
     "B5": ("en_az_biri_gecerli", "mevcut_tumu_gecerli", "gerekli_kume", "diger"),
 }
-# Ölçüm alanları: null olabilir (nedeniyle)
+# Measurement fields: may be null (with a reason)
 OLCUM_IKILI = ("Y_L4", "F_K", "F_T", "D_soy", "B2", "B3", "B4_ozel_kod", "B6", "surum_8725bis_sonrasi")
 OLCUM_ENUM = ("B1", "B5")
 OLCUM_ALANLARI = OLCUM_IKILI + OLCUM_ENUM + ("L_duzeyi",)
-# Zorunlu, null olamayan ikili alanlar
+# Mandatory binary fields that cannot be null
 ZORUNLU_IKILI = ("adaptor_gecersiz", "pilot", "devralan")
 HEDEF_ALANLARI = {
     "hedef_id", "tabaka", "adaptor_gecersiz", "adaptor_gecersiz_gerekce", "tk_sinifi", "l4_bicimi",
@@ -39,7 +39,7 @@ HEDEF_ALANLARI = {
 }
 HEDEF_ZORUNLU = {"hedef_id", "tabaka", "adaptor_gecersiz", "Y_L4", "L_duzeyi", "F_K", "F_T", "D_soy", "B1", "B2",
                  "B3", "B4_ozel_kod", "B5", "B6", "surum_8725bis_sonrasi", "pilot", "devralan"}
-HEDEF_ZORUNLU_N = {"tk_sinifi", "l4_bicimi"}          # REF dışındakiler için
+HEDEF_ZORUNLU_N = {"tk_sinifi", "l4_bicimi"}          # for targets other than REF
 VAKA_ALANLARI = {"hedef_id", "vaka_id", "kol", "uyum", "belirsiz_neden"}
 KOLLAR = ("K", "T", "diger")
 TUM_NEDENLER = BELIRSIZ_NEDENLERI + DIGER_NEDENLER
@@ -58,12 +58,12 @@ class Girdi:
     aciklama: str
     hedefler: list[dict]
     vakalar: list[dict]
-    kaynak: dict = field(default_factory=dict)   # {"dosya": ad, "sha256": …} (belirlenimci; mutlak yol yok)
+    kaynak: dict = field(default_factory=dict)   # {"dosya": name, "sha256": …} (deterministic; no absolute path)
 
 
 # ---------------------------------------------------------------------------------------------
 def _ikili(deger):
-    """0/1/True/False -> 0/1; başka her şey None (geçersiz). bool, int'in alt türüdür; ikisi de kabul."""
+    """0/1/True/False -> 0/1; anything else None (invalid). bool is a subclass of int; both are accepted."""
     if isinstance(deger, bool):
         return int(deger)
     if isinstance(deger, int) and deger in (0, 1):
@@ -93,7 +93,7 @@ def _dogrula_hedef(i: int, h: dict, hatalar: list[str]) -> dict:
                 hatalar.append(f"{yer}: {alan} tanımsız değer {v!r}")
         elif alan in ("tk_sinifi", "l4_bicimi", "kontrol_etiketi"):
             if v is None:
-                continue  # zorunluluk yukarıda denetlendi (kontrol_etiketi isteğe bağlı)
+                continue  # presence of mandatory fields was checked above (kontrol_etiketi is optional)
             if v not in secenekler:
                 hatalar.append(f"{yer}: {alan} tanımsız değer {v!r}")
         elif v not in secenekler:
@@ -114,7 +114,7 @@ def _dogrula_hedef(i: int, h: dict, hatalar: list[str]) -> dict:
     if L is not None and (isinstance(L, bool) or not isinstance(L, int) or not 0 <= L <= 5):
         hatalar.append(f"{yer}: L_duzeyi 0…5 tamsayı ya da null olmalı, bulunan {L!r}")
 
-    # null nedenleri
+    # null reasons
     nedenler = n["belirsiz_nedenleri"]
     for alan, neden in sorted(nedenler.items()):
         if alan not in OLCUM_ALANLARI:
@@ -132,7 +132,7 @@ def _dogrula_hedef(i: int, h: dict, hatalar: list[str]) -> dict:
         hatalar.append(f"{yer}: Y_L4 null ise nedeni ÖK §4.15 'belirsiz' nedenlerinden biri olmalı "
                        f"({', '.join(BELIRSIZ_NEDENLERI)}), bulunan {nedenler.get('Y_L4')!r}")
 
-    # tutarlılık kuralları
+    # consistency rules
     if n["tabaka"] != "REF" and n["adaptor_gecersiz"] == 0 and n.get("kontrol_etiketi") is None:
         hatalar.append(f"{yer}: kontrol_etiketi geçerli n hedeflerinde zorunlu (ÖK §2D-A.2, §2E.3: "
                        "kullanılan etiket hedef başına kaydedilir)")
@@ -240,7 +240,7 @@ def _csv_deger(alan: str, metin: str):
         try:
             return int(metin)
         except ValueError:
-            return metin   # doğrulayıcı reddeder
+            return metin   # the validator rejects it
     return metin
 
 
@@ -299,7 +299,7 @@ def _oku_bayt(yol: str) -> bytes:
 
 
 def yukle(yol: str, vakalar_yolu: str | None = None) -> Girdi:
-    """JSON (`.json`) ya da CSV (`hedefler.csv` [+ `vakalar.csv`]) girdisini yükler ve doğrular."""
+    """Loads and validates a JSON (`.json`) or CSV (`hedefler.csv` [+ `vakalar.csv`]) input."""
     ham = _oku_bayt(yol)
     kaynak = {"dosya": os.path.basename(yol), "sha256": hashlib.sha256(ham).hexdigest()}
     if yol.lower().endswith(".json"):

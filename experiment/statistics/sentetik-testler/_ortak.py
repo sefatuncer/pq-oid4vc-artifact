@@ -1,10 +1,10 @@
-"""Sentetik testlerin ortak yardımcıları.
+"""Shared helpers of the synthetic tests.
 
-- `c3istat` paketini içe aktarma yolunu ayarlar (depo düzeni ya da imaj düzeni).
-- Sentetik veri seti kurucuları.
-- İki uygulama karşılaştırmalarının sayaçları (`SAYAC`). `calistir.py` bu sayaçları özete yazar.
+- Sets the import path of the `c3istat` package (repository layout or image layout).
+- Builders of synthetic data sets.
+- Counters of the comparisons of the two implementations (`SAYAC`). `calistir.py` writes these counters to the summary.
 
-BU DOSYADA GERÇEK ÖLÇÜM VERİSİ YOKTUR. Bütün hedefler sentetiktir (kimlikler `S-...`).
+THIS FILE CONTAINS NO REAL MEASUREMENT DATA. All targets are synthetic (identifiers `S-...`).
 """
 from __future__ import annotations
 
@@ -24,7 +24,7 @@ from c3istat import analiz, bootstrap, kesin, karsilastir, referans, sema, yapil
 VERI_DIZINI = os.path.join(_BURASI, "veri")
 
 # ---------------------------------------------------------------------------
-# İki uygulama karşılaştırma sayaçları (süpürme testleri doldurur)
+# Counters of the comparisons of the two implementations (filled by the sweep tests)
 #   SAYAC[aile] = {"vaka": int, "uyumlu_vaka": int, "nicelik": int, "uyumlu_nicelik": int, "en_buyuk_sapma": float}
 # ---------------------------------------------------------------------------
 SAYAC: dict[str, dict] = defaultdict(lambda: {"vaka": 0, "uyumlu_vaka": 0, "nicelik": 0,
@@ -33,12 +33,12 @@ SAYAC: dict[str, dict] = defaultdict(lambda: {"vaka": 0, "uyumlu_vaka": 0, "nice
 
 
 def say(aile: str, k: "karsilastir.Karsilastirici") -> bool:
-    """Bir vakanın karşılaştırıcısını aile sayacına işler; vaka uyumluysa True döner."""
+    """Records the comparator of a case in the family counter; returns True if the case agrees."""
     oz = k.ozet()
     s = SAYAC[aile]
     s["vaka"] += 1
     s["nicelik"] += oz["toplam"]
-    # "sınırda" = karar eşiğine ≤ TOLERANSLAR["sinir"] yakın kayan nokta değeri; kesin aritmetik esas alınır (hata sayılmaz)
+    # "sinirda" = floating-point value within TOLERANSLAR["sinir"] of a decision threshold; the exact arithmetic is authoritative (not counted as an error)
     s["uyumlu_nicelik"] += oz["uyumlu"] + oz["sinirda"]
     s.setdefault("sinirda", 0)
     s["sinirda"] += oz["sinirda"]
@@ -52,13 +52,13 @@ def say(aile: str, k: "karsilastir.Karsilastirici") -> bool:
 
 
 # ---------------------------------------------------------------------------
-# Sentetik veri kurucuları
+# Synthetic data builders
 # ---------------------------------------------------------------------------
-TABAKA_KOTASI = (("JOSE", 18), ("SDJWT", 8), ("COSE", 5))  # ÖK §2B.3 düzeni (yalnız yapı; değerler sentetik)
+TABAKA_KOTASI = (("JOSE", 18), ("SDJWT", 8), ("COSE", 5))  # layout of PR §2B.3 (structure only; values are synthetic)
 
 
 def hedef(hid: str, tabaka: str = "JOSE", **alanlar) -> dict:
-    """Varsayılanları 'temiz' olan (hiç null içermeyen) sentetik bir hedef kaydı."""
+    """A synthetic target record whose defaults are 'clean' (no null at all)."""
     kayit = {
         "hedef_id": hid,
         "tabaka": tabaka,
@@ -104,7 +104,7 @@ def veri_seti(hedefler: list[dict], vakalar: list[dict] | None = None, aciklama:
 
 
 def n31_hedefleri() -> list[dict]:
-    """31 sentetik hedef: JOSE 18, SDJWT 8, COSE 5 (ÖK §2B kotası düzeni)."""
+    """31 synthetic targets: JOSE 18, SDJWT 8, COSE 5 (layout of the PR §2B quota)."""
     liste = []
     for tabaka, kota in TABAKA_KOTASI:
         for i in range(1, kota + 1):
@@ -114,8 +114,8 @@ def n31_hedefleri() -> list[dict]:
 
 def y_ata(hedefler: list[dict], birler: int, belirsiz: int = 0, gecersiz: int = 0,
           neden: str = "kanit_kurali") -> list[dict]:
-    """Sırayla: ilk `gecersiz` hedef adaptör geçersiz; sonraki `belirsiz` hedefte Y_L4 = null;
-    sonraki `birler` hedefte Y_L4 = 1; kalanlar 0."""
+    """In order: the first `gecersiz` targets have an invalid adapter; in the next `belirsiz` targets Y_L4 = null;
+    in the next `birler` targets Y_L4 = 1; the rest 0."""
     h = copy.deepcopy(hedefler)
     i = 0
     for _ in range(gecersiz):
@@ -135,5 +135,5 @@ def y_ata(hedefler: list[dict], birler: int, belirsiz: int = 0, gecersiz: int = 
 
 
 def analiz_sozluk(veri: dict) -> dict:
-    """Sözlük hâlindeki sentetik veriyi doğrulayıp analiz eder (dosya yazmadan)."""
+    """Validates and analyses synthetic data given as a dictionary (without writing files)."""
     return analiz.analiz_et(sema.sozlukten(veri))

@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 # =====================================================================
-#  PQ-OID4VC | Adım 7 | keşif kayıtları (ön kayıt dışı) — yalnız kesif.tsv'deki lemmalar koşulur
+#  PQ-OID4VC | Step 7 | exploration records (outside the pre-registration) — only the lemmas in kesif.tsv are run
 # =====================================================================
-#  Kurallar: model/mechanisms/betik/calistir.sh ile aynı (tek konteyner, 12 GB, 600 s, pq-a07-,
-#            --derivcheck-timeout=60, merdiven 1->3->5->6, iyi biçimlilik uyarısı = geçersiz).
-#  Çıktı : sonuc/ham/*.{txt,meta}, sonuc/json/*.json, sonuc/ozet.csv, sonuc/karsilastirma.csv
+#  Rules: the same as models/mechanisms/betik/calistir.sh (one container, 12 GB, 600 s, pq-a07-,
+#            --derivcheck-timeout=60, ladder 1->3->5->6, well-formedness warning = invalid).
+#  Output: sonuc/ham/*.{txt,meta}, sonuc/json/*.json, sonuc/ozet.csv, sonuc/karsilastirma.csv
 set -u
 BASE="$(cd "$(dirname "$0")" && pwd)"
 cd "$BASE" || exit 1

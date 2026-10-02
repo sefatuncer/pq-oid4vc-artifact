@@ -1,13 +1,13 @@
 #!/bin/sh
 # =====================================================================
-#  PQ-OID4VC | teknik kapı | konteyner içi tek Tamarin çağrısı (models/tamarin/betik/ic_kosum.sh kopyası)
+#  PQ-OID4VC | technical gate | a single Tamarin call inside the container (copy of models/tamarin/betik/ic_kosum.sh)
 # =====================================================================
-#  Kullanım (konteyner içinde, /work = model/sampling/teknik-kapi):
-#     sh /work/betik/ic_kosum.sh <cikti_oneki> <zaman_asimi_s> <model_goreli_yolu> [tamarin argümanları...]
-#  Yazar: /work/<cikti_oneki>.txt  (Tamarin'in tam çıktısı)
-#         /work/<cikti_oneki>.meta (rc, duvar saati süresi, cgroup bellek tepesi)
-#  Bellek tepesi: /sys/fs/cgroup/memory.peak (konteynerin tamamı; Maude dahil).
-#  Konteyner tek çağrı için açıldığından tepe değer bu çağrıya aittir.
+#  Usage (inside the container, /work = models/sampling/teknik-kapi):
+#     sh /work/betik/ic_kosum.sh <output_prefix> <timeout_s> <model_relative_path> [tamarin arguments...]
+#  Writes: /work/<output_prefix>.txt  (complete Tamarin output)
+#          /work/<output_prefix>.meta (rc, wall-clock duration, cgroup memory peak)
+#  Memory peak: /sys/fs/cgroup/memory.peak (the whole container; Maude included).
+#  Since the container is started for a single call, the peak value belongs to this call.
 out=$1; to=$2; f=$3; shift 3
 s=$(date +%s.%N)
 timeout "$to" tamarin-prover "$@" "/work/$f" > "/work/$out.txt" 2>&1

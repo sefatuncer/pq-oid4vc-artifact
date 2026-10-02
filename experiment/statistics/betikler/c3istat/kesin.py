@@ -1,11 +1,11 @@
-"""A uygulaması — yalnız Python standart kütüphanesi (fractions, math.comb, decimal, statistics).
+"""Implementation A — Python standard library only (fractions, math.comb, decimal, statistics).
 
-Kesin testler rasyonel sayılarla (Fraction) TAM hesaplanır. GA'lar Decimal (60 basamak) ile hesaplanır.
-Koşullu OR'nin kökleri, ψ = exp(t)'nin kesin rasyonel değeri üzerinde tamsayı aritmetiğiyle aranır:
-- t'de ikiye bölme, kayan nokta çözünürlüğüne kadar sürer;
-- her değerlendirme kesin tamsayı karşılaştırmasıdır.
+Exact tests are computed EXACTLY with rational numbers (Fraction). CIs are computed with Decimal (60 digits).
+The roots of the conditional OR are searched with integer arithmetic on the exact rational value of ψ = exp(t):
+- bisection in t continues down to floating-point resolution;
+- every evaluation is an exact integer comparison.
 
-Bu modül scipy/statsmodels/numpy İÇE AKTARMAZ (bağımsızlık).
+This module does NOT IMPORT scipy/statsmodels/numpy (independence).
 """
 from __future__ import annotations
 
@@ -17,7 +17,7 @@ from typing import NamedTuple
 
 from .yapilandirma import ALFA, GUVEN, HOLM_AILESI, NEWCOMBE_ESLESTIRILMIS_PHI
 
-HASSASIYET = 60  # Decimal basamak sayısı
+HASSASIYET = 60  # number of Decimal digits
 
 _YARIM = Fraction(1, 2)
 
@@ -31,17 +31,17 @@ def _dogrula(n: int, *xs: int) -> None:
 
 
 def _hucreler(*xs: int) -> None:
-    """Tablo hücreleri negatif olmayan tamsayı olmalı."""
+    """Table cells must be non-negative integers."""
     for x in xs:
         if isinstance(x, bool) or not isinstance(x, int) or x < 0:
             raise ValueError(f"tablo hücresi negatif olmayan tamsayı olmalı: {x!r}")
 
 
 # ---------------------------------------------------------------------------------------------
-# Binom
+# Binomial
 # ---------------------------------------------------------------------------------------------
 def binom_cdf(x: int, n: int, p: Fraction = _YARIM) -> Fraction:
-    """P(X ≤ x), X ~ Bin(n, p); kesin."""
+    """P(X ≤ x), X ~ Bin(n, p); exact."""
     _dogrula(n, x)
     if x < 0:
         return Fraction(0)
@@ -55,7 +55,7 @@ def binom_cdf(x: int, n: int, p: Fraction = _YARIM) -> Fraction:
 
 
 def binom_sf(x: int, n: int, p: Fraction = _YARIM) -> Fraction:
-    """P(X ≥ x), X ~ Bin(n, p); kesin."""
+    """P(X ≥ x), X ~ Bin(n, p); exact."""
     _dogrula(n, x)
     if x <= 0:
         return Fraction(1)
@@ -65,23 +65,23 @@ def binom_sf(x: int, n: int, p: Fraction = _YARIM) -> Fraction:
 
 
 def binom_alt_p(x: int, n: int) -> Fraction:
-    """T1: tek yönlü (alt) kesin binom p-değeri, H0: p ≥ 0,5 => P(X' ≤ x), X' ~ Bin(n, 1/2)."""
+    """T1: one-sided (lower) exact binomial p-value, H0: p ≥ 0.5 => P(X' ≤ x), X' ~ Bin(n, 1/2)."""
     return binom_cdf(x, n)
 
 
 def binom_ust_p(x: int, n: int) -> Fraction:
-    """T5 (ve T1 yanlışlama kuyruğu): tek yönlü (üst) kesin binom p-değeri => P(X' ≥ x)."""
+    """T5 (and the T1 falsification tail): one-sided (upper) exact binomial p-value => P(X' ≥ x)."""
     return binom_sf(x, n)
 
 
 class KritikDeger(NamedTuple):
-    c: int | None        # P(X ≤ c) ≤ α olan en büyük c (yoksa None)
+    c: int | None        # largest c with P(X ≤ c) ≤ α (None if there is none)
     u: int | None        # u = n − c
     P_c: Fraction | None  # P(X ≤ c)
 
 
 def kritik_degerler(n: int, alfa: Fraction = ALFA) -> KritikDeger:
-    """ÖK Ek A kuralı: c = max{c : P(X ≤ c) ≤ α}, u = n − c; p0 = 0,5."""
+    """PR Annex A rule: c = max{c : P(X ≤ c) ≤ α}, u = n − c; p0 = 0.5."""
     _dogrula(n)
     alfa = Fraction(alfa)
     payda = 2 ** n
@@ -99,10 +99,10 @@ def kritik_degerler(n: int, alfa: Fraction = ALFA) -> KritikDeger:
 
 
 # ---------------------------------------------------------------------------------------------
-# McNemar ve Fisher (kesin, iki yönlü)
+# McNemar and Fisher (exact, two-sided)
 # ---------------------------------------------------------------------------------------------
 def mcnemar_kesin(b: int, c: int) -> Fraction:
-    """Kesin (koşullu) McNemar, iki yönlü: p = min(1, 2·P(Bin(b+c, 1/2) ≤ min(b, c))); b + c = 0 => 1."""
+    """Exact (conditional) McNemar, two-sided: p = min(1, 2·P(Bin(b+c, 1/2) ≤ min(b, c))); b + c = 0 => 1."""
     _hucreler(b, c)
     m = b + c
     if m == 0:
@@ -111,8 +111,8 @@ def mcnemar_kesin(b: int, c: int) -> Fraction:
 
 
 def fisher_iki_yonlu(a: int, b: int, c: int, d: int) -> Fraction:
-    """Fisher kesin testi, iki yönlü: olasılığı gözlenenden büyük olmayan tabloların toplamı (kesin eşitlik).
-    Bir satır ya da sütun toplamı 0 ise p = 1."""
+    """Fisher exact test, two-sided: sum over the tables whose probability is not greater than the observed one (exact equality).
+    If a row or column total is 0, p = 1."""
     _hucreler(a, b, c, d)
     r1, r2, c1, c2 = a + b, c + d, a + c, b + d
     if 0 in (r1, r2, c1, c2):
@@ -124,10 +124,10 @@ def fisher_iki_yonlu(a: int, b: int, c: int, d: int) -> Fraction:
 
 
 # ---------------------------------------------------------------------------------------------
-# Wilson ve Newcombe (yöntem 10)
+# Wilson and Newcombe (method 10)
 # ---------------------------------------------------------------------------------------------
 def z_degeri(guven: Fraction = GUVEN) -> float:
-    """Φ⁻¹(1 − (1 − güven)/2); %95 için 0,975 kantili (statistics.NormalDist)."""
+    """Φ⁻¹(1 − (1 − confidence)/2); the 0.975 quantile for 95% (statistics.NormalDist)."""
     return NormalDist().inv_cdf(float(1 - (1 - Fraction(guven)) / 2))
 
 
@@ -143,7 +143,7 @@ def _wilson_dec(x: int, n: int, z: Decimal) -> tuple[Decimal, Decimal]:
 
 
 def wilson(x: int, n: int, guven: Fraction = GUVEN) -> tuple[float, float] | None:
-    """Wilson skor GA (süreklilik düzeltmesi yok). n = 0 => None. x = 0 => alt = 0; x = n => üst = 1 (kesin)."""
+    """Wilson score CI (no continuity correction). n = 0 => None. x = 0 => lower = 0; x = n => upper = 1 (exact)."""
     _dogrula(n, x)
     if n == 0:
         return None
@@ -157,8 +157,8 @@ def wilson(x: int, n: int, guven: Fraction = GUVEN) -> tuple[float, float] | Non
 
 def newcombe_bagimsiz(x1: int, n1: int, x2: int, n2: int,
                       guven: Fraction = GUVEN) -> tuple[float, float, float] | None:
-    """Bağımsız oranlar farkı p1 − p2 için Newcombe (1998) yöntem 10: iki Wilson aralığının
-    kare-ve-topla birleşimi (süreklilik düzeltmesi yok). Döner: (fark, alt, üst)."""
+    """Newcombe (1998) method 10 for the difference p1 − p2 of independent proportions: square-and-add
+    combination of two Wilson intervals (no continuity correction). Returns: (difference, lower, upper)."""
     _dogrula(n1, x1)
     _dogrula(n2, x2)
     if n1 == 0 or n2 == 0:
@@ -179,17 +179,17 @@ def newcombe_bagimsiz(x1: int, n1: int, x2: int, n2: int,
 
 def newcombe_eslestirilmis(a: int, b: int, c: int, d: int, guven: Fraction = GUVEN,
                            phi_turu: str = NEWCOMBE_ESLESTIRILMIS_PHI) -> tuple[float, float, float, float] | None:
-    """Eşleştirilmiş oranlar farkı θ = (a+b)/N − (a+c)/N = (b − c)/N için Newcombe (1998) yöntem 10.
+    """Newcombe (1998) method 10 for the difference of paired proportions θ = (a+b)/N − (a+c)/N = (b − c)/N.
 
-    Tablo düzeni (1. koşul = tedavi T, 2. koşul = kontrol K):
-      a = iki koşulda olay; b = yalnız 1. koşulda; c = yalnız 2. koşulda; d = hiçbirinde.
+    Table layout (condition 1 = treatment T, condition 2 = control K):
+      a = event under both conditions; b = only under condition 1; c = only under condition 2; d = under neither.
     L = θ − √(dl1² − 2φ·dl1·du2 + du2²),  U = θ + √(du1² − 2φ·du1·dl2 + dl2²)
-      dl1 = p1 − l1, du1 = u1 − p1, dl2 = p2 − l2, du2 = u2 − p2 (Wilson sınırları).
-    φ seçimi:
-      "newcombe_duzeltmeli" (yöntem 10): ad − bc > 0 ise φ* = max(ad − bc − N/2, 0)/√(efgh), değilse φ̂;
+      dl1 = p1 − l1, du1 = u1 − p1, dl2 = p2 − l2, du2 = u2 − p2 (Wilson bounds).
+    Choice of φ:
+      "newcombe_duzeltmeli" (method 10): φ* = max(ad − bc − N/2, 0)/√(efgh) if ad − bc > 0, otherwise φ̂;
       "duz": φ̂ = (ad − bc)/√(efgh);  "sifir": φ = 0.
-      Payda (efgh) 0 ise φ = 0.
-    Döner: (fark, alt, üst, φ)."""
+      If the denominator (efgh) is 0, φ = 0.
+    Returns: (difference, lower, upper, φ)."""
     _hucreler(a, b, c, d)
     N = a + b + c + d
     if N == 0:
@@ -223,15 +223,15 @@ def newcombe_eslestirilmis(a: int, b: int, c: int, d: int, guven: Fraction = GUV
 
 
 # ---------------------------------------------------------------------------------------------
-# Koşullu MLE odds oranı ve koşullu kesin GA (Fisher'ın merkezsiz hipergeometriği)
+# Conditional MLE odds ratio and conditional exact CI (Fisher's noncentral hypergeometric)
 # ---------------------------------------------------------------------------------------------
 def _isaret(x: int) -> int:
     return (x > 0) - (x < 0)
 
 
 def _terimler(w: list[int], t: float) -> list[int]:
-    """ψ = exp(t) (kayan noktanın kesin kesri num/den). terim_j = w_j · num^j · den^(K−j): ortak payda
-    den^K ile çarpılmış kesin ağırlıklar (tamsayı)."""
+    """ψ = exp(t) (exact fraction num/den of the floating-point value). term_j = w_j · num^j · den^(K−j): exact weights
+    multiplied by the common denominator den^K (integers)."""
     num, den = math.exp(t).as_integer_ratio()
     K = len(w) - 1
     npow = [1] * (K + 1)
@@ -243,7 +243,7 @@ def _terimler(w: list[int], t: float) -> list[int]:
 
 
 def _kok_bul(isaret) -> float:
-    """isaret(t) ∈ {−1, 0, +1}, t'de artan. Kökü kayan nokta çözünürlüğüne kadar ikiye bölmeyle bulur."""
+    """isaret(t) ∈ {−1, 0, +1}, increasing in t. Finds the root by bisection down to floating-point resolution."""
     s0 = isaret(0.0)
     if s0 == 0:
         return 0.0
@@ -277,11 +277,11 @@ def _kok_bul(isaret) -> float:
 
 
 def kosullu_or(a: int, b: int, c: int, d: int, guven: Fraction = GUVEN) -> tuple[float, float, float]:
-    """Koşullu MLE OR ve koşullu kesin GA ([[a, b], [c, d]]; OR = (a·d)/(b·c) yönü).
-    - Bir satır/sütun toplamı 0 => (nan, 0, ∞).
-    - a desteğin alt ucunda => MLE = 0, alt = 0; üst ucunda => MLE = ∞, üst = ∞.
-    - Alt sınır: P(X ≥ a; ψ) = (1 − güven)/2; üst sınır: P(X ≤ a; ψ) = (1 − güven)/2.
-    Döner: (mle, alt, üst)."""
+    """Conditional MLE OR and conditional exact CI ([[a, b], [c, d]]; direction OR = (a·d)/(b·c)).
+    - A row/column total of 0 => (nan, 0, ∞).
+    - a at the lower end of the support => MLE = 0, lower = 0; at the upper end => MLE = ∞, upper = ∞.
+    - Lower bound: P(X ≥ a; ψ) = (1 − confidence)/2; upper bound: P(X ≤ a; ψ) = (1 − confidence)/2.
+    Returns: (mle, lower, upper)."""
     _hucreler(a, b, c, d)
     r1, r2, c1, c2 = a + b, c + d, a + c, b + d
     if 0 in (r1, r2, c1, c2):
@@ -304,7 +304,7 @@ def kosullu_or(a: int, b: int, c: int, d: int, guven: Fraction = GUVEN) -> tuple
     else:
         def f_alt(t):
             T = _terimler(w, t)
-            return _isaret(sum(T[ja:]) * qa - pa * sum(T))          # P(X ≥ a; ψ) − α/2 (ψ'de artan)
+            return _isaret(sum(T[ja:]) * qa - pa * sum(T))          # P(X ≥ a; ψ) − α/2 (increasing in ψ)
         alt = math.exp(_kok_bul(f_alt))
 
     if a == hi:
@@ -312,17 +312,17 @@ def kosullu_or(a: int, b: int, c: int, d: int, guven: Fraction = GUVEN) -> tuple
     else:
         def f_ust(t):
             T = _terimler(w, t)
-            return _isaret(pa * sum(T) - sum(T[:ja + 1]) * qa)      # α/2 − P(X ≤ a; ψ) (ψ'de artan)
+            return _isaret(pa * sum(T) - sum(T[:ja + 1]) * qa)      # α/2 − P(X ≤ a; ψ) (increasing in ψ)
         ust = math.exp(_kok_bul(f_ust))
     return (mle, alt, ust)
 
 
 # ---------------------------------------------------------------------------------------------
-# Holm (adım-aşağı), kesin aritmetik
+# Holm (step-down), exact arithmetic
 # ---------------------------------------------------------------------------------------------
 def holm(p: dict, alfa: Fraction = ALFA, sira: tuple = HOLM_AILESI) -> dict:
-    """Holm düzeltmesi. Eşit p'lerde sıra `sira` (ÖK aile sırası) ile bozulur; düzeltilmiş değerler
-    bu seçimden bağımsızdır. p_düz(i) = max_{j ≤ i} min(1, (m − j + 1)·p(j)); red ⇔ p_düz ≤ α."""
+    """Holm correction. Ties in p are broken by the order `sira` (PR family order); the adjusted values
+    do not depend on this choice. p_adj(i) = max_{j ≤ i} min(1, (m − j + 1)·p(j)); reject ⇔ p_adj ≤ α."""
     alfa = Fraction(alfa)
     anahtarlar = sorted(p, key=lambda k: (Fraction(p[k]), sira.index(k) if k in sira else len(sira), k))
     m = len(anahtarlar)
@@ -336,10 +336,10 @@ def holm(p: dict, alfa: Fraction = ALFA, sira: tuple = HOLM_AILESI) -> dict:
 
 
 # ---------------------------------------------------------------------------------------------
-# Yüzdelik (Hyndman–Fan tip 7)
+# Percentile (Hyndman–Fan type 7)
 # ---------------------------------------------------------------------------------------------
 def yuzdelik_tip7(sirali: list[float], q: Fraction) -> float:
-    """Sıralı dizide tip 7 yüzdelik: h = (n − 1)q (0 tabanlı); x[⌊h⌋] + (h − ⌊h⌋)(x[⌊h⌋+1] − x[⌊h⌋])."""
+    """Type 7 percentile of a sorted sequence: h = (n − 1)q (0-based); x[⌊h⌋] + (h − ⌊h⌋)(x[⌊h⌋+1] − x[⌊h⌋])."""
     n = len(sirali)
     if n == 0:
         raise ValueError("boş dizi")

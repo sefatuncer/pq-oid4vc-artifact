@@ -1,18 +1,18 @@
 # -*- coding: utf-8 -*-
-"""Adım 6 | Tamarin koşucusu (host'ta çalışır; her Tamarin çağrısı ayrı konteynerde).
+"""Step 6 | Tamarin runner (runs on the host; every Tamarin call in a separate container).
 
-Kipler:
-  python tamarin_kos.py iyi_bicim   -> yalnız iyi biçimlilik (--prove YOK): benzersiz her bayrak kümesi
+Modes:
+  python tamarin_kos.py iyi_bicim   -> well-formedness only (NO --prove): every distinct flag set
                                        iyi_bicim/<ad>.{txt,meta}, iyi_bicim/ozet.tsv
-  python tamarin_kos.py kos         -> hücreler + mutasyonlar: 'executable' + hedef lemma (merdivenle)
+  python tamarin_kos.py kos         -> cells + mutations: 'executable' + target lemma (with the ladder)
                                        sonuc/tamarin_ham/*, sonuc/tamarin.csv, sonuc/tamarin_mutasyon.csv
-Kurallar (Adım 6 görevi; Tamarin çalışmasının calistir.sh'siyle aynı): imaj pq-a02-tamarin:1.12.0;
---memory=12g --memory-swap=12g (iyi biçimlilikte 4g); zaman aşımı 600 s; ad öneki pq-a06-;
-aynı anda tek ağır Tamarin işi: başka bir pq-a02-tamarin konteyneri çalışıyorsa beklenir.
-Merdiven (sentez §7.9): 1 --prove=<lemma>; 3 + --auto-sources; 5 + --bound=40; 6 'belirsiz'.
-İyi biçimlilik her çağrıda denetlenir ("wellformedness check failed" => 'gecersiz_wf'). Türetme denetimi
-kapatılmaz; zaman aşımı --derivcheck-timeout=60 (ÖK §2H.2).
-Beklenen değerler: hücrelerde nsurum/kat_nsurum.tsv 'ilk_ajan' (tek kaynak), mutasyonlarda mutasyonlar.tsv.
+Rules (Step 6 task; the same as calistir.sh of the Tamarin work): image pq-a02-tamarin:1.12.0;
+--memory=12g --memory-swap=12g (4g for well-formedness); timeout 600 s; name prefix pq-a06-;
+one heavy Tamarin job at a time: wait if another pq-a02-tamarin container is running.
+Ladder (design document §7.9): 1 --prove=<lemma>; 3 + --auto-sources; 5 + --bound=40; 6 'belirsiz'.
+Well-formedness is checked in every call ("wellformedness check failed" => 'gecersiz_wf'). The derivation check
+is not disabled; timeout --derivcheck-timeout=60 (PR §2H.2).
+Expected values: for the cells nsurum/kat_nsurum.tsv 'ilk_ajan' (single source), for the mutations mutasyonlar.tsv.
 """
 import csv, json, os, re, subprocess, sys, time
 
@@ -20,8 +20,8 @@ KOK = os.path.dirname(os.path.abspath(__file__))
 PROJE = os.path.abspath(os.path.join(KOK, '..', '..', '..'))
 NSURUM = os.path.join(PROJE, 'models', 'known-answer-tests', 'nsurum', 'kat_nsurum.tsv')
 IMG = 'pq-a02-tamarin:1.12.0'
-MODEL = 'KAT3_SMIME.spthy'            # klasöre özgü varsayılan (satırda 'model' sütunu varsa o kullanılır)
-EK_BAGLAR = [(os.path.join(PROJE, 'referans', 'pilot', 'p1'), '/pilot')]   # KAT-3b: pilot model aslı (salt okunur, değiştirilmeden)
+MODEL = 'KAT3_SMIME.spthy'            # folder-specific default (the 'model' column of a row is used if present)
+EK_BAGLAR = [(os.path.join(PROJE, 'referans', 'pilot', 'p1'), '/pilot')]   # KAT-3b: original pilot model (read only, unchanged)
 TO = 600
 ORTAK = ['--derivcheck-timeout=60']
 MERDIVEN = [(1, []), (3, ['--auto-sources']), (5, ['--bound=40'])]
@@ -40,11 +40,11 @@ def tablo(ad):
         return [r for r in csv.DictReader(f, delimiter='\t') if r['motor'] == 'tamarin']
 
 
-AGIR_MIB = 2048   # bu bellek düzeyinin üstündeki Tamarin konteyneri "ağır iş" sayılır
+AGIR_MIB = 2048   # a Tamarin container above this memory level counts as a "heavy job"
 
 
 def mib(deger):
-    """docker stats bellek dizesinin ilk kısmı ('1.2GiB') -> MiB."""
+    """First part of the docker stats memory string ('1.2GiB') -> MiB."""
     m = re.match(r'\s*([\d.]+)\s*([KMG]i?B)', deger)
     if not m:
         return 0.0
@@ -53,8 +53,8 @@ def mib(deger):
 
 
 def bekle():
-    """Aynı anda tek AĞIR Tamarin işi: başka bir pq-a02-tamarin konteyneri AGIR_MIB ve üstü bellek kullanıyorsa
-    bitmesini bekle. Daha hafif işlerle (ör. Tamarin çalışmasının kısa koşuları) küçük KAT işi aynı anda koşabilir."""
+    """One HEAVY Tamarin job at a time: if another pq-a02-tamarin container uses AGIR_MIB or more memory,
+    wait until it finishes. A small KAT job can run together with lighter jobs (e.g. short runs of the Tamarin work)."""
     while True:
         adlar = subprocess.run(['docker', 'ps', '--filter', 'ancestor=' + IMG, '--format', '{{.Names}}'],
                                capture_output=True, text=True).stdout.split()
@@ -131,8 +131,8 @@ def iyi_bicim():
 
 
 def kanitla(r, lemma):
-    """Merdivenle tek lemma; (sonuc, adim, basamak, meta, wf). Lemma sonucu iyi biçimlilikten bağımsız ayrıştırılır;
-    uyarılı koşunun kapı hücresinde geçersiz sayılması kos() içinde yapılır."""
+    """One lemma with the ladder; (sonuc, adim, basamak, meta, wf). The lemma result is parsed independently of well-formedness;
+    that a run with a warning counts as invalid in a gate cell is handled in kos()."""
     bay = [b for b in r['tamarin_bayraklari'].split(',') if b and b != '-']
     model = r.get('model') or MODEL
     wf = 'EVET'
@@ -144,7 +144,7 @@ def kanitla(r, lemma):
         sonuc, adim = lemma_sonucu(txt, lemma)
         if sonuc in ('verified', 'falsified'):
             if basamak == 5 and sonuc == 'verified':
-                continue                     # sınırlı arama 'verified' kanıt değildir
+                continue                     # a bounded search is no proof of 'verified'
             return sonuc, adim, basamak, meta, wf
     return 'belirsiz', '', 6, meta, wf
 
@@ -161,10 +161,10 @@ def kos():
             ex = kanitla(r, 'executable')
             ln = kanitla(r, r['tamarin_lemma'])
             if r.get('nsurum_hucre') and r.get('nsurum_sutun'):
-                bek = NS.get((r['nsurum_hucre'], r['nsurum_sutun']), 'YOK_ANAHTAR')   # tek kaynak
+                bek = NS.get((r['nsurum_hucre'], r['nsurum_sutun']), 'YOK_ANAHTAR')   # single source
             else:
                 bek = r['beklenen']
-            # kapı tablolarında iyi biçimlilik uyarılı koşu geçersizdir; ek tabloda ham sonuç kaydedilir
+            # in the gate tables a run with a well-formedness warning is invalid; the raw result is recorded in an additional table
             gozlenen = ln[0] if (ln[4] == 'EVET' or tablo_adi == 'ek_tamarin.tsv') else 'gecersiz_wf'
             satir = {'kosu': r['kosu'], 'model': r.get('model') or MODEL, 'bayraklar': r['tamarin_bayraklari'],
                      'lemma': r['tamarin_lemma'], 'beklenen': bek, 'gozlenen': gozlenen,

@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""SENTETIK duman testi fikstürü (BATARYA DEĞİL; oracle'sız; yalnız adaptör iskeletinin çalıştığını sınar).
+"""SYNTHETIC smoke-test fixture (NOT the battery; no oracle; only tests that the adapter skeleton works).
 
-Ön kayıt koruması: batarya vektörleri (experiment/vector-generator/vektorler) bu testte KULLANILMAZ. Bu betik kendi geçici
-anahtarlarını üretir, kendi belirteçlerini imzalar ve manifest/JWKS'i bataryanın ALAN YAPISIYLA (ama farklı
-kimliklerle: SENT_*) yazar. Çıktı: <hedef>/v (MANIFEST.json + dosyalar), <hedef>/anahtarlar, <hedef>/isler.jsonl.
-Kullanım: python sentetik_uret.py <cikti_klasoru>
+Pre-registration safeguard: the battery vectors (experiment/vector-generator/vektorler) are NOT USED in this test. This script generates
+its own temporary keys, signs its own tokens and writes the manifest/JWKS with the FIELD STRUCTURE of the battery (but with different
+identifiers: SENT_*). Output: <hedef>/v (MANIFEST.json + files), <hedef>/anahtarlar, <hedef>/isler.jsonl.
+Usage: python sentetik_uret.py <output_folder>
 """
 import base64, json, os, sys, time
 from cryptography.hazmat.primitives.asymmetric import ec, ed25519, utils
@@ -66,7 +66,7 @@ for alg in algs:
         for pol in ("GEC", "IZIN-A", "IZIN-AX", "L4"):
             add(ad, f"S/{ad}.jws", "compact", kol, pol, alg, dg)
 
-# General JSON, iki imza (ES256 + EdDSA), kid yok -> alg_kid ile seçim; ikinci imza bozuk eşi
+# General JSON, two signatures (ES256 + EdDSA), no kid -> selection by alg_kid; a twin with a corrupted second signature
 def general(ad, algs2, bozuk=None):
     sigs = []
     for i, alg in enumerate(algs2):
@@ -79,7 +79,7 @@ def general(ad, algs2, bozuk=None):
     for pol in ("GEC", "P0", "P1", "L4", "L4-S", "L4-Y"):
         add(ad, f"S/{ad}.json", "general", "kontrol-EdDSA", pol, ";".join(algs2), dg)
 
-# SD-JWT (açıklamasız, `_sd_alg` VAR, typ dc+sd-jwt / vc+sd-jwt) — SD-JWT kütüphanelerinin iskelet sınaması için
+# SD-JWT (without disclosures, `_sd_alg` PRESENT, typ dc+sd-jwt / vc+sd-jwt) — for skeleton tests of the SD-JWT libraries
 for typ in ("dc+sd-jwt", "vc+sd-jwt"):
     yuk = b64(json.dumps({"iss": "https://issuer.example", "iat": now - 60, "exp": now + 86400, "vct": "s", "_sd_alg": "sha-256"}).encode())
     for alg in ("ES256", "EdDSA"):

@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
-"""Adım 6 | örnek dosyası üreticisi (her KAT klasöründe aynı kod).
+"""Step 6 | generator of the instance files (the same code in every KAT folder).
 
-hucreler.tsv ve mutasyonlar.tsv'deki 'asp' satırlarının `asp_sabitler` sütununu (ASP olguları) hücre
-başına bir dosyaya yazar: ornekler/<kosu>.lp  (kosu adının sonundaki '.asp' atılır).
-Belirlenimci: aynı tablo -> bayt-aynı dosyalar. Çekirdeğe ve hiçbir koşuma dokunmaz.
-Kullanım (klasörün içinden): python uret.py
+Writes the `asp_sabitler` column (ASP facts) of the 'asp' rows of hucreler.tsv and mutasyonlar.tsv into one file per
+cell: ornekler/<kosu>.lp  (the '.asp' at the end of the run name is dropped).
+Deterministic: same table -> byte-identical files. Touches neither the core nor any run.
+Usage (from inside the folder): python uret.py
 """
 import csv, os, sys
 

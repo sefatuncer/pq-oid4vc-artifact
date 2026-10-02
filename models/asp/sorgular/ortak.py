@@ -1,16 +1,16 @@
 # -*- coding: utf-8 -*-
-"""PQ-OID4VC Adım 3 — ASP sürücüsünün ortak kısmı (clingo 5.8.2, konteyner pq-a02-solver:1.0).
+"""PQ-OID4VC Step 3 — shared part of the ASP driver (clingo 5.8.2, container pq-a02-solver:1.0).
 
-Kullanım (konteynerde, /work = models/asp):
+Usage (in the container, /work = models/asp):
     from sorgular.ortak import *
     kumeler, sure = asgari_kumeler(parametreler(faz='f2'), ['g1'])
 
-Terimler:
-  - parametreler: kategorik p(Ad,Deger) ve sayısal p_sayi(Ad,Deger) olguları.
-  - asgari küme: sorgulanan hedef(ler)i sağlayan (pq ∪ tasi) kümelerinin alt küme bakımından en küçükleri
-    (clingo --heuristic=Domain --enum-mode=domRec; pilot P2 ile aynı yöntem).
-  - sonlu k (Ö8): kırılma senaryoları = ilgili anahtarların min(k,n) elemanlı bütün altkümeleri
-    (ihlal, kırılan anahtar kümesinde tekdüze arttığı için daha küçük altkümeler kapsanır).
+Terms:
+  - parametreler: categorical p(Ad,Deger) and numerical p_sayi(Ad,Deger) facts.
+  - minimal set: the subset-minimal sets (pq ∪ tasi) that satisfy the queried goal(s)
+    (clingo --heuristic=Domain --enum-mode=domRec; the same method as pilot P2).
+  - finite k (Ö8): break scenarios = all subsets with min(k,n) elements of the relevant keys
+    (since the violation grows monotonically with the set of broken keys, smaller subsets are covered).
 """
 import itertools, json, os, time
 import clingo
@@ -28,8 +28,8 @@ TAU_DUYARLILIK = {'hizli': [60, 600, 3600], 'orta': [86400, 259200, 604800, 8640
 TAU_GENIS = [84, 600, 3600, 50400, 259200, 864000, 2246400, 4492800, 22809600, 86400000, 2100000000]
 PENCERE_IZGARA = [3600, 86400, 604800, 2592000, 15552000, 31536000, 157680000]
 
-# BİRİNCİL YAPILANDIRMA (ön kayıt §2C 2.3; D1′). Tabloda olmayan parametreler için temkinli/spesifikasyon
-# varsayılanı (RAPOR §1.5'te gerekçesiyle).
+# PRIMARY CONFIGURATION (pre-registration §2C 2.3; D1′). For parameters that are not in the table, a cautious/specification
+# default (justified in REPORT §1.5).
 VARSAYILAN = {
     'saldirgan': 's2', 'k_sinir': 'sinirsiz',
     'faz': 'f1', 'capa': 'taze', 'onbellek_ufku': 'kararli', 'webpki': 'cl', 'politika': 'p4',
@@ -56,7 +56,7 @@ ANA_HEDEFLER = ['g1', 'g2', 'g3', 'g4']
 
 
 def parametreler(**degisen):
-    """Birincil yapılandırmanın (§2C 2.3) üzerine değişenleri yazar."""
+    """Writes the changed values over the primary configuration (§2C 2.3)."""
     kat = dict(VARSAYILAN)
     say = dict(SAYISAL_VARSAYILAN)
     for k, v in degisen.items():
@@ -83,7 +83,7 @@ def _kontrol(dosyalar, ek, argumanlar):
     return ctl
 
 
-# ---------------------------------------------------------------- ilgili anahtarlar (sonlu k)
+# ---------------------------------------------------------------- relevant keys (finite k)
 ILGILI_PROGRAM = """
 ilgili_hedef(G) :- sorgu_hedef(G), hedef_artefakt(G,_).
 ilgili_hedef(G) :- sorgu_hedef(tum), ana_hedef(G).
@@ -115,7 +115,7 @@ def ilgili_anahtarlar(prm, hedefler, dosyalar=None):
 
 
 def senaryo_olgulari(prm, hedefler, dosyalar=None):
-    """Sonlu k için senaryo(sN) ve kir_izin(sN,K) olguları; sinirsiz/s1 için boş."""
+    """senaryo(sN) and kir_izin(sN,K) facts for finite k; empty for sinirsiz/s1."""
     ks = prm['kat']['k_sinir']
     if prm['kat']['saldirgan'] != 's2' or ks == 'sinirsiz':
         return '', None
@@ -128,10 +128,10 @@ def senaryo_olgulari(prm, hedefler, dosyalar=None):
     return ''.join(parcalar), {'n_anahtar': len(anah), 'n_senaryo': len(parcalar), 'anahtarlar': anah}
 
 
-# ---------------------------------------------------------------- asgari kümeler
+# ---------------------------------------------------------------- minimal sets
 def asgari_kumeler(prm, hedefler, ek='', sinir=0, dosyalar=None):
-    """Alt küme bakımından asgari (pq ∪ tasi) kümeleri. Dönüş: (kumeler, bilgi).
-    dosyalar: olgu dosyaları (varsayılan: ekosistem; regresyon örnekleri kendi dosyalarını verir)."""
+    """Subset-minimal (pq ∪ tasi) sets. Returns: (kumeler, bilgi).
+    dosyalar: fact files (default: the ecosystem; the regression instances pass their own files)."""
     sen, sbilgi = senaryo_olgulari(prm, hedefler, dosyalar)
     metin = parametre_olgulari(prm) + ''.join('sorgu_hedef(%s).' % h for h in hedefler) + sen + ek
     t0 = time.perf_counter()
@@ -154,7 +154,7 @@ def pq_sayisi(kume):
     return sum(1 for a in kume if a.startswith('pq('))
 
 
-# ---------------------------------------------------------------- değerlendirme kipi
+# ---------------------------------------------------------------- evaluation mode
 DEGERLENDIR_GOSTER = """
 #show ihlal/2. #show sahte/2. #show beklenir/2. #show parametre_hatasi/1.
 """
@@ -162,10 +162,10 @@ DEGERLENDIR_GOSTER = """
 
 def degerlendir(prm, pq=(), tasi=(), hedefler=('g1', 'g2', 'g3', 'g4'), g5_kapsam=None, ek='', ozel_kirik=None,
                 dosyalar=None):
-    """Sabit bir (pq, tasi) ataması için bütün senaryolarda ihlal/sahte/beklenir kümelerini döndürür.
-    pq: karar DÜĞÜMÜ adları (ekosistem: a01..a13, ecrl, ejvi, eas) ya da regresyon örneklerinde artefakt adları.
-    ozel_kirik: verilirse tek senaryo 'r0' kurulur ve yalnız bu anahtarlar kırılabilir
-    (anahtar adları: 'a07_kimlik', 'alt(a07_kimlik)', 'p3_kanal'); parametrelerde k_sinir sonlu olmalıdır."""
+    """Returns the violated/forged/expected sets in all scenarios for a fixed (pq, tasi) assignment.
+    pq: names of decision NODES (ecosystem: a01..a13, ecrl, ejvi, eas) or artefact names in the regression instances.
+    ozel_kirik: if given, a single scenario 'r0' is built and only these keys can be broken
+    (key names: 'a07_kimlik', 'alt(a07_kimlik)', 'p3_kanal'); k_sinir in the parameters must be finite."""
     if ozel_kirik is not None:
         assert prm['kat']['k_sinir'] != 'sinirsiz' and prm['kat']['saldirgan'] == 's2'
         sen = 'senaryo(r0).' + ''.join('kir_izin(r0,%s).' % k for k in sorted(ozel_kirik))

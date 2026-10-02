@@ -1,24 +1,24 @@
 #!/usr/bin/env bash
 # =====================================================================
-#  PQ-OID4VC | Adım 7 | mekanizma kanıt koşumları (çapa 8 = 2d16592'den sonra)
+#  PQ-OID4VC | Step 7 | mechanism proof runs (after anchor 8 = 2d16592)
 # =====================================================================
-#  Kullanım (Git Bash):
-#     bash model/mechanisms/betik/calistir.sh            # bütün koşulacak satırlar (kaldığı yerden sürer)
-#     bash model/mechanisms/betik/calistir.sh <varyant>  # tek satır
-#  Girdi : on_kayit_varyantlar.tsv (çapa 8; DEĞİŞTİRİLMEZ). Koşulan roller:
-#          mekanizma, kosul, tasiyici, ablasyon, 3b, 3a. 5A-kapsandi / indirgendi / betimsel koşulmaz.
-#  Çıktı : sonuc/ham/<varyant>__<lemma>__b<basamak>.{txt,meta}  tam Tamarin çıktısı, süre, bellek
-#          sonuc/ham/<varyant>__liste.{txt,meta}                iyi biçimlilik + lemma listesi
-#          sonuc/json/<varyant>__<lemma>.json                   bulunan izler (yalnız rapor içi iz özeti;
-#                                                               G09 öykünücü dışa aktarımı DEĞİL)
+#  Usage (Git Bash):
+#     bash models/mechanisms/betik/calistir.sh            # all rows to be run (resumes where it stopped)
+#     bash models/mechanisms/betik/calistir.sh <variant>  # a single row
+#  Input : on_kayit_varyantlar.tsv (anchor 8; NOT CHANGED). Roles that are run:
+#          mekanizma, kosul, tasiyici, ablasyon, 3b, 3a. 5A-kapsandi / indirgendi / betimsel are not run.
+#  Output: sonuc/ham/<variant>__<lemma>__b<step>.{txt,meta}  complete Tamarin output, duration, memory
+#          sonuc/ham/<variant>__liste.{txt,meta}                well-formedness + lemma list
+#          sonuc/json/<variant>__<lemma>.json                   traces found (only the trace summary inside the report;
+#                                                               NOT the G09 emulator export)
 #          sonuc/ozet.csv, sonuc/calistir_log.txt
-#  Kurallar:
-#   * Tek Tamarin konteyneri; başka bir pq-a02-tamarin konteyneri varsa beklenir.
-#   * --rm, --memory=12g --memory-swap=12g, timeout 600 s, ad öneki pq-a07-.
-#   * --derivcheck-timeout=60 (ÖK §2H madde 2); iyi biçimlilik uyarılı koşum geçersizdir.
-#   * Sonlanmama merdiveni: 1 --prove, 3 --auto-sources, 5 --bound=40, 6 "kapanmadi"
-#     (2 ve 4 model düzeyindedir; modeller çapadadır, DEĞİŞTİRİLMEZ).
-#   * Kaldığı yerden sürme: ozet.csv'de satırı olan (varyant, lemma) yeniden koşulmaz.
+#  Rules:
+#   * One Tamarin container; wait if another pq-a02-tamarin container exists.
+#   * --rm, --memory=12g --memory-swap=12g, timeout 600 s, name prefix pq-a07-.
+#   * --derivcheck-timeout=60 (PR §2H item 2); a run with a well-formedness warning is invalid.
+#   * Non-termination ladder: 1 --prove, 3 --auto-sources, 5 --bound=40, 6 "kapanmadi"
+#     (2 and 4 are at model level; the models are in the anchor and are NOT CHANGED).
+#   * Resuming: a (variant, lemma) that already has a row in ozet.csv is not run again.
 set -u
 BASE="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$BASE" || exit 1
@@ -41,7 +41,7 @@ log "Çapa denetimi (SHA256-ON-KAYIT.txt):"
 grep -v '^#' SHA256-ON-KAYIT.txt | sha256sum -c - 2>&1 | sed 's/^/    /' | tee -a "$LOG"
 
 N=0
-tamarin_run() { # <id> <model> [tamarin argümanları...]
+tamarin_run() { # <id> <model> [tamarin arguments...]
   local id=$1 model=$2; shift 2
   N=$((N+1))
   local bekledi=0
@@ -73,7 +73,7 @@ parse() { # <txt> <meta> <lemma>
   [ -z "$STEPS" ] && STEPS=NA
 }
 
-run_lemma() { # <kural> <varyant> <dosya> <dflags> <lemma>
+run_lemma() { # <rule> <variant> <file> <dflags> <lemma>
   local k=$1 v=$2 f=$3 dfl=$4 l=$5 b extra id wf
   if grep -q "^[^,]*,${v},${l}," "$CSV"; then return; fi
   for b in 1 3 5; do

@@ -1,8 +1,8 @@
-"""Bilinen-cevap testleri: ÖK Ek A (n = 20…40), §2B.5 (n = 31), §6.13 eşik tablosu,
-§6.6 T1-Holm notu, §6.14 güç notu ve Ek A'daki Wilson genişlikleri.
+"""Known-answer tests: PR Annex A (n = 20…40), §2B.5 (n = 31), §6.13 threshold table,
+§6.6 T1-Holm note, §6.14 power note and the Wilson widths in Annex A.
 
-Beklenen değerler ÖK metninden (00-on-kayit/ON-KAYIT-TASLAK.md, taslak v0.6) BİREBİR aktarıldı.
-Her değer hem kendi kesin uygulamamızla (fractions/math.comb) hem scipy ile yeniden üretilir.
+The expected values were copied VERBATIM from the PR text (00-on-kayit/ON-KAYIT-TASLAK.md, draft v0.6).
+Every value is reproduced both with our own exact implementation (fractions/math.comb) and with scipy.
 """
 from __future__ import annotations
 
@@ -12,7 +12,7 @@ from math import comb
 
 from _ortak import kesin, referans
 
-# ÖK Ek A tablosu (satır 1212–1222): n -> (c, "P(X<=c)" 4 ondalık, u)
+# PR Annex A table (lines 1212–1222): n -> (c, "P(X<=c)" to 4 decimals, u)
 EK_A = {
     20: (5, "0.0207", 15), 21: (6, "0.0392", 15), 22: (6, "0.0262", 16), 23: (7, "0.0466", 16),
     24: (7, "0.0320", 17), 25: (7, "0.0216", 18), 26: (8, "0.0378", 18), 27: (8, "0.0261", 19),
@@ -24,8 +24,8 @@ EK_A = {
 
 
 def yuvarlanmis_esit(deger, metin: str) -> bool:
-    """`deger`, `metin`'in ondalık basamak sayısına yuvarlandığında `metin`'e eşit mi?
-    (|deger − metin| ≤ yarım birim; kesin kesirle.)"""
+    """Is `deger` equal to `metin` when rounded to the number of decimal places of `metin`?
+    (|deger − metin| ≤ half a unit; with an exact fraction.)"""
     basamak = len(metin.split(".")[1]) if "." in metin else 0
     hedef = Fraction(metin)
     yarim = Fraction(1, 2 * 10 ** basamak)
@@ -40,7 +40,7 @@ class EkATablosu(unittest.TestCase):
                 self.assertEqual(kd.c, c)
                 self.assertEqual(kd.u, u)
                 self.assertTrue(yuvarlanmis_esit(kd.P_c, p_metin), (n, float(kd.P_c), p_metin))
-                self.assertEqual(kd.u, n - kd.c)  # Ek A: u = n − c
+                self.assertEqual(kd.u, n - kd.c)  # Annex A: u = n − c
 
     def test_ek_a_n20_40_scipy(self):
         for n, (c, p_metin, u) in EK_A.items():
@@ -50,7 +50,7 @@ class EkATablosu(unittest.TestCase):
                 self.assertTrue(yuvarlanmis_esit(p_r, p_metin), (n, p_r, p_metin))
 
     def test_ek_a_tanimi_en_buyuk_c(self):
-        # c: P(X ≤ c) ≤ 0,05 olan EN BÜYÜK değer => P(X ≤ c+1) > 0,05
+        # c: the LARGEST value with P(X ≤ c) ≤ 0.05 => P(X ≤ c+1) > 0.05
         for n in EK_A:
             with self.subTest(n=n):
                 kd = kesin.kritik_degerler(n)
@@ -58,7 +58,7 @@ class EkATablosu(unittest.TestCase):
                 self.assertGreater(kesin.binom_cdf(kd.c + 1, n), Fraction(1, 20))
 
     def test_ek_a_simetri_ust_kuyruk(self):
-        # u = n − c ve P(X ≥ u) = P(X ≤ c) (p0 = 0,5 simetrisi); yanlışlama kuyruğu da ≤ 0,05
+        # u = n − c and P(X ≥ u) = P(X ≤ c) (symmetry at p0 = 0.5); the falsification tail is also ≤ 0.05
         for n in EK_A:
             with self.subTest(n=n):
                 kd = kesin.kritik_degerler(n)
@@ -68,7 +68,7 @@ class EkATablosu(unittest.TestCase):
 
 
 class N31(unittest.TestCase):
-    """ÖK §2B.5: n_eff = 31 için destek X ≤ 10, yanlışlama X ≥ 21; P = 0,0354."""
+    """PR §2B.5: for n_eff = 31, support X ≤ 10, falsification X ≥ 21; P = 0.0354."""
 
     def test_n31_esikler(self):
         kd = kesin.kritik_degerler(31)
@@ -94,10 +94,10 @@ class N31(unittest.TestCase):
 
 
 class Tablo613(unittest.TestCase):
-    """ÖK §6.13 binom eşik tablosu ve Ek A Wilson genişlikleri."""
+    """PR §6.13 binomial threshold table and Annex A Wilson widths."""
 
-    SATIRLAR = {25: (18, 7, "33"), 30: (20, 10, "31"), 40: (26, 14, "27")}   # n: (çoğunluk ≥, yokluk ≤, ≈genişlik)
-    GENISLIK_EK_A = {25: (18, "33.3"), 30: (21, "31.2"), 40: (28, "27.4")}   # n: (k, genişlik puanı)
+    SATIRLAR = {25: (18, 7, "33"), 30: (20, 10, "31"), 40: (26, 14, "27")}   # n: (majority ≥, absence ≤, ≈width)
+    GENISLIK_EK_A = {25: (18, "33.3"), 30: (21, "31.2"), 40: (28, "27.4")}   # n: (k, width in points)
 
     def test_esikler(self):
         for n, (ust, alt, _) in self.SATIRLAR.items():
@@ -115,7 +115,7 @@ class Tablo613(unittest.TestCase):
                 self.assertTrue(yuvarlanmis_esit((u_r - a_r) * 100, metin))
 
     def test_wilson_genislikleri_613_yaklasik(self):
-        # §6.13: "(%70 düzeyinde)" ≈33 / ≈31 / ≈27 puan
+        # §6.13: "(at the 70% level)" ≈33 / ≈31 / ≈27 points
         for n, (_, _, metin) in self.SATIRLAR.items():
             k = self.GENISLIK_EK_A[n][0]
             with self.subTest(n=n):
@@ -124,17 +124,17 @@ class Tablo613(unittest.TestCase):
 
 
 class Not66Holm(unittest.TestCase):
-    """ÖK §6.6: T1 Holm'a (5 test) dahil edilseydi n=30 eşiği ≤8 / ≥22; P(X≤8)=0,0081; P(X≤9)=0,0214."""
+    """PR §6.6: if T1 were included in Holm (5 tests), the n=30 threshold would be ≤8 / ≥22; P(X≤8)=0.0081; P(X≤9)=0.0214."""
 
     def test_holm_ile_n30(self):
-        kd = kesin.kritik_degerler(30, alfa=Fraction(1, 100))   # α/5 = 0,01
+        kd = kesin.kritik_degerler(30, alfa=Fraction(1, 100))   # α/5 = 0.01
         self.assertEqual((kd.c, kd.u), (8, 22))
         self.assertTrue(yuvarlanmis_esit(kesin.binom_cdf(8, 30), "0.0081"))
         self.assertTrue(yuvarlanmis_esit(kesin.binom_cdf(9, 30), "0.0214"))
 
 
 class Not614Guc(unittest.TestCase):
-    """ÖK §6.14: n=30, X ≤ 10 için güç 0,974 / 0,73 / 0,29; X ≥ 20 için (p=0,7) 0,73."""
+    """PR §6.14: n=30, power for X ≤ 10 0.974 / 0.73 / 0.29; for X ≥ 20 (p=0.7) 0.73."""
 
     def test_guc(self):
         self.assertTrue(yuvarlanmis_esit(kesin.binom_cdf(10, 30, Fraction(1, 5)), "0.974"))
@@ -149,7 +149,7 @@ class Not614Guc(unittest.TestCase):
 
 
 class GenelKural(unittest.TestCase):
-    """Ek A kuralının genel özellikleri (n = 1…100): iki uygulama aynı; c(n+1) ≤ c(n) + 1; küçük n'de c yok."""
+    """General properties of the Annex A rule (n = 1…100): both implementations agree; c(n+1) ≤ c(n) + 1; no c for small n."""
 
     def test_iki_uygulama_ve_monotonluk(self):
         onceki = None
@@ -164,7 +164,7 @@ class GenelKural(unittest.TestCase):
                 onceki = kd
 
     def test_kucuk_n_esik_yok(self):
-        # n ≤ 4: P(X ≤ 0) = 0,5^n > 0,05 => c tanımsız (destek imkânsız)
+        # n ≤ 4: P(X ≤ 0) = 0.5^n > 0.05 => c undefined (support impossible)
         for n in range(1, 5):
             with self.subTest(n=n):
                 self.assertIsNone(kesin.kritik_degerler(n).c)

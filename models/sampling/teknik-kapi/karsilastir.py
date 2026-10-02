@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 """
-PQ-OID4VC | Teknik kapı (ÖK §2F) | koşumdan SONRA: Tamarin hükmü ↔ ASP tahmini
+PQ-OID4VC | Technical gate (PR §2F) | AFTER the run: Tamarin verdict ↔ ASP prediction
 ==============================================================================
-Girdi : tamarin_ham.csv (betik/calistir.sh), ceviri_plani.tsv, ../secim/secim.json, json/*.json
-Çıktı : sonuc.csv   satir_id, hedef, tur, asp_tahmini, tamarin_hukmu, lemma, sure_s, bellek, iyi_bicimlilik
-        saglik.csv  örnek başına `executable` (dürüst kabul erişilebilir; model boş değil)
-        izler.csv   falsified hedef lemmalarının izindeki protokol kuralları ve kırılan anahtarlar
-        farklar.csv yalnız uyuşmazlık varsa: ASP tanığı ve Tamarin izi yan yana (SINIFLAMA YAPILMAZ)
-Kural (ÖK §2F madde 1, P-16): kapanmış örneklerde uyum %100 olmalı; fark sınıflanmaz, düzeltilmez.
-Kapı sayımı yalnız 10 kapı örneği üzerinden yapılır; keşif örneği ayrı raporlanır.
+Input : tamarin_ham.csv (betik/calistir.sh), ceviri_plani.tsv, ../secim/secim.json, json/*.json
+Output: sonuc.csv   satir_id, hedef, tur, asp_tahmini, tamarin_hukmu, lemma, sure_s, bellek, iyi_bicimlilik
+        saglik.csv  `executable` per instance (honest acceptance reachable; the model is not empty)
+        izler.csv   protocol rules and broken keys in the traces of falsified goal lemmas
+        farklar.csv only if there is a disagreement: ASP witness and Tamarin trace side by side (NO CLASSIFICATION)
+Rule (PR §2F item 1, P-16): agreement on the closed instances must be 100%; a difference is not classified and not corrected.
+The gate count is made only over the 10 gate instances; the exploration instance is reported separately.
 """
 import csv
 import io
@@ -24,7 +24,7 @@ def oku_csv(yol, ayirici=','):
 
 
 def iz_kurallari(yol):
-    """JSON izinden protokol kurallarını (saldırgan kuralları hariç) ve kırılan anahtarları çıkarır."""
+    """Extracts the protocol rules (excluding the adversary rules) and the broken keys from a JSON trace."""
     if not os.path.exists(yol):
         return '', ''
     d = json.load(io.open(yol, encoding='utf-8'))

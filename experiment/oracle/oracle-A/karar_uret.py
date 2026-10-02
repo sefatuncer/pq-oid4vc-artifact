@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""Oracle A -- karar ureteci (Adim 9, gorev 6).
+"""Oracle A -- decision generator (Step 9, task 6).
 
-Kural: karar yalniz spesifikasyon maddesi + manifest `insa` gercekleri (ve vektor
-dosyalarinin base64url cozumuyle okunan baslik/talep gercekleri) uzerinden verilir.
-KRIPTOGRAFI YOK, HEDEF KUTUPHANE YOK, AG YOK. Imza dogrulanmaz; imzanin gecerli olup
-olmadigi manifestteki uretim gercegidir (`insa`).
+Rule: a decision is made only from specification clauses + the manifest `insa` facts (and the header/claim
+facts read by base64url decoding of the vector files).
+NO CRYPTOGRAPHY, NO TARGET LIBRARY, NO NETWORK. Signatures are not verified; whether a signature is valid
+or not is a generation fact in the manifest (`insa`).
 
-Kullanim:  python karar_uret.py <proje_koku>
-Ciktilar (experiment/oracle/oracle-A/): karar.tsv, maddeler.tsv, karar_ozet.json,
+Usage:  python karar_uret.py <proje_koku>
+Outputs (experiment/oracle/oracle-A/): karar.tsv, maddeler.tsv, karar_ozet.json,
                                    insa_denetimi.txt
 """
 import base64
@@ -41,9 +41,9 @@ def sha256(yol):
 for yol, ozet in BEKLENEN.items():
     gercek = sha256(yol)
     if gercek != ozet:
-        sys.exit('OZET UYUSMAZLIGI: %s %s != %s' % (yol, gercek, ozet))
+        sys.exit('DIGEST MISMATCH: %s %s != %s' % (yol, gercek, ozet))
 
-# korpus metinlerinin ozetleri spec-corpus/MANIFEST.csv ile
+# digests of the corpus texts, checked against spec-corpus/MANIFEST.csv
 KORPUS_MAN = {r['id']: r for r in csv.DictReader(open(os.path.join(KOK, 'spec-corpus', 'MANIFEST.csv'), encoding='utf-8'))}
 
 SURUM = {
@@ -65,7 +65,7 @@ for k, yol in DOSYA.items():
     if k == 'OK':
         continue
     if sha256(yol) != KORPUS_MAN[k]['sha256_metin']:
-        sys.exit('KORPUS OZET UYUSMAZLIGI: ' + k)
+        sys.exit('CORPUS DIGEST MISMATCH: ' + k)
 
 _SATIRLAR = {k: open(v, encoding='utf-8').read().split('\n') for k, v in DOSYA.items()}
 
@@ -75,7 +75,7 @@ def _norm(s):
 
 
 def satir_bul(belge, alinti, yakin=None, pencere=14):
-    """Alintinin (bosluk normallestirilmis) basladigi 1-tabanli satiri dondurur."""
+    """Returns the 1-based line at which the quotation (whitespace-normalised) starts."""
     L = _SATIRLAR[belge]
     q = _norm(alinti)
     bulunan = []
@@ -94,7 +94,7 @@ def satir_bul(belge, alinti, yakin=None, pencere=14):
 
 
 # ---------------------------------------------------------------------------
-# 1. Madde kayitlari. kimlik: izlenebilirlik matrisi T-kimligi (varsa) ya da bolum.
+# 1. Clause records. kimlik: T identifier of the traceability matrix (if any) or the section.
 # ---------------------------------------------------------------------------
 MADDELER = OrderedDict()
 
@@ -192,7 +192,7 @@ M('TSL51-typ', '§5.1', 'TSL', '§5.1', 'The JWT type MUST be statuslist+jwt.')
 M('TSL51-imza', 'T146', 'TSL', '§5.1', 'Relying Parties MUST reject JWTs with an invalid signature.')
 # ECCG
 M('ACM2-51', 'T135', 'ACM2', 'Note 51', 'the veriﬁcation function accepting if and only if all signatures are correct')
-# On kayit (politika tanimlari)
+# Pre-registration (policy definitions)
 M('OK65-pol', 'ÖK §6.5', 'OK', '§6.5', 'İhraççı başına gerekli küme R = {X}, izinli küme {A, X}.')
 M('OK65-K1', 'ÖK §6.5 K1', 'OK', '§6.5', 'Çift imza (A + X), ikisi geçerli | KABUL')
 M('OK65-K2', 'ÖK §6.5 K2', 'OK', '§6.5', 'X imzası bozuk | RED')
@@ -224,7 +224,7 @@ M('OK-MR2', 'ÖK §4.20 MR2', 'OK', '§4.20', 'MR2: Bilinmeyen alg eklemenin etk
 M('OK-sdjwtvc', 'ÖK §2C.2.3', 'OK', '§2C', '| `sdjwtvc_surum` | -13 | -19 |')
 
 # ---------------------------------------------------------------------------
-# Alinti dogrulama: her alinti korpus metninde bulunmali; satiri hesaplanir.
+# Quotation check: every quotation must be found in the corpus text; its line is computed.
 # ---------------------------------------------------------------------------
 _hatalar = []
 for k, m in MADDELER.items():
@@ -233,11 +233,11 @@ for k, m in MADDELER.items():
         _hatalar.append(k)
     m['satir'] = s
 if _hatalar:
-    sys.exit('ALINTI BULUNAMADI: ' + ', '.join(_hatalar))
+    sys.exit('QUOTATION NOT FOUND: ' + ', '.join(_hatalar))
 
 
 def dayanak(*anahtarlar):
-    """Bicim: [Tnnn] BELGE §bolum (surum; dosya:satir): "birebir alinti"  -- ' | ' ile ayrilir."""
+    """Format: [Tnnn] DOCUMENT §section (version; file:line): "verbatim quotation"  -- separated by ' | '."""
     parca = []
     gorulen = set()
     for a in anahtarlar:
@@ -255,7 +255,7 @@ def dayanak(*anahtarlar):
 
 
 def kisa(*anahtarlar):
-    """Not alanindaki madde anilari icin kisa bicim."""
+    """Short form for the clause references in the note field."""
     out = []
     for a in anahtarlar:
         m = MADDELER[a]
@@ -267,7 +267,7 @@ def kisa(*anahtarlar):
 
 
 # ---------------------------------------------------------------------------
-# 2. Vektorler ve insa gercekleri
+# 2. Vectors and construction facts
 # ---------------------------------------------------------------------------
 MAN = json.load(open(os.path.join(VDIR, 'MANIFEST.json'), encoding='utf-8'))
 SIMDI = MAN['simdi']
@@ -281,9 +281,9 @@ KOLLAR = OrderedDict([
     ('tedavi-composite', 'ML-DSA-65-ES256'),
 ])
 PQ = {'ML-DSA-44', 'ML-DSA-65', 'ML-DSA-87', 'ML-DSA-65-ES256', 'ML-DSA-65-Ed25519'}
-# Bataryadaki kayitli ya da taslakta tanimli (desteklenen varsayilan) algoritmalar.
+# Algorithms that are registered in the battery or defined in a draft (assumed to be supported).
 DESTEKLENEN = {'ES256', 'EdDSA', 'Ed25519', 'ML-DSA-44', 'ML-DSA-65', 'ML-DSA-87', 'ML-DSA-65-ES256', 'ML-DSA-65-Ed25519'}
-# IANA JOSE kaydinda olanlar (RFC 7518, 8037/9864, 9964). Composite -04 yalniz "talep" (JOSECOMP §7.1).
+# Those in the IANA JOSE registry (RFC 7518, 8037/9864, 9964). Composite -04 only "requested" (JOSECOMP §7.1).
 KAYITLI = {'ES256', 'EdDSA', 'Ed25519', 'ML-DSA-44', 'ML-DSA-65', 'ML-DSA-87'}
 
 
@@ -299,17 +299,17 @@ def oku(v):
     return open(os.path.join(VDIR, v['dosya'].replace('/', os.sep)), encoding='utf-8').read().strip()
 
 
-DENETIM = []  # (vektor, gercek, sonuc)
+DENETIM = []  # (vector, fact, result)
 
 
 def denetle(vid, aciklama, kosul):
     DENETIM.append((vid, aciklama, bool(kosul)))
     if not kosul:
-        sys.exit('INSA DENETIMI BASARISIZ: %s: %s' % (vid, aciklama))
+        sys.exit('CONSTRUCTION CHECK FAILED: %s: %s' % (vid, aciklama))
 
 
 def cozum(v):
-    """Vektor dosyasindan baslik ve talep gercekleri (yalniz base64url)."""
+    """Header and claim facts from the vector file (base64url only)."""
     raw = oku(v)
     d = {'imzalar': []}
     ser = v['serilestirme']
@@ -351,7 +351,7 @@ def cozum(v):
 
 
 # ---------------------------------------------------------------------------
-# 3. Imza gecerliligi (insa -> gecerli: True / False / None(belirsiz)) ve neden
+# 3. Signature validity (insa -> valid: True / False / None (undetermined)) and reason
 # ---------------------------------------------------------------------------
 CMP_KURAL = {
     'ML-DSA bileseni bozuk (bayt 1654, bit 0); ECDSA bileseni gecerli': (False, ['CMP43-AND'], 'ML-DSA bileşeni bozuk; composite AND gereği geçersiz'),
@@ -398,11 +398,11 @@ def imza_durumu(vid, s):
         return (False, k, 'başlık alg ile anahtarın algoritması uyuşmuyor (K10)')
     if ins and ins.startswith('x5c yapragiyla gecerli'):
         return (True, [], 'x5c yaprağıyla geçerli')
-    raise SystemExit('SINIFLANMAMIS INSA: %s %s' % (vid, ins))
+    raise SystemExit('UNCLASSIFIED CONSTRUCTION FACT: %s %s' % (vid, ins))
 
 
 # ---------------------------------------------------------------------------
-# 4. Politika yapilandirmalari
+# 4. Policy configurations
 # ---------------------------------------------------------------------------
 YAPILANDIRMALAR = OrderedDict([
     ('GEC', 'Geçerlilik tabanı (ÖK §4.15 V±): W = bataryanın desteklenen tüm algoritmaları; R = ∅; anahtar–alg bağlama; tek imzalı nesneler'),
@@ -441,7 +441,7 @@ def uc_degerli_ve(*xs):
 
 
 def imza_kumesi_karari(imzalar, cfg, X):
-    """imzalar: [(alg, gecerli, neden, aciklama)]. Donus: (karar, neden_anahtarlari, not)."""
+    """imzalar: [(alg, gecerli, neden, aciklama)]. Returns: (karar, neden_anahtarlari, not)."""
     base = cfg.split('@')[0]
     W, R = W_R(cfg, X)
     nedenler = []
@@ -451,7 +451,7 @@ def imza_kumesi_karari(imzalar, cfg, X):
         return not any(a in PQ for a, _, _, _ in kume)
 
     if base in ('GEC', 'IZIN-A', 'IZIN-AX'):
-        # tek imza varsayimi (uygulanabilirlik bunu saglar); coklu olursa P1 gibi degerlendir
+        # single-signature assumption (ensured by the applicability); if there are several, evaluate as P1
         dis = [s for s in imzalar if s[0] not in W]
         if dis:
             return ('reject', ['BCP31-izin', 'JWS52-enaz'] + (['OK413-L1'] if base.startswith('IZIN') else []),
@@ -493,7 +493,7 @@ def imza_kumesi_karari(imzalar, cfg, X):
         return ('accept-classical' if etiket_klasik_mi(imzalar) else 'accept-hybrid', ['OK48-P1', 'ACM2-51'],
                 'mevcut imzaların tümü geçerli' + ('' if etiket_klasik_mi(imzalar) else '; aralarında PQ imza var, kabul PQ doğrulamasını içerir'))
 
-    # L4 ailesi
+    # L4 family
     def l4(varyant):
         kume = imzalar if varyant == 'S' else [s for s in imzalar if s[0] in W]
         dis = [s for s in imzalar if s[0] not in W]
@@ -548,8 +548,8 @@ def imza_kumesi_karari(imzalar, cfg, X):
 
 
 def birlestir(karar, ek):
-    """Imza kararina yapisal/ek bir kosul uygular. ek: None ya da (tur, neden, not)
-    tur: 'red' (her kosulda red), 'belirsiz' (kabul ise belirsizlestirir), 'bilgi'."""
+    """Applies a structural/additional condition to the signature decision. ek: None or (tur, neden, not)
+    tur: 'red' (reject under every condition), 'belirsiz' (turns an acceptance into indeterminate), 'bilgi'."""
     if ek is None:
         return karar
     tur, nedenler, notu = ek
@@ -560,15 +560,15 @@ def birlestir(karar, ek):
         if k == 'reject':
             return (k, n, t + ' || ayrıca: ' + notu)
         return ('indeterminate', n + [x for x in nedenler if x not in n], notu + ' || imza düzeyi: %s (%s)' % (k, t))
-    if tur == 'bilgi':  # karari etkilemez ama dayanagin parcasidir
+    if tur == 'bilgi':  # does not affect the decision but is part of the basis
         return (k, n + [x for x in nedenler if x not in n], t + ' || ' + notu)
-    if tur == 'not':  # yalniz not; madde anisi kisa bicimde nota yazilir, dayanaga girmez
+    if tur == 'not':  # note only; the clause reference is written to the note in short form and does not enter the basis
         return (k, n, t + ' || ' + notu + ' ' + kisa(*nedenler))
     raise ValueError(tur)
 
 
 # ---------------------------------------------------------------------------
-# 5. Aileye ozgu kurallar
+# 5. Family-specific rules
 # ---------------------------------------------------------------------------
 KAPSAM_YALNIZ_GEC = {'kapsam-pq', 'kapsam-hibrit'}
 
@@ -582,7 +582,7 @@ def ana_imzalar(vid, v, d):
 
 
 def aile_ek(vid, v, d, cfg):
-    """Imza kumesi disindaki (yapisal) kosullar."""
+    """Conditions outside the signature set (structural)."""
     fam = v['aile']
     surum = '-19' if cfg.endswith('@-19') else '-13'
     ek = []
@@ -614,7 +614,7 @@ def aile_ek(vid, v, d, cfg):
         if cfg.startswith('L4-YOL'):
             sinif = x.get('sinif')
             if vid == 'X5C09_korumali_ve_korumasiz_x5c':
-                sinif = 'tam-pq'  # korumali zincir; yine de ayriklik ihlaliyle red
+                sinif = 'tam-pq'  # protected chain; still rejected because of the disjointness violation
             if sinif != 'tam-pq':
                 ek.append(('red', ['OK2D-yol', 'CMP62-sertifika', 'JWS416'], 'yol sınıfı "%s": yolun en az bir kenarı klasik imzalı → B2 politikası reddeder' % sinif))
             else:
@@ -666,7 +666,7 @@ def karar_ver(vid, cfg, kol):
     d = COZUM[vid]
     X = KOLLAR.get(kol, None)
     fam = v['aile']
-    # imzasiz DC API istekleri (REQ08/09)
+    # unsigned DC API requests (REQ08/09)
     if fam == 'REQ' and v['serilestirme'] == 'dcapi-json-parametre':
         if cfg.split('@')[0] == 'GEC':
             k = ('accept-classical', ['HAIP52-imzasiz', 'HAIP52-webpki'] + (['VPA2-clientid'] if 'client_id' in d['veri'] else []),
@@ -680,9 +680,9 @@ def karar_ver(vid, cfg, kol):
     imz = ana_imzalar(vid, v, d)
     Xeff = X
     if fam == 'X5C' and kol == 'tedavi-composite':
-        Xeff = 'ML-DSA-65'  # OK §2F m.4 uyarlamasi: K8/K9 kol-bagimsiz, ML-DSA-65 yaprakla
+        Xeff = 'ML-DSA-65'  # adaptation of PR §2F item 4: K8/K9 arm-independent, with an ML-DSA-65 leaf
     if Xeff is None:
-        Xeff = 'ML-DSA-65'  # yalniz GEC/P0/P1'de kullanilir (W/R X'ten bagimsiz)
+        Xeff = 'ML-DSA-65'  # used only in GEC/P0/P1 (W/R independent of X)
     k = imza_kumesi_karari(imz, cfg, Xeff)
     for e in aile_ek(vid, v, d, cfg):
         k = birlestir(k, e)
@@ -692,14 +692,14 @@ def karar_ver(vid, cfg, kol):
 
 
 # ---------------------------------------------------------------------------
-# 6. Insa denetimi (base64url cozumu; kripto yok)
+# 6. Construction check (base64url decoding; no cryptography)
 # ---------------------------------------------------------------------------
 COZUM = {}
 for vid, v in VEKTOR.items():
     d = cozum(v)
     COZUM[vid] = d
     fam = v['aile']
-    # zaman: exp > simdi >= iat
+    # time: exp > simdi >= iat
     yuklar = []
     if d.get('yuk'):
         yuklar.append(d['yuk'])
@@ -714,7 +714,7 @@ for vid, v in VEKTOR.items():
         denetle(vid, 'KB typ=kb+jwt', d['kb']['baslik'].get('typ') == 'kb+jwt')
         denetle(vid, 'KB iat penceresi (<=600 s)', 0 <= SIMDI - d['kb']['yuk']['iat'] <= 600)
         denetle(vid, 'KB aud/nonce = dogrulama_girdileri', d['kb']['yuk']['aud'] == v['dogrulama_girdileri']['kb_aud'] and d['kb']['yuk']['nonce'] == v['dogrulama_girdileri']['kb_nonce'])
-    # imza sayisi ve alg'ler manifestle ayni
+    # number of signatures and algs equal to the manifest
     ins = v.get('insa') or {}
     if ins.get('imzalar') is not None and fam != 'REQ' or (fam == 'REQ' and v['serilestirme'] != 'dcapi-json-parametre'):
         m_alg = [s['alg'] for s in ins.get('imzalar', [])]
@@ -766,11 +766,11 @@ for vid, v in VEKTOR.items():
         denetle(vid, 'protokol openid4vp-v1-unsigned', d['protokol'] == 'openid4vp-v1-unsigned')
 
 # ---------------------------------------------------------------------------
-# 7. Esleme: birincil / ikincil (BATARYA-ESLEME.md; kimlikler dosyada aranir)
+# 7. Mapping: primary / secondary (BATARYA-ESLEME.md; the identifiers are looked up in the file)
 # ---------------------------------------------------------------------------
 ESLEME_METIN = open(ESLEME_YOL, encoding='utf-8').read()
 KK, KE, KP, KC = 'kontrol-EdDSA', 'kontrol-Ed25519', 'tedavi-ML-DSA-65', 'tedavi-composite'
-BIRINCIL = [  # (vaka, kol, vektor)
+BIRINCIL = [  # (case, arm, vector)
     ('K1', KK, 'T1K_both_valid'), ('K1', KE, 'T1K_both_valid-ED25519'), ('K1', KP, 'T1P_both_valid'), ('K1', KC, 'T1C_both_valid'),
     ('K2', KK, 'T2K_second_tampered'), ('K2', KE, 'T2K_second_tampered-ED25519'), ('K2', KP, 'T2P_second_tampered'), ('K2', KC, 'T2C_second_tampered'),
     ('K3', KK, 'T3_stripped_to_ES256'), ('K3', KE, 'T3_stripped_to_ES256'), ('K3', KP, 'T3_stripped_to_ES256'), ('K3', KC, 'T3_stripped_to_ES256'),
@@ -804,7 +804,7 @@ IKINCIL = [
     ('K10', KC, 'CMP12_ayrilabilirlik_ecdsa_ES256'), ('K10', KC, 'CMP13_ayrilabilirlik_ml_MLDSA65'),
     ('K11', KK, 'VC01_ES256_x5c'), ('K11', KE, 'VC01_ES256_x5c'), ('K11', KP, 'VC01_ES256_x5c'), ('K11', KC, 'VC01_ES256_x5c'),
 ]
-MR = [  # (mr, kol, vektor, cift)
+MR = [  # (mr, arm, vector, pair)
     ('MR1', KK, 'T1K_both_valid', 'T3_stripped_to_ES256'), ('MR1', KE, 'T1K_both_valid-ED25519', 'T3_stripped_to_ES256'),
     ('MR1', KP, 'T1P_both_valid', 'T3_stripped_to_ES256'), ('MR1', KC, 'T1C_both_valid', 'T3_stripped_to_ES256'),
     ('MR1', KP, 'VP05_GJ_ES256_MLDSA65_kb', 'VP06_GJ_pq_soyuldu_kb_gecerli'), ('MR1', KP, 'REQ04_coklu_imzali', 'REQ05_coklu_imzali_pq_soyuldu'),
@@ -818,7 +818,7 @@ MR = [  # (mr, kol, vektor, cift)
 ]
 for _, _, vid in BIRINCIL + IKINCIL:
     if vid not in ESLEME_METIN or vid not in VEKTOR:
-        sys.exit('ESLEMEDE/MANIFESTTE YOK: ' + vid)
+        sys.exit('NOT IN THE MAPPING/MANIFEST: ' + vid)
 
 
 def sinif_vaka(vid, kol):
@@ -837,7 +837,7 @@ def sinif_vaka(vid, kol):
 
 
 # ---------------------------------------------------------------------------
-# 8. Uygulanabilirlik: (vektor -> [(yapilandirma, kol)])
+# 8. Applicability: (vector -> [(configuration, arm)])
 # ---------------------------------------------------------------------------
 def tum_kollar():
     return list(KOLLAR.keys())
@@ -845,19 +845,19 @@ def tum_kollar():
 
 def kollar_for(vid, v):
     kol = v['kol']
-    # ESLEME'de birden cok kol sutununda gecen vektorler (manifest kolundan once)
+    # vectors that appear in more than one arm column of ESLEME (before the manifest arm)
     if kol == 'ortak' or vid in ('VC10_ikili_ihrac', 'VC01_ES256_x5c', 'VC11_typ_vc+sd-jwt'):
         return tum_kollar()
     if vid in ('X5C04_karisik_pq_yaprak_klasik_ara', 'X5C07_korumasiz_x5c'):
         return [KP, KC]
     if kol in KOLLAR:
-        # EdDSA etiketi icermeyen kontrol vektorleri (esi yok) yedek kolda aynen kullanilir;
-        # EdDSA etiketli her kontrol vektorunun '-ED25519' esi bulunmali.
+        # control vectors without an EdDSA label (no twin) are used unchanged in the reserve arm;
+        # every control vector with an EdDSA label must have an '-ED25519' twin.
         if kol == KK:
             etiketler = [s['alg'] for s in (v.get('insa') or {}).get('imzalar', [])]
             ikiz = (vid + '-ED25519') in VEKTOR
             if 'EdDSA' in etiketler and not ikiz and v['aile'] != 'DPOP':
-                sys.exit('ED25519 ESI YOK: ' + vid)
+                sys.exit('NO ED25519 TWIN: ' + vid)
             if 'EdDSA' not in etiketler and not ikiz:
                 return [KK, KE]
         return [kol]
@@ -879,13 +879,13 @@ def uygulama(vid):
     ins = v.get('insa') or {}
     n_imza = len(ins.get('imzalar') or []) if vid != 'VC10_ikili_ihrac' else 1
     cift = []
-    # yalniz GEC: TSL, DPOP, kapsam vektorleri, VC12
+    # GEC only: TSL, DPOP, scope vectors, VC12
     if fam in ('TSL', 'DPOP') or v['kol'] in KAPSAM_YALNIZ_GEC or vid == 'VC12_alg_none':
         return [('GEC', v['kol'] or 'yok')]
     kollar = kollar_for(vid, v)
     if fam == 'X5C':
         x5c_kollar = kollar if kollar else [KP]
-        # GEC kolu bagimsiz; X5C icin tek satir (tedavi-ML-DSA-65)
+        # the GEC arm is independent; a single row for X5C (tedavi-ML-DSA-65)
         cift += [('GEC', KP)]
         for c in ('L4', 'L4-S', 'L4-Y', 'L4-YOL'):
             cift += [(c, k) for k in x5c_kollar]
@@ -909,9 +909,9 @@ def uygulama(vid):
 
 
 # ---------------------------------------------------------------------------
-# 9. Uretim
+# 9. Generation
 # ---------------------------------------------------------------------------
-TABAN = {  # her satira eklenen yapilandirma tanimi dayanagi (kararin kendi dayanagindan sonra)
+TABAN = {  # basis of the configuration definition added to every row (after the decision's own basis)
     'GEC': ['OK415-V', 'JWS52-enaz'],
     'IZIN-A': ['OK413-L1', 'BCP31-izin'],
     'IZIN-AX': ['OK413-L1', 'BCP31-izin'],
@@ -962,7 +962,7 @@ for vid in VEKTOR:
             ('not', on + ' || ' + notu),
         ]))
 
-# Birincil kapsam denetimi: her birincil (vektor, kol) icin gereken yapilandirma satiri var mi?
+# Primary coverage check: does every primary (vector, arm) have the required configuration row?
 _var = {(r['vektor_id'], r['politika'], r['kol']) for r in satirlar}
 for vaka, kol, vid in BIRINCIL:
     gerek = ['L4']
@@ -972,14 +972,14 @@ for vaka, kol, vid in BIRINCIL:
         gerek += ['L4-YOL']
     for g in gerek:
         if (vid, g, kol) not in _var:
-            sys.exit('BIRINCIL SATIR EKSIK: %s %s %s' % (vid, g, kol))
+            sys.exit('PRIMARY ROW MISSING: %s %s %s' % (vid, g, kol))
 
 # ---------------------------------------------------------------------------
-# 9b. Metamorfik iliskilerin oracle uzerinde oz-denetimi (MR1, MR2, MR4)
+# 9b. Self-check of the metamorphic relations on the oracle (MR1, MR2, MR4)
 # ---------------------------------------------------------------------------
 KARAR = {(r['vektor_id'], r['politika'], r['kol']): r['karar'] for r in satirlar}
 MR_DENETIM = OrderedDict()
-# MR4: permutasyon esi, kaynak vektorle ayni yapilandirma ve kolda ayni karar
+# MR4: permutation twin, same decision as the source vector under the same configuration and arm
 mr4_n = 0
 for vid, v in VEKTOR.items():
     mr4 = (v.get('insa') or {}).get('mr4')
@@ -990,24 +990,24 @@ for vid, v in VEKTOR.items():
         if a != vid:
             continue
         if KARAR.get((kaynak, cfg, kol)) != k:
-            sys.exit('MR4 IHLALI (oracle): %s vs %s %s %s' % (vid, kaynak, cfg, kol))
+            sys.exit('MR4 VIOLATION (oracle): %s vs %s %s %s' % (vid, kaynak, cfg, kol))
         mr4_n += 1
 MR_DENETIM['MR4_esit_karar_cifti'] = mr4_n
-# MR1: gerekli kume karsilanmiyorken soyma kabulu artirmamali (L4 ailesi)
+# MR1: stripping must not increase acceptance while the required set is not met (L4 family)
 mr1_n = 0
 for t1, kol in (('T1K_both_valid', KK), ('T1K_both_valid-ED25519', KE), ('T1P_both_valid', KP), ('T1C_both_valid', KC)):
     for cfg in ('L4', 'L4-S', 'L4-Y'):
         a, b = KARAR[(t1, cfg, kol)], KARAR[('T3_stripped_to_ES256', cfg, kol)]
         if not (a.startswith('accept') and b == 'reject'):
-            sys.exit('MR1 IHLALI (oracle): %s %s %s %s' % (t1, cfg, a, b))
+            sys.exit('MR1 VIOLATION (oracle): %s %s %s %s' % (t1, cfg, a, b))
         mr1_n += 1
 MR_DENETIM['MR1_T1_kabul_T3_red'] = mr1_n
-# MR2: S altinda kayitsiz ek imza red; Y altinda T7 karari T1 ile ayni
+# MR2: under S an additional unregistered signature is rejected; under Y the T7 decision equals the T1 decision
 mr2_n = 0
 for t1, t7, kol in (('T1K_both_valid', 'T7K_plus_kayitsiz', KK), ('T1K_both_valid-ED25519', 'T7K_plus_kayitsiz-ED25519', KE),
                     ('T1P_both_valid', 'T7P_plus_kayitsiz', KP), ('T1C_both_valid', 'T7C_plus_kayitsiz', KC)):
     if KARAR[(t7, 'L4-S', kol)] != 'reject' or KARAR[(t7, 'L4-Y', kol)] != KARAR[(t1, 'L4-Y', kol)]:
-        sys.exit('MR2 IHLALI (oracle): ' + t7)
+        sys.exit('MR2 VIOLATION (oracle): ' + t7)
     mr2_n += 1
 MR_DENETIM['MR2_S_red_Y_esit'] = mr2_n
 

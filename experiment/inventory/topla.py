@@ -1,36 +1,36 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-PQ-OID4VC — C3 örneklem çerçevesi toplayıcısı (Adım 9a)
+PQ-OID4VC — collector of the C3 sampling frame (Step 9a)
 =========================================================
 
-Bu betik C3 ampirik çalışmasının ÖRNEKLEM ÇERÇEVESİNİ tekrar üretilebilir biçimde kurar:
+This script builds the SAMPLING FRAME of the C3 empirical study in a reproducible way:
 
-  1. Tanımlama : jwt.io kütüphane verisi + GitHub konu aramaları + paket kaydı aramaları
-                 + kuruluş listeleri + plan/görev tanımında adı geçenler  -> ham isabetler
-  2. Tarama    : gürültü tabanı + elle verilmiş tarama kararları (tarama_kararlari.csv)
-                 -> aday listesi (TARAMA.csv tüm isabetleri kararlarıyla birlikte yazar)
-  3. Meta veri : deps.dev, ecosyste.ms, paket kayıtlarının genel API'leri, git (ls-remote,
-                 sığ/blob'suz klon) -> yıldız, son commit, son sürüm, lisans, indirme ...
-  4. Ölçütler  : KRITERLER-TASLAK.md'deki K1–K8 + eşik seçenekleri E1–E4 -> SECIM.csv,
-                 ESIK-DUYARLILIK.csv
-  5. Çıktı     : CERCEVE.csv (+ destek_kanitlari.csv'deki elle doğrulanmış destek hücreleri)
+  1. Identification : jwt.io library data + GitHub topic searches + package registry searches
+                      + organisation lists + names given in the plan/task definition  -> raw hits
+  2. Screening      : noise floor + screening decisions given by hand (tarama_kararlari.csv)
+                      -> candidate list (TARAMA.csv writes all hits together with their decisions)
+  3. Metadata       : deps.dev, ecosyste.ms, public APIs of the package registries, git (ls-remote,
+                      shallow/blobless clone) -> stars, last commit, last release, licence, downloads ...
+  4. Criteria       : K1–K8 in CRITERIA-DRAFT.md + threshold options E1–E4 -> SECIM.csv,
+                      ESIK-DUYARLILIK.csv
+  5. Output         : CERCEVE.csv (+ support cells checked by hand in destek_kanitlari.csv)
 
-Yalnız ÇERÇEVE ve META VERİ toplar. Kütüphane DAVRANIŞI ölçülmez; adaptör yazılmaz; test
-vektörü koşulmaz (ön kayıt donmadan yapılmamalı).
+Collects only the FRAME and the METADATA. Library BEHAVIOUR is not measured; no adapter is written; no test
+vector is run (that must not happen before the pre-registration is frozen).
 
-Gizlilik: Bütün istekler anonimdir. User-Agent genel bir metindir; hiçbir istekte e-posta,
-kişisel veri, token ya da hesap bilgisi yoktur. GitHub API'si yalnız son çare olarak ve
-bekleme/önbellekle kullanılır (anonim sınır saatte 60).
+Privacy: all requests are anonymous. The User-Agent is a generic text; no request contains an e-mail address,
+personal data, a token or account information. The GitHub API is used only as a last resort and
+with waiting/caching (anonymous limit 60 per hour).
 
-Kullanım:
-  python topla.py                    # önbellekten koş; önbellekte olmayanları ağdan al
-  python topla.py --cevrimdisi       # yalnız önbellek (ağ yok); eksikler boş kalır
-  python topla.py --tazele           # önbelleği yok say (anlık görüntü değişir!)
-  python topla.py --desen-tara       # (isteğe bağlı) sığ klonlarda kanıt ipucu taraması
-  python topla.py --klon-dizini D    # git klonları için dizin (vars.: %TEMP%/pq-oid4vc-envanter-klon)
+Usage:
+  python topla.py                    # run from the cache; fetch what is not cached from the network
+  python topla.py --cevrimdisi       # cache only (no network); missing values stay empty
+  python topla.py --tazele           # ignore the cache (the snapshot changes!)
+  python topla.py --desen-tara       # (optional) scan of shallow clones for evidence hints
+  python topla.py --klon-dizini D    # folder for the git clones (default: %TEMP%/pq-oid4vc-envanter-klon)
 
-Çerçeve tarihi (REF_TARIH) sabittir: 2026-09-23. "Son 24 ay" bu tarihe göre hesaplanır.
+The frame date (REF_TARIH) is fixed: 2026-09-23. "Last 24 months" is computed relative to this date.
 """
 from __future__ import annotations
 
@@ -52,18 +52,18 @@ import urllib.request
 from pathlib import Path
 
 # ---------------------------------------------------------------------------
-# Sabitler
+# Constants
 # ---------------------------------------------------------------------------
 KOK = Path(__file__).resolve().parent
 ONBELLEK = KOK / "onbellek"
 UA = "pq-oid4vc-envanter/0.1 (anonim arastirma envanteri)"
 REF_TARIH = dt.date(2026, 9, 23)
-ETKINLIK_SINIRI = dt.date(2024, 9, 23)  # REF_TARIH - 24 ay
+ETKINLIK_SINIRI = dt.date(2024, 9, 23)  # REF_TARIH - 24 months
 JWTIO_COMMIT = "60b70f7d8d2020e4c0165c4dfd442dd3329019a0"  # jsonwebtoken.github.io@master, 23.09.2026
 JWTIO_VERI_URL = (f"https://raw.githubusercontent.com/jsonwebtoken/jsonwebtoken.github.io/"
                   f"{JWTIO_COMMIT}/src/data/libraries-next.json")
 
-ARGS = None  # argparse sonucu (global; basitlik için)
+ARGS = None  # argparse result (global; for simplicity)
 
 
 def log(*a):
@@ -71,7 +71,7 @@ def log(*a):
 
 
 # ---------------------------------------------------------------------------
-# HTTP + önbellek
+# HTTP + cache
 # ---------------------------------------------------------------------------
 class AgYok(Exception):
     pass
@@ -84,8 +84,8 @@ def _onbellek_yolu(url: str, kategori: str) -> Path:
 
 def http_get(url: str, kategori: str = "genel", ham: bool = False, bekle: float = 0.25,
              basliklar: dict | None = None, kirp=None):
-    """GET + disk önbelleği. (durum, gövde) döndürür. gövde: JSON (ham=False) ya da metin.
-    kirp: gövdeyi önbelleğe yazmadan önce küçülten/temizleyen fonksiyon (ör. kişisel veri alanlarını atmak için)."""
+    """GET + disk cache. Returns (status, body). body: JSON (ham=False) or text.
+    kirp: function that shrinks/cleans the body before it is written to the cache (e.g. to drop personal data fields)."""
     yol = _onbellek_yolu(url, kategori)
     if yol.exists() and not ARGS.tazele:
         rec = json.loads(yol.read_text("utf-8"))
@@ -115,7 +115,7 @@ def http_get(url: str, kategori: str = "genel", ham: bool = False, bekle: float 
                 time.sleep(5 * (deneme + 1))
                 continue
             break
-        except Exception as e:  # ağ hatası
+        except Exception as e:  # network error
             durum, govde = -1, str(e)
             if deneme < 2:
                 time.sleep(3 * (deneme + 1))
@@ -133,7 +133,7 @@ def http_get(url: str, kategori: str = "genel", ham: bool = False, bekle: float 
 
 
 def gh_api(yol: str):
-    """GitHub REST API (anonim) — yalnız son çare. Kalan hak 3'ün altına düşerse beklemeden vazgeçer."""
+    """GitHub REST API (anonymous) — last resort only. Gives up without waiting if fewer than 3 requests remain."""
     url = "https://api.github.com/" + yol.lstrip("/")
     onb = _onbellek_yolu(url, "github")
     if onb.exists() and not ARGS.tazele:
@@ -162,10 +162,10 @@ def gh_api(yol: str):
 
 
 # ---------------------------------------------------------------------------
-# Yardımcılar
+# Helpers
 # ---------------------------------------------------------------------------
 def depo_normalize(url_ya_da_yol: str) -> str:
-    """'https://github.com/Owner/Repo.git' -> 'github.com/owner/repo' (küçük harf)."""
+    """'https://github.com/Owner/Repo.git' -> 'github.com/owner/repo' (lower case)."""
     if not url_ya_da_yol:
         return ""
     s = url_ya_da_yol.strip()
@@ -207,7 +207,7 @@ def csv_yaz(yol: Path, satirlar: list[dict], alanlar: list[str]):
 
 
 DIL_GRUBU = {
-    # jwt.io dil anahtarları ve serbest dil adları -> dil grubu
+    # jwt.io language keys and free-form language names -> language group
     "javascript": "JS/TS", "node-js": "JS/TS", "bun": "JS/TS", "deno": "JS/TS", "typescript": "JS/TS",
     "python": "Python",
     "java": "JVM", "kotlin": "JVM", "scala": "JVM", "groovy": "JVM", "clojure": "JVM",
@@ -223,12 +223,12 @@ def dil_grubu(dil: str) -> str:
 
 
 # ---------------------------------------------------------------------------
-# 1) TANIMLAMA
+# 1) IDENTIFICATION
 # ---------------------------------------------------------------------------
 def jwtio_yukle() -> dict:
     durum, veri = http_get(JWTIO_VERI_URL, "jwtio", ham=True)
     if durum != 200:
-        raise SystemExit(f"jwt.io verisi alınamadı: {durum}")
+        raise SystemExit(f"jwt.io data could not be fetched: {durum}")
     kopya = ONBELLEK / "jwtio_libraries-next.json"
     if not kopya.exists():
         kopya.write_text(veri, "utf-8")
@@ -236,7 +236,7 @@ def jwtio_yukle() -> dict:
 
 
 def jwtio_adaylari() -> tuple[list[dict], dict]:
-    """jwt.io'daki 110 girdiyi benzersiz depolara indirger (J kaynağı)."""
+    """Reduces the 110 entries of jwt.io to unique repositories (source J)."""
     veri = jwtio_yukle()
     esleme = {r["jwtio_yolu"].lower(): r for r in csv_oku(KOK / "jwtio_esleme.csv")}
     adaylar, gorulen = [], {}
@@ -275,15 +275,15 @@ def jwtio_adaylari() -> tuple[list[dict], dict]:
 
 
 def arama_isabetleri() -> list[dict]:
-    """T (GitHub konu), K (paket kaydı), O (kuruluş listesi) kaynaklarının ham isabetleri.
-    Her isabet: {kaynak, sorgu, anahtar(depo ya da pkg:), ekosistem, paket, yildiz_ham, indirme_ham, indirme_donemi, aciklama, arsiv_ham, push_ham}
-    Gürültü tabanı: T ≥5★; npm ≥100/ay; crates ≥300/90g; NuGet ≥1000 toplam; Packagist ≥50 toplam;
-    RubyGems ≥1000 toplam; pub.dev ≥100/30g; Go (pkg.go.dev) ve Maven: taban yok (tarama kararı verir)."""
+    """Raw hits of the sources T (GitHub topic), K (package registry), O (organisation list).
+    Every hit: {kaynak, sorgu, anahtar(repository or pkg:), ekosistem, paket, yildiz_ham, indirme_ham, indirme_donemi, aciklama, arsiv_ham, push_ham}
+    Noise floor: T ≥5★; npm ≥100/month; crates ≥300/90d; NuGet ≥1000 total; Packagist ≥50 total;
+    RubyGems ≥1000 total; pub.dev ≥100/30d; Go (pkg.go.dev) and Maven: no floor (the screening decides)."""
     isabet = []
     SD = re.compile(r"sd[-_ ]?jwt|selective[- ]disclosure", re.I)
     CO = re.compile(r"\bcose\b|cbor object signing|cose_sign|\bcose[-_.]|[-_.@/]cose\b", re.I)
 
-    # --- T: GitHub konu aramaları (arama API'si; dakikada 10 anonim) ---
+    # --- T: GitHub topic searches (search API; 10 per minute anonymously) ---
     for konu in ["sd-jwt", "sd-jwt-vc", "cose", "oid4vp", "openid4vp"]:
         url = f"https://api.github.com/search/repositories?q=topic:{konu}&per_page=100&sort=stars"
         yol = ONBELLEK / "gh_arama" / f"topic_{konu}.json"
@@ -406,7 +406,7 @@ def arama_isabetleri() -> list[dict]:
             isabet.append(dict(kaynak="K", sorgu=sorgu, anahtar=depo or f"pkg:rubygems:{r['name']}", ekosistem="rubygems",
                                paket=r["name"], yildiz_ham="", indirme_ham=r.get("downloads"), indirme_donemi="gem-toplam",
                                aciklama=(r.get("info") or "")[:120], arsiv_ham="", push_ham=""))
-    # --- K: pub.dev (arama + paket ayrıntısı) ---
+    # --- K: pub.dev (search + package details) ---
     for sorgu_metni in ["sd-jwt", "cose"]:
         m = yukle(f"pub_{sorgu_metni}.json", f"https://pub.dev/api/search?q={sorgu_metni}")
         if not m:
@@ -441,7 +441,7 @@ def arama_isabetleri() -> list[dict]:
             depo = depo_normalize("https://" + mod)
             if mod.startswith("go.mozilla.org/cose") or mod.startswith("gopkg.in/mozilla-services/go-cose"):
                 depo = "github.com/mozilla-services/go-cose"
-            # Go için gürültü tabanı: GitHub deposu ≥5★ (konu aramasıyla aynı taban; yıldız ecosyste.ms'ten)
+            # noise floor for Go: GitHub repository ≥5★ (the same floor as the topic search; stars from ecosyste.ms)
             yildiz = ""
             if depo.startswith("github.com/"):
                 _, s, r = depo.split("/", 2)
@@ -453,7 +453,7 @@ def arama_isabetleri() -> list[dict]:
                         continue
             isabet.append(dict(kaynak="K", sorgu=f"pkg.go.dev:q={sorgu_metni}", anahtar=depo or f"pkg:go:{mod}", ekosistem="go",
                                paket=mod, yildiz_ham=yildiz, indirme_ham="", indirme_donemi="", aciklama="", arsiv_ham="", push_ham=""))
-    # --- K: PyPI (arama API'si yok; ad yoklaması) ---
+    # --- K: PyPI (no search API; probing by name) ---
     for ad in ["sd-jwt", "pyeudiw", "pycose", "cwt", "joserfc"]:
         m = yukle(f"pypi_{ad}.json", f"https://pypi.org/pypi/{ad}/json")
         if not m:
@@ -469,7 +469,7 @@ def arama_isabetleri() -> list[dict]:
                 break
         isabet.append(dict(kaynak="K", sorgu=f"pypi:ad={ad}", anahtar=depo or f"pkg:pypi:{ad}", ekosistem="pypi", paket=ad,
                            yildiz_ham="", indirme_ham="", indirme_donemi="", aciklama=(i.get("summary") or "")[:120], arsiv_ham="", push_ham=""))
-    # --- O: kuruluş listeleri (ad/açıklama süzgeci) ---
+    # --- O: organisation lists (name/description filter) ---
     ORX = re.compile(r"sd-?jwt|cose|verifier|openid4vp|oid4vp|oid4vc|jose|jws", re.I)
     for sahip in ["eu-digital-identity-wallet", "openwallet-foundation", "openwallet-foundation-labs", "cose-wg"]:
         yol = ONBELLEK / "eco_owner" / f"{sahip}.json"
@@ -490,13 +490,13 @@ def arama_isabetleri() -> list[dict]:
 
 
 # ---------------------------------------------------------------------------
-# 2) TARAMA
+# 2) SCREENING
 # ---------------------------------------------------------------------------
 def tarama(jwt_adaylar: list[dict], isabetler: list[dict]):
-    """Arama isabetlerini tarama_kararlari.csv ile birleştirir. Döndürür: (tarama_satirlari, ek_adaylar)."""
+    """Merges the search hits with tarama_kararlari.csv. Returns: (tarama_satirlari, ek_adaylar)."""
     kararlar = {r["anahtar"].strip().lower(): r for r in csv_oku(KOK / "tarama_kararlari.csv")}
     jwt_depolar = {a["depo"] for a in jwt_adaylar}
-    # isabetleri anahtara göre topla
+    # group the hits by key
     grup: dict[str, dict] = {}
     for h in isabetler:
         g = grup.setdefault(h["anahtar"], {"anahtar": h["anahtar"], "kaynaklar": set(), "sorgular": set(),
@@ -509,8 +509,8 @@ def tarama(jwt_adaylar: list[dict], isabetler: list[dict]):
         for k in ("yildiz_ham", "indirme_ham", "aciklama", "arsiv_ham", "push_ham"):
             if h.get(k) not in ("", None) and g[k] in ("", None):
                 g[k] = h[k]
-    # kararlarda olup isabetlerde olmayanlar: yalnız G (görev/plan), H (halef) ya da P (pilot) kaynaklılar
-    # çerçeveye girer; diğerleri gürültü tabanının altında kalmış isabetlerdir ("taban-alti").
+    # entries in the decisions but not in the hits: only those from source G (task/plan), H (successor) or P (pilot)
+    # enter the frame; the others are hits that stayed below the noise floor ("taban-alti").
     taban_alti = set()
     for anahtar, k in kararlar.items():
         if anahtar not in grup:
@@ -555,7 +555,7 @@ def tarama(jwt_adaylar: list[dict], isabetler: list[dict]):
 
 
 # ---------------------------------------------------------------------------
-# 3) META VERİ
+# 3) METADATA
 # ---------------------------------------------------------------------------
 def _eco_repo_kirp(d):
     if not isinstance(d, dict):
@@ -567,7 +567,7 @@ def _eco_repo_kirp(d):
 
 
 def repo_meta(depo: str) -> dict:
-    """Depo düzeyi meta: ecosyste.ms (yıldız, push, arşiv, lisans), deps.dev (yıldız, lisans, OpenSSF)."""
+    """Repository-level metadata: ecosyste.ms (stars, push, archive, licence), deps.dev (stars, licence, OpenSSF)."""
     sonuc = {}
     if not depo:
         return sonuc
@@ -587,7 +587,7 @@ def repo_meta(depo: str) -> dict:
         if durum == 200 and isinstance(p, dict):
             sonuc.update(dd_yildiz=p.get("starsCount"), dd_lisans=p.get("license"), dd_openssf=p.get("scorecard_overall"))
         if "eco_tam_ad" not in sonuc and "dd_yildiz" not in sonuc:
-            # son çare: GitHub API (yeniden adlandırmaları da çözer)
+            # last resort: GitHub API (also resolves renames)
             durum, g = gh_api(f"repos/{sahip}/{ad}")
             if durum == 200 and isinstance(g, dict):
                 sonuc.update(gh_tam_ad=g.get("full_name"), eco_yildiz=g.get("stargazers_count"), eco_push=g.get("pushed_at"),
@@ -608,15 +608,15 @@ def repo_meta(depo: str) -> dict:
     return sonuc
 
 
-# Anonim git: kimlik bilgisi yardımcıları (ör. Git Credential Manager) ve parola istemleri kapalı.
-# Silinmiş/özel depolar 401 döndürünce GCM'nin oturum açma penceresi AÇILMAMALI (gizlilik kuralı).
+# Anonymous git: credential helpers (e.g. Git Credential Manager) and password prompts are disabled.
+# When deleted/private repositories return 401, the sign-in window of GCM must NOT OPEN (privacy rule).
 GIT_ANONIM = ["git", "-c", "credential.helper=", "-c", "credential.interactive=never", "-c", "core.askPass="]
 GIT_ORTAM = dict(os.environ, GIT_TERMINAL_PROMPT="0", GCM_INTERACTIVE="never", GIT_ASKPASS="", SSH_ASKPASS="",
                  GIT_CONFIG_NOSYSTEM="1")
 
 
 def git_bas(depo_url: str, anahtar: str) -> dict:
-    """Varsayılan dal HEAD'i: sha + committer tarihi. Blob'suz, derinliği 1 klon; yalnız sha/tarih önbelleğe yazılır."""
+    """HEAD of the default branch: sha + committer date. Blobless clone of depth 1; only sha/date are written to the cache."""
     onb = ONBELLEK / "git" / (re.sub(r"[^a-z0-9]+", "_", anahtar.lower()) + ".json")
     if onb.exists() and not ARGS.tazele:
         return json.loads(onb.read_text("utf-8"))
@@ -655,11 +655,11 @@ ECO_REGISTRY = {"npm": "npmjs.org", "pypi": "pypi.org", "cargo": "crates.io", "m
 
 
 def paket_meta(eko: str, paket: str) -> dict:
-    """Paket düzeyi meta: son sürüm + tarih, aylık indirme (varsa), bağımlı paket sayısı (ecosyste.ms)."""
+    """Package-level metadata: last release + date, monthly downloads (if any), number of dependent packages (ecosyste.ms)."""
     s = {}
     if not eko or not paket or eko in ("kaynak",):
         return s
-    # deps.dev: sürümler (varsayılan sürüm + yayım tarihi)
+    # deps.dev: versions (default version + publication date)
     if eko in DEPSDEV_SISTEM:
         durum, d = http_get(f"https://api.deps.dev/v3/systems/{DEPSDEV_SISTEM[eko]}/packages/{urllib.parse.quote(paket, safe='')}",
                             "depsdev_paket",
@@ -674,7 +674,7 @@ def paket_meta(eko: str, paket: str) -> dict:
             elif vs:
                 v = sorted(vs, key=lambda v: v.get("publishedAt") or "")[-1]
                 s.update(son_surum=v["versionKey"]["version"], son_surum_tarihi=(v.get("publishedAt") or "")[:10])
-    # ecosyste.ms packages: bağımlılar + (bazı kayıtlarda) indirme + son sürüm yedeği
+    # ecosyste.ms packages: dependents + (for some registries) downloads + fallback for the last release
     reg = ECO_REGISTRY.get(eko)
     if reg:
         ad = paket
@@ -691,7 +691,7 @@ def paket_meta(eko: str, paket: str) -> dict:
                      paket_lisans=",".join(p.get("normalized_licenses") or []), paket_durum=p.get("status"))
             if not s.get("son_surum"):
                 s.update(son_surum=p.get("latest_release_number"), son_surum_tarihi=(p.get("latest_release_published_at") or "")[:10])
-    # yerel indirme API'leri
+    # native download APIs
     if eko == "npm":
         durum, d = http_get(f"https://api.npmjs.org/downloads/point/last-month/{paket}", "npm_indirme")
         if durum == 200 and isinstance(d, dict):
@@ -745,16 +745,16 @@ def paket_meta(eko: str, paket: str) -> dict:
             rec = (d.get("downloads") or {}).get("recent")
             if rec is not None:
                 s.update(aylik_indirme=round(rec / 3), indirme_kaynagi="hex.pm recent(90g)/3")
-    # ecosyste.ms indirme yedeği (aylık dönem ise)
+    # ecosyste.ms download fallback (if the period is monthly)
     if s.get("aylik_indirme") in (None, "") and s.get("eco_indirme") and s.get("eco_indirme_donemi") == "last-month":
         s.update(aylik_indirme=s["eco_indirme"], indirme_kaynagi="ecosyste.ms last-month")
     return s
 
 
 # ---------------------------------------------------------------------------
-# 4) ÖLÇÜTLER VE SEÇİM
+# 4) CRITERIA AND SELECTION
 # ---------------------------------------------------------------------------
-# Eşik seçenekleri (KRITERLER-TASLAK.md §3). "ya da" bağlaçlı: yıldız, aylık indirme, bağımlı paket.
+# Threshold options (CRITERIA-DRAFT.md §3). Joined by "or": stars, monthly downloads, dependent packages.
 ESIKLER = {
     "E1": {"_ad": "Tek biçim, gevşek: ≥50★ ya da ≥10k/ay ya da ≥50 bağımlı paket (tüm tabakalar)",
            "JOSE": (50, 10_000, 50), "SDJWT": (50, 10_000, 50), "COSE": (50, 10_000, 50), "REF": (50, 10_000, 50)},
@@ -768,16 +768,16 @@ ESIKLER = {
            "JOSE": (1000, 1_000_000, 500), "SDJWT": (50, 10_000, 10), "COSE": (40, 10_000, 10), "REF": (100, None, None)},
 }
 RESMI_REFERANS_SAHIPLERI = {"eu-digital-identity-wallet", "openwallet-foundation", "openwallet-foundation-labs"}
-# Sürüm 3 §9.2 pilot kümesi (jose, @sd-jwt/core [halef depo], jwcrypto, Authlib, joserfc)
+# Pilot set of design document version 3 §9.2 (jose, @sd-jwt/core [successor repository], jwcrypto, Authlib, joserfc)
 PILOT_DEPOLARI = {"github.com/panva/jose", "github.com/openwallet-foundation-labs/identity-common-ts", "github.com/latchset/jwcrypto",
                   "github.com/lepture/authlib", "github.com/authlib/joserfc"}
-KOTALAR = {"JOSE": 18, "SDJWT": 8, "COSE": 5, "REF": 3}  # toplam 34 (25–40 aralığında); gerekçe KRITERLER-TASLAK.md §4
+KOTALAR = {"JOSE": 18, "SDJWT": 8, "COSE": 5, "REF": 3}  # total 34 (within 25–40); rationale CRITERIA-DRAFT.md §4
 
 
 def olcutleri_uygula(a: dict, esik: str) -> tuple[bool, list[str]]:
-    """K1–K8'i uygular (K6 Linux: yalnız belge düzeyi ön eleme; nihai test C3 kurulumunda)."""
+    """Applies K1–K8 (K6 Linux: only a document-level pre-screen; the final test is in the C3 installation)."""
     neden = []
-    # K7 kapsam zaten tarama aşamasında; burada K1..K8
+    # K7 scope already in the screening stage; here K1..K8
     if a["tabaka"] == "JOSE" and a.get("kaynak") == "J":
         if a.get("jwtio_verify") is False:
             neden.append("K1: doğrulama yok")
@@ -801,7 +801,7 @@ def olcutleri_uygula(a: dict, esik: str) -> tuple[bool, list[str]]:
             neden.append(f"K4: açık lisans doğrulanamadı ({lis or 'yok'}; kaynak: {a.get('lisans_kaynagi') or '-'})")
     if a.get("k4_elle") == "hayir":
         neden.append("K4: açık kaynak lisansı değil (belge)")
-    # K5 eşik
+    # K5 threshold
     y, ind, bag = ESIKLER[esik][a["tabaka"]]
     yildiz = a.get("yildiz")
     aylik = a.get("aylik_indirme")
@@ -815,11 +815,11 @@ def olcutleri_uygula(a: dict, esik: str) -> tuple[bool, list[str]]:
         gecti = True
     toplam = a.get("toplam_indirme")
     if ind is not None and aylik is None and isinstance(toplam, int) and toplam >= 12 * ind:
-        gecti = True  # aylık istatistik yayımlamayan kayıtlar (NuGet, RubyGems): toplam ≥ 12 × aylık eşik
+        gecti = True  # registries that publish no monthly statistics (NuGet, RubyGems): total ≥ 12 × monthly threshold
     if a["tabaka"] in ("SDJWT", "REF") and a.get("depo", "").split("/")[1:2] and a["depo"].split("/")[1] in RESMI_REFERANS_SAHIPLERI:
-        gecti = True  # resmî referans uygulama muafiyeti (KRITERLER-TASLAK.md K5-istisna)
+        gecti = True  # exemption for official reference implementations (CRITERIA-DRAFT.md K5 exception)
     if a["tabaka"] == "REF" and "G" in (a.get("kaynak") or "").split("+"):
-        gecti = True  # plan/görev tanımında adı geçen referans doğrulayıcı
+        gecti = True  # reference verifier named in the plan/task definition
     if not gecti:
         neden.append(f"K5[{esik}]: eşik altı (★{yildiz}, aylık {aylik}, bağımlı {bagimli}, toplam {toplam})")
     if a.get("k6_elle"):
@@ -830,14 +830,14 @@ def olcutleri_uygula(a: dict, esik: str) -> tuple[bool, list[str]]:
 
 
 GOSTERGELER = ("yildiz", "aylik_indirme", "bagimli_paket", "toplam_indirme_yalniz")
-# toplam_indirme_yalniz: yalnız aylık indirme yayımlamayan kayıtlar (NuGet, RubyGems) için toplam indirme
+# toplam_indirme_yalniz: total downloads only for registries that publish no monthly downloads (NuGet, RubyGems)
 GECERSIZ_LISANS = {"none", "other", "noassertion", "non-standard", "unknown", "unlicensed", "proprietary", ""}
 
 
 def lisans_sec(adaylar: list[tuple[str, str | None]]) -> tuple[str, str]:
-    """İlk geçerli SPDX benzeri lisans değerini (ve kaynağını) seçer; hiçbiri geçerli değilse ilk boş olmayanı
-    '(geçersiz)' etiketiyle döndürür. deps.dev bazı depolarda GitHub'ın eşleştiremediği lisansları 'non-standard'
-    raporladığı için tek kaynağa güvenilmez (ör. veraison/go-cose: ecosyste.ms 'mpl-2.0')."""
+    """Selects the first valid SPDX-like licence value (and its source); if none is valid, returns the first non-empty one
+    with the label '(geçersiz)'. deps.dev reports 'non-standard' for licences that GitHub cannot match in some
+    repositories, so a single source is not trusted (e.g. veraison/go-cose: ecosyste.ms 'mpl-2.0')."""
     for kaynak, l in adaylar:
         if l and str(l).strip().lower() not in GECERSIZ_LISANS:
             return str(l).strip(), kaynak
@@ -848,10 +848,10 @@ def lisans_sec(adaylar: list[tuple[str, str | None]]) -> tuple[str, str]:
 
 
 def populerlik_puanla(adaylar: list[dict]):
-    """Eşikten bağımsız popülerlik puanı (KRITERLER-TASLAK.md §5.2):
-    her gösterge için TABAKA-İÇİ (o göstergesi olan tüm çerçeve adayları) orta-sıra yüzdeliği
-    p = (#(değer < v) + 0,5·#(değer = v)) / n; eksik gösterge yok sayılır (eşit değerler şişirilmez).
-    pop_puani = mevcut göstergelerin en yüksek yüzdeliği; pop_puani2 = ikinci en yüksek (eşitlik bozucu)."""
+    """Threshold-independent popularity score (CRITERIA-DRAFT.md §5.2):
+    for every indicator the mid-rank percentile WITHIN THE STRATUM (all frame candidates that have this indicator)
+    p = (#(value < v) + 0.5·#(value = v)) / n; a missing indicator is ignored (ties are not inflated).
+    pop_puani = highest percentile of the available indicators; pop_puani2 = second highest (tie-breaker)."""
     from bisect import bisect_left, bisect_right
     for a in adaylar:
         a["toplam_indirme_yalniz"] = (a.get("toplam_indirme") if a.get("aylik_indirme") is None
@@ -874,18 +874,18 @@ def populerlik_puanla(adaylar: list[dict]):
 
 
 def populerlik_anahtari(a: dict):
-    """Tabaka içi sıralama anahtarı: pop_puani ↓, pop_puani2 ↓, id ↑ (deterministik)."""
+    """Sort key within a stratum: pop_puani ↓, pop_puani2 ↓, id ↑ (deterministic)."""
     return (-a.get("pop_puani", 0.0), -a.get("pop_puani2", 0.0), a["id"])
 
 
 def secim(adaylar: list[dict], esik: str) -> dict:
-    """Seçim kuralı (KRITERLER-TASLAK.md §5):
-       JOSE : çekirdek 9 dil grubunun her birinden popülerlik sırasıyla en çok 2 (kota 18); kota dolmazsa
-              çekirdek dışı gruplardan (C/C++ vb.) popülerlik sırasıyla, grup başına en çok 2.
-       SDJWT, COSE : dil grubu başına en çok 2, popülerlik sırasıyla kotaya kadar.
-       REF  : Sürüm 3 §9.2'de adı geçenler (G) önce; sonra popülerlik; kotaya kadar.
-       YEDEK: (i) seçilen her dil grubunda sıradaki uygun aday (grup-içi değiştirme için);
-              (ii) tabakanın genel sırasındaki ilk 2 seçilmemiş uygun aday (grup dışı değiştirme için)."""
+    """Selection rule (CRITERIA-DRAFT.md §5):
+       JOSE : at most 2 from each of the 9 core language groups in order of popularity (quota 18); if the quota is not filled,
+              from the non-core groups (C/C++ etc.) in order of popularity, at most 2 per group.
+       SDJWT, COSE : at most 2 per language group, in order of popularity, up to the quota.
+       REF  : those named in design document version 3 §9.2 (G) first; then popularity; up to the quota.
+       YEDEK: (i) the next eligible candidate in every selected language group (for a replacement within the group);
+              (ii) the first 2 unselected eligible candidates in the overall order of the stratum (for a replacement outside the group)."""
     uygun = [a for a in adaylar if a[f"uygun_{esik}"]]
     sonuc = {}
     for tabaka, kota in KOTALAR.items():
@@ -925,7 +925,7 @@ def secim(adaylar: list[dict], esik: str) -> dict:
 
 
 # ---------------------------------------------------------------------------
-# 5) (İsteğe bağlı) DESEN TARAMASI — elle doğrulama için ipucu; hüküm değildir
+# 5) (Optional) PATTERN SCAN — hints for checking by hand; not a verdict
 # ---------------------------------------------------------------------------
 DESENLER = {
     "ml_dsa": r"ML[-_]?DSA|MLDSA|\bAKP\b|Dilithium|dilithium",
@@ -941,7 +941,7 @@ TARANACAK_UZANTI = {".js", ".mjs", ".cjs", ".ts", ".py", ".java", ".kt", ".kts",
 
 
 def desen_tara(aday: dict) -> dict:
-    """Sığ klonda (derinlik 1) desen eşleşmelerini dosya:satır olarak toplar. Klon sonra silinir."""
+    """Collects pattern matches in a shallow clone (depth 1) as file:line. The clone is deleted afterwards."""
     onb = ONBELLEK / "tarama" / f"{aday['id']}.json"
     if onb.exists() and not ARGS.tazele:
         return json.loads(onb.read_text("utf-8"))
@@ -973,7 +973,7 @@ def desen_tara(aday: dict) -> dict:
                     continue
                 goreli = str(yol.relative_to(hedef)).replace("\\", "/")
                 gl = goreli.lower()
-                # öncelik: 0 kaynak, 1 belge, 2 test/örnek (kanıt için kaynak ve belge önce gelsin)
+                # priority: 0 source, 1 documentation, 2 test/example (source and documentation come first as evidence)
                 if re.search(r"(^|/)(tests?|spec|__tests__|testdata|test-vectors?|fixtures?|examples?|samples?|benchmarks?)(/|$)|_test\.|\.test\.|\.spec\.|test_", gl):
                     o = 2
                 elif yol.suffix.lower() in {".md", ".rst", ".adoc", ".txt"}:
@@ -1006,7 +1006,7 @@ def desen_tara(aday: dict) -> dict:
 
 
 # ---------------------------------------------------------------------------
-# ANA AKIŞ
+# MAIN FLOW
 # ---------------------------------------------------------------------------
 DESTEK_ALANLARI = ["general_json_coklu_imza", "coklu_imza_semantigi_belgelenmis", "alg_izin_listesi", "anahtar_alg_baglama",
                    "ml_dsa_rfc9964", "composite_destegi", "sd_jwt", "cose_sign_coklu"]
@@ -1017,19 +1017,19 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--cevrimdisi", action="store_true")
     ap.add_argument("--tazele", action="store_true")
-    ap.add_argument("--desen-tara", action="store_true", help="adayların sığ klonlarında desen taraması (ipucu)")
+    ap.add_argument("--desen-tara", action="store_true", help="pattern scan in shallow clones of the candidates (hint)")
     ap.add_argument("--desen-kapsam", default="secilen+yedek", choices=["secilen+yedek", "uygun", "hepsi"])
     ap.add_argument("--klon-dizini", default=str(Path(tempfile.gettempdir()) / "pq-oid4vc-envanter-klon"))
     ap.add_argument("--esik", default="E2", choices=list(ESIKLER))
-    ap.add_argument("--yalniz-tarama", action="store_true", help="tanımlama+tarama sonrası dur (TARAMA.csv)")
+    ap.add_argument("--yalniz-tarama", action="store_true", help="stop after identification+screening (TARAMA.csv)")
     ARGS = ap.parse_args()
     ONBELLEK.mkdir(parents=True, exist_ok=True)
 
-    # 1) Tanımlama
+    # 1) Identification
     log("1) Tanımlama …")
     jwt_adaylar, jwt_ozet = jwtio_adaylari()
     isabetler = arama_isabetleri()
-    # 2) Tarama
+    # 2) Screening
     log("2) Tarama …")
     tarama_satirlari, ek_adaylar = tarama(jwt_adaylar, isabetler)
     csv_yaz(KOK / "TARAMA.csv", tarama_satirlari,
@@ -1041,19 +1041,19 @@ def main():
         log(f"   jwt.io: {jwt_ozet}; isabet: {len(isabetler)}; tarama satırı: {len(tarama_satirlari)}; ek aday: {len(ek_adaylar)}")
         return
     adaylar = jwt_adaylar + ek_adaylar
-    # kimlik
+    # identifier
     sayac = {}
     for a in adaylar:
         onek = {"JOSE": "JOSE", "SDJWT": "SDJWT", "COSE": "COSE", "REF": "REF"}[a["tabaka"]]
         sayac[onek] = sayac.get(onek, 0) + 1
         a["id"] = f"{onek}-{sayac[onek]:03d}"
-    # elle bayraklar (K1/K3/K4/K6/K8) ve destek kanıtları
+    # manual flags (K1/K3/K4/K6/K8) and support evidence
     elle = {r["id_ya_da_depo"].strip().lower(): r for r in csv_oku(KOK / "elle_bayraklar.csv")}
     kanit = {}
     for r in csv_oku(KOK / "destek_kanitlari.csv"):
         kanit.setdefault(r["depo"].strip().lower(), {})[r["alan"].strip()] = r
 
-    # 3) Meta veri
+    # 3) Metadata
     log("3) Meta veri …")
     for i, a in enumerate(adaylar, 1):
         if i % 20 == 0:
@@ -1091,7 +1091,7 @@ def main():
             if e.get(k):
                 a[k] = e[k]
         if e.get("yildiz_elle") == "kullanma":
-            # birim, alanı başka olan büyük bir platform tek-deposunun küçük bir bileşeni: depo yıldızı birimi temsil etmez
+            # the unit is a small component of a large platform monorepo with another scope: the repository stars do not represent the unit
             a["yildiz_depo"] = a["yildiz"]
             a["yildiz"], a["yildiz_kaynagi"] = None, f"kullanılmadı (tek-depo; depo ★{a['yildiz_depo']})"
         elif e.get("yildiz_elle") and a["yildiz"] is None:
@@ -1106,7 +1106,7 @@ def main():
             a[alan + "_dayanak"] = r["dayanak"] if r else "incelenmedi"
         a["linux_konteyner_derleme"] = "test edilecek"
 
-    # 4) Ölçütler
+    # 4) Criteria
     log("4) Ölçütler …")
     populerlik_puanla(adaylar)
     for esik in ESIKLER:
@@ -1121,7 +1121,7 @@ def main():
             a[f"karar_{esik}"] = "SECILDI" if a["id"] in t["secilen"] else ("YEDEK" if a["id"] in t["yedek"] else
                                                                             ("uygun-disarida" if a[f"uygun_{esik}"] else "DISLANDI"))
 
-    # 5) (isteğe bağlı) desen taraması
+    # 5) (optional) pattern scan
     if ARGS.desen_tara:
         log("5) Desen taraması …")
         for a in adaylar:
@@ -1133,7 +1133,7 @@ def main():
             s = desen_tara(a)
             log(f"   {a['id']} {a['ad']}: {s.get('sayilar') or s.get('hata')}")
 
-    # Çıktılar
+    # Outputs
     log("6) Çıktılar …")
     for a in adaylar:
         a["dil_grubu"] = dil_grubu(a["dil_anahtari"])
@@ -1156,7 +1156,7 @@ def main():
                       "son_commit", "lisans", "lisans_kaynagi"] + \
                      [x for e in ESIKLER for x in (f"uygun_{e}", f"karar_{e}", f"neden_{e}")]
     csv_yaz(KOK / "SECIM.csv", adaylar, secim_alanlari)
-    # eşik duyarlılığı
+    # threshold sensitivity
     duy = []
     for esik, s in secimler.items():
         satir = {"esik": esik, "tanim": ESIKLER[esik]["_ad"]}
@@ -1165,13 +1165,13 @@ def main():
             satir[f"{t}_uygun"] = s[t]["uygun"]
             satir[f"{t}_secilen"] = len(s[t]["secilen"])
             if t == "REF":
-                continue  # ÖK §2A Ö6: referans doğrulayıcılar n'nin DIŞINDA, ayrı raporlanır
+                continue  # PR §2A Ö6: reference verifiers are OUTSIDE n and are reported separately
             top_u += s[t]["uygun"]
             top_s += len(s[t]["secilen"])
         satir["toplam_uygun"] = top_u
         satir["toplam_secilen"] = top_s
         satir["n_25_40_icinde"] = "evet" if 25 <= top_s <= 40 else "hayır"
-        # sayım (kota yok) seçeneği: uygun olanların hepsi
+        # count (no quota) option: all eligible candidates
         satir["sayim_n"] = top_u
         satir["sayim_25_40_icinde"] = "evet" if 25 <= top_u <= 40 else "hayır"
         idx = {a["id"]: a for a in adaylar}

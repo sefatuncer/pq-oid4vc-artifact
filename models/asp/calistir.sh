@@ -1,8 +1,8 @@
 #!/bin/sh
-# PQ-OID4VC Adım 3 — betikleri pq-a02-solver:1.0 konteynerinde koşar (Git Bash).
-# Kullanım: ./calistir.sh <betik.py> [argümanlar]   (çalışma dizini: models/asp -> /work, yazılabilir)
-# Salt okunur bağlar: models/tamarin -> /tamarin, referans -> /referans, veri -> /veri,
-#                     02-izlenebilirlik -> /izlenebilirlik  (yalnız okunur; yazma yalnız /work'e)
+# PQ-OID4VC Step 3 — runs the scripts in the pq-a02-solver:1.0 container (Git Bash).
+# Usage: ./calistir.sh <script.py> [arguments]   (working folder: models/asp -> /work, writable)
+# Read-only mounts: models/tamarin -> /tamarin, referans -> /referans, data -> /veri,
+#                     traceability -> /izlenebilirlik  (read only; writes go only to /work)
 D="$(cd "$(dirname "$0")" && pwd)"
 PROJE="$(cd "$D/../.." && pwd)"
 AD="pq-a03-$(date +%s)-$$"

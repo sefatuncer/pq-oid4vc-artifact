@@ -1,7 +1,7 @@
-"""Uçtan uca bilinen-cevap senaryoları (yalnız sentetik veri).
+"""End-to-end known-answer scenarios (synthetic data only).
 
-Beklenen değerler, analiz hattından BAĞIMSIZ olarak burada elle kurulan tablolardan
-`math.comb`/`fractions` ile hesaplanır.
+The expected values are computed with `math.comb`/`fractions` from tables that are built here by hand,
+INDEPENDENTLY of the analysis pipeline.
 """
 from __future__ import annotations
 
@@ -34,7 +34,7 @@ def fisher_elle(a, b, c, d):
 
 
 class H6Hukmu(unittest.TestCase):
-    """ÖK §6.10: destek = birincil VE (i) X ≤ c; yalnız birincil => kırılgan destek."""
+    """PR §6.10: support = primary AND (i) X ≤ c; primary only => fragile support."""
 
     def test_destek(self):
         s = analiz_sozluk(veri_seti(y_ata(n31_hedefleri(), birler=8)))
@@ -53,7 +53,7 @@ class H6Hukmu(unittest.TestCase):
         self.assertEqual(s["H6_hukmu"]["hukum"], "kirilgan_destek")
 
     def test_destek_belirsizle_saglam(self):
-        # 1 belirsiz, X = 9: birincil n=30, c=10 → destek; (i) X=10, n=31, c=10 → destek => destek
+        # 1 undetermined, X = 9: primary n=30, c=10 → support; (i) X=10, n=31, c=10 → support => support
         s = analiz_sozluk(veri_seti(y_ata(n31_hedefleri(), birler=9, belirsiz=1)))
         self.assertEqual(s["H6_hukmu"]["hukum"], "destek")
 
@@ -64,7 +64,7 @@ class H6Hukmu(unittest.TestCase):
         self.assertEqual(s["H6_hukmu"]["hukum"], "yanlislama")
 
     def test_kirilgan_yanlislama(self):
-        # Değişiklik 8 m.17: 2 belirsiz, X = 20: birincil n=29, u=20 → yanlışlama; (ii) n=31, X=20 < u=21 → belirsiz
+        # Amendment 8 item 17: 2 undetermined, X = 20: primary n=29, u=20 → falsification; (ii) n=31, X=20 < u=21 → undetermined
         s = analiz_sozluk(veri_seti(y_ata(n31_hedefleri(), birler=20, belirsiz=2)))
         self.assertEqual((s["T1"]["n_eff"], s["T1"]["u"], s["T1"]["karar"]), (29, 20, "yanlislama"))
         ii = s["T1_duyarlilik"]["ii_belirsiz_0"]
@@ -72,12 +72,12 @@ class H6Hukmu(unittest.TestCase):
         self.assertEqual(s["H6_hukmu"]["hukum"], "kirilgan_yanlislama")
 
     def test_yanlislama_belirsizle_saglam(self):
-        # 1 belirsiz, X = 21: birincil n=30, u=20 → yanlışlama; (ii) n=31, X=21, u=21 → yanlışlama => yanlışlama
+        # 1 undetermined, X = 21: primary n=30, u=20 → falsification; (ii) n=31, X=21, u=21 → falsification => falsification
         s = analiz_sozluk(veri_seti(y_ata(n31_hedefleri(), birler=21, belirsiz=1)))
         self.assertEqual(s["H6_hukmu"]["hukum"], "yanlislama")
 
     def test_gecersiz_y0_duyarlilik(self):
-        # Değişiklik 10: 1 adaptör geçersiz hedef; birincil n=30, X=8; duyarlılık n=31, X=8, eşikler n=31'den
+        # Amendment 10: 1 target with an invalid adapter; primary n=30, X=8; sensitivity n=31, X=8, thresholds from n=31
         s = analiz_sozluk(veri_seti(y_ata(n31_hedefleri(), birler=8, gecersiz=1)))
         self.assertEqual((s["T1"]["n_eff"], s["T1"]["X"]), (30, 8))
         g = s["T1_duyarlilik"]["gecersiz_y0"]
@@ -93,7 +93,7 @@ class H6Hukmu(unittest.TestCase):
         s = analiz_sozluk(veri_seti(y_ata(n31_hedefleri(), birler=3, gecersiz=12)))
         self.assertEqual(s["T1"]["n_eff"], 19)
         self.assertEqual(s["H6_hukmu"]["hukum"], "tanimlayici")
-        self.assertIsNotNone(s["T1"]["wilson"])  # tanımlayıcı sonuçta Wilson GA verilir (ÖK §6.3)
+        self.assertIsNotNone(s["T1"]["wilson"])  # a descriptive result carries the Wilson CI (PR §6.3)
 
     def test_etki_buyuklugu_t1(self):
         s = analiz_sozluk(veri_seti(y_ata(n31_hedefleri(), birler=8)))
@@ -118,11 +118,11 @@ class Duyarliliklar(unittest.TestCase):
         h = y_ata(n31_hedefleri(), birler=10)
         for x in h:
             x["tk_sinifi"] = "TK1"
-        # T2 için 6 uyumsuz çift (b): biri devralan
+        # 6 discordant pairs (b) for T2: one of them delegating
         for i in range(10, 16):
             h[i]["F_T"] = 1
         h[10]["devralan"] = 1
-        h[10]["devraldigi_hedef"] = "S-DIS-HEDEF"   # n dışı bir hedefe devir de geçerli
+        h[10]["devraldigi_hedef"] = "S-DIS-HEDEF"   # delegation to a target outside n is also valid
         h[0]["devralan"] = 1
         h[0]["devraldigi_hedef"] = h[1]["hedef_id"]
         s = analiz_sozluk(veri_seti(h))
@@ -141,11 +141,11 @@ class T2KapsamVeEtki(unittest.TestCase):
         h = n31_hedefleri()
         for i, x in enumerate(h):
             x["tk_sinifi"] = "TK3" if i >= 20 else ("TK1" if i < 5 else "TK2")
-        for i in range(0, 5):      # TK1/TK2: 5 çift F_K=0, F_T=1 (b)
+        for i in range(0, 5):      # TK1/TK2: 5 pairs F_K=0, F_T=1 (b)
             h[i]["F_T"] = 1
-        for i in range(5, 7):      # TK1/TK2: 2 çift F_K=1, F_T=1 (a)
+        for i in range(5, 7):      # TK1/TK2: 2 pairs F_K=1, F_T=1 (a)
             h[i]["F_K"] = h[i]["F_T"] = 1
-        for i in range(20, 31):    # TK3: 11 çift F_K=1, F_T=0 (T2'ye GİRMEMELİ)
+        for i in range(20, 31):    # TK3: 11 pairs F_K=1, F_T=0 (must NOT ENTER T2)
             h[i]["F_K"] = 1
         s = analiz_sozluk(veri_seti(h))
         t2 = s["T2"]
@@ -163,11 +163,11 @@ class T2KapsamVeEtki(unittest.TestCase):
 class T3T4T5(unittest.TestCase):
     def _veri(self):
         h = n31_hedefleri()  # JOSE 0–17, SDJWT 18–25, COSE 26–30
-        # T3: SDJWT'de 4/8 PQ'ya özgü (F_T=1, F_K=0); JOSE'de 1/18; COSE'da 3 (T3'e GİRMEMELİ)
+        # T3: 4/8 PQ-specific in SDJWT (F_T=1, F_K=0); 1/18 in JOSE; 3 in COSE (must NOT ENTER T3)
         for i in (18, 19, 20, 21, 0, 26, 27, 28):
             h[i]["F_T"] = 1
-        h[1]["F_K"] = h[1]["F_T"] = 1   # JOSE: iki kolda da başarısız => PQ'ya özgü değil
-        # T4: 8725bis sonrası sürüm: 10 hedef, bunların 7'sinde L ≥ 3; öncesi 21 hedef, 5'inde L ≥ 3
+        h[1]["F_K"] = h[1]["F_T"] = 1   # JOSE: fails in both arms => not PQ-specific
+        # T4: version after 8725bis: 10 targets, 7 of them with L ≥ 3; before: 21 targets, 5 of them with L ≥ 3
         for i in range(10):
             h[i]["surum_8725bis_sonrasi"] = 1
             h[i]["L_duzeyi"] = 4 if i < 7 else 1
@@ -209,7 +209,7 @@ class T3T4T5(unittest.TestCase):
             self.assertEqual(s["holm"]["sonuclar"][t]["p_duzeltilmis"]["kesin"], str(beklenen[t]["p_duzeltilmis"]))
             self.assertEqual(s["holm"]["sonuclar"][t]["red"], beklenen[t]["red"])
         self.assertEqual(s["holm"]["m"], 4)
-        self.assertNotIn("T1", s["holm"]["sonuclar"])   # T1 Holm dışında (ÖK §6.6)
+        self.assertNotIn("T1", s["holm"]["sonuclar"])   # T1 outside Holm (PR §6.6)
 
 
 class GenelYapi(unittest.TestCase):

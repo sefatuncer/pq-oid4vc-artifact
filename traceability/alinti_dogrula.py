@@ -1,16 +1,16 @@
 # -*- coding: utf-8 -*-
 """
-izlenebilirlik.csv icindeki her `birebir_alinti`nin, `belge_id` ile gosterilen
-spec-corpus/metin/<belge_id>.txt dosyasinda BIREBIR gectigini dogrular.
+Checks that every `birebir_alinti` in izlenebilirlik.csv occurs VERBATIM in the file
+spec-corpus/metin/<belge_id>.txt given by `belge_id`.
 
-Normallestirme (yalniz bosluk):
-  D1: tum bosluk dizileri (satir sonu, sekme, form feed dahil) tek bosluga indirgenir.
-  D2: D1 + satir sonunda bolunmus tireli sozcukler icin "-<bosluk>" -> "-" (hem metinde
-      hem alintida ayni donusum). Ornek: IETF metninde "SD-\\n   JWT" -> "SD-JWT".
-Baska hicbir donusum (buyuk/kucuk harf, tirnak, ligatur) yapilmaz.
+Normalisation (whitespace only):
+  D1: every whitespace sequence (including line breaks, tabs, form feeds) is reduced to one space.
+  D2: D1 + "-<space>" -> "-" for hyphenated words split at a line end (the same transformation
+      in the text and in the quotation). Example: "SD-\\n   JWT" -> "SD-JWT" in an IETF text.
+No other transformation (case, quotation marks, ligatures) is made.
 
-Cikti: alinti_dogrulama.txt (n/N, D1/D2 dagilimi, bulunamayanlar, uzunluk ihlalleri).
-Kullanim: python alinti_dogrula.py   (02-izlenebilirlik klasorunden ya da herhangi bir yerden)
+Output: alinti_dogrulama.txt (n/N, D1/D2 distribution, quotations not found, length violations).
+Usage: python alinti_dogrula.py   (from the traceability/ folder or from anywhere)
 """
 import csv
 import re

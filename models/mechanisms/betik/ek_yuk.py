@@ -1,17 +1,17 @@
 # -*- coding: utf-8 -*-
 """
-PQ-OID4VC | Adım 7 görev 8 | mekanizma başına BELİRLENİMCİ ek yük (bayt, ek alım) [Y]
+PQ-OID4VC | Step 7 task 8 | DETERMINISTIC overhead per mechanism (bytes, extra fetches) [Y]
 ======================================================================================
-Tel üzerindeki ek baytlar kodlama kurallarından hesaplanır (ölçüm değildir; süre ölçümü Adım 11'de).
-Birincil boyutlar:
-  ML-DSA-44/65/87 açık anahtar 1312/1952/2592 B, imza 2420/3309/4627 B
-      (draft-ietf-jose-pq-composite-sigs Tablo 1; spec-corpus/metin/JOSECOMP.txt satır 537-545)
-  ES256 imzası 64 B (RFC 7518 §3.4 adım 4: "The resulting 64-octet sequence is the JWS Signature value")
+The extra bytes on the wire are computed from the encoding rules (not a measurement; time measurement in Step 11).
+Primary sizes:
+  ML-DSA-44/65/87 public key 1312/1952/2592 B, signature 2420/3309/4627 B
+      (draft-ietf-jose-pq-composite-sigs Table 1; spec-corpus/metin/JOSECOMP.txt lines 537-545)
+  ES256 signature 64 B (RFC 7518 §3.4 step 4: "The resulting 64-octet sequence is the JWS Signature value")
   id-ML-DSA-65 = 2.16.840.1.101.3.4.3.18, id-sha256 = 2.16.840.1.101.3.4.2.1 (LAMPSCOMP.txt 3509, 3577)
-  vicente eki: id-ce-pqchc-experimental = 1.3.6.1.4.1.65953.1.1 (draft-vicente-lamps-pqchc-02 §4.1)
-  reddy eki: id-pe-pqchc = id-pe TBD2 (draft-reddy-lamps-x509-pq-commit-01 §3.2; tek baytlık yay varsayıldı)
-  sheffer uzantısı: uint32 algorithm_validity_period (draft-sheffer-tls-pqc-continuity-02 §3.3)
-Çıktı: sonuc/ek_yuk.csv
+  vicente extension: id-ce-pqchc-experimental = 1.3.6.1.4.1.65953.1.1 (draft-vicente-lamps-pqchc-02 §4.1)
+  reddy extension: id-pe-pqchc = id-pe TBD2 (draft-reddy-lamps-x509-pq-commit-01 §3.2; a one-byte arc assumed)
+  sheffer extension: uint32 algorithm_validity_period (draft-sheffer-tls-pqc-continuity-02 §3.3)
+Output: sonuc/ek_yuk.csv
 """
 import base64
 import csv
@@ -23,7 +23,7 @@ MLDSA = {'ML-DSA-44': (1312, 2420), 'ML-DSA-65': (1952, 3309), 'ML-DSA-87': (259
 
 
 def b64u(n):
-    """n baytın base64url (dolgusuz) uzunluğu."""
+    """Length of n bytes in base64url (without padding)."""
     return len(base64.urlsafe_b64encode(b'\0' * n).rstrip(b'='))
 
 
@@ -53,15 +53,15 @@ def oid(nokta):
 
 def vicente_eki():
     alg = tlv(0x30, oid('2.16.840.1.101.3.4.3.18'))                         # committedAlgorithm
-    dig = tlv(0x30, tlv(0x30, oid('2.16.840.1.101.3.4.2.1')) + tlv(0x04, b'\0' * 32))  # DigestInfo (parametre yok)
+    dig = tlv(0x30, tlv(0x30, oid('2.16.840.1.101.3.4.2.1')) + tlv(0x04, b'\0' * 32))  # DigestInfo (no parameters)
     zaman = tlv(0x18, b'20301231235959Z')                                  # commitmentNotAfter
-    govde = tlv(0x30, alg + dig + zaman)                                   # commitmentValid DEFAULT TRUE: kodlanmaz
-    return tlv(0x30, oid('1.3.6.1.4.1.65953.1.1') + tlv(0x04, govde))      # Extension (critical yok)
+    govde = tlv(0x30, alg + dig + zaman)                                   # commitmentValid DEFAULT TRUE: not encoded
+    return tlv(0x30, oid('1.3.6.1.4.1.65953.1.1') + tlv(0x04, govde))      # Extension (no critical)
 
 
 def reddy_eki():
-    govde = tlv(0x30, tlv(0x02, (365).to_bytes(2, 'big')))                  # continuityPeriod = 365 gün
-    return tlv(0x30, oid('1.3.6.1.5.5.7.1.99') + tlv(0x04, govde))          # id-pe TBD2: tek baytlık yay
+    govde = tlv(0x30, tlv(0x02, (365).to_bytes(2, 'big')))                  # continuityPeriod = 365 days
+    return tlv(0x30, oid('1.3.6.1.5.5.7.1.99') + tlv(0x04, govde))          # id-pe TBD2: one-byte arc
 
 
 def main():

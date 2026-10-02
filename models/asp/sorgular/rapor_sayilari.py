@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-"""RAPOR.md'deki sayıların tek kaynağı: bütün sonuç dosyalarından özet sayıları derler.
-Çıktı: sorgular/sonuc/rapor_sayilari.json. Kullanım: ./calistir.sh sorgular/rapor_sayilari.py
+"""Single source of the numbers in REPORT.md: collects the summary numbers from all result files.
+Output: sorgular/sonuc/rapor_sayilari.json. Usage: ./calistir.sh sorgular/rapor_sayilari.py
 """
 import json, os
 from collections import Counter, defaultdict
@@ -43,7 +43,7 @@ def main():
     out['siralar'] = j('sorgular/sonuc/siralar.json')['ozet']
     out['disa_aktarim'] = j('sampling/disa_aktarim_ozeti.json')
     out['analiz'] = j('sorgular/sonuc/analiz/ozet.json')
-    # A1 gereklilik matrisi (birincil çerçeveden): eksik düğüm -> satır sayısı ve düşen hedefler
+    # A1 requirement matrix (from the primary frame): missing node -> number of rows and the goals that fail
     a1 = defaultdict(lambda: {'satir': 0, 'dusen': Counter()})
     for satir in open(os.path.join(KOK, 'sampling', 'cerceve.jsonl'), encoding='utf-8'):
         r = json.loads(satir)

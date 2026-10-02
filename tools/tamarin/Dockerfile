@@ -1,5 +1,5 @@
-# Adım 2 — Tamarin 1.12.0 (resmî ikili) + Maude 3.5.1 (resmî ikili)
-# İkililerin SHA-256 değerleri: indir/beklenen.sha256 (GitHub release digest'leriyle doğrulandı)
+# Step 2 — Tamarin 1.12.0 (official binary) + Maude 3.5.1 (official binary)
+# SHA-256 values of the binaries: indir/beklenen.sha256 (checked against the GitHub release digests)
 FROM python:3.11-slim@sha256:9534e5a8e315485d4061ed659af0fd78a284c015f9b73661b41d6bab25604534
 COPY indir/tamarin/tamarin-prover /usr/local/bin/tamarin-prover
 COPY indir/maude/ /opt/maude/

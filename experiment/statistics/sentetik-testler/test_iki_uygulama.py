@@ -1,11 +1,11 @@
-"""İki bağımsız uygulamanın her sentetik vakada karşılaştırılması.
+"""Comparison of the two independent implementations on every synthetic case.
 
-A = kendi kesin uygulama (`c3istat.kesin`: fractions / math.comb / decimal; yalnız standart kütüphane)
-B = kütüphane uygulaması (`c3istat.referans`: scipy / statsmodels / numpy)
+A = own exact implementation (`c3istat.kesin`: fractions / math.comb / decimal; standard library only)
+B = library implementation (`c3istat.referans`: scipy / statsmodels / numpy)
 
-Toleranslar `c3istat.yapilandirma.TOLERANSLAR`'dadır. Uyuşmazlık = hata.
-Vaka ızgaraları kapsamlıdır (belirtilen sınıra kadar bütün tablolar). Rastgele ek vakalar sabit
-TEST tohumlarıyla üretilir (ÖK analiz tohumlarından ayrıdır; DONDURMA-GIRDISI.md §5).
+The tolerances are in `c3istat.yapilandirma.TOLERANSLAR`. A disagreement = an error.
+The case grids are exhaustive (all tables up to the stated bound). Additional random cases are generated
+with fixed TEST seeds (separate from the PR analysis seeds; FREEZE-INPUT.md §5).
 """
 from __future__ import annotations
 
@@ -24,7 +24,7 @@ TEST_TOHUMU_NEWCOMBE = 910005
 
 
 def tablolar(N_max: int):
-    """Toplamı N_max'ı aşmayan bütün 2×2 tablolar (a, b, c, d)."""
+    """All 2×2 tables (a, b, c, d) whose total does not exceed N_max."""
     for N in range(0, N_max + 1):
         for a in range(N + 1):
             for b in range(N - a + 1):
@@ -115,9 +115,9 @@ class Supurme(unittest.TestCase):
         self._bitir("newcombe_eslestirilmis_T2")
 
     def test_newcombe_eslestirilmis_phi0_statsmodels_bagimsiz(self):
-        """Bağımsız kütüphane denetimi: φ = 0 iken eşleştirilmiş formül, marjinaller üzerinde statsmodels'ın
-        bağımsız 'newcomb' aralığına (n1 = n2 = N) eşit olmalıdır. Bu, eşleştirilmiş kod yolunun
-        kütüphane dışı tek parçası olan birleştirme adımını statsmodels'a karşı sınar."""
+        """Independent library check: at φ = 0 the paired formula must equal the independent 'newcomb'
+        interval of statsmodels on the margins (n1 = n2 = N). This tests the combination step, the only
+        part of the paired code path outside the library, against statsmodels."""
         for t in tablolar(16):
             if sum(t) == 0:
                 continue
@@ -140,7 +140,7 @@ class Supurme(unittest.TestCase):
 
     def test_holm(self):
         rng = random.Random(TEST_TOHUMU_HOLM)
-        # Sınır değerleri ve eşitlikler içeren ayrık havuz + sürekli rastgele değerler
+        # Discrete pool with boundary values and ties + continuous random values
         havuz = [0.0, 1e-6, 0.001, 0.005, 0.01, 0.0125, 0.05 / 3, 0.02, 0.025, 0.04, 0.05, 0.06, 0.1, 0.5, 1.0]
         vakalar = [tuple(v) for v in itertools.product([0.001, 0.0125, 0.025, 0.05], repeat=4)]
         for _ in range(3000):

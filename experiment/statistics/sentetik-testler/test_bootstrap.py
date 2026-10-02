@@ -1,9 +1,9 @@
-"""Küme bootstrap (ÖK §6.9: birim kütüphane, B = 10.000, yüzdelik GA, tohum 20260927).
+"""Cluster bootstrap (PR §6.9: unit library, B = 10,000, percentile CI, seed 20260927).
 
-- Aynı tohum => bit düzeyinde aynı sonuç (aynı süreçte ve iki ayrı Python sürecinde).
-- Saf Python ve numpy uygulamaları aynı dağılımı üretir (dağılımın SHA-256'sı eşit).
-- Bilinen cevaplı vakalar: tek küme; bütün kümelerin oranı eşit; iki kümede kesin dağılım;
-  m = 0 kümelerin dışlanması; yüzdelik tanımı (tip 7).
+- Same seed => bit-identical result (in the same process and in two separate Python processes).
+- The pure Python and numpy implementations produce the same distribution (equal SHA-256 of the distribution).
+- Known-answer cases: a single cluster; all clusters with the same proportion; exact distribution with two clusters;
+  exclusion of clusters with m = 0; percentile definition (type 7).
 """
 from __future__ import annotations
 
@@ -50,13 +50,13 @@ class Tekrarlanabilirlik(unittest.TestCase):
         self.assertNotEqual(s1["dagilim_sha256"], s2["dagilim_sha256"])
 
     def test_kume_sirasi_hedef_kimligine_gore(self):
-        # Girdi sırası sonucu değiştirmez: kümeler hedef_id'ye göre sıralanır.
+        # The input order does not change the result: clusters are sorted by hedef_id.
         ters = list(reversed(ORNEK))
         self.assertEqual(bootstrap.kume_bootstrap_saf(ORNEK)["dagilim_sha256"],
                          bootstrap.kume_bootstrap_saf(ters)["dagilim_sha256"])
 
     def test_rastgele_akis_tanimi(self):
-        # İndeks = floor(U·k), U = random.Random(tohum).random() (Python'un kararlılık güvencesi random() için)
+        # Index = floor(U·k), U = random.Random(tohum).random() (Python's stability guarantee for random())
         import random
         rng = random.Random(20260927)
         beklenen = [int(rng.random() * 31) for _ in range(50)]
@@ -74,15 +74,15 @@ class BilinenCevap(unittest.TestCase):
         self.assertEqual((s["tahmin"], s["alt"], s["ust"]), (0.25, 0.25, 0.25))
 
     def test_iki_kume_kesin_dagilim(self):
-        # k = 2: yeniden örneklem 4 eşit olasılıklı sonuç; istatistik r1 (1/4), havuz (1/2), r2 (1/4).
-        # %2,5 ve %97,5 yüzdelikleri (tip 7) min ve max oranlara düşer (olasılık ≈ 1; tohum sabit).
+        # k = 2: the resample has 4 equally likely outcomes; statistic r1 (1/4), pooled (1/2), r2 (1/4).
+        # The 2.5% and 97.5% percentiles (type 7) fall on the min and max proportions (probability ≈ 1; fixed seed).
         s = bootstrap.kume_bootstrap_saf([("S-A", 1, 10), ("S-B", 6, 10)])
         self.assertEqual(s["alt"], 0.1)
         self.assertEqual(s["ust"], 0.6)
         self.assertEqual(s["tahmin"], 7 / 20)
         pay = s["dagilim_ozeti"]
         self.assertEqual(set(pay["farkli_degerler"]), {0.1, 0.35, 0.6})
-        # Göreli sıklıklar beklenen 1/4, 1/2, 1/4'e yakın (B = 10.000; 5 standart hata içinde)
+        # Relative frequencies close to the expected 1/4, 1/2, 1/4 (B = 10,000; within 5 standard errors)
         self.assertLess(abs(pay["sikliklar"]["0.1"] / 10000 - 0.25), 5 * (0.25 * 0.75 / 10000) ** 0.5)
         self.assertLess(abs(pay["sikliklar"]["0.35"] / 10000 - 0.5), 5 * (0.25 / 10000) ** 0.5)
 
@@ -100,7 +100,7 @@ class BilinenCevap(unittest.TestCase):
         self.assertEqual(s["durum"], "veri_yok")
 
     def test_yuzdelik_tip7(self):
-        # Hyndman–Fan tip 7: h = (B−1)q; Q = x[⌊h⌋] + (h − ⌊h⌋)(x[⌊h⌋+1] − x[⌊h⌋]) (0 tabanlı)
+        # Hyndman–Fan type 7: h = (B−1)q; Q = x[⌊h⌋] + (h − ⌊h⌋)(x[⌊h⌋+1] − x[⌊h⌋]) (0-based)
         x = [float(i) for i in range(10000)]
         self.assertAlmostEqual(kesin.yuzdelik_tip7(x, Fraction(1, 40)), 249.975, delta=1e-9)
         self.assertAlmostEqual(kesin.yuzdelik_tip7(x, Fraction(39, 40)), 9749.025, delta=1e-9)

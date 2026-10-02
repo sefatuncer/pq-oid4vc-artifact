@@ -1,8 +1,8 @@
-"""B uygulaması — kütüphaneler: scipy 1.17.1, statsmodels 0.15.0, numpy 2.4.6 (sürümler requirements.txt'de sabit).
+"""Implementation B — libraries: scipy 1.17.1, statsmodels 0.15.0, numpy 2.4.6 (versions pinned in requirements.txt).
 
-A uygulamasıyla (`kesin`) aynı imzalar; çıktılar kayan noktadır. Eşleştirilmiş Newcombe için hazır
-kütüphane işlevi yok: Wilson sınırları statsmodels'tan alınır, birleştirme numpy ile ayrıca yazılmıştır.
-Bu modül `kesin` modülünü İÇE AKTARMAZ (bağımsızlık).
+Same signatures as implementation A (`kesin`); the outputs are floating-point. There is no ready-made library function
+for the paired Newcombe interval: the Wilson bounds are taken from statsmodels, the combination is written separately with numpy.
+This module does NOT IMPORT the `kesin` module (independence).
 """
 from __future__ import annotations
 
@@ -70,7 +70,7 @@ def newcombe_eslestirilmis(a: int, b: int, c: int, d: int,
     N = a + b + c + d
     if N == 0:
         return None
-    n1p, np1 = a + b, a + c              # 1. koşul (T) ve 2. koşul (K) olay sayıları
+    n1p, np1 = a + b, a + c              # event counts of condition 1 (T) and condition 2 (K)
     n2p, np2 = c + d, b + d
     alt_w, ust_w = proportion_confint(np.array([n1p, np1]), np.array([N, N]), alpha=_ALFA, method="wilson")
     l1, l2 = float(alt_w[0]), float(alt_w[1])

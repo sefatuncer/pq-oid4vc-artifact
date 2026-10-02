@@ -1,32 +1,32 @@
 #!/usr/bin/env bash
 # =====================================================================
-#  PQ-OID4VC | Adım 4 | Tamarin kural şemaları R1–R5: toplu koşum
+#  PQ-OID4VC | Step 4 | Tamarin rule schemata R1–R5: batch run
 # =====================================================================
-#  Kullanım (Git Bash):
-#     bash models/tamarin/betik/calistir.sh          # bütün varyantlar (ozet.csv baştan yazılır)
-#     bash models/tamarin/betik/calistir.sh R3       # yalnız bir kural (o kuralın satırları yenilenir)
+#  Usage (Git Bash):
+#     bash models/tamarin/betik/calistir.sh          # all variants (ozet.csv is rewritten from the start)
+#     bash models/tamarin/betik/calistir.sh R3       # one rule only (the rows of that rule are renewed)
 #
-#  Girdi : betik/varyantlar.tsv (kural, varyant, rol, dosya, bayraklar, G_beklenen[, lemma_beklenen])
-#  İyi biçimlilik kuralı (24.09.2026): uyarılı her koşum "gecersiz_wf" olarak kaydedilir.
-#  Çıktı : sonuc/ozet.csv   kural,varyant,lemma,sonuc,adim,sure_s,bellek_MiB,merdiven_basamagi
-#          sonuc/ham/<kural>__<varyant>__<lemma>__b<basamak>.{txt,meta}   ham Tamarin çıktısı
-#          sonuc/ham/<kural>__<varyant>__liste.{txt,meta}                  lemma listesi + iyi biçimlilik
-#          sonuc/json/<kural>__<varyant>__<lemma>.json                     bulunan izler (--output-json)
+#  Input : betik/varyantlar.tsv (kural, varyant, rol, dosya, bayraklar, G_beklenen[, lemma_beklenen])
+#  Well-formedness rule (24.09.2026): every run with a warning is recorded as "gecersiz_wf".
+#  Output: sonuc/ozet.csv   kural,varyant,lemma,sonuc,adim,sure_s,bellek_MiB,merdiven_basamagi
+#          sonuc/ham/<rule>__<variant>__<lemma>__b<step>.{txt,meta}   raw Tamarin output
+#          sonuc/ham/<rule>__<variant>__liste.{txt,meta}                  lemma list + well-formedness
+#          sonuc/json/<rule>__<variant>__<lemma>.json                     traces found (--output-json)
 #          sonuc/calistir_log.txt, sonuc/uyarilar.txt
-#          ardından betik/degerlendir.py -> sonuc/degerlendirme.csv, datalog_uyum.csv, metrikler.txt
+#          then betik/degerlendir.py -> sonuc/degerlendirme.csv, datalog_uyum.csv, metrikler.txt
 #
-#  Kurallar (proje çalışma kuralları, görev tanımı):
-#   * Aynı anda tek Tamarin konteyneri: başka bir pq-a02-tamarin konteyneri çalışıyorsa beklenir.
-#   * Her çağrı: --rm, --memory=12g --memory-swap=12g, timeout 600 s, ad öneki pq-a04-.
-#   * Her lemma ayrı konteynerde koşar (süre ve bellek tepesi lemma başına ölçülür).
-#   * Sonlanmama merdiveni (her basamak <= 600 s, 12 GB):
+#  Rules (project working rules, task definition):
+#   * One Tamarin container at a time: wait if another pq-a02-tamarin container is running.
+#   * Every call: --rm, --memory=12g --memory-swap=12g, timeout 600 s, name prefix pq-a04-.
+#   * Every lemma runs in a separate container (duration and memory peak are measured per lemma).
+#   * Non-termination ladder (every step <= 600 s, 12 GB):
 #       1 --prove=<lemma>
-#       2 [use_induction]/[reuse] yardımcı lemmaları   -> model düzeyinde, gerekirse elle
+#       2 [use_induction]/[reuse] helper lemmas   -> at model level, by hand if needed
 #       3 --prove=<lemma> --auto-sources
-#       4 tactic / oracle                                -> model düzeyinde, gerekirse elle
-#       5 --prove=<lemma> --bound=40                     (sınırlı arama)
-#       6 "kapanmadi" etiketi
-#     Betik 1 -> 3 -> 5 -> 6 basamaklarını kendiliğinden uygular.
+#       4 tactic / oracle                                -> at model level, by hand if needed
+#       5 --prove=<lemma> --bound=40                     (bounded search)
+#       6 label "kapanmadi"
+#     The script applies steps 1 -> 3 -> 5 -> 6 by itself.
 set -u
 BASE="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$BASE" || exit 1
@@ -46,7 +46,7 @@ HDR="kural,varyant,lemma,sonuc,adim,sure_s,bellek_MiB,merdiven_basamagi"
 if [ -z "$FILTRE" ] || [ ! -f "$CSV" ]; then
   echo "$HDR" > "$CSV"; : > "$UYARI"; : > "$LOG"
 else
-  # yalnız filtrelenen kuralın eski satırlarını sil
+  # delete only the old rows of the filtered rule
   grep -v "^${FILTRE}," "$CSV" > "$CSV.tmp"; mv "$CSV.tmp" "$CSV"
 fi
 
@@ -57,7 +57,7 @@ docker run --rm --name pq-a04-surum --memory=2g --memory-swap=2g "$IMG" tamarin-
   | grep -E "tamarin-prover [0-9]|Maude version|Git revision" | sed 's/^/    /' | tee -a "$LOG"
 
 N=0
-tamarin_run() { # <id> <model_dosyasi> [tamarin argümanları...]
+tamarin_run() { # <id> <model_file> [tamarin arguments...]
   local id=$1 model=$2; shift 2
   N=$((N+1))
   local bekledi=0
@@ -89,7 +89,7 @@ parse() { # <txt> <meta> <lemma>
   [ -z "$STEPS" ] && STEPS=NA
 }
 
-run_lemma() { # <kural> <varyant> <dosya> <dflags> <lemma>
+run_lemma() { # <rule> <variant> <file> <dflags> <lemma>
   local k=$1 v=$2 f=$3 dfl=$4 l=$5 b extra id
   for b in 1 3 5; do
     case $b in
@@ -101,7 +101,7 @@ run_lemma() { # <kural> <varyant> <dosya> <dflags> <lemma>
     # shellcheck disable=SC2086
     tamarin_run "$id" "$f" --prove="$l" $dfl $extra --output-json="/work/sonuc/json/${k}__${v}__${l}.json"
     parse "sonuc/ham/$id.txt" "sonuc/ham/$id.meta" "$l"
-    # kural (24.09.2026): iyi biçimlilik uyarılı koşum geçersizdir
+    # rule (24.09.2026): a run with a well-formedness warning is invalid
     if grep -q "wellformedness check failed" "sonuc/ham/$id.txt"; then
       RES=gecersiz_wf
       echo "$k $v $l: WELLFORMEDNESS UYARISI (koşum geçersiz)" >> "$UYARI"

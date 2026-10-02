@@ -1,10 +1,10 @@
 #!/bin/sh
-# Adım 6 | Python betiklerini pq-a02-solver:1.0 konteynerinde koşar (Git Bash). Ad öneki: pq-a06-.
-# Bağlar: bu klasör -> /kat (yazılabilir; yalnız ornekler/, sonuc/ yazılır)
-#         models/asp -> /asp                          (SALT OKUNUR; tek çekirdek: cekirdek.lp)
-#         model/known-answer-tests/nsurum -> /nsurum      (SALT OKUNUR; beklenen değerlerin tek kaynağı)
-#         spec-corpus/metin -> /korpus, literatur/metin -> /literatur (SALT OKUNUR; alıntı denetimi)
-# Kullanım: ./calistir.sh <betik.py> [argümanlar]
+# Step 6 | runs the Python scripts in the pq-a02-solver:1.0 container (Git Bash). Name prefix: pq-a06-.
+# Mounts: this folder -> /kat (writable; only ornekler/ and sonuc/ are written)
+#         models/asp -> /asp                          (READ ONLY; single core: cekirdek.lp)
+#         models/known-answer-tests/nsurum -> /nsurum      (READ ONLY; single source of the expected values)
+#         spec-corpus/metin -> /korpus, literatur/metin -> /literatur (READ ONLY; quotation check)
+# Usage: ./calistir.sh <script.py> [arguments]
 D="$(cd "$(dirname "$0")" && pwd)"
 PROJE="$(cd "$D/../../.." && pwd)"
 AD="pq-a06-$(basename "$D")-$(date +%s)-$$"

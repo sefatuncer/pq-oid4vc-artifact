@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
-"""Ön kayıt D2 ek denetimi: sorgu sınıfı başına 1000 rastgele yapılandırmada ASP, z3 ve bağımsız
-Python (Jacobi) sabit-nokta değerlendiricisinin üç yönlü uyumu. Tohum 20260928 (Ek C).
-Karşılaştırılan: ihlal edilen hedefler kümesi (g1..g4, tum, g5, g2i) ve sahte artefakt kümesi.
-Rastgele: bütün kategorik parametreler (tam alan), sayısal parametreler (ızgaralardan), kırılma kipi
-(k sınırsız | S1 | rastgele kırık anahtar kümesi), PQ ataması ve beklenti taşıma (tasi) seçimi.
+"""Additional check of pre-registration D2: three-way agreement of ASP, z3 and the independent
+Python (Jacobi) fixed-point evaluator on 1000 random configurations per query class. Seed 20260928 (Annex C).
+Compared: the set of violated goals (g1..g4, tum, g5, g2i) and the set of forged artefacts.
+Random: all categorical parameters (full domain), numerical parameters (from the grids), break mode
+(k unbounded | S1 | random set of broken keys), PQ assignment and choice of expectation conveyance (tasi).
 """
 import json, os, random, sys, time
 from multiprocessing import Pool

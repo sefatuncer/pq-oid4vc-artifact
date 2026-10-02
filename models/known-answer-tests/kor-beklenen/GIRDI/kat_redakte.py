@@ -1,13 +1,13 @@
-# KAT-SPEC (d) bölümlerindeki tabloları beklenen değer içermeyecek biçimde çıkarır (kör N-sürüm girdisi).
+# Extracts the tables of the KAT-SPEC (d) sections in a form that contains no expected values (input of the blind N-version derivation).
 import re, sys, io
 yol = sys.argv[1]
 satirlar = io.open(yol, encoding="utf-8").read().split("\n")
-bolumler = []  # (başlık, başlangıç, bitiş)
+bolumler = []  # (heading, start, end)
 basliklar = [(i, s) for i, s in enumerate(satirlar) if s.startswith("### (d)") or s.startswith("## ")]
 for k, (i, s) in enumerate(basliklar):
     if s.startswith("### (d)"):
         son = basliklar[k+1][0] if k+1 < len(basliklar) else len(satirlar)
-        # bir sonraki ### başlığına kadar
+        # up to the next ### heading
         for j in range(i+1, son):
             if satirlar[j].startswith("### "):
                 son = j; break

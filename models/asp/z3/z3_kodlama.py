@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
-"""PQ-OID4VC Adım 3 — aynı semantiğin z3 ile BAĞIMSIZ kodlaması (ASP'den mekanik çeviri değil).
+"""PQ-OID4VC Step 3 — INDEPENDENT encoding of the same semantics with z3 (not a mechanical translation of the ASP).
 
-Kodlama: her artefakt için 'etkin sahtelik' formülü, bağımlılık grafiği üzerinde bellekli özyinelemeyle
-kurulur (döngü algılanırsa hata). Karar değişkenleri pq_A ve tasi_C_X; kırılma değişkenleri brk_K
-(K = A | ('alt',A) | 'p3_kanal'). k sınırsızda brk ≡ doğru, S1'de brk ≡ yanlış; sonlu k'da
-∀B(|B|≤k) koşulu CEGAR ile çözülür (ASP'nin senaryo sayımından farklı bir yöntem).
-Asgari kümeler: model bul → tek tek çıkararak alt küme bakımından asgariye indir → üst kümeleri engelle
-(güvenli kümeler ailesi yukarı kapalı olduğundan tek-eleman asgarisi = alt küme asgarisi).
+Encoding: for every artefact the 'effective forgery' formula is built by memoised recursion over the dependency graph
+(error if a cycle is detected). Decision variables pq_A and tasi_C_X; break variables brk_K
+(K = A | ('alt',A) | 'p3_kanal'). With k unbounded brk ≡ true, in S1 brk ≡ false; with finite k
+the condition ∀B(|B|≤k) is solved by CEGAR (a different method from the scenario enumeration of the ASP).
+Minimal sets: find a model → reduce it to a subset-minimal one by removing elements one by one → block the supersets
+(since the family of secure sets is upward closed, single-element minimality = subset minimality).
 """
 import itertools, time
 import z3
@@ -15,12 +15,12 @@ from yapi import Yapi
 
 class Kodlayici:
     def __init__(self, Y, brk_kip, sabit_pq=()):
-        """brk_kip: 'tum' | 'bos' | 'sembolik'; sabit_pq: karar dışı artefaktlar için sabit PQ ataması
-        (değerlendirme kipi; ASP'deki pq(x) olgusunun karşılığı)."""
+        """brk_kip: 'tum' | 'bos' | 'sembolik'; sabit_pq: fixed PQ assignment for artefacts outside the decisions
+        (evaluation mode; the counterpart of the pq(x) fact in the ASP)."""
         self.Y = Y
         self.kip = brk_kip
         self.sabit_pq = set(sabit_pq)
-        self.pqv = {d: z3.Bool('pq__' + d) for d in Y.dugumler}          # §2C: düğüm başına tek karar
+        self.pqv = {d: z3.Bool('pq__' + d) for d in Y.dugumler}          # §2C: one decision per node
         pq_at, ta_at = Y.karar_atomlari()
         self.tav = {ct: z3.Bool('tasi__%s__%s' % ct) for ct in ta_at}
         self.brkv = {}
@@ -31,7 +31,7 @@ class Kodlayici:
         self._bel = {}
         self._yigin = set()
 
-    # ---------------- temel terimler
+    # ---------------- basic terms
     def brk(self, k):
         if self.kip == 'tum':
             return z3.BoolVal(True)
@@ -60,7 +60,7 @@ class Kodlayici:
         self._bel[anahtar] = v
         return v
 
-    # ---------------- semantik
+    # ---------------- semantics
     def zaman(self, a):
         return z3.BoolVal(bool(self.Y.zaman.get(a, False)))
 
@@ -118,7 +118,7 @@ class Kodlayici:
                     t.append(self.etkin_sahte(b))
             t.append(z3.And(self.kirilir_alt(a), z3.Not(self.beklenir(a))))
             if a in Y.imzasiz:
-                # bağlanmamış imzasız içerik; ya da PQ-bağlı ama bağsız biçim de kabul (birlikte yaşama)
+                # unbound unsigned content; or PQ-bound but the unbound form is also accepted (coexistence)
                 t.append(z3.Not(self.pq(a)))
                 t.append(z3.And(self.pq(a), self.klasik_alt_s(a), z3.Not(self.beklenir(a))))
             return z3.Or(t)
@@ -132,7 +132,7 @@ class Kodlayici:
         if k in ('cekilen', 'yalniz_tasima'):
             t = [self.etkin_sahte(Y.tasima_anahtari[tt]) for tt in sorted(Y.tasima[a])]
             return z3.Or(t) if t else z3.BoolVal(False)
-        return z3.BoolVal(False)          # sabitlenmis ya da kanalsız
+        return z3.BoolVal(False)          # anchored or without a channel
 
     def sahte(self, a):
         def kur():
@@ -140,7 +140,7 @@ class Kodlayici:
             if a in Y.ozgun:
                 return z3.BoolVal(False)
             t = z3.And(self.basar(a), self.ulasir(a))
-            if a in Y.imzasiz and a in Y.pq_baglar:        # PQ-bağlıysa bağlandığı artefaktın sahteliği
+            if a in Y.imzasiz and a in Y.pq_baglar:        # if PQ-bound, the forgery of the artefact it is bound to
                 t = z3.Or(t, z3.And(self.pq(a), self.etkin_sahte(Y.pq_baglar[a])))
             return t
         return self._memo(('sahte', a), kur)
@@ -156,7 +156,7 @@ class Kodlayici:
             return z3.Or(t)
         return self._memo(('es', a), kur)
 
-    # ---------------- hedefler
+    # ---------------- goals
     def ihlal(self, g):
         Y = self.Y
         if g == 'tum':
@@ -169,10 +169,10 @@ class Kodlayici:
         return z3.Or(t) if t else z3.BoolVal(False)
 
     def g5_ihlal(self, kapsam):
-        """G5 (zamansız): yoldaki göç etmiş varlığın klasik-yalnız ya da imzasız kabulü."""
+        """G5 (untimed): classical-only or unsigned acceptance of a migrated entity on the path."""
         Y = self.Y
-        # 'yolda' ilişkisini hedeflerden aşağı doğru kur (ters bağımlılık; döngüsüz)
-        ebeveyn = {}   # A -> [(X, kosul_ifadesi)]  A, X'in yolundaysa yolda
+        # build the 'yolda' relation downwards from the goals (reverse dependency; acyclic)
+        ebeveyn = {}   # A -> [(X, kosul_ifadesi)]  A is on the path if it is on the path of X
         def ekle(a, x, kos):
             ebeveyn.setdefault(a, []).append((x, kos))
         for x in Y.mevcut:
@@ -224,8 +224,8 @@ def _ad(a):
 
 
 def asgari_kumeler_z3(prm, hedefler, en_fazla=100000, O=None):
-    """ASP'deki asgari_kumeler'in bağımsız z3 karşılığı. Dönüş: (kumeler, bilgi).
-    O: olgu sözlüğü (varsayılan: ekosistem); regresyon örnekleri kendi olgularını verir."""
+    """Independent z3 counterpart of asgari_kumeler in the ASP. Returns: (kumeler, bilgi).
+    O: fact dictionary (default: the ecosystem); the regression instances pass their own facts."""
     t0 = time.perf_counter()
     Y = Yapi(prm, O)
     kat = prm['kat']
@@ -258,7 +258,7 @@ def asgari_kumeler_z3(prm, hedefler, en_fazla=100000, O=None):
         return [v if a in dogru else z3.Not(v) for a, v in atom]
 
     def karsi_ornek(dogru):
-        """Sembolik kipte: dogru kümesi için |B|≤k saldırı var mı? Varsa B'yi döndür."""
+        """In symbolic mode: is there an attack with |B|≤k for the set dogru? If so, return B."""
         if ic.check(secim_varsayimlari(dogru)) == z3.sat:
             m = ic.model()
             return {kk: z3.is_true(m.eval(v, model_completion=True)) for kk, v in K.brkv.items()}
@@ -300,8 +300,8 @@ def asgari_kumeler_z3(prm, hedefler, en_fazla=100000, O=None):
 
 
 def degerlendir_z3(prm, pq=(), tasi=(), hedefler=('g1', 'g2', 'g3', 'g4'), kirik=None, g5_kapsam=None, O=None):
-    """Sabit atama + sabit kırılma kümesi için ihlal edilen hedefler ve sahte artefaktlar.
-    kirik: None => parametrelerdeki kip (tum/bos); küme => yalnız bu anahtarlar kırılabilir."""
+    """Violated goals and forged artefacts for a fixed assignment + a fixed set of broken keys.
+    kirik: None => the mode in the parameters (tum/bos); a set => only these keys can be broken."""
     Y = Yapi(prm, O)
     kat = prm['kat']
     if kirik is None:

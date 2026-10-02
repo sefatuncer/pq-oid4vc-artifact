@@ -34,8 +34,8 @@ T4_KESIM_TARIHI = "2026-08-21"                      # PR §6.6 T4: 8725bis-10 (2
 NEWCOMBE_ESLESTIRILMIS_PHI = "newcombe_duzeltmeli"
 
 # --- Cluster bootstrap ---------------------------------------------------------------------
-BOOTSTRAP_B = 10000                                 # ÖK §6.9
-BOOTSTRAP_TOHUM = 20260927                          # ÖK §6.9, Ek C
+BOOTSTRAP_B = 10000                                 # PR §6.9
+BOOTSTRAP_TOHUM = 20260927                          # PR §6.9, Annex C
 BOOTSTRAP_ALT = Fraction(1, 40)                     # percentile CI 2.5% (PR §6.9 "percentile CI"; 95%)
 BOOTSTRAP_UST = Fraction(39, 40)                    # percentile CI 97.5%
 BOOTSTRAP_YUZDELIK_TIPI = 7                         # Hyndman–Fan type 7 (N-7)

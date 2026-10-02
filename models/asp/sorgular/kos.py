@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-"""Katalogdaki sorgu gruplarını ASP ile koşar; her grubu sorgular/sonuc/<grup>.json'a yazar.
-Kullanım: ./calistir.sh sorgular/kos.py ana k a5 h
+"""Runs the query groups of the catalogue with ASP; writes every group to sorgular/sonuc/<group>.json.
+Usage: ./calistir.sh sorgular/kos.py ana k a5 h
 """
 import json, os, sys, time
 from multiprocessing import Pool

@@ -1,4 +1,4 @@
-"""Girdi şeması doğrulayıcısı (SEMA.md §6): hatalı girdi analize ULAŞMAMALI."""
+"""Input schema validator (SCHEMA.md §6): invalid input must NOT REACH the analysis."""
 from __future__ import annotations
 
 import copy
@@ -81,7 +81,7 @@ class HataliGirdi(unittest.TestCase):
 
     def test_gereksiz_neden(self):
         h = n31_hedefleri()
-        h[0]["belirsiz_nedenleri"] = {"F_K": "kanit_kurali"}   # F_K null değil
+        h[0]["belirsiz_nedenleri"] = {"F_K": "kanit_kurali"}   # F_K is not null
         self._hata(veri_seti(h), "F_K")
 
     def test_devralan_hedefsiz(self):
@@ -91,13 +91,13 @@ class HataliGirdi(unittest.TestCase):
 
     def test_tarih_bayrak_celiskisi(self):
         h = n31_hedefleri()
-        h[0]["son_surum_tarihi"] = "2026-08-21"      # "sonra" DEĞİL (kesin büyük)
+        h[0]["son_surum_tarihi"] = "2026-08-21"      # NOT "after" (strictly greater)
         h[0]["surum_8725bis_sonrasi"] = 1
         self._hata(veri_seti(h), "son_surum_tarihi")
         h2 = n31_hedefleri()
         h2[0]["son_surum_tarihi"] = "2026-08-22"
         h2[0]["surum_8725bis_sonrasi"] = 1
-        sema.sozlukten(veri_seti(h2))   # tutarlı: geçer
+        sema.sozlukten(veri_seti(h2))   # consistent: passes
 
     def test_b4_tutarsizligi(self):
         h = n31_hedefleri()
@@ -120,7 +120,7 @@ class HataliGirdi(unittest.TestCase):
         h2 = y_ata(n31_hedefleri(), birler=0, gecersiz=1)
         h2[0]["F_K"] = None
         h2[0]["belirsiz_nedenleri"] = {"F_K": "olculmedi"}
-        sema.sozlukten(veri_seti(h2))   # adaptör geçersizde geçer
+        sema.sozlukten(veri_seti(h2))   # passes for an invalid adapter
 
     def test_vaka_hatalari(self):
         h = n31_hedefleri()
@@ -136,13 +136,13 @@ class HataliGirdi(unittest.TestCase):
         self._hata(veri_seti(h, [iyi, copy.deepcopy(iyi)]), "yinelenen")
 
     def test_kontrol_etiketi_zorunlu(self):
-        # ÖK §2D-A.2 ve §2E.3: kullanılan kontrol etiketi (EdDSA/Ed25519) hedef başına kaydedilir
+        # PR §2D-A.2 and §2E.3: the control label used (EdDSA/Ed25519) is recorded per target
         h = n31_hedefleri()
         h[0]["kontrol_etiketi"] = None
         self._hata(veri_seti(h), "kontrol_etiketi")
         h2 = y_ata(n31_hedefleri(), birler=0, gecersiz=1)
         h2[0]["kontrol_etiketi"] = None
-        sema.sozlukten(veri_seti(h2))   # adaptör geçersiz hedefte zorunlu değil
+        sema.sozlukten(veri_seti(h2))   # not mandatory for a target with an invalid adapter
 
     def test_veri_turu(self):
         v = veri_seti(n31_hedefleri())

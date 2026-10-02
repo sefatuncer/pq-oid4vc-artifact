@@ -39,12 +39,12 @@ def oku(yol):
             r = json.loads(s)
             k = r.get("kimlik", r.get("id", r.get("satir_id")))
             if k is None:
-                raise SystemExit(f"{yol}:{i}: 'kimlik', 'id' ya da 'satir_id' alanı yok")
+                raise SystemExit(f"{yol}:{i}: no field 'kimlik', 'id' or 'satir_id'")
             r["_kimlik"] = str(k)
             satirlar.append(r)
     kimlikler = [r["_kimlik"] for r in satirlar]
     if len(set(kimlikler)) != len(kimlikler):
-        raise SystemExit(f"{yol}: yinelenen satır kimliği var")
+        raise SystemExit(f"{yol}: duplicate row identifier")
     return satirlar
 
 def anahtar(baglam, kimlik):
@@ -60,7 +60,7 @@ def normal_tur(t):
         return "asgari"
     if t in ("bir-eksik", "birreksik", "eksik", "minus-one", "bir eksik"):
         return "bir-eksik"
-    raise SystemExit(f"tanınmayan tür: {t!r}")
+    raise SystemExit(f"unrecognised kind: {t!r}")
 
 def main(cerceve, kesif, cikti):
     c = oku(cerceve)
@@ -68,7 +68,7 @@ def main(cerceve, kesif, cikti):
     for r in c:
         for alan in ("hedef", "tur"):
             if alan not in r:
-                raise SystemExit(f"çerçevede '{alan}' alanı yok (satır {r['_kimlik']})")
+                raise SystemExit(f"no field '{alan}' in the frame (row {r['_kimlik']})")
         katman.setdefault((normal_hedef(r["hedef"]), normal_tur(r["tur"])), []).append(r)
     secilen, kayit = [], []
     for h in HEDEFLER:
@@ -91,7 +91,7 @@ def main(cerceve, kesif, cikti):
         return r.get(ad, (r.get("hucre") or {}).get(ad))
     adv = [r for r in k if str(alan(r, "ca_baglama")) == "ad" and str(alan(r, "ayni_ad_klasik_ca")) == "var"]
     if not adv:
-        raise SystemExit("keşif dosyasında ca_baglama=ad, ayni_ad_klasik_ca=var satırı yok")
+        raise SystemExit("no row with ca_baglama=ad, ayni_ad_klasik_ca=var in the exploration file")
     kesif_secim = min(adv, key=lambda r: anahtar("kesif", r["_kimlik"]))
     sonuc = {
         "kural": "ÖK §2F madde 2 (çapa 6 = 998276a)",

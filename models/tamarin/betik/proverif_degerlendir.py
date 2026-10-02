@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 # =====================================================================
-#  PQ-OID4VC | Adım 5A | ProVerif ↔ Tamarin karşılaştırması (yalnız standart kitaplık)
+#  PQ-OID4VC | Step 5A | ProVerif ↔ Tamarin comparison (standard library only)
 # =====================================================================
-#  Girdi : sonuc/proverif/ozet.csv (ProVerif sorgu sonuçları), sonuc/ozet.csv (Tamarin)
-#  Çıktı : sonuc/proverif/karsilastirma.csv, sonuc/proverif/metrikler.txt
-#  Eşleme:
+#  Input : sonuc/proverif/ozet.csv (ProVerif query results), sonuc/ozet.csv (Tamarin)
+#  Output: sonuc/proverif/karsilastirma.csv, sonuc/proverif/metrikler.txt
+#  Mapping:
 #    reach (not event(E); Tamarin exists-trace):  ProVerif false -> verified, true -> falsified
-#    corr  (karşılıklılık; Tamarin all-traces):    ProVerif true  -> verified, false -> falsified
+#    corr  (correspondence; Tamarin all-traces):    ProVerif true  -> verified, false -> falsified
 #    neg   (not event(E); Tamarin all-traces):     ProVerif true  -> verified, false -> falsified
-#    cannot_be_proved / timeout / yok -> "bilinmiyor" (kesin değil; uyum oranına girmez)
+#    cannot_be_proved / timeout / yok -> "bilinmiyor" (not definite; does not enter the agreement rate)
 import csv
 
 pv = list(csv.DictReader(open("sonuc/proverif/ozet.csv", encoding="utf-8")))

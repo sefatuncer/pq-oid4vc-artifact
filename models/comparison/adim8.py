@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 """
-PQ-OID4VC | Adım 8 | karşılaştırma tabloları (yalnız betikten; ASP çıktıları 01.10.2026'da yeniden üretildi,
-süre alanları dışında birebir).
-Girdi : models/asp/sorgular/sonuc/{stratejiler,birincil,h1,a5,rapor_sayilari}.json,
-        models/asp/sorgular/stratejiler_taslak.json (SHA-256 11b05877…; 25.09.2026 12:34Z, karşılaştırmadan önce)
-Çıktı : m1-m5.csv, pareto.png/.pdf, A2-politika.csv, H4-adil-duyarlilik.csv, A1-gereklilik.json,
-        sayilar.json (rapor ve makale için)
-Kullanım: python model/comparison/adim8.py
+PQ-OID4VC | Step 8 | comparison tables (from the script only; the ASP outputs were regenerated on 01.10.2026,
+identical except for the duration fields).
+Input : models/asp/sorgular/sonuc/{stratejiler,birincil,h1,a5,rapor_sayilari}.json,
+        models/asp/sorgular/stratejiler_taslak.json (SHA-256 11b05877…; 25.09.2026 12:34Z, before the comparison)
+Output: m1-m5.csv, pareto.png/.pdf, A2-politika.csv, H4-adil-duyarlilik.csv, A1-gereklilik.json,
+        sayilar.json (for the report and the paper)
+Usage: python models/comparison/adim8.py
 """
 import csv, hashlib, io, itertools, json, os
 from collections import Counter, defaultdict
@@ -16,7 +16,7 @@ S = os.path.join(K, '..', 'asp', 'sorgular', 'sonuc')
 L = lambda f: json.load(io.open(os.path.join(S, f), encoding='utf-8'))
 out = {}
 
-# ---- stratejiler: atama ve M1–M5 ----
+# ---- strategies: assignment and M1–M5 ----
 taslak_yol = os.path.join(K, '..', 'asp', 'sorgular', 'stratejiler_taslak.json')
 out['stratejiler_taslak_sha256'] = hashlib.sha256(open(taslak_yol, 'rb').read()).hexdigest()
 st = L('stratejiler.json')
@@ -43,7 +43,7 @@ out['onceden_kayitli_sorular'] = st['onceden_kayitli_sorular']
 out['h4_ozet'] = st['h4_ozet']
 out['M1'] = {f"{r['strateji']}|{r['webpki']}": r['M1'] for r in rows}
 
-# ---- Pareto (M1 cl karşısında Φ1 ağırlıklı M2) ----
+# ---- Pareto (Φ1-weighted M2 against M1 cl) ----
 try:
     import matplotlib; matplotlib.use('Agg'); import matplotlib.pyplot as plt
     pts = [(r['strateji'], int(str(r['M1']).split('/')[0]), r['M2_f1_agirlikli']) for r in rows
@@ -59,7 +59,7 @@ try:
 except Exception as e:
     out['pareto'] = f'cizilmedi: {e}'
 
-# ---- A2: politika basamakları (birincil; τ × çıpa = 9 hücre) ----
+# ---- A2: policy steps (primary; τ × anchor = 9 cells) ----
 b = L('birincil.json')['sorgular']
 a2 = defaultdict(lambda: [0, 0])
 for q in b:
@@ -70,13 +70,13 @@ with io.open(os.path.join(K, 'A2-politika.csv'), 'w', encoding='utf-8', newline=
     for (h, ph, p), (s_, n) in sorted(a2.items()): f.write(f'{h},{ph},{p},{s_},{n}\n')
 out['A2'] = {f'{h}|{ph}|{p}': f'{s_}/{n}' for (h, ph, p), (s_, n) in sorted(a2.items())}
 
-# ---- H4 adil duyarlılık (K-4): hedef vektörünün birleşimine göre gereksiz kök göçleri ----
-# WebPKI PQ hücreleri (H1 tasarımı, temel kanal varyantı) ve birincil (WebPKI klasik), P4, taze/sabit/onbellek.
+# ---- H4 fair sensitivity (K-4): unnecessary root migrations relative to the union over the goal vector ----
+# WebPKI PQ cells (H1 design, basic channel variant) and primary (WebPKI classical), P4, taze/sabit/onbellek.
 KOK = {'a01', 'a02'}
 h1 = L('h1.json')['sorgular']
 def zorunlu(sorgular):
-    """Bir kök, ancak bir hedefin BÜTÜN asgari kümelerinde varsa zorunludur. Yukarı kapalılık gereği hedef
-    başına kökü içermeyen birer asgari küme seçilirse birleşimleri bütün hedefleri sağlar."""
+    """A root is mandatory only if it is in ALL minimal sets of a goal. Because of upward closure, if one minimal set
+    without the root is chosen per goal, their union satisfies all goals."""
     z = set()
     for q in sorgular:
         kes = None
@@ -89,7 +89,7 @@ grp = defaultdict(list)
 for q in h1:
     e, d = q['etiket'], q['degisen']
     if e['politika'] != 'p4' or set(d) - {'capa', 'faz', 'politika', 'tau', 'webpki'}:
-        continue   # yalnız temel kanal varyantı (yalnız WebPKI değişen)
+        continue   # only the basic channel variant (only WebPKI changed)
     grp[(e['webpki'], e['faz'], e['tau'], e['capa'])].append(q)
 for q in b:
     e = q['etiket']

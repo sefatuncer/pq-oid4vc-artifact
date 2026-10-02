@@ -1,11 +1,11 @@
-"""Sınır vakaları (bilinen cevaplar elle türetilebilir).
+"""Boundary cases (the known answers can be derived by hand).
 
-- T1: X = c, c+1, u−1, u; n_eff'in değişimi (20…31); n_eff < 20; bütün hedefler belirsiz.
-- McNemar: uyumsuz çift 0; tek yönlü uyumsuzluk.
-- Fisher ve koşullu OR: boş hücre, boş satır/sütun, tamamen boş tablo.
-- Holm: sıralama, eşitlikler, α/k sınırı (kesin aritmetik), permütasyon değişmezliği, hesaplanamayan test.
-- Wilson: x = 0 ve x = n uç noktaları; n = 0.
-- Newcombe: simetri ve transpozisyon.
+- T1: X = c, c+1, u−1, u; variation of n_eff (20…31); n_eff < 20; all targets undetermined.
+- McNemar: 0 discordant pairs; one-directional discordance.
+- Fisher and conditional OR: empty cell, empty row/column, completely empty table.
+- Holm: ordering, ties, the α/k boundary (exact arithmetic), permutation invariance, a test that cannot be computed.
+- Wilson: end points x = 0 and x = n; n = 0.
+- Newcombe: symmetry and transposition.
 """
 from __future__ import annotations
 
@@ -18,7 +18,7 @@ from _ortak import analiz, analiz_sozluk, kesin, n31_hedefleri, referans, veri_s
 
 
 class T1Karari(unittest.TestCase):
-    """analiz.t1_karari(X, n): ÖK §3.7, §2B.5, §6.3, §6.13."""
+    """analiz.t1_karari(X, n): PR §3.7, §2B.5, §6.3, §6.13."""
 
     def test_sinirlar_n20_31(self):
         for n in range(20, 32):
@@ -28,7 +28,7 @@ class T1Karari(unittest.TestCase):
             for X, karar in beklenen.items():
                 with self.subTest(n=n, X=X):
                     self.assertEqual(analiz.t1_karari(X, n)["karar"], karar)
-            # p-değeri ile eşik kararı tutarlı: destek ⇔ P(X' ≤ X) ≤ 0,05; yanlışlama ⇔ P(X' ≥ X) ≤ 0,05
+            # p-value and threshold decision are consistent: support ⇔ P(X' ≤ X) ≤ 0.05; falsification ⇔ P(X' ≥ X) ≤ 0.05
             for X in range(0, n + 1):
                 with self.subTest(n=n, X=X, tur="p-tutarlilik"):
                     k = analiz.t1_karari(X, n)
@@ -50,7 +50,7 @@ class T1Karari(unittest.TestCase):
                     self.assertEqual(analiz.t1_karari(X, n)["karar"], "tanimlayici")
 
     def test_n_eff_degisimi_esikleri_yeniden_hesaplar(self):
-        # Aynı X = 10: n_eff 31 → destek; n_eff 29 → c(29) = 9 → belirsiz
+        # Same X = 10: n_eff 31 → support; n_eff 29 → c(29) = 9 → undetermined
         h = n31_hedefleri()
         s31 = analiz_sozluk(veri_seti(y_ata(h, birler=10)))
         self.assertEqual(s31["T1"]["n_eff"], 31)
@@ -67,7 +67,7 @@ class T1Karari(unittest.TestCase):
         self.assertEqual(s["T1"]["karar"], "tanimlayici")
         self.assertIsNone(s["T1"]["wilson"])
         self.assertEqual(s["H6_hukmu"]["hukum"], "tanimlayici")
-        # Duyarlılıklar yine hesaplanır: (i) X = 31/31 → yanlışlama; (ii) X = 0/31 → destek
+        # The sensitivity analyses are still computed: (i) X = 31/31 → falsification; (ii) X = 0/31 → support
         self.assertEqual(s["T1_duyarlilik"]["i_belirsiz_1"]["X"], 31)
         self.assertEqual(s["T1_duyarlilik"]["i_belirsiz_1"]["karar"], "yanlislama")
         self.assertEqual(s["T1_duyarlilik"]["ii_belirsiz_0"]["X"], 0)
@@ -81,7 +81,7 @@ class McNemarSinir(unittest.TestCase):
             self.assertEqual(referans.mcnemar_kesin(*b_c), 1.0)
 
     def test_tek_yonlu_uyumsuzluk(self):
-        # b = 0, c = k: p = min(1, 2 · 0,5^k)
+        # b = 0, c = k: p = min(1, 2 · 0.5^k)
         for k in range(1, 25):
             with self.subTest(k=k):
                 beklenen = min(Fraction(1), 2 * Fraction(1, 2 ** k))
@@ -95,7 +95,7 @@ class McNemarSinir(unittest.TestCase):
                 self.assertEqual(kesin.mcnemar_kesin(k, k), Fraction(1))
 
     def test_t2_uyumsuzsuz_veri(self):
-        # Bütün TK1/TK2 hedeflerinde F_K = F_T => b = c = 0 => p = 1, fark = 0
+        # F_K = F_T for all TK1/TK2 targets => b = c = 0 => p = 1, difference = 0
         h = n31_hedefleri()
         for i, x in enumerate(h):
             x["tk_sinifi"] = "TK1" if i % 2 else "TK2"
@@ -108,7 +108,7 @@ class McNemarSinir(unittest.TestCase):
 
 class FisherSinir(unittest.TestCase):
     def test_bos_hucre(self):
-        # [[0, 5], [5, 0]]: tek taraflı uç tablo
+        # [[0, 5], [5, 0]]: one-sided extreme table
         p = kesin.fisher_iki_yonlu(0, 5, 5, 0)
         self.assertEqual(p, Fraction(2, math.comb(10, 5)))
         self.assertAlmostEqual(referans.fisher_iki_yonlu(0, 5, 5, 0), float(p), delta=1e-15)
@@ -126,7 +126,7 @@ class FisherSinir(unittest.TestCase):
                 self.assertEqual((alt_r, ust_r), (0.0, math.inf))
 
     def test_or_uc_noktalari(self):
-        # a desteğin alt ucunda => MLE = 0 ve GA alt = 0; üst ucunda => MLE = ∞ ve GA üst = ∞
+        # a at the lower end of the support => MLE = 0 and CI lower = 0; at the upper end => MLE = ∞ and CI upper = ∞
         mle, alt, ust = kesin.kosullu_or(0, 4, 3, 2)
         self.assertEqual((mle, alt), (0.0, 0.0))
         self.assertTrue(0 < ust < math.inf)
@@ -135,7 +135,7 @@ class FisherSinir(unittest.TestCase):
         self.assertTrue(0 < alt < math.inf)
 
     def test_or_bir_esit_marjinal_simetri(self):
-        # Satırlar yer değiştirince OR → 1/OR; GA → (1/üst, 1/alt)
+        # Swapping the rows gives OR → 1/OR; CI → (1/upper, 1/lower)
         for tablo in [(3, 2, 1, 4), (5, 1, 2, 2), (7, 3, 3, 9)]:
             a, b, c, d = tablo
             with self.subTest(tablo=tablo):
@@ -146,7 +146,7 @@ class FisherSinir(unittest.TestCase):
                 self.assertTrue(math.isclose(u1, 1 / a2, rel_tol=1e-12))
 
     def test_or_ga_p_tutarliligi(self):
-        # Koşullu kesin GA'nın 1'i dışlaması, iki kat tek yönlü kesin p ≤ 0,05 ile eşdeğerdir (Fisher'ın iki yönlü p'si değil).
+        # The conditional exact CI excludes 1 exactly when twice the one-sided exact p ≤ 0.05 (not Fisher's two-sided p).
         for a, b, c, d in [(8, 2, 1, 9), (6, 4, 2, 8), (10, 0, 3, 7), (2, 8, 8, 2)]:
             with self.subTest(tablo=(a, b, c, d)):
                 _, alt, ust = kesin.kosullu_or(a, b, c, d)
@@ -156,7 +156,7 @@ class FisherSinir(unittest.TestCase):
                 P = {k: Fraction(math.comb(r1, k) * math.comb(r2, c1 - k), math.comb(N, c1)) for k in range(lo, hi + 1)}
                 ust_kuyruk = sum(v for k, v in P.items() if k >= a)
                 alt_kuyruk = sum(v for k, v in P.items() if k <= a)
-                # ψ_L > 1 ⇔ P(X ≥ a; ψ=1) < α/2 ; ψ_U < 1 ⇔ P(X ≤ a; ψ=1) < α/2 (kuyruklar ψ'de monoton)
+                # ψ_L > 1 ⇔ P(X ≥ a; ψ=1) < α/2 ; ψ_U < 1 ⇔ P(X ≤ a; ψ=1) < α/2 (the tails are monotone in ψ)
                 self.assertEqual(alt > 1, ust_kuyruk < Fraction(1, 40))
                 self.assertEqual(ust < 1, alt_kuyruk < Fraction(1, 40))
 
@@ -167,7 +167,7 @@ class HolmSinir(unittest.TestCase):
     def test_bilinen_ornek(self):
         p = {"T2": Fraction(1, 100), "T3": Fraction(4, 100), "T4": Fraction(3, 100), "T5": Fraction(5, 1000)}
         h = kesin.holm(p)
-        # sıra: T5 (0,005) → ×4 = 0,02; T2 (0,01) → ×3 = 0,03; T4 (0,03) → ×2 = 0,06; T3 (0,04) → ×1 → max(0,06, 0,04) = 0,06
+        # order: T5 (0.005) → ×4 = 0.02; T2 (0.01) → ×3 = 0.03; T4 (0.03) → ×2 = 0.06; T3 (0.04) → ×1 → max(0.06, 0.04) = 0.06
         self.assertEqual([k for k, _ in sorted(h.items(), key=lambda kv: kv[1]["sira"])], ["T5", "T2", "T4", "T3"])
         self.assertEqual(h["T5"]["p_duzeltilmis"], Fraction(2, 100))
         self.assertEqual(h["T2"]["p_duzeltilmis"], Fraction(3, 100))
@@ -178,15 +178,15 @@ class HolmSinir(unittest.TestCase):
     def test_esitlikler(self):
         p = {"T2": Fraction(1, 50), "T3": Fraction(1, 50), "T4": Fraction(1, 50), "T5": Fraction(1, 2)}
         h = kesin.holm(p)
-        # Eşit p'ler: düzeltilmiş değerler sıradan bağımsız: max(4p, 3p, 2p) = 4p = 0,08
+        # Equal p values: the adjusted values do not depend on the order: max(4p, 3p, 2p) = 4p = 0.08
         for k in ("T2", "T3", "T4"):
             self.assertEqual(h[k]["p_duzeltilmis"], Fraction(8, 100))
             self.assertFalse(h[k]["red"])
-        # Eşitlikte sıra ÖK aile sırasıyla bozulur (T2 < T3 < T4)
+        # Ties are broken by the PR family order (T2 < T3 < T4)
         self.assertEqual([h[k]["sira"] for k in ("T2", "T3", "T4", "T5")], [1, 2, 3, 4])
 
     def test_alfa_bolu_k_siniri_kesin(self):
-        # p_(1) = α/4 tam sınırda => red (≤); p_(2) = α/3 tam sınırda => red
+        # p_(1) = α/4 exactly at the boundary => reject (≤); p_(2) = α/3 exactly at the boundary => reject
         p = {"T2": Fraction(1, 80), "T3": Fraction(1, 60), "T4": Fraction(1, 2), "T5": Fraction(9, 10)}
         h = kesin.holm(p)
         self.assertTrue(h["T2"]["red"])
@@ -194,11 +194,11 @@ class HolmSinir(unittest.TestCase):
         self.assertEqual(h["T2"]["p_duzeltilmis"], Fraction(1, 20))
         self.assertEqual(h["T3"]["p_duzeltilmis"], Fraction(1, 20))
         self.assertFalse(h["T4"]["red"])
-        # Sınırın bir tık üstü => red yok ve ardından gelen hepsi red değil (adım-aşağı durur)
+        # One step above the boundary => no rejection, and none of the following ones is rejected (step-down stops)
         p2 = dict(p, T2=Fraction(1, 80) + Fraction(1, 10 ** 12))
         h2 = kesin.holm(p2)
         self.assertFalse(h2["T2"]["red"])
-        self.assertFalse(h2["T3"]["red"])  # T3 düzeltilmiş = max(4·p2, 3·(1/60)) > α
+        self.assertFalse(h2["T3"]["red"])  # T3 adjusted = max(4·p2, 3·(1/60)) > α
 
     def test_permutasyon_degismezligi(self):
         tabanlar = [Fraction(1, 100), Fraction(1, 100), Fraction(3, 100), Fraction(7, 10)]
@@ -232,7 +232,7 @@ class WilsonSinir(unittest.TestCase):
                 self.assertEqual(alt0, 0.0)
                 altn, ustn = kesin.wilson(n, n)
                 self.assertEqual(ustn, 1.0)
-                # simetri: W(x, n) = 1 − W(n − x, n) ters çevrilmiş
+                # symmetry: W(x, n) = 1 − W(n − x, n) reversed
                 for x in range(0, n + 1):
                     a1, u1 = kesin.wilson(x, n)
                     a2, u2 = kesin.wilson(n - x, n)
@@ -246,7 +246,7 @@ class WilsonSinir(unittest.TestCase):
 
 class NewcombeSinir(unittest.TestCase):
     def test_eslestirilmis_transpozisyon(self):
-        # Koşullar yer değişince (b ↔ c): fark → −fark; GA → (−üst, −alt)
+        # Swapping the conditions (b ↔ c): difference → −difference; CI → (−upper, −lower)
         for a, b, c, d in [(20, 12, 2, 16), (1, 1, 7, 12), (0, 3, 0, 5), (4, 0, 0, 4), (2, 5, 1, 0)]:
             with self.subTest(tablo=(a, b, c, d)):
                 f1, a1, u1, _ = kesin.newcombe_eslestirilmis(a, b, c, d)
@@ -256,7 +256,7 @@ class NewcombeSinir(unittest.TestCase):
                 self.assertAlmostEqual(u1, -a2, delta=1e-15)
 
     def test_eslestirilmis_uyumsuzsuz_simetrik(self):
-        # b = c = 0 => fark 0 ve GA 0'a göre simetrik
+        # b = c = 0 => difference 0 and the CI is symmetric about 0
         for a, d in [(3, 5), (0, 9), (7, 0), (10, 10)]:
             with self.subTest(a=a, d=d):
                 f, alt, ust, _ = kesin.newcombe_eslestirilmis(a, 0, 0, d)
@@ -272,7 +272,7 @@ class NewcombeSinir(unittest.TestCase):
         self.assertAlmostEqual(u1, -a2, delta=1e-15)
 
     def test_aralik_sinirlari(self):
-        # [−1, 1] içinde kalır ve nokta tahminini içerir
+        # stays within [−1, 1] and contains the point estimate
         for a, b, c, d in itertools.product(range(0, 4), repeat=4):
             if a + b + c + d == 0:
                 continue

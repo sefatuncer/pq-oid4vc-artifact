@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
 """
-PQ-OID4VC Adim 1 - izlenebilirlik matrisi olusturucu.
+PQ-OID4VC Step 1 - builder of the traceability matrix.
 
-Satirlar asagida elle (birincil metin okunarak) yazilmistir; bu betik yalnizca
-kimlikleri atar, uzunluk kontrolu yapar ve izlenebilirlik.csv'yi UTF-8 yazar.
-Alintilarin metinde birebir gectigi alinti_dogrula.py ile ayrica dogrulanir.
+The rows below were written by hand (by reading the primary text); this script only
+assigns the identifiers, checks the lengths and writes izlenebilirlik.csv as UTF-8.
+That the quotations occur verbatim in the text is checked separately with alinti_dogrula.py.
 
-Sutunlar: id, belge_id, bolum, birebir_alinti, anahtar_sozcuk, artefakt,
+Columns: id, belge_id, bolum, birebir_alinti, anahtar_sozcuk, artefakt,
 imzalayan_rol, algoritma_kosulu, kanal, hedef, kategori, not
 """
 import csv
@@ -15,7 +15,7 @@ from pathlib import Path
 KOK = Path(__file__).resolve().parent
 CIKTI = KOK / "izlenebilirlik.csv"
 
-# --- 13 artefakt (Surum 3, 7.4) ---
+# --- 13 artefacts (design document version 3, §7.4) ---
 A01 = "A01 LOTL"
 A02 = "A02 TL/LoTE"
 A03 = "A03 CA (x5c zinciri)"
@@ -31,7 +31,7 @@ A12 = "A12 OID4VP istek nesnesi"
 A13 = "A13 taşıma (TLS/WebPKI)"
 GEN = "genel"
 
-# --- imzalayan roller ---
+# --- signing roles ---
 KOM = "Avrupa Komisyonu (LOTL/LoTE operatörü)"
 TLSO = "TL/LoTE şema operatörü"
 CA = "CA (ihraççı zinciri)"
@@ -143,7 +143,7 @@ r("TS119312", "8.4", "Certificates based on such keys that were issued on or bef
   "shall", A02, TLSO, "RSA 1900–2999 bit", CE, "G1", "gecerlilik", "")
 
 # =====================================================================
-# A03 CA (x5c zinciri) ve A04 ihraççı sertifikası
+# A03 CA (x5c chain) and A04 issuer certificate
 # =====================================================================
 r("RFC7515", "4.1.6", "The recipient MUST validate the certificate chain according to RFC 5280 [RFC5280] and consider the certificate or certificate chain to be invalid if any validation failure occurs.",
   "MUST", A03, CA, "RFC 5280 yol doğrulama", AK, "G1;G2;G4", "x5c", "")
@@ -211,7 +211,7 @@ r("TS119312", "9.4", "A trust anchor shall remain secure during the whole time p
   "shall", A03, CA, "—", SA, "G1", "gecerlilik", "Çıpa, imza doğrulaması gereken tüm süre boyunca güvenli kalmalı (sertifika ömründen uzun olabilir).")
 
 # =====================================================================
-# A05 imzalı ihraççı meta verisi
+# A05 signed issuer metadata
 # =====================================================================
 r("OID4VCI", "12.2.2", "Communication with the Credential Issuer Metadata Endpoint MUST utilize TLS.",
   "MUST", A05, ISS, "TLS (BCP195)", CE, "G1;G5", "guven-capasi", "Meta veri çekilen artefakt; imzasız meta verinin tek koruması TLS/WebPKI.")
@@ -285,7 +285,7 @@ r("SDJWTVC", "3", "Issuers and Publishers SHOULD include an explicit freshness l
   "SHOULD", A06, PUB, "—", CE, "G1", "tazelik", "")
 
 # =====================================================================
-# A07 kimlik bilgisi
+# A07 credential
 # =====================================================================
 r("RFC9901", "4.1", "An SD-JWT has a JWT component that MUST be signed using the Issuer's private key. It MUST NOT use the none algorithm.",
   "MUST/MUST NOT", A07, ISS, "none yasak", AK, "G1", "alg-muzakere", "")
@@ -375,7 +375,7 @@ r("ARF-A202", "Topic 10 ISSU_50 (not)", "A Wallet Unit is allowed to present a P
   "bilgi (not)", A07, HOL, "—", AK, "G1;G2", "gecerlilik", "Zaman kontrolü tamamen doğrulayıcıda; saat varsayımı (§7.4) kritik.")
 
 # =====================================================================
-# A08 durum listesi belirteci
+# A08 status list token
 # =====================================================================
 r("TSL", "5.1", "The JWT MUST be secured using a cryptographic signature or MAC algorithm.",
   "MUST", A08, STAT, "imza ya da MAC", CE, "G3", "alg-muzakere", "MAC da serbest; algoritma kısıtı yok.")
@@ -451,7 +451,7 @@ r("ARF-M06", "6.3.2.4", "However, they also may be different, because a PID Prov
   "bilgi", A08, STAT, "—", CE, "G3", "guven-capasi", "Durum imzacısı çıpası ihraççıdan farklı olabilir (delegasyon).")
 
 # =====================================================================
-# A09 cüzdan kanıtlaması (WUA: WIA/KA)
+# A09 wallet attestation (WUA: WIA/KA)
 # =====================================================================
 r("ABCA", "4", "alg: REQUIRED. The alg (algorithm) header MUST specify the cryptographic algorithm used to sign the Client Attestation.",
   "MUST", A09, WP, "—", AK, "G2", "alg-muzakere", "")
@@ -511,7 +511,7 @@ r("ARF-A202", "Topic 9 WUA_22", "A Wallet Provider SHALL ensure that a non-revok
   "SHALL", A09, WP, "—", AK, "G2", "gecerlilik", "")
 
 # =====================================================================
-# A10 WSCD anahtarı ve KB-JWT
+# A10 WSCD key and KB-JWT
 # =====================================================================
 r("RFC9901", "4.3", "alg: REQUIRED. A digital signature algorithm identifier such as per the IANA \"JSON Web Signature and Encryption Algorithms\" registry. It MUST NOT be \"none\".",
   "REQUIRED/MUST NOT", A10, HOL, "none yasak", AK, "G2", "alg-muzakere", "")
@@ -577,7 +577,7 @@ r("OID4VCI", "8.1", "The issued Credential SHOULD be cryptographically bound to 
   "SHOULD", A10, ISS, "—", AK, "G2", "anahtar-baglama", "")
 
 # =====================================================================
-# A11 RP erişim/kayıt sertifikası
+# A11 RP access/registration certificate
 # =====================================================================
 r("OID4VP", "5.9.3 (x509_hash)", "The Wallet MUST validate the signature and the trust chain of the X.509 leaf certificate.",
   "MUST", A11, ACA, "—", AK, "G4", "x5c", "")
@@ -637,7 +637,7 @@ r("OID4VP", "5.9.3 (verifier_attestation)", "If the Wallet cannot establish trus
   "MUST", A11, ACA, "—", AK, "G4", "guven-capasi", "")
 
 # =====================================================================
-# A12 OID4VP istek nesnesi
+# A12 OID4VP request object
 # =====================================================================
 r("OID4VP", "5.9.3", "In case of using OpenID4VP over DC API, as defined in Appendix A, it is at the discretion of the Wallet whether it validates the signature on the Request Object following the processing rules defined by a relevant Client Identifier Prefix.",
   "bilgi (takdir)", A12, RP, "—", AK, "G4;G5", "downgrade", "DC API'de istek imzasının doğrulanması bile cüzdan takdirinde: G4/G5 için en zayıf normatif nokta.")
@@ -709,7 +709,7 @@ r("OID4VCI", "13.5", "The Wallet MUST consider the parameter values in the Crede
   "MUST", GEN, ISS, "—", AK, "G1;G5", "downgrade", "Kimliği doğrulanmamış giriş nesnesi (ihraç tarafı).")
 
 # =====================================================================
-# A13 taşıma (TLS/WebPKI)
+# A13 transport (TLS/WebPKI)
 # =====================================================================
 r("OID4VP", "14.6", "Whenever TLS is used, a TLS server certificate check MUST be performed, per [RFC6125].",
   "MUST", A13, TLS, "BCP195 (klasik sertifika)", AK, "G1;G3;G4", "diger", "")
@@ -737,7 +737,7 @@ r("HAUCK25", "2 (Assumptions and Modeling Decisions)", "This simplification, of 
   "bilgi", A13, NA, "—", SA, "G4", "guven-capasi", "OIDF biçimsel analizi WebPKI'yi ideal varsayıyor.")
 
 # =====================================================================
-# Genel: JOSE/COSE algoritma ve çoklu imza semantiği
+# General: JOSE/COSE algorithms and multi-signature semantics
 # =====================================================================
 r("RFC7515", "5.2", "When there are multiple JWS Signature values, it is an application decision which of the JWS Signature values must successfully validate for the JWS to be accepted.",
   "bilgi", GEN, NA, "çoklu imza: uygulama kararı", BE, "G1;G4;G5", "downgrade", "A.3.2.2 ve RFC 9901 §8 bu kararı tanımlamıyor.")
@@ -841,7 +841,7 @@ r("PQCFAQ", "3.3", "However, this topic falls outside the scope of the EU Roadma
   "bilgi", GEN, NA, "—", BE, "G5", "diger", "Hibrit imza rehberliği AB yol haritası kapsamı dışında (boşluk).")
 
 # =====================================================================
-# Bilinen-cevap testleri (DNSSEC)
+# Known-answer tests (DNSSEC)
 # =====================================================================
 r("RFC6840", "5.11", "Validators SHOULD accept any single valid path.",
   "SHOULD", GEN, DNS, "biri yeter (P0)", BE, "G5", "downgrade", "BCT-1: DS ile beklenti sinyali olsa da doğrulayıcı OR uygular → soyma izi beklenir.")
@@ -865,7 +865,7 @@ r("RFC7583", "1.4 (Limitation of Scope)", "Algorithm rollovers. Only the rolling
   "bilgi", GEN, DNS, "—", BE, "G5", "diger", "RFC 7583 algoritma geçişini KAPSAMIYOR: bilinen-cevap testi için yalnız anahtar devri zamanlaması.")
 
 # =====================================================================
-# DPoP (ihraç tarafı PoP; ABCA birleşik kipte WUA kanıtı)
+# DPoP (issuance-side PoP; WUA proof in the combined ABCA mode)
 # =====================================================================
 r("HAIP", "4", "Sender-constrained access token: MUST support DPoP as defined in [RFC9449].",
   "MUST", A09, HOL, "DPoP (RFC 9449)", AK, "G2", "dpop", "İhraç tarafı; sunumda DPoP yok. ML-DSA-65 DPoP ≈8.192 B > nginx varsayılanı (B, P4).")
@@ -891,7 +891,7 @@ r("ABCA", "8", "The Authorization Server or Resource Server MUST include dpop_si
   "MUST", A09, WP, "'supported'", CE, "G2", "dpop", "")
 
 # =====================================================================
-# İstek içi yetenek/bilinmeyen parametre kuralları (M-a ile ilgili)
+# In-request capability/unknown-parameter rules (related to M-a)
 # =====================================================================
 r("RFC7515", "4", "Unless listed as a critical Header Parameter, per Section 4.1.11, all Header Parameters not defined by this specification MUST be ignored when not understood.",
   "MUST", GEN, NA, "bilinmeyen başlık yok sayılır", BE, "G5", "downgrade", "Eski doğrulayıcı bilinmeyen PQ başlıklarını yok sayar (#791'deki 'ignore unknown headers' davranışının kaynağı).")
@@ -907,7 +907,7 @@ r("OID4VP", "5.1 (client_metadata)", "vp_formats_supported: REQUIRED when not av
   "REQUIRED (koşullu)", A12, RP, "'supported'", AK, "G5", "alg-muzakere", "")
 
 # =====================================================================
-# Ek: zaman semantiği ve meta verideki 'required' bayrakları
+# Additional: time semantics and the 'required' flags in metadata
 # =====================================================================
 r("RFC7519", "4.1.4", "The \"exp\" (expiration time) claim identifies the expiration time on or after which the JWT MUST NOT be accepted for processing.",
   "MUST NOT", A07, ISS, "—", AK, "G1;G3", "gecerlilik", "Tüm JWT artefaktlarında (kimlik bilgisi, durum listesi, WIA, meta veri) ortak zaman kuralı.")

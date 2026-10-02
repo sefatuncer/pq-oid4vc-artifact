@@ -1,12 +1,12 @@
 # -*- coding: utf-8 -*-
-"""Adım 6 | KAT-1 DNSSEC — ASP koşucusu. TEK ÇEKİRDEK: yalnız /asp/cekirdek.lp + bu klasörün örnek dosyaları.
+"""Step 6 | KAT-1 DNSSEC — ASP runner. SINGLE CORE: only /asp/cekirdek.lp + the instance files of this folder.
 
-Yüklenen dosyalar (başka hiçbiri yok): /asp/cekirdek.lp, kat1_dnssec.lp, ornekler/<kosu>.lp.
-Okuma kuralı (ESLEME.md §2.5; KAT-SPEC §0 "saldırı var" sorusu): SALDIRI <=> ihlal(tum,g1) tek cevap
-kümesinde; aksi YOK. Program tabakalıdır: tam olarak bir cevap kümesi beklenir (denetlenir).
-Beklenen değerler: hücrelerde /nsurum/kat_nsurum.tsv 'ilk_ajan' (tek kaynak; ÖK §2H.1), mutasyonlarda
-mutasyonlar.tsv 'beklenen' (KAT-SPEC §6). Çekirdeğin SHA-256'sı koşudan önce ve sonra kaydedilir.
-Kullanım: ./calistir.sh kos.py   ->  sonuc/asp.csv, sonuc/asp_mutasyon.csv, sonuc/asp_ozet.json
+Loaded files (no others): /asp/cekirdek.lp, kat1_dnssec.lp, ornekler/<kosu>.lp.
+Reading rule (MAPPING.md §2.5; KAT-SPEC §0 question "is there an attack"): SALDIRI <=> ihlal(tum,g1) in the single answer
+set; otherwise YOK. The program is stratified: exactly one answer set is expected (checked).
+Expected values: for the cells /nsurum/kat_nsurum.tsv 'ilk_ajan' (single source; PR §2H.1), for the mutations
+mutasyonlar.tsv 'beklenen' (KAT-SPEC §6). The SHA-256 of the core is recorded before and after the run.
+Usage: ./calistir.sh kos.py   ->  sonuc/asp.csv, sonuc/asp_mutasyon.csv, sonuc/asp_ozet.json
 """
 import csv, hashlib, json, os, sys, time
 import clingo
@@ -36,7 +36,7 @@ def nsurum():
 
 
 def coz(ornek):
-    """cekirdek + taban + örnek; tek cevap kümesinin atomları."""
+    """core + base + instance; the atoms of the single answer set."""
     ctl = clingo.Control(['--warn=none', '0'])
     for d in [CEKIRDEK] + [os.path.join(KOK, t) for t in TABAN] + [os.path.join(KOK, 'ornekler', ornek)]:
         ctl.load(d)
@@ -59,7 +59,7 @@ def oku(A):
 
 
 def tanik(A):
-    """İz/tanık: senaryo 'tum'da sahte artefaktlar, kırılan anahtarlar, etkin beklentiler, M-f geri alma."""
+    """Trace/witness: in scenario 'tum' the forged artefacts, broken keys, effective expectations, M-f rollback."""
     sec = lambda on: sorted(a for a in A if a.startswith(on))
     return ' '.join(sec('sahte(tum,') + sec('kirilir(tum,') + sec('kirilir_alt(tum,') +
                     sec('beklenir(tum,') + sec('geri_alinir(') + sec('klasik_alt(') + sec('pq('))

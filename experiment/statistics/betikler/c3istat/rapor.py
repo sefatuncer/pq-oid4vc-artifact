@@ -1,4 +1,4 @@
-"""sonuc.json'dan insan okunur Markdown tablo (belirlenimci; tarih/saat içermez)."""
+"""Human-readable Markdown table from sonuc.json (deterministic; contains no date or time)."""
 from __future__ import annotations
 
 import math

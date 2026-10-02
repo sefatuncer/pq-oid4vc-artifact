@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
-"""Stratejiler S0–S8 × M1–M5 ve H4 karşılaştırması (ÖN; taslak atama: stratejiler_taslak.json sürüm 2).
-M1 hücreleri: G1–G4 × Φ1–Φ3 × τ{hızlı, orta, yavaş}; birincil yapılandırma (çıpa taze, WebPKI klasik);
-H1 tasarımı için WebPKI PQ ayrıca. Her strateji değerlendirmesi ASP, z3 ve Jacobi ile üç yönlü denetlenir.
-Kullanım: ./calistir.sh sorgular/stratejiler.py
+"""Strategies S0–S8 × M1–M5 and the H4 comparison (PRELIMINARY; draft assignment: stratejiler_taslak.json version 2).
+M1 cells: G1–G4 × Φ1–Φ3 × τ{fast, medium, slow}; primary configuration (fresh anchor, WebPKI classical);
+WebPKI PQ in addition for the H1 design. Every strategy evaluation is checked three ways with ASP, z3 and Jacobi.
+Usage: ./calistir.sh sorgular/stratejiler.py
 """
 import json, os, sys, hashlib
 from collections import defaultdict, Counter
@@ -19,7 +19,7 @@ M2_AGIRLIK = {'a02': 107}
 FAZ = ['f1', 'f2', 'f3']
 TAU3 = ['hizli', 'orta', 'yavas']
 HEDEF4 = ['g1', 'g2', 'g3', 'g4']
-KISA_PENCERE = {'a10', 'a09a'}          # birincil yapılandırmada kısa pencereli anahtar düğümleri (Ö3)
+KISA_PENCERE = {'a10', 'a09a'}          # key nodes with a short window in the primary configuration (Ö3)
 
 
 def taslak():
@@ -32,7 +32,7 @@ def m2(dug):
 
 
 def strateji_atamasi(T, sad, faz, prm):
-    """Stratejinin bu hücredeki PQ düğüm kümesi ve taşıyıcı kümesi."""
+    """PQ node set and carrier set of the strategy in this cell."""
     st = T['stratejiler'][sad]
     Y = Yapi(prm)
     etkin = [d for d in Y.dugumler if d not in Y.yasak_dugum]
@@ -70,7 +70,7 @@ def _deg(is_):
 
 
 def s7_tablosu():
-    """S7 = birincil (cl) / h1-birincil (pq) P4 hücresinin ağırlıklı M2'si en küçük asgari kümesi."""
+    """S7 = the minimal set with the smallest weighted M2 of the P4 cell of birincil (cl) / h1-birincil (pq)."""
     out = {}
     kaynak = {'cl': json.load(open(os.path.join(SON, 'birincil.json'), encoding='utf-8'))['sorgular'],
               'pq': [q for q in json.load(open(os.path.join(SON, 'h1.json'), encoding='utf-8'))['sorgular']
@@ -115,7 +115,7 @@ def main():
         sonuc.append({'strateji': 'S7', 'hedef': h, 'faz': fz, 'tau': t, 'webpki': w,
                       'dugum': v['dugum'] if v else None, 'tasi': len(v['tasi']) if v else 0,
                       'saglar': v is not None, 'g5_saglar': v is not None, 'uclu_esit': True})
-    # ---------------- ölçütler
+    # ---------------- metrics
     olcut = {}
     for sad in list(T['stratejiler']):
         for w in ['cl', 'pq']:
@@ -141,7 +141,7 @@ def main():
                 m5 = 'evet' if any('a10' in r['dugum'] for r in rs) else 'hayır'
             olcut['%s|%s' % (sad, w)] = {'M1': '%d/36' % m1, 'M2': fazm2, 'M3_vekil': m3, 'M4_yapisal': m4, 'M5': m5,
                                          'G5_saglanan': sum(r['g5_saglar'] for r in rs if r['saglar'])}
-    # ---------------- H4: S5 (ve S5e) ↔ S7, birincil (cl) ve H1 tasarımı (pq)
+    # ---------------- H4: S5 (and S5e) ↔ S7, primary (cl) and H1 design (pq)
     h4 = []
     for w in ['cl', 'pq']:
         for h in HEDEF4:

@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
-"""Adım 6 | KAT-3 S/MIME değerlendirmesi: koşum çıktılarından geçme ölçütü (ÖK §4.19; ESLEME.md §1, §4.4–§4.7).
-KOŞU YAPMAZ; yalnız okur. Girdi: sonuc/{asp,asp_sondalar,asp_mutasyon,tamarin,tamarin_mutasyon,tamarin_ek}.csv,
-sonuc/asp_ozet.json, iyi_bicim/ozet.tsv, sonuc/alinti_denetimi.tsv. Çıktı: sonuc/KAT_OZET.json, sonuc/KAT_OZET.md.
-ASP–Tamarin ortak hücreleri (ESLEME §4.6):
-  KAT-3a: Tamarin MIXED <-> o4, PQ_ONLY <-> o1, HYBRID_KEM <-> o5; ASP değeri 'klasik' sondası (yalnız klasik anahtar
-          kırılır; Tamarin'in tehdit modeli): E=1 <-> falsified, E=0 <-> verified.
+"""Step 6 | KAT-3 S/MIME evaluation: pass criterion from the run outputs (PR §4.19; MAPPING.md §1, §4.4–§4.7).
+DOES NOT RUN anything; only reads. Input: sonuc/{asp,asp_sondalar,asp_mutasyon,tamarin,tamarin_mutasyon,tamarin_ek}.csv,
+sonuc/asp_ozet.json, iyi_bicim/ozet.tsv, sonuc/alinti_denetimi.tsv. Output: sonuc/KAT_OZET.json, sonuc/KAT_OZET.md.
+Cells shared by ASP and Tamarin (MAPPING §4.6):
+  KAT-3a: Tamarin MIXED <-> o4, PQ_ONLY <-> o1, HYBRID_KEM <-> o5; ASP value from the probe 'klasik' (only the classical key
+          is broken; the threat model of Tamarin): E=1 <-> falsified, E=0 <-> verified.
   KAT-3b: V1–V6 'attack(qday=0)' <-> 'Tamarin:claims_unforgeability' (SALDIRI<->falsified, YOK<->verified).
-KAT-SPEC §4(d) ek geçme maddeleri (nsurum'da yok; ayrıca raporlanır): kat3a_fail boş; model_gap yalnız o8.
-Ek (kapı değil): pilotun ASLI ile KAT-3b Tamarin (iyi biçimlilik uyarılı; ESLEME §4.5).
+Additional pass items of KAT-SPEC §4(d) (not in nsurum; reported separately): kat3a_fail empty; model_gap only o8.
+Additional (not a gate): KAT-3b Tamarin with the ORIGINAL pilot model (with well-formedness warnings; MAPPING §4.5).
 """
 import csv, json, os, sys
 from collections import defaultdict
@@ -46,8 +46,8 @@ def main():
     ort_uyum = [o for o in ortak if o[1] == o[2]]
     kotu = [r['kosu'] for r in tam + tm if r['gozlenen'] in ('belirsiz', 'gecersiz_wf', 'yok')]
     ex = [r['kosu'] for r in tam + tm if r['executable'] != 'verified']
-    # Katı dönme ölçütü (KAT-SPEC §6 "dönmeli"): mutasyonlu değer beklenen değerde VE mutasyonsuz temel koşunun
-    # gözlenen değerinden farklı. Temel koşu: aynı adın 'MUTxx.' öneki atılmış hâli (ASP'de sonda koşusu).
+    # Strict flip criterion (KAT-SPEC §6 "must flip"): the mutated value equals the expected value AND differs from the observed
+    # value of the unmutated base run. Base run: the same name with the 'MUTxx.' prefix removed (in ASP the probe run).
     def temel_asp(kosu, grup, sonda):
         r = next((x for x in son if x['kosu'] == kosu), None)
         if r is None:

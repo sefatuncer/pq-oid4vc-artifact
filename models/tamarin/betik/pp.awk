@@ -1,9 +1,9 @@
 # =====================================================================
-#  PQ-OID4VC | Adım 5A | ProVerif şablonları için küçük önişlemci
+#  PQ-OID4VC | Step 5A | small preprocessor for the ProVerif templates
 # =====================================================================
-#  Kullanım: awk -v DEFS="ROOT_PQ,CA_PQ" -f betik/pp.awk modeller/proverif/R1_chain.pvt > cikti.pv
-#  Desteklenen yönergeler (satır başında): #ifdef AD, #ifndef AD, #else, #endif (iç içe olabilir).
-#  Yalnız tek bayrak adı; Boole ifadesi yok. Yönerge satırları çıktıya yazılmaz.
+#  Usage: awk -v DEFS="ROOT_PQ,CA_PQ" -f betik/pp.awk modeller/proverif/R1_chain.pvt > cikti.pv
+#  Supported directives (at the start of a line): #ifdef NAME, #ifndef NAME, #else, #endif (may be nested).
+#  A single flag name only; no Boolean expression. Directive lines are not written to the output.
 BEGIN {
   n = split(DEFS, a, ",")
   for (i = 1; i <= n; i++) if (a[i] != "") def[a[i]] = 1
@@ -14,4 +14,4 @@ BEGIN {
 /^#else/        { active[depth] = active[depth-1] && !taken[depth]; next }
 /^#endif/       { depth--; next }
 { if (active[depth]) print }
-END { if (depth != 0) { print "pp.awk: kapanmamış #ifdef" > "/dev/stderr"; exit 1 } }
+END { if (depth != 0) { print "pp.awk: unclosed #ifdef" > "/dev/stderr"; exit 1 } }
