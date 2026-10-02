@@ -3,6 +3,8 @@
 #   anchored bytes are in the private working history. base_sha256 is the digest in the base commit.
 # recorded-path-rewritten-in-base: the path written in the record was rewritten in the base
 #   commit; the anchored file exists under actual_path.
+# redacted-private: a Docker image or container list of the build machine from which images and containers
+#   unrelated to this study were removed on 2026-10-03 (privacy); the recorded digest is that of the unredacted list.
 # outside-repository: the recorded path points outside this repository.
 record	recorded_path	anchor_sha256	base_sha256	status	actual_path
 experiment/environments/SHA256SUMS	./DEGISIKLIKLER.md	ea93387f31a16ffefcac40d267d881d48f89c80c299f837e3b92ea56051175ac	ea4d4bf7b27c50d1e5f9d7f4e60ffe623c4fc3ebdae2ce0a9490950799d73e1e	edited-before-base	
@@ -110,3 +112,7 @@ models/tamarin/sonuc/sha256_adim5a.txt	betik/ic_kosum.sh	8b462934053afae7cf0a69a
 models/tamarin/sonuc/sha256_adim5a.txt	betik/degerlendir.py	bbfc007d33f983166b8e1d31172568d0ba62c6e9a9747fe80364c1c26159ecd6	41731e2321ff59c3db2b27ef9ab9538b28757a98c0583b2941d2c096e728e767	edited-before-base	
 models/tamarin/sonuc/sha256_adim5a.txt	betik/ic_kosum_pv.sh	5ffb6656f2691e13ed5bf575729a28a88064f4db4e8c4aa5bd834f2b63fa6b42	36c9f2fcffbb85aba43afc9a2bed15fd552ea71a708fdd25958a19cbcdf4eafd	edited-before-base	
 models/tamarin/sonuc/sha256_adim5a.txt	betik/proverif_calistir.sh	e36cdf470798c657da75cc58fc50cfb07094b7fd739e040f350690c07477d2f8	3d9997f9c47845a74321c96d9b29c2f36d6dbed8586d6a03630b38a58d1d28d9	edited-before-base	
+experiment/environments/SHA256SUMS	./_docker/docker_images_once_2026-09-25_1526.txt	08b739bb0aeb507de27773dd0af1152676719d41c227976e4a262a359b4085e7	08b739bb0aeb507de27773dd0af1152676719d41c227976e4a262a359b4085e7	redacted-private	
+experiment/environments/SHA256SUMS	./_docker/docker_images_sonra_2026-09-25_2233.txt	b914fa413699a6353720769e66d8dfe8808102b587b771cd3d1a30d71738e665	b914fa413699a6353720769e66d8dfe8808102b587b771cd3d1a30d71738e665	redacted-private	
+experiment/environments/SHA256SUMS	./_docker/docker_ps_once_2026-09-25_1526.txt	0431d21dc1e8df77b0a3353ef95cf688c047bfc95413389c6d75abad1095b843	0431d21dc1e8df77b0a3353ef95cf688c047bfc95413389c6d75abad1095b843	redacted-private	
+experiment/environments/SHA256SUMS	./_docker/docker_ps_sonra_2026-09-25_2233.txt	e016581c7d9c808efce130cfce2cd08bb835224d67a3e1932fd1b997e7b6a3f3	e016581c7d9c808efce130cfce2cd08bb835224d67a3e1932fd1b997e7b6a3f3	redacted-private	

@@ -2,7 +2,7 @@
 
 > **Task (PR Ö6, line 173):** "**L4 oracle:** There is no direct normative clause. The oracle is derived from 8725bis §3.1 + composite AND + the definition of G5. The N-version oracle makes this derivation independently."
 > **PR §4.20 (line 940):** "The oracle is the combination of 8725bis §3.1 with PQ/composite."
-> Line numbers refer to the files `spec-corpus/metin/<DOCUMENT>.txt` and `00-on-kayit/ON-KAYIT-TASLAK.md` (v0.8, SHA-256 `dcc84092…`). Every quote is verified by `karar_uret.py`, which finds it in the text (`maddeler.tsv`).
+> Line numbers refer to the files `spec-corpus/metin/<DOCUMENT>.txt` and `00-on-kayit/ON-KAYIT-TASLAK.md` (v0.8, SHA-256 `dcc84092…`). Every quote is verified by `make_decisions.py`, which finds it in the text (`items.tsv`).
 > The derivation of Oracle B was not seen.
 >
 > (Quotations from the pre-registration are translated from Turkish; quotations from specifications are verbatim. Premises are numbered Pr1–Pr15.)
@@ -104,7 +104,7 @@ The control arm measures L4 as an **API capability**, independently of PQ suppor
 
 The stripped T3 is `accept-classical` under P0 and P1, and `reject` under L4. The difference "classical acceptance ≠ hybrid authentication" shows in these three rows.
 
-## 5. K1–K11 and V± decisions (L4 family; generated from `karar.tsv`)
+## 5. K1–K11 and V± decisions (L4 family; generated from `decisions.tsv`)
 
 | Case | Arm | Vector | L4 | L4-S | L4-Y | Extra |
 |---|---|---|---|---|---|---|
@@ -162,7 +162,7 @@ All cells agree with the table of PR §6.5 (l. 1058–1069):
 - **Certificate path:** L4 is at signature level. That the x5c path is PQ is a separate policy (`L4-YOL`, B2). Its basis is `yol_sinifi` of PR §2D item 13 and composite -04 §6.2 [T055]: "Because the certificate itself is protected by a composite signature, an attacker cannot forge a fake certificate…".
 - **KB-JWT:** L4 is a policy on the issuer signature. In General JSON with several issuer signatures the KB `sd_hash` binding is undefined (UNDETERMINED B-2).
 
-## 8. Metamorphic relations (self-check on the oracle; `karar_ozet.json` → `mr_oz_denetim`)
+## 8. Metamorphic relations (self-check on the oracle; `decisions_summary.json` → `mr_oz_denetim`)
 
 | Relation | Holds on the oracle? | Count |
 |---|---|---|

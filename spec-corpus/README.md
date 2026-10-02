@@ -8,8 +8,8 @@ text. The texts themselves are not redistributed.
 
 **Used by.** `traceability/` (every quote is checked against `metin/<id>.txt`), the two oracles in
 `experiment/oracle/` (clauses are cited with file and line), the vector self-verification
-(`experiment/vector-generator/testler/t10_oz_dogrulama.py`, corpus mounted read-only), the signer's
-external test vectors (`experiment/signer/testler/dis_vektorler.py`) and the known-answer tests.
+(`experiment/vector-generator/tests/t10_self_verification.py`, corpus mounted read-only), the signer's
+external test vectors (`experiment/signer/tests/external_vectors.py`) and the known-answer tests.
 
 ## Files
 

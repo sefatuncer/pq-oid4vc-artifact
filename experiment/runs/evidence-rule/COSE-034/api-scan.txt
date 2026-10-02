@@ -1,0 +1,392 @@
+# API scan, COSE-034 go-cose v1.3.0 (commit e5c68f97dfbb7dc2677e891ceea9a8eafe42ddb4)
+# Date (UTC): 2026-10-02T23:05:41Z
+# Sources: (a) module github.com/veraison/go-cose v1.3.0 fetched by 'go build' in pq-a09-env-go:1.0 with go.mod/go.sum of the installation record (go.sum unchanged after the build)
+#          (b) https://codeload.github.com/veraison/go-cose/tar.gz/e5c68f97dfbb7dc2677e891ceea9a8eafe42ddb4 (sha256 53c61e47925db2f666048754370cfa5d633e4b479c1cdc12aeacd74671b7666a)
+# 'rg' is not installed on the host; 'grep -rnE' is used with the same patterns.
+
+$ diff -rq repo gomod/github.com/veraison/go-cose@v1.3.0; echo exit=$?
+exit=0
+(the module downloaded for the build is identical to the commit archive)
+
+$ grep -nE "alg|allow|algorithms|required|verif|issuer|policy|threshold" repo/sign.go repo/sign1.go repo/verifier.go repo/headers.go
+repo/sign.go:148:	// check algorithm if present.
+repo/sign.go:149:	// `alg` header MUST present if there is no externally supplied data.
+repo/sign.go:150:	alg := signer.Algorithm()
+repo/sign.go:151:	if err := s.Headers.ensureSigningAlgorithm(alg, external); err != nil {
+repo/sign.go:169:// Verify verifies the signature, returning nil on success or a suitable error
+repo/sign.go:170:// if verification fails.
+repo/sign.go:180:func (s *Signature) Verify(verifier Verifier, protected cbor.RawMessage, payload, external []byte) error {
+repo/sign.go:182:		return errors.New("verifying nil Signature")
+repo/sign.go:194:	// check algorithm if present.
+repo/sign.go:195:	// `alg` header MUST present if there is no externally supplied data.
+repo/sign.go:196:	alg := verifier.Algorithm()
+repo/sign.go:197:	err := s.Headers.ensureVerificationAlgorithm(alg, external)
+repo/sign.go:202:	// verify the message
+repo/sign.go:207:	return verifier.Verify(toBeSigned, s.Signature)
+repo/sign.go:433:// Verify verifies the signatures on the SignMessage against the corresponding
+repo/sign.go:434:// verifier, returning nil on success or a suitable error if verification fails.
+repo/sign.go:436:// See `Signature.Verify()` for advanced verification scenarios like threshold
+repo/sign.go:445:func (m *SignMessage) Verify(external []byte, verifiers ...Verifier) error {
+repo/sign.go:447:		return errors.New("verifying nil SignMessage")
+repo/sign.go:455:	case len(verifiers):
+repo/sign.go:458:		return fmt.Errorf("%d verifiers for %d signatures", len(verifiers), len(m.Signatures))
+repo/sign.go:468:	// verify message accordingly
+repo/sign.go:470:		if err := signature.Verify(verifiers[i], protected, m.Payload, external); err != nil {
+repo/sign1.go:100:	// check algorithm if present.
+repo/sign1.go:101:	// `alg` header MUST be present if there is no externally supplied data.
+repo/sign1.go:102:	alg := signer.Algorithm()
+repo/sign1.go:103:	err := m.Headers.ensureSigningAlgorithm(alg, external)
+repo/sign1.go:122:// Verify verifies the signature on the Sign1Message returning nil on success or
+repo/sign1.go:123:// a suitable error if verification fails.
+repo/sign1.go:126:func (m *Sign1Message) Verify(external []byte, verifier Verifier) error {
+repo/sign1.go:128:		return errors.New("verifying nil Sign1Message")
+repo/sign1.go:137:	// check algorithm if present.
+repo/sign1.go:138:	// `alg` header MUST present if there is no externally supplied data.
+repo/sign1.go:139:	alg := verifier.Algorithm()
+repo/sign1.go:140:	err := m.Headers.ensureVerificationAlgorithm(alg, external)
+repo/sign1.go:145:	// verify the message
+repo/sign1.go:150:	return verifier.Verify(toBeSigned, m.Signature)
+repo/sign1.go:296:// Verify verifies the signature on the UntaggedSign1Message returning nil on success or
+repo/sign1.go:297:// a suitable error if verification fails.
+repo/sign1.go:300:func (m *UntaggedSign1Message) Verify(external []byte, verifier Verifier) error {
+repo/sign1.go:301:	return (*Sign1Message)(m).Verify(external, verifier)
+repo/verifier.go:12:// Verifier is an interface for public keys to verify COSE signatures.
+repo/verifier.go:14:	// Algorithm returns the signing algorithm associated with the public key.
+repo/verifier.go:17:	// Verify verifies message content with the public key, returning nil for
+repo/verifier.go:25:// DigestVerifier is an interface for public keys to verify digested COSE signatures.
+repo/verifier.go:27:	// Algorithm returns the signing algorithm associated with the public key.
+repo/verifier.go:30:	// VerifyDigest verifies message digest with the public key, returning nil
+repo/verifier.go:36:// NewVerifier returns a verifier with a given public key.
+repo/verifier.go:44:func NewVerifier(alg Algorithm, key crypto.PublicKey) (Verifier, error) {
+repo/verifier.go:46:	switch alg {
+repo/verifier.go:50:			return nil, fmt.Errorf("%v: %w", alg, ErrInvalidPubKey)
+repo/verifier.go:58:			alg: alg,
+repo/verifier.go:64:			return nil, fmt.Errorf("%v: %w", alg, ErrInvalidPubKey)
+repo/verifier.go:68:				return nil, fmt.Errorf("%v: %w", alg, ErrInvalidPubKey)
+repo/verifier.go:70:			return nil, fmt.Errorf("%v: %w: %v", alg, ErrInvalidPubKey, err)
+repo/verifier.go:73:			alg: alg,
+repo/verifier.go:79:			return nil, fmt.Errorf("%v: %w", alg, ErrInvalidPubKey)
+repo/verifier.go:89:		errReason = "unknown algorithm"
+repo/verifier.go:91:	return nil, fmt.Errorf("can't create new Verifier for %s: %s: %w", alg, errReason, ErrAlgorithmNotSupported)
+repo/headers.go:92:		// cast to type Algorithm if `alg` presents
+repo/headers.go:93:		if alg, err := candidate.Algorithm(); err == nil {
+repo/headers.go:94:			candidate.SetAlgorithm(alg)
+repo/headers.go:102:// SetAlgorithm sets the algorithm value of the protected header.
+repo/headers.go:103:func (h ProtectedHeader) SetAlgorithm(alg Algorithm) {
+repo/headers.go:104:	h[HeaderLabelAlgorithm] = alg
+repo/headers.go:131:// Algorithm gets the algorithm value from the algorithm header.
+repo/headers.go:137:	switch alg := value.(type) {
+repo/headers.go:139:		return alg, nil
+repo/headers.go:141:		return Algorithm(alg), nil
+repo/headers.go:143:		return Algorithm(alg), nil
+repo/headers.go:145:		return Algorithm(alg), nil
+repo/headers.go:147:		return Algorithm(alg), nil
+repo/headers.go:149:		return Algorithm(alg), nil
+repo/headers.go:151:		return AlgorithmReserved, fmt.Errorf("Algorithm(%q)", alg)
+repo/headers.go:158:// processing a message is required to understand.
+repo/headers.go:230:	// In order to unmarshal Countersignature structs, it is required to make it
+repo/headers.go:295:// holding information about content, algorithms, keys, or evaluation
+repo/headers.go:396:// ensureSigningAlgorithm ensures the presence of the `alg` header if there is
+repo/headers.go:400:func (h *Headers) ensureSigningAlgorithm(alg Algorithm, external []byte) error {
+repo/headers.go:404:		if candidate != alg {
+repo/headers.go:405:			return fmt.Errorf("%w: signer %v: header %v", ErrAlgorithmMismatch, alg, candidate)
+repo/headers.go:418:		h.Protected.SetAlgorithm(alg)
+repo/headers.go:424:// ensureVerificationAlgorithm ensures the presence of the `alg` header if there
+repo/headers.go:425:// is no externally supplied data for verification.
+repo/headers.go:428:func (h *Headers) ensureVerificationAlgorithm(alg Algorithm, external []byte) error {
+repo/headers.go:432:		if candidate != alg {
+repo/headers.go:433:			return fmt.Errorf("%w: verifier %v: header %v", ErrAlgorithmMismatch, alg, candidate)
+repo/headers.go:491:				return errors.New("header parameter: alg: require int / tstr type")
+repo/headers.go:495:				return errors.New("header parameter: crit: not allowed")
+repo/headers.go:558:				return errors.New("header parameter: counter signature: not allowed")
+repo/headers.go:567:				return errors.New("header parameter: countersignature0: not allowed")
+repo/headers.go:574:				return errors.New("header parameter: Countersignature version 2: not allowed")
+repo/headers.go:583:				return errors.New("header parameter: Countersignature0 version 2: not allowed")
+
+$ grep -hnE "^func [A-Z]|^func \([a-z]+ \*?[A-Z][A-Za-z0-9]*\) [A-Z]|^type [A-Z]" repo/<each non-test .go file>   # public exports
+algorithm.go:76:type Algorithm int64
+algorithm.go:79:func (a Algorithm) String() string {
+cbor.go:69:func (s *byteString) UnmarshalCBOR(data []byte) error {
+countersign.go:19:type Countersignature Signature
+countersign.go:27:func NewCountersignature() *Countersignature {
+countersign.go:37:func (s *Countersignature) MarshalCBOR() ([]byte, error) {
+countersign.go:51:func (s *Countersignature) UnmarshalCBOR(data []byte) error {
+countersign.go:69:func (s *Countersignature) Sign(rand io.Reader, signer Signer, parent any, external []byte) error {
+countersign.go:108:func (s *Countersignature) Verify(verifier Verifier, parent any, external []byte) error {
+countersign.go:282:func Countersign0(rand io.Reader, signer Signer, parent any, external []byte) ([]byte, error) {
+countersign.go:299:func VerifyCountersign0(verifier Verifier, parent any, external, signature []byte) error {
+cwt.go:20:type CWTClaims map[any]any
+ecdsa.go:19:func I2OSP(x *big.Int, buf []byte) error {
+ecdsa.go:35:func OS2IP(x []byte) *big.Int {
+ecdsa.go:46:func (es *ecdsaKeySigner) Algorithm() Algorithm {
+ecdsa.go:55:func (es *ecdsaKeySigner) Sign(rand io.Reader, content []byte) ([]byte, error) {
+ecdsa.go:66:func (es *ecdsaKeySigner) SignDigest(rand io.Reader, digest []byte) ([]byte, error) {
+ecdsa.go:82:func (es *ecdsaCryptoSigner) Algorithm() Algorithm {
+ecdsa.go:91:func (es *ecdsaCryptoSigner) Sign(rand io.Reader, content []byte) ([]byte, error) {
+ecdsa.go:102:func (es *ecdsaCryptoSigner) SignDigest(rand io.Reader, digest []byte) ([]byte, error) {
+ecdsa.go:155:func (ev *ecdsaVerifier) Algorithm() Algorithm {
+ecdsa.go:164:func (ev *ecdsaVerifier) Verify(content []byte, signature []byte) error {
+ecdsa.go:178:func (ev *ecdsaVerifier) VerifyDigest(digest []byte, signature []byte) error {
+ed25519.go:15:func (es *ed25519Signer) Algorithm() Algorithm {
+ed25519.go:24:func (es *ed25519Signer) Sign(rand io.Reader, content []byte) ([]byte, error) {
+ed25519.go:36:func (ev *ed25519Verifier) Algorithm() Algorithm {
+ed25519.go:45:func (ev *ed25519Verifier) Verify(content []byte, signature []byte) error {
+headers.go:36:type ProtectedHeader map[any]any
+headers.go:41:func (h ProtectedHeader) MarshalCBOR() ([]byte, error) {
+headers.go:63:func (h *ProtectedHeader) UnmarshalCBOR(data []byte) error {
+headers.go:103:func (h ProtectedHeader) SetAlgorithm(alg Algorithm) {
+headers.go:108:func (h ProtectedHeader) SetType(typ any) (any, error) {
+headers.go:117:func (h ProtectedHeader) SetCWTClaims(claims CWTClaims) (CWTClaims, error) {
+headers.go:132:func (h ProtectedHeader) Algorithm() (Algorithm, error) {
+headers.go:161:func (h ProtectedHeader) Critical() ([]any, error) {
+headers.go:196:type UnprotectedHeader map[any]any
+headers.go:200:func (h UnprotectedHeader) MarshalCBOR() ([]byte, error) {
+headers.go:213:func (h *UnprotectedHeader) UnmarshalCBOR(data []byte) error {
+headers.go:318:type Headers struct {
+headers.go:365:func (h *Headers) MarshalProtected() ([]byte, error) {
+headers.go:374:func (h *Headers) MarshalUnprotected() ([]byte, error) {
+headers.go:383:func (h *Headers) UnmarshalFromRaw() error {
+headers.go:672:func (hlv headerLabelValidator) String() string {
+headers.go:678:func (hlv *headerLabelValidator) UnmarshalCBOR(data []byte) error {
+key.go:40:type KeyOp int64
+key.go:80:func KeyOpFromString(val string) (KeyOp, bool) {
+key.go:108:func (ko KeyOp) String() string {
+key.go:140:type KeyType int64
+key.go:152:func (kt KeyType) String() string {
+key.go:170:type Curve int64
+key.go:201:func (c Curve) String() string {
+key.go:226:type Key struct {
+key.go:246:func NewKeyOKP(alg Algorithm, x, d []byte) (*Key, error) {
+key.go:272:func (k *Key) ParamBytes(label any) ([]byte, bool) {
+key.go:279:func (k *Key) ParamInt(label any) (int64, bool) {
+key.go:286:func (k *Key) ParamUint(label any) (uint64, bool) {
+key.go:293:func (k *Key) ParamString(label any) (string, bool) {
+key.go:300:func (k *Key) ParamBool(label any) (bool, bool) {
+key.go:306:func (k *Key) OKP() (crv Curve, x []byte, d []byte) {
+key.go:318:func NewKeyEC2(alg Algorithm, x, y, d []byte) (*Key, error) {
+key.go:355:func (k *Key) EC2() (crv Curve, x []byte, y, d []byte) {
+key.go:368:func NewKeySymmetric(k []byte) *Key {
+key.go:378:func (key *Key) Symmetric() (k []byte) {
+key.go:385:func NewKeyFromPublic(pub crypto.PublicKey) (*Key, error) {
+key.go:404:func NewKeyFromPrivate(priv crypto.PrivateKey) (*Key, error) {
+key.go:534:func (k *Key) MarshalCBOR() ([]byte, error) {
+key.go:578:func (k *Key) UnmarshalCBOR(data []byte) error {
+key.go:657:func (k *Key) PublicKey() (crypto.PublicKey, error) {
+key.go:696:func (k *Key) PrivateKey() (crypto.PrivateKey, error) {
+key.go:751:func (k *Key) AlgorithmOrDefault() (Algorithm, error) {
+key.go:760:func (k *Key) Signer() (Signer, error) {
+key.go:783:func (k *Key) Verifier() (Verifier, error) {
+rsa.go:18:func (rs *rsaSigner) Algorithm() Algorithm {
+rsa.go:26:func (rs *rsaSigner) Sign(rand io.Reader, content []byte) ([]byte, error) {
+rsa.go:37:func (rs *rsaSigner) SignDigest(rand io.Reader, digest []byte) ([]byte, error) {
+rsa.go:53:func (rv *rsaVerifier) Algorithm() Algorithm {
+rsa.go:62:func (rv *rsaVerifier) Verify(content []byte, signature []byte) error {
+rsa.go:75:func (rv *rsaVerifier) VerifyDigest(digest []byte, signature []byte) error {
+sign.go:40:type Signature struct {
+sign.go:51:func NewSignature() *Signature {
+sign.go:66:func (s *Signature) MarshalCBOR() ([]byte, error) {
+sign.go:91:func (s *Signature) UnmarshalCBOR(data []byte) error {
+sign.go:134:func (s *Signature) Sign(rand io.Reader, signer Signer, protected cbor.RawMessage, payload, external []byte) error {
+sign.go:180:func (s *Signature) Verify(verifier Verifier, protected cbor.RawMessage, payload, external []byte) error {
+sign.go:283:type SignMessage struct {
+sign.go:295:func NewSignMessage() *SignMessage {
+sign.go:310:func (m *SignMessage) MarshalCBOR() ([]byte, error) {
+sign.go:347:func (m *SignMessage) UnmarshalCBOR(data []byte) error {
+sign.go:400:func (m *SignMessage) Sign(rand io.Reader, external []byte, signers ...Signer) error {
+sign.go:445:func (m *SignMessage) Verify(external []byte, verifiers ...Verifier) error {
+sign1.go:37:type Sign1Message struct {
+sign1.go:44:func NewSign1Message() *Sign1Message {
+sign1.go:54:func (m *Sign1Message) MarshalCBOR() ([]byte, error) {
+sign1.go:67:func (m *Sign1Message) UnmarshalCBOR(data []byte) error {
+sign1.go:89:func (m *Sign1Message) Sign(rand io.Reader, external []byte, signer Signer) error {
+sign1.go:126:func (m *Sign1Message) Verify(external []byte, verifier Verifier) error {
+sign1.go:241:func Sign1(rand io.Reader, signer Signer, headers Headers, payload []byte, external []byte) ([]byte, error) {
+sign1.go:253:type UntaggedSign1Message Sign1Message
+sign1.go:256:func (m *UntaggedSign1Message) MarshalCBOR() ([]byte, error) {
+sign1.go:266:func (m *UntaggedSign1Message) UnmarshalCBOR(data []byte) error {
+sign1.go:292:func (m *UntaggedSign1Message) Sign(rand io.Reader, external []byte, signer Signer) error {
+sign1.go:300:func (m *UntaggedSign1Message) Verify(external []byte, verifier Verifier) error {
+sign1.go:309:func Sign1Untagged(rand io.Reader, signer Signer, headers Headers, payload []byte, external []byte) ([]byte, error) {
+signer.go:14:type Signer interface {
+signer.go:27:type DigestSigner interface {
+signer.go:52:func NewSigner(alg Algorithm, key crypto.Signer) (Signer, error) {
+verifier.go:13:type Verifier interface {
+verifier.go:26:type DigestVerifier interface {
+verifier.go:44:func NewVerifier(alg Algorithm, key crypto.PublicKey) (Verifier, error) {
+
+$ grep -niE "verif|policy|threshold|allow|multiple|signers|algorithm" repo/README.md
+62:### Signing and Verification
+88:    signer, err := cose.NewSigner(cose.AlgorithmES256, privateKey)
+96:            cose.HeaderLabelAlgorithm: cose.AlgorithmES256,
+105:Verify a raw COSE_Sign1_Tagged message. For example:
+117:func VerifyP256(publicKey crypto.PublicKey, sig []byte) error {
+118:    // create a verifier from a trusted private key
+119:    verifier, err := cose.NewVerifier(cose.AlgorithmES256, publicKey)
+129:    return msg.Verify(nil, verifier)
+135:#### Untagged Signing and Verification
+137:Untagged COSE_Sign1 messages can be signed and verified as above, using
+140:#### Signing and Verification of payload digest
+146:When `cose.NewVerifier` is used with PS{256,384,512} or ES{256,384,512}, the returned verifier
+147:can be casted to the `cose.DigestVerifier` interface, whose `VerifyDigest` method verifies an
+154:`go-cose` does not import any hash package by its own to avoid linking unnecessary algorithms to the final binary.
+165:These are the required packages for each built-in cose.Algorithm:
+167:- cose.AlgorithmPS256, cose.AlgorithmES256: `crypto/sha256`
+168:- cose.AlgorithmPS384, cose.AlgorithmPS512, cose.AlgorithmES384, cose.AlgorithmES512: `crypto/sha512`
+169:- cose.AlgorithmEdDSA: none
+180:When verifying countersignatures, it is necessary to pass the parent object in the `Verify` function
+187:### Signing and Verifying Objects
+199:### Built-in Algorithms
+201:go-cose has built-in supports the following algorithms:
+206:### Custom Algorithms
+208:The supported algorithms can be extended at runtime by using [cose.RegisterAlgorithm](https://pkg.go.dev/github.com/veraison/go-cose#RegisterAlgorithm).
+
+$ sed -n 36,44p repo/verifier.go; sed -n 428,442p repo/headers.go   # verifier bound to one algorithm
+// NewVerifier returns a verifier with a given public key.
+// Only golang built-in crypto public keys of type `*rsa.PublicKey`,
+// `*ecdsa.PublicKey`, and `ed25519.PublicKey` are accepted.
+// When `*ecdsa.PublicKey` is specified, its curve must be supported by
+// crypto/ecdh.
+//
+// The returned signer for rsa and ecdsa keys also implements
+// `cose.DigestSigner`.
+func NewVerifier(alg Algorithm, key crypto.PublicKey) (Verifier, error) {
+...
+func (h *Headers) ensureVerificationAlgorithm(alg Algorithm, external []byte) error {
+	candidate, err := h.Protected.Algorithm()
+	switch err {
+	case nil:
+		if candidate != alg {
+			return fmt.Errorf("%w: verifier %v: header %v", ErrAlgorithmMismatch, alg, candidate)
+		}
+		return nil
+	case ErrAlgorithmNotFound:
+		if len(external) > 0 {
+			return nil
+		}
+	}
+	return err
+}
+
+$ sed -n 165,207p repo/sign.go; sed -n 433,479p repo/sign.go   # Signature.Verify and SignMessage.Verify
+	s.Signature = sig
+	return nil
+}
+
+// Verify verifies the signature, returning nil on success or a suitable error
+// if verification fails.
+// Verifying a COSE_Signature requires the encoded protected header and the
+// payload of its parent message.
+//
+// Reference: https://datatracker.ietf.org/doc/html/rfc8152#section-4.4
+//
+// # Experimental
+//
+// Notice: The COSE Sign API is EXPERIMENTAL and may be changed or removed in a
+// later release.
+func (s *Signature) Verify(verifier Verifier, protected cbor.RawMessage, payload, external []byte) error {
+	if s == nil {
+		return errors.New("verifying nil Signature")
+	}
+	if payload == nil {
+		return ErrMissingPayload
+	}
+	if len(s.Signature) == 0 {
+		return ErrEmptySignature
+	}
+	if len(protected) == 0 || protected[0]>>5 != 2 { // protected is a bstr
+		return errors.New("invalid body protected headers")
+	}
+
+	// check algorithm if present.
+	// `alg` header MUST present if there is no externally supplied data.
+	alg := verifier.Algorithm()
+	err := s.Headers.ensureVerificationAlgorithm(alg, external)
+	if err != nil {
+		return err
+	}
+
+	// verify the message
+	toBeSigned, err := s.toBeSigned(protected, payload, external)
+	if err != nil {
+		return err
+	}
+	return verifier.Verify(toBeSigned, s.Signature)
+...
+// Verify verifies the signatures on the SignMessage against the corresponding
+// verifier, returning nil on success or a suitable error if verification fails.
+//
+// See `Signature.Verify()` for advanced verification scenarios like threshold
+// policies.
+//
+// Reference: https://datatracker.ietf.org/doc/html/rfc8152#section-4.4
+//
+// # Experimental
+//
+// Notice: The COSE Sign API is EXPERIMENTAL and may be changed or removed in a
+// later release.
+func (m *SignMessage) Verify(external []byte, verifiers ...Verifier) error {
+	if m == nil {
+		return errors.New("verifying nil SignMessage")
+	}
+	if m.Payload == nil {
+		return ErrMissingPayload
+	}
+	switch len(m.Signatures) {
+	case 0:
+		return ErrNoSignatures
+	case len(verifiers):
+		// no ops
+	default:
+		return fmt.Errorf("%d verifiers for %d signatures", len(verifiers), len(m.Signatures))
+	}
+
+	// populate common parameters
+	var protected cbor.RawMessage
+	protected, err := m.Headers.MarshalProtected()
+	if err != nil {
+		return err
+	}
+
+	// verify message accordingly
+	for i, signature := range m.Signatures {
+		if err := signature.Verify(verifiers[i], protected, m.Payload, external); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+$ sed -n 122,154p repo/sign1.go   # Sign1Message.Verify
+// Verify verifies the signature on the Sign1Message returning nil on success or
+// a suitable error if verification fails.
+//
+// Reference: https://datatracker.ietf.org/doc/html/rfc8152#section-4.4
+func (m *Sign1Message) Verify(external []byte, verifier Verifier) error {
+	if m == nil {
+		return errors.New("verifying nil Sign1Message")
+	}
+	if m.Payload == nil {
+		return ErrMissingPayload
+	}
+	if len(m.Signature) == 0 {
+		return ErrEmptySignature
+	}
+
+	// check algorithm if present.
+	// `alg` header MUST present if there is no externally supplied data.
+	alg := verifier.Algorithm()
+	err := m.Headers.ensureVerificationAlgorithm(alg, external)
+	if err != nil {
+		return err
+	}
+
+	// verify the message
+	toBeSigned, err := m.toBeSigned(external)
+	if err != nil {
+		return err
+	}
+	return verifier.Verify(toBeSigned, m.Signature)
+}
+
+// toBeSigned constructs Sig_structure, computes and returns ToBeSigned.
+//

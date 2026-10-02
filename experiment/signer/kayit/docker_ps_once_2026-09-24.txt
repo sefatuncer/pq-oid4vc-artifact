@@ -1,2 +1,0 @@
-CONTAINER ID   IMAGE                                        COMMAND                  CREATED       STATUS                     PORTS                    NAMES
-c7995eb9e9ce   cqframework/cql-translation-service:latest   "java -jar /app/cqlT…"   7 weeks ago   Exited (255) 5 weeks ago   0.0.0.0:8083->8080/tcp   cql-xlate

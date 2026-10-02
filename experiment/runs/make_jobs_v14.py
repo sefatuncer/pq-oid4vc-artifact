@@ -8,7 +8,7 @@ Usage: python make_jobs_v14.py
 import io, json, os
 
 H = os.path.dirname(os.path.abspath(__file__))
-M = json.load(io.open(os.path.join(H, '..', 'vector-generator', 'vektorler', 'v1.4', 'MANIFEST.json'), encoding='utf-8'))
+M = json.load(io.open(os.path.join(H, '..', 'vector-generator', 'vectors', 'v1.4', 'MANIFEST.json'), encoding='utf-8'))
 byid = {v['id']: v for v in M['vektorler']}
 counterpart = {v['insa']['v13_esi']: v['id'] for v in M['vektorler'] if v['kol'] == 'kontrol-ES384'}
 edDSA_vectors = {v['id'] for v in M['vektorler'] if v['kol'] == 'kontrol-EdDSA'}

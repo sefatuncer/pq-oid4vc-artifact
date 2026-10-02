@@ -2,7 +2,7 @@
 
 > **Date:** 24.09.2026. Frame date REF_TARIH = 23.09.2026.
 > **Scope:** frame, metadata and a feature inventory at documentation/code level only. No behaviour was measured: no adapter was written and no test vector was run.
-> **Sources:** the numbers come from `CERCEVE.csv`, `SECIM.csv`, `ESIK-DUYARLILIK.csv`, `TARAMA.csv` and `topla_kayit.json`. The full definition of the criteria is in `CRITERIA-DRAFT.md`.
+> **Sources:** the numbers come from `FRAME.csv`, `SELECTION.csv`, `THRESHOLD-SENSITIVITY.csv`, `SCREENING.csv` and `collect_record.json`. The full definition of the criteria is in `CRITERIA-DRAFT.md`.
 > **Consistency with the pre-registration decision (PR §2A Ö6):**
 > - Reference verifiers (REF) are kept **outside** n.
 > - The main treatment arm is composite -04, the secondary arm ML-DSA-65.
@@ -62,7 +62,7 @@ Eligible candidates outside the quota: 14 in JOSE, 1 in SDJWT, 8 in COSE.
 - ML-DSA: RFC 9964 support
 - Treatment path: the proposed treatment class of §3.2. "to be examined" = there may be a plug-in API, but it is not proven.
 
-**All cells** are in `CERCEVE.csv` with a basis link (a line at a pinned commit, or a screening record).
+**All cells** are in `FRAME.csv` with a basis link (a line at a pinned commit, or a screening record).
 
 ### 2.1 JOSE (18)
 
@@ -160,7 +160,7 @@ Recommendation: do not force the pilots in. Report "n + pilots" as a sensitivity
 
 ### 3.1 Findings
 
-Source: the 349 evidence rows in `destek_kanitlari.csv`. 160 of them are automatic negative evidence: a pattern scan with 0 matches, at a pinned commit.
+Source: the 349 evidence rows in `support_evidence.csv`. 160 of them are automatic negative evidence: a pattern scan with 0 matches, at a pinned commit.
 
 | Support | Within n = 31 | In the whole frame (those examined) |
 |---|---|---|
@@ -283,18 +283,18 @@ The full list is in `CRITERIA-DRAFT.md` §7. In short:
 
 | File | Content |
 |---|---|
-| `CERCEVE.csv` | 198 candidates. Identity, metadata, 8 support columns each with its basis, criterion result (E2), exclusion reason |
-| `SECIM.csv` | Criterion results and decisions for E1–E5; popularity scores |
-| `ESIK-DUYARLILIK.csv` | Threshold options × stratum: eligible and selected counts, census n |
-| `TARAMA.csv` | 306 screening rows: source, query, decision, reason |
-| `topla_kayit.json` | Run record |
+| `FRAME.csv` | 198 candidates. Identity, metadata, 8 support columns each with its basis, criterion result (E2), exclusion reason |
+| `SELECTION.csv` | Criterion results and decisions for E1–E5; popularity scores |
+| `THRESHOLD-SENSITIVITY.csv` | Threshold options × stratum: eligible and selected counts, census n |
+| `SCREENING.csv` | 306 screening rows: source, query, decision, reason |
+| `collect_record.json` | Run record |
 | `CRITERIA-DRAFT.md` | Criteria, thresholds, quotas, selection rule, exclusion reasons, pre-registration constants |
 | `SUMMARY.md` | This document |
-| `topla.py` | Collection script. `python topla.py --cevrimdisi` produces the same outputs from the cache only. `--desen-tara` runs the evidence hint scan (shallow clone, anonymous git) |
-| `tarama_kararlari.csv` | Manual input |
-| `jwtio_esleme.csv` | Manual input |
-| `elle_bayraklar.csv` | Manual input |
-| `destek_kanitlari.csv` | Manual input; 349 evidence rows |
+| `collect.py` | Collection script. `python collect.py --cevrimdisi` produces the same outputs from the cache only. `--desen-tara` runs the evidence hint scan (shallow clone, anonymous git) |
+| `screening_decisions.csv` | Manual input |
+| `jwtio_mapping.csv` | Manual input |
+| `manual_flags.csv` | Manual input |
+| `support_evidence.csv` | Manual input; 349 evidence rows |
 | `onbellek/` | HTTP responses (personal-data fields removed), git HEAD records, pattern scan outputs |
 
 **Limit:** the `destek_*` cells are an **inventory**. They rest on a documentation or code line, but they are not an L0–L5 result. The evidence for H6 will be produced by the adapter tests after the pre-registration.

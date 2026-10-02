@@ -19,8 +19,8 @@ import os
 import sys
 
 sys.path.insert(0, '/work')
-from uretec import artefakt as A          # noqa: E402
-from uretec.anahtar import AnahtarSeti    # noqa: E402
+from generator import artefakt as A       # noqa: E402
+from generator.anahtar import AnahtarSeti # noqa: E402
 
 OUT = sys.argv[1] if len(sys.argv) > 1 else '.'
 ALGS = [('ES256', 'issuer/ES256', 'tedavi-ML-DSA-65'), ('EdDSA', 'issuer/EdDSA', 'kontrol-EdDSA'),

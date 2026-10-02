@@ -1,0 +1,337 @@
+# API scan, SDJWT-018 sd-jwt-python 0.10.4 (commit cf27b5b89aba03fd676a51aec4737f5f46d4105d)
+# Date (UTC): 2026-10-02T22:57:42Z
+# Sources: (a) wheel installed with: pip install --require-hashes -r requirements.lock (sd-jwt==0.10.4 sha256:d7ae669e..., jwcrypto==1.6.1 sha256:77e85681...)
+#          in pq-a09-env-python:1.0; site-packages copied to src/
+#          (b) https://codeload.github.com/openwallet-foundation-labs/sd-jwt-python/tar.gz/cf27b5b89aba03fd676a51aec4737f5f46d4105d (sha256 ab2564e916f1d473af5138fa7401d82e3022bc34c6c0671da237f63ec1a718aa)
+# 'rg' is not installed on the host; 'grep -rnE' is used with the same patterns.
+
+$ diff -r -x __pycache__ repo/src/sd_jwt src/sd_jwt
+diff -r -x __pycache__ repo/src/sd_jwt/__init__.py src/sd_jwt/__init__.py
+1c1
+< __version__ = "0.10.0"
+---
+> __version__ = "0.10.4"
+(only the __version__ string differs; line numbers below hold for both)
+
+$ grep -rnE "alg|allow|algorithms|required|verif|issuer|policy" repo/src/sd_jwt/verifier.py repo/src/sd_jwt/common.py repo/src/sd_jwt/__init__.py
+repo/src/sd_jwt/verifier.py:25:        cb_get_issuer_key: Callable[[str, Dict], str],
+repo/src/sd_jwt/verifier.py:34:        self._verify_sd_jwt(cb_get_issuer_key)
+repo/src/sd_jwt/verifier.py:44:            self._verify_key_binding_jwt(
+repo/src/sd_jwt/verifier.py:49:    def get_verified_payload(self):
+repo/src/sd_jwt/verifier.py:52:    def _verify_sd_jwt(
+repo/src/sd_jwt/verifier.py:54:        cb_get_issuer_key,
+repo/src/sd_jwt/verifier.py:55:        sign_alg: str = None,
+repo/src/sd_jwt/verifier.py:58:        parsed_input_sd_jwt.deserialize(self._unverified_input_sd_jwt)
+repo/src/sd_jwt/verifier.py:60:        unverified_issuer = self._unverified_input_sd_jwt_payload.get("iss", None)
+repo/src/sd_jwt/verifier.py:61:        unverified_header_parameters = parsed_input_sd_jwt.jose_header
+repo/src/sd_jwt/verifier.py:62:        issuer_public_key = cb_get_issuer_key(unverified_issuer, unverified_header_parameters)
+repo/src/sd_jwt/verifier.py:63:        parsed_input_sd_jwt.verify(issuer_public_key, alg=sign_alg)
+repo/src/sd_jwt/verifier.py:70:    def _verify_key_binding_jwt(
+repo/src/sd_jwt/verifier.py:74:        sign_alg: Union[str, None] = None,
+repo/src/sd_jwt/verifier.py:78:        _alg = sign_alg or DEFAULT_SIGNING_ALG
+repo/src/sd_jwt/verifier.py:80:        parsed_input_key_binding_jwt.deserialize(self._unverified_input_key_binding_jwt)
+repo/src/sd_jwt/verifier.py:96:        parsed_input_key_binding_jwt.verify(pubkey, alg=_alg)
+repo/src/sd_jwt/verifier.py:115:                        self._unverified_input_sd_jwt,
+repo/src/sd_jwt/verifier.py:127:                # TODO: Support other hash algorithms
+repo/src/sd_jwt/verifier.py:128:                raise ValueError("Invalid hash algorithm")
+repo/src/sd_jwt/verifier.py:172:                            f"Duplicate key found when unpacking disclosed claim: '{key}' in {pre_output}. This is not allowed."
+repo/src/sd_jwt/common.py:14:DIGEST_ALG_KEY = "_sd_alg"
+repo/src/sd_jwt/common.py:79:            # and allows for repeatable output for the generation of the examples.
+repo/src/sd_jwt/common.py:128:                self._unverified_input_sd_jwt,
+repo/src/sd_jwt/common.py:130:                self._unverified_input_key_binding_jwt
+repo/src/sd_jwt/common.py:133:            # Extract only the body from SD-JWT without verifying the signature
+repo/src/sd_jwt/common.py:134:            _, jwt_body, _ = self._unverified_input_sd_jwt.split(".")
+repo/src/sd_jwt/common.py:135:            self._unverified_input_sd_jwt_payload = loads(
+repo/src/sd_jwt/common.py:141:            self._unverified_input_sd_jwt = sd_jwt
+repo/src/sd_jwt/common.py:142:            self._unverified_input_sd_jwt_parsed = loads(sd_jwt)
+repo/src/sd_jwt/common.py:143:            self._input_disclosures = self._unverified_input_sd_jwt_parsed[
+repo/src/sd_jwt/common.py:146:            self._unverified_input_key_binding_jwt = (
+repo/src/sd_jwt/common.py:147:                self._unverified_input_sd_jwt_parsed.get(self.JWS_KEY_KB_JWT, "")
+repo/src/sd_jwt/common.py:149:            self._unverified_input_sd_jwt_payload = loads(
+repo/src/sd_jwt/common.py:150:                self._base64url_decode(self._unverified_input_sd_jwt_parsed["payload"])
+
+$ grep -rnE "^(class|def) |^    def [a-z]" repo/src/sd_jwt/*.py   # public exports
+repo/src/sd_jwt/common.py:22:class SDObj:
+repo/src/sd_jwt/common.py:32:class SDJWTHasSDClaimException(Exception):
+repo/src/sd_jwt/common.py:41:class SDJWTCommon:
+repo/src/sd_jwt/disclosure.py:7:class SDJWTDisclosure:
+repo/src/sd_jwt/disclosure.py:30:    def hash(self):
+repo/src/sd_jwt/disclosure.py:34:    def b64(self):
+repo/src/sd_jwt/disclosure.py:38:    def json(self):
+repo/src/sd_jwt/holder.py:20:class SDJWTHolder(SDJWTCommon):
+repo/src/sd_jwt/holder.py:46:    def create_presentation(
+repo/src/sd_jwt/issuer.py:18:class SDJWTIssuer(SDJWTCommon):
+repo/src/sd_jwt/verifier.py:17:class SDJWTVerifier(SDJWTCommon):
+repo/src/sd_jwt/verifier.py:49:    def get_verified_payload(self):
+
+$ grep -rnE "cb_get_issuer_key|header_parameters" repo/src repo/tests repo/README.md
+repo/src/sd_jwt/bin/demo.py:181:    def cb_get_issuer_key(issuer):
+repo/src/sd_jwt/bin/demo.py:192:        cb_get_issuer_key,
+repo/src/sd_jwt/bin/generate.py:42:    extra_header_parameters = testcase.get("extra_header_parameters", {})
+repo/src/sd_jwt/bin/generate.py:62:        extra_header_parameters=extra_header_parameters,
+repo/src/sd_jwt/bin/generate.py:86:    def cb_get_issuer_key(issuer, header_parameters):
+repo/src/sd_jwt/bin/generate.py:95:        cb_get_issuer_key,
+repo/src/sd_jwt/common.py:42:    SD_JWT_HEADER = os.getenv("SD_JWT_HEADER", "example+sd-jwt") # overwriteable with extra_header_parameters = {"typ": "other-example+sd-jwt"}
+repo/src/sd_jwt/issuer.py:39:        extra_header_parameters: dict = {},
+repo/src/sd_jwt/issuer.py:48:        self._extra_header_parameters = extra_header_parameters
+repo/src/sd_jwt/issuer.py:176:        _protected_headers.update(self._extra_header_parameters)
+repo/src/sd_jwt/verifier.py:25:        cb_get_issuer_key: Callable[[str, Dict], str],
+repo/src/sd_jwt/verifier.py:34:        self._verify_sd_jwt(cb_get_issuer_key)
+repo/src/sd_jwt/verifier.py:54:        cb_get_issuer_key,
+repo/src/sd_jwt/verifier.py:61:        unverified_header_parameters = parsed_input_sd_jwt.jose_header
+repo/src/sd_jwt/verifier.py:62:        issuer_public_key = cb_get_issuer_key(unverified_issuer, unverified_header_parameters)
+repo/tests/testcases/header_mod/specification.yml:19:extra_header_parameters:
+repo/tests/test_disclose_all_shortcut.py:14:    extra_header_parameters = {"typ": "testcase+sd-jwt"}
+repo/tests/test_disclose_all_shortcut.py:15:    extra_header_parameters.update(testcase.get("extra_header_parameters", {}))
+repo/tests/test_disclose_all_shortcut.py:29:        extra_header_parameters=extra_header_parameters,
+repo/tests/test_disclose_all_shortcut.py:39:    sdjwt_header_parameters = {}
+repo/tests/test_disclose_all_shortcut.py:40:    def cb_get_issuer_key(issuer, header_parameters):
+repo/tests/test_disclose_all_shortcut.py:41:        sdjwt_header_parameters.update(header_parameters)
+repo/tests/test_disclose_all_shortcut.py:46:        cb_get_issuer_key,
+repo/tests/test_disclose_all_shortcut.py:64:    expected_header_parameters = {
+repo/tests/test_disclose_all_shortcut.py:68:    expected_header_parameters.update(extra_header_parameters)
+repo/tests/test_disclose_all_shortcut.py:70:    assert sdjwt_header_parameters == expected_header_parameters
+repo/tests/test_e2e_testcases.py:14:    extra_header_parameters = {"typ": "testcase+sd-jwt"}
+repo/tests/test_e2e_testcases.py:15:    extra_header_parameters.update(testcase.get("extra_header_parameters", {}))
+repo/tests/test_e2e_testcases.py:29:        extra_header_parameters=extra_header_parameters,
+repo/tests/test_e2e_testcases.py:52:    sdjwt_header_parameters = {}
+repo/tests/test_e2e_testcases.py:53:    def cb_get_issuer_key(issuer, header_parameters):
+repo/tests/test_e2e_testcases.py:54:        sdjwt_header_parameters.update(header_parameters)
+repo/tests/test_e2e_testcases.py:59:        cb_get_issuer_key,
+repo/tests/test_e2e_testcases.py:78:    expected_header_parameters = {
+repo/tests/test_e2e_testcases.py:82:    expected_header_parameters.update(extra_header_parameters)
+repo/tests/test_e2e_testcases.py:84:    assert sdjwt_header_parameters == expected_header_parameters
+
+$ grep -niE "verif|alg|signature|serializ" repo/README.md
+42: * `sd_jwt_jws_part.txt`: The serialized JWS component of the SD-JWT. (*)
+44: * `kb_jwt_serialized.txt`: The serialized key binding JWT.
+45: * `verified_contents.json`: The verified contents of the SD-JWT.
+47:(*) Note: When JWS JSON Serialization is used, the file extensions of these files are `.json` instead of `.txt`.
+62:property is contained, which is the expected output of the verifier.
+68:    the verifier verifies the SD-JWT and outputs the expected verified contents.
+69:    The test passes if the output of the verifier matches the expected verified
+72:    data and the whole SD-JWT is put directly into the Verifier for consumption.
+77:    and is useful to verify that the Issuer put all data into the SD-JWT in a
+78:    correct way. The test passes if the output of the verifier matches the input
+100:    "13": True          # not selectively disclosable - always visible to the verifier
+145:discloses to the verifier. The structure must follow the structure of
+161:### Verifier Output: `expect_verified_user_claims`
+163:Finally, `expect_verified_user_claims` describes what the verifier is expected
+166:result is `expect_verified_user_claims`.
+173:Using `serialization_format`, the serialization format of the SD-JWT can be
+
+$ sed -n 17,34p repo/src/sd_jwt/verifier.py ; sed -n 52,63p repo/src/sd_jwt/verifier.py
+class SDJWTVerifier(SDJWTCommon):
+    _input_disclosures: List
+    _hash_to_decoded_disclosure: Dict
+    _hash_to_disclosure: Dict
+
+    def __init__(
+        self,
+        sd_jwt_presentation: str,
+        cb_get_issuer_key: Callable[[str, Dict], str],
+        expected_aud: Union[str, None] = None,
+        expected_nonce: Union[str, None] = None,
+        serialization_format: str = "compact",
+    ):
+        super().__init__(serialization_format=serialization_format)
+
+        self._parse_sd_jwt(sd_jwt_presentation)
+        self._create_hash_mappings(self._input_disclosures)
+        self._verify_sd_jwt(cb_get_issuer_key)
+...
+    def _verify_sd_jwt(
+        self,
+        cb_get_issuer_key,
+        sign_alg: str = None,
+    ):
+        parsed_input_sd_jwt = JWS()
+        parsed_input_sd_jwt.deserialize(self._unverified_input_sd_jwt)
+
+        unverified_issuer = self._unverified_input_sd_jwt_payload.get("iss", None)
+        unverified_header_parameters = parsed_input_sd_jwt.jose_header
+        issuer_public_key = cb_get_issuer_key(unverified_issuer, unverified_header_parameters)
+        parsed_input_sd_jwt.verify(issuer_public_key, alg=sign_alg)
+
+$ sed -n 159,186p repo/src/sd_jwt/issuer.py   # issuance: one add_signature call
+    def _create_signed_jws(self):
+        """
+        Create the SD-JWT.
+
+        If serialization_format is "compact", then the SD-JWT is a JWT (JWS in compact serialization).
+        If serialization_format is "json", then the SD-JWT is a JWS in JSON serialization. The disclosures in this case
+        will be added in a separate "disclosures" property of the JSON.
+        """
+
+        self.sd_jwt = JWS(payload=dumps(self.sd_jwt_payload))
+
+        # Assemble protected headers starting with default
+        _protected_headers = {
+            "alg": self._sign_alg,
+            "typ": self.SD_JWT_HEADER
+        }
+        # override if any
+        _protected_headers.update(self._extra_header_parameters)
+
+        self.sd_jwt.add_signature(
+            self._issuer_key,
+            alg=self._sign_alg,
+            protected=dumps(_protected_headers),
+        )
+
+        self.serialized_sd_jwt = self.sd_jwt.serialize(
+            compact=(self._serialization_format == "compact")
+        )
+
+## jwcrypto 1.6.1 (verification is delegated here)
+$ grep -nE "allowed_algs|default_allowed_algs|def verify|def _verify|resulting_alg|at least one|signatures" src/jwcrypto/jws.py
+28:default_allowed_algs = [
+135:            allowed = default_allowed_algs
+160:    def verify(self, signature):
+192:        self._allowed_algs = None
+198:    def allowed_algs(self):
+205:        if self._allowed_algs:
+206:            return self._allowed_algs
+208:            return default_allowed_algs
+210:    @allowed_algs.setter
+211:    def allowed_algs(self, algs):
+214:        self._allowed_algs = algs
+261:    def _verify(self, alg, key, payload, signature, protected, header=None):
+289:            resulting_alg = alg
+291:            resulting_alg = p['alg']
+296:            signer = JWSCore(resulting_alg, key, protected,
+297:                             payload, self._allowed_algs)
+312:                        resulting_alg, k, protected,
+313:                        payload, self._allowed_algs
+338:    def verify(self, key, alg=None, detached_payload=None):
+373:        elif 'signatures' in obj:
+375:            for o in obj['signatures']:
+382:                    # Ok if at least one verifies
+389:            raise InvalidJWSSignature('No signatures available')
+395:                                      'signatures' + repr(self.verifylog))
+449:                if 'signatures' in djws:
+450:                    o['signatures'] = []
+451:                    for s in djws['signatures']:
+453:                        o['signatures'].append(os)
+525:                raise InvalidJWSObject('Mixed b64 headers on signatures')
+548:            self.allowed_algs
+561:        if 'signatures' in self.objects:
+562:            self.objects['signatures'].append(o)
+564:            self.objects['signatures'] = []
+572:            self.objects['signatures'].append(n)
+573:            self.objects['signatures'].append(o)
+593:            if 'signatures' in self.objects:
+595:                                          "multiple signatures")
+641:            elif 'signatures' in obj:
+642:                sig['signatures'] = []
+643:                for o in obj['signatures']:
+651:                    sig['signatures'].append(s)
+652:                if len(sig['signatures']) == 0:
+676:        elif 'signatures' in self.objects:
+678:            for o in obj['signatures']:
+
+$ grep -nE "'alg'" src/jwcrypto/jwk.py   # is the JWK alg member enforced on verify?
+199:    'alg': JWKParameter('Algorithm', True, None, None),
+439:        elif 'alg' in params:
+442:                alg = JWA.instantiate_alg(params['alg'])
+444:                raise ValueError("Invalid 'alg' parameter") from e
+618:        alg = params.pop('alg', None)
+700:        # RFC 9964: 'alg' is required for AKP keys
+702:            alg = newkey.get('alg')
+1002:            alg = self.get('alg')
+1014:            alg = self.get('alg')
+1232:        # RFC 9964 Section 6: AKP thumbprint includes 'alg'
+1234:            t['alg'] = self.get('alg')
+
+$ sed -n 990,1020p src/jwcrypto/jwk.py
+                privkey = _OKP_CURVES_TABLE[crv].privkey
+            except KeyError as e:
+                raise InvalidJWKValue('Unknown curve "%s"' % crv) from e
+
+            d = base64url_decode(self.get('d'))
+            k = privkey.from_private_bytes(d)
+            self._cache_pri_k = k
+        return k
+
+    def _akp_pub(self):
+        k = self._cache_pub_k
+        if k is None:
+            alg = self.get('alg')
+            if alg not in _AKP_ALG_TABLE:
+                raise InvalidJWKValue('Unknown algorithm "%s"' % alg)
+            pubkey_class = _AKP_ALG_TABLE[alg].pubkey
+            pub_bytes = base64url_decode(self.get('pub'))
+            k = pubkey_class.from_public_bytes(pub_bytes)
+            self._cache_pub_k = k
+        return k
+
+    def _akp_pri(self):
+        k = self._cache_pri_k
+        if k is None:
+            alg = self.get('alg')
+            if alg not in _AKP_ALG_TABLE:
+                raise InvalidJWKValue('Unknown algorithm "%s"' % alg)
+            privkey_class = _AKP_ALG_TABLE[alg].privkey
+            seed = base64url_decode(self.get('priv'))
+            k = privkey_class.from_seed_bytes(seed)
+            self._cache_pri_k = k
+
+$ sed -n 338,395p src/jwcrypto/jws.py
+    def verify(self, key, alg=None, detached_payload=None):
+        """Verifies a JWS token.
+
+        :param key: A (:class:`jwcrypto.jwk.JWK`) verification or
+         a (:class:`jwcrypto.jwk.JWKSet`) that contains a key indexed by the
+         'kid' header.
+        :param alg: The signing algorithm (optional). Usually the algorithm
+            is known as it is provided with the JOSE Headers of the token.
+        :param detached_payload: A detached payload to verify the signature
+            against. Only valid for tokens that are not carrying a payload.
+
+        :raises InvalidJWSSignature: if the verification fails.
+        :raises InvalidJWSOperation: if a detached_payload is provided but
+                                     an object payload exists
+        :raises JWKeyNotFound: if key is a JWKSet and the key is not found.
+        """
+
+        self.verifylog = []
+        self.objects['valid'] = False
+        obj = self.objects
+        missingkey = False
+        if 'signature' in obj:
+            payload = self._get_obj_payload(obj, detached_payload)
+            try:
+                self._verify(alg, key,
+                             payload,
+                             obj['signature'],
+                             obj.get('protected', None),
+                             obj.get('header', None))
+                obj['valid'] = True
+            except Exception as e:  # pylint: disable=broad-except
+                if isinstance(e, JWKeyNotFound):
+                    missingkey = True
+                self.verifylog.append('Failed: [%s]' % repr(e))
+
+        elif 'signatures' in obj:
+            payload = self._get_obj_payload(obj, detached_payload)
+            for o in obj['signatures']:
+                try:
+                    self._verify(alg, key,
+                                 payload,
+                                 o['signature'],
+                                 o.get('protected', None),
+                                 o.get('header', None))
+                    # Ok if at least one verifies
+                    obj['valid'] = True
+                except Exception as e:  # pylint: disable=broad-except
+                    if isinstance(e, JWKeyNotFound):
+                        missingkey = True
+                    self.verifylog.append('Failed: [%s]' % repr(e))
+        else:
+            raise InvalidJWSSignature('No signatures available')
+
+        if not self.is_valid:
+            if missingkey:
+                raise JWKeyNotFound('No working key found in key set')
+            raise InvalidJWSSignature('Verification failed for all '
+                                      'signatures' + repr(self.verifylog))

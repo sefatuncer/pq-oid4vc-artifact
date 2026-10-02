@@ -23,9 +23,9 @@ To produce, for every vector × policy configuration × arm of battery v1.2, the
 
 | Input | SHA-256 |
 |---|---|
-| `experiment/vector-generator/vektorler/v1.2/MANIFEST.json` | `bb17aaa76a3d1859b2dd5df54c62e7039948a715e2c4b4628fed82d184c6e738` (same as PR §2G item 2) |
-| `experiment/vector-generator/vektorler/v1.2/SHA256SUMS` | `92663b48f477f51e5a4cdd2a6942d97d36b2d9591fa67af451fd33eb14f0b2a3` (same as PR §2G item 2) |
-| `experiment/vector-generator/BATARYA-ESLEME.md` | `d73352179cdf281825d498000b7f9dc6d1df0fe835c8258c6aa2c516e659e3fc` (same as PR §2G item 2) |
+| `experiment/vector-generator/vectors/v1.2/MANIFEST.json` | `bb17aaa76a3d1859b2dd5df54c62e7039948a715e2c4b4628fed82d184c6e738` (same as PR §2G item 2) |
+| `experiment/vector-generator/vectors/v1.2/SHA256SUMS` | `92663b48f477f51e5a4cdd2a6942d97d36b2d9591fa67af451fd33eb14f0b2a3` (same as PR §2G item 2) |
+| `experiment/vector-generator/BATTERY-MAPPING.md` | `d73352179cdf281825d498000b7f9dc6d1df0fe835c8258c6aa2c516e659e3fc` (same as PR §2G item 2) |
 | `00-on-kayit/ON-KAYIT-TASLAK.md` (v0.8, as read) | `dcc84092e2ca5eee0fcca8277fbcbd6b06ff613dc3459f63195f44d1ce3df79a` |
 
 The digests of the corpus files are in §8.
@@ -73,7 +73,7 @@ Source: in PR §4.8, P3 = P2 + R_I and P2 = P1 + binding, P1 = "Accept if all pr
 
 - The `alg` comparison is case-sensitive and label-based (RFC 7515 §4.1.1). In `kontrol-EdDSA` an `Ed25519`-labelled signature is not allowed, and vice versa (consistent with the tool fact of PR §2E item 3).
 - **Assignment rule:** if the `kol` in the manifest is one of the four arms, the vector is evaluated only in that arm. If `kol` ∈ {`ortak`, `klasik-taban`, `kapsam-pq`, `kapsam-hibrit`, `null`}, it is evaluated in all four arms (the decision of these vectors may depend on the X of the arm or be arm-independent; in both cases the rows are written explicitly).
-- **Additional arm assignments from the mapping** (`BATARYA-ESLEME.md`): `X5C04` and `X5C07` → also `tedavi-composite` (primary column of K8/K9); `K10K_alg-ES256_anahtar-Ed25519` → also `kontrol-Ed25519` (no twin in the fallback arm, the same file); `VC10_ikili_ihrac` → four arms (K11 primary, "policy per arm").
+- **Additional arm assignments from the mapping** (`BATTERY-MAPPING.md`): `X5C04` and `X5C07` → also `tedavi-composite` (primary column of K8/K9); `K10K_alg-ES256_anahtar-Ed25519` → also `kontrol-Ed25519` (no twin in the fallback arm, the same file); `VC10_ikili_ihrac` → four arms (K11 primary, "policy per arm").
 
 ## 6. Decision rule
 
@@ -114,12 +114,12 @@ For every signature s, under the allowed set of the arm:
 - **SD-JWT VC version** (`sdjwtvc_surum`, PR Ö9 and §2D item 7): the scope of the parameter is "scenario (d) vectors (status of the JSON serialization) and VC11" (§2D item 7). In these vectors (the `VC07/08/09` family and permutations, `VP05/06/07`, `VP05-SIRA-ters`, `VC11`) every configuration is split into two rows: `…|sdjwtvc=-13` and `…|sdjwtvc=-19`. In the other SD-JWT VC vectors the decision is the same in both versions; `politika` carries no version suffix and `not` says so. The flattened JSON vectors defined in the manifest only for `-13` (`X5C07/08/09`, `CRIT02`) have a single row with the `-13` reading.
 - Under `-19` the details of a JSON-serialized SD-JWT VC are "beyond the scope", so decisions with an acceptance path become `indeterminate`; decisions without an acceptance path (`reject`) do not change.
 - For a target that does not support the JSON serialization, these rows fall under B6 ("not applicable"); the oracle gives the decision of a verifier that supports the format.
-- Vector-specific rules (CMP, X5C, CRIT, VP, REQ, DPoP, VC11/VC12) are in the `dayanak` and `not` columns of `karar.tsv`; the undetermined ones in `UNDETERMINED.md`.
+- Vector-specific rules (CMP, X5C, CRIT, VP, REQ, DPoP, VC11/VC12) are in the `dayanak` and `not` columns of `decisions.tsv`; the undetermined ones in `UNDETERMINED.md`.
 
 ## 8. Format of the basis and quote verification
 
 - Format: `DOCUMENT §section [matrix id Tnnn if any] “verbatim short quote” (version; file:line)`. Several clauses are separated by ` ; `. The matrix ids are the rows of `traceability/izlenebilirlik.csv`.
-- Every quote is searched by the script in the source file **as a substring within the given line range, with whitespace normalised**; a quote that is not found stops the script (`turet_karar.py`, `alinti_denetimi()`). Lines are split only at `\n` (the same as grep/sed numbering; form-feed characters do not count as lines). A hyphen at a line end is joined without a space (in the RFC texts it is a real hyphen: `case-`/`sensitive`, `ML-DSA-`/`65`). The quote in the basis is a verbatim substring of the source text; only line breaks have been reduced to a single space. The long quotations in `L4-DERIVATION-B.md` and `UNDETERMINED.md` were also verified separately with the same method.
+- Every quote is searched by the script in the source file **as a substring within the given line range, with whitespace normalised**; a quote that is not found stops the script (`derive_decisions.py`, `alinti_denetimi()`). Lines are split only at `\n` (the same as grep/sed numbering; form-feed characters do not count as lines). A hyphen at a line end is joined without a space (in the RFC texts it is a real hyphen: `case-`/`sensitive`, `ML-DSA-`/`65`). The quote in the basis is a verbatim substring of the source text; only line breaks have been reduced to a single space. The long quotations in `L4-DERIVATION-B.md` and `UNDETERMINED.md` were also verified separately with the same method.
 - Cited documents (version; SHA-256):
 
 | Short name | Document | SHA-256 (`spec-corpus/metin/…`) |
@@ -143,19 +143,19 @@ For every signature s, under the allowed set of the arm:
 
 ## 9. Primary / secondary
 
-- `birincil_mi = evet` (primary): the (vector, arm) pair appears as **primary** in that arm's column in §1 of `BATARYA-ESLEME.md` (including the fallback `-ED25519` twins and V+/V−). PR §2G item 4: the pre-registered variables are computed only from these.
+- `birincil_mi = evet` (primary): the (vector, arm) pair appears as **primary** in that arm's column in §1 of `BATTERY-MAPPING.md` (including the fallback `-ED25519` twins and V+/V−). PR §2G item 4: the pre-registered variables are computed only from these.
 - `birincil_mi = hayır` (secondary): secondary in the mapping, only an MR twin (MR1/MR3/MR4), or outside the mapping. Their role is written in their `not`.
 
 ## 10. Output format
 
-- `karar.tsv`: UTF-8, tab-separated, **no quote character** (use `csv.QUOTE_NONE` when reading). Fields contain no tabs or newlines (checked by the script). Header row: `vektor_id politika kol birincil_mi karar dayanak not`.
+- `decisions.tsv`: UTF-8, tab-separated, **no quote character** (use `csv.QUOTE_NONE` when reading). Fields contain no tabs or newlines (checked by the script). Header row: `vektor_id politika kol birincil_mi karar dayanak not`.
 - Row order: arm → vector (manifest order) → policy (`L4`, `P2`, `P0`; for those with a version suffix, `-13` first).
 
 ## 11. Tool and reproduction
 
-- `turet_karar.py` (Python 3, standard library only): applies a hand-written fact table per vector (the signature list is **cross-checked** against the manifest) and the special rules; verifies the quotes in the source text; produces `karar.tsv` and the distribution summary. It opens no vector file and uses no network.
-- Running: `PYTHONIOENCODING=utf-8 python turet_karar.py` (from the folder; it finds the project root automatically).
-- Incremental generation: with the option `--kollar k1,k2,…` the arms were written cumulatively (kontrol-EdDSA → + kontrol-Ed25519 → + tedavi-ML-DSA-65 → + tedavi-composite); every run rewrites `karar.tsv` in the canonical order of the selected arms. The final state is the union of the four arms (run without the option).
+- `derive_decisions.py` (Python 3, standard library only): applies a hand-written fact table per vector (the signature list is **cross-checked** against the manifest) and the special rules; verifies the quotes in the source text; produces `decisions.tsv` and the distribution summary. It opens no vector file and uses no network.
+- Running: `PYTHONIOENCODING=utf-8 python derive_decisions.py` (from the folder; it finds the project root automatically).
+- Incremental generation: with the option `--kollar k1,k2,…` the arms were written cumulatively (kontrol-EdDSA → + kontrol-Ed25519 → + tedavi-ML-DSA-65 → + tedavi-composite); every run rewrites `decisions.tsv` in the canonical order of the selected arms. The final state is the union of the four arms (run without the option).
 
 ## 12. Limitations
 
@@ -163,11 +163,11 @@ For every signature s, under the allowed set of the arm:
 - The `insa` facts were taken as correct (generator self-verification T10 and the maintainers' regeneration in PR §2G item 3).
 - The R_I analogy in the REQ/TSL/DPoP rows is not pre-registered; these rows are descriptive.
 
-## 13. Result summary (output of `turet_karar.py`, 25.09.2026)
+## 13. Result summary (output of `derive_decisions.py`, 25.09.2026)
 
 - **732 rows**; all 153 vectors; 53 primary (vector, arm) pairs × 3 configurations = 159 primary rows. Rows with a version suffix: 96 (§7).
 - Quote check: all 116 clauses of the script were found in their source line range. Manifest cross-check: every signature whose `insa` value is not "gecerli" has a hand-written state; all ids are in the manifest.
-- Two independent runs gave the same digest of `karar.tsv` (deterministic).
+- Two independent runs gave the same digest of `decisions.tsv` (deterministic).
 
 | Slice | Rows | accept-classical | accept-hybrid | reject | indeterminate |
 |---|---|---|---|---|---|

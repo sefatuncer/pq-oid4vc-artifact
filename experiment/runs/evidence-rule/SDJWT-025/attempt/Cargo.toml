@@ -1,0 +1,15 @@
+[package]
+name = "ev-sdjwt025"
+version = "0.0.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+# target crate and the feature set of the installation record's information run (_bilgi-SDJWT-025-ozellik)
+ssi-sd-jwt = "=0.6.0"
+ssi-jws = { version = "=0.5.0", features = ["secp256r1", "ed25519"] }
+ssi-jwk = { version = "=0.4.0", features = ["secp256r1", "ed25519"] }
+# test harness only (versions already in the lock)
+futures = "=0.3.34"
+ssi-claims-core = "=0.2.0"
+serde_json = "=1.0.151"

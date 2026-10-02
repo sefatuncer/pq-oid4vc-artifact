@@ -2,7 +2,7 @@
 
 > **Date:** 25.09.2026. **Write area:** only `experiment/environments/`.
 > **Limit:** the following are **installation facts** only. No test vector was run and no signature verification call was made. The link checks are limited to loading types or symbols. Capability flags (e.g. `MLDsa.IsSupported`, `SubtleCrypto.supports`) show that the runtime recognises the algorithm; they do not show that a target verifies correctly.
-> **Source:** the numbers come from script outputs: `derleme-sonuc.csv` (`betikler/topla_sonuc.py`), `kayit/surum_ozet.csv` (`betikler/surum_ozet.py`), `kayit/surum_dayanak.csv` (`betikler/surum_dayanak.py`), `kayit/surum_commit.csv` (`betikler/etiket_coz.py`).
+> **Source:** the numbers come from script outputs: `build-results.csv` (`scripts/collect_results.py`), `records/version_summary.csv` (`scripts/version_summary.py`), `records/version_basis.csv` (`scripts/version_basis.py`), `records/version_commit.csv` (`scripts/resolve_tags.py`).
 
 ## 0. Summary
 
@@ -18,22 +18,22 @@
 
 **K2 — Version pinning: `son_surum` or `son_commit_sha`?**
 - The task description asked for `son_surum` (last release); CRITERIA §7.6, however, says "pinned with `son_commit_sha`; if a release corresponds to the same code, it is recorded as well".
-- In this task 30 targets were installed by release and 4 by commit. For **21 of the 30 targets installed by release, the release commit differs from the frame HEAD** (`kayit/surum_ozet.csv`).
-- **Effect on TK1 (static source check, `kayit/surum_dayanak.csv`):**
+- In this task 30 targets were installed by release and 4 by commit. For **21 of the 30 targets installed by release, the release commit differs from the frame HEAD** (`records/version_summary.csv`).
+- **Effect on TK1 (static source check, `records/version_basis.csv`):**
   - **COSE-035 cose-lib 4.8.2** has no ML-DSA source (no `src/Algorithm/Signature/MLDSA`). The "yes" basis of the inventory belongs to the frame HEAD (`1c854bf63c5c`).
   - The README of **COSE-034 go-cose v1.3.0** (2024-07) does not contain the "partial" basis of the inventory.
   - The releases of JOSE-009, JOSE-001 and JOSE-102 show traces of ML-DSA.
   - So the "4 targets in n with native ML-DSA support" of D-E3 drop to 3 under pinning by release (cose-lib drops out).
 - Both HEADs can be installed (informational runs outside the CSV):
-  - `_bilgi-COSE-035-HEAD`: 159 classes loaded, including `MLDSA65`.
-  - `_bilgi-COSE-034-HEAD`: built.
+  - `_info-COSE-035-HEAD`: 159 classes loaded, including `MLDSA65`.
+  - `_info-COSE-034-HEAD`: built.
 - Which one is pinned at the freeze is your decision. If the commit is chosen, the record of these two targets can be replaced by the HEAD run; 19 targets would need a reinstall.
 
 **K3 — Resolver for the Kotlin multiplatform targets (COSE-001, SDJWT-001).** The primary record was made with the Gradle module metadata. Maven chose `kotlinx-serialization-json` 1.8.0 in vck (mixed with `-core` 1.11.0); Gradle chooses 1.11.0. Recommendation: use Gradle and the `verification-metadata.xml` lock in the adapters.
 
 **K4 — Configuration choices that must be written into the pre-registration** (all installation facts):
 - JOSE-092 `jsonwebtoken` 11 crypto back end: `aws_lc_rs` or `rust_crypto`. Both build; the primary record is `aws_lc_rs` (README example).
-- SDJWT-025 `ssi-sd-jwt` 0.6.0 feature set. The library depends on `ssi-jws`/`ssi-jwk` with `default-features=false`; the default installation has no signature algorithm crate. It builds with `secp256r1` and `ed25519` enabled (`_bilgi-SDJWT-025-ozellik`).
+- SDJWT-025 `ssi-sd-jwt` 0.6.0 feature set. The library depends on `ssi-jws`/`ssi-jwk` with `default-features=false`; the default installation has no signature algorithm crate. It builds with `secp256r1` and `ed25519` enabled (`_info-SDJWT-025-feature`).
 - `spomky-labs/cbor-php` for COSE-035 (the extra package the library `suggest`s).
 - The pyjwt `[crypto]` and python-jose `[cryptography]` extras.
 - **SDJWT-004 authlete sd-jwt and SDJWT-010 sd-jwt-payload contain no signature verification:**
@@ -65,7 +65,7 @@
 | JOSE-001 IdentityModel 8.23.0 | .NET 10.0.12 + OpenSSL 3.5.5: `IsSupported=True` for `MLDsa`, `CompositeMLDsa` and `SlhDsa`. Whether IdentityModel uses `CompositeMLDsa` was not examined | The environment condition for TK1 (ML-DSA) is met. "To be examined" for composite (relation to JOSE composite -04 not verified) |
 | COSE-035 cose-lib | No ML-DSA in 4.8.2; present in HEAD. The gate of HEAD is PHP ≥ 8.4 + OpenSSL 3.5; the image has PHP 8.4.26 + OpenSSL 3.5.8 (`isSupported()` not called) | TK1 depends on the K2 decision |
 | COSE-036 wolfCOSE | ML-DSA **depends on a build flag**: wolfSSL `--enable-mldsa` and the condition "newer than v5.9.1-stable". With v5.9.2-stable `WOLFSSL_HAVE_MLDSA` is defined. `wc_CoseSign1_Verify` and `wc_CoseSign_Verify` were linked | TK1 only in this configuration; the flag set must be written into the pre-registration. The COSE_Sign symbol exists (for L4m) |
-| JOSE-102 jwt-kit 5.3.0 | The ML-DSA sources build on Linux (CryptoExtras / swift-crypto 4.5.2); behind `@_spi(PostQuantum)`. The `MLDSA` type was linked (`_bilgi-JOSE-102-mldsa-spi`) | The inventory note "macOS 26+ → T3 likely on Linux" should be re-evaluated. The runtime was not tested |
+| JOSE-102 jwt-kit 5.3.0 | The ML-DSA sources build on Linux (CryptoExtras / swift-crypto 4.5.2); behind `@_spi(PostQuantum)`. The `MLDSA` type was linked (`_info-JOSE-102-mldsa-spi`) | The inventory note "macOS 26+ → T3 likely on Linux" should be re-evaluated. The runtime was not tested |
 | COSE-034 go-cose | The Go 1.27.1 stdlib has `crypto/mldsa`. `NewVerifier`, `Sign1Message` and `SignMessage` were linked | The environment is ready for TK2 (Signer/Verifier interface); v1.3.0 has no ML-DSA basis (K2) |
 | JOSE-083 pyjwt | The `PyJWS.register_algorithm` symbol exists | Consistent with the TK2 basis |
 | JOSE-034 jose2go | The `RegisterJws` symbol exists | Consistent with the TK2 basis |
@@ -82,7 +82,7 @@
   - Both are only measured; their code is not distributed (D-E11).
   - `experiment/environments/` contains no third-party source code. Only our own scripts, lock files and metadata (POM, nuspec, `.cargo_vcs_info.json`).
 - JOSE-002 JWT.NET: CC0-1.0. JOSE-104 Swift-JWT: Apache-2.0. The candidates guardian and jwt-cpp: MIT.
-- The other targets are consistent with the licences in the inventory: MIT / Apache-2.0 / BSD-3-Clause / MPL-2.0 (go-cose). The licence reported by the registry is in the field `lisans_kayit` of `hedefler/<id>/cikti/sonuc.tsv`.
+- The other targets are consistent with the licences in the inventory: MIT / Apache-2.0 / BSD-3-Clause / MPL-2.0 (go-cose). The licence reported by the registry is in the field `lisans_kayit` of `targets/<id>/output/result.tsv`.
 
 ## 4. Limitations
 
@@ -98,7 +98,7 @@
 - A reproducible build is not claimed (REF-003 bootJar, `libwolfcose.a`). What is pinned are the source commits and the dependency digests. Observation nonetheless: the `verification-metadata.xml` of REF-003 and `libwolfcose.a` gave the same output in repeated runs.
 - npm installations were done with `--ignore-scripts`; install scripts were not run.
 - The time per target (`sure_s`) is only the container time of the last attempt. Image builds and base image pulls are excluded. The number of attempts and the total time are in the `not` column.
-- The informational runs outside the CSV (`hedefler/_bilgi-*`) are decision inputs; they do not enter the result counts.
+- The informational runs outside the CSV (`targets/_info-*`) are decision inputs; they do not enter the result counts.
 
 ## 5. Process notes
 
@@ -120,10 +120,10 @@
 - **Docker:**
   - No `prune` and no bulk deletion.
   - Containers ran one at a time, named `pq-a09-ortam-*`, with `--rm`, `--memory=6g` and the lock label `pq.agir=derleme`.
-  - The 14 pulled base images were not deleted (rule: the work may delete only `pq-a09-env-*` images). List in `IMAGES.md` and `_docker/yeni_imajlar_*.txt`.
+  - The 14 pulled base images were not deleted (rule: the work may delete only `pq-a09-env-*` images). List in `IMAGES.md` and `_docker/new_images_*.txt`.
   - The image builds added small entries to the build cache. The clean-up by id is yours (§3.4 item 6).
 - **COSE note (instruction of the maintainers):** Oracle A found that the C3 battery (v1.2) has no COSE vectors. The five COSE targets (COSE-001, -014, -034, -035, -036) were installed; their measurement scope will be decided separately. After the instruction no further environment effort was spent on COSE; COSE-036 was built the standard way. The cbor-php fix for COSE-035 and the HEAD informational runs had been done before the instruction.
 - **Personal data scan (for Step 15):**
   - The user's e-mail address occurs in no file in `experiment/environments/` (scanned).
   - The lock and report files contain the public e-mail addresses of third-party package authors from the registries: `composer.lock`, `pip-report.json`, `poetry-report.json`, REF-010 `pyproject.toml`.
-  - The Windows user name occurs only in the local mount path in `betikler/kos.sh` (the same as the example in work plan §3.4).
+  - The Windows user name occurs only in the local mount path in `scripts/run_target.sh` (the same as the example in work plan §3.4).

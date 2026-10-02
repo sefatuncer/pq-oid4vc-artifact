@@ -1,15 +1,15 @@
 # JOSE-071 lcobucci/jwt 5.6.0 — adapter notes (01.10.2026)
 
 ## 1. Version pinning
-- Latest published release 5.6.0 (`bb3e9f21e419`). Package id in `SECIM.csv`/`CERCEVE.csv`: `lcobucci/jwt` (packagist; jwt.io name "jwt").
+- Latest published release 5.6.0 (`bb3e9f21e419`). Package id in `SELECTION.csv`/`FRAME.csv`: `lcobucci/jwt` (packagist; jwt.io name "jwt").
 
 ## 2. TK proposal
 | Arm | Proposal | Evidence |
 |---|---|---|
-| ML-DSA-65 | **TK3** | `src/Signer`: Ecdsa (Sha256/384/512), Eddsa, Rsa, Hmac, Blake2b; ML-DSA/JWK 0 matches (`evidence/api-tarama.txt`). The `Signer` interface is an extension point, but TK2 is out of scope |
+| ML-DSA-65 | **TK3** | `src/Signer`: Ecdsa (Sha256/384/512), Eddsa, Rsa, Hmac, Blake2b; ML-DSA/JWK 0 matches (`evidence/api-scan.txt`). The `Signer` interface is an extension point, but TK2 is out of scope |
 | composite | **TK3** | the same |
 
-## 3. V± result (`evidence/vpm-kosu.txt`)
+## 3. V± result (`evidence/vpm-run.txt`)
 - ES256 ×4 accept / VMINUS ×4 `red/imza-gecersiz`; EdDSA accept / VMINUS_EdDSA `red/imza-gecersiz`; label `Ed25519` `alg-desteklenmiyor` (control arm EdDSA); ML-DSA-65 and CMP `alg-desteklenmiyor`; COSE B6.
 - **Gate: passed (ES256 + EdDSA).**
 

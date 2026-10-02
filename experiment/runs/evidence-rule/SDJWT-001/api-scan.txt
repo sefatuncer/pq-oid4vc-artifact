@@ -1,0 +1,339 @@
+# API scan, SDJWT-001 vck 7.0.1 (commit a3e66b1a4e80b3053b6921bb4dae3d704dc022bf)
+# Date (UTC): 2026-10-02T23:21:13Z
+# Sources: (a) at.asitplus.wallet:vck:7.0.1 resolved by Gradle 9.6.1 in pq-a09-env-jvm:1.0; jar sha256 equal to the installation record:
+#              vck-jvm-7.0.1.jar c50d76c6..., indispensable-josef-jvm-3.24.0.jar 9acc5a36..., supreme-jvm-0.15.0.jar b125876d...
+#          (b) https://codeload.github.com/a-sit-plus/vck/tar.gz/a3e66b1a4e80b3053b6921bb4dae3d704dc022bf (sha256 f400a4dfa26059d959f17ad7942c107643bbf7cab5b74212e08dfe418e9d1a93)
+# 'rg' is not installed on the host; 'grep -rnE' is used with the same patterns.
+
+$ grep -rniE "allowedAlg|acceptedAlg|supportedAlg|requiredAlg|allowList|algorithmPolicy" repo/vck/src/commonMain repo/openid-data-classes/src/commonMain
+repo/openid-data-classes/src/commonMain/kotlin/at/asitplus/openid/IssuerMetadata.kt:79:    val credentialResponseEncryption: SupportedAlgorithmsContainer? = null,
+repo/openid-data-classes/src/commonMain/kotlin/at/asitplus/openid/IssuerMetadata.kt:86:    val credentialRequestEncryption: SupportedAlgorithmsContainer? = null,
+repo/openid-data-classes/src/commonMain/kotlin/at/asitplus/openid/SupportedAlgorithmsContainer.kt:11:data class SupportedAlgorithmsContainer(
+repo/openid-data-classes/src/commonMain/kotlin/at/asitplus/openid/SupportedAlgorithmsContainer.kt:18:    val supportedAlgorithmsStrings: Set<String>? = null,
+repo/openid-data-classes/src/commonMain/kotlin/at/asitplus/openid/SupportedAlgorithmsContainer.kt:54:    val supportedAlgorithms: Set<JsonWebAlgorithm>? = supportedAlgorithmsStrings
+repo/openid-data-classes/src/commonMain/kotlin/at/asitplus/openid/SupportedAlgorithmsContainerIso.kt:9:data class SupportedAlgorithmsContainerIso(
+repo/openid-data-classes/src/commonMain/kotlin/at/asitplus/openid/SupportedAlgorithmsContainerJwt.kt:9:data class SupportedAlgorithmsContainerJwt(
+repo/openid-data-classes/src/commonMain/kotlin/at/asitplus/openid/SupportedAlgorithmsContainerSdJwt.kt:9:data class SupportedAlgorithmsContainerSdJwt(
+repo/openid-data-classes/src/commonMain/kotlin/at/asitplus/openid/VpFormatsSupported.kt:16:    val vcJwt: SupportedAlgorithmsContainerJwt? = null,
+repo/openid-data-classes/src/commonMain/kotlin/at/asitplus/openid/VpFormatsSupported.kt:20:    val dcSdJwt: SupportedAlgorithmsContainerSdJwt? = null,
+repo/openid-data-classes/src/commonMain/kotlin/at/asitplus/openid/VpFormatsSupported.kt:24:    val msoMdoc: SupportedAlgorithmsContainerIso? = null,
+(the SupportedAlgorithmsContainer* hits are OpenID metadata data classes; no use in the vck verification path:)
+$ grep -rn "SupportedAlgorithmsContainer\|supportedAlgorithms" repo/vck/src/commonMain | wc -l
+0
+
+$ grep -nE "fun interface|^class |^data class|val [a-zA-Z]+: [A-Za-z]+Fun|publicKeyLookup|jwkSetRetriever|algorithm" repo/vck/src/commonMain/kotlin/at/asitplus/wallet/lib/jws/JwsService.kt
+71:fun interface JwsHeaderModifierFun {
+76:fun interface JwsHeaderIdentifierFun {
+83:class JwsHeaderCertOrJwk : JwsHeaderIdentifierFun {
+98:class JwsHeaderNone : JwsHeaderIdentifierFun {
+106:fun interface SignJwtFun<P : Any> {
+115:fun interface SignJwtExtFun<P : Any> {
+125:class SignJwt<P : Any>(
+127:    val headerModifier: JwsHeaderIdentifierFun,
+135:            algorithm = keyMaterial.signatureAlgorithm.toJwsAlgorithm().getOrThrow(),
+152:class SignJwtExt<P : Any>(
+154:    val headerModifier: JwsHeaderIdentifierFun,
+163:            algorithm = keyMaterial.signatureAlgorithm.toJwsAlgorithm().getOrThrow(),
+182:fun interface EncryptJweFun {
+192:class EncryptJwe(
+214:fun interface EncryptJweSymmetricFun {
+222:class EncryptJweSymmetric(
+231:        val algorithm = jweEncryption.algorithm
+232:        require(algorithm.requiresNonce())
+233:        require(algorithm.isAuthenticated())
+281:        val algorithm = jweEncryption.algorithm
+282:        require(algorithm.requiresNonce())
+283:        require(algorithm.isAuthenticated())
+284:        val key = algorithm.keyFromIntermediate(intermediateKey)
+309:        require(header.algorithm == JweAlgorithm.ECDH_ES)
+310:        val algorithm = header.encryption!!.algorithm
+311:        require(algorithm.requiresNonce())
+312:        require(algorithm.isAuthenticated())
+313:        val key = algorithm.keyFromIntermediate(intermediateKey)
+329:        require(jweHeader.algorithm is JweAlgorithm.Symmetric)
+330:        val keyAlgorithm = (jweHeader.algorithm as JweAlgorithm.Symmetric).algorithm
+331:        if (key.algorithm != keyAlgorithm)
+332:            throw IllegalArgumentException("Key algorithm mismatch: $keyAlgorithm != ${key.algorithm}")
+334:        val contentAlgorithm = jweHeader.encryption!!.algorithm
+365:        val keyAlgorithm = (header.algorithm as JweAlgorithm.Symmetric).algorithm
+366:        if (key.algorithm != keyAlgorithm)
+367:            throw IllegalArgumentException("Key algorithm mismatch: $keyAlgorithm != ${key.algorithm}")
+394:        val contentAlgorithm = header.encryption!!.algorithm
+421:fun interface DecryptJweFun {
+431:class DecryptJwe(
+438:        val alg = header.algorithm
+439:            ?: throw IllegalArgumentException("No algorithm in JWE header")
+443:        require(enc.algorithm.requiresNonce())
+444:        require(enc.algorithm.isAuthenticated())
+457:class DecryptJweSymmetric(
+464:        header.algorithm
+465:            ?: throw IllegalArgumentException("No algorithm in JWE header")
+468:        val algorithm = enc.algorithm
+469:        require(algorithm.requiresNonce())
+470:        require(algorithm.isAuthenticated())
+480:fun interface JwkSetRetrieverFunction {
+487:fun interface PublicJsonWebKeyLookup {
+496:fun interface TrustStoreLookup {
+502:fun interface VerifyJwsSignatureFun {
+513:class VerifyJwsSignature @JvmOverloads constructor(
+514:    val verifySignature: VerifySignatureFun = VerifySignature(),
+520:        val jwsAlgorithm = jwsObject.jwsHeader.algorithm
+525:            jwsAlgorithm.algorithm,
+531:fun interface VerifyJwsSignatureWithKeyFun {
+542:class VerifyJwsSignatureWithKey @JvmOverloads constructor(
+543:    val verifyJwsSignature: VerifyJwsSignatureFun = VerifyJwsSignature(),
+551:fun interface VerifyJwsSignatureWithCnfFun {
+562:class VerifyJwsSignatureWithCnf @JvmOverloads constructor(
+563:    val verifyJwsSignature: VerifyJwsSignatureFun = VerifyJwsSignature(),
+568:    val jwkSetRetriever: JwkSetRetrieverFunction = JwkSetRetrieverFunction { null },
+591:        jwkSetRetriever(jku)?.keys?.let { keys ->
+603:class VerifyStatusListTokenHAIP @JvmOverloads constructor(
+604:    val verifyJwsSignature: VerifyJwsSignatureFun = VerifyJwsSignature(),
+646:fun interface VerifyJwsObjectFun {
+656:class VerifyJwsObject @JvmOverloads constructor(
+657:    val verifyJwsSignature: VerifyJwsSignatureFun = VerifyJwsSignature(),
+662:    val jwkSetRetriever: JwkSetRetrieverFunction = JwkSetRetrieverFunction { null },
+664:    val publicKeyLookup: PublicJsonWebKeyLookup = PublicJsonWebKeyLookup { null },
+676:     * as well as out-of-band transmitted keys from [publicKeyLookup].
+682:            } ?: publicKeyLookup(this)?.mapNotNull { jwk -> jwk.toCryptoPublicKey().getOrNull() }?.toSet()
+692:        jwkSetRetriever(jku)?.keys?.let { keys ->
+705:class VerifyJwsObjectJades(
+706:    val verifyJwsObject: VerifyJwsObjectFun = VerifyJwsObject(),
+746:     * Parses the JAdES digest algorithm string into a [Digest] instance.
+747:     * Throws [IllegalArgumentException] if the algorithm is forbidden (like SHA-256 in x5t#o) or unsupported.
+757:                "Unsupported JAdES digest algorithm: '$alg'. System supports 'sha-384' or 'sha-512'."
+
+$ sed -n 476,545p repo/vck/src/commonMain/kotlin/at/asitplus/wallet/lib/jws/JwsService.kt
+
+/**
+ * Clients need to retrieve the URL passed in as the only argument, and parse the content to [JsonWebKeySet].
+ */
+fun interface JwkSetRetrieverFunction {
+    suspend operator fun invoke(url: String): JsonWebKeySet?
+}
+
+/**
+ * Clients get the parsed [JwsCompact] and need to provide a set of keys, which will be used for verification one-by-one.
+ */
+fun interface PublicJsonWebKeyLookup {
+    suspend operator fun invoke(
+        jwsObject: JwsCompact,
+    ): Set<JsonWebKey>?
+}
+
+/**
+ * Assumes that truststore is populated by x509 certificates
+ */
+fun interface TrustStoreLookup {
+    suspend operator fun invoke(
+        jwsObject: JwsCompact,
+    ): Set<X509Certificate>?
+}
+
+fun interface VerifyJwsSignatureFun {
+    suspend operator fun invoke(
+        jwsObject: JwsCompact,
+        publicKey: CryptoPublicKey,
+    ): KmmResult<Verifier.Success>
+}
+
+/**
+ * Verifies a JWS signature against a provided public key.
+ * Use when the verification key is already resolved out of band.
+ */
+class VerifyJwsSignature @JvmOverloads constructor(
+    val verifySignature: VerifySignatureFun = VerifySignature(),
+) : VerifyJwsSignatureFun {
+    override suspend operator fun invoke(
+        jwsObject: JwsCompact,
+        publicKey: CryptoPublicKey,
+    ) = catching {
+        val jwsAlgorithm = jwsObject.jwsHeader.algorithm
+        require(jwsAlgorithm is JwsAlgorithm.Signature) { "Algorithm not supported: $jwsAlgorithm" }
+        verifySignature(
+            jwsObject.signatureInput,
+            jwsObject.signature,
+            jwsAlgorithm.algorithm,
+            publicKey,
+        ).getOrThrow()
+    }
+}
+
+fun interface VerifyJwsSignatureWithKeyFun {
+    suspend operator fun invoke(
+        jwsObject: JwsCompact,
+        signer: JsonWebKey,
+    ): KmmResult<Verifier.Success>
+}
+
+/**
+ * Verifies a JWS signature using a JSON Web Key.
+ * Use when the signer key is available in JWK form.
+ */
+class VerifyJwsSignatureWithKey @JvmOverloads constructor(
+    val verifyJwsSignature: VerifyJwsSignatureFun = VerifyJwsSignature(),
+) : VerifyJwsSignatureWithKeyFun {
+    override suspend operator fun invoke(
+
+$ sed -n 646,697p repo/vck/src/commonMain/kotlin/at/asitplus/wallet/lib/jws/JwsService.kt
+fun interface VerifyJwsObjectFun {
+    suspend operator fun invoke(
+        jwsObject: JwsCompact,
+    ): KmmResult<Verifier.Success>
+}
+
+/**
+ * Verifies a JWS by loading possible signing keys from headers or lookup callbacks.
+ * Use for validating incoming JWS objects in verification flows.
+ */
+class VerifyJwsObject @JvmOverloads constructor(
+    val verifyJwsSignature: VerifyJwsSignatureFun = VerifyJwsSignature(),
+    /**
+     * Need to implement if JSON web keys in JWS headers are referenced by a `kid`, and need to be retrieved from
+     * the `jku`.
+     */
+    val jwkSetRetriever: JwkSetRetrieverFunction = JwkSetRetrieverFunction { null },
+    /** Need to implement if valid keys for JWS are transported somehow out-of-band, e.g. provided by a trust store */
+    val publicKeyLookup: PublicJsonWebKeyLookup = PublicJsonWebKeyLookup { null },
+) : VerifyJwsObjectFun {
+    override suspend operator fun invoke(jwsObject: JwsCompact) = catching {
+        require(jwsObject.loadPublicKeys().any { verifyJwsSignature(jwsObject, it).isSuccess }) {
+            "Invalid Signature"
+        }
+        Verifier.Success
+    }
+
+    /**
+     * Returns a list of public keys that may have been used to sign this [JwsCompact]
+     * by evaluating its header values (see [JwsHeader.jsonWebKey], [JwsHeader.jsonWebKeySetUrl])
+     * as well as out-of-band transmitted keys from [publicKeyLookup].
+     */
+    private suspend fun JwsCompact.loadPublicKeys(): Set<CryptoPublicKey> =
+        jwsHeader.publicKey?.let { setOf(it) }
+            ?: jwsHeader.jsonWebKeySetUrl?.let {
+                retrieveJwkFromKeySetUrl(it, jwsHeader.keyId)?.let { setOf(it) }
+            } ?: publicKeyLookup(this)?.mapNotNull { jwk -> jwk.toCryptoPublicKey().getOrNull() }?.toSet()
+            ?: setOf()
+
+    /**
+     * Either take the single key from the JSON Web Key Set, or the one matching the keyId
+     */
+    private suspend fun retrieveJwkFromKeySetUrl(
+        jku: String,
+        keyId: String?,
+    ): CryptoPublicKey? =
+        jwkSetRetriever(jku)?.keys?.let { keys ->
+            (keys.firstOrNull { it.keyId == keyId } ?: keys.singleOrNull())
+        }?.toCryptoPublicKey()?.getOrNull()
+
+}
+
+
+$ sed -n 25,40p repo/vck/src/commonMain/kotlin/at/asitplus/wallet/lib/agent/ValidatorSdJwt.kt; sed -n 108,131p repo/vck/src/commonMain/kotlin/at/asitplus/wallet/lib/agent/ValidatorSdJwt.kt
+/**
+ * Parses and validates Verifiable Credentials and Verifiable Presentations.
+ * Does verify the cryptographic authenticity of the data.
+ * Does verify the revocation status of the data (when a status information is encoded in the credential).
+ */
+class ValidatorSdJwt @JvmOverloads constructor(
+    private val verifySignature: VerifySignatureFun = VerifySignature(),
+    private val verifyJwsSignature: VerifyJwsSignatureFun = VerifyJwsSignature(verifySignature),
+    private val verifyJwsObject: VerifyJwsObjectFun = VerifyJwsObject(verifyJwsSignature),
+    private val verifyJwsSignatureWithCnf: VerifyJwsSignatureWithCnfFun = VerifyJwsSignatureWithCnf(verifyJwsSignature),
+    /** Toggles whether transaction data should be verified if present. */
+    private val verifyTransactionData: Boolean = true,
+    /** Structure / Integrity / Semantics validator. */
+    private val sdJwtInputValidator: SdJwtInputValidator = SdJwtInputValidator(verifyJwsObject = verifyJwsObject),
+    private val validator: Validator = Validator(),
+) {
+...
+    /**
+     * Validates the content of an [SdJwtSigned], expected to contain a [VerifiableCredentialSdJwt].
+     *
+     * @param publicKey Optionally, the local key, to verify SD-JWT was bound to it
+     */
+    suspend fun verifySdJwt(
+        sdJwtSigned: SdJwtSigned,
+        publicKey: CryptoPublicKey?,
+    ): KmmResult<VerifyCredentialResult.SuccessSdJwt> = catching {
+        Napier.d("Verifying SD-JWT $sdJwtSigned for $publicKey")
+        val validationResult = sdJwtInputValidator.invoke(sdJwtSigned, publicKey)
+        return when {
+            validationResult.integrityValidationResult.isFailure ->
+                throw validationResult.integrityValidationResult.exceptionOrNull()!!
+
+            validationResult.payloadCredentialValidationSummary.getOrNull()?.isSuccess == false
+                -> throw IllegalArgumentException(
+                "cnf claim invalid",
+                validationResult.payloadCredentialValidationSummary.exceptionOrNull()
+            )
+
+            else -> validationResult.payload
+        }
+    }
+
+$ sed -n 19,27p repo/vck/src/commonMain/kotlin/at/asitplus/wallet/lib/agent/validation/sdJwt/SdJwtInputValidator.kt; sed -n 68,74p repo/vck/src/commonMain/kotlin/at/asitplus/wallet/lib/agent/validation/sdJwt/SdJwtInputValidator.kt
+data class SdJwtInputValidator @JvmOverloads constructor(
+    private val timeLeeway: Duration = 300.seconds,
+    private val clock: Clock = Clock.System,
+    private val verifyJwsObject: VerifyJwsObjectFun = VerifyJwsObject(),
+) {
+    suspend operator fun invoke(
+        sdJwtSigned: SdJwtSigned,
+        publicKey: CryptoPublicKey?,
+    ): SdJwtInputValidationResult {
+...
+        return SdJwtInputValidationResult(
+            input = sdJwtSigned,
+            integrityValidationResult = verifyJwsObject(sdJwtSigned.jws),
+            payloadCredentialValidationSummary = payloadCredentialValidationSummary,
+            payloadJsonValidationSummary = payloadJsonValidationSummary,
+            payload = payloadValidationSummary,
+        )
+
+$ grep -rn "JwsGeneral\|JwsJson\|\"signatures\"" repo/vck/src/commonMain repo/openid-data-classes/src/commonMain || echo "no JWS JSON / multi-signature type"
+repo/openid-data-classes/src/commonMain/kotlin/at/asitplus/dcapi/request/verifier/DigitalCredentialGetRequest.kt:8:import at.asitplus.signum.indispensable.josef.JwsGeneral
+repo/openid-data-classes/src/commonMain/kotlin/at/asitplus/dcapi/request/verifier/DigitalCredentialGetRequest.kt:40:            val request: JwsGeneral
+repo/openid-data-classes/src/commonMain/kotlin/at/asitplus/openid/RequestParametersFrom.kt:9:import at.asitplus.signum.indispensable.josef.JwsGeneral
+repo/openid-data-classes/src/commonMain/kotlin/at/asitplus/openid/RequestParametersFrom.kt:10:import at.asitplus.signum.indispensable.josef.JwsGeneralTyped
+repo/openid-data-classes/src/commonMain/kotlin/at/asitplus/openid/RequestParametersFrom.kt:80:        @Serializable(with = JwsGeneralAuthParamSerializer::class)
+repo/openid-data-classes/src/commonMain/kotlin/at/asitplus/openid/RequestParametersFrom.kt:82:        override val jwsTyped: JwsGeneralTyped<AuthenticationRequestParameters>,
+repo/openid-data-classes/src/commonMain/kotlin/at/asitplus/openid/RequestParametersFrom.kt:99:        object JwsGeneralAuthParamSerializer :
+repo/openid-data-classes/src/commonMain/kotlin/at/asitplus/openid/RequestParametersFrom.kt:100:            KSerializer<JwsGeneralTyped<AuthenticationRequestParameters>> by JwsTypedSerializerTemplate(
+repo/openid-data-classes/src/commonMain/kotlin/at/asitplus/openid/RequestParametersFrom.kt:101:                JwsGeneral.serializer(),
+repo/openid-data-classes/src/commonMain/kotlin/at/asitplus/openid/RequestParametersFromSerializer.kt:14:import at.asitplus.signum.indispensable.josef.JwsGeneral
+repo/openid-data-classes/src/commonMain/kotlin/at/asitplus/openid/RequestParametersFromSerializer.kt:104:                jwsTyped = JwsTyped(requireJwsGeneral(), requireAuthenticationRequestParameters()),
+repo/openid-data-classes/src/commonMain/kotlin/at/asitplus/openid/RequestParametersFromSerializer.kt:176:    private fun requireJwsGeneral(): JwsGeneral =
+repo/openid-data-classes/src/commonMain/kotlin/at/asitplus/openid/RequestParametersFromSerializer.kt:177:        jws as? JwsGeneral
+
+$ sed -n 16,25p repo/openid-data-classes/src/commonMain/kotlin/at/asitplus/wallet/lib/jws/SdJwtSigned.kt
+data class SdJwtSigned(
+    /**
+     * Holds signed JWS in compact representation. To access the payload use
+     * [at.asitplus.signum.indispensable.josef.JWS.getPayload]
+     */
+    val jws: JwsCompact,
+    val rawDisclosures: List<String>,
+    val keyBindingJws: JwsCompactTyped<KeyBindingJws>? = null,
+    val hashInput: String,
+) {
+
+$ sed -n 17,34p repo/vck/src/commonMain/kotlin/at/asitplus/wallet/lib/agent/CryptoService.kt
+fun interface VerifySignatureFun {
+    suspend operator fun invoke(
+        input: ByteArray,
+        signature: CryptoSignature,
+        algorithm: SignatureAlgorithm,
+        publicKey: CryptoPublicKey,
+    ): KmmResult<Verifier.Success>
+}
+
+class VerifySignature : VerifySignatureFun {
+    override suspend operator fun invoke(
+        input: ByteArray,
+        signature: CryptoSignature,
+        algorithm: SignatureAlgorithm,
+        publicKey: CryptoPublicKey
+    ): KmmResult<Verifier.Success> = algorithm.verifierFor(publicKey).transform {
+        it.verify(SignatureInput(input), signature)
+    }

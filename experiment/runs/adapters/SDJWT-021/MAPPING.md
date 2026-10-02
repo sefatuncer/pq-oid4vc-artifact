@@ -8,8 +8,8 @@
 The same as `JOSE-087/MAPPING.md` §1 (normalisation, P2 included).
 
 ## 2. Public API and policy mapping
-SdJwtLib has two public verification routes (reflection: `evidence/api-tarama.txt`; source: `evidence/kaynak-alintilari.txt`, commit `2ed7a64b9c44`):
-1. `Roles.Implementation.Verifier.VerifyPresentation(string presentation, string issuerJwk) → bool` — in the source `VerifyJwt` is called, but the method **returns `false` in every case** and rejects every token with IDX10208 because of `ValidateAudience = true` + `ValidAudience = null` (`Verifier.cs`, whole file). It cannot produce an acceptance → not used (attempt 1, `evidence/deneme1-verifypresentation.txt`).
+SdJwtLib has two public verification routes (reflection: `evidence/api-scan.txt`; source: `evidence/source-quotes.txt`, commit `2ed7a64b9c44`):
+1. `Roles.Implementation.Verifier.VerifyPresentation(string presentation, string issuerJwk) → bool` — in the source `VerifyJwt` is called, but the method **returns `false` in every case** and rejects every token with IDX10208 because of `ValidateAudience = true` + `ValidAudience = null` (`Verifier.cs`, whole file). It cannot produce an acceptance → not used (attempt 1, `evidence/attempt1-verifypresentation.txt`).
 2. **`new SdJwtDoc(serialized).AssertThatJwtSignatureIsValid(string issuerJwk, string expectedIssuer)`** (the public `SdJwtDoc` model) — **the route used.** Inside, `JwtSecurityTokenHandler.ValidateToken` is called with `ValidIssuer = expectedIssuer`, **`ValidTypes = {"vc+sd-jwt"}`**, **`ValidAlgorithms = {"ES256"}`** hard-coded (`SdJwtDoc.cs` L49–73).
 
 | Policy | Mapping |
@@ -17,7 +17,7 @@ SdJwtLib has two public verification routes (reflection: `evidence/api-tarama.tx
 | GEC / P0 / P1 / P2 / VARSAYILAN | `AssertThatJwtSignatureIsValid(jwk_json, iss)` (the API takes only the key and the issuer; the alg/typ set is fixed in the library) |
 | IZIN-A, IZIN-AX, L4, L4-S, L4-Y, L4-YOL | **`ifade-edilemedi`**: the API has no parameter for an alg allow-list, a required set or a path policy |
 
-- **Key path `JWK`** (issuer JWK JSON string). **`expectedIssuer`:** the trusted issuer configuration (key ↔ iss): `https://issuer.example`; for the old issuer key (kid `GGKBh_lE…`, `anahtarlar/v1.3/roller.json`) `https://legacy-issuer.example`.
+- **Key path `JWK`** (issuer JWK JSON string). **`expectedIssuer`:** the trusted issuer configuration (key ↔ iss): `https://issuer.example`; for the old issuer key (kid `GGKBh_lE…`, `keys/v1.3/roller.json`) `https://legacy-issuer.example`.
 - **Presentation format:** compact `jws-cekirdek` vectors are presented, by the maintainers' rule, as an SD-JWT without disclosures: `"<jws>~"` (payload and signature unchanged). For the OID4VCI batch response (VC10) `credentials[0]` is evaluated (BATARYA-ESLEME K11). This API has no KB-JWT verification.
 - **x5c:** the API takes no x5c; in the X5C vectors the key is given as a JWK via the manifest kid (deviation from contract §8 item 2; the target has no x5c route).
 - `dogrulanan_algoritmalar`: the API returns `void`/`bool` → `[]`.

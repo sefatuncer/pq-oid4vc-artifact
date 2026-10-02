@@ -1,6 +1,6 @@
 # UNDETERMINED DECISIONS — Oracle B
 
-> Reasons of the **89 rows** with `karar = indeterminate` in `karar.tsv` (12.2 % of 732 rows). Criterion (`METHOD.md` §6.3): a decision is undetermined if the clauses do not choose between acceptance and rejection at MUST/MUST NOT/REQUIRED level, or if the context needed for the decision is missing from `insa` / `dogrulama_girdileri`. SHOULD/RECOMMENDED/MAY are written only as a **direction**.
+> Reasons of the **89 rows** with `karar = indeterminate` in `decisions.tsv` (12.2 % of 732 rows). Criterion (`METHOD.md` §6.3): a decision is undetermined if the clauses do not choose between acceptance and rejection at MUST/MUST NOT/REQUIRED level, or if the context needed for the decision is missing from `insa` / `dogrulama_girdileri`. SHOULD/RECOMMENDED/MAY are written only as a **direction**.
 >
 > **Effect on pre-registered variables: none.** None of the 159 rows of the primary (vector, arm) pairs is `indeterminate`. All rows below are secondary, MR twins or outside the mapping (PR §2G item 4: descriptive).
 >

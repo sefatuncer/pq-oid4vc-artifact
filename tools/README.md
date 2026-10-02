@@ -55,7 +55,7 @@ Run the solvers:
 MSYS_NO_PATHCONV=1 docker run --rm -v "$(cygpath -m "$PWD/models/asp"):/work" -w /work pq-a02-solver:1.0 python <script>.py
 ```
 
-## Acceptance test (`regression-tests/calistir.sh`)
+## Acceptance test (`regression-tests/run.sh`)
 
 The test reproduces the design-stage pilots P1 (Tamarin), P1b (ProVerif) and P2 (ASP + z3) with the
 new images. Result (23.09.2026): **identical**. Details in
@@ -74,7 +74,7 @@ new images. Result (23.09.2026): **identical**. Details in
 | P2 ASP + z3 | 48 queries, 48/48 agreement, single optimal order | 48 queries in 0.028 s; z3–clingo **48/48**; optimal order 1 |
 | P1b ProVerif, 4 variants | 1 true, 1 false, 2 "cannot be proved" | the same (TLpq+required: true; TLpq+none: false; TLclassical: 2× cannot be proved) |
 
-Raw outputs: `regression-tests/sonuc/`, `regression-tests/p1/out_*.txt`, `regression-tests/p2/`.
+Raw outputs: `regression-tests/results/`, `regression-tests/p1/out_*.txt`, `regression-tests/p2/`.
 
 ## Integrity check (`verify_anchors.py`)
 
@@ -96,6 +96,6 @@ entry is accounted for. Background and the last output: [`../docs/INTEGRITY.md`]
 
 ## Turkish names in this folder
 
-`build.sh` builds the images · `indir/` downloads (not in the repository) · `beklenen.sha256`
-expected hashes · `regression-tests/calistir.sh` run the acceptance test · `sonuc/` results ·
-`calistir_log.txt` run log · `p1_ozet.txt` P1 summary.
+`indir/` downloads (not in the repository; the Dockerfiles copy from it) · `beklenen.sha256`
+expected hashes. Recorded outputs under `regression-tests/results/` still mention the old names
+`calistir.sh` (now `run.sh`) and `sonuc/` (now `results/`); see `docs/PATHS.tsv`.

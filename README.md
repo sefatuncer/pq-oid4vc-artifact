@@ -126,7 +126,7 @@ are built, except for re-downloading the corpus.
    `spec-corpus/metin/`.
 2. **Tool images.** Place the pinned binaries in `tools/*/indir/` (file names and SHA-256 values
    in [`tools/README.md`](tools/README.md)), then run `sh tools/build.sh` and build
-   `tools/proverif`. `sh tools/regression-tests/calistir.sh` re-runs the design-stage pilots as an
+   `tools/proverif`. `sh tools/regression-tests/run.sh` re-runs the design-stage pilots as an
    acceptance test.
 3. **Models.** Follow the README of each folder in step order: `models/asp/`, `models/tamarin/`,
    `models/sampling/`, `models/known-answer-tests/`, `models/mechanisms/`. Tamarin runs always use
@@ -138,23 +138,25 @@ are built, except for re-downloading the corpus.
 Quick checks that need only Python (no Docker):
 
 ```
-python experiment/oracle/birlesik/turet_v13.py            # rewrites karar_v13.tsv identically
-cd experiment/statistics && python sentetik-testler/calistir.py --cikti /tmp/c3istat-test
+python experiment/oracle/merged/derive_v13.py            # rewrites decisions_v13.tsv identically
+cd experiment/statistics && python synthetic-tests/run_tests.py --cikti /tmp/c3istat-test
 ```
 
-The battery-mapping audit (`experiment/vector-generator/testler/t11_esleme_denetim.py`) also needs
+The battery-mapping audit (`experiment/vector-generator/tests/t11_mapping_audit.py`) also needs
 the pre-registration document, which is not part of this release.
 
 ## Language, names and integrity
 
 - The study was run in Turkish. Documentation and the comments of hand-written scripts are in
-  English. Folder names below the second level, file names, data fields and data values are still
-  Turkish because recorded outputs refer to them. Model files (ASP `.lp`, Tamarin `.spthy`),
+  English. Folder names and the names of scripts and hand-made inputs are English; Python module
+  names, adapter sources, the files inside the frozen vector and key sets, data fields and data
+  values are still Turkish because code, digests and recorded outputs refer to them. Model files (ASP `.lp`, Tamarin `.spthy`),
   generated samples and recorded outputs keep their Turkish comments and messages: they are inputs
   or outputs of recorded runs, and some of them are checked by hard-coded digests. See [`docs/GLOSSARY.md`](docs/GLOSSARY.md) and
   [`docs/DATA-DICTIONARY.md`](docs/DATA-DICTIONARY.md).
 - Recorded outputs keep the paths that were valid when they were produced; the old and new folder
-  and document names are in [`docs/PATHS.md`](docs/PATHS.md).
+  and document names are in [`docs/PATHS.md`](docs/PATHS.md) and, one row per renamed folder or
+  file, in [`docs/PATHS.tsv`](docs/PATHS.tsv).
 - Per-folder integrity lists (`SHA256SUMS`, `*.sha256`) are kept exactly as they were recorded
   before the runs. Where this release translated or renamed a listed file, the recorded bytes are
   kept in `archive/hash-anchored/`. [`docs/INTEGRITY.md`](docs/INTEGRITY.md) explains this, and
@@ -164,6 +166,6 @@ the pre-registration document, which is not part of this release.
 
 Code: MIT (see [`LICENSE`](LICENSE)). Data, models and documentation: CC BY 4.0.
 Third-party specifications are not redistributed; they are referenced by URL and SHA-256.
-Third-party build outputs under `experiment/environments/hedefler/*/cikti*/` (lock files,
+Third-party build outputs under `experiment/environments/targets/*/output*/` (lock files,
 dependency lists) are kept as records of the build environment and remain under the licences of
 their projects.

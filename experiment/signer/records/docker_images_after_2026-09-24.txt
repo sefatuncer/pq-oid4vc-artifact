@@ -1,0 +1,12 @@
+# Unrelated local images and containers of the build machine were removed from this record on 2026-10-03 (privacy).
+REPOSITORY                            TAG                DIGEST                                                                    IMAGE ID       CREATED         SIZE
+pq-a09-credgen                        1.0                sha256:55ac321117b72a72b92d06c24db2e327ce64448caa256772b08ab03848ec3aac   55ac321117b7   4 minutes ago   223MB
+pq-a09-signer                         1.0                sha256:beeb05a70a97996f72e54c337512c106ca48187b361bae5e2bce2dea9750a21a   beeb05a70a97   4 minutes ago   223MB
+pq-a02-proverif                       2.05               sha256:9d15c7a7dc2c3e5c8cf777f5fb1facfb739810f5b1a8cecc438957aa55a8923e   9d15c7a7dc2c   20 hours ago    208MB
+pq-a02-solver                         1.0                sha256:02c637eba8b0147f3a0302100a62b846f17d927e1932aeeda77c655da48efc82   02c637eba8b0   20 hours ago    339MB
+pq-a02-tamarin                        1.12.0             sha256:59b648d60829c4580504470be1b171df0e63ead38bebc8944ac8ee2bba6b9c60   59b648d60829   20 hours ago    273MB
+python                                3.10-slim          sha256:fd76ade0c607f27677bc04be3c60749f400eedc941d9e72967e19a4cedff80c2   fd76ade0c607   3 weeks ago     197MB
+python                                3.11-slim          sha256:9534e5a8e315485d4061ed659af0fd78a284c015f9b73661b41d6bab25604534   9534e5a8e315   3 weeks ago     200MB
+mcr.microsoft.com/dotnet/sdk          8.0                sha256:306301580fcaa5b445180e759db59309979002d1000669cb4cf58a567d0014bc   306301580fca   6 weeks ago     1.2GB
+node                                  20-bookworm        sha256:8f693eaa7e0a8e71560c9a82b55fd54c2ae920a2ba5d2cde28bac7d1c01c9ba5   8f693eaa7e0a   5 months ago    1.59GB
+node                                  20-bookworm-slim   sha256:2cf067cfed83d5ea958367df9f966191a942351a2df77d6f0193e162b5febfc0   2cf067cfed83   5 months ago    293MB

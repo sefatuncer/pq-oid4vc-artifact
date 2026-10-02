@@ -83,20 +83,34 @@ const T = {
       ver: require('cose-js/package.json').version, api: 'cose.sign.verify(cbor, {key:{x,y,kid}}) (key from the message kid or alg)', formats: new Set(['COSE_Sign1', 'COSE_Sign']),
       async verify(job, data, X) {
         const pol = temel(job.politika);
-        if (!['GEC', 'P0', 'P1', 'P2'].includes(pol)) return 'ifade-edilemedi';   // cose-js has no option for an algorithm allow-list or a required set
+        // cose-js has no option for an algorithm allow-list. L4 is expressed through its documented signer selection
+        // (pre-freeze decision D8, evidence-rule second attempt).
+        if (!['GEC', 'P0', 'P1', 'P2', 'L4'].includes(pol)) return 'ifade-edilemedi';
         const buf = Buffer.from(readFileSync(`/v/${job.dosya}`));
         // Verifier key (cose-js supports ES/PS/RS only; lib/sign.js AlgFromTags). For COSE_Sign1 the key is chosen
         // from the message's kid, or from its alg (-7 ES256, -35 ES384); COSE_Sign keeps the ES256 key.
         let alg = 'ES256', j = KID[ALG2KID['ES256']];
         const t = cborlib.decodeFirstSync(buf);
-        if (t && t.tag === 18 && Array.isArray(t.value) && t.value[0] && t.value[0].length) {
+        if (pol === 'L4' && !job.vektor_id.includes('eski')) {
+          // L4 for a migrated issuer (R = {X}): cose.sign.verify checks exactly the signer whose kid equals the kid
+          // of the verifier key (lib/sign.js getSigner), so the configuration is the key of the required algorithm X.
+          // A legacy issuer (vector ids with "eski", W = {A, X}, R empty) keeps the key resolution below.
+          const kx = KID[ALG2KID[X]];
+          if (!kx || kx.kty !== 'EC') throw new Error(`unsupported algorithm ${X} for cose-js`);
+          j = kx; alg = kx.crv === 'P-384' ? 'ES384' : 'ES256';
+        } else if (t && t.tag === 18 && Array.isArray(t.value) && t.value[0] && t.value[0].length) {
           const h = cborlib.decodeFirstSync(t.value[0]);
-          const kid = h.get(4) ? Buffer.from(h.get(4)).toString('base64url') : null;
+          // The kid may sit in the protected or in the unprotected header (the battery uses the unprotected one).
+          const u = t.value[1] instanceof Map ? t.value[1] : new Map();
+          const kidRaw = h.get(4) ?? u.get(4);
+          const kid = kidRaw ? Buffer.from(kidRaw).toString('base64url') : null;
           const a = h.get(1);
           if (kid && KID[kid] && KID[kid].kty === 'EC') { j = KID[kid]; alg = KID[kid].crv === 'P-384' ? 'ES384' : 'ES256'; }
           else if (a === -35) { j = KID[ALG2KID['ES384']]; alg = 'ES384'; }
         }
-        const verifier = { key: { x: b64d(j.x), y: b64d(j.y), kid: j.kid } };
+        // The COSE kid is the base64url-decoded JWK kid (32 bytes). getSigner compares it with Buffer.from(key.kid),
+        // so the kid must be passed as bytes; a base64url string never matches a signer of a COSE_Sign message.
+        const verifier = { key: { x: b64d(j.x), y: b64d(j.y), kid: b64d(j.kid) } };
         await cose.sign.verify(buf, verifier);
         return [{ sira: 0, alg, sonuc: 'gecerli' }];
       },

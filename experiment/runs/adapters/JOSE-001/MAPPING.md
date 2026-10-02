@@ -27,7 +27,7 @@ The same as `JOSE-087/MAPPING.md` §1 (A/X, W/R, effective allow-list for a sing
 | Serialization | Decision | Basis |
 |---|---|---|
 | compact | supported | `JsonWebTokenHandler` |
-| general, sd-jwt-*, oid4vci-toplu-yanit, dcapi-json-parametre | **B6** | no JWS JSON serialization and no SD-JWT API (reflection scan: `evidence/api-tarama.txt`) |
+| general, sd-jwt-*, oid4vci-toplu-yanit, dcapi-json-parametre | **B6** | no JWS JSON serialization and no SD-JWT API (reflection scan: `evidence/api-scan.txt`) |
 | COSE_* | **B6** | no COSE |
 
 ## 4. Exception → hata_sinifi

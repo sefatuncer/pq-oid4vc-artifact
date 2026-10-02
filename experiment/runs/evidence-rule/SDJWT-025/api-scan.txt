@@ -1,0 +1,291 @@
+# API scan, SDJWT-025 spruceid ssi, crate ssi-sd-jwt 0.6.0 (commit 16cd58715aa209f3151560ad59bd6ac65b90fa89)
+# Date (UTC): 2026-10-02T23:37:27Z
+# Sources: (a) crates fetched by cargo in pq-a09-env-rust:1.0 (rustc 1.98.1) with the Cargo.lock of the installation record's
+#              information run (_bilgi-SDJWT-025-ozellik: ssi-sd-jwt =0.6.0, ssi-jws =0.5.0 and ssi-jwk =0.4.0 with features secp256r1, ed25519);
+#              only the root package entry of the lock differs (see attempt/Cargo.lock vs the record)
+#          (b) https://codeload.github.com/spruceid/ssi/tar.gz/16cd58715aa209f3151560ad59bd6ac65b90fa89 (sha256 85026e865497afbe7ca31ad3e65327eaff42907702a8fac8d78a1561f48ef984)
+# 'rg' is not installed on the host; 'grep -rnE' is used with the same patterns.
+
+$ for each crate: diff -rq src/<crate>/src repo/<path_in_vcs>/src
+ssi-sd-jwt-0.6.0: identical to repo/crates/claims/crates/sd-jwt/src
+ssi-jws-0.5.0: identical to repo/crates/claims/crates/jws/src
+ssi-jwt-0.6.0: identical to repo/crates/claims/crates/jwt/src
+ssi-jwk-0.4.0: identical to repo/crates/jwk/src
+ssi-claims-core-0.2.0: identical to repo/crates/claims/core/src
+
+$ grep -rnE "alg|allow|algorithms|required|verif|issuer|policy" repo/crates/claims/crates/sd-jwt/src/lib.rs | grep -vE '^\S+:[0-9]+:\s*//'
+7://! Contrarily to regular JWTs or JWSs that can be verified directly after
+25://! revealed claim to its disclosure. The [`RevealedSdJwt::verify`] function
+26://! can then be used to verify the JWT as usual.
+29://! revealing the claims, a [`SdJwt::decode_reveal_verify`] function is provided
+30://! to decode, reveal and verify the claims directly.
+70:const SD_ALG_CLAIM_NAME: &str = "_sd_alg";
+222:    /// Returns the byte-position just after the issuer-signed JWT.
+250:    /// Returns the issuer-signed JWT.
+323:    pub async fn decode_verify_concealed<P>(
+330:        self.parts().decode_verify_concealed(params).await
+333:    /// Decodes, reveals and verify a compact SD-JWT.
+337:    /// [`Self::decode_reveal_verify`] method with `T` defining the custom
+340:    /// Returns the decoded JWT with the verification status.
+341:    pub async fn decode_reveal_verify_any<P>(
+348:        self.parts().decode_reveal_verify_any(params).await
+351:    /// Decodes, reveals and verify a compact SD-JWT.
+355:    /// for this parameter, you can use the [`Self::decode_reveal_verify_any`]
+358:    /// Returns the decoded JWT with the verification status.
+359:    pub async fn decode_reveal_verify<T, P>(
+367:        self.parts().decode_reveal_verify(params).await
+439:        sd_alg: SdAlg,
+443:        DecodedSdJwt::conceal_and_sign(claims, sd_alg, pointers, signer)
+451:        sd_alg: SdAlg,
+456:        DecodedSdJwt::conceal_and_sign_with(claims, sd_alg, pointers, signer, rng)
+642:    pub async fn decode_verify_concealed<P>(
+650:        let verification = decoded.verify_concealed(params).await?;
+651:        Ok((decoded, verification))
+654:    /// Decodes, reveals and verify a compact SD-JWT.
+658:    /// [`Self::decode_reveal_verify`] method with `T` defining the custom
+661:    /// Returns the decoded JWT with the verification status.
+662:    pub async fn decode_reveal_verify_any<P>(
+670:        decoded.reveal_verify_any(params).await
+673:    /// Decodes, reveals and verify a compact SD-JWT.
+677:    /// for this parameter, you can use the [`Self::decode_reveal_verify_any`]
+680:    /// Returns the decoded JWT with the verification status.
+681:    pub async fn decode_reveal_verify<T, P>(
+690:        decoded.reveal_verify(params).await
+711:    /// Hash algorithm used by the Issuer to generate the digests.
+712:    #[serde(rename = "_sd_alg")]
+713:    pub sd_alg: SdAlg,
+744:    pub async fn verify_concealed<P>(&self, params: P) -> Result<Verification, ProofValidationError>
+748:        self.jwt.verify(params).await
+754:    /// If you need to validate custom claims, use the [`Self::reveal_verify`]
+757:    /// Returns the decoded JWT with the verification status.
+758:    pub async fn reveal_verify_any<P>(
+768:        let verification = revealed.verify(params).await?;
+769:        Ok((revealed, verification))
+776:    /// [`Self::reveal_verify_any`] function instead.
+779:    pub async fn reveal_verify<T, P>(
+790:        let verification = revealed.verify(params).await?;
+791:        Ok((revealed, verification))
+799:        sd_alg: SdAlg,
+804:            SdJwtPayload::conceal(claims, sd_alg, pointers).map_err(SignatureError::other)?;
+815:        sd_alg: SdAlg,
+820:        let (payload, disclosures) = SdJwtPayload::conceal_with(claims, sd_alg, pointers, rng)
+860:    /// Hashing algorithm.
+861:    pub sd_alg: SdAlg,
+879:    pub async fn verify<P>(&self, params: P) -> Result<Verification, ProofValidationError>
+884:        self.jwt.verify(params).await
+
+$ grep -rniE "allow|allowed_alg|accept.*alg|policy|issuer" repo/crates/claims/crates/jws/src repo/crates/claims/crates/jwt/src repo/crates/claims/core/src repo/crates/jwk/src/resolver.rs | grep -viE 'allow\(|#\[allow'
+repo/crates/claims/crates/jws/src/compact/bytes.rs:227:    /// - [`JWK`](ssi_jwk::JWK): allows you to put a JWK as `params`, which
+repo/crates/claims/crates/jws/src/lib.rs:247:    /// - [`JWK`]: allows you to put a JWK as `params`, which
+repo/crates/claims/crates/jws/src/lib.rs:820:                        // Legacy mode: allow using Keccak-256 instead of SHA-256
+repo/crates/claims/crates/jws/src/lib.rs:1095:/// "crit" (critical) header parameters are checked and disallowed if unrecognized/unsupported.
+repo/crates/claims/crates/jws/src/lib.rs:1157:    // Allow ESKeccakK-R misimplementation of ES256K-R, for legacy reasons.
+repo/crates/claims/crates/jws/src/signature.rs:86:/// This is to allow us to progressively add support for new fields without
+repo/crates/claims/crates/jwt/src/claims/matching.rs:21:/// The second one also allows you to properly cast a claim variable.
+repo/crates/claims/crates/jwt/src/claims/mixed/de.rs:305:    /// This allows deserializers that encode an optional value as a nullable
+repo/crates/claims/crates/jwt/src/claims/mixed/mod.rs:8:    AnyClaims, ClaimSet, ExpirationTime, InvalidClaimValue, IssuedAt, Issuer, RegisteredClaim,
+repo/crates/claims/crates/jwt/src/claims/mixed/mod.rs:119:    pub fn iss(self, value: impl TryIntoClaim<Issuer>) -> Self {
+repo/crates/claims/crates/jwt/src/claims/registered.rs:348:    /// Issuer (`iss`) claim.
+repo/crates/claims/crates/jwt/src/claims/registered.rs:352:    "iss": Issuer(StringOrURI),
+repo/crates/claims/crates/jwt/src/claims/registered.rs:358:    /// scoped to be locally unique in the context of the issuer or be globally
+repo/crates/claims/crates/jwt/src/claims/registered.rs:404:    /// the application uses multiple issuers, collisions MUST be prevented
+repo/crates/claims/crates/jwt/src/claims/registered.rs:405:    /// among values produced by different issuers as well.
+repo/crates/claims/crates/jwt/src/datatype/numeric_date.rs:117:        // Have to take seconds and nanoseconds separately in order to get the full allowable
+repo/crates/claims/crates/jwt/src/lib.rs:49://! use ssi_jwt::{JWTClaims, Issuer, IssuedAt, ExpirationTime};
+repo/crates/claims/crates/jwt/src/lib.rs:52://! claims.registered.set(Issuer("http://example.org/#issuer".parse().unwrap()));
+
+$ grep -rn "ValidateJwsHeader" repo/crates/claims/crates/sd-jwt/src repo/crates/claims/crates/jws/src repo/crates/claims/crates/jwt/src
+repo/crates/claims/crates/sd-jwt/src/kb.rs:6:use ssi_jws::{JwsPayload, ValidateJwsHeader};
+repo/crates/claims/crates/sd-jwt/src/kb.rs:65:impl<E> ValidateJwsHeader<E> for KbJwtPayload {
+repo/crates/claims/crates/sd-jwt/src/lib.rs:50:use ssi_jws::{DecodedJws, Jws, JwsPayload, JwsSignature, JwsSigner, ValidateJwsHeader};
+repo/crates/claims/crates/sd-jwt/src/lib.rs:726:impl<E> ValidateJwsHeader<E> for SdJwtPayload {}
+repo/crates/claims/crates/jws/src/lib.rs:258:        T: ValidateJwsHeader<P> + ValidateClaims<P, JwsSignature>,
+repo/crates/claims/crates/jws/src/verification.rs:13:pub trait ValidateJwsHeader<E> {
+repo/crates/claims/crates/jws/src/verification.rs:19:impl<E> ValidateJwsHeader<E> for [u8] {}
+repo/crates/claims/crates/jws/src/verification.rs:21:impl<E, T: ?Sized + ToOwned + ValidateJwsHeader<E>> ValidateJwsHeader<E> for Cow<'_, T> {
+repo/crates/claims/crates/jws/src/verification.rs:27:impl<E, T: ValidateClaims<E, JwsSignature> + ValidateJwsHeader<E>> ValidateClaims<E, JwsSignature>
+repo/crates/claims/crates/jwt/src/claims/mixed/mod.rs:3:use ssi_jws::{JwsPayload, ValidateJwsHeader};
+repo/crates/claims/crates/jwt/src/claims/mixed/mod.rs:85:impl<T, E> ValidateJwsHeader<E> for JWTClaims<T> {
+
+$ grep -rn "impl.*JWKResolver for" repo/crates/jwk repo/crates/claims
+repo/crates/jwk/src/resolver.rs:23:impl<T: JWKResolver> JWKResolver for &T {
+repo/crates/jwk/src/resolver.rs:32:impl JWKResolver for JWK {
+
+$ sed -n 9,39p repo/crates/jwk/src/resolver.rs
+/// JWK resolver.
+///
+/// Any type that can fetch a JWK from its identifier.
+pub trait JWKResolver {
+    /// Fetches a JWK by id.
+    ///
+    /// The key identifier is optional since the key may be known in advance.
+    #[allow(async_fn_in_trait)]
+    async fn fetch_public_jwk(
+        &'_ self,
+        key_id: Option<&str>,
+    ) -> Result<Cow<'_, JWK>, ProofValidationError>;
+}
+
+impl<T: JWKResolver> JWKResolver for &T {
+    async fn fetch_public_jwk(
+        &'_ self,
+        key_id: Option<&str>,
+    ) -> Result<Cow<'_, JWK>, ProofValidationError> {
+        T::fetch_public_jwk(*self, key_id).await
+    }
+}
+
+impl JWKResolver for JWK {
+    async fn fetch_public_jwk(
+        &'_ self,
+        _key_id: Option<&str>,
+    ) -> Result<Cow<'_, JWK>, ProofValidationError> {
+        Ok(Cow::Borrowed(self))
+    }
+}
+
+$ sed -n 13,33p repo/crates/claims/crates/jws/src/verification.rs; sed -n 102,123p repo/crates/claims/crates/jws/src/verification.rs
+pub trait ValidateJwsHeader<E> {
+    fn validate_jws_header(&self, _env: &E, _header: &Header) -> ClaimsValidity {
+        Ok(())
+    }
+}
+
+impl<E> ValidateJwsHeader<E> for [u8] {}
+
+impl<E, T: ?Sized + ToOwned + ValidateJwsHeader<E>> ValidateJwsHeader<E> for Cow<'_, T> {
+    fn validate_jws_header(&self, env: &E, header: &Header) -> ClaimsValidity {
+        self.as_ref().validate_jws_header(env, header)
+    }
+}
+
+impl<E, T: ValidateClaims<E, JwsSignature> + ValidateJwsHeader<E>> ValidateClaims<E, JwsSignature>
+    for DecodedSigningBytes<'_, T>
+{
+    fn validate_claims(&self, env: &E, signature: &JwsSignature) -> ClaimsValidity {
+        self.payload.validate_jws_header(env, &self.header)?;
+        self.payload.validate_claims(env, signature)
+    }
+...
+impl<'b, V, T> ValidateProof<V, DecodedSigningBytes<'b, T>> for JwsSignature
+where
+    V: ResolverProvider,
+    V::Resolver: JWKResolver,
+{
+    async fn validate_proof<'a>(
+        &'a self,
+        verifier: &'a V,
+        claims: &'a DecodedSigningBytes<'b, T>,
+    ) -> Result<ProofValidity, ProofValidationError> {
+        let key = verifier
+            .resolver()
+            .fetch_public_jwk(claims.header.key_id.as_deref())
+            .await?;
+        match verify_bytes(claims.header.algorithm, &claims.bytes, &key, &self.0) {
+            Ok(()) => Ok(Ok(())),
+            Err(Error::InvalidSignature) => Ok(Err(InvalidProof::Signature)),
+            Err(_) => Err(ProofValidationError::InvalidSignature),
+        }
+    }
+}
+
+$ sed -n 673,690p repo/crates/claims/crates/jws/src/lib.rs   # per-key alg binding
+pub fn verify_bytes_warnable(
+    algorithm: Algorithm,
+    data: &[u8],
+    key: &JWK,
+    signature: &[u8],
+) -> Result<VerificationWarnings, Error> {
+    let mut warnings = VerificationWarnings::default();
+    if let Some(key_algorithm) = key.algorithm {
+        if key_algorithm != algorithm
+            && !(key_algorithm == Algorithm::EdDSA && algorithm == Algorithm::EdBlake2b)
+            && !(key_algorithm == Algorithm::ES256 && algorithm == Algorithm::ESBlake2b)
+            && !(key_algorithm == Algorithm::ES256K && algorithm == Algorithm::ESBlake2bK)
+            && !(key_algorithm == Algorithm::ES256KR && algorithm == Algorithm::ESBlake2bK)
+        {
+            return Err(Error::AlgorithmMismatch);
+        }
+    }
+    match &key.params {
+
+$ sed -n 708,729p repo/crates/claims/crates/sd-jwt/src/lib.rs; sed -n 740,750p repo/crates/claims/crates/sd-jwt/src/lib.rs; sed -n 876,886p repo/crates/claims/crates/sd-jwt/src/lib.rs
+/// Undisclosed SD-JWT payload.
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct SdJwtPayload {
+    /// Hash algorithm used by the Issuer to generate the digests.
+    #[serde(rename = "_sd_alg")]
+    pub sd_alg: SdAlg,
+
+    /// Other claims.
+    #[serde(flatten)]
+    pub claims: serde_json::Map<String, Value>,
+}
+
+impl JwsPayload for SdJwtPayload {
+    fn payload_bytes(&'_ self) -> Cow<'_, [u8]> {
+        Cow::Owned(serde_json::to_vec(self).unwrap())
+    }
+}
+
+impl<E> ValidateJwsHeader<E> for SdJwtPayload {}
+
+impl<E, P> ValidateClaims<E, P> for SdJwtPayload {}
+
+...
+    /// Verifies the decoded SD-JWT without revealing the concealed claims.
+    ///
+    /// No revealing the claims means only the registered JWT claims will be
+    /// validated.
+    pub async fn verify_concealed<P>(&self, params: P) -> Result<Verification, ProofValidationError>
+    where
+        P: ResolverProvider<Resolver: JWKResolver>,
+    {
+        self.jwt.verify(params).await
+    }
+
+...
+    }
+
+    /// Verifies the SD-JWT, validating the revealed claims.
+    pub async fn verify<P>(&self, params: P) -> Result<Verification, ProofValidationError>
+    where
+        T: ClaimSet + ValidateClaims<P, JwsSignature>,
+        P: ResolverProvider<Resolver: JWKResolver> + DateTimeProvider,
+    {
+        self.jwt.verify(params).await
+    }
+
+
+$ sed -n 85,89p repo/crates/claims/crates/jwt/src/claims/mixed/mod.rs
+impl<T, E> ValidateJwsHeader<E> for JWTClaims<T> {
+    fn validate_jws_header(&self, _env: &E, _header: &ssi_jws::Header) -> ClaimsValidity {
+        Ok(())
+    }
+}
+
+$ sed -n 20,40p repo/crates/claims/core/src/verification/parameters.rs   # verification parameters
+/// sufficient to verify all your secured claims.
+///
+/// [`VerifiableClaims::verify`]: super::VerifiableClaims::verify
+#[derive(Debug, Default, Clone, Copy)]
+pub struct VerificationParameters<R, L1 = ssi_json_ld::ContextLoader, L2 = ()> {
+    /// Public key resolver.
+    pub resolver: R,
+
+    /// JSON-LD loader.
+    pub json_ld_loader: L1,
+
+    /// EIP-712 types loader.
+    pub eip712_types_loader: L2,
+
+    /// Date-time.
+    ///
+    /// If `None`, the current date time is used.
+    pub date_time: Option<DateTime<Utc>>,
+}
+
+impl<R> VerificationParameters<R> {
+
+$ grep -rnE "JwsJson|General|\"signatures\"" repo/crates/claims/crates/jws/src repo/crates/claims/crates/sd-jwt/src || echo "no JWS JSON / multi-signature type"
+no JWS JSON / multi-signature type

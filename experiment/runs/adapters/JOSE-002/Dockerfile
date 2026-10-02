@@ -1,4 +1,4 @@
-# a10-jose-002:1 — JWT 11.1.0 (packages.lock.json = experiment/environments/hedefler/JOSE-002/cikti; nuget.org, anonymous; telemetry off)
+# a10-jose-002:1 — JWT 11.1.0 (packages.lock.json = experiment/environments/targets/JOSE-002/output; nuget.org, anonymous; telemetry off)
 FROM pq-a09-env-dotnet:1.0
 WORKDIR /opt/a/src
 COPY Adaptor.csproj packages.lock.json ./

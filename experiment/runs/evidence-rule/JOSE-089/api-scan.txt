@@ -1,0 +1,225 @@
+# API scan, JOSE-089 json-jwt 1.17.2 (commit 5fc6faed950f9dff9fd41ca663cf35ef12f46575)
+# Date (UTC): 2026-10-02T23:26:51Z
+# Sources: (a) bundle install (frozen) with Gemfile/Gemfile.lock of the installation record in pq-a09-env-ruby:1.0 (Ruby 3.4.11, OpenSSL 3.5.7)
+#          (b) https://codeload.github.com/nov/json-jwt/tar.gz/5fc6faed950f9dff9fd41ca663cf35ef12f46575 (sha256 f68df1d69ab3adcfcbfe61acffb147f77d35ba99c836f369bb43c0811fad3705)
+# 'rg' is not installed on the host; 'grep -rnE' is used with the same patterns.
+
+$ diff -r repo/lib vendor/bundle/ruby/3.4.0/gems/json-jwt-1.17.2//lib && echo identical
+identical
+
+$ grep -rnE "alg|allow|algorithms|required|verif|issuer|policy|kid" repo/lib/json/jose.rb repo/lib/json/jws.rb repo/lib/json/jwt.rb repo/lib/json/jwk/set.rb
+repo/lib/json/jose.rb:9:      register_header_keys :alg, :jku, :jwk, :x5u, :x5t, :x5c, :kid, :typ, :cty, :crit
+repo/lib/json/jose.rb:12:      alias_method :algorithm, :alg
+repo/lib/json/jose.rb:29:        key[kid]&.to_key or raise JWK::Set::KidNotFound
+repo/lib/json/jose.rb:59:      def decode(input, key_or_secret = nil, algorithms = nil, encryption_methods = nil, allow_blank_payload = false)
+repo/lib/json/jose.rb:61:          decode_json_serialized input, key_or_secret, algorithms, encryption_methods, allow_blank_payload
+repo/lib/json/jose.rb:63:          decode_compact_serialized input, key_or_secret, algorithms, encryption_methods, allow_blank_payload
+repo/lib/json/jws.rb:16:      self.alg = autodetected_algorithm_from(private_key_or_secret) if alg == :autodetect
+repo/lib/json/jws.rb:21:    def verify!(public_key_or_secret, algorithms = nil)
+repo/lib/json/jws.rb:22:      if alg&.to_sym == :none
+repo/lib/json/jws.rb:23:        raise UnexpectedAlgorithm unless algorithms.blank? || Array(algorithms).include?(:none)
+repo/lib/json/jws.rb:26:      elsif algorithms.blank? || Array(algorithms).include?(alg&.to_sym)
+repo/lib/json/jws.rb:30:        raise UnexpectedAlgorithm.new('Unexpected alg header')
+repo/lib/json/jws.rb:47:      OpenSSL::Digest.new "SHA#{alg.to_s[2, 3]}"
+repo/lib/json/jws.rb:51:      [:HS256, :HS384, :HS512].include? alg&.to_sym
+repo/lib/json/jws.rb:55:      [:RS256, :RS384, :RS512].include? alg&.to_sym
+repo/lib/json/jws.rb:59:      [:PS256, :PS384, :PS512].include? alg&.to_sym
+repo/lib/json/jws.rb:63:      [:ES256, :ES384, :ES512, :ES256K].include? alg&.to_sym
+repo/lib/json/jws.rb:66:    def autodetected_algorithm_from(private_key_or_secret)
+repo/lib/json/jws.rb:87:        raise UnexpectedAlgorithm.new('Signature algorithm auto-detection failed')
+repo/lib/json/jws.rb:114:        verify_ecdsa_group! private_key
+repo/lib/json/jws.rb:132:        public_key.verify digest, signature, signature_base_string
+repo/lib/json/jws.rb:135:        public_key.verify_pss digest, signature, signature_base_string, salt_length: :digest, mgf1_hash: digest
+repo/lib/json/jws.rb:138:        verify_ecdsa_group! public_key
+repo/lib/json/jws.rb:139:        public_key.verify digest, raw_to_asn1(signature, public_key), signature_base_string
+repo/lib/json/jws.rb:147:    def verify_ecdsa_group!(key)
+repo/lib/json/jws.rb:178:      def decode_compact_serialized(input, public_key_or_secret, algorithms = nil, allow_blank_payload = false)
+repo/lib/json/jws.rb:186:        if allow_blank_payload && claims == ''
+repo/lib/json/jws.rb:195:        jws.verify! public_key_or_secret, algorithms unless public_key_or_secret == :skip_verification
+repo/lib/json/jws.rb:199:      def decode_json_serialized(input, public_key_or_secret, algorithms = nil, allow_blank_payload = false)
+repo/lib/json/jws.rb:215:        decode_compact_serialized compact_serialized, public_key_or_secret, algorithms, allow_blank_payload
+repo/lib/json/jwt.rb:28:      self.alg = :none
+repo/lib/json/jwt.rb:37:    def sign(private_key_or_secret, algorithm = :autodetect)
+repo/lib/json/jwt.rb:39:      jws.kid ||= private_key_or_secret[:kid] if private_key_or_secret.is_a? JSON::JWK
+repo/lib/json/jwt.rb:40:      jws.alg = algorithm
+repo/lib/json/jwt.rb:44:    def encrypt(public_key_or_secret, algorithm = :RSA1_5, encryption_method = :'A128CBC-HS256')
+repo/lib/json/jwt.rb:46:      jwe.kid ||= public_key_or_secret[:kid] if public_key_or_secret.is_a? JSON::JWK
+repo/lib/json/jwt.rb:47:      jwe.alg = algorithm
+repo/lib/json/jwt.rb:107:      def decode_compact_serialized(jwt_string, key_or_secret, algorithms = nil, encryption_methods = nil, allow_blank_payload = false)
+repo/lib/json/jwt.rb:110:          JWS.decode_compact_serialized jwt_string, key_or_secret, algorithms, allow_blank_payload
+repo/lib/json/jwt.rb:112:          JWE.decode_compact_serialized jwt_string, key_or_secret, algorithms, encryption_methods, allow_blank_payload
+repo/lib/json/jwt.rb:118:      def decode_json_serialized(input, key_or_secret, algorithms = nil, encryption_methods = nil, allow_blank_payload = false)
+repo/lib/json/jwt.rb:121:          JWS.decode_json_serialized input, key_or_secret, algorithms, allow_blank_payload
+repo/lib/json/jwt.rb:123:          JWE.decode_json_serialized input, key_or_secret, algorithms, encryption_methods, allow_blank_payload
+repo/lib/json/jwt.rb:130:        decode(jwt_string, :skip_verification).pretty_generate
+repo/lib/json/jwk/set.rb:22:      def [](kid)
+repo/lib/json/jwk/set.rb:24:          jwk[:kid] && jwk[:kid] == kid
+
+$ grep -rnE "^\s*def (self\.)?[a-z_!?]+|^\s*class |^\s*module |^\s*private" repo/lib/json/jose.rb repo/lib/json/jws.rb repo/lib/json/jwt.rb repo/lib/json/jwk/set.rb   # public surface
+repo/lib/json/jose.rb:3:module JSON
+repo/lib/json/jose.rb:4:  module JOSE
+repo/lib/json/jose.rb:15:      def header
+repo/lib/json/jose.rb:19:      def content_type
+repo/lib/json/jose.rb:24:    def with_jwk_support(key)
+repo/lib/json/jose.rb:35:    def secure_compare(a, b)
+repo/lib/json/jose.rb:47:    module ClassMethods
+repo/lib/json/jose.rb:48:      def register_header_keys(*keys)
+repo/lib/json/jose.rb:59:      def decode(input, key_or_secret = nil, algorithms = nil, encryption_methods = nil, allow_blank_payload = false)
+repo/lib/json/jws.rb:1:module JSON
+repo/lib/json/jws.rb:2:  class JWS < JWT
+repo/lib/json/jws.rb:3:    class InvalidFormat < JWT::InvalidFormat; end
+repo/lib/json/jws.rb:4:    class VerificationFailed < JWT::VerificationFailed; end
+repo/lib/json/jws.rb:5:    class UnexpectedAlgorithm < JWT::UnexpectedAlgorithm; end
+repo/lib/json/jws.rb:11:    def initialize(jwt)
+repo/lib/json/jws.rb:15:    def sign!(private_key_or_secret)
+repo/lib/json/jws.rb:21:    def verify!(public_key_or_secret, algorithms = nil)
+repo/lib/json/jws.rb:34:    def update(hash_or_jwt)
+repo/lib/json/jws.rb:44:    private
+repo/lib/json/jws.rb:46:    def digest
+repo/lib/json/jws.rb:50:    def hmac?
+repo/lib/json/jws.rb:54:    def rsa?
+repo/lib/json/jws.rb:58:    def rsa_pss?
+repo/lib/json/jws.rb:62:    def ecdsa?
+repo/lib/json/jws.rb:66:    def autodetected_algorithm_from(private_key_or_secret)
+repo/lib/json/jws.rb:67:      private_key_or_secret = with_jwk_support private_key_or_secret
+repo/lib/json/jws.rb:91:    def signature_base_string
+repo/lib/json/jws.rb:100:    def sign(signature_base_string, private_key_or_secret)
+repo/lib/json/jws.rb:101:      private_key_or_secret = with_jwk_support private_key_or_secret
+repo/lib/json/jws.rb:107:        private_key = private_key_or_secret
+repo/lib/json/jws.rb:108:        private_key.sign digest, signature_base_string
+repo/lib/json/jws.rb:110:        private_key = private_key_or_secret
+repo/lib/json/jws.rb:111:        private_key.sign_pss digest, signature_base_string, salt_length: :digest, mgf1_hash: digest
+repo/lib/json/jws.rb:113:        private_key = private_key_or_secret
+repo/lib/json/jws.rb:116:          private_key.sign(digest, signature_base_string),
+repo/lib/json/jws.rb:117:          private_key
+repo/lib/json/jws.rb:124:    def valid?(public_key_or_secret)
+repo/lib/json/jws.rb:147:    def verify_ecdsa_group!(key)
+repo/lib/json/jws.rb:165:    def raw_to_asn1(signature, public_key)
+repo/lib/json/jws.rb:172:    def asn1_to_raw(signature, private_key)
+repo/lib/json/jws.rb:177:    class << self
+repo/lib/json/jws.rb:178:      def decode_compact_serialized(input, public_key_or_secret, algorithms = nil, allow_blank_payload = false)
+repo/lib/json/jws.rb:199:      def decode_json_serialized(input, public_key_or_secret, algorithms = nil, allow_blank_payload = false)
+repo/lib/json/jwt.rb:9:module JSON
+repo/lib/json/jwt.rb:10:  class JWT < ActiveSupport::HashWithIndifferentAccess
+repo/lib/json/jwt.rb:18:    class Exception < StandardError; end
+repo/lib/json/jwt.rb:19:    class InvalidFormat < Exception; end
+repo/lib/json/jwt.rb:20:    class VerificationFailed < Exception; end
+repo/lib/json/jwt.rb:21:    class UnexpectedAlgorithm < VerificationFailed; end
+repo/lib/json/jwt.rb:25:    def initialize(claims = {})
+repo/lib/json/jwt.rb:37:    def sign(private_key_or_secret, algorithm = :autodetect)
+repo/lib/json/jwt.rb:44:    def encrypt(public_key_or_secret, algorithm = :RSA1_5, encryption_method = :'A128CBC-HS256')
+repo/lib/json/jwt.rb:52:    def to_s
+repo/lib/json/jwt.rb:62:    def as_json(options = {})
+repo/lib/json/jwt.rb:83:    def to_json *args
+repo/lib/json/jwt.rb:91:    def update claims
+repo/lib/json/jwt.rb:99:    def pretty_generate
+repo/lib/json/jwt.rb:106:    class << self
+repo/lib/json/jwt.rb:107:      def decode_compact_serialized(jwt_string, key_or_secret, algorithms = nil, encryption_methods = nil, allow_blank_payload = false)
+repo/lib/json/jwt.rb:118:      def decode_json_serialized(input, key_or_secret, algorithms = nil, encryption_methods = nil, allow_blank_payload = false)
+repo/lib/json/jwt.rb:129:      def pretty_generate(jwt_string)
+repo/lib/json/jwk/set.rb:1:module JSON
+repo/lib/json/jwk/set.rb:2:  class JWK
+repo/lib/json/jwk/set.rb:3:    class Set < Array
+repo/lib/json/jwk/set.rb:4:      class KidNotFound < JWT::Exception; end
+repo/lib/json/jwk/set.rb:6:      def initialize(*jwks)
+repo/lib/json/jwk/set.rb:18:      def content_type
+repo/lib/json/jwk/set.rb:28:      def as_json(options = {})
+
+$ grep -rniE "okp|ed25519|eddsa" repo/lib || echo "no EdDSA/Ed25519"
+no EdDSA/Ed25519
+
+$ grep -niE "decode|algorithm|verif|kid|jwk" repo/README.md
+45:# Decode & Verify
+47:JSON::JWT.decode(input, public_key)
+50:If you need to get a JWK from `jwks_uri` of OpenID Connect IdP, you can use `JSON::JWK::Set::Fetcher` to fetch (& optionally cache) it.
+53:# JWK Set Fetching & Caching
+54:# NOTE: Optionally by setting cache instance, JWKs are cached by kid.
+55:JSON::JWK::Set::Fetcher.cache = Rails.cache
+57:JSON::JWK::Set::Fetcher.fetch(jwks_uri, kid: kid)
+58:# => returns JSON::JWK instance or raise JSON::JWK::Set::KidNotFound
+
+$ sed -n 24,33p repo/lib/json/jose.rb; sed -n 59,67p repo/lib/json/jose.rb
+    def with_jwk_support(key)
+      case key
+      when JSON::JWK
+        key.to_key
+      when JSON::JWK::Set
+        key[kid]&.to_key or raise JWK::Set::KidNotFound
+      else
+        key
+      end
+    end
+...
+      def decode(input, key_or_secret = nil, algorithms = nil, encryption_methods = nil, allow_blank_payload = false)
+        if input.is_a? Hash
+          decode_json_serialized input, key_or_secret, algorithms, encryption_methods, allow_blank_payload
+        else
+          decode_compact_serialized input, key_or_secret, algorithms, encryption_methods, allow_blank_payload
+        end
+      rescue JSON::ParserError, ArgumentError
+        raise JWT::InvalidFormat.new("Invalid JSON Format")
+      end
+
+$ sed -n 21,32p repo/lib/json/jws.rb; sed -n 178,216p repo/lib/json/jws.rb
+    def verify!(public_key_or_secret, algorithms = nil)
+      if alg&.to_sym == :none
+        raise UnexpectedAlgorithm unless algorithms.blank? || Array(algorithms).include?(:none)
+        raise UnexpectedAlgorithm if public_key_or_secret
+        signature == '' or raise VerificationFailed
+      elsif algorithms.blank? || Array(algorithms).include?(alg&.to_sym)
+        public_key_or_secret && valid?(public_key_or_secret) or
+        raise VerificationFailed
+      else
+        raise UnexpectedAlgorithm.new('Unexpected alg header')
+      end
+    end
+...
+      def decode_compact_serialized(input, public_key_or_secret, algorithms = nil, allow_blank_payload = false)
+        unless input.count('.') + 1 == NUM_OF_SEGMENTS
+          raise InvalidFormat.new("Invalid JWS Format. JWS should include #{NUM_OF_SEGMENTS} segments.")
+        end
+        header, claims, signature = input.split('.', NUM_OF_SEGMENTS).collect do |segment|
+          Base64.urlsafe_decode64 segment.to_s
+        end
+        header = JSON.parse(header).with_indifferent_access
+        if allow_blank_payload && claims == ''
+          claims = nil
+        else
+          claims = JSON.parse(claims).with_indifferent_access
+        end
+        jws = new claims
+        jws.header = header
+        jws.signature = signature
+        jws.signature_base_string = input.split('.')[0, NUM_OF_SEGMENTS - 1].join('.')
+        jws.verify! public_key_or_secret, algorithms unless public_key_or_secret == :skip_verification
+        jws
+      end
+
+      def decode_json_serialized(input, public_key_or_secret, algorithms = nil, allow_blank_payload = false)
+        input = input.with_indifferent_access
+        header, payload, signature = if input[:signatures].present?
+          [
+            input[:signatures].first[:protected],
+            input[:payload],
+            input[:signatures].first[:signature]
+          ].collect do |segment|
+            segment
+          end
+        else
+          [:protected, :payload, :signature].collect do |key|
+            input[key]
+          end
+        end
+        compact_serialized = [header, payload, signature].join('.')
+        decode_compact_serialized compact_serialized, public_key_or_secret, algorithms, allow_blank_payload
+      end
+
+$ sed -n 20,27p repo/lib/json/jwk/set.rb
+      end
+
+      def [](kid)
+        detect do |jwk|
+          jwk[:kid] && jwk[:kid] == kid
+        end
+      end
+

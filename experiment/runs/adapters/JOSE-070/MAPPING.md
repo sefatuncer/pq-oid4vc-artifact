@@ -29,7 +29,7 @@ Call: `JWT::decode($jwt, $anahtarlar, $hdr)`; on acceptance `dogrulanan_algoritm
 | Serialization | Decision | Basis |
 |---|---|---|
 | compact | supported | `JWT::decode` (`explode('.', $jwt, 4)`, 3 parts) |
-| general, sd-jwt-* , oid4vci-toplu-yanit, dcapi-json-parametre | **B6** | no JSON serialization and no SD-JWT API (`evidence/api-tarama.txt`) |
+| general, sd-jwt-* , oid4vci-toplu-yanit, dcapi-json-parametre | **B6** | no JSON serialization and no SD-JWT API (`evidence/api-scan.txt`) |
 | COSE_Sign, COSE_Sign1 | **B6** | no COSE |
 
 ## 4. Exception → hata_sinifi

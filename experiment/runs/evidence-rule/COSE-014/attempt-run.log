@@ -1,0 +1,28 @@
+== cose-js 0.9.0 node v24.21.0
+exports of cose.sign: SignTag, Sign1Tag, create, verify, verifySync
+
+== 1. Validity check (COSE_Sign1)
+V+ Sign1 migrated ES256                              accept  expect=accept  OK        
+V+ Sign1 migrated ES384                              accept  expect=accept  OK        
+V+ Sign1 legacy ES256                                accept  expect=accept  OK        
+V- Sign1 migrated ES256 corrupted                    reject  expect=reject  OK        Signature missmatch
+
+== 2. L4m (primary form): COSE_Sign, R = {ES384}, W = {ES256, ES384}
+verify options: only {defaultType}; verifier object: {key:{x,y,kid}, externalAAD}
+configuration: verifier = key of the required algorithm X (kid mig-es384)
+L4m T1 both valid                                    accept  expect=accept  OK        
+L4m T2 X corrupted                                   reject  expect=reject  OK        Signature missmatch
+L4m T3 stripped to ES256                             reject  expect=reject  OK        Failed to find signer with kidmig-es384
+L4m T5 only X                                        accept  expect=accept  OK        
+L4m T3 with ES256 signer relabelled kid=mig-es384    reject  expect=reject  OK        Signature missmatch
+for contrast, verifier = classical key (kid mig-es256):
+  T2 X corrupted                                     accept  expect=-       -         
+  T3 stripped to ES256                               accept  expect=-       -         
+
+== 3. L4c (supplement): COSE_Sign1, migrated record holds its ES256 key
+there is no algorithm or issuer option; alg is read from the header (lib/sign.js L273) and used as is
+L4c migrated ES256 (L4c wants reject)                accept  expect=reject  MISMATCH  
+L4c migrated ES384 (L4c wants accept)                accept  expect=accept  OK        
+L4c legacy ES256 (L4c wants accept)                  accept  expect=accept  OK        
+
+== SUMMARY: checked rows OK = 11 of 12

@@ -20,7 +20,7 @@ echo "start $(date -u +%FT%TZ) targets=${#T[@]}" >> "$LOG"
 for r in r1 r2 r3; do
   for t in "${T[@]}"; do
     s=$(date +%s)
-    bash adapters/_tools/kos.sh jobs-v1.4.jsonl "$r" outputs/measurement "$t" >> "$LOG" 2>&1
+    bash adapters/_tools/run.sh jobs-v1.4.jsonl "$r" outputs/measurement "$t" >> "$LOG" 2>&1
     echo "$r $t $(( $(date +%s) - s )) s $(wc -l < outputs/measurement/$t.$r.jsonl 2>/dev/null || echo 0) rows" | tee -a "$LOG"
   done
 done

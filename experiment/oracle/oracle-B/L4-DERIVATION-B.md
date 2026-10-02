@@ -3,7 +3,7 @@
 > **Task:** PR Ö6: "**L4 oracle:** There is no direct normative clause. The oracle is derived from 8725bis §3.1 + composite AND + the definition of G5. The N-version oracle makes this derivation independently." (`ON-KAYIT-TASLAK.md:173`)
 > **Written by:** Oracle B, 25.09.2026. The work of Oracle A was not seen (`ACCESS-LOG.md`).
 > **Source texts** (`spec-corpus/metin/`, SHA-256 values in `METHOD.md` §8): 8725bis = draft-ietf-oauth-rfc8725bis-10 (`JWTBCP.txt`); composite = draft-ietf-jose-pq-composite-sigs-04 (`JOSECOMP.txt`); RFC 7515; RFC 9901; ECCG ACM v2.0 (`ACM2.txt`); PR v0.8 (`ON-KAYIT-TASLAK.md`, SHA-256 `dcc84092…`).
-> The quotations below were copied verbatim from the source lines (hyphens at line ends joined). Short forms of the same quotations are verified automatically in the source by `turet_karar.py`.
+> The quotations below were copied verbatim from the source lines (hyphens at line ends joined). Short forms of the same quotations are verified automatically in the source by `derive_decisions.py`.
 >
 > (Quotations from the pre-registration are translated from Turkish; quotations from specifications are verbatim. Premises are numbered Pr-1 … Pr-12.)
 
@@ -95,7 +95,7 @@ L4(D; Perm_I = {A, X}, R_I = {X}) = ACCEPT  ⇔  n ≥ 1
 
 L4m (PR §2B item 6: "'Required algorithm set' semantics with the documented API and without changing code. Reject if there is no PQ component.") is the direct application of A7 to multi-signature documents. The signature order does not enter the decision (RFC 7515 §5.2 step 9: "repeat this process (steps 4-8) for each digital signature or MAC value"; §7.2.1 computes every signature with its own header) → the MR4 twins get the same decision as their sources.
 
-Primary cases (from karar.tsv; `acc-cl` = accept-classical, `acc-hy` = accept-hybrid; P2 and P0 for comparison):
+Primary cases (from decisions.tsv; `acc-cl` = accept-classical, `acc-hy` = accept-hybrid; P2 and P0 for comparison):
 
 | Case | Arm | Vector | L4 | P2 | P0 |
 |---|---|---|---|---|---|

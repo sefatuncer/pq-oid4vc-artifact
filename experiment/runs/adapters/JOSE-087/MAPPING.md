@@ -1,6 +1,6 @@
 # JOSE-087 ruby-jwt — policy → API mapping (contract 1.0 §2.2, RUNNER §2)
 
-- **Target:** `jwt` gem 3.3.0 (tag v3.3.0 → `ccf24892fec8`), `Gemfile.lock` CHECKSUMS `sha256=44cc34fb…` (the same file as the environment record, `experiment/environments/hedefler/JOSE-087/cikti/`).
+- **Target:** `jwt` gem 3.3.0 (tag v3.3.0 → `ccf24892fec8`), `Gemfile.lock` CHECKSUMS `sha256=44cc34fb…` (the same file as the environment record, `experiment/environments/targets/JOSE-087/output/`).
 - **Image:** `a10-jose-087:1` (`FROM pq-a09-env-ruby:1.0`; Ruby 3.4.11, ruby-openssl → OpenSSL 3.5.7). `bundle install` only when the image is built (rubygems.org, anonymous); runs with `--network none`.
 - **Call:** `docker run --rm --network none -v <v1.3>:/v:ro -v <anahtarlar>:/anahtarlar:ro -v <isler>:/is:ro -v <cikti>:/c a10-jose-087:1 adaptor /is/<isler> /c/JOSE-087.<kosu>.jsonl`
 - **Source:** `adaptor.rb` (library-specific), `ortak.rb` (same skeleton as JOSE-089). `adaptor_sha256` = `sha256(sha256sum adaptor.rb ortak.rb)` is computed when the image is built.

@@ -1,0 +1,2 @@
+1de59b5c9e172ab898427ab37468e6d8fc210b6f65fd246d4e9b36a6e67af802 *sample_analysis1/sonuc.json
+1de59b5c9e172ab898427ab37468e6d8fc210b6f65fd246d4e9b36a6e67af802 *sample_analysis2/sonuc.json

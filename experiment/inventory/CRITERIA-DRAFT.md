@@ -2,7 +2,7 @@
 
 > **Status:** draft. Submitted to the maintainers' approval before the pre-registration is frozen.
 > **Scope:** frame and metadata only. No decision in this document rests on library **behaviour**. The behavioural measurement (adapters, test vectors) is done after the pre-registration is frozen.
-> **Source:** all numbers come from the outputs of `topla.py`: `CERCEVE.csv`, `SECIM.csv`, `ESIK-DUYARLILIK.csv`, `TARAMA.csv`, `topla_kayit.json`. The snapshot is dated 23–24.09.2026; the raw responses are under `onbellek/` (cache).
+> **Source:** all numbers come from the outputs of `collect.py`: `FRAME.csv`, `SELECTION.csv`, `THRESHOLD-SENSITIVITY.csv`, `SCREENING.csv`, `collect_record.json`. The snapshot is dated 23–24.09.2026; the raw responses are under `onbellek/` (cache).
 > **Consistency with the pre-registration decision (PR §2A Ö6):**
 > - Reference verifiers (REF) are kept **outside** n and reported separately.
 > - The main treatment arm is composite -04, the secondary arm pure ML-DSA-65.
@@ -57,7 +57,7 @@
 
 ## 2. Screening (relevance; K7)
 
-Every hit is recorded in `tarama_kararlari.csv` with its decision and reason; all of them are in `TARAMA.csv`.
+Every hit is recorded in `screening_decisions.csv` with its decision and reason; all of them are in `SCREENING.csv`.
 
 | Decision | Definition |
 |---|---|
@@ -78,21 +78,21 @@ A candidate counts as "eligible" only if it meets **all of K1–K8**.
 |---|---|---|---|
 | **K1** | Asymmetric verification | Verifies a JWS/COSE/SD-JWT signature with at least one asymmetric algorithm (RS/PS/ES/EdDSA/ML-DSA) | J: jwt.io `support` flags. Others: documentation |
 | **K2** | Activity | HEAD commit of the default branch (committer date) ≥ **2024-09-23** (REF_TARIH − 24 months) | `git clone --depth 1 --filter=tree:0` (anonymous; credential helpers disabled); Bitbucket API; fallback: ecosyste.ms `pushed_at` |
-| **K3** | Maintenance status | Must not be archived; the README or the registry must not declare "deprecated / not maintained / moved / legacy" | ecosyste.ms `archived`; README; `elle_bayraklar.csv` |
+| **K3** | Maintenance status | Must not be archived; the README or the registry must not declare "deprecated / not maintained / moved / legacy" | ecosyste.ms `archived`; README; `manual_flags.csv` |
 | **K4** | Open licence | An OSI-approved licence (SPDX). Sources are read in order: deps.dev → ecosyste.ms → package registry. The first **valid** value is taken; the few repositories that deps.dev calls "non-standard" are resolved from another source (e.g. go-cose → MPL-2.0) | `lisans`, `lisans_kaynagi` |
-| **K5** | Popularity threshold | The threshold of §4. The indicators are combined with "or": stars, monthly downloads, dependent packages (ecosyste.ms). For registries that publish no monthly statistics (NuGet, RubyGems), total ≥ 12 × the monthly threshold. **Exceptions:** (a) official reference implementations in SDJWT and REF (EUDI, OWF, OWF-Labs); (b) plan-sourced ones in REF (G). For small components of one large monorepo, the repository stars are not used (dotnet/runtime, poco, mORMot, catalyst-voices) | `CERCEVE.csv` |
-| **K6** | Linux container | Must build and run in a Linux x86_64 container. **Now only a pre-screening:** those that, according to the documentation, depend on Apple, Windows or a proprietary runtime are excluded. **Final test** in §5.4 | `elle_bayraklar.csv` |
+| **K5** | Popularity threshold | The threshold of §4. The indicators are combined with "or": stars, monthly downloads, dependent packages (ecosyste.ms). For registries that publish no monthly statistics (NuGet, RubyGems), total ≥ 12 × the monthly threshold. **Exceptions:** (a) official reference implementations in SDJWT and REF (EUDI, OWF, OWF-Labs); (b) plan-sourced ones in REF (G). For small components of one large monorepo, the repository stars are not used (dotnet/runtime, poco, mORMot, catalyst-voices) | `FRAME.csv` |
+| **K6** | Linux container | Must build and run in a Linux x86_64 container. **Now only a pre-screening:** those that, according to the documentation, depend on Apple, Windows or a proprietary runtime are excluded. **Final test** in §5.4 | `manual_flags.csv` |
 | **K7** | Scope | Must be a library or an RP verifier (§2) | screening |
 | **K8** | Uniqueness | One unit per code base; forks and repackagings are excluded | screening; ecosyste.ms `fork` |
 
 **Evidence principle:**
-- Every criterion decision is justified in `SECIM.csv` with the criterion code (`neden_E*`).
+- Every criterion decision is justified in `SELECTION.csv` with the criterion code (`neden_E*`).
 - If the data cannot be obtained, the criterion counts as "could not be verified" and the candidate is excluded.
-- The support columns in `CERCEVE.csv` (General JSON, ML-DSA etc.) are **not used in the selection.** They are inventory and treatment-class information only (§5.5).
+- The support columns in `FRAME.csv` (General JSON, ML-DSA etc.) are **not used in the selection.** They are inventory and treatment-class information only (§5.5).
 
 ## 4. Threshold options (K5) and their effect on n
 
-Source: `ESIK-DUYARLILIK.csv`. **n** = selected JOSE + SDJWT + COSE; **REF does not enter n.**
+Source: `THRESHOLD-SENSITIVITY.csv`. **n** = selected JOSE + SDJWT + COSE; **REF does not enter n.**
 
 | Option | Definition | Eligible (JOSE / SDJWT / COSE / REF) | Eligible total (excl. REF) | Selected n | n in a census (no quota) |
 |---|---|---|---|---|---|
@@ -139,7 +139,7 @@ The number excluded for K5 alone is 41.
 - `pop_puani` is the highest of the available percentiles; the tie-breaker is the second highest percentile; at a final tie the `id` decides.
 - In this way Bitbucket repositories without stars (Nimbus, jose4j), registries without download statistics (Maven, Go) and young but much-downloaded libraries (joserfc) become comparable.
 
-### 5.3 Selection rule (deterministic; `topla.py` → `secim()`)
+### 5.3 Selection rule (deterministic; `collect.py` → `secim()`)
 
 1. **JOSE:**
    - From each of the 9 core language groups (JS/TS, Python, JVM, Go, Rust, .NET, PHP, Ruby, Swift/ObjC) **at most 2** targets are taken in order of popularity.
@@ -168,7 +168,7 @@ Under PR §2A Ö6 the treatment arms are composite -04 (main) and ML-DSA-65 (sec
 | **T2-eklenti** (plug-in) | Our own PQ verifier can be registered through the public API or supplied as a callback; the policy layer is the library's |
 | **T3-bilinmeyen-alg** (unknown alg) | The library cannot verify the PQ signature. Only the "unknown alg" behaviour is observed; the oracle output can be accept-classical, reject or indeterminate |
 
-The class is frozen before the measurement, based on `destek_kanitlari.csv`. (These classes later became TK1–TK3 in the pre-registration.)
+The class is frozen before the measurement, based on `support_evidence.csv`. (These classes later became TK1–TK3 in the pre-registration.)
 
 ## 6. Exclusion reasons (coded)
 
@@ -188,10 +188,10 @@ The class is frozen before the measurement, based on `destek_kanitlari.csv`. (Th
 
 1. `REF_TARIH = 2026-09-23`; activity limit `2024-09-23`.
 2. jwt.io data file: commit `60b70f7d8d20`, SHA-256 `3b1573be…5477`.
-3. The query strings and noise floors of §1; the `onbellek/` snapshot. Proposed: a SHA-256 list of `onbellek/` and the input files (`tarama_kararlari.csv`, `jwtio_esleme.csv`, `elle_bayraklar.csv`, `destek_kanitlari.csv`).
+3. The query strings and noise floors of §1; the `onbellek/` snapshot. Proposed: a SHA-256 list of `onbellek/` and the input files (`screening_decisions.csv`, `jwtio_mapping.csv`, `manual_flags.csv`, `support_evidence.csv`).
 4. The definitions K1–K8, the E2 thresholds and exceptions; the set of invalid licences; the K5 total-download rule; the monorepo star exception.
 5. Popularity score (§5.2), quotas (§5.1), selection and reserve rule (§5.3), Linux test and replacement rule (§5.4).
-6. **Version pinning:** every target is pinned with the `son_commit_sha` value of `CERCEVE.csv` at the time of the freeze. If the package registry has a last release that corresponds to the same code, that release is also written. For the historical baseline, the last 3–5 releases (version 3 §7.10d) are chosen backwards from this pin.
+6. **Version pinning:** every target is pinned with the `son_commit_sha` value of `FRAME.csv` at the time of the freeze. If the package registry has a last release that corresponds to the same code, that release is also written. For the historical baseline, the last 3–5 releases (version 3 §7.10d) are chosen backwards from this pin.
 7. **Operationalisation of L4 (proposal, see SUMMARY §6):** for a compact-only target, L4 is the application of the "required algorithm set per issuer" to a single-signature JWS. For a multi-signature target, L4 is requiring every algorithm in the required set to be **present and valid**.
 8. The treatment class assignment (§5.5) and the dependency clusters (SUMMARY §5, risk R6) are frozen before the measurement.
 9. Binomial thresholds: at n=31 the majority claim is **≥21/31** (p=0.035), the absence of a majority **≤10/31** (p=0.035). At n=30, ≥20 and ≤10 respectively (p=0.049). If n changes after a replacement, the threshold is recomputed with the same rule.

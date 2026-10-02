@@ -1,8 +1,8 @@
 # Oracle A — reasons for the `indeterminate` decisions
 
-> **Scope:** the **75 rows** with `karar = indeterminate` in `karar.tsv` fall into six reasons. Only **4** of them are primary: T7K, T7K-ED25519, T7P and T7C in the base configuration `L4`, under B-1. These four are determined in the sub-configurations `L4-S` and `L4-Y`.
+> **Scope:** the **75 rows** with `karar = indeterminate` in `decisions.tsv` fall into six reasons. Only **4** of them are primary: T7K, T7K-ED25519, T7P and T7C in the base configuration `L4`, under B-1. These four are determined in the sub-configurations `L4-S` and `L4-Y`.
 > **Rule:** `indeterminate` was written where the clauses + construction facts do not determine the decision. Oracle A did not guess and did not choose one of the two readings. For each group the following is given: the two readings, which clauses conflict, and what could remove the ambiguity.
-> To reproduce the row lists: filter the rows of `karar.tsv` with `karar == "indeterminate"` and group them by the keyword in the `not` column.
+> To reproduce the row lists: filter the rows of `decisions.tsv` with `karar == "indeterminate"` and group them by the keyword in the `not` column.
 >
 > (Quotations from the pre-registration are translated from Turkish; quotations from specifications are verbatim.)
 

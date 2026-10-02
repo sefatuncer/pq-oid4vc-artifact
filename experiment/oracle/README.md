@@ -14,11 +14,11 @@ which the C3 measurements are compared.
 |---|---|
 | [`oracle-A/`](oracle-A/) | Oracle A: eleven policy configurations, decision generator, adapter contract, divergence detector design |
 | [`oracle-B/`](oracle-B/) | Oracle B: three policy configurations (L4, P2, P0) plus SD-JWT VC version suffixes |
-| [`birlesik/`](birlesik/) | Merged oracle for battery v1.3 (rules of PR §2H items 7–10) |
+| [`merged/`](merged/) | Merged oracle for battery v1.3 (rules of PR §2H items 7–10) |
 | `AB-COMPARISON.md` | Comparison of A and B (25.09.2026) |
 
-**Inputs.** Vector manifests `experiment/vector-generator/vektorler/v1.2/` and `v1.3/`, the battery
-mapping `experiment/vector-generator/BATARYA-ESLEME.md`, the corpus texts `spec-corpus/metin/`, and
+**Inputs.** Vector manifests `experiment/vector-generator/vectors/v1.2/` and `v1.3/`, the battery
+mapping `experiment/vector-generator/BATTERY-MAPPING.md`, the corpus texts `spec-corpus/metin/`, and
 the pre-registration (expected at `00-on-kayit/ON-KAYIT-TASLAK.md`; not part of this release).
 
 **Used by.** `experiment/runs/` (comparison of each measured decision with the merged oracle) and
@@ -38,10 +38,13 @@ Common configurations L4 and P0, key (vector, policy, arm):
 All definite differences come from points that both oracles had flagged as undefined in the
 pre-registration (K8/K9 in the composite arm; the hybrid/classical distinction under P0; the
 extra-signature case K5). These definitions were then added to the pre-registration (PR §2H
-items 7–10) and applied in `birlesik/`.
+items 7–10) and applied in `merged/`.
 
-## Turkish names in this folder
+## Names in this folder
 
-`birlesik` merged · `karar` decision · `turet` derive · `maddeler` clauses · `insa_denetimi`
-construction audit · `karar_ozet` decision summary. Column names and values:
-`docs/DATA-DICTIONARY.md` §5.
+The folder and file names were renamed to English on 03.10.2026 (`docs/PATHS.tsv`): `birlesik/` →
+`merged/`, `karar*.tsv` → `decisions*.tsv`, `turet_*.py` → `derive_*.py`, `karar_uret.py` →
+`make_decisions.py`, `maddeler.tsv` → `items.tsv`, `insa_denetimi.txt` → `construction_audit.txt`,
+`karar_ozet.json` → `decisions_summary.json`, `OZET*.json` → `SUMMARY*.json`. Recorded files (the
+SHA-256 records and the summaries) still use the old names. Column names and values (`karar`
+decision, `kaynak` source, ...): `docs/DATA-DICTIONARY.md` §5.

@@ -1,8 +1,8 @@
 # Comparison of Oracle A ↔ B (maintainers, 25.09.2026)
 
 **Inputs:**
-- `oracle-A/karar.tsv` `dd21fdba…` (858 rows; 11 configurations).
-- `oracle-B/karar.tsv` `2cca1295…` (732 rows; L4/P0/P2 and version suffixes).
+- `oracle-A/decisions.tsv` `dd21fdba…` (858 rows; 11 configurations).
+- `oracle-B/decisions.tsv` `2cca1295…` (732 rows; L4/P0/P2 and version suffixes).
 - B was committed before A was finished (`037e468` < `be1904f`). Both stated that they did not read the other's folder.
 
 **Key:** (vektor_id, politika, kol). Common configurations: L4 and P0.

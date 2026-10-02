@@ -6,10 +6,10 @@
 ## 2. TK proposal
 | Arm | Proposal | Evidence |
 |---|---|---|
-| ML-DSA-65 | **TK3** | erlang-jose 1.11.12 `jose_jws.erl` from_map: Ed25519/Ed448/EdDSA, ES*, HS*, Poly1305, PS*, RS*, none; ML-DSA/AKP 0 matches (`evidence/api-tarama.txt`) |
+| ML-DSA-65 | **TK3** | erlang-jose 1.11.12 `jose_jws.erl` from_map: Ed25519/Ed448/EdDSA, ES*, HS*, Poly1305, PS*, RS*, none; ML-DSA/AKP 0 matches (`evidence/api-scan.txt`) |
 | composite | **TK3** | the same |
 
-## 3. V± result (`evidence/vpm-kosu.txt`)
+## 3. V± result (`evidence/vpm-run.txt`)
 - ES256 ×4 `kabul` / VMINUS ×4 `red/imza-gecersiz`; EdDSA `kabul` / VMINUS `red`; label `Ed25519` `kabul` / VMINUS `red` (erlang-jose recognises both labels → control arm `EdDSA`, contract §8 item 4).
 - ML-DSA-65, CMP00/01: `red/alg-desteklenmiyor` (the AKP JWK cannot be built). COSE B6.
 - **Gate: passed (ES256 + EdDSA + Ed25519).**
@@ -21,4 +21,4 @@
 4. Multi-signature B6; no B4 candidate. `dogrulanan_algoritmalar` empty (Guardian does not show it).
 
 ## 5. Run record
-- Smoke test `evidence/duman-testi.txt`. Pre-freeze file: 13:15Z, ~13:59Z, 14:05Z; V± the same.
+- Smoke test `evidence/smoke-test.txt`. Pre-freeze file: 13:15Z, ~13:59Z, 14:05Z; V± the same.

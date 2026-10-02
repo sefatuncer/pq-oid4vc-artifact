@@ -1,0 +1,228 @@
+# API scan, COSE-014 cose-js 0.9.0 (commit 421bcaa5dded58890d00243c91b9f7155a613458)
+# Date (UTC): 2026-10-02T23:00:45Z
+# Sources: (a) npm ci --ignore-scripts with package.json/package-lock.json of the installation record, in pq-a09-env-node:1.0
+#          (b) https://codeload.github.com/erdtman/cose-js/tar.gz/421bcaa5dded58890d00243c91b9f7155a613458 (sha256 8636940619c1597be5508f2fc1e8806dcdb6be40bcc7f11b74b5ddec53a14c80)
+# 'rg' is not installed on the host; 'grep -rnE' is used with the same patterns.
+
+$ diff -r repo/lib node_modules/cose-js/lib && echo identical
+identical
+
+$ grep -rnE "alg|allow|algorithms|required|verif|issuer|policy|options\." repo/lib/sign.js repo/lib/index.js
+repo/lib/sign.js:34:  PS256: { alg: 'pss-sha256', saltLen: 32 },
+repo/lib/sign.js:35:  PS384: { alg: 'pss-sha384', saltLen: 48 },
+repo/lib/sign.js:36:  PS512: { alg: 'pss-sha512', saltLen: 64 }
+repo/lib/sign.js:39:function doSign (SigStructure, signer, alg) {
+repo/lib/sign.js:40:  if (!AlgFromTags[alg]) {
+repo/lib/sign.js:41:    throw new Error('Unknown algorithm, ' + alg);
+repo/lib/sign.js:43:  if (!COSEAlgToNodeAlg[AlgFromTags[alg].sign]) {
+repo/lib/sign.js:44:    throw new Error('Unsupported algorithm, ' + AlgFromTags[alg].sign);
+repo/lib/sign.js:50:  if (AlgFromTags[alg].sign.startsWith('ES')) {
+repo/lib/sign.js:51:    const hash = crypto.createHash(COSEAlgToNodeAlg[AlgFromTags[alg].sign].digest);
+repo/lib/sign.js:54:    const ec = new EC(COSEAlgToNodeAlg[AlgFromTags[alg].sign].sign);
+repo/lib/sign.js:59:  } else if (AlgFromTags[alg].sign.startsWith('PS')) {
+repo/lib/sign.js:66:        scheme: COSEAlgToNodeAlg[AlgFromTags[alg].sign].alg.split('-')[0],
+repo/lib/sign.js:67:        hash: COSEAlgToNodeAlg[AlgFromTags[alg].sign].alg.split('-')[1],
+repo/lib/sign.js:68:        saltLength: COSEAlgToNodeAlg[AlgFromTags[alg].sign].saltLen
+repo/lib/sign.js:73:    const sign = crypto.createSign(COSEAlgToNodeAlg[AlgFromTags[alg].sign].sign);
+repo/lib/sign.js:105:    const alg = signerP.get(common.HeaderParameters.alg);
+repo/lib/sign.js:116:    const sig = doSign(SigStructure, signer, alg);
+repo/lib/sign.js:117:    if (p.size === 0 && options.encodep === 'empty') {
+repo/lib/sign.js:123:    return cbor.encodeAsync(options.excludetag ? signed : new Tagged(SignTag, signed));
+repo/lib/sign.js:127:    const alg = p.get(common.HeaderParameters.alg) || u.get(common.HeaderParameters.alg);
+repo/lib/sign.js:134:    const sig = doSign(SigStructure, signer, alg);
+repo/lib/sign.js:135:    if (p.size === 0 && options.encodep === 'empty') {
+repo/lib/sign.js:141:    return cbor.encodeAsync(options.excludetag ? signed : new Tagged(Sign1Tag, signed), { canonical: true });
+repo/lib/sign.js:145:function doVerify (SigStructure, verifier, alg, sig) {
+repo/lib/sign.js:146:  if (!AlgFromTags[alg]) {
+repo/lib/sign.js:147:    throw new Error('Unknown algorithm, ' + alg);
+repo/lib/sign.js:149:  const nodeAlg = COSEAlgToNodeAlg[AlgFromTags[alg].sign];
+repo/lib/sign.js:151:    throw new Error('Unsupported algorithm, ' + AlgFromTags[alg].sign);
+repo/lib/sign.js:155:  if (AlgFromTags[alg].sign.startsWith('ES')) {
+repo/lib/sign.js:160:    const pub = { x: verifier.key.x, y: verifier.key.y };
+repo/lib/sign.js:164:    if (!key.verify(msgHash, sig)) {
+repo/lib/sign.js:167:  } else if (AlgFromTags[alg].sign.startsWith('PS')) {
+repo/lib/sign.js:168:    const key = new NodeRSA().importKey(verifier.key, 'components-public');
+repo/lib/sign.js:171:        scheme: COSEAlgToNodeAlg[AlgFromTags[alg].sign].alg.split('-')[0],
+repo/lib/sign.js:172:        hash: COSEAlgToNodeAlg[AlgFromTags[alg].sign].alg.split('-')[1],
+repo/lib/sign.js:173:        saltLength: COSEAlgToNodeAlg[AlgFromTags[alg].sign].saltLen
+repo/lib/sign.js:176:    if (!key.verify(ToBeSigned, sig, 'buffer', 'buffer')) {
+repo/lib/sign.js:180:    const verify = crypto.createVerify(nodeAlg.sign);
+repo/lib/sign.js:181:    verify.update(ToBeSigned);
+repo/lib/sign.js:182:    if (!verify.verify(verifier.key, sig)) {
+repo/lib/sign.js:188:function getSigner (signers, verifier) {
+repo/lib/sign.js:191:    if (kid.equals(Buffer.from(verifier.key.kid, 'utf8'))) {
+repo/lib/sign.js:208:exports.verify = async function (payload, verifier, options) {
+repo/lib/sign.js:211:  return verifyInternal(verifier, options, obj);
+repo/lib/sign.js:214:exports.verifySync = function (payload, verifier, options) {
+repo/lib/sign.js:217:  return verifyInternal(verifier, options, obj);
+repo/lib/sign.js:220:function verifyInternal (verifier, options, obj) {
+repo/lib/sign.js:222:  let type = options.defaultType ? options.defaultType : SignTag;
+repo/lib/sign.js:248:  const signer = (type === SignTag ? getSigner(signers, verifier) : signers);
+repo/lib/sign.js:251:    throw new Error('Failed to find signer with kid' + verifier.key.kid);
+repo/lib/sign.js:255:    const externalAAD = verifier.externalAAD || EMPTY_BUFFER;
+repo/lib/sign.js:260:    const alg = signerPMap.get(common.HeaderParameters.alg);
+repo/lib/sign.js:268:    doVerify(SigStructure, verifier, alg, sig);
+repo/lib/sign.js:271:    const externalAAD = verifier.externalAAD || EMPTY_BUFFER;
+repo/lib/sign.js:273:    const alg = getCommonParameter(p, u, common.HeaderParameters.alg);
+repo/lib/sign.js:281:    doVerify(SigStructure, verifier, alg, signer);
+
+$ grep -rnE "^exports\.|^const .* = exports\." repo/lib/*.js   # public exports
+repo/lib/common.js:82:exports.EMPTY_BUFFER = Buffer.alloc(0);
+repo/lib/common.js:84:exports.TranslateHeaders = function (header) {
+repo/lib/common.js:142:exports.TranslateKey = function (key) {
+repo/lib/common.js:167:exports.HeaderParameters = HeaderParameters;
+repo/lib/common.js:169:exports.runningInNode = function () {
+repo/lib/encrypt.js:14:const EncryptTag = exports.EncryptTag = 96;
+repo/lib/encrypt.js:15:const Encrypt0Tag = exports.Encrypt0Tag = 16;
+repo/lib/encrypt.js:168:exports.create = function (headers, payload, recipients, options) {
+repo/lib/encrypt.js:329:exports.read = async function (data, key, options) {
+repo/lib/index.js:5:exports.common = require('./common');
+repo/lib/index.js:6:exports.mac = require('./mac');
+repo/lib/index.js:7:exports.sign = require('./sign');
+repo/lib/index.js:8:exports.encrypt = require('./encrypt');
+repo/lib/mac.js:13:const MAC0Tag = exports.MAC0Tag = 17;
+repo/lib/mac.js:14:const MACTag = exports.MACTag = 97;
+repo/lib/mac.js:75:exports.create = async function (headers, payload, recipents, externalAAD, options) {
+repo/lib/mac.js:120:exports.read = async function (data, key, externalAAD, options) {
+repo/lib/sign.js:13:const SignTag = exports.SignTag = 98;
+repo/lib/sign.js:14:const Sign1Tag = exports.Sign1Tag = 18;
+repo/lib/sign.js:81:exports.create = function (headers, payload, signers, options) {
+repo/lib/sign.js:208:exports.verify = async function (payload, verifier, options) {
+repo/lib/sign.js:214:exports.verifySync = function (payload, verifier, options) {
+
+$ grep -rnE "EdDSA|Ed25519|-8\]|OKP" repo/lib || echo "no EdDSA/Ed25519 support"
+repo/lib/common.js:111:  OKP: 1,
+repo/lib/common.js:123:  Ed25519: 6,
+
+$ grep -niE "verif|alg|kid|signer|multiple|option" repo/README.md
+11:    p: { alg: 'SHA-256_64' },
+12:    u: { kid: 'our-secret' }
+23:## Verify MAC
+30:  console.log('Verified message: ' + buf.toString('utf8'));
+41:    p: { alg: 'ES256' },
+42:    u: { kid: '11' }
+44:  const signer = {
+49:  const buf = await cose.sign.create(headers, plaintext, signer);
+55:## Verify Signature
+59:  const verifier = {
+66:  const buf = await cose.sign.verify(COSEMessage, verifier);
+67:  console.log('Verified message: ' + buf.toString('utf8'));
+78:    p: { alg: 'A128GCM' },
+79:    u: { kid: 'our-secret' }
+
+$ sed -n 81,98p repo/lib/sign.js   # create: one signer only
+exports.create = function (headers, payload, signers, options) {
+  options = options || {};
+  let u = headers.u || {};
+  let p = headers.p || {};
+
+  p = common.TranslateHeaders(p);
+  u = common.TranslateHeaders(u);
+  let bodyP = p || {};
+  bodyP = (bodyP.size === 0) ? EMPTY_BUFFER : cbor.encode(bodyP);
+  if (Array.isArray(signers)) {
+    if (signers.length === 0) {
+      throw new Error('There has to be at least one signer');
+    }
+    if (signers.length > 1) {
+      throw new Error('Only one signer is supported');
+    }
+    // TODO handle multiple signers
+    const signer = signers[0];
+
+$ sed -n 145,152p repo/lib/sign.js; sed -n 188,195p repo/lib/sign.js; sed -n 208,284p repo/lib/sign.js   # verify path
+function doVerify (SigStructure, verifier, alg, sig) {
+  if (!AlgFromTags[alg]) {
+    throw new Error('Unknown algorithm, ' + alg);
+  }
+  const nodeAlg = COSEAlgToNodeAlg[AlgFromTags[alg].sign];
+  if (!nodeAlg) {
+    throw new Error('Unsupported algorithm, ' + AlgFromTags[alg].sign);
+  }
+...
+function getSigner (signers, verifier) {
+  for (let i = 0; i < signers.length; i++) {
+    const kid = signers[i][1].get(common.HeaderParameters.kid); // TODO create constant for header locations
+    if (kid.equals(Buffer.from(verifier.key.kid, 'utf8'))) {
+      return signers[i];
+    }
+  }
+}
+...
+exports.verify = async function (payload, verifier, options) {
+  options = options || {};
+  const obj = await cbor.decodeFirst(payload);
+  return verifyInternal(verifier, options, obj);
+};
+
+exports.verifySync = function (payload, verifier, options) {
+  options = options || {};
+  const obj = cbor.decodeFirstSync(payload);
+  return verifyInternal(verifier, options, obj);
+};
+
+function verifyInternal (verifier, options, obj) {
+  options = options || {};
+  let type = options.defaultType ? options.defaultType : SignTag;
+  if (obj instanceof Tagged) {
+    if (obj.tag !== SignTag && obj.tag !== Sign1Tag) {
+      throw new Error('Unexpected cbor tag, \'' + obj.tag + '\'');
+    }
+    type = obj.tag;
+    obj = obj.value;
+  }
+
+  if (!Array.isArray(obj)) {
+    throw new Error('Expecting Array');
+  }
+
+  if (obj.length !== 4) {
+    throw new Error('Expecting Array of lenght 4');
+  }
+
+  let [p, u, plaintext, signers] = obj;
+
+  if (type === SignTag && !Array.isArray(signers)) {
+    throw new Error('Expecting signature Array');
+  }
+
+  p = (!p.length) ? EMPTY_BUFFER : cbor.decodeFirstSync(p);
+  u = (!u.size) ? EMPTY_BUFFER : u;
+
+  const signer = (type === SignTag ? getSigner(signers, verifier) : signers);
+
+  if (!signer) {
+    throw new Error('Failed to find signer with kid' + verifier.key.kid);
+  }
+
+  if (type === SignTag) {
+    const externalAAD = verifier.externalAAD || EMPTY_BUFFER;
+    let [signerP, , sig] = signer;
+    signerP = (!signerP.length) ? EMPTY_BUFFER : signerP;
+    p = (!p.size) ? EMPTY_BUFFER : cbor.encode(p);
+    const signerPMap = cbor.decode(signerP);
+    const alg = signerPMap.get(common.HeaderParameters.alg);
+    const SigStructure = [
+      'Signature',
+      p,
+      signerP,
+      externalAAD,
+      plaintext
+    ];
+    doVerify(SigStructure, verifier, alg, sig);
+    return plaintext;
+  } else {
+    const externalAAD = verifier.externalAAD || EMPTY_BUFFER;
+
+    const alg = getCommonParameter(p, u, common.HeaderParameters.alg);
+    p = (!p.size) ? EMPTY_BUFFER : cbor.encode(p);
+    const SigStructure = [
+      'Signature1',
+      p,
+      externalAAD,
+      plaintext
+    ];
+    doVerify(SigStructure, verifier, alg, signer);
+    return plaintext;
+  }
+}

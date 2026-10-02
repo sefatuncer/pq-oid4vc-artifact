@@ -273,7 +273,7 @@ E(probe) := `ihlal(tum,g1)`.
   - **static** (time constraint removed: now large, τ = 0; all classical keys broken).
 - **V14 (static ≡ dynamic):** in the single-core design, the static policy check is the same attack search with the time constraint removed. `violation(qday=0) = attack(qday=0)` holds by construction; this is a design property, not an independent test. The divergence at `qday=200` comes only from the time rule of the core (no `zaman_uygun`).
 - **Reading:** dynamic SALDIRI ⇔ E; static violation = 1 ⇔ E.
-- **Pilot counterparts:** KAT-SPEC §4(d) and the flags of `tools/regression-tests/calistir.sh` (V1 without flags … V6 `NO_COEXIST`).
+- **Pilot counterparts:** KAT-SPEC §4(d) and the flags of `tools/regression-tests/run.sh` (V1 without flags … V6 `NO_COEXIST`).
 
 **Well-formedness of the pilot model (preparation finding; decided BEFORE the run).**
 - **Problem:** KAT-SPEC §4(c) requires the pilot (`referans/pilot/p1/weakest_link.spthy`, `b079cbbb…bd47`) to be run "unchanged". But in six of the six configurations the pilot does not pass the Tamarin 1.12 well-formedness check: "Fact multiplicity issues". The name `Qday` is used both as an action (`--[ Qday() ]->`) and as a persistent fact (`!Qday()`).

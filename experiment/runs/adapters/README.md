@@ -15,7 +15,7 @@ version `adaptor-sozlesme/1.0`) and the call format in [`../RUNNER.md`](../RUNNE
 | `_node/` | Shared Node.js adapter: JOSE-009 jose, JOSE-065 jsonwebtoken, COSE-014 cose-js, SDJWT-015 @sd-jwt/core |
 | `_go/` | Shared Go adapter (one binary): JOSE-033 golang-jwt, JOSE-034 jose2go, COSE-034 go-cose |
 | `_jvm/` | Shared Java adapter: JOSE-052 java-jwt, JOSE-055 jjwt, SDJWT-004 authlete sd-jwt (+ Nimbus) |
-| `_kt/` | Kotlin adapters: COSE-001 Signum, SDJWT-001 vck (`derle.sh` builds them in a container) |
+| `_kt/` | Kotlin adapters: COSE-001 Signum, SDJWT-001 vck (`compile.sh` builds them in a container) |
 | `_rs/` | Rust adapters: JOSE-091, JOSE-092, SDJWT-010, SDJWT-025 (shared runner in `common/`, smoke tests in `smoke/`) |
 | `_tools/` | Build, run and scan scripts (below), `gate_summary.py` (validity-gate summary), `control_labels.py` |
 
@@ -28,8 +28,8 @@ installation record there.
 From `experiment/runs/adapters`:
 
 ```
-bash _tools/kur_hepsi.sh          # all 31 adapter images: _tools/kur.sh, _rs/build.sh and every <target>/Dockerfile
-bash _tools/kur.sh JOSE-083       # one shared-adapter target only
+bash _tools/build_all.sh          # all 31 adapter images: _tools/build_shared.sh, _rs/build.sh and every <target>/Dockerfile
+bash _tools/build_shared.sh JOSE-083       # one shared-adapter target only
 ```
 
 Network access is needed only while the images are built (package registries, anonymous). The
@@ -38,8 +38,8 @@ adapters themselves run with `--network none`.
 ## Run
 
 ```
-bash _tools/kos.sh <job_file> <run_label> <output_folder> [target ...]
-# e.g. bash _tools/kos.sh jobs-prefreeze-v1.3.jsonl oncesi outputs/prefreeze-v1.3 JOSE-009 JOSE-083
+bash _tools/run.sh <job_file> <run_label> <output_folder> [target ...]
+# e.g. bash _tools/run.sh jobs-prefreeze-v1.3.jsonl oncesi outputs/prefreeze-v1.3 JOSE-009 JOSE-083
 ```
 
 - Paths are relative to `experiment/runs/`. The vectors and keys of `experiment/vector-generator/` are
@@ -51,8 +51,8 @@ bash _tools/kos.sh <job_file> <run_label> <output_folder> [target ...]
 
 ## API scan
 
-`bash _tools/api_tarama.sh [target]` scans the pinned library source (or, for the JVM, the bytecode of
-the public API) inside each image and writes `<target>/evidence/api-tarama.txt` (contract §5.1).
+`bash _tools/api_scan.sh [target]` scans the pinned library source (or, for the JVM, the bytecode of
+the public API) inside each image and writes `<target>/evidence/api-scan.txt` (contract §5.1).
 `_rs/api_scan.sh` does the same for the Rust targets.
 
 ## Names
