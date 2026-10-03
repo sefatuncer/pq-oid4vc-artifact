@@ -8,8 +8,8 @@ Written after the freeze (pre-registration Section 11, steps 1 and 8). Not part 
 | Frozen document | `docs/preregistration/PREREGISTRATION-v1.0.md` |
 | Hash list | `docs/preregistration/FREEZE-SHA256SUMS`, 769 files |
 | SHA-256 of the hash list | `283ac30b38b1e91e266c8a6b5c728ccedad01c8603c4ba04af33d16c8b16f487` |
-| Public commit | `29a835a79c9a34e47c86243f858a541925f6d193` (pull request #10) |
-| Tag | `prereg-v1.0`, annotated tag object `20f1f616f127589d6055339710fbaf89ccb6365b`, tagger date 2026-10-03T10:15:13Z, pointing to the public commit |
+| Public commit | `bb0e66933f88afa90220f57ffe474d527d297916` (pull request #10; `29a835a79c9a34e47c86243f858a541925f6d193` before the history rewrite below, same tree) |
+| Tag | `prereg-v1.0`, annotated tag object `bdac1b9f94abd4b8183a8894405cedcb64b2d775`, tagger date 2026-10-03T10:15:13Z, pointing to the public commit (first tag object `20f1f616f127589d6055339710fbaf89ccb6365b`, moved with the history rewrite below) |
 | External timestamp | OpenTimestamps proof `docs/preregistration/FREEZE-SHA256SUMS.ots` of the SHA-256 of the hash list, submitted on 2026-10-03 to the public calendars a.pool.opentimestamps.org, b.pool.opentimestamps.org, a.pool.eternitywall.com and ots.btc.catallaxy.com (client opentimestamps-client 0.7.2). Only the digest left the machine. The proof is pending until the calendars commit to a Bitcoin block; it is then upgraded with `ots upgrade` in a later commit |
 
 **Verification.**
@@ -18,7 +18,7 @@ Written after the freeze (pre-registration Section 11, steps 1 and 8). Not part 
 sha256sum -c docs/preregistration/FREEZE-SHA256SUMS                         # every frozen file
 sha256sum docs/preregistration/FREEZE-SHA256SUMS                            # 283ac30b...
 ots verify docs/preregistration/FREEZE-SHA256SUMS.ots                       # after the upgrade
-git cat-file -p prereg-v1.0                                                 # tag object, object 29a835a...
+git cat-file -p prereg-v1.0                                                 # tag object, object bb0e669...
 ```
 
 The hash list was checked on the public commit (an export of the commit, `sha256sum -c`: all files match) before the
@@ -36,3 +36,12 @@ tag was set.
   (1 comment line), `models/tamarin/betik/varyantlar.tsv` (the anchored bytes, SHA-256 `a88d972e…` at anchor 3,
   followed by 7 appended R7hx lines): 4 of 4; `experiment/inventory/CRITERIA-DRAFT.md` translated and
   `experiment/statistics/SHA256SUMS` regenerated, as stated.
+
+**History rewrite of 2026-10-03 (privacy).** Recorded Docker image and container lists in the first 13 public
+commits named unrelated local images and containers of the build machine (removed from the current files on the same
+day, before the freeze). The public history was rewritten to remove those lines from these lists in every commit, and
+one README line that named a local container. The trees of all later commits, including the freeze commit, are
+byte-identical to the trees before the rewrite, so the hash list and its SHA-256 are unchanged and the OpenTimestamps
+proof is unaffected. The commit identities changed (freeze commit `29a835a` → `bb0e669`), and the tag was recreated
+on the rewritten freeze commit with the same message and tagger date. Pull-request references created before the rewrite
+still point to the earlier commits.
