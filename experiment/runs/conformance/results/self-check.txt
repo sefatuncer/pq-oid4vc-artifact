@@ -1,0 +1,39 @@
+SYN-VPLUS_ES256 mirror=VPLUS_ES256 serialization=compact signatures=1 verified, headers equal, payload = mirror + jti
+SYN-VPLUS_EdDSA mirror=VPLUS_EdDSA serialization=compact signatures=1 verified, headers equal, payload = mirror + jti
+SYN-L4C-JOSE_eski_ES256 mirror=L4C-JOSE_eski_ES256 serialization=compact signatures=1 verified, headers equal, payload = mirror + jti
+SYN-T1K_both_valid mirror=T1K_both_valid serialization=general signatures=2 verified, headers equal, payload = mirror + jti
+SYN-T1K_both_valid-SIRA-ters mirror=T1K_both_valid-SIRA-ters serialization=general signatures=2 verified, headers equal, payload = mirror + jti
+SYN-T5K_only_EdDSA mirror=T5K_only_EdDSA serialization=general signatures=1 verified, headers equal, payload = mirror + jti
+SYN-COSE-VPLUS_ES256 mirror=COSE-VPLUS_ES256 serialization=COSE_Sign1 signatures=1 verified, headers equal, payload = mirror + jti
+SYN-COSE-VPLUS_EdDSA mirror=COSE-VPLUS_EdDSA serialization=COSE_Sign1 signatures=1 verified, headers equal, payload = mirror + jti
+SYN-L4C-COSE_eski_ES256 mirror=L4C-COSE_eski_ES256 serialization=COSE_Sign1 signatures=1 verified, headers equal, payload = mirror + jti
+SYN-COSE-K1K_iki_gecerli mirror=COSE-K1K_iki_gecerli serialization=COSE_Sign signatures=2 verified, headers equal, payload = mirror + jti
+SYN-COSE-K1K_iki_gecerli-SIRA-ters mirror=COSE-K1K_iki_gecerli-SIRA-ters serialization=COSE_Sign signatures=2 verified, headers equal, payload = mirror + jti
+SYN-COSE-K4K_yalniz_X mirror=COSE-K4K_yalniz_X serialization=COSE_Sign signatures=1 verified, headers equal, payload = mirror + jti
+SYN-VC01_ES256_x5c mirror=VC01_ES256_x5c serialization=sd-jwt-compact signatures=1 verified, headers equal, payload = mirror + jti
+SYN-VC09_GJ_ES256_EdDSA mirror=VC09_GJ_ES256_EdDSA serialization=sd-jwt-general signatures=2 verified, headers equal, payload = mirror + jti
+SYN-VC09_GJ_ES256_EdDSA-SIRA-ters mirror=VC09_GJ_ES256_EdDSA-SIRA-ters serialization=sd-jwt-general signatures=2 verified, headers equal, payload = mirror + jti
+SYN-VPLUS_EdDSA-ES384 mirror=VPLUS_EdDSA-ES384 serialization=compact signatures=1 verified, headers equal, payload = mirror + jti
+SYN-T1K_both_valid-ES384 mirror=T1K_both_valid-ES384 serialization=general signatures=2 verified, headers equal, payload = mirror + jti
+SYN-T1K_both_valid-SIRA-ters-ES384 mirror=T1K_both_valid-SIRA-ters-ES384 serialization=general signatures=2 verified, headers equal, payload = mirror + jti
+SYN-T5K_only_EdDSA-ES384 mirror=T5K_only_EdDSA-ES384 serialization=general signatures=1 verified, headers equal, payload = mirror + jti
+SYN-COSE-VPLUS_EdDSA-ES384 mirror=COSE-VPLUS_EdDSA-ES384 serialization=COSE_Sign1 signatures=1 verified, headers equal, payload = mirror + jti
+SYN-COSE-K1K_iki_gecerli-ES384 mirror=COSE-K1K_iki_gecerli-ES384 serialization=COSE_Sign signatures=2 verified, headers equal, payload = mirror + jti
+SYN-COSE-K1K_iki_gecerli-SIRA-ters-ES384 mirror=COSE-K1K_iki_gecerli-SIRA-ters-ES384 serialization=COSE_Sign signatures=2 verified, headers equal, payload = mirror + jti
+SYN-COSE-K4K_yalniz_X-ES384 mirror=COSE-K4K_yalniz_X-ES384 serialization=COSE_Sign signatures=1 verified, headers equal, payload = mirror + jti
+SYN-VC09_GJ_ES256_EdDSA-ES384 mirror=VC09_GJ_ES256_EdDSA-ES384 serialization=sd-jwt-general signatures=2 verified, headers equal, payload = mirror + jti
+SYN-VC09_GJ_ES256_EdDSA-SIRA-ters-ES384 mirror=VC09_GJ_ES256_EdDSA-SIRA-ters-ES384 serialization=sd-jwt-general signatures=2 verified, headers equal, payload = mirror + jti
+SYN-VPLUS_ML-DSA-65 mirror=VPLUS_ML-DSA-65 serialization=compact signatures=1 verified, headers equal, payload = mirror + jti
+SYN-T1P_both_valid mirror=T1P_both_valid serialization=general signatures=2 verified, headers equal, payload = mirror + jti
+SYN-T1P_both_valid-SIRA-ters mirror=T1P_both_valid-SIRA-ters serialization=general signatures=2 verified, headers equal, payload = mirror + jti
+SYN-T5P_only_ML-DSA-65 mirror=T5P_only_ML-DSA-65 serialization=general signatures=1 verified, headers equal, payload = mirror + jti
+SYN-COSE-VPLUS_ML-DSA-65 mirror=COSE-VPLUS_ML-DSA-65 serialization=COSE_Sign1 signatures=1 verified, headers equal, payload = mirror + jti
+SYN-COSE-K1P_iki_gecerli mirror=COSE-K1P_iki_gecerli serialization=COSE_Sign signatures=2 verified, headers equal, payload = mirror + jti
+SYN-COSE-K1P_iki_gecerli-SIRA-ters mirror=COSE-K1P_iki_gecerli-SIRA-ters serialization=COSE_Sign signatures=2 verified, headers equal, payload = mirror + jti
+SYN-COSE-K4P_yalniz_X mirror=COSE-K4P_yalniz_X serialization=COSE_Sign signatures=1 verified, headers equal, payload = mirror + jti
+SYN-VC02_MLDSA65_x5c mirror=VC02_MLDSA65_x5c serialization=sd-jwt-compact signatures=1 verified, headers equal, payload = mirror + jti
+SYN-VC07_GJ_ES256_MLDSA65 mirror=VC07_GJ_ES256_MLDSA65 serialization=sd-jwt-general signatures=2 verified, headers equal, payload = mirror + jti
+SYN-VC07_GJ_ES256_MLDSA65-SIRA-ters mirror=VC07_GJ_ES256_MLDSA65-SIRA-ters serialization=sd-jwt-general signatures=2 verified, headers equal, payload = mirror + jti
+SYN-D-VCX_EdDSA_kid derived (X only, kid) signature verified
+SYN-D-VCX_ES384_kid derived (X only, kid) signature verified
+objects 38, job rows 258, no object hash equals a battery file hash (246 battery files checked)

@@ -1,0 +1,392 @@
+# API scan, COSE-036 wolfCOSE (commit f907071b10127f3ae2dd7719749a91b039ff04a1) on wolfSSL v5.9.2-stable (ac01707f552c611fbd135cc723b2682b3e7f80f2)
+# Date (UTC): 2026-10-03T09:51:20Z
+# Sources: (a) wolfcose-git = anonymous 'git fetch --depth 1' of https://github.com/wolfssl/wolfcose at the commit, as in install.sh of the installation record;
+#              built in pq-a09-env-c:1.0 against wolfSSL installed with the record's configure flags
+#          (b) repo = https://codeload.github.com/wolfssl/wolfcose/tar.gz/f907071b10127f3ae2dd7719749a91b039ff04a1 (sha256 c4533bbce4b3a8d767bd836f10e5285fbf03dd02eebbef8bdb761f5d9d45fc9a)
+# 'rg' is not installed on the host; 'grep -rnE' is used with the same patterns.
+
+$ git -C wolfcose-git rev-parse HEAD "HEAD^{tree}"
+f907071b10127f3ae2dd7719749a91b039ff04a1
+78dd09da969fca6b067de1ea7916ff7ccc9d34d5
+
+(tree 78dd09da969fca6b067de1ea7916ff7ccc9d34d5 = paket_ozeti of the installation record)
+
+$ diff -rq --exclude=.git repo wolfcose-git; echo exit=$?
+exit=0
+
+(the fetched tree is identical to the commit archive)
+
+## Build (from the build container log)
+default build (make all):                                  libwolfcose.a sha256 f826574ce2838835eb6cafcbf79ba9d5ee23aa47967e8852c492b163c9d98bf2 (= kilit_sha256 of the installation record)
+make all EXTRA_CFLAGS=-DWOLFCOSE_ENABLE_DEPRECATED_ALGS:    libwolfcose.a sha256 ddaafd46d448f3788c997c209d0d583d8aa47a433aad5364fb3e0bc7b88ad701 (used by the attempt)
+
+$ grep -nE "WOLFCOSE_ENABLE_DEPRECATED_ALGS" repo/docs/Macros.md repo/docs/Algorithms.md | sed -n 1,8p; sed -n 197,204p repo/include/wolfcose/wolfcose.h
+repo/docs/Macros.md:101:| Sign1 consume | `WOLFCOSE_SIGN1_VERIFY` | `WOLFCOSE_ENABLE_DEPRECATED_ALGS` plus ES256, ES384, and/or ES512 |
+repo/docs/Macros.md:102:| Sign1 issue | `WOLFCOSE_SIGN1_SIGN` | `WOLFCOSE_ENABLE_DEPRECATED_ALGS` plus ES256, ES384, and/or ES512 |
+repo/docs/Macros.md:155:| `WOLFCOSE_ENABLE_DEPRECATED_ALGS` | Also accept the deprecated `ES256`/`ES384`/`ES512`/`EdDSA` IDs on sign and verify. Off by default in both full and lean builds. |
+repo/docs/Algorithms.md:14:| ES256 | -7 | `HAVE_ECC` | Deprecated by RFC 9864; needs `WOLFCOSE_ENABLE_DEPRECATED_ALGS` |
+repo/docs/Algorithms.md:15:| ES384 | -35 | `HAVE_ECC` | Deprecated by RFC 9864; needs `WOLFCOSE_ENABLE_DEPRECATED_ALGS` |
+repo/docs/Algorithms.md:16:| ES512 | -36 | `HAVE_ECC` | Deprecated by RFC 9864; needs `WOLFCOSE_ENABLE_DEPRECATED_ALGS` |
+repo/docs/Algorithms.md:17:| EdDSA | -8 | `HAVE_ED25519` / `HAVE_ED448` | Deprecated by RFC 9864 (curve taken from the key); needs `WOLFCOSE_ENABLE_DEPRECATED_ALGS` |
+repo/docs/Algorithms.md:42:again rather than relabeled. Define `WOLFCOSE_ENABLE_DEPRECATED_ALGS` when
+#define WOLFCOSE_ALG_ED448      (-53)   /* EdDSA, Ed448 */
+/* The following four polymorphic RFC 9053 IDs are deprecated by RFC 9864 and
+ * accepted only when WOLFCOSE_ENABLE_DEPRECATED_ALGS is defined. */
+#define WOLFCOSE_ALG_ES256      (-7)
+#define WOLFCOSE_ALG_ES384      (-35)
+#define WOLFCOSE_ALG_ES512      (-36)
+#define WOLFCOSE_ALG_EDDSA      (-8)
+/* RSA-PSS algorithms remain supported without the deprecated-algorithm gate. */
+
+## Public exports: signature verification entry points
+$ grep -nE "^WOLFCOSE_API int wc_Cose(Sign1?|Key)_|^WOLFCOSE_API int wc_Cose_(Add|Verify)CounterSignature" repo/include/wolfcose/wolfcose.h
+840:WOLFCOSE_API int wc_CoseKey_Init(WOLFCOSE_KEY* key);
+857:WOLFCOSE_API int wc_CoseKey_SetEcc(WOLFCOSE_KEY* key, int32_t crv,
+868:WOLFCOSE_API int wc_CoseKey_SetEd25519(WOLFCOSE_KEY* key,
+873:WOLFCOSE_API int wc_CoseKey_SetEd448(WOLFCOSE_KEY* key, ed448_key* edKey);
+877:WOLFCOSE_API int wc_CoseKey_SetMlDsa(WOLFCOSE_KEY* key, int32_t alg,
+881:WOLFCOSE_API int wc_CoseKey_SetMlDsa_ex(WOLFCOSE_KEY* key, int32_t alg,
+911:WOLFCOSE_API int wc_CoseKey_SetLms(WOLFCOSE_KEY* key, LmsKey* lmsKey);
+915:WOLFCOSE_API int wc_CoseKey_SetRsa(WOLFCOSE_KEY* key, RsaKey* rsaKey);
+925:WOLFCOSE_API int wc_CoseKey_SetSymmetric(WOLFCOSE_KEY* key,
+943:WOLFCOSE_API int wc_CoseKey_SetExtSigner(WOLFCOSE_KEY* key,
+970:WOLFCOSE_API int wc_CoseKey_Encode(WOLFCOSE_KEY* key, uint8_t* out,
+994:WOLFCOSE_API int wc_CoseKey_Encode_ex(const WOLFCOSE_KEY* key, uint8_t* out,
+1027:WOLFCOSE_API int wc_CoseKey_EncodeEccRaw(int32_t crv,
+1047:WOLFCOSE_API int wc_CoseKey_EncodeSize(const WOLFCOSE_KEY* key,
+1063:WOLFCOSE_API int wc_CoseKey_EncodeSize_ex(const WOLFCOSE_KEY* key,
+1102:WOLFCOSE_API int wc_CoseKey_PeekInfo(const uint8_t* in, size_t inSz,
+1133:WOLFCOSE_API int wc_CoseKey_Decode(WOLFCOSE_KEY* key, const uint8_t* in,
+1167:WOLFCOSE_API int wc_CoseSign1_Sign(WOLFCOSE_KEY* key, int32_t alg,
+1186:WOLFCOSE_API int wc_CoseSign1_Sign_ex(WOLFCOSE_KEY* key, int32_t alg,
+1216:WOLFCOSE_API int wc_CoseSign1_SignSize_ex(const WOLFCOSE_KEY* key,
+1241:WOLFCOSE_API int wc_CoseSign1_Verify(const WOLFCOSE_KEY* key,
+1264:WOLFCOSE_API int wc_Cose_AddCounterSignature(
+1282:WOLFCOSE_API int wc_Cose_AddCounterSignature0(
+1304:WOLFCOSE_API int wc_Cose_VerifyCounterSignature(
+1320:WOLFCOSE_API int wc_Cose_VerifyCounterSignature0(
+1573:WOLFCOSE_API int wc_CoseSign_Sign(const WOLFCOSE_SIGNATURE* signers,
+1607:WOLFCOSE_API int wc_CoseSign_Verify(const WOLFCOSE_KEY* verifyKey,
+
+## Callbacks and function-pointer types in the public headers
+$ grep -rnE "typedef [^;]*\(\*" repo/include/wolfcose
+repo/include/wolfcose/eat_psa.h:121:typedef int (*WOLFCOSE_EAT_PSA_KEY_RESOLVER)(void* ctx,
+repo/include/wolfcose/eat_psa.h:139:typedef int (*WOLFCOSE_EAT_PSA_COMPONENT_CB)(void* ctx,
+repo/include/wolfcose/wolfcose.h:384:typedef int (*WOLFCOSE_SIGN_CB)(void* cbCtx, int32_t alg,
+
+$ sed -n 367,387p repo/include/wolfcose/wolfcose.h
+/**
+ * \brief Caller-supplied signature callback (RFC 9052 Section 4.4).
+ *
+ * Return the signature exactly as it appears in the message; for ECDSA that is
+ * fixed-width r||s (RFC 9053 Section 2.1), not DER. wolfCOSE converts nothing
+ * but does check the length. See docs/Macros.md.
+ *
+ * \param cbCtx  Opaque caller context, passed through untouched.
+ * \param alg    WOLFCOSE_ALG_* being signed with.
+ * \param tbs    To-be-signed bytes: the digest for ES* and PS*, or the
+ *               complete Sig_structure for EdDSA, ML-DSA, and HSS-LMS.
+ * \param tbsSz  Length of tbs.
+ * \param sig    Output buffer for the signature.
+ * \param sigSz  Capacity of sig.
+ * \param sigLen Output: bytes written to sig.
+ * \return 0 on success, non-zero to fail the operation.
+ */
+typedef int (*WOLFCOSE_SIGN_CB)(void* cbCtx, int32_t alg,
+                                const uint8_t* tbs, size_t tbsSz,
+                                uint8_t* sig, size_t sigSz, size_t* sigLen);
+
+
+## Allow-lists, required sets, issuer/trust policy, signer counts
+$ grep -niE "allow|policy|required|issuer|trust|threshold|quorum|signer ?count|all signers|every signer" repo/include/wolfcose/wolfcose.h | grep -viE "short_hmac|preferred|shortest|ext_sign|signCb"
+177: *   library enforces the expected algorithm rather than trusting the message.
+748: * to defer or nest a parse: a CTAP2 allowList entry, a COSE_Key embedded in
+765: * RFC 9052 allows `label = int / tstr`. Applications may define either form
+895: * defines no persistence policy. If a local signing call fails, its persisted
+1090: * (no duplicate integer labels, kty required, no trailing bytes), so a buffer
+1202: *                    NULL when \p alg determines the exact length. Required
+1229: *                        Required if message has nil payload.
+1301: * same non-UNSET alg value, providing the external authentication required by
+1370: *                        Required if message has nil ciphertext.
+1444: * \param detachedCt     Detached ciphertext (NULL if attached). Required
+1517: *                        Required if message has nil payload.
+1556: * \param signerCount     Number of signers (must be >= 1).
+1570: *                        when every signer uses an external signing callback.
+1574:    size_t signerCount,
+1595: *                        Required if message has nil payload.
+
+$ grep -rniE "allow ?list|required (algorithm|set)|per-issuer|issuer policy|threshold|quorum|signerCount|signer count" repo/docs repo/README.md | sed -n 1,20p
+repo/docs/API-Reference.md:958:    const WOLFCOSE_SIGNATURE* signers, size_t signerCount,
+repo/docs/API-Reference.md:974:| `signerCount` | Number of signers |
+repo/docs/API-Reference.md:1308:that every integrator ends up writing - CTAP2 `allowList` entries, a
+repo/docs/Testing.md:5:100% line coverage for every wolfCOSE source file. These thresholds are
+
+## Per-key algorithm binding: WOLFCOSE_KEY.alg pin (an L3 mechanism)
+$ sed -n 174,177p repo/include/wolfcose/wolfcose.h; sed -n 396,399p repo/include/wolfcose/wolfcose.h
+ *   prefer the 128-bit-tag variants unless a peer requires otherwise.
+ * - Algorithm pinning: verify/decrypt dispatch on the message algorithm.
+ *   To avoid algorithm-confusion, set key->alg (or recipient->algId) so the
+ *   library enforces the expected algorithm rather than trusting the message.
+typedef struct WOLFCOSE_KEY {
+    int32_t        kty;       /**< WOLFCOSE_KTY_* */
+    int32_t        alg;       /**< WOLFCOSE_ALG_*, 0 if unset */
+    int32_t        crv;       /**< WOLFCOSE_CRV_*, 0 if N/A */
+
+$ sed -n 1196,1206p repo/src/wolfcose_sign1.c
+    }
+
+    /* Honour the key->alg pin on the verify path too. */
+    if ((ret == WOLFCOSE_SUCCESS) &&
+        (key->alg != WOLFCOSE_ALG_UNSET) && (key->alg != alg)) {
+        ret = WOLFCOSE_E_COSE_BAD_ALG;
+    }
+    if ((ret == WOLFCOSE_SUCCESS) &&
+        (key->alg == WOLFCOSE_ALG_UNSET) && (algProtected == 0)) {
+        ret = WOLFCOSE_E_COSE_BAD_ALG;
+    }
+
+$ sed -n 1010,1022p repo/src/wolfcose_sign.c
+    /* An unprotected alg is safe only when constrained by key policy. */
+    if ((ret == WOLFCOSE_SUCCESS) &&
+        (verifyKey->alg == WOLFCOSE_ALG_UNSET) &&
+        (signerAlgProtected == 0)) {
+        ret = WOLFCOSE_E_COSE_BAD_ALG;
+    }
+
+    /* Honour the verifyKey->alg pin. */
+    if ((ret == WOLFCOSE_SUCCESS) &&
+        (verifyKey->alg != WOLFCOSE_ALG_UNSET) &&
+        (verifyKey->alg != alg)) {
+        ret = WOLFCOSE_E_COSE_BAD_ALG;
+    }
+
+## COSE_Sign verification: one key, one signer index per call
+$ sed -n 1584,1615p repo/include/wolfcose/wolfcose.h
+/**
+ * \brief Verify one signature in a COSE_Sign message.
+ *
+ * Verifies the signature at signerIndex against the provided verifyKey.
+ * The caller must match the key to the signer (via kid or out-of-band).
+ *
+ * \param verifyKey       WOLFCOSE_KEY with public key. Caller retains ownership.
+ * \param signerIndex     0-based index of signer to verify.
+ * \param in              Input COSE_Sign message.
+ * \param inSz            Input message size.
+ * \param detachedPayload Detached payload for verification (NULL if attached).
+ *                        Required if message has nil payload.
+ * \param detachedLen     Detached payload length.
+ * \param extAad          External additional authenticated data (NULL if none).
+ * \param extAadLen       External AAD length.
+ * \param scratch         Working buffer for Sig_structure reconstruction.
+ * \param scratchSz       Scratch buffer size.
+ * \param hdr             Output: parsed COSE headers (body level).
+ * \param payload         Output: zero-copy pointer to payload (NULL if detached).
+ * \param payloadLen      Output: payload length (0 if detached).
+ * \return WOLFCOSE_SUCCESS or negative error code.
+ *         WOLFCOSE_E_DETACHED_PAYLOAD if payload is nil and detachedPayload is NULL.
+ */
+WOLFCOSE_API int wc_CoseSign_Verify(const WOLFCOSE_KEY* verifyKey,
+    size_t signerIndex,
+    const uint8_t* in, size_t inSz,
+    const uint8_t* detachedPayload, size_t detachedLen,
+    const uint8_t* extAad, size_t extAadLen,
+    uint8_t* scratch, size_t scratchSz,
+    WOLFCOSE_HDR* hdr,
+    const uint8_t** payload, size_t* payloadLen);
+#endif /* WOLFCOSE_SIGN_VERIFY */
+
+$ sed -n 979,1003p repo/docs/API-Reference.md
+### wc_CoseSign_Verify
+
+```c
+int wc_CoseSign_Verify(
+    const WOLFCOSE_KEY* key,
+    size_t signerIdx,
+    const uint8_t* coseMsg, size_t coseMsgLen,
+    const uint8_t* detachedPayload, size_t detachedPayloadLen,
+    const uint8_t* extAad, size_t extAadLen,
+    uint8_t* scratch, size_t scratchSz,
+    WOLFCOSE_HDR* hdr,
+    const uint8_t** payload, size_t* payloadLen
+);
+```
+
+Verify one signer's signature in a COSE_Sign message.
+
+**Parameters:**
+| Name | Description |
+|------|-------------|
+| `key` | Verification key for the specific signer |
+| `signerIdx` | Zero-based index of signer to verify |
+| Other parameters | Same as `wc_CoseSign1_Verify` |
+
+---
+
+$ sed -n 40,42p repo/docs/Message-Types.md; sed -n 63,71p repo/docs/Message-Types.md
+## COSE_Sign — multi-signer signature (RFC 9052 Sec. 4.1)
+
+`COSE_Sign` carries N independent signatures over the same payload. Use it for dual-control approval, certificate chains where multiple parties attest, or hybrid classical/PQC signatures during migration. Each signer has its own algorithm and `kid`.
+Verifiers select which signature to check by index:
+
+```c
+ret = wc_CoseSign_Verify(&vendorPubKey, /*signerIndex=*/0,
+                         in, inLen,
+                         NULL, 0, NULL, 0,
+                         scratch, sizeof(scratch),
+                         &hdr, &payload, &payloadLen);
+```
+
+$ sed -n 964,975p repo/src/wolfcose_sign.c; sed -n 1029,1036p repo/src/wolfcose_sign.c
+    /* 4. Signatures array */
+    if (ret == WOLFCOSE_SUCCESS) {
+        ret = wc_CBOR_DecodeArrayStart(&ctx, &signatureCount);
+        if ((ret == WOLFCOSE_SUCCESS) && (signerIndex >= signatureCount)) {
+            ret = WOLFCOSE_E_INVALID_ARG;
+        }
+    }
+
+    /* Skip to the requested signer */
+    for (i = 0; (i < signerIndex) && (ret == WOLFCOSE_SUCCESS); i++) {
+        ret = wolfCose_DecodeSkippedSignature(&ctx);
+    }
+    /* Skip remaining signers, then reject trailing data (RFC 8949 5.3.1). */
+    for (i = signerIndex + 1u; (i < signatureCount) && (ret == WOLFCOSE_SUCCESS);
+         i++) {
+        ret = wolfCose_DecodeSkippedSignature(&ctx);
+    }
+    if ((ret == WOLFCOSE_SUCCESS) && (ctx.idx != ctx.bufSz)) {
+        ret = WOLFCOSE_E_CBOR_MALFORMED;
+    }
+
+(the requested signer is located by index; the other signers are skipped without verification)
+
+$ sed -n 196,221p repo/examples/scenarios/multi_party_approval.c
+
+    /* Verify silicon vendor signature (index 0) */
+    printf("  Checking Silicon Vendor signature (index 0)...\n");
+    ret = wc_CoseSign_Verify(vendorPubKey, 0, signedMsg, signedMsgLen,
+        NULL, 0, NULL, 0,
+        scratch, sizeof(scratch),
+        &hdr, &payload, &payloadLen);
+    if (ret != 0) {
+        printf("  ERROR: Silicon vendor signature invalid: %d\n", ret);
+        return ret;
+    }
+    printf("    PASS: Silicon vendor signature valid\n");
+
+    /* Verify OEM signature (index 1) */
+    printf("  Checking OEM signature (index 1)...\n");
+    ret = wc_CoseSign_Verify(oemPubKey, 1, signedMsg, signedMsgLen,
+        NULL, 0, NULL, 0,
+        scratch, sizeof(scratch),
+        &hdr, &payload, &payloadLen);
+    if (ret != 0) {
+        printf("  ERROR: OEM signature invalid: %d\n", ret);
+        return ret;
+    }
+    printf("    PASS: OEM signature valid\n");
+
+    printf("  SUCCESS: Both signatures verified\n");
+
+## COSE_Sign1 verification: one key per call
+$ sed -n 1222,1249p repo/include/wolfcose/wolfcose.h
+/**
+ * \brief Verify a COSE_Sign1 message and extract the payload.
+ *
+ * \param key             WOLFCOSE_KEY with public key. Caller retains ownership.
+ * \param in              Input COSE_Sign1 message.
+ * \param inSz            Input message size.
+ * \param detachedPayload Detached payload for verification (NULL if attached).
+ *                        Required if message has nil payload.
+ * \param detachedLen     Detached payload length.
+ * \param extAad          External additional authenticated data (NULL if none).
+ * \param extAadLen       External AAD length.
+ * \param scratch         Working buffer for Sig_structure reconstruction.
+ * \param scratchSz       Scratch buffer size.
+ * \param hdr             Output: parsed COSE headers. flags field indicates detached.
+ * \param payload         Output: zero-copy pointer to payload (NULL if detached).
+ * \param payloadLen      Output: payload length (0 if detached).
+ * \return WOLFCOSE_SUCCESS or negative error code.
+ *         WOLFCOSE_E_DETACHED_PAYLOAD if payload is nil and detachedPayload is NULL.
+ */
+WOLFCOSE_API int wc_CoseSign1_Verify(const WOLFCOSE_KEY* key,
+    const uint8_t* in, size_t inSz,
+    const uint8_t* detachedPayload, size_t detachedLen,
+    const uint8_t* extAad, size_t extAadLen,
+    uint8_t* scratch, size_t scratchSz,
+    WOLFCOSE_HDR* hdr,
+    const uint8_t** payload, size_t* payloadLen);
+#endif /* WOLFCOSE_SIGN1_VERIFY */
+
+
+## Ed25519 verification failure is reported as WOLFCOSE_E_CRYPTO (used in the run log for T2)
+$ sed -n 1134,1139p repo/src/wolfcose_sign.c
+                ret = wc_ed25519_verify_msg(signature, (word32)signatureLen,
+                                             scratch, (word32)sigStructLen,
+                                             &verified, ed25519Key);
+                if (ret != 0) {
+                    ret = WOLFCOSE_E_CRYPTO;
+                }
+
+
+## The only verification-time callback in the headers: WOLFCOSE_EAT_PSA_KEY_RESOLVER (PSA attestation tokens, RFC 9783)
+$ sed -n 102,124p repo/include/wolfcose/eat_psa.h
+} WOLFCOSE_EAT_PSA_TOKEN;
+
+#if defined(WOLFCOSE_EAT_PSA_UEID_RESOLVER)
+/**
+ * \brief Resolve a candidate key from untrusted routing claims before verification.
+ *
+ * The callback must not grant authorization from these untrusted values. It
+ * initializes or populates \p key for a candidate IAK; wolfCOSE authenticates
+ * the original token only after this callback returns success.
+ *
+ * \param ctx Opaque application context supplied to VerifyByUeid().
+ * \param profile Untrusted selected current or legacy profile indication.
+ * \param ueid Untrusted UEID bytes borrowed from the input token.
+ * \param ueidLen Length of \p ueid.
+ * \param alg Untrusted protected COSE algorithm indication.
+ * \param key Output caller-owned key description to use for verification.
+ * \return WOLFCOSE_SUCCESS to continue, or an application error returned
+ *         unchanged by VerifyByUeid().
+ */
+typedef int (*WOLFCOSE_EAT_PSA_KEY_RESOLVER)(void* ctx,
+    WOLFCOSE_EAT_PSA_PROFILE profile,
+    const uint8_t* ueid, size_t ueidLen, int32_t alg,
+    WOLFCOSE_KEY* key);
+
+$ sed -n 15,28p repo/docs/PSA-EAT.md; sed -n 184,194p repo/docs/PSA-EAT.md
+`WOLFCOSE_ENABLE_EAT_PSA` enables the common API. Select at least one profile
+and at least one consume or issue operation after it.
+
+| Define | Effect | Default |
+|---|---|---|
+| `WOLFCOSE_ENABLE_EAT_PSA` | Common PSA/EAT API and types | off |
+| `WOLFCOSE_ENABLE_EAT_PSA_CURRENT` | RFC 9783 TF-M profile, `tag:psacertified.org,2023:psa#tfm` | off |
+| `WOLFCOSE_ENABLE_EAT_PSA_SIGN1` | Tagged `COSE_Sign1` consumption | off |
+| `WOLFCOSE_ENABLE_EAT_PSA_MAC0` | Tagged `COSE_Mac0` consumption | off |
+| `WOLFCOSE_ENABLE_EAT_PSA_ISSUE` | Current-profile claim encoding | off |
+| `WOLFCOSE_ENABLE_EAT_PSA_SIGN1_ISSUE` | Tagged `COSE_Sign1` token creation | off |
+| `WOLFCOSE_ENABLE_EAT_PSA_MAC0_ISSUE` | Tagged `COSE_Mac0` token creation | off |
+| `WOLFCOSE_ENABLE_EAT_PSA_LEGACY` | Legacy `PSA_IOT_PROFILE_1` consumption | off |
+| `WOLFCOSE_ENABLE_EAT_PSA_UEID_RESOLVER` | `wc_CoseEatPsaToken_VerifyByUeid()` key lookup helper | off |
+For a fleet verifier, enable the UEID resolver and map the untrusted UEID to a
+candidate provisioned IAK. The token is authenticated only after that lookup.
+This keeps the wolfCOSE library portable while allowing a PSA client such as
+wolfTrust to use its normal `psa_initial_attest_get_token()` API.
+
+If the attestation key is selected by device identity, enable
+`WOLFCOSE_ENABLE_EAT_PSA_UEID_RESOLVER` and use
+`wc_CoseEatPsaToken_VerifyByUeid()`. The resolver sees an untrusted decoded UEID
+only to choose a candidate key. wolfCOSE then verifies the original token
+before returning any claims, so the resolver must not use that preliminary
+UEID for authorization.
+
+(off by default; requires WOLFCOSE_ENABLE_EAT_PSA + a profile + WOLFCOSE_ENABLE_EAT_PSA_UEID_RESOLVER; it verifies only PSA tokens with the
+ RFC 9783 claim set, and the documentation forbids using the untrusted UEID for authorization. Not part of the measured build:)
+
+$ nm build/libwolfcose.a | grep -c " T wc_CoseEatPsa"
+0
+$ nm build/libwolfcose.a | grep -E " T wc_CoseSign1?_Verify| T wc_CoseSign_Verify"
+0000000000000000 T wc_CoseSign1_Verify
+0000000000000000 T wc_CoseSign_Verify

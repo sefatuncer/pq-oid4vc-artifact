@@ -1,0 +1,102 @@
+77b7428a6fed11c4ca3a5e63342bfef37877d34d77aef7070303cff585f49b78  composer.lock
+== web-auth/cose-lib 4.8.2 (8849e8bf043a), spomky-labs/cbor-php 3.4.2 (8f5ea00a07ad); PHP 8.4.26; OpenSSL 3.5.8 25 Aug 2026; sodium loaded; composer.lock sha256 77b7428a6fed11c4ca3a5e63342bfef37877d34d77aef7070303cff585f49b78
+X = EdDSA (-8): EdDSA::isSupported() = true
+
+== 0. Public surface (reflection): public methods whose name contains 'verif', 'polic', 'allow', 'requir', 'issuer'
+  CBOR\Tag\CoseSign1Tag                                -
+  CBOR\Tag\CoseSignTag                                 -
+  Cose\Signature\CoseSignature                         -
+  Cose\Signature\Signature                             -
+  Cose\Signature\Signature1                            -
+  Cose\Structure\CoseHeaders                           -
+  Cose\Algorithm\Manager                               -
+  Cose\Algorithm\ManagerFactory                        -
+  Cose\Algorithm\Signature\ECDSA\ES256                 verify(string $data, Cose\Key\Key $key, string $signature)
+  Cose\Algorithm\Signature\EdDSA\EdDSA                 verify(string $data, Cose\Key\Key $key, string $signature)
+  Cose\Algorithm\Signature\CertificateSignatureVerifier verify(int $algorithmIdentifier, string $certificate, string $data, string $signature); verifySubjectPublicKeyInfo(int $algorithmIdentifier, string $subjectPublicKeyInfo, string $data, string $signature)
+  Cose\Key\Key                                         -
+
+== 1. Validity check (documented path, Manager W = {ES256, EdDSA}, keys by kid)
+  V+ Sign1 migrated ES256                                  accept  expect=accept  OK        
+  V+ Sign1 migrated EdDSA                                  accept  expect=accept  OK        
+  V+ Sign1 legacy ES256                                    accept  expect=accept  OK        
+  V- Sign1 migrated ES256 corrupted                        reject  expect=reject  OK        signature invalid
+  V+ COSE_Sign T1 both valid (documented loop)             accept  expect=accept  OK        
+  V- COSE_Sign T2 X corrupted (documented loop)            reject  expect=reject  OK        signature invalid
+
+== 2. L4m (primary form), R = {EdDSA}, W = {ES256, EdDSA}: documented COSE_Sign path, every configurable library object
+configuration: Manager W, keys without restrictions
+  T1 A+X both valid                                        accept  expect=accept  OK        
+  T2 A valid + X corrupted                                 reject  expect=reject  OK        signature invalid
+  T3 A only (X stripped)                                   accept  expect=reject  MISMATCH  
+  T5 X only                                                accept  expect=accept  OK        
+  T1 permuted (X first)                                    accept  expect=accept  OK        
+configuration: Manager R = {EdDSA}
+  T1 A+X both valid                                        reject  expect=accept  MISMATCH  Unsupported algorithm
+  T2 A valid + X corrupted                                 reject  expect=reject  OK        Unsupported algorithm
+  T3 A only (X stripped)                                   reject  expect=reject  OK        Unsupported algorithm
+  T5 X only                                                accept  expect=accept  OK        
+  T1 permuted (X first)                                    reject  expect=accept  MISMATCH  Unsupported algorithm
+configuration: Manager W with key restrictions enforced, keys carry their own alg (3)
+  T1 A+X both valid                                        accept  expect=accept  OK        
+  T2 A valid + X corrupted                                 reject  expect=reject  OK        signature invalid
+  T3 A only (X stripped)                                   accept  expect=reject  MISMATCH  
+  T5 X only                                                accept  expect=accept  OK        
+  T1 permuted (X first)                                    accept  expect=accept  OK        
+configuration: Manager R with key restrictions enforced, keys carry their own alg (3)
+  T1 A+X both valid                                        reject  expect=accept  MISMATCH  Unsupported algorithm
+  T2 A valid + X corrupted                                 reject  expect=reject  OK        Unsupported algorithm
+  T3 A only (X stripped)                                   reject  expect=reject  OK        Unsupported algorithm
+  T5 X only                                                accept  expect=accept  OK        
+  T1 permuted (X first)                                    reject  expect=accept  MISMATCH  Unsupported algorithm
+recorded, not counted (relabelling the migrated classical key, README rule 'Key material'):
+configuration: Manager W enforced, migrated ES256 key relabelled alg = -8
+  T1 A+X both valid                                        reject  expect=-       -         The key is restricted to the algorithm -8 and cannot be used with the algorithm -7
+  T2 A valid + X corrupted                                 reject  expect=-       -         The key is restricted to the algorithm -8 and cannot be used with the algorithm -7
+  T3 A only (X stripped)                                   reject  expect=-       -         The key is restricted to the algorithm -8 and cannot be used with the algorithm -7
+  T5 X only                                                accept  expect=-       -         
+  T1 permuted (X first)                                    reject  expect=-       -         The key is restricted to the algorithm -8 and cannot be used with the algorithm -7
+-> the documented COSE_Sign path is 'every present signature verifies' (all-present-valid): T3 is accepted under W;
+   under R the classical signature of T1 has no algorithm. No library object is told which algorithms must be present.
+
+== 3. L4m with own code (B4 record only): required-set check after the signer loop (23 lines)
+  T1 A+X both valid                                        accept  expect=-       -         
+  T2 A valid + X corrupted                                 reject  expect=-       -         signature invalid
+  T3 A only (X stripped)                                   reject  expect=-       -         required algorithm -8 missing
+  T5 X only                                                accept  expect=-       -         
+  T1 permuted (X first)                                    accept  expect=-       -         
+
+== 4. L4c (supplement): COSE_Sign1, migrated issuer (R = {EdDSA}, keys mig-es256 + mig-eddsa), legacy issuer (R = {}, key leg-es256)
+one configuration: Manager W, all keys
+  migrated ES256                                           accept  expect=reject  MISMATCH  
+  migrated EdDSA                                           accept  expect=accept  OK        
+  legacy ES256                                             accept  expect=accept  OK        
+one configuration: Manager R = {EdDSA}, all keys
+  migrated ES256                                           reject  expect=reject  OK        Unsupported algorithm
+  migrated EdDSA                                           accept  expect=accept  OK        
+  legacy ES256                                             reject  expect=accept  MISMATCH  Unsupported algorithm
+one configuration: Manager W enforced, keys carry their own alg (3)
+  migrated ES256                                           accept  expect=reject  MISMATCH  
+  migrated EdDSA                                           accept  expect=accept  OK        
+  legacy ES256                                             accept  expect=accept  OK        
+recorded, not counted (README rule 'Key material'):
+Manager W enforced, migrated ES256 key relabelled alg = -8
+  migrated ES256                                           reject  expect=-       -         The key is restricted to the algorithm -8 and cannot be used with the algorithm -7
+  migrated EdDSA                                           accept  expect=-       -         
+  legacy ES256                                             accept  expect=-       -         
+Manager W enforced, migrated ES256 key key_ops = [sign] (no verify)
+  migrated ES256                                           reject  expect=-       -         The key does not allow the "verify" operation
+  migrated EdDSA                                           accept  expect=-       -         
+  legacy ES256                                             accept  expect=-       -         
+Manager W, migrated ES256 key left out
+  migrated ES256                                           reject  expect=-       -         unknown kid
+  migrated EdDSA                                           accept  expect=-       -         
+  legacy ES256                                             accept  expect=-       -         
+
+== 5. L4c with own code (B4 record only; 'L4c (consecutive)': one Manager per issuer, selected by the caller) (14 lines)
+  migrated ES256                                           reject  expect=-       -         Unsupported algorithm
+  migrated EdDSA                                           accept  expect=-       -         
+  legacy ES256                                             accept  expect=-       -         
+(the record selection and the verification are assembled by the caller; the migrated record holds its ES256 key)
+
+== SUMMARY: checked rows OK = 26 of 35; B4 lines: L4m 23, L4c 14

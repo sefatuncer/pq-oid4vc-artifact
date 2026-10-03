@@ -447,7 +447,18 @@ v1.4 = v1.3 (byte-identical) + ES384 counterparts of the control-arm (EdDSA) vec
 support neither EdDSA nor Ed25519 (pre-registration amendment 10; label order EdDSA, then Ed25519, then
 ES384). 230 vectors, 30 of them with `kol` = `kontrol-ES384`. Generator `generator/v14.py` (its docstring
 describes the construction); independent check `tests/t14_es384.py` → `results/t14_es384.txt`
-(**341/341**). The merged oracle for v1.4 is `experiment/oracle/merged/derive_v14.py`.
+(**357/357**). The merged oracle for v1.4 is `experiment/oracle/merged/derive_v14.py`.
+
+**Correction of 2026-10-03 (before the freeze; decision D9 in `experiment/runs/DECISIONS-PREFREEZE.md`).**
+The first generation of v1.4 replaced the COSE kid only in the protected header. The battery carries the COSE kid in
+the unprotected header, so 9 COSE counterparts kept the kid of the EdDSA key although they are signed with the ES384
+key (`COSE-VPLUS_EdDSA-ES384`, `COSE-VMINUS_EdDSA-ES384`, `COSE-K1K_iki_gecerli-ES384` and its `-SIRA-ters` twin,
+`COSE-K2K_X_bozuk-ES384` and its `-SIRA-ters` twin, `COSE-K4K_yalniz_X-ES384`, `COSE-K5K_arti_kayitsiz-ES384`,
+`COSE-K10K_alg-ES256_anahtar-Ed25519-ES384`). `generator/v14.py` now replaces the kid in both headers and v1.4 was
+generated again: these 9 files and `MANIFEST.json`, `MANIFEST.csv`, `SHA256SUMS` changed, every other file is
+byte-identical. T14 now also checks that every kid of a re-made signature is the kid of its signing key (9 failures
+on the first generation, 0 after the correction; previously 341 checks). A battery-wide scan finds one remaining
+kid that differs from the signing key, `X5C10_x5c_ve_baska_anahtar_kid`, which is that vector's construction.
 
 ## 6. Sizes (`results/v1_sizes.csv`, `results/v1.1_sizes.csv`, `results/v1.1_dpop_sizes.*`)
 

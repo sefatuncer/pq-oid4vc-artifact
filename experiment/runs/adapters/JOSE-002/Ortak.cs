@@ -1,5 +1,6 @@
 // Shared adapter skeleton (C#) — C3 adapter contract 1.0 (experiment/oracle/oracle-A/adapter-contract.md) / RUNNER.md §1–§3.
-// This file is IDENTICAL in JOSE-001, JOSE-002 and SDJWT-021. The library-specific verification is in Adaptor.cs.
+// This file is the same in JOSE-001, JOSE-002 and SDJWT-021 (SDJWT-021 also reads the manifest of the pre-freeze
+// SD-JWT validity vectors). The library-specific verification is in Adaptor.cs.
 // NO verification loop: signature verification is done only by the documented API of the target library. No network access.
 using System.Diagnostics;
 using System.Reflection;
@@ -15,6 +16,7 @@ public sealed record Politika(string Taban, List<string>? W, List<string> R);
 public static class Ortak
 {
     public const string A = "ES256";
+    public const string EskiIss = "https://legacy-issuer.example";   // legacy issuer of L4c (battery v1.3)
     public static readonly Dictionary<string, string> XKol = new()
     {
         ["kontrol-EdDSA"] = "EdDSA", ["kontrol-Ed25519"] = "Ed25519", ["kontrol-ES384"] = "ES384",
@@ -60,7 +62,10 @@ public static class Ortak
     }
 
     // Policy → (W, R). METHOD.md §2; VARSAYILAN = contract §5.2 L5 (key only).
-    public static Politika Pol(JsonObject isSatiri, IReadOnlyList<string> kutuphaneAlgleri)
+    // L4 family: two issuer records (pre-registration §5.13, contract §5.3). The record is selected by the iss of the
+    // object: legacy issuer W = {A, X}, R = ∅; every other issuer (migrated) W = {A, X}, R = {X}. The selected record
+    // is enforced by the library's allow-list ("L4c (consecutive)", decision D9).
+    public static Politika Pol(JsonObject isSatiri, IReadOnlyList<string> kutuphaneAlgleri, string? iss = null)
     {
         var p = isSatiri["politika"]!.GetValue<string>();
         var taban = p.Split('|')[0].Split('@')[0]; // the suffixes '|sdjwtvc=..' and '@-19' only split the oracle
@@ -72,7 +77,9 @@ public static class Ortak
             "VARSAYILAN" => new(taban, null, new()),
             "IZIN-A" => new(taban, new() { A }, new()),
             "IZIN-AX" => new(taban, new() { A, X() }, new()),
-            "L4" or "L4-S" or "L4-Y" or "L4-YOL" => new(taban, new() { A, X() }, new() { X() }),
+            "L4" or "L4-S" or "L4-Y" or "L4-YOL" => iss == EskiIss
+                ? new(taban, new() { A, X() }, new())
+                : new(taban, new() { A, X() }, new() { X() }),
             _ => throw new InvalidOperationException("bilinmeyen politika " + p),
         };
     }
@@ -102,6 +109,12 @@ public static class Ortak
     public static JsonObject Baslik(string kompakt)
     {
         try { return JsonNode.Parse(B64d(kompakt.Split('.')[0]))!.AsObject(); } catch { return new JsonObject(); }
+    }
+
+    // iss of a compact JWS payload (read before verification only to select the issuer record of L4c).
+    public static string? Iss(string kompakt)
+    {
+        try { return JsonNode.Parse(B64d(kompakt.Split('.')[1])) is JsonObject p ? Str(p, "iss") : null; } catch { return null; }
     }
 
     public static string? Str(JsonObject o, string ad) => o[ad] is JsonValue v && v.TryGetValue<string>(out var s) ? s : null;

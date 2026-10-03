@@ -38,7 +38,10 @@ defmodule A10.Ortak do
   end
 
   # Policy → {taban, W | nil, R}. METHOD.md §2; VARSAYILAN = contract §5.2 L5.
-  def politika(is, kutuphane) do
+  # L4 family: two issuer records (pre-registration §5.13, contract §5.3), selected by the iss of the object: legacy
+  # issuer W = {A, X}, R = ∅; every other issuer (migrated) W = {A, X}, R = {X}. The selected record is enforced by the
+  # library's allow-list ("L4c (consecutive)", decision D9).
+  def politika(is, kutuphane, iss \\ nil) do
     taban = is["politika"] |> String.split("|") |> hd() |> String.split("@") |> hd()  # the suffixes only split the oracle
     x = @x_kol[is["kol"]]
     gx = fn -> x || raise "kol icin X tanimsiz" end
@@ -47,8 +50,21 @@ defmodule A10.Ortak do
       "VARSAYILAN" -> {taban, nil, []}
       "IZIN-A" -> {taban, ["ES256"], []}
       "IZIN-AX" -> {taban, ["ES256", gx.()], []}
-      t when t in ["L4", "L4-S", "L4-Y", "L4-YOL"] -> {taban, ["ES256", gx.()], [gx.()]}
+      t when t in ["L4", "L4-S", "L4-Y", "L4-YOL"] ->
+        {taban, ["ES256", gx.()], if(iss == "https://legacy-issuer.example", do: [], else: [gx.()])}
       _ -> raise "bilinmeyen politika #{is["politika"]}"
+    end
+  end
+
+  # iss of a compact JWS payload (read before verification only to select the issuer record of L4c).
+  def iss(jwt) do
+    try do
+      case jwt |> String.split(".") |> Enum.at(1) |> b64d() |> JSON.decode!() do
+        %{"iss" => i} when is_binary(i) -> i
+        _ -> nil
+      end
+    rescue
+      _ -> nil
     end
   end
 
@@ -144,7 +160,7 @@ defmodule A10.Adaptor do
     else
       dg = Ortak.manifest()[is["vektor_id"]] || raise "manifestte yok"
       jwt = is["dosya"] |> Ortak.vektor_yolu() |> File.read!() |> String.trim()
-      pol = Ortak.politika(is, @kutuphane)
+      pol = Ortak.politika(is, @kutuphane, Ortak.iss(jwt))
       izin = Ortak.tek_imza_izin(pol)
       baslik = try do jwt |> String.split(".") |> hd() |> Ortak.b64d() |> JSON.decode!() rescue _ -> %{} end
       alg = baslik["alg"]

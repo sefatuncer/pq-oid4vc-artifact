@@ -14,7 +14,7 @@
 | A, X | A = ES256; X from the arm: kontrol-EdDSA → EdDSA, kontrol-Ed25519 → Ed25519, tedavi-ML-DSA-65 → ML-DSA-65, tedavi-composite → ML-DSA-65-ES256 (RUNNER §1) |
 | GEC, GEC@-19, P0, P1 | W = the subset of the battery's algorithms that the library supports **natively** (METHOD §2 "all supported algorithms"), R = ∅ |
 | IZIN-A / IZIN-AX | W = {A} / {A, X}, R = ∅ |
-| L4, L4-S, L4-Y, L4@-19, L4-YOL | W = {A, X}, R = {X} |
+| L4, L4-S, L4-Y, L4@-19, L4-YOL | W = {A, X}, R = {X} (migrated issuer); legacy issuer: W = {A, X}, R = ∅ (decision D9) |
 | Single-signature object (compact; General JSON with one signature) | The multi-signature rule stays empty. If R ≠ ∅, the effective allow-list is R: a single signature satisfies R only if it is X itself, and R ⊆ W. Thus L4/L4-S/L4-Y on a compact object are built with the library's **allow-list** mechanism (L4c "migrated issuer" record; contract §5.2). P0/P1 equal GEC for a single signature |
 | Multi-signature object | If the library has no documented multi-signature rule (at-least-one / all / required set), `ifade-edilemedi`; no custom loop is written (B4) |
 | Key path (contract §8 item 1) | **`JWK` in all arms:** the header `kid` is looked up in the vector's JWKS (`dogrulama_girdileri.jwks`); without `kid`, `alg_kid[alg]` of the manifest, and without that the single `kid`. The selected JWK is turned into a key with the library's documented JWK import API. For DPoP the header `jwk` (`jwk-basligi`). x5c is not used in non-X5C vectors (§8 item 2) |
@@ -31,6 +31,7 @@
 | IZIN-A | `… algorithms: ["ES256"] …` |
 | IZIN-AX | `… algorithms: ["ES256", X] …` (X = EdDSA/Ed25519/ML-DSA-65/ML-DSA-65-ES256 resolves to `JWA::Unsupported` in the library) |
 | L4 / L4-S / L4-Y (compact) | `… algorithms: [X] …` (effective allow-list = R) |
+| L4 / L4-S / L4-Y, legacy issuer (payload `iss` = `https://legacy-issuer.example`) | legacy-issuer record of L4c: W = {A, X}, R = ∅, i.e. the allow-list of `IZIN-AX`. The record is selected by the `iss` of the object before the library call (pre-registration §5.13, contract §5.3: "L4c (consecutive)", decision D9) |
 | L4-YOL | the X5C vectors are in SD-JWT form → B6 first; if it comes in a supported format, `ifade-edilemedi` (no API for an x5c path-class policy; the same rule for all my targets) |
 | VARSAYILAN | `JWT.decode(token, nil, true) { … }` (no algorithm given; the library rejects with "An algorithm must be specified") |
 

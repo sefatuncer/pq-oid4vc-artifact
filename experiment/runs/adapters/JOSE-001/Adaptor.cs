@@ -51,7 +51,7 @@ Sonuc Dogrula(JsonObject isSatiri)
     if (!DestekliBicim.Contains(isSatiri["serilestirme"]!.GetValue<string>())) return Ortak.B6(Api);
     var dg = Ortak.Girdi(isSatiri["vektor_id"]!.GetValue<string>());
     var jwt = File.ReadAllText(Ortak.VektorYolu(isSatiri["dosya"]!.GetValue<string>())).Trim();
-    var pol = Ortak.Pol(isSatiri, KutuphaneAlgleri);
+    var pol = Ortak.Pol(isSatiri, KutuphaneAlgleri, Ortak.Iss(jwt));
     if (pol.Taban == "L4-YOL") return Ortak.IfadeEdilemedi("x5c/x5chain yol sinifi politikasi (L4-YOL, B2) icin belgeli API yok", Api);
     var izin = Ortak.TekImzaIzin(pol);
     var baslik = Ortak.Baslik(jwt);

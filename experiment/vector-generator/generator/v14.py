@@ -84,6 +84,14 @@ def jws_resign(obj, recs, S):
     return obj, changed
 
 
+def with_kid(hmap, kid):
+    """Copy of a header map in which an existing kid is replaced (the battery puts the COSE kid in the unprotected header)."""
+    h = dict(hmap or {})
+    if cose.H_KID in h:
+        h[cose.H_KID] = kid
+    return h
+
+
 def cose_resign(data, recs, S):
     kES = S[X_ROLE]
     kES256 = S['issuer/ES256']
@@ -108,6 +116,8 @@ def cose_resign(data, recs, S):
                 hdr[cose.H_KID] = cose.kid_bytes(kES)
         else:
             return data, changed
+        if key is kES:                                      # the kid names the key that now signs (fix 2026-10-03, D9)
+            bu = with_kid(bu, cose.kid_bytes(kES))
         nbp = cose.prot(hdr)
         sig = algs.sign(sign_alg, key, cose.sig_structure1(nbp, pl), True)
         c = corruption(rec)
@@ -124,6 +134,7 @@ def cose_resign(data, recs, S):
             hdr[cose.H_ALG] = COSE_ES384
             if cose.H_KID in hdr:
                 hdr[cose.H_KID] = cose.kid_bytes(kES)
+            su = with_kid(su, cose.kid_bytes(kES))           # unprotected kid as well (fix 2026-10-03, D9)
             nsp = cose.prot(hdr)
             sg = algs.sign(X_NEW, kES, cose.sig_structure(bp, nsp, pl), True)
             c = corruption(rec)

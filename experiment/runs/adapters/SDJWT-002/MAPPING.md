@@ -16,6 +16,7 @@ Documented route (README "Usage"): `SdJwtHandlerV1().decodeAndVerify(sdJwtToken:
 | GEC / P0 / P1 / P2 / VARSAYILAN | `SdPublicKey(jwk, natural_alg)` (EC P-256 → es256, P-384 → es384, OKP → eddsa) |
 | IZIN-A / IZIN-AX | pin = the natural alg if it is in W∩supported, otherwise the first of W∩supported; if W∩supported is empty, no verifier can be built → `red/alg-desteklenmiyor` (the library is not called) |
 | L4 / L4-S / L4-Y | the same rule, W_effective = R = {X} |
+| L4 / L4-S / L4-Y, legacy issuer (payload `iss` = `https://legacy-issuer.example`) | legacy-issuer record of L4c: W = {A, X}, R = ∅, i.e. the allow-list of `IZIN-AX`. The record is selected by the `iss` of the object before the library call (pre-registration §5.13, contract §5.3: "L4c (consecutive)", decision D9) |
 | L4-YOL | `ifade-edilemedi` |
 
 - `verifyKeyBinding = (artefakt == "sd-jwt-vc+kb")`; there is no API parameter for `kb_aud`/`kb_nonce`.

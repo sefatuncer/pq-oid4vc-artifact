@@ -8,6 +8,7 @@ final class Ortak
 {
     public const SOZLESME = 'adaptor-sozlesme/1.0';
     public const A = 'ES256';
+    public const ESKI_ISS = 'https://legacy-issuer.example';   // legacy issuer of L4c (battery v1.3)
     public const X_KOL = [
         'kontrol-EdDSA' => 'EdDSA', 'kontrol-Ed25519' => 'Ed25519', 'kontrol-ES384' => 'ES384',
         'tedavi-ML-DSA-65' => 'ML-DSA-65', 'tedavi-composite' => 'ML-DSA-65-ES256',
@@ -18,6 +19,13 @@ final class Ortak
     public static function b64d(string $s): string
     {
         return (string) base64_decode(strtr($s, '-_', '+/') . str_repeat('=', (4 - strlen($s) % 4) % 4), false);
+    }
+
+    /** iss of a compact JWS payload (read before verification only to select the issuer record of L4c). */
+    public static function iss(string $kompakt): ?string
+    {
+        $p = json_decode(self::b64d(explode('.', $kompakt)[1] ?? ''), true);
+        return is_array($p) && is_string($p['iss'] ?? null) ? $p['iss'] : null;
     }
 
     // RUNNER §2: /v = v1.3; the file in the job row may carry the prefix "v1.3/...".
@@ -52,8 +60,13 @@ final class Ortak
         return self::$jwks[$goreli] ??= json_decode((string) file_get_contents(self::anahtarDosyasi($goreli)), true, 512, JSON_THROW_ON_ERROR);
     }
 
-    /** Policy → ['w' => W|null, 'r' => R, 'taban' => ...]. METHOD.md §2; VARSAYILAN = contract §5.2 L5. */
-    public static function politika(array $is, array $kutuphaneAlgleri): array
+    /**
+     * Policy → ['w' => W|null, 'r' => R, 'taban' => ...]. METHOD.md §2; VARSAYILAN = contract §5.2 L5.
+     * L4 family: two issuer records (pre-registration §5.13, contract §5.3), selected by the iss of the object: legacy
+     * issuer W = {A, X}, R = ∅; every other issuer (migrated) W = {A, X}, R = {X}. The selected record is enforced by
+     * the library's allow-list ("L4c (consecutive)", decision D9).
+     */
+    public static function politika(array $is, array $kutuphaneAlgleri, ?string $iss = null): array
     {
         $taban = explode('@', explode('|', $is['politika'])[0])[0]; // the suffixes '|sdjwtvc=..' and '@-19' only split the oracle
         $x = self::X_KOL[$is['kol']] ?? null;
@@ -63,7 +76,8 @@ final class Ortak
             case 'VARSAYILAN': return ['w' => null, 'r' => [], 'taban' => $taban];
             case 'IZIN-A': return ['w' => [self::A], 'r' => [], 'taban' => $taban];
             case 'IZIN-AX': $gerekX(); return ['w' => [self::A, $x], 'r' => [], 'taban' => $taban];
-            case 'L4': case 'L4-S': case 'L4-Y': case 'L4-YOL': $gerekX(); return ['w' => [self::A, $x], 'r' => [$x], 'taban' => $taban];
+            case 'L4': case 'L4-S': case 'L4-Y': case 'L4-YOL': $gerekX();
+                return ['w' => [self::A, $x], 'r' => $iss === self::ESKI_ISS ? [] : [$x], 'taban' => $taban];
         }
         throw new RuntimeException("bilinmeyen politika {$is['politika']}");
     }

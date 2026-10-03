@@ -17,6 +17,7 @@ JWT.NET has no allow-list option and no JWK API. Documented use: `JwtBuilder.Cre
 | GEC / P0 / P1 / P2 / VARSAYILAN | natural alg ∈ {ES256, ES384} |
 | IZIN-A / IZIN-AX | natural alg ∈ {ES256} / {ES256, X} (only ES256 if X has no JWT.NET counterpart) |
 | L4 / L4-S / L4-Y (compact) | natural alg ∈ {X} — no algorithm can be set up for X ∈ {EdDSA, Ed25519, ML-DSA-65, composite} |
+| L4 / L4-S / L4-Y, legacy issuer (payload `iss` = `https://legacy-issuer.example`) | legacy-issuer record of L4c: W = {A, X}, R = ∅, i.e. the allow-list of `IZIN-AX`. The record is selected by the `iss` of the object before the library call (pre-registration §5.13, contract §5.3: "L4c (consecutive)", decision D9) |
 | L4-YOL | `ifade-edilemedi` |
 
 `dogrulanan_algoritmalar`: on acceptance the `Name` of the configured algorithm object (the object that performs the verification).

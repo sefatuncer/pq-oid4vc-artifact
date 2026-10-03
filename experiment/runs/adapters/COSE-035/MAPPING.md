@@ -16,6 +16,7 @@ cose-lib is a primitives library. README "Verifying a COSE_Sign1 Signature": *"T
 | GEC / P0 / P1 / P2 / VARSAYILAN | `Manager::create()->add(ES256, ES384, EdDSA, FullySpecified\Ed25519)`; `Manager::has(alg)` is the allow-list |
 | IZIN-A / IZIN-AX | Manager = W ∩ native (ML-DSA-65/composite cannot be added) |
 | L4 / L4-S / L4-Y (COSE_Sign1 or COSE_Sign with a single signer) | Manager = {X} (effective allow-list = R) |
+| L4 / L4-S / L4-Y, legacy issuer (payload `iss` = `https://legacy-issuer.example`) | legacy-issuer record of L4c: W = {A, X}, R = ∅, i.e. the allow-list of `IZIN-AX`. The record is selected by the `iss` of the object before the library call (pre-registration §5.13, contract §5.3: "L4c (consecutive)", decision D9) |
 | COSE_Sign with several signers × every policy | **`ifade-edilemedi`**: no documented option for a rule over the signers (P0/P1/R); a loop over the `CoseSignature::all()` list would be the caller's code (B4) |
 | L4-YOL | **`ifade-edilemedi`**: no documented API for an x5chain path-class policy (B2) |
 
