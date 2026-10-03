@@ -1,0 +1,1079 @@
+{
+  "kayitlar": [
+    {
+      "ad": "T1.c",
+      "kendi": 10,
+      "referans": 10,
+      "sapma": 0.0,
+      "sinirda": false,
+      "tur": "tam",
+      "uyum": true
+    },
+    {
+      "ad": "T1.u",
+      "kendi": 20,
+      "referans": 20,
+      "sapma": 0.0,
+      "sinirda": false,
+      "tur": "tam",
+      "uyum": true
+    },
+    {
+      "ad": "T1.p_alt",
+      "kendi": "510366361/536870912",
+      "referans": 0.9506314266473055,
+      "sapma": 0.0,
+      "sinirda": false,
+      "tur": "p",
+      "uyum": true
+    },
+    {
+      "ad": "T1.p_ust",
+      "kendi": "53818201/536870912",
+      "referans": 0.10024421103298667,
+      "sapma": 2.7755575615628914e-17,
+      "sinirda": false,
+      "tur": "p",
+      "uyum": true
+    },
+    {
+      "ad": "T1.karar_destek",
+      "kendi": false,
+      "referans": false,
+      "sapma": 0.0,
+      "sinirda": false,
+      "tur": "tam",
+      "uyum": true
+    },
+    {
+      "ad": "T1.karar_yanlislama",
+      "kendi": false,
+      "referans": false,
+      "sapma": 0.0,
+      "sinirda": false,
+      "tur": "tam",
+      "uyum": true
+    },
+    {
+      "ad": "T1.wilson",
+      "kendi": [
+        0.4551356365479488,
+        0.7812607919389929
+      ],
+      "referans": [
+        0.45513563654794864,
+        0.7812607919389929
+      ],
+      "sapma": 1.6653345369377348e-16,
+      "sinirda": false,
+      "tur": "ga",
+      "uyum": true
+    },
+    {
+      "ad": "T1.dus_i.c",
+      "kendi": 10,
+      "referans": 10,
+      "sapma": 0.0,
+      "sinirda": false,
+      "tur": "tam",
+      "uyum": true
+    },
+    {
+      "ad": "T1.dus_i.u",
+      "kendi": 20,
+      "referans": 20,
+      "sapma": 0.0,
+      "sinirda": false,
+      "tur": "tam",
+      "uyum": true
+    },
+    {
+      "ad": "T1.dus_i.p_alt",
+      "kendi": "510366361/536870912",
+      "referans": 0.9506314266473055,
+      "sapma": 0.0,
+      "sinirda": false,
+      "tur": "p",
+      "uyum": true
+    },
+    {
+      "ad": "T1.dus_i.p_ust",
+      "kendi": "53818201/536870912",
+      "referans": 0.10024421103298667,
+      "sapma": 2.7755575615628914e-17,
+      "sinirda": false,
+      "tur": "p",
+      "uyum": true
+    },
+    {
+      "ad": "T1.dus_i.karar_destek",
+      "kendi": false,
+      "referans": false,
+      "sapma": 0.0,
+      "sinirda": false,
+      "tur": "tam",
+      "uyum": true
+    },
+    {
+      "ad": "T1.dus_i.karar_yanlislama",
+      "kendi": false,
+      "referans": false,
+      "sapma": 0.0,
+      "sinirda": false,
+      "tur": "tam",
+      "uyum": true
+    },
+    {
+      "ad": "T1.dus_i.wilson",
+      "kendi": [
+        0.4551356365479488,
+        0.7812607919389929
+      ],
+      "referans": [
+        0.45513563654794864,
+        0.7812607919389929
+      ],
+      "sapma": 1.6653345369377348e-16,
+      "sinirda": false,
+      "tur": "ga",
+      "uyum": true
+    },
+    {
+      "ad": "T1.dus_ii.c",
+      "kendi": 10,
+      "referans": 10,
+      "sapma": 0.0,
+      "sinirda": false,
+      "tur": "tam",
+      "uyum": true
+    },
+    {
+      "ad": "T1.dus_ii.u",
+      "kendi": 20,
+      "referans": 20,
+      "sapma": 0.0,
+      "sinirda": false,
+      "tur": "tam",
+      "uyum": true
+    },
+    {
+      "ad": "T1.dus_ii.p_alt",
+      "kendi": "510366361/536870912",
+      "referans": 0.9506314266473055,
+      "sapma": 0.0,
+      "sinirda": false,
+      "tur": "p",
+      "uyum": true
+    },
+    {
+      "ad": "T1.dus_ii.p_ust",
+      "kendi": "53818201/536870912",
+      "referans": 0.10024421103298667,
+      "sapma": 2.7755575615628914e-17,
+      "sinirda": false,
+      "tur": "p",
+      "uyum": true
+    },
+    {
+      "ad": "T1.dus_ii.karar_destek",
+      "kendi": false,
+      "referans": false,
+      "sapma": 0.0,
+      "sinirda": false,
+      "tur": "tam",
+      "uyum": true
+    },
+    {
+      "ad": "T1.dus_ii.karar_yanlislama",
+      "kendi": false,
+      "referans": false,
+      "sapma": 0.0,
+      "sinirda": false,
+      "tur": "tam",
+      "uyum": true
+    },
+    {
+      "ad": "T1.dus_ii.wilson",
+      "kendi": [
+        0.4551356365479488,
+        0.7812607919389929
+      ],
+      "referans": [
+        0.45513563654794864,
+        0.7812607919389929
+      ],
+      "sapma": 1.6653345369377348e-16,
+      "sinirda": false,
+      "tur": "ga",
+      "uyum": true
+    },
+    {
+      "ad": "T1.dus_pilot.c",
+      "kendi": 7,
+      "referans": 7,
+      "sapma": 0.0,
+      "sinirda": false,
+      "tur": "tam",
+      "uyum": true
+    },
+    {
+      "ad": "T1.dus_pilot.u",
+      "kendi": 16,
+      "referans": 16,
+      "sapma": 0.0,
+      "sinirda": false,
+      "tur": "tam",
+      "uyum": true
+    },
+    {
+      "ad": "T1.dus_pilot.p_alt",
+      "kendi": "418153/524288",
+      "referans": 0.7975635528564453,
+      "sapma": 0.0,
+      "sinirda": false,
+      "tur": "p",
+      "uyum": true
+    },
+    {
+      "ad": "T1.dus_pilot.p_ust",
+      "kendi": "1421113/4194304",
+      "referans": 0.3388197422027588,
+      "sapma": 0.0,
+      "sinirda": false,
+      "tur": "p",
+      "uyum": true
+    },
+    {
+      "ad": "T1.dus_pilot.karar_destek",
+      "kendi": false,
+      "referans": false,
+      "sapma": 0.0,
+      "sinirda": false,
+      "tur": "tam",
+      "uyum": true
+    },
+    {
+      "ad": "T1.dus_pilot.karar_yanlislama",
+      "kendi": false,
+      "referans": false,
+      "sapma": 0.0,
+      "sinirda": false,
+      "tur": "tam",
+      "uyum": true
+    },
+    {
+      "ad": "T1.dus_pilot.wilson",
+      "kendi": [
+        0.3681137508501647,
+        0.7436536467432578
+      ],
+      "referans": [
+        0.3681137508501646,
+        0.743653646743258
+      ],
+      "sapma": 1.1102230246251565e-16,
+      "sinirda": false,
+      "tur": "ga",
+      "uyum": true
+    },
+    {
+      "ad": "T1.dus_devir.c",
+      "kendi": 9,
+      "referans": 9,
+      "sapma": 0.0,
+      "sinirda": false,
+      "tur": "tam",
+      "uyum": true
+    },
+    {
+      "ad": "T1.dus_devir.u",
+      "kendi": 20,
+      "referans": 20,
+      "sapma": 0.0,
+      "sinirda": false,
+      "tur": "tam",
+      "uyum": true
+    },
+    {
+      "ad": "T1.dus_devir.p_alt",
+      "kendi": "260190683/268435456",
+      "referans": 0.9692858271300793,
+      "sapma": 0.0,
+      "sinirda": false,
+      "tur": "p",
+      "uyum": true
+    },
+    {
+      "ad": "T1.dus_devir.p_ust",
+      "kendi": "9129889/134217728",
+      "referans": 0.06802297383546829,
+      "sapma": 0.0,
+      "sinirda": false,
+      "tur": "p",
+      "uyum": true
+    },
+    {
+      "ad": "T1.dus_devir.karar_destek",
+      "kendi": false,
+      "referans": false,
+      "sapma": 0.0,
+      "sinirda": false,
+      "tur": "tam",
+      "uyum": true
+    },
+    {
+      "ad": "T1.dus_devir.karar_yanlislama",
+      "kendi": false,
+      "referans": false,
+      "sapma": 0.0,
+      "sinirda": false,
+      "tur": "tam",
+      "uyum": true
+    },
+    {
+      "ad": "T1.dus_devir.wilson",
+      "kendi": [
+        0.4734510409047615,
+        0.8005928147332501
+      ],
+      "referans": [
+        0.4734510409047613,
+        0.8005928147332501
+      ],
+      "sapma": 1.6653345369377348e-16,
+      "sinirda": false,
+      "tur": "ga",
+      "uyum": true
+    },
+    {
+      "ad": "T1.dus_gecersiz.c",
+      "kendi": 10,
+      "referans": 10,
+      "sapma": 0.0,
+      "sinirda": false,
+      "tur": "tam",
+      "uyum": true
+    },
+    {
+      "ad": "T1.dus_gecersiz.u",
+      "kendi": 21,
+      "referans": 21,
+      "sapma": 0.0,
+      "sinirda": false,
+      "tur": "tam",
+      "uyum": true
+    },
+    {
+      "ad": "T1.dus_gecersiz.p_alt",
+      "kendi": "15522173/16777216",
+      "referans": 0.9251936078071594,
+      "sapma": 0.0,
+      "sinirda": false,
+      "tur": "p",
+      "uyum": true
+    },
+    {
+      "ad": "T1.dus_gecersiz.p_ust",
+      "kendi": "301766029/2147483648",
+      "referans": 0.14052075752988458,
+      "sapma": 0.0,
+      "sinirda": false,
+      "tur": "p",
+      "uyum": true
+    },
+    {
+      "ad": "T1.dus_gecersiz.karar_destek",
+      "kendi": false,
+      "referans": false,
+      "sapma": 0.0,
+      "sinirda": false,
+      "tur": "tam",
+      "uyum": true
+    },
+    {
+      "ad": "T1.dus_gecersiz.karar_yanlislama",
+      "kendi": false,
+      "referans": false,
+      "sapma": 0.0,
+      "sinirda": false,
+      "tur": "tam",
+      "uyum": true
+    },
+    {
+      "ad": "T1.dus_gecersiz.wilson",
+      "kendi": [
+        0.43824108619660734,
+        0.7626689857961975
+      ],
+      "referans": [
+        0.4382410861966073,
+        0.7626689857961975
+      ],
+      "sapma": 5.551115123125783e-17,
+      "sinirda": false,
+      "tur": "ga",
+      "uyum": true
+    },
+    {
+      "ad": "T2.p",
+      "kendi": "1",
+      "referans": 1.0,
+      "sapma": 0.0,
+      "sinirda": false,
+      "tur": "p",
+      "uyum": true
+    },
+    {
+      "ad": "T2.dus_devir.p",
+      "kendi": "1",
+      "referans": 1.0,
+      "sapma": 0.0,
+      "sinirda": false,
+      "tur": "p",
+      "uyum": true
+    },
+    {
+      "ad": "T3.p",
+      "kendi": "1",
+      "referans": 1.0,
+      "sapma": 0.0,
+      "sinirda": false,
+      "tur": "p",
+      "uyum": true
+    },
+    {
+      "ad": "T3.or_kosullu",
+      "kendi": [
+        "nan",
+        0.0,
+        "inf"
+      ],
+      "referans": [
+        "nan",
+        0.0,
+        "inf"
+      ],
+      "sapma": 0.0,
+      "sinirda": false,
+      "tur": "or",
+      "uyum": true
+    },
+    {
+      "ad": "T4.p",
+      "kendi": "3180/8671",
+      "referans": 0.3667397070695422,
+      "sapma": 0.0,
+      "sinirda": false,
+      "tur": "p",
+      "uyum": true
+    },
+    {
+      "ad": "T4.or_kosullu",
+      "kendi": [
+        3.9803649301579838,
+        0.3750412097921095,
+        211.91913894009323
+      ],
+      "referans": [
+        3.9803649301579704,
+        0.375041209792109,
+        211.91913894009483
+      ],
+      "sapma": 7.51048600925347e-15,
+      "sinirda": false,
+      "tur": "or",
+      "uyum": true
+    },
+    {
+      "ad": "T4.newcombe10",
+      "kendi": [
+        0.21578947368421053,
+        -0.1288820529208479,
+        0.4544692112220288
+      ],
+      "referans": [
+        0.21578947368421053,
+        -0.12888205292084814,
+        0.4544692112220289
+      ],
+      "sapma": 2.498001805406602e-16,
+      "sinirda": false,
+      "tur": "ga",
+      "uyum": true
+    },
+    {
+      "ad": "T5.p",
+      "kendi": "1/64",
+      "referans": 0.015625,
+      "sapma": 0.0,
+      "sinirda": false,
+      "tur": "p",
+      "uyum": true
+    },
+    {
+      "ad": "T5.wilson",
+      "kendi": [
+        0.6096657120978348,
+        1.0
+      ],
+      "referans": [
+        0.6096657120978346,
+        1.0
+      ],
+      "sapma": 2.220446049250313e-16,
+      "sinirda": false,
+      "tur": "ga",
+      "uyum": true
+    },
+    {
+      "ad": "T5.p_duzeltilmis",
+      "kendi": "1/16",
+      "referans": 0.0625,
+      "sapma": 0.0,
+      "sinirda": false,
+      "tur": "p",
+      "uyum": true
+    },
+    {
+      "ad": "T5.red",
+      "kendi": false,
+      "referans": false,
+      "sapma": 0.0,
+      "sinirda": false,
+      "tur": "tam",
+      "uyum": true
+    },
+    {
+      "ad": "T4.p_duzeltilmis",
+      "kendi": "1",
+      "referans": 1.0,
+      "sapma": 0.0,
+      "sinirda": false,
+      "tur": "p",
+      "uyum": true
+    },
+    {
+      "ad": "T4.red",
+      "kendi": false,
+      "referans": false,
+      "sapma": 0.0,
+      "sinirda": false,
+      "tur": "tam",
+      "uyum": true
+    },
+    {
+      "ad": "T2.p_duzeltilmis",
+      "kendi": "1",
+      "referans": 1.0,
+      "sapma": 0.0,
+      "sinirda": false,
+      "tur": "p",
+      "uyum": true
+    },
+    {
+      "ad": "T2.red",
+      "kendi": false,
+      "referans": false,
+      "sapma": 0.0,
+      "sinirda": false,
+      "tur": "tam",
+      "uyum": true
+    },
+    {
+      "ad": "T3.p_duzeltilmis",
+      "kendi": "1",
+      "referans": 1.0,
+      "sapma": 0.0,
+      "sinirda": false,
+      "tur": "p",
+      "uyum": true
+    },
+    {
+      "ad": "T3.red",
+      "kendi": false,
+      "referans": false,
+      "sapma": 0.0,
+      "sinirda": false,
+      "tur": "tam",
+      "uyum": true
+    },
+    {
+      "ad": "wilson.L0",
+      "kendi": [
+        0.11792388144489499,
+        0.40928326158122164
+      ],
+      "referans": [
+        0.11792388144489496,
+        0.40928326158122175
+      ],
+      "sapma": 1.1102230246251565e-16,
+      "sinirda": false,
+      "tur": "ga",
+      "uyum": true
+    },
+    {
+      "ad": "wilson.L1",
+      "kendi": [
+        0.0,
+        0.1135133931739687
+      ],
+      "referans": [
+        0.0,
+        0.1135133931739688
+      ],
+      "sapma": 9.71445146547012e-17,
+      "sinirda": false,
+      "tur": "ga",
+      "uyum": true
+    },
+    {
+      "ad": "wilson.L2",
+      "kendi": [
+        0.0,
+        0.1135133931739687
+      ],
+      "referans": [
+        0.0,
+        0.1135133931739688
+      ],
+      "sapma": 9.71445146547012e-17,
+      "sinirda": false,
+      "tur": "ga",
+      "uyum": true
+    },
+    {
+      "ad": "wilson.L3",
+      "kendi": [
+        0.053096554840547455,
+        0.2968132668203629
+      ],
+      "referans": [
+        0.05309655484054743,
+        0.296813266820363
+      ],
+      "sapma": 1.1102230246251565e-16,
+      "sinirda": false,
+      "tur": "ga",
+      "uyum": true
+    },
+    {
+      "ad": "wilson.L4",
+      "kendi": [
+        0.4551356365479488,
+        0.7812607919389929
+      ],
+      "referans": [
+        0.45513563654794864,
+        0.7812607919389929
+      ],
+      "sapma": 1.6653345369377348e-16,
+      "sinirda": false,
+      "tur": "ga",
+      "uyum": true
+    },
+    {
+      "ad": "wilson.L5",
+      "kendi": [
+        0.0,
+        0.1135133931739687
+      ],
+      "referans": [
+        0.0,
+        0.1135133931739688
+      ],
+      "sapma": 9.71445146547012e-17,
+      "sinirda": false,
+      "tur": "ga",
+      "uyum": true
+    },
+    {
+      "ad": "wilson.L>=1",
+      "kendi": [
+        0.5907167384187784,
+        0.882076118555105
+      ],
+      "referans": [
+        0.5907167384187783,
+        0.882076118555105
+      ],
+      "sapma": 1.1102230246251565e-16,
+      "sinirda": false,
+      "tur": "ga",
+      "uyum": true
+    },
+    {
+      "ad": "wilson.L>=2",
+      "kendi": [
+        0.5907167384187784,
+        0.882076118555105
+      ],
+      "referans": [
+        0.5907167384187783,
+        0.882076118555105
+      ],
+      "sapma": 1.1102230246251565e-16,
+      "sinirda": false,
+      "tur": "ga",
+      "uyum": true
+    },
+    {
+      "ad": "wilson.L>=3",
+      "kendi": [
+        0.5907167384187784,
+        0.882076118555105
+      ],
+      "referans": [
+        0.5907167384187783,
+        0.882076118555105
+      ],
+      "sapma": 1.1102230246251565e-16,
+      "sinirda": false,
+      "tur": "ga",
+      "uyum": true
+    },
+    {
+      "ad": "wilson.L>=4",
+      "kendi": [
+        0.4551356365479488,
+        0.7812607919389929
+      ],
+      "referans": [
+        0.45513563654794864,
+        0.7812607919389929
+      ],
+      "sapma": 1.6653345369377348e-16,
+      "sinirda": false,
+      "tur": "ga",
+      "uyum": true
+    },
+    {
+      "ad": "wilson.L>=5",
+      "kendi": [
+        0.0,
+        0.1135133931739687
+      ],
+      "referans": [
+        0.0,
+        0.1135133931739688
+      ],
+      "sapma": 9.71445146547012e-17,
+      "sinirda": false,
+      "tur": "ga",
+      "uyum": true
+    },
+    {
+      "ad": "wilson.B1.red",
+      "kendi": [
+        0.0,
+        0.6576197724933468
+      ],
+      "referans": [
+        0.0,
+        0.657619772493347
+      ],
+      "sapma": 2.220446049250313e-16,
+      "sinirda": false,
+      "tur": "ga",
+      "uyum": true
+    },
+    {
+      "ad": "wilson.B1.yok_sayma",
+      "kendi": [
+        0.3423802275066532,
+        1.0
+      ],
+      "referans": [
+        0.342380227506653,
+        1.0
+      ],
+      "sapma": 2.220446049250313e-16,
+      "sinirda": false,
+      "tur": "ga",
+      "uyum": true
+    },
+    {
+      "ad": "wilson.B1.dogrulama_duser",
+      "kendi": [
+        0.0,
+        0.6576197724933468
+      ],
+      "referans": [
+        0.0,
+        0.657619772493347
+      ],
+      "sapma": 2.220446049250313e-16,
+      "sinirda": false,
+      "tur": "ga",
+      "uyum": true
+    },
+    {
+      "ad": "wilson.B5.en_az_biri_gecerli",
+      "kendi": [
+        0.09677141110578051,
+        0.7000066848616079
+      ],
+      "referans": [
+        0.09677141110578041,
+        0.700006684861608
+      ],
+      "sapma": 1.1102230246251565e-16,
+      "sinirda": false,
+      "tur": "ga",
+      "uyum": true
+    },
+    {
+      "ad": "wilson.B5.mevcut_tumu_gecerli",
+      "kendi": [
+        0.030053369748306677,
+        0.5635028221864702
+      ],
+      "referans": [
+        0.030053369748306635,
+        0.5635028221864703
+      ],
+      "sapma": 1.1102230246251565e-16,
+      "sinirda": false,
+      "tur": "ga",
+      "uyum": true
+    },
+    {
+      "ad": "wilson.B5.gerekli_kume",
+      "kendi": [
+        0.0,
+        0.39033428790216523
+      ],
+      "referans": [
+        0.0,
+        0.39033428790216546
+      ],
+      "sapma": 2.220446049250313e-16,
+      "sinirda": false,
+      "tur": "ga",
+      "uyum": true
+    },
+    {
+      "ad": "wilson.B5.diger",
+      "kendi": [
+        0.18761630648265057,
+        0.8123836935173494
+      ],
+      "referans": [
+        0.18761630648265054,
+        0.8123836935173494
+      ],
+      "sapma": 2.7755575615628914e-17,
+      "sinirda": false,
+      "tur": "ga",
+      "uyum": true
+    },
+    {
+      "ad": "wilson.B2",
+      "kendi": [
+        0.04696514218385386,
+        0.44803086225297334
+      ],
+      "referans": [
+        0.04696514218385381,
+        0.4480308622529735
+      ],
+      "sapma": 1.6653345369377348e-16,
+      "sinirda": false,
+      "tur": "ga",
+      "uyum": true
+    },
+    {
+      "ad": "wilson.B3",
+      "kendi": [
+        0.0,
+        0.7934506856227626
+      ],
+      "referans": [
+        0.0,
+        0.7934506856227627
+      ],
+      "sapma": 1.1102230246251565e-16,
+      "sinirda": false,
+      "tur": "ga",
+      "uyum": true
+    },
+    {
+      "ad": "wilson.B4_ozel_kod",
+      "kendi": [
+        0.01847702379127038,
+        0.21323458362616918
+      ],
+      "referans": [
+        0.018477023791270378,
+        0.21323458362616926
+      ],
+      "sapma": 8.326672684688674e-17,
+      "sinirda": false,
+      "tur": "ga",
+      "uyum": true
+    },
+    {
+      "ad": "wilson.B6",
+      "kendi": [
+        0.8864866068260313,
+        1.0
+      ],
+      "referans": [
+        0.8864866068260311,
+        1.0
+      ],
+      "sapma": 2.220446049250313e-16,
+      "sinirda": false,
+      "tur": "ga",
+      "uyum": true
+    },
+    {
+      "ad": "wilson.Y_L4.L4m",
+      "kendi": [
+        0.09677141110578051,
+        0.7000066848616079
+      ],
+      "referans": [
+        0.09677141110578041,
+        0.700006684861608
+      ],
+      "sapma": 1.1102230246251565e-16,
+      "sinirda": false,
+      "tur": "ga",
+      "uyum": true
+    },
+    {
+      "ad": "wilson.Y_L4.L4c",
+      "kendi": [
+        0.5083230633550336,
+        0.8508535180303912
+      ],
+      "referans": [
+        0.5083230633550336,
+        0.8508535180303914
+      ],
+      "sapma": 2.220446049250313e-16,
+      "sinirda": false,
+      "tur": "ga",
+      "uyum": true
+    },
+    {
+      "ad": "bootstrap.tum.tahmin",
+      "kendi": 0.3627450980392157,
+      "referans": 0.3627450980392157,
+      "sapma": 0.0,
+      "sinirda": false,
+      "tur": "bootstrap",
+      "uyum": true
+    },
+    {
+      "ad": "bootstrap.tum.alt",
+      "kendi": 0.22930567139282737,
+      "referans": 0.22930567139282743,
+      "sapma": 5.551115123125783e-17,
+      "sinirda": false,
+      "tur": "bootstrap",
+      "uyum": true
+    },
+    {
+      "ad": "bootstrap.tum.ust",
+      "kendi": 0.47706422018348627,
+      "referans": 0.47706422018348627,
+      "sapma": 0.0,
+      "sinirda": false,
+      "tur": "bootstrap",
+      "uyum": true
+    },
+    {
+      "ad": "bootstrap.tum.dagilim_sha256",
+      "kendi": "140c6d84577717831a38a0ad9ad98a5f623950c04d8ade3e1ce97599d60f6156",
+      "referans": "140c6d84577717831a38a0ad9ad98a5f623950c04d8ade3e1ce97599d60f6156",
+      "sapma": 0.0,
+      "sinirda": false,
+      "tur": "tam",
+      "uyum": true
+    },
+    {
+      "ad": "bootstrap.K.tahmin",
+      "kendi": 0.25,
+      "referans": 0.25,
+      "sapma": 0.0,
+      "sinirda": false,
+      "tur": "bootstrap",
+      "uyum": true
+    },
+    {
+      "ad": "bootstrap.K.alt",
+      "kendi": 0.13541666666666666,
+      "referans": 0.13541666666666666,
+      "sapma": 0.0,
+      "sinirda": false,
+      "tur": "bootstrap",
+      "uyum": true
+    },
+    {
+      "ad": "bootstrap.K.ust",
+      "kendi": 0.36904761904761907,
+      "referans": 0.36904761904761907,
+      "sapma": 0.0,
+      "sinirda": false,
+      "tur": "bootstrap",
+      "uyum": true
+    },
+    {
+      "ad": "bootstrap.K.dagilim_sha256",
+      "kendi": "b8b87d5315c8ff485716e9f5763cbe706f00729b7cd6756aaed5f0df79688818",
+      "referans": "b8b87d5315c8ff485716e9f5763cbe706f00729b7cd6756aaed5f0df79688818",
+      "sapma": 0.0,
+      "sinirda": false,
+      "tur": "tam",
+      "uyum": true
+    },
+    {
+      "ad": "bootstrap.T.tahmin",
+      "kendi": 0.8888888888888888,
+      "referans": 0.8888888888888888,
+      "sapma": 0.0,
+      "sinirda": false,
+      "tur": "bootstrap",
+      "uyum": true
+    },
+    {
+      "ad": "bootstrap.T.alt",
+      "kendi": 0.7777777777777778,
+      "referans": 0.7777777777777778,
+      "sapma": 0.0,
+      "sinirda": false,
+      "tur": "bootstrap",
+      "uyum": true
+    },
+    {
+      "ad": "bootstrap.T.ust",
+      "kendi": 1.0,
+      "referans": 1.0,
+      "sapma": 0.0,
+      "sinirda": false,
+      "tur": "bootstrap",
+      "uyum": true
+    },
+    {
+      "ad": "bootstrap.T.dagilim_sha256",
+      "kendi": "cb00a86214fa34ea25eba8d85603403f359d849828b4c940a996e27c3bf57dc8",
+      "referans": "cb00a86214fa34ea25eba8d85603403f359d849828b4c940a996e27c3bf57dc8",
+      "sapma": 0.0,
+      "sinirda": false,
+      "tur": "tam",
+      "uyum": true
+    }
+  ],
+  "ozet": {
+    "en_buyuk_sapma": 7.51048600925347e-15,
+    "gecerli": true,
+    "hata": 0,
+    "karsilastirma": 95,
+    "sinir_kayitlari": [],
+    "sinirda": 0,
+    "uyumlu": 95,
+    "uyusmazliklar": []
+  }
+}
