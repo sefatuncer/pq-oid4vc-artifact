@@ -9,6 +9,7 @@ require 'base64'
 module Ortak
   SOZLESME = 'adaptor-sozlesme/1.0'
   A = 'ES256'
+  ESKI_ISS = 'https://legacy-issuer.example' # legacy issuer of L4c (battery v1.3)
   X_KOL = {
     'kontrol-EdDSA' => 'EdDSA', 'kontrol-Ed25519' => 'Ed25519', 'kontrol-ES384' => 'ES384',
     'tedavi-ML-DSA-65' => 'ML-DSA-65', 'tedavi-composite' => 'ML-DSA-65-ES256'
@@ -18,6 +19,15 @@ module Ortak
 
   def b64d(s)
     Base64.urlsafe_decode64(s + '=' * ((4 - s.length % 4) % 4))
+  end
+
+  # iss of the payload of a compact or JSON-serialized JWS (read before verification only to select the issuer record of L4c)
+  def iss(ham)
+    yuk = ham.lstrip.start_with?('{') ? JSON.parse(ham)['payload'] : ham.split('.')[1]
+    p = JSON.parse(b64d(yuk.to_s))
+    p.is_a?(Hash) && p['iss'].is_a?(String) ? p['iss'] : nil
+  rescue StandardError
+    nil
   end
 
   # Path of the job row under /v: RUNNER §2 (/v = v1.3) or /v = vektorler/ (file with the prefix "v1.3/...")
@@ -45,7 +55,10 @@ module Ortak
   end
 
   # Policy → (W, R). METHOD.md §2; RUNNER §1. VARSAYILAN: contract §5.2 L5 (key only).
-  def politika(is, kutuphane_algleri)
+  # L4 family: two issuer records (pre-registration §5.13, contract §5.3), selected by the iss of the object: legacy
+  # issuer W = {A, X}, R = ∅; every other issuer (migrated) W = {A, X}, R = {X}. The selected record is enforced by the
+  # library's allow-list ("L4c (consecutive)", decision D9).
+  def politika(is, kutuphane_algleri, iss = nil)
     taban = is['politika'].split('|').first.split('@').first # maintainers: the suffixes '|sdjwtvc=..' and '@-19' only split the oracle
     x = X_KOL[is['kol']]
     case taban
@@ -57,7 +70,7 @@ module Ortak
       { w: [A, x], r: [], taban: taban }
     when 'L4', 'L4-S', 'L4-Y', 'L4-YOL'
       raise "kol #{is['kol']} icin X tanimsiz" unless x
-      { w: [A, x], r: [x], taban: taban }
+      { w: [A, x], r: iss == ESKI_ISS ? [] : [x], taban: taban }
     else raise "bilinmeyen politika #{is['politika']}"
     end
   end

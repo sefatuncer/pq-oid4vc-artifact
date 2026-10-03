@@ -4,7 +4,9 @@ For every v1.4 vector with kol kontrol-ES384 and its v1.3 source:
   * the payload is byte-identical and every signature that was not re-made is byte-identical;
   * every re-made signature verifies under the key it was made with, unless the recipe records a corruption,
     in which case it must NOT verify;
-  * the v1.3 part of the v1.4 set is byte-identical to v1.3 (SHA256SUMS of v1.3 re-checked).
+  * the v1.3 part of the v1.4 set is byte-identical to v1.3 (SHA256SUMS of v1.3 re-checked);
+  * every kid that a re-made signature carries (protected or unprotected header) is the kid of the key recorded in the
+    manifest for that signature (added 2026-10-03, decision D9).
 Usage (in pq-a09-credgen:1.3): PYTHONPATH=/work python tests/t14_es384.py /work
 """
 import hashlib
@@ -59,6 +61,9 @@ for v in m14['vektorler']:
                 continue
             key = ROLE_KEY[r['anahtar_rolu']]
             alg = 'ES384' if r['anahtar_rolu'] == 'issuer/ES384' else 'ES256'
+            if sb['kid'] is not None:
+                check('kid is the kid of the signing key: %s[%d]' % (v['id'], i), sb['kid'] == cose.kid_bytes(key),
+                      'object kid %s, key kid %s' % (sb['kid'].hex()[:16], cose.kid_bytes(key).hex()[:16]))
             ok = algs.verify(alg, key, sb['tbs'], sb['imza'])
             bad = 'bozuk' in (r.get('insa') or '')
             check('re-made signature %s: %s[%d]' % ('fails (corrupted)' if bad else 'verifies', v['id'], i), ok != bad)
@@ -86,6 +91,9 @@ for v in m14['vektorler']:
             bad = 'bozuk' in (r.get('insa') or '')
             hdr = json.loads(b64u_decode(sb['protected']))
             check('header label is ES384 or K10 ES256: %s[%d]' % (v['id'], i), hdr['alg'] in ('ES384', 'ES256'))
+            kid = hdr.get('kid', (sb.get('header') or {}).get('kid'))
+            if kid is not None:
+                check('kid is the kid of the signing key: %s[%d]' % (v['id'], i), kid == key.kid, 'object kid %s' % kid[:12])
             check('re-made signature %s: %s[%d]' % ('fails (corrupted)' if bad else 'verifies', v['id'], i), ok != bad)
 
 n_ok = sum(1 for r in res if r[0])

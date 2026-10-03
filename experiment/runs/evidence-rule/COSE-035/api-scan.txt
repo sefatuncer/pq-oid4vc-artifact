@@ -1,0 +1,526 @@
+# API scan, COSE-035 web-auth/cose-lib 4.8.2 (commit 8849e8bf043a2d42d0bec5bda5db2469ad376148) with spomky-labs/cbor-php 3.4.2 (commit 8f5ea00a07ad529d20886505cdbeb2b9ac7bb2d6)
+# Date (UTC): 2026-10-03T09:40:30Z
+# Sources: (a) 'composer install' in pq-a09-env-php:1.0 with composer.json/composer.lock of the installation record (lock sha256 77b7428a6fed11c4ca3a5e63342bfef37877d34d77aef7070303cff585f49b78): proj/vendor/
+#          (b) repo = https://codeload.github.com/web-auth/cose-lib/tar.gz/8849e8bf043a2d42d0bec5bda5db2469ad376148 (sha256 a22515ee5d901f4e6c43ca099b2da70a9077ad81a1f2c5e7f9654020118cc500)
+#              cbor = https://codeload.github.com/Spomky-Labs/cbor-php/tar.gz/8f5ea00a07ad529d20886505cdbeb2b9ac7bb2d6 (sha256 e383f6c8545a36cb088a439640830bc231c0db93105f447c2d2794a4204f2d3f)
+#          (c) doc-tree = anonymous 'git fetch --depth 1' of https://github.com/web-auth/cose-lib.git at the same commit, for doc/ and examples/,
+#              which .gitattributes marks export-ignore (absent from the archive and from the Packagist dist)
+# 'rg' is not installed on the host; 'grep -rnE' is used with the same patterns.
+
+$ diff -rq repo proj/vendor/web-auth/cose-lib; echo exit=$?
+exit=0
+
+(the installed package is identical to the commit archive)
+
+$ diff -rq cbor proj/vendor/spomky-labs/cbor-php; echo exit=$?
+exit=0
+
+(the installed cbor-php is identical to its commit archive)
+
+$ git -C doc-tree rev-parse HEAD; diff -rq doc-tree/src repo/src; echo exit=$?; grep -n "export-ignore" doc-tree/.gitattributes
+8849e8bf043a2d42d0bec5bda5db2469ad376148
+exit=0
+3:/.agents export-ignore
+4:/.ci-tools export-ignore
+5:/.github export-ignore
+6:/doc export-ignore
+7:/tests export-ignore
+8:/.editorconfig export-ignore
+9:/.gitattributes export-ignore
+10:/.gitignore export-ignore
+11:/castor.php export-ignore
+12:/examples export-ignore
+
+$ ls repo/src repo/src/Signature repo/src/Algorithm repo/src/Structure
+repo/src:
+Algorithm/
+Algorithms.php
+BigInteger.php
+Encryption/
+Hash.php
+Key/
+Mac/
+Signature/
+Structure/
+
+repo/src/Algorithm:
+Algorithm.php
+KeyRestrictionAware.php
+KeyRestrictionEnforcement.php
+Mac/
+Manager.php
+ManagerFactory.php
+Signature/
+
+repo/src/Signature:
+CoseSign1Tag.php
+CoseSignature.php
+CoseSignTag.php
+Signature.php
+Signature1.php
+
+repo/src/Structure:
+CoseHeaders.php
+CoseRecipient.php
+CoseStructure.php
+HeaderMapHelper.php
+
+## Verification entry points (any public function with verif in its name)
+$ grep -rnE "function [a-zA-Z]*[Vv]erif" repo/src cbor/src/Tag
+repo/src/Algorithm/Mac/Hmac.php:59:    public function verify(string $data, Key $key, string $signature): bool
+repo/src/Algorithm/Mac/Mac.php:28:    public function verify(string $data, Key $key, string $signature): bool;
+repo/src/Algorithm/Signature/CertificateSignatureVerifier.php:59:    public function verify(int $algorithmIdentifier, string $certificate, string $data, string $signature): bool
+repo/src/Algorithm/Signature/CertificateSignatureVerifier.php:75:    public function verifySubjectPublicKeyInfo(
+repo/src/Algorithm/Signature/CertificateSignatureVerifier.php:89:    private function verifyWithKey(int $algorithmIdentifier, Key $key, string $data, string $signature): bool
+repo/src/Algorithm/Signature/ECDSA/ECDSA.php:48:    public function verify(string $data, Key $key, string $signature): bool
+repo/src/Algorithm/Signature/EdDSA/Ed256.php:68:    public function verify(string $data, Key $key, string $signature): bool
+repo/src/Algorithm/Signature/EdDSA/Ed512.php:70:    public function verify(string $data, Key $key, string $signature): bool
+repo/src/Algorithm/Signature/EdDSA/EdDSA.php:89:    public function verify(string $data, Key $key, string $signature): bool
+repo/src/Algorithm/Signature/FullySpecified/Ed448.php:81:    public function verify(string $data, Key $key, string $signature): bool
+repo/src/Algorithm/Signature/RSA/PSSRSA.php:85:    public function verify(string $data, Key $key, string $signature): bool
+repo/src/Algorithm/Signature/RSA/PSSRSA.php:498:    private function verifyEMSAPSS(string $m, string $em, int $emBits, Hash $hash): bool
+repo/src/Algorithm/Signature/RSA/RSA.php:70:    public function verify(string $data, Key $key, string $signature): bool
+repo/src/Algorithm/Signature/Signature.php:33:    public function verify(string $data, Key $key, string $signature): bool;
+
+## Allow-lists, required sets, issuer/trust policy, callbacks
+$ grep -rniE "allow|required|requir|policy|issuer|trust|callable|callback|closure|resolver|threshold" repo/src | grep -viE "RsaKeyPolicy|KeyPolicy|minimum|modulus|exponent"
+repo/src/Algorithm/KeyRestrictionAware.php:15: * whole `Manager`, to get the behaviour the RFC requires: the operation is refused with an
+repo/src/Algorithm/KeyRestrictionEnforcement.php:15: * @phpstan-require-implements KeyRestrictionAware
+repo/src/Algorithm/KeyRestrictionEnforcement.php:38:     *                                  does not allow the operation
+repo/src/Algorithm/Mac/Hmac.php:23: * RFC 9053, section 3.1 requires that "implementations creating and validating MAC values MUST validate that the key
+repo/src/Algorithm/Mac/Mac.php:24:     * operation from the one above: a key may be allowed to perform one and not the other.
+repo/src/Algorithm/Manager.php:78:     * restrictions of the keys it is given, as RFC 9052, section 7.1 requires. Algorithms that cannot enforce them
+repo/src/Algorithm/Signature/CertificateSignatureVerifier.php:30: * Second, every policy a registered algorithm carries applies unchanged, because it is that very instance which
+repo/src/Algorithm/Signature/ECDSA/ECSignature.php:22: * The encoder emits DER as required by X.690 §10.1 and the decoder only accepts DER: every encoding OpenSSL
+repo/src/Algorithm/Signature/ECDSA/ECSignature.php:87:            // X.690 §8.1.3: the length octets cover exactly the contents octets; no trailing data is allowed.
+repo/src/Algorithm/Signature/ECDSA/ECSignature.php:209:            // Drop the single sign octet the encoding is allowed to carry.
+repo/src/Algorithm/Signature/EdDSA/EdDSA.php:37:                'The EdDSA algorithms require the Sodium extension, which is not loaded.'
+repo/src/Algorithm/Signature/FullySpecified/Ed448.php:53:     * Ed448 requires PHP 8.4 or later: earlier versions reject the digest-less signature OpenSSL needs for Edwards
+repo/src/Algorithm/Signature/FullySpecified/Ed448.php:99:                'The Ed448 algorithm requires PHP 8.4 or later, as earlier versions cannot sign or verify with Edwards curves through OpenSSL.'
+repo/src/Algorithm/Signature/RSA/PSSRSA.php:189:     * asked to do must not depend on an extension being installed. ext-openssl is a hard requirement of this package,
+repo/src/Algorithms.php:177:     * @internal this constant bypasses getOpensslAlgorithmFor() and the acknowledgement it requires for RS1; it will
+repo/src/Algorithms.php:205:     * @internal this constant bypasses getHashAlgorithmFor() and the acknowledgement it requires for RS1; it will
+repo/src/Algorithms.php:277:     * handed straight to openssl_verify(). The policy therefore has to hold here too, otherwise the operator's
+repo/src/Key/Ec2Key.php:150:        // RFC 9053 section 7.1.1: "For public keys, it is REQUIRED that 'crv', 'x', and 'y' be present".
+repo/src/Key/Ec2Key.php:219:     * The curve as the key carries it, which RFC 9053 section 7.1 allows to be either the identifier of the "COSE
+repo/src/Key/Key.php:199:     * Whether the restrictions the key carries allow the operation to be performed with the given algorithm.
+repo/src/Key/Key.php:218:     * 3.1 repeat both as a per-algorithm requirement for ECDSA, EdDSA and HMAC.
+repo/src/Key/Key.php:252:            throw new InvalidArgumentException(sprintf('The key does not allow the "%s" operation', $name));
+repo/src/Key/OkpKey.php:113:        // private key, "it can be recomputed from the required elements". A private key carrying "crv" and "d"
+repo/src/Key/OkpKey.php:168:     * The curve as the key carries it, which RFC 9053 section 7.2 allows to be either the identifier of the "COSE
+repo/src/Key/OkpKey.php:196:     * Recomputes the public key from the private one, as RFC 9053 section 7.2 allows when "x" was omitted.
+repo/src/Key/OkpKey.php:208:                'The "x" coordinate is missing and computing it from "d" requires the Sodium extension, which is not loaded.'
+repo/src/Key/PublicKeyLoader.php:200:     * Only the definite form of X.690, section 8.1.3 is accepted, which is all DER allows (section 10.1).
+repo/src/Key/RsaKeyValidator.php:26: * (checkLengthBounds()). Neither depends on a policy - an RSA operation costs an amount of CPU proportional to the
+repo/src/Key/RsaKeyValidator.php:59:     * FIPS 186-5, appendix A.1.1 requires 2^16 < e < 2^256 of a generated key; RFC 8017, section 3.1 places no upper
+repo/src/Key/RsaKeyValidator.php:63:     * bound allows.
+repo/src/Key/RsaKeyValidator.php:114:     * with it. They are not a policy the caller opts into: an RSA operation costs an amount of CPU proportional to
+repo/src/Key/SymmetricKeyValidator.php:16: * RFC 9053, section 3.1 requires implementations to "validate that the key type, key length, and algorithm are
+repo/src/Key/SymmetricKeyValidator.php:66:     * is a byte string and is not empty. None of them depends on a policy - a `k` that is not a byte string is
+repo/src/Key/SymmetricKeyValidator.php:84:                'The key is %d bytes long; at least %d bytes are required',
+repo/src/Signature/Signature1.php:17: * form of RFC 9052 section 4.2 -- is supplied by the application, which is what the RFC requires of it.
+repo/src/Structure/HeaderMapHelper.php:178:     * number stays acceptable exactly as it is on the decoder path (RFC 8949 allows it outside deterministic
+
+$ grep -rnE "class RsaKeyPolicy|interface|trait " repo/src
+repo/src/Algorithm/Algorithm.php:7:interface Algorithm
+repo/src/Algorithm/KeyRestrictionAware.php:21:interface KeyRestrictionAware extends Algorithm
+repo/src/Algorithm/KeyRestrictionEnforcement.php:17:trait KeyRestrictionEnforcement
+repo/src/Algorithm/Mac/Mac.php:11:interface Mac extends Algorithm
+repo/src/Algorithm/Signature/RSA/RsaKeyPolicy.php:37:trait RsaKeyPolicy
+repo/src/Algorithm/Signature/Signature.php:11:interface Signature extends Algorithm
+
+## Multi-signer (COSE_Sign) support
+$ grep -rnE "COSE_Sign\b|signatures|Multiple Signers|several signers" repo/src repo/README.md doc-tree/doc/Usage.md doc-tree/examples/02-sign-multiple-signers.php | grep -v "^repo/src/Signature/CoseSignTag.php"
+repo/src/Algorithm/Signature/EdDSA/EdDSA.php:65:        // verbatim, so handing it a caller-supplied "x" would let two signatures of the same message under two
+repo/src/Algorithm/Signature/RSA/RS1.php:15: * SHA-1 is no longer acceptable for digital signatures: NIST has recommended against generating signatures with it
+repo/src/Algorithm/Signature/RSA/RS1.php:30:    public const INSECURE_ALGORITHM_MESSAGE = 'The algorithm RS1 (RSASSA-PKCS1-v1_5 with SHA-1) is not secure and shall only be used to verify signatures produced by legacy authenticators. If you know what you are doing, create it with "acknowledgeInsecureAlgorithm: true"; as of v5.0.0, omitting that acknowledgement will throw an exception.';
+repo/src/Signature/CoseSignature.php:19: * One entry of the "signatures" list of a COSE_Sign (RFC 9052 section 4.1).
+repo/src/Signature/CoseSignature.php:25: * form, and it carries the same header reader as the message, because a signer of a COSE_Sign has a protected
+repo/src/Signature/CoseSignature.php:72:     * Every entry of a "signatures" list, checked and wrapped.
+repo/src/Signature/CoseSignature.php:76:    public static function all(ListObject|IndefiniteLengthListObject $signatures): array
+repo/src/Signature/CoseSignature.php:78:        HeaderMapHelper::assertSignatureList($signatures);
+repo/src/Signature/CoseSignature.php:81:        foreach ($signatures as $signature) {
+repo/src/Signature/Signature.php:12: * The Sig_structure of one signer of a COSE_Sign (RFC 9052 section 4.4).
+repo/src/Signature/Signature.php:17: * The sign_protected field is what tells this structure apart from {@see Signature1}: a signature of a COSE_Sign
+repo/src/Structure/HeaderMapHelper.php:195:     * Check a "signatures" list against "signatures : [+ COSE_Signature]" and "COSE_Signature = [ Headers,
+repo/src/Structure/HeaderMapHelper.php:198:    public static function assertSignatureList(ListObject|IndefiniteLengthListObject $signatures): void
+repo/src/Structure/HeaderMapHelper.php:200:        if ($signatures->count() === 0) {
+repo/src/Structure/HeaderMapHelper.php:202:                'Not a valid CoseSign object. The signatures list shall hold at least one COSE_Signature (RFC 9052 section 4.1).'
+repo/src/Structure/HeaderMapHelper.php:205:        foreach ($signatures as $signature) {
+repo/README.md:27:- `CoseSignature` and `CoseRecipient` are the checked views over the `signatures` and `recipients` lists (`[+ ...]`)
+repo/README.md:134:> The library verifies signatures; it does not decide what a message is allowed to say. Checking that `alg` is the one
+repo/README.md:210:- 🔐 **WebAuthn/FIDO2** - Authenticator attestation and assertion signatures
+repo/README.md:213:- 📄 **Document Signing** - Compact digital signatures
+repo/README.md:256:> compute the same signatures; only the algorithm identifier differs.
+repo/README.md:591:  valid signatures as invalid. Call `EdDSA::isSupported()` when the platform is not known in advance.
+doc-tree/doc/Usage.md:17:  - [COSE_Sign (Multiple Signers)](#cose_sign-multiple-signers)
+doc-tree/doc/Usage.md:72:| COSE_Sign | 98 | `CBOR\Tag\CoseSignTag` | Multiple signatures structure |
+doc-tree/doc/Usage.md:81:made for one signer of a `COSE_Sign` cannot be lifted into a `COSE_Sign1`. These structures are what this library
+doc-tree/doc/Usage.md:299:The library verifies signatures; it does not decide what a message is allowed to say. Two checks
+doc-tree/doc/Usage.md:324:### COSE_Sign (Multiple Signers)
+doc-tree/doc/Usage.md:326:The `COSE_Sign` structure supports multiple signatures from different signers.
+doc-tree/doc/Usage.md:340:$signatures = ListObject::create([
+doc-tree/doc/Usage.md:357:    $signatures
+doc-tree/doc/Usage.md:369:> Each signature of a `COSE_Sign` covers the `Signature` structure of
+doc-tree/doc/Usage.md:654:  - Ed25519 (-8): the same algorithm under its own class name; identical signatures, identical identifier
+doc-tree/doc/Usage.md:677:RS1 relies on SHA-1, which is no longer acceptable for digital signatures (see
+doc-tree/doc/Usage.md:748:compute the same signatures; only the algorithm identifier differs.
+doc-tree/doc/Usage.md:1169:| `examples/02-sign-multiple-signers.php` | COSE_Sign, and why `Signature` carries `sign_protected` |
+doc-tree/doc/Usage.md:1185:| `tests/Structure/CoseSignatureTest.php` | Per-signer views of a `COSE_Sign` |
+doc-tree/examples/02-sign-multiple-signers.php:6: * COSE_Sign (RFC 9052 section 4.1): several signers over one payload.
+doc-tree/examples/02-sign-multiple-signers.php:8: * The point to take away: a signer of a COSE_Sign commits to two protected buckets -- the message's and its own --
+doc-tree/examples/02-sign-multiple-signers.php:30:example_title('COSE_Sign: two signers over one payload');
+doc-tree/examples/02-sign-multiple-signers.php:74:example_hex('COSE_Sign', $encoded);
+doc-tree/examples/02-sign-multiple-signers.php:80:example_assert($decoded instanceof CoseSignTag, 'decoded as a COSE_Sign');
+doc-tree/examples/02-sign-multiple-signers.php:85:example_assert(count($entries) === 2, 'the message carries two well-formed signatures');
+
+## Global algorithm set: Manager / ManagerFactory / CertificateSignatureVerifier
+$ grep -nE "public function|public static function" repo/src/Algorithm/Manager.php repo/src/Algorithm/ManagerFactory.php repo/src/Algorithm/Signature/CertificateSignatureVerifier.php
+repo/src/Algorithm/Manager.php:23:    public static function create(): self
+repo/src/Algorithm/Manager.php:41:    public function add(Algorithm ...$algorithms): self
+repo/src/Algorithm/Manager.php:63:    public function list(): iterable
+repo/src/Algorithm/Manager.php:71:    public function all(): iterable
+repo/src/Algorithm/Manager.php:83:    public function withKeyRestrictionsEnforced(bool $enforce = true): self
+repo/src/Algorithm/Manager.php:97:    public function has(int $identifier): bool
+repo/src/Algorithm/Manager.php:102:    public function get(int $identifier): Algorithm
+repo/src/Algorithm/ManagerFactory.php:23:    public static function create(): self
+repo/src/Algorithm/ManagerFactory.php:40:    public function add(string $alias, Algorithm $algorithm): self
+repo/src/Algorithm/ManagerFactory.php:59:    public function list(): iterable
+repo/src/Algorithm/ManagerFactory.php:67:    public function all(): iterable
+repo/src/Algorithm/ManagerFactory.php:72:    public function generate(string ...$aliases): Manager
+repo/src/Algorithm/Signature/CertificateSignatureVerifier.php:48:    public static function create(Manager $manager): self
+repo/src/Algorithm/Signature/CertificateSignatureVerifier.php:59:    public function verify(int $algorithmIdentifier, string $certificate, string $data, string $signature): bool
+repo/src/Algorithm/Signature/CertificateSignatureVerifier.php:75:    public function verifySubjectPublicKeyInfo(
+
+$ sed -n 97,109p repo/src/Algorithm/Manager.php
+    public function has(int $identifier): bool
+    {
+        return array_key_exists($identifier, $this->algorithms);
+    }
+
+    public function get(int $identifier): Algorithm
+    {
+        if (! $this->has($identifier)) {
+            throw new InvalidArgumentException('Unsupported algorithm');
+        }
+
+        return $this->algorithms[$identifier];
+    }
+
+$ sed -n 25,33p repo/src/Algorithm/Signature/CertificateSignatureVerifier.php; sed -n 89,99p repo/src/Algorithm/Signature/CertificateSignatureVerifier.php
+ * First, the set of acceptable algorithms is the Manager the operator built, not a constant of this library: an
+ * identifier that was never registered is refused, so `alg`, which comes from the wire, cannot select a verifier the
+ * operator did not choose. RS1 in particular is only reachable when the operator registered an RS1 instance, which
+ * they can only build by acknowledging what SHA-1 is.
+ *
+ * Second, every policy a registered algorithm carries applies unchanged, because it is that very instance which
+ * verifies: the minimum modulus length an RSA algorithm was created with (RsaKeyPolicy, RFC 8230 section 6.1) is the
+ * one enforced against the key of the certificate. Nothing here overrides it, and nothing has to be configured twice.
+ *
+    private function verifyWithKey(int $algorithmIdentifier, Key $key, string $data, string $signature): bool
+    {
+        $algorithm = $this->manager->get($algorithmIdentifier);
+        if (! $algorithm instanceof Signature) {
+            throw new InvalidArgumentException(sprintf(
+                'The algorithm identifier %d is not registered with a signature algorithm',
+                $algorithmIdentifier
+            ));
+        }
+        return $algorithm->verify($data, $key, $signature);
+    }
+
+## Per-key binding: key restrictions alg (label 3) and key_ops (label 4), opt-in
+$ sed -n 9,29p repo/src/Algorithm/KeyRestrictionAware.php; sed -n 40,49p repo/src/Algorithm/KeyRestrictionEnforcement.php
+/**
+ * An algorithm that can enforce the restrictions a COSE key carries: "alg" (label 3) and "key_ops" (label 4), as
+ * defined by RFC 9052, section 7.1.
+ *
+ * Enforcement is opt-in and off by default, so that a key whose labels contradict the operation keeps behaving as it
+ * did before this library read them. Turn it on with `withKeyRestrictionsEnforced()`, on a single algorithm or on a
+ * whole `Manager`, to get the behaviour the RFC requires: the operation is refused with an
+ * `InvalidArgumentException` naming the restriction the key carries.
+ *
+ * @see https://www.rfc-editor.org/rfc/rfc9052.html#section-7.1
+ * @see Key::assertUsableWith()
+ */
+interface KeyRestrictionAware extends Algorithm
+{
+    /**
+     * Returns the same algorithm, enforcing - or no longer enforcing - the restrictions of the keys it is given. The
+     * algorithm this is called on is left untouched.
+     */
+    public function withKeyRestrictionsEnforced(bool $enforce = true): static;
+
+    public function enforcesKeyRestrictions(): bool;
+    private function checkKeyRestrictions(Key $key, int $operation): void
+    {
+        if (! $this->enforceKeyRestrictions) {
+            return;
+        }
+
+        // static::identifier() is the identifier of the concrete algorithm, so ES256 and ESP256, or EdDSA (-8) and
+        // the fully-specified Ed25519 (-19), each enforce their own value.
+        $key->assertUsableWith(static::identifier(), $operation);
+    }
+
+$ grep -nE "function assertUsableWith" -A 9 repo/src/Key/Key.php
+232:    public function assertUsableWith(int $algorithmIdentifier, int $operation): void
+233-    {
+234-        if ($this->has(self::ALG) && $this->alg() !== $algorithmIdentifier) {
+235-            throw new InvalidArgumentException(sprintf(
+236-                'The key is restricted to the algorithm %d and cannot be used with the algorithm %d',
+237-                $this->alg(),
+238-                $algorithmIdentifier
+239-            ));
+240-        }
+241-
+
+## The Signature algorithm contract (the only verify primitive): data, key, signature; no header, no issuer
+$ sed -n 11,34p repo/src/Algorithm/Signature/Signature.php
+interface Signature extends Algorithm
+{
+    /**
+     * @throws InvalidArgumentException when the key cannot be used to sign with this algorithm (wrong key type, wrong
+     *                                  curve, public key, key material the crypto layer refuses, or - when the
+     *                                  algorithm enforces them, see KeyRestrictionAware - an "alg" or a "key_ops"
+     *                                  that forbids signing with it)
+     */
+    public function sign(string $data, Key $key): string;
+
+    /**
+     * Verification is total for every condition the underlying specification defines as an "invalid signature"
+     * outcome: a malformed, truncated, over-long or out-of-range signature, and key material no verification can be
+     * performed with (an off-curve point, a public key that is not a valid group element, an RSA key whose public
+     * parameters are not those RFC 8017 defines, …) all yield false.
+     *
+     * @throws InvalidArgumentException when $key cannot be used with this algorithm at all, i.e. its key type or its
+     *                                  curve does not match, or - when the algorithm enforces them, see
+     *                                  KeyRestrictionAware - its "alg" or its "key_ops" forbids the verification.
+     *                                  Structurally invalid key components are rejected earlier, by the Key
+     *                                  constructors.
+     */
+    public function verify(string $data, Key $key, string $signature): bool;
+}
+
+## Documented verification path and where the algorithm decision is placed
+$ grep -niE "verif|caller|responsib|expect|policy|Manager|alg" repo/README.md | sed -n 1,60p
+12:- **[RFC 9053](https://datatracker.ietf.org/doc/html/rfc9053)** - COSE: Initial Algorithms
+13:- **[RFC 9864](https://www.rfc-editor.org/rfc/rfc9864.html)** - COSE: Fully-Specified Algorithms
+36:✅ **Cryptographic Algorithms**
+43:- Opt-in enforcement of the `alg` (label 3) and `key_ops` (label 4) parameters a COSE key carries
+44:- Turned on per algorithm or for a whole `Manager`: `ES256::create()->withKeyRestrictionsEnforced()`
+45:- See [Key Restrictions](doc/Usage.md#key-restrictions-alg-and-key_ops)
+73:### Verifying a COSE_Sign1 Signature
+81:use Cose\Algorithm\Signature\ECDSA\ES256;
+86:// The key of the signer you trust, and the algorithm you expect it to be used with.
+88:$algorithm = ES256::create();
+89:// The protected header labels this application knows how to process (1 = alg, 2 = crit).
+101:// RFC 9052 §3.1: bind the signature to the algorithm the protected header declares.
+104:$alg = $headers->getProtectedHeaderParameter(1);
+105:if ($alg === null || (int) $alg->normalize() !== $algorithm::identifier()) {
+106:    throw new RuntimeException('Unexpected or missing "alg" in the protected header');
+128:// Verify the Sig_structure the signature covers
+130:$isValid = $algorithm->verify((string) $sigStructure, $key, $coseSign1->getSignature()->getValue());
+134:> The library verifies signatures; it does not decide what a message is allowed to say. Checking that `alg` is the one
+135:> expected for that key, and refusing any `crit` label the application does not process, are the caller's
+136:> responsibility ([RFC 9052 §3.1](https://datatracker.ietf.org/doc/html/rfc9052#section-3.1)) — the snippet above is
+137:> the shape they take. `tests/Signature/DocumentedVerifierTest.php` runs exactly this code.
+149:use Cose\Algorithm\Signature\ECDSA\ES256;
+154:$algorithm = ES256::create();
+160:        UnsignedIntegerObject::create(1),                  // alg
+177:$signature = ByteStringObject::create($algorithm->sign((string) $toBeSigned, $key));
+203:- **[RFC 9053](https://datatracker.ietf.org/doc/html/rfc9053)** - COSE Algorithms
+215:## Supported Algorithms
+217:### Signature Algorithms
+219:| Algorithm | Identifier | Description |
+237:#### Fully-Specified Algorithms ([RFC 9864](https://www.rfc-editor.org/rfc/rfc9864.html))
+240:the key. They live in the `Cose\Algorithm\Signature\FullySpecified` namespace.
+242:| Algorithm | Identifier | Description |
+255:> `Cose\Algorithm\Signature\FullySpecified\Ed25519` (-19) and `Cose\Algorithm\Signature\EdDSA\Ed25519` (-8)
+256:> compute the same signatures; only the algorithm identifier differs.
+268:> classes as those algorithms. Despite its name, `Ed512` is not Ed448 and rejects an Ed448 key; EdDSA with Curve448 is
+269:> `Cose\Algorithm\Signature\FullySpecified\Ed448` (-53).
+275:> use Cose\Algorithm\Signature\EdDSA\Ed256;
+277:> $algorithm = Ed256::create(acknowledgeNonStandardAlgorithm: true);
+288:> use Cose\Algorithm\Signature\RSA\RS1;
+290:> $algorithm = RS1::create(acknowledgeInsecureAlgorithm: true);
+293:> The same acknowledgement applies to `Algorithms::getOpensslAlgorithmFor()` and `Algorithms::getHashAlgorithmFor()`,
+297:> use Cose\Algorithms;
+299:> $digest = Algorithms::getOpensslAlgorithmFor(Algorithms::COSE_ALGORITHM_RS1, acknowledgeInsecureAlgorithm: true);
+304:### MAC Algorithms
+306:| Algorithm | Identifier | Description |
+316:validating MAC values" to validate the key type, the key length and the algorithm. The key value `k` is a `bstr`
+317:(section 7.3), so `hash()` and `verify()` reject — with an `InvalidArgumentException` — a key that is not symmetric,
+327:use Cose\Algorithm\Mac\HS512;
+329:$algorithm = HS512::create(acknowledgeShortKey: true);
+334:To fail hard on a short key today, validate it before handing it to the algorithm:
+337:use Cose\Algorithm\Mac\HS256;
+341:$algorithm = HS256::create();
+345:SymmetricKeyValidator::create($algorithm->minimumKeyLength())->check($key);
+353:## Signature Verification Contract
+355:`Cose\Algorithm\Signature\Signature::verify()` is total for every condition the governing specifications define as an
+360:It throws an `InvalidArgumentException` in one case only: the key cannot be used with the algorithm at all, i.e. its
+363:raised when the key is first seen rather than at every verification.
+373:    // The credential cannot be used with this algorithm: reject it at registration.
+376:// From here on, verification is a plain boolean, whatever the client sent.
+377:$isValid = $algorithm->verify($data, $key, $signature);
+
+$ sed -n 71,78p repo/README.md; sed -n 112,137p repo/README.md
+## Quick Start
+
+### Verifying a COSE_Sign1 Signature
+
+```php
+use CBOR\Decoder;
+use CBOR\ListObject;
+use CBOR\OtherObject\NullObject;
+    if (! $crit instanceof ListObject) {
+        throw new RuntimeException('"crit" is not an array');
+    }
+    foreach ($crit as $label) {
+        if (! in_array((int) $label->normalize(), $understoodLabels, true)) {
+            throw new RuntimeException('Unsupported critical header parameter');
+        }
+    }
+}
+
+// RFC 9052 §4.2: a nil payload is detached and the application supplies the content itself.
+$payload = $coseSign1->getPayload();
+if ($payload instanceof NullObject) {
+    throw new RuntimeException('The payload is detached; supply it from the application');
+}
+
+// Verify the Sig_structure the signature covers
+$sigStructure = Signature1::create($coseSign1->getProtectedHeader(), $payload);
+$isValid = $algorithm->verify((string) $sigStructure, $key, $coseSign1->getSignature()->getValue());
+```
+
+> [!IMPORTANT]
+> The library verifies signatures; it does not decide what a message is allowed to say. Checking that `alg` is the one
+> expected for that key, and refusing any `crit` label the application does not process, are the caller's
+> responsibility ([RFC 9052 §3.1](https://datatracker.ietf.org/doc/html/rfc9052#section-3.1)) — the snippet above is
+> the shape they take. `tests/Signature/DocumentedVerifierTest.php` runs exactly this code.
+
+$ sed -n 297,309p doc-tree/doc/Usage.md
+##### What the application must check
+
+The library verifies signatures; it does not decide what a message is allowed to say. Two checks
+[RFC 9052 §3.1](https://datatracker.ietf.org/doc/html/rfc9052#section-3.1) requires are therefore the caller's, and
+both are in the snippet above:
+
+- **`alg` (label 1)** — "This header parameter MUST be authenticated where the ability to do so exists". Read it from
+  the *protected* header, which the signature covers, and compare it with the algorithm you decided to accept for
+  that key. A verifier that hard-codes its algorithm and ignores the header still accepts a message that announces a
+  different one.
+- **`crit` (label 2)** — it lists the protected header parameters a recipient is *required* to understand. Any label
+  in that list your application does not process makes the message unusable: reject it instead of verifying it.
+
+
+$ sed -n 324,326p doc-tree/doc/Usage.md; sed -n 368,386p doc-tree/doc/Usage.md
+### COSE_Sign (Multiple Signers)
+
+The `COSE_Sign` structure supports multiple signatures from different signers.
+> [!IMPORTANT]
+> Each signature of a `COSE_Sign` covers the `Signature` structure of
+> [RFC 9052 §4.4](https://datatracker.ietf.org/doc/html/rfc9052#section-4.4), which carries the protected bucket of the
+> message **and** the one of the signer's own entry — not the `Signature1` structure a `COSE_Sign1` uses:
+>
+> ```php
+> use Cose\Signature\Signature;
+>
+> $toBeSigned = Signature::create(
+>     $coseSign->getProtectedHeader(),   // body_protected
+>     $signer->getProtectedHeader(),     // sign_protected
+>     $coseSign->getPayload(),
+> );
+> $isValid = $algorithm->verify((string) $toBeSigned, $key, $signer->getSignature()->getValue());
+> ```
+>
+> RFC 9052 §4.1 writes the list as `[+ COSE_Signature]`: at least one entry, each a `[bstr, map, bstr]` array. The CBOR
+> layer only checks that the item is a list, so `CoseSignature::all()` is where that rule is applied — it rejects an
+> empty list and any entry of another shape.
+
+$ sed -n 820,829p doc-tree/doc/Usage.md
+// The key says "alg": -7 and "key_ops": [2], i.e. ES256, verification only
+$isValid = $algorithm->verify($data, $key, $signature); // fine
+$signature = $algorithm->sign($data, $key);             // InvalidArgumentException: the key does not allow "sign"
+```
+
+`withKeyRestrictionsEnforced()` returns a new algorithm and leaves the one it is called on untouched, so a manager
+that enforces the restrictions can live next to one that does not. `enforcesKeyRestrictions()` says which one you are
+holding, and `withKeyRestrictionsEnforced(false)` turns it off again.
+
+This matters when the algorithm is chosen from the message rather than from the key. A verifier that reads `alg` from
+
+$ sed -n 77,100p doc-tree/examples/02-sign-multiple-signers.php
+// --- verifying -------------------------------------------------------------
+
+$decoded = Decoder::create()->decode(StringStream::create($encoded));
+example_assert($decoded instanceof CoseSignTag, 'decoded as a COSE_Sign');
+
+// getSignatures() hands back the raw list, which the CBOR layer only checked is a list. CoseSignature::all() applies
+// RFC 9052 section 4.1: at least one entry, each a [bstr, map, bstr].
+$entries = CoseSignature::all($decoded->getSignatures());
+example_assert(count($entries) === 2, 'the message carries two well-formed signatures');
+
+foreach ($entries as $entry) {
+    $kid = (string) $entry->getUnprotectedHeaderParameter(4)?->getValue();
+    $key = $signers[$kid]->toPublic();
+
+    $toBeVerified = Signature::create(
+        $decoded->getProtectedHeader(),   // body_protected
+        $entry->getProtectedHeader(),     // sign_protected
+        $decoded->getPayload()
+    );
+    example_assert(
+        $algorithm->verify((string) $toBeVerified, $key, $entry->getSignature()->getValue()),
+        sprintf('the signature of %s verifies', $kid)
+    );
+}
+
+## cbor-php 3.4.2: the COSE message classes carry the structure only
+$ grep -nE "public function|public static function" cbor/src/Tag/AbstractCoseTag.php cbor/src/Tag/CoseSign1Tag.php cbor/src/Tag/CoseSignTag.php
+cbor/src/Tag/AbstractCoseTag.php:40:    public function getProtectedHeader(): ByteStringObject|IndefiniteLengthByteStringObject
+cbor/src/Tag/AbstractCoseTag.php:54:    public function getProtectedHeaderAsMap(
+cbor/src/Tag/AbstractCoseTag.php:72:    public function getUnprotectedHeader(): MapObject|IndefiniteLengthMapObject
+cbor/src/Tag/AbstractCoseTag.php:83:    public function normalize(): array
+cbor/src/Tag/CoseSign1Tag.php:27:    public function __construct(int $additionalInformation, ?string $data, CBORObject $object)
+cbor/src/Tag/CoseSign1Tag.php:36:    public static function getTagId(): int
+cbor/src/Tag/CoseSign1Tag.php:41:    public static function createFromLoadedData(int $additionalInformation, ?string $data, CBORObject $object): Tag
+cbor/src/Tag/CoseSign1Tag.php:46:    public static function create(CBORObject $object): self
+cbor/src/Tag/CoseSign1Tag.php:56:    public static function createFromComponents(
+cbor/src/Tag/CoseSign1Tag.php:73:    public function getPayload(): ByteStringObject|IndefiniteLengthByteStringObject|NullObject
+cbor/src/Tag/CoseSign1Tag.php:81:    public function getSignature(): ByteStringObject|IndefiniteLengthByteStringObject
+cbor/src/Tag/CoseSignTag.php:27:    public function __construct(int $additionalInformation, ?string $data, CBORObject $object)
+cbor/src/Tag/CoseSignTag.php:36:    public static function getTagId(): int
+cbor/src/Tag/CoseSignTag.php:41:    public static function createFromLoadedData(int $additionalInformation, ?string $data, CBORObject $object): Tag
+cbor/src/Tag/CoseSignTag.php:46:    public static function create(CBORObject $object): self
+cbor/src/Tag/CoseSignTag.php:56:    public static function createFromComponents(
+cbor/src/Tag/CoseSignTag.php:73:    public function getPayload(): ByteStringObject|IndefiniteLengthByteStringObject|NullObject
+cbor/src/Tag/CoseSignTag.php:81:    public function getSignatures(): ListObject|IndefiniteLengthListObject
+
+$ sed -n 24,31p cbor/src/Tag/AbstractCoseTag.php
+/**
+ * Common behaviour of the six COSE structures of RFC 9052: tags 16, 17, 18, 96, 97 and 98.
+ *
+ * Every one of them is an array that opens with the same two items -- the protected header, wrapped in a byte
+ * string so that it is signed exactly as it was written, and the unprotected header as a plain map -- and then
+ * differs in what follows. The tag only describes that shape: verifying a signature or a MAC needs keys and
+ * algorithms this library knows nothing about, and belongs to a COSE implementation such as web-auth/cose-lib.
+ *
+
+## Runtime reflection on the installed package (from attempt-run.log, section 0)
+== 0. Public surface (reflection): public methods whose name contains 'verif', 'polic', 'allow', 'requir', 'issuer'
+  CBOR\Tag\CoseSign1Tag                                -
+  CBOR\Tag\CoseSignTag                                 -
+  Cose\Signature\CoseSignature                         -
+  Cose\Signature\Signature                             -
+  Cose\Signature\Signature1                            -
+  Cose\Structure\CoseHeaders                           -
+  Cose\Algorithm\Manager                               -
+  Cose\Algorithm\ManagerFactory                        -
+  Cose\Algorithm\Signature\ECDSA\ES256                 verify(string $data, Cose\Key\Key $key, string $signature)
+  Cose\Algorithm\Signature\EdDSA\EdDSA                 verify(string $data, Cose\Key\Key $key, string $signature)
+  Cose\Algorithm\Signature\CertificateSignatureVerifier verify(int $algorithmIdentifier, string $certificate, string $data, string $signature); verifySubjectPublicKeyInfo(int $algorithmIdentifier, string $subjectPublicKeyInfo, string $data, string $signature)
+  Cose\Key\Key                                         -
+

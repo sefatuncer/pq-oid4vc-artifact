@@ -79,8 +79,8 @@ def klass(e):
     for pat, c in (("not allowed", "alg-izin-disi"), ("not supported", "alg-desteklenmiyor"), ("unsupported", "alg-desteklenmiyor"),
                    ("unable to find an algorithm", "alg-desteklenmiyor"), ("algorithm not", "alg-desteklenmiyor"),
                    ("asymmetric key", "alg-anahtar-uyusmazligi"), ("signature", "imza-gecersiz"), ("verification failed", "imza-gecersiz"),
-                   ("expired", "zaman"), ("decode", "ayristirma"), ("invalid header", "ayristirma"), ("no key", "anahtar-bulunamadi"),
-                   ("key", "anahtar-bulunamadi")):
+                   ("expired", "zaman"), ("decode", "ayristirma"), ("invalid header", "ayristirma"), ("keyerror", "ayristirma"),
+                   ("no key", "anahtar-bulunamadi"), ("key", "anahtar-bulunamadi")):
         if pat in m:
             return c
     return "istisna-diger"

@@ -41,7 +41,11 @@ String vektorYolu(String d) {
 Map<String, dynamic> b64json(String s) => jsonDecode(utf8.decode(base64Url.decode(base64Url.normalize(s)))) as Map<String, dynamic>;
 
 // Policy → (taban, W|null, R). METHOD.md §2; VARSAYILAN = contract §5.2 L5.
-(String, List<String>?, List<String>) politika(Map is_) {
+// L4 family: two issuer records (pre-registration §5.13, contract §5.3), selected by the iss of the object: legacy issuer
+// W = {A, X}, R = ∅; every other issuer (migrated) W = {A, X}, R = {X}. The selected record is enforced through the key–alg
+// binding of the library ("L4c (consecutive)", decision D9).
+const eskiIss = 'https://legacy-issuer.example';
+(String, List<String>?, List<String>) politika(Map is_, [String? iss]) {
   final taban = (is_['politika'] as String).split('|').first.split('@').first; // the suffixes only split the oracle
   final x = xKol[is_['kol']];
   String gx() => x ?? (throw StateError('kol icin X tanimsiz'));
@@ -49,7 +53,7 @@ Map<String, dynamic> b64json(String s) => jsonDecode(utf8.decode(base64Url.decod
     case 'GEC' || 'P0' || 'P1' || 'P2' || 'VARSAYILAN': return (taban, null, []);
     case 'IZIN-A': return (taban, ['ES256'], []);
     case 'IZIN-AX': return (taban, ['ES256', gx()], []);
-    case 'L4' || 'L4-S' || 'L4-Y' || 'L4-YOL': return (taban, ['ES256', gx()], [gx()]);
+    case 'L4' || 'L4-S' || 'L4-Y' || 'L4-YOL': return (taban, ['ES256', gx()], iss == eskiIss ? [] : [gx()]);
   }
   throw StateError('bilinmeyen politika ${is_['politika']}');
 }
@@ -101,7 +105,12 @@ Map<String, dynamic> dogrula(Map<String, dynamic> is_) {
   }
   final baslik = b64json(sunum.split('~').first.split('.').first);
   final alg = baslik['alg'] as String?;
-  final (taban, w, r) = politika(is_);
+  // iss of the issuer-signed JWT, read before verification only to select the issuer record of L4c.
+  String? iss;
+  try {
+    iss = b64json(sunum.split('~').first.split('.')[1])['iss'] as String?;
+  } catch (_) {}
+  final (taban, w, r) = politika(is_, iss);
   if (taban == 'L4-YOL') return sonuc('ifade-edilemedi', null, 'x5c/x5chain yol sinifi politikasi (L4-YOL, B2) icin belgeli API yok');
   final izin = w == null ? null : (r.isNotEmpty ? r : w);
   final jwk = jwkSec(baslik, dg);

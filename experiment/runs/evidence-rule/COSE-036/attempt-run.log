@@ -1,0 +1,72 @@
+gcc (GCC) 15.3.0
+ddaafd46d448f3788c997c209d0d583d8aa47a433aad5364fb3e0bc7b88ad701  build/libwolfcose.a
+== wolfCOSE 2.0.0 (git f907071b1012), wolfSSL 5.9.2; built with -DWOLFCOSE_ENABLE_DEPRECATED_ALGS
+X = EdDSA (-8): WOLFCOSE_HAVE_EDDSA and the deprecated -8 identifier are compiled in
+
+== 1. Validity check (keys pinned to their own algorithm)
+  V+ Sign1 migrated ES256                                  accept  expect=accept  OK        
+  V+ Sign1 migrated EdDSA                                  accept  expect=accept  OK        
+  V+ Sign1 legacy ES256                                    accept  expect=accept  OK        
+  V- Sign1 migrated ES256 corrupted                        reject  expect=reject  OK        WOLFCOSE_E_COSE_SIG_FAIL
+  V+ COSE_Sign T1, Verify(A key, 0) and Verify(X key, 1)   accept  expect=accept  OK        
+  V- COSE_Sign T2, Verify(A key, 0) and Verify(X key, 1)   reject  expect=reject  OK        WOLFCOSE_E_CRYPTO
+recorded: wc_CoseSign_Verify checks only the signer at the given index
+  T2 (X corrupted), Verify(A key, 0) only                  accept  expect=-       -         
+
+== 2. L4m (primary form), R = {EdDSA}, W = {ES256, EdDSA}: static configurations of wc_CoseSign_Verify
+configuration: W in order: Verify(A key, 0), Verify(X key, 1)
+  T1 A+X both valid                                        accept  expect=accept  OK        
+  T2 A valid + X corrupted                                 reject  expect=reject  OK        WOLFCOSE_E_CRYPTO
+  T3 A only (X stripped)                                   reject  expect=reject  OK        WOLFCOSE_E_INVALID_ARG
+  T5 X only                                                reject  expect=accept  MISMATCH  WOLFCOSE_E_COSE_BAD_ALG
+  T1 permuted (X first)                                    reject  expect=accept  MISMATCH  WOLFCOSE_E_COSE_BAD_ALG
+configuration: R at index 1: Verify(X key, 1)
+  T1 A+X both valid                                        accept  expect=accept  OK        
+  T2 A valid + X corrupted                                 reject  expect=reject  OK        WOLFCOSE_E_CRYPTO
+  T3 A only (X stripped)                                   reject  expect=reject  OK        WOLFCOSE_E_INVALID_ARG
+  T5 X only                                                reject  expect=accept  MISMATCH  WOLFCOSE_E_INVALID_ARG
+  T1 permuted (X first)                                    reject  expect=accept  MISMATCH  WOLFCOSE_E_COSE_BAD_ALG
+configuration: R at index 0: Verify(X key, 0)
+  T1 A+X both valid                                        reject  expect=accept  MISMATCH  WOLFCOSE_E_COSE_BAD_ALG
+  T2 A valid + X corrupted                                 reject  expect=reject  OK        WOLFCOSE_E_COSE_BAD_ALG
+  T3 A only (X stripped)                                   reject  expect=reject  OK        WOLFCOSE_E_COSE_BAD_ALG
+  T5 X only                                                accept  expect=accept  OK        
+  T1 permuted (X first)                                    accept  expect=accept  OK        
+configuration: W permuted: Verify(X key, 0), Verify(A key, 1)
+  T1 A+X both valid                                        reject  expect=accept  MISMATCH  WOLFCOSE_E_COSE_BAD_ALG
+  T2 A valid + X corrupted                                 reject  expect=reject  OK        WOLFCOSE_E_COSE_BAD_ALG
+  T3 A only (X stripped)                                   reject  expect=reject  OK        WOLFCOSE_E_COSE_BAD_ALG
+  T5 X only                                                reject  expect=accept  MISMATCH  WOLFCOSE_E_INVALID_ARG
+  T1 permuted (X first)                                    accept  expect=accept  OK        
+-> every call names one signer index; no static list of (key, index) calls gives T1/T5 accept and T3 reject.
+   The library has no call that verifies a COSE_Sign as a whole, returns the signer count, or takes a required set.
+
+== 3. L4m with own code (B4 record only): loop over signer indices with the issuer's pinned keys,
+      then require that an EdDSA signer verified
+  T1 A+X both valid                                        accept  expect=-       -         
+  T2 A valid + X corrupted                                 reject  expect=-       -         WOLFCOSE_E_CRYPTO
+  T3 A only (X stripped)                                   reject  expect=-       -         WOLFCOSE_E_COSE_BAD_ALG
+  T5 X only                                                accept  expect=-       -         
+  T1 permuted (X first)                                    accept  expect=-       -         
+
+== 4. L4c (supplement): COSE_Sign1, migrated issuer (R = {EdDSA}; keys mig-es256, mig-eddsa),
+      legacy issuer (R = {}; key leg-es256); one key per call, chosen by kid
+records: migrated = {ES256 key pinned -7, EdDSA key pinned -8}, legacy = {ES256 key pinned -7}
+  migrated ES256 with the record's ES256 key               accept  expect=reject  MISMATCH  
+  migrated EdDSA with the record's EdDSA key               accept  expect=accept  OK        
+  legacy ES256 with the record's ES256 key                 accept  expect=accept  OK        
+recorded, not counted (README rule 'Key material'):
+  migrated ES256, migrated ES256 key relabelled pin -8     reject  expect=-       -         WOLFCOSE_E_COSE_BAD_ALG
+  migrated ES256, classical key left out (EdDSA key only)  reject  expect=-       -         WOLFCOSE_E_COSE_BAD_ALG
+  migrated ES256 with an unpinned ES256 key                accept  expect=-       -         
+
+== 5. L4c with own code (B4 record only): per-issuer policy records, kid lookup, check of hdr.alg after
+      verification
+  migrated ES256                                           reject  expect=-       -         WOLFCOSE_E_COSE_BAD_ALG
+  migrated EdDSA                                           accept  expect=-       -         
+  legacy ES256                                             accept  expect=-       -         
+(record selection, key choice and the algorithm check are caller code; the migrated record holds its ES256 key)
+
+== SUMMARY: checked rows OK = 21 of 29
+B4 lines L4m: 20
+B4 lines L4c: 16

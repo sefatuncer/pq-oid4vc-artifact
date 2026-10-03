@@ -22,6 +22,7 @@ import (
 	"time"
 
 	jose "github.com/dvsekhvalnov/jose2go"
+	"github.com/fxamacker/cbor/v2"
 	gjwt "github.com/golang-jwt/jwt/v5"
 	cose "github.com/veraison/go-cose"
 )
@@ -250,11 +251,31 @@ func verifierFor(alg cose.Algorithm, kid []byte, W []string) (cose.Verifier, err
 	}
 	return cose.NewVerifier(alg, pk)
 }
-func (GOCOSE) verify(j Job, data []byte, X string) (Res, error) {
-	iss := ""
-	if strings.Contains(j.VektorID, "eski") {
-		iss = LEGACY
+// coseIss: iss of the COSE payload (a CBOR map), read before verification only to select the issuer record of L4c.
+func coseIss(serilestirme string, data []byte) string {
+	var payload []byte
+	if serilestirme == "COSE_Sign1" {
+		var m cose.Sign1Message
+		if m.UnmarshalCBOR(data) != nil {
+			return ""
+		}
+		payload = m.Payload
+	} else {
+		var m cose.SignMessage
+		if m.UnmarshalCBOR(data) != nil {
+			return ""
+		}
+		payload = m.Payload
 	}
+	var c map[string]any
+	if cbor.Unmarshal(payload, &c) != nil {
+		return ""
+	}
+	s, _ := c["iss"].(string)
+	return s
+}
+func (GOCOSE) verify(j Job, data []byte, X string) (Res, error) {
+	iss := coseIss(j.Serilestirme, data)
 	W := allowed(j.Politika, X, iss, coseSupported)
 	if j.Serilestirme == "COSE_Sign1" {
 		var m cose.Sign1Message

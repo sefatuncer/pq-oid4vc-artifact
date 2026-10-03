@@ -33,7 +33,8 @@ object Cose : T {
     }
     val alg = (cs.protectedHeader.algorithm ?: throw IllegalArgumentException("unsupported: protected alg yok")) as? CoseAlgorithm.Signature
       ?: throw IllegalArgumentException("unsupported: imza algoritması değil")
-    val kid = (cs.protectedHeader.kid ?: cs.unprotectedHeader?.kid)?.decodeToString()
+    // The COSE kid is the base64url-decoded JWK kid (32 bytes): it is encoded back to base64url to find the JWK.
+    val kid = (cs.protectedHeader.kid ?: cs.unprotectedHeader?.kid)?.let { java.util.Base64.getUrlEncoder().withoutPadding().encodeToString(it) }
     val name = alg.toString()
     val jwk = (if (kid != null) KID[kid] else null)
       ?: ALG2KID.entries.firstOrNull { name.contains(it.key) && it.key.startsWith("ES") }?.let { KID[it.value] }

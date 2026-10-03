@@ -20,6 +20,7 @@ php-jwt has no separate allow-list; the algorithm is bound to the object `Key(ma
 | GEC / P0 / P1 | all keys whose natural alg ∈ {ES256, ES384, EdDSA} |
 | IZIN-A / IZIN-AX | natural alg ∈ {ES256} / {ES256, X} |
 | L4 / L4-S / L4-Y (compact, single signature) | natural alg ∈ {X} (effective allow-list = R) |
+| L4 / L4-S / L4-Y, legacy issuer (payload `iss` = `https://legacy-issuer.example`) | legacy-issuer record of L4c: W = {A, X}, R = ∅, i.e. the allow-list of `IZIN-AX`. The record is selected by the `iss` of the object before the library call (pre-registration §5.13, contract §5.3: "L4c (consecutive)", decision D9) |
 | VARSAYILAN | the same as GEC (in php-jwt the alg is always bound to the key) |
 | L4-YOL | X5C (SD-JWT) → B6; in a supported format `ifade-edilemedi` (no path-class API) |
 

@@ -4,7 +4,7 @@
 
 Pre-registration Section 5.14 gives the verdict "not expressible" only if (1) the API scan finds no hook,
 (2) two independent attempts failed and (3) a source line reference exists; otherwise the result is
-"indeterminate". This folder holds the **second** attempt for the seven targets whose L4 configuration
+"indeterminate". This folder holds the **second** attempt for the nine targets whose L4 configuration
 (L4m or L4c, the one that determines Y_i) was recorded as not expressible by the first attempt.
 
 The second attempt was made on 2026-10-03 in a separate session without access to the first attempt: no
@@ -62,6 +62,8 @@ a time; attempt runs used `--network none` where no download was needed.
 | SDJWT-001 | vck 7.0.1 | L4c | **expressible** via the documented `PublicJsonWebKeyLookup` / `VerifyJwsSignatureFun` parameters of `VerifyJwsObject` (8 caller lines) | yes | no |
 | JOSE-089 | json-jwt 1.17.2 | L4c | **not-expressible** in one configuration; only a per-call allow-list, so "L4c (consecutive)" is reachable | no (per-call allow-list only) | yes, unless "L4c (consecutive)" counts |
 | SDJWT-025 | spruceid ssi-sd-jwt 0.6.0 | L4c | **not-expressible**: the only hook (`JWKResolver`) sees only the key id; header hooks fixed for SD-JWT (B4: 15 lines) | no | yes |
+| COSE-035 | web-auth/cose-lib 4.8.2 | L4m | **not-expressible**: no message-level verify; the documented COSE_Sign path is a caller loop over the primitive `Signature::verify` (all present signatures valid); `Manager` is one algorithm set (B4: 23 lines) | no | yes |
+| COSE-036 | wolfCOSE `f907071b1012` | L4m | **not-expressible**: `wc_CoseSign_Verify` verifies one caller-chosen signer index with one key and skips the others (B4: 20 lines) | no | yes |
 
 Machine-readable summary: `experiment/runs/analysis/evidence-rule.csv`.
 
@@ -78,3 +80,15 @@ Machine-readable summary: `experiment/runs/analysis/evidence-rule.csv`.
 - **JOSE-089** depends on whether "L4c (consecutive)" (contract §5.3) is accepted as L4c.
 - **COSE-034, COSE-001, SDJWT-025** satisfy the rule with this second attempt (no hook, failed attempt, line
   reference), as does JOSE-089 under the strict reading.
+
+## Addendum: COSE-035 and COSE-036 (2026-10-03, decision D9)
+
+The adapter conformance review before the freeze (decision D9 in `../DECISIONS-PREFREEZE.md`) found two more targets
+whose Y-determining configuration is recorded as not expressible: COSE-035 and COSE-036 accept COSE_Sign objects
+with several signers, so their form is L4m, and their adapters record every multi-signer row as `ifade-edilemedi`.
+Their second attempts were made later the same day with the same method, the same inputs and the same
+independence rule (a separate session that opened no adapter, output, analysis or decision file). Both satisfy the
+rule of Section 5.14. COSE-035 was built from the installation record's composer.lock; its `doc/` and `examples/`
+folders are export-ignored in the release archive and were read from an anonymous fetch of the same commit.
+COSE-036 was built with `WOLFCOSE_ENABLE_DEPRECATED_ALGS` (decision D3); the default build of the same tree
+reproduces the library hash of the installation record.

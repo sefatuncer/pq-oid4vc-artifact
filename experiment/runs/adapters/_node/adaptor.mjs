@@ -91,10 +91,12 @@ const T = {
         // from the message's kid, or from its alg (-7 ES256, -35 ES384); COSE_Sign keeps the ES256 key.
         let alg = 'ES256', j = KID[ALG2KID['ES256']];
         const t = cborlib.decodeFirstSync(buf);
-        if (pol === 'L4' && !job.vektor_id.includes('eski')) {
+        // iss of the COSE payload (a CBOR map), read before verification only to select the issuer record of L4c.
+        const iss = (() => { try { const p = cborlib.decodeFirstSync(t.value[2]); return p instanceof Map ? p.get('iss') : p?.iss; } catch { return undefined; } })();
+        if (pol === 'L4' && iss !== LEGACY) {
           // L4 for a migrated issuer (R = {X}): cose.sign.verify checks exactly the signer whose kid equals the kid
           // of the verifier key (lib/sign.js getSigner), so the configuration is the key of the required algorithm X.
-          // A legacy issuer (vector ids with "eski", W = {A, X}, R empty) keeps the key resolution below.
+          // A legacy issuer (payload iss = LEGACY: W = {A, X}, R empty) keeps the key resolution below.
           const kx = KID[ALG2KID[X]];
           if (!kx || kx.kty !== 'EC') throw new Error(`unsupported algorithm ${X} for cose-js`);
           j = kx; alg = kx.crv === 'P-384' ? 'ES384' : 'ES256';
@@ -107,6 +109,19 @@ const T = {
           const a = h.get(1);
           if (kid && KID[kid] && KID[kid].kty === 'EC') { j = KID[kid]; alg = KID[kid].crv === 'P-384' ? 'ES384' : 'ES256'; }
           else if (a === -35) { j = KID[ALG2KID['ES384']]; alg = 'ES384'; }
+        } else if (t && t.tag === 98 && Array.isArray(t.value) && Array.isArray(t.value[3])) {
+          // COSE_Sign: the ES256 key is kept when a signer carries its kid; otherwise the key named by the kid of the
+          // first signer that resolves to an EC key (contract section 8 item 1; decision D9).
+          const kids = t.value[3].map((s) => {
+            const h = s[0] && s[0].length ? cborlib.decodeFirstSync(s[0]) : new Map();
+            const u = s[1] instanceof Map ? s[1] : new Map();
+            const k = (h instanceof Map ? h.get(4) : undefined) ?? u.get(4);
+            return k ? Buffer.from(k).toString('base64url') : null;
+          });
+          if (!kids.includes(j.kid)) {
+            const k = kids.find((x) => x && KID[x] && KID[x].kty === 'EC');
+            if (k) { j = KID[k]; alg = KID[k].crv === 'P-384' ? 'ES384' : 'ES256'; }
+          }
         }
         // The COSE kid is the base64url-decoded JWK kid (32 bytes). getSigner compares it with Buffer.from(key.kid),
         // so the kid must be passed as bytes; a base64url string never matches a signer of a COSE_Sign message.
@@ -142,6 +157,9 @@ const T = {
         if (job.artefakt?.startsWith('sd-jwt-vc+kb')) { opts.keyBindingNonce = g.kb_nonce; }
         if (job.serilestirme === 'sd-jwt-general') {
           const j = JSON.parse(data);
+          // With several signatures every signature must be in allowedIssuerAlgorithms, and there is no option for a
+          // required set: R = {X} with A allowed cannot be configured (decision D9).
+          if (['L4', 'L4-S'].includes(pol) && (j.signatures ?? []).length > 1) return 'ifade-edilemedi';
           const iss = (() => { try { return JSON.parse(b64d(j.payload).toString()).iss; } catch { return undefined; } })();
           opts.allowedIssuerAlgorithms = allowed(pol, X, iss, supported);
           const r = await sdg.verify(GeneralJSON.fromSerialized(j), opts);

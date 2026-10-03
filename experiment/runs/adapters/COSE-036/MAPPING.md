@@ -18,6 +18,7 @@ wolfCOSE has no allow-list API; the verification path enforces the `alg` field o
 | GEC / P0 / P1 / P2 / VARSAYILAN | key without a pin |
 | IZIN-A / IZIN-AX | pin ∈ {−7} / {−7, X} |
 | L4 / L4-S / L4-Y (COSE_Sign1 or COSE_Sign with a single signer) | pin = X (effective allow-list = R) |
+| L4 / L4-S / L4-Y, legacy issuer (payload `iss` = `https://legacy-issuer.example`) | legacy-issuer record of L4c: W = {A, X}, R = ∅, i.e. the allow-list of `IZIN-AX`. The record is selected by the `iss` of the object before the library call (pre-registration §5.13, contract §5.3: "L4c (consecutive)", decision D9) |
 | COSE_Sign with several signers × every policy | **`ifade-edilemedi`**: `wc_CoseSign_Verify(key, signerIndex, …)` verifies the signers one by one; for a P0/P1/R rule, a loop over the signers would be the caller's code (B4) |
 | L4-YOL | **`ifade-edilemedi`** (no x5chain path-class API) |
 

@@ -81,7 +81,7 @@ function dogrula(array $is): array
     if (!in_array($is['serilestirme'], DESTEKLI_BICIM, true)) return Ortak::b6(API);
     $dg = Ortak::girdi($is['vektor_id']);
     $jwt = trim((string) file_get_contents(Ortak::vektorYolu($is['dosya'])));
-    $pol = Ortak::politika($is, KUTUPHANE_ALGLERI);
+    $pol = Ortak::politika($is, KUTUPHANE_ALGLERI, Ortak::iss($jwt));
     if ($pol['taban'] === 'L4-YOL') return Ortak::ifadeEdilemedi('x5c/x5chain yol sinifi politikasi (L4-YOL, B2) icin belgeli API yok', API);
     $izin = Ortak::tekImzaIzin($pol) ?? KUTUPHANE_ALGLERI; // VARSAYILAN: in lcobucci the signature constraint is always given explicitly
     $baslik = json_decode(Ortak::b64d(explode('.', $jwt)[0]), true) ?: [];

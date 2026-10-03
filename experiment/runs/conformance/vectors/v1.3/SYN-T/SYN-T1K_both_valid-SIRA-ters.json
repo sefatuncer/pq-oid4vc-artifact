@@ -1,0 +1,13 @@
+{
+ "payload": "eyJpc3MiOiJodHRwczovL2lzc3Vlci5leGFtcGxlIiwidmN0IjoidXJuOmV1ZGk6cGlkOjEiLCJnaXZlbl9uYW1lIjoiRXJpa2EiLCJqdGkiOiJjb25mb3JtYW5jZS9TWU4tVDFLX2JvdGhfdmFsaWQtU0lSQS10ZXJzIn0",
+ "signatures": [
+  {
+   "protected": "eyJhbGciOiJFZERTQSJ9",
+   "signature": "unSMwpsUPgJ_XxgVq0PyvYgdccjNCZvYsqhtKKwRHWmuGchHXRUxSoZMkxiOvT59kLWJ6VXXJpG73iSQqB2FBA"
+  },
+  {
+   "protected": "eyJhbGciOiJFUzI1NiJ9",
+   "signature": "VVSFyKtoKpsqZicjz8sWdfN0WEkrb79v4e2-gA02hpc3E_tFBxE5LrH2nADAVyWEDz5n4czTbCZQTUSQRG5TNQ"
+  }
+ ]
+}

@@ -15,6 +15,7 @@ The same as `JOSE-087/MAPPING.md` §1 (normalisation, P2, L4-YOL → `ifade-edil
 | GEC / P0 / P1 / P2 | ["ES256", "ES384", "EdDSA", "Ed25519", "Ed448"] (erlang-jose native; `jose_jws.erl` from_map) |
 | IZIN-A / IZIN-AX | ["ES256"] / ["ES256", X] |
 | L4 / L4-S / L4-Y (compact) | [X] |
+| L4 / L4-S / L4-Y, legacy issuer (payload `iss` = `https://legacy-issuer.example`) | legacy-issuer record of L4c: W = {A, X}, R = ∅, i.e. the allow-list of `IZIN-AX`. The record is selected by the `iss` of the object before the library call (pre-registration §5.13, contract §5.3: "L4c (consecutive)", decision D9) |
 | VARSAYILAN | not given (module configuration/Guardian default) |
 | L4-YOL | `ifade-edilemedi` |
 

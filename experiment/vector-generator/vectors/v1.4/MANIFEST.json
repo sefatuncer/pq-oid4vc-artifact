@@ -16508,7 +16508,7 @@
   {
    "id": "COSE-K1K_iki_gecerli-ES384",
    "dosya": "COSE/COSE-K1K_iki_gecerli-ES384.cbor",
-   "sha256": "9bf739a133e55cb308ffc8538429b7182daf4677ea2a5ec6e16f4a28874e6f1f",
+   "sha256": "37ee5ca35bd9924dc47e71ce4cc6a2cc11b09dfaa06800f4b7d8e42e257a9cdc",
    "bayt": 319,
    "aile": "COSE",
    "aciklama": "ES384 counterpart of v1.3 vector COSE-K1K_iki_gecerli (amendment 10): signatures labelled EdDSA are re-made with the issuer/ES384 key and label ES384; payload and all other signatures unchanged. Original description: COSE_Sign (etiket 98), iki imzaci: ES256 + EdDSA, ikisi gecerli uretildi (ÖK §6.5 K1).",
@@ -16604,7 +16604,7 @@
   {
    "id": "COSE-K2K_X_bozuk-ES384",
    "dosya": "COSE/COSE-K2K_X_bozuk-ES384.cbor",
-   "sha256": "3136ac9288ab0f2508ac08a5082b58cbdfb76bbc968133633f5ae36504e826f1",
+   "sha256": "367c5220353f58d4fb2dcf95b2a4aa1069a66b986e5b3e8a73ff072107fc5c68",
    "bayt": 319,
    "aile": "COSE",
    "aciklama": "ES384 counterpart of v1.3 vector COSE-K2K_X_bozuk (amendment 10): signatures labelled EdDSA are re-made with the issuer/ES384 key and label ES384; payload and all other signatures unchanged. Original description: COSE-K1K ile ayni; ikinci (EdDSA) imzacinin imzasinin 5. baytinin 0. biti cevrildi (ÖK §6.5 K2).",
@@ -16701,7 +16701,7 @@
   {
    "id": "COSE-K4K_yalniz_X-ES384",
    "dosya": "COSE/COSE-K4K_yalniz_X-ES384.cbor",
-   "sha256": "81713533d49324cff3c92707c9cb36f05279a7c4f89ba695e5875fad654be5ce",
+   "sha256": "a5c439d1b6f3d4e95c6109f16751d809ad06b31f453293e9ba3cc6bc6054eb6e",
    "bayt": 212,
    "aile": "COSE",
    "aciklama": "ES384 counterpart of v1.3 vector COSE-K4K_yalniz_X (amendment 10): signatures labelled EdDSA are re-made with the issuer/ES384 key and label ES384; payload and all other signatures unchanged. Original description: COSE_Sign, YALNIZ EdDSA imzacisi (gecerli; ÖK §6.5 K4).",
@@ -16780,7 +16780,7 @@
   {
    "id": "COSE-K5K_arti_kayitsiz-ES384",
    "dosya": "COSE/COSE-K5K_arti_kayitsiz-ES384.cbor",
-   "sha256": "4ba595ea35d0eae186302ca9465887695cc39b8a54117ac9e85623b49aa273ff",
+   "sha256": "d0cc034fa32c6ee83777b52c97570813838d9475a7eba27040f7a4b97abe9004",
    "bayt": 467,
    "aile": "COSE",
    "aciklama": "ES384 counterpart of v1.3 vector COSE-K5K_arti_kayitsiz (amendment 10): signatures labelled EdDSA are re-made with the issuer/ES384 key and label ES384; payload and all other signatures unchanged. Original description: COSE_Sign: COSE-K1K ile ayni iki gecerli imzaci + KAYITSIZ tstr alg (\"X-KAYITSIZ-1\") etiketli ucuncu imzaci; imza baytlari rastgele ve belirlenimci (HKDF \"v1.3/COSE-K5K/kayitsiz-imza\", 128 B), korumasiz baslik bos (kid yok). ÖK §6.5 K5.",
@@ -16982,7 +16982,7 @@
   {
    "id": "COSE-K10K_alg-ES256_anahtar-Ed25519-ES384",
    "dosya": "COSE/COSE-K10K_alg-ES256_anahtar-Ed25519-ES384.cbor",
-   "sha256": "2a8b71005598e6f2ac15ec34d49df947f13c08b3339b4501437d50f735ec6d73",
+   "sha256": "1c0cb92bf8132297576859287672a0a3d4628c39c786d126d9f204afb11683d8",
    "bayt": 206,
    "aile": "COSE",
    "aciklama": "ES384 counterpart of v1.3 vector COSE-K10K_alg-ES256_anahtar-Ed25519 (amendment 10): signatures labelled EdDSA are re-made with the issuer/ES384 key and label ES384; payload and all other signatures unchanged. Original description: COSE_Sign1 (ÖK §6.5 K10, alg-anahtar uyusmazligi): korumali baslikta alg=ES256 (-7), dogrulama anahtari issuer/EdDSA (Ed25519; COSE_Key ve JWK olarak verilir). Imza, baslik alg'iyla DEGIL gercek anahtarin kendi algoritmasiyla (EdDSA) bu Sig_structure uzerinde uretilmis GECERLI imzadir.",
@@ -17073,7 +17073,7 @@
   {
    "id": "COSE-VPLUS_EdDSA-ES384",
    "dosya": "COSE/COSE-VPLUS_EdDSA-ES384.cbor",
-   "sha256": "5dced9ddb6858295ec3763b9a0744b75f82eb3d3649e15d2d513d6343b221550",
+   "sha256": "9cf7dc022530ad12ca94049fa5c40cbe7945dae28f4e67444f5de19cccf5fc23",
    "bayt": 207,
    "aile": "COSE",
    "aciklama": "ES384 counterpart of v1.3 vector COSE-VPLUS_EdDSA (amendment 10): signatures labelled EdDSA are re-made with the issuer/ES384 key and label ES384; payload and all other signatures unchanged. Original description: V+ adaptor gecerlilik kontrolu (ÖK §6.5 V+/V-, §4.15): tek imzali COSE_Sign1, EdDSA (-8), kid ile; imza gecerli.",
@@ -17148,7 +17148,7 @@
   {
    "id": "COSE-VMINUS_EdDSA-ES384",
    "dosya": "COSE/COSE-VMINUS_EdDSA-ES384.cbor",
-   "sha256": "68470b8b79d42a4424b467a2b6f534296af35b7db4fb4efb1387ab5d2825841b",
+   "sha256": "22f99e55e5edc1cd221446d9bfa1df4c48a85bd2c33cf8afd2ccf8dcb499c433",
    "bayt": 207,
    "aile": "COSE",
    "aciklama": "ES384 counterpart of v1.3 vector COSE-VMINUS_EdDSA (amendment 10): signatures labelled EdDSA are re-made with the issuer/ES384 key and label ES384; payload and all other signatures unchanged. Original description: V- adaptor gecerlilik kontrolu (ÖK §6.5 V+/V-, §4.15): tek imzali COSE_Sign1, EdDSA (-8), kid ile; imzanin orta baytinda bit cevrildi.",
@@ -17223,7 +17223,7 @@
   {
    "id": "COSE-K1K_iki_gecerli-SIRA-ters-ES384",
    "dosya": "COSE/COSE-K1K_iki_gecerli-SIRA-ters-ES384.cbor",
-   "sha256": "676b5b2e12452d77f94ca03e5b8c9df648dae10af5e73d149d179fad569ec3b8",
+   "sha256": "bd606eb3189fe162b8b2c51442606191a632df753e362207f3bb739192449258",
    "bayt": 319,
    "aile": "COSE",
    "aciklama": "ES384 counterpart of v1.3 vector COSE-K1K_iki_gecerli-SIRA-ters (amendment 10): signatures labelled EdDSA are re-made with the issuer/ES384 key and label ES384; payload and all other signatures unchanged. Original description: MR4 esi (ÖK §2B m.8, §2C m.4): COSE-K1K_iki_gecerli COSE_Sign imzaci sirasi ters (yeni sira = ozgun [1, 0]). Her COSE_Signature [korumali, korumasiz, imza] ve govde/yuk bayt-ayni; imzaci Sig_structure'i sira bagimsizdir. Ozgun aciklama: COSE_Sign (etiket 98), iki imzaci: ES256 + EdDSA, ikisi gecerli uretildi (ÖK §6.5 K1).",
@@ -17330,7 +17330,7 @@
   {
    "id": "COSE-K2K_X_bozuk-SIRA-ters-ES384",
    "dosya": "COSE/COSE-K2K_X_bozuk-SIRA-ters-ES384.cbor",
-   "sha256": "a7ee3aea659d9d4fc372d7c9267631f848e8b04431366f758df0077dd392efc7",
+   "sha256": "ca580bf17fd2e2df17532b0f0d99c01b9f91e0fd8dfa7f189b7a1f17290f3cb5",
    "bayt": 319,
    "aile": "COSE",
    "aciklama": "ES384 counterpart of v1.3 vector COSE-K2K_X_bozuk-SIRA-ters (amendment 10): signatures labelled EdDSA are re-made with the issuer/ES384 key and label ES384; payload and all other signatures unchanged. Original description: MR4 esi (ÖK §2B m.8, §2C m.4): COSE-K2K_X_bozuk COSE_Sign imzaci sirasi ters (yeni sira = ozgun [1, 0]). Her COSE_Signature [korumali, korumasiz, imza] ve govde/yuk bayt-ayni; imzaci Sig_structure'i sira bagimsizdir. Ozgun aciklama: COSE-K1K ile ayni; ikinci (EdDSA) imzacinin imzasinin 5. baytinin 0. biti cevrildi (ÖK §6.5 K2).",

@@ -33,7 +33,7 @@ def dogrula(is)
 
   giris = Ortak.manifest[is['vektor_id']] or raise "manifestte yok: #{is['vektor_id']}"
   ham = File.read(Ortak.vektor_yolu(is['dosya'])).strip
-  pol = Ortak.politika(is, KUTUPHANE_ALGLERI)
+  pol = Ortak.politika(is, KUTUPHANE_ALGLERI, Ortak.iss(ham))
   return Ortak.ifade_edilemedi('x5c/x5chain yol sinifi politikasi (L4-YOL, B2) icin belgeli API yok', API_KOMPAKT) if pol[:taban] == 'L4-YOL'
   if seri == 'general'
     girdi = JSON.parse(ham)

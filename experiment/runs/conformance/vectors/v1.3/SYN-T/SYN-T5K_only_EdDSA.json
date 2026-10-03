@@ -1,0 +1,9 @@
+{
+ "payload": "eyJpc3MiOiJodHRwczovL2lzc3Vlci5leGFtcGxlIiwidmN0IjoidXJuOmV1ZGk6cGlkOjEiLCJnaXZlbl9uYW1lIjoiRXJpa2EiLCJqdGkiOiJjb25mb3JtYW5jZS9TWU4tVDVLX29ubHlfRWREU0EifQ",
+ "signatures": [
+  {
+   "protected": "eyJhbGciOiJFZERTQSJ9",
+   "signature": "fRM2fNArEvhIF1W4luZQ7thXGL54YTR3c9fVxchziVlbtbZLLj64RbN2jcennM2aseFxo5leALAXjT8wiqNbAg"
+  }
+ ]
+}

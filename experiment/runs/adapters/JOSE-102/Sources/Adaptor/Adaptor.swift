@@ -53,16 +53,27 @@ func vektorYolu(_ d: String) -> String {
 }
 
 // Policy → (taban, W|nil, R). METHOD.md §2; VARSAYILAN = contract §5.2 L5.
-func politika(_ isx: [String: Any]) throws -> (String, [String]?, [String]) {
+// L4 family: two issuer records (pre-registration §5.13, contract §5.3), selected by the iss of the object: legacy issuer
+// W = {A, X}, R = ∅; every other issuer (migrated) W = {A, X}, R = {X}. The selected record is enforced by the library's
+// allow-list ("L4c (consecutive)", decision D9).
+let eskiIss = "https://legacy-issuer.example"
+func politika(_ isx: [String: Any], iss: String? = nil) throws -> (String, [String]?, [String]) {
     let taban = (isx["politika"] as! String).components(separatedBy: "|")[0].components(separatedBy: "@")[0] // the suffixes only split the oracle
     let x = xKol[isx["kol"] as! String]
     switch taban {
     case "GEC", "P0", "P1", "P2", "VARSAYILAN": return (taban, nil, [])
     case "IZIN-A": return (taban, ["ES256"], [])
     case "IZIN-AX": guard let x else { throw NSError(domain: "X tanimsiz", code: 2) }; return (taban, ["ES256", x], [])
-    case "L4", "L4-S", "L4-Y", "L4-YOL": guard let x else { throw NSError(domain: "X tanimsiz", code: 2) }; return (taban, ["ES256", x], [x])
+    case "L4", "L4-S", "L4-Y", "L4-YOL": guard let x else { throw NSError(domain: "X tanimsiz", code: 2) }; return (taban, ["ES256", x], iss == eskiIss ? [] : [x])
     default: throw NSError(domain: "bilinmeyen politika", code: 3)
     }
+}
+
+// iss of a compact JWS payload (read before verification only to select the issuer record of L4c).
+func yukIss(_ jwt: String) -> String? {
+    let p = jwt.split(separator: ".", omittingEmptySubsequences: false)
+    guard p.count > 1 else { return nil }
+    return b64d(String(p[1])).flatMap(jsonObj)?["iss"] as? String
 }
 
 // Key selection (contract §8 item 1): header kid → the vector's JWKS; otherwise alg_kid[alg]; otherwise the single kid.
@@ -102,8 +113,8 @@ func dogrula(_ isx: [String: Any]) async throws -> [String: Any] {
     let jwt = try String(contentsOfFile: vektorYolu(isx["dosya"] as! String), encoding: .utf8).trimmingCharacters(in: .whitespacesAndNewlines)
     let baslik = b64d(String(jwt.split(separator: ".").first ?? "")).flatMap(jsonObj) ?? [:]
     let alg = baslik["alg"] as? String
-    let (_, w, r) = try politika(isx)
-    if (try politika(isx)).0 == "L4-YOL" { return sonuc("ifade-edilemedi", nil, "x5c/x5chain yol sinifi politikasi (L4-YOL, B2) icin belgeli API yok", yol: nil) }
+    let (taban, w, r) = try politika(isx, iss: yukIss(jwt))
+    if taban == "L4-YOL" { return sonuc("ifade-edilemedi", nil, "x5c/x5chain yol sinifi politikasi (L4-YOL, B2) icin belgeli API yok", yol: nil) }
     let izin = w == nil ? nil : (r.isEmpty ? w! : r)
     var jwk: [String: Any]? = nil
     var yol = "dogrudan"

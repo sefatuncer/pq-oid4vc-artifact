@@ -1,0 +1,2856 @@
+{
+ "surum": "conformance-1",
+ "not": "Pre-freeze adapter conformance objects (decision D9); not battery vectors.",
+ "vektorler": [
+  {
+   "id": "SYN-COSE-K1K_iki_gecerli",
+   "dosya": "SYN-COSE/SYN-COSE-K1K_iki_gecerli.cbor",
+   "sha256": "ea46ad2c20c3e82864fb964d7fe19999ee19c1b094f6814d3f2f65620af68477",
+   "bayt": 328,
+   "aile": "SYN-COSE",
+   "aciklama": "Conformance object (not in the battery). COSE_Sign (etiket 98), iki imzaci: ES256 + EdDSA, ikisi gecerli uretildi (ÖK §6.5 K1).",
+   "artefakt": "cose",
+   "serilestirme": "COSE_Sign",
+   "kol": "kontrol-EdDSA",
+   "senaryo": "d-COSE (COSE_Sign cok imzacili; RFC 9052 §4.1)",
+   "sdjwtvc_surum": null,
+   "sinanan": {
+    "basamak": [
+     "L1",
+     "L2"
+    ],
+    "plan_bayraklari": [],
+    "ek_etiketler": [
+     "COSE",
+     "K1",
+     "coklu-imza"
+    ]
+   },
+   "dayanak": [
+    "RFC9052 §4.1",
+    "RFC9052 §4.4",
+    "RFC9053 §2.1",
+    "RFC9864 §4.2.2",
+    "HAIP §7",
+    "RFC9053 §2.2",
+    "RFC9864 §4.2.2"
+   ],
+   "insa": {
+    "imzalar": [
+     {
+      "sira": 0,
+      "alg": "ES256",
+      "cose_alg": -7,
+      "alg_sinifi": "klasik",
+      "anahtar_rolu": "issuer/ES256",
+      "kid": "Dae-6PSSx7FfaEPNMopZGZ-wBvY8xkwyPQHmeHIgaUU",
+      "cose_kid_hex": "0da7bee8f492c7b15f6843cd328a59199fb006f63cc64c323d01e67872206945",
+      "insa": "gecerli",
+      "kimlik_kaynagi": "RFC9053:248",
+      "kayit_durumu": "kayitli; RFC 9864 §4.2.2 \"Deprecated\" (polimorfik) (RFC9864:467); HAIP §7: \"COSE algorithm identifier -7 or -9, as applicable\" (HAIP:498)"
+     },
+     {
+      "sira": 1,
+      "alg": "EdDSA",
+      "cose_alg": -8,
+      "alg_sinifi": "klasik",
+      "anahtar_rolu": "issuer/EdDSA",
+      "kid": "Xs-nufJolGnijX_-1fWpt5C9pvH44duKX8YO0WJTsSs",
+      "cose_kid_hex": "5ecfa7b9f2689469e28d7ffed5f5a9b790bda6f1f8e1db8a5fc60ed16253b12b",
+      "insa": "gecerli",
+      "kimlik_kaynagi": "RFC9053:365",
+      "kayit_durumu": "kayitli; RFC 9864 §4.2.2 \"Deprecated\" (polimorfik) (RFC9864:491)"
+     }
+    ],
+    "cose": {
+     "yapi": "COSE_Sign",
+     "etiket": 98,
+     "etiket_kaynagi": "RFC9052:482",
+     "govde_korumali": "bos (h'')",
+     "yuk": "belirlenimci CBOR harita {\"iss\",\"vct\",\"given_name\"}",
+     "external_aad": "bos (h'')",
+     "kid": "COSE kid (etiket 4) = base64url-cozulmus JWK kid (RFC 7638 parmak izi, 32 B); korumasiz baslikta",
+     "basliklar": {
+      "imzaci_korumali": "{1: alg}",
+      "imzaci_korumasiz": "{4: kid}"
+     }
+    }
+   },
+   "dogrulama_girdileri": {
+    "cose_anahtarlar": "anahtarlar/v1.3/cose-anahtarlar.json",
+    "jwks": "anahtarlar/v1/acik-jwks.json",
+    "kid": [
+     "Dae-6PSSx7FfaEPNMopZGZ-wBvY8xkwyPQHmeHIgaUU",
+     "Xs-nufJolGnijX_-1fWpt5C9pvH44duKX8YO0WJTsSs"
+    ],
+    "cose_kid_hex": [
+     "0da7bee8f492c7b15f6843cd328a59199fb006f63cc64c323d01e67872206945",
+     "5ecfa7b9f2689469e28d7ffed5f5a9b790bda6f1f8e1db8a5fc60ed16253b12b"
+    ],
+    "cose_key_hex": {
+     "0da7bee8f492c7b15f6843cd328a59199fb006f63cc64c323d01e67872206945": "a501020258200da7bee8f492c7b15f6843cd328a59199fb006f63cc64c323d01e67872206945200121582058474a0119ab406a1e402bd3a6931af90789c5c3fd5ba187b4a3b6c5fbb6675f225820cd0d5f081d18dd31bbb1ff13848ff4d6e2fb9ca838d9931efc09e3044c52d847",
+     "5ecfa7b9f2689469e28d7ffed5f5a9b790bda6f1f8e1db8a5fc60ed16253b12b": "a401010258205ecfa7b9f2689469e28d7ffed5f5a9b790bda6f1f8e1db8a5fc60ed16253b12b2006215820165579699245deb4b624c9fe4b80479bdd6d8d7baa6442281a7c5e23d9493749"
+    },
+    "anahtar_yolu": "hedefin belgeli API'si (COSE_Key/JWK ya da dogrudan anahtar); ÖK §2D m.1",
+    "simdi": 1790003700
+   },
+   "b_pilot_esi": null,
+   "dcapi_protokol": null,
+   "ayna": "COSE-K1K_iki_gecerli"
+  },
+  {
+   "id": "SYN-COSE-K1K_iki_gecerli-ES384",
+   "dosya": "SYN-COSE/SYN-COSE-K1K_iki_gecerli-ES384.cbor",
+   "sha256": "7d1be9c06bcccd1bc3f26d2a7bfddd7d82b96aca70f456a317211d440e53aa95",
+   "bayt": 367,
+   "aile": "SYN-COSE",
+   "aciklama": "Conformance object (not in the battery). ES384 counterpart of v1.3 vector COSE-K1K_iki_gecerli (amendment 10): signatures labelled EdDSA are re-made with the issuer/ES384 key and label ES384; payload and all other signatures unchanged. Original description: COSE_Sign (etiket 98), iki imzaci: ES256 + EdDSA, ikisi gecerli uretildi (ÖK §6.5 K1).",
+   "artefakt": "cose",
+   "serilestirme": "COSE_Sign",
+   "kol": "kontrol-ES384",
+   "senaryo": "d-COSE (COSE_Sign cok imzacili; RFC 9052 §4.1)",
+   "sdjwtvc_surum": null,
+   "sinanan": {
+    "basamak": [
+     "L1",
+     "L2"
+    ],
+    "plan_bayraklari": [],
+    "ek_etiketler": [
+     "COSE",
+     "K1",
+     "coklu-imza"
+    ]
+   },
+   "dayanak": [
+    "RFC9052 §4.1",
+    "RFC9052 §4.4",
+    "RFC9053 §2.1",
+    "RFC9864 §4.2.2",
+    "HAIP §7",
+    "RFC9053 §2.2",
+    "RFC9864 §4.2.2"
+   ],
+   "insa": {
+    "imzalar": [
+     {
+      "sira": 0,
+      "alg": "ES256",
+      "cose_alg": -7,
+      "alg_sinifi": "klasik",
+      "anahtar_rolu": "issuer/ES256",
+      "kid": "Dae-6PSSx7FfaEPNMopZGZ-wBvY8xkwyPQHmeHIgaUU",
+      "cose_kid_hex": "0da7bee8f492c7b15f6843cd328a59199fb006f63cc64c323d01e67872206945",
+      "insa": "gecerli",
+      "kimlik_kaynagi": "RFC9053:248",
+      "kayit_durumu": "kayitli; RFC 9864 §4.2.2 \"Deprecated\" (polimorfik) (RFC9864:467); HAIP §7: \"COSE algorithm identifier -7 or -9, as applicable\" (HAIP:498)"
+     },
+     {
+      "sira": 1,
+      "alg": "ES384",
+      "cose_alg": -35,
+      "alg_sinifi": "klasik",
+      "anahtar_rolu": "issuer/ES384",
+      "kid": "35xWV--z8WN_BPF0nuwviD5IQsv6e5m2FRdcmiB_Dok",
+      "cose_kid_hex": "df9c5657efb3f1637f04f1749eec2f883e4842cbfa7b99b615175c9a207f0e89",
+      "insa": "gecerli",
+      "kimlik_kaynagi": "RFC9053:365",
+      "kayit_durumu": "kayitli; RFC 9864 §4.2.2 \"Deprecated\" (polimorfik) (RFC9864:491)"
+     }
+    ],
+    "cose": {
+     "yapi": "COSE_Sign",
+     "etiket": 98,
+     "etiket_kaynagi": "RFC9052:482",
+     "govde_korumali": "bos (h'')",
+     "yuk": "belirlenimci CBOR harita {\"iss\",\"vct\",\"given_name\"}",
+     "external_aad": "bos (h'')",
+     "kid": "COSE kid (etiket 4) = base64url-cozulmus JWK kid (RFC 7638 parmak izi, 32 B); korumasiz baslikta",
+     "basliklar": {
+      "imzaci_korumali": "{1: alg}",
+      "imzaci_korumasiz": "{4: kid}"
+     }
+    },
+    "v13_esi": "COSE-K1K_iki_gecerli"
+   },
+   "dogrulama_girdileri": {
+    "cose_anahtarlar": "anahtarlar/v1.3/cose-anahtarlar.json",
+    "jwks": "anahtarlar/v1/acik-jwks.json",
+    "kid": [
+     "Dae-6PSSx7FfaEPNMopZGZ-wBvY8xkwyPQHmeHIgaUU",
+     "35xWV--z8WN_BPF0nuwviD5IQsv6e5m2FRdcmiB_Dok"
+    ],
+    "cose_kid_hex": [
+     "0da7bee8f492c7b15f6843cd328a59199fb006f63cc64c323d01e67872206945",
+     "df9c5657efb3f1637f04f1749eec2f883e4842cbfa7b99b615175c9a207f0e89"
+    ],
+    "cose_key_hex": {
+     "0da7bee8f492c7b15f6843cd328a59199fb006f63cc64c323d01e67872206945": "a501020258200da7bee8f492c7b15f6843cd328a59199fb006f63cc64c323d01e67872206945200121582058474a0119ab406a1e402bd3a6931af90789c5c3fd5ba187b4a3b6c5fbb6675f225820cd0d5f081d18dd31bbb1ff13848ff4d6e2fb9ca838d9931efc09e3044c52d847",
+     "df9c5657efb3f1637f04f1749eec2f883e4842cbfa7b99b615175c9a207f0e89": "a50102025820df9c5657efb3f1637f04f1749eec2f883e4842cbfa7b99b615175c9a207f0e89200221583035159bc6cf3b857627bed5f29c333d7584b1c6391c1b6ce4f0d238b2475c7ab18169909ee060f59c54371a5e6e82adf6225830b260af6833b507519e2bda0c25027af12c522f7cac844e6af59d0feab667b200cadd4e07f236402ccf6bce4c227484a4"
+    },
+    "anahtar_yolu": "hedefin belgeli API'si (COSE_Key/JWK ya da dogrudan anahtar); ÖK §2D m.1",
+    "simdi": 1790003700
+   },
+   "b_pilot_esi": null,
+   "dcapi_protokol": null,
+   "ayna": "COSE-K1K_iki_gecerli-ES384"
+  },
+  {
+   "id": "SYN-COSE-K1K_iki_gecerli-SIRA-ters",
+   "dosya": "SYN-COSE/SYN-COSE-K1K_iki_gecerli-SIRA-ters.cbor",
+   "sha256": "937be69d6aece45d77ef045f2c4a6d352d7db00c3248c239b355bcd55f09df43",
+   "bayt": 338,
+   "aile": "SYN-COSE",
+   "aciklama": "Conformance object (not in the battery). MR4 esi (ÖK §2B m.8, §2C m.4): COSE-K1K_iki_gecerli COSE_Sign imzaci sirasi ters (yeni sira = ozgun [1, 0]). Her COSE_Signature [korumali, korumasiz, imza] ve govde/yuk bayt-ayni; imzaci Sig_structure'i sira bagimsizdir. Ozgun aciklama: COSE_Sign (etiket 98), iki imzaci: ES256 + EdDSA, ikisi gecerli uretildi (ÖK §6.5 K1).",
+   "artefakt": "cose",
+   "serilestirme": "COSE_Sign",
+   "kol": "kontrol-EdDSA",
+   "senaryo": "d-COSE (COSE_Sign cok imzacili; RFC 9052 §4.1)",
+   "sdjwtvc_surum": null,
+   "sinanan": {
+    "basamak": [
+     "L1",
+     "L2"
+    ],
+    "plan_bayraklari": [],
+    "ek_etiketler": [
+     "COSE",
+     "K1",
+     "coklu-imza",
+     "MR4(imza-sirasi-permutasyonu)"
+    ]
+   },
+   "dayanak": [
+    "RFC9052 §4.1",
+    "RFC9052 §4.4",
+    "RFC9053 §2.1",
+    "RFC9864 §4.2.2",
+    "HAIP §7",
+    "RFC9053 §2.2",
+    "RFC9864 §4.2.2"
+   ],
+   "insa": {
+    "imzalar": [
+     {
+      "sira": 0,
+      "alg": "EdDSA",
+      "cose_alg": -8,
+      "alg_sinifi": "klasik",
+      "anahtar_rolu": "issuer/EdDSA",
+      "kid": "Xs-nufJolGnijX_-1fWpt5C9pvH44duKX8YO0WJTsSs",
+      "cose_kid_hex": "5ecfa7b9f2689469e28d7ffed5f5a9b790bda6f1f8e1db8a5fc60ed16253b12b",
+      "insa": "gecerli",
+      "kimlik_kaynagi": "RFC9053:365",
+      "kayit_durumu": "kayitli; RFC 9864 §4.2.2 \"Deprecated\" (polimorfik) (RFC9864:491)",
+      "ozgun_sira": 1
+     },
+     {
+      "sira": 1,
+      "alg": "ES256",
+      "cose_alg": -7,
+      "alg_sinifi": "klasik",
+      "anahtar_rolu": "issuer/ES256",
+      "kid": "Dae-6PSSx7FfaEPNMopZGZ-wBvY8xkwyPQHmeHIgaUU",
+      "cose_kid_hex": "0da7bee8f492c7b15f6843cd328a59199fb006f63cc64c323d01e67872206945",
+      "insa": "gecerli",
+      "kimlik_kaynagi": "RFC9053:248",
+      "kayit_durumu": "kayitli; RFC 9864 §4.2.2 \"Deprecated\" (polimorfik) (RFC9864:467); HAIP §7: \"COSE algorithm identifier -7 or -9, as applicable\" (HAIP:498)",
+      "ozgun_sira": 0
+     }
+    ],
+    "cose": {
+     "yapi": "COSE_Sign",
+     "etiket": 98,
+     "etiket_kaynagi": "RFC9052:482",
+     "govde_korumali": "bos (h'')",
+     "yuk": "belirlenimci CBOR harita {\"iss\",\"vct\",\"given_name\"}",
+     "external_aad": "bos (h'')",
+     "kid": "COSE kid (etiket 4) = base64url-cozulmus JWK kid (RFC 7638 parmak izi, 32 B); korumasiz baslikta",
+     "basliklar": {
+      "imzaci_korumali": "{1: alg}",
+      "imzaci_korumasiz": "{4: kid}"
+     }
+    },
+    "mr4": {
+     "kaynak_vektor": "COSE-K1K_iki_gecerli",
+     "yeni_siradaki_ozgun_indeksler": [
+      1,
+      0
+     ],
+     "permutasyon": "ters"
+    }
+   },
+   "dogrulama_girdileri": {
+    "cose_anahtarlar": "anahtarlar/v1.3/cose-anahtarlar.json",
+    "jwks": "anahtarlar/v1/acik-jwks.json",
+    "kid": [
+     "Dae-6PSSx7FfaEPNMopZGZ-wBvY8xkwyPQHmeHIgaUU",
+     "Xs-nufJolGnijX_-1fWpt5C9pvH44duKX8YO0WJTsSs"
+    ],
+    "cose_kid_hex": [
+     "0da7bee8f492c7b15f6843cd328a59199fb006f63cc64c323d01e67872206945",
+     "5ecfa7b9f2689469e28d7ffed5f5a9b790bda6f1f8e1db8a5fc60ed16253b12b"
+    ],
+    "cose_key_hex": {
+     "0da7bee8f492c7b15f6843cd328a59199fb006f63cc64c323d01e67872206945": "a501020258200da7bee8f492c7b15f6843cd328a59199fb006f63cc64c323d01e67872206945200121582058474a0119ab406a1e402bd3a6931af90789c5c3fd5ba187b4a3b6c5fbb6675f225820cd0d5f081d18dd31bbb1ff13848ff4d6e2fb9ca838d9931efc09e3044c52d847",
+     "5ecfa7b9f2689469e28d7ffed5f5a9b790bda6f1f8e1db8a5fc60ed16253b12b": "a401010258205ecfa7b9f2689469e28d7ffed5f5a9b790bda6f1f8e1db8a5fc60ed16253b12b2006215820165579699245deb4b624c9fe4b80479bdd6d8d7baa6442281a7c5e23d9493749"
+    },
+    "anahtar_yolu": "hedefin belgeli API'si (COSE_Key/JWK ya da dogrudan anahtar); ÖK §2D m.1",
+    "simdi": 1790003700
+   },
+   "b_pilot_esi": null,
+   "dcapi_protokol": null,
+   "ayna": "COSE-K1K_iki_gecerli-SIRA-ters"
+  },
+  {
+   "id": "SYN-COSE-K1K_iki_gecerli-SIRA-ters-ES384",
+   "dosya": "SYN-COSE/SYN-COSE-K1K_iki_gecerli-SIRA-ters-ES384.cbor",
+   "sha256": "a111ba9f7fcc6dee8a91cc940270de00a5c89ed5ee2ad829200176c487138db4",
+   "bayt": 377,
+   "aile": "SYN-COSE",
+   "aciklama": "Conformance object (not in the battery). ES384 counterpart of v1.3 vector COSE-K1K_iki_gecerli-SIRA-ters (amendment 10): signatures labelled EdDSA are re-made with the issuer/ES384 key and label ES384; payload and all other signatures unchanged. Original description: MR4 esi (ÖK §2B m.8, §2C m.4): COSE-K1K_iki_gecerli COSE_Sign imzaci sirasi ters (yeni sira = ozgun [1, 0]). Her COSE_Signature [korumali, korumasiz, imza] ve govde/yuk bayt-ayni; imzaci Sig_structure'i sira bagimsizdir. Ozgun aciklama: COSE_Sign (etiket 98), iki imzaci: ES256 + EdDSA, ikisi gecerli uretildi (ÖK §6.5 K1).",
+   "artefakt": "cose",
+   "serilestirme": "COSE_Sign",
+   "kol": "kontrol-ES384",
+   "senaryo": "d-COSE (COSE_Sign cok imzacili; RFC 9052 §4.1)",
+   "sdjwtvc_surum": null,
+   "sinanan": {
+    "basamak": [
+     "L1",
+     "L2"
+    ],
+    "plan_bayraklari": [],
+    "ek_etiketler": [
+     "COSE",
+     "K1",
+     "coklu-imza",
+     "MR4(imza-sirasi-permutasyonu)"
+    ]
+   },
+   "dayanak": [
+    "RFC9052 §4.1",
+    "RFC9052 §4.4",
+    "RFC9053 §2.1",
+    "RFC9864 §4.2.2",
+    "HAIP §7",
+    "RFC9053 §2.2",
+    "RFC9864 §4.2.2"
+   ],
+   "insa": {
+    "imzalar": [
+     {
+      "sira": 0,
+      "alg": "ES384",
+      "cose_alg": -35,
+      "alg_sinifi": "klasik",
+      "anahtar_rolu": "issuer/ES384",
+      "kid": "35xWV--z8WN_BPF0nuwviD5IQsv6e5m2FRdcmiB_Dok",
+      "cose_kid_hex": "df9c5657efb3f1637f04f1749eec2f883e4842cbfa7b99b615175c9a207f0e89",
+      "insa": "gecerli",
+      "kimlik_kaynagi": "RFC9053:365",
+      "kayit_durumu": "kayitli; RFC 9864 §4.2.2 \"Deprecated\" (polimorfik) (RFC9864:491)",
+      "ozgun_sira": 1
+     },
+     {
+      "sira": 1,
+      "alg": "ES256",
+      "cose_alg": -7,
+      "alg_sinifi": "klasik",
+      "anahtar_rolu": "issuer/ES256",
+      "kid": "Dae-6PSSx7FfaEPNMopZGZ-wBvY8xkwyPQHmeHIgaUU",
+      "cose_kid_hex": "0da7bee8f492c7b15f6843cd328a59199fb006f63cc64c323d01e67872206945",
+      "insa": "gecerli",
+      "kimlik_kaynagi": "RFC9053:248",
+      "kayit_durumu": "kayitli; RFC 9864 §4.2.2 \"Deprecated\" (polimorfik) (RFC9864:467); HAIP §7: \"COSE algorithm identifier -7 or -9, as applicable\" (HAIP:498)",
+      "ozgun_sira": 0
+     }
+    ],
+    "cose": {
+     "yapi": "COSE_Sign",
+     "etiket": 98,
+     "etiket_kaynagi": "RFC9052:482",
+     "govde_korumali": "bos (h'')",
+     "yuk": "belirlenimci CBOR harita {\"iss\",\"vct\",\"given_name\"}",
+     "external_aad": "bos (h'')",
+     "kid": "COSE kid (etiket 4) = base64url-cozulmus JWK kid (RFC 7638 parmak izi, 32 B); korumasiz baslikta",
+     "basliklar": {
+      "imzaci_korumali": "{1: alg}",
+      "imzaci_korumasiz": "{4: kid}"
+     }
+    },
+    "mr4": {
+     "kaynak_vektor": "COSE-K1K_iki_gecerli",
+     "yeni_siradaki_ozgun_indeksler": [
+      1,
+      0
+     ],
+     "permutasyon": "ters"
+    },
+    "v13_esi": "COSE-K1K_iki_gecerli-SIRA-ters"
+   },
+   "dogrulama_girdileri": {
+    "cose_anahtarlar": "anahtarlar/v1.3/cose-anahtarlar.json",
+    "jwks": "anahtarlar/v1/acik-jwks.json",
+    "kid": [
+     "Dae-6PSSx7FfaEPNMopZGZ-wBvY8xkwyPQHmeHIgaUU",
+     "35xWV--z8WN_BPF0nuwviD5IQsv6e5m2FRdcmiB_Dok"
+    ],
+    "cose_kid_hex": [
+     "0da7bee8f492c7b15f6843cd328a59199fb006f63cc64c323d01e67872206945",
+     "df9c5657efb3f1637f04f1749eec2f883e4842cbfa7b99b615175c9a207f0e89"
+    ],
+    "cose_key_hex": {
+     "0da7bee8f492c7b15f6843cd328a59199fb006f63cc64c323d01e67872206945": "a501020258200da7bee8f492c7b15f6843cd328a59199fb006f63cc64c323d01e67872206945200121582058474a0119ab406a1e402bd3a6931af90789c5c3fd5ba187b4a3b6c5fbb6675f225820cd0d5f081d18dd31bbb1ff13848ff4d6e2fb9ca838d9931efc09e3044c52d847",
+     "df9c5657efb3f1637f04f1749eec2f883e4842cbfa7b99b615175c9a207f0e89": "a50102025820df9c5657efb3f1637f04f1749eec2f883e4842cbfa7b99b615175c9a207f0e89200221583035159bc6cf3b857627bed5f29c333d7584b1c6391c1b6ce4f0d238b2475c7ab18169909ee060f59c54371a5e6e82adf6225830b260af6833b507519e2bda0c25027af12c522f7cac844e6af59d0feab667b200cadd4e07f236402ccf6bce4c227484a4"
+    },
+    "anahtar_yolu": "hedefin belgeli API'si (COSE_Key/JWK ya da dogrudan anahtar); ÖK §2D m.1",
+    "simdi": 1790003700
+   },
+   "b_pilot_esi": null,
+   "dcapi_protokol": null,
+   "ayna": "COSE-K1K_iki_gecerli-SIRA-ters-ES384"
+  },
+  {
+   "id": "SYN-COSE-K1P_iki_gecerli",
+   "dosya": "SYN-COSE/SYN-COSE-K1P_iki_gecerli.cbor",
+   "sha256": "e3746fa25ab77355055fe83fb278a31be48e87d7f78d301db21b57e481d065e2",
+   "bayt": 3575,
+   "aile": "SYN-COSE",
+   "aciklama": "Conformance object (not in the battery). COSE_Sign (etiket 98), iki imzaci: ES256 + ML-DSA-65, ikisi gecerli uretildi (ÖK §6.5 K1).",
+   "artefakt": "cose",
+   "serilestirme": "COSE_Sign",
+   "kol": "tedavi-ML-DSA-65",
+   "senaryo": "d-COSE (COSE_Sign cok imzacili; RFC 9052 §4.1)",
+   "sdjwtvc_surum": null,
+   "sinanan": {
+    "basamak": [
+     "L1",
+     "L2"
+    ],
+    "plan_bayraklari": [],
+    "ek_etiketler": [
+     "COSE",
+     "K1",
+     "coklu-imza"
+    ]
+   },
+   "dayanak": [
+    "RFC9052 §4.1",
+    "RFC9052 §4.4",
+    "RFC9053 §2.1",
+    "RFC9864 §4.2.2",
+    "HAIP §7",
+    "RFC9964 §5",
+    "RFC9964 §8.1.1"
+   ],
+   "insa": {
+    "imzalar": [
+     {
+      "sira": 0,
+      "alg": "ES256",
+      "cose_alg": -7,
+      "alg_sinifi": "klasik",
+      "anahtar_rolu": "issuer/ES256",
+      "kid": "Dae-6PSSx7FfaEPNMopZGZ-wBvY8xkwyPQHmeHIgaUU",
+      "cose_kid_hex": "0da7bee8f492c7b15f6843cd328a59199fb006f63cc64c323d01e67872206945",
+      "insa": "gecerli",
+      "kimlik_kaynagi": "RFC9053:248",
+      "kayit_durumu": "kayitli; RFC 9864 §4.2.2 \"Deprecated\" (polimorfik) (RFC9864:467); HAIP §7: \"COSE algorithm identifier -7 or -9, as applicable\" (HAIP:498)"
+     },
+     {
+      "sira": 1,
+      "alg": "ML-DSA-65",
+      "cose_alg": -49,
+      "alg_sinifi": "pq",
+      "anahtar_rolu": "issuer/ML-DSA-65",
+      "kid": "IwjBAm8NcIKqmDrXCIh38jMlzcH8b87-G3qtObt2OHs",
+      "cose_kid_hex": "2308c1026f0d7082aa983ad7088877f23325cdc1fc6fcefe1b7aad39bb76387b",
+      "insa": "gecerli",
+      "kimlik_kaynagi": "RFC9964:367"
+     }
+    ],
+    "cose": {
+     "yapi": "COSE_Sign",
+     "etiket": 98,
+     "etiket_kaynagi": "RFC9052:482",
+     "govde_korumali": "bos (h'')",
+     "yuk": "belirlenimci CBOR harita {\"iss\",\"vct\",\"given_name\"}",
+     "external_aad": "bos (h'')",
+     "kid": "COSE kid (etiket 4) = base64url-cozulmus JWK kid (RFC 7638 parmak izi, 32 B); korumasiz baslikta",
+     "basliklar": {
+      "imzaci_korumali": "{1: alg}",
+      "imzaci_korumasiz": "{4: kid}"
+     }
+    }
+   },
+   "dogrulama_girdileri": {
+    "cose_anahtarlar": "anahtarlar/v1.3/cose-anahtarlar.json",
+    "jwks": "anahtarlar/v1/acik-jwks.json",
+    "kid": [
+     "Dae-6PSSx7FfaEPNMopZGZ-wBvY8xkwyPQHmeHIgaUU",
+     "IwjBAm8NcIKqmDrXCIh38jMlzcH8b87-G3qtObt2OHs"
+    ],
+    "cose_kid_hex": [
+     "0da7bee8f492c7b15f6843cd328a59199fb006f63cc64c323d01e67872206945",
+     "2308c1026f0d7082aa983ad7088877f23325cdc1fc6fcefe1b7aad39bb76387b"
+    ],
+    "cose_key_hex": {
+     "0da7bee8f492c7b15f6843cd328a59199fb006f63cc64c323d01e67872206945": "a501020258200da7bee8f492c7b15f6843cd328a59199fb006f63cc64c323d01e67872206945200121582058474a0119ab406a1e402bd3a6931af90789c5c3fd5ba187b4a3b6c5fbb6675f225820cd0d5f081d18dd31bbb1ff13848ff4d6e2fb9ca838d9931efc09e3044c52d847",
+     "2308c1026f0d7082aa983ad7088877f23325cdc1fc6fcefe1b7aad39bb76387b": "a401070258202308c1026f0d7082aa983ad7088877f23325cdc1fc6fcefe1b7aad39bb76387b033830205907a093620d0623344d558351e35a33bb0fcfb46863ed46b04d4d43fdc47da80b3f358b578751a069013cf85c1cca9b251e558eec637b3379473d0b6a896403dd530fda2edb59c82dcbc7b3e3631786dace9ffb096c003a6c7adb01fa01c61851a1a0a659305ba480048815b32fc551b280b7885dc0e6c0570be283f4030ee04a158e372ad46af626cb60413bac74c480213012fa86459818d01787d03b0a7ab30d832d7da0d2862480afd2ebeabda576e15f5edf2906f97a208321597e43456f8a9ae38a75123344fa587bad6b8ba3cc943ca8c1168a00c978434d3c36f4ba4553438905ab07601e37093f25feee7143cddd8485330cb1e592afa4bb482ddf198da9d0af65b04b4ced7b73a4e15b148ee4b011527ed6fddd20edf74d6d4dc1d231c3bb738e91ea650b15809974a25b6892d69f295dcb694de61a14748d2628316e583c2b76ac95df5b99bfdc46c0345caaa1d01e76251dab576cac5816b6331f1c850d217d26c17c2d4ba2ace3a6fbaea9bb8d64b2f82595305ea1eb086011b0dea490acff18925f90f918605524eb268b4dfa4c3a829a2c92f5e2b3863e364ed7d4d7c6d8aa4683f8c940fb490f5dd89d9cb1b6c81da08aa263cf4cdddaed8f623883562b8b248a4eb2402b9b090ad55054ff2a2d3105772d59c9fd48522b74f5995fb86dd8e37923e7b6c1df55ed2c6b80ef5f8b4a8e8a286d777effde9d5171de80a4363654ffca28ac574b88dce788c6278a6f6057315603d7019534207ba2fce39e813ec55810d3583bd828288b1fb5580844a8fff425874496f82fea919234f557d483f3c7f92151192e77fc852ac49ecee4fab49b2d9091b994b7cc8c9c95f293cafcc2f21ff7de42e678721290740fd223e7a5bee84a86cf2e092cca55cecbe38427b3d1e76fca7b0ae933d1400a0da1e01f8fa5defa28b979fd81a6581e865b41342945195a4c8615de4e2f01263871e8020f92a1c14bf68296fc7d02e99c289a7fb40ac3d38bd844ef840ad8f9aaa228f5ed836d63f795d021c230f6f1e454149228b2122d6f52d7736c6713b609148c2f04a0faca42c5aae950b7ab3e1d86f85aa01392628b4c99c7717385566f6148dd509065f5fc363c99ba825f0e7d3bd4e432a27eeccba1aeb7dd83ac529b73fafa1c2c15ae9385c79668c33e8c9536f6815b4b2eab377af7ba0512bec6b2c9e778228b0379f5475754c76d480798d6e8b57c6558a63f17909f6ccdb755c7c4cfc561cf259e58e659bb651f22d4a016677dee7275830a0273878ab621819ff563bea0d615c0fc1cd68e744e42be5e6386d8c464e3488132555512b7187791518ece563541f7400ddb335a7cd9eacfbd55198976003658c1c0e48da7fbf6f300e017dd7e080f3354073f4b058694b1a87e7086e815ff00404c70811fd0e04ee34a195910815b4d403c4e9a583772f8c67a7715db1982b9e84af6eb2a9f17d6daea1c1c0048ba488888ad15ca1f262899511146d04ebc6142881dad7eb2e29617991775de69f4004a9ccd4b106fb2af01fc650ce26afc48f18a459bb5a9c143e0562ed6129d8dcda9583dac30c97bbbbdffe2475db21b7b08b779767b6faf457cceca399a5340fbe84ee350542e022e2ac05b5db7bb75bfcf2b7ce56c7b4dad7b62b9db1c95b373ec875e1060bb59513cee55ade1ccc56664c25679a1e951c78e060e2fc3a02f95fa0c0bee1c4708736cd9617aee3cabd0690d1f5654a55bacaea8c9f32feffc097bc82b42bc16a8abbfb60f7f07c61f68cacd8517ef91449c09a1dbfe993d1c98ef82dc402dd3cf284f055ff083e937799206cf33044c330572a0d5168e5ce6c963620c400044525762a711f4060a41e3ba2fe3992477ae2ba0ebc0b61d0ed6fca797a78b4680a2e911a75fc327f3d9efd72384a02c8a9041c44d0cff2a251efd5ef93a0a3cc4158ae05042bea982720469e9620a24100d8b3049a3b031c35f94a4ef69b51ef5892ce39288fd968928c9e3ba4997daa84434e924d0f1d2895a1f7ee6ec045f9a3f44197acf6bb9a9b097b8614e8c39e99fb1c33d0ca9591ed81fa04248df183e10ecf5387a37f8f5e82a8e3053742130157074cde17ce952868a338651d10d2a214eec26a365e48f593049b4e4538e2cbb52abd8cd662af6aed9c02072fa8316641cc06d7e2695535cb9ed5ded92a498d209235dd979993b4731acd32179468153c5c62feca4fe480f0f8aee9b0f5b40229d0817d74086966456fe54c9cad6fdca6bafee5f37da4ef3b57fd4d89410d9b09b266cc6be387484336a0bbee3b81889010c640d705c5a2e82bd25fa6d3141385e91d5ce13ae80b479022c3f91f38cc9df99c858442d118b19a5b3e43d4d86b636cdec9f31232b46d490a3fd8293f3d0f7eb123339901f2f040eaab3d7f505e0611cfc6200b547911afd11a1164435b18c042b471d5192e558b43a5e4415a535b7653614ae5f26da23b2cea69dbe7473b05ed8ff8263cfe4d0f0808d744e2ccdd4c46884e525677653c004c82d06e5a202cf40d6bc42ec5f82877e97a9960a5900a5c18aad654b240734e1868fce6a20f958d2949ad503736cc00328cc6f29660de214bf105989dd28a73ae6f7944b29fcaf7d070c2d7cd955070e0adff11c147398753ed7eefb4da3ea0cd24b8c332076cdf295a2a112c7cca1a53e4bd615a5f6fe267b235231f5924d4e54fbf94a489a5efc0b45515570497c277267ccc9f04370fe4cc82231de162ceadea04dd4ae"
+    },
+    "anahtar_yolu": "hedefin belgeli API'si (COSE_Key/JWK ya da dogrudan anahtar); ÖK §2D m.1",
+    "simdi": 1790003700
+   },
+   "b_pilot_esi": null,
+   "dcapi_protokol": null,
+   "ayna": "COSE-K1P_iki_gecerli"
+  },
+  {
+   "id": "SYN-COSE-K1P_iki_gecerli-SIRA-ters",
+   "dosya": "SYN-COSE/SYN-COSE-K1P_iki_gecerli-SIRA-ters.cbor",
+   "sha256": "f0414a5008b2333c1e8e21b1b93dfb45b618233ad2d450f4e011b0374cfeaff6",
+   "bayt": 3585,
+   "aile": "SYN-COSE",
+   "aciklama": "Conformance object (not in the battery). MR4 esi (ÖK §2B m.8, §2C m.4): COSE-K1P_iki_gecerli COSE_Sign imzaci sirasi ters (yeni sira = ozgun [1, 0]). Her COSE_Signature [korumali, korumasiz, imza] ve govde/yuk bayt-ayni; imzaci Sig_structure'i sira bagimsizdir. Ozgun aciklama: COSE_Sign (etiket 98), iki imzaci: ES256 + ML-DSA-65, ikisi gecerli uretildi (ÖK §6.5 K1).",
+   "artefakt": "cose",
+   "serilestirme": "COSE_Sign",
+   "kol": "tedavi-ML-DSA-65",
+   "senaryo": "d-COSE (COSE_Sign cok imzacili; RFC 9052 §4.1)",
+   "sdjwtvc_surum": null,
+   "sinanan": {
+    "basamak": [
+     "L1",
+     "L2"
+    ],
+    "plan_bayraklari": [],
+    "ek_etiketler": [
+     "COSE",
+     "K1",
+     "coklu-imza",
+     "MR4(imza-sirasi-permutasyonu)"
+    ]
+   },
+   "dayanak": [
+    "RFC9052 §4.1",
+    "RFC9052 §4.4",
+    "RFC9053 §2.1",
+    "RFC9864 §4.2.2",
+    "HAIP §7",
+    "RFC9964 §5",
+    "RFC9964 §8.1.1"
+   ],
+   "insa": {
+    "imzalar": [
+     {
+      "sira": 0,
+      "alg": "ML-DSA-65",
+      "cose_alg": -49,
+      "alg_sinifi": "pq",
+      "anahtar_rolu": "issuer/ML-DSA-65",
+      "kid": "IwjBAm8NcIKqmDrXCIh38jMlzcH8b87-G3qtObt2OHs",
+      "cose_kid_hex": "2308c1026f0d7082aa983ad7088877f23325cdc1fc6fcefe1b7aad39bb76387b",
+      "insa": "gecerli",
+      "kimlik_kaynagi": "RFC9964:367",
+      "ozgun_sira": 1
+     },
+     {
+      "sira": 1,
+      "alg": "ES256",
+      "cose_alg": -7,
+      "alg_sinifi": "klasik",
+      "anahtar_rolu": "issuer/ES256",
+      "kid": "Dae-6PSSx7FfaEPNMopZGZ-wBvY8xkwyPQHmeHIgaUU",
+      "cose_kid_hex": "0da7bee8f492c7b15f6843cd328a59199fb006f63cc64c323d01e67872206945",
+      "insa": "gecerli",
+      "kimlik_kaynagi": "RFC9053:248",
+      "kayit_durumu": "kayitli; RFC 9864 §4.2.2 \"Deprecated\" (polimorfik) (RFC9864:467); HAIP §7: \"COSE algorithm identifier -7 or -9, as applicable\" (HAIP:498)",
+      "ozgun_sira": 0
+     }
+    ],
+    "cose": {
+     "yapi": "COSE_Sign",
+     "etiket": 98,
+     "etiket_kaynagi": "RFC9052:482",
+     "govde_korumali": "bos (h'')",
+     "yuk": "belirlenimci CBOR harita {\"iss\",\"vct\",\"given_name\"}",
+     "external_aad": "bos (h'')",
+     "kid": "COSE kid (etiket 4) = base64url-cozulmus JWK kid (RFC 7638 parmak izi, 32 B); korumasiz baslikta",
+     "basliklar": {
+      "imzaci_korumali": "{1: alg}",
+      "imzaci_korumasiz": "{4: kid}"
+     }
+    },
+    "mr4": {
+     "kaynak_vektor": "COSE-K1P_iki_gecerli",
+     "yeni_siradaki_ozgun_indeksler": [
+      1,
+      0
+     ],
+     "permutasyon": "ters"
+    }
+   },
+   "dogrulama_girdileri": {
+    "cose_anahtarlar": "anahtarlar/v1.3/cose-anahtarlar.json",
+    "jwks": "anahtarlar/v1/acik-jwks.json",
+    "kid": [
+     "Dae-6PSSx7FfaEPNMopZGZ-wBvY8xkwyPQHmeHIgaUU",
+     "IwjBAm8NcIKqmDrXCIh38jMlzcH8b87-G3qtObt2OHs"
+    ],
+    "cose_kid_hex": [
+     "0da7bee8f492c7b15f6843cd328a59199fb006f63cc64c323d01e67872206945",
+     "2308c1026f0d7082aa983ad7088877f23325cdc1fc6fcefe1b7aad39bb76387b"
+    ],
+    "cose_key_hex": {
+     "0da7bee8f492c7b15f6843cd328a59199fb006f63cc64c323d01e67872206945": "a501020258200da7bee8f492c7b15f6843cd328a59199fb006f63cc64c323d01e67872206945200121582058474a0119ab406a1e402bd3a6931af90789c5c3fd5ba187b4a3b6c5fbb6675f225820cd0d5f081d18dd31bbb1ff13848ff4d6e2fb9ca838d9931efc09e3044c52d847",
+     "2308c1026f0d7082aa983ad7088877f23325cdc1fc6fcefe1b7aad39bb76387b": "a401070258202308c1026f0d7082aa983ad7088877f23325cdc1fc6fcefe1b7aad39bb76387b033830205907a093620d0623344d558351e35a33bb0fcfb46863ed46b04d4d43fdc47da80b3f358b578751a069013cf85c1cca9b251e558eec637b3379473d0b6a896403dd530fda2edb59c82dcbc7b3e3631786dace9ffb096c003a6c7adb01fa01c61851a1a0a659305ba480048815b32fc551b280b7885dc0e6c0570be283f4030ee04a158e372ad46af626cb60413bac74c480213012fa86459818d01787d03b0a7ab30d832d7da0d2862480afd2ebeabda576e15f5edf2906f97a208321597e43456f8a9ae38a75123344fa587bad6b8ba3cc943ca8c1168a00c978434d3c36f4ba4553438905ab07601e37093f25feee7143cddd8485330cb1e592afa4bb482ddf198da9d0af65b04b4ced7b73a4e15b148ee4b011527ed6fddd20edf74d6d4dc1d231c3bb738e91ea650b15809974a25b6892d69f295dcb694de61a14748d2628316e583c2b76ac95df5b99bfdc46c0345caaa1d01e76251dab576cac5816b6331f1c850d217d26c17c2d4ba2ace3a6fbaea9bb8d64b2f82595305ea1eb086011b0dea490acff18925f90f918605524eb268b4dfa4c3a829a2c92f5e2b3863e364ed7d4d7c6d8aa4683f8c940fb490f5dd89d9cb1b6c81da08aa263cf4cdddaed8f623883562b8b248a4eb2402b9b090ad55054ff2a2d3105772d59c9fd48522b74f5995fb86dd8e37923e7b6c1df55ed2c6b80ef5f8b4a8e8a286d777effde9d5171de80a4363654ffca28ac574b88dce788c6278a6f6057315603d7019534207ba2fce39e813ec55810d3583bd828288b1fb5580844a8fff425874496f82fea919234f557d483f3c7f92151192e77fc852ac49ecee4fab49b2d9091b994b7cc8c9c95f293cafcc2f21ff7de42e678721290740fd223e7a5bee84a86cf2e092cca55cecbe38427b3d1e76fca7b0ae933d1400a0da1e01f8fa5defa28b979fd81a6581e865b41342945195a4c8615de4e2f01263871e8020f92a1c14bf68296fc7d02e99c289a7fb40ac3d38bd844ef840ad8f9aaa228f5ed836d63f795d021c230f6f1e454149228b2122d6f52d7736c6713b609148c2f04a0faca42c5aae950b7ab3e1d86f85aa01392628b4c99c7717385566f6148dd509065f5fc363c99ba825f0e7d3bd4e432a27eeccba1aeb7dd83ac529b73fafa1c2c15ae9385c79668c33e8c9536f6815b4b2eab377af7ba0512bec6b2c9e778228b0379f5475754c76d480798d6e8b57c6558a63f17909f6ccdb755c7c4cfc561cf259e58e659bb651f22d4a016677dee7275830a0273878ab621819ff563bea0d615c0fc1cd68e744e42be5e6386d8c464e3488132555512b7187791518ece563541f7400ddb335a7cd9eacfbd55198976003658c1c0e48da7fbf6f300e017dd7e080f3354073f4b058694b1a87e7086e815ff00404c70811fd0e04ee34a195910815b4d403c4e9a583772f8c67a7715db1982b9e84af6eb2a9f17d6daea1c1c0048ba488888ad15ca1f262899511146d04ebc6142881dad7eb2e29617991775de69f4004a9ccd4b106fb2af01fc650ce26afc48f18a459bb5a9c143e0562ed6129d8dcda9583dac30c97bbbbdffe2475db21b7b08b779767b6faf457cceca399a5340fbe84ee350542e022e2ac05b5db7bb75bfcf2b7ce56c7b4dad7b62b9db1c95b373ec875e1060bb59513cee55ade1ccc56664c25679a1e951c78e060e2fc3a02f95fa0c0bee1c4708736cd9617aee3cabd0690d1f5654a55bacaea8c9f32feffc097bc82b42bc16a8abbfb60f7f07c61f68cacd8517ef91449c09a1dbfe993d1c98ef82dc402dd3cf284f055ff083e937799206cf33044c330572a0d5168e5ce6c963620c400044525762a711f4060a41e3ba2fe3992477ae2ba0ebc0b61d0ed6fca797a78b4680a2e911a75fc327f3d9efd72384a02c8a9041c44d0cff2a251efd5ef93a0a3cc4158ae05042bea982720469e9620a24100d8b3049a3b031c35f94a4ef69b51ef5892ce39288fd968928c9e3ba4997daa84434e924d0f1d2895a1f7ee6ec045f9a3f44197acf6bb9a9b097b8614e8c39e99fb1c33d0ca9591ed81fa04248df183e10ecf5387a37f8f5e82a8e3053742130157074cde17ce952868a338651d10d2a214eec26a365e48f593049b4e4538e2cbb52abd8cd662af6aed9c02072fa8316641cc06d7e2695535cb9ed5ded92a498d209235dd979993b4731acd32179468153c5c62feca4fe480f0f8aee9b0f5b40229d0817d74086966456fe54c9cad6fdca6bafee5f37da4ef3b57fd4d89410d9b09b266cc6be387484336a0bbee3b81889010c640d705c5a2e82bd25fa6d3141385e91d5ce13ae80b479022c3f91f38cc9df99c858442d118b19a5b3e43d4d86b636cdec9f31232b46d490a3fd8293f3d0f7eb123339901f2f040eaab3d7f505e0611cfc6200b547911afd11a1164435b18c042b471d5192e558b43a5e4415a535b7653614ae5f26da23b2cea69dbe7473b05ed8ff8263cfe4d0f0808d744e2ccdd4c46884e525677653c004c82d06e5a202cf40d6bc42ec5f82877e97a9960a5900a5c18aad654b240734e1868fce6a20f958d2949ad503736cc00328cc6f29660de214bf105989dd28a73ae6f7944b29fcaf7d070c2d7cd955070e0adff11c147398753ed7eefb4da3ea0cd24b8c332076cdf295a2a112c7cca1a53e4bd615a5f6fe267b235231f5924d4e54fbf94a489a5efc0b45515570497c277267ccc9f04370fe4cc82231de162ceadea04dd4ae"
+    },
+    "anahtar_yolu": "hedefin belgeli API'si (COSE_Key/JWK ya da dogrudan anahtar); ÖK §2D m.1",
+    "simdi": 1790003700
+   },
+   "b_pilot_esi": null,
+   "dcapi_protokol": null,
+   "ayna": "COSE-K1P_iki_gecerli-SIRA-ters"
+  },
+  {
+   "id": "SYN-COSE-K4K_yalniz_X",
+   "dosya": "SYN-COSE/SYN-COSE-K4K_yalniz_X.cbor",
+   "sha256": "4cefc731c77d644b40d2e2cda1b39a97863f2c2ec0283ee32c282cdeeddd97da",
+   "bayt": 218,
+   "aile": "SYN-COSE",
+   "aciklama": "Conformance object (not in the battery). COSE_Sign, YALNIZ EdDSA imzacisi (gecerli; ÖK §6.5 K4).",
+   "artefakt": "cose",
+   "serilestirme": "COSE_Sign",
+   "kol": "kontrol-EdDSA",
+   "senaryo": "d-COSE (COSE_Sign cok imzacili; RFC 9052 §4.1)",
+   "sdjwtvc_surum": null,
+   "sinanan": {
+    "basamak": [
+     "L1",
+     "L2",
+     "L3"
+    ],
+    "plan_bayraklari": [],
+    "ek_etiketler": [
+     "COSE",
+     "K4",
+     "yalniz-tek-alg"
+    ]
+   },
+   "dayanak": [
+    "RFC9052 §4.1",
+    "RFC9052 §4.4",
+    "RFC9053 §2.2",
+    "RFC9864 §4.2.2"
+   ],
+   "insa": {
+    "imzalar": [
+     {
+      "sira": 0,
+      "alg": "EdDSA",
+      "cose_alg": -8,
+      "alg_sinifi": "klasik",
+      "anahtar_rolu": "issuer/EdDSA",
+      "kid": "Xs-nufJolGnijX_-1fWpt5C9pvH44duKX8YO0WJTsSs",
+      "cose_kid_hex": "5ecfa7b9f2689469e28d7ffed5f5a9b790bda6f1f8e1db8a5fc60ed16253b12b",
+      "insa": "gecerli",
+      "kimlik_kaynagi": "RFC9053:365",
+      "kayit_durumu": "kayitli; RFC 9864 §4.2.2 \"Deprecated\" (polimorfik) (RFC9864:491)"
+     }
+    ],
+    "cose": {
+     "yapi": "COSE_Sign",
+     "etiket": 98,
+     "etiket_kaynagi": "RFC9052:482",
+     "govde_korumali": "bos (h'')",
+     "yuk": "belirlenimci CBOR harita {\"iss\",\"vct\",\"given_name\"}",
+     "external_aad": "bos (h'')",
+     "kid": "COSE kid (etiket 4) = base64url-cozulmus JWK kid (RFC 7638 parmak izi, 32 B); korumasiz baslikta",
+     "basliklar": {
+      "imzaci_korumali": "{1: alg}",
+      "imzaci_korumasiz": "{4: kid}"
+     }
+    }
+   },
+   "dogrulama_girdileri": {
+    "cose_anahtarlar": "anahtarlar/v1.3/cose-anahtarlar.json",
+    "jwks": "anahtarlar/v1/acik-jwks.json",
+    "kid": [
+     "Xs-nufJolGnijX_-1fWpt5C9pvH44duKX8YO0WJTsSs"
+    ],
+    "cose_kid_hex": [
+     "5ecfa7b9f2689469e28d7ffed5f5a9b790bda6f1f8e1db8a5fc60ed16253b12b"
+    ],
+    "cose_key_hex": {
+     "5ecfa7b9f2689469e28d7ffed5f5a9b790bda6f1f8e1db8a5fc60ed16253b12b": "a401010258205ecfa7b9f2689469e28d7ffed5f5a9b790bda6f1f8e1db8a5fc60ed16253b12b2006215820165579699245deb4b624c9fe4b80479bdd6d8d7baa6442281a7c5e23d9493749"
+    },
+    "anahtar_yolu": "hedefin belgeli API'si (COSE_Key/JWK ya da dogrudan anahtar); ÖK §2D m.1",
+    "simdi": 1790003700
+   },
+   "b_pilot_esi": null,
+   "dcapi_protokol": null,
+   "ayna": "COSE-K4K_yalniz_X"
+  },
+  {
+   "id": "SYN-COSE-K4K_yalniz_X-ES384",
+   "dosya": "SYN-COSE/SYN-COSE-K4K_yalniz_X-ES384.cbor",
+   "sha256": "bd8f3310c0d8302e6b8dd3c56b2c79d10bba961a2cbf20fda398ef1660423f27",
+   "bayt": 257,
+   "aile": "SYN-COSE",
+   "aciklama": "Conformance object (not in the battery). ES384 counterpart of v1.3 vector COSE-K4K_yalniz_X (amendment 10): signatures labelled EdDSA are re-made with the issuer/ES384 key and label ES384; payload and all other signatures unchanged. Original description: COSE_Sign, YALNIZ EdDSA imzacisi (gecerli; ÖK §6.5 K4).",
+   "artefakt": "cose",
+   "serilestirme": "COSE_Sign",
+   "kol": "kontrol-ES384",
+   "senaryo": "d-COSE (COSE_Sign cok imzacili; RFC 9052 §4.1)",
+   "sdjwtvc_surum": null,
+   "sinanan": {
+    "basamak": [
+     "L1",
+     "L2",
+     "L3"
+    ],
+    "plan_bayraklari": [],
+    "ek_etiketler": [
+     "COSE",
+     "K4",
+     "yalniz-tek-alg"
+    ]
+   },
+   "dayanak": [
+    "RFC9052 §4.1",
+    "RFC9052 §4.4",
+    "RFC9053 §2.2",
+    "RFC9864 §4.2.2"
+   ],
+   "insa": {
+    "imzalar": [
+     {
+      "sira": 0,
+      "alg": "ES384",
+      "cose_alg": -35,
+      "alg_sinifi": "klasik",
+      "anahtar_rolu": "issuer/ES384",
+      "kid": "35xWV--z8WN_BPF0nuwviD5IQsv6e5m2FRdcmiB_Dok",
+      "cose_kid_hex": "df9c5657efb3f1637f04f1749eec2f883e4842cbfa7b99b615175c9a207f0e89",
+      "insa": "gecerli",
+      "kimlik_kaynagi": "RFC9053:365",
+      "kayit_durumu": "kayitli; RFC 9864 §4.2.2 \"Deprecated\" (polimorfik) (RFC9864:491)"
+     }
+    ],
+    "cose": {
+     "yapi": "COSE_Sign",
+     "etiket": 98,
+     "etiket_kaynagi": "RFC9052:482",
+     "govde_korumali": "bos (h'')",
+     "yuk": "belirlenimci CBOR harita {\"iss\",\"vct\",\"given_name\"}",
+     "external_aad": "bos (h'')",
+     "kid": "COSE kid (etiket 4) = base64url-cozulmus JWK kid (RFC 7638 parmak izi, 32 B); korumasiz baslikta",
+     "basliklar": {
+      "imzaci_korumali": "{1: alg}",
+      "imzaci_korumasiz": "{4: kid}"
+     }
+    },
+    "v13_esi": "COSE-K4K_yalniz_X"
+   },
+   "dogrulama_girdileri": {
+    "cose_anahtarlar": "anahtarlar/v1.3/cose-anahtarlar.json",
+    "jwks": "anahtarlar/v1/acik-jwks.json",
+    "kid": [
+     "35xWV--z8WN_BPF0nuwviD5IQsv6e5m2FRdcmiB_Dok"
+    ],
+    "cose_kid_hex": [
+     "df9c5657efb3f1637f04f1749eec2f883e4842cbfa7b99b615175c9a207f0e89"
+    ],
+    "cose_key_hex": {
+     "df9c5657efb3f1637f04f1749eec2f883e4842cbfa7b99b615175c9a207f0e89": "a50102025820df9c5657efb3f1637f04f1749eec2f883e4842cbfa7b99b615175c9a207f0e89200221583035159bc6cf3b857627bed5f29c333d7584b1c6391c1b6ce4f0d238b2475c7ab18169909ee060f59c54371a5e6e82adf6225830b260af6833b507519e2bda0c25027af12c522f7cac844e6af59d0feab667b200cadd4e07f236402ccf6bce4c227484a4"
+    },
+    "anahtar_yolu": "hedefin belgeli API'si (COSE_Key/JWK ya da dogrudan anahtar); ÖK §2D m.1",
+    "simdi": 1790003700
+   },
+   "b_pilot_esi": null,
+   "dcapi_protokol": null,
+   "ayna": "COSE-K4K_yalniz_X-ES384"
+  },
+  {
+   "id": "SYN-COSE-K4P_yalniz_X",
+   "dosya": "SYN-COSE/SYN-COSE-K4P_yalniz_X.cbor",
+   "sha256": "bba4a7f24e329ecfda34203c6999b5ffde86dc691b9823faffeaf3efa9c69aa6",
+   "bayt": 3465,
+   "aile": "SYN-COSE",
+   "aciklama": "Conformance object (not in the battery). COSE_Sign, YALNIZ ML-DSA-65 imzacisi (gecerli; ÖK §6.5 K4).",
+   "artefakt": "cose",
+   "serilestirme": "COSE_Sign",
+   "kol": "tedavi-ML-DSA-65",
+   "senaryo": "d-COSE (COSE_Sign cok imzacili; RFC 9052 §4.1)",
+   "sdjwtvc_surum": null,
+   "sinanan": {
+    "basamak": [
+     "L1",
+     "L2",
+     "L3"
+    ],
+    "plan_bayraklari": [],
+    "ek_etiketler": [
+     "COSE",
+     "K4",
+     "yalniz-tek-alg"
+    ]
+   },
+   "dayanak": [
+    "RFC9052 §4.1",
+    "RFC9052 §4.4",
+    "RFC9964 §5",
+    "RFC9964 §8.1.1"
+   ],
+   "insa": {
+    "imzalar": [
+     {
+      "sira": 0,
+      "alg": "ML-DSA-65",
+      "cose_alg": -49,
+      "alg_sinifi": "pq",
+      "anahtar_rolu": "issuer/ML-DSA-65",
+      "kid": "IwjBAm8NcIKqmDrXCIh38jMlzcH8b87-G3qtObt2OHs",
+      "cose_kid_hex": "2308c1026f0d7082aa983ad7088877f23325cdc1fc6fcefe1b7aad39bb76387b",
+      "insa": "gecerli",
+      "kimlik_kaynagi": "RFC9964:367"
+     }
+    ],
+    "cose": {
+     "yapi": "COSE_Sign",
+     "etiket": 98,
+     "etiket_kaynagi": "RFC9052:482",
+     "govde_korumali": "bos (h'')",
+     "yuk": "belirlenimci CBOR harita {\"iss\",\"vct\",\"given_name\"}",
+     "external_aad": "bos (h'')",
+     "kid": "COSE kid (etiket 4) = base64url-cozulmus JWK kid (RFC 7638 parmak izi, 32 B); korumasiz baslikta",
+     "basliklar": {
+      "imzaci_korumali": "{1: alg}",
+      "imzaci_korumasiz": "{4: kid}"
+     }
+    }
+   },
+   "dogrulama_girdileri": {
+    "cose_anahtarlar": "anahtarlar/v1.3/cose-anahtarlar.json",
+    "jwks": "anahtarlar/v1/acik-jwks.json",
+    "kid": [
+     "IwjBAm8NcIKqmDrXCIh38jMlzcH8b87-G3qtObt2OHs"
+    ],
+    "cose_kid_hex": [
+     "2308c1026f0d7082aa983ad7088877f23325cdc1fc6fcefe1b7aad39bb76387b"
+    ],
+    "cose_key_hex": {
+     "2308c1026f0d7082aa983ad7088877f23325cdc1fc6fcefe1b7aad39bb76387b": "a401070258202308c1026f0d7082aa983ad7088877f23325cdc1fc6fcefe1b7aad39bb76387b033830205907a093620d0623344d558351e35a33bb0fcfb46863ed46b04d4d43fdc47da80b3f358b578751a069013cf85c1cca9b251e558eec637b3379473d0b6a896403dd530fda2edb59c82dcbc7b3e3631786dace9ffb096c003a6c7adb01fa01c61851a1a0a659305ba480048815b32fc551b280b7885dc0e6c0570be283f4030ee04a158e372ad46af626cb60413bac74c480213012fa86459818d01787d03b0a7ab30d832d7da0d2862480afd2ebeabda576e15f5edf2906f97a208321597e43456f8a9ae38a75123344fa587bad6b8ba3cc943ca8c1168a00c978434d3c36f4ba4553438905ab07601e37093f25feee7143cddd8485330cb1e592afa4bb482ddf198da9d0af65b04b4ced7b73a4e15b148ee4b011527ed6fddd20edf74d6d4dc1d231c3bb738e91ea650b15809974a25b6892d69f295dcb694de61a14748d2628316e583c2b76ac95df5b99bfdc46c0345caaa1d01e76251dab576cac5816b6331f1c850d217d26c17c2d4ba2ace3a6fbaea9bb8d64b2f82595305ea1eb086011b0dea490acff18925f90f918605524eb268b4dfa4c3a829a2c92f5e2b3863e364ed7d4d7c6d8aa4683f8c940fb490f5dd89d9cb1b6c81da08aa263cf4cdddaed8f623883562b8b248a4eb2402b9b090ad55054ff2a2d3105772d59c9fd48522b74f5995fb86dd8e37923e7b6c1df55ed2c6b80ef5f8b4a8e8a286d777effde9d5171de80a4363654ffca28ac574b88dce788c6278a6f6057315603d7019534207ba2fce39e813ec55810d3583bd828288b1fb5580844a8fff425874496f82fea919234f557d483f3c7f92151192e77fc852ac49ecee4fab49b2d9091b994b7cc8c9c95f293cafcc2f21ff7de42e678721290740fd223e7a5bee84a86cf2e092cca55cecbe38427b3d1e76fca7b0ae933d1400a0da1e01f8fa5defa28b979fd81a6581e865b41342945195a4c8615de4e2f01263871e8020f92a1c14bf68296fc7d02e99c289a7fb40ac3d38bd844ef840ad8f9aaa228f5ed836d63f795d021c230f6f1e454149228b2122d6f52d7736c6713b609148c2f04a0faca42c5aae950b7ab3e1d86f85aa01392628b4c99c7717385566f6148dd509065f5fc363c99ba825f0e7d3bd4e432a27eeccba1aeb7dd83ac529b73fafa1c2c15ae9385c79668c33e8c9536f6815b4b2eab377af7ba0512bec6b2c9e778228b0379f5475754c76d480798d6e8b57c6558a63f17909f6ccdb755c7c4cfc561cf259e58e659bb651f22d4a016677dee7275830a0273878ab621819ff563bea0d615c0fc1cd68e744e42be5e6386d8c464e3488132555512b7187791518ece563541f7400ddb335a7cd9eacfbd55198976003658c1c0e48da7fbf6f300e017dd7e080f3354073f4b058694b1a87e7086e815ff00404c70811fd0e04ee34a195910815b4d403c4e9a583772f8c67a7715db1982b9e84af6eb2a9f17d6daea1c1c0048ba488888ad15ca1f262899511146d04ebc6142881dad7eb2e29617991775de69f4004a9ccd4b106fb2af01fc650ce26afc48f18a459bb5a9c143e0562ed6129d8dcda9583dac30c97bbbbdffe2475db21b7b08b779767b6faf457cceca399a5340fbe84ee350542e022e2ac05b5db7bb75bfcf2b7ce56c7b4dad7b62b9db1c95b373ec875e1060bb59513cee55ade1ccc56664c25679a1e951c78e060e2fc3a02f95fa0c0bee1c4708736cd9617aee3cabd0690d1f5654a55bacaea8c9f32feffc097bc82b42bc16a8abbfb60f7f07c61f68cacd8517ef91449c09a1dbfe993d1c98ef82dc402dd3cf284f055ff083e937799206cf33044c330572a0d5168e5ce6c963620c400044525762a711f4060a41e3ba2fe3992477ae2ba0ebc0b61d0ed6fca797a78b4680a2e911a75fc327f3d9efd72384a02c8a9041c44d0cff2a251efd5ef93a0a3cc4158ae05042bea982720469e9620a24100d8b3049a3b031c35f94a4ef69b51ef5892ce39288fd968928c9e3ba4997daa84434e924d0f1d2895a1f7ee6ec045f9a3f44197acf6bb9a9b097b8614e8c39e99fb1c33d0ca9591ed81fa04248df183e10ecf5387a37f8f5e82a8e3053742130157074cde17ce952868a338651d10d2a214eec26a365e48f593049b4e4538e2cbb52abd8cd662af6aed9c02072fa8316641cc06d7e2695535cb9ed5ded92a498d209235dd979993b4731acd32179468153c5c62feca4fe480f0f8aee9b0f5b40229d0817d74086966456fe54c9cad6fdca6bafee5f37da4ef3b57fd4d89410d9b09b266cc6be387484336a0bbee3b81889010c640d705c5a2e82bd25fa6d3141385e91d5ce13ae80b479022c3f91f38cc9df99c858442d118b19a5b3e43d4d86b636cdec9f31232b46d490a3fd8293f3d0f7eb123339901f2f040eaab3d7f505e0611cfc6200b547911afd11a1164435b18c042b471d5192e558b43a5e4415a535b7653614ae5f26da23b2cea69dbe7473b05ed8ff8263cfe4d0f0808d744e2ccdd4c46884e525677653c004c82d06e5a202cf40d6bc42ec5f82877e97a9960a5900a5c18aad654b240734e1868fce6a20f958d2949ad503736cc00328cc6f29660de214bf105989dd28a73ae6f7944b29fcaf7d070c2d7cd955070e0adff11c147398753ed7eefb4da3ea0cd24b8c332076cdf295a2a112c7cca1a53e4bd615a5f6fe267b235231f5924d4e54fbf94a489a5efc0b45515570497c277267ccc9f04370fe4cc82231de162ceadea04dd4ae"
+    },
+    "anahtar_yolu": "hedefin belgeli API'si (COSE_Key/JWK ya da dogrudan anahtar); ÖK §2D m.1",
+    "simdi": 1790003700
+   },
+   "b_pilot_esi": null,
+   "dcapi_protokol": null,
+   "ayna": "COSE-K4P_yalniz_X"
+  },
+  {
+   "id": "SYN-COSE-VPLUS_ES256",
+   "dosya": "SYN-COSE/SYN-COSE-VPLUS_ES256.cbor",
+   "sha256": "58505aa3169378f30efb71ac59c9b4a8de2ee75c5b6f2006386b95cea37586fa",
+   "bayt": 212,
+   "aile": "SYN-COSE",
+   "aciklama": "Conformance object (not in the battery). V+ adaptor gecerlilik kontrolu (ÖK §6.5 V+/V-, §4.15): tek imzali COSE_Sign1, ES256 (-7), kid ile; imza gecerli.",
+   "artefakt": "cose",
+   "serilestirme": "COSE_Sign1",
+   "kol": "ortak",
+   "senaryo": null,
+   "sdjwtvc_surum": null,
+   "sinanan": {
+    "basamak": [],
+    "plan_bayraklari": [],
+    "ek_etiketler": [
+     "COSE",
+     "V+",
+     "adaptor-gecerlilik-kontrolu"
+    ]
+   },
+   "dayanak": [
+    "RFC9052 §4.2",
+    "RFC9052 §4.4",
+    "RFC9053 §2.1",
+    "RFC9864 §4.2.2",
+    "HAIP §7"
+   ],
+   "insa": {
+    "imzalar": [
+     {
+      "sira": 0,
+      "alg": "ES256",
+      "cose_alg": -7,
+      "alg_sinifi": "klasik",
+      "anahtar_rolu": "issuer/ES256",
+      "kid": "Dae-6PSSx7FfaEPNMopZGZ-wBvY8xkwyPQHmeHIgaUU",
+      "cose_kid_hex": "0da7bee8f492c7b15f6843cd328a59199fb006f63cc64c323d01e67872206945",
+      "insa": "gecerli",
+      "kimlik_kaynagi": "RFC9053:248",
+      "kayit_durumu": "kayitli; RFC 9864 §4.2.2 \"Deprecated\" (polimorfik) (RFC9864:467); HAIP §7: \"COSE algorithm identifier -7 or -9, as applicable\" (HAIP:498)"
+     }
+    ],
+    "cose": {
+     "yapi": "COSE_Sign1",
+     "etiket": 18,
+     "etiket_kaynagi": "RFC9052:485",
+     "govde_korumali": "alg (+ varsa x5chain)",
+     "yuk": "belirlenimci CBOR harita {\"iss\",\"vct\",\"given_name\"}",
+     "external_aad": "bos (h'')",
+     "kid": "COSE kid (etiket 4) = base64url-cozulmus JWK kid (RFC 7638 parmak izi, 32 B); korumasiz baslikta",
+     "basliklar": {
+      "korumali": "{1: alg}",
+      "korumasiz": "{4: kid}"
+     }
+    }
+   },
+   "dogrulama_girdileri": {
+    "cose_anahtarlar": "anahtarlar/v1.3/cose-anahtarlar.json",
+    "jwks": "anahtarlar/v1/acik-jwks.json",
+    "kid": [
+     "Dae-6PSSx7FfaEPNMopZGZ-wBvY8xkwyPQHmeHIgaUU"
+    ],
+    "cose_kid_hex": [
+     "0da7bee8f492c7b15f6843cd328a59199fb006f63cc64c323d01e67872206945"
+    ],
+    "cose_key_hex": {
+     "0da7bee8f492c7b15f6843cd328a59199fb006f63cc64c323d01e67872206945": "a501020258200da7bee8f492c7b15f6843cd328a59199fb006f63cc64c323d01e67872206945200121582058474a0119ab406a1e402bd3a6931af90789c5c3fd5ba187b4a3b6c5fbb6675f225820cd0d5f081d18dd31bbb1ff13848ff4d6e2fb9ca838d9931efc09e3044c52d847"
+    },
+    "anahtar_yolu": "hedefin belgeli API'si (COSE_Key/JWK ya da dogrudan anahtar); ÖK §2D m.1",
+    "simdi": 1790003700
+   },
+   "b_pilot_esi": null,
+   "dcapi_protokol": null,
+   "ayna": "COSE-VPLUS_ES256"
+  },
+  {
+   "id": "SYN-COSE-VPLUS_EdDSA",
+   "dosya": "SYN-COSE/SYN-COSE-VPLUS_EdDSA.cbor",
+   "sha256": "ce237f62e7cfff21766bce402cfcf50f41469cf94af90d2f91529920b0702f6b",
+   "bayt": 212,
+   "aile": "SYN-COSE",
+   "aciklama": "Conformance object (not in the battery). V+ adaptor gecerlilik kontrolu (ÖK §6.5 V+/V-, §4.15): tek imzali COSE_Sign1, EdDSA (-8), kid ile; imza gecerli.",
+   "artefakt": "cose",
+   "serilestirme": "COSE_Sign1",
+   "kol": "kontrol-EdDSA",
+   "senaryo": null,
+   "sdjwtvc_surum": null,
+   "sinanan": {
+    "basamak": [],
+    "plan_bayraklari": [],
+    "ek_etiketler": [
+     "COSE",
+     "V+",
+     "adaptor-gecerlilik-kontrolu"
+    ]
+   },
+   "dayanak": [
+    "RFC9052 §4.2",
+    "RFC9052 §4.4",
+    "RFC9053 §2.2",
+    "RFC9864 §4.2.2"
+   ],
+   "insa": {
+    "imzalar": [
+     {
+      "sira": 0,
+      "alg": "EdDSA",
+      "cose_alg": -8,
+      "alg_sinifi": "klasik",
+      "anahtar_rolu": "issuer/EdDSA",
+      "kid": "Xs-nufJolGnijX_-1fWpt5C9pvH44duKX8YO0WJTsSs",
+      "cose_kid_hex": "5ecfa7b9f2689469e28d7ffed5f5a9b790bda6f1f8e1db8a5fc60ed16253b12b",
+      "insa": "gecerli",
+      "kimlik_kaynagi": "RFC9053:365",
+      "kayit_durumu": "kayitli; RFC 9864 §4.2.2 \"Deprecated\" (polimorfik) (RFC9864:491)"
+     }
+    ],
+    "cose": {
+     "yapi": "COSE_Sign1",
+     "etiket": 18,
+     "etiket_kaynagi": "RFC9052:485",
+     "govde_korumali": "alg (+ varsa x5chain)",
+     "yuk": "belirlenimci CBOR harita {\"iss\",\"vct\",\"given_name\"}",
+     "external_aad": "bos (h'')",
+     "kid": "COSE kid (etiket 4) = base64url-cozulmus JWK kid (RFC 7638 parmak izi, 32 B); korumasiz baslikta",
+     "basliklar": {
+      "korumali": "{1: alg}",
+      "korumasiz": "{4: kid}"
+     }
+    }
+   },
+   "dogrulama_girdileri": {
+    "cose_anahtarlar": "anahtarlar/v1.3/cose-anahtarlar.json",
+    "jwks": "anahtarlar/v1/acik-jwks.json",
+    "kid": [
+     "Xs-nufJolGnijX_-1fWpt5C9pvH44duKX8YO0WJTsSs"
+    ],
+    "cose_kid_hex": [
+     "5ecfa7b9f2689469e28d7ffed5f5a9b790bda6f1f8e1db8a5fc60ed16253b12b"
+    ],
+    "cose_key_hex": {
+     "5ecfa7b9f2689469e28d7ffed5f5a9b790bda6f1f8e1db8a5fc60ed16253b12b": "a401010258205ecfa7b9f2689469e28d7ffed5f5a9b790bda6f1f8e1db8a5fc60ed16253b12b2006215820165579699245deb4b624c9fe4b80479bdd6d8d7baa6442281a7c5e23d9493749"
+    },
+    "anahtar_yolu": "hedefin belgeli API'si (COSE_Key/JWK ya da dogrudan anahtar); ÖK §2D m.1",
+    "simdi": 1790003700
+   },
+   "b_pilot_esi": null,
+   "dcapi_protokol": null,
+   "ayna": "COSE-VPLUS_EdDSA"
+  },
+  {
+   "id": "SYN-COSE-VPLUS_EdDSA-ES384",
+   "dosya": "SYN-COSE/SYN-COSE-VPLUS_EdDSA-ES384.cbor",
+   "sha256": "18d76cc22a964a99070711cf6290bf33adf056882e4c565d6198019f57fc71e9",
+   "bayt": 251,
+   "aile": "SYN-COSE",
+   "aciklama": "Conformance object (not in the battery). ES384 counterpart of v1.3 vector COSE-VPLUS_EdDSA (amendment 10): signatures labelled EdDSA are re-made with the issuer/ES384 key and label ES384; payload and all other signatures unchanged. Original description: V+ adaptor gecerlilik kontrolu (ÖK §6.5 V+/V-, §4.15): tek imzali COSE_Sign1, EdDSA (-8), kid ile; imza gecerli.",
+   "artefakt": "cose",
+   "serilestirme": "COSE_Sign1",
+   "kol": "kontrol-ES384",
+   "senaryo": null,
+   "sdjwtvc_surum": null,
+   "sinanan": {
+    "basamak": [],
+    "plan_bayraklari": [],
+    "ek_etiketler": [
+     "COSE",
+     "V+",
+     "adaptor-gecerlilik-kontrolu"
+    ]
+   },
+   "dayanak": [
+    "RFC9052 §4.2",
+    "RFC9052 §4.4",
+    "RFC9053 §2.2",
+    "RFC9864 §4.2.2"
+   ],
+   "insa": {
+    "imzalar": [
+     {
+      "sira": 0,
+      "alg": "ES384",
+      "cose_alg": -35,
+      "alg_sinifi": "klasik",
+      "anahtar_rolu": "issuer/ES384",
+      "kid": "35xWV--z8WN_BPF0nuwviD5IQsv6e5m2FRdcmiB_Dok",
+      "cose_kid_hex": "df9c5657efb3f1637f04f1749eec2f883e4842cbfa7b99b615175c9a207f0e89",
+      "insa": "gecerli",
+      "kimlik_kaynagi": "RFC9053:365",
+      "kayit_durumu": "kayitli; RFC 9864 §4.2.2 \"Deprecated\" (polimorfik) (RFC9864:491)"
+     }
+    ],
+    "cose": {
+     "yapi": "COSE_Sign1",
+     "etiket": 18,
+     "etiket_kaynagi": "RFC9052:485",
+     "govde_korumali": "alg (+ varsa x5chain)",
+     "yuk": "belirlenimci CBOR harita {\"iss\",\"vct\",\"given_name\"}",
+     "external_aad": "bos (h'')",
+     "kid": "COSE kid (etiket 4) = base64url-cozulmus JWK kid (RFC 7638 parmak izi, 32 B); korumasiz baslikta",
+     "basliklar": {
+      "korumali": "{1: alg}",
+      "korumasiz": "{4: kid}"
+     }
+    },
+    "v13_esi": "COSE-VPLUS_EdDSA"
+   },
+   "dogrulama_girdileri": {
+    "cose_anahtarlar": "anahtarlar/v1.3/cose-anahtarlar.json",
+    "jwks": "anahtarlar/v1/acik-jwks.json",
+    "kid": [
+     "35xWV--z8WN_BPF0nuwviD5IQsv6e5m2FRdcmiB_Dok"
+    ],
+    "cose_kid_hex": [
+     "df9c5657efb3f1637f04f1749eec2f883e4842cbfa7b99b615175c9a207f0e89"
+    ],
+    "cose_key_hex": {
+     "df9c5657efb3f1637f04f1749eec2f883e4842cbfa7b99b615175c9a207f0e89": "a50102025820df9c5657efb3f1637f04f1749eec2f883e4842cbfa7b99b615175c9a207f0e89200221583035159bc6cf3b857627bed5f29c333d7584b1c6391c1b6ce4f0d238b2475c7ab18169909ee060f59c54371a5e6e82adf6225830b260af6833b507519e2bda0c25027af12c522f7cac844e6af59d0feab667b200cadd4e07f236402ccf6bce4c227484a4"
+    },
+    "anahtar_yolu": "hedefin belgeli API'si (COSE_Key/JWK ya da dogrudan anahtar); ÖK §2D m.1",
+    "simdi": 1790003700
+   },
+   "b_pilot_esi": null,
+   "dcapi_protokol": null,
+   "ayna": "COSE-VPLUS_EdDSA-ES384"
+  },
+  {
+   "id": "SYN-COSE-VPLUS_ML-DSA-65",
+   "dosya": "SYN-COSE/SYN-COSE-VPLUS_ML-DSA-65.cbor",
+   "sha256": "796f849cbf47d0fada5c0cd1b1736b318d8d8449d49e0c8697fca1c9051471a3",
+   "bayt": 3463,
+   "aile": "SYN-COSE",
+   "aciklama": "Conformance object (not in the battery). V+ adaptor gecerlilik kontrolu (ÖK §6.5 V+/V-, §4.15): tek imzali COSE_Sign1, ML-DSA-65 (-49), kid ile; imza gecerli.",
+   "artefakt": "cose",
+   "serilestirme": "COSE_Sign1",
+   "kol": "tedavi-ML-DSA-65",
+   "senaryo": null,
+   "sdjwtvc_surum": null,
+   "sinanan": {
+    "basamak": [],
+    "plan_bayraklari": [],
+    "ek_etiketler": [
+     "COSE",
+     "V+",
+     "adaptor-gecerlilik-kontrolu"
+    ]
+   },
+   "dayanak": [
+    "RFC9052 §4.2",
+    "RFC9052 §4.4",
+    "RFC9964 §5",
+    "RFC9964 §8.1.1"
+   ],
+   "insa": {
+    "imzalar": [
+     {
+      "sira": 0,
+      "alg": "ML-DSA-65",
+      "cose_alg": -49,
+      "alg_sinifi": "pq",
+      "anahtar_rolu": "issuer/ML-DSA-65",
+      "kid": "IwjBAm8NcIKqmDrXCIh38jMlzcH8b87-G3qtObt2OHs",
+      "cose_kid_hex": "2308c1026f0d7082aa983ad7088877f23325cdc1fc6fcefe1b7aad39bb76387b",
+      "insa": "gecerli",
+      "kimlik_kaynagi": "RFC9964:367"
+     }
+    ],
+    "cose": {
+     "yapi": "COSE_Sign1",
+     "etiket": 18,
+     "etiket_kaynagi": "RFC9052:485",
+     "govde_korumali": "alg (+ varsa x5chain)",
+     "yuk": "belirlenimci CBOR harita {\"iss\",\"vct\",\"given_name\"}",
+     "external_aad": "bos (h'')",
+     "kid": "COSE kid (etiket 4) = base64url-cozulmus JWK kid (RFC 7638 parmak izi, 32 B); korumasiz baslikta",
+     "basliklar": {
+      "korumali": "{1: alg}",
+      "korumasiz": "{4: kid}"
+     }
+    }
+   },
+   "dogrulama_girdileri": {
+    "cose_anahtarlar": "anahtarlar/v1.3/cose-anahtarlar.json",
+    "jwks": "anahtarlar/v1/acik-jwks.json",
+    "kid": [
+     "IwjBAm8NcIKqmDrXCIh38jMlzcH8b87-G3qtObt2OHs"
+    ],
+    "cose_kid_hex": [
+     "2308c1026f0d7082aa983ad7088877f23325cdc1fc6fcefe1b7aad39bb76387b"
+    ],
+    "cose_key_hex": {
+     "2308c1026f0d7082aa983ad7088877f23325cdc1fc6fcefe1b7aad39bb76387b": "a401070258202308c1026f0d7082aa983ad7088877f23325cdc1fc6fcefe1b7aad39bb76387b033830205907a093620d0623344d558351e35a33bb0fcfb46863ed46b04d4d43fdc47da80b3f358b578751a069013cf85c1cca9b251e558eec637b3379473d0b6a896403dd530fda2edb59c82dcbc7b3e3631786dace9ffb096c003a6c7adb01fa01c61851a1a0a659305ba480048815b32fc551b280b7885dc0e6c0570be283f4030ee04a158e372ad46af626cb60413bac74c480213012fa86459818d01787d03b0a7ab30d832d7da0d2862480afd2ebeabda576e15f5edf2906f97a208321597e43456f8a9ae38a75123344fa587bad6b8ba3cc943ca8c1168a00c978434d3c36f4ba4553438905ab07601e37093f25feee7143cddd8485330cb1e592afa4bb482ddf198da9d0af65b04b4ced7b73a4e15b148ee4b011527ed6fddd20edf74d6d4dc1d231c3bb738e91ea650b15809974a25b6892d69f295dcb694de61a14748d2628316e583c2b76ac95df5b99bfdc46c0345caaa1d01e76251dab576cac5816b6331f1c850d217d26c17c2d4ba2ace3a6fbaea9bb8d64b2f82595305ea1eb086011b0dea490acff18925f90f918605524eb268b4dfa4c3a829a2c92f5e2b3863e364ed7d4d7c6d8aa4683f8c940fb490f5dd89d9cb1b6c81da08aa263cf4cdddaed8f623883562b8b248a4eb2402b9b090ad55054ff2a2d3105772d59c9fd48522b74f5995fb86dd8e37923e7b6c1df55ed2c6b80ef5f8b4a8e8a286d777effde9d5171de80a4363654ffca28ac574b88dce788c6278a6f6057315603d7019534207ba2fce39e813ec55810d3583bd828288b1fb5580844a8fff425874496f82fea919234f557d483f3c7f92151192e77fc852ac49ecee4fab49b2d9091b994b7cc8c9c95f293cafcc2f21ff7de42e678721290740fd223e7a5bee84a86cf2e092cca55cecbe38427b3d1e76fca7b0ae933d1400a0da1e01f8fa5defa28b979fd81a6581e865b41342945195a4c8615de4e2f01263871e8020f92a1c14bf68296fc7d02e99c289a7fb40ac3d38bd844ef840ad8f9aaa228f5ed836d63f795d021c230f6f1e454149228b2122d6f52d7736c6713b609148c2f04a0faca42c5aae950b7ab3e1d86f85aa01392628b4c99c7717385566f6148dd509065f5fc363c99ba825f0e7d3bd4e432a27eeccba1aeb7dd83ac529b73fafa1c2c15ae9385c79668c33e8c9536f6815b4b2eab377af7ba0512bec6b2c9e778228b0379f5475754c76d480798d6e8b57c6558a63f17909f6ccdb755c7c4cfc561cf259e58e659bb651f22d4a016677dee7275830a0273878ab621819ff563bea0d615c0fc1cd68e744e42be5e6386d8c464e3488132555512b7187791518ece563541f7400ddb335a7cd9eacfbd55198976003658c1c0e48da7fbf6f300e017dd7e080f3354073f4b058694b1a87e7086e815ff00404c70811fd0e04ee34a195910815b4d403c4e9a583772f8c67a7715db1982b9e84af6eb2a9f17d6daea1c1c0048ba488888ad15ca1f262899511146d04ebc6142881dad7eb2e29617991775de69f4004a9ccd4b106fb2af01fc650ce26afc48f18a459bb5a9c143e0562ed6129d8dcda9583dac30c97bbbbdffe2475db21b7b08b779767b6faf457cceca399a5340fbe84ee350542e022e2ac05b5db7bb75bfcf2b7ce56c7b4dad7b62b9db1c95b373ec875e1060bb59513cee55ade1ccc56664c25679a1e951c78e060e2fc3a02f95fa0c0bee1c4708736cd9617aee3cabd0690d1f5654a55bacaea8c9f32feffc097bc82b42bc16a8abbfb60f7f07c61f68cacd8517ef91449c09a1dbfe993d1c98ef82dc402dd3cf284f055ff083e937799206cf33044c330572a0d5168e5ce6c963620c400044525762a711f4060a41e3ba2fe3992477ae2ba0ebc0b61d0ed6fca797a78b4680a2e911a75fc327f3d9efd72384a02c8a9041c44d0cff2a251efd5ef93a0a3cc4158ae05042bea982720469e9620a24100d8b3049a3b031c35f94a4ef69b51ef5892ce39288fd968928c9e3ba4997daa84434e924d0f1d2895a1f7ee6ec045f9a3f44197acf6bb9a9b097b8614e8c39e99fb1c33d0ca9591ed81fa04248df183e10ecf5387a37f8f5e82a8e3053742130157074cde17ce952868a338651d10d2a214eec26a365e48f593049b4e4538e2cbb52abd8cd662af6aed9c02072fa8316641cc06d7e2695535cb9ed5ded92a498d209235dd979993b4731acd32179468153c5c62feca4fe480f0f8aee9b0f5b40229d0817d74086966456fe54c9cad6fdca6bafee5f37da4ef3b57fd4d89410d9b09b266cc6be387484336a0bbee3b81889010c640d705c5a2e82bd25fa6d3141385e91d5ce13ae80b479022c3f91f38cc9df99c858442d118b19a5b3e43d4d86b636cdec9f31232b46d490a3fd8293f3d0f7eb123339901f2f040eaab3d7f505e0611cfc6200b547911afd11a1164435b18c042b471d5192e558b43a5e4415a535b7653614ae5f26da23b2cea69dbe7473b05ed8ff8263cfe4d0f0808d744e2ccdd4c46884e525677653c004c82d06e5a202cf40d6bc42ec5f82877e97a9960a5900a5c18aad654b240734e1868fce6a20f958d2949ad503736cc00328cc6f29660de214bf105989dd28a73ae6f7944b29fcaf7d070c2d7cd955070e0adff11c147398753ed7eefb4da3ea0cd24b8c332076cdf295a2a112c7cca1a53e4bd615a5f6fe267b235231f5924d4e54fbf94a489a5efc0b45515570497c277267ccc9f04370fe4cc82231de162ceadea04dd4ae"
+    },
+    "anahtar_yolu": "hedefin belgeli API'si (COSE_Key/JWK ya da dogrudan anahtar); ÖK §2D m.1",
+    "simdi": 1790003700
+   },
+   "b_pilot_esi": null,
+   "dcapi_protokol": null,
+   "ayna": "COSE-VPLUS_ML-DSA-65"
+  },
+  {
+   "id": "SYN-D-VCX_ES384_kid",
+   "dosya": "SYN-VC/SYN-D-VCX_ES384_kid.sdjwt",
+   "sha256": "fbe21e2c8e1496143799bbf06eeb6ab384117683db8f965cc805f17cd979d3ce",
+   "bayt": 2144,
+   "aile": "SYN-VC",
+   "aciklama": "Conformance object (not in the battery). Derived SD-JWT VC (compact; typ=dc+sd-jwt; PID), ES384 only, kid.",
+   "artefakt": "sd-jwt-vc",
+   "serilestirme": "sd-jwt-compact",
+   "kol": "kontrol-ES384",
+   "senaryo": "a",
+   "sdjwtvc_surum": [
+    "-13",
+    "-19"
+   ],
+   "sinanan": {
+    "basamak": [
+     "L1",
+     "L3"
+    ],
+    "plan_bayraklari": [],
+    "ek_etiketler": []
+   },
+   "dayanak": [
+    "RFC9901 §4.1",
+    "RFC9901 §4.2",
+    "SDJWTVC §2.2.1",
+    "SDJWTVC13 §3.2.1",
+    "SDJWTVC §2.2.2.3",
+    "JOSECOMP §5.1 (Tablo 5)"
+   ],
+   "insa": {
+    "imzalar": [
+     {
+      "sira": 0,
+      "alg": "ES384",
+      "anahtar_rolu": "issuer/ES384",
+      "kid": "35xWV--z8WN_BPF0nuwviD5IQsv6e5m2FRdcmiB_Dok",
+      "insa": "gecerli"
+     }
+    ],
+    "ifsa_sayisi": 10
+   },
+   "dogrulama_girdileri": {
+    "jwks": "anahtarlar/v1/acik-jwks.json",
+    "kid": [
+     "35xWV--z8WN_BPF0nuwviD5IQsv6e5m2FRdcmiB_Dok"
+    ],
+    "simdi": 1790003700
+   },
+   "b_pilot_esi": null,
+   "dcapi_protokol": null,
+   "ayna": null
+  },
+  {
+   "id": "SYN-D-VCX_EdDSA_kid",
+   "dosya": "SYN-VC/SYN-D-VCX_EdDSA_kid.sdjwt",
+   "sha256": "4cb34dfebee951a486299a37a43c4a6f71c034d0570680b6e101f387e8c628bf",
+   "bayt": 2102,
+   "aile": "SYN-VC",
+   "aciklama": "Conformance object (not in the battery). Derived SD-JWT VC (compact; typ=dc+sd-jwt; PID), EdDSA only, kid.",
+   "artefakt": "sd-jwt-vc",
+   "serilestirme": "sd-jwt-compact",
+   "kol": "kontrol-EdDSA",
+   "senaryo": "a",
+   "sdjwtvc_surum": [
+    "-13",
+    "-19"
+   ],
+   "sinanan": {
+    "basamak": [
+     "L1",
+     "L3"
+    ],
+    "plan_bayraklari": [],
+    "ek_etiketler": []
+   },
+   "dayanak": [
+    "RFC9901 §4.1",
+    "RFC9901 §4.2",
+    "SDJWTVC §2.2.1",
+    "SDJWTVC13 §3.2.1",
+    "SDJWTVC §2.2.2.3",
+    "JOSECOMP §5.1 (Tablo 5)"
+   ],
+   "insa": {
+    "imzalar": [
+     {
+      "sira": 0,
+      "alg": "EdDSA",
+      "anahtar_rolu": "issuer/EdDSA",
+      "kid": "Xs-nufJolGnijX_-1fWpt5C9pvH44duKX8YO0WJTsSs",
+      "insa": "gecerli"
+     }
+    ],
+    "ifsa_sayisi": 10
+   },
+   "dogrulama_girdileri": {
+    "jwks": "anahtarlar/v1/acik-jwks.json",
+    "kid": [
+     "Xs-nufJolGnijX_-1fWpt5C9pvH44duKX8YO0WJTsSs"
+    ],
+    "simdi": 1790003700
+   },
+   "b_pilot_esi": null,
+   "dcapi_protokol": null,
+   "ayna": null
+  },
+  {
+   "id": "SYN-L4C-COSE_eski_ES256",
+   "dosya": "SYN-L4C/SYN-L4C-COSE_eski_ES256.cbor",
+   "sha256": "15ed3896e010df53e88f9665d70cea33173b1848eb68044c1cb7fa1434689834",
+   "bayt": 223,
+   "aile": "SYN-L4C",
+   "aciklama": "Conformance object (not in the battery). L4c (ÖK §2B m.6): AYRI kimlikli \"eski ihracci\"nin COSE_Sign1'i (yukte iss https://legacy-issuer.example; korumasiz kid; yalniz ES256 (-7)). Goc etmis ihraccinin karsiliklari mevcut vektorlerdir (COSE-VPLUS_ES256, COSE-VPLUS_ML-DSA-65, COSE-K6).",
+   "artefakt": "cose",
+   "serilestirme": "COSE_Sign1",
+   "kol": "ortak (L4c; iki tedavi kolu)",
+   "senaryo": null,
+   "sdjwtvc_surum": null,
+   "sinanan": {
+    "basamak": [
+     "L4"
+    ],
+    "plan_bayraklari": [],
+    "ek_etiketler": [
+     "L4c",
+     "eski-ihracci",
+     "COSE"
+    ]
+   },
+   "dayanak": [
+    "RFC9052 §4.2",
+    "RFC9052 §4.4",
+    "RFC9052 §3.1",
+    "RFC9053 §2.1",
+    "RFC9864 §4.2.2",
+    "HAIP §7",
+    "JWTBCP §3.1"
+   ],
+   "insa": {
+    "imzalar": [
+     {
+      "sira": 0,
+      "alg": "ES256",
+      "cose_alg": -7,
+      "alg_sinifi": "klasik",
+      "anahtar_rolu": "issuer-eski/ES256",
+      "kid": "GGKBh_lEw5eKZr0XX6kbRRp8H1HYW6hwLhLBagC8MHw",
+      "cose_kid_hex": "18628187f944c3978a66bd175fa91b451a7c1f51d85ba8702e12c16a00bc307c",
+      "insa": "gecerli",
+      "kimlik_kaynagi": "RFC9053:248",
+      "kayit_durumu": "kayitli; RFC 9864 §4.2.2 \"Deprecated\" (polimorfik) (RFC9864:467); HAIP §7: \"COSE algorithm identifier -7 or -9, as applicable\" (HAIP:498)"
+     }
+    ],
+    "ihracci": {
+     "kimlik": "eski-ihracci (goc etmemis)",
+     "iss": "https://legacy-issuer.example",
+     "anahtar_rolu": "issuer-eski/ES256",
+     "kid": "GGKBh_lEw5eKZr0XX6kbRRp8H1HYW6hwLhLBagC8MHw",
+     "cose_kid_hex": "18628187f944c3978a66bd175fa91b451a7c1f51d85ba8702e12c16a00bc307c",
+     "turetme_etiketi": "v1.3/issuer-eski/ES256"
+    },
+    "cose": {
+     "yapi": "COSE_Sign1",
+     "etiket": 18,
+     "etiket_kaynagi": "RFC9052:485",
+     "govde_korumali": "alg (+ varsa x5chain)",
+     "yuk": "belirlenimci CBOR harita {\"iss\",\"vct\",\"given_name\"}",
+     "external_aad": "bos (h'')",
+     "kid": "COSE kid (etiket 4) = base64url-cozulmus JWK kid (RFC 7638 parmak izi, 32 B); korumasiz baslikta",
+     "basliklar": {
+      "korumali": "{1: alg}",
+      "korumasiz": "{4: kid}"
+     }
+    }
+   },
+   "dogrulama_girdileri": {
+    "cose_anahtarlar": "anahtarlar/v1.3/cose-anahtarlar.json",
+    "jwks": "anahtarlar/v1.3/acik-jwks-l4c.json",
+    "kid": [
+     "GGKBh_lEw5eKZr0XX6kbRRp8H1HYW6hwLhLBagC8MHw"
+    ],
+    "cose_kid_hex": [
+     "18628187f944c3978a66bd175fa91b451a7c1f51d85ba8702e12c16a00bc307c"
+    ],
+    "cose_key_hex": {
+     "18628187f944c3978a66bd175fa91b451a7c1f51d85ba8702e12c16a00bc307c": "a5010202582018628187f944c3978a66bd175fa91b451a7c1f51d85ba8702e12c16a00bc307c200121582092d8cc44c42c273e079ac9814f7b4463e1d6bc89a2cf96a4cd65c4a432c6e0d222582036069773cc46a22886441533dda3e07b8aff4b50e02b0074b5ee93a6f9f39ced"
+    },
+    "anahtar_yolu": "hedefin belgeli API'si (COSE_Key/JWK ya da dogrudan anahtar); ÖK §2D m.1",
+    "simdi": 1790003700
+   },
+   "b_pilot_esi": null,
+   "dcapi_protokol": null,
+   "ayna": "L4C-COSE_eski_ES256"
+  },
+  {
+   "id": "SYN-L4C-JOSE_eski_ES256",
+   "dosya": "SYN-L4C/SYN-L4C-JOSE_eski_ES256.jws",
+   "sha256": "61ef29817b89ed27121fbfeecd9ee84115bad229d9bdbd31980434d909e94dd5",
+   "bayt": 409,
+   "aile": "SYN-L4C",
+   "aciklama": "Conformance object (not in the battery). L4c (ÖK §2B m.6): AYRI kimlikli \"eski ihracci\"nin compact JWS'i (iss https://legacy-issuer.example, ayri anahtar ve kid; yalniz ES256). Baslik {\"alg\",\"kid\",\"typ\":\"JWT\"}, yuk VPLUS_ES256 ile ayni yapida (yalniz iss farkli). Goc etmis ihraccinin karsiliklari mevcut vektorlerdir (VPLUS_ES256, VPLUS_ML-DSA-65, CMP00; BATARYA-ESLEME.md).",
+   "artefakt": "jws-cekirdek",
+   "serilestirme": "compact",
+   "kol": "ortak (L4c; iki tedavi kolu)",
+   "senaryo": null,
+   "sdjwtvc_surum": null,
+   "sinanan": {
+    "basamak": [
+     "L4"
+    ],
+    "plan_bayraklari": [],
+    "ek_etiketler": [
+     "L4c",
+     "eski-ihracci"
+    ]
+   },
+   "dayanak": [
+    "JWTBCP §3.1",
+    "RFC7519 §4.1.1",
+    "RFC7515 §4.1.4",
+    "RFC7518 §3.4"
+   ],
+   "insa": {
+    "imzalar": [
+     {
+      "sira": 0,
+      "alg": "ES256",
+      "alg_sinifi": "klasik",
+      "anahtar_rolu": "issuer-eski/ES256",
+      "kid": "GGKBh_lEw5eKZr0XX6kbRRp8H1HYW6hwLhLBagC8MHw",
+      "insa": "gecerli"
+     }
+    ],
+    "ihracci": {
+     "kimlik": "eski-ihracci (goc etmemis)",
+     "iss": "https://legacy-issuer.example",
+     "anahtar_rolu": "issuer-eski/ES256",
+     "kid": "GGKBh_lEw5eKZr0XX6kbRRp8H1HYW6hwLhLBagC8MHw",
+     "cose_kid_hex": "18628187f944c3978a66bd175fa91b451a7c1f51d85ba8702e12c16a00bc307c",
+     "turetme_etiketi": "v1.3/issuer-eski/ES256"
+    }
+   },
+   "dogrulama_girdileri": {
+    "jwks": "anahtarlar/v1.3/acik-jwks-l4c.json",
+    "kid": [
+     "GGKBh_lEw5eKZr0XX6kbRRp8H1HYW6hwLhLBagC8MHw"
+    ],
+    "jwk": {
+     "kid": "GGKBh_lEw5eKZr0XX6kbRRp8H1HYW6hwLhLBagC8MHw",
+     "kty": "EC",
+     "crv": "P-256",
+     "x": "ktjMRMQsJz4HmsmBT3tEY-HWvImiz5akzWXEpDLG4NI",
+     "y": "NgaXc8xGoiiGRBUz3aPge4r_S1DgKwB0te6TpvnznO0"
+    },
+    "anahtar_yolu": "hedefin belgeli API'si (JWK/JWKS ya da dogrudan anahtar); ÖK §2D m.1",
+    "simdi": 1790003700
+   },
+   "b_pilot_esi": null,
+   "dcapi_protokol": null,
+   "ayna": "L4C-JOSE_eski_ES256"
+  },
+  {
+   "id": "SYN-T1K_both_valid",
+   "dosya": "SYN-T/SYN-T1K_both_valid.json",
+   "sha256": "c31592cade16083f7b9574cbfc196e58437e9e93d45f613bc4d3c5d454499aad",
+   "bayt": 501,
+   "aile": "SYN-T",
+   "aciklama": "Conformance object (not in the battery). General JSON JWS; ES256 + EdDSA, iki imza da gecerli uretildi (B T1).",
+   "artefakt": "jws-cekirdek",
+   "serilestirme": "general",
+   "kol": "kontrol-EdDSA",
+   "senaryo": "d (JWS duzeyi)",
+   "sdjwtvc_surum": null,
+   "sinanan": {
+    "basamak": [
+     "L1",
+     "L2"
+    ],
+    "plan_bayraklari": [],
+    "ek_etiketler": [
+     "coklu-imza",
+     "saglik-kontrolu(H0)"
+    ]
+   },
+   "dayanak": [
+    "RFC7515 §7.2.1",
+    "RFC7515 §7.2",
+    "RFC7515 §5.2",
+    "JWTBCP §3.1",
+    "RFC9864 §2.2"
+   ],
+   "insa": {
+    "imzalar": [
+     {
+      "sira": 0,
+      "alg": "ES256",
+      "alg_sinifi": "klasik",
+      "anahtar_rolu": "issuer/ES256",
+      "kid": "Dae-6PSSx7FfaEPNMopZGZ-wBvY8xkwyPQHmeHIgaUU",
+      "insa": "gecerli"
+     },
+     {
+      "sira": 1,
+      "alg": "EdDSA",
+      "alg_sinifi": "klasik",
+      "anahtar_rolu": "issuer/EdDSA",
+      "kid": "Xs-nufJolGnijX_-1fWpt5C9pvH44duKX8YO0WJTsSs",
+      "insa": "gecerli"
+     }
+    ]
+   },
+   "dogrulama_girdileri": {
+    "jwks": "anahtarlar/v1/acik-jwks.json",
+    "kid": [
+     "Dae-6PSSx7FfaEPNMopZGZ-wBvY8xkwyPQHmeHIgaUU",
+     "Xs-nufJolGnijX_-1fWpt5C9pvH44duKX8YO0WJTsSs",
+     "IwjBAm8NcIKqmDrXCIh38jMlzcH8b87-G3qtObt2OHs",
+     "Ok8LZzNE-E_MbjjoD_C6hj14YzZW9-lLCBPxpeHR2hg"
+    ],
+    "simdi": 1790003700,
+    "anahtar_secimi": "alg basligina gore (B pilotundaki gibi; kid yok)",
+    "alg_kid": {
+     "ES256": "Dae-6PSSx7FfaEPNMopZGZ-wBvY8xkwyPQHmeHIgaUU",
+     "EdDSA": "Xs-nufJolGnijX_-1fWpt5C9pvH44duKX8YO0WJTsSs",
+     "ML-DSA-65": "IwjBAm8NcIKqmDrXCIh38jMlzcH8b87-G3qtObt2OHs",
+     "ML-DSA-65-ES256": "Ok8LZzNE-E_MbjjoD_C6hj14YzZW9-lLCBPxpeHR2hg"
+    }
+   },
+   "b_pilot_esi": "T1_both_valid",
+   "dcapi_protokol": null,
+   "ayna": "T1K_both_valid"
+  },
+  {
+   "id": "SYN-T1K_both_valid-ES384",
+   "dosya": "SYN-T/SYN-T1K_both_valid-ES384.json",
+   "sha256": "c70494d4d68d4fa1e50d78955882b357d9848363af25092bb8f7a25707f9106a",
+   "bayt": 551,
+   "aile": "SYN-T",
+   "aciklama": "Conformance object (not in the battery). ES384 counterpart of v1.3 vector T1K_both_valid (amendment 10): signatures labelled EdDSA are re-made with the issuer/ES384 key and label ES384; payload and all other signatures unchanged. Original description: General JSON JWS; ES256 + EdDSA, iki imza da gecerli uretildi (B T1).",
+   "artefakt": "jws-cekirdek",
+   "serilestirme": "general",
+   "kol": "kontrol-ES384",
+   "senaryo": "d (JWS duzeyi)",
+   "sdjwtvc_surum": null,
+   "sinanan": {
+    "basamak": [
+     "L1",
+     "L2"
+    ],
+    "plan_bayraklari": [],
+    "ek_etiketler": [
+     "coklu-imza",
+     "saglik-kontrolu(H0)"
+    ]
+   },
+   "dayanak": [
+    "RFC7515 §7.2.1",
+    "RFC7515 §7.2",
+    "RFC7515 §5.2",
+    "JWTBCP §3.1",
+    "RFC9864 §2.2"
+   ],
+   "insa": {
+    "imzalar": [
+     {
+      "sira": 0,
+      "alg": "ES256",
+      "alg_sinifi": "klasik",
+      "anahtar_rolu": "issuer/ES256",
+      "kid": "Dae-6PSSx7FfaEPNMopZGZ-wBvY8xkwyPQHmeHIgaUU",
+      "insa": "gecerli"
+     },
+     {
+      "sira": 1,
+      "alg": "ES384",
+      "alg_sinifi": "klasik",
+      "anahtar_rolu": "issuer/ES384",
+      "kid": "35xWV--z8WN_BPF0nuwviD5IQsv6e5m2FRdcmiB_Dok",
+      "insa": "gecerli"
+     }
+    ],
+    "v13_esi": "T1K_both_valid"
+   },
+   "dogrulama_girdileri": {
+    "jwks": "anahtarlar/v1/acik-jwks.json",
+    "kid": [
+     "Dae-6PSSx7FfaEPNMopZGZ-wBvY8xkwyPQHmeHIgaUU",
+     "35xWV--z8WN_BPF0nuwviD5IQsv6e5m2FRdcmiB_Dok",
+     "IwjBAm8NcIKqmDrXCIh38jMlzcH8b87-G3qtObt2OHs",
+     "Ok8LZzNE-E_MbjjoD_C6hj14YzZW9-lLCBPxpeHR2hg"
+    ],
+    "simdi": 1790003700,
+    "anahtar_secimi": "alg basligina gore (B pilotundaki gibi; kid yok)",
+    "alg_kid": {
+     "ES256": "Dae-6PSSx7FfaEPNMopZGZ-wBvY8xkwyPQHmeHIgaUU",
+     "EdDSA": "Xs-nufJolGnijX_-1fWpt5C9pvH44duKX8YO0WJTsSs",
+     "ML-DSA-65": "IwjBAm8NcIKqmDrXCIh38jMlzcH8b87-G3qtObt2OHs",
+     "ML-DSA-65-ES256": "Ok8LZzNE-E_MbjjoD_C6hj14YzZW9-lLCBPxpeHR2hg",
+     "ES384": "35xWV--z8WN_BPF0nuwviD5IQsv6e5m2FRdcmiB_Dok"
+    }
+   },
+   "b_pilot_esi": "T1_both_valid",
+   "dcapi_protokol": null,
+   "ayna": "T1K_both_valid-ES384"
+  },
+  {
+   "id": "SYN-T1K_both_valid-SIRA-ters",
+   "dosya": "SYN-T/SYN-T1K_both_valid-SIRA-ters.json",
+   "sha256": "8ed6e0416acb9d4806e320c77288fd57efbb0dbc2788e819b451b56bfaae5041",
+   "bayt": 514,
+   "aile": "SYN-T",
+   "aciklama": "Conformance object (not in the battery). MR4 esi (ÖK §2B m.8, §2C m.4): T1K_both_valid vektorunun imza sirasi \"ters\" (yeni sira = ozgun indeksler [1, 0]; algler ['EdDSA', 'ES256']). Her imzanin korumali basligi ve imza baytlari ile yuk bayt-ayni; yalniz signatures dizisindeki sira degisti. Ozgun aciklama: General JSON JWS; ES256 + EdDSA, iki imza da gecerli uretildi (B T1).",
+   "artefakt": "jws-cekirdek",
+   "serilestirme": "general",
+   "kol": "kontrol-EdDSA",
+   "senaryo": "d (JWS duzeyi)",
+   "sdjwtvc_surum": null,
+   "sinanan": {
+    "basamak": [
+     "L1",
+     "L2"
+    ],
+    "plan_bayraklari": [],
+    "ek_etiketler": [
+     "coklu-imza",
+     "saglik-kontrolu(H0)",
+     "MR4(imza-sirasi-permutasyonu)"
+    ]
+   },
+   "dayanak": [
+    "RFC7515 §7.2.1",
+    "RFC7515 §7.2",
+    "RFC7515 §5.2",
+    "JWTBCP §3.1",
+    "RFC9864 §2.2"
+   ],
+   "insa": {
+    "imzalar": [
+     {
+      "sira": 0,
+      "alg": "EdDSA",
+      "alg_sinifi": "klasik",
+      "anahtar_rolu": "issuer/EdDSA",
+      "kid": "Xs-nufJolGnijX_-1fWpt5C9pvH44duKX8YO0WJTsSs",
+      "insa": "gecerli",
+      "ozgun_sira": 1
+     },
+     {
+      "sira": 1,
+      "alg": "ES256",
+      "alg_sinifi": "klasik",
+      "anahtar_rolu": "issuer/ES256",
+      "kid": "Dae-6PSSx7FfaEPNMopZGZ-wBvY8xkwyPQHmeHIgaUU",
+      "insa": "gecerli",
+      "ozgun_sira": 0
+     }
+    ],
+    "mr4": {
+     "kaynak_vektor": "T1K_both_valid",
+     "yeni_siradaki_ozgun_indeksler": [
+      1,
+      0
+     ],
+     "permutasyon": "ters",
+     "ifsalar_yeni_ilk_basliga_tasindi": false
+    }
+   },
+   "dogrulama_girdileri": {
+    "jwks": "anahtarlar/v1/acik-jwks.json",
+    "kid": [
+     "Dae-6PSSx7FfaEPNMopZGZ-wBvY8xkwyPQHmeHIgaUU",
+     "Xs-nufJolGnijX_-1fWpt5C9pvH44duKX8YO0WJTsSs",
+     "IwjBAm8NcIKqmDrXCIh38jMlzcH8b87-G3qtObt2OHs",
+     "Ok8LZzNE-E_MbjjoD_C6hj14YzZW9-lLCBPxpeHR2hg"
+    ],
+    "simdi": 1790003700,
+    "anahtar_secimi": "alg basligina gore (B pilotundaki gibi; kid yok)",
+    "alg_kid": {
+     "ES256": "Dae-6PSSx7FfaEPNMopZGZ-wBvY8xkwyPQHmeHIgaUU",
+     "EdDSA": "Xs-nufJolGnijX_-1fWpt5C9pvH44duKX8YO0WJTsSs",
+     "ML-DSA-65": "IwjBAm8NcIKqmDrXCIh38jMlzcH8b87-G3qtObt2OHs",
+     "ML-DSA-65-ES256": "Ok8LZzNE-E_MbjjoD_C6hj14YzZW9-lLCBPxpeHR2hg"
+    }
+   },
+   "b_pilot_esi": "T1_both_valid",
+   "dcapi_protokol": null,
+   "ayna": "T1K_both_valid-SIRA-ters"
+  },
+  {
+   "id": "SYN-T1K_both_valid-SIRA-ters-ES384",
+   "dosya": "SYN-T/SYN-T1K_both_valid-SIRA-ters-ES384.json",
+   "sha256": "7b1f288e1ede6867a6af041afe5136d7b4a3f084c23976d3a8b55ce8ca6d563c",
+   "bayt": 564,
+   "aile": "SYN-T",
+   "aciklama": "Conformance object (not in the battery). ES384 counterpart of v1.3 vector T1K_both_valid-SIRA-ters (amendment 10): signatures labelled EdDSA are re-made with the issuer/ES384 key and label ES384; payload and all other signatures unchanged. Original description: MR4 esi (ÖK §2B m.8, §2C m.4): T1K_both_valid vektorunun imza sirasi \"ters\" (yeni sira = ozgun indeksler [1, 0]; algler ['EdDSA', 'ES256']). Her imzanin korumali basligi ve imza baytlari ile yuk bayt-ayni; yalniz signatures dizisindeki sira degisti. Ozgun aciklama: General JSON JWS; ES256 + EdDSA, iki imza da gecerli uretildi (B T1).",
+   "artefakt": "jws-cekirdek",
+   "serilestirme": "general",
+   "kol": "kontrol-ES384",
+   "senaryo": "d (JWS duzeyi)",
+   "sdjwtvc_surum": null,
+   "sinanan": {
+    "basamak": [
+     "L1",
+     "L2"
+    ],
+    "plan_bayraklari": [],
+    "ek_etiketler": [
+     "coklu-imza",
+     "saglik-kontrolu(H0)",
+     "MR4(imza-sirasi-permutasyonu)"
+    ]
+   },
+   "dayanak": [
+    "RFC7515 §7.2.1",
+    "RFC7515 §7.2",
+    "RFC7515 §5.2",
+    "JWTBCP §3.1",
+    "RFC9864 §2.2"
+   ],
+   "insa": {
+    "imzalar": [
+     {
+      "sira": 0,
+      "alg": "ES384",
+      "alg_sinifi": "klasik",
+      "anahtar_rolu": "issuer/ES384",
+      "kid": "35xWV--z8WN_BPF0nuwviD5IQsv6e5m2FRdcmiB_Dok",
+      "insa": "gecerli",
+      "ozgun_sira": 1
+     },
+     {
+      "sira": 1,
+      "alg": "ES256",
+      "alg_sinifi": "klasik",
+      "anahtar_rolu": "issuer/ES256",
+      "kid": "Dae-6PSSx7FfaEPNMopZGZ-wBvY8xkwyPQHmeHIgaUU",
+      "insa": "gecerli",
+      "ozgun_sira": 0
+     }
+    ],
+    "mr4": {
+     "kaynak_vektor": "T1K_both_valid",
+     "yeni_siradaki_ozgun_indeksler": [
+      1,
+      0
+     ],
+     "permutasyon": "ters",
+     "ifsalar_yeni_ilk_basliga_tasindi": false
+    },
+    "v13_esi": "T1K_both_valid-SIRA-ters"
+   },
+   "dogrulama_girdileri": {
+    "jwks": "anahtarlar/v1/acik-jwks.json",
+    "kid": [
+     "Dae-6PSSx7FfaEPNMopZGZ-wBvY8xkwyPQHmeHIgaUU",
+     "35xWV--z8WN_BPF0nuwviD5IQsv6e5m2FRdcmiB_Dok",
+     "IwjBAm8NcIKqmDrXCIh38jMlzcH8b87-G3qtObt2OHs",
+     "Ok8LZzNE-E_MbjjoD_C6hj14YzZW9-lLCBPxpeHR2hg"
+    ],
+    "simdi": 1790003700,
+    "anahtar_secimi": "alg basligina gore (B pilotundaki gibi; kid yok)",
+    "alg_kid": {
+     "ES256": "Dae-6PSSx7FfaEPNMopZGZ-wBvY8xkwyPQHmeHIgaUU",
+     "EdDSA": "Xs-nufJolGnijX_-1fWpt5C9pvH44duKX8YO0WJTsSs",
+     "ML-DSA-65": "IwjBAm8NcIKqmDrXCIh38jMlzcH8b87-G3qtObt2OHs",
+     "ML-DSA-65-ES256": "Ok8LZzNE-E_MbjjoD_C6hj14YzZW9-lLCBPxpeHR2hg",
+     "ES384": "35xWV--z8WN_BPF0nuwviD5IQsv6e5m2FRdcmiB_Dok"
+    }
+   },
+   "b_pilot_esi": "T1_both_valid",
+   "dcapi_protokol": null,
+   "ayna": "T1K_both_valid-SIRA-ters-ES384"
+  },
+  {
+   "id": "SYN-T1P_both_valid",
+   "dosya": "SYN-T/SYN-T1P_both_valid.json",
+   "sha256": "3d7bc90df23c45c8ba199c6d8333abc8e0b228da1221a94d041cf7b40334c5b7",
+   "bayt": 4833,
+   "aile": "SYN-T",
+   "aciklama": "Conformance object (not in the battery). General JSON JWS; ES256 + ML-DSA-65, iki imza da gecerli uretildi (B T1).",
+   "artefakt": "jws-cekirdek",
+   "serilestirme": "general",
+   "kol": "tedavi-ML-DSA-65",
+   "senaryo": "d (JWS duzeyi)",
+   "sdjwtvc_surum": null,
+   "sinanan": {
+    "basamak": [
+     "L1",
+     "L2"
+    ],
+    "plan_bayraklari": [],
+    "ek_etiketler": [
+     "coklu-imza",
+     "saglik-kontrolu(H0)"
+    ]
+   },
+   "dayanak": [
+    "RFC7515 §7.2.1",
+    "RFC7515 §7.2",
+    "RFC7515 §5.2",
+    "JWTBCP §3.1",
+    "RFC9964 §5"
+   ],
+   "insa": {
+    "imzalar": [
+     {
+      "sira": 0,
+      "alg": "ES256",
+      "alg_sinifi": "klasik",
+      "anahtar_rolu": "issuer/ES256",
+      "kid": "Dae-6PSSx7FfaEPNMopZGZ-wBvY8xkwyPQHmeHIgaUU",
+      "insa": "gecerli"
+     },
+     {
+      "sira": 1,
+      "alg": "ML-DSA-65",
+      "alg_sinifi": "pq",
+      "anahtar_rolu": "issuer/ML-DSA-65",
+      "kid": "IwjBAm8NcIKqmDrXCIh38jMlzcH8b87-G3qtObt2OHs",
+      "insa": "gecerli"
+     }
+    ]
+   },
+   "dogrulama_girdileri": {
+    "jwks": "anahtarlar/v1/acik-jwks.json",
+    "kid": [
+     "Dae-6PSSx7FfaEPNMopZGZ-wBvY8xkwyPQHmeHIgaUU",
+     "Xs-nufJolGnijX_-1fWpt5C9pvH44duKX8YO0WJTsSs",
+     "IwjBAm8NcIKqmDrXCIh38jMlzcH8b87-G3qtObt2OHs",
+     "Ok8LZzNE-E_MbjjoD_C6hj14YzZW9-lLCBPxpeHR2hg"
+    ],
+    "simdi": 1790003700,
+    "anahtar_secimi": "alg basligina gore (B pilotundaki gibi; kid yok)",
+    "alg_kid": {
+     "ES256": "Dae-6PSSx7FfaEPNMopZGZ-wBvY8xkwyPQHmeHIgaUU",
+     "EdDSA": "Xs-nufJolGnijX_-1fWpt5C9pvH44duKX8YO0WJTsSs",
+     "ML-DSA-65": "IwjBAm8NcIKqmDrXCIh38jMlzcH8b87-G3qtObt2OHs",
+     "ML-DSA-65-ES256": "Ok8LZzNE-E_MbjjoD_C6hj14YzZW9-lLCBPxpeHR2hg"
+    }
+   },
+   "b_pilot_esi": "T1_both_valid",
+   "dcapi_protokol": null,
+   "ayna": "T1P_both_valid"
+  },
+  {
+   "id": "SYN-T1P_both_valid-SIRA-ters",
+   "dosya": "SYN-T/SYN-T1P_both_valid-SIRA-ters.json",
+   "sha256": "2729536de67f5a03adfc1af7f2ec24391b62320a065dfbd4938247a384bc5d11",
+   "bayt": 4846,
+   "aile": "SYN-T",
+   "aciklama": "Conformance object (not in the battery). MR4 esi (ÖK §2B m.8, §2C m.4): T1P_both_valid vektorunun imza sirasi \"ters\" (yeni sira = ozgun indeksler [1, 0]; algler ['ML-DSA-65', 'ES256']). Her imzanin korumali basligi ve imza baytlari ile yuk bayt-ayni; yalniz signatures dizisindeki sira degisti. Ozgun aciklama: General JSON JWS; ES256 + ML-DSA-65, iki imza da gecerli uretildi (B T1).",
+   "artefakt": "jws-cekirdek",
+   "serilestirme": "general",
+   "kol": "tedavi-ML-DSA-65",
+   "senaryo": "d (JWS duzeyi)",
+   "sdjwtvc_surum": null,
+   "sinanan": {
+    "basamak": [
+     "L1",
+     "L2"
+    ],
+    "plan_bayraklari": [],
+    "ek_etiketler": [
+     "coklu-imza",
+     "saglik-kontrolu(H0)",
+     "MR4(imza-sirasi-permutasyonu)"
+    ]
+   },
+   "dayanak": [
+    "RFC7515 §7.2.1",
+    "RFC7515 §7.2",
+    "RFC7515 §5.2",
+    "JWTBCP §3.1",
+    "RFC9964 §5"
+   ],
+   "insa": {
+    "imzalar": [
+     {
+      "sira": 0,
+      "alg": "ML-DSA-65",
+      "alg_sinifi": "pq",
+      "anahtar_rolu": "issuer/ML-DSA-65",
+      "kid": "IwjBAm8NcIKqmDrXCIh38jMlzcH8b87-G3qtObt2OHs",
+      "insa": "gecerli",
+      "ozgun_sira": 1
+     },
+     {
+      "sira": 1,
+      "alg": "ES256",
+      "alg_sinifi": "klasik",
+      "anahtar_rolu": "issuer/ES256",
+      "kid": "Dae-6PSSx7FfaEPNMopZGZ-wBvY8xkwyPQHmeHIgaUU",
+      "insa": "gecerli",
+      "ozgun_sira": 0
+     }
+    ],
+    "mr4": {
+     "kaynak_vektor": "T1P_both_valid",
+     "yeni_siradaki_ozgun_indeksler": [
+      1,
+      0
+     ],
+     "permutasyon": "ters",
+     "ifsalar_yeni_ilk_basliga_tasindi": false
+    }
+   },
+   "dogrulama_girdileri": {
+    "jwks": "anahtarlar/v1/acik-jwks.json",
+    "kid": [
+     "Dae-6PSSx7FfaEPNMopZGZ-wBvY8xkwyPQHmeHIgaUU",
+     "Xs-nufJolGnijX_-1fWpt5C9pvH44duKX8YO0WJTsSs",
+     "IwjBAm8NcIKqmDrXCIh38jMlzcH8b87-G3qtObt2OHs",
+     "Ok8LZzNE-E_MbjjoD_C6hj14YzZW9-lLCBPxpeHR2hg"
+    ],
+    "simdi": 1790003700,
+    "anahtar_secimi": "alg basligina gore (B pilotundaki gibi; kid yok)",
+    "alg_kid": {
+     "ES256": "Dae-6PSSx7FfaEPNMopZGZ-wBvY8xkwyPQHmeHIgaUU",
+     "EdDSA": "Xs-nufJolGnijX_-1fWpt5C9pvH44duKX8YO0WJTsSs",
+     "ML-DSA-65": "IwjBAm8NcIKqmDrXCIh38jMlzcH8b87-G3qtObt2OHs",
+     "ML-DSA-65-ES256": "Ok8LZzNE-E_MbjjoD_C6hj14YzZW9-lLCBPxpeHR2hg"
+    }
+   },
+   "b_pilot_esi": "T1_both_valid",
+   "dcapi_protokol": null,
+   "ayna": "T1P_both_valid-SIRA-ters"
+  },
+  {
+   "id": "SYN-T5K_only_EdDSA",
+   "dosya": "SYN-T/SYN-T5K_only_EdDSA.json",
+   "sha256": "d84745214aafe2d23e6eda484b3f2f164e6b6edf3d3b0716f0f3907afc4669f0",
+   "bayt": 347,
+   "aile": "SYN-T",
+   "aciklama": "Conformance object (not in the battery). General JSON; YALNIZ EdDSA imzasi (gecerli). B T5 (only_MLDSA65) rastgele bayt idi.",
+   "artefakt": "jws-cekirdek",
+   "serilestirme": "general",
+   "kol": "kontrol-EdDSA",
+   "senaryo": "d (JWS duzeyi)",
+   "sdjwtvc_surum": null,
+   "sinanan": {
+    "basamak": [
+     "L1",
+     "L2",
+     "L3"
+    ],
+    "plan_bayraklari": [],
+    "ek_etiketler": [
+     "yalniz-tek-alg"
+    ]
+   },
+   "dayanak": [
+    "RFC7515 §7.2.1",
+    "RFC7515 §7.2",
+    "RFC7515 §5.2",
+    "JWTBCP §3.1",
+    "RFC9864 §2.2"
+   ],
+   "insa": {
+    "imzalar": [
+     {
+      "sira": 0,
+      "alg": "EdDSA",
+      "alg_sinifi": "klasik",
+      "anahtar_rolu": "issuer/EdDSA",
+      "kid": "Xs-nufJolGnijX_-1fWpt5C9pvH44duKX8YO0WJTsSs",
+      "insa": "gecerli"
+     }
+    ]
+   },
+   "dogrulama_girdileri": {
+    "jwks": "anahtarlar/v1/acik-jwks.json",
+    "kid": [
+     "Dae-6PSSx7FfaEPNMopZGZ-wBvY8xkwyPQHmeHIgaUU",
+     "Xs-nufJolGnijX_-1fWpt5C9pvH44duKX8YO0WJTsSs",
+     "IwjBAm8NcIKqmDrXCIh38jMlzcH8b87-G3qtObt2OHs",
+     "Ok8LZzNE-E_MbjjoD_C6hj14YzZW9-lLCBPxpeHR2hg"
+    ],
+    "simdi": 1790003700,
+    "anahtar_secimi": "alg basligina gore (B pilotundaki gibi; kid yok)",
+    "alg_kid": {
+     "ES256": "Dae-6PSSx7FfaEPNMopZGZ-wBvY8xkwyPQHmeHIgaUU",
+     "EdDSA": "Xs-nufJolGnijX_-1fWpt5C9pvH44duKX8YO0WJTsSs",
+     "ML-DSA-65": "IwjBAm8NcIKqmDrXCIh38jMlzcH8b87-G3qtObt2OHs",
+     "ML-DSA-65-ES256": "Ok8LZzNE-E_MbjjoD_C6hj14YzZW9-lLCBPxpeHR2hg"
+    }
+   },
+   "b_pilot_esi": "T5_only_MLDSA65",
+   "dcapi_protokol": null,
+   "ayna": "T5K_only_EdDSA"
+  },
+  {
+   "id": "SYN-T5K_only_EdDSA-ES384",
+   "dosya": "SYN-T/SYN-T5K_only_EdDSA-ES384.json",
+   "sha256": "b42bcbd59c5bd6c03ffe5d405e8d6e1853edf1dd24608afbded5b82afb9ea718",
+   "bayt": 397,
+   "aile": "SYN-T",
+   "aciklama": "Conformance object (not in the battery). ES384 counterpart of v1.3 vector T5K_only_EdDSA (amendment 10): signatures labelled EdDSA are re-made with the issuer/ES384 key and label ES384; payload and all other signatures unchanged. Original description: General JSON; YALNIZ EdDSA imzasi (gecerli). B T5 (only_MLDSA65) rastgele bayt idi.",
+   "artefakt": "jws-cekirdek",
+   "serilestirme": "general",
+   "kol": "kontrol-ES384",
+   "senaryo": "d (JWS duzeyi)",
+   "sdjwtvc_surum": null,
+   "sinanan": {
+    "basamak": [
+     "L1",
+     "L2",
+     "L3"
+    ],
+    "plan_bayraklari": [],
+    "ek_etiketler": [
+     "yalniz-tek-alg"
+    ]
+   },
+   "dayanak": [
+    "RFC7515 §7.2.1",
+    "RFC7515 §7.2",
+    "RFC7515 §5.2",
+    "JWTBCP §3.1",
+    "RFC9864 §2.2"
+   ],
+   "insa": {
+    "imzalar": [
+     {
+      "sira": 0,
+      "alg": "ES384",
+      "alg_sinifi": "klasik",
+      "anahtar_rolu": "issuer/ES384",
+      "kid": "35xWV--z8WN_BPF0nuwviD5IQsv6e5m2FRdcmiB_Dok",
+      "insa": "gecerli"
+     }
+    ],
+    "v13_esi": "T5K_only_EdDSA"
+   },
+   "dogrulama_girdileri": {
+    "jwks": "anahtarlar/v1/acik-jwks.json",
+    "kid": [
+     "Dae-6PSSx7FfaEPNMopZGZ-wBvY8xkwyPQHmeHIgaUU",
+     "35xWV--z8WN_BPF0nuwviD5IQsv6e5m2FRdcmiB_Dok",
+     "IwjBAm8NcIKqmDrXCIh38jMlzcH8b87-G3qtObt2OHs",
+     "Ok8LZzNE-E_MbjjoD_C6hj14YzZW9-lLCBPxpeHR2hg"
+    ],
+    "simdi": 1790003700,
+    "anahtar_secimi": "alg basligina gore (B pilotundaki gibi; kid yok)",
+    "alg_kid": {
+     "ES256": "Dae-6PSSx7FfaEPNMopZGZ-wBvY8xkwyPQHmeHIgaUU",
+     "EdDSA": "Xs-nufJolGnijX_-1fWpt5C9pvH44duKX8YO0WJTsSs",
+     "ML-DSA-65": "IwjBAm8NcIKqmDrXCIh38jMlzcH8b87-G3qtObt2OHs",
+     "ML-DSA-65-ES256": "Ok8LZzNE-E_MbjjoD_C6hj14YzZW9-lLCBPxpeHR2hg",
+     "ES384": "35xWV--z8WN_BPF0nuwviD5IQsv6e5m2FRdcmiB_Dok"
+    }
+   },
+   "b_pilot_esi": "T5_only_MLDSA65",
+   "dcapi_protokol": null,
+   "ayna": "T5K_only_EdDSA-ES384"
+  },
+  {
+   "id": "SYN-T5P_only_ML-DSA-65",
+   "dosya": "SYN-T/SYN-T5P_only_ML-DSA-65.json",
+   "sha256": "dd5c5bbeabdd0457364b8763b3160c4c27c8aa95690136cc65590353085a3d11",
+   "bayt": 4684,
+   "aile": "SYN-T",
+   "aciklama": "Conformance object (not in the battery). General JSON; YALNIZ ML-DSA-65 imzasi (gecerli). B T5 (only_MLDSA65) rastgele bayt idi.",
+   "artefakt": "jws-cekirdek",
+   "serilestirme": "general",
+   "kol": "tedavi-ML-DSA-65",
+   "senaryo": "d (JWS duzeyi)",
+   "sdjwtvc_surum": null,
+   "sinanan": {
+    "basamak": [
+     "L1",
+     "L2",
+     "L3"
+    ],
+    "plan_bayraklari": [],
+    "ek_etiketler": [
+     "yalniz-tek-alg"
+    ]
+   },
+   "dayanak": [
+    "RFC7515 §7.2.1",
+    "RFC7515 §7.2",
+    "RFC7515 §5.2",
+    "JWTBCP §3.1",
+    "RFC9964 §5"
+   ],
+   "insa": {
+    "imzalar": [
+     {
+      "sira": 0,
+      "alg": "ML-DSA-65",
+      "alg_sinifi": "pq",
+      "anahtar_rolu": "issuer/ML-DSA-65",
+      "kid": "IwjBAm8NcIKqmDrXCIh38jMlzcH8b87-G3qtObt2OHs",
+      "insa": "gecerli"
+     }
+    ]
+   },
+   "dogrulama_girdileri": {
+    "jwks": "anahtarlar/v1/acik-jwks.json",
+    "kid": [
+     "Dae-6PSSx7FfaEPNMopZGZ-wBvY8xkwyPQHmeHIgaUU",
+     "Xs-nufJolGnijX_-1fWpt5C9pvH44duKX8YO0WJTsSs",
+     "IwjBAm8NcIKqmDrXCIh38jMlzcH8b87-G3qtObt2OHs",
+     "Ok8LZzNE-E_MbjjoD_C6hj14YzZW9-lLCBPxpeHR2hg"
+    ],
+    "simdi": 1790003700,
+    "anahtar_secimi": "alg basligina gore (B pilotundaki gibi; kid yok)",
+    "alg_kid": {
+     "ES256": "Dae-6PSSx7FfaEPNMopZGZ-wBvY8xkwyPQHmeHIgaUU",
+     "EdDSA": "Xs-nufJolGnijX_-1fWpt5C9pvH44duKX8YO0WJTsSs",
+     "ML-DSA-65": "IwjBAm8NcIKqmDrXCIh38jMlzcH8b87-G3qtObt2OHs",
+     "ML-DSA-65-ES256": "Ok8LZzNE-E_MbjjoD_C6hj14YzZW9-lLCBPxpeHR2hg"
+    }
+   },
+   "b_pilot_esi": "T5_only_MLDSA65",
+   "dcapi_protokol": null,
+   "ayna": "T5P_only_ML-DSA-65"
+  },
+  {
+   "id": "SYN-VC01_ES256_x5c",
+   "dosya": "SYN-VC/SYN-VC01_ES256_x5c.sdjwt",
+   "sha256": "1cdc04b40ee239dc8adaf0c3cd417efb1bc1d82b872aa6fe058f4a494511048f",
+   "bayt": 3890,
+   "aile": "SYN-VC",
+   "aciklama": "Conformance object (not in the battery). SD-JWT VC ihraci (compact; typ=dc+sd-jwt; PID; 10 ifsa + 2 sahte ozet; cnf.jwk=holder/ES256); ES256, x5c=[issuer-ec@int-ec, ara CA].",
+   "artefakt": "sd-jwt-vc",
+   "serilestirme": "sd-jwt-compact",
+   "kol": "klasik-taban",
+   "senaryo": null,
+   "sdjwtvc_surum": [
+    "-13",
+    "-19"
+   ],
+   "sinanan": {
+    "basamak": [
+     "L1",
+     "L3"
+    ],
+    "plan_bayraklari": [],
+    "ek_etiketler": []
+   },
+   "dayanak": [
+    "RFC9901 §4.1",
+    "RFC9901 §4.2",
+    "SDJWTVC §2.2.1",
+    "SDJWTVC13 §3.2.1",
+    "SDJWTVC §2.2.2.3",
+    "HAIP §6.1.1",
+    "HAIP §7"
+   ],
+   "insa": {
+    "imzalar": [
+     {
+      "sira": 0,
+      "alg": "ES256",
+      "alg_sinifi": "klasik",
+      "anahtar_rolu": "issuer/ES256",
+      "kid": "Dae-6PSSx7FfaEPNMopZGZ-wBvY8xkwyPQHmeHIgaUU",
+      "insa": "gecerli"
+     }
+    ],
+    "ifsa_sayisi": 10
+   },
+   "dogrulama_girdileri": {
+    "jwks": "anahtarlar/v1/acik-jwks.json",
+    "kid": [
+     "Dae-6PSSx7FfaEPNMopZGZ-wBvY8xkwyPQHmeHIgaUU"
+    ],
+    "simdi": 1790003700,
+    "guven_capalari": [
+     "anahtarlar/v1/pki/root-ec.pem",
+     "anahtarlar/v1/pki/root-ml.pem"
+    ]
+   },
+   "b_pilot_esi": null,
+   "dcapi_protokol": null,
+   "ayna": "VC01_ES256_x5c"
+  },
+  {
+   "id": "SYN-VC02_MLDSA65_x5c",
+   "dosya": "SYN-VC/SYN-VC02_MLDSA65_x5c.sdjwt",
+   "sha256": "83f9306b977bf75b4c3eee20dda792e93f5bbcaa273cc8e8d5db009d5536e5a0",
+   "bayt": 26464,
+   "aile": "SYN-VC",
+   "aciklama": "Conformance object (not in the battery). SD-JWT VC ihraci (compact; typ=dc+sd-jwt; PID; 10 ifsa + 2 sahte ozet; cnf.jwk=holder/ES256); ML-DSA-65, x5c=[issuer-ml@int-ml, ara CA].",
+   "artefakt": "sd-jwt-vc",
+   "serilestirme": "sd-jwt-compact",
+   "kol": "tedavi-ML-DSA-65",
+   "senaryo": null,
+   "sdjwtvc_surum": [
+    "-13",
+    "-19"
+   ],
+   "sinanan": {
+    "basamak": [
+     "L1",
+     "L3"
+    ],
+    "plan_bayraklari": [],
+    "ek_etiketler": []
+   },
+   "dayanak": [
+    "RFC9901 §4.1",
+    "RFC9901 §4.2",
+    "SDJWTVC §2.2.1",
+    "SDJWTVC13 §3.2.1",
+    "SDJWTVC §2.2.2.3",
+    "HAIP §6.1.1",
+    "RFC9964 §5"
+   ],
+   "insa": {
+    "imzalar": [
+     {
+      "sira": 0,
+      "alg": "ML-DSA-65",
+      "alg_sinifi": "pq",
+      "anahtar_rolu": "issuer/ML-DSA-65",
+      "kid": "IwjBAm8NcIKqmDrXCIh38jMlzcH8b87-G3qtObt2OHs",
+      "insa": "gecerli"
+     }
+    ],
+    "ifsa_sayisi": 10
+   },
+   "dogrulama_girdileri": {
+    "jwks": "anahtarlar/v1/acik-jwks.json",
+    "kid": [
+     "IwjBAm8NcIKqmDrXCIh38jMlzcH8b87-G3qtObt2OHs"
+    ],
+    "simdi": 1790003700,
+    "guven_capalari": [
+     "anahtarlar/v1/pki/root-ec.pem",
+     "anahtarlar/v1/pki/root-ml.pem"
+    ]
+   },
+   "b_pilot_esi": null,
+   "dcapi_protokol": null,
+   "ayna": "VC02_MLDSA65_x5c"
+  },
+  {
+   "id": "SYN-VC07_GJ_ES256_MLDSA65",
+   "dosya": "SYN-VC/SYN-VC07_GJ_ES256_MLDSA65.json",
+   "sha256": "ff777ecfb5e77e1cf4fa6d4a57db97bc4cef28a80d6024f6ce13d0bbb9e47c39",
+   "bayt": 28666,
+   "aile": "SYN-VC",
+   "aciklama": "Conformance object (not in the battery). SD-JWT VC, JWS General JSON (RFC 9901 8.3), coklu ihracci imzasi: ES256 + ML-DSA-65; ifsalar ilk korumasiz baslikta. SD-JWT VC -13'te JSON serilestirme ISTEGE BAGLI (3.2), -19'da ayrintilar kapsam disi (2.2).",
+   "artefakt": "sd-jwt-vc",
+   "serilestirme": "sd-jwt-general",
+   "kol": "tedavi-ML-DSA-65",
+   "senaryo": "d",
+   "sdjwtvc_surum": [
+    "-13"
+   ],
+   "sinanan": {
+    "basamak": [
+     "L4"
+    ],
+    "plan_bayraklari": [],
+    "ek_etiketler": [
+     "coklu-imza"
+    ]
+   },
+   "dayanak": [
+    "RFC9901 §8.3",
+    "RFC9901 §8.1",
+    "SDJWTVC13 §3.2",
+    "SDJWTVC §2.2",
+    "HAIP §9.4",
+    "RFC7515 §7.2.1"
+   ],
+   "insa": {
+    "imzalar": [
+     {
+      "sira": 0,
+      "alg": "ES256",
+      "alg_sinifi": "klasik",
+      "anahtar_rolu": "issuer/ES256",
+      "kid": "Dae-6PSSx7FfaEPNMopZGZ-wBvY8xkwyPQHmeHIgaUU",
+      "insa": "gecerli"
+     },
+     {
+      "sira": 1,
+      "alg": "ML-DSA-65",
+      "alg_sinifi": "pq",
+      "anahtar_rolu": "issuer/ML-DSA-65",
+      "kid": "IwjBAm8NcIKqmDrXCIh38jMlzcH8b87-G3qtObt2OHs",
+      "insa": "gecerli"
+     }
+    ]
+   },
+   "dogrulama_girdileri": {
+    "jwks": "anahtarlar/v1/acik-jwks.json",
+    "kid": [
+     "Dae-6PSSx7FfaEPNMopZGZ-wBvY8xkwyPQHmeHIgaUU",
+     "IwjBAm8NcIKqmDrXCIh38jMlzcH8b87-G3qtObt2OHs"
+    ],
+    "simdi": 1790003700,
+    "guven_capalari": [
+     "anahtarlar/v1/pki/root-ec.pem",
+     "anahtarlar/v1/pki/root-ml.pem"
+    ]
+   },
+   "b_pilot_esi": null,
+   "dcapi_protokol": null,
+   "ayna": "VC07_GJ_ES256_MLDSA65"
+  },
+  {
+   "id": "SYN-VC07_GJ_ES256_MLDSA65-SIRA-ters",
+   "dosya": "SYN-VC/SYN-VC07_GJ_ES256_MLDSA65-SIRA-ters.json",
+   "sha256": "e7a80d3dcda049879fe1a367acddf59fce084e0e3791fc4b8d31a048212a060b",
+   "bayt": 28679,
+   "aile": "SYN-VC",
+   "aciklama": "Conformance object (not in the battery). MR4 esi (ÖK §2B m.8, §2C m.4): VC07_GJ_ES256_MLDSA65 vektorunun imza sirasi \"ters\" (yeni sira = ozgun indeksler [1, 0]; algler ['ML-DSA-65', 'ES256']). Her imzanin korumali basligi ve imza baytlari ile yuk bayt-ayni; yalniz signatures dizisindeki sira degisti. SD-JWT: disclosures YENI ilk korumasiz baslikta (RFC 9901 §8.3); ifsa listesi ayni. Ozgun aciklama: SD-JWT VC, JWS General JSON (RFC 9901 8.3), coklu ihracci imzasi: ES256 + ML-DSA-65; ifsalar ilk korumasiz baslikta. SD-JWT VC -13'te JSON serilestirme ISTEGE BAGLI (3.2), -19'da ayrintilar kapsam disi (2.2).",
+   "artefakt": "sd-jwt-vc",
+   "serilestirme": "sd-jwt-general",
+   "kol": "tedavi-ML-DSA-65",
+   "senaryo": "d",
+   "sdjwtvc_surum": [
+    "-13"
+   ],
+   "sinanan": {
+    "basamak": [
+     "L4"
+    ],
+    "plan_bayraklari": [],
+    "ek_etiketler": [
+     "coklu-imza",
+     "MR4(imza-sirasi-permutasyonu)"
+    ]
+   },
+   "dayanak": [
+    "RFC9901 §8.3",
+    "RFC9901 §8.1",
+    "SDJWTVC13 §3.2",
+    "SDJWTVC §2.2",
+    "HAIP §9.4",
+    "RFC7515 §7.2.1"
+   ],
+   "insa": {
+    "imzalar": [
+     {
+      "sira": 0,
+      "alg": "ML-DSA-65",
+      "alg_sinifi": "pq",
+      "anahtar_rolu": "issuer/ML-DSA-65",
+      "kid": "IwjBAm8NcIKqmDrXCIh38jMlzcH8b87-G3qtObt2OHs",
+      "insa": "gecerli",
+      "ozgun_sira": 1
+     },
+     {
+      "sira": 1,
+      "alg": "ES256",
+      "alg_sinifi": "klasik",
+      "anahtar_rolu": "issuer/ES256",
+      "kid": "Dae-6PSSx7FfaEPNMopZGZ-wBvY8xkwyPQHmeHIgaUU",
+      "insa": "gecerli",
+      "ozgun_sira": 0
+     }
+    ],
+    "mr4": {
+     "kaynak_vektor": "VC07_GJ_ES256_MLDSA65",
+     "yeni_siradaki_ozgun_indeksler": [
+      1,
+      0
+     ],
+     "permutasyon": "ters",
+     "ifsalar_yeni_ilk_basliga_tasindi": true
+    }
+   },
+   "dogrulama_girdileri": {
+    "jwks": "anahtarlar/v1/acik-jwks.json",
+    "kid": [
+     "Dae-6PSSx7FfaEPNMopZGZ-wBvY8xkwyPQHmeHIgaUU",
+     "IwjBAm8NcIKqmDrXCIh38jMlzcH8b87-G3qtObt2OHs"
+    ],
+    "simdi": 1790003700,
+    "guven_capalari": [
+     "anahtarlar/v1/pki/root-ec.pem",
+     "anahtarlar/v1/pki/root-ml.pem"
+    ]
+   },
+   "b_pilot_esi": null,
+   "dcapi_protokol": null,
+   "ayna": "VC07_GJ_ES256_MLDSA65-SIRA-ters"
+  },
+  {
+   "id": "SYN-VC09_GJ_ES256_EdDSA",
+   "dosya": "SYN-VC/SYN-VC09_GJ_ES256_EdDSA.json",
+   "sha256": "66c7010fcf1518ffaa7532a36c3c3cbdeb5f4bbd02085e2bcc4e5863c362e664",
+   "bayt": 4356,
+   "aile": "SYN-VC",
+   "aciklama": "Conformance object (not in the battery). SD-JWT VC, JWS General JSON (RFC 9901 8.3), coklu ihracci imzasi: ES256 + EdDSA; ifsalar ilk korumasiz baslikta. SD-JWT VC -13'te JSON serilestirme ISTEGE BAGLI (3.2), -19'da ayrintilar kapsam disi (2.2).",
+   "artefakt": "sd-jwt-vc",
+   "serilestirme": "sd-jwt-general",
+   "kol": "kontrol-EdDSA",
+   "senaryo": "d",
+   "sdjwtvc_surum": [
+    "-13"
+   ],
+   "sinanan": {
+    "basamak": [
+     "L4"
+    ],
+    "plan_bayraklari": [],
+    "ek_etiketler": [
+     "coklu-imza"
+    ]
+   },
+   "dayanak": [
+    "RFC9901 §8.3",
+    "RFC9901 §8.1",
+    "SDJWTVC13 §3.2",
+    "SDJWTVC §2.2",
+    "HAIP §9.4",
+    "RFC7515 §7.2.1"
+   ],
+   "insa": {
+    "imzalar": [
+     {
+      "sira": 0,
+      "alg": "ES256",
+      "alg_sinifi": "klasik",
+      "anahtar_rolu": "issuer/ES256",
+      "kid": "Dae-6PSSx7FfaEPNMopZGZ-wBvY8xkwyPQHmeHIgaUU",
+      "insa": "gecerli"
+     },
+     {
+      "sira": 1,
+      "alg": "EdDSA",
+      "alg_sinifi": "klasik",
+      "anahtar_rolu": "issuer/EdDSA",
+      "kid": "Xs-nufJolGnijX_-1fWpt5C9pvH44duKX8YO0WJTsSs",
+      "insa": "gecerli"
+     }
+    ]
+   },
+   "dogrulama_girdileri": {
+    "jwks": "anahtarlar/v1/acik-jwks.json",
+    "kid": [
+     "Dae-6PSSx7FfaEPNMopZGZ-wBvY8xkwyPQHmeHIgaUU",
+     "Xs-nufJolGnijX_-1fWpt5C9pvH44duKX8YO0WJTsSs"
+    ],
+    "simdi": 1790003700,
+    "guven_capalari": [
+     "anahtarlar/v1/pki/root-ec.pem",
+     "anahtarlar/v1/pki/root-ml.pem"
+    ]
+   },
+   "b_pilot_esi": null,
+   "dcapi_protokol": null,
+   "ayna": "VC09_GJ_ES256_EdDSA"
+  },
+  {
+   "id": "SYN-VC09_GJ_ES256_EdDSA-ES384",
+   "dosya": "SYN-VC/SYN-VC09_GJ_ES256_EdDSA-ES384.json",
+   "sha256": "e1abedc425612a72e20d8cedff870f611c1817250989e8a93a06f8df563bec6c",
+   "bayt": 4406,
+   "aile": "SYN-VC",
+   "aciklama": "Conformance object (not in the battery). ES384 counterpart of v1.3 vector VC09_GJ_ES256_EdDSA (amendment 10): signatures labelled EdDSA are re-made with the issuer/ES384 key and label ES384; payload and all other signatures unchanged. Original description: SD-JWT VC, JWS General JSON (RFC 9901 8.3), coklu ihracci imzasi: ES256 + EdDSA; ifsalar ilk korumasiz baslikta. SD-JWT VC -13'te JSON serilestirme ISTEGE BAGLI (3.2), -19'da ayrintilar kapsam disi (2.2).",
+   "artefakt": "sd-jwt-vc",
+   "serilestirme": "sd-jwt-general",
+   "kol": "kontrol-ES384",
+   "senaryo": "d",
+   "sdjwtvc_surum": [
+    "-13"
+   ],
+   "sinanan": {
+    "basamak": [
+     "L4"
+    ],
+    "plan_bayraklari": [],
+    "ek_etiketler": [
+     "coklu-imza"
+    ]
+   },
+   "dayanak": [
+    "RFC9901 §8.3",
+    "RFC9901 §8.1",
+    "SDJWTVC13 §3.2",
+    "SDJWTVC §2.2",
+    "HAIP §9.4",
+    "RFC7515 §7.2.1"
+   ],
+   "insa": {
+    "imzalar": [
+     {
+      "sira": 0,
+      "alg": "ES256",
+      "alg_sinifi": "klasik",
+      "anahtar_rolu": "issuer/ES256",
+      "kid": "Dae-6PSSx7FfaEPNMopZGZ-wBvY8xkwyPQHmeHIgaUU",
+      "insa": "gecerli"
+     },
+     {
+      "sira": 1,
+      "alg": "ES384",
+      "alg_sinifi": "klasik",
+      "anahtar_rolu": "issuer/ES384",
+      "kid": "35xWV--z8WN_BPF0nuwviD5IQsv6e5m2FRdcmiB_Dok",
+      "insa": "gecerli"
+     }
+    ],
+    "v13_esi": "VC09_GJ_ES256_EdDSA"
+   },
+   "dogrulama_girdileri": {
+    "jwks": "anahtarlar/v1/acik-jwks.json",
+    "kid": [
+     "Dae-6PSSx7FfaEPNMopZGZ-wBvY8xkwyPQHmeHIgaUU",
+     "35xWV--z8WN_BPF0nuwviD5IQsv6e5m2FRdcmiB_Dok"
+    ],
+    "simdi": 1790003700,
+    "guven_capalari": [
+     "anahtarlar/v1/pki/root-ec.pem",
+     "anahtarlar/v1/pki/root-ml.pem"
+    ]
+   },
+   "b_pilot_esi": null,
+   "dcapi_protokol": null,
+   "ayna": "VC09_GJ_ES256_EdDSA-ES384"
+  },
+  {
+   "id": "SYN-VC09_GJ_ES256_EdDSA-SIRA-ters",
+   "dosya": "SYN-VC/SYN-VC09_GJ_ES256_EdDSA-SIRA-ters.json",
+   "sha256": "e6c6a2ba2c8098c40d160715a566689dc4a7112af43f1d41544a227ce666ceed",
+   "bayt": 4369,
+   "aile": "SYN-VC",
+   "aciklama": "Conformance object (not in the battery). MR4 esi (ÖK §2B m.8, §2C m.4): VC09_GJ_ES256_EdDSA vektorunun imza sirasi \"ters\" (yeni sira = ozgun indeksler [1, 0]; algler ['EdDSA', 'ES256']). Her imzanin korumali basligi ve imza baytlari ile yuk bayt-ayni; yalniz signatures dizisindeki sira degisti. SD-JWT: disclosures YENI ilk korumasiz baslikta (RFC 9901 §8.3); ifsa listesi ayni. Ozgun aciklama: SD-JWT VC, JWS General JSON (RFC 9901 8.3), coklu ihracci imzasi: ES256 + EdDSA; ifsalar ilk korumasiz baslikta. SD-JWT VC -13'te JSON serilestirme ISTEGE BAGLI (3.2), -19'da ayrintilar kapsam disi (2.2).",
+   "artefakt": "sd-jwt-vc",
+   "serilestirme": "sd-jwt-general",
+   "kol": "kontrol-EdDSA",
+   "senaryo": "d",
+   "sdjwtvc_surum": [
+    "-13"
+   ],
+   "sinanan": {
+    "basamak": [
+     "L4"
+    ],
+    "plan_bayraklari": [],
+    "ek_etiketler": [
+     "coklu-imza",
+     "MR4(imza-sirasi-permutasyonu)"
+    ]
+   },
+   "dayanak": [
+    "RFC9901 §8.3",
+    "RFC9901 §8.1",
+    "SDJWTVC13 §3.2",
+    "SDJWTVC §2.2",
+    "HAIP §9.4",
+    "RFC7515 §7.2.1"
+   ],
+   "insa": {
+    "imzalar": [
+     {
+      "sira": 0,
+      "alg": "EdDSA",
+      "alg_sinifi": "klasik",
+      "anahtar_rolu": "issuer/EdDSA",
+      "kid": "Xs-nufJolGnijX_-1fWpt5C9pvH44duKX8YO0WJTsSs",
+      "insa": "gecerli",
+      "ozgun_sira": 1
+     },
+     {
+      "sira": 1,
+      "alg": "ES256",
+      "alg_sinifi": "klasik",
+      "anahtar_rolu": "issuer/ES256",
+      "kid": "Dae-6PSSx7FfaEPNMopZGZ-wBvY8xkwyPQHmeHIgaUU",
+      "insa": "gecerli",
+      "ozgun_sira": 0
+     }
+    ],
+    "mr4": {
+     "kaynak_vektor": "VC09_GJ_ES256_EdDSA",
+     "yeni_siradaki_ozgun_indeksler": [
+      1,
+      0
+     ],
+     "permutasyon": "ters",
+     "ifsalar_yeni_ilk_basliga_tasindi": true
+    }
+   },
+   "dogrulama_girdileri": {
+    "jwks": "anahtarlar/v1/acik-jwks.json",
+    "kid": [
+     "Dae-6PSSx7FfaEPNMopZGZ-wBvY8xkwyPQHmeHIgaUU",
+     "Xs-nufJolGnijX_-1fWpt5C9pvH44duKX8YO0WJTsSs"
+    ],
+    "simdi": 1790003700,
+    "guven_capalari": [
+     "anahtarlar/v1/pki/root-ec.pem",
+     "anahtarlar/v1/pki/root-ml.pem"
+    ]
+   },
+   "b_pilot_esi": null,
+   "dcapi_protokol": null,
+   "ayna": "VC09_GJ_ES256_EdDSA-SIRA-ters"
+  },
+  {
+   "id": "SYN-VC09_GJ_ES256_EdDSA-SIRA-ters-ES384",
+   "dosya": "SYN-VC/SYN-VC09_GJ_ES256_EdDSA-SIRA-ters-ES384.json",
+   "sha256": "3080dd0d825a0c51ed57390592423f20ffed74ef0ceb16ce0330e6f4cdb75837",
+   "bayt": 4419,
+   "aile": "SYN-VC",
+   "aciklama": "Conformance object (not in the battery). ES384 counterpart of v1.3 vector VC09_GJ_ES256_EdDSA-SIRA-ters (amendment 10): signatures labelled EdDSA are re-made with the issuer/ES384 key and label ES384; payload and all other signatures unchanged. Original description: MR4 esi (ÖK §2B m.8, §2C m.4): VC09_GJ_ES256_EdDSA vektorunun imza sirasi \"ters\" (yeni sira = ozgun indeksler [1, 0]; algler ['EdDSA', 'ES256']). Her imzanin korumali basligi ve imza baytlari ile yuk bayt-ayni; yalniz signatures dizisindeki sira degisti. SD-JWT: disclosures YENI ilk korumasiz baslikta (RFC 9901 §8.3); ifsa listesi ayni. Ozgun aciklama: SD-JWT VC, JWS General JSON (RFC 9901 8.3), coklu ihracci imzasi: ES256 + EdDSA; ifsalar ilk korumasiz baslikta. SD-JWT VC -13'te JSON serilestirme ISTEGE BAGLI (3.2), -19'da ayrintilar kapsam disi (2.2).",
+   "artefakt": "sd-jwt-vc",
+   "serilestirme": "sd-jwt-general",
+   "kol": "kontrol-ES384",
+   "senaryo": "d",
+   "sdjwtvc_surum": [
+    "-13"
+   ],
+   "sinanan": {
+    "basamak": [
+     "L4"
+    ],
+    "plan_bayraklari": [],
+    "ek_etiketler": [
+     "coklu-imza",
+     "MR4(imza-sirasi-permutasyonu)"
+    ]
+   },
+   "dayanak": [
+    "RFC9901 §8.3",
+    "RFC9901 §8.1",
+    "SDJWTVC13 §3.2",
+    "SDJWTVC §2.2",
+    "HAIP §9.4",
+    "RFC7515 §7.2.1"
+   ],
+   "insa": {
+    "imzalar": [
+     {
+      "sira": 0,
+      "alg": "ES384",
+      "alg_sinifi": "klasik",
+      "anahtar_rolu": "issuer/ES384",
+      "kid": "35xWV--z8WN_BPF0nuwviD5IQsv6e5m2FRdcmiB_Dok",
+      "insa": "gecerli",
+      "ozgun_sira": 1
+     },
+     {
+      "sira": 1,
+      "alg": "ES256",
+      "alg_sinifi": "klasik",
+      "anahtar_rolu": "issuer/ES256",
+      "kid": "Dae-6PSSx7FfaEPNMopZGZ-wBvY8xkwyPQHmeHIgaUU",
+      "insa": "gecerli",
+      "ozgun_sira": 0
+     }
+    ],
+    "mr4": {
+     "kaynak_vektor": "VC09_GJ_ES256_EdDSA",
+     "yeni_siradaki_ozgun_indeksler": [
+      1,
+      0
+     ],
+     "permutasyon": "ters",
+     "ifsalar_yeni_ilk_basliga_tasindi": true
+    },
+    "v13_esi": "VC09_GJ_ES256_EdDSA-SIRA-ters"
+   },
+   "dogrulama_girdileri": {
+    "jwks": "anahtarlar/v1/acik-jwks.json",
+    "kid": [
+     "Dae-6PSSx7FfaEPNMopZGZ-wBvY8xkwyPQHmeHIgaUU",
+     "35xWV--z8WN_BPF0nuwviD5IQsv6e5m2FRdcmiB_Dok"
+    ],
+    "simdi": 1790003700,
+    "guven_capalari": [
+     "anahtarlar/v1/pki/root-ec.pem",
+     "anahtarlar/v1/pki/root-ml.pem"
+    ]
+   },
+   "b_pilot_esi": null,
+   "dcapi_protokol": null,
+   "ayna": "VC09_GJ_ES256_EdDSA-SIRA-ters-ES384"
+  },
+  {
+   "id": "SYN-VPLUS_ES256",
+   "dosya": "SYN-V/SYN-VPLUS_ES256.jws",
+   "sha256": "b6677a8253338d23a1aa5d2becbc13c4e6afcddba5d4e01c2dc68e5fe646b97f",
+   "bayt": 389,
+   "aile": "SYN-V",
+   "aciklama": "Conformance object (not in the battery). V+ adaptor gecerlilik kontrolu (ÖK §6.5 V+/V-, §4.15): tek imzali compact JWS, ES256, kid ile (ÖK §4.15: tek gecerli klasik imza); imza gecerli.",
+   "artefakt": "jws-cekirdek",
+   "serilestirme": "compact",
+   "kol": "ortak",
+   "senaryo": null,
+   "sdjwtvc_surum": null,
+   "sinanan": {
+    "basamak": [],
+    "plan_bayraklari": [],
+    "ek_etiketler": [
+     "V+",
+     "adaptor-gecerlilik-kontrolu"
+    ]
+   },
+   "dayanak": [
+    "RFC7515 §5.2",
+    "RFC7515 §4.1.1",
+    "RFC7518 §3.4"
+   ],
+   "insa": {
+    "imzalar": [
+     {
+      "sira": 0,
+      "alg": "ES256",
+      "alg_sinifi": "klasik",
+      "anahtar_rolu": "issuer/ES256",
+      "kid": "Dae-6PSSx7FfaEPNMopZGZ-wBvY8xkwyPQHmeHIgaUU",
+      "insa": "gecerli"
+     }
+    ]
+   },
+   "dogrulama_girdileri": {
+    "jwks": "anahtarlar/v1/acik-jwks.json",
+    "kid": [
+     "Dae-6PSSx7FfaEPNMopZGZ-wBvY8xkwyPQHmeHIgaUU"
+    ],
+    "jwk": {
+     "kid": "Dae-6PSSx7FfaEPNMopZGZ-wBvY8xkwyPQHmeHIgaUU",
+     "kty": "EC",
+     "crv": "P-256",
+     "x": "WEdKARmrQGoeQCvTppMa-QeJxcP9W6GHtKO2xfu2Z18",
+     "y": "zQ1fCB0Y3TG7sf8ThI_01uL7nKg42ZMe_AnjBExS2Ec"
+    },
+    "anahtar_yolu": "hedefin belgeli API'si (JWK/JWKS ya da dogrudan anahtar); ÖK §2D m.1",
+    "simdi": 1790003700
+   },
+   "b_pilot_esi": null,
+   "dcapi_protokol": null,
+   "ayna": "VPLUS_ES256"
+  },
+  {
+   "id": "SYN-VPLUS_EdDSA",
+   "dosya": "SYN-V/SYN-VPLUS_EdDSA.jws",
+   "sha256": "d65cfbfac0e9bf8ac3177361a9e32192f444b5b99d2b2eb0a5c6c8e0823b886f",
+   "bayt": 389,
+   "aile": "SYN-V",
+   "aciklama": "Conformance object (not in the battery). V+ adaptor gecerlilik kontrolu (ÖK §6.5 V+/V-, §4.15): tek imzali compact JWS, EdDSA, kid ile; imza gecerli.",
+   "artefakt": "jws-cekirdek",
+   "serilestirme": "compact",
+   "kol": "kontrol-EdDSA",
+   "senaryo": null,
+   "sdjwtvc_surum": null,
+   "sinanan": {
+    "basamak": [],
+    "plan_bayraklari": [],
+    "ek_etiketler": [
+     "V+",
+     "adaptor-gecerlilik-kontrolu"
+    ]
+   },
+   "dayanak": [
+    "RFC7515 §5.2",
+    "RFC7515 §4.1.1",
+    "RFC9864 §2.2"
+   ],
+   "insa": {
+    "imzalar": [
+     {
+      "sira": 0,
+      "alg": "EdDSA",
+      "alg_sinifi": "klasik",
+      "anahtar_rolu": "issuer/EdDSA",
+      "kid": "Xs-nufJolGnijX_-1fWpt5C9pvH44duKX8YO0WJTsSs",
+      "insa": "gecerli"
+     }
+    ]
+   },
+   "dogrulama_girdileri": {
+    "jwks": "anahtarlar/v1/acik-jwks.json",
+    "kid": [
+     "Xs-nufJolGnijX_-1fWpt5C9pvH44duKX8YO0WJTsSs"
+    ],
+    "jwk": {
+     "kid": "Xs-nufJolGnijX_-1fWpt5C9pvH44duKX8YO0WJTsSs",
+     "kty": "OKP",
+     "crv": "Ed25519",
+     "x": "FlV5aZJF3rS2JMn-S4BHm91tjXuqZEIoGnxeI9lJN0k"
+    },
+    "anahtar_yolu": "hedefin belgeli API'si (JWK/JWKS ya da dogrudan anahtar); ÖK §2D m.1",
+    "simdi": 1790003700
+   },
+   "b_pilot_esi": null,
+   "dcapi_protokol": null,
+   "ayna": "VPLUS_EdDSA"
+  },
+  {
+   "id": "SYN-VPLUS_EdDSA-ES384",
+   "dosya": "SYN-V/SYN-VPLUS_EdDSA-ES384.jws",
+   "sha256": "d28f21e630ba54c71bb35211c5644f7fe47f582a230b77d4bcb197b285de0164",
+   "bayt": 439,
+   "aile": "SYN-V",
+   "aciklama": "Conformance object (not in the battery). ES384 counterpart of v1.3 vector VPLUS_EdDSA (amendment 10): signatures labelled EdDSA are re-made with the issuer/ES384 key and label ES384; payload and all other signatures unchanged. Original description: V+ adaptor gecerlilik kontrolu (ÖK §6.5 V+/V-, §4.15): tek imzali compact JWS, EdDSA, kid ile; imza gecerli.",
+   "artefakt": "jws-cekirdek",
+   "serilestirme": "compact",
+   "kol": "kontrol-ES384",
+   "senaryo": null,
+   "sdjwtvc_surum": null,
+   "sinanan": {
+    "basamak": [],
+    "plan_bayraklari": [],
+    "ek_etiketler": [
+     "V+",
+     "adaptor-gecerlilik-kontrolu"
+    ]
+   },
+   "dayanak": [
+    "RFC7515 §5.2",
+    "RFC7515 §4.1.1",
+    "RFC9864 §2.2"
+   ],
+   "insa": {
+    "imzalar": [
+     {
+      "sira": 0,
+      "alg": "ES384",
+      "alg_sinifi": "klasik",
+      "anahtar_rolu": "issuer/ES384",
+      "kid": "35xWV--z8WN_BPF0nuwviD5IQsv6e5m2FRdcmiB_Dok",
+      "insa": "gecerli"
+     }
+    ],
+    "v13_esi": "VPLUS_EdDSA"
+   },
+   "dogrulama_girdileri": {
+    "jwks": "anahtarlar/v1/acik-jwks.json",
+    "kid": [
+     "35xWV--z8WN_BPF0nuwviD5IQsv6e5m2FRdcmiB_Dok"
+    ],
+    "jwk": {
+     "kid": "35xWV--z8WN_BPF0nuwviD5IQsv6e5m2FRdcmiB_Dok",
+     "kty": "EC",
+     "crv": "P-384",
+     "x": "NRWbxs87hXYnvtXynDM9dYSxxjkcG2zk8NI4skdcerGBaZCe4GD1nFQ3Gl5ugq32",
+     "y": "smCvaDO1B1GeK9oMJQJ68SxSL3yshE5q9Z0P6rZnsgDK3U4H8jZALM9rzkwidISk"
+    },
+    "anahtar_yolu": "hedefin belgeli API'si (JWK/JWKS ya da dogrudan anahtar); ÖK §2D m.1",
+    "simdi": 1790003700
+   },
+   "b_pilot_esi": null,
+   "dcapi_protokol": null,
+   "ayna": "VPLUS_EdDSA-ES384"
+  },
+  {
+   "id": "SYN-VPLUS_ML-DSA-65",
+   "dosya": "SYN-V/SYN-VPLUS_ML-DSA-65.jws",
+   "sha256": "460c3af82ac7f4ff46eb431fec9368d918a57ad411f8b81115158fda98a016e4",
+   "bayt": 4725,
+   "aile": "SYN-V",
+   "aciklama": "Conformance object (not in the battery). V+ adaptor gecerlilik kontrolu (ÖK §6.5 V+/V-, §4.15): tek imzali compact JWS, ML-DSA-65, kid ile; imza gecerli.",
+   "artefakt": "jws-cekirdek",
+   "serilestirme": "compact",
+   "kol": "tedavi-ML-DSA-65",
+   "senaryo": null,
+   "sdjwtvc_surum": null,
+   "sinanan": {
+    "basamak": [],
+    "plan_bayraklari": [],
+    "ek_etiketler": [
+     "V+",
+     "adaptor-gecerlilik-kontrolu"
+    ]
+   },
+   "dayanak": [
+    "RFC7515 §5.2",
+    "RFC7515 §4.1.1",
+    "RFC9964 §5"
+   ],
+   "insa": {
+    "imzalar": [
+     {
+      "sira": 0,
+      "alg": "ML-DSA-65",
+      "alg_sinifi": "pq",
+      "anahtar_rolu": "issuer/ML-DSA-65",
+      "kid": "IwjBAm8NcIKqmDrXCIh38jMlzcH8b87-G3qtObt2OHs",
+      "insa": "gecerli"
+     }
+    ]
+   },
+   "dogrulama_girdileri": {
+    "jwks": "anahtarlar/v1/acik-jwks.json",
+    "kid": [
+     "IwjBAm8NcIKqmDrXCIh38jMlzcH8b87-G3qtObt2OHs"
+    ],
+    "jwk": {
+     "kid": "IwjBAm8NcIKqmDrXCIh38jMlzcH8b87-G3qtObt2OHs",
+     "kty": "AKP",
+     "alg": "ML-DSA-65",
+     "pub": "k2INBiM0TVWDUeNaM7sPz7RoY-1GsE1NQ_3EfagLPzWLV4dRoGkBPPhcHMqbJR5VjuxjezN5Rz0LaolkA91TD9ou21nILcvHs-NjF4bazp_7CWwAOmx62wH6AcYYUaGgplkwW6SABIgVsy_FUbKAt4hdwObAVwvig_QDDuBKFY43KtRq9ibLYEE7rHTEgCEwEvqGRZgY0BeH0DsKerMNgy19oNKGJICv0uvqvaV24V9e3ykG-XoggyFZfkNFb4qa44p1EjNE-lh7rWuLo8yUPKjBFooAyXhDTTw29LpFU0OJBasHYB43CT8l_u5xQ83dhIUzDLHlkq-ku0gt3xmNqdCvZbBLTO17c6ThWxSO5LARUn7W_d0g7fdNbU3B0jHDu3OOkeplCxWAmXSiW2iS1p8pXctpTeYaFHSNJigxblg8K3asld9bmb_cRsA0XKqh0B52JR2rV2ysWBa2Mx8chQ0hfSbBfC1LoqzjpvuuqbuNZLL4JZUwXqHrCGARsN6kkKz_GJJfkPkYYFUk6yaLTfpMOoKaLJL14rOGPjZO19TXxtiqRoP4yUD7SQ9d2J2csbbIHaCKomPPTN3a7Y9iOINWK4skik6yQCubCQrVUFT_Ki0xBXctWcn9SFIrdPWZX7ht2ON5I-e2wd9V7SxrgO9fi0qOiihtd37_3p1Rcd6ApDY2VP_KKKxXS4jc54jGJ4pvYFcxVgPXAZU0IHui_OOegT7FWBDTWDvYKCiLH7VYCESo__Qlh0SW-C_qkZI09VfUg_PH-SFRGS53_IUqxJ7O5Pq0my2QkbmUt8yMnJXyk8r8wvIf995C5nhyEpB0D9Ij56W-6EqGzy4JLMpVzsvjhCez0edvynsK6TPRQAoNoeAfj6Xe-ii5ef2BplgehltBNClFGVpMhhXeTi8BJjhx6AIPkqHBS_aClvx9AumcKJp_tArD04vYRO-ECtj5qqIo9e2DbWP3ldAhwjD28eRUFJIoshItb1LXc2xnE7YJFIwvBKD6ykLFqulQt6s-HYb4WqATkmKLTJnHcXOFVm9hSN1QkGX1_DY8mbqCXw59O9TkMqJ-7Muhrrfdg6xSm3P6-hwsFa6ThceWaMM-jJU29oFbSy6rN3r3ugUSvsayyed4IosDefVHV1THbUgHmNbotXxlWKY_F5CfbM23VcfEz8VhzyWeWOZZu2UfItSgFmd97nJ1gwoCc4eKtiGBn_VjvqDWFcD8HNaOdE5Cvl5jhtjEZONIgTJVVRK3GHeRUY7OVjVB90AN2zNafNnqz71VGYl2ADZYwcDkjaf79vMA4BfdfggPM1QHP0sFhpSxqH5whugV_wBATHCBH9DgTuNKGVkQgVtNQDxOmlg3cvjGencV2xmCuehK9usqnxfW2uocHABIukiIiK0Vyh8mKJlREUbQTrxhQogdrX6y4pYXmRd13mn0AEqczUsQb7KvAfxlDOJq_EjxikWbtanBQ-BWLtYSnY3NqVg9rDDJe7u9_-JHXbIbewi3eXZ7b69FfM7KOZpTQPvoTuNQVC4CLirAW123u3W_zyt85Wx7Ta17YrnbHJWzc-yHXhBgu1lRPO5VreHMxWZkwlZ5oelRx44GDi_DoC-V-gwL7hxHCHNs2WF67jyr0GkNH1ZUpVusrqjJ8y_v_Al7yCtCvBaoq7-2D38Hxh9oys2FF--RRJwJodv-mT0cmO-C3EAt088oTwVf8IPpN3mSBs8zBEwzBXKg1RaOXObJY2IMQABEUldipxH0BgpB47ov45kkd64roOvAth0O1vynl6eLRoCi6RGnX8Mn89nv1yOEoCyKkEHETQz_KiUe_V75Ogo8xBWK4FBCvqmCcgRp6WIKJBANizBJo7Axw1-UpO9ptR71iSzjkoj9lokoyeO6SZfaqEQ06STQ8dKJWh9-5uwEX5o_RBl6z2u5qbCXuGFOjDnpn7HDPQypWR7YH6BCSN8YPhDs9Th6N_j16CqOMFN0ITAVcHTN4XzpUoaKM4ZR0Q0qIU7sJqNl5I9ZMEm05FOOLLtSq9jNZir2rtnAIHL6gxZkHMBtfiaVU1y57V3tkqSY0gkjXdl5mTtHMazTIXlGgVPFxi_spP5IDw-K7psPW0AinQgX10CGlmRW_lTJytb9ymuv7l832k7ztX_U2JQQ2bCbJmzGvjh0hDNqC77juBiJAQxkDXBcWi6CvSX6bTFBOF6R1c4TroC0eQIsP5HzjMnfmchYRC0Rixmls-Q9TYa2Ns3snzEjK0bUkKP9gpPz0PfrEjM5kB8vBA6qs9f1BeBhHPxiALVHkRr9EaEWRDWxjAQrRx1RkuVYtDpeRBWlNbdlNhSuXybaI7LOpp2-dHOwXtj_gmPP5NDwgI10TizN1MRohOUlZ3ZTwATILQblogLPQNa8Quxfgod-l6mWClkApcGKrWVLJAc04YaPzmog-VjSlJrVA3NswAMozG8pZg3iFL8QWYndKKc65veUSyn8r30HDC182VUHDgrf8RwUc5h1Ptfu-02j6gzSS4wzIHbN8pWioRLHzKGlPkvWFaX2_iZ7I1Ix9ZJNTlT7-UpIml78C0VRVXBJfCdyZ8zJ8ENw_kzIIjHeFizq3qBN1K4"
+    },
+    "anahtar_yolu": "hedefin belgeli API'si (JWK/JWKS ya da dogrudan anahtar); ÖK §2D m.1",
+    "simdi": 1790003700
+   },
+   "b_pilot_esi": null,
+   "dcapi_protokol": null,
+   "ayna": "VPLUS_ML-DSA-65"
+  }
+ ]
+}

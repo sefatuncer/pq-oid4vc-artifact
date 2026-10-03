@@ -8,6 +8,7 @@ declare(strict_types=1);
 require '/opt/a/vendor/autoload.php';
 require __DIR__ . '/ortak.php';
 
+use CBOR\ByteStringObject;
 use CBOR\Decoder;
 use CBOR\ListObject;
 use CBOR\OtherObject\NullObject;
@@ -86,18 +87,32 @@ function kidHex(CoseHeaders $h): ?string
     return $k === null ? null : bin2hex((string) $k->normalize());
 }
 
+/** iss of the COSE payload (a CBOR map), read before verification only to select the issuer record of L4c. */
+function yukIss(string $ham): ?string
+{
+    try {
+        $yuk = Decoder::create()->decode(new StringStream($ham))->getPayload();
+        if (!($yuk instanceof ByteStringObject)) return null;
+        $harita = Decoder::create()->decode(new StringStream($yuk->getValue()))->normalize();
+        return is_array($harita) && is_string($harita['iss'] ?? null) ? $harita['iss'] : null;
+    } catch (\Throwable $e) {
+        return null;
+    }
+}
+
 function dogrula(array $is): array
 {
     if (!in_array($is['serilestirme'], DESTEKLI_BICIM, true)) return Ortak::b6(API);
     $dg = Ortak::girdi($is['vektor_id']);
-    $pol = Ortak::politika($is, KUTUPHANE_ALGLERI);
+    $ham = (string) file_get_contents(Ortak::vektorYolu($is['dosya']));
+    $pol = Ortak::politika($is, KUTUPHANE_ALGLERI, yukIss($ham));
     if ($pol['taban'] === 'L4-YOL') return Ortak::ifadeEdilemedi('x5c/x5chain yol sinifi politikasi (L4-YOL, B2) icin belgeli API yok', API);
     $izin = Ortak::tekImzaIzin($pol) ?? KUTUPHANE_ALGLERI;
     $m = Manager::create();
     foreach ($izin as $ad) if (($a = algoritma($ad)) !== null) $m->add($a);
     try {
         try {
-            $mesaj = Decoder::create()->decode(new StringStream((string) file_get_contents(Ortak::vektorYolu($is['dosya']))));
+            $mesaj = Decoder::create()->decode(new StringStream($ham));
         } catch (\Throwable $e) {
             throw new Red('ayristirma', 'CBOR: ' . $e->getMessage());
         }

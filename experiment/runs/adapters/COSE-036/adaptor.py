@@ -68,13 +68,29 @@ def vektor_yolu(d):
     return "/v/" + d
 
 
-def politika(isx):
+ESKI_ISS = "https://legacy-issuer.example"   # legacy issuer of L4c (battery v1.3)
+
+
+def yuk_iss(ham):
+    """iss of the COSE payload (a CBOR map), read before verification only to select the issuer record of L4c."""
+    try:
+        obj, _ = cbor(ham)
+        harita, _ = cbor(obj[2][2])
+        return harita.get("iss") if isinstance(harita, dict) else None
+    except Exception:
+        return None
+
+
+# L4 family: two issuer records (pre-registration §5.13, contract §5.3), selected by the iss of the object: legacy issuer
+# W = {A, X}, R = ∅; every other issuer (migrated) W = {A, X}, R = {X}. The selected record is enforced through the
+# library's algorithm pin ("L4c (consecutive)", decision D9).
+def politika(isx, iss=None):
     taban = isx["politika"].split("|")[0].split("@")[0]; x = X_KOL.get(isx["kol"])  # the suffixes only split the oracle
     if taban in ("GEC", "P0", "P1", "P2", "VARSAYILAN"): return taban, None, []      # no pin = library default
     if taban == "IZIN-A": return taban, ["ES256"], []
     if x is None: raise ValueError("kol icin X tanimsiz")
     if taban == "IZIN-AX": return taban, ["ES256", x], []
-    if taban in ("L4", "L4-S", "L4-Y", "L4-YOL"): return taban, ["ES256", x], [x]
+    if taban in ("L4", "L4-S", "L4-Y", "L4-YOL"): return taban, ["ES256", x], ([] if iss == ESKI_ISS else [x])
     raise ValueError("bilinmeyen politika " + isx["politika"])
 
 
@@ -94,7 +110,7 @@ def dogrula(isx):
     if seri not in ("COSE_Sign1", "COSE_Sign"): return b6()
     dg = girdi(isx["vektor_id"])
     ham = open(vektor_yolu(isx["dosya"]), "rb").read()
-    taban, w, r = politika(isx)
+    taban, w, r = politika(isx, yuk_iss(ham))
     if taban == "L4-YOL":
         return {"sonuc_ham": "ifade-edilemedi", "hata_sinifi": None, "hata_ozeti": "x5c/x5chain yol sinifi politikasi (L4-YOL, B2) icin belgeli API yok", "api_yolu": API}
     izin = None if w is None else (r if r else w)

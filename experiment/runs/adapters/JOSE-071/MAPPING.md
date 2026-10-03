@@ -16,6 +16,7 @@ lcobucci/jwt has no JWK parser and no global allow-list. Documented verification
 | GEC / P0 / P1 / VARSAYILAN | `SignedWithOneInSet` (ES256, ES384, EdDSA signers × the selected key) + `LooseValidAt(simdi)` |
 | IZIN-A / IZIN-AX | (Signer, key) for every alg in W; an alg without a signer in the library (ML-DSA-65, composite, the label `Ed25519`) cannot be added |
 | L4 / L4-S / L4-Y (compact) | effective allow-list R = {X}; if X has no signer, the constraint set stays empty and the library throws `NoConstraintsGiven` (→ `red/alg-desteklenmiyor`) |
+| L4 / L4-S / L4-Y, legacy issuer (payload `iss` = `https://legacy-issuer.example`) | legacy-issuer record of L4c: W = {A, X}, R = ∅, i.e. the allow-list of `IZIN-AX`. The record is selected by the `iss` of the object before the library call (pre-registration §5.13, contract §5.3: "L4c (consecutive)", decision D9) |
 | L4-YOL | X5C (SD-JWT) → B6; in a supported format `ifade-edilemedi` (no path-class API) |
 
 - **Key path (`dogrudan`):** the selected JWK is converted in the adapter into the form the library expects: EC → SubjectPublicKeyInfo PEM (RFC 5480 prefix + 04‖x‖y), OKP Ed25519 → raw 32 bytes (`Eddsa` expects sodium), `InMemory::plainText`. The same path in all arms.

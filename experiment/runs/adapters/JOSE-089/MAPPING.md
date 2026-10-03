@@ -17,6 +17,7 @@ The same as `JOSE-087/MAPPING.md` §1 (A/X; GEC = the battery algorithms the lib
 | GEC / P0 / P1 (single signature) | `JSON::JWT.decode(girdi, JSON::JWK.new(jwk), [:ES256, :ES384])` |
 | IZIN-A / IZIN-AX | `… [:ES256]` / `… [:ES256, X]` |
 | L4 / L4-S / L4-Y (single signature: compact or General JSON with one signature) | `… [X]` (effective allow-list = R) |
+| L4 / L4-S / L4-Y, legacy issuer (payload `iss` = `https://legacy-issuer.example`) | legacy-issuer record of L4c: W = {A, X}, R = ∅, i.e. the allow-list of `IZIN-AX`. The record is selected by the `iss` of the object before the library call (pre-registration §5.13, contract §5.3: "L4c (consecutive)", decision D9) |
 | P0 / P1 / L4 / L4-S / L4-Y — **multi-signed General JSON** | **`ifade-edilemedi`**: the library has no option for a multi-signature rule; `decode_json_serialized` verifies only `signatures.first` (`lib/json/jws.rb` L199–216, `evidence/api-scan.txt`). A loop over every signature would be custom code (B4, NOTES §4) |
 | VARSAYILAN | `JSON::JWT.decode(girdi, JSON::JWK.new(jwk))` (no algorithm list → `algorithms.blank?` accepts every alg; for a multi-signed object only the first signature) |
 | L4-YOL | X5C (SD-JWT) → B6; in a supported format `ifade-edilemedi` (no path-class API) |
