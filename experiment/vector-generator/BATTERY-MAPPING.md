@@ -2,7 +2,7 @@
 
 > **Üretildi:** `uretec/esleme.py` (belirlenimci). Kararlar, MR tanımları, L4c ve §2H maddeleri ön kayıt metninden **ayrıştırılarak** birebir alıntılanır; her vektör kimliği v1.3 manifestinde denetlenir.
 > - Ön kayıt: `00-on-kayit/ON-KAYIT-TASLAK.md` SHA-256 `87932cf00b74063066386b1ade066720c4ac645df3f1e75d895ab9bbc43e3f47`
-> - Batarya: `experiment/vector-generator/vektorler/v1.3/MANIFEST.json` SHA-256 `a81424470cf2b773c346795aa1b1880aecd841b77254ebb0c077432bc3c5390a` (200 vektör)
+> - Batarya: `experiment/vector-generator/vectors/v1.3/MANIFEST.json` SHA-256 `a81424470cf2b773c346795aa1b1880aecd841b77254ebb0c077432bc3c5390a` (200 vektör)
 >
 > **Vektörler ve manifest oracle kararı İÇERMEZ.** Bu dosya yalnız ÖK §6.5'in ve §2B m.6'nın kararlarını alıntılar; kararın hedef başına uygulanması oracle N-sürüm işidir (ÖK §4.20).
 
