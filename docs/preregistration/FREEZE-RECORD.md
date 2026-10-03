@@ -10,7 +10,7 @@ Written after the freeze (pre-registration Section 11, steps 1 and 8). Not part 
 | SHA-256 of the hash list | `283ac30b38b1e91e266c8a6b5c728ccedad01c8603c4ba04af33d16c8b16f487` |
 | Public commit | `bb0e66933f88afa90220f57ffe474d527d297916` (pull request #10; `29a835a79c9a34e47c86243f858a541925f6d193` before the history rewrite below, same tree) |
 | Tag | `prereg-v1.0`, annotated tag object `bdac1b9f94abd4b8183a8894405cedcb64b2d775`, tagger date 2026-10-03T10:15:13Z, pointing to the public commit (first tag object `20f1f616f127589d6055339710fbaf89ccb6365b`, moved with the history rewrite below) |
-| External timestamp | OpenTimestamps proof `docs/preregistration/FREEZE-SHA256SUMS.ots` of the SHA-256 of the hash list, submitted on 2026-10-03 to the public calendars a.pool.opentimestamps.org, b.pool.opentimestamps.org, a.pool.eternitywall.com and ots.btc.catallaxy.com (client opentimestamps-client 0.7.2). Only the digest left the machine. The proof is pending until the calendars commit to a Bitcoin block; it is then upgraded with `ots upgrade` in a later commit |
+| External timestamp | OpenTimestamps proof `docs/preregistration/FREEZE-SHA256SUMS.ots` of the SHA-256 of the hash list, submitted on 2026-10-03 to the public calendars a.pool.opentimestamps.org, b.pool.opentimestamps.org, a.pool.eternitywall.com and ots.btc.catallaxy.com (client opentimestamps-client 0.7.2). Only the digest left the machine. Upgraded on 2026-10-03 with `ots upgrade`: the proof contains a Bitcoin block header attestation for block 969719 (other calendars still pending) |
 
 **Verification.**
 
