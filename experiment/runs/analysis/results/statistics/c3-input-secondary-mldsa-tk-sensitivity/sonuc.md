@@ -1,0 +1,78 @@
+# C3 (H6) istatistik çıktısı
+
+- Araç: c3istat 1.0.0 · Python 3.11.16 · numpy 2.4.6 · scipy 1.17.1 · statsmodels 0.15.0
+- Girdi: `c3-input-secondary-mldsa-tk-sensitivity.json` · SHA-256 `34fedc5538ed8d940cbef81fdfe26f6de38b0c52cfa4d2812efdb2399a7139d8` · veri türü **olcum** · şema c3-istat-girdi/1.0
+- İki uygulama (kesin ↔ kütüphane): 97 uyumlu + 0 sınırda / 97; hata 0 → **GEÇERLİ**
+- UYARI: veri_turu = olcum: bu çalıştırma yalnız dondurulmuş ön kayıttan SONRA geçerlidir (ÖK §10)
+
+## H6 hükmü: **BELİRSİZ**
+
+c < X < u (ÖK §6.13). Birincil: belirsiz; duyarlılık (i): belirsiz.
+
+## T1 (birincil, Holm dışı) ve duyarlılıklar
+
+| Analiz | n_eff | X | c | u | P(X′ ≤ X) | P(X′ ≥ X) | Oran | Wilson %95 GA | Karar |
+|---|---|---|---|---|---|---|---|---|---|
+| Birincil | 30 | 19 | 10 | 20 | 0,950631 | 0,100244 | 0,6333 | [0,4551; 0,7813] | belirsiz |
+| (i) belirsiz = 1 | 30 | 19 | 10 | 20 | 0,950631 | 0,100244 | 0,6333 | [0,4551; 0,7813] | belirsiz |
+| (ii) belirsiz = 0 | 30 | 19 | 10 | 20 | 0,950631 | 0,100244 | 0,6333 | [0,4551; 0,7813] | belirsiz |
+| Pilot hariç | 23 | 13 | 7 | 16 | 0,797564 | 0,338820 | 0,5652 | [0,3681; 0,7437] | belirsiz |
+| Devralan hariç | 29 | 19 | 9 | 20 | 0,969286 | 0,068023 | 0,6552 | [0,4735; 0,8006] | belirsiz |
+| Adaptör geçersiz = 0 | 31 | 19 | 10 | 21 | 0,925194 | 0,140521 | 0,6129 | [0,4382; 0,7627] | belirsiz |
+
+## T2–T5 ve Holm (aile T2–T5, m = 4, α = 0,05)
+
+| Test | Veri | p (ham) | p (Holm) | Holm reddi | Etki büyüklüğü |
+|---|---|---|---|---|---|
+| T2 McNemar (TK1+TK2) | n_çift = 2; b = 0, c = 0 | 1,000000 (kesin 1) | 1,000000 | hayır | fark 0,0000 [−0,5734; 0,5734] (Newcombe 10, eşl.) |
+| T3 Fisher | SDJWT [0, 0] / JOSE [0, 2] | 1,000000 (kesin 1) | 1,000000 | hayır | OR tanımsız [0,0000; ∞] (koşullu kesin); fark — |
+| T4 Fisher | 8725bis_sonrasi=1 [9, 1] / 8725bis_sonrasi=0 [13, 6] | 0,366740 (kesin 3180/8671) | 1,000000 | hayır | OR 3,9804 [0,3750; 211,9191] (koşullu kesin); fark 0,2158 [−0,1289; 0,4545] (Newcombe 10) |
+| T5 binom (üst) | 6/6 | 0,015625 (kesin 1/64) | 0,062500 | hayır | oran 1,0000 [0,6097; 1,0000] |
+
+Devralan hariç T2 (tanımlayıcı, Holm dışı): n_çift = 2, b = 0, c = 0, p = 1,000000. TK3 (tanımlayıcı): {'a': 3, 'b': 1, 'c': 0, 'd': 0}.
+
+## Wilson %95 GA (ÖK §6.8)
+
+| Değişken | Kategori | x/n | Oran | GA |
+|---|---|---|---|---|
+| L düzeyi | L0 | 7/30 | 0,2333 | [0,1179; 0,4093] |
+| L düzeyi | L1 | 0/30 | 0,0000 | [0,0000; 0,1135] |
+| L düzeyi | L2 | 0/30 | 0,0000 | [0,0000; 0,1135] |
+| L düzeyi | L3 | 4/30 | 0,1333 | [0,0531; 0,2968] |
+| L düzeyi | L4 | 19/30 | 0,6333 | [0,4551; 0,7813] |
+| L düzeyi | L5 | 0/30 | 0,0000 | [0,0000; 0,1135] |
+| L ≥ k (ek) | L≥1 | 23/30 | 0,7667 | [0,5907; 0,8821] |
+| L ≥ k (ek) | L≥2 | 23/30 | 0,7667 | [0,5907; 0,8821] |
+| L ≥ k (ek) | L≥3 | 23/30 | 0,7667 | [0,5907; 0,8821] |
+| L ≥ k (ek) | L≥4 | 19/30 | 0,6333 | [0,4551; 0,7813] |
+| L ≥ k (ek) | L≥5 | 0/30 | 0,0000 | [0,0000; 0,1135] |
+| B1 | red | 0/2 | 0,0000 | [0,0000; 0,6576] |
+| B1 | yok_sayma | 2/2 | 1,0000 | [0,3424; 1,0000] |
+| B1 | dogrulama_duser | 0/2 | 0,0000 | [0,0000; 0,6576] |
+| B5 | en_az_biri_gecerli | 2/6 | 0,3333 | [0,0968; 0,7000] |
+| B5 | mevcut_tumu_gecerli | 1/6 | 0,1667 | [0,0301; 0,5635] |
+| B5 | gerekli_kume | 0/6 | 0,0000 | [0,0000; 0,3903] |
+| B5 | diger | 3/6 | 0,5000 | [0,1876; 0,8124] |
+| B2 | 1 | 2/12 | 0,1667 | [0,0470; 0,4480] |
+| B3 | 1 | 0/1 | 0,0000 | [0,0000; 0,7935] |
+| B4_ozel_kod | 1 | 2/30 | 0,0667 | [0,0185; 0,2132] |
+| B6 | 1 | 30/30 | 1,0000 | [0,8865; 1,0000] |
+| Y_L4 | L4m | 2/6 | 0,3333 | [0,0968; 0,7000] |
+| Y_L4 | L4c | 17/24 | 0,7083 | [0,5083; 0,8509] |
+
+## Küme bootstrap (ÖK §6.9; B = 10.000; tohum 20260927; yüzdelik tip 7)
+
+| Kapsam | k | Vaka | Oracle'a uymayan oran | %95 GA | Durum |
+|---|---|---|---|---|---|
+| tum | 30 | 102 | 0,3627 | [0,2293; 0,4771] | tamam |
+| K | 30 | 84 | 0,2500 | [0,1354; 0,3690] | tamam |
+| T | 6 | 18 | 0,8889 | [0,7778; 1,0000] | tamam |
+
+## Tanımlayıcılar
+
+- n = 31; n_eff (T1) = 30; adaptör geçersiz: SDJWT-021; Y_L4 belirsiz: yok
+- Tabaka: {'COSE': 5, 'JOSE': 18, 'SDJWT': 8}; TK: {'TK1': 6, 'TK3': 24}; L4 biçimi: {'L4c': 24, 'L4m': 6}; kontrol etiketi: {'ES384': 13, 'EdDSA': 17}
+- Belirsiz nedenleri: {'B1': {'uygulanamaz': 28}, 'B2': {'uygulanamaz': 18}, 'B3': {'uygulanamaz': 29}, 'B5': {'uygulanamaz': 24}, 'D_soy': {'uygulanamaz': 24}, 'F_K': {'uygulanamaz': 24}, 'F_T': {'uygulanamaz': 24}, 'surum_8725bis_sonrasi': {'uygulanamaz': 1}}; kararsız hücre (vaka): 0
+- B4 satır: {'n': 2, 'medyan': 8.0, 'min': 8, 'max': 8}; devralanlar: [{'hedef_id': 'SDJWT-001', 'devraldigi_hedef': 'COSE-001'}]; pilotlar: ['JOSE-009', 'JOSE-033', 'JOSE-034', 'JOSE-065', 'JOSE-083', 'JOSE-084', 'SDJWT-015']
+- REF (n dışı): yok
+
