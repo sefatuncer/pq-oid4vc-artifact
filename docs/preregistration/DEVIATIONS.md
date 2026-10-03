@@ -116,4 +116,11 @@ Decisions of the study lead after an internal methodological review. Recorded be
 
 ## Deviations after the freeze
 
-None recorded.
+### Deviation 1 (2026-10-03): incidental-rejection rule of Section 5.13
+- **Type:** major (it changes the result of the confirmatory test T1).
+- **When noticed:** 2026-10-03, after the measurement and after the registered analysis had been run and published (`experiment/runs/analysis/results/`), while checking why two L4c targets had Y_L4 = 0.
+- **What:** Section 5.13 (Amendment 11) codes a control-arm rejection as not supported when its error class shows that the control-label algorithm itself is not supported on that API path. The frozen analysis script, and the implementation bullet of the same section, apply this coding to every control-arm rejection with `hata_sinifi = alg-desteklenmiyor`, whatever algorithm was rejected. JOSE-034 (jose2go) and JOSE-055 (jjwt) implement their allowlist as a restricted algorithm registry and reject `VPLUS_ES256` under `L4` with "unknown/unsupported algorithm ES256" (class `alg-desteklenmiyor`), although both accept the same object under `GEC` and `IZIN-A`. The frozen script codes these policy rejections as not supported and sets Y_L4 = 0 for both targets.
+- **Reason for the deviation analysis:** the rule text restricts the coding to the control-label algorithm; the two rejections concern ES256.
+- **Analysis according to the original plan (registered, primary):** X = 19 of n_eff = 30, one-sided p (upper) = 0.100: H6 inconclusive (`experiment/runs/analysis/results/`).
+- **Deviation analysis:** the frozen script with the coding restricted to vectors signed only with the control-label algorithm (`experiment/runs/analysis/deviation-1/`): X = 21 of 30, p = 0.021: falsification region; only JOSE-034 and JOSE-055 change (Y_L4 0 to 1). Pilot targets excluded: 14 of 23, inconclusive.
+- **Effect on the conclusions:** H6 is not supported under either analysis. The registered result stays primary and the deviation analysis is reported beside it (decision of the corresponding author, human step İ7, 2026-10-03).
