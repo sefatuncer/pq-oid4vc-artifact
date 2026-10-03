@@ -301,6 +301,18 @@ goals), `tanik_sahte_artefaktlar` (witness: forgeable artefacts), `alt_cizge` (s
 | `asp_tahmini`, `tamarin_hukmu` | (technical gate) ASP prediction, Tamarin verdict |
 | `satir_id` | frame row id |
 
+**Discrepancy log** (`models/sampling/UYUSMAZLIK-KAYDI.csv`, pre-registration Section 5.18; header only at the freeze, one row per classified difference between the ASP prediction and the Tamarin verdict):
+
+| Column | Meaning |
+|---|---|
+| `satir_id`, `lemma`, `asp_tahmini`, `tamarin_hukmu` | frame row, lemma, ASP prediction, Tamarin verdict |
+| `sinif` | class of the difference: `hata-asp` (ASP error), `hata-tamarin` (Tamarin model error), `soyutlama-boslugu` (documented abstraction gap) |
+| `aciklama` | explanation of the difference |
+| `duzeltme` | correction (commit) for an error; empty for an abstraction gap |
+| `yeniden_kosum` | re-run of the affected instances and its result |
+| `kor_dogrulama` | result of the blind check by a second, independent derivation session |
+| `tarih` | date of the classification |
+
 ### 7.4 Known-answer tests (`models/known-answer-tests/`)
 
 | Column | Meaning |

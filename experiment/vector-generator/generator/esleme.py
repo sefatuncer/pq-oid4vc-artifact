@@ -323,7 +323,7 @@ def main(kok, onkayit, cikti=None):
     L.append('> **Üretildi:** `uretec/esleme.py` (belirlenimci). Kararlar, MR tanımları, L4c ve §2H maddeleri ön kayıt '
              'metninden **ayrıştırılarak** birebir alıntılanır; her vektör kimliği v1.3 manifestinde denetlenir.')
     L.append('> - Ön kayıt: `00-on-kayit/ON-KAYIT-TASLAK.md` SHA-256 `%s`' % hashlib.sha256(raw).hexdigest())
-    L.append('> - Batarya: `experiment/vector-generator/vektorler/v1.3/MANIFEST.json` SHA-256 `%s` (%d vektör)' %
+    L.append('> - Batarya: `experiment/vector-generator/vectors/v1.3/MANIFEST.json` SHA-256 `%s` (%d vektör)' %
              (hashlib.sha256(open(man_p, 'rb').read()).hexdigest(), len(ids)))
     L.append('>')
     L.append('> **Vektörler ve manifest oracle kararı İÇERMEZ.** Bu dosya yalnız ÖK §6.5\'in ve §2B m.6\'nın kararlarını '
