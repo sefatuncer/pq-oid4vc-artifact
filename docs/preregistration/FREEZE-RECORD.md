@@ -44,8 +44,9 @@ record of the public repository: pull request #10 ("Freeze the pre-registration 
 that the hash list existed no later than the time of Bitcoin block 969719 (block header time 2026-10-03T10:57:43Z,
 median time past 09:57:25Z). It therefore anchors the content of the hash list, but on its own it does not order the
 freeze before the measurement. The tagger date of the tag is set by the tagger and is not independent evidence. Before
-the freeze, only the vectors of the validity gates (pre-registration Sections 7.8 and 12.2 to 12.5) had been run on
-libraries.
+the freeze, only the vectors of the validity gates and, outside the battery, the conformance objects of Decision D9
+(acceptance rows only) had been run on libraries (pre-registration Sections 7.8 and 12.2 to 12.5, where Section 12.5
+records the resulting one-sided prior knowledge).
 
 **History rewrite of 2026-10-03 (privacy).** Recorded Docker image and container lists in the first 13 public
 commits named unrelated local images and containers of the build machine (removed from the current files on the same
