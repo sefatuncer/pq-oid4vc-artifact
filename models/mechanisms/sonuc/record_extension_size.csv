@@ -1,0 +1,7 @@
+format,placement,bytes,text
+trusted list (XML),bare record (as in ek_yuk.py),87,"<pq:Expectation Scope=""path"" Sunset=""2031-01-01T00:00:00Z"">pq_required</pq:Expectation>"
+trusted list (XML),record in a non-critical extension,135,"<tsl:Extension Critical=""false""><pq:Expectation Scope=""path"" Sunset=""2031-01-01T00:00:00Z"">pq_required</pq:Expectation></tsl:Extension>"
+trusted list (XML),record in a new TSPInformationExtensions container,196,"<tsl:TSPInformationExtensions><tsl:Extension Critical=""false""><pq:Expectation Scope=""path"" Sunset=""2031-01-01T00:00:00Z"">pq_required</pq:Expectation></tsl:Extension></tsl:TSPInformationExtensions>"
+LoTE (JSON),bare member (as in ek_yuk.py),87,",""pqExpectation"":{""state"":""pq_required"",""scope"":""path"",""sunset"":""2031-01-01T00:00:00Z""}"
+LoTE (JSON),record as a further element of TEInformationExtensions,89,",{""pqExpectation"":{""state"":""pq_required"",""scope"":""path"",""sunset"":""2031-01-01T00:00:00Z""}}"
+LoTE (JSON),record in a new TEInformationExtensions array,117,",""TEInformationExtensions"":[{""pqExpectation"":{""state"":""pq_required"",""scope"":""path"",""sunset"":""2031-01-01T00:00:00Z""}}]"

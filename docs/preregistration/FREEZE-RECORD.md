@@ -37,6 +37,16 @@ tag was set.
   followed by 7 appended R7hx lines): 4 of 4; `experiment/inventory/CRITERIA-DRAFT.md` translated and
   `experiment/statistics/SHA256SUMS` regenerated, as stated.
 
+**Timing evidence (added 2026-10-20).** The evidence that the freeze preceded the measurement is the server-side
+record of the public repository: pull request #10 ("Freeze the pre-registration v1.0") was merged at
+2026-10-03T10:14:42Z (merge commit `29a835a`, GitHub API field `merged_at`), and the measurement ran from
+2026-10-03T10:21:13Z to 10:31:59Z (`experiment/runs/outputs/measurement/README.md`). The OpenTimestamps proof shows
+that the hash list existed no later than the time of Bitcoin block 969719 (block header time 2026-10-03T10:57:43Z,
+median time past 09:57:25Z). It therefore anchors the content of the hash list, but on its own it does not order the
+freeze before the measurement. The tagger date of the tag is set by the tagger and is not independent evidence. Before
+the freeze, only the vectors of the validity gates (pre-registration Sections 7.8 and 12.2 to 12.5) had been run on
+libraries.
+
 **History rewrite of 2026-10-03 (privacy).** Recorded Docker image and container lists in the first 13 public
 commits named unrelated local images and containers of the build machine (removed from the current files on the same
 day, before the freeze). The public history was rewritten to remove those lines from these lists in every commit, and
