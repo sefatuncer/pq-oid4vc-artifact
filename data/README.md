@@ -8,6 +8,7 @@ modified; new data are added as new files.
 | `eu-lotl_seq394.xml` | Snapshot of the EU List of Trusted Lists (LOTL), sequence number 394, issued 2026-09-10T15:35:23Z. Third-party data published by the European Commission, kept unchanged |
 | `eu-lotl_seq394.xml.sha256` | SHA-256 of the snapshot: `24c47f10c2dee1821e811664978511f0ef2129c46644ff0c61b47311dd639616` (check with `sha256sum -c eu-lotl_seq394.xml.sha256`) |
 | `tl_pilot.json` | Statistics of the certificates found in the national trusted lists referenced by the snapshot (design-stage pilot P5) |
+| `tl_pilot.py` | Script that produced `tl_pilot.json` (run on 2026-09-23 in the folder that held the snapshot as `lotl.xml`; downloads the national lists, needs the `cryptography` package) |
 
 ## `tl_pilot.json`
 
