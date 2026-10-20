@@ -1,0 +1,4 @@
+list,variant,schema_errors
+IS.xml,record in a non-critical extension of every entry,0
+IS.xml,first extension without the required Critical attribute,1
+IS.xml,"record directly in TSPInformation, outside the extension container",1

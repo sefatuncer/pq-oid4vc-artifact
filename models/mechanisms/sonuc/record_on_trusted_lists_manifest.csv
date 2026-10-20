@@ -1,0 +1,32 @@
+territory,url,status,bytes,sha256,fetched_utc
+AT,https://www.signatur.rtr.at/vertrauensliste.xml,ok,502447,f91bbd67a2bf913dfea5f35e9d3bf9157a1bac7d3d2377558ebf071e251e557b,2026-10-20T21:10:02Z
+BE,https://tsl.belgium.be/tsl-be.xml,ok,732425,cabba95e3100a45edaf923b72d4fb6fa38a5b4bd5ab3a3555c2d79563e83396b,2026-10-20T21:10:04Z
+BG,https://crc.bg/files/_en/TSL_BG.xml,ok,627531,b7ac246a31e6d805f4830cb36449ed86cdecef328a66a37b9bca9c2969b6fd66,2026-10-20T21:10:05Z
+CY,https://dec.dmrid.gov.cy/dmrid/dec/ws_dec.nsf/all/5064247FF4FC3DCCC2258506002EEA17/$file/TSL-CY-sign.xml,failed: URLError,0,,2026-10-20T21:10:26Z
+CZ,https://tsl.gov.cz/publ/TSL_CZ.xtsl,ok,2630805,d491de75685929fec2274b2a259715013398b780a5eb2ea1c15f8776aaf8de95,2026-10-20T21:10:28Z
+DE,https://tl.bundesnetzagentur.de/TL-DE.xml,ok,5367120,bed0356c0edb30bfa177bcf9d67b9f8709fd930dc298b9881ffe75e27e6bc7ad,2026-10-20T21:10:31Z
+DK,https://www.digst.dk/TSLDK_v6xml,ok,92502,4fcbf5c7d4a3e6b62d54efd36123ae467dfd6f3dee6961a30a3df59e83c03326,2026-10-20T21:10:32Z
+EE,https://sr.riik.ee/tsl/estonian-tsl.xml,ok,412129,c6b7b872fadcafdd24ad772f7b6649c5c87e3aa27ea44952727ea73d2c435918,2026-10-20T21:10:33Z
+EL,https://www.eett.gr/tsl/tl-el.xml,ok,699955,6ca821dc9e6781f974fa90e11cf896166d6d64cdae8fd5579d305106001a0bb1,2026-10-20T21:10:35Z
+ES,https://tsl.digital.gob.es/TSL.xml,ok,3042285,19edfb5923cd27289ba78548255ca79ae5c9ae4b7dc8a5a334170d4a821a73cf,2026-10-20T21:10:42Z
+FI,https://dp.trustedlist.fi/fi-tl-v6.xml,ok,139398,1b5ba620df63a93a0810a0a6ccbdbfb55d34b40141a5dc8a6560a989db8b6f89,2026-10-20T21:10:43Z
+FR,https://messervices.cyber.gouv.fr/visas/tl-fr_v6.xml,ok,2581406,d584a732ff848ebdff0d04b439f82f6486009b224664dda119aff3d2a5560593,2026-10-20T21:10:46Z
+HR,https://gov.hr/UserDocsImages/Usluge%20povjerenja/Pouzdani_popis_RH.xml,ok,262417,1e51b2987fc41e54848e91c76cfc7017cd2ff0043b146b95efff018528468ae3,2026-10-20T21:10:47Z
+HU,https://www.nmhh.hu/tl/pub/HU_TL.xml,failed: URLError,0,,2026-10-20T21:10:49Z
+IE,https://eidas.gov.ie/Irelandtslsignedv6.xml,ok,115821,9e88d44c3f33013b47463b2e473f672f23e69b20ae93c770228b0635707d4c3c,2026-10-20T21:10:50Z
+IS,https://tsl.fjarskiptastofa.is/library/skrar/tsl/tsl.xml,ok,69409,ea3ff288d1e6c6668ea98bfc5b7c1a4e174aae855e093c0afc2648058d97d777,2026-10-20T21:10:50Z
+IT,https://eidas.agid.gov.it/TL/TSL-IT.xml,ok,2861752,4dc43dc5ee19c23d1b65262b8df65ac7c4f16f12727e59175fa76e092e0a6889,2026-10-20T21:10:51Z
+LI,https://www.llv.li/serviceportal2/amtsstellen/amt-fuer-kommunikation/trustedlist-li.xml,ok,106885,f406b0346fd742340f5173c9080aa1368534b7e5503de1697bb827a6baf7ca1f,2026-10-20T21:10:51Z
+LT,https://rrt.lt/static/files/LT-TSL.xml,ok,591522,c13de0bda8711b98b3b43c02a3f7daaed0598bf17a706b9a0b3df731384d85e5,2026-10-20T21:10:52Z
+LU,https://trusted-list.lu/tsl.xml,ok,212974,979384a04a416d6601c86fdd25a2921602a8e031be0f4df0a50d805f3913666c,2026-10-20T21:10:52Z
+LV,https://trustlist.gov.lv/tsl/latvian-tsl.xml,ok,260970,6a1fc36561fea8b94fa75274e6a35f7727ebc5309cd0c22878575c2102c10ced,2026-10-20T21:10:53Z
+MT,https://tsl.mca.org.mt/MT_TSL.xml,ok,104772,3a5dbe1fda2b805384f00357ebd544532f5d5fb5d122f2b41f4bc8c3d467a36e,2026-10-20T21:10:53Z
+NL,https://www.rdi.nl/site/binaries/content/assets/site-content/bestanden/current-tsl.xml,ok,778197,0a0cc4cbdec9e989318f2c5da634cb24cb69b349d57c39acc7e3804c62fb7979,2026-10-20T21:10:54Z
+NO,https://nkom.no/files/TL/NO_TL.xml,ok,305065,1f4c834cd55fb32482bdc68351f3614bb77d44767c2b8631dcefb6430eef2ce4,2026-10-20T21:10:54Z
+PL,https://www.nccert.pl/tsl/PL_TSL.xml,ok,876662,30dd1589f76467f10f15062866e576c214be9c4b0f62529eea0e56e5045cad76,2026-10-20T21:10:56Z
+PT,https://www.gns.gov.pt/media/TSLPT.xml,failed: URLError,0,,2026-10-20T21:10:58Z
+RO,https://trustedlist.adr.gov.ro/trustedlist.xml,ok,904782,233e4e07a479ed14ab3985c2d7b0ba519abbdc7ee194783229b180f49d5e10ff,2026-10-20T21:10:59Z
+SE,https://trustedlist.pts.se/tlv6/SE-TL.xml,ok,109601,63dcc74867f797af2f728bbef2aa73a05ea664e40f915298cbc20dec6d05756d,2026-10-20T21:10:59Z
+SI,https://www.tl.gov.si/SI_TL.xml,ok,692628,03cece6d16b87f9740a263bce140b6cfa5405f2cceabd1840c7a4a6f729e2a85,2026-10-20T21:11:00Z
+SK,http://tl.nbu.gov.sk/kca/tsl/tsl.xml,ok,1209956,48ca61b4a2197aaec0bc2d75bfb0ab5e5bfde07722ee4f7fd08aea837155311f,2026-10-20T21:11:02Z
+UK,https://ec.europa.eu/tools/lotl/Final_EU_TSL-UKsigned.xml,ok,115719,c6185978315d1470b023b59af02ab1a200e6e6bec8c60f949e9151f61b2583e5,2026-10-20T21:11:03Z
