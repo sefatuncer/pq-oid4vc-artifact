@@ -142,8 +142,11 @@ python experiment/oracle/merged/derive_v13.py            # rewrites decisions_v1
 cd experiment/statistics && python synthetic-tests/run_tests.py --cikti /tmp/c3istat-test
 ```
 
-The battery-mapping audit (`experiment/vector-generator/tests/t11_mapping_audit.py`) also needs
-the pre-registration document, which is not part of this release.
+The frozen pre-registration is in [`docs/preregistration/`](docs/preregistration/)
+(`PREREGISTRATION-v1.0.md`, with the freeze record, the hash list and its OpenTimestamps proof).
+The battery-mapping audit (`experiment/vector-generator/tests/t11_mapping_audit.py`) checks the
+mapping against the section numbers of the Turkish source draft v0.11 from which v1.0 was
+translated. That draft is not part of this release, so the audit cannot be rerun from it.
 
 ## Language, names and integrity
 
