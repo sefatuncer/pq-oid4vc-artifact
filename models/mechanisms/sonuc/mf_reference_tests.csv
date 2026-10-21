@@ -1,0 +1,29 @@
+case,scenario,chain,expected,full_rule,reason,list_used,declared_checks,with_declared_checks_off,single_checks_admitting,without_mf,as_expected
+C01,version 2 retrieved at T2,A classical,accept,accept,state none,retrieved list,,,,accept,yes
+C02,version 2 retrieved at T2,B Q-clean,accept,accept,Q-clean path,retrieved list,,,,accept,yes
+C03,version 2 retrieved at T2,B classical,reject,reject,classical leaf key,retrieved list,,,,accept,yes
+C04,version 2 retrieved at T2,B PQ leaf under classical intermediate,reject,reject,classical edge below the anchor,retrieved list,path,accept,path,accept,yes
+C05,version 2 retrieved at T2,B PQ path under classical anchor,reject,reject,classical anchor edge,retrieved list,anchor,accept,anchor,accept,yes
+C06,version 2 retrieved at T2,C bound key,accept,accept,key scope met,retrieved list,,,,accept,yes
+C07,version 2 retrieved at T2,C other PQ key,reject,reject,not the bound key,retrieved list,key,accept,key,accept,yes
+C08,version 2 retrieved at T2,B name under A anchor,reject,reject,classical leaf key,retrieved list,binding,accept,binding,accept,yes
+C09,version 2 retrieved at T2,E name under shared anchor,reject,reject,classical leaf key,retrieved list,strictest,accept,strictest,accept,yes
+C10,version 2 retrieved at T2,D classical,reject,reject,classical leaf key,retrieved list,,,,accept,yes
+C11,version 2 retrieved at T2,G classical,reject,reject,classical leaf key,retrieved list,unknown,accept,unknown,accept,yes
+C12,version 2 retrieved at T2,F classical,accept,accept,state none,retrieved list,,,,accept,yes
+C13,version 2 retrieved at T2,X classical,reject,reject,no listed anchor validates the path,retrieved list,,,,reject,yes
+C14,"version 2 processed, then version 1 served at T2",B classical,reject,reject,classical leaf key,held copy,currency+stored,accept,,accept,yes
+C15,version 1 retrieved at T2 by a verifier that has not seen version 2,B classical,accept,accept,state none,retrieved list,,,,accept,yes
+C16,version 1 retrieved at T3 by a verifier that has not seen version 2,B classical,reject,reject,classical leaf key,retrieved list,sunset,accept,sunset,accept,yes
+C17,"version 2 processed, list cache cleared, version 1 installed, stored state kept, T2",B classical,reject,reject,classical leaf key,held copy,stored,accept,stored,accept,yes
+C18,version 1 installed and held at T4,F classical,reject,reject,classical leaf key,held copy,sunset,accept,sunset,accept,yes
+C19,version 2 retrieved at T2,B PQ leaf from an unlisted key with the name of the B anchor,reject,reject,no listed anchor validates the path,retrieved list,,,,reject,yes
+C20,"version 2 processed, then version 1 served at T2B",H classical,reject,reject,classical leaf key,held copy,currency,accept,currency sunset,accept,yes
+C21,"forged version 3 signed with an unpinned ML-DSA key, retrieved at T2",B classical,reject,reject,no authentic list,held copy,,,,reject,yes
+C22,"forged version 3 signed with the pinned ECDSA key of the operator, T2",B classical,reject,reject,no authentic list,held copy,carrier,accept,carrier,accept,yes
+C23,version 2 retrieved at T2,subscriber of A classical,accept,accept,state none,retrieved list,,,,accept,yes
+C24,version 2 retrieved at T2,subscriber of B under A anchor,accept,accept,state none,retrieved list,,,,accept,yes
+C25,"version 2 processed, then version 4 without B retrieved at T2B",B name under A anchor,reject,reject,classical leaf key,retrieved list,stored,accept,stored,accept,yes
+C26,version 2 retrieved at T2,B in the common name only under A anchor,reject,reject,classical leaf key,retrieved list,binding,accept,binding,accept,yes
+C27,version 2 retrieved at T2,B in another spelling under A anchor,reject,reject,classical leaf key,retrieved list,binding,accept,binding,accept,yes
+C28,version 2 retrieved at T2,B in a subject alternative name only under A anchor,accept,accept,state none,retrieved list,,,,accept,yes

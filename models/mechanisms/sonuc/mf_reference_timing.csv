@@ -1,0 +1,8 @@
+measure,value,unit,n
+OpenSSL,OpenSSL 3.5.6 7 Apr 2026 (Library: OpenSSL 3.5.6 7 Apr 2026),,1
+"decision on the test list with the list adopted and path validation cached, median",21.7,us,38000
+parsing the test list version 2,1.43,ms,100
+size of the test list version 2,31970,bytes,1
+size of the detached ML-DSA-65 signature of version 2,3309,bytes,1
+schema errors of the test lists (versions 1 to 4),"0, 0, 0, 0",,4
+"lookup of a chain that matches no entry in the largest national list (DE, 979 certificates), median",207.7,us,2000

@@ -38,6 +38,10 @@ paper's C2 section.
 | `betik/karsilastir.py` | Expected vs. observed → `sonuc/karsilastirma.csv`, `beklenmeyen.csv`, `izler.csv`, `varyant_ozeti.csv` |
 | `betik/tablolar.py` | Result tables → `sonuc/tablolar.md` (generated, Turkish) |
 | `betik/ek_yuk.py` | Deterministic overhead per mechanism (bytes on the wire, extra fetches) from encoding rules → `sonuc/ek_yuk.csv` |
+| `betik/record_extension_size.py` | Size of the M-f record inside the extension containers of a trusted list (TS 119 612) and a LoTE (TS 119 602) → `sonuc/record_extension_size.csv` |
+| `betik/record_on_trusted_lists.py` | Inserts the record into every TSP entry of the national trusted lists of the LOTL snapshot and checks them against the TS 119 612 V2.4.1 schema → `sonuc/record_on_trusted_lists*.csv` |
+| `betik/mf_reference_verifier.py` | Reference implementation of the M-f verification rule for one trusted list, with ten checks that can be switched off one by one and path validation by OpenSSL 3.5 or later |
+| `betik/mf_reference_tests.py` | Test cases of the reference verifier on schema-valid test lists with detached signatures, each run with the full rule and without M-f, and each rejected case with every check switched off in turn; decision time; the record read back from the national lists and the names of their providers in their certificates → `sonuc/mf_reference_tests.csv`, `mf_reference_checks.csv`, `mf_reference_timing.csv`, `mf_reference_national.csv` |
 | `sonuc/ozet.csv`, `sonuc/ham/`, `sonuc/json/`, `sonuc/calistir_log.txt` | Results per lemma, raw Tamarin output, traces, run log |
 | `sonuc/kosum_tamamla_0110.txt`, `sonuc/yeniden_kosum_0110/` | Completion of the interrupted run on 01.10.2026 and the independent re-run of the two unexpected verdicts |
 | `kesif/` | Exploratory runs outside the pre-registration (see [`kesif/README.md`](kesif/README.md)) |
@@ -55,10 +59,21 @@ bash models/mechanisms/betik/calistir.sh <variant>    # one row
 python models/mechanisms/betik/karsilastir.py
 python models/mechanisms/betik/tablolar.py
 python models/mechanisms/betik/ek_yuk.py
+python models/mechanisms/betik/record_extension_size.py
+python models/mechanisms/betik/record_on_trusted_lists.py fetch <list_dir>
+python models/mechanisms/betik/record_on_trusted_lists.py measure <list_dir> <schema_dir>
+python models/mechanisms/betik/mf_reference_tests.py <schema_dir> <list_dir>
 ```
 
-Every call: `--rm --memory=12g --memory-swap=12g`, 600 s timeout, `--derivcheck-timeout=60`, ladder
+Every Tamarin call: `--rm --memory=12g --memory-swap=12g`, 600 s timeout, `--derivcheck-timeout=60`, ladder
 rungs 1 → 3 → 5 → 6; a run with a well-formedness warning is invalid.
+
+The last two commands need the schema directory described in `record_on_trusted_lists.py` and the Python package
+`xmlschema`. `mf_reference_tests.py` needs OpenSSL 3.5 or later (ML-DSA) on the path or in the variable `OPENSSL`
+and generates a fresh test PKI on every run, so the decisions are reproducible but keys, list sizes and timings are
+not. The record scripts and the reference verifier were added after the formal results and are not pre-registered.
+The reference verifier implements the M-f rule. It is not one of the reference verifiers of Section 7.4 of the
+pre-registration, which Amendment 11 removed.
 
 ## Results (from `sonuc/karsilastirma.csv` and `STEP07-REPORT.md`)
 
@@ -76,6 +91,21 @@ rungs 1 → 3 → 5 → 6; a run with a well-formedness warning is invalid.
   root + post-quantum intermediate); scope `anahtar`: path forms falsified; scope `yaprak_alg`: G1
   falsified.
 - M-h (reddy, vicente) on a classical chain: all three G5 forms falsified.
+- Record on the national trusted lists (`sonuc/record_on_trusted_lists.csv`): inserted into all 381 TSP entries
+  of the 28 retrievable lists, every list still valid under the schema; 69,644 added bytes (0.26 %).
+- Reference verifier (`sonuc/mf_reference_*.csv`): 28 of 28 test cases decided as the rule prescribes, on four
+  test lists without schema errors (two versions, a forged one and one without provider B). A verifier that
+  checks the list signature and the path but has no M-f checks accepts 17 of the 20 rejected cases (in two no
+  listed anchor validates the path, and one list is not signed with the pinned key). Switching off any one of the
+  ten checks admits at least one case (`sonuc/mf_reference_checks.csv`). Case C20 is admitted when either the
+  currency check or the sunset is switched off, and case C14 only when both the currency check and the stored
+  state are switched off. Cases C24 and C28 are accepted by design and show the limits of the binding (an issuer
+  that is not listed, a name only in a subject alternative name). In one run, a decision took a median of 21.7 µs
+  on the test list and a lookup that compares a chain with all 979 certificates of the German list 0.21 ms. The
+  record is read back from all 381 TSP entries of the 28 national lists, 378 of which carry a registration
+  identifier in the trade name. 4,445 of the 4,682 certificates in their service digital identities name their own
+  provider in a form that the verifier recognises, and 369 of the 372 providers with certificates are named in at
+  least one of them.
 
 ## Turkish names in this folder
 

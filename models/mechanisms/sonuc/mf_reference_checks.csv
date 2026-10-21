@@ -1,0 +1,11 @@
+check,cases_admitted_when_only_this_check_is_off
+carrier,C22
+currency,C20
+sunset,C16 C18 C20
+stored,C17 C25
+binding,C08 C26 C27
+strictest,C09
+unknown,C11
+path,C04
+anchor,C05
+key,C07
