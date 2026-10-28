@@ -1,0 +1,263 @@
+{
+ "k1_birincile_gore": {
+  "fark_hucre": 297,
+  "hedef": {
+   "g1": 81,
+   "g2": 81,
+   "g3": 135
+  },
+  "ornek": [
+   [
+    "g1",
+    "f1",
+    "hizli",
+    "onbellek",
+    "p3"
+   ],
+   [
+    "g1",
+    "f1",
+    "hizli",
+    "onbellek",
+    "p4"
+   ],
+   [
+    "g1",
+    "f1",
+    "hizli",
+    "sabit",
+    "p3"
+   ]
+  ],
+  "sat_unsat": 0,
+  "unsat_sat": 108
+ },
+ "k2_birincile_gore": {
+  "fark_hucre": 162,
+  "hedef": {
+   "g1": 48,
+   "g2": 48,
+   "g3": 66
+  },
+  "ornek": [
+   [
+    "g1",
+    "f1",
+    "hizli",
+    "onbellek",
+    "p4"
+   ],
+   [
+    "g1",
+    "f1",
+    "hizli",
+    "sabit",
+    "p4"
+   ],
+   [
+    "g1",
+    "f1",
+    "hizli",
+    "taze",
+    "p4"
+   ]
+  ],
+  "sat_unsat": 0,
+  "unsat_sat": 18
+ },
+ "k2_k1e_gore": {
+  "fark_hucre": 297,
+  "hedef": {
+   "g1": 81,
+   "g2": 81,
+   "g3": 135
+  },
+  "ornek": [
+   [
+    "g1",
+    "f1",
+    "hizli",
+    "onbellek",
+    "p3"
+   ],
+   [
+    "g1",
+    "f1",
+    "hizli",
+    "onbellek",
+    "p4"
+   ],
+   [
+    "g1",
+    "f1",
+    "hizli",
+    "sabit",
+    "p3"
+   ]
+  ],
+  "sat_unsat": 90,
+  "unsat_sat": 0
+ },
+ "k2_k3e_gore": {
+  "fark_hucre": 162,
+  "hedef": {
+   "g1": 48,
+   "g2": 48,
+   "g3": 66
+  },
+  "ornek": [
+   [
+    "g1",
+    "f1",
+    "hizli",
+    "onbellek",
+    "p4"
+   ],
+   [
+    "g1",
+    "f1",
+    "hizli",
+    "sabit",
+    "p4"
+   ],
+   [
+    "g1",
+    "f1",
+    "hizli",
+    "taze",
+    "p4"
+   ]
+  ],
+  "sat_unsat": 0,
+  "unsat_sat": 18
+ },
+ "k3_birincile_gore": {
+  "fark_hucre": 9,
+  "hedef": {
+   "g1": 3,
+   "g2": 3,
+   "g3": 3
+  },
+  "ornek": [
+   [
+    "g1",
+    "f1",
+    "hizli",
+    "sabit",
+    "p4"
+   ],
+   [
+    "g1",
+    "f1",
+    "orta",
+    "sabit",
+    "p4"
+   ],
+   [
+    "g1",
+    "f1",
+    "yavas",
+    "sabit",
+    "p4"
+   ]
+  ],
+  "sat_unsat": 0,
+  "unsat_sat": 0
+ },
+ "ozet": {
+  "duvar_s": 26.52,
+  "en_uzun": {
+   "id": "k2|tum|f2|hizli|taze|p2",
+   "s": 0.6835
+  },
+  "grup": "k2",
+  "sat": 207,
+  "senaryo_sayisi": [
+   [
+    6,
+    36
+   ],
+   [
+    10,
+    9
+   ],
+   [
+    15,
+    36
+   ],
+   [
+    21,
+    9
+   ],
+   [
+    28,
+    36
+   ],
+   [
+    36,
+    81
+   ],
+   [
+    45,
+    54
+   ],
+   [
+    55,
+    81
+   ],
+   [
+    66,
+    18
+   ],
+   [
+    78,
+    36
+   ],
+   [
+    91,
+    45
+   ],
+   [
+    105,
+    9
+   ],
+   [
+    153,
+    72
+   ],
+   [
+    171,
+    18
+   ],
+   [
+    190,
+    72
+   ],
+   [
+    210,
+    18
+   ],
+   [
+    378,
+    36
+   ],
+   [
+    406,
+    9
+   ]
+  ],
+  "sorgu": 675,
+  "toplam_asgari_kume": 315,
+  "unsat": 468
+ },
+ "regresyon_k1_k3": {
+  "k1": {
+   "farkli": 0,
+   "sorgu": 675
+  },
+  "k3": {
+   "farkli": 0,
+   "sorgu": 675
+  }
+ }
+}

@@ -125,3 +125,11 @@
 ## N15. Limitation: a single model author
 - ASP, z3 and the Jacobi evaluator came from the same work. The independence is at method and code level: z3 does not read the ASP core and uses CEGAR at finite k. The real independent verification is the Tamarin sampling of the technical gate.
 - **Proposed decision:** state this limitation explicitly in the technical-gate report.
+
+## N16. Exploratory run with k = 2 (added 2026-10-28)
+- Not part of the query catalogue of §2C. The paper reported k ∈ {1, 3} and stated that k = 2 had not been tested, so this run was added after all other results were known and is labelled exploratory in the paper (§10, supplementary S4).
+- Script `sorgular/k2.py`; outputs `sorgular/sonuc/k2.json` (all queries) and `sorgular/sonuc/analiz/k2.json` (summary). Changes to existing code: the value `k2` in `param_alan(k_sinir, ·)` (`olgular/parametreler.lp`) and in the k map of `senaryo_olgulari` (`sorgular/ortak.py`). Neither file is in the frozen hash list.
+- Regression check: the same code reran k1 and k3, and 675/675 queries of each reproduce the stored minimal-set families of the OAT group (0 differences).
+- Result against the primary configuration: 162 of 675 queries change, SAT→UNSAT 0, UNSAT→SAT 18 (G3 in Φ1/Φ2 under P3, all τ and anchors). In 135 queries, 45 for each of G1–G3, a01 (LOTL signer) leaves the required nodes. In the remaining 9 only the minimal sets change. By goal: G1 48, G2 48, G3 66.
+- The effect shrinks with the budget: 297 (k1), 162 (k2) and 9 (k3) changed queries.
+- Run in the `pq-a02-solver:1.0` container with 6 workers (wall time 26.5 s for the k2 queries).

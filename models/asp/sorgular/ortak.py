@@ -119,7 +119,7 @@ def senaryo_olgulari(prm, hedefler, dosyalar=None):
     ks = prm['kat']['k_sinir']
     if prm['kat']['saldirgan'] != 's2' or ks == 'sinirsiz':
         return '', None
-    k = {'k1': 1, 'k3': 3}[ks]
+    k = {'k1': 1, 'k2': 2, 'k3': 3}[ks]
     anah = ilgili_anahtarlar(prm, hedefler, dosyalar)
     boy = min(k, len(anah))
     parcalar = []

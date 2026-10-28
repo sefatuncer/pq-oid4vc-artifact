@@ -9,7 +9,7 @@
 
 % --- Saldırgan ve kırılma sınırı (ön kayıt §4.3; Ö8)
 param_alan(saldirgan,s1).  param_alan(saldirgan,s2).            % s1: Q-day öncesi ağ saldırganı; s2: CRQC(τ,k)
-param_alan(k_sinir,sinirsiz). param_alan(k_sinir,k1). param_alan(k_sinir,k3).
+param_alan(k_sinir,sinirsiz). param_alan(k_sinir,k1). param_alan(k_sinir,k2). param_alan(k_sinir,k3).
 % --- Faz Φ (ön kayıt §4.2; Ö10#1 onaylandı)
 param_alan(faz,f1). param_alan(faz,f2). param_alan(faz,f3).
 % --- Çıpa kipleri (§4.6) ve önbellek ufku

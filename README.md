@@ -107,7 +107,7 @@ experiment/inventory ──► experiment/environments ──► experiment/runs
 | Part of the paper | Folders |
 |---|---|
 | Specification analysis, channel classification and threat model | `spec-corpus/`, `traceability/`, `threat-model/`, `data/` |
-| C1 — proven abstraction: time- and channel-resolved minimal post-quantum sets (H0, H1, H2, H4, H5) | `models/asp/`, `models/tamarin/`, `models/sampling/`, `models/known-answer-tests/`, `models/comparison/` |
+| C1 — cross-checked abstraction: time- and channel-resolved minimal post-quantum sets (H0, H1, H2, H4, H5); the exploratory run with a budget of two broken keys is `models/asp/sorgular/k2.py` (DECISION-NOTES N16) | `models/asp/`, `models/tamarin/`, `models/sampling/`, `models/known-answer-tests/`, `models/comparison/` |
 | C2 — expectation conveyance: mechanism classes M-a … M-h and the proposed M-f (H3) | `models/mechanisms/`, rule schema R7 in `models/tamarin/` |
 | C3 — capability of JOSE, SD-JWT and COSE libraries, control vs. treatment arms (H6) | `experiment/` |
 | Validity: abstraction sampling, mutation scores, known-answer tests, N-version oracles | `models/sampling/`, `models/tamarin/`, `models/known-answer-tests/`, `experiment/oracle/` |

@@ -239,6 +239,7 @@ The regimes of R6 are symbolic; numerical reading: FAST τ ≤ token window; MED
 | Deviation | Changed cells (/675) | SAT→UNSAT | UNSAT→SAT | Goals |
 |---|---|---|---|---|
 | k1 | 297 | 0 | 108 | G1 81, G2 81, G3 135. With a single break a fetched artefact cannot be forged (signature + transport = 2 breaks): G1/G2 set {a03, a04, a07 (+a10)}, a01/a02 drop; **for G3 ∅ is enough** (the status token is fetched). UNSAT→SAT: Φ1/Φ2-P3 in G1/G2 (36), Φ1/Φ2-P0…P3 in G3 (72) |
+| k2 (exploratory, added 2026-10-28, not in the 46 deviations; DECISION-NOTES N16) | 162 | 0 | 18 | G1 48, G2 48, G3 66. UNSAT→SAT: G3 in Φ1/Φ2 under P3 (18). a01 leaves the required nodes in 135 queries (45 per G1–G3); in the other 9 only the minimal sets change. `analiz/k2.json` |
 | k3 | 9 | 0 | 0 | G1–G3, only pinned anchor + Φ1 + P4: a01 drops. Dropping the TL expectation via the LOTL needs 4 breaks: {a01_lotl, a13_lotl_kanal, alt(a02_tl), a13_webpki}. Verified in evaluation mode: against the k3 set these four keys together violate G1, none of the four triples does |
 | diger_ca_var (ca_baglama yok) | 189 | 189 | 0 | G1–G3 (fidelity cell: alternative classical CA path) |
 | guven_deposu_liste_bagli | 135 | 0 | 0 | G1–G3: a01 drops (anchor only in the OJEU-pinned PID LoTE; no national TL path) |
