@@ -25,3 +25,25 @@ Sensitivity analyses of the primary input: unstable cells as Y = 1 and as Y = 0 
 Y = 0 (19/31, inconclusive), delegating targets excluded (19/29, inconclusive), pilot targets excluded (13/23,
 inconclusive). Without SDJWT-002 (decision D1): 19/29, inconclusive; with delegating targets also excluded, 19/28,
 falsification region. Descriptive: Y_L4 = 1 in 17 of 24 L4c targets and in 2 of 6 L4m targets (COSE-014, JOSE-009).
+
+## Post-hoc descriptive intervals by stratum (2026-10-28)
+
+The frozen analysis reports Wilson intervals for the two L4 forms but not for the strata. After the review
+of the paper, `analysis/subgroup_wilson.py` computed them for the registered analysis and for deviation 1,
+with the Wilson function of the frozen statistics package (`c3istat.kesin.wilson`). The output is
+`subgroup-wilson.json`. These intervals are descriptive and were not pre-registered. The rows for the
+L4 forms and for all 30 targets reproduce the intervals of the frozen outputs.
+
+```
+cd experiment/runs
+python -I analysis/subgroup_wilson.py
+```
+
+| Group | Registered | Deviation 1 |
+|---|---|---|
+| all | 19/30, 45.5 % to 78.1 % | 21/30, 52.1 % to 83.3 % |
+| L4c | 17/24, 50.8 % to 85.1 % | 19/24, 59.5 % to 90.8 % |
+| L4m | 2/6, 9.7 % to 70.0 % | 2/6, 9.7 % to 70.0 % |
+| JOSE | 15/18, 60.8 % to 94.2 % | 17/18, 74.2 % to 99.0 % |
+| SD-JWT | 3/7, 15.8 % to 75.0 % | 3/7, 15.8 % to 75.0 % |
+| COSE | 1/5, 3.6 % to 62.4 % | 1/5, 3.6 % to 62.4 % |
