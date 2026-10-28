@@ -124,3 +124,19 @@ Decisions of the study lead after an internal methodological review. Recorded be
 - **Analysis according to the original plan (registered, primary):** X = 19 of n_eff = 30, one-sided p (upper) = 0.100: H6 inconclusive (`experiment/runs/analysis/results/`).
 - **Deviation analysis:** the frozen script with the coding restricted to vectors signed only with the control-label algorithm (`experiment/runs/analysis/deviation-1/`): X = 21 of 30, p = 0.021: falsification region; only JOSE-034 and JOSE-055 change (Y_L4 0 to 1). Pilot targets excluded: 14 of 23, inconclusive.
 - **Effect on the conclusions:** H6 is not supported under either analysis. The registered result stays primary and the deviation analysis is reported beside it (decision of the corresponding author, human step İ7, 2026-10-03).
+
+## Notes on the frozen text
+
+These notes correct or qualify statements of the frozen pre-registration that an internal review of the manuscript found inexact. They change no rule, analysis, verdict or result.
+
+### Note 1 (2026-10-28): numbering of the cited Bkakria theorem
+- **Type:** minor (citation in the frozen text).
+- **When noticed:** 2026-10-28, in an internal review of the manuscript.
+- **What:** Section 4.4 positions the impossibility half of H3 as an instance of "Bkakria (2026), Theorem 1". In arXiv:2608.30004v1 the introduction presents this result as the first theorem, but the body numbers it Theorem 3 ("Context omission"). Theorem 1 of the body is a conditional soundness bound.
+- **Effect:** none. The manuscript cites the work without a theorem number.
+
+### Note 2 (2026-10-28): scope of "each component is necessary" for H3
+- **Type:** minor (wording of a result statement in Section 12.1).
+- **When noticed:** 2026-10-28, in an internal review of the manuscript.
+- **What:** Section 12.1 records for H3 "(d) Each component is necessary." This holds for offline verification. Online, `A_online_no_monotone` verifies the migrated form and no-rollback without monotone state, and `A_online_no_sunset` verifies the migrated and timed forms without the sunset. With a pinned view, `A_pinned_min` verifies all three without both (Table S9 of the supplementary material).
+- **Effect:** none on any verdict. Statement (d) is read as restricted to verifiers that may act on a value that is not current, as the manuscript states.
