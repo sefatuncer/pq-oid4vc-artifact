@@ -1,6 +1,6 @@
 # models — formal part of the study (contributions C1 and C2)
 
-The formal part is a *proven abstraction*: a fast, exhaustive ASP model computes minimal
+The formal part is a *cross-checked abstraction*: a fast, exhaustive ASP model computes minimal
 post-quantum sets for every query; symbolic Tamarin models check the rules on which the ASP
 semantics rests; sampled ASP cells are re-checked in Tamarin; known-answer tests on other
 ecosystems check that the same core reproduces published results.

@@ -5,7 +5,7 @@ every query (goal × coexistence phase × τ × anchor × policy, plus the hypot
 subset-minimal sets of artefacts that must be post-quantum, together with the expectation carriers
 they need. An independently written z3 encoding re-computes every query, and a third,
 plain-Python fixed-point evaluator (Jacobi) checks random configurations. The model is layer 1 of
-the proven abstraction; Tamarin (`models/tamarin/`) is layer 2.
+the cross-checked abstraction; Tamarin (`models/tamarin/`) is layer 2.
 
 **Inputs.** Definitions of the threat model (`threat-model/`) and the traceability matrix
 (`traceability/`, mounted read-only as `/izlenebilirlik`); the LOTL snapshot statistics (`data/`,

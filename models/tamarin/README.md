@@ -1,6 +1,6 @@
 # models/tamarin — Tamarin rule schemata R1–R7 (Steps 4 and 5A)
 
-**What it does.** Layer 2 of the proven abstraction. Each rule schema isolates one way in which a
+**What it does.** Layer 2 of the cross-checked abstraction. Each rule schema isolates one way in which a
 classical link lets a quantum attacker (CRQC with time τ per key) forge an accepted object:
 
 | Schema | Model | Question |

@@ -39,7 +39,7 @@ Several families share a letter. The documents always qualify them.
 
 | Code | Meaning |
 |---|---|
-| C1–C3 | The three contributions: C1 proven abstraction (minimal post-quantum sets), C2 expectation-conveyance mechanisms, C3 library capability measurement |
+| C1–C3 | The three contributions named in the pre-registration: C1 cross-checked abstraction (minimal post-quantum sets), C2 expectation-conveyance mechanisms, C3 library capability measurement |
 | H0–H6 | Hypotheses. H0 sanity check, H1 channel substitution, H2/H2′ time phase, H3 expectation conveyance, H4 limits of published ("root-first") orderings, H5 aggregate-and-forge, H6 expressiveness of library APIs |
 | G1–G5 | Security goals: G1 credential (claims) unforgeability, G2 presentation unforgeability, G3 status soundness, G4 request/relying-party authenticity, G5 no classical acceptance after migration (three forms: G5-untimed, G5-timed, G5-migrated, the last one including first contact) |
 | A01–A13 | The 13 artefacts of the threat model (A01 LOTL … A13 transport TLS/WebPKI), see `threat-model/THREAT-MODEL.md` |
